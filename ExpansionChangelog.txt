@@ -19,6 +19,7 @@
 //	Sounds/COMBAT/WEAPONS folder:	Added the new plasma rifle reload sound effect from Zodomaniac 06/06/2020
 //	Sounds Folder:					Broke-up the TANKRE sound effect into two sounds to allow for separate eject and reload sound effects
 //									Modified the Unmaker start and loop sounds to be used for the mech's small laser sound effect
+//	DECORATE.txt:					Removed the inclusion of Dragonslayer2.txt 06/06/2020
 //	<all weapon files>:				Adjusted all weapon flags and made minor tweaks for consistency
 //									Changed dual wield fire rates to be 1 tic slower than single-weapon fire rates 06/02/2020
 //	+AmmoDropper.txt:				Updated to be able to drop all ammo types (except nukes), health, and armor bonuses
@@ -42,6 +43,7 @@
 //	Plasma.txt:						Changed AltFire state to jump over Goto NoAmmo if ammo is 10 or more instead of 11
 //	Railgun.txt:					Fixed the railgun jumping back to Ready3 with no ammo in the magazine and keeping zoom and light amp 05/06/2020
 //	Rifle.txt:						Changed the tactical warm-up sound to "Reloading" instead of "DryFire"
+//	Shotgun.txt:					Fixed DoKickReloading jumping to the wrong state 06/06/2020
 //	SSG.txt:						Fixed the SSG taking 2 shells and reloading both barrels if only a single barrel was reloaded previously
 //	+SubMachinegun.txt:				Changed the TNT1 A 1 frame to a SMGG A 1 frame in the DualWield state (flickering)
 //	+Unmaker.txt:					Modified the laser to be more potato-computer friendly (based off the mech laser)
@@ -61,6 +63,7 @@
 //	<All Monsters>:					Adjusted DamageFactor and PainChance values updated 04/20/2020
 //									Changed the cruelty bonus spawn velocities from random(-2.5, 2.5) to frandom(-2.5, 2.5) (truncation errors in GZDoom)
 //	Baron.txt:						Removed lines to heal the baron and bossbaron 200 hitpoints every time it sees the player 06/03/2020
+//									Removed the Translation property from the DeadBaron actor (translation was just wrong and not needed)
 //	Belphegor.txt:					Adjusted headshot actors to spawn at the monster's radius +1 (so the box would be shootable)
 //	Cacodemo.txt:					Added A_Stop to the start of Missile state (for pain.avoid behavior)
 //	Commando.txt:					Removed Clip spawn from fatality death and duplicate GiveInventory("SoulAmmo",...) from Death.PussyGrab state
@@ -75,6 +78,7 @@
 //									Monster now heals one hitpoint every 32 tics and can raise other monsters like an Archvile
 //									Added A_Stop to the start of Missile state (for pain.avoid behavior)
 //	PainElemental.txt:				Added A_Stop to the start of Missile state (for pain.avoid behavior)
+//	Sergeants.txt:					Changed SMGGuy's frames to use the new idle sprites 06/06/2020
 //	+SpecialDoom1Bosses.txt:		Adjusted hitboxes and headshottarget spawns to match the actual rendered sprites
 //	Volcabus.txt:					Adjusted headshot actors to spawn at the monster's radius +1 (so the box would be shootable)
 //									Added in missing pain and death state labels to prevent turning into a Mancubus
@@ -122,8 +126,10 @@
 //	+COMMANDS.txt:					Updated Script 396(Ammo Dropper) to display the quantity of all ammo types (except nukes), health, and armor
 //									Created Script 395 to decrease player health by 5 for the healthbonus dropper
 //	+doomdefs.bm:					Added missing brightmaps
+//									Removed Dragonslayer brightmap entries 06/06/2020
 //	GLDEFS.txt:						Added dynamic lights to any player or enemy projectiles that were missing them
 //									Tinyburningpiece actors now give off light
+//									Removed entries for vert and horizontal slayermissile from the dragonslayer 06/06/2020
 //	KEYCONF:						Moved the NukeLauncher to Slot 7 ahead of the BFG's
 //									Reordered the shotguns 04/20/2020
 // 	+Modeldef.BDVehicles			Adjusted model scale, ZOffset, and fixed ZombieArtilleryTank turret
