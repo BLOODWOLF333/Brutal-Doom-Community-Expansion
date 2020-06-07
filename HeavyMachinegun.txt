@@ -1,0 +1,867 @@
+//Sergeant Mark IV's vehicles.
+//If you want to modify and reuse this on your wad, please ask me first.
+
+
+
+
+
+ACTOR HeavyMachinegun: SwitchableDecoration 5462
+{
+	Health 90
+	Radius 24
+	Height 64
+	+SOLID
+	+USESPECIAL
+	MONSTER
+	-COUNTKILL
+	+SHOOTABLE
+	+THRUACTORS
+	+NOINFIGHTING
+	-COUNTKILL
+	+NOBLOODDECALS
+	+DONTRIP
+	+NOTIMEFREEZE
+	+NEVERTARGET
+	+CANTSEEK
+	//$category "Weapons"
+	BloodType "TankBlood", "TankBlood", "TankBlood"
+	Activation THINGSPEC_Activate | THINGSPEC_ThingTargets | THINGSPEC_NoDeathSpecial
+	Mass 0x7FFFFFFF 
+	Speed 0
+	
+	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 20.0
+	Damagefactor "Cut", 1.0	Damagefactor "Extremepunches", 0.0	Damagefactor "Fatality", 0.0
+	Damagefactor "FriendBullet", 0.25	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0
+	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
+	Damagefactor "HelperMarineFatallity", 0.0	Damagefactor "KillMe", 1.0	Damagefactor "Leg", 0.0
+	Damagefactor "LowKick", 0.0	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0
+	Damagefactor "Repair", 1.0	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "Saw", 1.0
+	Damagefactor "Slide", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 1.0
+	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "Kick", 0.0
+	Damagefactor "Melee", 0.0	Damagefactor "Shrapnel", 0.25	Damagefactor "Slime", 0.0
+	Damagefactor "Stealth", 0.0	Damagefactor "Stomp", 0.0	Damagefactor "Trample", 0.0
+	Damagefactor "Burn", 0.0	Damagefactor "Fire", 0.0	Damagefactor "Flames", 0.0
+	Damagefactor "GreenFire", 0.0	Damagefactor "HumanBBQ", 0.0	Damagefactor "Bullet", 0.25
+	Damagefactor "Desintegrate", 3.0	Damagefactor "Explosive", 0.5	Damagefactor "ExplosiveImpact", 0.25
+	Damagefactor "Minigun", 0.25	Damagefactor "Minor", 0.25	Damagefactor "MonsterBullet", 0.25
+	Damagefactor "MonsterMinigun", 0.25	Damagefactor "MonsterShotgunBullet", 0.25	Damagefactor "Shotgun", 0.25
+	Damagefactor "SSG", 0.25	Damagefactor "HitGround", 3.0	Damagefactor "Plasma", 1.25
+	Damagefactor "Railgun", 2.0	Damagefactor "TankWeakSpot", 3.0	Damagefactor "CheckRepair", 0.0
+
+	PainChance "Avoid", 0	PainChance "HitGround", 255	PainChance "Repair", 255
+	States
+    {
+    Spawn:
+	    TTR1 A 1
+		TNT1 A 0 Thing_ChangeTID(0, 261)
+		TTR1 A 1 A_ChangeFlag("FRIENDLY", 0)
+		TTR1 A 3 
+		TNT1 A 0 Thing_ChangeTID(0, 0)
+		TTR1 A 0 A_ChangeFlag("THRUACTORS", 0)
+		TTR1 A -1
+		Stop
+	Active:
+		TNT1 A 0 
+		TNT1 A 0 A_TakeFromTarget("PowerInvulnerable", 1)
+		TNT1 A 0 A_GiveToTarget("CeaseMorph", 1)
+		TTR1 A 0 A_ChangeFlag("FRIENDLY", 0)
+		
+	See:	
+		//TNT1 A 0 A_Chase("","",CHF_DONTMOVE )
+		TNT1 A 0 A_GiveToTarget("CheckingMorphingPlayerHealth", 1)
+		TTR1 A 3
+		TNT1 A 0 A_GiveToTarget("HeavyMachinegunMorpher", 1)
+		TNT1 A 0 A_GiveToTarget("HeavyMachinegunAmmo", 200)
+		TNT1 A 0 Thing_ChangeTID(0, 261)
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 1
+		TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
+		TNT1 A 10
+		TNT1 A 0 Thing_ChangeTID(0, 0)
+		TNT1 A 1
+		Stop
+		
+	Death:	
+		TNT1 A 1
+		BIKE A 0 A_Scream
+		NULL AAAAAAAAA 0 A_CustomMissile ("BDGlassShard", 96, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAAA 0 A_CustomMissile ("CrashMetalShards", 32, 0, random (0, 360), 2, random (20, 50))
+		TNT1 A -1
+		Stop
+	}
+}
+
+
+
+ACTOR HeavyMachinegunUsed: HeavyMachinegun
+{
+    States
+    {
+	Active:
+		TNT1 A 0 
+		TNT1 A 0 A_TakeFromTarget("PowerInvulnerable", 1)
+		TNT1 A 0 A_GiveToTarget("CeaseMorph", 1)
+		TTR1 A 0 A_ChangeFlag("FRIENDLY", 0)
+	See:	
+		//TNT1 A 0 A_Chase("","",CHF_DONTMOVE )
+		TNT1 A 0 A_GiveToTarget("CheckingMorphingPlayerHealth", 1)
+		TTR1 A 3
+		TNT1 A 0 A_GiveToTarget("HeavyMachinegunMorpher", 1)
+		TNT1 A 0 Thing_ChangeTID(0, 261)
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 1
+		TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
+		TNT1 A 10
+		TNT1 A 0 Thing_ChangeTID(0, 0)
+		Stop
+	}
+}
+
+ACTOR PlayerHeavyMachinegun : PlayerPawn
+{
+	Speed 0
+	Scale 1.0
+	Radius 24
+	Height 56
+	Mass 190
+	PainChance 0
+	Health 190
+	Speed 0
+	Player.MorphWeapon "HeavyMachinegunHUD"
+	Player.JumpZ 0
+	+NOSKIN
+	Player.ColorRange 112, 127
+	PainSound "*pain"
+	DeathSound "*death"
+	player.viewheight	44
+    player.attackzoffset 16
+	
+	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 10.0
+	Damagefactor "Cut", 10.0	Damagefactor "Extremepunches", 2.0	Damagefactor "Fatality", 5.0
+	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.1
+	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
+	Damagefactor "HelperMarineFatallity", 0.0	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0
+	Damagefactor "LowKick", 0.5	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 100.0
+	Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "Saw", 10.0
+	Damagefactor "Slide", 0.5	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 0.0
+	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
+	States
+	{
+	
+	Spawn:
+	TTR2 A 1
+	TTR2 A 4
+	TNT2 A 0 A_TakeInventory("PressedUse", 1)
+	Spawn2:
+	TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "ExitVehicle")
+	TTR2 A 1
+	Loop
+	
+	PAIN:
+	TTR2 A 1
+	TTR2 A 1 A_Pain
+	Goto Spawn
+	
+	ExitVehicle:
+	TNT1 A 1
+	TNT1 A 0 A_TakeInventory("PressedUse", 1)
+	
+	TNT1 A 0 A_SpawnItemEx ("TransferPlayerOutOfVehicle", -64, 0, 4)
+	TTR2 A 4
+	TNT1 A 0 A_JumpIfInventory("CanLeaveVehicle", 1, "CanExit")
+	TNT1 A 0 A_Print("Can't leave from this direction", 1)
+	Goto Spawn
+	
+	CanExit:
+	TNT1 A 0 A_TakeInventory("PressedUse", 1)
+	TNT1 A 0 A_TakeInventory("CanLeaveVehicle", 1)
+	TNT1 A 0 A_SpawnItemEx ("HeavyMachinegunUsed", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+	TNT1 A 0 ACS_NamedExecuteAlways("BDLeaveHMG")
+	TNT1 A 100
+	TNT1 A -1
+	Stop
+	
+	Death:
+	TNT1 A 0
+	TNT1 A 0 A_Scream
+	TNT1 A 0 A_NoBlocking
+	TNT1 A 0 A_TakeInventory("HeavyMachinegunHUD", 1)
+	TNT1 A 0 A_SpawnItemEx ("HeavyMachinegun", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+	PLAY HIJKLM 4
+	PLAY N -1
+	Stop
+	
+	}
+}
+
+
+ACTOR PowerHeavyMachinegunSwitch : PowerMorph {PowerMorph.PlayerClass "PlayerHeavyMachinegun"}
+
+
+
+ACTOR HeavyMachinegunMorpher : CustomInventory 
+{
+  States
+  {
+  PickUp:
+  TNT1 A 1
+  TNT1 A 0 ACS_NamedExecuteAlways("BDEnterHMG", 0, 0, 0, 0)//Grab Tripod Gun.
+  TNT1 A 0 A_GiveInventory("HeavyMachinegunMorphActivation")
+  TNT1 A 0 A_SpawnItem("CancelTeleportFog")
+  TNT1 A 1
+  Stop
+  }
+ }
+ 
+ACTOR CheckingMorphingPlayerHealth : CustomInventory 
+{
+  States
+  {
+  PickUp:
+  TNT1 A 0
+  TNT1 A 0 ACS_NamedExecuteAlways("GetVehiclePreviousHealth2", 0, 0, 0, 0)//Grab Tripod Gun.
+  Stop
+  }
+ } 
+
+
+ACTOR HeavyMachinegunMorphActivation : PowerupGiver
+{
+  Powerup.Type "PowerHeavyMachinegunSwitch"
+  Powerup.Duration 252000
+  +INVENTORY.AUTOACTIVATE
+  +INVENTORY.ALWAYSPICKUP
+  Inventory.MaxAmount 1
+  Health 100
+  GibHealth 1
+  Scale 0.5
+  Mass 999999999
+  Height 96
+  Radius 32
+  States
+  {
+  Spawn:
+  TNT1 A 100
+  Stop
+  
+  PickUp:
+  TNT1 A 1
+  TNT1 A 1
+  Stop
+  }
+ }
+ 
+ 
+
+ACTOR HeavyMachinegunHUD : DoomWeapon
+{
+	Game Doom
+	Weapon.AmmoUse 0
+	Weapon.AmmoGive 0
+	Weapon.AmmoType "HeavyMachinegunAmmo"
+	Obituary "%o was chewed up by a heavy machinegun."
+	Weapon.SelectionOrder 9999
+	+WEAPON.NOAUTOAIM
+	+WEAPON.CHEATNOTWEAPON
+	+WEAPON.NO_AUTO_SWITCH
+	Inventory.Pickupmessage "$PICKUP_PISTOL_DROPPED"
+	Tag "$TAG_PISTOL"
+	States
+	{
+	Ready:
+	    TNT1 A 0
+		TNT1 A 0 A_SetCrosshair(44)
+		TNT1 A 0 A_GunFlash
+		
+	ReadyToFire:
+		TNT1 A 0
+		TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 1, 1)
+		Goto NoAmmo
+		HMGH A 2 A_WeaponReady(1)
+     	Loop
+		
+	NoAmmo:
+	    TNT1 A 0
+		HMGH H 2
+		HMGH H 1 A_WeaponReady(1)
+     	Goto ReadyToFire
+		
+	Deselect:
+		TNT1 A 1 A_Lower
+		Loop
+	Select:
+		HMGH A 0 A_Raise
+		TNT1 A 1 A_TakeInventory("PressedUse", 1)
+		TNT1 A 1 A_TakeInventory("PressedJump", 2)
+		HMGH AAAAAAA 1 A_Raise
+		HMGH AAAAAAAAAAA 0 A_Raise
+		TNT1 A 0
+		Goto Ready
+	Fire:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 2, 1)
+		Goto NoAmmo
+		
+		TNT1 A 0 A_ZoomFactor(1.25)
+		HMGH B 1 BRIGHT
+		TNT1 A 0 A_FireCustomMissile("Alerter")
+		TNT1 A 0 A_FireCustomMissile("HeavyMachinegunProjectile", 0, 0, 2, -2)
+		TNT1 A 0 A_TakeInventory("HeavyMachinegunAmmo", 1)
+		TNT1 A 0 A_FireCustomMissile("HeavyMachinegunFlash", 0, 0, 2, -2)
+		RIFF A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 2, -2)
+	    TNT1 A 0 A_PlaySound("TANKMG", 1)
+		HMGH DG 1
+		
+		HMGH C 1 BRIGHT
+		TNT1 A 0 A_FireCustomMissile("Alerter")
+		TNT1 A 0 A_FireCustomMissile("HeavyMachinegunProjectile", 0, 0, -2, -2)
+		TNT1 A 0 A_TakeInventory("HeavyMachinegunAmmo", 1)
+		TNT1 A 0 A_FireCustomMissile("HeavyMachinegunFlash", 0, 0, -2, -2)
+		RIFF A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, -2, -2)
+	    TNT1 A 0 A_PlaySound("TANKMG", 1)
+		HMGH EG 1 
+		HMGH A 0 A_Refire
+		Goto ReadyToFire
+	
+	Flash:
+		TNT1 A 0
+		TNT1 A 1
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "LightEnd")
+		NULL A 0 A_JumpIf (pitch < -36, "TooHighCheckGZD")
+		NULL A 0 A_JumpIf (pitch > 220, "TooHighCheck")
+		NULL A 0 A_JumpIf (pitch > 16, "TooLowCheck")
+		TNT1 A 1
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "LightEnd")
+		NULL A 0 A_JumpIf (pitch < -36, "TooHighCheckGZD")
+		NULL A 0 A_JumpIf (pitch > 220, "TooHighCheck")
+		NULL A 0 A_JumpIf (pitch > 16, "TooLowCheck")
+		TNT1 A 1
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "LightEnd")
+		NULL A 0 A_JumpIf (pitch < -36, "TooHighCheckGZD")
+		NULL A 0 A_JumpIf (pitch > 220, "TooHighCheck")
+		NULL A 0 A_JumpIf (pitch > 16, "TooLowCheck")
+		Goto Flash
+		
+	
+	TooHigh:
+		TNT1 A 0
+		TNT1 A 0 A_SetPitch(325)
+		Goto Flash
+		
+	TooLowCheck:
+		TNT1 A 0
+		TNT1 A 0 A_SetPitch(15)
+		Goto Flash
+		
+	TooHighCheck:
+		TNT1 A 0
+		NULL A 0 A_JumpIf (pitch < 326, "TooHigh")
+		Goto Flash
+		
+	TooHighCheckGZD:
+		TNT1 A 0
+		NULL A 0 A_SetPitch(-35)
+		Goto Flash
+	
+	LightEnd:
+		TNT1 A 0
+		TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_Takeinventory("FlashlightOn",1)
+		TNT1 A 0 A_TakEinventory("PowerLightAmp", 1)
+		TNT1 A 10
+		Stop
+	
+	Spawn:
+		LAUN A -1
+		Stop
+	}
+}
+ 
+ 
+ACTOR HeavyMachinegunProjectile: FastProjectile
+{
+	Game Doom
+	Radius 2
+	Height 2
+	Speed 140
+	Damage (random(25, 25))
+	+RANDOMIZE
+	+MISSILE
+	+BLOODSPLATTER
+	+NOEXTREMEDEATH
+	RenderStyle Add
+	damagetype "Minigun"
+	Alpha 1.0
+	Decal "BulletChip"
+	Scale 0.5
+	Obituary "$OB_MPPLASMARIFLE"
+	States
+	{
+	Spawn:
+		MG74 A 1 Bright
+        TNT1 A 0 A_SpawnItem("HeavyMachinegunHitsProjectiles", 0, 5)
+		Loop
+	Death:
+	    TNT1 A 0 A_SpawnItem("BulletPuff")
+		TNT1 A 0 A_NoBlocking
+		TNT1 AA 0 A_CustomMissile ("ExplosionParticleVeryFast", 0, 0, random (0, 360), 2, random (0, 40))
+		TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 1
+		Stop
+	}
+}
+
+
+
+ACTOR HeavyMachinegunProjectile2: HeavyMachinegunProjectile
+{
+	Damage 4
+}
+
+
+ACTOR HeavyMachinegunProjectileEnemy: HeavyMachinegunProjectile
+{
+	+THRUSPECIES
+	Species "EnemyTank"
+	Speed 140
+	Damage (random(12,13))
+}
+
+ACTOR HeavyMachinegunFlash : FastProjectile
+{
+	Game Doom
+	Radius 2
+	Height 2
+	Speed 32
+	Damage 1
+	Projectile
+	+RANDOMIZE
+	+MISSILE
+	+BLOODSPLATTER
+	RenderStyle Add
+	damagetype "Blast"
+	Alpha 0.2
+	Scale 0.11
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		HMGH F 2 BRIGHT A_SpawnItem("YellowFlare")
+		Goto Death
+	Death:
+		TNT1 A 0
+		Stop
+	}
+}
+
+
+	
+	
+actor HeavyMachinegunHitsProjectiles
+{
+    Scale 1.0
+    +SHOOTABLE
+	+NOBLOOD
+	MONSTER
+	-COUNTKILL
+	Radius 6
+	Height 8
+	Health 2
+    States
+    {
+    Spawn:
+        TNT1 A 3
+		TNT1 A 0 A_NoBlocking
+        stop
+	Death:
+        TNT1 A 0
+		TNT1 A 0 A_NoBlocking
+        stop	
+    }
+}	
+
+actor HeavyMachinegunProjectileTracerTrail
+{
+    Scale 0.5
+    RenderStyle Add
+    Alpha 0.9
+    +NOINTERACTION
+    +CLIENTSIDEONLY
+    States
+    {
+    Spawn:
+        MG74 A 4 BRIGHT
+        stop
+    }
+}
+
+
+
+actor HeavyMachinegunProjectileTracerTrail2: HeavyMachinegunProjectileTracerTrail {    Alpha 0.85 }
+actor HeavyMachinegunProjectileTracerTrail3: HeavyMachinegunProjectileTracerTrail {    Alpha 0.80 }
+actor HeavyMachinegunProjectileTracerTrail4: HeavyMachinegunProjectileTracerTrail {    Alpha 0.75 }
+actor HeavyMachinegunProjectileTracerTrail5: HeavyMachinegunProjectileTracerTrail {    Alpha 0.70 }
+actor HeavyMachinegunProjectileTracerTrail6: HeavyMachinegunProjectileTracerTrail {    Alpha 0.65 }
+actor HeavyMachinegunProjectileTracerTrail7: HeavyMachinegunProjectileTracerTrail {    Alpha 0.60 }
+actor HeavyMachinegunProjectileTracerTrail8: HeavyMachinegunProjectileTracerTrail {    Alpha 0.55 }
+actor HeavyMachinegunProjectileTracerTrail9: HeavyMachinegunProjectileTracerTrail {    Alpha 0.50 }
+actor HeavyMachinegunProjectileTracerTrail10: HeavyMachinegunProjectileTracerTrail {    Alpha 0.45 }
+actor HeavyMachinegunProjectileTracerTrail11: HeavyMachinegunProjectileTracerTrail {    Alpha 0.40 }
+actor HeavyMachinegunProjectileTracerTrail12: HeavyMachinegunProjectileTracerTrail {    Alpha 0.35 }
+actor HeavyMachinegunProjectileTracerTrail13: HeavyMachinegunProjectileTracerTrail {    Alpha 0.30 }
+actor HeavyMachinegunProjectileTracerTrail14: HeavyMachinegunProjectileTracerTrail {    Alpha 0.25 }
+actor HeavyMachinegunProjectileTracerTrail15: HeavyMachinegunProjectileTracerTrail {    Alpha 0.20 }
+actor HeavyMachinegunProjectileTracerTrail16: HeavyMachinegunProjectileTracerTrail {    Alpha 0.15 }
+actor HeavyMachinegunProjectileTracerTrail17: HeavyMachinegunProjectileTracerTrail {    Alpha 0.10 }
+actor HeavyMachinegunProjectileTracerTrail18: HeavyMachinegunProjectileTracerTrail {    Alpha 0.05 }
+
+
+
+ACTOR AutoCannonProjectile: HeavyMachinegunProjectile
+{
+	Damage (random(60, 60))
+	Speed 120
+	Scale 1.0
+	Decal "Scorch"
+	States
+	{
+	Spawn:
+		TNT1 A 1 Bright
+		TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail2", (2 *momx)/-35.0, -(2 *momy)/-35.0, 2+(2 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail3", (4 *momx)/-35.0, -(4 *momy)/-35.0, 2+(4 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail4", (6 *momx)/-35.0, -(6 *momy)/-35.0, 2+(6 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail5", (8 *momx)/-35.0, -(8 *momy)/-35.0, 2+(8 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail6", (10*momx)/-35.0, -(10*momy)/-35.0, 2+(10*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail7", (12*momx)/-35.0, -(12*momy)/-35.0, 2+(12*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail8", (14*momx)/-35.0, -(14*momy)/-35.0, 2+(14*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail9", (16*momx)/-35.0, -(16*momy)/-35.0, 2+(16*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail10", (18*momx)/-35.0, -(18*momy)/-35.0, 2+(18*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail11", (20*momx)/-35.0, -(20*momy)/-35.0, 2+(20*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail12", (22*momx)/-35.0, -(22*momy)/-35.0, 2+(22*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItem("HeavyMachinegunHitsProjectiles", 0, 5)
+		Loop
+		
+	Death:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx ("AutocannonPenetrator",cos(-pitch)*42,0,0+(sin(pitch)*42),cos(-pitch)*120,0,sin(pitch)*120,0,SXF_TRANSFERPITCH)
+	XDeath:
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_Explode(30, 240)
+		TNT1 A 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
+		TNT1 A 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (40, 90))
+		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 2, 0, random (0, 360), 2, random (0, 360))
+		
+		TNT1 A 0 A_CheckFloor("ExplodeFloor")
+		XPAC EFGHIJK 1 BRIGHT A_SpawnItem("RedFlare")
+		TNT1 A 1
+		Stop
+		
+	ExplodeFloor:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("BulletPuff")
+		TNT1 A 0 A_Jump(64, "Ricochet")
+		XPAC EFGHIJK 1 BRIGHT A_SpawnItem("RedFlare")
+		TNT1 A 1
+		Stop
+		
+	Ricochet:
+		TNT1 A 0
+		TNT1 A 0 A_CustomMissile("AutoCannonProjectile2", 12, 0, random(-15, 15), 2, random(5, 20))
+		Stop
+		
+	}
+}
+
+Actor AutoCannonProjectile2
+{
+Damage (random(30, 30))
++MISSILE
+Speed 60
+States
+	{
+	Spawn:
+		TNT1 A 1 Bright
+		TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail2", (2 *momx)/-35.0, -(2 *momy)/-35.0, 2+(2 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail3", (4 *momx)/-35.0, -(4 *momy)/-35.0, 2+(4 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail4", (6 *momx)/-35.0, -(6 *momy)/-35.0, 2+(6 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail5", (8 *momx)/-35.0, -(8 *momy)/-35.0, 2+(8 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail6", (10*momx)/-35.0, -(10*momy)/-35.0, 2+(10*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail7", (12*momx)/-35.0, -(12*momy)/-35.0, 2+(12*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail8", (14*momx)/-35.0, -(14*momy)/-35.0, 2+(14*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail9", (16*momx)/-35.0, -(16*momy)/-35.0, 2+(16*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail10", (18*momx)/-35.0, -(18*momy)/-35.0, 2+(18*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail11", (20*momx)/-35.0, -(20*momy)/-35.0, 2+(20*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail12", (22*momx)/-35.0, -(22*momy)/-35.0, 2+(22*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+		Loop
+		
+		Death:
+		TNT1 A 0 A_Explode(30, 240)
+		TNT1 A 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
+		TNT1 A 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (40, 90))
+		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 2, 0, random (0, 360), 2, random (0, 360))
+
+		XPAC EFGHIJK 1 BRIGHT A_SpawnItem("RedFlare")
+		TNT1 A 1
+		Stop
+		}
+}
+
+
+
+Actor AutocannonPenetrator: AutoCannonProjectile
+{
+damage (random(30, 30))
+//Decal "BulletDecalNew1"
+Decal "Scorch"
+DamageType Blast
+Radius 4
+Height 4
+Scale 0.5
++MISSILE
+-SKYEXPLODE
+States
+{
+	
+Death:
+	TNT1 A 0
+	TNT1 A 0 A_CheckFloor("Nah")
+	TNT1 A 0 A_CheckCeiling("Nah")
+	Goto XDeath
+	
+Nah:
+		TNT1 A 0
+		Stop
+	}
+}
+
+
+actor AutoCannonTracerTrail
+{
+    Scale 1.0
+    RenderStyle Add
+    Alpha 0.9
+    +NOINTERACTION
+    +CLIENTSIDEONLY
+    States
+    {
+    Spawn:
+        MG74 C 2 BRIGHT
+        stop
+    }
+}
+
+
+
+actor AutoCannonTracerTrail2: AutoCannonTracerTrail {    Alpha 0.85 }
+actor AutoCannonTracerTrail3: AutoCannonTracerTrail {    Alpha 0.80 }
+actor AutoCannonTracerTrail4: AutoCannonTracerTrail {    Alpha 0.75 }
+actor AutoCannonTracerTrail5: AutoCannonTracerTrail {    Alpha 0.70 }
+actor AutoCannonTracerTrail6: AutoCannonTracerTrail {    Alpha 0.65 }
+actor AutoCannonTracerTrail7: AutoCannonTracerTrail {    Alpha 0.60 }
+actor AutoCannonTracerTrail8: AutoCannonTracerTrail {    Alpha 0.55 }
+actor AutoCannonTracerTrail9: AutoCannonTracerTrail {    Alpha 0.50 }
+actor AutoCannonTracerTrail10: AutoCannonTracerTrail {    Alpha 0.45 }
+actor AutoCannonTracerTrail11: AutoCannonTracerTrail {    Alpha 0.40 }
+actor AutoCannonTracerTrail12: AutoCannonTracerTrail {    Alpha 0.35 }
+
+
+
+
+ACTOR AutoCannonFlash: HeavyMachinegunFlash
+{
+	Scale 0.22
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		//TNT1 A 0 Radius_Quake(4, 4, 0, 1, 0)
+		TNT1 A 1
+		TNT1 A 0 A_Stop
+		Death:
+		TNT1 A 0 A_SpawnItem("RedFlare")
+		HMGH F 2
+		Stop
+	}
+}
+
+
+ACTOR heavyplasmaProjectile: FastProjectile
+{
+	Game Doom
+	Radius 2
+	Height 0
+	Speed 220
+	Damage 13
+	+RANDOMIZE
+	+MISSILE
+	-NOGRAVITY
+	+BLOODSPLATTER
+	Gravity 0.1
+	RenderStyle Add
+	damagetype "Plasma"
+	Alpha 1.0
+	Decal "Scorch"
+	Scale 1.0
+	Obituary "$OB_MPPLASMARIFLE"
+	States
+	{
+	Spawn:
+		TNT1 A 1 Bright a_sPAWNITEM("BlueFlareSmall")
+		TNT1 A 0 A_SpawnItemEx("heavyplasmaProjectileTracerTrail2", (2 *momx)/-35.0, -(2 *momy)/-35.0, 2+(2 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("heavyplasmaProjectileTracerTrail3", (4 *momx)/-35.0, -(4 *momy)/-35.0, 2+(4 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("heavyplasmaProjectileTracerTrail4", (6 *momx)/-35.0, -(6 *momy)/-35.0, 2+(6 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("heavyplasmaProjectileTracerTrail5", (8 *momx)/-35.0, -(8 *momy)/-35.0, 2+(8 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("heavyplasmaProjectileTracerTrail6", (10*momx)/-35.0, -(10*momy)/-35.0, 2+(10*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("heavyplasmaProjectileTracerTrail7", (12*momx)/-35.0, -(12*momy)/-35.0, 2+(12*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("heavyplasmaProjectileTracerTrail8", (14*momx)/-35.0, -(14*momy)/-35.0, 2+(14*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("heavyplasmaProjectileTracerTrail9", (16*momx)/-35.0, -(16*momy)/-35.0, 2+(16*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("heavyplasmaProjectileTracerTrail10", (18*momx)/-35.0, -(18*momy)/-35.0, 2+(18*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("heavyplasmaProjectileTracerTrail11", (20*momx)/-35.0, -(20*momy)/-35.0, 2+(20*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("heavyplasmaProjectileTracerTrail12", (22*momx)/-35.0, -(22*momy)/-35.0, 2+(22*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItem("heavyplasmaHitsProjectiles", 0, 5)
+		Loop
+	Death:
+	    TNT1 A 0 A_SpawnItem("BulletPuff")
+		TNT1 A 0 A_NoBlocking
+		TNT1 AAAA 0 A_SpawnItem("BlueFlare")
+		TNT1 AAA 0 A_CustomMissile ("HeavyPlasmaProjectileHit", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAA 0 A_CustomMissile ("ExplosionParticleVeryFast", 0, 0, random (0, 360), 2, random (0, 40))
+		TNT1 AAA 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 1
+		Stop
+	}
+}
+
+
+ACTOR heavyplasmaProjectileEnemy: heavyplasmaProjectile
+{
+	Speed 100
+	Damage 10
+}
+
+
+ACTOR AutoCannonProjectileEnemy: AutoCannonProjectile
+{
+	+THRUSPECIES
+	Species "EnemyTank"
+	Speed 120
+	Damage (random(30,30))
+}
+
+ACTOR heavyplasmaFlash: FastProjectile
+{
+	Game Doom
+	Radius 2
+	Height 2
+	Speed 15
+	Damage 0
+	+RANDOMIZE
+	+MISSILE
+	-NOGRAVITY
+	+BLOODSPLATTER
+	Gravity 0.1
+	RenderStyle Add
+	damagetype "Plasma"
+	Alpha 0.2
+	Scale 0.4
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1
+		TNT1 A 0 A_Stop
+		Death:
+		TNT1 AA 0 A_SpawnItem("BlueFlare")
+		HMGH W 2
+		Stop
+	}
+}
+
+
+	
+	
+actor heavyplasmaHitsProjectiles
+{
+    Scale 1.0
+    +SHOOTABLE
+	+NOBLOOD
+	MONSTER
+	-COUNTKILL
+	Radius 6
+	Height 8
+	Health 2
+    States
+    {
+    Spawn:
+        TNT1 A 3
+		TNT1 A 0 A_NoBlocking
+        stop
+	Death:
+        TNT1 A 0
+		TNT1 A 0 A_NoBlocking
+        stop	
+    }
+}	
+
+actor heavyplasmaProjectileTracerTrail
+{
+    Scale 1.0
+    RenderStyle Add
+    Alpha 0.9
+    +NOINTERACTION
+    +CLIENTSIDEONLY
+    States
+    {
+    Spawn:
+        HPLP A 2 BRIGHT
+        stop
+    }
+}
+
+
+actor heavyplasmaProjectileHit
+{
+    Scale 2.1
+    RenderStyle Add
+    Alpha 0.7
+	+MISSILE
+    Speed 2
+	+NOGRAVITY
+	+DOOMBOUNCE
+    +CLIENTSIDEONLY
+	Radius 1
+	Height 1
+    States
+    {
+    Spawn:
+	TNT1 A 0
+	Goto Death
+	Death:
+        HPLP BCDEF 3 BRIGHT A_SpawnItem("BlueFlareSmall")
+        stop
+    }
+}
+
+
+
+actor heavyplasmaProjectileTracerTrail2: heavyplasmaProjectileTracerTrail {    Alpha 0.85 }
+actor heavyplasmaProjectileTracerTrail3: heavyplasmaProjectileTracerTrail {    Alpha 0.80 }
+actor heavyplasmaProjectileTracerTrail4: heavyplasmaProjectileTracerTrail {    Alpha 0.75 }
+actor heavyplasmaProjectileTracerTrail5: heavyplasmaProjectileTracerTrail {    Alpha 0.70 }
+actor heavyplasmaProjectileTracerTrail6: heavyplasmaProjectileTracerTrail {    Alpha 0.65 }
+actor heavyplasmaProjectileTracerTrail7: heavyplasmaProjectileTracerTrail {    Alpha 0.60 }
+actor heavyplasmaProjectileTracerTrail8: heavyplasmaProjectileTracerTrail {    Alpha 0.55 }
+actor heavyplasmaProjectileTracerTrail9: heavyplasmaProjectileTracerTrail {    Alpha 0.50 }
+actor heavyplasmaProjectileTracerTrail10: heavyplasmaProjectileTracerTrail {    Alpha 0.45 }
+actor heavyplasmaProjectileTracerTrail11: heavyplasmaProjectileTracerTrail {    Alpha 0.40 }
+actor heavyplasmaProjectileTracerTrail12: heavyplasmaProjectileTracerTrail {    Alpha 0.35 }
+actor heavyplasmaProjectileTracerTrail13: heavyplasmaProjectileTracerTrail {    Alpha 0.30 }
+actor heavyplasmaProjectileTracerTrail14: heavyplasmaProjectileTracerTrail {    Alpha 0.25 }
+actor heavyplasmaProjectileTracerTrail15: heavyplasmaProjectileTracerTrail {    Alpha 0.20 }
+actor heavyplasmaProjectileTracerTrail16: heavyplasmaProjectileTracerTrail {    Alpha 0.15 }
+actor heavyplasmaProjectileTracerTrail17: heavyplasmaProjectileTracerTrail {    Alpha 0.10 }
+actor heavyplasmaProjectileTracerTrail18: heavyplasmaProjectileTracerTrail {    Alpha 0.05 }

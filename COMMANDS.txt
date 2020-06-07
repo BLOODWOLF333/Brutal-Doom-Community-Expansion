@@ -1,0 +1,469 @@
+#library "commands"
+#include "zcommon.acs"
+
+Script 312 (void) NET
+{
+	While(CheckInventory("PowerInvulnerable") > 0)
+	{
+		Delay(1);
+	}
+	While(CheckInventory("GoFatality") > 0)
+	{
+		Delay(1);
+		if(GetActorProperty(0, APROP_INVULNERABLE) != 1)
+		{
+			SetActorProperty(0, APROP_INVULNERABLE, ON);
+		}
+	}
+	SetActorProperty(0, APROP_INVULNERABLE, OFF);
+}
+
+Script 301 (VOID) NET
+{
+ GiveInventory("BDWeaponAction", 1);
+ GiveInventory("Kicking", 1);
+ GiveInventory("GoSpecial", 1);
+}
+
+Script 302 (VOID) NET
+{
+ GiveInventory("BDWeaponAction", 1);
+ GiveInventory("Taunting", 1);
+ GiveInventory("GoSpecial", 1);
+}
+
+Script 303 (VOID) NET
+{
+ GiveInventory("Reloading", 1);
+ GiveInventory("BDWeaponAction", 1);
+ GiveInventory("GoSpecial", 1);
+}
+
+
+Script 309 (VOID) NET
+{
+ GiveInventory("AmmoDroper", 1);
+ SetWeapon("AmmoDroper");
+}
+
+Script 310 (VOID) NET
+{
+	SetPlayerproperty(0, 1, PROP_INSTANTWEAPONSWITCH );
+	SetWeapon("BrutalPistol");
+	SetWeapon("ClassicPistol");
+	delay(5);
+	SetPlayerproperty(0, 0, PROP_INSTANTWEAPONSWITCH );
+}
+
+
+Script 363 (VOID) NET
+{
+ GiveInventory("BDWeaponAction", 1);
+ GiveInventory("Unloading", 1);
+ GiveInventory("GoSpecial", 1);
+}
+
+
+Script 313 (VOID) NET
+{
+ GiveInventory("SwitchFlashlight", 1);
+ GiveInventory("GoSpecial", 1);
+}
+
+
+Script 315 (VOID) NET
+{
+ GiveInventory("BDWeaponAction", 1);
+ GiveInventory("TossGrenade", 1);
+ GiveInventory("GoSpecial", 1);
+}
+
+
+//TAUNTING
+
+Script 431 (VOID) NET
+{
+ GiveInventory("BDWeaponAction", 1);
+ GiveInventory("Salute1", 1);
+ GiveInventory("GoSpecial", 1);
+}
+
+Script 432 (VOID) NET
+{
+ GiveInventory("BDWeaponAction", 1);
+ GiveInventory("Salute2", 1);
+ GiveInventory("GoSpecial", 1);
+}
+
+Script 304 (VOID) NET
+{
+ GiveInventory("BDWeaponAction", 1);
+ GiveInventory("AdvTaunting", 1);
+ GiveInventory("GoSpecial", 1);
+}
+
+Script 305 (VOID) NET
+{
+ GiveInventory("OneLiner", 1);
+ GiveInventory("GoSpecial", 1);
+}
+
+//ROLLS
+
+Script 306 (VOID) NET
+{
+ GiveInventory("RollLeft", 1);
+ GiveInventory("GoSpecial", 1);
+}
+
+Script 307 (VOID) NET
+{
+ GiveInventory("RollRight", 1);
+ GiveInventory("GoSpecial", 1);
+}
+
+
+Script 308 (VOID) NET
+{
+ GiveInventory("StartDualWield", 1);
+ GiveInventory("GoSpecial", 1);
+}
+
+
+//==================================================================================================
+//SPRINTING
+script "CheckSprint" ENTER
+{
+
+ int buttonSpeed;
+
+ while (TRUE)
+ {
+   buttonSpeed = GetPlayerInput(-1, INPUT_BUTTONS);
+   
+if (buttonSpeed & BT_SPEED)
+{
+   if (checkinventory("istacticalclass") == 1) { GiveInventory("IsRunning", 1); }
+   GiveInventory("IsRunning2", 1);
+   delay(1);
+   restart;
+}
+   TakeInventory("IsRunning", 1);
+   TakeInventory("IsRunning2", 1);
+   delay(4);
+ } 
+
+
+}
+
+
+script "CheckPrimary" ENTER
+{
+ int buttons;
+
+ while (TRUE)
+ {
+   buttons = GetPlayerInput(-1, INPUT_BUTTONS);
+   
+if (buttons & BT_ALTATTACK)
+{
+   GiveInventory("FiredSecondary", 1);
+   delay(1);
+   restart;
+}
+   TakeInventory("FiredSecondary", 1);
+   delay(4);
+ }
+ 
+} 
+ 
+ 
+script "CheckSecondary" ENTER
+{ 
+ int buttons2;
+
+ while (TRUE)
+ {
+   buttons2 = GetPlayerInput(-1, INPUT_BUTTONS);
+   
+if (buttons2 & BT_ATTACK)
+{
+   GiveInventory("FiredPrimary", 1);
+   delay(1);
+   restart;
+}
+   TakeInventory("FiredPrimary", 1);
+   delay(4);
+ }
+}
+
+
+script "CheckCrouch" ENTER
+{ 
+ int buttons2;
+
+ while (TRUE)
+ {
+   buttons2 = GetPlayerInput(-1, INPUT_BUTTONS);
+   
+if (buttons2 & BT_CROUCH)
+{
+   GiveInventory("IsCrouching", 1);
+   delay(1);
+   restart;
+}
+   TakeInventory("IsCrouching", 1);
+   delay(4);
+ }
+}
+
+
+
+//Faster
+script 852 (void)
+{
+		if (checkinventory("istacticalclass") == 1) { SetActorProperty (0, APROP_Speed, 2.6); }
+		delay (12);
+		if (checkinventory("istacticalclass") == 1) { SetActorProperty (0, APROP_Speed, 1.3); }
+}
+
+//Slower
+script 853 (void)
+{
+	if (checkinventory("istacticalclass") == 1) { SetActorProperty (0, APROP_Speed, 1.3); }
+	delay (1);
+}
+
+Script 395 (VOID) NET
+{
+	SetActorProperty(0,APROP_HEALTH,(GetActorProperty(0,APROP_HEALTH)-5));
+	Delay(1);
+}
+
+//==================================================================================================
+  
+//Ammo Drop Counters
+Script 396 (VOID) NET
+{
+	int ammoclip1 = CheckInventory("Clip1");
+	If (CheckInventory("Clip1") >= 100)
+	{
+		HudMessage(d:ammoclip1; HUDMSG_PLAIN, 0, CR_GREEN, 0.178, 0.575, 0.1, 2.0);
+	}
+	Else If (CheckInventory("Clip1") >= 50)
+	{
+		HudMessage(d:ammoclip1; HUDMSG_PLAIN, 0, CR_YELLOW, 0.178, 0.575, 0.1, 2.0);
+	}
+	Else
+	{
+		HudMessage(d:ammoclip1; HUDMSG_PLAIN, 0, CR_RED, 0.178, 0.575, 0.1, 2.0);
+	}
+
+	int ammoclip2 = CheckInventory("Mauser9mm");
+	If (CheckInventory("Mauser9mm") >= 100)
+	{
+		HudMessage(d:ammoclip2; HUDMSG_PLAIN, 0, CR_GREEN, 0.25, 0.575, 0.1, 2.0);
+	}
+	Else If (CheckInventory("Mauser9mm") >= 50)
+	{
+		HudMessage(d:ammoclip2; HUDMSG_PLAIN, 0, CR_YELLOW, 0.25, 0.575, 0.1, 2.0);
+	}
+	Else
+	{
+		HudMessage(d:ammoclip2; HUDMSG_PLAIN, 0, CR_RED, 0.25, 0.575, 0.1, 2.0);
+	}
+
+	int ammoclip3 = CheckInventory("AmmoMagnum");
+	If (CheckInventory("AmmoMagnum") >= 15)
+	{
+		HudMessage(d:ammoclip3; HUDMSG_PLAIN, 0, CR_GREEN, 0.322, 0.575, 0.1, 2.0);
+	}
+	Else If (CheckInventory("AmmoMagnum") >= 8)
+	{
+		HudMessage(d:ammoclip3; HUDMSG_PLAIN, 0, CR_YELLOW, 0.322, 0.575, 0.1, 2.0);
+	}
+	Else
+	{
+		HudMessage(d:ammoclip3; HUDMSG_PLAIN, 0, CR_RED, 0.322, 0.575, 0.1, 2.0);
+	}
+
+	int ammoclip4 = CheckInventory("AmmoShell");
+	If (CheckInventory("AmmoShell") >= 25)
+	{
+		HudMessage(d:ammoclip4; HUDMSG_PLAIN, 0, CR_GREEN, 0.394, 0.575, 0.1, 2.0);
+	}
+	Else If (CheckInventory("AmmoShell") >= 13)
+	{
+		HudMessage(d:ammoclip4; HUDMSG_PLAIN, 0, CR_YELLOW, 0.394, 0.575, 0.1, 2.0);
+	}
+	Else
+	{
+		HudMessage(d:ammoclip4; HUDMSG_PLAIN, 0, CR_RED, 0.394, 0.575, 0.1, 2.0);
+	}
+
+	int ammoclip5 = CheckInventory("Clip2");
+	If (CheckInventory("Clip2") >= 150)
+	{
+		HudMessage(d:ammoclip5; HUDMSG_PLAIN, 0, CR_GREEN, 0.466, 0.575, 0.1, 2.0);
+	}
+	Else If (CheckInventory("Clip2") >= 75)
+	{
+		HudMessage(d:ammoclip5; HUDMSG_PLAIN, 0, CR_YELLOW, 0.466, 0.575, 0.1, 2.0);
+	}
+	Else
+	{
+		HudMessage(d:ammoclip5; HUDMSG_PLAIN, 0, CR_RED, 0.466, 0.575, 0.1, 2.0);
+	}
+
+	int ammoclip6 = CheckInventory("BuzzSawAmmo");
+	If (CheckInventory("BuzzSawAmmo") >= 150)
+	{
+		HudMessage(d:ammoclip6; HUDMSG_PLAIN, 0, CR_GREEN, 0.538, 0.575, 0.1, 2.0);
+	}
+	Else If (CheckInventory("BuzzSawAmmo") >= 75)
+	{
+		HudMessage(d:ammoclip6; HUDMSG_PLAIN, 0, CR_YELLOW, 0.538, 0.575, 0.1, 2.0);
+	}
+	Else
+	{
+		HudMessage(d:ammoclip6; HUDMSG_PLAIN, 0, CR_RED, 0.538, 0.575, 0.1, 2.0);
+	}
+
+	int ammoclip7 = CheckInventory("AmmoRocket");
+	If (CheckInventory("AmmoRocket") >= 25)
+	{
+		HudMessage(d:ammoclip7; HUDMSG_PLAIN, 0, CR_GREEN, 0.61, 0.575, 0.1, 2.0);
+	}
+	Else If (CheckInventory("AmmoRocket") >= 13)
+	{
+		HudMessage(d:ammoclip7; HUDMSG_PLAIN, 0, CR_YELLOW, 0.61, 0.575, 0.1, 2.0);
+	}
+	Else
+	{
+		HudMessage(d:ammoclip7; HUDMSG_PLAIN, 0, CR_RED, 0.61, 0.575, 0.1, 2.0);
+	}
+
+	int ammoclip8 = CheckInventory("AmmoCell");
+	If (CheckInventory("AmmoCell") >= 150)
+	{
+		HudMessage(d:ammoclip8; HUDMSG_PLAIN, 0, CR_GREEN, 0.682, 0.575, 0.1, 2.0);
+	}
+	Else If (CheckInventory("AmmoCell") >= 75)
+	{
+		HudMessage(d:ammoclip8; HUDMSG_PLAIN, 0, CR_YELLOW, 0.682, 0.575, 0.1, 2.0);
+	}
+	Else
+	{
+		HudMessage(d:ammoclip8; HUDMSG_PLAIN, 0, CR_RED, 0.682, 0.575, 0.1, 2.0);
+	}
+
+	int ammoclip9 = CheckInventory("Gas");
+	If (CheckInventory("Gas") >= 500)
+	{
+		HudMessage(d:ammoclip9; HUDMSG_PLAIN, 0, CR_GREEN, 0.754, 0.575, 0.1, 2.0);
+	}
+	Else If (CheckInventory("Gas") >= 250)
+	{
+		HudMessage(d:ammoclip9; HUDMSG_PLAIN, 0, CR_YELLOW, 0.754, 0.575, 0.1, 2.0);
+	}
+	Else
+	{
+		HudMessage(d:ammoclip9; HUDMSG_PLAIN, 0, CR_RED, 0.754, 0.575, 0.1, 2.0);
+	}
+
+	int ammoclip10 = CheckInventory("GrenadeAmmo");
+	If (CheckInventory("GrenadeAmmo") >= 5)
+	{
+		HudMessage(d:ammoclip10; HUDMSG_PLAIN, 0, CR_GREEN, 0.826, 0.575, 0.1, 2.0);
+	}
+	Else If (CheckInventory("GrenadeAmmo") >= 3)
+	{
+		HudMessage(d:ammoclip10; HUDMSG_PLAIN, 0, CR_YELLOW, 0.826, 0.575, 0.1, 2.0);
+	}
+	Else
+	{
+		HudMessage(d:ammoclip10; HUDMSG_PLAIN, 0, CR_RED, 0.826, 0.575, 0.1, 2.0);
+	}
+
+	int ammoclip11 = GetActorProperty(0,APROP_Health);
+	If (GetActorProperty(0,APROP_Health) >= 100)
+	{
+		HudMessage(d:ammoclip11; HUDMSG_PLAIN, 0, CR_GREEN, 0.466, 0.725, 0.1, 2.0);
+	}
+	Else If (GetActorProperty(0,APROP_Health) >= 50)
+	{
+		HudMessage(d:ammoclip11; HUDMSG_PLAIN, 0, CR_YELLOW, 0.466, 0.725, 0.1, 2.0);
+	}
+	Else
+	{
+		HudMessage(d:ammoclip11; HUDMSG_PLAIN, 0, CR_RED, 0.466, 0.725, 0.1, 2.0);
+	}
+
+	int ammoclip12 = CheckInventory("BasicArmor");
+	If (CheckInventory("BasicArmor") >= 100)
+	{
+		HudMessage(d:ammoclip12; HUDMSG_PLAIN, 0, CR_GREEN, 0.538, 0.725, 0.1, 2.0);
+	}
+	Else If (CheckInventory("BasicArmor") >= 50)
+	{
+		HudMessage(d:ammoclip12; HUDMSG_PLAIN, 0, CR_YELLOW, 0.538, 0.725, 0.1, 2.0);
+	}
+	Else
+	{
+		HudMessage(d:ammoclip12; HUDMSG_PLAIN, 0, CR_RED, 0.538, 0.725, 0.1, 2.0);
+	}
+	Delay(1);
+}  
+ 
+//INVISIBILITY
+Script 397 (VOID) NET
+{
+ delay(2100);
+ TakeInventory("IsInvisible", 1);
+}
+
+
+//RAILGUN AIMING
+Script 398 (VOID) NET
+{
+ delay(4200);
+ TakeInventory("HasInfraRed", 1);
+}
+
+Script 399 (VOID) NET
+{
+SetCVAR("chase", 1);
+delay(15);
+SetCVAR("chase", 0);
+}
+
+#define SKILL_REALISM        32
+#define SKILL_BLACKMETAL     31
+
+script 289 (void)
+{
+    if (GameSkill () == SKILL_BLACKMETAL)
+        SetActorProperty (0, APROP_Speed, 1.4);
+		
+		
+	 if (GameSkill () == SKILL_BLACKMETAL)	
+		GiveInventory("TurboReload", 1);
+}
+ 
+ 
+
+Script "MGGrenadeCheck"(VOID)
+{
+if (checkinventory("FiredMGGrenade") == 1) {
+setfont("NoGren");
+hudmessage(s:"A"; HUDMSG_PLAIN, 0, CR_UNTRANSLATED, 0.50, 0.90, 1.0);
+delay(5);
+}
+}
+
+Script "GetBerserkEffect" (VOID) NET
+{
+ FadeTo (255, 0, 0, 1.0, 0.25);
+ Delay(10);
+ FadeTo (255, 0, 0, 0.0, 4.0);
+} 

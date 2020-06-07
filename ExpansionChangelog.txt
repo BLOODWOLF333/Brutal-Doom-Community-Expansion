@@ -1,0 +1,382 @@
+//	Brutal Doom v21 BLOODWOLF Expansion
+//
+//	Authored by BLOODWOLF
+//
+//	v21.0.4 06/06/2020
+//
+//	Graphics Folder:				Modified the vehicle start-up messages to detail the new controls
+//	Sprites/Monsters Folder:		Added-in the SMG zombie idle and corrected axe zombie scientists sprites 
+//	Sprites/Vehicles/Weapons:		Created a green, yellow, and red variant of the turret & tracks orientation diagram to represent damage level
+//									Modified the mech Hud (all text is now drawn through it's Hud script and created a blue, yellow, and red armor diagram
+//	Sprites/Items Folder:			Used the SOULA0 sprite for the BDSLA0 sprite to represent the Unmaker SoulAmmo
+//									Used the FATBA7A3 sprite for the HMLRA0 sprite to represent the HellishMissileLauncher ammo
+//	Sprites/Weapons Folder:			Created a new CLIPC0 pistol magazine sprite (smaller laying on side)
+//									Created a new GSLNA0 sprite (red fuel jug) updated 04/20/2020
+//									Updated the AmmoMagnum and AmmoMagnumBox sprites from BDRebalance
+//									All new axe sprites created by Squig and mirrored versions for continuous swings
+//									All new DragonSlayer sprites
+//	Sprites/Debris Folder:			Created new white-glass sprites (from Hexen) to be used for the BDGlassShard actor
+//	Sounds/COMBAT/WEAPONS folder:	Added the new plasma rifle reload sound effect from Zodomaniac 06/06/2020
+//	Sounds Folder:					Broke-up the TANKRE sound effect into two sounds to allow for separate eject and reload sound effects
+//									Modified the Unmaker start and loop sounds to be used for the mech's small laser sound effect
+//	<all weapon files>:				Adjusted all weapon flags and made minor tweaks for consistency
+//									Changed dual wield fire rates to be 1 tic slower than single-weapon fire rates 06/02/2020
+//	+AmmoDropper.txt:				Updated to be able to drop all ammo types (except nukes), health, and armor bonuses
+//									Grim96's fix for deselecting the ammodropper causing a crash on GZdoom 06/02/2020
+//	+Axe.txt:						Changed throw frames to that of the grenade throw (different hand sprites)
+//	+BFG10k.txt:					Created a BFG10K_BallDM and a check for DMGame in the Fire state updated 04/20/2020
+//	+ClassicWeapons.txt:			Changed A_Saw() damage to 1 instead of 3 04/20/2020
+//	DEFAULTWEAPON.txt:				Changed TossGrenade state to GoTo "GoingToReady" if there is no ammo
+//									Created a BerserkSlide state for a berserk variant of the slide kick
+//									***Removed the flashlight source projectile (kept turning the screen all white while player was moving)***
+//	+Explosives.txt:				Modified the TankShell actor's sprite and properties for more realism
+//									Increased GrenadeMissile's damage to 150 (like the ShortGrenade)
+//	+Flamethrower.txt:				Changed the flamethrower to only give 100 ammo on pickup
+//									Added ammo checks in fire state that jump to DryFire before every TakeInventory("Gas", X)
+//	+GrenadeLaunch.txt:				Removed the 1 degree of spawn offset horizontal from the AltFire projectile
+//	Grenades.txt:					Increase maximum grenade damage to 200 within 160 map units (5 yards) and progressively less out to 480 map units
+//	Melee.txt:						Created a BerserkSlide actor variant of the SlideAttack
+//	Mp40.txt:						Changed the buzzsaw to only give 100 ammo on pickup
+//	Plasma.txt:						Changed AltFire state to jump over Goto NoAmmo if ammo is 10 or more instead of 11
+//	Railgun.txt:					Fixed the railgun jumping back to Ready3 with no ammo in the magazine and keeping zoom and light amp 05/06/2020
+//	Rifle.txt:						Changed the tactical warm-up sound to "Reloading" instead of "DryFire"
+//	SSG.txt:						Fixed the SSG taking 2 shells and reloading both barrels if only a single barrel was reloaded previously
+//	+SubMachinegun.txt:				Changed the TNT1 A 1 frame to a SMGG A 1 frame in the DualWield state (flickering)
+//	+Unmaker.txt:					Modified the laser to be more potato-computer friendly (based off the mech laser)
+//	Weaponspawners.txt:				Added MP40Spawner to ChaingunSpawnerReplacer
+//									Moved NukeLauncher into BFGReplacer and adjusted probabilities
+//									Created FakeMachinegunSprite and adjusted MachinegunSpawner Stay state (purist)
+//	Ammo.txt:						Created an AmmoCellPackReplacer actor and moved AmmoNukeBox into it
+//									Moved magnum round ammo spawners into replacer actors for shells and shellbox
+//									Added the Mauser9mm ammo as a possible spawn in ClipSpawnerReplacer
+//									Added the BuzzsawAmmo as a possible spawn in the ClipBoxSpawnerReplacer
+//									Created an Inventory.Icon for SoulAmmo and MiniHellRocketAmmo
+//									Several modifications to the vehicle ammo items and counts
+//									Corrected SpawnID's so that ammo will respawn online
+//									Created an AmmoRocketReplacer to allow a grenade to spawn in place of a single rocket rarely 04/20/2020
+//	Artifact.txt:					Corrected SpawnID's
+//	Health2.txt:					Corrected SpawnID's
+//	<All Monsters>:					Adjusted DamageFactor and PainChance values updated 04/20/2020
+//									Changed the cruelty bonus spawn velocities from random(-2.5, 2.5) to frandom(-2.5, 2.5) (truncation errors in GZDoom)
+//	Baron.txt:						Removed lines to heal the baron and bossbaron 200 hitpoints every time it sees the player 06/03/2020
+//	Belphegor.txt:					Adjusted headshot actors to spawn at the monster's radius +1 (so the box would be shootable)
+//	Cacodemo.txt:					Added A_Stop to the start of Missile state (for pain.avoid behavior)
+//	Commando.txt:					Removed Clip spawn from fatality death and duplicate GiveInventory("SoulAmmo",...) from Death.PussyGrab state
+//	DyingGuys.txt:					Added a Death.Saw and Death.Cut to PoorPinkyLostHisArm actor
+//	Juggernaut.txt:					Added A_BossDeath to death state when monster replaces a Mastermind and adjusted size, health, and mass to match the Mastermind
+//	+LostSoul.txt:					Added A_Stop to the start of Missile state (for pain.avoid behavior)
+//	+MonsterSpawner.txt:			Created a random MonsterSpawner Actor for my BrutalBattlefield map wad
+//	+Motherdemon.txt:				Adjusted monster speed and animation frame times of all states
+//									Changed the MotherBall to be a seeking fireball
+//									MotherFire attack now dies after it's spawn animation instead of looping forever
+//									Changed the SuperMotherBall to be a large fireball that spawns many MotherBalls on death
+//									Monster now heals one hitpoint every 32 tics and can raise other monsters like an Archvile
+//									Added A_Stop to the start of Missile state (for pain.avoid behavior)
+//	PainElemental.txt:				Added A_Stop to the start of Missile state (for pain.avoid behavior)
+//	+SpecialDoom1Bosses.txt:		Adjusted hitboxes and headshottarget spawns to match the actual rendered sprites
+//	Volcabus.txt:					Adjusted headshot actors to spawn at the monster's radius +1 (so the box would be shootable)
+//									Added in missing pain and death state labels to prevent turning into a Mancubus
+//	+ZombiemanVariantions.txt:		Adjusted Head and Legtarget spawns
+//	+Head_Sys.txt:					Adjusted damagefactors and a_explode damage values
+//									Created a GreatCybersHitbox actor to match the size of the E2M8 sprite's head
+//	+Leg.txt:						Adjusted damagefactors and a_explode damage values
+//	+BDDebris.txt:					Created a BDGlassShard actor
+//	+Casing.txt:					Added +NONETID and +CLIENTSIDEONLY to any SFX that were missing them
+//	+Fire.txt:						Added +NONETID, +CLIENTSIDEONLY, and +NOINTERACTION to any SFX that were missing them
+//	+Fireworks.txt:					Added +NONETID, +CLIENTSIDEONLY, and +NOINTERACTION to any SFX that were missing them
+//	+Flares.txt:					Created a WhiteFlareMedium actor for the megasphere
+//	+Particles.txt:					Added +NONETID, +CLIENTSIDEONLY, and +NOINTERACTION to any SFX that were missing them
+//	Puff.txt:						Changed RevoPuff to DamageType HeavyImpact (barrels are resistant to Kick damagetypes)
+//	+Smoke.txt:						Added +NONETID, +CLIENTSIDEONLY, and +NOINTERACTION to any SFX that were missing them
+//	+Sparks.txt:					Added +NONETID, +CLIENTSIDEONLY, and +NOINTERACTION to any SFX that were missing them
+//	+Lamps.txt:						Removed +LOOKALLAROUND flags and combined Spawn1 and Spawn2 states
+//	+MapSpecificDec.txt:			Removed +LOOKALLAROUND flags from BigFire and SpecimenTank actors
+//									Changed health of barrels and specimentanks to 20 instead of 100
+//									Set destroyable actors to inherit from BDdestroyabledecorative (friendly marines killme spawns were breaking lamps)
+//	+Torches.txt:					Removed +LOOKALLAROUND flags from actors that had the flag but never called A_Look and didn't need it
+//									Added a spawn2/stay2 state for when the player is out of sight for performance
+//	ArtilleryTank.txt:				Added a Pain.Repair state to PlayerArtilleryTank that heals and reloads the player
+//									Several edits to attack states to allow for online play
+//									Added lines to remove zoom and powerlightamp on vehicle exit 06/02/2020
+//	Bike.txt:						Created the Flash states to give it a working headlamp. Updated 06/02/2020
+//									Changed the BikeMorpher back to using the BDTank enter/exit scripts instead of the HMG to get rid of the teleport fog. 06/02/2020
+//	EnemyTanks.txt:					Updated the enemy vehicles to have similar attacks and properties as the player vehicles
+//	+EEEVILLL.txt:					Updated painchance and damagefactors. 05/03/2020
+//	+HeavyMachinegun.txt:			Added Health 100 to HMG actor so that it could be destroyed
+//									Several edits to attack states to allow for online play
+//	Helicopter.txt:					Added a Pain.Repair state to the PlayerAttackHelicopter that heals and reloads the player
+//									Several edits to attack states to allow for online play
+//									Added lines to remove zoom and powerlightamp on vehicle exit 06/02/2020
+//	Mech.txt:						Added a Pain.Repair state to the PlayerMech that heals and reloads the player
+//									Created new Hud sprites and removed the mortar states from MechGun
+//									Changed the MechGun's Machinegun state to imitate the minigun weapon
+//									Changed the MechGun's Laser to imitate the Unmaker laser
+//									Several edits to attack states to allow for online play
+//									Added lines to remove zoom and powerlightamp on vehicle exit 06/02/2020
+//	+Repairs.txt:					Created a DestroyedArmoredVehicleTemp and DestroyedAirCraft actor that animates for 70 tics then stops for vehicle deaths
+//	Tank.txt:						Added a Pain.Repair state to the PlayerTank that heals and reloads the player
+//									Several edits to attack states to allow for online play
+//									Added lines to remove zoom and powerlightamp on vehicle exit 06/02/2020
+//	+COMMANDS.txt:					Updated Script 396(Ammo Dropper) to display the quantity of all ammo types (except nukes), health, and armor
+//									Created Script 395 to decrease player health by 5 for the healthbonus dropper
+//	+doomdefs.bm:					Added missing brightmaps
+//	GLDEFS.txt:						Added dynamic lights to any player or enemy projectiles that were missing them
+//									Tinyburningpiece actors now give off light
+//	KEYCONF:						Moved the NukeLauncher to Slot 7 ahead of the BFG's
+//									Reordered the shotguns 04/20/2020
+// 	+Modeldef.BDVehicles			Adjusted model scale, ZOffset, and fixed ZombieArtilleryTank turret
+//	VEHICLECONTROL.txt:				Several edits to the vehicle HUDs
+//
+//	v21.0.3patch 08/25/2019
+//
+//		Sprites Folder:				Slightly blurred the vehicle Hud images(transparency) and changed tank crosshair
+//									Added black gloved version of motorcycle Hud by JMartinez2098
+//									Added corrected LH MP40 reload sprite (without charging handle) by JMartinez2098
+//									Modified and created new DragonSlayer frames for vertical and horizontal attacks
+//									Created new DragonSlayer frames for vert and horz powered-up attacks
+//									Modified the offsets and zoom-level of a few revolver sprites
+//									Changed the AXE1A0(weapon drop) frame to the new axe sprite
+//									Created purple sprites for the dragonslayer projectiles in Flames, Flares, Particles, and Explosions folders
+//		+Brightmaps Folder:			Created brightmaps for the cruelty armor and health bonus pickups
+//		Player.txt:					Removed ACS_ExecuteAlways(171,...) lines from Arachnotron2 fatalities
+//									Removed ACS_ExecuteAlways(582 & 583,....) lines from Arachnotron2 fatalities
+//		+Executions.txt:			Modified first-person executions to spawn HealthCrueltyBonus2
+//		+AssaultShotgun.txt:		Sped-up reload animation and added two more A_JumpIfInventory("Kicking",1,"DoKick")
+//									added a A_JumpIfInventory("HasUnloaded", 1, "PutMag") in Fire state
+//		+DEFAULTWEAPON.txt:			Replaced all CrueltyBonus and FatalityBonus spawns with new version
+//		+DragonSlayer.txt:			Created new states for vertical and horizontal attacks
+//		+DragonSlayer2.txt:			Created a powered-up version of the DragonSlayer for when the user has the Berserk powerup
+//		+DualMP40.txt:				Removed 3rd EmptyClipSpawn line
+//		-GrenadesPatch.txt:			Deleted
+//		+Grenades.txt:				Added in changes from GrenadesPatch.txt
+//		+Machinegun.txt:			Added two checks for kicking during GrenadeReload state & increased NoAmmo2 state time to 10 tics
+//		Melee.txt:					Removed ACS_ExecuteAlways(310,...) from StealthAttack state (forcing pistol select)
+//		+Revolver.txt:				Created a RevolverBrass actor which is a scaled up version of EmptyBrass
+//									Created a SpentRound actor to track the number of spent rounds in the cylinder
+//									Set Revolver to use the new AmmoMagnum ammo
+//									Broke up InsertingShellsAnimation state into EjectBullets and InsertingBulletsAnimation states
+//									Added "Fan The Hammer" AltFire states
+//									Many other edits to make the weapon function intuitively
+//		+Revolver2.txt:				Broke up the InsertingShellsAnimation state into EjectShells and InsertingShellsAnimation states
+//									Added "Fan The Hammer" AltFire states
+//									Changed the projectiles fired to that of the pump-action shotgun
+//									Many other edits to make the weapon function intuitively
+//		Rifle.txt:					Moved A_TakeInventory("Reloading",1) before the jump to TurboReload in Reload state
+//		WeaponSpawners.txt:			Created a ShotgunSpawnerReplacer allowing the Revolver to spawn 1/256 of the time
+//									Added a 1/256 chance for the NukeLauncher to spawn in the RLSpawnerReplacer
+//									Created a ChainsawSpawnerReplacer allowing the DragonSlayer to spawn 1/256 of the time
+//									Or the BrutalAxe to spawn 16/256 of the time in place of the chainsaw
+//		Ammo.txt:					Created AmmoMagnum, AmmoMagnumBox, and AmmoNukeBox actors
+//									Created a ClipSpawner, ClipBoxSpawner, and RBoxSpawner actors to allow new ammo types to spawn
+//		Health2.txt:				Changed frames of CrueltyBonus spawns to use new sprites
+//									Removed CrueltyBonus actors and renamed FatalityBonus actors to Health/ArmorCrueltyBonus
+//		+Archvile.txt:				Replaced all CrueltyBonus and FatalityBonus spawns with new version
+//		-BaronPatch.txt:			Deleted
+//		+Baron.txt:					added in changes from BaronPatch
+//									Replaced all CrueltyBonus and FatalityBonus spawns with new version
+//		-BelphegorPatch.txt:		Deleted
+//		+Belphegor.txt:				Added in changes from BelphegorPatch.txt, changed health to 2300, and mass to 1900
+//		+Cacodemo.txt:				Replaced all CrueltyBonus and FatalityBonus spawns with new version
+//		+Comando.txt:				Replaced all CrueltyBonus and FatalityBonus spawns with new version
+//									added in missing GiveToTarget("SoulAmmo",10) in death states
+//		+Cyberdemon.txt:			Replaced all CrueltyBonus and FatalityBonus spawns with new version
+//									Changed wandering legs to die after the See state and removed A_Scream and A_BossDeath lines
+//		+Demons.txt:				Replaced all CrueltyBonus and FatalityBonus spawns with new version
+//		+DyingGuys.txt:				Replaced all CrueltyBonus and FatalityBonus spawns with new version
+//		+Imps.txt:					Replaced all CrueltyBonus and FatalityBonus spawns with new version
+//		-JuggernautPatch.txt:		Deleted
+//		+Juggernaut.txt:			Added in changes from JuggernautPatch.txt and increased rocket firing rate
+//		-KnightPatch.txt:			Deleted
+//		+Knight.txt:				added in changes from KnightPatch
+//									Replaced all CrueltyBonus and FatalityBonus spawns with new version
+//		+LABGUY.txt:				Replaced all CrueltyBonus and FatalityBonus spawns with new version
+//									added in missing GiveToTarget("SoulAmmo",10) in death states
+//									Removed non-existant jump to "AcidGuy"
+//									added in missing "BloodyAxe" spawn in GroundExecution
+//		-MancubusPatch.txt:			Deleted
+//		+Mancubus.txt:				Added in changes from MancubusPatch
+//									Replaced all CrueltyBonus and FatalityBonus spawns with new version
+//		-MastermindPatch.txt:		Deleted
+//		+Mastermind.txt:			Added in changes from MastermindPatch
+//									Replaced all CrueltyBonus and FatalityBonus spawns with new version
+//		+Nazis.txt:					Added in missing GiveToTarget("SoulAmmo",10) in death states
+//									Slowed movement by making the walking frames last for 2 tics instead of 1
+//									Fixed StealthKill state to allow for Nazi stealthkills
+//		+PainElemental.txt:			Replaced all CrueltyBonus and FatalityBonus spawns with new version
+//		-RevenantPatch.txt:			Deleted
+//		+Revenant.txt:				added in changes from RevenantPatch
+//									Replaced all CrueltyBonus and FatalityBonus spawns with new version
+//		-SergeantsPatch.txt:		Deleted
+//		+Sergeants.txt:				Added changes from SergeantsPatch.txt
+//									Replaced all CrueltyBonus and FatalityBonus spawns with new version
+//									Added in missing GiveToTarget("SoulAmmo",10) in death states
+//									Removed A_NoBlocking from GroundExecution state (double item drops)
+//									Removed A_NoBlocking from Death.ExplosiveImpact and added it to BlownAwayRight and Left (double item drops)
+//		-SpidersPatch.txt:			Deleted
+//		+Spiders.txt:				added in changes from SpidersPatch
+//									Replaced all CrueltyBonus and FatalityBonus spawns with new version
+//		-Spiders2Patch.txt:			Deleted
+//		+Spiders2.txt:				added in changes from SpidersPatch, set health to 1100 and mas to 875
+//									Replaced all CrueltyBonus and FatalityBonus spawns with new version
+//		+Ubersoldat.txt:			Added in missing HealthCrueltyBonus spawn for Death.Fatality state
+//									Added in missing GiveToTarget("SoulAmmo",10) in death states
+//		-VolcabusPatch.txt:			Deleted
+//		+Volcabus.txt:				Added in changes from VolcabusPatch, set health to 1400, and mass to 2300
+//									Replaced all CrueltyBonus and FatalityBonus spawns with new version
+//									Added Pain.Kick and Death.ExtremePunches states (was using Mancubus inherited states)
+//		-ZombiemenPatch.txt:		Deleted
+//		+Zombiemen.txt:				Added changes from ZombiemenPatch.txt
+//									Replaced all CrueltyBonus and FatalityBonus spawns with new version
+//									added in missing GiveToTarget("SoulAmmo",10) in death states
+//									Removed A_NoBlocking from GroundExecution state (double item drops)
+//		+BURN.txt:					Replaced all CrueltyBonus and FatalityBonus spawns with new version
+//		+DEAD.txt:					Removed fatality and crueltybonus spawns from dyingcomando and dyingrevenant (already awarded in death states)
+//		+PUFF.txt:					Changed RevoPuff to DamageType Kick (headshot actors resist explosiveimpact damage)
+//		ArtilleryTank.txt:			Copied the Tank actor's TurnLeft/Right, TurnLeft2/Right2, CheckifStillMoves, and Stay states then changed frames
+//									Created AltFireLeft and AltFire2Left states 
+//		Bike.txt:					Duplicated the Helicopters enter, exit, and LightEnd states in the bike actor
+//									Created TurnRightPedal and TurnLeftPedal states and reduced speed of bike when pedaling 
+//									Several edits to how much speed is gained/lost in various states for realistic behavior
+//		+EnemyTanks.txt:			Added in changes from EnemyTanksPatch.txt
+//		-EnemyTanksPatch.txt:		Deleted
+//		Helicopter.txt:				Created a HeliRestart token that is given if exiting fails causing attackhelicopterGun to go back to Ready state displaying the Hud again
+//		Tank.txt:					Adjusted speed of the Tank to only be a little bit slower than the ArtilleryTank actor
+//		+Cruelty.bm:				Assigned brightmap images to their specific frames
+//		DemonMorph.txt:				Changed to give "GiveArmor" actor to player on unmorph/morphed level change (couldn't go over 200)
+//		DemonRunesPatch.txt:		Took away the PICKUP flag from BaronPlayerPatch actor
+//									Created DRRPatch, PowerMorphRevenant, and RevenantPlayerPatch(removes PICKUP flag) actors
+//									Added DamageFactor "Slime", 0.0 and "Lava", 0.0 to Baron and Revenant player classes
+//									Created D4BaronHUDPatch and D4RevenantHUDPatch with A_Refire in each attack state so that can fire can be held down
+//									Allowed the Baron melee attacks to alternate between left and right hand attacks
+//									Reduced the Revenant primary attack to fire only four missiles in sequence instead of six
+//		+GLDEFS.txt:				Created pulselight actors for cruelty pickups and added in missing frame for armorshard
+//		KEYCONF:					Rearranged weapons to select the most powerful first and the weakest last
+//		+language.enu:				Created a few more weapon pickup messages with their corresponding slot numbers
+//		+SNDINFO.BD:				Created entries for IGNITE DSSKEATK and EXTINGUISH DSFLAMST for the DragonSlayer
+//		VEHICLECONTROL.txt:			Changed to give "GiveArmor" actor to player on vehicle exit (couldn't go over 200)
+//									Added TakeInventory("PowerInvisibility",1): to HMG and Tank enter scripts
+//
+//	v21.0.2 07/09/2019
+//
+//		+FootSteps.txt:				Added full-magazine starting ammo for all applicable weapons for non-purist classes
+//		+Rifle.txt:					Removed redundant A_WeaponReady(1) from Fire and Fire2 states
+//		+DualPlasma.txt:			Replaced turboreload state with an imitation of the dualrifle turboreload state
+//		-MeleePatch.txt:			Deleted
+//		+Melee.txt:					Added A_JumpIf(CheckClass("ExplosiveBarrel1",,) to CheckGrab and CheckGrab2 states
+//									Changed speed of melee attacks from the MeleePatch.txt (patching didn't work)
+//		+Mp40.txt					Added Sprinting states to MG42
+//									Added a Tactical Mode check to DualWield state and a NoDual state to MP40
+//									Changed Reload state to GoTo Ready if there is no reserve ammo
+//		+Pistol.txt:				Added a Tactical Mode check to DualWield state and a NoDual state to Pistol
+//		+Plasma.txt:				Added a Tactical Mode check to DualWield state and a NoDual state to Plasma Rifle
+//		+Shotgun.txt:				Changed Reload state to GoTo Ready instead of NoAmmo2 state when there is no reserve ammo
+//									Added a line to remove "ShotgunWasEmpty" in TurboReload states.
+//		+SSG.txt:					Changed the Fire and AltFire2 states to jump to the Ready state instead of NoAmmo after firing in TacticalMode
+//		+SubMachinegun.txt:			Added a Tactical Mode check to DualWield state and a NoDual state to SubMachinegun
+//		+WeaponsSpawners.txt:		Normalized some of the fake sprite frames to fix sprite flickering
+//		-WeaponSpawnersPatch.txt:	Deleted
+//		+Ammo.txt:					Added a spawn state for Gas ammo that renders the gas can image
+//									Created a Nuke ammoicon that will display on the Hud
+//		BaronPatch.txt:				Added DONTHARMSPECIES flag
+//		Belphegor2Patch.txt:		Added DONTHARMSPECIES flag to prevent infighting
+//		+KnightPatch.txt:			Added DONTHARMSPECIES flag
+//		+ArtilleryTank.txt:			Created a new controls message specific to ArtilleryTank
+//									Added in missing zoomed states
+//									Added lines for BDATHUD script in Flash state
+//		Bike.txt:					Set Bike actor to spawn 68 units to the player's right when exiting
+//		+ChaingunMarine.txt:		Notated out ChangeFlag("Solid",1) lines in attack states
+//		+Helicopter.txt:			Created a new controls message specific to Helicopter
+//									Moved TurnLeft & TurnRight states out of AttackHelicopterGun and into PlayerAttackHelicopter
+//									Created states for every possible 3D move
+//									Added many checks to Stay state to determine movement type
+//									Modified AttackHelicopterGun's Flash and firing states to emulate the tank actor
+//									Changed Missile to be triggered by the kick key
+//		+Mech.txt:					Created a new controls message specific to Mech
+//									Added A_PlaySound(MECHWLK, 15) to MoveForward state
+//		+PlasmagunMarine.txt:		Notated out ChangeFlag("Solid",1) lines in attack states
+//		+ShotgunMarine.txt:			Notated out ChangeFlag("Solid",1) lines in attack states
+//		Tank.txt:					Created a new controls message specific to Tank
+//									Added missing zoom states
+//									Added lines for BDTankHUD script in Flash state
+//		DemonMorph.txt:				Removed unnecessary Delay()'s
+//		+KEYCONF:					Arranged weaponslots to select the vanilla weapon first on key press and the most powerful weapon last
+//		+SNDINFO.Vehicles:			Changed MECHWLK to use the DSHOOF sound effect
+//		VEHICLECONTROL.txt:			Created BDTankHUD, BDATHUD, and BDHeliHUD scripts
+//
+//	v21.0.1 05/30/2019
+//
+//		Player.txt:					Changed floor execution actors spawn xoffsets to 26 units in front of player
+//		Axe.txt:					Replaced colored blood sprinting states (which were displaying no weapon sprite) with
+//									normal sprint state code and changed frames.
+//		DualRifle.txt:				Updated to v21
+//		-ExplosivesPatch.txt:		Deleted
+//		+MeleePatch.txt:			Changed speed of melee attacks to simulate more realistic range/reach of attacks.
+//		+Saw.txt:					Changed StartSprint state removing the lines that take away the blood on visor effects
+//									Added red, green, and blue variants of all sprinting states for tactical mode.
+//		WeaponSpawnersPatch.txt:	Added patches for ShotgunSpawner, ShotgunSpawnerDroped, RailGunSpawner, BFG9000Spawner, BFG10KSpawner, and UnmakerSpawner
+//									that fix Spawn states to prevent double-sprite issues.
+//									Added MachinegunSpawnerPatch actor that gives the ClassicChaingun for purist mode and clip2, 20.
+//		+Artifact.txt:				Added MorphToken Actor and set the DemonRuneMix to run the morph scripts
+//		-ArtifactPatch.txt:			Deleted
+//		+Health2.txt:				Set HeavyArmor back to 80% damage reduction
+//		BaronPatch.txt:				Removed Health and Mass properties (fixed in v21)
+//		Belphegor2Patch.txt:		Changed species to "Baronofhell"
+//									Changed fireball spawn height to 47 (half of sprite height) was going over player's head.
+//		MancubusPatch.txt:			Added a height check before allowing a Volcabus to spawn.
+//		RevenantPatch.txt:			Revenant now throws patched zombiemen actors who can cause 8-64 damage
+//		SergeantsPatch.txt:			Changed spawn probability of SMGGuy from 128 to 64/256.
+//		VolcabusPatch.txt:			Changed height to 83 so that headshot actors and volcabus-hitbox matches sprite dimensions.
+//									Adjusted headshot spawn heights to match sprite dimensions.
+//		-BURNPatch.txt:				Fixed in v21
+//		+Bike.txt:					Changed Enter and Exit scripts to use the HMG Enter/Exit scripts
+//		+EnemyTanksPatch.txt:		Patched the ZombieHelicopter actor's death state to use "BDDisableCameraBig" instead of script 871 (no longer exists)
+//		+Tank.txt:					Changed NoAmmo state frame to TNHD from TNT1
+//		DemonMorph.txt:				Created World variable arrays for each player's health, armor#, and armorclass.
+//									Created MorphedLevelChange script that checks for the MorphToken if player exited while in demonform
+//									And returns that player's stats when entering the next level unmorphed.
+//		+VehicleControl.txt:		Modified the GetVehiclePreviousHealth2, BDEnterHMG, BDLeaveHMG, BDEnterTank, and BDLeaveTank scripts to store and then return the player's armorclass
+//
+//	RC10.2 05/17/2019
+//
+//		+ArtifactPatch.txt:		Patched the DemonRuneMix actor which now runs either the MorphBaron or MorphRevenant script.
+//		+DemonRunesPatch.txt:	Patched the BaronPlayer class to have 1200 health and will match the monster.
+//		+DemonMorph.txt:		Created a MorphBaron and MorphRevenant script that store the player's health & armor values returning them after unmorph.
+//
+//	RC10.1 05/13/2019
+//
+//		Player.txt:				Updated to RC10
+//		+DualRifle.txt:			Inserted the single Rifle's TurboReload state, changed the frames, and added a check for ammo which fixes the infinite loop crash.
+//		+ThrownMonsters.txt:	Changed damaged of monsters thrown by the revenant to 8-64.
+//		BURNPatch.txt:			Added back in lines for script 477 but corrected to "InitializeChasecam"
+//		BaronPatch.txt:			Renamed file to match RC10 (was Baron2.txt)
+//		RevenantPatch.txt:		Changed seekermissiles threshold and maxturnangle to 3,6 from 2,4 (track a little better)
+//								Changed speed of both revenant missiles to 15 and reduced zombieman, sergeant, and imp fatalities to only two slams before throwing.
+//		+VolcabusPatch.txt:		Added Tag "Volcabus"
+//
+//	RC9.1 05/04/2019
+//	
+//		Player.txt:					Updated Land: state to RC9 and removed A_GiveInventory("IsFloating", 1) from SubMGIsJumping state.
+//		+GrenadesPatch.txt:			Created FGEPatch, set grenade explosion max radius to 480, and has progressive damage.
+//		+WeaponsSpawnersPatch.txt:	Normalized fake sprites that were using multiple images and causing drops to blink between two sprites.
+//		Baron2Patch.txt:			Moved A_Die("Vanish") under the Death.Vanish state.
+//		+RevenantPatch.txt:			Changed YellowFlareSmall to A_SpawnItemEx and 10 units behind the missile actor
+//									Changed SeekerMissile speed from 10 to 15, threshold to 2, maxturnangle to 4, and gave it the SMF_PRECISE flag
+//		SpidersPatch.txt:			Removed ACS_NamedExecuteAlways("BDCHeckClassicMonsters") Vanilla Arachnotron doesn't exist.
+//		+CVARINFO:					Adds the CVAR bd_disablereloading=0 to allow for reloading to be disabled online.
+//		+CVARSPatch:				Adds a BD_DisableReloading script that gives turboreload if the CVAR is true and player is not tactical class.
+//		+LOADACS:					Adds CVARSPatch to the ACS load order.
+//
+//	RC8.1 04/27/2019
+//
+//		+Player.txt:			Sets Player.Face "STF" in Doomer
+//		+ExplosivesPatch.txt:	Created a patch for the JuggernautRocket that spawns the backblast effects behind the rocket.
+//		+BURNPatch.txt:			Created patches for Zombieman and Sergeant's XDeath that removes script call 477 (no longer exists).
+//		+Baron2Patch.txt:		Sets health to 1200, mass to 1000, and adds the chance for the Belphegor2 to spawn 1/64th of the time.
+//		+Belphegor2Patch.txt:	Adjusted actor radius to prevent it from becoming stuck when spawning in place of a Baron.
+//		+JuggernautPatch.txt:	Many edits to properties and states.
+//		+MancubusPatch.txt:		Adds the chance for a Volcabus to spawn 1/64th of the time.
+//		+MastermindPatch.txt:	Adds the chance for a Juggernaut to spawn 1/64th of the time.
+//		+SpidersPatch.txt:		Adds the chance for an Ancient Arachnotron to spawn 1/64th of the time and adds a stand state.
+//		+Spider2Patch.txt:		Adds a Pain.Kick state for Ancient Arachnotron
+//		+SergeantsPatch.txt:	Changes SMGGuy spawn chance to 50%.
+//		+ZombiemenPatch.txt:	Changes LabGuy spawn chance to 1/64th and PistolZombie to 65.63%(RifleZombie at 32.81%).
