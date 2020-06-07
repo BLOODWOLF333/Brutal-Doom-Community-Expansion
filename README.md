@@ -1,6 +1,6 @@
 ### Instructions for use
 
-Download this file as a zip archive and then unzip it using 7-zip, WinZip, or a similar program to extract the .pk3 file to be used with modern launchers and ports.
+Download this file as a zip archive and then unzip it using 7-zip, WinZip, or a similar program to extract the .pk3 file to be used with modern launchers, ports, and Doom editors such as Slade.  Or go to the Releases tab to get the latest stable or development snapshot versions.
 
 A Doom launcher must be used to load the doom or doom 2 wad, the brutalv21.pk3, and this expansion on modern ports.  Dragging and dropping on the port's .exe will only work for a single file and this expansion requires loading two files.
 
