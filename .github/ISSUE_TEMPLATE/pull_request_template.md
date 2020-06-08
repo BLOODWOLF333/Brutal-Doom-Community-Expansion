@@ -1,6 +1,11 @@
-### Title
-Brief title relating to your pull request's subject matter.
+---
+name: Pull Request
+about: Create a pull request for your changes to be reviewed and merged into the project.
+title: Brief title relating to your pull request's subject matter.
+labels: ''
+assignees: ''
 
+---
 ### Description
 Brief summary of what your pull request adds or fixes and the files changed.
 
