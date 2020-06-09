@@ -1,0 +1,330 @@
+//Was missing a frame
+object ArmorShard
+{
+    frame BON2 { light GREENITEM2  }
+}
+
+//Cruelty Pickups
+object ArmorCrueltyBonus
+{
+    frame BON2 { light REDITEM  }
+}
+
+object ArmorCrueltyBonus2
+{
+    frame BON2 { light REDITEM  }
+}
+
+object HealthCrueltyBonus
+{
+    frame BON1 { light REDITEM  }
+}
+
+object HealthCrueltyBonus2
+{
+    frame BON1 { light REDITEM  }
+}
+
+pulselight REDITEM
+{
+    color 1.0 0.1 0.1
+    size 14
+    secondarySize 16
+    interval 0.1
+    offset 0 5 0
+}
+
+pulselight GREENITEM
+{
+    color 0.1 1.0 0.1
+    size 14
+    secondarySize 16
+    interval 0.1
+    offset 0 5 0
+}
+
+pulselight GREENITEM2
+{
+    color 0.1 1.0 0.1
+    size 14
+    secondarySize 16
+    interval 0.1
+    offset 0 5 0
+}
+
+pulselight MEGASPHERE
+{
+    color 0.9 0.9 0.9
+    size 40
+    secondarySize 42
+    interval 2.0
+    offset 0 16 0
+}
+
+object ENERGYSPHERE
+{
+    frame MEGA { light MEGASPHERE }
+}
+
+pulselight INVULNERABILITY
+{
+    color 0.1 1.0 0.1
+    size 40
+    secondarySize 42
+    interval 2.0
+    offset 0 16 0
+}
+
+object InvulnerabilitySphere_
+{
+    frame PINV { light INVULNERABILITY }
+}
+
+pulselight DEMONRUNE
+{
+    color 1.0 0.1 0.1
+    size 40
+    secondarySize 42
+    interval 2.0
+    offset 0 16 0
+}
+
+object DemonRuneMix
+{
+    frame DMRU { light DEMONRUNE }
+}
+
+pulselight DEMONSTRENGTH
+{
+    color 1.0 0.1 0.1
+    size 16
+    secondarySize 18
+    interval 2.0
+}
+
+object DemonStrengthRune
+{
+    frame DPRF { light DEMONSTRENGTH }
+}
+
+pulselight BERSERK
+{
+    color 1.0 0.1 0.1
+    size 16
+    secondarySize 18
+    interval 2.0
+}
+
+object BerserkPack
+{
+    frame MEDKC { light BERSERK }
+}
+
+pulselight INFRARED
+{
+    color 0.9 0.9 0.9
+    size 16
+    secondarySize 18
+    interval 2.0
+}
+
+object NightVision
+{
+    frame SVIS { light INFRARED }
+}
+
+object PlasmaFlare
+{
+    frame L2NB { light PLASMABALLSMALL }
+}
+
+object Plasma_Ball
+{
+    frame PLSS { light PLASMABALLSMALL }
+	frame PLSE { light PLASMABALL }
+}
+
+object PlasmaBall75
+{
+    frame PLSS { light PLASMABALLSMALL }
+	frame PLSE { light PLASMABALL }
+}
+
+object PlasmaBall99
+{
+    frame PLSS { light PLASMABALLSMALL }
+	frame PLSE { light PLASMABALL }
+}
+
+object PlasmaBallDM
+{
+    frame PLSS { light PLASMABALLSMALL }
+	frame PLSE { light PLASMABALL }
+}
+
+object EnemyPlasmaBall
+{
+    frame PLSS { light PLASMABALLSMALL }
+	frame PLSE { light PLASMABALL }
+}
+
+object BFG10K_Ball
+{
+    frame BFS1 { light BFGBALL }
+    frame BFE1 { light BFGEXPLO }
+}
+
+object BFG10K_BallDM
+{
+    frame BFS1 { light BFGBALL }
+    frame BFE1 { light BFGEXPLO }
+}
+
+object BigFireBall
+{
+    frame BLHD { light IMPBALL   }
+}
+
+object BigFireBallWithGravity
+{
+    frame BLHD { light IMPBALL   }
+}
+
+object ArchvileFire2
+{
+	frame INFE { light ZOMBIEATK }
+}
+
+object CacodemonBall_
+{
+    frame PBAL { light CACOBALL }
+}
+
+object ShoqueAzul
+{
+    frame SH1K { light CACOBALL_X1 }
+	frame SH1K { light CACOBALL_X1 }
+	frame SH1K { light CACOBALL_X1 }
+	frame SH1K { light CACOBALL_X2 }
+	frame SH1K { light CACOBALL_X2 }
+	frame SH1K { light CACOBALL_X3 }
+	frame SH1K { light CACOBALL_X3 }
+}
+
+flickerlight CACOBALL
+{
+    color 1.0 0.1 0.5 
+    size 56
+    secondarySize 64
+    chance 0.5
+}
+
+object GreenPlasmaBall
+{
+    frame PBAL { light BARONBALL    }
+
+    frame FRPGA { light BARONBALL_X1 }
+    frame FRPGB { light BARONBALL_X1 }
+    frame FRPGC { light BARONBALL_X2 }
+    frame FRPGD { light BARONBALL_X2 }
+    frame FRPGE { light BARONBALL_X2 }
+    frame FRPGF { light BARONBALL_X3 }
+	frame FRPGG { light BARONBALL_X3 }
+	frame FRPGH { light BARONBALL_X3 }
+}
+
+object GreenPlasmaBallPlayerTransformed
+{
+    frame PBAL { light BARONBALL    }
+
+    frame FRPGA { light BARONBALL_X1 }
+    frame FRPGB { light BARONBALL_X1 }
+    frame FRPGC { light BARONBALL_X2 }
+    frame FRPGD { light BARONBALL_X2 }
+    frame FRPGE { light BARONBALL_X2 }
+    frame FRPGF { light BARONBALL_X3 }
+	frame FRPGG { light BARONBALL_X3 }
+	frame FRPGH { light BARONBALL_X3 }
+}
+
+object BelphegorGreenPlasmaBall
+{
+	frame FRPG {light GreenShotLight }
+}
+
+object MotherBall
+{
+	frame SPKO {light RedShotLight }
+	frame FRPR {light RedShotLight }
+}
+
+object MotherBallDumb
+{
+	frame SPKO {light RedShotLight }
+	frame FRPR {light RedShotLight }
+}
+
+object SuperMotherBall
+{
+	frame FRFX {light RedShotLightBig }
+}
+
+object MotherFire
+{
+	frame FIR3 {light BIGREDTORCH }
+}
+
+pointlight VioletShotLight
+{
+    color 1.0 0.1 1.0
+    size 128
+}
+
+pointlight VioletShotLightSmall
+{
+    color 1.0 0.1 1.0
+    size 64
+}
+
+pointlight GreenShotLight
+{
+    color 0.1 1.0 0.1
+    size 64
+}
+
+object GreenFlareSmall
+{
+    frame LENG { light GreenShotLight }
+}
+
+pointlight RedShotLight
+{
+    color 1.0 0.1 0.1
+    size 64
+}
+
+pointlight RedShotLightBig
+{
+    color 1.0 0.1 0.1
+    size 128
+}
+
+object RedFlareSmall2
+{
+    frame LENR { light RedShotLight }
+}
+
+object TinyBurningPiece
+{
+    frame CFCF { light SMALLREDTORCH }
+}
+
+object TinyBurningPiece2
+{
+    frame CFCF { light SMALLREDTORCH }
+}
+
+object TinyBurningPiece3
+{
+    frame CFCF { light SMALLREDTORCH }
+}

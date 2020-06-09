@@ -1,0 +1,897 @@
+ACTOR BasicAmmoPickup : Ammo
+{
+ scale 1.0
+ radius 8
+ height 16
+ +FORCEXYBILLBOARD
+ -COUNTITEM
+ -INVENTORY.ALWAYSPICKUP
+ Inventory.Amount 0
+ Inventory.MaxAmount 99999
+ Inventory.PickupMessage ""
+ Inventory.PickupSound "none"
+}
+
+// Backpack ---------------------------------------------------------------
+
+ACTOR AmmoSupply : BackpackItem Replaces Backpack
+{
+	Game Doom
+	SpawnID 144
+	Height 26
+	Inventory.PickupMessage "$GOTBACKPACK"
+	Inventory.PickupSound "BACKPACK"
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		BPAK A -1
+		Stop
+	}
+}
+
+ACTOR Clip2 : Ammo
+{
+	Game Doom
+	SpawnID 11
+	Inventory.PickupMessage "Picked up a Rifle Magazine."
+	Inventory.Amount 30
+	Inventory.MaxAmount 300
+	Ammo.BackpackAmount 30
+	Ammo.BackpackMaxAmount 600
+	Inventory.Icon "CLIPA0"
+	Inventory.PickupSound "CLIPICK2"
+	Scale 0.9
+	States
+	{
+	Spawn:
+		CLIP A -1
+		Stop
+	}
+}
+
+
+
+ACTOR DoubleRifleAmmo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 62
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 62
+   Inventory.Icon "RIFLB0"
+}
+
+
+
+ACTOR Clip1 : Ammo
+{
+	Game Doom
+	Inventory.PickupMessage "Picked up a Pistol Magazine."
+	Inventory.Amount 10
+	Inventory.MaxAmount 200
+	Ammo.BackpackAmount 50
+	Ammo.BackpackMaxAmount 400
+	Inventory.Icon "CLIPC0"
+	Inventory.PickupSound "CLIPICK"
+	Scale 0.9
+	States
+	{
+	Spawn:
+		CLIP C -1
+		Stop
+	}
+}
+
+ACTOR Mauser9mm : Ammo
+{
+	Game Doom
+	Inventory.PickupMessage "Picked up a Mauser 9mm Magazine for the MP40."
+	Inventory.Amount 32
+	Inventory.MaxAmount 200
+	Ammo.BackpackAmount 160
+	Ammo.BackpackMaxAmount 400
+	Inventory.Icon "CLIPB0"
+	Inventory.PickupSound "CLIPICK"
+	Scale 0.8
+	States
+	{
+	Spawn:
+		CLIP B -1
+		Stop
+	}
+}
+
+Actor ClipSpawner : BasicAmmoPickup Replaces Clip
+{
+    States
+    {
+	Spawn:
+		TNT1 A 0
+		MARN A 0 ACS_NamedExecuteAlways("BDDisableNewGuns", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+		TNT1 A 2
+		TNT1 A 0 A_Jump(4, "Spawn3") // Mauser 9mm
+		TNT1 A 0 A_Jump(16, "Spawn2") // Pistol Ammo
+		
+	Vanilla:	
+	Spawn1:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx ("Clip2",0,0,0,0,0,0,0,0,0)
+		TNT1 A 1
+		TNT1 A -1
+		Stop
+
+	Spawn2:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx ("Clip1",0,0,0,0,0,0,0,0,0)
+		TNT1 A 1
+		TNT1 A -1
+		Stop
+
+	Spawn3:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx ("Mauser9mm",0,0,0,0,0,0,0,0,0)
+		TNT1 A 1
+		TNT1 A -1
+		Stop
+    }
+}
+
+ACTOR Clip1Drop: CustomInventory
+{
+ scale 0.9
+ radius 24
+ height 24
+ +THRUACTORS +FORCEXYBILLBOARD
+ Inventory.PickupMessage "Picked up a Pistol Magazine"
+ Inventory.PickupSound "CLIPIN"
+ Mass 1
+    States
+    {
+
+	 Spawn:
+		TNT1 A 0
+		TNT1 A 1
+		TNT1 A 0 
+		TNT1 A 0 A_ChangeFlag("THRUACTORS", 0)
+		TNT1 A 0
+	Stay:
+		CLIP C 1
+		CLIP C -1
+		Stop
+	Pickup:
+	    TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
+	PickupNormal:	
+		TNT1 A 0 A_GiveInventory("Clip1", 10)
+		Stop
+	Purist:
+	    TNT1 A 0 A_GiveInventory("Clip2", 10)
+		Stop
+    }
+}
+
+ACTOR ClipBox2 : Clip2
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a box of rifle ammunition."
+	Inventory.PickupSound "CBOXPICK"
+	Inventory.Amount 100
+	Scale 0.9
+	States
+	{
+	Spawn:
+		AMMO A -1
+		Stop
+	}
+}
+
+ACTOR BuzzSawAmmo : Ammo
+{
+	Game Doom
+	Inventory.PickupMessage "Picked up a belt of MG42 ammo."
+	Inventory.PickupSound "CBOXPICK"
+	Inventory.Amount 100
+	Inventory.MaxAmount 300
+	Ammo.BackpackAmount 100
+	Ammo.BackpackMaxAmount 600
+	Inventory.Icon "HBUSE0"
+	Scale 0.6
+	States
+	{
+	Spawn:
+		HBUS E -1
+		Stop
+	}
+}
+
+Actor ClipBoxSpawnerReplacer : BasicAmmoPickup Replaces ClipBox
+{
+    States
+    {
+	Spawn:
+		TNT1 A 0
+		MARN A 0 ACS_NamedExecuteAlways("BDDisableNewGuns", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+		TNT1 A 2
+		TNT1 A 0 A_Jump(4, "Spawn2") // Buzzsaw ammo
+		TNT1 A 2
+		
+	Vanilla:	
+	Spawn1:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx ("ClipBox2",0,0,0,0,0,0,0,0,0)
+		TNT1 A 1
+		TNT1 A -1
+		Stop
+
+	Spawn2:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx ("BuzzSawAmmo",0,0,0,0,0,0,0,0,0)
+		TNT1 A 1
+		TNT1 A -1
+		Stop
+    }
+}
+
+ACTOR BDSMGAmmo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 41
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 41
+   Inventory.Icon SMGZA0
+}
+
+ACTOR BDDualSMGAmmo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 82
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 82
+   Inventory.Icon SMGZB0
+}
+
+ACTOR AmmoRocket : Ammo
+{
+	Game Doom
+	SpawnID 140
+	Inventory.PickupMessage "$GOTROCKET"
+	Inventory.Amount 1
+	Inventory.MaxAmount 50
+	Ammo.BackpackAmount 1
+	Ammo.BackpackMaxAmount 100
+	Inventory.Icon "ROCKA0"
+	Inventory.Pickupsound "RCKCLIP"
+	Scale 0.9
+	+NOTAUTOAIMED
+	+SHOOTABLE
+	+NOBLOOD
+	+NORADIUSDMG
+	+FORCERADIUSDMG
+	
+	damagefactor "Shrapnel", 0.0  damagefactor "Trample", 0.0 
+	damagefactor "Head", 0.0	damagefactor "FriendBullet", 0.0    damagefactor "Taunt", 0.0    damagefactor "KillMe", 0.0
+	damagefactor "CancelTeleportFog", 0.0	damagefactor "BHFTOnBarrel", 0.0	damagefactor "GibRemoving", 0.0
+	damagefactor "SpawnMarine", 0.0	damagefactor "TeleportRemover", 0.0	damagefactor "MinorHead", 0.0
+	damagefactor "Decaptate", 0.0	damagefactor "MonsterKnocked", 0.0
+	DamageFactor "CauseSplash", 0.0 DamageFactor "CauseObjectsToSplashSlime", 0.0 DamageFactor "CauseObjectsToSplashNukage", 0.0
+	DamageFactor "CauseObjectsToSplashBlood", 0.0 DamageFactor "CauseObjectsToSplashLava", 0.0
+	damagefactor "HelperMarineFatallity", 0.0	damagefactor "Leg", 0.0
+	DamageFactor "KillMeBot", 0.0
+	Health 20
+	States
+	{
+	Spawn:
+		ROCK A 1
+		TNT1 A 0 ACS_NamedExecuteAlways("BDShootableAmmo")//Checks if shootable ammo is enabled
+		ROCK A 4
+		TNT1 A 0 A_JumpIfInventory("Clip1", 1, "NoShootable")
+		ROCK A -1
+		Stop
+		
+	NoShootable:
+		ROCK A 1
+		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		ROCK A -1
+		Stop
+	Death:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx ("ExplosionSplashSpawner", 0, 0, -20)
+        TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
+        TNT1 AAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleVeryFast", 0, 0, random (0, 360), 2, random (0, 360))
+        TNT1 AAAA 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+        EXPL AAAA 0 A_CustomMissile ("ExplosionSmokeFast22", 0, 0, random (0, 360), 2, random (0, 360))
+		EXPL A 0 A_CustomMissile ("BigNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_SpawnItemEx ("RocketExplosion",0,0,13,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		//TNT1 A 0 A_SpawnItemEx ("RocketPenetrator",cos(-pitch)*42,0,0+(sin(pitch)*42),cos(-pitch)*40,0,sin(pitch)*40,0,SXF_TRANSFERPITCH)
+		//TNT1 AA 0 A_SpawnItem("SuperExpensiveParticleSpawner")
+		
+		TNT1 A 2
+		TNT1 A 0 A_SpawnItemEx ("LiquidExplosionEffectSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_PlaySound("FAREXPL", 3)
+		TNT1 A 4
+		TNT1 A 0 A_Explode(100, 100)
+		TNT1 A 10
+		TNT1 A 0 A_PlaySound("distantexp", 5)
+		TNT1 AAAAA 4 A_CustomMissile ("HeavyExplosionSmoke", 2, 0, random (0, 360), 2, random (0, 360))
+		Stop
+	}
+}
+
+// Rocket box --------------------------------------------------------------
+
+ACTOR AmmoRocketBox : AmmoRocket Replaces RocketBox
+{
+	Game Doom
+	SpawnID 141
+	Inventory.PickupMessage "$GOTROCKBOX"
+	Inventory.Amount 3
+	Scale 0.9
+	Inventory.Pickupsound "RCKCLIP2"
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 ACS_NamedExecuteAlways("BDShootableAmmo")//Checks if shootable ammo is enabled
+		BROK A 4
+		TNT1 A 0 A_JumpIfInventory("Clip1", 1, "NoShootable")
+		BROK A -1
+		Stop
+	
+	NoShootable:
+		BROK A 1
+		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		BROK A -1
+		Stop
+		
+	Death:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx ("ExplosionSplashSpawner", 0, 0, -20)
+        TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
+        TNT1 AAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleVeryFast", 0, 0, random (0, 360), 2, random (0, 360))
+        TNT1 AAAA 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+        EXPL AAAA 0 A_CustomMissile ("ExplosionSmokeFast22", 0, 0, random (0, 360), 2, random (0, 360))
+		EXPL A 0 A_CustomMissile ("BigNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_SpawnItemEx ("RocketExplosion",0,0,13,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		//TNT1 A 0 A_SpawnItemEx ("RocketPenetrator",cos(-pitch)*42,0,0+(sin(pitch)*42),cos(-pitch)*40,0,sin(pitch)*40,0,SXF_TRANSFERPITCH)
+		//TNT1 AA 0 A_SpawnItem("SuperExpensiveParticleSpawner")
+		EXPL AAA 0 A_CustomMissile ("BarrelKaboom", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_Explode(150, 300)
+		TNT1 A 2
+		TNT1 A 0 A_SpawnItemEx ("LiquidExplosionEffectSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_PlaySound("FAREXPL", 3)
+		TNT1 A 15
+		TNT1 A 0 A_PlaySound("distantexp", 5)
+		TNT1 AAAAA 4 A_CustomMissile ("HeavyExplosionSmoke", 2, 0, random (0, 360), 2, random (0, 360))
+		Stop	
+	}
+}
+
+ACTOR AmmoRocketReplacer : BasicAmmoPickup Replaces RocketAmmo
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		MARN A 0 ACS_NamedExecuteAlways("BDDisableNewGuns", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+		TNT1 A 2
+		TNT1 A 0 A_Jump(4, "Spawn2") // Grenade Ammo
+		TNT1 A 2
+		
+	Vanilla:	
+	Spawn1:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx ("AmmoRocket",0,0,0,0,0,0,0,0,0)
+		TNT1 A 1
+		TNT1 A -1
+		Stop
+	
+	Spawn2:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx ("GrenadeAmmo",0,0,0,0,0,0,0,0,0)
+		TNT1 A 1
+		TNT1 A -1
+		Stop
+	}
+}
+
+// Cell --------------------------------------------------------------------
+
+ACTOR AmmoCell : Ammo Replaces Cell
+{
+	Game Doom
+	SpawnID 75
+	Inventory.PickupMessage "$GOTCELL"
+	Inventory.Amount 20
+	Inventory.MaxAmount 300
+	Ammo.BackpackAmount 20
+	Ammo.BackpackMaxAmount 600
+	Inventory.Icon "CELLA0"
+	Scale 0.9
+	States
+	{
+	Spawn:
+		CELL A -1
+		Stop
+	}
+}
+
+// Cell pack ---------------------------------------------------------------
+
+ACTOR AmmoCellPack : AmmoCell
+{
+	Game Doom
+	SpawnID 142
+	Inventory.PickupMessage "$GOTCELLBOX"
+	Inventory.Amount 100
+	Scale 0.9
+	States
+	{
+	Spawn:
+		CELP A -1
+		Stop
+	}
+}
+
+//Nuclear Missile
+
+ACTOR Nuke : Ammo
+{
+	Game Doom
+	Inventory.PickupMessage "Picked up a nuclear missile."
+	Inventory.Amount 1
+	Inventory.MaxAmount 1
+	Ammo.BackpackAmount 0
+	Ammo.BackpackMaxAmount 2
+	Inventory.Icon "NKLAA0"
+	Inventory.PickupSound "RCKCLIP"
+	Scale 0.9
+	States
+	{
+	Spawn:
+		BNUK A -1
+		Stop
+	}
+}
+
+ACTOR AmmoNukeBox : Nuke
+{
+	Game Doom
+	Inventory.PickupMessage "Picked up a nuclear missile."
+	Inventory.PickupSound "RCKCLIP2"
+	Inventory.Amount 1
+	Scale 0.6
+	States
+	{
+	Spawn:
+		BNUK A -1
+		Stop
+	}
+}
+
+ACTOR AmmoCellPackReplacer : BasicAmmoPickup Replaces CellPack
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		MARN A 0 ACS_NamedExecuteAlways("BDDisableNewGuns", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+		TNT1 A 2
+		TNT1 A 0 A_Jump(2, "Spawn2") // Nuclear Missile
+		TNT1 A 0 A_Jump(4, "Spawn2") // Gas
+		TNT1 A 2
+		
+	Vanilla:	
+	Spawn1:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx ("AmmoCellPack",0,0,0,0,0,0,0,0,0)
+		TNT1 A 1
+		TNT1 A -1
+		Stop
+	
+	Spawn2:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx ("Gas",0,0,0,0,0,0,0,0,0)
+		TNT1 A 1
+		TNT1 A -1
+		Stop
+	
+	Spawn3:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx ("AmmoNukeBox",0,0,0,0,0,0,0,0,0)
+		TNT1 A 1
+		TNT1 A -1
+		Stop
+	}
+}
+
+// Shells ------------------------------------------------------------------
+
+ACTOR AmmoShell : Ammo
+{
+	Game Doom
+	SpawnID 12
+	Inventory.PickupMessage "$GOTSHELLS"
+	Inventory.Amount 4
+	Inventory.MaxAmount 50
+	Ammo.BackpackAmount 4
+	Ammo.BackpackMaxAmount 100
+	Inventory.Icon "SHELA0"
+	Inventory.Pickupsound "SHELPK1"
+	Scale 0.9
+	States
+	{
+	Spawn:
+		SHEL A -1
+		Stop
+	}
+}
+
+// Shell box ---------------------------------------------------------------
+
+ACTOR AmmoShellBox : AmmoShell
+{
+	Game Doom
+	SpawnID 143
+	Inventory.PickupMessage "$GOTSHELLBOX"
+	Inventory.Amount 20
+	Inventory.Pickupsound "SHELPK2"
+	Scale 0.9
+	States
+	{
+	Spawn:
+		SBOX A -1
+		Stop
+	}
+}
+
+//Magnum Rounds
+
+ACTOR AmmoMagnum : Ammo
+{
+	Game Doom
+	Inventory.PickupMessage "Picked up some magnum rounds."
+	Inventory.PickupSound "CBOXPICK"
+	Inventory.Amount 6
+	Inventory.MaxAmount 30
+	Ammo.BackpackAmount 6
+	Ammo.BackpackMaxAmount 60
+	Inventory.Icon "MAGAA0"
+	Scale 0.75
+	States
+	{
+	Spawn:
+		MAGA A -1
+		Stop
+	}
+}
+
+ACTOR AmmoMagnumBox : AmmoMagnum
+{
+	Game Doom
+	Inventory.PickupMessage "Picked up a box of magnum rounds."
+	Inventory.Amount 18
+	Inventory.Pickupsound "CBOXPICK"
+	Scale 0.75
+	States
+	{
+	Spawn:
+		MBOX A -1
+		Stop
+	}
+}
+
+ACTOR AmmoShellReplacer : BasicAmmoPickup Replaces Shell
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		MARN A 0 ACS_NamedExecuteAlways("BDDisableNewGuns", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+		TNT1 A 2
+		TNT1 A 0 A_Jump(2, "Spawn2") // Magnum Ammo
+		TNT1 A 2
+		
+	Vanilla:	
+	Spawn1:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx ("AmmoShell",0,0,0,0,0,0,0,0,0)
+		TNT1 A 1
+		TNT1 A -1
+		Stop
+	
+	Spawn2:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx ("AmmoMagnum",0,0,0,0,0,0,0,0,0)
+		TNT1 A 1
+		TNT1 A -1
+		Stop
+	}
+}
+
+ACTOR AmmoShellBoxReplacer : BasicAmmoPickup Replaces ShellBox
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		MARN A 0 ACS_NamedExecuteAlways("BDDisableNewGuns", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+		TNT1 A 2
+		TNT1 A 0 A_Jump(2, "Spawn2") // Magnum Ammo Box
+		TNT1 A 2
+		
+	Vanilla:	
+	Spawn1:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx ("AmmoShellBox",0,0,0,0,0,0,0,0,0)
+		TNT1 A 1
+		TNT1 A -1
+		Stop
+	
+	Spawn2:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx ("AmmoMagnumBox",0,0,0,0,0,0,0,0,0)
+		TNT1 A 1
+		TNT1 A -1
+		Stop
+	}
+}
+
+ACTOR SSGAmmo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 2
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 2
+   Inventory.Icon "SGN2A0"
+}
+
+ACTOR PlasmaAmmo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 50
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 50
+   Inventory.Icon "PLASA0"
+}
+
+ACTOR GLAmmo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 1
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 1
+   Inventory.Icon "GLAPA0"
+}
+
+ACTOR DoublePlasmaAmmo : Ammo //Your weapon's magazine ammo.
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 100 //Your weapon's magazine ammo limit. Always leave one more bullet, so you can do the 12+1 effect.
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 100
+   Inventory.Icon "PLASB0"
+}
+
+ACTOR MiniHellRocketAmmo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 50
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 100
+   Inventory.Icon "HMLRA0"
+}
+
+ACTOR SoulAmmo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 300
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 600
+   Inventory.Icon "BDSLA0"
+}
+
+ACTOR Gas : Ammo
+{
+   Inventory.Amount 50
+   Inventory.MaxAmount 300
+   Ammo.BackpackAmount 50
+   Ammo.BackpackMaxAmount 600
+   Inventory.Icon "GSLNA0"
+   Inventory.PickupMessage "Picked up a jug of Gasoline."
+   Scale 0.9
+   States
+   {
+	Spawn:
+		GSLN A -1
+		Stop
+   }
+}
+
+ACTOR MP40Ammo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 32
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 32
+   Inventory.Icon "MP40I0"
+   
+}
+
+ACTOR DualMP40Ammo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 64
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 64
+   Inventory.Icon "MP40J0" 
+}
+
+ACTOR RailgunAmmo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 50
+   Ammo.BackpackAmount 0
+   Inventory.Icon "SRCGA0"
+   Ammo.BackpackMaxAmount 50
+}	
+
+ACTOR GrenadeAmmo : Ammo
+{
+	Game Doom
+	Inventory.PickupMessage "Picked up a Grenade."
+	Inventory.Amount 1
+	Inventory.MaxAmount 3
+	Ammo.BackpackAmount 1
+	Ammo.BackpackMaxAmount 6
+	Inventory.Icon "GRNDA"
+	Scale 0.3
+	States
+	{
+	Spawn:
+		GRND H -1
+		Stop
+	}
+}
+
+ACTOR GrenadeBox : GrenadeAmmo
+{
+	Game Doom
+	Inventory.PickupMessage "Picked up a box of grenades."
+	Inventory.Amount 3
+	States
+	{
+	Spawn:
+		GRND H -1
+		Stop
+	}
+}
+
+ACTOR TankCannon10Ammo : Ammo
+{
+	Inventory.PickupMessage "Picked up a Magazine."
+	Inventory.Amount 10
+	Inventory.MaxAmount 20
+	Ammo.BackpackAmount 0
+	Ammo.BackpackMaxAmount 20
+	Inventory.Icon "NULL"
+	States
+	{
+	Spawn:
+		CLIP A -1
+		Stop
+	}
+}
+
+ACTOR HeavyMachinegunAmmo : Ammo
+{
+	Game Doom
+	Inventory.PickupMessage "Picked up a Magazine."
+	Inventory.Amount 100
+	Inventory.MaxAmount 5700
+	Ammo.BackpackAmount 0
+	Ammo.BackpackMaxAmount 5700
+	Inventory.Icon "NULL"
+	States
+	{
+	Spawn:
+		CLIP A -1
+		Stop
+	}
+}
+
+ACTOR Autocannon2Ammo : Ammo
+{
+	Game Doom
+	Inventory.PickupMessage "Picked up a Magazine."
+	Inventory.Amount 100
+	Inventory.MaxAmount 500
+	Ammo.BackpackAmount 0
+	Ammo.BackpackMaxAmount 500
+	Inventory.Icon "NULL"
+	States
+	{
+	Spawn:
+		CLIP A -1
+		Stop
+	}
+}
+
+ACTOR Autocannon2Ammo2 : Ammo
+{
+	Game Doom
+	Inventory.PickupMessage "Picked up a Magazine."
+	Inventory.Amount 100
+	Inventory.MaxAmount 1000
+	Ammo.BackpackAmount 0
+	Ammo.BackpackMaxAmount 1000
+	Inventory.Icon "NULL"
+	States
+	{
+	Spawn:
+		CLIP A -1
+		Stop
+	}
+}
+
+ACTOR MissileAmmo : Ammo
+{
+	Game Doom
+	Inventory.PickupMessage "Picked up a Magazine."
+	Inventory.Amount 5
+	Inventory.MaxAmount 120
+	Ammo.BackpackAmount 0
+	Ammo.BackpackMaxAmount 120
+	Inventory.Icon "NULL"
+	States
+	{
+	Spawn:
+		CLIP A -1
+		Stop
+	}
+}
+
+ACTOR SRMAmmo : Ammo
+{
+	Game Doom
+	Inventory.PickupMessage "Picked up a Magazine."
+	Inventory.Amount 1
+	Inventory.MaxAmount 100
+	Ammo.BackpackAmount 0
+	Ammo.BackpackMaxAmount 100
+	Inventory.Icon "NULL"
+	States
+	{
+	Spawn:
+		CLIP A -1
+		Stop
+	}
+}
+		
+ACTOR BDPistolAmmo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 16
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 16
+   Inventory.Icon PISTG0
+}
+
+ACTOR BDDualPistolAmmo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 32
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 32
+   Inventory.Icon PISTH0
+}

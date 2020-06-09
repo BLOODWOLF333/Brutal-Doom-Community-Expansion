@@ -1,0 +1,1459 @@
+//Sergeant Mark IV's vehicles.
+//If you want to modify and reuse this on your wad, please ask me first.
+
+ACTOR attackhelicopter: Tank 7262
+{
+    Scale 1.0
+	Radius 64
+	Height 128
+	+SOLID
+	+USESPECIAL
+	MONSTER
+	-COUNTKILL
+	+SHOOTABLE
+	+THRUACTORS
+	+NOINFIGHTING
+	+NORADIUSDMG
+	-COUNTKILL
+	MaxTargetRange 120
+	BloodType "TankBlood", "TankBlood", "TankBlood"
+	Activation THINGSPEC_Activate | THINGSPEC_ThingTargets | THINGSPEC_NoDeathSpecial
+	Mass 18100//20 tons
+	Speed 0
+	Health 1260
+	
+    States
+    {
+    Spawn:
+	    HELA A 0
+		HELA A 1
+		TNT1 A 0 Thing_ChangeTID(0, 261)
+		TNT1 A 0 ACS_NamedExecuteAlways("BDSetNewTankDirection", 0, 0, 0, 0)//Check vehicle initial angle.
+		HELA A 1 A_ChangeFlag("FRIENDLY", 0)
+		HELA A 5 
+		TNT1 A 0 Thing_ChangeTID(0, 0)
+		HELA A 0 A_ChangeFlag("THRUACTORS", 0)
+		TNT1 A 0 A_ChangeFlag("FRIENDLY", 1)
+		Goto StandingHere
+		
+	  StandingHere:
+		HELA A 7
+		TNT1 A 0 A_SpawnItem("StationedVehicleCheckRepairs")
+		Loop
+		
+	Active:
+		TNT1 A 0 
+		TNT1 A 0 A_ChangeFLag("NOPAIN", 1)
+		TNT1 A 0 A_TakeFromTarget("PowerInvulnerable", 1)
+		TNT1 A 0 A_GiveToTarget("CeaseMorph", 1)
+		TNT1 A 0 Thing_ChangeTID(0, 261)
+		TNT1 A 0 ACS_namedExecuteAlways("GetVehiclePreviousHealth", 0, 0, 0, 0)//Check Vehicle Health
+		TNT1 A 0 A_GiveToTarget("CheckingMorphingPlayerHealth", 1)
+		HELA A 3
+		TNT1 A 0 A_GiveToTarget("attackhelicopterMorpher", 1)
+		TNT1 A 0 A_GiveToTarget("Autocannon2Ammo", 500)
+		TNT1 A 0 A_GiveToTarget("HeavyMachinegunAmmo", 5700)
+		TNT1 A 0 A_GiveToTarget("SRMAmmo", 100)
+		TNT1 A 0 Thing_ChangeTID(0, 261)
+		TNT1 A 0 A_NoBlocking
+		HELA A 1
+		TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
+		HELA A 10
+		TNT1 A 0 Thing_ChangeTID(0, 0)
+		HELA A 1
+		Stop
+	Death:	
+	TNT1 A 1
+	TNT1 A 0 A_SpawnItem("BigExplosion1112")
+	TNT1 A 0 A_PlaySound("weapons/explode")
+	TNT1 A 0 A_PlaySound("EXPLOSIO", 3)
+	TNT1 A 0 A_NoBlocking
+	NULL AAAAAA 0 A_CustomMissile ("MetalShard1", 96, 0, random (0, 360), 2, random (0, 180))
+	NULL AAAAAA 0 A_CustomMissile ("MetalShard2", 96, 0, random (0, 360), 2, random (0, 180))
+	NULL AAAAAAAAA 0 A_CustomMissile ("BDGlassShard", 96, 0, random (0, 360), 2, random (0, 360))
+	TNT1 A 0 A_SpawnItem("DestroyedAircraftTemp")
+	ELEC A 0 A_Explode(100, 250)
+	TNT1 A 15
+	TNT1 A 0
+	Stop	
+	
+	Pain.Repair:
+		TNT1 A 0
+		TNT1 A 0 A_ChangeFLag("NOPAIN", 1)
+		TNT1 A 0 HealThing(84)
+		TNT1 A 0 A_JumpIfInventory("Autocannon2Ammo", 500, 2)
+		TNT1 A 0 A_GiveInventory("Autocannon2Ammo", 33)
+		TNT1 A 0 A_JumpIfInventory("SRMAmmo", 100, 2)
+		TNT1 A 0 A_GiveInventory("SRMAmmo", 7)
+		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 5700, 2)
+		TNT1 A 0 A_GiveInventory("HeavyMachinegunAmmo", 380)
+		HELA A 1
+		TNT1 A 0 A_ChangeFLag("NOPAIN", 0)
+		Goto StandingHere
+	}
+}
+
+ACTOR AttackHelicopterRealism: AttackHelicopter
+{
+Health 4000
+}
+
+ACTOR attackhelicopterUsed: attackhelicopter
+{
+    States
+    {
+	Spawn:
+		TNT1 A 0
+	    HELA A 1
+		TNT1 A 0 ACS_namedExecuteAlways("BDSetBaseAngle", 0, 0, 0, 0)//SpawnVehicleBase
+		TNT1 A 0 Thing_ChangeTID(0, 261)
+		HELA A 1 A_ChangeFlag("FRIENDLY", 0)
+		HELA A 5 
+		TNT1 A 0 Thing_ChangeTID(0, 0)
+		HELA A 0 A_ChangeFlag("THRUACTORS", 0)
+		TNT1 A 0 A_ChangeFlag("FRIENDLY", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCHeckOnline")
+		Goto StandingHere
+	
+	IsOnline:
+		TNT1 A 0
+		HELA A 1
+		//TNT1 A 0 A_TAkeInventory("attackhelicopterBaseDirection", 500)
+		Goto StandingHere
+		
+	
+	
+	Active:
+		TNT1 A 0 
+		TNT1 A 0 A_ChangeFLag("NOPAIN", 1)
+		TNT1 A 0 A_TakeFromTarget("PowerInvulnerable", 1)
+		TNT1 A 0 A_GiveToTarget("CeaseMorph", 1)
+		HELA A 0 A_ChangeFlag("FRIENDLY", 0)
+		TNT1 A 0 Thing_ChangeTID(0, 261)
+		TNT1 A 0 ACS_namedExecuteAlways("GetVehiclePreviousHealth", 0, 0, 0, 0)//Check Vehicle Health
+		//TNT1 A 0 A_Chase("","",CHF_DONTMOVE )
+		TNT1 A 0 A_GiveToTarget("CheckingMorphingPlayerHealth", 1)
+		HELA A 3
+		TNT1 A 0 A_GiveToTarget("attackhelicopterMorpher", 1)
+		TNT1 A 0 Thing_ChangeTID(0, 261)
+		TNT1 A 0 A_NoBlocking
+		HELA A 1
+		TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
+		HELA A 10
+		TNT1 A 0 Thing_ChangeTID(0, 0)
+		Stop
+	}
+}
+
+	
+
+
+ACTOR PowerattackhelicopterSwitch : PowerMorph {PowerMorph.PlayerClass "Playerattackhelicopter"}
+
+
+
+ACTOR attackhelicopterMorpher : CustomInventory 
+{
+  States
+  {
+  PickUp:
+  TNT1 A 1
+  TNT1 A 0 ACS_namedExecuteAlways("BDEnterTank", 0, 0, 0, 0)//Get into attackhelicopter
+  TNT1 A 0 A_GiveInventory("attackhelicopterMorphActivation")
+  TNT1 A 0 A_SpawnItem("CancelTeleportFog")
+  TNT1 A 1
+  Stop
+  }
+ }
+ 
+
+
+ACTOR attackhelicopterMorphActivation : PowerupGiver
+{
+  Powerup.Type "PowerattackhelicopterSwitch"
+  Powerup.Duration 252000
+  +INVENTORY.AUTOACTIVATE
+  +INVENTORY.ALWAYSPICKUP
+  Inventory.MaxAmount 1
+  Health 100
+  GibHealth 1
+  Mass 9999
+  Height 96
+  Radius 32
+  States
+  {
+  Spawn:
+  TNT1 A 100
+  Stop
+  
+  PickUp:
+  TNT1 A 1
+  TNT1 A 1
+  Stop
+  }
+ }
+ 
+ 
+
+
+ACTOR Playerattackhelicopter : PlayerTank
+{
+	Speed 0
+	+FLOAT
+	+NOGRAVITY
+	Scale 1.0
+	Radius 64
+	Height 128
+	Mass 18100//20 tons
+	PainChance 0
+	Health 1260
+	player.viewheight 64
+    player.attackzoffset 0
+	Player.MorphWeapon "attackhelicopterGun"
+	States
+	{
+	
+	ExitVehicle:
+		TNT1 A 0
+		TNT1 A 0 A_ChangeFlag(NOPAIN, 1)
+		TNT1 A 0 SetPlayerProperty(0,1,4)
+		TNT1 A 0 A_StopSound(6)
+		TNT1 A 0 A_StopSound(7)
+		TNT1 A 0 A_PlaySound("HELSTOP", 4)
+		TNT1 A 0 ThrustThingZ(0,-20,0,1)
+		HEL1 ABABAB 1 A_SetPitch(0)
+		TNT1 A 0 ThrustThingZ(0,-20,0,1)
+	    HEL1 ABC 1 A_CheckFloor("IsExiting")
+		TNT1 A 0 ThrustThingZ(0,-30,0,1)
+	    HEL1 ABC 1 A_CheckFloor("IsExiting")
+		TNT1 A 0 ThrustThingZ(0,-40,0,1)
+		
+		HEL1 ABC 1 A_CheckFloor("IsExiting")
+		TNT1 A 0 ThrustThingZ(0,-40,0,1)
+		HEL1 ABC 1 A_CheckFloor("IsExiting")
+		TNT1 A 0 ThrustThingZ(0,-40,0,1)
+		HEL1 ABC 1 A_CheckFloor("IsExiting")
+		TNT1 A 0 ThrustThingZ(0,-40,0,1)
+		HEL1 ABC 1 A_CheckFloor("IsExiting")
+		TNT1 A 0 ThrustThingZ(0,-40,0,1)
+		HEL1 ABC 1 A_CheckFloor("IsExiting")
+		TNT1 A 0 ThrustThingZ(0,-40,0,1)
+		HEL1 ABC 1 A_CheckFloor("IsExiting")
+		TNT1 A 0 ThrustThingZ(0,-40,0,1)
+		
+	   IsExiting:
+		HEL1 ABC 2
+		TNT1 A 0 ThrustThingZ(0,-50,0,1)
+		HEL1 ABC 3
+		TNT1 A 0 ThrustThingZ(0,-60,0,1)
+		HEL1 ABC 4
+		TNT1 A 0 ThrustThingZ(0,-60,0,1)
+		HEL1 ABC 5
+		TNT1 A 0 ThrustThingZ(0,-20,0,1)
+		TNT1 A 0 SetPlayerProperty(0,0,4)
+		TNT1 A 0 A_TakeInventory("PowerFlight", 1)
+	
+		TNT1 A 0 A_TakeInventory("PressedUse", 1)
+	
+		TNT1 A 0 A_SpawnItemEx ("TransferPlayerOutOfVehicle", 128, 128, 4)
+		
+		HELA A 3
+	
+		TNT1 A 0 A_JumpIfInventory("CanLeaveVehicle", 1, "CanExit")
+		TNT1 A 0 A_Print("Can't leave from this direction", 1)
+		TNT1 A 0 A_ChangeFlag(NOPAIN, 0)
+		TNT1 A 0 A_GiveInventory("HeliRestart",1)
+		Goto Stay
+	
+	CanExit:
+		TNT1 A 0
+		HELA A 2 A_TakeInventory("IsInATank", 1)
+		TNT1 A 0 A_TakeInventory("PressedUse", 1)
+		TNT1 A 0 A_TakeInventory("HelicopterIsFlying", 1)
+		TNT1 A 0 A_TakeInventory("CanLeaveVehicle", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("BDLeaveTank")
+		TNT1 A 0 A_SpawnItemEx ("attackhelicopterUsed", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+		Goto FinishExit
+
+	FinishExit:
+		TNT1 A 0 A_TakeInventory("PressedUse", 1)
+		TNT1 AAA 10 A_TakeInventory("PressedUse", 1)
+		TNT1 A 0 A_TakeInventory("PressedUse", 1)
+		Goto Stay
+		
+	
+	Spawn2: //Taking Off
+		HELA A 1
+		TNT1 A 0 A_Print ("A", 2, "TUTO3")
+	    TNT1 A 0 A_TakeInventory("PressedUse", 9)
+		TNT1 A 0 A_TakeInventory("PressedJump", 9)
+		TNT1 A 0 A_TakeInventory("TurnRight", 9)
+		TNT1 A 0 A_TakeInventory("TurnLeft", 9)
+		TNT1 A 0 A_TakeInventory("Accelerate", 9)
+		TNT1 A 0 A_TakeInventory("BackPedal", 9)
+		HEL1 A 1
+		TNT1 A 0 A_TakeInventory("PressedUse", 1)
+		TNT1 A 0 A_TakeInventory("FiredTankMainGun", 1)
+		TNT1 A 0 SetPlayerProperty(0,1,4)
+		TNT1 A 0 A_PlaySound("HELSTAR", 1)
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
+		HELA ABC 6
+		HELA ABC 5
+		HELA ABC 4
+		HELA ABC 3
+		TNT1 A 0 A_GiveInventory("PowerFlight", 1)
+		TNT1 A 0 ThrustThingZ(0,25,0,1)
+		HEL1 ABC 2
+		TNT1 A 0 ThrustThingZ(0,25,0,1)
+		HEL1 ABCABC 1
+		TNT1 A 0 ThrustThingZ(0,25,0,1)
+		HEL1 AB 1
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
+		TNT1 A 0 A_GiveInventory("HelicopterIsFlying", 1)
+		TNT1 A 0 A_TakeInventory("PressedUse", 1)
+		TNT1 A 0 SetPlayerProperty(0,0,4)
+	Goto Stay
+	
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("HelicopterIsFlying", 1, "Stay")
+		Goto Spawn2
+		
+	See:
+	Stay:
+		HEL1 ABC 1
+		TNT1 A 0 A_CustomMissile ("HelicopterHitDetection", 70, 0, 0, 2, 0)
+		TNT1 A 0 A_CustomMissile ("HelicopterHitDetection", 70, 0, 90, 2, 0)
+		TNT1 A 0 A_CustomMissile ("HelicopterHitDetection", 70, 0, 45, 2, 0)
+		TNT1 A 0 A_CustomMissile ("HelicopterHitDetection", 70, 0, 135, 2, 0)
+		TNT1 A 0 A_CustomMissile ("HelicopterHitDetection", 70, 0, 180, 2, 0)
+		TNT1 A 0 A_CustomMissile ("HelicopterHitDetection", 70, 0, 225, 2, 0)
+		TNT1 A 0 A_CustomMissile ("HelicopterHitDetection", 70, 0, 270, 2, 0)
+		TNT1 A 0 A_CustomMissile ("HelicopterHitDetection", 70, 0, 315, 2, 0)
+		TNT1 A 0 A_CustomMissile ("HelicopterHitDetectionGround", 0, 0, 0, 2, -45)
+		TNT1 A 0 A_PlaySound("HELILOP", 6, 1, 1)
+		TNT1 A 0 A_PlaySound("HELILOP2", 7, 1, 1)
+		TNT1 A 0 A_GiveInventory("PowerFlight", 1)
+		//Check buttons pressed
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "ExitVehicle")
+		TNT1 A 0 A_JumpIfInventory("Accelerate", 1, 3)//CheckAccel#16
+		TNT1 A 0 A_JumpIfInventory("Backpedal", 1, 3)//CheckDecel#17
+		Goto Stay+18	//None
+		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, 7)//None+CheckLeft#18
+		Goto Stay+21	//None+NotLeft
+		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, 9)//Accel+CheckLeft#19
+		Goto Stay+22	//Accel+NotLeft
+		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, 11)//Decel+CheckLeft#20
+		Goto Stay+23	//Decel+NotLeft
+		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, 5)//None+CheckRight#21
+		Goto Stay+24 	//None+None
+		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, 7)//Accel+CheckRight#22
+		Goto Stay+27	//Accel+None
+		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, 9)//Decel+CheckRight#23
+		Goto Stay+30	//Decel+None
+		
+		NULL A 0 A_JumpIf (pitch > 4 && pitch < 354, 9)//None+None+CheckForward#24
+		Goto Stay+42	//None+None+NotForward
+		NULL A 0 A_JumpIf (pitch > 4 && pitch < 354, 9)//None+Left+CheckForward#25
+		Goto Stay+43	//None+Left+NotForward
+		NULL A 0 A_JumpIf (pitch > 4 && pitch < 354, 9)//None+Right+CheckForward#26
+		Goto Stay+44	//None+Right+NotForward
+		NULL A 0 A_JumpIf (pitch > 4 && pitch < 354, 9)//Accel+None+CheckForward#27
+		Goto Stay+45	//Accel+None+NotForward
+		NULL A 0 A_JumpIf (pitch > 4 && pitch < 354, 9)//Accel+Left+CheckForward#28
+		Goto Stay+46	//Accel+Left+NotForward
+		NULL A 0 A_JumpIf (pitch > 4 && pitch < 354, 9)//Accel+Right+CheckForward#29
+		Goto Stay+47	//Accel+Right+NotForward
+		NULL A 0 A_JumpIf (pitch > 4 && pitch < 354, 9)//Decel+None+CheckForward#30
+		Goto Stay+48	//Decel+None+NotForward
+		NULL A 0 A_JumpIf (pitch > 4 && pitch < 354, 9)//Decel+Left+CheckForward#31
+		Goto Stay+49	//Decel+Left+NotForward
+		NULL A 0 A_JumpIf (pitch > 4 && pitch < 354, 9)//Decel+Right+CheckForward#32
+		Goto Stay+50	//Decel+Right+NotForward
+		
+		NULL A 0 A_JumpIf (pitch > 270, "Backward")//None+None+ZandronumCheckForward#33
+		Goto Forward
+		NULL A 0 A_JumpIf (pitch > 270, "BackwardLeft")//None+Left+ZandronumCheckForward#34
+		Goto ForwardLeft
+		NULL A 0 A_JumpIf (pitch > 270, "BackwardRight")//None+Right+ZandronumCheckForward#35
+		Goto ForwardRight
+		NULL A 0 A_JumpIf (pitch > 270, "GoUpBack")//Accel+None+ZandronumCheckForward#36
+		Goto GoUpAccel
+		NULL A 0 A_JumpIf (pitch > 270, "GoUpBackwardLeft")//Accel+Left+ZandronumCheckForward#37
+		Goto GoUpForwardLeft
+		NULL A 0 A_JumpIf (pitch > 270, "GoUpBackwardRight")//Accel+Right+ZandronumCheckForward#38
+		Goto GoUpForwardRight
+		NULL A 0 A_JumpIf (pitch > 270, "GoDownBack")//Decel+None+ZandronumCheckForward#39
+		Goto GoDownAccel
+		NULL A 0 A_JumpIf (pitch > 270, "GoDownBackwardLeft")//Decel+Left+ZandronumCheckForward#40
+		Goto GoDownForwardLeft
+		NULL A 0 A_JumpIf (pitch > 270, "GoDownBackwardRight")//Decel+Right+ZandronumCheckForward#41
+		Goto GoDownForwardRight
+		
+		NULL A 0 A_JumpIf (pitch < -6, "Backward")//None+None+CheckBackward#42
+		Loop
+		NULL A 0 A_JumpIf (pitch < -6, "BackwardLeft")//None+Left+CheckBackward#43
+		Goto TurnLeft
+		NULL A 0 A_JumpIf (pitch < -6, "BackwardRight")//None+Right+CheckBackward#44
+		Goto TurnRight
+		NULL A 0 A_JumpIf (pitch < -6, "GoUpBack")//Accel+None+CheckBackward#45
+		Goto GoUp
+		NULL A 0 A_JumpIf (pitch < -6, "GoUpBackwardLeft")//Accel+Left+CheckBackward#46
+		Goto GoUpLeft
+		NULL A 0 A_JumpIf (pitch < -6, "GoUpBackwardRight")//Accel+Right+CheckBackward#47
+		Goto GoUpRight
+		NULL A 0 A_JumpIf (pitch < -6, "GoDownBack")//Decel+None+CheckBackward#48
+		Goto GoDown
+		NULL A 0 A_JumpIf (pitch < -6, "GoDownBackwardLeft")//Decel+Left+CheckBackward#49
+		Goto GoDownLeft
+		NULL A 0 A_JumpIf (pitch < -6, "GoDownBackwardRight")//Decel+Right+CheckBackward#50
+		Goto GoDownRight
+		
+	TurnLeft:
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliRollLeft", 0, 0, 0, 0)
+		TNT1 A 0 A_GiveInventory("HeliIsLeft", 1)
+		HELH A 0 ThrustThing(angle*256/360+64, 6, 1, 0)
+	KeepLeft:
+		HEL1 ABC 1
+		TNT1 A 0 ThrustThing(angle*256/360+64, 6, 1, 0)
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "ExitVehicle")
+		TNT1 A 0 A_JumpIfInventory("Accelerate", 1, 6)
+		TNT1 A 0 A_JumpIfInventory("Backpedal", 1, 5)
+		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, 4)
+		NULL A 0 A_JumpIf (pitch > 4 && pitch < 354, 3)
+		NULL A 0 A_JumpIf (pitch < -6, 2)
+		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, "KeepLeft")
+		TNT1 A 0 A_TakeInventory("HeliIsLeft", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliStopLeft", 0, 0, 0, 0)
+		HELH A 0 ThrustThing(angle*256/360+64, 6, 1, 0)
+		Goto Stay
+	
+	//When pressing A while looking down
+	ForwardLeft:
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliRollLeft", 0, 0, 0, 0)
+		TNT1 A 0 A_GiveInventory("HeliIsLeft", 1)
+		HELH A 0 ThrustThing(angle*256/360+64, 6, 1, 0)
+	KeepForwardLeft:
+		TNT1 A 0 A_Recoil(-pitch/6)
+		HEL1 ABC 1
+		TNT1 A 0 ThrustThing(angle*256/360+64, 6, 1, 0)
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "ExitVehicle")
+		TNT1 A 0 A_JumpIfInventory("Accelerate", 1, 7)
+		TNT1 A 0 A_JumpIfInventory("Backpedal", 1, 6)
+		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, 5)
+		NULL A 0 A_JumpIf (pitch > 4 && pitch < 354, 2)
+		NULL A 0 A_JumpIf (pitch < -6, 3)
+		Goto Stay
+		NULL A 0 A_JumpIf (pitch > 270, 2)
+		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, "KeepForwardLeft")//#12
+		TNT1 A 0 A_TakeInventory("HeliIsLeft", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliStopLeft", 0, 0, 0, 0)
+		HELH A 0 ThrustThing(angle*256/360+64, 6, 1, 0)
+		Goto Stay
+	
+	//When pressing A while looking up
+	BackwardLeft:
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliRollLeft", 0, 0, 0, 0)
+		TNT1 A 0 A_GiveInventory("HeliIsLeft", 1)
+		HELH A 0 ThrustThing(angle*256/360+64, 6, 1, 0)
+	KeepBackwardLeft:
+		TNT1 A 0 A_JumpIf(Pitch > 270,5)
+		TNT1 A 0 A_Recoil(-pitch/12)			//GZDoom
+		HEL1 ABC 1
+		Goto KeepBackwardLeft+9
+		TNT1 A 0 A_Recoil((360-pitch)/12)	//Zandronum
+		HEL1 ABC 1
+		TNT1 A 0 ThrustThing(angle*256/360+64, 6, 1, 0)//#9
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "ExitVehicle")
+		TNT1 A 0 A_JumpIfInventory("Accelerate", 1, 6)
+		TNT1 A 0 A_JumpIfInventory("Backpedal", 1, 5)
+		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, 4)
+		NULL A 0 A_JumpIf (pitch > 4 && pitch < 354, 1)
+		Goto KeepBackwardLeft+16
+		NULL A 0 A_JumpIf (pitch > 270, 1)
+		Goto KeepBackwardLeft+17
+		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, "KeepBackwardLeft")//#16
+		TNT1 A 0 A_TakeInventory("HeliIsLeft", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliStopLeft", 0, 0, 0, 0)
+		HELH A 0 ThrustThing(angle*256/360+64, 6, 1, 0)
+		Goto Stay
+	
+	//When pressing A + W
+	GoUpLeft:
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliRollLeft", 0, 0, 0, 0)
+		TNT1 A 0 A_GiveInventory("HeliIsLeft", 1)
+		HELH A 0 ThrustThing(angle*256/360+64, 6, 1, 0)
+	KeepGoUpLeft:
+		TNT1 A 0 ThrustTHingZ(0, 8, 0, 1)
+		HEL1 ABC 1
+		TNT1 A 0 ThrustThing(angle*256/360+64, 6, 1, 0)
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "ExitVehicle")
+		TNT1 A 0 A_JumpIfInventory("Accelerate", 1, 1)
+		Goto KeepGoUpLeft+12
+		TNT1 A 0 A_JumpIfInventory("Backpedal", 1, 5)
+		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, 4)
+		NULL A 0 A_JumpIf (pitch > 4 && pitch < 354, 3)
+		NULL A 0 A_JumpIf (pitch < -6, 2)
+		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, "KeepGoUpLeft")//#11
+		TNT1 A 0 A_TakeInventory("HeliIsLeft", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliStopLeft", 0, 0, 0, 0)
+		HELH A 0 ThrustThing(angle*256/360+64, 6, 1, 0)
+		Goto Stay
+	
+	//When pressing A + W while looking down
+	GoUpForwardLeft:
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliRollLeft", 0, 0, 0, 0)
+		TNT1 A 0 A_GiveInventory("HeliIsLeft", 1)
+		HELH A 0 ThrustThing(angle*256/360+64, 6, 1, 0)
+	KeepGoUpForwardLeft:
+		TNT1 A 0 ThrustTHingZ(0, 8, 0, 1)
+		TNT1 A 0 A_Recoil(-pitch/6)
+		HEL1 ABC 1
+		TNT1 A 0 ThrustThing(angle*256/360+64, 6, 1, 0)
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "ExitVehicle")
+		TNT1 A 0 A_JumpIfInventory("Accelerate", 1, 1)
+		Goto KeepGoUpForwardLeft+14
+		TNT1 A 0 A_JumpIfInventory("Backpedal", 1, 6)
+		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, 5)
+		NULL A 0 A_JumpIf (pitch > 4 && pitch < 354, 2)
+		NULL A 0 A_JumpIf (pitch < -6, 3)
+		Goto Stay
+		NULL A 0 A_JumpIf (pitch > 270, 2)
+		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, "KeepGoUpForwardLeft")//#13
+		TNT1 A 0 A_TakeInventory("HeliIsLeft", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliStopLeft", 0, 0, 0, 0)
+		HELH A 0 ThrustThing(angle*256/360+64, 6, 1, 0)
+		Goto Stay
+	
+	//When pressing A + W while looking up
+	GoUpBackwardLeft:
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliRollLeft", 0, 0, 0, 0)
+		TNT1 A 0 A_GiveInventory("HeliIsLeft", 1)
+		HELH A 0 ThrustThing(angle*256/360+64, 6, 1, 0)
+	KeepGoUpBackwardLeft:
+		TNT1 A 0 ThrustTHingZ(0, 8, 0, 1)
+		TNT1 A 0 A_JumpIf(pitch > 270, 5)
+		TNT1 A 0 A_Recoil(-pitch/12)			//GZDoom
+		HEL1 ABC 1
+		Goto KeepGoUpBackwardLeft+10
+		TNT1 A 0 A_Recoil((360-pitch)/12)	//Zandronum
+		HEL1 ABC 1
+		TNT1 A 0 ThrustThing(angle*256/360+64, 6, 1, 0)//#10
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "ExitVehicle")
+		TNT1 A 0 A_JumpIfInventory("Accelerate", 1, 1)
+		Goto KeepGoUpBackwardLeft+19
+		TNT1 A 0 A_JumpIfInventory("Backpedal", 1, 5)
+		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, 4)
+		NULL A 0 A_JumpIf (pitch > 4 && pitch < 354, 1)
+		Goto KeepGoUpBackwardLeft+18
+		NULL A 0 A_JumpIf (pitch > 270, 1)
+		Goto KeepGoUpBackwardLeft+19
+		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, "KeepGoUpBackwardLeft")//#18
+		TNT1 A 0 A_TakeInventory("HeliIsLeft", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliStopLeft", 0, 0, 0, 0)
+		HELH A 0 ThrustThing(angle*256/360+64, 6, 1, 0)
+		Goto Stay
+	
+	//When pressing A + S
+	GoDownLeft:
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliRollLeft", 0, 0, 0, 0)
+		TNT1 A 0 A_GiveInventory("HeliIsLeft", 1)
+		HELH A 0 ThrustThing(angle*256/360+64, 6, 1, 0)
+	KeepGoDownLeft:
+		TNT1 A 0 ThrustTHingZ(0, -9, 0, 1)
+		HEL1 ABC 1
+		TNT1 A 0 ThrustThing(angle*256/360+64, 6, 1, 0)
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "ExitVehicle")
+		TNT1 A 0 A_JumpIfInventory("Accelerate", 1, 6)
+		TNT1 A 0 A_JumpIfInventory("Backpedal", 1, 1)
+		Goto KeepGoDownLeft+12
+		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, 4)
+		NULL A 0 A_JumpIf (pitch > 4 && pitch < 354, 3)
+		NULL A 0 A_JumpIf (pitch < -6, 2)
+		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, "KeepGoDownLeft")//#11
+		TNT1 A 0 A_TakeInventory("HeliIsLeft", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliStopLeft", 0, 0, 0, 0)
+		HELH A 0 ThrustThing(angle*256/360+64, 6, 1, 0)
+		Goto Stay
+	
+	//When pressing A + S while looking down
+	GoDownForwardLeft:
+		NULL A 0 A_JumpIf (pitch > 270, "GoDownBackwardLeft")
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliRollLeft", 0, 0, 0, 0)
+		TNT1 A 0 A_GiveInventory("HeliIsLeft", 1)
+		HELH A 0 ThrustThing(angle*256/360+64, 6, 1, 0)
+	KeepGoDownForwardLeft:
+		TNT1 A 0 ThrustTHingZ(0, -9, 0, 1)
+		TNT1 A 0 A_Recoil(-pitch/6)
+		HEL1 ABC 1
+		TNT1 A 0 ThrustThing(angle*256/360+64, 6, 1, 0)
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "ExitVehicle")
+		TNT1 A 0 A_JumpIfInventory("Accelerate", 1, 7)
+		TNT1 A 0 A_JumpIfInventory("Backpedal", 1, 1)
+		Goto KeepGoDownForwardLeft+14
+		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, 5)
+		NULL A 0 A_JumpIf (pitch > 4 && pitch < 354, 2)
+		NULL A 0 A_JumpIf (pitch < -6, 3)
+		Goto Stay
+		NULL A 0 A_JumpIf (pitch > 270, 2)
+		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, "KeepGoDownForwardLeft")//#13
+		TNT1 A 0 A_TakeInventory("HeliIsLeft", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliStopLeft", 0, 0, 0, 0)
+		HELH A 0 ThrustThing(angle*256/360+64, 6, 1, 0)
+		Goto Stay
+	
+	//When pressing A + S while looking up
+	GoDownBackwardLeft:
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliRollLeft", 0, 0, 0, 0)
+		TNT1 A 0 A_GiveInventory("HeliIsLeft", 1)
+		HELH A 0 ThrustThing(angle*256/360+64, 6, 1, 0)
+	KeepGoDownBackwardLeft:
+		TNT1 A 0 ThrustTHingZ(0, -9, 0, 1)
+		TNT1 A 0 A_JumpIf(pitch > 270, 5)
+		TNT1 A 0 A_Recoil(-pitch/12)			//GZDoom
+		HEL1 ABC 1
+		Goto KeepGoDownBackwardLeft+10
+		TNT1 A 0 A_Recoil((360-pitch)/12)	//Zandronum
+		HEL1 ABC 1
+		TNT1 A 0 ThrustThing(angle*256/360+64, 6, 1, 0)//#10
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "ExitVehicle")
+		TNT1 A 0 A_JumpIfInventory("Accelerate", 1, 6)
+		TNT1 A 0 A_JumpIfInventory("Backpedal", 1, 1)
+		Goto KeepGoDownBackwardLeft+19
+		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, 4)
+		NULL A 0 A_JumpIf (pitch > 4 && pitch < 354, 1)
+		Goto KeepGoDownBackwardLeft+18
+		NULL A 0 A_JumpIf (pitch > 270, 1)
+		Goto KeepGoDownBackwardLeft+19
+		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, "KeepGoDownBackwardLeft")//#18
+		TNT1 A 0 A_TakeInventory("HeliIsLeft", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliStopLeft", 0, 0, 0, 0)
+		HELH A 0 ThrustThing(angle*256/360+64, 6, 1, 0)
+		Goto Stay
+		
+	TurnRight:
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliRollRight", 0, 0, 0, 0)
+		TNT1 A 0 A_GiveInventory("HeliIsRight", 1)
+		HELH A 0 ThrustThing(angle*256/360+192, 6, 1, 0)
+	KeepRight:
+		HEL1 ABC 1
+		TNT1 A 0 ThrustThing(angle*256/360+192, 6, 1, 0)
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "ExitVehicle")
+		TNT1 A 0 A_JumpIfInventory("Accelerate", 1, 6)
+		TNT1 A 0 A_JumpIfInventory("Backpedal", 1, 5)
+		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, 4)
+		NULL A 0 A_JumpIf (pitch > 4 && pitch < 354, 3)
+		NULL A 0 A_JumpIf (pitch < -6, 2)
+		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, "KeepRight")
+		TNT1 A 0 A_TakeInventory("HeliIsRight", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliStopRight", 0, 0, 0, 0)
+		HELH A 0 ThrustThing(angle*256/360+192, 6, 1, 0)
+		Goto Stay
+	
+	//When pressing D while looking down
+	ForwardRight:
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliRollRight", 0, 0, 0, 0)
+		TNT1 A 0 A_GiveInventory("HeliIsRight", 1)
+		HELH A 0 ThrustThing(angle*256/360+192, 6, 1, 0)
+	KeepForwardRight:
+		TNT1 A 0 A_Recoil(-pitch/6)
+		HEL1 ABC 1
+		TNT1 A 0 ThrustThing(angle*256/360+192, 6, 1, 0)
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "ExitVehicle")
+		TNT1 A 0 A_JumpIfInventory("Accelerate", 1, 7)
+		TNT1 A 0 A_JumpIfInventory("Backpedal", 1, 6)
+		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, 5)
+		NULL A 0 A_JumpIf (pitch > 4 && pitch < 354, 2)
+		NULL A 0 A_JumpIf (pitch < -6, 3)
+		Goto Stay
+		NULL A 0 A_JumpIf (pitch > 270, 2)
+		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, "KeepForwardRight")//#12
+		TNT1 A 0 A_TakeInventory("HeliIsRight", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliStopRight", 0, 0, 0, 0)
+		HELH A 0 ThrustThing(angle*256/360+192, 6, 1, 0)
+		Goto Stay
+	
+	//When pressing D while looking up
+	BackwardRight:
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliRollRight", 0, 0, 0, 0)
+		TNT1 A 0 A_GiveInventory("HeliIsRight", 1)
+		HELH A 0 ThrustThing(angle*256/360+192, 6, 1, 0)
+	KeepBackwardRight:
+		TNT1 A 0 A_JumpIf(Pitch > 270,5)
+		TNT1 A 0 A_Recoil(-pitch/12)			//GZDoom
+		HEL1 ABC 1
+		Goto KeepBackwardRight+9
+		TNT1 A 0 A_Recoil((360-pitch)/12)	//Zandronum
+		HEL1 ABC 1
+		TNT1 A 0 ThrustThing(angle*256/360+192, 6, 1, 0)//#9
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "ExitVehicle")
+		TNT1 A 0 A_JumpIfInventory("Accelerate", 1, 6)
+		TNT1 A 0 A_JumpIfInventory("Backpedal", 1, 5)
+		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, 4)
+		NULL A 0 A_JumpIf (pitch > 4 && pitch < 354, 1)
+		Goto KeepBackwardRight+16
+		NULL A 0 A_JumpIf (pitch > 270, 1)
+		Goto KeepBackwardRight+17
+		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, "KeepBackwardRight")//#16
+		TNT1 A 0 A_TakeInventory("HeliIsRight", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliStopRight", 0, 0, 0, 0)
+		HELH A 0 ThrustThing(angle*256/360+192, 6, 1, 0)
+		Goto Stay
+	
+	//When pressing D + W
+	GoUpRight:
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliRollRight", 0, 0, 0, 0)
+		TNT1 A 0 A_GiveInventory("HeliIsRight", 1)
+		HELH A 0 ThrustThing(angle*256/360+192, 6, 1, 0)
+	KeepGoUpRight:
+		TNT1 A 0 ThrustTHingZ(0, 8, 0, 1)
+		HEL1 ABC 1
+		TNT1 A 0 ThrustThing(angle*256/360+192, 6, 1, 0)
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "ExitVehicle")
+		TNT1 A 0 A_JumpIfInventory("Accelerate", 1, 1)
+		Goto KeepGoUpRight+12
+		TNT1 A 0 A_JumpIfInventory("Backpedal", 1, 5)
+		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, 4)
+		NULL A 0 A_JumpIf (pitch > 4 && pitch < 354, 3)
+		NULL A 0 A_JumpIf (pitch < -6, 2)
+		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, "KeepGoUpRight")//#11
+		TNT1 A 0 A_TakeInventory("HeliIsRight", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliStopRight", 0, 0, 0, 0)
+		HELH A 0 ThrustThing(angle*256/360+192, 6, 1, 0)
+		Goto Stay
+	
+	//When pressing D + W while looking down
+	GoUpForwardRight:
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliRollRight", 0, 0, 0, 0)
+		TNT1 A 0 A_GiveInventory("HeliIsRight", 1)
+		HELH A 0 ThrustThing(angle*256/360+192, 6, 1, 0)
+	KeepGoUpForwardRight:
+		TNT1 A 0 ThrustTHingZ(0, 8, 0, 1)
+		TNT1 A 0 A_Recoil(-pitch/6)
+		HEL1 ABC 1
+		TNT1 A 0 ThrustThing(angle*256/360+192, 6, 1, 0)
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "ExitVehicle")
+		TNT1 A 0 A_JumpIfInventory("Accelerate", 1, 1)
+		Goto KeepGoUpForwardRight+14
+		TNT1 A 0 A_JumpIfInventory("Backpedal", 1, 6)
+		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, 5)
+		NULL A 0 A_JumpIf (pitch > 4 && pitch < 354, 2)
+		NULL A 0 A_JumpIf (pitch < -6, 3)
+		Goto Stay
+		NULL A 0 A_JumpIf (pitch > 270, 2)
+		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, "KeepGoUpForwardRight")//#13
+		TNT1 A 0 A_TakeInventory("HeliIsRight", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliStopRight", 0, 0, 0, 0)
+		HELH A 0 ThrustThing(angle*256/360+192, 6, 1, 0)
+		Goto Stay
+	
+	//When pressing D + W while looking up
+	GoUpBackwardRight:
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliRollRight", 0, 0, 0, 0)
+		TNT1 A 0 A_GiveInventory("HeliIsRight", 1)
+		HELH A 0 ThrustThing(angle*256/360+192, 6, 1, 0)
+	KeepGoUpBackwardRight:
+		TNT1 A 0 ThrustTHingZ(0, 8, 0, 1)
+		TNT1 A 0 A_JumpIf(pitch > 270, 5)
+		TNT1 A 0 A_Recoil(-pitch/12)			//GZDoom
+		HEL1 ABC 1
+		Goto KeepGoUpBackwardRight+10
+		TNT1 A 0 A_Recoil((360-pitch)/12)	//Zandronum
+		HEL1 ABC 1
+		TNT1 A 0 ThrustThing(angle*256/360+192, 6, 1, 0)//#10
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "ExitVehicle")
+		TNT1 A 0 A_JumpIfInventory("Accelerate", 1, 1)
+		Goto KeepGoUpBackwardRight+19
+		TNT1 A 0 A_JumpIfInventory("Backpedal", 1, 5)
+		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, 4)
+		NULL A 0 A_JumpIf (pitch > 4 && pitch < 354, 1)
+		Goto KeepGoUpBackwardRight+18
+		NULL A 0 A_JumpIf (pitch > 270, 1)
+		Goto KeepGoUpBackwardRight+19
+		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, "KeepGoUpBackwardRight")//#18
+		TNT1 A 0 A_TakeInventory("HeliIsRight", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliStopRight", 0, 0, 0, 0)
+		HELH A 0 ThrustThing(angle*256/360+192, 6, 1, 0)
+		Goto Stay
+	
+	//When pressing D + S
+	GoDownRight:
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliRollRight", 0, 0, 0, 0)
+		TNT1 A 0 A_GiveInventory("HeliIsRight", 1)
+		HELH A 0 ThrustThing(angle*256/360+192, 6, 1, 0)
+	KeepGoDownRight:
+		TNT1 A 0 ThrustTHingZ(0, -9, 0, 1)
+		HEL1 ABC 1
+		TNT1 A 0 ThrustThing(angle*256/360+192, 6, 1, 0)
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "ExitVehicle")
+		TNT1 A 0 A_JumpIfInventory("Accelerate", 1, 6)
+		TNT1 A 0 A_JumpIfInventory("Backpedal", 1, 1)
+		Goto KeepGoDownRight+12
+		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, 4)
+		NULL A 0 A_JumpIf (pitch > 4 && pitch < 354, 3)
+		NULL A 0 A_JumpIf (pitch < -6, 2)
+		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, "KeepGoDownRight")//#11
+		TNT1 A 0 A_TakeInventory("HeliIsRight", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliStopRight", 0, 0, 0, 0)
+		HELH A 0 ThrustThing(angle*256/360+192, 6, 1, 0)
+		Goto Stay
+	
+	//When pressing D + S while looking down
+	GoDownForwardRight:
+		NULL A 0 A_JumpIf (pitch > 270, "GoDownBackwardRight")
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliRollRight", 0, 0, 0, 0)
+		TNT1 A 0 A_GiveInventory("HeliIsRight", 1)
+		HELH A 0 ThrustThing(angle*256/360+192, 6, 1, 0)
+	KeepGoDownForwardRight:
+		TNT1 A 0 ThrustTHingZ(0, -9, 0, 1)
+		TNT1 A 0 A_Recoil(-pitch/6)
+		HEL1 ABC 1
+		TNT1 A 0 ThrustThing(angle*256/360+192, 6, 1, 0)
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "ExitVehicle")
+		TNT1 A 0 A_JumpIfInventory("Accelerate", 1, 7)
+		TNT1 A 0 A_JumpIfInventory("Backpedal", 1, 1)
+		Goto KeepGoDownForwardRight+14
+		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, 5)
+		NULL A 0 A_JumpIf (pitch > 4 && pitch < 354, 2)
+		NULL A 0 A_JumpIf (pitch < -6, 3)
+		Goto Stay
+		NULL A 0 A_JumpIf (pitch > 270, 2)
+		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, "KeepGoDownForwardRight")//#13
+		TNT1 A 0 A_TakeInventory("HeliIsRight", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliStopRight", 0, 0, 0, 0)
+		HELH A 0 ThrustThing(angle*256/360+192, 6, 1, 0)
+		Goto Stay
+	
+	//When pressing D + S while looking up
+	GoDownBackwardRight:
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliRollRight", 0, 0, 0, 0)
+		TNT1 A 0 A_GiveInventory("HeliIsRight", 1)
+		HELH A 0 ThrustThing(angle*256/360+192, 6, 1, 0)
+	KeepGoDownBackwardRight:
+		TNT1 A 0 ThrustTHingZ(0, -9, 0, 1)
+		TNT1 A 0 A_JumpIf(pitch > 270, 5)
+		TNT1 A 0 A_Recoil(-pitch/12)			//GZDoom
+		HEL1 ABC 1
+		Goto KeepGoDownBackwardRight+10
+		TNT1 A 0 A_Recoil((360-pitch)/12)	//Zandronum
+		HEL1 ABC 1
+		TNT1 A 0 ThrustThing(angle*256/360+192, 6, 1, 0)//#10
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "ExitVehicle")
+		TNT1 A 0 A_JumpIfInventory("Accelerate", 1, 6)
+		TNT1 A 0 A_JumpIfInventory("Backpedal", 1, 1)
+		Goto KeepGoDownBackwardRight+19
+		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, 4)
+		NULL A 0 A_JumpIf (pitch > 4 && pitch < 354, 1)
+		Goto KeepGoDownBackwardRight+18
+		NULL A 0 A_JumpIf (pitch > 270, 1)
+		Goto KeepGoDownBackwardRight+19
+		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, "KeepGoDownBackwardRight")//#18
+		TNT1 A 0 A_TakeInventory("HeliIsRight", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("HeliStopRight", 0, 0, 0, 0)
+		HELH A 0 ThrustThing(angle*256/360+192, 6, 1, 0)
+		Goto Stay
+	
+	Forward:
+		HEL1 A 0
+		TNT1 A 0 A_Recoil(-pitch/2)
+		HEL1 ABC 1
+		Goto Stay
+	
+	Backward:
+		HEL1 A 0
+		NULL A 0 A_JumpIf (pitch > 270, 5)
+		TNT1 A 0 A_Recoil(-pitch/4)			//GZDoom
+		HEL1 ABC 1
+		Goto Stay
+		TNT1 A 0 A_Recoil((360-pitch)/4)	//Zandro
+		HEL1 ABC 1
+		Goto Stay
+		
+	GoUp:
+		HEL1 A 0
+		TNT1 A 0 A_TakeInventory("Accelerate", 1)
+		TNT1 A 0 A_TakeInventory("BACKPEDAL", 1)
+		TNT1 A 0 ThrustTHingZ(0, 8, 0, 1)
+		HEL1 ABC 1
+		Goto Stay
+	
+	//When pressing W while looking down
+	GoUpAccel:
+		HEL1 A 0
+		TNT1 A 0 A_TakeInventory("Accelerate", 1)
+		TNT1 A 0 A_TakeInventory("BACKPEDAL", 1)
+		TNT1 A 0 ThrustTHingZ(0, 8, 0, 1)
+		TNT1 A 0 A_Recoil(-pitch/2)
+		HEL1 ABC 1
+		Goto Stay
+		
+	//When pressing W while looking up
+	GoUpBack:
+		HEL1 A 0
+		TNT1 A 0 A_TakeInventory("Accelerate", 1)
+		TNT1 A 0 A_TakeInventory("BACKPEDAL", 1)
+		TNT1 A 0 ThrustTHingZ(0, 8, 0, 1)
+		NULL A 0 A_JumpIf (pitch > 270, 5)
+		TNT1 A 0 A_Recoil(-pitch/4)			//GZDoom
+		HEL1 ABC 1
+		Goto Stay
+		TNT1 A 0 A_Recoil((360-pitch)/4)	//Zandronum
+		HEL1 ABC 1
+		Goto Stay
+		
+	GoDown:
+		HEL1 A 0
+		TNT1 A 0 A_TakeInventory("Accelerate", 1)
+		TNT1 A 0 A_TakeInventory("BACKPEDAL", 1)
+		TNT1 A 0 ThrustTHingZ(0, -9, 0, 1)
+		HEL1 ABC 1
+		Goto Stay
+		
+	//When pressing S while looking down	
+	GoDownAccel:
+		HEL1 A 0
+		TNT1 A 0 A_TakeInventory("Accelerate", 1)
+		TNT1 A 0 A_TakeInventory("BACKPEDAL", 1)
+		TNT1 A 0 ThrustTHingZ(0, -9, 0, 1)
+		TNT1 A 0 A_Recoil(-pitch/2)
+		HEL1 ABC 1
+		Goto Stay	
+		
+	//When pressing S while looking up	
+	GoDownBack:
+		HEL1 A 0
+		TNT1 A 0 A_TakeInventory("Accelerate", 1)
+		TNT1 A 0 A_TakeInventory("BACKPEDAL", 1)
+		TNT1 A 0 ThrustTHingZ(0, -9, 0, 1)
+		NULL A 0 A_JumpIf (pitch > 270, 5)
+		TNT1 A 0 A_Recoil(-pitch/4)			//GZDoom
+		HEL1 ABC 1 
+		Goto Stay
+		TNT1 A 0 A_Recoil((360-pitch)/4)	//Zandronum
+		HEL1 ABC 1 
+		Goto Stay
+		
+	Pain.HitGround:
+		PLAY G 0
+		TNT1 A 0 ThrustThingZ(0,60,0,1)
+		HEL1 A 1 A_Pain
+		Goto Stay
+	
+	Pain.Repair:
+		TNT1 A 0
+		HELA A 1 A_PlaySound("vehicle/pain")
+		TNT1 A 0 HealThing(84)
+		TNT1 A 0 A_JumpIfInventory("Autocannon2Ammo", 500, 2)
+		TNT1 A 0 A_GiveInventory("Autocannon2Ammo", 33)
+		TNT1 A 0 A_JumpIfInventory("SRMAmmo", 100, 2)
+		TNT1 A 0 A_GiveInventory("SRMAmmo", 7)
+		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 5700, 2)
+		TNT1 A 0 A_GiveInventory("HeavyMachinegunAmmo", 380)
+		HELA A 1
+		Goto Stay
+		
+	Death:
+	XDeath:
+	TNT1 A 0
+	TNT1 A 0 A_StopSound(7)
+	TNT1 A 0 A_StopSound(6)
+	TNT1 A 0 A_TakeInventory("AttackhelicopterGun", 1)
+	TNT1 A 0 SetPlayerProperty(0,0,4)
+	TNT1 A 0 A_PlaySound("HELSTOP", 6)
+	TNT1 A 0 A_ChangeFlag("NOGRAVITY", 0)
+	
+	falling:
+	TNT1 A 0 A_Scream
+	TNT1 A 0 A_ClearTarget
+	TNT1 A 0 A_NoBlocking
+	HEL1 AB 1 A_CustomMissile ("FlamethrowerFireParticles", 32, 0, random (0, 360), 2, random (0, 180))
+	TNT1 A 0 A_SetAngle(10 + angle)
+	HEL1 CD 1 A_CustomMissile ("FlamethrowerFireParticles", 32, 0, random (0, 360), 2, random (0, 180))
+	TNT1 A 0 A_SetAngle(10 + angle)
+	TNT1 A 0 A_CheckFloor("Crashed")
+	Loop
+	
+	Crashed:
+	TNT1 A 0 A_SpawnItem("BigExplosion1112")
+	TNT1 A 0 A_PlaySound("weapons/explode")
+	TNT1 A 0 A_PlaySound("EXPLOSIO", 3)
+	
+	NULL AAAAAA 0 A_CustomMissile ("MetalShard1", 96, 0, random (0, 360), 2, random (0, 180))
+	NULL AAAAAA 0 A_CustomMissile ("MetalShard2", 96, 0, random (0, 360), 2, random (0, 180))
+	NULL AAAAAAAAA 0 A_CustomMissile ("BDGlassShard", 96, 0, random (0, 360), 2, random (0, 360))
+	TNT1 A 0 A_StopSound(6)
+	TNT1 A 0 A_StopSound(7)
+	ELEC A 0 A_Explode(100, 250)
+	TNT1 A 0 A_SpawnItem("DestroyedAircraftTemp")
+	8762 A 500
+	8762 A 2000
+	Stop
+	
+	}
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Vehicle's weapons and misc
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ACTOR SRMReady : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 35
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 35
+   Inventory.Icon TNT1A0
+}
+
+ACTOR attackhelicopterGun : DoomWeapon
+{
+	Game Doom
+	Weapon.AmmoUse1 0
+	Weapon.AmmoGive1 0
+	Weapon.AmmoUse2 0
+	Weapon.AmmoGive2 0
+	Weapon.AmmoType1 "HeavyMachinegunAmmo"
+	Weapon.AmmoType2 "Autocannon2Ammo"
+	Obituary "%o suffered Death-From-Above by a helicopter."
+	Weapon.SelectionOrder 9999
+	+WEAPON.AMMO_OPTIONAL
+	+WEAPON.ALT_AMMO_OPTIONAL
+	+WEAPON.NOAUTOAIM
+	+WEAPON.EXPLOSIVE
+	+WEAPON.CHEATNOTWEAPON
+	+WEAPON.NO_AUTO_SWITCH
+	Inventory.Pickupmessage "$PICKUP_PISTOL_DROPPED"
+	Tag "$TAG_PISTOL"
+	States
+	{
+	Spawn:
+		LAUN A -1
+		Stop
+		
+	Ready:
+		HELH A 35
+		TNT1 A 0 A_TakeInventory("PressedUse", 1)
+		TNT1 A 0 A_TakeInventory("HeliRestart",1)
+		TNT1 A 0 A_TakeInventory("PressedJump", 2)
+		TNT1 A 0 A_GiveInventory("SRMReady", 35)
+		HELH A 1 A_GunFlash
+		TNT1 A 0 A_SetCrosshair(28)
+		Goto ReadyToFire
+		
+	ReadyToFire:
+		TNT1 A 0 
+		TNT1 A 0 A_JumpIfinventory("TankZoom", 1, "ReadyZoom")
+		TNT1 A 0 A_JumpIfInventory("SwitchFlashlight",1,"SwitchFlashlight")
+		TNT1 A 0 A_JumpIfInventory("Kicking", 1, "ZoomMode")
+		HELH A 1 A_WeaponReady(1)
+		Loop
+	
+	ReadyZoom:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("SwitchFlashlight",1,"SwitchFlashlight")
+		TNT1 A 0 A_JumpIfInventory("Kicking", 1, "ZoomMode")
+		TNT1 A 1 A_WeaponReady(1)
+		Loop
+	
+	ZoomMode:
+		TNT1 A 0
+		TNT1 A 1
+		TNT1 A 0 A_JumpIfinventory("TankZoom", 1, "StopZoom")
+		TNT1 A 0 A_ZoomFactor(5.0)
+		TNT1 A 0 A_GiveInventory("TankZoom")
+		TNT1 A 1
+		TNT1 A 0 A_TakeInventory("Kicking", 1)
+		Goto ReadyZoom
+	
+	StopZoom:
+		TNT1 A 0
+		TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_TakeInventory("TankZoom", 1)
+		TNT1 A 1
+		TNT1 A 0 A_TakeInventory("Kicking", 1)
+		Goto ReadyToFire
+	
+	Deselect:
+		TNT1 A 1 A_Lower
+		TNT1 A 0 SetPlayerProperty(0,0,4)
+		Loop
+		
+	Select:
+		HELH AAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 SetPlayerProperty(0,1,4)
+		HELH AAA 1 A_Raise
+		TNT1 A 0
+		Goto Ready
+		
+	NoAmmo:
+		HELH A 7
+		TNT1 A 0 A_Print("Ammunition Depleted", 2)
+		Goto ReadyToFire
+		
+	NoAmmoZoom:
+		TNT1 A 7
+		TNT1 A 0 A_Print("Ammunition Depleted", 2)
+		Goto ReadyZoom
+		
+	Reloading:
+		HELH A 7
+		TNT1 A 0 A_Print("Reloading", 2)
+		Goto ReadyToFire
+
+	ReloadingZoom:
+		TNT1 A 7
+		TNT1 A 0 A_Print("Reloading", 2)
+		Goto ReadyZoom
+
+	Fire:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("MechFireMode", 2, "Rocket")
+		TNT1 A 0 A_JumpIfInventory("MechFireMode", 1, "Machinegun")
+		
+	Autocannon:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfinventory("TankZoom", 1, "AutocannonZoom")
+		TNT1 A 0 A_JumpIfInventory("Autocannon2Ammo", 1, 1)
+		Goto NoAmmo
+		
+		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
+		HELH A 1 BRIGHT A_FireCustomMissile("AutocannonFlash", 0, 0, 0, -48, 0, 0)
+		HELH A 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", 0, 0, 0, -48, 0, 0.16)
+		TNT1 A 0 A_TakeInventory("Autocannon2Ammo", 1)
+		HELH A 2 A_PlaySound("ACANO1", 1)
+		TNT1 A 0 A_PlaySound("FARCAN1", 4)
+		
+		TNT1 A 0 A_ReFire
+		Goto ReadyToFire
+		
+	AutocannonZoom:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("Autocannon2Ammo", 1, 1)
+		Goto NoAmmoZoom
+		
+		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
+		TNT1 A 1 BRIGHT A_FireCustomMissile("AutocannonFlash", 0, 0, 0, -48, 0, 0)
+		TNT1 A 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", 0, 0, 0, -48, 0, 0.16)
+		TNT1 A 0 A_TakeInventory("Autocannon2Ammo", 1)
+		TNT1 A 2 A_PlaySound("ACANO1", 1)
+		TNT1 A 0 A_PlaySound("FARCAN1", 4)
+		
+		TNT1 A 0 A_ReFire
+		Goto ReadyZoom
+		
+	Machinegun:
+		HELH A 0 
+		TNT1 A 0 A_JumpIfinventory("TankZoom", 1, "MachinegunZoom")
+		HELH A 0 A_PlaySound("CHAINSTA", 3)
+		HELH A 5
+	FireContinue:
+		HELH A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 2, 2)
+		HELH A 0 A_PlaySound("CHAINSTO", 3)
+		Goto NoAmmo
+		HELH A 0 A_PlaySound("TANKMG", 1)
+
+		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
+		HELH A 0 A_FireCustomMissile("HeavyMachinegunProjectile", 0.182, 0, 64, -16, 0, 0.046)
+		HELH A 0 A_FireCustomMissile("HeavyMachinegunProjectile", -0.182, 0, -64, -16, 0, 0.046)
+		HELH A 0 A_FireCustomMissile("HeavyMachinegunFlash", 0, 0, 64, -16, 0, 0)
+		HELH A 0 A_FireCustomMissile("HeavyMachinegunFlash", 0, 0, -64, -16, 0, 0)
+		HELH A 0 A_TakeInventory("HeavyMachinegunAmmo", 2)
+		HELH A 3 BRIGHT
+		
+		HELH A 0 A_ReFire("FireContinue")
+		HELH A 0 A_PlaySound("CHAINSTO", 3)
+		Goto ReadyToFire
+
+	MachinegunZoom:
+		TNT1 A 0
+		HELH A 0 A_PlaySound("CHAINSTA", 3)
+		TNT1 A 5
+	FireContinueZoom:
+		HELH A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 2, 2)
+		HELH A 0 A_PlaySound("CHAINSTO", 3)
+		Goto NoAmmoZoom
+		HELH A 0 A_PlaySound("TANKMG", 1)
+		
+		HELH A 0 A_FireCustomMissile("Alerter", 0, 0, 0, 0)
+		HELH A 0 A_FireCustomMissile("HeavyMachinegunProjectile", 0.182, 0, 64, -16, 0, 0.046)
+		HELH A 0 A_FireCustomMissile("HeavyMachinegunProjectile", -0.182, 0, -64, -16, 0, 0.046)
+		HELH A 0 A_FireCustomMissile("HeavyMachinegunFlash", 0, 0, 64, -16, 0, 0)
+		HELH A 0 A_FireCustomMissile("HeavyMachinegunFlash", 0, 0, -64, -16, 0, 0)
+		HELH A 0 A_TakeInventory("HeavyMachinegunAmmo", 2)
+		TNT1 A 3 BRIGHT
+		
+		HELH A 0 A_ReFire("FireContinueZoom")
+		HELH A 0 A_PlaySound("CHAINSTO", 3)
+		Goto ReadyZoom
+
+	Rocket:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("TankZoom", 1, "RocketZoom")
+		HELH A 0 A_JumpIfInventory("SRMAmmo", 4, 1)
+		Goto NoAmmo
+		HELH A 0 A_JumpIfInventory("SRMReady", 35, 1)
+		Goto Reloading
+		HELH A 0 A_JumpIfInventory("DMgame",1,"RocketDM")
+		
+		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
+		HELH A 0 A_FireCustomMissile("SRM", 0.213, 0, random(24,40), random(-40,-24), 0, 0.213)
+		HELH A 0 A_FireCustomMissile("SRM", -0.213, 0, random(-40,-24), random(-40,-24), 0, 0.213)
+		HELH A 7 BRIGHT
+		TNT1 A 0 A_TakeInventory("SRMAmmo", 2)
+		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
+		HELH A 0 A_FireCustomMissile("SRM", 0.213, 0, random(24,40), random(-40,-24), 0, 0.213)
+		HELH A 0 A_FireCustomMissile("SRM", -0.213, 0, random(-40,-24), random(-40,-24), 0, 0.213)
+		HELH A 7 BRIGHT
+		TNT1 A 0 A_TakeInventory("SRMAmmo", 2)
+		TNT1 A 0 A_TakeInventory("SRMReady", 35)
+		Goto ReadyToFire
+		
+	RocketDM:
+		TNT1 A 0
+		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
+		HELH A 0 A_FireCustomMissile("SRMDM", 0.213, 0, random(24,40), random(-40,-24), 0, 0.213)
+		HELH A 0 A_FireCustomMissile("SRMDM", -0.213, 0, random(-40,-24), random(-40,-24), 0, 0.213)
+		HELH A 7 BRIGHT
+		TNT1 A 0 A_TakeInventory("SRMAmmo", 2)
+		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
+		HELH A 0 A_FireCustomMissile("SRMDM", 0.213, 0, random(24,40), random(-40,-24), 0, 0.213)
+		HELH A 0 A_FireCustomMissile("SRMDM", -0.213, 0, random(-40,-24), random(-40,-24), 0, 0.213)
+		HELH A 7 BRIGHT
+		TNT1 A 0 A_TakeInventory("SRMAmmo", 2)
+		TNT1 A 0 A_TakeInventory("SRMReady", 35)
+		Goto ReadyToFire
+
+	RocketZoom:
+		TNT1 A 0
+		HELH A 0 A_JumpIfInventory("SRMAmmo", 4, 1)
+		Goto NoAmmoZoom
+		HELH A 0 A_JumpIfInventory("SRMReady", 35, 1)
+		Goto ReloadingZoom
+		HELH A 0 A_JumpIfInventory("DMgame",1,"RocketDMZoom")
+		
+		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
+		HELH A 0 A_FireCustomMissile("SRM", 0.213, 0, random(24,40), random(-40,-24), 0, 0.213)
+		HELH A 0 A_FireCustomMissile("SRM", -0.213, 0, random(-40,-24), random(-40,-24), 0, 0.213)
+		TNT1 A 7 BRIGHT
+		TNT1 A 0 A_TakeInventory("SRMAmmo", 2)
+		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
+		HELH A 0 A_FireCustomMissile("SRM", 0.213, 0, random(24,40), random(-40,-24), 0, 0.213)
+		HELH A 0 A_FireCustomMissile("SRM", -0.213, 0, random(-40,-24), random(-40,-24), 0, 0.213)
+		TNT1 A 7 BRIGHT
+		TNT1 A 0 A_TakeInventory("SRMAmmo", 2)
+		TNT1 A 0 A_TakeInventory("SRMReady", 35)
+		Goto ReadyZoom
+		
+	RocketDMZoom:
+		TNT1 A 0
+		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
+		HELH A 0 A_FireCustomMissile("SRMDM", 0.213, 0, random(24,40), random(-40,-24), 0, 0.213)
+		HELH A 0 A_FireCustomMissile("SRMDM", -0.213, 0, random(-40,-24), random(-40,-24), 0, 0.213)
+		TNT1 A 7 BRIGHT
+		TNT1 A 0 A_TakeInventory("SRMAmmo", 2)
+		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
+		HELH A 0 A_FireCustomMissile("SRMDM", 0.213, 0, random(24,40), random(-40,-24), 0, 0.213)
+		HELH A 0 A_FireCustomMissile("SRMDM", -0.213, 0, random(-40,-24), random(-40,-24), 0, 0.213)
+		TNT1 A 7 BRIGHT
+		TNT1 A 0 A_TakeInventory("SRMAmmo", 2)
+		TNT1 A 0 A_TakeInventory("SRMReady", 35)
+		Goto ReadyZoom
+
+	AltFire:
+		TNT1 A 0 A_JumpIfInventory("TankZoom", 1, "AltFireZoom")
+		HELH A 14
+		TNT1 A 0 A_JumpIfInventory("MechFireMode", 2, "Switch0")
+		TNT1 A 0 A_GiveInventory("MechFireMode", 1)
+		Goto ReadyToFire
+	
+	Switch0:
+		TNT1 A 0 A_TakeInventory("MechFireMode", 3)
+		Goto ReadyToFire
+		
+	AltFireZoom:
+		TNT1 A 14
+		TNT1 A 0 A_JumpIfInventory("MechFireMode", 2, "Switch0Zoom")
+		TNT1 A 0 A_GiveInventory("MechFireMode", 1)
+		Goto ReadyZoom
+	
+	Switch0Zoom:
+		TNT1 A 0 A_TakeInventory("MechFireMode", 3)
+		Goto ReadyZoom
+
+	Flash:
+		TNT1 A 0
+		TNT1 A 1 ACS_NamedExecuteAlways("BDHelicopterHUD")
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "LightEnd")
+		NULL A 0 A_JumpIf (pitch < -57, "TooHighCheckGZD")
+		NULL A 0 A_JumpIf (pitch > 220, "TooHighCheck")
+		NULL A 0 A_JumpIf (pitch > 33, "TooLowCheck")
+		TNT1 A 1 ACS_NamedExecuteAlways("BDHelicopterHUD")
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "LightEnd")
+		NULL A 0 A_JumpIf (pitch < -57, "TooHighCheckGZD")
+		NULL A 0 A_JumpIf (pitch > 220, "TooHighCheck")
+		NULL A 0 A_JumpIf (pitch > 33, "TooLowCheck")
+		TNT1 A 1 ACS_NamedExecuteAlways("BDHelicopterHUD")
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "LightEnd")
+		NULL A 0 A_JumpIf (pitch < -57, "TooHighCheckGZD")
+		NULL A 0 A_JumpIf (pitch > 220, "TooHighCheck")
+		NULL A 0 A_JumpIf (pitch > 33, "TooLowCheck")
+		Goto Flash	
+		
+	TooHigh:
+		TNT1 A 0
+		TNT1 A 0 A_SetPitch(304)
+		Goto Flash
+		
+	TooLowCheck:
+		TNT1 A 0
+		TNT1 A 0 A_SetPitch(32)
+		Goto Flash
+		
+	TooHighCheck:
+		TNT1 A 0
+		NULL A 0 A_JumpIf (pitch < 303, "TooHigh")
+		Goto Flash
+		
+	TooHighCheckGZD:
+		TNT1 A 0
+		NULL A 0 A_SetPitch(-56)
+		Goto Flash
+		
+	SwitchFlashlight:
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("SwitchFlashlight", 1)
+		TNT1 A 0 A_JumpIfInventory("FlashlightOn",1,"TurnFlashOff")
+		TNT1 A 0 A_Giveinventory("FlashlightOn",1)
+		TNT1 A 0 A_giveinventory("PowerLightAmp", 1)
+		TNT1 A 0 A_PlaySound("INFRARED", 3)
+        Goto ReadyToFire
+		
+	TurnFlashOff:
+		TNT1 A 0 A_Takeinventory("FlashlightOn",1)
+		TNT1 A 0 A_TakEinventory("PowerLightAmp", 1)
+		TNT1 A 0 A_PlaySound("FLASHOFF", 3)
+        Goto ReadyToFire
+		
+	LightEnd:
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("TankZoom", 1)
+		TNT1 A 0 A_TakeInventory("MechFireMode", 3)
+		TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_Takeinventory("FlashlightOn",1)
+		TNT1 A 0 A_TakEinventory("PowerLightAmp", 1)
+		TNT1 A 10
+		Stop	
+	}
+}
+
+Actor SRM : FastProjectile
+{
+	Speed 30
+	+FORCERADIUSDMG
+	Scale 1.5
+	Damage (random (300, 300))
+	States
+	{
+	Spawn:
+		RCKT A 0
+		TNT1 A 0 A_PlaySound("MISLFIRE", 1)
+		TNT1 A 0 A_PlaySound("MISFAR", 4)
+		TNT1 A 0 A_SpawnItemEx("RocketBackBlast", 128, 0, 0, 0, 0, 0, 180)
+		TNT1 A 0 A_SpawnItemEx("RocketBackBlast2", 128, 0, 0, 0, 0, 0, 180)
+		TNT1 A 0 A_SpawnItemEx("RocketBackBlast3", 128, 0, 0, 0, 0, 0, 180)
+		TNT1 A 0 A_SpawnItemEx("BackblastFlames1", 128, 0, 0, 0, 0, 0, 180)
+		TNT1 A 0 A_SpawnItemEx("BackblastFlames2", 128, 0, 0, 0, 0, 0, 180)
+		TNT1 A 0 A_SpawnItemEx("BackblastFlames3", 128, 0, 0, 0, 0, 0, 180)
+		TNT1 A 0 A_SpawnItemEx("BackblastFlames4", 128, 0, 0, 0, 0, 0, 180)
+	
+	Live:	
+		RCKT ABC 1 BRIGHT A_SpawnItem("PlasmaSmoke")
+		TNT1 A 0 A_CustomMissile("PlasmaSmoke", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
+		Loop
+	
+	Death:
+		EXPL A 0 Radius_Quake (3, 8, 0, 15, 0)//(intensity, duration, damrad, tremrad, tid)
+		TNT1 A 0 A_CustomMissile("ExplosionSplashSpawner")
+		TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 AAAAAA 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
+		TNT1 AAAA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (0, 90))
+		TNT1 AAAA 0 A_CustomMissile ("ExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AA 0 A_SpawnItemEx ("GrenadeExplosion",0,0,13,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0
+		TNT1 A 2
+		TNT1 A 0 A_SpawnItemEx ("LiquidExplosionEffectSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_PlaySound("FAREXPL", 3)
+		TNT1 A 15
+		TNT1 A 0 A_PlaySound("distantexp", 5)
+		Stop
+	}
+}
+
+Actor SRMDM : FastProjectile
+{
+	Speed 30
+	+FORCERADIUSDMG
+	-THRUSPECIES
+	-MTHRUSPECIES
+	Scale 1.5
+	Damage (random (300, 300))
+	Species "none"
+	States
+	{
+	Spawn:
+		RCKT A 0
+		TNT1 A 0 A_PlaySound("MISLFIRE", 1)
+		TNT1 A 0 A_PlaySound("MISFAR", 4)
+		TNT1 A 0 A_SpawnItemEx("RocketBackBlast", 128, 0, 0, 0, 0, 0, 180)
+		TNT1 A 0 A_SpawnItemEx("RocketBackBlast2", 128, 0, 0, 0, 0, 0, 180)
+		TNT1 A 0 A_SpawnItemEx("RocketBackBlast3", 128, 0, 0, 0, 0, 0, 180)
+		TNT1 A 0 A_SpawnItemEx("BackblastFlames1", 128, 0, 0, 0, 0, 0, 180)
+		TNT1 A 0 A_SpawnItemEx("BackblastFlames2", 128, 0, 0, 0, 0, 0, 180)
+		TNT1 A 0 A_SpawnItemEx("BackblastFlames3", 128, 0, 0, 0, 0, 0, 180)
+		TNT1 A 0 A_SpawnItemEx("BackblastFlames4", 128, 0, 0, 0, 0, 0, 180)
+	
+	Live:	
+		RCKT ABC 1 BRIGHT A_SpawnItem("PlasmaSmoke")
+		TNT1 A 0 A_CustomMissile("PlasmaSmoke", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
+		Loop
+	
+	Death:
+		EXPL A 0 Radius_Quake (3, 8, 0, 15, 0)//(intensity, duration, damrad, tremrad, tid)
+		TNT1 A 0 A_CustomMissile("ExplosionSplashSpawner")
+		TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 AAAAAA 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
+		TNT1 AAAA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (0, 90))
+		TNT1 AAAA 0 A_CustomMissile ("ExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AA 0 A_SpawnItemEx ("GrenadeExplosion",0,0,13,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0
+		TNT1 A 2
+		TNT1 A 0 A_SpawnItemEx ("LiquidExplosionEffectSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_PlaySound("FAREXPL", 3)
+		TNT1 A 15
+		TNT1 A 0 A_PlaySound("distantexp", 5)
+		Stop
+	}
+}
+
+Actor SRMEnemy : SRM
+{
+	+THRUSPECIES
+	Species "EnemyTank"
+	Speed 30
+	Damage (random(150,150))
+}
+
+Actor HeliRestart : Inventory
+{
+	inventory.maxamount 1
+}

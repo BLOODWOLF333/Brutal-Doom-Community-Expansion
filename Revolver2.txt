@@ -1,0 +1,457 @@
+ACTOR Revolver2 : BrutalWeapon
+{
+	Weapon.SelectionOrder 1600
+	Weapon.AmmoUse1 0
+	Weapon.AmmoUse2 0
+	Weapon.AmmoGive1 6
+	Weapon.AmmoGive2 0
+	Weapon.AmmoType1 "AmmoShell"
+	Weapon.AmmoType2 "RevolverAmmo"
+	Inventory.PickupMessage "$GOTREVOLVER"
+    Inventory.PickupSound "REVOHAM"
+	Obituary "$OB_MPSHOTGUN"
+    AttackSound "None"
+    +WEAPON.NOAUTOAIM
+	+WEAPON.NOAUTOFIRE
+	+WEAPON.CHEATNOTWEAPON
+	+NOALERT
+	Scale 0.6
+	Tag "Revolver"
+	States
+	{
+		
+    Spawn:
+		REVP A -1
+		Stop
+    	
+	Select:
+		REVO A 0 A_Giveinventory("GoSpecial",1)
+		REVO A 0 A_Takeinventory("FistsSelected",1)
+		REVO A 0 A_Takeinventory("SawSelected",1)
+		REVO A 0 A_Takeinventory("ShotgunSelected",1)
+		REVO A 0 A_Takeinventory("SSGSelected",1)
+		REVO A 0 A_Takeinventory("MinigunSelected",1)
+		REVO A 0 A_Takeinventory("PlasmaGunSelected",1)
+		REVO A 0 A_Takeinventory("RocketLauncherSelected",1)
+		REVO A 0 A_Takeinventory("GrenadeLauncherSelected",1)
+		REVO A 0 A_Takeinventory("BFGSelected",1)
+		REVO A 0 A_Takeinventory("BFG10kSelected",1)
+		REVO A 0 A_Takeinventory("RailGunSelected",1)
+		REVO A 0 A_Giveinventory("SubMachineGunSelected",1)
+		REVO A 0 A_Takeinventory("RevenantLauncherSelected",1)
+		REVO A 0 A_Takeinventory("LostSoulSelected",1)
+		REVO A 0 A_Takeinventory("FlameCannonSelected",1)
+		REVO A 0 A_Takeinventory("HasBarrel",1)
+		REVO A 0 A_TakeInventory("TossGrenade", 1)
+		REVO A 0 A_TakeInventory("Revolver", 1)
+		REVO A 0 A_TakeInventory("RevolverChangeAmmo",1)
+		REVO A 0 A_Takeinventory("StartDualWield",1)
+		REVO A 0 A_TakeInventory("PistolBurstFire",1)
+		REVO AAAAAA 1 A_Raise
+
+	SelectAnimation:
+        TNT1 AAAA 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+        REVO LMN 1
+		TNT1 A 0 A_PlaySound("REVOHAM", 4)
+		REVO OPQR 1
+		REVO A 0 A_GunFlash
+
+	Ready3:	
+	Ready:
+		REVO A 0 A_JumpIfInventory("PistolBurstFire", 1, "Ready2")
+		REVO A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+        REVO A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        REVO A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+        REVO A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		REVO A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		REVO A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		REVO A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		REVO A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
+		REVO A 0 A_JumpIfInventory("StartDualWield",1,"DualWield")
+		REVO A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		REVO A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
+		REVO A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
+        Goto Ready
+		
+	Ready2://Fan The Hammer Ready State
+		REVA A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+        REVO A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        REVO A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+        REVO A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		REVO A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		REVO A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		REVO A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		REVO A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
+		REVO A 0 A_JumpIfInventory("StartDualWield",1,"DualWield")
+		REVO A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		REVO A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
+		REVO A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
+        Loop
+	
+	Deselect:
+		REVO A 0
+		REVO A 0 A_Takeinventory("Zoomed",1)
+		REVO A 0 A_TakeInventory("TossGrenade", 1)
+		REVO A 0 A_Takeinventory("ADSmode",1)
+		REVO A 0 A_TakeInventory("PistolBurstFire",1)
+        REVO A 0 A_ZoomFactor(1.0)
+		REVO A 1 A_Lower
+		Wait
+		
+    Fire:
+        REVO A 0 A_Takeinventory("Reloading",1)
+        REVO A 0 A_JumpIfInventory("RevolverAmmo",1,2)
+        Goto NoAmmo
+        TNT1 AAAA 0
+		REVO A 0 A_JumpIfInventory("PistolBurstFire",1,"Fire2")
+		REVO B 1
+		REVO A 0 A_ZoomFactor(0.9)
+        REVO A 0 A_AlertMonsters
+        REVO A 0 A_PlaySound("REVOFIR", 1)
+		RIFF A 0 A_FireCustomMissile("DistantFireSoundShotgun", random(-1,1), 0, 0, -12, 0, random(-1,1))
+        REVO A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
+		TNT1 AAAAAAAAAAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-12,12), 0, 0, 0, 0, random(-9,9))
+		TNT1 AAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles2", random(-12,12), 0, 0, 0, 0, random(-9,9))
+		TNT1 AAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-3,3), 0, 0, 0, 0, random(-3,3))
+		REVO A 0 A_Takeinventory("RevolverAmmo",1)
+		REVO A 0 A_GiveInventory("SpentRound",1)
+		REVO A 0 A_FireBullets (5, 1, 4, 13, "ShotgunPuff", FBF_NORANDOM)
+		REVO A 0 A_FireBullets (2.5, 2.5, 5, 13, "ShotgunPuff2", FBF_NORANDOM)
+		REVO A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//Tactical Mode deals extra damage
+		REVO A 0 A_FireBullets (6, 3, 5, 13, "ShotgunPuff2", FBF_NORANDOM)
+		REVO A 0 A_SetPitch(pitch-10)
+		REVO CD 1 BRIGHT
+		REVO A 0 A_ZoomFactor(1.00)
+		REVO E 1 A_SetPitch(pitch+2)
+		REVO FG 1 A_SetPitch(pitch+2)
+		REVO F 1 A_SetPitch(pitch+2)
+		REVO E 1 A_SetPitch(pitch+2)
+		REVO K 4
+		REVO LMN 1
+		TNT1 A 0 A_PlaySound("REVOHAM", 4)
+		REVO OPQR 1
+		REVO A 1 A_Refire("Fire")
+		Goto Ready3
+	
+	Fire2:
+		REVA B 1
+		REVO A 0 A_ZoomFactor(0.9)
+        REVO A 0 A_AlertMonsters
+        REVO A 0 A_PlaySound("REVOFIR", 1)
+		RIFF A 0 A_FireCustomMissile("DistantFireSoundShotgun", random(-1,1), 0, 0, -12, 0, random(-1,1))
+        REVO A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
+		TNT1 AAAAAAAAAAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-12,12), 0, 0, 0, 0, random(-9,9))
+		TNT1 AAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles2", random(-12,12), 0, 0, 0, 0, random(-9,9))
+		TNT1 AAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-3,3), 0, 0, 0, 0, random(-3,3))
+		REVO A 0 A_Takeinventory("RevolverAmmo",1)
+		REVO A 0 A_GiveInventory("SpentRound",1)
+		REVO A 0 A_FireBullets (15, 2, 4, 13, "ShotgunPuff", FBF_NORANDOM)
+		REVO A 0 A_FireBullets (7.5, 5, 5, 13, "ShotgunPuff2", FBF_NORANDOM)
+		REVO A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//Tactical Mode deals extra damage
+		REVO A 0 A_FireBullets (18, 6, 5, 13, "ShotgunPuff2", FBF_NORANDOM)
+		REVO A 0 A_SetPitch(pitch-5)
+		REVA CD 1 BRIGHT
+		REVA A 0 A_ZoomFactor(1.00)
+		REVA E 1 A_SetPitch(pitch+1)
+		REVA FG 1 A_SetPitch(pitch+1)
+		REVA F 1 A_SetPitch(pitch+1)
+		REVA E 1 A_SetPitch(pitch+1)
+		REVA K 1 A_PlaySound("REVOHAM", 4)
+		REVA A 1 A_Refire("Fire")
+		Goto Ready2
+	
+	AltFire://Fan The Hammer
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("PistolBurstFire", 1, "StopAlt")
+		TNT1 A 0 A_GiveInventory("PistolBurstFire", 1)
+		TNT1 A 0 A_Print("Fan The Hammer")
+		//Lower weapon
+		REVO A 2 Offset(0, 45)//(+:Right | -:Left, +:Down | -:Up )
+		REVO A 2 Offset(0, 55)
+		REVO A 2 Offset(0, 65)
+		REVO A 2 Offset(0, 75)
+		Goto Ready2
+		
+	StopAlt:
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("PistolBurstFire", 1)
+		TNT1 A 0 A_Print("Single Action")
+		//Raise weapon
+		REVA A 2 Offset(0, 35)
+		REVA A 2 Offset(0, 25)
+		REVA A 2 Offset(0, 15)
+		REVA A 2 Offset(0, 5)
+		Goto Ready3
+  
+	CheckSprint:
+		REVO A 1 A_WeaponReady(WRF_NOFIRE)
+		REVO A 0 A_Takeinventory("Zoomed",1)
+        REVO A 0 A_ZoomFactor(1.0)
+		REVO A 0 A_Takeinventory("ADSmode",1)
+		REVO A 0 A_Giveinventory("GoSpecial",1)
+		REVO A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
+		REVO A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
+		Goto Ready
+		
+	StartSprint:
+		REVO A 1 A_WeaponReady(WRF_NOFIRE)
+		REVO A 0 A_Takeinventory("Zoomed",1)
+		REVO A 0 A_Takeinventory("ADSmode",1)
+		REVO A 0 A_ZoomFactor(1.0)
+		REVO A 0 A_JumpIfInventory("UsedStamina", 40, "StopSprintTired")
+		
+	Sprinting:	
+		REVP B 0 offset(-9,32) 
+		REVO A 0 offset(-9,32) A_JumpIfInventory("IsStandingStill", 1, "Ready3")
+		REVO A 0 offset(-9,32) A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
+		PLAY A 0 offset(-9,32) ACS_ExecuteAlways(852, 0, 0, 0, 0)//Makes player faster.
+		REVO A 0 offset(-9,32) A_JumpIfInventory("PowerStrength", 1, 2)
+		REVO A 0 offset(-9,32) A_GiveInventory("UsedStamina", 3)
+		REVO A 0 offset(-9,32)
+		REVP B 1 offset(-9,34) A_SetPitch(pitch -0.5)
+		REVP B 1 offset(-6,36) A_SetPitch(pitch -0.5)
+		REVP B 1 offset(-3,38) A_SetPitch(pitch -0.5)
+		REVP B 1 offset(0,38) A_SetPitch(pitch -0.5)
+		REVP B 1 offset(3,36) A_SetPitch(pitch -0.5)
+		REVP B 1 offset(6,34) A_SetPitch(pitch -0.5)
+		REVP B 1 offset(9,32) A_SetPitch(pitch -0.5)
+		REVO A 0 offset(9,32) A_WeaponReady(WRF_NOBOB)
+		REVO A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        REVO A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+        REVO A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		REVO A 0 offset(-9,32) A_GiveInventory("UsedStamina", 3)
+		REVO A 0 offset(9,33) A_SpawnItemEx("FootStep", 0, 0, 2, 0, 0, -4)
+		REVP B 1 offset(9,34) A_SetPitch(pitch +0.5)
+		REVP B 1 offset(6,36) A_SetPitch(pitch +0.5)
+		REVP B 1 offset(3,38) A_SetPitch(pitch +0.5)
+		REVP B 1 offset(0,38) A_SetPitch(pitch +0.5)
+		REVP B 1 offset(-3,36) A_SetPitch(pitch +0.5)
+		REVP B 1 offset(-6,34) A_SetPitch(pitch +0.5)
+		REVP B 1 offset(-9,32) A_SetPitch(pitch +0.5)
+		REVO A 0 offset(-9,32) A_WeaponReady(WRF_NOBOB)
+		REVO A 0 offset(-9,32) A_JumpIfInventory("IsRunning", 1, "Sprinting")
+		
+		Goto StopSprint
+	StopSprintTired:
+		REVO A 1
+		PLAY A 0 ACS_ExecuteAlways(853, 0, 0, 0, 0)//Makes player slower.
+		REVO A 0 A_PlaySound("Tired", 2)
+		REVO A 0 A_TakeInventory("UsedStamina", 2)
+		REVO A 5 A_WeaponReady
+		REVO A 0 A_TakeInventory("UsedStamina", 2)
+		REVO A 5 A_WeaponReady
+		REVO A 0 A_TakeInventory("UsedStamina", 2)
+		REVO A 5 A_WeaponReady
+		REVO A 0 A_TakeInventory("UsedStamina", 2)
+		REVO A 5 A_WeaponReady
+		REVO A 0 A_TakeInventory("UsedStamina", 2)
+		REVO A 5 A_WeaponReady
+		Goto Ready
+	StopSprint:
+		REVP B 1
+		REVO A 0 A_JumpIfInventory("UsedStamina", 60, "StopSprintTired")
+		PLAY A 0 ACS_ExecuteAlways(853, 0, 0, 0, 0)//Makes player slower.
+		Goto Ready
+	
+	
+    ReloadWithNoAmmoLeft:
+    Reload:
+	    REVO A 0
+		REVO A 0 A_TakeInventory("Reloading", 1)
+		REVO A 0 A_JumpIfInventory("AmmoShell", 1, 2)
+		Goto NoAmmo
+		REVO A 0
+	    REVO A 0 A_Takeinventory("Zoomed",1)
+        REVO A 0 A_ZoomFactor(1.0)
+		REVO A 1 A_WeaponReady
+		REVO A 0 A_JumpIfInventory("RevolverAmmo",6,"Ready3")
+		REVO A 0 A_JumpIfInventory("RevolverAmmo", 1, "ReloadNormally")//Check if there is a shell in the cylinder
+	
+	ReloadNormally:	
+        REVO A 0 A_JumpIfInventory("AmmoShell",1,1)//If there is no reserve ammo, don't reload, go back to Ready
+        Goto Ready
+		REVO A 0 A_JumpIfInventory("TurboReload", 1, "TurboReload")//Check if reloads are disabled.
+		REVR ABCDEEDCBA 1
+		TNT1 A 0 A_PLaySound("RELO1", 4)
+        REVR FGHIJJJ 1
+		REVR KLM 1
+		REVR M 4
+		REVO A 0 A_JumpIfInventory("RevolverChangeAmmo", 1, "InsertShellAnimation")
+		
+	 EjectShells:
+		REVO A 0
+		SSHR A 0 A_TakeInventory("Reloading", 1)
+		TNT1 A 0 A_PlaySound("CLIPINSS")
+		REVR M 1 Offset(0, 30)
+		REVR M 1 Offset(0, 28)
+		REVR M 1 Offset(0, 30)
+		REVR M 1 Offset(0, 32)
+        REVR M 4 A_WeaponReady(WRF_NOBOB)
+		
+	Dump:
+		REVO A 0 A_JumpIfInventory("SpentRound",1,1)
+        Goto InsertShellAnimation
+		TNT1 A 0 A_FireCustomMissile("ShotgunCasing",random(-120,-150),0,0,0,2,random(-30,-60))
+		REVO A 0 A_TakeInventory("SpentRound",1)
+		Loop
+        
+	InsertShellAnimation:	
+		REVO A 0
+		REVO A 0 A_JumpIfInventory("AmmoShell",1,2)//if there are no more reserve shells, finish reload.
+        Goto FinishedInsertingShells
+		REVO A 0 A_JumpIfInventory("RevolverAmmo",6,"FinishedInsertingShells")
+        REVO A 0 A_Giveinventory("RevolverAmmo",1)
+		REVO A 0 A_Takeinventory("AmmoShell",1)
+        TNT1 A 0 A_PlaySound("insertshell")
+		REVR M 1 Offset(0, 30)
+		REVR M 1 Offset(0, 28)
+		REVR M 1 Offset(0, 30)
+		REVR M 1 Offset(0, 32)
+        REVR M 4 A_WeaponReady(WRF_NOBOB)
+        SSHR A 0 A_JumpIfInventory("Reloading", 1, "FinishedInsertingShells")
+        REVO A 0 A_JumpIfInventory("Kicking",1,"DoKickReloading")
+		REVO A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
+		REVO A 0 A_JumpIfInventory("RevolverAmmo",6,"FinishedInsertingShells")
+        Loop
+	
+		
+	FinishedInsertingShells:
+		REVO A 0 A_Takeinventory("Reloading",1)
+		TNT1 A 0 A_PLaySound("RELO2", 4)
+		REVR JIHGFAEDCBA 1
+		REVO K 4
+		REVO LMN 1
+		TNT1 A 0 A_PlaySound("REVOHAM", 4)
+		REVO OPQR 1
+		TNT1 A 0 A_TakeInventory("RevolverChangeAmmo",1)
+		Goto Ready
+		
+	
+	 TurboReload:
+		SHSS BC 0
+	TurboBullets:	
+		REVO A 0
+		REVO A 0 A_JumpIfInventory("RevolverAmmo",6,"FinishTurboReload")
+        REVO A 0 A_JumpIfInventory("AmmoShell",1,3)
+        Goto Ready3
+        TNT1 AAAA 0
+        REVO A 0 A_Giveinventory("RevolverAmmo",1)
+		REVO A 0 A_Takeinventory("AmmoShell",1)
+		Goto TurboBullets
+	FinishTurboReload:
+		REVO A 1 A_Refire
+		Goto Ready3
+
+      PuristGun:
+		TNT1 A 1
+		REVO A 0 A_GiveInventory("ClassicShotgun", 1)
+		REVO A 0 A_TakeInventory("Shot_Gun", 1)
+		TNT1 A 10
+		Goto Ready3
+		
+	DualWield:
+		TNT1 A 0
+		TNT1 A 0 A_Takeinventory("StartDualWield",1)
+		TNT1 A 0 A_GiveInventory("RevolverChangeAmmo", 1)
+		TNT1 A 0 A_JumpIfInventory("AmmoMagnum",1,"Unload")
+		Goto NoRounds
+		
+	NoRounds:
+		TNT1 A 0 A_Print("You are out of magnum rounds.", 2)
+		TNT1 A 0 A_TakeInventory("RevolverChangeAmmo",1)
+		REVO A 5
+		Goto Ready3
+		
+	Unload:
+		REVO A 1
+		REVO A 0 A_ZoomFactor(1.0)
+		REVO A 0 A_Takeinventory("Unloading",1)
+		REVO A 0 A_Takeinventory("ADSmode",1)
+		REVO A 0 A_Takeinventory("Zoomed",1)
+        REVO A 0 A_JumpIfInventory("RevolverAmmo",1,2)
+		REVO A 0 A_JumpIfInventory("RevolverChangeAmmo",1,"FinishUnload")
+        Goto Ready3
+        TNT1 AAA 0
+		REVO A 0 A_Takeinventory("Zoomed",1)
+		REVO A 0 A_Takeinventory("Unloading",1)
+		REVR ABCDEEDCBA 1
+		TNT1 A 0 A_PLaySound("RELO1", 4)
+        REVR FGHIJJJ 1
+		REVR KLM 1
+		REVR M 4
+		
+	RemoveBullets:
+		TNT1 AAAA 0
+		REVO A 0 A_JumpIfInventory("RevolverAmmo",1,3)
+		Goto FinishUnload
+        TNT1 AAAAAA 0
+		REVO A 0 A_Takeinventory("RevolverAmmo",1)
+		REVO A 0 A_Giveinventory("AmmoShell",1)
+		
+		REVR M 1 Offset(0, 30)
+		REVR M 1 Offset(0, 28)
+		REVR M 1 Offset(0, 30)
+		REVR M 1 Offset(0, 32)
+		Goto RemoveBullets
+	
+	FInishUnload:
+		TNT1 A 0
+		REVO A 0 A_TakeInventory("SpentRound", 6)
+		TNT1 A 0 A_JumpIfInventory("RevolverChangeAmmo", 1, "ChangeAmmo")
+		REVO A 0 A_Takeinventory("Unloading",1)
+		Goto Ready3	
+		
+	ChangeAmmo:
+		TNT1 A 0
+		TNT1 A 0 A_GiveInventory("Revolver", 1)
+		TNT1 A 0 A_GiveInventory("Reloading",1)
+		TNT1 A 0 A_SelectWeapon("Revolver")
+		Goto Ready3
+		
+		
+	DoKickReloading:
+		NULL A 0 A_JumpIf (momZ > 0, "AirKick")
+		NULL A 0 A_JumpIf (momZ < 0, "AirKick")
+        REVO A 0 A_PlaySound("KICK")
+		REVO A 0 SetPlayerProperty(0,1,0)
+		KICK BCD 1
+		RIFF A 0 A_FireCustomMissile("KickAttack", 0, 0, 0, -7)
+        KICK H 3
+		KICK A 0 A_Takeinventory("Kicking",1)
+		KICK I 1
+		KICK GFEDCBA 1 
+		RIBA A 0 A_Takeinventory("Kicking",1)
+		REVO A 0 SetPlayerProperty(0,0,0)
+		Goto InsertShellAnimation
+		
+	Steady:
+		TNT1 A 1
+		Goto Ready
+		
+		
+
+	NoAmmo:
+		RIFG A 0
+		RIFG A 0 A_ZoomFactor(1.0)
+		RIFG A 0 A_Takeinventory("Zoomed",1)
+		RIFG A 0 A_Takeinventory("ADSmode",1)
+		RIFG A 0 A_JumpIfInventory("TurboReload",1,"TurboReload")
+		TNT1 A 0 A_PlaySound("weapons/empty", 4)
+		NoAmmo2:
+		RIFG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+	    RIFG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		RIFG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		RIFG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		RIFG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
+		RIFG A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
+		RIFG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		REVO A 5 A_WeaponReady(WRF_ALLOWRELOAD | WRF_NOFIRE)
+		RIFG A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		RIFG A 0 A_JumpIfInventory("TurboReload",1,"TurboReload")
+		TNT1 A 0 A_JumpIfInventory("NoAutoReload", 1, "NoAmmo2")
+		RIFG A 0 A_JumpIfInventory("AmmoShell",1,"Reload")
+		RIFG A 0 A_JumpIfInventory("FiredPrimary",1,"NoAmmo2")
+		Goto Ready3
+			
+	}
+}

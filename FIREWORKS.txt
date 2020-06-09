@@ -1,0 +1,879 @@
+
+ACTOR ExplosiveBarrel1 Replaces ExplosiveBarrel
+{
+	Game Doom
+    damagefactor "Trample", 0.0 damagefactor "Headkick", 0.0
+    damagefactor "Kick", 0.1 damagefactor "use", 0.0 damagefactor "stealth", 0.0
+	damagefactor "LowKick", 0.1
+    damagefactor "Melee", 0.1
+	damagefactor "Extremepunches", 0.1
+	damagefactor "Fatality", 10.1
+	damagefactor "SuperPunch", 10.1
+	damagefactor "Fire", 3.5
+	damagefactor "GibRemoving", 0.0
+	damagefactor "Taunt", 0.0
+	damagefactor "BHFTOnBarrel", 500.0 damagefactor "PussyGrab", 500.0
+	damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0    damagefactor "Avoid", 0.0
+    damagefactor "KillMe", 0.0  damagefactor "TeleportRemover", 0.0 damagefactor "Slide", 0.0
+	//Species "Marines"
+	Health 20
+	Radius 10
+	Height 34
+    Mass 200
+	MONSTER
+	-COUNTKILL
+	+NOBLOOD
+	+FRIENDLY
+	+NOICEDEATH
+    +PUSHABLE
+	+SLIDESONWALLS
+    +WINDTHRUST
+    +TELESTOMP
+	+NOBLOCKMONST
+	+MISSILEMORE
+	+MISSILEEVENMORE
+	+EXTREMEDEATH
+	-DONTHURTSPECIES
+	+DOHARMSPECIES
+	Speed 0
+	MaxTargetRange 200
+	DamageFactor "BHFT", 10.0
+	Painchance "Blood", 255
+	PainChance "Kick", 255
+	DeathSound "Explosion"
+	Obituary "$OB_BARREL"
+	Damagetype "ExplosiveImpact"
+	PainChance "DontCallTheBaron", 255
+	PainSound "weapons/barrelpain"
+	Painchance 255
+	States
+	{
+	
+	
+	Vanilla:
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_SpawnItem("VanillaExplosiveBarrel")
+		Stop
+		
+	Spawn:
+		BARI A 0
+		//MARN A 0 ACS_ExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+		TNT1 A 1
+		
+	Stay:
+		TNT1 A 0
+		TNT1 A 0 A_CheckSight("See2")
+
+		TNT1 A 0 A_GiveInventory("TargetIsANExplosiveBarrel", 1)
+	    BARI A 1 A_Look
+		BARI BCDCBBCDCB 1
+		TNT1 A 0 A_TAkeInventory("BarrelExpMeasure", 100)
+		TNT1 A 0 A_TAkeInventory("BarrelExpMeas2", 100)
+		Goto See
+		Loop
+	
+	See:	
+		BARI A 1 A_CheckSight("See2")
+	    BARI BCDCB 1
+		TNT1 A 0 A_TAkeInventory("BarrelExpMeasure", 100)
+		TNT1 A 0 A_TAkeInventory("BarrelExpMeas2", 100)
+		BARI A 1
+	    BARI BCDCB 1
+		TNT1 A 0 A_ClearTarget
+		TNT1 A 0 A_Chase
+		Loop
+		
+	See2:
+		BARI ABCDCB 1
+		Goto See
+		
+	Missile:
+	TNT1 A 0
+	TNT1 A 0 A_JumpIfInTargetInventory("TargetIsABaronOfHell", 1, "TauntTHeBaron")
+	BARI ABCDCBABCDCBABCDCBABCDCB 1
+	BARI ABCDCBABCDCBABCDCBABCDCB 1
+	BARI ABCDCBABCDCBABCDCBABCDCB 1
+	TNT1 A 0 A_ClearTarget
+	Goto See
+	
+	TauntTheBaron:
+	TNT1 A 0
+	BARI A 4 A_SpawnItem("greenlensflarealtsmall",0,32)
+	TNT1 A 0 A_JumpIfCloser(280, 2)
+	Goto See
+	TNT1 A 0
+	TNT1 A 0 A_JumpIfInTargetInventory("ComingToGetTheBarrel", 1, "DoingNothing")
+	TNT1 A 0 A_GiveInventory("TargetIsANExplosiveBarrel", 1)
+	TNT1 A 0 A_FaceTarget
+	TNT1 A 0 A_CustomMissile("CallingTheBaronAFaggot", 36, 0, 0, 1)
+	TNT1 A 0 A_GiveToTarget("ComingTOGetTheBarrel", 1)
+	DoingNothing:
+	BARI ABCDCBABCDCBABCDCBABCDCB 1
+	Goto See
+	
+		
+	Pain:
+	BARI A 4
+	TNT1 A 0 A_PlaySound("weapons/barrelpain", 1)
+	
+	BARI ABCDCB 1
+	TNT1 A 0 A_TAkeInventory("BarrelExpMeasure", 100)
+	TNT1 A 0 A_TAkeInventory("BarrelExpMeas2", 100)
+	Goto Stay
+	
+	Pain.Blood:
+	    TNT1 A 0
+	    TNT1 A 0 A_GiveInventory("GotBloody", 1)
+	    Goto StayBloody
+	StayBloody:
+		BARB AB 4  A_SpawnItem("greenlensflarealtsmall",0,32)
+		Loop	
+		
+    Pain.Kick:
+	Pain.ExtremePunches:
+	Pain.LowKick:
+	Pain.Melee:
+	    TNT1 A 0 A_Changeflag("FRIENDLY", 0)
+	    BARI A 1 A_Pain
+		TNT1 A 0 A_PlaySound("weapons/barrelpain", 1)
+		BARI A 0 A_Chase("","")
+        BARI A 1 A_FaceTarget
+		TNT1 A 0 HealThing(100)
+		TNT1 A 0 ThrustThing(angle*256/360+128, 10, 0, 0)
+		TNT1 A 0 ThrustThingZ(0,10,0,1)
+		TNT1 A 0 A_Changeflag("FRIENDLY", 1)
+		TNT1 A 0 A_JumpIfInventory("GotBloody", 1, "StayBloody")
+        Goto Stay
+		
+	Death:	
+        BARI A 0
+        BEXP AB 4 BRIGHT
+		BEXP CD 4 BRIGHT
+		TNT1 A 0 A_RadiusGive("BarrelExpMeasure", 300, RGF_GIVESELF | RGF_MONSTERS | RGF_CORPSES, 1)
+		
+		
+		
+		BEXP D 1
+		TNT1 A 0 A_JumpIfInventory("BarrelExpMeasure", 60, "ExplodeNuke")
+	    TNT1 A 0 A_JumpIfInventory("BarrelExpMeasure", 20, "ExplodehUGE")
+		TNT1 A 0 A_JumpIfInventory("BarrelExpMeasure", 12, "ExplodeBig")
+		TNT1 A 0 A_JumpIfInventory("BarrelExpMeasure", 8, "ExplodeMedium")
+		BEXP D 1
+		TNT1 A 0 A_JumpIfInventory("BarrelExpMeasure", 6, "ExplodeLessEffects")
+		
+		TNT1 A 0 A_SpawnItemEx ("BarrelExplosionDamage",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 A 0 A_SpawnItem("WhiteShockwaveBig")
+		TNT1 A 0 A_NoBlocking
+	    TNT1 A 0 A_Fall
+		
+		
+		TNT1 A 0 A_SpawnItemEx ("BarrelKaboom",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 AAAA 0 A_CustomMissile ("FireworkSFXType2", 64, 0, random (0, 360), 2, random (30, 60))
+		TNT1 AAA 0 A_CustomMissile ("HighExplosiveFlames", random (10, 20), 0, random (0, 360), 2, random (10, 90))
+		EXPL AA 0 A_CustomMissile ("BigBlackSmokeLarger", 20, 0, random (0, 360), 2, random (10, 90))
+        TNT1 AAA 0 A_CustomMissile ("BDExplosionparticles3", 64, 0, random (0, 360), 2, random (40, 90))
+		TNT1 AAA 0 A_CustomMissile ("BDExplosionparticles4", 64, 0, random (0, 360), 2, random (40, 90))
+		EXPL A 0 Radius_Quake (2, 24, 0, 15, 0)
+		BEXP B 0 BRIGHT A_Scream
+        
+		TNT1 AA 0 A_CustomMissile ("BarrelShrapnel1", 25, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("BarrelShrapnel2", 15, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("BarrelShrapnel3", 5, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("BarrelShrapnel4", 5, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_PlaySound("FAREXPL", 3)
+		TNT1 AA 0 A_SpawnItemEx("TinyBurningPiece", random (-15, 15), random (-15, 15))
+		TNT1 AA 0 A_SpawnItemEx("TinyBurningPiece2", random (-35, 35), random (-35, 35))
+		TNT1 AA 0 A_SpawnItemEx("TinyBurningPiece3", random (-45, 45), random (-45, 35))
+	
+		TNT1 A 4
+		TNT1 A 0 A_SpawnItemEx ("ExplosionSplashSpawner", 0, 0, 0)
+		
+		TNT1 AAA 8 A_CustomMissile ("ExplosionSmoke", 1, 0, random (0, 360), 2, random (50, 130))
+
+		BEXP Z 300 BRIGHT A_BarrelDestroy
+		BEXP Z 5 A_Respawn
+		sTOP
+		
+	 ExplodeLessEffects:
+		BEXP D 0
+		TNT1 A 0 A_Stop
+		TNT1 A 0 A_SpawnItemEx ("BarrelExplosionDamage",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 10
+		TNT1 A 0 A_SpawnItemEx ("BarrelKaboom",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_CustomMissile ("FireworkSFXType2", 64, 0, random (0, 360), 2, random (30, 60))
+		TNT1 AA 0 A_CustomMissile ("HighExplosiveFlames", random (10, 20), 0, random (0, 360), 2, random (10, 90))
+		EXPL A 0 A_CustomMissile ("BigBlackSmokeLarger", 20, 0, random (0, 360), 2, random (10, 90))
+        TNT1 A 0 A_CustomMissile ("BDExplosionparticles3", 64, 0, random (0, 360), 2, random (40, 90))
+		EXPL A 0 Radius_Quake (2, 24, 0, 15, 0)
+		BEXP B 0 BRIGHT A_Scream
+		TNT1 A 0 A_PlaySound("FAREXPL", 3)
+		TNT1 A 0 A_NoBlocking
+	    TNT1 A 0 A_Fall
+		TNT1 A 4
+		
+		BEXP Z 300 BRIGHT A_BarrelDestroy
+		BEXP Z 5 A_Respawn
+		sTOP
+	 
+	 ExplodeMedium:
+		TNT1 A 0
+		TNT1 A 0 A_Stop
+		TNT1 A 0 A_SpawnItemEx ("BarrelExplosionDamage",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 15
+		TNT1 A 0 A_SpawnItemEx ("BarrelKaboom",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_CustomMissile ("HighExplosiveFlamesBig", random (30, 50), 0, random (0, 360), 2, random (10, 90))
+		EXPL A 0 A_CustomMissile ("BigBlackSmokeLarger", 20, 0, random (0, 360), 2, random (10, 90))
+        TNT1 A 0 A_CustomMissile ("BDExplosionparticles3", 124, 0, random (0, 360), 2, random (40, 90))
+		TNT1 A 0 A_CustomMissile ("BDExplosionparticles4", 124, 0, random (0, 360), 2, random (40, 90))
+		
+		TNT1 A 0 A_CustomMissile ("ExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+        EXPL A 0 Radius_Quake (2, 24, 0, 15, 0)
+		BEXP B 0 BRIGHT A_Scream
+        
+		TNT1 A 0 A_PlaySound("FAREXPL", 3)
+		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece2", random (-35, 35), random (-35, 35))
+	
+		TNT1 A 4
+		
+		TNT1 AAA 8 A_CustomMissile ("ExplosionSmoke", 1, 0, random (0, 360), 2, random (50, 130))
+
+		BEXP Z 300 BRIGHT A_BarrelDestroy
+		BEXP Z 5 A_Respawn
+		sTOP
+		
+		
+	 ExplodebIG:
+		TNT1 A 0
+		TNT1 A 0 A_Stop
+		TNT1 A 0 A_ChangeFlag("FORCERADIUSDMG", 1)
+		TNT1 A 25
+		TNT1 Aa 0 A_CustomMissile ("HighExplosiveFlamesBig", random (25, 300), 0, random (0, 360), 2, random (10, 90))
+        EXPL A 0 Radius_Quake (8, 4, 0, 250, 0)
+		TNT1 A 0 A_Explode(500,400, 1, 1, 1)
+		BEXP B 0 BRIGHT A_Scream
+		TNT1 A 100
+		
+		EXPL A 0 Radius_Quake (4, 4, 0, 250, 0)
+		TNT1 A 100
+		sTOP
+		
+		
+	 
+	 ExplodeHuge:
+		TNT1 A 0
+		TNT1 A 0 A_Stop
+		TNT1 A 0 A_ChangeFlag("FORCERADIUSDMG", 1)
+		TNT1 A 35
+		TNT1 A 0 A_CustomMissile ("HighExplosiveFlamesHuge", random (100, 500), 0, random (0, 360), 2, random (10, 90))
+		EXPL A 0 Radius_Quake (8, 4, 0, 250, 0)
+		TNT1 A 0 A_Explode(2000,700, 1, 1, 1)
+		BEXP B 0 BRIGHT A_Scream
+		TNT1 A 100
+		
+		EXPL A 0 Radius_Quake (4, 4, 0, 250, 0)
+		TNT1 A 100
+		sTOP
+		
+	ExplodeNuke:
+		TNT1 A 0
+		TNT1 A 0 A_ChangeFlag("FORCERADIUSDMG", 1)
+		TNT1 A 1
+		TNT1 A 0 A_CustomMissile ("HighExplosiveFlamesHuge", random (100, 600), 0, random (0, 360), 2, random (10, 90))
+		TNT1 A 0 A_CustomMissile ("hUGEExplosionSpawner2", 30, 0, random (0, 360), 2, random(40, 60))
+		EXPL A 0 Radius_Quake (8, 4, 0, 250, 0)
+		TNT1 A 0 A_Explode(2000,700, 1, 1, 1)
+		BEXP B 0 BRIGHT A_Scream
+		TNT1 A 8
+		TNT1 A 0 A_Explode(2000,1200, 1, 1, 1)
+		TNT1 A 100
+		
+		EXPL A 0 Radius_Quake (4, 4, 0, 250, 0)
+		TNT1 A 100
+		sTOP	
+		
+		
+	 Death.SuperPunch:	
+	 Death.Fatality:
+	 Death.PussyGrab:
+        TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_GiveToTarget("GoSpecial", 1)
+        TNT1 A 0 A_GiveToTarget("HasBarrel", 1)
+        Stop
+	Death.Kick:
+	Death.ExtremePunches:
+	TNT1 A 0 A_NoBlocking
+	TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+	TNT1 A 1
+	TNT1 A 0 A_SpawnItemEx ("ExplosiveBarrel",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+	TNT1 A 1
+	Stop
+	
+	Death.Massacre:
+	TNT1 A 1 A_NoBlocking
+	TNT1 A 0 A_SpawnItemEx ("ExplosiveBarrel",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+	TNT1 A 1
+	Stop
+	
+	Death.BHFT:
+	Death.BHFTOnBarrel:
+	TNT1 A 0
+	TNT1 A 0 A_GiveToTarget("HasExplosiveBarrel", 1)
+	TNT1 A 0 A_NoBlocking
+	TNT1 A 0 A_FAll
+	TNT1 A 1
+	Stop
+		
+	}
+}
+
+ACTOR BarrelShrapnel1
+{
+    Radius 2
+    Height 2
+    Speed 20
+	Mass 1
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +MOVEWITHSECTOR
+    +CLIENTSIDEONLY
+	+NONETID
+	+THRUACTORS
+	+FLOORCLIP
+	+DOOMBOUNCE
+	-NOGRAVITY
+	BounceFactor 0.5
+	Gravity 0.9
+	Mass 1
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Underwater")
+        BRPT ABCDEFGH 1
+		TNT1 A 0 A_ChangeFlag("NOGRAVITY", 0)
+        Goto Spawn2
+	Spawn2:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Underwater")
+	    BRPT ABCDEFGH 2
+		Loop
+		
+    Death:
+        TNT1 A 0
+		BRPT I 300
+		BRPT IIIIIIIII 2 A_FadeOut(0.1)
+        Stop
+     Underwater:
+	 Splash:
+	    Goto Death
+    }
+}
+
+
+ACTOR BarrelShrapnel2: BarrelShrapnel1
+{
+ Scale 1.7
+}
+
+ACTOR BarrelShrapnel3: BarrelShrapnel1
+{
+ Scale 1.4
+}
+
+ACTOR BarrelShrapnel4: BarrelShrapnel1
+{
+ Scale 1.2
+}
+
+
+
+
+
+
+actor GreatKaboom: DeadMarine
+{
+	Game Doom
+	States
+	{
+Spawn:
+TNT1 A 50
+TNT1 A 0 A_SpawnItemEx ("ExplosionSplashSpawner", 0, 0, 0)
+TNT1 AAAA 0 A_CustomMissile ("ExplosionSpawner", 20, 0, random (0, 360), 2, random (0, 180))
+        TNT1 AAAAAA 0 A_CustomMissile ("ExplosionSpawner", 20, 0, random (0, 360), 2, random (0, 180))
+Stop
+	}
+}
+
+
+actor UltraKaboom: DeadMarine
+{
+	Game Doom
+	States
+	{
+Spawn:
+TNT1 A 50
+TNT1 A 0 A_SpawnItemEx ("ExplosionSplashSpawner", 0, 0, 0)
+TNT1 AAAA 0 A_CustomMissile ("LongExplosionSpawner", 20, 0, random (0, 360), 2, random (0, 180))
+        TNT1 AAAAAA 0 A_CustomMissile ("ExplosionSpawner", 20, 0, random (0, 360), 2, random (0, 180))
+Stop
+	}
+}
+
+
+actor BarrelKaboom: DeadMarine
+{
+	Game Doom
+	States
+	{
+Spawn:
+TNT1 A 1
+TNT1 AAAA 0 A_CustomMissile ("ExplosionSpawner", 10, 0, random (0, 360), 2, random (10, 90))
+Stop
+	}
+}
+
+actor BigExplosion1112: DeadMarine
+{
+	Game Doom
+	States
+	{
+Spawn:
+TNT1 A 1
+EXPL A 0 Radius_Quake (2, 100, 0, 22, 0)
+TNT1 AAA 0 A_CustomMissile ("FireworkSFXType2", 64, 0, random (0, 360), 2, random (30, 60))
+TNT1 A 0 A_CustomMissile ("ExplosionSpawner", 10, 0, random (0, 360), 2, random (80, 90))
+TNT1 AAA 0 A_CustomMissile ("SmallExplosionSpawner", 10, 0, random (0, 360), 2, random (0, 40))
+TNT1 A 10
+TNT1 AAAA 0 A_CustomMissile ("FireworkSFXType2", 94, 0, random (0, 360), 2, random (30, 60))
+EXPL A 0 Radius_Quake (3, 100, 0, 22, 0)
+TNT1 A 0 A_CustomMissile ("ExplosionSpawner",10, 0, random (0, 360), 2, random (80, 90))
+TNT1 A 10
+TNT1 AAAAAAA 0 A_CustomMissile ("FireworkSFXType2", 128, 0, random (0, 360), 2, random (30, 60))
+EXPL A 0 Radius_Quake (6, 100, 0, 22, 0)
+TNT1 A 0 A_CustomMissile ("ExplosionSpawner", 10, 0, random (0, 360), 2, random (80, 90))
+TNT1 A 0 A_CustomMissile ("RidiculousExplosionSpawner", 10, 0, random (0, 360), 2, 90)
+TNT1 A 200
+Stop
+	}
+}
+
+
+
+
+
+
+actor KaboomWithSound: DeadMarine
+{
+	Game Doom
+	States
+	{
+Spawn:
+TNT1 A 1
+TNT1 AA 0 A_CustomMissile ("ExplosionSpawner", 20, 0, random (0, 360), 2, random (0, 180))
+TNT1 AA 0 A_CustomMissile ("ExplosionSpawner", 20, 0, random (0, 360), 2, random (0, 180))
+TNT1 A 0 A_PlaySound("FAREXPL", 3)
+TNT1 A 0 A_PlaySound("Explosion", 1)
+TNT1 A 300
+Stop
+	}
+}
+
+Actor ExplosionSpawner
+{
++MISSILE
++FORCEXYBILLBOARD
+//+DOOMBOUNCE
+   // +BLOODSPLATTER 
+damage 0
+radius 6
+height 6
+speed 40
+renderstyle ADD
+alpha 0.9
+scale .01
+BounceFactor 0.5
+Decal "FireworxScorch"
+states
+	{
+	Spawn:
+		TNT1 AA 2 A_SpawnItem("SpawnedExplosion")
+		EXPL A 0 A_CustomMissile ("BigBlackSmokeLarger", 0, 0, random (0, 360), 2, random (20, 90))
+		TNT1 AA 2 A_SpawnItem("SpawnedExplosion")
+		Stop
+Death:
+    MISG A 1
+	TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+    TNT1 A 10
+    Stop
+XDeath:
+MISG A 1
+TNT1 A 10
+Stop
+	}
+}
+
+Actor SmallExplosionSpawner: ExplosionSpawner
+{
+Speed 30
+states
+	{
+	Spawn:
+		TNT1 AAA 2 A_SpawnItem("SpawnedExplosionSmall")
+		Stop
+	}
+}
+
+
+Actor LongExplosionSpawner: ExplosionSpawner
+{
+speed 66
+renderstyle ADD
+alpha 0.9
+scale .15
+Decal "BigScorch"
+states
+	{
+	Spawn:
+		TNT1 AAAAAA 2 A_SpawnItem("SpawnedExplosionLarge")
+		Stop
+	}
+}
+
+
+
+Actor hUGEExplosionSpawner: ExplosionSpawner
+{
+speed 100
+renderstyle ADD
+alpha 0.9
+scale .15
+Decal "BigScorch"
+states
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 2
+		TNT1 A 0 A_SpawnItem("HighExplosiveFlamesBig")
+		TNT1 A 0 A_Stop
+		Stop
+	}
+}
+
+Actor hUGEExplosionSpawner2: hUGEExplosionSpawner
+{
+speed 80
+states
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 AAAAA 3 A_SpawnItem("HighExplosiveFlamesBig")
+		TNT1 A 0 A_SpawnItem("HighExplosiveFlamesHuge")
+		TNT1 A 0 A_Stop
+		Stop
+	}
+}
+
+
+
+Actor RidiculousExplosionSpawner: ExplosionSpawner
+{
+speed 20
+renderstyle ADD
+alpha 0.9
+scale .15
+Decal "BigScorch"
++SKYEXPLODE
+-DOOMBOUNCE
++NOGRAVITY
+states
+	{
+	Spawn:
+	Goto Death
+	
+	Death:
+		TNT1 AAAA 2 A_SpawnItem("HighExplosiveFlamesBig")
+		EXPL A 0 A_CustomMissile ("RidiculousNeoSmoke", 0, 0, random (0, 360), 2, random (0, 180))
+		TNT1 AA 2 A_SpawnItem("HighExplosiveFlamesHuge")
+		TNT1 A 0 A_SpawnItem("ExplosionFlareSpawner")
+		Stop
+	}
+}
+
+Actor SpawnedExplosion
+{
++NOCLIP
++NOGRAVITY
+states
+	{
+	Spawn:
+ TNT1 A 0
+ TNT1 A 2 A_PlaySound("FAREXPL")
+TNT1 A 0 A_CustomMissile ("HighExplosiveFlamesSmall", 0, 0, random (0, 360), 2, random (0, 90))
+		Stop
+	}
+}
+
+Actor SpawnedExplosionRepeat
+{
++NOCLIP
++NOGRAVITY
+states
+	{
+	Spawn:
+ TNT1 A 2
+ TNT1 A 2 A_PlaySound("FAREXPL")
+ TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+TNT1 AAAA 0 A_CustomMissile ("ExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+TNT1 A 3
+TNT1 AAAA 0 A_CustomMissile ("ExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+TNT1 A 3
+TNT1 AAAA 0 A_CustomMissile ("ExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+		Stop
+	}
+}
+
+Actor SpawnedExplosionBig
+{
++NOCLIP
++NOGRAVITY
+states
+	{
+	Spawn:
+ TNT1 A 2
+ TNT1 A 2 A_PlaySound("FAREXPL")
+ EXPL A 0 A_CustomMissile ("HugeNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+ EXPL A 0 A_CustomMissile ("BigNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+ TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+TNT1 AAAA 0 A_CustomMissile ("ExplosionFlamesBig", 0, 0, random (0, 360), 2, random (0, 180))
+TNT1 A 3
+TNT1 AAAA 0 A_CustomMissile ("ExplosionFlamesBig", 0, 0, random (0, 360), 2, random (0, 180))
+		Stop
+	}
+}
+
+Actor SpawnedExplosionLarge
+{
++NOCLIP
++NOGRAVITY
+states
+	{
+	Spawn:
+ TNT1 A 2
+ TNT1 A 2 A_PlaySound("FAREXPL")
+TNT1 AA 0 A_CustomMissile ("ExplosionFlamesBig2", 0, 0, random (0, 360), 2, random (0, 180))
+tnt1 a 0 a_eXPLODE(200, 400)
+		Stop
+	}
+}
+
+
+Actor SpawnedExplosionLarge2
+{
++NOCLIP
++NOGRAVITY
+states
+	{
+	Spawn:
+ TNT1 A 2
+ TNT1 A 2
+TNT1 AA 0 A_CustomMissile ("ExplosionFlamesBig2", 0, 0, random (0, 360), 2, random (0, 180))
+tnt1 a 0 a_eXPLODE(200, 400)
+		Stop
+	}
+}
+
+
+Actor SpawnedExplosionGiant
+{
++NOCLIP
++NOGRAVITY
+states
+	{
+	Spawn:
+ TNT1 A 2
+ TNT1 A 2 A_PlaySound("FAREXPL")
+ EXPL A 0 A_CustomMissile ("RidiculousNeoSmoke", 0, 0, random (0, 360), 2, random (0, 180))
+ TNT1 AA 0 A_CustomMissile ("ExplosionFlamesGiant", 0, 0, random (0, 360), 2, random (0, 180))
+		Stop
+	}
+}
+
+Actor SpawnedFlamers
+{
++NOCLIP
++NOGRAVITY
+    DamageType Flames
+states
+	{
+	Spawn:
+ TNT1 A 2
+TNT1 A 0 A_Explode(100,40)
+TNT1 AAAA 0 A_CustomMissile ("ExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+		Stop
+	}
+}
+
+
+
+
+Actor SpawnedExplosionSmall
+{
++NOCLIP
++NOGRAVITY
+states
+	{
+	Spawn:
+ TNT1 A 2
+ TNT1 A 2
+ EXPL A 0 A_CustomMissile ("BigNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+ EXPL A 0 A_CustomMissile ("ExplosionSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+ TNT1 AAAA 0 A_CustomMissile ("SmallExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+		Stop
+	}
+}
+
+Actor SpawnedExplosionNuke
+{
++NOCLIP
++NOGRAVITY
++MISSILE
++FORCERADIUSDMG
++NODAMAGETHRUST
+Speed 2
+Damagetype "Fire"
+states
+	{
+	Spawn:
+ TNT1 A 0
+ TNT1 A 2 A_PlaySound("FAREXPL")
+TNT1 AA 32 A_CustomMissile ("NuclearFlames", 0, 0, random (0, 360), 2, random (0, 90))
+TNT1 A 0 A_Explode(64, 800)
+TNT1 A 0 A_CustomMissile ("NukeSmoke", 0, 0, random (0, 360), 2, random (0, 90))
+TNT1 A 32 A_CustomMissile ("NuclearFlames", 0, 0, random (0, 360), 2, random (0, 90))
+TNT1 A 0 A_Explode(64, 800)
+TNT1 A 32 A_CustomMissile ("NuclearFlames", 0, 0, random (0, 360), 2, random (0, 90))
+TNT1 A 0 A_Explode(64, 800)
+TNT1 A 32 A_CustomMissile ("NuclearFlames", 0, 0, random (0, 360), 2, random (0, 90))
+TNT1 A 0 A_Explode(64, 800)
+TNT1 AA 32 A_Explode(128, 800)
+		Stop
+	}
+}
+
+Actor SpawnedExplosionNuke2
+{
++NOCLIP
++NOGRAVITY
++MISSILE
+Speed 24
+states
+	{
+	Spawn:
+ TNT1 A 0
+ TNT1 A 2 A_PlaySound("FAREXPL")
+TNT1 AAAA 6 A_CustomMissile ("NuclearFlames", 0, 0, random (0, 360), 2, random (0, 90))
+TNT1 AAAA 6 A_CustomMissile ("NuclearFlamesBig", 0, 0, random (0, 360), 2, random (0, 90))
+TNT1 A 0 A_Stop
+TNT1 AAAAAAAAAAAAAAA 6 A_CustomMissile ("NuclearFlamesBig", 0, 0, random (0, 360), 2, random (0, 90))
+TNT1 A 0 A_CustomMissile ("NukeSmoke", 0, 0, random (0, 360), 2, random (0, 90))
+TNT1 AAA 6 A_CustomMissile ("NuclearFlamesBig", 0, 0, random (0, 360), 2, random (0, 20))
+		Stop
+	}
+}
+
+Actor RocketPenetrationExplosion
+{
++NOCLIP
++NOGRAVITY
+DamageType "ExplosiveImpact"
+states
+	{
+	Spawn:
+ TNT1 A 2
+ TNT1 A 2
+ TNT1 A 0 A_Explode(20, 80)
+ EXPL A 0 A_CustomMissile ("BigNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+ EXPL A 0 A_CustomMissile ("ExplosionSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+ TNT1 AA 0 A_CustomMissile ("SmallExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+		Stop
+	}
+}
+
+
+ACTOR VanillaExplosiveBarrel: ExplosiveBarrel1
+{
+	States
+	{
+	Spawn:
+		BARI ABDEFGHIJKLM 2
+		Loop
+	}
+}
+
+
+ACTOR FireworkSFXType1
+{
+	Radius 4
+	Height 4
+	Speed 18
+	PROJECTILE
+    +THRUGHOST
+	RenderStyle Add
+	+MISSILE
+	-NOGRAVITY
+	Gravity 1
+	Alpha 1.0
+	States
+	{
+	Spawn:
+		//TNT1 A 0 A_CustomMissile ("SmallFlameTrails", 2, 0, random (170, 200), 2, random (-20, 20))
+		TNT1 A 0 A_SpawnItem ("SmallFlameTrails")
+		TNT1 A 1 A_SpawnItem("RedFlareSmall")
+		TNT1 A 1 A_SpawnItem("RedFlareSmall")
+		Loop
+	
+	Death:
+		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece", random (-15, 15), random (-15, 15))
+		Stop
+	}
+}
+
+
+ACTOR FireworkSFXType2: FireworkSFXType1
+{
+	Radius 2
+	Height 2
+	+DOOMBOUNCE
+	WallBounceFactor 0.5
+	BounceFactor 0.2
+	States
+	{
+	Death:
+		TNT1 A 0
+		Stop
+	}
+}
+
+
+Actor BarrelExplosionDamage
+{
++MISSILE
+Radius 2
+Height 42
+PROJECTILE
+Speed 0
+Damagetype "ExplosiveImpact"
+States
+{
+	Spawn:
+	TNT1 A 0
+	Goto Death
+	
+	Death:
+	TNT1 A 0
+	TNT1 A 0 A_Explode(200,200)
+	Stop
+	}
+}

@@ -1,0 +1,494 @@
+actor HeadshotTargetBase
+{
+Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
+Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 10.0
+Damagefactor "Cut", 10.0	Damagefactor "Extremepunches", 2.0	Damagefactor "Fatality", 5.0
+Damagefactor "FriendBullet", 1.0	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.1
+Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 1.0
+Damagefactor "HelperMarineFatallity", 2.0	Damagefactor "KillMe", 1.0	Damagefactor "Leg", 0.0
+Damagefactor "LowKick", 0.5	Damagefactor "MonsterKnocked", 1.0	Damagefactor "PussyGrab", 0.0
+Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "Saw", 10.0
+Damagefactor "Slide", 0.5	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 1.0
+Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
+Health 2560
+Radius 9
+Height 18
+Mass 999999
+DamageType head
+BloodType "Brutal_Blood", "SawBlood", "SawBlood"
+PainChance 255
+-COUNTKILL +NOTARGET
++NOGRAVITY +SHOOTABLE +NOTELEPORT +FORCERADIUSDMG -SOLID +NODAMAGETHRUST
++THRUGHOST +NORADIUSDMG +GHOST +SERVERSIDEONLY -COUNTKILL +NOTAUTOAIMED
+States
+{
+Spawn:
+XXXX A 3
+XXXX A 1 A_NoBlocking
+Stop
+
+Pain.Explosive:
+TNT1 A 3
+Goto Pain
+
+Pain.ExplosiveImpact:
+TNT1 A 3
+Goto Pain
+Pain.Saw:
+Pain.Cut:
+TNT1 A 0
+TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+TNT1 A 0 A_ChangeFlag("THRUACTORS", 0)
+Pain:
+TNT1 A 0
+TNT1 A 0 A_Stop
+TNT1 A 1
+TNT1 A 0 A_JumpIfHealthLower(1280, "Pain1280")
+TNT1 A 0 A_JumpIfHealthLower(1920, "Pain640")
+TNT1 A 0 A_JumpIfHealthLower(2240, "Pain320")
+TNT1 A 0 A_JumpIfHealthLower(2400, "Pain160")
+TNT1 A 0 A_JumpIfHealthLower(2480, "Pain80")
+TNT1 A 0 A_JumpIfHealthLower(2520, "Pain40")
+TNT1 A 0 A_JumpIfHealthLower(2540, "Pain20")
+TNT1 A 0 A_JumpIfHealthLower(2550, "Pain10")
+XDT3 A 0 A_Explode(5,15, 0, 0, 15)//hs
+PLAY A 0  A_NoBlocking
+Stop
+
+Pain10:
+TNT1 A 0
+XDT3 A 0 A_Explode(10,15, 0, 0, 15)//hs
+TNT1 A 3
+TNT1 A 0 A_NoBlocking
+Stop
+
+Pain20:
+TNT1 A 0
+XDT3 A 0 A_Explode(20,15, 0, 0, 15)//hs
+TNT1 A 3
+TNT1 A 0 A_NoBlocking
+Stop
+
+Pain40:
+TNT1 A 0
+XDT3 A 0 A_Explode(40,15, 0, 0, 15)//hs
+TNT1 A 3
+TNT1 A 0 A_NoBlocking
+Stop
+
+Pain80:
+TNT1 A 0
+XDT3 A 0 A_Explode(80,15, 0, 0, 15)//hs
+TNT1 A 3
+TNT1 A 0 A_NoBlocking
+Stop
+
+Pain160:
+TNT1 A 0
+XDT3 A 0 A_Explode(160,15, 0, 0, 15)//hs
+TNT1 A 3
+TNT1 A 0 A_NoBlocking
+Stop
+
+Pain320:
+TNT1 A 0
+XDT3 A 0 A_Explode(320,15, 0, 0, 15)//hs
+TNT1 A 3
+TNT1 A 0 A_NoBlocking
+Stop
+
+Pain640:
+TNT1 A 0
+XDT3 A 0 A_Explode(640,15, 0, 0, 15)//hs
+TNT1 A 3
+TNT1 A 0 A_NoBlocking
+Stop
+
+Pain1280:
+TNT1 A 0
+XDT3 A 0 A_Explode(1280,15, 0, 0, 15)//hs
+TNT1 A 3
+TNT1 A 0 A_NoBlocking
+Stop
+
+Death:
+TNT1 A 0
+XDT3 A 0 A_Explode(2560,15, 0, 0, 15)//hs
+TNT1 A 1 A_NoBlocking
+Stop
+ }
+}
+
+actor HeadshotTarget4: HeadshotTargetBase
+{
+States
+ {
+Spawn:
+XXXX A 5
+XXXX A 1 A_NoBlocking
+Stop
+ }
+}
+
+actor HeadshotTarget6: HeadshotTargetBase
+{
+States
+ {
+Spawn:
+XXXX A 6
+XXXX A 1 A_NoBlocking
+Stop
+ }
+}
+
+actor HeadshotTarget2: HeadshotTargetBase
+{
+States
+ {
+Spawn:
+XXXX A 5
+XXXX A 1 A_NoBlocking
+Stop
+ }
+}
+
+actor HeadshotTarget8: HeadshotTargetBase
+{
+States
+ {
+Spawn:
+XXXX A 11
+XXXX A 1 A_NoBlocking
+Stop
+ }
+}
+
+actor HeadshotTarget10: HeadshotTargetBase
+{
+States
+ {
+Spawn:
+XXXX A 12
+XXXX A 1 A_NoBlocking
+Stop
+ }
+}
+
+actor HeadshotTarget20: HeadshotTargetBase
+{
+States
+ {
+Spawn:
+XXXX A 20
+XXXX A 1 A_NoBlocking
+Stop
+ }
+}
+
+actor HeadshotTarget23: HeadshotTargetBase
+{
+States
+ {
+Spawn:
+XXXX A 25
+XXXX A 1 A_NoBlocking
+Stop
+ }
+}
+
+actor HeadshotTarget30: HeadshotTargetBase
+{
+States
+ {
+Spawn:
+XXXX A 33
+XXXX A 1 A_NoBlocking
+Stop
+ }
+}
+
+actor HeadshotTarget60: HeadshotTargetBase
+{
+States
+ {
+Spawn:
+XXXX A 63
+XXXX A 1 A_NoBlocking
+Stop
+ }
+}
+
+actor HeadshotTarget50: HeadshotTargetBase
+{
+States
+ {
+Spawn:
+XXXX A 53
+XXXX A 1 A_NoBlocking
+Stop
+ }
+}
+
+actor HeadshotTarget100: HeadshotTargetBase
+{
+States
+ {
+Spawn:
+XXXX A 100
+XXXX A 1 A_NoBlocking
+Stop
+ }
+}
+
+actor HeadshotTarget200: HeadshotTargetBase
+{
+States
+ {
+Spawn:
+XXXX A 200
+XXXX A 1 A_NoBlocking
+Stop
+ }
+}
+
+actor MeatShield: HeadshotTargetBase
+{
+Speed 9
+Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
+Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 10.0
+Damagefactor "Cut", 10.0	Damagefactor "Extremepunches", 2.0	Damagefactor "Fatality", 5.0
+Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.1
+Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
+Damagefactor "HelperMarineFatallity", 0.0	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0
+Damagefactor "LowKick", 0.5	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 100.0
+Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "Saw", 10.0
+Damagefactor "Slide", 0.5	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 0.0
+Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "Trample", 0.0
+Health 99999
+Radius 24
+Height 42
+BloodType "Brutal_Blood"
+Species "Marines"
+PainChance 255
++NOTARGET
++NOGRAVITY
++SHOOTABLE
++NOTELEPORT
+-SOLID
++NODAMAGETHRUST
+-THRUGHOST
++NORADIUSDMG
+-GHOST
+States
+{
+Spawn:
+XXXX A 0
+XXXX A 5
+Stop
+
+Pain:
+Pain.Minigun:
+TNT1 A 0 A_PlaySound ("imp/pain")
+TNT1 A 0 A_RadiusGive("MeatAmmo", 50, RGF_GIVESELF | RGF_PLAYERS | RGF_OBJECTS, 6)
+XXXX A 2
+Stop
+
+Pain.Bullet:
+TNT1 A 0 A_PlaySound ("imp/pain")
+TNT1 A 1 A_NoBlocking
+TNT1 A 0 A_RadiusGive("MeatAmmo", 50, RGF_GIVESELF | RGF_PLAYERS | RGF_OBJECTS, 6)
+XXXX A 2
+Stop
+
+Pain.SSG:
+Pain.Cut:
+Pain.Flames:
+Pain.Fire:
+Pain.Burn:
+Pain.Plasma:
+Pain.Eat:
+Pain.Blast:
+Pain.Rip:
+Pain.ImpFatalityMarine:
+Pain.HKF:
+Pain.Melee:
+TNT1 A 0 A_PlaySound ("imp/pain")
+TNT1 A 0 A_RadiusGive("MeatAmmo", 50, RGF_GIVESELF | RGF_PLAYERS | RGF_OBJECTS, 12)
+TNT1 AAAAAAAAAAAAAA 1
+XXXX A 2
+Stop
+ }
+}
+
+actor BaronHoldingBarrel
+{
++NOTARGET
+Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
+Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 10.0
+Damagefactor "Cut", 10.0	Damagefactor "Extremepunches", 2.0	Damagefactor "Fatality", 5.0
+Damagefactor "FriendBullet", 1.0	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.1
+Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 1.0
+Damagefactor "HelperMarineFatallity", 2.0	Damagefactor "KillMe", 1.0	Damagefactor "Leg", 0.0
+Damagefactor "LowKick", 0.5	Damagefactor "MonsterKnocked", 1.0	Damagefactor "PussyGrab", 0.0
+Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "Saw", 10.0
+Damagefactor "Slide", 0.5	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 1.0
+Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
+//MONSTER
+-COUNTKILL
++NOBLOOD
+Health 25
+Radius 32
+Height 24
+DamageType Extreme
+PainChance 255
++NOGRAVITY
++SHOOTABLE
++NOTELEPORT
++FORCERADIUSDMG
+-SOLID
++NODAMAGETHRUST
++THRUGHOST
++NORADIUSDMG
++GHOST
++SERVERSIDEONLY
+-COUNTKILL
+damagefactor "Trample", 0
+States
+{
+Spawn:
+XXXX A 32
+XXXX A 1 A_NoBlocking
+Stop
+
+Death:
+TNT1 A 0
+TNT1 A 0 A_Explode(5000, 30)
+	    TNT1 A 0 A_NoBlocking
+	    TNT1 A 0 A_Fall
+		TNT1 A 0 A_SpawnItemEx ("ExplosionSplashSpawner", 0, 0, -20)
+		TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 A 0 A_SpawnItemEx ("BarrelExplosion",0,0,30,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("BarrelKaboom",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 AAAAAAA 0 A_CustomMissile ("ExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+        TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
+        TNT1 AAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
+	    EXPL A 0 Radius_Quake (2, 24, 0, 15, 0)
+		BEXP B 0 BRIGHT A_Scream
+        
+		TNT1 AA 0 A_CustomMissile ("MetalShard1", 5, 0, random (0, 360), 2, random (30, 160))
+		TNT1 AA 0 A_CustomMissile ("MetalShard2", 5, 0, random (0, 360), 2, random (30, 160))
+		TNT1 AA 0 A_CustomMissile ("MetalShard3", 5, 0, random (0, 360), 2, random (30, 160))
+		TNT1 A 0 A_PlaySound("FAREXPL", 3)
+		
+		TNT1 A 0 A_SpawnItem("BarrelExplosionSmokeColumn")
+		TNT1 AAAAA 8 A_CustomMissile ("ExplosionSmoke", 1, 0, random (0, 360), 2, random (50, 130))
+		Stop
+
+ }
+}
+
+// Headshot targets with green blood
+
+actor HeadshotTarget4b: HeadshotTarget4
+{
+BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
+BloodColor "DarkGreen"
++DONTRIP
+}
+
+actor HeadshotTarget8b: HeadshotTarget8
+{
+BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
+BloodColor "DarkGreen"
++DONTRIP
+}
+
+actor HeadshotTarget6b: HeadshotTarget6
+{
+BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
+BloodColor "DarkGreen"
++DONTRIP
+}
+
+actor HeadshotTarget10b: HeadshotTarget10
+{
+BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
+BloodColor "DarkGreen"
++DONTRIP
+}
+
+actor HeadshotTarget20b: HeadshotTarget10
+{
+BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
+BloodColor "DarkGreen"
++DONTRIP
+}
+
+actor HellNobleCrotchHitbox: HeadshotTarget20
+{
+BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
+BloodColor "DarkGreen"
+Radius 2
+Height 2
+Damagetype "Leg"
++DONTRIP
+}
+
+actor MasterMindHitBox: HeadshotTarget8
+{
+Radius 53
+Height 24
++DONTRIP
+}
+
+actor SuperMastermindHitbox: HeadshotTarget8
+{
+Radius 120
+Height 55
++DONTRIP
+}
+
+actor CybersHitBox: HeadshotTarget8
+{
+Radius 20
+Height 18
++DONTRIP
+}
+
+actor GreatCybersHitBox: HeadshotTarget8
+{
+Radius 49
+Height 36
++DONTRIP
+}
+
+actor TankEngineWeakSpot: HeadshotTarget4
+{
+Radius 24
+Height 44
++NOBLOOD
++THRUSPECIES
+Species "EnemyTank"
++DONTRIP
+Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
+Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 20.0
+Damagefactor "Cut", 0.0	Damagefactor "Extremepunches", 0.0	Damagefactor "Fatality", 0.0
+Damagefactor "FriendBullet", 0.25	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0
+Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
+Damagefactor "HelperMarineFatallity", 0.0	Damagefactor "KillMe", 1.0	Damagefactor "Leg", 0.0
+Damagefactor "LowKick", 0.0	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0
+Damagefactor "Repair", 1.0	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "Saw", 0.0
+Damagefactor "Slide", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 1.0
+Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "Kick", 0.0
+Damagefactor "Melee", 0.0	Damagefactor "Shrapnel", 0.25	Damagefactor "Slime", 0.0
+Damagefactor "Stealth", 0.0	Damagefactor "Stomp", 0.0	Damagefactor "Trample", 0.0
+Damagefactor "Burn", 0.0	Damagefactor "Fire", 0.0	Damagefactor "Flames", 0.0
+Damagefactor "GreenFire", 0.0	Damagefactor "HumanBBQ", 0.0	Damagefactor "Bullet", 0.25
+Damagefactor "Desintegrate", 3.0	Damagefactor "Explosive", 0.5	Damagefactor "ExplosiveImpact", 0.25
+Damagefactor "Minigun", 0.25	Damagefactor "Minor", 0.25	Damagefactor "MonsterBullet", 0.25
+Damagefactor "MonsterMinigun", 0.25	Damagefactor "MonsterShotgunBullet", 0.25	Damagefactor "Shotgun", 0.25
+Damagefactor "SSG", 0.25	Damagefactor "HitGround", 3.0	Damagefactor "Plasma", 1.25
+Damagefactor "Railgun", 2.0	Damagefactor "CheckRepair", 0.0
+}

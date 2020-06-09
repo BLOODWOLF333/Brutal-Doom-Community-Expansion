@@ -1,0 +1,429 @@
+ACTOR TheCyberdemon: Cyberdemon Replaces Cyberdemon
+{
+	+NOICEDEATH
+    Health 5000
+	PainSound "CYBPAIN"
+	MaxStepHeight 32
+	MaxDropOffHeight 40
+    Scale 1.2
+	Radius 40
+	Height 106
+	+MISSILEMORE
+	+MISSILEEVENMORE
+    +DONTRIP
+    +NORADIUSDMG
+	+QUICKTORETALIATE
+	
+	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 30.0
+	Damagefactor "Cut", 0.5	Damagefactor "Extremepunches", 1.0	Damagefactor "Fatality", 2.5
+	Damagefactor "FriendBullet", 0.5	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0
+	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 1.0	Damagefactor "HeadKick", 0.5
+	Damagefactor "HelperMarineFatallity", 1.0	Damagefactor "KillMe", 1.0	Damagefactor "Leg", 0.25
+	Damagefactor "LowKick", 0.25	Damagefactor "MonsterKnocked", 0.5	Damagefactor "PussyGrab", 0.0
+	Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "Saw", 0.5
+	Damagefactor "Slide", 0.25	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 1.0
+	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "Kick", 0.5
+	Damagefactor "Melee", 0.5	Damagefactor "Shrapnel", 0.5	Damagefactor "Slime", 0.5
+	Damagefactor "Stealth", 0.5	Damagefactor "Stomp", 0.5	Damagefactor "Trample", 0.5
+	Damagefactor "Burn", 0.5	Damagefactor "Fire", 0.5	Damagefactor "Flames", 0.5
+	Damagefactor "GreenFire", 0.5	Damagefactor "HumanBBQ", 0.5	Damagefactor "Bullet", 0.5
+	Damagefactor "Desintegrate", 0.5	Damagefactor "Explosive", 0.75	Damagefactor "ExplosiveImpact", 0.5
+	Damagefactor "Minigun", 0.5	Damagefactor "Minor", 0.5	Damagefactor "MonsterBullet", 0.5
+	Damagefactor "MonsterMinigun", 0.5	Damagefactor "MonsterShotgunBullet", 0.5	Damagefactor "Shotgun", 0.5
+	Damagefactor "SSG", 0.5
+
+	PainChance "Avoid", 0	PainChance "Burn", 16	PainChance "Cut", 16
+	PainChance "ExplosiveImpact", 16	PainChance "Extremepunches", 4	PainChance "Fatality", 4
+	PainChance "Fire", 16	PainChance "Flames", 16	PainChance "GreenFire", 16
+	PainChance "Head", 16	PainChance "HelperMarineFatallity", 4	PainChance "HumanBBQ", 16
+	PainChance "Kick", 4	PainChance "LowKick", 4	PainChance "Melee", 4
+	PainChance "MonsterKnocked", 4	PainChance "Saw", 16	PainChance "Slide", 4
+	PainChance "Stealth", 4	PainChance "Taunt", 255	PainChance "Trample", 4
+	
+	Speed 16
+	FastSpeed 22
+	painchance 20
+	mass 5000
+	DropItem "DemonStrengthRune" 16
+    BloodType "CyberDemon_Blood", "CyberDemon_SawBlood", "CyberDemon_Blood"
+	Tag "Cyberdemon"
+	States
+	{
+
+    ReplaceVanilla:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIf(x == -1472, "ReplaceForBOSS")
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+		TNT1 A 0 A_SpawnItemEx ("VanillaCyberdemon",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
+		TNT1 A 100
+		TNT1 A 0
+		Stop
+		
+	ReplaceForBOSS:
+		TNT1 A 0
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 ACS_NamedExecuteAlways("MapEnhancementE2M8")
+		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+		TNT1 A 0 A_SpawnItemEx ("CyberdemonBoss",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
+		TNT1 A 0
+		Stop
+		
+	Pain:
+		CYBR G 1
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		CYBR G 4 A_Pain
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		CYBR G 4 A_Pain
+		Goto See
+	
+    Spawn:
+		CYBR D 0
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCHeckClassicMonsters", 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 0 A_JumpIf(x == -1472, "ReplaceForBOSS")
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		TNT1 A 0 A_GiveInventory("TargetIsACyberdemon")
+		
+	Stand:	
+        
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+        CYBR Z 10 A_Look
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		CYBR D 10 A_Look
+        Loop
+
+	See:
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		TNT1 A 0 A_SpawnItem("HeavyFootSteps32")
+		CYBR A 3 A_Hoof
+		CYBR A 3 //A_Chase
+		TNT1 A 0 A_JumpIfCloser(120, "Stomp")
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		CYBR AA 2 A_Chase
+		TNT1 A 0 A_JumpIfCloser(120, "Stomp")
+        //TNT1 A 0 A_SpawnItemEx("CyberStep",12,-30)
+		CYBR BB 2 A_Chase
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+        CYBR BBC 2 A_Chase
+		TNT1 A 0 A_SpawnItem("HeavyFootSteps32")
+		TNT1 A 0 A_JumpIfCloser(120, "Stomp")
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+        CYBR C 2 A_Chase
+		CYBR C 2
+		CYBR C 2 A_Metal
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+        //TNT1 A 0 A_SpawnItemEx("CyberStep",12,30)
+		CYBR D 2 A_Chase
+		CYBR D 2 A_Chase
+		TNT1 A 0 A_JumpIfCloser(120, "Stomp")
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		CYBR DD 2 A_Chase
+		Loop
+
+	Missile:
+	    TNT1 A 0 A_JumpIfCloser(180, "Stomp")
+		TNT1 A 0 A_JumpIfInventory("Enraged", 1, "SpecialAttack")
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		CYBR E 8 A_FaceTarget
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		CYBR F 3 BRIGHT A_CustomMissile("CyberBalls",60,-25,0,0)
+		TNT1 A 0 A_JumpIfCloser(180, "Stomp")
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		CYBR EE 6 A_FaceTarget
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		CYBR F 3 BRIGHT A_CustomMissile("CyberBalls",60,-25,-7,0)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		CYBR EE 6 A_FaceTarget
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		CYBR F 3 BRIGHT A_CustomMissile("CyberBalls",60,-25,7,0)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		CYBR EE 6 A_FaceTarget
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		CYBR F 3 BRIGHT A_CustomMissile("CyberBalls",60,-25,0,0)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		CYBR EE 6 A_FaceTarget
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		CYBR E 12
+		Goto See
+
+	Stomp:
+	Melee:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInTargetInventory("IsInATank", 1, "SpecialAttack")
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		CYBR Z 5 A_FaceTarget
+		TNT1 A 0 A_Recoil(-5)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+	    CYMA A 7 A_FaceTarget
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		TNT1 A 0 A_CustomMissile("CyberStomp",10,0,0,0)
+	    CYMA B 7
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		CYMA B 7
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		Goto See
+	Death:
+		CYBR H 0
+		CYBR H 0 A_Scream
+		CYBR H 10
+		CYBR I 4
+		CYBR J 4
+		TNT1 AAAAAA 0 A_CustomMissile ("HighExplosiveFlames2", random (40, 90), 0, random (0, 360), 2, random (0, 360))
+		CYBR J 4
+		EXPL A 0 Radius_Quake (6, 50, 0, 22, 0)
+		TNT1 A 0 A_CustomMissile("ExplosionSplashSpawner")
+        TNT1 AA 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_CustomMissile ("XDeathCyberdemonHead", 120, 0, random (0, 360), 2, random (0, 180))
+		TNT1 A 0 A_CustomMissile ("XDeathCyberdemonArm", 120, 0, random (0, 360), 2, random (0, 180))
+		TNT1 A 0 A_CustomMissile ("XDeathCyberdemonGun", 120, 0, random (0, 360), 2, random (0, 180))
+		TNT1 A 0 A_CustomMissile ("XDeathCyberdemonPiece", 120, 0, random (0, 360), 2, random (0, 180))
+		TNT1 A 0 A_CustomMissile ("XDeathCyberdemonTorso", 120, 0, random (0, 360), 2, random (0, 180))
+		TNT1 AAA 0 A_CustomMissile ("BDExplosionparticles3", 74, 0, random (0, 360), 2, random (40, 90))
+		TNT1 AAA 0 A_CustomMissile ("BDExplosionparticles4", 76, 0, random (0, 360), 2, random (40, 90))
+		TNT1 AA 0 A_CustomMissile ("ExplosionSpawner", 40, 0, random (0, 360), 2, random (10, 90))
+		EXPL AA 0 A_CustomMissile ("BigBlackSmokeLarger", 40, 0, random (0, 360), 2, random (10, 90))
+        TNT1 A 0 A_CustomMissile ("CyberXDeath", 0, 0, random (0, 360), 2, random (0, 160))
+		CYBR M 5 A_NoBlocking
+		CYBR NOP 5
+		CYBR P 120
+		TNT1 A 0 A_BossDeath
+		CYBR P -1
+		Stop
+	Death.Head:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate")
+		TNT1 AAA 0 A_CustomMissile ("Brains6Big", 120, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_CustomMissile ("Brains7Big", 210, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAA 0 A_CustomMissile ("XDeath3b", 120, 0, random (0, 360), 2, random (50, 90))
+		TNT1 AAAAA 0 A_CustomMissile ("XDeath2b", 120, 0, random (0, 360), 2, random (50, 90))
+		TNT1 AA 0 A_CustomMissile ("MeatDeath", 120, 0, random (0, 360), 2, random (50, 90))
+		CYBB AAAA 6 A_SpawnItem("MuchBlood3", 0, 120)
+		CYBB ABCABCB 8 A_SpawnItem("MuchBlood", 0, 120)
+		EXPL A 0 Radius_Quake (6, 100, 0, 22, 0)
+        TNT1 AAAA 0 A_CustomMissile ("ExplosionSpawner", 90, 0, random (0, 360), 2, random (0, 180))
+        TNT1 AAAAAA 0 A_CustomMissile ("ExplosionSpawner", 90, 0, random (0, 360), 2, random (0, 180))
+        TNT1 AAAA 0 A_CustomMissile ("UltraGoreSPawner", 90, 0, random (0, 360), 2, random (0, 180))
+		
+        TNT1 AAAAAA 0 A_CustomMissile ("UltraGoreSpawner", 90, 0, random (0, 360), 2, random (0, 180))
+        TNT1 A 0 A_CustomMissile ("CyberXDeath", 0, 0, random (0, 360), 2, random (0, 160))
+		CYBR I 0 A_Fall
+		CYBR JKL 0
+		CYBR M 0 A_NoBlocking
+		CYBR NOP 0
+		CYBR P 120
+		CYBR P -1 A_BossDeath
+		Stop
+		
+	Death.Decaptate:
+	    TNT1 A 0 A_CustomMissile ("XDeathCyberdemonHead", 120, 0, random (0, 360), 2, random (0, 180))
+		TNT1 AAAAAAAAA 0 A_CustomMissile ("XDeath1", 120, 0, random (0, 360), 2, random (0, 180))
+		CYBB AAAA 0 A_SpawnItem("MuchBlood3", 0, 120)
+		CYBB ABCABCB 8 A_SpawnItem("MuchBlood", 0, 120)
+		EXPL A 0 Radius_Quake (6, 100, 0, 22, 0)
+        TNT1 AAAA 0 A_CustomMissile ("ExplosionSpawner", 90, 0, random (0, 360), 2, random (0, 180))
+        TNT1 AAAAAA 0 A_CustomMissile ("ExplosionSpawner", 90, 0, random (0, 360), 2, random (0, 180))
+        TNT1 AAAA 0 A_CustomMissile ("UltraGoreSPawner", 90, 0, random (0, 360), 2, random (0, 180))
+		
+        TNT1 AAAAAA 0 A_CustomMissile ("UltraGoreSpawner", 90, 0, random (0, 360), 2, random (0, 180))
+        TNT1 A 0 A_CustomMissile ("CyberXDeath", 0, 0, random (0, 360), 2, random (0, 160))
+		CYBR I 0 A_Fall
+		CYBR JKL 0
+		CYBR M 0 A_NoBlocking
+		CYBR NOP 0
+		CYBR P 120
+		CYBR P -1 A_BossDeath
+		Stop
+	
+    Crush:
+		TNT1 A 0
+		TNT1 AAAA 0 A_SpawnItemEx ("BodyRemovalThing",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 1 A_XScream
+		TNT1 A 0 A_BossDeath
+		Stop
+	
+	Pain.Taunt:
+		TNT1 A 0
+		TNT1 A 0 HealThing(1)
+		TNT1 A 0 A_JumpIfInventory("Enraged", 1, "SpecialAttack")
+		SPOS B 0 A_Pain
+		TNT1 A 0 A_ChangeFlag("FASTER", 1)
+		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
+		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
+		TNT1 A 0 A_PlaySound("demon/pain")
+		CYBT A 1 A_FaceTarget
+		CYBT ABCCBADE 4
+		TNT1 A 0 A_PlaySound("CYBTAT", 1)
+		CYBT FGHGFGHGFGHGFGHG 3
+		CYBT EDA 4
+		TNT1 A 0 A_GiveInventory("Enraged", 1)
+		Goto Missile
+	
+	Pain.Killme:
+		TNT1 A 0
+		TNT1 A 0 HealThing(1)
+		Goto Missile
+
+	SpecialAttack:
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		CYBR E 6 A_FaceTarget
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		CYBR F 4 BRIGHT A_CustomMissile("CyberBalls",60,-25,0,0)
+		TNT1 A 0 A_JumpIfCloser(180, "Stomp")
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		CYBR EE 4 A_FaceTarget
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		CYBR F 4 BRIGHT A_CustomMissile("CyberBalls",60,-25,-7,0)
+		TNT1 A 0 A_JumpIfCloser(180, "Stomp")
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		CYBR EE 4 A_FaceTarget
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		CYBR F 4 BRIGHT A_CustomMissile("CyberBalls",60,-25,7,0)
+		TNT1 A 0 A_JumpIfCloser(180, "Stomp")
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		CYBR EE 4 A_FaceTarget
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		CYBR F 4 BRIGHT A_CustomMissile("CyberBalls",60,-25,0,0)
+		TNT1 A 0 A_JumpIfCloser(180, "Stomp")
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		CYBR EE 4 A_FaceTarget
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		CYBR F 4 BRIGHT A_CustomMissile("CyberBalls",60,-25,0,0)
+		CYBR EE 4 A_FaceTarget
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
+		CYBR F 4 BRIGHT A_CustomMissile("CyberBalls",60,-25,0,0)
+		Goto See
+		
+	Death.Deletus:
+		TNT1 A 0
+		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+		TNT1 A 0 A_NoBlocking
+		Stop
+		
+	Death.Fatality:
+	    TNT1 A 0
+		TNT1 A 0 A_Pain
+        TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_JumpIfIntargetInventory("IsPlayer", 1, 1)
+		Goto Death
+		TNT1 A 0
+		TNT1 A 0 A_FaceTarget
+		TNT1 AAAAA 0 A_SpawnItemEx("HealthCrueltyBonus", 0, 0, 47, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
+		TNT1 AAAAA 0 A_SpawnItemEx("ArmorCrueltyBonus", 0, 0, 47, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
+		TNT1 A 0 A_Jump(128, "Death.Fatality2")
+		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
+		TNT1 A 0 A_GiveToTarget("CyberdemonFatality", 1)
+		TNT1 A 500
+		TNT1 A 0 A_BossDeath
+        Stop	
+		
+	Death.Fatality2:
+		TNT1 A 0
+		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
+		TNT1 A 0 A_GiveToTarget("CyberdemonFatality", 1)
+		TNT1 A 500
+		TNT1 A 0 A_BossDeath
+        Stop	
+	
+	}
+}
+
+ACTOR CyberdemonLegsFatality 17003
+{
+  Health 200
+  Radius 16
+  Height 56
+  Mass 500
+  Speed 12
+  PainChance 0
+  +BOSS
+  +FLOORCLIP
+  +DONTMORPH
+  +BOSSDEATH
+  +SOLID
+  +SHOOTABLE
+  +THRUACTORS
+   DeathSound "world/barrelx"
+  Obituary "$OB_CYBORG"
+  Tag "Cyberdemon's roaming legs"
+  States
+  {
+  Spawn:
+    PATA AABBCCDD 3 A_Wander
+	TNT1 A 0 A_ChangeFlag("THRUACTORS", 0)
+  See:
+    PATA AABBCCDD 3 A_Wander
+	PATA AABBCCDD 3 A_Wander
+	PATA AABBCCDD 3 A_Wander
+	PATA A 0 A_Die
+  Death:
+    PATA H 10 
+	TNT1 AA 0 A_SpawnItem("MeatDeath", 0, 32)
+	TNT1 AA 0 A_SpawnItem("RipGuts", 0, 32)
+	TNT1 A 0 A_SpawnItem("MuchBlood2", 0, 42)
+    PATA IJKL 3
+    PATA M 3 A_NoBlocking
+    PATA NO 3
+    PATA P 3
+    PATA P -1
+    Stop
+  }
+}
+
+ACTOR CyberStomp
+{
+	Radius 12
+	Height 8
+	+MISSILE
+	Speed 15
+    Damage 50
+	renderstyle translucent
+	alpha 0.9
+	DamageType Stomp
+    Gravity 1.0
+    Decal "Cracks"
+    -NOGRAVITY
+    +EXTREMEDEATH
+	+NOTELEPORT
+	+THRUACTORS
+	Obituary "%o was stepped by a Cyberdemon."
+	HitObituary "%o was stepped by a Cyberdemon."
+	States
+	{
+	Spawn:
+        TNT1 A 1
+		TNT1 A 0 ThrustThingZ(0, -35, 0, 0)
+		TNT1 A 10
+		Stop
+	Death:
+		MARN A 0 A_SpawnItemEx("FootStepStrong", 0, 0, 8, 0, 0)
+        TNT1 A 0 A_PlaySound("CLAP", 1)
+		EXPL AAAA 0 A_CustomMissile ("ExplosionSmoke", 0, 0, random (0, 360), 2, random (10, 12))
+		TNT1 A 0 Radius_Quake(4, 15, 0, 25, 0)
+		TNT1 A 0 Radius_Quake(2, 15, 0, 45, 0)
+		EXPL A 0 A_Explode
+		SM8K BDFHJLNPRTVXZ 1
+		Stop
+	}
+}
+
+ACTOR CyberStompBig: Cyberstomp
+{
+	Scale 2.0
+	States
+	{
+	Death:
+		MARN A 0 A_SpawnItemEx("FootStepStrong", 0, 0, 8, 0, 0)
+        TNT1 A 0 A_PlaySound("CLAP", 1)
+		EXPL AAAA 0 A_CustomMissile ("ExplosionSmoke", 0, 0, random (0, 360), 2, random (10, 12))
+		TNT1 A 0 Radius_Quake(4, 15, 0, 25, 0)
+		TNT1 A 0 Radius_Quake(2, 15, 0, 45, 0)
+		EXPL A 0 A_Explode(300, 300)
+		SM8K ABCDEFGHIJKLMNOPQRSTUWVXYZ 1
+		Stop
+	}
+}
+
