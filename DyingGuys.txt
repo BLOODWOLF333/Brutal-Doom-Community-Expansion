@@ -22,7 +22,7 @@ ACTOR DyingZombieman
 	//+NOBLOCKMAP
     +LOOKALLAROUND
 	+FRIGHTENED
-	-SOLID
+	+SOLID
 	+DONTSPLASH
 	MONSTER
 	+FRIENDLY//
@@ -175,7 +175,7 @@ ACTOR ZombiemanFallingBeheaded
 	Damagefactor "Slide", 0.5	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 1.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
 	BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
-	+SHOOTABLE    +FLOORCLIP	-SOLID	+DONTSPLASH	MONSTER
+	+SHOOTABLE    +FLOORCLIP	+SOLID	+DONTSPLASH	MONSTER
 	+FRIENDLY	+GHOST	+THRUGHOST -COUNTKILL
 	Mass 500
     States
@@ -268,7 +268,7 @@ ACTOR ZombiemanFallingSplattered
 	Damagefactor "Slide", 0.5	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 1.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
 	BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
-	+SHOOTABLE    +FLOORCLIP	-SOLID	+DONTSPLASH	MONSTER
+	+SHOOTABLE    +FLOORCLIP	+SOLID	+DONTSPLASH	MONSTER
 	+FRIENDLY	+GHOST	+THRUGHOST
 	-COUNTKILL
 	Mass 500
@@ -371,7 +371,7 @@ ACTOR ZombiemanFallingHoleOnStomach
 	Damagefactor "Slide", 0.5	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 1.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
 	BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
-	+SHOOTABLE    +FLOORCLIP	-SOLID	+DONTSPLASH	MONSTER
+	+SHOOTABLE    +FLOORCLIP	+SOLID	+DONTSPLASH	MONSTER
 	+FRIENDLY	+GHOST	+THRUGHOST
 	-COUNTKILL
 	Mass 500
@@ -479,7 +479,7 @@ ACTOR BrutalizedZombieMan1
 	+DONTSPLASH
 	+FRIENDLY//
 	+GHOST
-	-SOLID
+	+SOLID
 	+THRUGHOST
 	-COUNTKILL
 	Scale 1.0
@@ -753,7 +753,7 @@ ACTOR SergeantFallingSplattered
 	Damagefactor "Slide", 0.5	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 1.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
 	BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
-	+SHOOTABLE    +FLOORCLIP	-SOLID	+DONTSPLASH	MONSTER
+	+SHOOTABLE    +FLOORCLIP	+SOLID	+DONTSPLASH	MONSTER
 	+FRIENDLY	+GHOST	+THRUGHOST
 	-COUNTKILL
 	Mass 500
@@ -856,7 +856,7 @@ ACTOR SergeantFallingHoleOnStomach
 	Damagefactor "Slide", 0.5	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 1.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
 	BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
-	+SHOOTABLE    +FLOORCLIP	-SOLID	+DONTSPLASH	MONSTER
+	+SHOOTABLE    +FLOORCLIP	+SOLID	+DONTSPLASH	MONSTER
 	+FRIENDLY	+GHOST	+THRUGHOST
 	-COUNTKILL
 	Mass 500
@@ -965,7 +965,7 @@ ACTOR DyingSergeant
 	-COUNTKILL
 	+GHOST
 	+THRUGHOST
-	-SOLID
+	+SOLID
 	-COUNTKILL
 	States
 	{
@@ -1173,7 +1173,7 @@ ACTOR DyingSergeantNoLeg
 	+GHOST
 	+THRUGHOST
 	-COUNTKILL
-	-SOLID
+	+SOLID
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 10.0
 	Damagefactor "Cut", 10.0	Damagefactor "Extremepunches", 2.0	Damagefactor "Fatality", 5.0
@@ -1305,7 +1305,7 @@ ACTOR DyingSergeantLegBlewedOff: DyingSergeantNoLeg
 	Damagefactor "Slide", 0.5	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 1.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	
 	Mass 500
-	-SOLID
+	+SOLID
 	+SHOOTABLE
 	+GHOST
 	+THRUGHOST
@@ -1436,7 +1436,7 @@ ACTOR BrutalizedSergeant1
 	PainSound "grunt/pain"
 	PainChance 255
 	Mass 999999
-	-SOLID
+	+SOLID
 	+SHOOTABLE
 	+FLOORCLIP
 	+DONTSPLASH
@@ -1855,7 +1855,7 @@ ACTOR DyingZombiemanNoArm: DyingSergeant
 ACTOR ZombieManDyingAfterFatality: DyingZombiemanNoArm
 {
 	-CANPASS
-	-SOLID
+	+SOLID
 	States
 	{
 		Death.cut:
@@ -2548,7 +2548,7 @@ ACTOR DyingImp
 	PainChance 255
 	Mass 999999
 	+SHOOTABLE
-	-SOLID
+	+SOLID
 	+THRUACTORS
 	-COUNTKILL
 	+FLOORCLIP
@@ -2982,7 +2982,7 @@ ACTOR BrutalizedImp1
 	PainSound "grunt/pain"
 	PainChance 255
 	Mass 999999
-	-SOLID
+	+SOLID
 	+SHOOTABLE
 	+NORADIUSDMG
 	-COUNTKILL
@@ -3173,7 +3173,7 @@ ACTOR ImpBrutalizedWithNoLeg
 	PainSound "grunt/pain"
 	PainChance 255
 	Mass 999999
-	-SOLID
+	+SOLID
 	+SHOOTABLE
 	-COUNTKILL
 	Scale 1.0
@@ -3233,7 +3233,7 @@ ACTOR DyingImpNoArm
 	PainSound "imp/pain"
 	PainChance 255
 	Mass 999999
-	-SOLID
+	+SOLID
 	+SHOOTABLE
 	//MONSTER
 	+GHOST
@@ -3370,7 +3370,7 @@ ACTOR DyingImpNoLeg
 	PainSound "imp/pain"
 	PainChance 255
 	Mass 999999
-	-SOLID
+	+SOLID
 	-COUNTKILL
 	+SHOOTABLE
 	Scale 1.0
@@ -3668,7 +3668,7 @@ ACTOR BrutalizedCommando1
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
 	PainSound "grunt/pain"
 	Mass 999999
-	-SOLID
+	+SOLID
 	+SHOOTABLE
 	+FLOORCLIP
 	+DONTSPLASH

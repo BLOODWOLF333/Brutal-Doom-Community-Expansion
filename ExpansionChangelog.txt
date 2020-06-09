@@ -3,34 +3,42 @@
 //
 //	Authored by BLOODWOLF, 
 //
-//	v0.0.1
+//	Development_v0.0.1
 //
+//	Sounds/COMBAT/WEAPONS folder:	Added the modified PLREADY sound effect from Dox778
 //	Sprites/Monsters folder:		Added SMGGuy idle and LabGuy with the correct axe sprites from Dox778
 //	Sprites/Weapons folder:			Removed all Dragonslayer sprites
-//	Sounds/COMBAT/WEAPONS folder:	Added the modified PLREADY sound effect from Dox778
-//	DECORATE.txt:					Removed the inclusion of the Dragonslayer2.txt
+//	Artifact.txt:					Reverted the conditional flare spawns when out of the player's sight
 //	Assaultshotgun.txt:				Added A_Setcrosshair(41) to Ready2 and A_Setcrosshair(0) to Ready3 states
 //	Axe.txt:						Added A_Setcrosshair(41) to Select and A_Setcrosshair(0) to Deselect states
+//	Baron.txt:						Removed the Translation property from the DeadBaron actor
+//									Set DyingBaron1 to +SOLID
+//	Cacodemo.txt:					Set BrutalizedCacodemon1 and 2 to +SOLID
+//	DECORATE.txt:					Removed the inclusion of the Dragonslayer2.txt
+//	doomdefs.bm:					Removed the Dragonslayer entries
 //	-Dragonslayer.txt:				Removed
 //	-Dragonslayer2.txt:				Removed
+//	DyingGuys.txt:					Change actors who were inheriting from the "alive" monsters to instead inherit from their generic dying monster (execpt for the armless Pinky)
+//									Set all dying actors to +SOLID
+//	Fire.txt:						Reverted the conditional flare and particle spawns when out of the player's sight
+//	GLDEFS.txt:						Removed the vert and horizontal Slayermissile entries for the Dragonslayer
+//	Health2.txt:					Reverted the conditional flare spawns when out of the player's sight
+//	Knight.txt:						Set DyingHellKnight1 to +SOLID
+//	LabGuy.txt:						Set Dying states to +SOLID
+//	Lamps.txt:						Reverted the conditional flare spawns when out of the player's sight
 //	Machinegun.txt:					Added lines to check for AmmoRocket first before allowing a jump to ReloadGrenade in the Reload state
+//	Mancubus.txt:					Set DyingFatso01 to +SOLID
+//	MapSpecificDec.txt:				Reverted the conditional flare spawns when out of the player's sight
 //	MP40.txt:						Added A_Setcrosshair(41) to Ready2 and A_Setcrosshair(0) to Ready3 states
 //	Railgun.txt:					Added A_Setcrosshair(41) to Ready2 and A_Setcrosshair(0) to Ready3 states
 //	Rifle.txt:						Added A_Setcrosshair(41) to Ready2 and A_Setcrosshair(0) to Ready3 states
 //	RocketLauncher.txt:				Added A_Setcrosshair(41) to Ready2 and A_Setcrosshair(0) to Ready3 states
 //	Saw.txt:						Added A_Setcrosshair(41) to Select and A_Setcrosshair(0) to Deselect states
+//	Sergeants.txt:					Changed the SMGGuy's Spawn, Stand, and Idle frames to now use the new sprites from Dox778
 //	Shotgun.txt:					Added A_Setcrosshair(41) to Ready2 and A_Setcrosshair(0) to Ready3 states
 //									Set the DoKickReloading state to jump to FinishedInsertingShells instead of back to InsertingShells wasting ammo
 //	SubMachinegun.txt:				Added A_Setcrosshair(41) to Ready2 and A_Setcrosshair(0) to Ready3 states
-//	WeaponSpawners.txt:				Removed the Dragonslayer from the ChainsawSpawner
-//	Artifact.txt:					Reverted the conditional flare spawns when out of the player's sight
-//	Health2.txt:					Reverted the conditional flare spawns when out of the player's sight
-//	Baron.txt:						Removed the Translation property from the DeadBaron actor
-//	DyingGuys.txt:					Change actors who were inheriting from the "alive" monsters to instead inherit from their generic dying monster (execpt for the armless Pinky)
-//	Sergeants.txt:					Changed the SMGGuy's Spawn, Stand, and Idle frames to now use the new sprites from Dox778
-//	Fire.txt:						Reverted the conditional flare and particle spawns when out of the player's sight
-//	Lamps.txt:						Reverted the conditional flare spawns when out of the player's sight
-//	MapSpecificDec.txt:				Reverted the conditional flare spawns when out of the player's sight
 //	Torches.txt:					Reverted the conditional flare and particle spawns when out of the player's sight
-//	doomdefs.bm:					Removed the Dragonslayer entries
-//	GLDEFS.txt:						Removed the vert and horizontal Slayermissile entries for the Dragonslayer
+//	Volcabus.txt:					Set DyingVolcabus to +SOLID and adjusted radius and height to match the monsters increased size from previous edits.
+//									Changed probability of jumping to the Suffer state in Death.Massacre to 128 (rarely happens)
+//	WeaponSpawners.txt:				Removed the Dragonslayer from the ChainsawSpawner
