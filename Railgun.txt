@@ -140,6 +140,7 @@ ACTOR RailGun : BrutalWeapon
 		RAIL A 0 A_Takeinventory("FlameCannonSelected",1)
 		RAIL A 0 A_Takeinventory("HasBarrel",1)
 	    TNT1 A 1 A_Raise
+		TNT1 A 0 A_SetCrosshair(0)
 		TNT1 AAAAAAAAAAA 0 A_Raise
 		RAIL A 0 A_GunFlash
 		Goto SelectAnimation
@@ -231,7 +232,7 @@ ACTOR RailGun : BrutalWeapon
         RAIL A 0 A_ZoomFactor(5.0)
 		RAIL A 0 A_giveinventory("PowerLightAmp", 1)
         RAIZ AB 1 BRIGHT
-		
+		TNT1 A 0 A_SetCrosshair(41)
         RAIL A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
 		SNIP A 1 BRIGHT A_WeaponReady(WRF_ALLOWRELOAD)
 		RAIL A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
@@ -261,6 +262,7 @@ ACTOR RailGun : BrutalWeapon
 		RAIL A 0 A_JumpIfInventory("FiredSecondary",1,"HoldAim")
 	 NoAim:	
         RAIZ BA 1 BRIGHT
+		TNT1 A 0 A_SetCrosshair(0)
 		RAIL A 0 A_Light0
 		RAIL A 0 A_Takeinventory("Zoomed",1)
 		RAIL A 0 A_Takeinventory("PowerLightAmp", 1)
