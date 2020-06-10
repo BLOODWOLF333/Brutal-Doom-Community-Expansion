@@ -4,7 +4,7 @@ ACTOR Rocket_Launcher : BrutalWeapon Replaces RocketLauncher
 	SpawnID 29
 	Speed 20
 	Damage 20
-	Weapon.SelectionOrder 2500
+	Weapon.SelectionOrder 9500
 	Weapon.AmmoUse1 0
 	Weapon.AmmoUse2 0
 	Weapon.AmmoGive2 0
@@ -12,11 +12,11 @@ ACTOR Rocket_Launcher : BrutalWeapon Replaces RocketLauncher
 	Weapon.AmmoType1 "AmmoRocket"
 	Weapon.AmmoType2 "RocketRounds"
     Inventory.PickupSound "ROCKPKUP"
+    +WEAPON.NOAUTOAIM
 	+FORCEXYBILLBOARD
-	+WEAPON.NOAUTOAIM
-	+WEAPON.NOAUTOFIRE
+	+WEAPON.AXEBLOOD
 	+WEAPON.EXPLOSIVE
-	+WEAPON.NO_AUTO_SWITCH
+	+WEAPON.NOAUTOFIRE
 	+WEAPON.NOALERT
 	Inventory.PickupMessage "$GOTLAUNCHER"
 	Tag "Rocket Launcher"
@@ -25,8 +25,6 @@ ACTOR Rocket_Launcher : BrutalWeapon Replaces RocketLauncher
 	
 	Ready3:
 	Ready:
-		TNT1 A 0
-		TNT1 A 0 A_SetCrosshair(0)
 	    RLNG A 1 A_WeaponReady(WRF_ALLOWRELOAD)
 		RLNG A 0 A_JumpIfInventory("Unloading",1,"Unload")
         RLNG A 0 A_JumpIfInventory("Reloading",1,"Reload")
@@ -36,14 +34,12 @@ ACTOR Rocket_Launcher : BrutalWeapon Replaces RocketLauncher
         RLNG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		RLNG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		RLNG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
-		RLNG A 0 A_JumpIfInventory("Zoomed", 1, "Ready2")
-		RLNG A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
 		RLNG A 0 A_JumpIfInventory("HasUnloadedRL", 1, "ReadyNoAmmo")
+		RLNG A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
+		TNT1 A 0 A_SetCrosshair(0)
 		Loop
 		
 	Ready2:
-		TNT1 A 0
-		TNT1 A 0 A_SetCrosshair(41)
 		SNIP A 1 BRIGHT A_WeaponReady(WRF_ALLOWRELOAD)
 		RLNG A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
 		RLNG A 0 A_JumpIfInventory("Unloading",1,"Unload")
@@ -57,7 +53,6 @@ ACTOR Rocket_Launcher : BrutalWeapon Replaces RocketLauncher
 		Loop	
 		
 	ReadyNoAmmo:
-		TNT1 A 0
 	    MISR J 1 A_WeaponReady(WRF_ALLOWRELOAD)
 		RLNG A 0 A_JumpIfInventory("Unloading",1,"Unload")
         RLNG A 0 A_JumpIfInventory("Reloading",1,"Reload")
@@ -75,8 +70,9 @@ ACTOR Rocket_Launcher : BrutalWeapon Replaces RocketLauncher
 		RIFG A 0 A_ZoomFactor(1.0)
 		RIFG A 0 A_Takeinventory("Zoomed",1)
 		RIFG A 0 A_Takeinventory("ADSmode",1)
+		RIFG A 0 A_SetCrosshair(0)
+		RIFG A 0 A_JumpIfInventory("TurboReload",1,"TurboReload")
 		TNT1 A 0 A_PlaySound("weapons/empty", 4)
-		RLNG A 0 A_JumpIfInventory("HasUnloadedRL", 1, "ReadyNoAmmo")
 		NoAmmo2:
 		RIFG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 	    RIFG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
@@ -87,7 +83,7 @@ ACTOR Rocket_Launcher : BrutalWeapon Replaces RocketLauncher
 		RIFG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		RLNG A 5 A_WeaponReady(WRF_ALLOWRELOAD | WRF_NOPRIMARY)
 		RIFG A 0 A_JumpIfInventory("Reloading",1,"Reload")
-		RIFG A 0 A_JumpIfInventory("TurboReload",1,"InsertBullets")
+		RIFG A 0 A_JumpIfInventory("TurboReload",1,"TurboReload")
 		TNT1 A 0 A_JumpIfInventory("NoAutoReload", 1, "NoAmmo2")
 		RIFG A 0 A_JumpIfInventory("AmmoRocket",1,"Reload")
 		RIFG A 0 A_JumpIfInventory("FiredPrimary",1,"NoAmmo2")
@@ -178,6 +174,7 @@ ACTOR Rocket_Launcher : BrutalWeapon Replaces RocketLauncher
 		RLNG A 0 A_Takeinventory("SSGSelected",1)
 		RLNG A 0 A_Takeinventory("MinigunSelected",1)
 		RLNG A 0 A_Takeinventory("PlasmaGunSelected",1)
+		//RLNG A 0 A_Giveinventory("RocketLauncherSelected",1)
 		RLNG A 0 A_Giveinventory("RocketLauncherSelected",1)
 		RLNG A 0 A_Takeinventory("GrenadeLauncherSelected",1)
 		RLNG A 0 A_Takeinventory("BFGSelected",1)
@@ -212,7 +209,7 @@ ACTOR Rocket_Launcher : BrutalWeapon Replaces RocketLauncher
 		RLNG A 1
 		
 		RLNG A 0 A_JumpIfInventory("DMgame",1,"DM")
-		RLNG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
+		RLNG A 0 A_FireCustomMissile("RedFlareSpawn",-5,0,0,0)
         RLNG A 0 A_PlaySound ("DSRFIRE")
 		RLNG A 0 BRIGHT A_FireCustomMissile("Alerter")
 		RLNG A 0 A_ZoomFactor(0.98)
@@ -222,7 +219,7 @@ ACTOR Rocket_Launcher : BrutalWeapon Replaces RocketLauncher
 		Goto RecoilAnimation
 		
 	DM:	
-		RLNG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
+		RLNG A 0 A_FireCustomMissile("RedFlareSpawn",-5,0,0,0)
         RLNG A 0 A_PlaySound ("DSRFIRE")
 		RLNG A 0 A_ZoomFactor(0.98)
 		RLNF A 1 BRIGHT A_FireCustomMissile("RocketDM", 0, 1, 0, -6)
@@ -251,7 +248,7 @@ ACTOR Rocket_Launcher : BrutalWeapon Replaces RocketLauncher
 	ZoomedFire:	
 		SNIP A 1
 		RLNG A 0 A_JumpIfInventory("DMgame",1,"ZoomedFireDM")
-		RLNG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
+		RLNG A 0 A_FireCustomMissile("RedFlareSpawn",-5,0,0,0)
         RLNG A 0 A_PlaySound ("DSRFIRE")
 		RLNG A 0 BRIGHT A_FireCustomMissile("Alerter")
 		RLNG A 0 A_ZoomFactor(2.9)
@@ -261,7 +258,7 @@ ACTOR Rocket_Launcher : BrutalWeapon Replaces RocketLauncher
 		Goto ZoomedRecoil
 		
 	ZoomedFireDM:	
-		RLNG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
+		RLNG A 0 A_FireCustomMissile("RedFlareSpawn",-5,0,0,0)
         RLNG A 0 A_PlaySound ("DSRFIRE")
 		RLNG A 0 A_ZoomFactor(2.9)
 		SNIP A 1 BRIGHT A_FireCustomMissile("RocketDM", 0, 1, 0, -6)
@@ -285,51 +282,55 @@ ACTOR Rocket_Launcher : BrutalWeapon Replaces RocketLauncher
 	
     Reload:
 		RLNG A 0
-		RLNG A 1 A_WeaponReady
 		RLNG A 0 A_Takeinventory("Reloading",1)
 		RLNG A 0 A_ZoomFactor(1.0)
 		RLNG A 0 A_TakeInventory("Zoomed", 1)
 		RLNG A 0 A_Takeinventory("PowerLightAmp", 1)
-        RLNG A 0 A_JumpIfInventory("RocketRounds",6,"Ready")
+		RLNG A 0 A_JumpIfInventory("HasUnloadedRL", 1, 26)
+		RLNG A 1 A_WeaponReady(WRF_NOFIRE)
+        RLNG A 0 A_JumpIfInventory("RocketRounds",6,"NoNeedToReload")
         RLNG A 0 A_JumpIfInventory("AmmoRocket",1,3)
         Goto Ready
         TNT1 AAAA 0
 		
-		RLNG A 0 A_JumpIfInventory("HasUnloadedRL",1,"PutMag")
-		RLNG A 0 A_JumpIfInventory("TurboReload",1,"InsertBullets")
+		RLNG A 0 A_JumpIfInventory("TurboReload",1,"TurboReload")
+	
 		
         RLNG A 0 A_PlaySound("Reload")
-        MISR ABCDE 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+        MISR ABCDE 1 
         RLNG A 0 A_FireCustomMissile("RocketCaseSpawn",-20,0,2,-10)
-        MISR EFGGG 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
-		A12G A 0 A_GiveInventory("HasUnloadedRL",1)
-		
-	PutMag:
-		RLNG A 0 A_Takeinventory("Reloading",1)
-		RLNG A 0 A_Takeinventory("HasUnloadedRL",1)
+        MISR EFGGG 1
 		MISR HIJJJJKLM 1
         MISR MNOPONM 1
 		MISR Q 1
 		MISR R 1
 		RLNG BCD 2
 		RLNG A 1
+		RLNG A 0 A_Takeinventory("HasUnloadedRL",1)
+		Goto FinishReload
 		
-	InsertBullets:
+		FinishReload:
 		TNT1 AAAAAA 0
-		RLNG A 0 A_JumpIfInventory("RocketRounds",6,"FinishReload")
+		RLNG A 0 A_JumpIfInventory("RocketRounds",6,"NoNeedToReload")
 		RLNG A 0 A_JumpIfInventory("AmmoRocket",1,3)
 		Goto Ready
         TNT1 AAAAAA 0
-		RLNG A 0 A_Takeinventory("HasUnloadedRL",1)
 		RLNG A 0 A_Giveinventory("RocketRounds",1)
 		RLNG A 0 A_Takeinventory("AmmoRocket",1)
-		Goto InsertBullets
+		Goto FinishReload
 		
-	FinishReload:
-		TNT1 AAAA 0
-		RLNG A 0 A_Takeinventory("Reloading",1)
-        RLNG A 0 A_Refire
-        Goto Ready	
+		TNT1 AAAAAAAAAA 0
+		
+		NoNeedToReload:
+        RLNG A 1 A_Refire
+        Goto Ready
+		
+		
+	TurboReload:
+		RLNG A 0 A_Takeinventory("HasUnloaded",1)
+        PISS BA 0
+        Goto FinishReload	
+
 
 	Spawn:
 		LAUN A -1
@@ -337,13 +338,19 @@ ACTOR Rocket_Launcher : BrutalWeapon Replaces RocketLauncher
 		
 	Unload:
 		RLNG A 0
-		RLNG A 1 A_WeaponReady
-		RLNG A 0 A_Takeinventory("Unloading",1)
 		RLNG A 0 A_Takeinventory("Zoomed",1)
 		RLNG A 0 A_Takeinventory("PowerLightAmp", 1)
         RLNG A 0 A_ZoomFactor(1.0)
 		RLNG A 0 A_JumpIfInventory("RocketRounds",1,2)
-		Goto Ready
+		Goto ReadyNoAMmo
+		TNT1 AA 0
+		
+		RLNG A 1 A_WeaponReady(WRF_NOFIRE)
+		RLNG A 0 A_Takeinventory("Unloading",1)
+		RLNG A 0 A_ZoomFactor(1.0)
+		RLNG A 0 A_TakeInventory("Zoomed", 1)
+        RLNG A 0 A_JumpIfInventory("AmmoRocket",1,3)
+        Goto Ready
         TNT1 AAAA 0
 		
         RLNG A 0 A_PlaySound("Reload")
@@ -352,15 +359,21 @@ ACTOR Rocket_Launcher : BrutalWeapon Replaces RocketLauncher
 		MISR HI 1
 		RLNG A 0 A_Giveinventory("HasUnloadedRL",1)
 		
+		
 	FinishUnload:
 		TNT1 AAAAAA 0
 		RLNG A 0 A_JumpIfInventory("RocketRounds",1,3)
-		Goto ReadyNoAmmo
+		Goto ReadyNoAMmo
         TNT1 AAAA 0
 		RLNG A 0 A_Takeinventory("RocketRounds",1)
 		RLNG A 0 A_Giveinventory("AmmoRocket",1)
 		Goto FinishUnload
 		
+		TNT1 AAAAAAAAAA 0
+		Goto ReadyNoAMmo
+
+ 	
+    
 	PuristGun:
 		TNT1 A 1
 		RLNG A 0 A_GiveInventory("ClassicRocketLauncher", 1)
