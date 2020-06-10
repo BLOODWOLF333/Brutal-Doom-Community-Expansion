@@ -891,7 +891,7 @@ Actor DeadFatsoNoArm: DeadFat
 		Stop}}
 
 Actor FatalizedFatso: NoGutsFatso
-{Scale 1.0 Health 500 States{Spawn:
+{Scale 1.1 Health 500 States{Spawn:
 		FATF F 1 A_PlaySound("fatso/pain")
         FATF FFEE 10 A_CustomMissile ("Blood", 35, 0, random (0, 360), 2, random (0, 160))
 		
@@ -910,11 +910,12 @@ Actor FatalizedFatso: NoGutsFatso
         Stop }}
 
 Actor DyingFatso01: NoGutsFatso
-{Scale 1.0 
+{Scale 1.1
 Health 20 
 Radius 28
 Height 70
 -CLIENTSIDEONLY
+-SOLID
 States
 	{Spawn:
 		XFT1 A 1 A_PlaySound("fatso/pain")
@@ -949,7 +950,7 @@ States
 			}}
 
 Actor DyingFatso02: DyingFatso01
-{Scale 1.0 
+{Scale 1.1
 Health 20 States
 	{Spawn:
 		XFT2 AAAAAAAAAAAAAAAAAAAAAAAAAAAA 2 A_CustomMissile ("Brutal_LiquidBlood2", 50, 0, random (0, 360), 2, random (30, 50))
@@ -972,7 +973,7 @@ Health 20 States
 }			
 			
 Actor DyingFatso03: DyingFatso02
-{Scale 1.0 
+{Scale 1.1
 Health 20 States
 	{Spawn:
 		XFT3 AAAAAAAAAAAAAAAAAAAAAAAAAAAA 2 A_CustomMissile ("Brutal_LiquidBlood2", 50, 0, random (0, 360), 2, random (30, 50))

@@ -265,7 +265,7 @@ Actor Volcabus : Mancubus 2543
 		F5T2 A 7
 		F5T2 B 7 A_Scream
 		F5T2 C 7 A_NoBlocking
-		TNT1 A 0 A_Jump(44, "Suffer")
+		TNT1 A 0 A_Jump(128, "Suffer")
 		F5T2 DEF 6 A_CustomMissile ("MuchBlood", 15, 0, random (0, 360), 2, random (0, 160))
 		F5T2 F 1 A_BossDeath    
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
@@ -531,7 +531,7 @@ Actor FatalizedVolcabus
 {
 	Radius 39
 	Height 33
-	Scale 1.2
+	Scale 1.5
 	-SHOOTABLE
 	-SOLID
 	+NOTELEPORT
@@ -570,7 +570,7 @@ Actor FatalizedVolcabus2
 {
 	Radius 39
 	Height 33
-	Scale 1.2
+	Scale 1.5
 	-SHOOTABLE
 	-SOLID
 	+NOTELEPORT
@@ -596,9 +596,9 @@ Spawn:
 
 ACTOR DyingVolcabus
 {
-	Scale 1.08
-    Radius 32
-    Height 35
+	Scale 1.5
+    Radius 41
+    Height 67
     Speed 0
 	Health 90
 	Mass 1400
@@ -606,7 +606,7 @@ ACTOR DyingVolcabus
 	DeathSound "skeleton/death"
 	+SHOOTABLE
 	+FRIGHTENED
-	+SOLID
+	-SOLID
 	+FLOORCLIP
 	DamageFactor "Kick", 6.0
 	DamageFactor "ExtremePunches", 6.0
@@ -752,7 +752,7 @@ ACTOR XDeathVolcabusArm: XDeathArm1
 {
     +SKYEXPLODE
 	-CLIENTSIDEONLY
-    Scale 1.2
+    Scale 1.5
     Speed 9
 	Gravity 0.4
 	BounceFactor 0.4
