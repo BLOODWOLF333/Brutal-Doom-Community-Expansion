@@ -872,7 +872,7 @@ States
 
 actor DeadKnightBTN5F: DeadKnight
 {
-	Scale 1.2
+	Scale 1.0
     States
     {
     Spawn:
@@ -948,7 +948,7 @@ Stop
 	    Stop}}
 
 Actor DeadKnightExplosiveImpact2: DeadKnight
-{Scale 1.2 States{Spawn:        BAH3 H -1        
+{Scale 1.0 States{Spawn:        BAH3 H -1        
 Stop
 	
 	Death:
@@ -968,7 +968,7 @@ Stop
 }}
 
 Actor DeadKnightExplosiveImpact1: DeadKnightExplosiveImpact2
-{Scale 1.2 States{Spawn:        BAH3 D -1        
+{Scale 1.0 States{Spawn:        BAH3 D -1        
 Stop}}
 
 Actor OmgSoDeadHK: DeadKnightHalfUp
@@ -1069,7 +1069,7 @@ ACTOR DyingHellKnight1
 	BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
 	BloodColor "DarkGreen"
 	Mass 999999
-	+SOLID
+	-SOLID
 	+SHOOTABLE
 	+FLOORCLIP
 	+NOPAIN
