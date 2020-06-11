@@ -8,12 +8,14 @@
 //	Sounds/COMBAT/WEAPONS folder:	Added the modified PLREADY sound effect from Dox778
 //	Sprites/Monsters folder:		Added SMGGuy idle and LabGuy with the correct axe sprites from Dox778
 //	Sprites/Weapons folder:			Removed all Dragonslayer sprites
+//	AmmoDropper.txt:				Added A_Setcrosshair(41) to Select and A_Setcrosshair(0) to Deselect states
 //	ArchVile.txt:					Added -SOLID flag to DyingArchvileNoArm
 //	Artifact.txt:					Reverted the conditional flare spawns when out of the player's sight
-//	Assaultshotgun.txt:				Added A_Setcrosshair(41) to Ready2 and A_Setcrosshair(0) to Ready3 states
+//	Assaultshotgun.txt:				Added A_Setcrosshair(41) Altfire and A_SetCrosshair(0) to all states that reset zoom to 1.0
 //	Axe.txt:						Added A_Setcrosshair(41) to Select and A_Setcrosshair(0) to Deselect states
 //	Baron.txt:						Removed the Translation property from the DeadBaron actor
 //	DECORATE.txt:					Removed the inclusion of the Dragonslayer2.txt
+//	DEFAULTWEAPON.txt:				Added A_SetCrosshair(0) to all states that reset zoom to 1.0
 //	doomdefs.bm:					Removed the Dragonslayer entries
 //	-Dragonslayer.txt:				Removed
 //	-Dragonslayer2.txt:				Removed
@@ -25,15 +27,16 @@
 //	Lamps.txt:						Reverted the conditional flare spawns when out of the player's sight
 //	Machinegun.txt:					Added lines to check for AmmoRocket first before allowing a jump to ReloadGrenade in the Reload state
 //	MapSpecificDec.txt:				Reverted the conditional flare spawns when out of the player's sight
-//	MP40.txt:						Added A_Setcrosshair(41) to Ready2 and A_Setcrosshair(0) to Ready3 states
-//	Railgun.txt:					Added A_Setcrosshair(41) to Ready2 and A_Setcrosshair(0) to Ready3 states
-//	Rifle.txt:						Added A_Setcrosshair(41) to Ready2 and A_Setcrosshair(0) to Ready3 states
-//	RocketLauncher.txt:				Added A_Setcrosshair(41) to Ready2 and A_Setcrosshair(0) to Ready3 states
+//	MP40.txt:						Added A_Setcrosshair(41) Altfire and A_SetCrosshair(0) to all states that reset zoom to 1.0
+//	Railgun.txt:					Added A_Setcrosshair(41) Altfire and A_SetCrosshair(0) to all states that reset zoom to 1.0
+//	Rifle.txt:						Added A_Setcrosshair(41) Altfire and A_SetCrosshair(0) to all states that reset zoom to 1.0
+//	RocketLauncher.txt:				Added A_Setcrosshair(41) Altfire and A_SetCrosshair(0) to all states that reset zoom to 1.0
+//									Added a GoTaunt state like the Railgun so that PowerLightAmp will be removed if jumping to Taunt from a zoomed state.
 //	Saw.txt:						Added A_Setcrosshair(41) to Select and A_Setcrosshair(0) to Deselect states
 //	Sergeants.txt:					Changed the SMGGuy's Spawn, Stand, and Idle frames to now use the new sprites from Dox778
-//	Shotgun.txt:					Added A_Setcrosshair(41) to Ready2 and A_Setcrosshair(0) to Ready3 states
+//	Shotgun.txt:					Added A_Setcrosshair(41) Altfire and A_SetCrosshair(0) to all states that reset zoom to 1.0
 //									Set the DoKickReloading state to jump to FinishedInsertingShells instead of back to InsertingShells wasting ammo
-//	SubMachinegun.txt:				Added A_Setcrosshair(41) to Ready2 and A_Setcrosshair(0) to Ready3 states
+//	SubMachinegun.txt:				Added A_Setcrosshair(41) Altfire and A_SetCrosshair(0) to all states that reset zoom to 1.0
 //	Torches.txt:					Reverted the conditional flare and particle spawns when out of the player's sight
 //	Volcabus.txt:					Adjusted radius and height to match the monsters increased size from previous edits.
 //									Changed probability of jumping to the Suffer state in Death.Massacre to 128 (rarely happens)

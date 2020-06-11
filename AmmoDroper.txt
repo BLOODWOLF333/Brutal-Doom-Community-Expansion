@@ -12,6 +12,7 @@ ACTOR AmmoDroper : BrutalWeapon
 	
 	Select:
 		TNT1 A 0
+		TNT1 A 0 A_SetCrosshair(41)
 		TNT1 A 1 A_Raise
 		TNT1 AAAAAAAAA 0 A_Raise
 		TNT1 A 0 A_GiveInventory("AmmoDropSlot", 1)
@@ -20,6 +21,7 @@ ACTOR AmmoDroper : BrutalWeapon
 		
 	Deselect:
 		TNT1 A 0
+		TNT1 A 0 A_SetCrosshair(0)
 		TNT1 AAAAAAAAA 0 A_Lower
 		TNT1 AAAAAA 1 A_Lower
 		
