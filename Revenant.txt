@@ -352,7 +352,7 @@ Goto See
 
 	FatalityZombieman:
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
-		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		//TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
 		SKF1 A 1 A_Chase("","")
 		SKF1 ABC 4 A_FaceTarget
 		TNT1 A 0 A_PlaySound("grunt/pain", 1)
@@ -370,14 +370,14 @@ Goto See
 		SKF1 I 10 A_FaceTarget
 		TNT1 A 0 A_TakeInventory("ZombieManFatality",1)
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
-		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 1)
+		//TNT1 A 0 A_ChangeFlag("SHOOTABLE", 1)
 		TNT1 A 0 A_CustomMissile("ThrowedZombieManPatch", 64, 0, 0, 0) 
 		SKEL HI 4
 		Goto See
 		
 	FatalitySergeant:
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
-		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		//TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
 		SKF2 A 1 A_Chase("","")
 		SKF2 ABC 4 A_FaceTarget
 		TNT1 A 0 A_PlaySound("grunt/pain", 1)
@@ -395,14 +395,14 @@ Goto See
 		SKF2 I 10 A_FaceTarget
 		TNT1 A 0 A_TakeInventory("SergeantFatality",1)
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
-		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 1)
+		//TNT1 A 0 A_ChangeFlag("SHOOTABLE", 1)
 		TNT1 A 0 A_CustomMissile("ThrowedSergeantPatch", 64, 0, 0, 0) 
 		SKEL HI 4
 		Goto See
 
 	FatalityImp:
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
-		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		//TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
 		SKF3 A 1 A_Chase("","")
 		SKF3 ABC 4 A_FaceTarget
 		TNT1 A 0 A_PlaySound("grunt/pain", 1)
@@ -420,7 +420,7 @@ Goto See
 		SKF3 I 10 A_FaceTarget
 		TNT1 A 0 A_TakeInventory("ImpFatality",1)
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
-		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 1)
+		//TNT1 A 0 A_ChangeFlag("SHOOTABLE", 1)
 		TNT1 A 0 A_CustomMissile("ThrowedImpPatch", 64, 0, 0, 0) 
 		SKEL HI 4
 		Goto See
