@@ -22,6 +22,7 @@ ACTOR AmmoDroper : BrutalWeapon
 	Deselect:
 		TNT1 A 0
 		TNT1 A 0 A_SetCrosshair(0)
+		TNT1 A 0 A_TakeInventory("Unloading", 1)
 		TNT1 AAAAAAAAA 0 A_Lower
 		TNT1 AAAAAA 1 A_Lower
 		
