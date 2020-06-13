@@ -719,32 +719,40 @@ ACTOR BullDemon: Demon Replaces Demon
         Stop
 
      FatalityZombieman:
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
         SARK DEDEDEDEDE 10 A_CustomMissile ("MuchBlood2", 45, 0, random (0, 360), 2, random (0, 160))
 	   
 	EndFatalityZombieman:	
 		TNT1 A 0 A_CustomMissile ("XDeathHalfZombieManDown", 20, 0, random(0, 360), 2, random (0, 160))
 		TNT1 A 0 A_TakeInventory("ZombiemanFatality",1)
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
         Goto See
 		
 	  FatalitySergeant:
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
         SARK FGFGFGFGFG 10 A_CustomMissile ("MuchBlood2", 45, 0, random (0, 360), 2, random (0, 160))
 	  
 	  EndFatalitySergeant:
 		TNT1 A 0 A_CustomMissile ("XDeathHalfZombieManDown", 20, 0, random(0, 360), 2, random (0, 160))
         TNT1 A 0 A_TakeInventory("SergeantFatality",1)
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
         Goto See
 		
 	 FatalityComando:
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
         SARK JKJKJKJKJK 10 A_CustomMissile ("MuchBlood2", 45, 0, random (0, 360), 2, random (0, 160))
 	 EndFatalityComando:  
         TNT1 A 0 A_TakeInventory("ComandoFatality",1)
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
         Goto See
 		
 	 FatalityImp:
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
         SARK HIHIHIHIHI 10 A_CustomMissile ("MuchBlood2", 45, 0, random (0, 360), 2, random (0, 160))
 	   
 	  EndFatalityImp: 
         TNT1 A 0 A_TakeInventory("ImpFatality",1)
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
         Goto See
 
 	Eat:

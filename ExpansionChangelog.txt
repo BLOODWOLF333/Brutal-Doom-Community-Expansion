@@ -14,6 +14,8 @@
 //	Assaultshotgun.txt:				Added A_Setcrosshair(41) Altfire and A_SetCrosshair(0) to all states that reset zoom to 1.0
 //	Axe.txt:						Added A_Setcrosshair(41) to Select and A_Setcrosshair(0) to Deselect states
 //	Baron.txt:						Removed the Translation property from the DeadBaron actor
+//									Changed A_SetInvulnerable to A_ChangeFlag("NOPAIN") for monster fatalities 
+//	Belphegor.txt:					Changed A_SetInvulnerable to A_ChangeFlag("NOPAIN") for monster fatalities 
 //	DECORATE.txt:					Removed the inclusion of the Dragonslayer2.txt
 //	DEFAULTWEAPON.txt:				Added A_SetCrosshair(0) to all states that reset zoom to 1.0
 //	doomdefs.bm:					Removed the Dragonslayer entries
@@ -24,11 +26,13 @@
 //	Fire.txt:						Reverted the conditional flare and particle spawns when out of the player's sight
 //	GLDEFS.txt:						Removed the vert and horizontal Slayermissile entries for the Dragonslayer
 //	Health2.txt:					Reverted the conditional flare spawns when out of the player's sight
+//	Knight.txt:						Changed A_SetInvulnerable to A_ChangeFlag("NOPAIN") for monster fatalities 
 //	Lamps.txt:						Reverted the conditional flare spawns when out of the player's sight
 //	Machinegun.txt:					Added lines to check for AmmoRocket first before allowing a jump to ReloadGrenade in the Reload state
 //	MapSpecificDec.txt:				Reverted the conditional flare spawns when out of the player's sight
 //	MP40.txt:						Added A_Setcrosshair(41) Altfire and A_SetCrosshair(0) to all states that reset zoom to 1.0
 //	Railgun.txt:					Added A_Setcrosshair(41) Altfire and A_SetCrosshair(0) to all states that reset zoom to 1.0
+//	Revenant.txt:					Notated-out the A_ChangeFlag("Shootable") for monster fatalities 
 //	Rifle.txt:						Added A_Setcrosshair(41) Altfire and A_SetCrosshair(0) to all states that reset zoom to 1.0
 //	RocketLauncher.txt:				Added A_Setcrosshair(41) Altfire and A_SetCrosshair(0) to all states that reset zoom to 1.0
 //									Added a GoTaunt state like the Railgun so that PowerLightAmp will be removed if jumping to Taunt from a zoomed state.

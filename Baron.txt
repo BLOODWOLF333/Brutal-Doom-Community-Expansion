@@ -890,7 +890,7 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
         Goto See2
 
 	FatalityImp:
-        TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+        TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
 		TNT1 A 0 A_PlaySound("demon/pain")
         3HF2 ABABAB 4
 	   
@@ -906,7 +906,7 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 	   3HF2 GGHHIJ 3
 	   TNT1 A 0 A_SpawnItem("DeadImp_BaronFatality")
         TNT1 A 0 A_TakeInventory("ImpFatality3",1)
-        TNT1 A 0 A_ChangeFlag("SHOOTABLE", 1)
+        TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
         Goto See2
 	}
 }

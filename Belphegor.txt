@@ -185,7 +185,7 @@ ACTOR Belphegor2 : BaronofHell 2544
         Stop	
 
    CurbstompMarine:
-        TNT1 A 0 A_SetInvulnerable
+        TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
         BS3F AB 10
 	    BS3F CDEF 2
 	    EXPL A 0 Radius_Quake (2, 24, 0, 15, 0)
@@ -247,7 +247,7 @@ ACTOR Belphegor2 : BaronofHell 2544
 		BS3F NOPPP 3
    
 		TNT1 A 0 A_TakeInventory("Curbstomp_Marine")
-        TNT1 A 0 A_UnSetInvulnerable
+        TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
 	Goto See
 	}
 }
