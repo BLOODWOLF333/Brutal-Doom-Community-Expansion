@@ -493,6 +493,7 @@ ACTOR HitlersBuzzsaw : BrutalWeapon
 		Goto Ready 
 		
 	Deselect:
+		TNT1 A 0 A_TakeInventory("Unloading", 1)
 		HBUS A 1 A_Lower
 		Loop
 	Select:

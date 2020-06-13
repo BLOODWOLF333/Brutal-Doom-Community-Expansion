@@ -64,10 +64,6 @@ Actor BFG10k : BrutalWeapon
 		BG2G A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		Loop
 	
-  Deselect:
-    BG2G E 1 BRIGHT A_Lower
-    Loop
-	
   Select:
 	BG2G A 0 A_Giveinventory("GoSpecial",1)
   	BG2G A 0 A_Takeinventory("FistsSelected",1)
@@ -189,8 +185,9 @@ Actor BFG10k : BrutalWeapon
 		Goto Ready
 		
 	Deselect:
-	    TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		BG2G A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("Unloading", 1)
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		BG2G A 1 BRIGHT A_Lower
 		Loop	
   }

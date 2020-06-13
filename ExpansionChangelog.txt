@@ -9,13 +9,17 @@
 //	Sprites/Monsters folder:		Added SMGGuy idle and LabGuy with the correct axe sprites from Dox778
 //	Sprites/Weapons folder:			Removed all Dragonslayer sprites
 //	AmmoDropper.txt:				Added A_Setcrosshair(41) to Select and A_Setcrosshair(0) to Deselect states
+//									Added TNT1 A 0 A_TakeInventory("Unloading", 1) to Deselect state
 //	ArchVile.txt:					Added -SOLID flag to DyingArchvileNoArm
 //	Artifact.txt:					Reverted the conditional flare spawns when out of the player's sight
 //	Assaultshotgun.txt:				Added A_Setcrosshair(41) Altfire and A_SetCrosshair(0) to all states that reset zoom to 1.0
 //	Axe.txt:						Added A_Setcrosshair(41) to Select and A_Setcrosshair(0) to Deselect states
+//									Added TNT1 A 0 A_TakeInventory("Unloading", 1) to Deselect state
 //	Baron.txt:						Removed the Translation property from the DeadBaron actor
 //									Changed A_SetInvulnerable to A_ChangeFlag("NOPAIN") for monster fatalities 
 //	Belphegor.txt:					Changed A_SetInvulnerable to A_ChangeFlag("NOPAIN") for monster fatalities 
+//	BFG.txt:						Added TNT1 A 0 A_TakeInventory("Unloading", 1) to Deselect state
+//	BFG10K.txt:						Added TNT1 A 0 A_TakeInventory("Unloading", 1) to Deselect state
 //	+CapturedMarine.txt:			Set health to 100, Normalized the DamageFactors, set DamageFactor "Use", to 1000.0, and set DamageFactor "Stealth", to 0.0
 //	DECORATE.txt:					Removed the inclusion of the Dragonslayer2.txt
 //	DEFAULTWEAPON.txt:				Added A_SetCrosshair(0) to all states that reset zoom to 1.0
@@ -26,24 +30,35 @@
 //	DyingGuys.txt:					Change actors who were inheriting from the "alive" monsters to instead inherit from their generic dying monster (execpt for the armless Pinky)
 //									Set all dying actors to -SOLID
 //	Fire.txt:						Reverted the conditional flare and particle spawns when out of the player's sight
+//	FlameCannon.txt:				Added TNT1 A 0 A_TakeInventory("Unloading", 1) to Deselect state
+//	FlameThrower.txt:				Added TNT1 A 0 A_TakeInventory("Unloading", 1) to Deselect state
 //	GLDEFS.txt:						Removed the vert and horizontal Slayermissile entries for the Dragonslayer
+//	Grenades.txt:					Added TNT1 A 0 A_TakeInventory("Unloading", 1) to Deselect state
 //	Health2.txt:					Reverted the conditional flare spawns when out of the player's sight
+//	HellishMissile.txt:				Added TNT1 A 0 A_TakeInventory("Unloading", 1) to Deselect state
 //	Knight.txt:						Changed A_SetInvulnerable to A_ChangeFlag("NOPAIN") for monster fatalities 
 //	Lamps.txt:						Reverted the conditional flare spawns when out of the player's sight
 //	Machinegun.txt:					Added lines to check for AmmoRocket first before allowing a jump to ReloadGrenade in the Reload state
+//									Added TNT1 A 0 A_TakeInventory("Unloading", 1) to Deselect state
 //	MapSpecificDec.txt:				Reverted the conditional flare spawns when out of the player's sight
+//	Minigun.txt:					Added TNT1 A 0 A_TakeInventory("Unloading", 1) to Deselect state
+//	Melee.txt:						Added TNT1 A 0 A_TakeInventory("Unloading", 1) to Deselect state
 //	MP40.txt:						Added A_Setcrosshair(41) Altfire and A_SetCrosshair(0) to all states that reset zoom to 1.0
+//									Added TNT1 A 0 A_TakeInventory("Unloading", 1) to HitlersBuzzsaw Deselect state
+//	NukeLauncher.txt:				Added TNT1 A 0 A_TakeInventory("Unloading", 1) to Deselect state
 //	Railgun.txt:					Added A_Setcrosshair(41) Altfire and A_SetCrosshair(0) to all states that reset zoom to 1.0
 //	Revenant.txt:					Notated-out the A_ChangeFlag("Shootable") for monster fatalities 
 //	Rifle.txt:						Added A_Setcrosshair(41) Altfire and A_SetCrosshair(0) to all states that reset zoom to 1.0
 //	RocketLauncher.txt:				Added A_Setcrosshair(41) Altfire and A_SetCrosshair(0) to all states that reset zoom to 1.0
 //									Added a GoTaunt state like the Railgun so that PowerLightAmp will be removed if jumping to Taunt from a zoomed state.
 //	Saw.txt:						Added A_Setcrosshair(41) to Select and A_Setcrosshair(0) to Deselect states
+//									Added TNT1 A 0 A_TakeInventory("Unloading", 1) to Deselect state
 //	Sergeants.txt:					Changed the SMGGuy's Spawn, Stand, and Idle frames to now use the new sprites from Dox778
 //	Shotgun.txt:					Added A_Setcrosshair(41) Altfire and A_SetCrosshair(0) to all states that reset zoom to 1.0
 //									Set the DoKickReloading state to jump to FinishedInsertingShells instead of back to InsertingShells wasting ammo
 //	SubMachinegun.txt:				Added A_Setcrosshair(41) Altfire and A_SetCrosshair(0) to all states that reset zoom to 1.0
 //	Torches.txt:					Reverted the conditional flare and particle spawns when out of the player's sight
+//	Unmaker.txt:					Added TNT1 A 0 A_TakeInventory("Unloading", 1) to Deselect state
 //	Volcabus.txt:					Adjusted radius and height to match the monsters increased size from previous edits.
 //									Changed probability of jumping to the Suffer state in Death.Massacre to 128 (rarely happens)
 //	WeaponSpawners.txt:				Removed the Dragonslayer from the ChainsawSpawner
