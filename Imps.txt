@@ -46,6 +46,8 @@ ACTOR Imp Replaces DoomImp
 	PainSound "imp/pain"
 	DeathSound "imp/death"
 	ActiveSound "imp/active"
+	HitObituary "$OB_IMPHIT"
+    Obituary "$OB_IMP"
 	MaxStepHeight 24
 	MaxDropOffHeight 32
 	Monster
@@ -1316,8 +1318,6 @@ ACTOR ImpAttack: BaronBall
     +BLOODSPLATTER 
 	RenderStyle Add
 	Alpha 0.6
-	HitObituary "$OB_IMPHIT"
-    Obituary "$OB_IMPHIT"
 	+DONTHURTSPECIES
 
 	SeeSound "None"
