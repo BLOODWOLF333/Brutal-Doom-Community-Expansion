@@ -5,7 +5,6 @@
 //===========================================================================
 ACTOR TheSpiderMastermind Replaces SpiderMastermind
 {
-	Obituary "%o was destroyed by a Mastermind."
 	+NOICEDEATH
 	Game Doom
 	SpawnID 7
@@ -363,7 +362,7 @@ ACTOR MastermindStep
 	//+SHOOTABLE
 	//+NOBLOOD
 	//Health 50000
-	Obituary "%o has stepped by a Mastermind."
+	Obituary "%o has been stepped on by a Mastermind."
     Health 5
 	States
 	{
