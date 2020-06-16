@@ -1,4 +1,3 @@
-
 ListMenu "MainMenu"
 {
 IfGame(Doom, Chex)
@@ -86,9 +85,6 @@ OptionMenu "BrutalMenu"
 	Command "Go to Weapons Testing Map",			"map test"
 }
 
-
-
-
 OptionMenu "BrutalCreditsMenu"
 {
 	Title "CREDITS"
@@ -97,90 +93,88 @@ OptionMenu "BrutalCreditsMenu"
 	Submenu	"Credits - Community Expansion",	"BDCreditsCE"
 }
 
-
 OptionMenu "BrutalDoomOptionsPerformance"
 {
-
-  
-  
    Title "Performance Options"
    StaticText "All changes made here have immediate effect."
    StaticText " "
-	
-  Option "Please, select engine you are using.", "isrunningzandronum", "SelectEngineType"
-  StaticText "Due the way CVARs works, you must inform the game" 
-  StaticText "if you are a client or a server with this option"
-  StaticText " so you can control settings such as blood amount."
-  StaticText "If you are playing alone, always use 'singleplayer'."
-  StaticText "If you are hosting a server, always use 'multiplayer'."
+  Option "Current Sourceport", "isrunningzandronum", "SelectEngineType"
+  StaticText "To ensure maximum compatibility, select the" 
+  StaticText "sourceport you are using to run Brutal Doom."
   StaticText " "
-  
   Option "Max Wall Decals", "cl_maxdecals", "maxdecals"
+  StaticText "Set how many bulletholes, blast marks, and"
+  StaticText "blood splats are rendered simultaneously."
+  StaticText " "
   Option "Max Gibs and Blood Pools", "sv_corpsequeuesize", "maxgibs"
+  StaticText "Set how many severed body parts and"
+  StaticText "blood pools are rendered simultaneously."
   StaticText " "
-  
-
-  Option "Blood Amount (Server/Singleplayer)", "zdoombrutalblood", "BrutalBlood"
-  Option "Blood Amount (Client/Multiplayer)", "bd_bloodamount", "BrutalBlood"
-  StaticText "How much blood do you want to see?"
+  Option "Blood Amount (GZDoom/LZDoom)", "zdoombrutalblood", "BrutalBlood"
+  Option "Blood Amount (Zandronum)", "bd_bloodamount", "BrutalBlood"
+  StaticText "Set the intensity of all blood visual effects."
   StaticText " "
-  Option "Enable Janitor  (Server/Singleplayer)", "zdoombrutaljanitor", "YesOrNo"
-  Option "Enable Janitor (Client/Multiplayer)", "bd_lowgraphicsmode", "YesOrNo"
-  StaticText "Makes gibs disappear after 30 seconds."
+  Option "Enable Janitor (GZDoom/LZDoom)", "zdoombrutaljanitor", "YesOrNo"
+  Option "Enable Janitor (Zandronum)", "bd_lowgraphicsmode", "YesOrNo"
+  StaticText "If enabled, gibs will disappear after 30 seconds."
   StaticText " "
-  
-  
-
-  
-  Option "Spent Casings stays on floor forever", "bd_infinitecasings", "YesOrNo"
+  Option "Persistent Bullet Casings", "bd_infinitecasings", "YesOrNo"
+  StaticText "If enabled, all spent bullet casings will"
+  StaticText "remain on the current map indefinitely."
+  StaticText " "
   Option "Water Ripple Effects", "bd_disablewaterripples2", "YesOrNoFalse"
+  StaticText "Enables rendering of 3D water ripples"
+  StaticText "when moving around in liquids."
   StaticText " "
-  
-
 }
-
 
 OptionMenu "BrutalDoomOptionsLevel"
 {
-
-  
-  
    Title "Level Options"
    StaticText "All changes made here will take effect on next level"
    StaticText "or when you start a new game."
    StaticText " "
-   
   Option "Vanilla Monsters", "bd_classicmonsters", "YesOrNo"
-  StaticText "Disables new enemy AI and new attacks."
+  StaticText "Spawns classic enemies instead of their"
+  StaticText "Brutal Doom equivalents."
   StaticText " "
-  
   Option "Advanced Decorative Objects", "bd_disabledecorations", "DisabledOption"
-  StaticText "Fancy particle effects for torches and lamps."
+  StaticText "Enable fancy particle effects for torches and lamps."
   StaticText " "
-  
   Option "Level Enhancement System", "bd_disablemapenhancements", "DisabledOption"
   StaticText "Improves several maps with better textures,"
   StaticText  "new decorations and sometimes new enemies."
   StaticText " "
-  
-  
    Option "Level Enhancement System - Disable Voxels", "bd_voxeldec", "YesorNoFalse"
   StaticText "Disable voxel decorations to prevent crashes on Android."
   StaticText " "
-  
   Option "New Weapons", "bd_disablenewguns", "DisabledOption"
-  StaticText "Selects if the new weapons should be spawned or not."
-  StaticText "(Submachinegun, Assault Shotgun, Railgun, etc.)"
+  StaticText "Enables spawning of new weapons, such as the"
+  StaticText "SMG, Assault Shotgun, Machinegun, and Railgun."
   StaticText " "
-  
   Option "New Enemies", "bd_disablenewenemies", "DisabledOption"
+  StaticText "Enables spawning of new enemy types, such as"
+  StaticText "the Volcabus and Ancient Arachnotron."
+  StaticText " "
   Option "Footstep Sounds", "bd_footstepsounds", "YesOrNo"
+  StaticText "Toggles the sound of the player's footsteps."
+  StaticText "Has no impact on actual gameplay."
+  StaticText " "
   Option "Spawn Demon Spheres", "bd_disabledemonspheres", "YesOrNoFalse"
+  StaticText "Enables spawning of Demon Spheres, which allow the"
+  StaticText "player to become a Revenant or Baron of Hell."
+  StaticText " "
  // StaticText "Following CVARs still doesn't works:"
   //Option "Cruelty Bonuses", "bd_disablecrueltybonus", "DisabledOption"
  // Option "Bloody Screen Effects", "bd_disablebloodyscreen", "DisabledOption"
   Option "Rescuable Marines", "bd_disablefriendlymarines", "YesOrNoFalse"
-  Option "Rocket Ammo is shootable", "bd_shootablerocketammo", "YesOrNo"
+  StaticText "Replaces Blurspheres with captured Marines, who can"
+  StaticText "be freed to lend additional fire support in combat."
+  StaticText " "
+  Option "Destructible Rocket Ammo", "bd_shootablerocketammo", "YesOrNo"
+  StaticText "Allows rocket ammunition to be detonated by the player's"
+  StaticText "weapons fire. Extremely hazardous to anyone nearby."
+  StaticText " "
 }
 
 
@@ -188,64 +182,47 @@ OptionMenu "BrutalDoomOptionsLevel"
 
 OptionMenu "BrutalDoomOptionsGame"
 {
-
-  
-  
    Title "Gameplay Options"
    StaticText "All changes made here have an immediate effect."
    StaticText " "
-   
-   
-   Option "Rocket Launcher has backblast", "bd_rocketbackblast", "YesOrNo"
+   Option "Rocket Launcher Backblast", "bd_rocketbackblast", "YesOrNo"
+  StaticText "When enabled, you will harm yourself if using the"
+  StaticText "Rocket Launcher with insufficient clearance behind you."
   StaticText " "
-   
-   
-   Command "Enable Reloading for all weapons",			"take turboreload"
-   Command "Disable Reloading for all weapons",			"give turboreload"
-   
-   Command "Enable Auto-Reload",			"take NoAutoReload"
-   Command "Disable Auto-Reload",			"give NoAutoReload"
+   Command "Enable Reloading",			"take turboreload"
+   Command "Skip Reloading",			"give turboreload"
+   StaticText "If using ''Skip Reloading'', reload animations"
+   StaticText "are skipped entirely."
    StaticText " "
-
+   Command "Enable Automatic Reloading",			"take NoAutoReload"
+   Command "Enable Manual Reloading",			"give NoAutoReload"
+   StaticText "Set whether or not you have to manually reload"
+   StaticText "each time you empty your current magazine."
+   StaticText " "
 }
 
 
 OptionMenu "BrutalDoomOptionsPlayer"
 {
-
-  
-  
    Title "Player Options"
    StaticText "All changes made here require the level to"
    StaticText "be restarted or take effect on next level."
    StaticText " "
-   
-   
    Option "Player Gender", "gender", "genderOption"
-   StaticText "Only works on Zandronum"
+   StaticText "Set the player's gender. Only works on Zandronum"
    StaticText " "
-   
    Option "HUD Type", "bd_sbartype", "HUDType"
-   StaticText " "
-   
    Option "HUD Size", "screenblocks", "screenblocksize"
-   StaticText " "
-   
    Option "Show enemy health", "bd_disablescanner", "YesorNoFalse"
    StaticText " "
    StaticText " "
-   StaticText " "
-   
-   Command "Force HUD to Restart",			"pukename BDRespawn"
-   
-   
-   
+   Command "Force HUD Refresh",			"pukename BDRespawn"
    StaticText " "
    StaticText " "
    StaticText " "
    Option "Force GZDoom UI Scale", "uiscale", "uiscalesize"
    StaticText "Change this if you are having trouble"
-   StaticText "with HUD scaling on GZDoom"
+   StaticText "with HUD scaling on GZDoom."
    StaticText "(does nothing on Zandronum)"
 }
 
@@ -270,22 +247,16 @@ OptionValue "DisabledOption"
 	1, "Disabled"
 }
 
-
-
-
-
 OptionValue "YesOrNoFalse"
 {
 	1, "No"
 	0, "Yes"
 }
 
-
-
 OptionValue "SelectEngineType"
 {
-	1, "Multiplayer"
-	0, "Singleplayer"
+	1, "Zandronum"
+	0, "GZDoom/LZDoom"
 }
 
 OptionValue "genderoption"
@@ -300,7 +271,6 @@ OptionValue "screenblocksize"
 	11, "Custom HUDs"
 	12, "No HUD"
 }
-
 
 OptionValue "HUDType"
 {
@@ -333,7 +303,6 @@ OptionValue "maxdecals"
 	9999, "9999"
 }
 
-
 OptionValue "maxgibs"
 {
 	1, "0"
@@ -348,11 +317,8 @@ OptionValue "maxgibs"
 	50000, "50000"
 }
 
-
-
 OptionMenu "BDCredits1"
 {
-
    Title "BDv21 by SGT_Mark_IV"
    StaticText "==== Graphics ===="
    StaticText "Mike12, Captain Toenail, David G, Revilution,"
@@ -363,20 +329,15 @@ OptionMenu "BDCredits1"
    StaticText "EletricPulse, Mr. Enchanter, Doom_Jedi, Kamijou"
    StaticText "Kars van Kouwen, scalliano, Tomtefars, Das_M,"
    StaticText "Azona, Bret Arts, 3D Realms, Raven Software."
-   StaticText ""
-   
-   
+   StaticText "" 
    StaticText "==== Code Contributions ===="
    StaticText "TerminusEst13, Solarsnowfall, Nash, Jekyll Grim Payne" 
    StaticText " "
-   
    StaticText "==== Voice Acting ===="
    StaticText "Zero X. Diamond (Doomguy), Tiberium Soul (Marines)"
     StaticText " "
-   
    StaticText "==== PSX Doom Maps ===="
    StaticText "fenderc01, Dragonsbretheren"
-   
    StaticText " "
    StaticText " "
    StaticText " "
@@ -384,21 +345,15 @@ OptionMenu "BDCredits1"
    StaticText "in Twitter, Discord, Moddb, Doomworld, or Zandronum forums"
 }
 
-
-
-
 OptionMenu "BDCredits2"
 {
-
    Title "Special Thanks"
-   
    StaticText "==== Special Sponsors ===="
    StaticText "Rowan Waltho, Tainted Reality, Josef S. E. Trendevski,"
    StaticText "Lasse Skov, Matthew J. Meade, Jian Feng"
    StaticText "Suleyman Kutlu, Khayman, SenorFussion"
    StaticText "Aaron Stockman, Kyle Quintanilla"
    StaticText " "
-   
    StaticText "= V21 Testing Team (list still incomplete) ="
    StaticText "Cairn (El_Jefe) Moczygemba, Bog, TheZombie, LadySlash"
    StaticText "FusedQYou, BXN, Erebus, Miles, Jaylen (Pyrolex) Leu"	
@@ -412,26 +367,22 @@ OptionMenu "BDCredits2"
    StaticText " "
    StaticText "In case of missing names, please PM them to me either"
    StaticText "in Twitter, Discord, Moddb, Doomworld, or Zandronum forums"
-   
-   
    StaticText " "
    StaticText "Special Thanks To Andrew Hulshult, Finfr0sk"
    StaticText "John Romero, Bethesda's Doom Community Managers"
-   
 }
 
 OptionMenu "BDCreditsCE"
 {
 	Title "BDv21: Community Expansion v0.1.1"
-	
 	StaticText "==== Code ===="
-	StaticText "BLOODWOLF333"
+	StaticText "BLOODWOLF333, Zodomaniac"
 	StaticText " "
 	StaticText "==== Images ===="
 	StaticText "Dox778, Typical SF, Squig, BLOODWOLF333"
 	StaticText " "
 	StaticText "==== Play Testing ===="
-	StaticText "Shockwave"
+	StaticText "Shockwave_S08"
 	StaticText " "
 	StaticText "Contribute to the project and report bugs at:"
 	StaticText "github.com/BLOODWOLF333/Brutal-Doom-Community-Expansion"
