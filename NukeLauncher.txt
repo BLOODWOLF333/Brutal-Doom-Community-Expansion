@@ -23,7 +23,6 @@ ACTOR NukeLauncher : BrutalWeapon 7452
 	
 	Ready:
 	Ready3:
-	Reload:
 		NKLG A 1 A_WeaponReady
 		NKLG A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
         NKLG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
@@ -109,6 +108,7 @@ ACTOR NukeLauncher : BrutalWeapon 7452
 	    NKLG A 0 A_StopSound(CHAN_WEAPON)
 		NKLG A 0 A_TakeInventory("TossGrenade", 1)
 		TNT1 A 0 A_TakeInventory("Unloading", 1)
+		TNT1 A 0 A_TakeInventory("Reloading", 1)
 		NKLG A 1 A_Lower
 		Loop
 	Select:
