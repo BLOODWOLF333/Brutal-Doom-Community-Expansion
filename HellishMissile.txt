@@ -98,6 +98,7 @@ ACTOR HellishMissileLauncher : BrutalWeapon
 	Deselect:
 		RVCG A 0 A_TakeInventory("TossGrenade", 1)
 		TNT1 A 0 A_TakeInventory("Unloading", 1)
+		TNT1 A 0 A_TakeInventory("Reloading", 1)
 		RVCG A 1 A_Lower
 		Loop
 	Select:

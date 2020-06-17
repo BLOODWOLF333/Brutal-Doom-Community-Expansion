@@ -101,6 +101,7 @@ ACTOR FlameCannon : BrutalWeapon
 	    FLMG A 0 A_StopSound(CHAN_WEAPON)
 		FLMG A 0 A_TakeInventory("TossGrenade", 1)
 		TNT1 A 0 A_TakeInventory("Unloading", 1)
+		TNT1 A 0 A_TakeInventory("Reloading", 1)
 		FLMG A 1 A_Lower
 		Loop
 	Select:
