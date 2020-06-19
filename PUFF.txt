@@ -11,6 +11,8 @@ DamageType Melee
   +BLOODLESSIMPACT 
   +FORCEXYBILLBOARD
   +DONTSPLASH
+  +MTHRUSPECIES
+  Species "Marines"
   states
   {
   Spawn:
@@ -124,9 +126,11 @@ ACTOR HitPuff Replaces BulletPuff
 	+FORCEXYBILLBOARD
 	+DONTSPLASH
 	-EXPLODEONWATER
+	+MTHRUSPECIES
 	Gravity 0.01
 	DamageType Bullet
 	Decal "BulletDecalNew1"
+	Species "Marines"
   states
   {
   Spawn:
