@@ -6,20 +6,18 @@ ACTOR DualMP40 : BrutalWeapon
 	Weapon.AmmoGive2 0
 	Weapon.AmmoType1 "Mauser9mm"
 	Weapon.AmmoType2 "DualMP40Ammo"
-	Obituary "%o was shot down by %k's SMG."
+	Obituary "%o was shot down by %k's MP40."
     AttackSound "None"
-	Weapon.SelectionOrder 1700
     Inventory.PickupSound "CLIPIN"
-	Inventory.Pickupmessage "You got dual MP40's! (Slot 2)"
+	Inventory.Pickupmessage "You got the MP40 (Slot 2)!"
     +WEAPON.NOAUTOAIM
-	+WEAPON.NOAUTOFIRE
+    //+WEAPON.NOAUTOFIRE
+    +FORCEXYBILLBOARD
 	+WEAPON.NO_AUTO_SWITCH
-	+WEAPON.CHEATNOTWEAPON
-	+WEAPON.NOALERT
 	Scale 0.9
-	Tag "Dual MP40's"
 	States
 	{
+		
 	Ready3:
 	Ready:
         MP42 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
@@ -124,7 +122,7 @@ ACTOR DualMP40 : BrutalWeapon
 		MP42 A 0 A_Takeinventory("BFGSelected",1)
 		MP42 A 0 A_Takeinventory("BFG10kSelected",1)
 		MP42 A 0 A_Takeinventory("RailGunSelected",1)
-		MP42 A 0 A_Giveinventory("SubMachineGunSelected",1)
+		MP42 A 0 A_Takeinventory("SubMachineGunSelected",1)
 		MP42 A 0 A_Takeinventory("RevenantLauncherSelected",1)
 		MP42 A 0 A_Takeinventory("LostSoulSelected",1)
 		MP42 A 0 A_Takeinventory("FlameCannonSelected",1)
@@ -146,34 +144,43 @@ ACTOR DualMP40 : BrutalWeapon
 
 	
     Fire:
-        TNT1 A 0
-		MP42 A 0 A_JumpIfInventory("MP40Ammo",1,1)
-        Goto FireLeft
+        MP42 A 0 A_JumpIfInventory("DualMP40Ammo",1,2)
+        Goto NoAmmo
+        TNT1 AAAA 0
 		MP42 A 0 A_PlaySound("FARSHT", 6)
         MP42 A 0 A_PlaySound("pfire", 1)
 		MP42 A 0 A_ZoomFactor(0.99)
-		MP42 A 0 A_SpawnItemEx("PlayerMuzzle1",32,5,28)
-		MP42 B 1 BRIGHT A_FireBullets (4, 3, -1, 14, "WeakPuff", FBF_NORANDOM)
+		//MP42 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
+		MP42 B 1 BRIGHT A_FireBullets (4, 3, -1, 15, "WeakPuff", FBF_NORANDOM)
 		MP42 A 0 A_ZoomFactor(1.0)
-        MP42 C 0 A_FireCustomMissile("DecorativeTracer", random(-6,3), 0, 5, 0)
-		MP42 A 0 A_Takeinventory("MP40Ammo",1)
+        MP42 C 1 A_FireCustomMissile("DecorativeTracer", random(-6,3), 0, 5, 0)
+		
 		MP42 A 0 A_Takeinventory("DualMP40Ammo",1)
 		MP42 A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,6,-2)
 		
+		
+		MP42 A 0 A_JumpIfInventory("MP40Ammo",1,"FireLeft")//Checks if single gun is not depleted
+        	MP42 A 0 A_Takeinventory("MP40Ammo",1)
+		MP42 A 2	
+		MP42 A 0 A_ReFire
+		MP42 A 1 A_WeaponReady(1)
+		MP42 A 7 A_WeaponReady(1)
+		Goto Ready3
+
 	FireLeft:
-		MP42 A 0 A_JumpIfInventory("DualMP40Ammo",1,1)
-        Goto NoAmmo
+		
 		MP42 A 0 A_PlaySound("FARSHT", 6)
         MP42 A 0 A_PlaySound("pfire", 1)
 		MP42 A 0 A_ZoomFactor(0.99)
-		MP42 A 0 A_SpawnItemEx("PlayerMuzzle1",32,-5,28)
-		MP42 D 1 BRIGHT A_FireBullets (4, 3, -1, 14, "WeakPuff", FBF_NORANDOM)
+		//MP42 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
+		MP42 D 1 BRIGHT A_FireBullets (4, 3, -1, 15, "WeakPuff", FBF_NORANDOM)
 		MP42 A 0 A_ZoomFactor(1.0)
         RIFF A 0 A_FireCustomMissile("DecorativeTracer", random(-3,6), 0, -5, 0)
 		MP42 A 0 A_Takeinventory("DualMP40Ammo",1)
-        MP42 E 3
+		MP42 A 0 A_Takeinventory("MP40Ammo",1)
+        MP42 E 1
 		MP42 A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,-8,-2)
-		MP42 A 0 A_ReFire("Fire")
+		MP42 A 0 A_ReFire
 		MP42 A 1 A_WeaponReady(1)
 		MP42 A 7 A_WeaponReady(1)
 		Goto Ready3
@@ -216,6 +223,7 @@ ACTOR DualMP40 : BrutalWeapon
 		MP42 A 0 A_GiveInventory ("Pumping", 1)
 		MP42 A 0 A_Takeinventory("Reloading",1)
 		MP42 A 0 A_JumpIfInventory("TurboReload",1,"TurboReload")
+		RIFR C 0 A_FireCustomMissile("EmptyClipSpawn",-5,0,8,-4)
 		MP42 F 1
 		TNT1 A 5
 		MP42 A 0 A_PlaySound("reload")
