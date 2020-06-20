@@ -1,26 +1,26 @@
 ACTOR MeleePuff: BulletPuff
 {
-  renderstyle Translucent
-  alpha 0.5
-  Scale 1.5
-DamageType Melee
-  +NOBLOCKMAP
-  +NOGRAVITY
-  +NOEXTREMEDEATH
-  +PUFFONACTORS
-  +BLOODLESSIMPACT 
-  +FORCEXYBILLBOARD
-  +DONTSPLASH
-  states
-  {
-  Spawn:
-  Death:
-  Melee:
-  XDeath:
-    PUFF A 0 A_PlaySound("player/cyborg/fist")
-    EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+	renderstyle Translucent
+	alpha 0.5
+	Scale 1.5
+	DamageType Melee
+	+NOBLOCKMAP
+	+NOGRAVITY
+	+NOEXTREMEDEATH
+	+PUFFONACTORS
+	+BLOODLESSIMPACT 
+	+FORCEXYBILLBOARD
+	+DONTSPLASH
+	states
+	{
+	Spawn:
+	Death:
+	Melee:
+	XDeath:
+	PUFF A 0 A_PlaySound("player/cyborg/fist")
+	EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
 	TNT1 A 10
-    stop
+	stop
  
   }
 }
