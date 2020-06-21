@@ -244,6 +244,40 @@ ACTOR ShotgunSpawnerDroped: ShotgunSpawner
     }
 }
 
+ACTOR RevolverSpawner: CustomInventory
+{
+ scale 0.6
+ radius 24
+ height 24
+ +FORCEXYBILLBOARD
+ Inventory.PickupMessage "$GOTREVOLVER"
+ Inventory.PickupSound "REVOHAM"
+ Mass 1
+    States
+    {
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1
+		TNT1 A 0 A_ChangeFlag("THRUACTORS", 0)
+	Stay:
+		TNT1 A 0 
+		TNT1 A 0 A_SpawnItem("FakeOldSGSprite")
+		TNT1 A 0 A_SpawnItem("FakeRevolverSprite")
+		TNT1 A 2
+		Loop
+	Pickup:
+	    TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
+		TNT1 A 0 A_GiveInventory("Revolver", 1)
+		TNT1 A 0 A_GiveInventory("AmmoMagnum", 6)
+		Stop
+	Purist:
+	    TNT1 A 0 A_GiveInventory("ClassicShotgun", 1)
+		TNT1 A 0 A_GiveInventory("AmmoShell", 8)
+		Stop
+    }
+}
+
 actor ShotgunSpawnerReplacer: BasicWeaponPickup Replaces Shotgun
 {
     States
@@ -266,7 +300,7 @@ actor ShotgunSpawnerReplacer: BasicWeaponPickup Replaces Shotgun
 	
 	 Spawn2:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx ("Revolver",0,0,0,0,0,0,0,0,0)
+		TNT1 A 0 A_SpawnItemEx ("RevolverSpawner",0,0,0,0,0,0,0,0,0)
 		TNT1 A 1
 		TNT1 A -1
 		Stop
@@ -301,6 +335,21 @@ ACTOR FakeNewSGSprite: RifleSpawner
 	 Spawn:
 		SHTC A 0
 		SHTC A 2
+		Stop
+    }
+}
+
+ACTOR FakeRevolverSprite: RifleSpawner
+{
+Scale 0.6
+VisibleToPlayerClass BDoomer, Doomer2, TacticalDoomer
++NOGRAVITY
++FLOAT +NOCLIP +NOINTERACTION
+ States
+    {
+	 Spawn:
+		REVP A 0
+		REVP A 2
 		Stop
     }
 }
