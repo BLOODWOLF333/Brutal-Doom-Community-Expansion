@@ -185,20 +185,23 @@ OptionMenu "BrutalDoomOptionsGame"
    Title "Gameplay Options"
    StaticText "All changes made here have an immediate effect."
    StaticText " "
-   
-   
-   Option "Rocket Launcher has backblast", "bd_rocketbackblast", "YesOrNo"
-	StaticText " "
-	StaticText "When enabled, you will harm yourself if using the"
-	StaticText "Rocket Launcher with insufficient clearance behind you."
-    StaticText " "
-   
-   Option "Skip Reloading", "bd_disablereloading", "YesOrNo"
-    StaticText " "
-	 
-   Option "Disable Auto-Reloading", "bd_disableautoreload", "YesOrNo"
-	StaticText " "
-
+   Option "Rocket Launcher Backblast", "bd_rocketbackblast", "YesOrNo"
+   StaticText " "
+  StaticText "When enabled, you will harm yourself if using the"
+  StaticText "Rocket Launcher with insufficient clearance behind you."
+  StaticText " "
+   Command "Enable Reloading",			"enablereloading"
+   Command "Skip Reloading",			"disablereloading"
+   StaticText " "
+   StaticText "If using \"Skip Reloading\", reload animations"
+   StaticText "are skipped entirely."
+   StaticText " "
+   Command "Enable Automatic Reloading",			"enableautoreload"
+   Command "Enable Manual Reloading Only",			"disableautoreload"
+   StaticText " "
+   StaticText "Set whether or not you have to manually reload"
+   StaticText "each time you empty your current magazine."
+   StaticText " "
 }
 
 

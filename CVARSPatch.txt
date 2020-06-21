@@ -3,16 +3,10 @@
 
 Script "Check_DisabledReloading" Enter
 {
-	If(GetCvar("bd_disablereloading") == 1 && checkinventory("istacticalclass") == 0)
+	if(GetCvar("bd_disablereloading") == 1 && checkinventory("istacticalclass") == 0)
 	{
 		GiveInventory("turboreload",1);
 	}
-	else
-	{
-		TakeInventory("turboreload",1);
-	}
-	Delay(7);
-	Restart;
 }
 
 Script "Check_DisabledAutoReloading" Enter
@@ -21,10 +15,4 @@ Script "Check_DisabledAutoReloading" Enter
 	{
 		GiveInventory("NoAutoReload", 1);
 	}
-	else
-	{
-		TakeInventory("NoAutoReload", 1);
-	}
-	Delay(7);
-	Restart;
 }
