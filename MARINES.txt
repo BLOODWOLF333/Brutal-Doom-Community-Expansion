@@ -109,9 +109,9 @@ ACTOR Marine_Rifle: SwitchableDecoration
 	Health 100
 	PainChance 255
 	DamageFactor "Melee", 0.0	DamageFactor "Minor", 0.0	DamageFactor "Kick", 0.0
-	DamageFactor "ExplosiveImpact", 0.0	DamageFactor "Bullet", 0.0	DamageFactor "SSG", 0.0
+	DamageFactor "Trample", 0.0	DamageFactor "Bullet", 0.0	DamageFactor "SSG", 0.0
 	DamageFactor "Shotgun", 0.0	DamageFactor "Shrapnel", 0.0	DamageFactor "Minigun", 0.0
-	DamageFactor "Railgun", 0.0	DamageFactor "Extreme", 0.0
+	DamageFactor "Railgun", 0.0	DamageFactor "TeleportRemover", 0.0
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 10.0
 	Damagefactor "Cut", 0.0	Damagefactor "Extremepunches", 0.0	Damagefactor "Fatality", 0.0
@@ -121,7 +121,6 @@ ACTOR Marine_Rifle: SwitchableDecoration
 	Damagefactor "LowKick", 0.0	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0
 	Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "Saw", 0.0
 	Damagefactor "Slide", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 0.0
-	Damagefactor "TeleportRemover", 0.0	Damagefactor "Trample", 0.0
 	Speed 3
 	FastSpeed 22
 	Species "Marines"
@@ -140,7 +139,6 @@ ACTOR Marine_Rifle: SwitchableDecoration
 	Translation "112:127=117:127"
 	BloodType "Player_Blood", "Player_BloodSaw", "Player_Blood"
 	Obituary "%o has been gunned down by a Marine."
-	MaxTargetRange 2048
 	Monster
 	DropItem "RifleDrop"
 	+FLOORCLIP
