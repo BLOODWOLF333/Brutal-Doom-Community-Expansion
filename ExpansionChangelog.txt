@@ -1,7 +1,7 @@
 //	Brutal Doom v21 Community Expansion Changelog
 //	*continued from BD21.0.4EXPANSION
 //
-//	Authored by BLOODWOLF, Zodomaniac
+//	Authored by BLOODWOLF
 //
 //	Development v0.1.1
 //
@@ -12,7 +12,10 @@
 //									Added TNT1 A 0 A_TakeInventory("Reloading", 1) to Deselect state
 //	BFG10K.txt:						Fixed PickupMessage
 //									Added TNT1 A 0 A_TakeInventory("Reloading", 1) to Deselect state
+//	ChaingunMarine.txt:				Changed to DropItem "DropedChaingunSpawner" like the ChaingunGuy
 //	+Doom1Remap.txt:				Notated-out the Goodie Barrel spawns ontop of the short pillars on E2M3
+//	Explosives.txt:					Added Species "TheSpiderMastermind" to JuggernautRocket
+//									Added Species "Cyberdemon" to CyberBalls
 //	FlameCannon.txt:				Added TNT1 A 0 A_TakeInventory("Reloading", 1) to Deselect state
 //	Flamethrower.txt:				Added TNT1 A 0 A_TakeInventory("Reloading", 1) to Deselect state
 //	Grenades.txt:					Added TNT1 A 0 A_TakeInventory("Reloading", 1) to Deselect state
@@ -28,12 +31,18 @@
 //	Mp40.txt:						Added TNT1 A 0 A_TakeInventory("Reloading", 1) to Deselect state of Buzzsaw
 //	NukeLauncher.txt:				Added TNT1 A 0 A_TakeInventory("Reloading", 1) to Deselect state
 //	Plasma.txt:						Fixed PickupMessage
+//	PlasmagunMarine.txt:			Changed to DropItem "PLasmagunSpawner"
 //	Railgun.txt:					Fixed PickupMessage
+//	Revolver.txt:					Set Weapon.AmmoGive to 0
+//	Revolver2.txt:					Set Weapon.AmmoGive to 0
 //	Saw.txt:						Added TNT1 A 0 A_TakeInventory("Reloading", 1) to Deselect state
+//	ShotgunMarine.txt:				Changed to DropItem "ShotgunSpawnerDroped" like the ShotgunGuy
 //	SSG.txt:						Added A_TakeInventory("SSGAlt",1) to FinishUnload state 
 //	SubMachinegun.txt:				Fixed PickupMessage
 //	Unmaker.txt:					Added TNT1 A 0 A_TakeInventory("Reloading", 1) to Deselect state
 //	WeaponSpawners.txt:				Fixed Pickupmessages
+//									Created a FakeRevolverSprite actor that cannot be seen by purist
+//									Created a RevolverSpawner actor for subsequent pickups
 //
 //	Stable v0.1.0
 //
