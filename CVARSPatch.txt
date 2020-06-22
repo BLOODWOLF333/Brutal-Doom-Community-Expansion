@@ -1,10 +1,18 @@
 #library "CVARSPatch"
 #include "zcommon.acs"
 
-Script "BD_DisableReloading" Enter
+Script "Check_DisabledReloading" Enter
 {
-	If(GetCvar("bd_disablereloading") == 1 && checkinventory("istacticalclass") == 0)
+	if(GetCvar("bd_disablereloading") == 1 && checkinventory("istacticalclass") == 0)
 	{
 		GiveInventory("turboreload",1);
+	}
+}
+
+Script "Check_DisabledAutoReloading" Enter
+{
+	if (GetCvar("bd_disableautoreload") == 1)
+	{
+		GiveInventory("NoAutoReload", 1);
 	}
 }
