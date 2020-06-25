@@ -450,12 +450,18 @@ Death6:
    }
 }
 
-
-
-
-
-
-
+ACTOR BDGlassShard : BarrelParticle
+{
+	States
+	{
+	Spawn:
+		SGSW ABCDE 4
+		Loop
+	Death:
+		SGSW F 30
+		Stop
+	}
+}
 
 Actor ShrapnelPieceDamaging
 {
