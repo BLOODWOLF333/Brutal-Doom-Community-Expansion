@@ -674,7 +674,7 @@ ACTOR BrutalizedZombieManLeg: BrutalizedZombieMan1
 	}
 }
 
-ACTOR DyingZombiemanLostTeeth: DyingZombieman
+ACTOR DyingZombiemanLostTeeth: RifleZombie
 {
     Radius 12
     Height 35
@@ -696,6 +696,7 @@ ACTOR DyingZombiemanLostTeeth: DyingZombieman
 	Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "Saw", 10.0
 	Damagefactor "Slide", 0.5	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 1.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
+	DropItem "none"
     States
     {
 	Spawn:
@@ -2446,7 +2447,7 @@ ACTOR FlyingImpaledSergeant
     }
 }
 
-ACTOR DyingShotgunguyHitInEye: DyingSergeant
+ACTOR DyingShotgunguyHitInEye: Shotgunguy1
 {
     Radius 12
     Height 30
@@ -2459,6 +2460,7 @@ ACTOR DyingShotgunguyHitInEye: DyingSergeant
 	+DONTSPLASH
 	-COUNTKILL
 	Damagefactor "Stealth", 0.0
+	DropItem "none"
     States
     {
 	Spawn:
