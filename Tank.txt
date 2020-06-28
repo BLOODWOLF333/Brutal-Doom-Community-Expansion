@@ -653,7 +653,7 @@ ACTOR Tank: SwitchableDecoration 7261
 	Activation THINGSPEC_Activate | THINGSPEC_ThingTargets | THINGSPEC_NoDeathSpecial
 	Mass 31700//35 ton
 	Speed 0
-	health 3000
+	health 2500
 	Scale 1.0
 	
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
@@ -711,8 +711,8 @@ ACTOR Tank: SwitchableDecoration 7261
 		TNT1 A 0 A_SpawnItem("TankTurretNotReal8")
 		NULL A 3
 		TNT1 A 0 A_GiveToTarget("TankMorpher", 1)
-		TNT1 A 0 A_GiveToTarget("HeavyMachinegunAmmo", 5700)
-		TNT1 A 0 A_GiveToTarget("TankCannon10Ammo", 20)
+		TNT1 A 0 A_GiveToTarget("HeavyMachinegunAmmo", 1000)
+		TNT1 A 0 A_GiveToTarget("TankAmmo", 40)
 		TNT1 A 0 Thing_ChangeTID(0, 261)
 		TNT1 A 0 A_NoBlocking
 		NULL A 1
@@ -743,10 +743,10 @@ ACTOR Tank: SwitchableDecoration 7261
 			TNT1 A 0
 			TNT1 A 0 A_ChangeFLag("NOPAIN", 1)
 			TNT1 A 0 HealThing(200)
-			TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 5700, 2)
-			TNT1 A 0 A_GiveInventory("HeavyMachinegunAmmo", 380)
-			TNT1 A 0 A_JumpIfInventory("TankCannon10Ammo", 20, 2)
-			TNT1 A 0 A_GiveInventory("TankCannon10Ammo", 1)
+			TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 1000, 2)
+			TNT1 A 0 A_GiveInventory("HeavyMachinegunAmmo", 67)
+			TNT1 A 0 A_JumpIfInventory("TankAmmo", 40, 2)
+			TNT1 A 0 A_GiveInventory("TankAmmo", 3)
 			TNK1 T 1
 			TNT1 A 0 A_ChangeFLag("NOPAIN", 0)
 			Goto StandingHere
@@ -869,7 +869,7 @@ var int user_tankbasedirection;
 	Radius 64
 	Height 100
 	Mass 31700//35 Tons
-	Health 3000
+	Health 2500
 	-PICKUP
 	player.viewheight	72
 	Player.AttackZOffset 22
@@ -1156,10 +1156,10 @@ var int user_tankbasedirection;
 		TNT1 A 0
 		TNK1 T 1 A_PlaySound("vehicle/pain")
 		TNT1 A 0 HealThing(200)
-		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 5700, 2)
-		TNT1 A 0 A_GiveInventory("HeavyMachinegunAmmo", 380)
-		TNT1 A 0 A_JumpIfInventory("TankCannon10Ammo", 20, 2)
-		TNT1 A 0 A_GiveInventory("TankCannon10Ammo", 1)
+		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 1000, 2)
+		TNT1 A 0 A_GiveInventory("HeavyMachinegunAmmo", 67)
+		TNT1 A 0 A_JumpIfInventory("TankAmmo", 40, 2)
+		TNT1 A 0 A_GiveInventory("TankAmmo", 3)
 		TNK1 T 1
 		Goto Stay
 		
@@ -1320,9 +1320,9 @@ var int user_tankbasedirection;
 ACTOR TankReady : Ammo
 {
    Inventory.Amount 0
-   Inventory.MaxAmount 175
+   Inventory.MaxAmount 140
    Ammo.BackpackAmount 0
-   Ammo.BackpackMaxAmount 175
+   Ammo.BackpackMaxAmount 140
    Inventory.Icon TNT1A0
 }
 
@@ -1333,7 +1333,7 @@ ACTOR TankGun : DoomWeapon
 	Weapon.AmmoGive1 0
 	Weapon.AmmoUse2 0
 	Weapon.AmmoGive2 0
-	Weapon.AmmoType2 "TankCannon10Ammo"
+	Weapon.AmmoType2 "TankAmmo"
 	Weapon.AmmoType1 "HeavyMachinegunAmmo"
 	Obituary "%o was gibbed by a tank."
 	Weapon.SelectionOrder 9999
@@ -1353,7 +1353,7 @@ ACTOR TankGun : DoomWeapon
 		TNHD W 10
 		TNT1 A 0 A_PlaySound("INFRARED", 1)
 		TNHD XYZXYZXYZXYZXYZXYZXYZ 1 BRIGHT
-		TNT1 A 0 A_GiveInventory("TankReady", 175)
+		TNT1 A 0 A_GiveInventory("TankReady", 140)
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
 		TNT1 A 0 A_TakeInventory("PressedJump", 2)
 		TNHD Y 0 A_TakeInventory("PressedJump", 2)
@@ -1426,13 +1426,13 @@ ACTOR TankGun : DoomWeapon
 	Fire:
 	    TNT1 A 0 
 		TNT1 A 0 A_JumpIfinventory("TankZoom", 1, "FireZoom")
-		TNT1 A 0 A_JumpIfInventory("TankCannon10Ammo", 1, 1)
+		TNT1 A 0 A_JumpIfInventory("TankAmmo", 1, 1)
 		Goto NoAmmo
-		TNT1 A 0 A_JumpIfInventory("TankReady", 174, 1)
+		TNT1 A 0 A_JumpIfInventory("TankReady", 139, 1)
 		Goto NotReady
-		TNT1 A 0 A_TakeInventory("TankReady", 175, 1)
+		TNT1 A 0 A_TakeInventory("TankReady", 140, 1)
 		TNT1 A 0 A_PlaySound("TANKF", 1)
-		TNT1 A 0 A_TakeInventory("TankCannon10Ammo", 1)
+		TNT1 A 0 A_TakeInventory("TankAmmo", 1)
 		
 		TNT1 A 0 A_FireCustomMissile("Alerter")
 		MISG A 0 A_FireCustomMissile("TankShell")
@@ -1450,13 +1450,13 @@ ACTOR TankGun : DoomWeapon
 		
 	FireZoom:
 		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("TankCannon10Ammo", 1, 1)
-		Goto NoAmmo
-		TNT1 A 0 A_JumpIfInventory("TankReady", 174, 1)
+		TNT1 A 0 A_JumpIfInventory("TankAmmo", 1, 1)
+		Goto NoAmmoZoom
+		TNT1 A 0 A_JumpIfInventory("TankReady", 139, 1)
 		Goto NotReadyZoom
-		TNT1 A 0 A_TakeInventory("TankReady", 175, 1)
+		TNT1 A 0 A_TakeInventory("TankReady", 140, 1)
 		TNT1 A 0 A_PlaySound("TANKF", 1)
-		TNT1 A 0 A_TakeInventory("TankCannon10Ammo", 1)
+		TNT1 A 0 A_TakeInventory("TankAmmo", 1)
 		TNT1 A 0 A_FireCustomMissile("Alerter")
 		MISG A 0 A_FireCustomMissile("TankShell")
 		MISG A 0 A_FireCustomMissile("TankFireEffect")
@@ -1472,10 +1472,12 @@ ACTOR TankGun : DoomWeapon
 		
 	NoAmmo:
 		TNHD A 2
+		TNT1 A 0 A_Print("Ammunition Depleted", 2)
 		Goto ReadyToFire 
 		
 	NoAmmoZoom:
 		TNT1 A 2
+		TNT1 A 0 A_Print("Ammunition Depleted", 2)
 		Goto Ready2
 		
 	AltFire:
@@ -1489,7 +1491,7 @@ ACTOR TankGun : DoomWeapon
 		Goto NoAmmo
 		TNT1 A 0 A_PlaySound("TANKMG", 1)
 		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
-		TNT1 A 0 A_FireCustomMissile("HeavyMachinegunProjectile", 0.182, 0, 64, 32, 0, -0.091)
+		TNT1 A 0 A_FireCustomMissile("HeavyMachinegunProjectile", 0.5, 0, 64, 32, 0, -0.2)
 		TNT1 A 0 A_FireCustomMissile("HeavyMachinegunFlash", 0, 0, 64, 32)
 		TNT1 A 0 A_TakeInventory("HeavyMachinegunAmmo", 1)
 		
@@ -1506,10 +1508,10 @@ ACTOR TankGun : DoomWeapon
 	AltFire2Continue:
 		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 1, 2)
 		TNT1 A 0 A_PlaySound("CHAINSTO", 3)
-		Goto NoAmmo
+		Goto NoAmmoZoom
 		TNT1 A 0 A_PlaySound("TANKMG", 1)
 		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
-		TNT1 A 0 A_FireCustomMissile("HeavyMachinegunProjectile", 0.182, 0, 64, 32, 0, -0.091)
+		TNT1 A 0 A_FireCustomMissile("HeavyMachinegunProjectile", 0.5, 0, 64, 32, 0, -0.2)
 		TNT1 A 0 A_FireCustomMissile("HeavyMachinegunFlash", 0, 0, 64, 32)
 		TNT1 A 0 A_TakeInventory("HeavyMachinegunAmmo", 1)
 		 
