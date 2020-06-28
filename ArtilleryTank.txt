@@ -1,8 +1,6 @@
 //Sergeant Mark IV's vehicles.
 //If you want to modify and reuse this on your wad, please ask me first.
 
-
-
 Actor ArtilleryTankTurretNotReal: TankBaseNotReal
 {
 Scale 1.0
@@ -13,13 +11,6 @@ TNT1 A 0
 TN2M T 1
 Stop
 }}
-
-
-
-
-
-
-
 
 Actor ArtilleryTankTurretNotReal2: ArtilleryTankTurretNotReal
 {
@@ -41,7 +32,6 @@ TN2M T 4
 Stop
 }}
 
-
 Actor ArtilleryTankTurretNotReal8: ArtilleryTankTurretNotReal
 {
 States
@@ -52,13 +42,11 @@ TN2E T 8
 Stop
 }}
 
-
-
 ACTOR ArtilleryTank: Tank 7264
 {
     Radius 64
 	Height 88
-	health 1560
+	health 2000
 	Scale 1.0
 	Mass 36300//40 tons
     States
@@ -97,8 +85,8 @@ ACTOR ArtilleryTank: Tank 7264
 		TNT1 A 0 A_SpawnItem("ArtilleryTankTurretNotReal8")
 		TNT1 A 3
 		TNT1 A 0 A_GiveToTarget("ArtilleryTankMorpher", 1)
-		TNT1 A 0 A_GiveToTarget("Autocannon2Ammo2", 1000)
-		TNT1 A 0 A_GiveToTarget("MissileAmmo", 120)
+		TNT1 A 0 A_GiveToTarget("HeavyMachinegunAmmo", 1200)
+		TNT1 A 0 A_GiveToTarget("HelicopterRocketAmmo", 30)
 		TNT1 A 0 Thing_ChangeTID(0, 261)
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 1
@@ -127,16 +115,15 @@ ACTOR ArtilleryTank: Tank 7264
 		TNT1 A 0
 		TNT1 A 0 A_ChangeFLag("NOPAIN", 1)
 		TNT1 A 0 HealThing(104)
-		TNT1 A 0 A_JumpIfInventory("Autocannon2Ammo2", 1000, 2)
-		TNT1 A 0 A_GiveInventory("Autocannon2Ammo2", 67)
-		TNT1 A 0 A_JumpIfInventory("MissileAmmo", 120, 2)
-		TNT1 A 0 A_GiveInventory("MissileAmmo", 8)
+		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 1200, 2)
+		TNT1 A 0 A_GiveInventory("HeavyMachinegunAmmo", 80)
+		TNT1 A 0 A_JumpIfInventory("HelicopterRocketAmmo", 30, 2)
+		TNT1 A 0 A_GiveInventory("HelicopterRocketAmmo", 2)
 		TN2E T 1
 		TNT1 A 0 A_ChangeFLag("NOPAIN", 0)
 		Goto StandingHere
 	}
 }
-
 
 ACTOR ArtilleryTankRealism: ArtilleryTank
 {
@@ -165,10 +152,8 @@ ACTOR ArtilleryTankUsed: ArtilleryTank
 		TNT1 A 1
 		TNT1 A 0 A_TAkeInventory("TankBaseDirection", 500)
 		Goto StandingHere
-		
-	
-	
-	Active:
+
+Active:
 		TNT1 A 0 
 		TNT1 A 0 A_ChangeFLag("NOPAIN", 1)
 		TNT1 A 0 A_TakeFromTarget("PowerInvulnerable", 1)
@@ -190,12 +175,7 @@ ACTOR ArtilleryTankUsed: ArtilleryTank
 	}
 }
 
-	
-
-
 ACTOR PowerArtilleryTankSwitch : PowerMorph {PowerMorph.PlayerClass "PlayerArtilleryTank"}
-
-
 
 ACTOR ArtilleryTankMorpher : CustomInventory 
 {
@@ -210,8 +190,6 @@ ACTOR ArtilleryTankMorpher : CustomInventory
   Stop
   }
  }
- 
-
 
 ACTOR ArtilleryTankMorphActivation : PowerupGiver
 {
@@ -237,14 +215,11 @@ ACTOR ArtilleryTankMorphActivation : PowerupGiver
   Stop
   }
  }
- 
- 
-
 
 ACTOR PlayerArtilleryTank : PlayerTank
 {
 	Height 88
-	health 1560
+	health 2000
 	player.viewheight 65
     player.attackzoffset 21
 	Player.MorphWeapon "ArtilleryTankGun"
@@ -271,9 +246,7 @@ ACTOR PlayerArtilleryTank : PlayerTank
 		TNT1 A 0 A_Print ("A", 2, "TUTO2")
 	Goto Stay
 
-		
-
-	ExitVehicle:
+ExitVehicle:
 	TNT1 A 1
 	TNT1 A 0 A_ChangeFlag(NOPAIN, 1)
 	TNT1 A 0 A_JumpIfHealthLower(2, "EmergencyExit")
@@ -325,10 +298,8 @@ ACTOR PlayerArtilleryTank : PlayerTank
 	TNT1 A 0 ACS_NamedExecuteAlways("BDLeaveTank")
 	PLA1 J 100
 	Goto Stay
-	
-		
-		
-	TurnLeft:
+
+TurnLeft:
 		TNT1 A 0
 		TN2M T 2
 		TNT1 A 0 A_TakeInventory("TurnLeft", 1)
@@ -359,9 +330,8 @@ ACTOR PlayerArtilleryTank : PlayerTank
 		TNT1 A 0 A_SetUserVar("user_tankbasedirection", 0)
 		TNT1 A 0 A_JumpIfInventory("Accelerate", 1, "TurnLeftAccel")
 		Goto TurnLeft
-		
-		
-	TurnLeftAccel:
+
+TurnLeftAccel:
 		TNT1 A 0
 		TNT1 A 0 A_TakeInventory("TurnLeft", 1)
 		TNT1 A 0 A_TakeInventory("TurnRight", 1)
@@ -421,9 +391,8 @@ ACTOR PlayerArtilleryTank : PlayerTank
 		TNT1 A 0 A_SetUserVar("user_tankbasedirection", 360)
 		TNT1 A 0 A_JumpIfInventory("Accelerate", 1, "TurnRightAccel")
 		Goto TurnRight
-		
-	
-	TurnRightAccel:
+
+TurnRightAccel:
 		TNT1 A 0
 		TNT1 A 0 A_TakeInventory("TurnLeft", 1)
 		TNT1 A 0 A_TakeInventory("TurnRight", 1)
@@ -476,9 +445,8 @@ ACTOR PlayerArtilleryTank : PlayerTank
 		TN2M T 1 
 		TNT1 A 0 A_JumpIF(velz < 0, "Falling")
 		Goto Stay
-		
-	
-	Pain.TracksDamaged:
+
+Pain.TracksDamaged:
 	    TNT1 A 0
 		TNT1 A 0 
 		
@@ -494,10 +462,10 @@ ACTOR PlayerArtilleryTank : PlayerTank
 		TNT1 A 0
 		TN2E T 1 A_PlaySound("vehicle/pain")
 		TNT1 A 0 HealThing(104)
-		TNT1 A 0 A_JumpIfInventory("Autocannon2Ammo2", 1000, 2)
-		TNT1 A 0 A_GiveInventory("Autocannon2Ammo2", 67)
-		TNT1 A 0 A_JumpIfInventory("MissileAmmo", 120, 2)
-		TNT1 A 0 A_GiveInventory("MissileAmmo", 8)
+		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 1200, 2)
+		TNT1 A 0 A_GiveInventory("HeavyMachinegunAmmo", 80)
+		TNT1 A 0 A_JumpIfInventory("HelicopterRocketAmmo", 30, 2)
+		TNT1 A 0 A_GiveInventory("HelicopterRocketAmmo", 2)
 		TN2E T 1
 		Goto Stay
 	
@@ -537,9 +505,8 @@ ACTOR PlayerArtilleryTank : PlayerTank
 		
 		TNT1 A 0 A_JumpIF(velz < 0, "Falling")
 		Goto CheckIfStillMoves
-		
-		
-	Backpedal:
+
+Backpedal:
 		TNT1 A 0 A_PlaySound("TANK1", 5, 1, 1)
 		TNT1 A 0 A_SpawnItemEx("TnkStep", 0, 0, 8, 0, 0, 0, user_tankbasedirection, SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_SpawnItemEx ("TnkTreadsDamage" , -100, 0, 0, 0, 0, 0, user_tankbasedirection, SXF_ABSOLUTEANGLE | SXF_ABSOLUTEVELOCITY)
@@ -621,10 +588,8 @@ ACTOR PlayerArtilleryTank : PlayerTank
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving1" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_SetPitch(4.0 + pitch)
 		Goto Stay	
-		
-		
-		
-	Death:	
+
+Death:	
 	XDeath:
     TNT1 A 1
 	TNT1 A 0 A_SpawnItem("BigExplosion1112")
@@ -660,8 +625,8 @@ ACTOR ArtilleryTankGun : DoomWeapon
 	Weapon.AmmoGive1 0
 	Weapon.AmmoUse2 1
 	Weapon.AmmoGive1 0
-	Weapon.AmmoType1 "Autocannon2Ammo2"
-	Weapon.AmmoType2 "MissileAmmo"
+	Weapon.AmmoType1 "HeavyMachinegunAmmo"
+	Weapon.AmmoType2 "HelicopterRocketAmmo"
 	Obituary "%o was wasted by an artillery tank."
 	Weapon.SelectionOrder 9999
 	+WEAPON.AMMO_OPTIONAL
@@ -680,7 +645,6 @@ ACTOR ArtilleryTankGun : DoomWeapon
 		TNHD W 10
 		TNT1 A 0 A_PlaySound("INFRARED", 1)
 		TNHD XYZXYZXYZXYZXYZXYZXYZ 1 BRIGHT
-		TNT1 A 0 A_GiveInventory("LRMReady", 88)
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
 		TNHD Y 0 A_TakeInventory("PressedJump", 2)
 		TNT1 A 0 A_TakeInventory("TankZoom", 1)
@@ -703,22 +667,14 @@ ACTOR ArtilleryTankGun : DoomWeapon
 		TNT1 A 0 A_JumpIfInventory("Kicking", 1, "ZoomMode")
 		Loop	
 	
-	Reloading:
-		TNLH G 7
-		TNT1 A 0 A_Print("Reloading", 2)
-		Goto ReadyToFire
-		
-	ReloadingZoom:
-		TNT1 A 7
-		TNT1 A 0 A_Print("Reloading", 2)
-		Goto ReadyToFire2	
-	
 	NoAmmo:
 		TNLH G 2
+		TNT1 A 0 A_Print("Ammunition Depleted", 2)
 		Goto ReadyToFire
 		
 	NoAmmoZoom:
 		TNT1 A 2
+		TNT1 A 0 A_Print("Ammunition Depleted", 2)
 		Goto ReadyToFire2 
 	
 	ZoomMode:
@@ -761,49 +717,48 @@ ACTOR ArtilleryTankGun : DoomWeapon
 	Fire://zero-offset = 65 pixels high
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfinventory("TankZoom", 1, "FireZoom")
-		TNT1 A 0 A_JumpIfInventory("Autocannon2Ammo2", 1, 1)
+		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 1, 1)
 		Goto NoAmmo
 		
 		TNT1 A 0 A_FireCustomMissile("Alerter")
 		TNLH H 1 BRIGHT A_FireCustomMissile("AutocannonFlash", 0, 0, -32, -16, 0, 0)
-		TNLH I 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", -0.107, 0, -32, -16, 0, 0.054)
-		TNT1 A 0 A_TakeInventory("Autocannon2Ammo2", 1)
+		TNLH I 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", -0.2, 0, -32, -16, 0, 0.1)
+		TNT1 A 0 A_TakeInventory("HeavyMachinegunAmmo", 1)
 		TNLH J 2 A_PlaySound("ACANO1", 1)
 		TNT1 A 0 A_PlaySound("FARCAN1", 4)
 		
-		TNT1 A 0 A_JumpIfInventory("Autocannon2Ammo2", 1, 1)
+		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 1, 1)
 		Goto NoAmmo
 		
 		TNT1 A 0 A_FireCustomMissile("Alerter")
 		TNLH K 1 BRIGHT A_FireCustomMissile("AutocannonFlash", 0, 0, 32, -16, 0, 0)
-		TNLH L 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", 0.107, 0, 32, -16, 0, 0.054)
-		TNT1 A 0 A_TakeInventory("Autocannon2Ammo2", 1)
+		TNLH L 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", 0.2, 0, 32, -16, 0, 0.1)
+		TNT1 A 0 A_TakeInventory("HeavyMachinegunAmmo", 1)
 		TNLH M 2 A_PlaySound("ACANO1", 1)
 		TNT1 A 0 A_PlaySound("FARCAN1", 4)
 		
 		TNT1 A 0 A_ReFire
 		Goto ReadyToFire
-		
-		
+
 	FireZoom:	
 		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("Autocannon2Ammo2", 1, 1)
+		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 1, 1)
 		Goto NoAmmoZoom
 		
 		TNT1 A 0 A_FireCustomMissile("Alerter")
 		TNT1 H 1 BRIGHT A_FireCustomMissile("AutocannonFlash", 0, 0, -32, -16, 0, 0)
-		TNT1 I 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", -0.107, 0, -32, -16, 0, 0.054)
-		TNT1 A 0 A_TakeInventory("Autocannon2Ammo2", 1)
+		TNT1 I 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", -0.2, 0, -32, -16, 0, 0.1)
+		TNT1 A 0 A_TakeInventory("HeavyMachinegunAmmo", 1)
 		TNT1 J 2 A_PlaySound("ACANO1", 1)
 		TNT1 A 0 A_PlaySound("FARCAN1", 4)
 		
-		TNT1 A 0 A_JumpIfInventory("Autocannon2Ammo2", 1, 1)
+		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 1, 1)
 		Goto NoAmmo
 		
 		TNT1 A 0 A_FireCustomMissile("Alerter")
 		TNT1 K 1 BRIGHT A_FireCustomMissile("AutocannonFlash", 0, 0, 32, -16, 0, 0)
-		TNT1 L 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", 0.107, 0, 32, -16, 0, 0.054)
-		TNT1 A 0 A_TakeInventory("Autocannon2Ammo2", 1)
+		TNT1 L 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", 0.2, 0, 32, -16, 0, 0.1)
+		TNT1 A 0 A_TakeInventory("HeavyMachinegunAmmo", 1)
 		TNT1 M 2 A_PlaySound("ACANO1", 1)
 		TNT1 A 0 A_PlaySound("FARCAN1", 4)
 		
@@ -813,133 +768,49 @@ ACTOR ArtilleryTankGun : DoomWeapon
 	AltFire:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfinventory("TankZoom", 1, "AltFire2")
-		TNT1 A 0 A_JumpIfInventory("MissileAmmo", 10, 1)
+		TNT1 A 0 A_JumpIfInventory("HelicopterRocketAmmo", 2, 1)
 		Goto NoAmmo
-		TNT1 A 0 A_JumpIfInventory("LRMReady", 88, 1)
-		Goto Reloading
 		TNT1 A 0 A_JumpIfInventory("DMgame",1,"AltFireDM")
 		
 		TNT1 A 0 A_FireCustomMissile("Alerter")
-		TNT1 A 0 A_FireCustomMissile("LRM", 0.182, 0, random(56,72), random(56,72), 0, -0.182)
-		TNT1 A 0 A_FireCustomMissile("LRM", -0.182, 0, random(-72,-56), random(56,72), 0, -0.182)
-		TNLH G 7 BRIGHT
-		TNT1 A 0 A_TakeInventory("MissileAmmo", 2)
-		TNT1 A 0 A_FireCustomMissile("Alerter")
-		TNT1 A 0 A_FireCustomMissile("LRM", 0.182, 0, random(56,72), random(56,72), 0, -0.182)
-		TNT1 A 0 A_FireCustomMissile("LRM", -0.182, 0, random(-72,-56), random(56,72), 0, -0.182)
-		TNLH G 7 BRIGHT
-		TNT1 A 0 A_TakeInventory("MissileAmmo", 2)
-		TNT1 A 0 A_FireCustomMissile("Alerter")
-		TNT1 A 0 A_FireCustomMissile("LRM", 0.182, 0, random(56,72), random(56,72), 0, -0.182)
-		TNT1 A 0 A_FireCustomMissile("LRM", -0.182, 0, random(-72,-56), random(56,72), 0, -0.182)
-		TNLH G 7 BRIGHT
-		TNT1 A 0 A_TakeInventory("MissileAmmo", 2)
-		TNT1 A 0 A_FireCustomMissile("Alerter")
-		TNT1 A 0 A_FireCustomMissile("LRM", 0.182, 0, random(56,72), random(56,72), 0, -0.182)
-		TNT1 A 0 A_FireCustomMissile("LRM", -0.182, 0, random(-72,-56), random(56,72), 0, -0.182)
-		TNLH G 7 BRIGHT
-		TNT1 A 0 A_TakeInventory("MissileAmmo", 2)
-		TNT1 A 0 A_FireCustomMissile("Alerter")
-		TNT1 A 0 A_FireCustomMissile("LRM", 0.182, 0, random(56,72), random(56,72), 0, -0.182)
-		TNT1 A 0 A_FireCustomMissile("LRM", -0.182, 0, random(-72,-56), random(56,72), 0, -0.182)
-		TNLH G 7 BRIGHT
-		TNT1 A 0 A_TakeInventory("MissileAmmo", 2)
-		TNT1 A 0 A_TakeInventory("LRMReady", 88)
+		TNT1 A 0 A_FireCustomMissile("TankMissile", 0.5, 0, random(56,72), random(56,72), 0, -0.5)
+		TNLH G 15 BRIGHT
+		TNT1 A 0 A_FireCustomMissile("TankMissile", -0.5, 0, random(-72,-56), random(56,72), 0, -0.5)
+		TNLH G 15 BRIGHT
+		TNT1 A 0 A_TakeInventory("HelicopterRocketAmmo", 2)
 		Goto ReadyToFire
 	
 	AltFireDM:
 		TNT1 A 0
 		TNT1 A 0 A_FireCustomMissile("Alerter")
-		TNT1 A 0 A_FireCustomMissile("LRMDM", 0.182, 0, random(56,72), random(56,72), 0, -0.182)
-		TNT1 A 0 A_FireCustomMissile("LRMDM", -0.182, 0, random(-72,-56), random(56,72), 0, -0.182)
-		TNLH G 7 BRIGHT
-		TNT1 A 0 A_TakeInventory("MissileAmmo", 2)
-		TNT1 A 0 A_FireCustomMissile("Alerter")
-		TNT1 A 0 A_FireCustomMissile("LRMDM", 0.182, 0, random(56,72), random(56,72), 0, -0.182)
-		TNT1 A 0 A_FireCustomMissile("LRMDM", -0.182, 0, random(-72,-56), random(56,72), 0, -0.182)
-		TNLH G 7 BRIGHT
-		TNT1 A 0 A_TakeInventory("MissileAmmo", 2)
-		TNT1 A 0 A_FireCustomMissile("Alerter")
-		TNT1 A 0 A_FireCustomMissile("LRMDM", 0.182, 0, random(56,72), random(56,72), 0, -0.182)
-		TNT1 A 0 A_FireCustomMissile("LRMDM", -0.182, 0, random(-72,-56), random(56,72), 0, -0.182)
-		TNLH G 7 BRIGHT
-		TNT1 A 0 A_TakeInventory("MissileAmmo", 2)
-		TNT1 A 0 A_FireCustomMissile("Alerter")
-		TNT1 A 0 A_FireCustomMissile("LRMDM", 0.182, 0, random(56,72), random(56,72), 0, -0.182)
-		TNT1 A 0 A_FireCustomMissile("LRMDM", -0.182, 0, random(-72,-56), random(56,72), 0, -0.182)
-		TNLH G 7 BRIGHT
-		TNT1 A 0 A_TakeInventory("MissileAmmo", 2)
-		TNT1 A 0 A_FireCustomMissile("Alerter")
-		TNT1 A 0 A_FireCustomMissile("LRMDM", 0.182, 0, random(56,72), random(56,72), 0, -0.182)
-		TNT1 A 0 A_FireCustomMissile("LRMDM", -0.182, 0, random(-72,-56), random(56,72), 0, -0.182)
-		TNLH G 7 BRIGHT
-		TNT1 A 0 A_TakeInventory("MissileAmmo", 2)
-		TNT1 A 0 A_TakeInventory("LRMReady", 88)
+		TNT1 A 0 A_FireCustomMissile("TankMissileDM", 0.5, 0, random(56,72), random(56,72), 0, -0.5)
+		TNLH G 15 BRIGHT
+		TNT1 A 0 A_FireCustomMissile("TankMissileDM", -0.5, 0, random(-72,-56), random(56,72), 0, -0.5)
+		TNLH G 15 BRIGHT
+		TNT1 A 0 A_TakeInventory("HelicopterRocketAmmo", 2)
 		Goto ReadyToFire
 	
 	AltFire2:
-		TNT1 A 0 A_JumpIfInventory("MissileAmmo", 10, 1)
+		TNT1 A 0 A_JumpIfInventory("HelicopterRocketAmmo", 2, 1)
 		Goto NoAmmoZoom
-		TNT1 A 0 A_JumpIfInventory("LRMReady", 88, 1)
-		Goto ReloadingZoom
 		TNT1 A 0 A_JumpIfInventory("DMgame",1,"AltFire2DM")
 		
 		TNT1 A 0 A_FireCustomMissile("Alerter")
-		TNT1 A 0 A_FireCustomMissile("LRM", 0.182, 0, random(56,72), random(56,72), 0, -0.182)
-		TNT1 A 0 A_FireCustomMissile("LRM", -0.182, 0, random(-72,-56), random(56,72), 0, -0.182)
-		TNT1 A 7 BRIGHT
-		TNT1 A 0 A_TakeInventory("MissileAmmo", 2)
-		TNT1 A 0 A_FireCustomMissile("Alerter")
-		TNT1 A 0 A_FireCustomMissile("LRM", 0.182, 0, random(56,72), random(56,72), 0, -0.182)
-		TNT1 A 0 A_FireCustomMissile("LRM", -0.182, 0, random(-72,-56), random(56,72), 0, -0.182)
-		TNT1 A 7 BRIGHT
-		TNT1 A 0 A_TakeInventory("MissileAmmo", 2)
-		TNT1 A 0 A_FireCustomMissile("Alerter")
-		TNT1 A 0 A_FireCustomMissile("LRM", 0.182, 0, random(56,72), random(56,72), 0, -0.182)
-		TNT1 A 0 A_FireCustomMissile("LRM", -0.182, 0, random(-72,-56), random(56,72), 0, -0.182)
-		TNT1 A 7 BRIGHT
-		TNT1 A 0 A_TakeInventory("MissileAmmo", 2)
-		TNT1 A 0 A_FireCustomMissile("Alerter")
-		TNT1 A 0 A_FireCustomMissile("LRM", 0.182, 0, random(56,72), random(56,72), 0, -0.182)
-		TNT1 A 0 A_FireCustomMissile("LRM", -0.182, 0, random(-72,-56), random(56,72), 0, -0.182)
-		TNT1 A 7 BRIGHT
-		TNT1 A 0 A_TakeInventory("MissileAmmo", 2)
-		TNT1 A 0 A_FireCustomMissile("Alerter")
-		TNT1 A 0 A_FireCustomMissile("LRM", 0.182, 0, random(56,72), random(56,72), 0, -0.182)
-		TNT1 A 0 A_FireCustomMissile("LRM", -0.182, 0, random(-72,-56), random(56,72), 0, -0.182)
-		TNT1 A 7 BRIGHT
-		TNT1 A 0 A_TakeInventory("MissileAmmo", 2)
-		TNT1 A 0 A_TakeInventory("LRMReady", 88)
+		TNT1 A 0 A_FireCustomMissile("TankMissile", 0.5, 0, random(56,72), random(56,72), 0, -0.5)
+		TNT1 A 15 BRIGHT
+		TNT1 A 0 A_FireCustomMissile("TankMissile", -0.5, 0, random(-72,-56), random(56,72), 0, -0.5)
+		TNT1 A 15 BRIGHT
+		TNT1 A 0 A_TakeInventory("HelicopterRocketAmmo", 2)
 		Goto ReadyToFire2
 	
 	AltFire2DM:
 		TNT1 A 0
 		TNT1 A 0 A_FireCustomMissile("Alerter")
-		TNT1 A 0 A_FireCustomMissile("LRMDM", 0.182, 0, random(56,72), random(56,72), 0, -0.182)
-		TNT1 A 0 A_FireCustomMissile("LRMDM", -0.182, 0, random(-72,-56), random(56,72), 0, -0.182)
-		TNT1 A 7 BRIGHT
-		TNT1 A 0 A_TakeInventory("MissileAmmo", 2)
-		TNT1 A 0 A_FireCustomMissile("Alerter")
-		TNT1 A 0 A_FireCustomMissile("LRMDM", 0.182, 0, random(56,72), random(56,72), 0, -0.182)
-		TNT1 A 0 A_FireCustomMissile("LRMDM", -0.182, 0, random(-72,-56), random(56,72), 0, -0.182)
-		TNT1 A 7 BRIGHT
-		TNT1 A 0 A_TakeInventory("MissileAmmo", 2)
-		TNT1 A 0 A_FireCustomMissile("Alerter")
-		TNT1 A 0 A_FireCustomMissile("LRMDM", 0.182, 0, random(56,72), random(56,72), 0, -0.182)
-		TNT1 A 0 A_FireCustomMissile("LRMDM", -0.182, 0, random(-72,-56), random(56,72), 0, -0.182)
-		TNT1 A 7 BRIGHT
-		TNT1 A 0 A_TakeInventory("MissileAmmo", 2)
-		TNT1 A 0 A_FireCustomMissile("Alerter")
-		TNT1 A 0 A_FireCustomMissile("LRMDM", 0.182, 0, random(56,72), random(56,72), 0, -0.182)
-		TNT1 A 0 A_FireCustomMissile("LRMDM", -0.182, 0, random(-72,-56), random(56,72), 0, -0.182)
-		TNT1 A 7 BRIGHT
-		TNT1 A 0 A_TakeInventory("MissileAmmo", 2)
-		TNT1 A 0 A_FireCustomMissile("Alerter")
-		TNT1 A 0 A_FireCustomMissile("LRMDM", 0.182, 0, random(56,72), random(56,72), 0, -0.182)
-		TNT1 A 0 A_FireCustomMissile("LRMDM", -0.182, 0, random(-72,-56), random(56,72), 0, -0.182)
-		TNT1 A 7 BRIGHT
-		TNT1 A 0 A_TakeInventory("MissileAmmo", 2)
-		TNT1 A 0 A_TakeInventory("LRMReady", 88)
+		TNT1 A 0 A_FireCustomMissile("TankMissileDM", 0.5, 0, random(56,72), random(56,72), 0, -0.5)
+		TNT1 A 15 BRIGHT
+		TNT1 A 0 A_FireCustomMissile("TankMissileDM", -0.5, 0, random(-72,-56), random(56,72), 0, -0.5)
+		TNT1 A 15 BRIGHT
+		TNT1 A 0 A_TakeInventory("HelicopterRocketAmmo", 2)
 		Goto ReadyToFire2
 	
 	Flash:
@@ -1014,5 +885,224 @@ ACTOR ArtilleryTankGun : DoomWeapon
 		LAUN A -1
 		Stop
 		
+	}
+}
+
+ACTOR TankMissile: Rocket2
+{
+	Speed 50
+    Damage (random (450, 450))
+	DamageType Explosive
+	Scale 1.0
+	+SEEKERMISSILE
+	+SCREENSEEKER
+	-NOGRAVITY
+	Gravity 0.2
+	States
+	{
+	Spawn:
+	
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("DSMISLAU", 1, 1, 1)
+		TNT1 A 0 A_PlaySound("DSMISFIR", 4)
+		
+		//TNT1 A 0 ThrustThingZ(0, 6, -1, 1)
+		MISL A 0 A_CustomMissile("BackblastFlames1", 0, 0, angle-170, CMF_ABSOLUTEANGLE)
+		MISL A 1 Bright A_SeekerMissile (4,8, SMF_LOOK)
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+		TNT1 A 0 A_SpawnItem ("HighExplosiveFlamesSmall")
+		TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		MISL A 1 Bright A_SeekerMissile (4,8, SMF_LOOK)
+		MISL A 0 A_CustomMissile("BackblastFlames2", 0, 0, angle-190, CMF_ABSOLUTEANGLE)
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+		TNT1 A 0 A_SpawnItem ("HighExplosiveFlamesSmall")
+		TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		MISL A 1 Bright A_SeekerMissile (4,8, SMF_LOOK)
+		MISL A 0 A_CustomMissile("BackblastFlames3", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+		TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		
+		MISL A 1 Bright A_SeekerMissile (4,8, SMF_LOOK)
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+		TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		MISL A 1 Bright A_SeekerMissile (4,8, SMF_LOOK)
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+		TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+
+		//TNT1 A 0 ThrustThingZ(0, 6, -1, 1)
+		MISL A 1 Bright A_SeekerMissile (4,8, SMF_LOOK)
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+		TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		MISL A 1 Bright A_SeekerMissile (4,8, SMF_LOOK)
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+		TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		MISL A 1 Bright A_SeekerMissile (4,8, SMF_LOOK)
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+		TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		MISL A 1 Bright A_SeekerMissile (4,8, SMF_LOOK)
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+		TNT1 A 0 A_SpawnItem ("PlasmaSmoke")
+		TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		MISL A 1 Bright A_SeekerMissile (4,8, SMF_LOOK)
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+		TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		
+		//TNT1 A 0 ThrustThingZ(0, 40, 1, 1)
+		
+		MISL A 1 Bright A_SeekerMissile (4,8, SMF_LOOK)
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+		TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		MISL A 1 Bright A_SeekerMissile (4,8, SMF_LOOK)
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+		TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		MISL A 1 Bright A_SeekerMissile (4,8, SMF_LOOK)
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+		TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		MISL A 1 Bright A_SeekerMissile (4,8, SMF_LOOK)
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+		TNT1 A 0 A_SpawnItem ("PlasmaSmoke")
+		TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		MISL A 1 Bright A_SeekerMissile (4,8, SMF_LOOK)
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+		TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		
+		//TNT1 A 0 ThrustThingZ(0, 40, 1, 1)
+
+	Live:
+	    MISL A 1 Bright A_SeekerMissile (4,8, SMF_LOOK)
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+		TNT1 A 0 A_SpawnItem ("PlasmaSmoke")
+		TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		Loop
+	
+	SpawnUnderwater:
+	    TNT1 A 0 A_ChangeFlag("NOGRAVITY", 0)
+		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+	    TNT1 A 0 A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
+	    Goto Live
+	
+	Death:
+	XDeath:
+		TNT1 A 0
+		TNT1 A 0 A_StopSound(1)
+        EXPL A 0 Radius_Quake (3, 8, 0, 15, 0)//(intensity, duration, damrad, tremrad, tid)
+		TNT1 A 0 A_CustomMissile("ExplosionSplashSpawner")
+        TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 AAA 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
+		TNT1 AA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (40, 90))
+		TNT1 AA 0 A_CustomMissile ("BDExplosionparticles3", 10, 0, random (0, 360), 2, random (40, 90))
+        EXPL A 0 A_CustomMissile ("BigNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_SpawnItemEx ("TankMissileExplosion",0,0,13,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("BarrelKaboom",0,0,13,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 AAA 0 A_CustomMissile ("HighExplosiveFlames", random (10, 20), 0, random (0, 360), 2, random (10, 90))
+		//TNT1 A 0 A_SpawnItemEx ("RocketPenetrator",cos(-pitch)*42,0,0+(sin(pitch)*42),cos(-pitch)*40,0,sin(pitch)*40,0,SXF_TRANSFERPITCH)
+		TNT1 A 2
+		TNT1 A 0 A_SpawnItemEx ("LiquidExplosionEffectSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_PlaySound("FAREXPL", 3)
+		TNT1 A 15
+		TNT1 A 0 A_PlaySound("distantexp", 5)
+		TNT1 AA 4 A_CustomMissile ("ExplosionSmoke", 2, 0, random (0, 360), 2, random (0, 360))
+		Stop
+	}
+}
+
+ACTOR TankMissileDM: TankMissile
+{
+	Species "none"
+	-THRUSPECIES
+	-MTHRUSPECIES
+}
+
+ACTOR TankMissile2: Rocket2
+{
+	Speed 50
+    Damage (random (300, 300))
+	DamageType Explosive
+	Scale 1.0
+	Species "EnemyTank"
+	States
+	{
+	Spawn:
+	
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("DSMISLAU", 1, 1, 1)
+		TNT1 A 0 A_PlaySound("DSMISFIR", 4)
+		
+		MISL A 0 A_CustomMissile("BackblastFlames1", 0, 0, angle-170, CMF_ABSOLUTEANGLE)
+		MISL A 1 Bright
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+		TNT1 A 0 A_SpawnItem ("HighExplosiveFlamesSmall")
+		TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		MISL A 1 Bright
+		MISL A 0 A_CustomMissile("BackblastFlames2", 0, 0, angle-190, CMF_ABSOLUTEANGLE)
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+		TNT1 A 0 A_SpawnItem ("HighExplosiveFlamesSmall")
+		TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		MISL A 1 Bright
+		MISL A 0 A_CustomMissile("BackblastFlames3", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+		TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		
+	Live:
+	    MISL A 1 Bright
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+		TNT1 A 0 A_SpawnItem ("PlasmaSmoke")
+		TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		Loop
+	
+	SpawnUnderwater:
+	    TNT1 A 0 A_ChangeFlag("NOGRAVITY", 0)
+		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+	    TNT1 A 0 A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
+	    Goto Live
+	
+	Death:
+	XDeath:
+		TNT1 A 0
+		TNT1 A 0 A_StopSound(1)
+        EXPL A 0 Radius_Quake (3, 8, 0, 15, 0)//(intensity, duration, damrad, tremrad, tid)
+		TNT1 A 0 A_CustomMissile("ExplosionSplashSpawner")
+        TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 AAA 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
+		TNT1 AA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (40, 90))
+		TNT1 AA 0 A_CustomMissile ("BDExplosionparticles3", 10, 0, random (0, 360), 2, random (40, 90))
+		TNT1 AAA 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+        EXPL A 0 A_CustomMissile ("BigNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_SpawnItemEx ("BarrelExplosion",0,0,13,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("BarrelKaboom",0,0,13,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		//TNT1 A 0 A_SpawnItemEx ("RocketPenetrator",cos(-pitch)*42,0,0+(sin(pitch)*42),cos(-pitch)*40,0,sin(pitch)*40,0,SXF_TRANSFERPITCH)
+		TNT1 A 2
+		TNT1 A 0 A_SpawnItemEx ("LiquidExplosionEffectSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_PlaySound("FAREXPL", 3)
+		TNT1 A 15
+		TNT1 A 0 A_PlaySound("distantexp", 5)
+		TNT1 AA 4 A_CustomMissile ("ExplosionSmoke", 2, 0, random (0, 360), 2, random (0, 360))
+		Stop
 	}
 }

@@ -49,10 +49,8 @@ ACTOR Clip2 : Ammo
 		Stop
 	}
 }
-
-
-
-ACTOR DoubleRifleAmmo : Ammo
+	
+	ACTOR DoubleRifleAmmo : Ammo
 {
    Inventory.Amount 0
    Inventory.MaxAmount 62
@@ -60,10 +58,8 @@ ACTOR DoubleRifleAmmo : Ammo
    Ammo.BackpackMaxAmount 62
    Inventory.Icon "RIFLB0"
 }
-
-
-
-ACTOR Clip1 : Ammo
+	
+	ACTOR Clip1 : Ammo
 {
 	Game Doom
 	Inventory.PickupMessage "Picked up a Pistol Magazine."
@@ -777,13 +773,30 @@ ACTOR GrenadeBox : GrenadeAmmo
 	}
 }
 
-ACTOR TankCannon10Ammo : Ammo
+ACTOR TankAmmo : Ammo
 {
 	Inventory.PickupMessage "Picked up a Magazine."
 	Inventory.Amount 10
-	Inventory.MaxAmount 20
+	Inventory.MaxAmount 100
 	Ammo.BackpackAmount 0
-	Ammo.BackpackMaxAmount 20
+	Ammo.BackpackMaxAmount 100
+	Inventory.Icon "NULL"
+	States
+	{
+	Spawn:
+		CLIP A -1
+		Stop
+	}
+}
+
+ACTOR MechAmmo : Ammo
+{
+
+	Inventory.PickupMessage "Picked up a Magazine."
+	Inventory.Amount 10
+	Inventory.MaxAmount 100
+	Ammo.BackpackAmount 0
+	Ammo.BackpackMaxAmount 100
 	Inventory.Icon "NULL"
 	States
 	{
@@ -797,10 +810,10 @@ ACTOR HeavyMachinegunAmmo : Ammo
 {
 	Game Doom
 	Inventory.PickupMessage "Picked up a Magazine."
-	Inventory.Amount 100
-	Inventory.MaxAmount 5700
+	Inventory.Amount 200
+	Inventory.MaxAmount 2000
 	Ammo.BackpackAmount 0
-	Ammo.BackpackMaxAmount 5700
+	Ammo.BackpackMaxAmount 2000
 	Inventory.Icon "NULL"
 	States
 	{
@@ -810,14 +823,14 @@ ACTOR HeavyMachinegunAmmo : Ammo
 	}
 }
 
-ACTOR Autocannon2Ammo : Ammo
+ACTOR MechRocketAmmo : Ammo
 {
 	Game Doom
 	Inventory.PickupMessage "Picked up a Magazine."
-	Inventory.Amount 100
-	Inventory.MaxAmount 500
+	Inventory.Amount 6
+	Inventory.MaxAmount 60
 	Ammo.BackpackAmount 0
-	Ammo.BackpackMaxAmount 500
+	Ammo.BackpackMaxAmount 60
 	Inventory.Icon "NULL"
 	States
 	{
@@ -827,7 +840,7 @@ ACTOR Autocannon2Ammo : Ammo
 	}
 }
 
-ACTOR Autocannon2Ammo2 : Ammo
+ACTOR AutocannonAmmo : Ammo
 {
 	Game Doom
 	Inventory.PickupMessage "Picked up a Magazine."
@@ -844,14 +857,14 @@ ACTOR Autocannon2Ammo2 : Ammo
 	}
 }
 
-ACTOR MissileAmmo : Ammo
+ACTOR MechMOrtarAmmo : Ammo
 {
 	Game Doom
 	Inventory.PickupMessage "Picked up a Magazine."
-	Inventory.Amount 5
-	Inventory.MaxAmount 120
+	Inventory.Amount 2
+	Inventory.MaxAmount 20
 	Ammo.BackpackAmount 0
-	Ammo.BackpackMaxAmount 120
+	Ammo.BackpackMaxAmount 20
 	Inventory.Icon "NULL"
 	States
 	{
@@ -861,14 +874,31 @@ ACTOR MissileAmmo : Ammo
 	}
 }
 
-ACTOR SRMAmmo : Ammo
+ACTOR HelicopterRocketAmmo : Ammo
 {
 	Game Doom
 	Inventory.PickupMessage "Picked up a Magazine."
-	Inventory.Amount 1
+	Inventory.Amount 10
 	Inventory.MaxAmount 100
 	Ammo.BackpackAmount 0
 	Ammo.BackpackMaxAmount 100
+	Inventory.Icon "NULL"
+	States
+	{
+	Spawn:
+		CLIP A -1
+		Stop
+	}
+}
+
+ACTOR HelicopterMissileAmmo : Ammo
+{
+	Game Doom
+	Inventory.PickupMessage "Picked up a Magazine."
+	Inventory.Amount 5
+	Inventory.MaxAmount 50
+	Ammo.BackpackAmount 0
+	Ammo.BackpackMaxAmount 50
 	Inventory.Icon "NULL"
 	States
 	{

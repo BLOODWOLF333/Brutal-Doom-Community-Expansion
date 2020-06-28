@@ -20,7 +20,7 @@ ACTOR attackhelicopter: Tank 7262
 	Activation THINGSPEC_Activate | THINGSPEC_ThingTargets | THINGSPEC_NoDeathSpecial
 	Mass 18100//20 tons
 	Speed 0
-	Health 1260
+	Health 500
 	
     States
     {
@@ -51,9 +51,9 @@ ACTOR attackhelicopter: Tank 7262
 		TNT1 A 0 A_GiveToTarget("CheckingMorphingPlayerHealth", 1)
 		HELA A 3
 		TNT1 A 0 A_GiveToTarget("attackhelicopterMorpher", 1)
-		TNT1 A 0 A_GiveToTarget("Autocannon2Ammo", 500)
-		TNT1 A 0 A_GiveToTarget("HeavyMachinegunAmmo", 5700)
-		TNT1 A 0 A_GiveToTarget("SRMAmmo", 100)
+		TNT1 A 0 A_GiveToTarget("AutocannonAmmo", 500)
+		TNT1 A 0 A_GiveToTarget("HeavyMachinegunAmmo", 1000)
+		TNT1 A 0 A_GiveToTarget("HelicopterRocketAmmo", 50)
 		TNT1 A 0 Thing_ChangeTID(0, 261)
 		TNT1 A 0 A_NoBlocking
 		HELA A 1
@@ -81,12 +81,12 @@ ACTOR attackhelicopter: Tank 7262
 		TNT1 A 0
 		TNT1 A 0 A_ChangeFLag("NOPAIN", 1)
 		TNT1 A 0 HealThing(84)
-		TNT1 A 0 A_JumpIfInventory("Autocannon2Ammo", 500, 2)
-		TNT1 A 0 A_GiveInventory("Autocannon2Ammo", 33)
-		TNT1 A 0 A_JumpIfInventory("SRMAmmo", 100, 2)
-		TNT1 A 0 A_GiveInventory("SRMAmmo", 7)
-		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 5700, 2)
-		TNT1 A 0 A_GiveInventory("HeavyMachinegunAmmo", 380)
+		TNT1 A 0 A_JumpIfInventory("AutocannonAmmo", 500, 2)
+		TNT1 A 0 A_GiveInventory("AutocannonAmmo", 33)
+		TNT1 A 0 A_JumpIfInventory("HelicopterRocketAmmo", 50, 2)
+		TNT1 A 0 A_GiveInventory("HelicopterRocketAmmo", 2)
+		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 1000, 2)
+		TNT1 A 0 A_GiveInventory("HeavyMachinegunAmmo", 67)
 		HELA A 1
 		TNT1 A 0 A_ChangeFLag("NOPAIN", 0)
 		Goto StandingHere
@@ -206,7 +206,7 @@ ACTOR Playerattackhelicopter : PlayerTank
 	Height 128
 	Mass 18100//20 tons
 	PainChance 0
-	Health 1260
+	Health 500
 	player.viewheight 64
     player.attackzoffset 0
 	Player.MorphWeapon "attackhelicopterGun"
@@ -943,12 +943,12 @@ ACTOR Playerattackhelicopter : PlayerTank
 		TNT1 A 0
 		HELA A 1 A_PlaySound("vehicle/pain")
 		TNT1 A 0 HealThing(84)
-		TNT1 A 0 A_JumpIfInventory("Autocannon2Ammo", 500, 2)
-		TNT1 A 0 A_GiveInventory("Autocannon2Ammo", 33)
-		TNT1 A 0 A_JumpIfInventory("SRMAmmo", 100, 2)
-		TNT1 A 0 A_GiveInventory("SRMAmmo", 7)
-		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 5700, 2)
-		TNT1 A 0 A_GiveInventory("HeavyMachinegunAmmo", 380)
+		TNT1 A 0 A_JumpIfInventory("AutocannonAmmo", 500, 2)
+		TNT1 A 0 A_GiveInventory("AutocannonAmmo", 33)
+		TNT1 A 0 A_JumpIfInventory("HelicopterRocketAmmo", 50, 2)
+		TNT1 A 0 A_GiveInventory("HelicopterRocketAmmo", 2)
+		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 1000, 2)
+		TNT1 A 0 A_GiveInventory("HeavyMachinegunAmmo", 67)
 		HELA A 1
 		Goto Stay
 		
@@ -1000,15 +1000,6 @@ ACTOR Playerattackhelicopter : PlayerTank
 //Vehicle's weapons and misc
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-ACTOR SRMReady : Ammo
-{
-   Inventory.Amount 0
-   Inventory.MaxAmount 35
-   Ammo.BackpackAmount 0
-   Ammo.BackpackMaxAmount 35
-   Inventory.Icon TNT1A0
-}
-
 ACTOR attackhelicopterGun : DoomWeapon
 {
 	Game Doom
@@ -1017,7 +1008,7 @@ ACTOR attackhelicopterGun : DoomWeapon
 	Weapon.AmmoUse2 0
 	Weapon.AmmoGive2 0
 	Weapon.AmmoType1 "HeavyMachinegunAmmo"
-	Weapon.AmmoType2 "Autocannon2Ammo"
+	Weapon.AmmoType2 "AutocannonAmmo"
 	Obituary "%o suffered Death-From-Above by a helicopter."
 	Weapon.SelectionOrder 9999
 	+WEAPON.AMMO_OPTIONAL
@@ -1039,7 +1030,6 @@ ACTOR attackhelicopterGun : DoomWeapon
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
 		TNT1 A 0 A_TakeInventory("HeliRestart",1)
 		TNT1 A 0 A_TakeInventory("PressedJump", 2)
-		TNT1 A 0 A_GiveInventory("SRMReady", 35)
 		HELH A 1 A_GunFlash
 		TNT1 A 0 A_SetCrosshair(28)
 		Goto ReadyToFire
@@ -1098,16 +1088,6 @@ ACTOR attackhelicopterGun : DoomWeapon
 		TNT1 A 7
 		TNT1 A 0 A_Print("Ammunition Depleted", 2)
 		Goto ReadyZoom
-		
-	Reloading:
-		HELH A 7
-		TNT1 A 0 A_Print("Reloading", 2)
-		Goto ReadyToFire
-
-	ReloadingZoom:
-		TNT1 A 7
-		TNT1 A 0 A_Print("Reloading", 2)
-		Goto ReadyZoom
 
 	Fire:
 		TNT1 A 0
@@ -1117,13 +1097,13 @@ ACTOR attackhelicopterGun : DoomWeapon
 	Autocannon:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfinventory("TankZoom", 1, "AutocannonZoom")
-		TNT1 A 0 A_JumpIfInventory("Autocannon2Ammo", 1, 1)
+		TNT1 A 0 A_JumpIfInventory("AutocannonAmmo", 1, 1)
 		Goto NoAmmo
 		
 		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
 		HELH A 1 BRIGHT A_FireCustomMissile("AutocannonFlash", 0, 0, 0, -48, 0, 0)
-		HELH A 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", 0, 0, 0, -48, 0, 0.16)
-		TNT1 A 0 A_TakeInventory("Autocannon2Ammo", 1)
+		HELH A 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", 0, 0, 0, -48, 0, 0.3)
+		TNT1 A 0 A_TakeInventory("AutocannonAmmo", 1)
 		HELH A 2 A_PlaySound("ACANO1", 1)
 		TNT1 A 0 A_PlaySound("FARCAN1", 4)
 		
@@ -1132,13 +1112,13 @@ ACTOR attackhelicopterGun : DoomWeapon
 		
 	AutocannonZoom:
 		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("Autocannon2Ammo", 1, 1)
+		TNT1 A 0 A_JumpIfInventory("AutocannonAmmo", 1, 1)
 		Goto NoAmmoZoom
 		
 		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
 		TNT1 A 1 BRIGHT A_FireCustomMissile("AutocannonFlash", 0, 0, 0, -48, 0, 0)
-		TNT1 A 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", 0, 0, 0, -48, 0, 0.16)
-		TNT1 A 0 A_TakeInventory("Autocannon2Ammo", 1)
+		TNT1 A 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", 0, 0, 0, -48, 0, 0.3)
+		TNT1 A 0 A_TakeInventory("AutocannonAmmo", 1)
 		TNT1 A 2 A_PlaySound("ACANO1", 1)
 		TNT1 A 0 A_PlaySound("FARCAN1", 4)
 		
@@ -1157,8 +1137,8 @@ ACTOR attackhelicopterGun : DoomWeapon
 		HELH A 0 A_PlaySound("TANKMG", 1)
 
 		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
-		HELH A 0 A_FireCustomMissile("HeavyMachinegunProjectile", 0.182, 0, 64, -16, 0, 0.046)
-		HELH A 0 A_FireCustomMissile("HeavyMachinegunProjectile", -0.182, 0, -64, -16, 0, 0.046)
+		HELH A 0 A_FireCustomMissile("HeavyMachinegunProjectile", 0.5, 0, 64, -16, 0, 0.1)
+		HELH A 0 A_FireCustomMissile("HeavyMachinegunProjectile", -0.5, 0, -64, -16, 0, 0.1)
 		HELH A 0 A_FireCustomMissile("HeavyMachinegunFlash", 0, 0, 64, -16, 0, 0)
 		HELH A 0 A_FireCustomMissile("HeavyMachinegunFlash", 0, 0, -64, -16, 0, 0)
 		HELH A 0 A_TakeInventory("HeavyMachinegunAmmo", 2)
@@ -1179,8 +1159,8 @@ ACTOR attackhelicopterGun : DoomWeapon
 		HELH A 0 A_PlaySound("TANKMG", 1)
 		
 		HELH A 0 A_FireCustomMissile("Alerter", 0, 0, 0, 0)
-		HELH A 0 A_FireCustomMissile("HeavyMachinegunProjectile", 0.182, 0, 64, -16, 0, 0.046)
-		HELH A 0 A_FireCustomMissile("HeavyMachinegunProjectile", -0.182, 0, -64, -16, 0, 0.046)
+		HELH A 0 A_FireCustomMissile("HeavyMachinegunProjectile", 0.5, 0, 64, -16, 0, 0.1)
+		HELH A 0 A_FireCustomMissile("HeavyMachinegunProjectile", -0.5, 0, -64, -16, 0, 0.1)
 		HELH A 0 A_FireCustomMissile("HeavyMachinegunFlash", 0, 0, 64, -16, 0, 0)
 		HELH A 0 A_FireCustomMissile("HeavyMachinegunFlash", 0, 0, -64, -16, 0, 0)
 		HELH A 0 A_TakeInventory("HeavyMachinegunAmmo", 2)
@@ -1193,74 +1173,58 @@ ACTOR attackhelicopterGun : DoomWeapon
 	Rocket:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("TankZoom", 1, "RocketZoom")
-		HELH A 0 A_JumpIfInventory("SRMAmmo", 4, 1)
+		HELH A 0 A_JumpIfInventory("HelicopterRocketAmmo", 2, 1)
 		Goto NoAmmo
-		HELH A 0 A_JumpIfInventory("SRMReady", 35, 1)
-		Goto Reloading
 		HELH A 0 A_JumpIfInventory("DMgame",1,"RocketDM")
 		
 		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
-		HELH A 0 A_FireCustomMissile("SRM", 0.213, 0, random(24,40), random(-40,-24), 0, 0.213)
-		HELH A 0 A_FireCustomMissile("SRM", -0.213, 0, random(-40,-24), random(-40,-24), 0, 0.213)
-		HELH A 7 BRIGHT
-		TNT1 A 0 A_TakeInventory("SRMAmmo", 2)
-		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
-		HELH A 0 A_FireCustomMissile("SRM", 0.213, 0, random(24,40), random(-40,-24), 0, 0.213)
-		HELH A 0 A_FireCustomMissile("SRM", -0.213, 0, random(-40,-24), random(-40,-24), 0, 0.213)
-		HELH A 7 BRIGHT
-		TNT1 A 0 A_TakeInventory("SRMAmmo", 2)
-		TNT1 A 0 A_TakeInventory("SRMReady", 35)
+		TNT1 A 0 A_PlaySound("MISLFIRE", 1)
+		HELH A 0 A_FireCustomMissile("AssaultHelicopterRocket", 0.2, 0, random(24,40), random(-40,-24), 0, 0.2)
+		HELH A 9 BRIGHT
+		TNT1 A 0 A_PlaySound("MISLFIRE", 1)
+		HELH A 0 A_FireCustomMissile("AssaultHelicopterRocket", -0.2, 0, random(-40,-24), random(-40,-24), 0, 0.2)
+		HELH A 9 BRIGHT
+		TNT1 A 0 A_TakeInventory("HelicopterRocketAmmo", 2)
 		Goto ReadyToFire
 		
 	RocketDM:
 		TNT1 A 0
 		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
-		HELH A 0 A_FireCustomMissile("SRMDM", 0.213, 0, random(24,40), random(-40,-24), 0, 0.213)
-		HELH A 0 A_FireCustomMissile("SRMDM", -0.213, 0, random(-40,-24), random(-40,-24), 0, 0.213)
-		HELH A 7 BRIGHT
-		TNT1 A 0 A_TakeInventory("SRMAmmo", 2)
-		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
-		HELH A 0 A_FireCustomMissile("SRMDM", 0.213, 0, random(24,40), random(-40,-24), 0, 0.213)
-		HELH A 0 A_FireCustomMissile("SRMDM", -0.213, 0, random(-40,-24), random(-40,-24), 0, 0.213)
-		HELH A 7 BRIGHT
-		TNT1 A 0 A_TakeInventory("SRMAmmo", 2)
-		TNT1 A 0 A_TakeInventory("SRMReady", 35)
+		TNT1 A 0 A_PlaySound("MISLFIRE", 1)
+		HELH A 0 A_FireCustomMissile("AssaultHelicopterRocketDM", 0.2, 0, random(24,40), random(-40,-24), 0, 0.2)
+		HELH A 9 BRIGHT
+		TNT1 A 0 A_PlaySound("MISLFIRE", 1)
+		HELH A 0 A_FireCustomMissile("AssaultHelicopterRocketDM", -0.2, 0, random(-40,-24), random(-40,-24), 0, 0.2)
+		HELH A 9 BRIGHT
+		TNT1 A 0 A_TakeInventory("HelicopterRocketAmmo", 2)
 		Goto ReadyToFire
 
 	RocketZoom:
 		TNT1 A 0
-		HELH A 0 A_JumpIfInventory("SRMAmmo", 4, 1)
+		HELH A 0 A_JumpIfInventory("HelicopterRocketAmmo", 2, 1)
 		Goto NoAmmoZoom
-		HELH A 0 A_JumpIfInventory("SRMReady", 35, 1)
-		Goto ReloadingZoom
 		HELH A 0 A_JumpIfInventory("DMgame",1,"RocketDMZoom")
 		
 		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
-		HELH A 0 A_FireCustomMissile("SRM", 0.213, 0, random(24,40), random(-40,-24), 0, 0.213)
-		HELH A 0 A_FireCustomMissile("SRM", -0.213, 0, random(-40,-24), random(-40,-24), 0, 0.213)
-		TNT1 A 7 BRIGHT
-		TNT1 A 0 A_TakeInventory("SRMAmmo", 2)
-		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
-		HELH A 0 A_FireCustomMissile("SRM", 0.213, 0, random(24,40), random(-40,-24), 0, 0.213)
-		HELH A 0 A_FireCustomMissile("SRM", -0.213, 0, random(-40,-24), random(-40,-24), 0, 0.213)
-		TNT1 A 7 BRIGHT
-		TNT1 A 0 A_TakeInventory("SRMAmmo", 2)
-		TNT1 A 0 A_TakeInventory("SRMReady", 35)
+		TNT1 A 0 A_PlaySound("MISLFIRE", 1)
+		HELH A 0 A_FireCustomMissile("AssaultHelicopterRocket", 0.2, 0, random(24,40), random(-40,-24), 0, 0.2)
+		TNT1 A 9 BRIGHT
+		TNT1 A 0 A_PlaySound("MISLFIRE", 1)
+		HELH A 0 A_FireCustomMissile("AssaultHelicopterRocket", -0.2, 0, random(-40,-24), random(-40,-24), 0, 0.2)
+		TNT1 A 9 BRIGHT
+		TNT1 A 0 A_TakeInventory("HelicopterRocketAmmo", 2)
 		Goto ReadyZoom
 		
 	RocketDMZoom:
 		TNT1 A 0
 		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
-		HELH A 0 A_FireCustomMissile("SRMDM", 0.213, 0, random(24,40), random(-40,-24), 0, 0.213)
-		HELH A 0 A_FireCustomMissile("SRMDM", -0.213, 0, random(-40,-24), random(-40,-24), 0, 0.213)
-		TNT1 A 7 BRIGHT
-		TNT1 A 0 A_TakeInventory("SRMAmmo", 2)
-		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
-		HELH A 0 A_FireCustomMissile("SRMDM", 0.213, 0, random(24,40), random(-40,-24), 0, 0.213)
-		HELH A 0 A_FireCustomMissile("SRMDM", -0.213, 0, random(-40,-24), random(-40,-24), 0, 0.213)
-		TNT1 A 7 BRIGHT
-		TNT1 A 0 A_TakeInventory("SRMAmmo", 2)
-		TNT1 A 0 A_TakeInventory("SRMReady", 35)
+		TNT1 A 0 A_PlaySound("MISLFIRE", 1)
+		HELH A 0 A_FireCustomMissile("AssaultHelicopterRocketDM", 0.2, 0, random(24,40), random(-40,-24), 0, 0.2)
+		TNT1 A 9 BRIGHT
+		TNT1 A 0 A_PlaySound("MISLFIRE", 1)
+		HELH A 0 A_FireCustomMissile("AssaultHelicopterRocketDM", -0.2, 0, random(-40,-24), random(-40,-24), 0, 0.2)
+		TNT1 A 9 BRIGHT
+		TNT1 A 0 A_TakeInventory("HelicopterRocketAmmo", 2)
 		Goto ReadyZoom
 
 	AltFire:
@@ -1350,39 +1314,39 @@ ACTOR attackhelicopterGun : DoomWeapon
 	}
 }
 
-Actor SRM : FastProjectile
+Actor AssaultHelicopterRocket: Rocket2
 {
-	Speed 30
-	+FORCERADIUSDMG
-	Scale 1.5
-	Damage (random (300, 300))
-	States
+Speed 100
++FORCERADIUSDMG
+Scale 1.0
+Damage (random (150, 150))
+SeeSound "weapons/rocklf"
+DeathSound "weapons/rocklx"
+States
 	{
 	Spawn:
-		RCKT A 0
-		TNT1 A 0 A_PlaySound("MISLFIRE", 1)
-		TNT1 A 0 A_PlaySound("MISFAR", 4)
-		TNT1 A 0 A_SpawnItemEx("RocketBackBlast", 128, 0, 0, 0, 0, 0, 180)
-		TNT1 A 0 A_SpawnItemEx("RocketBackBlast2", 128, 0, 0, 0, 0, 0, 180)
-		TNT1 A 0 A_SpawnItemEx("RocketBackBlast3", 128, 0, 0, 0, 0, 0, 180)
-		TNT1 A 0 A_SpawnItemEx("BackblastFlames1", 128, 0, 0, 0, 0, 0, 180)
-		TNT1 A 0 A_SpawnItemEx("BackblastFlames2", 128, 0, 0, 0, 0, 0, 180)
-		TNT1 A 0 A_SpawnItemEx("BackblastFlames3", 128, 0, 0, 0, 0, 0, 180)
-		TNT1 A 0 A_SpawnItemEx("BackblastFlames4", 128, 0, 0, 0, 0, 0, 180)
-	
-	Live:	
-		RCKT ABC 1 BRIGHT A_SpawnItem("PlasmaSmoke")
+
+		MISL A 0
+		TNT1 A 0 BRIGHT A_CustomMissile("RocketBackblast", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
+		TNT1 A 0 BRIGHT A_CustomMissile("RocketBackblast2", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
+		TNT1 A 0 BRIGHT A_CustomMissile("RocketBackblast3", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
+		TNT1 A 0 BRIGHT A_CustomMissile("BackblastFlames1", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
+		TNT1 A 0 BRIGHT A_CustomMissile("BackblastFlames2", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
+		TNT1 A 0 BRIGHT A_CustomMissile("BackblastFlames3", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
+		TNT1 A 0 BRIGHT A_CustomMissile("BackblastFlames4", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
+		MISL AAAA 1 BRIGHT A_CustomMissile("BackblastFlames4", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
+	 Live:	
+		MISL A 1 BRIGHT A_SpawnItem("PlasmaSmoke")
 		TNT1 A 0 A_CustomMissile("PlasmaSmoke", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
 		Loop
-	
 	Death:
-		EXPL A 0 Radius_Quake (3, 8, 0, 15, 0)//(intensity, duration, damrad, tremrad, tid)
+        EXPL A 0 Radius_Quake (3, 8, 0, 15, 0)//(intensity, duration, damrad, tremrad, tid)
 		TNT1 A 0 A_CustomMissile("ExplosionSplashSpawner")
-		TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 AAAAAA 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
+        TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 AAAAAA 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
 		TNT1 AAAA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (0, 90))
 		TNT1 AAAA 0 A_CustomMissile ("ExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 AA 0 A_SpawnItemEx ("GrenadeExplosion",0,0,13,0,0,0,0,SXF_NOCHECKPOSITION,0)
@@ -1392,65 +1356,42 @@ Actor SRM : FastProjectile
 		TNT1 A 0 A_PlaySound("FAREXPL", 3)
 		TNT1 A 15
 		TNT1 A 0 A_PlaySound("distantexp", 5)
-		Stop
+		Stop	
 	}
 }
 
-Actor SRMDM : FastProjectile
+Actor AssaultHelicopterRocketDM: AssaultHelicopterRocket
 {
-	Speed 30
-	+FORCERADIUSDMG
+	Species "none"
 	-THRUSPECIES
 	-MTHRUSPECIES
-	Scale 1.5
-	Damage (random (300, 300))
-	Species "none"
-	States
-	{
-	Spawn:
-		RCKT A 0
-		TNT1 A 0 A_PlaySound("MISLFIRE", 1)
-		TNT1 A 0 A_PlaySound("MISFAR", 4)
-		TNT1 A 0 A_SpawnItemEx("RocketBackBlast", 128, 0, 0, 0, 0, 0, 180)
-		TNT1 A 0 A_SpawnItemEx("RocketBackBlast2", 128, 0, 0, 0, 0, 0, 180)
-		TNT1 A 0 A_SpawnItemEx("RocketBackBlast3", 128, 0, 0, 0, 0, 0, 180)
-		TNT1 A 0 A_SpawnItemEx("BackblastFlames1", 128, 0, 0, 0, 0, 0, 180)
-		TNT1 A 0 A_SpawnItemEx("BackblastFlames2", 128, 0, 0, 0, 0, 0, 180)
-		TNT1 A 0 A_SpawnItemEx("BackblastFlames3", 128, 0, 0, 0, 0, 0, 180)
-		TNT1 A 0 A_SpawnItemEx("BackblastFlames4", 128, 0, 0, 0, 0, 0, 180)
-	
-	Live:	
-		RCKT ABC 1 BRIGHT A_SpawnItem("PlasmaSmoke")
-		TNT1 A 0 A_CustomMissile("PlasmaSmoke", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
-		Loop
-	
-	Death:
-		EXPL A 0 Radius_Quake (3, 8, 0, 15, 0)//(intensity, duration, damrad, tremrad, tid)
-		TNT1 A 0 A_CustomMissile("ExplosionSplashSpawner")
-		TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 AAAAAA 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
-		TNT1 AAAA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (0, 90))
-		TNT1 AAAA 0 A_CustomMissile ("ExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AA 0 A_SpawnItemEx ("GrenadeExplosion",0,0,13,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 0
-		TNT1 A 2
-		TNT1 A 0 A_SpawnItemEx ("LiquidExplosionEffectSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 0 A_PlaySound("FAREXPL", 3)
-		TNT1 A 15
-		TNT1 A 0 A_PlaySound("distantexp", 5)
-		Stop
-	}
 }
 
-Actor SRMEnemy : SRM
+Actor EnemyHelicopterRocket: Rocket2
 {
-	+THRUSPECIES
-	Species "EnemyTank"
-	Speed 30
-	Damage (random(150,150))
+Speed 75
+Scale 1.0
+Species "EnemyTank"
+SeeSound "weapons/rocklf"
+DeathSound "weapons/rocklx"
+States
+	{
+	Spawn:
+
+		MISL A 0
+		TNT1 A 0 BRIGHT A_CustomMissile("RocketBackblast", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
+		TNT1 A 0 BRIGHT A_CustomMissile("RocketBackblast2", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
+		TNT1 A 0 BRIGHT A_CustomMissile("RocketBackblast3", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
+		TNT1 A 0 BRIGHT A_CustomMissile("BackblastFlames1", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
+		TNT1 A 0 BRIGHT A_CustomMissile("BackblastFlames2", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
+		TNT1 A 0 BRIGHT A_CustomMissile("BackblastFlames3", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
+		TNT1 A 0 BRIGHT A_CustomMissile("BackblastFlames4", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
+		MISL AAAA 1 BRIGHT A_CustomMissile("BackblastFlames4", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
+	 Live:	
+		MISL A 1 BRIGHT A_SpawnItem("PlasmaSmoke")
+		TNT1 A 0 A_CustomMissile("PlasmaSmoke", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
+		Loop
+	}
 }
 
 Actor HeliRestart : Inventory

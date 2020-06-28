@@ -1,13 +1,9 @@
 //Sergeant Mark IV's vehicles.
 //If you want to modify and reuse this on your wad, please ask me first.
 
-
-
-
-
 ACTOR HeavyMachinegun: SwitchableDecoration 5462
 {
-	Health 90
+	Health 100
 	Radius 24
 	Height 64
 	+SOLID
@@ -92,8 +88,6 @@ ACTOR HeavyMachinegun: SwitchableDecoration 5462
 	}
 }
 
-
-
 ACTOR HeavyMachinegunUsed: HeavyMachinegun
 {
     States
@@ -124,9 +118,9 @@ ACTOR PlayerHeavyMachinegun : PlayerPawn
 	Scale 1.0
 	Radius 24
 	Height 56
-	Mass 190
+	Mass 0x7FFFFFFF
 	PainChance 0
-	Health 190
+	Health 100
 	Speed 0
 	Player.MorphWeapon "HeavyMachinegunHUD"
 	Player.JumpZ 0
@@ -196,10 +190,7 @@ ACTOR PlayerHeavyMachinegun : PlayerPawn
 	}
 }
 
-
 ACTOR PowerHeavyMachinegunSwitch : PowerMorph {PowerMorph.PlayerClass "PlayerHeavyMachinegun"}
-
-
 
 ACTOR HeavyMachinegunMorpher : CustomInventory 
 {
@@ -226,7 +217,6 @@ ACTOR CheckingMorphingPlayerHealth : CustomInventory
   }
  } 
 
-
 ACTOR HeavyMachinegunMorphActivation : PowerupGiver
 {
   Powerup.Type "PowerHeavyMachinegunSwitch"
@@ -252,8 +242,6 @@ ACTOR HeavyMachinegunMorphActivation : PowerupGiver
   Stop
   }
  }
- 
- 
 
 ACTOR HeavyMachinegunHUD : DoomWeapon
 {
@@ -344,9 +332,8 @@ ACTOR HeavyMachinegunHUD : DoomWeapon
 		NULL A 0 A_JumpIf (pitch > 220, "TooHighCheck")
 		NULL A 0 A_JumpIf (pitch > 16, "TooLowCheck")
 		Goto Flash
-		
-	
-	TooHigh:
+
+TooHigh:
 		TNT1 A 0
 		TNT1 A 0 A_SetPitch(325)
 		Goto Flash
@@ -379,24 +366,25 @@ ACTOR HeavyMachinegunHUD : DoomWeapon
 		Stop
 	}
 }
- 
- 
+
 ACTOR HeavyMachinegunProjectile: FastProjectile
 {
 	Game Doom
 	Radius 2
 	Height 2
-	Speed 140
-	Damage (random(25, 25))
+	Speed 300
+	Damage (random(40, 40))
 	+RANDOMIZE
 	+MISSILE
+	-NOGRAVITY
 	+BLOODSPLATTER
 	+NOEXTREMEDEATH
+	Gravity 0.1
 	RenderStyle Add
 	damagetype "Minigun"
 	Alpha 1.0
 	Decal "BulletChip"
-	Scale 0.5
+	Scale 1.0
 	Obituary "$OB_MPPLASMARIFLE"
 	States
 	{
@@ -414,52 +402,49 @@ ACTOR HeavyMachinegunProjectile: FastProjectile
 	}
 }
 
-
-
 ACTOR HeavyMachinegunProjectile2: HeavyMachinegunProjectile
 {
 	Damage 4
 }
 
-
 ACTOR HeavyMachinegunProjectileEnemy: HeavyMachinegunProjectile
 {
+Speed 180
+	damage (random(25, 25))
 	+THRUSPECIES
 	Species "EnemyTank"
-	Speed 140
-	Damage (random(12,13))
 }
 
-ACTOR HeavyMachinegunFlash : FastProjectile
+ACTOR HeavyMachinegunFlash: FastProjectile
 {
 	Game Doom
 	Radius 2
 	Height 2
-	Speed 32
-	Damage 1
-	Projectile
+	Speed 15
+	Damage 0
 	+RANDOMIZE
 	+MISSILE
+	-NOGRAVITY
 	+BLOODSPLATTER
+	Gravity 0.1
 	RenderStyle Add
 	damagetype "Blast"
 	Alpha 0.2
-	Scale 0.11
+	Scale 0.4
 	States
 	{
 	Spawn:
 		TNT1 A 0
-		HMGH F 2 BRIGHT A_SpawnItem("YellowFlare")
-		Goto Death
-	Death:
-		TNT1 A 0
+		//TNT1 A 0 Radius_Quake(4, 4, 0, 1, 0)
+		TNT1 A 1
+		TNT1 A 0 A_Stop
+		Death:
+		TNT1 A 0 A_SpawnItem("YellowFlare")
+		HMGH F 2
 		Stop
 	}
 }
 
-
-	
-	
 actor HeavyMachinegunHitsProjectiles
 {
     Scale 1.0
@@ -485,7 +470,7 @@ actor HeavyMachinegunHitsProjectiles
 
 actor HeavyMachinegunProjectileTracerTrail
 {
-    Scale 0.5
+    Scale 2.0
     RenderStyle Add
     Alpha 0.9
     +NOINTERACTION
@@ -497,8 +482,6 @@ actor HeavyMachinegunProjectileTracerTrail
         stop
     }
 }
-
-
 
 actor HeavyMachinegunProjectileTracerTrail2: HeavyMachinegunProjectileTracerTrail {    Alpha 0.85 }
 actor HeavyMachinegunProjectileTracerTrail3: HeavyMachinegunProjectileTracerTrail {    Alpha 0.80 }
@@ -518,13 +501,11 @@ actor HeavyMachinegunProjectileTracerTrail16: HeavyMachinegunProjectileTracerTra
 actor HeavyMachinegunProjectileTracerTrail17: HeavyMachinegunProjectileTracerTrail {    Alpha 0.10 }
 actor HeavyMachinegunProjectileTracerTrail18: HeavyMachinegunProjectileTracerTrail {    Alpha 0.05 }
 
-
-
 ACTOR AutoCannonProjectile: HeavyMachinegunProjectile
 {
 	Damage (random(60, 60))
-	Speed 120
-	Scale 1.0
+	Speed 250
+	Scale 1.5
 	Decal "Scorch"
 	States
 	{
@@ -543,13 +524,12 @@ ACTOR AutoCannonProjectile: HeavyMachinegunProjectile
 		TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail12", (22*momx)/-35.0, -(22*momy)/-35.0, 2+(22*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
         TNT1 A 0 A_SpawnItem("HeavyMachinegunHitsProjectiles", 0, 5)
 		Loop
-		
 	Death:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx ("AutocannonPenetrator",cos(-pitch)*42,0,0+(sin(pitch)*42),cos(-pitch)*120,0,sin(pitch)*120,0,SXF_TRANSFERPITCH)
 	XDeath:
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_Explode(30, 240)
+		TNT1 A 0 A_Explode(10, 120)
 		TNT1 A 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
 		TNT1 A 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (40, 90))
 		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 2, 0, random (0, 360), 2, random (0, 360))
@@ -579,7 +559,9 @@ Actor AutoCannonProjectile2
 {
 Damage (random(30, 30))
 +MISSILE
-Speed 60
+-NOGRAVITY
+Speed 100
+Gravity 1.0
 States
 	{
 	Spawn:
@@ -598,7 +580,7 @@ States
 		Loop
 		
 		Death:
-		TNT1 A 0 A_Explode(30, 240)
+		TNT1 A 0 A_Explode(10, 120)
 		TNT1 A 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
 		TNT1 A 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (40, 90))
 		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 2, 0, random (0, 360), 2, random (0, 360))
@@ -609,17 +591,15 @@ States
 		}
 }
 
-
-
 Actor AutocannonPenetrator: AutoCannonProjectile
 {
-damage (random(30, 30))
+damage (random(50, 60))
 //Decal "BulletDecalNew1"
 Decal "Scorch"
 DamageType Blast
 Radius 4
 Height 4
-Scale 0.5
+Scale 0.2
 +MISSILE
 -SKYEXPLODE
 States
@@ -637,10 +617,9 @@ Nah:
 	}
 }
 
-
 actor AutoCannonTracerTrail
 {
-    Scale 1.0
+    Scale 0.8
     RenderStyle Add
     Alpha 0.9
     +NOINTERACTION
@@ -652,8 +631,6 @@ actor AutoCannonTracerTrail
         stop
     }
 }
-
-
 
 actor AutoCannonTracerTrail2: AutoCannonTracerTrail {    Alpha 0.85 }
 actor AutoCannonTracerTrail3: AutoCannonTracerTrail {    Alpha 0.80 }
@@ -667,12 +644,9 @@ actor AutoCannonTracerTrail10: AutoCannonTracerTrail {    Alpha 0.45 }
 actor AutoCannonTracerTrail11: AutoCannonTracerTrail {    Alpha 0.40 }
 actor AutoCannonTracerTrail12: AutoCannonTracerTrail {    Alpha 0.35 }
 
-
-
-
 ACTOR AutoCannonFlash: HeavyMachinegunFlash
 {
-	Scale 0.22
+	Scale 0.9
 	States
 	{
 	Spawn:
@@ -686,7 +660,6 @@ ACTOR AutoCannonFlash: HeavyMachinegunFlash
 		Stop
 	}
 }
-
 
 ACTOR heavyplasmaProjectile: FastProjectile
 {
@@ -736,20 +709,21 @@ ACTOR heavyplasmaProjectile: FastProjectile
 	}
 }
 
-
 ACTOR heavyplasmaProjectileEnemy: heavyplasmaProjectile
 {
 	Speed 100
 	Damage 10
 }
 
-
 ACTOR AutoCannonProjectileEnemy: AutoCannonProjectile
 {
+	Speed 100
+	Damage (random(20, 25))
+	Speed 60
+	Damage (random (190, 200))
+	+NOGRAVITY
 	+THRUSPECIES
 	Species "EnemyTank"
-	Speed 120
-	Damage (random(30,30))
 }
 
 ACTOR heavyplasmaFlash: FastProjectile
@@ -781,9 +755,6 @@ ACTOR heavyplasmaFlash: FastProjectile
 	}
 }
 
-
-	
-	
 actor heavyplasmaHitsProjectiles
 {
     Scale 1.0
@@ -822,7 +793,6 @@ actor heavyplasmaProjectileTracerTrail
     }
 }
 
-
 actor heavyplasmaProjectileHit
 {
     Scale 2.1
@@ -845,8 +815,6 @@ actor heavyplasmaProjectileHit
         stop
     }
 }
-
-
 
 actor heavyplasmaProjectileTracerTrail2: heavyplasmaProjectileTracerTrail {    Alpha 0.85 }
 actor heavyplasmaProjectileTracerTrail3: heavyplasmaProjectileTracerTrail {    Alpha 0.80 }

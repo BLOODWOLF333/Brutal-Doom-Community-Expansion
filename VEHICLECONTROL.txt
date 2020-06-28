@@ -10,7 +10,6 @@ str arrayArmorClass[32];
 str arrayBase[8];
 int vehicleprevioushealth;
 int playReload;
-int playRecharge;
 
 //FORWARD
 script "BDForwardInput" ENTER
@@ -381,18 +380,16 @@ script "BDEnterTank" (VOID) NET
 	vehicleprevioushealth = GetActorProperty(261, APROP_Health);
 	SetActorProperty(0, APROP_Health, vehicleprevioushealth);
 	int thisgunmachinegunammo = CheckActorInventory(261, "HeavyMachinegunAmmo");
-	int thisTankCannon10Ammo = CheckActorInventory(261, "TankCannon10Ammo");
-	int thisAutocannon2Ammo = CheckActorInventory(261, "Autocannon2Ammo");
-	int thisAutocannon2Ammo2 = CheckActorInventory(261, "Autocannon2Ammo2");
-	int thisvehicleRocketAmmo = CheckActorInventory(261, "RocketAmmo");
-	int thisvehicleMissileAmmo = CheckActorInventory(261, "MissileAmmo");
+	int thisTankAmmo = CheckActorInventory(261, "TankAmmo");
+	int thisvehicleAutocannonAmmo = CheckActorInventory(261, "AutocannonAmmo");
+	int thisvehicleHelicopterRocketAmmo = CheckActorInventory(261, "HelicopterRocketAmmo");
+	int thisvehicleMechRocketAmmo = CheckActorInventory(261, "MechRocketAmmo");
 	int vehiclepreviousbaseangle = CheckActorInventory(261, "TankBaseDirection");
 	GiveInventory("HeavyMachinegunAmmo", thisgunmachinegunammo);
-	GiveInventory("TankCannon10Ammo", thisTankCannon10Ammo);
-	GiveInventory("Autocannon2Ammo", thisAutocannon2Ammo);
-	GiveInventory("Autocannon2Ammo2", thisAutocannon2Ammo2);
-	GiveInventory("RocketAmmo", thisvehicleRocketAmmo);
-	GiveInventory("MissileAmmo", thisvehicleMissileAmmo);
+	GiveInventory("TankAmmo", thisTankAmmo);
+	GiveInventory("AutocannonAmmo", thisvehicleAutocannonAmmo);
+	GiveInventory("HelicopterRocketAmmo", thisvehicleHelicopterRocketAmmo);
+	GiveInventory("MechRocketAmmo", thisvehicleMechRocketAmmo);
 	GiveInventory("IsInATank",1);
 	SetUserVariable(0, "user_tankbasedirection", vehiclepreviousbaseangle);
 	delay(1);
@@ -403,18 +400,16 @@ script "BDLeaveTank" (VOID) NET
 {
 	vehicleprevioushealth = GetActorProperty(0, APROP_Health);
 	int thisgunmachinegunammo = CheckInventory("HeavyMachinegunAmmo");
-	int thisTankCannon10Ammo = CheckInventory("TankCannon10Ammo");
-	int thisAutocannon2Ammo = CheckInventory("Autocannon2Ammo");
-	int thisAutocannon2Ammo2 = CheckInventory("Autocannon2Ammo2");
-	int thisvehicleRocketAmmo = CheckInventory("RocketAmmo");
-	int thisvehicleMissileAmmo = CheckInventory("MissileAmmo");
+	int thisTankAmmo = CheckInventory("TankAmmo");
+	int thisvehicleAutocannonAmmo = CheckInventory("AutocannonAmmo");
+	int thisvehicleHelicopterRocketAmmo = CheckInventory("HelicopterRocketAmmo");
+	int thisvehicleMechRocketAmmo = CheckInventory("MechRocketAmmo");
 	int vehiclepreviousbaseangle = GetUserVariable(0, "user_tankbasedirection");
 	TakeInventory("HeavyMachinegunAmmo", 9999);
-	TakeInventory("TankCannon10Ammo", 9999);
-	TakeInventory("Autocannon2Ammo", 9999);
-	TakeInventory("Autocannon2Ammo2", 9999);
-	TakeInventory("RocketAmmo", 9999);
-	TakeInventory("MissileAmmo", 9999);
+	TakeInventory("TankAmmo", 9999);
+	TakeInventory("AutocannonAmmo", 9999);
+	TakeInventory("HelicopterRocketAmmo", 9999);
+	TakeInventory("MechRocketAmmo", 9999);
 	TakeInventory("IsInATank", 9);
 	Thing_Move(0, 264, 1);
 	UnMorphActor(0, 0);
@@ -445,11 +440,10 @@ script "BDLeaveTank" (VOID) NET
 	//Log(s:"Post ArmorPoints= ", i: CheckInventory("BasicArmor"));
 	SetActorProperty(261, APROP_Health, vehicleprevioushealth);
 	GiveActorInventory(261, "HeavyMachinegunAmmo", thisgunmachinegunammo);
-	GiveActorInventory(261, "TankCannon10Ammo", thisTankCannon10Ammo);
-	GiveActorInventory(261, "Autocannon2Ammo", thisAutocannon2Ammo);
-	GiveActorInventory(261, "Autocannon2Ammo2", thisAutocannon2Ammo2);
-	GiveActorInventory(261, "RocketAmmo", thisvehicleRocketAmmo);
-	GiveActorInventory(261, "MissileAmmo", thisvehicleMissileAmmo);
+	GiveActorInventory(261, "TankAmmo", thisTankAmmo);
+	GiveActorInventory(261, "AutocannonAmmo", thisvehicleAutocannonAmmo);
+	GiveActorInventory(261, "HelicopterRocketAmmo", thisvehicleAutocannonAmmo);
+	GiveActorInventory(261, "MechRocketAmmo", thisvehicleMechRocketAmmo);
 	GiveActorInventory(261, "TankBaseDirection", vehiclepreviousbaseangle);
 }
 
@@ -497,11 +491,11 @@ Script "BDTankOrientation" (VOID)
 	
 		If(CheckActorClass(0, "PlayerTank"))
 		{
-			healthMax = 3000;
+			healthMax = 2500;
 		}
 		Else If(CheckActorClass(0, "PlayerArtilleryTank"))
 		{
-			healthMax = 1560;
+			healthMax = 2000;
 		}
 		
 		If(GetActorProperty(0, APROP_HEALTH) >= (healthMax/2) + 1)
@@ -602,24 +596,24 @@ Script "BDTankOrientation" (VOID)
 Script "BDTankHUD" (VOID)
 {
 	ACS_NamedExecuteAlways("BDTankOrientation",0,0,0,0);
-	int ammoTank = CheckInventory("TankCannon10Ammo");
+	int ammoTank = CheckInventory("TankAmmo");
 	int readyTank = CheckInventory("TankReady");
-		If (readyTank <= 174)
+		If (readyTank <= 139)
 		{
 			playReload = 0;
 			GiveInventory("TankReady", 1);
 		}
-		If(readyTank == 175 && playReload == 0)
+		If(readyTank == 140 && playReload == 0 && ammoTank >= 1)
 		{
 			PlaySound(0, "TANKRE", 3);
 			playReload = 1;
 		}
-	hudmessage(s: "100mm CANNON HE-AT"; HUDMSG_PLAIN, 0, CR_WHITE, 0.5, 0.925, 0.11);
-		If(ammoTank >= 1 && readyTank == 175)
+	hudmessage(s: "CANNON HE-AT"; HUDMSG_PLAIN, 0, CR_WHITE, 0.5, 0.925, 0.11);
+		If(ammoTank >= 1 && readyTank == 140)
 		{
 			hudmessage(s: "READY"; HUDMSG_PLAIN, 0, CR_WHITE, 0.5, 0.95, 0.11);
 		}
-		Else If(ammoTank >=1 && readyTank <= 174)
+		Else If(ammoTank >=1 && readyTank <= 139)
 		{
 			hudmessage(s: "RELOADING"; HUDMSG_PLAIN, 0, CR_YELLOW, 0.5, 0.95, 0.11);
 		}
@@ -654,21 +648,9 @@ Script "BDTankHUD" (VOID)
 Script "BDATHUD" (VOID)
 {
 	ACS_NamedExecuteAlways("BDTankOrientation",0,0,0,0);
-	int LRMready = CheckInventory("LRMReady");
-		If (LRMready <= 87)
-		{
-			playReload = 0;
-			GiveInventory("LRMReady", 1);
-		}
-		If(LRMready == 88 && playReload == 0)
-		{
-			PlaySound(0, "RLANDRAW", 3);
-			playReload = 1;
-		}
-		
-	int ammoAC2 = CheckInventory("Autocannon2Ammo2");
+	int ammo20Auto = CheckInventory("HeavyMachinegunAmmo");
 		hudmessage(s: "20MM AUTOx2"; HUDMSG_PLAIN, 0, CR_WHITE, 0.5, 0.925, 0.11);
-		If(ammoAC2 >= 1)
+		If(ammo20Auto >= 1)
 		{
 			hudmessage(s: "READY"; HUDMSG_PLAIN, 0, CR_WHITE, 0.5, 0.95, 0.11);
 		}
@@ -677,15 +659,11 @@ Script "BDATHUD" (VOID)
 			hudmessage(s: "EMPTY"; HUDMSG_PLAIN, 0, CR_RED, 0.5, 0.95, 0.11);
 		}
 		
-	int ammoRocket = CheckInventory("MissileAmmo");
-		hudmessage(s: "LRM5x2"; HUDMSG_PLAIN, 0, CR_WHITE, -0.1, 0.5, 0.11);
-		If(ammoRocket >= 1 && LRMready == 88)
+	int ammoRocket = CheckInventory("HelicopterRocketAmmo");
+		hudmessage(s: "MISSILE"; HUDMSG_PLAIN, 0, CR_WHITE, -0.1, 0.5, 0.11);
+		If(ammoRocket >= 1)
 		{
 			hudmessage(s: "READY"; HUDMSG_PLAIN, 0, CR_WHITE, -0.1, 0.525, 0.11);
-		}
-		Else If(ammoRocket >= 1 && LRMready <= 87)
-		{
-			hudmessage(s: "RELOADING"; HUDMSG_PLAIN, 0, CR_YELLOW, -0.1, 0.525, 0.11);
 		}
 		Else
 		{
@@ -726,15 +704,15 @@ Script "BDHelicopterHUD"(VOID)
 		}
 		If(fireMode == 2)
 		{
-			hudmessage(s: "[SRM2x2]"; HUDMSG_PLAIN, 0, CR_YELLOW, -0.65, 0.8, 0.11);
+			hudmessage(s: "[ROCKETS]"; HUDMSG_PLAIN, 0, CR_YELLOW, -0.65, 0.8, 0.11);
 		}
 		Else
 		{
-			hudmessage(s: "SRM2x2"; HUDMSG_PLAIN, 0, CR_WHITE, -0.65, 0.8, 0.11);
+			hudmessage(s: "ROCKETS"; HUDMSG_PLAIN, 0, CR_WHITE, -0.65, 0.8, 0.11);
 		}
 	//Ammo status
-	int ammoAC2 = CheckInventory("Autocannon2Ammo");
-		If(ammoAC2 >= 1)
+	int ammo20Auto = CheckInventory("AutocannonAmmo");
+		If(ammo20Auto >= 1)
 		{
 			hudmessage(s: "READY"; HUDMSG_PLAIN, 0, CR_WHITE, 0.5, 0.825, 0.11);
 		}
@@ -752,26 +730,11 @@ Script "BDHelicopterHUD"(VOID)
 		{
 			hudmessage(s: "EMPTY"; HUDMSG_PLAIN, 0, CR_RED, -0.3, 0.825, 0.11);
 		}
-	int SRMready = CheckInventory("SRMReady");
-	If (SRMready <= 34)
-	{
-		playReload = 0;
-		GiveInventory("SRMReady", 1);
-	}
-	If(SRMready == 35 && playReload == 0)
-	{
-		PlaySound(0, "RLANDRAW", 3);
-		playReload = 1;
-	}
 	
-	int ammoSRM = CheckInventory("SRMAmmo");
-		If(ammoSRM >= 1 && SRMready == 35)
+	int ammoRocket = CheckInventory("HelicopterRocketAmmo");
+		If(ammoRocket >= 1)
 		{
-			hudmessage(i:ammoSRM; HUDMSG_PLAIN, 0, CR_WHITE, -0.65, 0.825, 0.11);
-		}
-		Else If(ammoSRM >= 1 && SRMready <= 34)
-		{
-			hudmessage(s: "RELOADING"; HUDMSG_PLAIN, 0, CR_YELLOW, -0.65, 0.825, 0.11);
+			hudmessage(i:ammoRocket; HUDMSG_PLAIN, 0, CR_WHITE, -0.65, 0.825, 0.11);
 		}
 		Else
 		{
@@ -826,51 +789,46 @@ Script "BDMechHUD"(VOID)
 			hudmessage(i: rightMGAmmo; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.72, 0.11);
 		}
 		
-	int Laserready = CheckInventory("LaserReady");
 		If(fireMode == 1)
 		{
-			hudmessage(s: "[SLSR]"; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.8, 0.11);
-			hudmessage(i: Laserready; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.82, 0.11);
+			hudmessage(s: "[LASER]"; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.8, 0.11);
 			
-			hudmessage(s: "[SLSR]"; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.8, 0.11);
-			hudmessage(i: Laserready; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.82, 0.11);
+			hudmessage(s: "[LASER]"; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.8, 0.11);
 		}
 		Else
 		{
-			hudmessage(s: "SLSR"; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.8, 0.11);
-			hudmessage(i: Laserready; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.82, 0.11);
+			hudmessage(s: "LASER"; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.8, 0.11);
 			
-			hudmessage(s: "SLSR"; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.8, 0.11);
-			hudmessage(i: Laserready; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.82, 0.11);
+			hudmessage(s: "LASER"; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.8, 0.11);
 		}
 		
-	int leftLRMAmmo = CheckInventory("MissileAmmo")/2;
-	int rightLRMAmmo = CheckInventory("MissileAmmo")/2;
+	int leftRocketAmmo = CheckInventory("MechRocketAmmo")/2;
+	int rightRocketAmmo = CheckInventory("MechRocketAmmo")/2;
 		If(fireMode == 2)
 		{
-			hudmessage(s: "[LRM5]"; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.9, 0.11);
-			hudmessage(i: leftLRMAmmo; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.92, 0.11);
+			hudmessage(s: "[ROCKET]"; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.9, 0.11);
+			hudmessage(i: leftRocketAmmo; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.92, 0.11);
 		
-			hudmessage(s: "[LRM5]"; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.9, 0.11);
-			hudmessage(i: rightLRMAmmo; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.92, 0.11);
+			hudmessage(s: "[ROCKET]"; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.9, 0.11);
+			hudmessage(i: rightRocketAmmo; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.92, 0.11);
 		}
 		Else
 		{
-			hudmessage(s: "LRM5"; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.9, 0.11);
-			hudmessage(i: leftLRMAmmo; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.92, 0.11);
+			hudmessage(s: "ROCKET"; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.9, 0.11);
+			hudmessage(i: leftRocketAmmo; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.92, 0.11);
 		
-			hudmessage(s: "LRM5"; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.9, 0.11);
-			hudmessage(i: rightLRMAmmo; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.92, 0.11);
+			hudmessage(s: "ROCKET"; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.9, 0.11);
+			hudmessage(i: rightRocketAmmo; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.92, 0.11);
 		}
 	//Armor display
 	int mechhealth = GetActorProperty(0, APROP_HEALTH);
 		hudmessage(i: mechhealth; HUDMSG_PLAIN, 0, CR_CYAN, 0.5, 0.9, 0.11);
-	If(mechhealth >= 1726)
+	If(mechhealth >= 500)
 	{
 		SetFont("MEKHB0");
 		Hudmessage(s:"A"; HUDMSG_PLAIN, 0, 0, 0.5, 0.85, 0.11);
 	}
-	Else If(mechhealth >= 863)
+	Else If(mechhealth >= 250)
 	{
 		SetFont("MEKHC0");
 		Hudmessage(s:"A"; HUDMSG_PLAIN, 0, 0, 0.5, 0.85, 0.11);
@@ -879,29 +837,6 @@ Script "BDMechHUD"(VOID)
 	{
 		SetFont("MEKHD0");
 		Hudmessage(s:"A"; HUDMSG_PLAIN, 0, 0, 0.5, 0.85, 0.11);
-	}
-	//Laser & LRM recharge/reload function
-	If (Laserready <= 104)
-	{
-		playRecharge = 0;
-		GiveInventory("LaserReady", 1);
-	}
-	If(Laserready == 105 && playRecharge == 0)
-	{
-		PlaySound(0, "BEP", 3);
-		playRecharge = 1;
-	}
-	
-	int LRMready = CheckInventory("LRMReady");
-	If (LRMready <= 87)
-	{
-		playReload = 0;
-		GiveInventory("LRMReady", 1);
-	}
-	If(LRMready == 88 && playReload == 0)
-	{
-		PlaySound(0, "RLANDRAW", 3);
-		playReload = 1;
 	}
 	delay(1);
 }
