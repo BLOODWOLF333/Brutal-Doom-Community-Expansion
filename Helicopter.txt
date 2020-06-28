@@ -1320,13 +1320,13 @@ Speed 100
 +FORCERADIUSDMG
 Scale 1.0
 Damage (random (150, 150))
+SeeSound "weapons/rocklf"
+DeathSound "weapons/rocklx"
 States
 	{
 	Spawn:
 
 		MISL A 0
-		TNT1 A 0 A_PlaySound("DSRLAUN")
-		TNT1 A 0 A_PlaySound("DSRLAUN", 1)
 		TNT1 A 0 BRIGHT A_CustomMissile("RocketBackblast", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
 		TNT1 A 0 BRIGHT A_CustomMissile("RocketBackblast2", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
 		TNT1 A 0 BRIGHT A_CustomMissile("RocketBackblast3", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
@@ -1372,13 +1372,13 @@ Actor EnemyHelicopterRocket: Rocket2
 Speed 75
 Scale 1.0
 Species "EnemyTank"
+SeeSound "weapons/rocklf"
+DeathSound "weapons/rocklx"
 States
 	{
 	Spawn:
 
 		MISL A 0
-		TNT1 A 0 A_PlaySound("MISFAR", 2)
-		TNT1 A 0 A_PlaySound("DSRLAUN", 1)
 		TNT1 A 0 BRIGHT A_CustomMissile("RocketBackblast", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
 		TNT1 A 0 BRIGHT A_CustomMissile("RocketBackblast2", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
 		TNT1 A 0 BRIGHT A_CustomMissile("RocketBackblast3", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
