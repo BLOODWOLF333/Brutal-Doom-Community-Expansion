@@ -151,26 +151,24 @@ ACTOR DualMP40 : BrutalWeapon
         Goto FireLeft
 		MP42 A 0 A_PlaySound("FARSHT", 6)
         MP42 A 0 A_PlaySound("pfire", 1)
-		MP42 A 0 A_ZoomFactor(0.99)
 		MP42 A 0 A_SpawnItemEx("PlayerMuzzle1",32,5,28)
-		MP42 B 1 BRIGHT A_FireBullets (4, 3, -1, 14, "WeakPuff", FBF_NORANDOM)
-		MP42 A 0 A_ZoomFactor(1.0)
-        MP42 C 0 A_FireCustomMissile("DecorativeTracer", random(-6,3), 0, 5, 0)
+		MP42 B 1 BRIGHT A_FireBullets (1.7, 1.6, -1, 15, "WeakPuff", FBF_NORANDOM)
+        TNT1 A 0 A_FireCustomMissile("DecorativeTracer",random(-1,1),0,-5,0,0,random(-1,1))
 		MP42 A 0 A_Takeinventory("MP40Ammo",1)
 		MP42 A 0 A_Takeinventory("DualMP40Ammo",1)
 		MP42 A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,6,-2)
+		RIFG A 0 A_SetPitch(pitch-0.4)
 		
 	FireLeft:
 		MP42 A 0 A_JumpIfInventory("DualMP40Ammo",1,1)
         Goto NoAmmo
 		MP42 A 0 A_PlaySound("FARSHT", 6)
         MP42 A 0 A_PlaySound("pfire", 1)
-		MP42 A 0 A_ZoomFactor(0.99)
 		MP42 A 0 A_SpawnItemEx("PlayerMuzzle1",32,-5,28)
-		MP42 D 1 BRIGHT A_FireBullets (4, 3, -1, 14, "WeakPuff", FBF_NORANDOM)
-		MP42 A 0 A_ZoomFactor(1.0)
-        RIFF A 0 A_FireCustomMissile("DecorativeTracer", random(-3,6), 0, -5, 0)
+		MP42 D 1 BRIGHT A_FireBullets (1.7, 1.6, -1, 15, "WeakPuff", FBF_NORANDOM)
+        TNT1 A 0 A_FireCustomMissile("DecorativeTracer",random(-1,1),0,5,0,0,random(-1,1))
 		MP42 A 0 A_Takeinventory("DualMP40Ammo",1)
+		RIFG A 0 A_SetPitch(pitch-0.4)
         MP42 E 3
 		MP42 A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,-8,-2)
 		MP42 A 0 A_ReFire("Fire")
@@ -221,7 +219,7 @@ ACTOR DualMP40 : BrutalWeapon
 		MP42 A 0 A_PlaySound("reload")
         MP4R ABCDEF 1 
 		MP42 A 0 A_JumpIfInventory("HasUnloaded", 1, 2)
-		MP42 A 0 A_FireCustomMissile("EmptyClipSpawn",-5,0,8,-4)
+		MP42 A 0 A_FireCustomMissile("EmptyPistolClipSpawn",0,0,10,-20)
         MP4R GGGGGGGGGGGGGGGFEDDDCCBA 1
 		TNT1 A 5
 		
@@ -229,7 +227,7 @@ ACTOR DualMP40 : BrutalWeapon
         MP42 A 0 A_PlaySound("reload")
         MP2R ABCDEF 1 
 		MP42 A 0 A_JumpIfInventory("HasUnloaded", 1, 2)
-		MP42 A 0 A_FireCustomMissile("EmptyClipSpawn",-5,0,8,-4)
+		MP42 A 0 A_FireCustomMissile("EmptyPistolClipSpawn",225,0,-10,-20)
         MP2R GGGGGGGGGGGGGGGFEDDDCCBA 1
 		
 		MP42 F 1

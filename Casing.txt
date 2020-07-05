@@ -54,6 +54,214 @@ Actor SSGCaseSpawner : ShotcaseSpawn
 		}
 }
 
+ACTOR SlugCaseSpawn : RifleCaseSpawn
+{
+	States
+	{
+	Spawn:
+        TNT1 A 0
+		TNT1 A 1 A_CustomMissile("SlugShellCasing",0,0,random(-80,-100),2,random(40,60))
+		Stop
+	}
+} 
+
+ACTOR SSGSlugCaseSpawner : SlugCaseSpawn
+{
+	States
+	{
+	Spawn:
+        TNT1 A 0
+		TNT1 A 1 A_CustomMissile("SlugShellCasing",0,0,random(80,100),2,random(50,70))
+		Stop
+	}
+} 
+
+ACTOR SlugShellCasing
+{
+   Height 2
+   Radius 2
+   Speed 6
+   Scale 0.25
+   +DOOMBOUNCE
+   -CANBOUNCEWATER
+   -NOGRAVITY
+   +WINDTHRUST
+   +CLIENTSIDEONLY
+   +NONETID
+   +MOVEWITHSECTOR
+   +MISSILE
+   +NOBLOCKMAP
+   -DROPOFF
+   +NOTELEPORT
+   +FORCEXYBILLBOARD
+   +NOTDMATCH
+   +GHOST
+   Mass 2
+   BounceFactor 0.3
+   DeathSound "weapons/shell"
+   BounceSound "weapons/shell"
+   States
+   {
+    Spawn:
+      CAS4 AABBCCDDEEFFGGHHAABBCCDDEEFFGGHH 1 A_CustomMissile("CasingSmoke", 0, 0, random(0, 360), 2, random(85, 90))
+      Stop
+   Death:
+	  TNT1 A 0
+	  TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor")//Check Effects
+	  TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor2")//Check Effects
+	  TNT1 A 0 A_SpawnItem("MicroSmokeColumn")
+      LCPJ A 0 A_Jump(256,"Rest1","Rest2","Rest3","Rest4","Rest5","Rest6","Rest7","Rest8")
+      Goto Rest1
+    Rest1:
+      CAS4 I 200
+	  TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+      Loop
+    Rest2:
+      CAS4 J 200
+	  TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+      Loop
+    Rest3:
+      CAS4 K 200
+	  TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+      Loop
+    Rest4:
+      CAS4 L 200
+	  TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+      Loop
+    Rest5:
+      CAS4 M 200
+	  TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+      Loop
+    Rest6:
+      CAS4 I 200
+	  TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+      Loop
+    Rest7:
+      CAS4 J 200
+	  TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+      Loop
+    Rest8:
+      CAS4 K 200
+	  TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+   Loop
+   
+	Stoping:
+		TNT1 A 0
+		Stop
+   }
+}
+
+ACTOR EmptyDrumSpawn
+{
+	Speed 20
+	PROJECTILE
+	+NOCLIP
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_CustomMissile("EmptyDrum",1,0,random(85,95),2,1)
+		Stop
+	}
+}
+
+ACTOR EmptyDrum
+{
+   Height 12
+   Radius 2
+   Speed 4
+   Scale 0.7
+   +DOOMBOUNCE
+   -NOGRAVITY
+   +WINDTHRUST
+   +CLIENTSIDEONLY
+   +NONETID
+   +MOVEWITHSECTOR
+   +MISSILE
+   +NOBLOCKMAP
+   -DROPOFF
+   +NOTELEPORT
+   +FORCEXYBILLBOARD
+   +NOTDMATCH
+   +GHOST
+   BounceFactor 0.3
+   Mass 1
+   DeathSound "weapons/largemagdrop"
+   BounceSound "weapons/largemagdrop"
+   States
+   {
+   Spawn:
+      TNT1 A 0
+      DRUM ABCDEFGHABCDEFGHABCDEFGHABCDEFGHABCDEFGH 4
+      Stop
+   Death:
+	  TNT1 A 0
+	  TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor")//Check Effects
+	  TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor2")//Check Effects
+      DRUM A 200
+	  TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+      Loop
+	Stoping:
+		TNT1 A 0
+		Stop
+   }
+}
+
+ACTOR EmptyPistolClipSpawn
+{
+	Speed 20
+	PROJECTILE
+	+NOCLIP
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_CustomMissile("EmptyPistolClip",1,0,random(85,95),2,1)
+		Stop
+	}
+}
+
+ACTOR EmptyPistolClip
+{
+   Height 2
+   Radius 2
+   Speed 4
+   Scale 0.9
+   +DOOMBOUNCE
+   -NOGRAVITY
+   +WINDTHRUST
+   +CLIENTSIDEONLY
+   +NONETID
+   +MOVEWITHSECTOR
+   +MISSILE
+   +NOBLOCKMAP
+   -DROPOFF
+   +NOTELEPORT
+   +FORCEXYBILLBOARD
+   +NOTDMATCH
+   +GHOST
+   BounceFactor 0.3
+   Mass 1
+   DeathSound "weapons/largemagdrop"
+   BounceSound "weapons/largemagdrop"
+   States
+   {
+   Spawn:
+      TNT1 A 0
+      PCAS ABCDEFGHABCDEFGHABCDEFGHABCDEFGHABCDEFGH 4
+      Stop
+   Death:
+	  TNT1 A 0
+	  TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor")//Check Effects
+	  TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor2")//Check Effects
+      PCAS G 200
+	  TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+      Loop
+	Stoping:
+		TNT1 A 0
+		Stop
+   }
+}
 
 ACTOR 50CaseSpawn
 {
@@ -448,7 +656,7 @@ ACTOR EmptyClip
    Height 2
    Radius 2
    Speed 4
-   Scale 1.01
+   Scale 0.9
    +DOOMBOUNCE
    - NOGRAVITY
    +WINDTHRUST
@@ -469,7 +677,7 @@ ACTOR EmptyClip
    States
    {
    Spawn:
-      TNT1 A 7 A_PlaySound("NULL")
+      TNT1 A 0
       ECLI ABCDEFGHABCDEFGHABCDEFGHABCDEFGHABCDEFGH 4
       Stop
    Death:
@@ -513,7 +721,7 @@ ACTOR EmptyRocketChamber
    States
    {
    Spawn:
-      TNT1 A 7 A_PlaySound("NULL")
+      TNT1 A 0
       RCSE ABCDEFGHABCDEFGHABCDEFGHABCDEFGHABCDEFGH 4
       Stop
    Death:
@@ -549,7 +757,7 @@ ACTOR EmptyCell
    States
    {
    Spawn:
-      TNT1 A 7 A_PlaySound("NULL")
+      TNT1 A 0
       ECEL ABCDEFGHABCDEFGHABCDEFGHABCDEFGHABCDEFGH 4
       Stop
    Death:
@@ -570,7 +778,7 @@ ACTOR RocketCaseSpawn
 	{
 	Spawn:
         TNT1 A 0
-		TNT1 A 1 A_CustomMissile("EmptyRocketChamber",0,0,random(-80,-100),2,random(40,60))
+		TNT1 A 1 A_CustomMissile("EmptyRocketChamber",0,0,random(80,100),2,random(40,60))
 		Stop
 	}
 } 
@@ -581,7 +789,7 @@ ACTOR PlasmaCaseSpawn : RifleCaseSpawn
 	{
 	Spawn:
         TNT1 A 0
-		TNT1 A 1 A_CustomMissile("EmptyCell",0,0,random(-80,-100),2,random(40,60))
+		TNT1 A 1 A_CustomMissile("EmptyCell",0,0,random(80,100),2,random(40,60))
 		Stop
 	}
 } 
