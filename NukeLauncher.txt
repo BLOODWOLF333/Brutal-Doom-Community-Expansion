@@ -150,18 +150,13 @@ ACTOR NukeLauncher : BrutalWeapon 7452
         NKLG B 1 BRIGHT
 		NKLG A 0 A_PlaySound ("DSRFIRE", 1)
 		NKLG A 0 A_PlaySound ("brain/spit", 4)
-		NKLG A 0 A_ZoomFactor(0.9)
 		NKLG B 1 BRIGHT
 		NKLG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
-		NKLG A 0 A_ZoomFactor(1.0)
 		NKLG A 0 A_FireCustomMissile("NuclearRocket", 0, 1, 0, -6)
-		NKLG C 2 BRIGHT
-		NKLG A 1 offset(0,28)
-		NKLG A 1 offset(0,24)
-		NKLG A 1 offset(0,26)
-		NKLG A 1 offset(0,28)
-		NKLG A 1 offset(0,30)
-		NKLG A 1 offset(0,32)
+		RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
+		RIFG A 0 A_SetPitch(-5.0 + pitch)
+		NKLG C 2 BRIGHT A_SetPitch(-5.0 + pitch)
+		NKLG AAAAA 1 BRIGHT A_SetPitch(1.0 + pitch)
 		Goto Ready+6
 	}
 }

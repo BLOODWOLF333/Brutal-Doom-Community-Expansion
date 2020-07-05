@@ -156,11 +156,13 @@ ACTOR FlameCannon : BrutalWeapon
 	Fireball:	
 		FLMG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
         FLMF A 1 BRIGHT A_FireCustomMissile("BigFireBallWithGravity", 0, 1, 0, -6)
-		FLMG A 0 A_SetPitch(-4.0 + pitch)
+		RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
+		RIFG A 0 A_SetPitch(-1.6 + pitch)
+		FLMG A 0 A_SetPitch(-1.6 + pitch)
 		FLMG A 0 A_TakeInventory("Gas", 16)
 		FLMG A 0 A_FireCustomMissile("ShakeYourAssDouble", 0, 0, 0, 0)
-        FLMF BC 1  
-        FLMF CD 1 A_SetPitch(+2.0 + pitch)
+        FLMF BC 1 A_SetPitch(+0.4 + pitch)
+        FLMF CD 1 A_SetPitch(+0.4 + pitch)
 		FLMG A 5
 		Goto Ready+2
 	
@@ -170,8 +172,7 @@ ACTOR FlameCannon : BrutalWeapon
 		FLMG A 0 A_PlaySound("FLAMER", CHAN_WEAPON, 1, 1)
 		
 		FLMG A 0 A_TakeInventory("Gas", 7)
-		FLMF FG 1 BRIGHT A_SetAngle(random(1, -1) + angle)
-		FLMG A 0 BRIGHT A_SetPitch(random(1, -1) + pitch)
+		FLMF FG 1 BRIGHT
 		
 		FLMG A 0 BRIGHT A_FireCustomMissile("FlamethrowerMissileNoLight", 0, 1, 0, -12, 0, 8)
 		FLMG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)

@@ -170,11 +170,10 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 		DUPL A 0 A_FireCustomMissile("PlasmaFlareSpawn", 8, 0, 0, 0)
 		
 		DUPL A 0 A_JumpIfInventory("DMgame", 1, "FireDM")
-		DUPL A 0 A_ZoomFactor(0.98)
-		DUPL B 1 BRIGHT A_FireCustomMissile("Plasma_Ball", random(-2, 2), 1, 8, -3, 0, frandom(-1.5, 1.5))
-		DUPL A 0 A_ZoomFactor(1.0)
+		DUPL B 1 BRIGHT A_FireCustomMissile("Plasma_Ball", random(-1, 1), 1, 8, -5, 0, frandom(-0.9, 0.9))
 		DUPL A 0 A_Takeinventory("PlasmaAmmo",1)
 		DUPL A 0 A_Takeinventory("DoublePlasmaAmmo",1)
+		TNT1 A 0 A_SetPitch(-0.2 + pitch)
 		DUPL C 0
 		
 	FireLeft:
@@ -183,19 +182,16 @@ ACTOR DualPlasmaRifles : BrutalWeapon
         Goto NoAmmo
         DUPL A 0 A_PlaySound("PLSM9", CHAN_WEAPON)
 		DUPL A 0 A_FireCustomMissile("PlasmaFlareSpawn", -8, 0, 0, 0)
-		
-		DUPL A 0 A_ZoomFactor(0.98)
-		DUPL D 2 BRIGHT A_FireCustomMissile("Plasma_Ball", random(-2, 2), 1, -8, -3, 0, frandom(-1.5, 1.5))
-		DUPL A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_SetPitch(-0.2 + pitch)
+		DUPL D 2 BRIGHT A_FireCustomMissile("Plasma_Ball", random(-1, 1), 1, -8, -5, 0, frandom(-0.9, 0.9))
 		DUPL A 0 A_Takeinventory("DoublePlasmaAmmo",1)
 		DUPL EC 1
 		DUPL A 0 A_Refire("Fire")
 		Goto Ready
 		
 	FireDM:	
-		DUPL A 0 A_ZoomFactor(0.98)
-		DUPL B 1 BRIGHT A_FireCustomMissile("PlasmaBallDM", random(-2, 2), 1, 8, -3, 0, frandom(-1.5, 1.5))
-		DUPL A 0 A_ZoomFactor(1.0)
+		DUPL A 0 
+		DUPL B 1 BRIGHT A_FireCustomMissile("PlasmaBallDM", random(-1, 1), 1, 8, -5, 0, frandom(-0.9, 0.9))
 		DUPL A 0 A_Takeinventory("PlasmaAmmo",1)
 		DUPL A 0 A_Takeinventory("DoublePlasmaAmmo",1)
 		DUPL B 1
@@ -207,9 +203,7 @@ ACTOR DualPlasmaRifles : BrutalWeapon
         DUPL A 0 A_PlaySound("PLSM9", CHAN_WEAPON)
 		DUPL A 0 A_FireCustomMissile("PlasmaFlareSpawn", -12, 0, 0, 0)
 		
-		DUPL A 0 A_ZoomFactor(0.98)
-		DUPL D 1 BRIGHT A_FireCustomMissile("PlasmaBallDM", random(-2, 2), 1, -8, -3, 0, frandom(-1.5, 1.5))
-		DUPL A 0 A_ZoomFactor(1.0)
+		DUPL D 1 BRIGHT A_FireCustomMissile("PlasmaBallDM", random(-1, 1), 1, -8, -5, 0, frandom(-0.9, 0.9))
 		DUPL A 0 A_Takeinventory("DoublePlasmaAmmo",1)
 		DUPL E 1
 		Goto Ready
@@ -244,13 +238,13 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 		TNT1 A 5
 		PLSR B 1
 		DUPL A 0 A_PlaySound("PLREADY", 1)
-		DUPL A 0 A_FireCustomMissile("PlasmaCaseSpawn",-210,0,20,-20)
+		DUPL A 0 A_FireCustomMissile("PlasmaCaseSpawn",45,0,10,-20)
 		PLSR CDEEEEEEEEEEEEEEEF 1
         PLSR GHHIIIJJJJJJJJIKLB 1
 		TNT1 A 10
 		P2SR B 1
 		DUPL A 0 A_PlaySound("PLREADY", 3)
-		DUPL A 0 A_FireCustomMissile("PlasmaCaseSpawn",-210,0,20,-20)
+		DUPL A 0 A_FireCustomMissile("PlasmaCaseSpawn",180,0,-10,-20)
 		P2SR CDEEEEEEEEEEEEEEEF 1
         P2SR GHHIIIJJJJJJJJIKLB 1
 		DUPL A 0 A_TakeInventory("StopDualWield", 1)
