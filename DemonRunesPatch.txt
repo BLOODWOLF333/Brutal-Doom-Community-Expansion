@@ -57,6 +57,8 @@ ACTOR D4BaronHUDPatch : D4BaronHUD Replaces D4BaronHUD
 			TNT1 A 0 A_TakeInventory("HeavyStrikeRight",1)
 			TNT1 A 0 A_TakeInventory("HeavyStrikeLeft",1)
 			HBRG A 1 A_WeaponReady
+			TNT1 A 0 A_JumpIfInventory("FiredPrimary", 1, "Fire")
+			TNT1 A 0 A_JumpIfInventory("FiredSecondary", 1, "AltFire")
 			Loop
 			
 		Fire:
@@ -70,14 +72,13 @@ ACTOR D4BaronHUDPatch : D4BaronHUD Replaces D4BaronHUD
 			HBRF EFGHI 1 BRIGHT A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
 			HBRF JKLMDCBA 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
 			HBRG A 17
-			HBRG A 1 A_Refire("Fire")
+			HBRG A 1 A_Refire
 			Goto Ready
 		
 		MeleeAttack://Right swipe
 			TNT1 A 0
 			HBRG A 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
 			TNT1 A 0 A_Recoil(-3)
-			TNT1 A 0 A_TakeInventory("HeavyStrikeLeft",1)
 			TNT1 A 0 A_JumpIfInventory("HeavyStrikeRight",1,"Melee2")
 			
 			HBRM ABC 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
@@ -87,15 +88,17 @@ ACTOR D4BaronHUDPatch : D4BaronHUD Replaces D4BaronHUD
 			TNT1 A 0 A_GiveInventory("HeavyStrikeRight", 1)
 			TNT1 AAAA 0 A_FireCustomMissile("SuperKickAttack", 0, 0, 0, -24)
 			HBRM GH 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
-			HBRF DCB 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
-			HBRF A 1 A_Refire
+			HBRF DCBA 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+			TNT1 A 0 A_TakeInventory("HeavyStrikeLeft",1)
+			TNT1 A 0 A_JumpIfInventory("FiredPrimary", 1, "Fire")
+			TNT1 A 0 A_JumpIfInventory("FiredSecondary", 1, "AltFire")
 			Goto Ready
 	
 		Melee2://Left swipe
 			TNT1 A 0
 			HBRG A 1
 			TNT1 A 0 A_Recoil(-3)
-			TNT1 A 0 A_TakeInventory("HeavyStrikeRight",1)
+			TNT1 A 0 A_JumpIfInventory("HeavyStrikeLeft",1,"MeleeAttack")
 			
 			HBRN ABC 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
 			TNT1 A 0 A_PlaySound("weapons/gswing")
@@ -104,8 +107,10 @@ ACTOR D4BaronHUDPatch : D4BaronHUD Replaces D4BaronHUD
 			TNT1 A 0 A_GiveInventory("HeavyStrikeLeft", 1)
 			TNT1 AAAA 0 A_FireCustomMissile("SuperKickAttack", 0, 0, 0, -24)
 			HBRN GH 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
-			HBRF DCB 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
-			HBRF A 1 A_Refire
+			HBRF DCBA 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+			TNT1 A 0 A_TakeInventory("HeavyStrikeRight",1)
+			TNT1 A 0 A_JumpIfInventory("FiredPrimary", 1, "Fire")
+			TNT1 A 0 A_JumpIfInventory("FiredSecondary", 1, "AltFire")
 			Goto Ready
 			
 		AltFire://Right swipe
@@ -116,12 +121,10 @@ ACTOR D4BaronHUDPatch : D4BaronHUD Replaces D4BaronHUD
 			TNT1 A 0 A_JumpIfInventory("HasExplosiveBarrel", 1, "ReadyBarrel")
 			HBRG A 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
 			TNT1 A 0 A_Recoil(-3)
-			TNT1 A 0 A_TakeInventory("HeavyStrikeLeft",1)
 			TNT1 A 0 A_JumpIfInventory("HeavyStrikeRight",1,"Melee2")
 			
 			HBRM ABC 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
 			TNT1 A 0 A_PlaySound("weapons/gswing")
-			TNT1 A 0 A_FireCustomMissile("BaronAttackOnBarrel", 0, 0, 0, -16)
 			HBRM DEF 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
 			
 			TNT1 A 0 A_GiveInventory("HeavyStrikeRight", 1)
@@ -129,8 +132,10 @@ ACTOR D4BaronHUDPatch : D4BaronHUD Replaces D4BaronHUD
 			TNT1 AAAA 0 A_FireCustomMissile("SuperKickAttack", 0, 0, 0, -24)
 			HBRM GH 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
 			TNT1 A 0 A_JumpIfInventory("HasExplosiveBarrel", 1, "ReadyBarrel")
-			HBRF DCB 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
-			HBRF A 1 A_Refire
+			HBRF DCBA 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+			TNT1 A 0 A_TakeInventory("HeavyStrikeLeft",1)
+			TNT1 A 0 A_JumpIfInventory("FiredPrimary", 1, "Fire")
+			TNT1 A 0 A_JumpIfInventory("FiredSecondary", 1, "AltFire")
 			Goto Ready
 	}
 }
