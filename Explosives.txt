@@ -15,10 +15,9 @@ ACTOR Rocket2
 	+MISSILE
     +NOGRAVITY
     +EXTREMEDEATH
-    +BLOODSPLATTER 
-	+THRUSPECIES
-	+MTHRUSPECIES
+    +BLOODSPLATTER
 	+SPECTRAL
+	+MTHRUSPECIES
 	SeeSound "weapons/RLL"
 	DeathSound "Explosion"
 	Obituary "$OB_MPROCKET"
@@ -87,7 +86,6 @@ Actor RocketBackblast: FastProjectile
 	+GHOST
 	+THRUGHOST
 	Species "Marines"
-	+THRUSPECIES
 	DamageType "ExplosiveImpact"
 	States
 	{
@@ -226,7 +224,7 @@ actor JuggernautRocket: Rocket2
 {
 speed 20
 Damage (random (100, 110))
-Species "TheSpiderMastermind"
+Species "SpiderMastermind"
 }
 
 actor RocketExplosion
@@ -340,7 +338,6 @@ ACTOR GrenadeMissile
 	+BOUNCEONWALLS
 	+BOUNCEONCEILINGS
 	+EXPLODEONWATER
-	+THRUSPECIES
 	Species "Marines"
 	DamageType Kick
     BounceFactor 0.5
@@ -559,7 +556,6 @@ ACTOR CyberBalls: Rocket2
     -NOGRAVITY
 	+EXTREMEDEATH
 	+THRUGHOST
-	+THRUSPECIES
 	Species "Cyberdemon"
 	Scale 1.7
     SeeSound "DSCANFIR"
@@ -718,8 +714,6 @@ ACTOR NuclearRocket: Rocket2
 +FORCERADIUSDMG
 -NOGRAVITY
 +SKYEXPLODE
--DONTHURTSPECIES
-+DOHARMSPECIES
 +NODAMAGETHRUST
 Gravity 0.4
 Damage (random (20000, 20000))
@@ -840,12 +834,12 @@ Actor TankShellLong: TankShell
 Gravity 0.1
 }
 
-Actor EnemYTankShell: TankShell
+Actor EnemyTankShell: TankShell
 {
 Speed 55
 Damage (random (350, 350))
 +NOGRAVITY
-+THRUSPECIES
++MTHRUSPECIES
 Species "EnemyTank"
 }
 
