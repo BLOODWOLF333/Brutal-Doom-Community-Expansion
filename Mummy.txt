@@ -1,0 +1,169 @@
+
+
+ACTOR BDMummy
+{
+	Health 200
+	Height 48
+	Scale 0.7
+	Mass 500
+	Speed 10
+	FastSpeed 14
+	PainChance 100
+	Monster
+	MeleeThreshold 196
+	+MISSILEMORE 
+	+FLOORCLIP
+	SeeSound "MUMYSEE"
+	PainSound "skeleton/pain"
+	DeathSound "MUMYDIE"
+	ActiveSound "MUMYACT"
+	MeleeSound "skeleton/melee"
+	Tag "Mummy"
+	HitObituary "%o was knocked-out by a Mummy."
+	Obituary "$OB_UNDEAD"
+	States
+	{
+	Spawn2:
+		MUMA B 10 A_Look
+		Loop
+	Spawn:
+		MUMA B 11 A_Look
+		Loop
+	See:
+		MUMA AABBCCDDEEFF 2 A_Chase
+		Loop
+	Melee:
+		MUMA G 1 A_FaceTarget
+		TNT1 A 0 A_Recoil(-5)
+		MUMA G 6 A_SkelWhoosh
+		MUMA H 6 A_FaceTarget
+		MUMA I 6 A_SkelFist
+		Goto See
+	Pain:
+		MUMA L 5
+		MUMA L 5 A_Pain
+		Goto See
+	
+	Death:
+		MUMA LM 7
+		MUMA N 7 A_Scream
+		MUMA O 7 A_NoBlocking
+		MUMA P 7
+		MUMA Q -1
+		Stop
+		
+	Death.Fire:
+	Death.Burn:
+	Death.PLasma:
+	Death.GreenFire:
+		SKEL LM 4
+		SKEL N 4 A_Scream
+		SKEL O 4 A_NoBlocking
+		SKEL P 1
+		TNT1 A 0 A_Playsound("props/redfire")
+		CARB NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN 2 A_CustomMissile ("FlameTrails", 25, 0, random (0, 360), 2, random (70, 130))
+        CARB NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN 10 A_CustomMissile ("PlasmaSmoke", 25, 0, random (0, 360), 2, random (70, 130))
+        CARB N -1
+        Stop
+
+	XDeath:
+	Death.ExplosiveImpact:
+		TNT1 AAAAA 0 A_CustomMissile ("RevenantDust", 60, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAAAA 0 A_CustomMissile ("RevenantDust2", 60, 0, random (0, 360), 2, random (0, 360))
+        TNT1 A 0 A_CustomMissile ("XDeathRevenantHead", 52, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_CustomMissile ("XDeath1", 67, 0, random (0, 360), 2, random (30, 150))
+		TNT1 AAA 0 A_CustomMissile ("XDeath1", 60, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAA 0 A_CustomMissile ("XDeath2b", 60, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAA 0 A_CustomMissile ("XDeath3b", 60, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_SpawnItem("MuchBlood2", 0, 50)
+		TNT1 AAAAA 0 A_CustomMissile ("RevenantBonesFast", 57, 0, random (0, 360), 2, random (30, 150))
+		TNT1 AAAAA 0 A_CustomMissile ("RevenantPiece", 57, 0, random (0, 360), 2, random (30, 150))
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_Scream
+        Stop	
+	}
+}
+
+
+
+
+ACTOR Experiment: BDMummy
+{
+	Health 100
+	Height 48
+	Scale 0.7
+	Mass 500
+	Speed 16
+	FastSpeed 18
+	PainChance 100
+	Monster
+	MeleeThreshold 196
+	+MISSILEMORE 
+	+FLOORCLIP
+	SeeSound "MUMYSEE"
+	PainSound "skeleton/pain"
+	DeathSound "MUMYDIE"
+	ActiveSound "MUMYACT"
+	MeleeSound "skeleton/melee"
+	Tag "Experiment"
+	HitObituary "%o was clobbered by an Experiment."
+	Obituary "$OB_UNDEAD"
+	States
+	{
+	Spawn:
+		ZKEL B 11 A_Look
+		Loop
+	See:
+		ZKEL AABBCCDDEEFF 2 A_Chase
+		Loop
+	Melee:
+		ZKEL G 1 A_FaceTarget
+		TNT1 A 0 A_Recoil(-5)
+		ZKEL G 6 A_SkelWhoosh
+		ZKEL H 6 A_FaceTarget
+		ZKEL I 6 A_SkelFist
+		Goto See
+	Pain:
+		ZKEL L 5
+		ZKEL L 5 A_Pain
+		Goto See
+	
+	Death:
+		ZKEL LM 7
+		ZKEL N 7 A_Scream
+		ZKEL O 7 A_NoBlocking
+		ZKEL P 7
+		ZKEL Q -1
+		Stop
+		
+	Death.Fire:
+	Death.Burn:
+	Death.PLasma:
+	Death.GreenFire:
+		SKEL LM 4
+		SKEL N 4 A_Scream
+		SKEL O 4 A_NoBlocking
+		SKEL P 1
+		TNT1 A 0 A_Playsound("props/redfire")
+		CARB NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN 2 A_CustomMissile ("FlameTrails", 25, 0, random (0, 360), 2, random (70, 130))
+        CARB NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN 10 A_CustomMissile ("PlasmaSmoke", 25, 0, random (0, 360), 2, random (70, 130))
+        CARB N -1
+        Stop
+
+	XDeath:
+	Death.ExplosiveImpact:
+		TNT1 AAAAA 0 A_CustomMissile ("RevenantDust", 60, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAAAA 0 A_CustomMissile ("RevenantDust2", 60, 0, random (0, 360), 2, random (0, 360))
+        TNT1 A 0 A_CustomMissile ("XDeathRevenantHead", 52, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_CustomMissile ("XDeath1", 67, 0, random (0, 360), 2, random (30, 150))
+		TNT1 AAA 0 A_CustomMissile ("XDeath1", 60, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAA 0 A_CustomMissile ("XDeath2b", 60, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAA 0 A_CustomMissile ("XDeath3b", 60, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_SpawnItem("MuchBlood2", 0, 50)
+		TNT1 AAAAA 0 A_CustomMissile ("RevenantBonesFast", 57, 0, random (0, 360), 2, random (30, 150))
+		TNT1 AAAAA 0 A_CustomMissile ("RevenantPiece", 57, 0, random (0, 360), 2, random (30, 150))
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_Scream
+        Stop	
+	}
+}
