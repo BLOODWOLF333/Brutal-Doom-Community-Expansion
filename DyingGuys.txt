@@ -2453,12 +2453,12 @@ ACTOR DyingShotgunguyHitInEye: Shotgunguy1
     Height 30
     Speed 0
 	Health 20
-	-COUNTKILL
 	+GHOST
 	+THRUGHOST
 	+NOPAIN
 	+DONTSPLASH
 	-COUNTKILL
+	-SOLID
 	Damagefactor "Stealth", 0.0
 	DropItem "none"
     States
@@ -3469,6 +3469,7 @@ ACTOR ImpDyingOfBloodLoss : Imp
 	-COUNTKILL
 	+SHOOTABLE
 	-COUNTKILL
+	-SOLID
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 10.0
 	Damagefactor "Cut", 10.0	Damagefactor "Extremepunches", 2.0	Damagefactor "Fatality", 5.0
