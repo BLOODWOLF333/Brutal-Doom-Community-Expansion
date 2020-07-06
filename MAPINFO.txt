@@ -1,0 +1,565 @@
+
+episode EDAY01
+{
+optional
+name = "Extermination Day"
+}
+
+episode BDM01
+{
+name = "Brutal Deathmatch"
+}
+
+
+
+
+map BDM01 "Re-Entryway"
+{
+next = "BDM02"
+secretnext = "BDM02"
+sky1 = "SKYEAR1", 0.1
+music = D_RUNNIN
+cluster = 1
+}
+
+map BDM02 "Dead Simpler"
+{
+next = "BDM03"
+secretnext = "BDM03"
+sky1 = "SKYEAR1", 0.1
+music = D_SHAWN
+cluster = 1
+}
+
+map BDM03 "Nuclear Ashes"
+{
+next = "BDM04"
+secretnext = "BDM04"
+sky1 = "SKYCIT1"
+music = D_ADRIAN
+cluster = 1
+}
+
+
+map BDM04 "Hangarmageddon"
+{
+next = "BDM05"
+secretnext = "BDM05"
+sky1 = "SKYPHO"
+music = D_E1M1
+cluster = 1
+}
+
+
+map BDM05 "Sandstorm"
+{
+next = "BDM06"
+secretnext = "BDM06"
+sky1 = "SKYEAR1", 0.1
+music = D_DM05
+cluster = 1
+}
+
+
+map BDM06 "Another One Bites De Dust"
+{
+next = "BDM07"
+secretnext = "BDM07"
+sky1 = "SKYEAR1", 0.1
+music = D_DM06
+cluster = 1
+}
+
+map BDM07 "Pyramid"
+{
+next = "BDM09"
+secretnext = "BDM09"
+sky1 = "SKYEAR1", 0.1
+music = D_DM07
+cluster = 1
+}
+
+
+map BDM08 "Storage Center"
+{
+next = "BDM09"
+secretnext = "BDM09"
+sky1 = "SKYEAR1"
+music = D_DM08
+cluster = 1
+}
+
+map BDM09 "Cathedral"
+{
+next = "BDM10"
+secretnext = "BDM10"
+sky1 = "SKYDEI"
+music = D_DM09
+cluster = 1
+}
+
+map BDM10 "Tower of Babel"
+{
+next = "BDM01"
+secretnext = "BDM01"
+sky1 = "SKYDEI"
+music = D_dM10
+cluster = 1
+}
+
+map TEST "UAC Testing Center"
+{
+next = "MAP02"
+secretnext = "MAP02"
+sky1 = "SKYEAR1", 0.1
+cluster = 1
+//par = 60
+music = D_RUNNIN
+}
+
+map PSMAP58 "The Mansion"
+{
+next = "MAP17"
+secretnext = "PSMAP59"
+//sky1 = "SKYCIT1"
+sky1 = "SKYEAR3"
+cluster = 1
+//par = 60
+music = D_ROMERO
+}
+
+map PSMAP59 "Club Doom"
+{
+next = "MAP17"
+sky1 = "SKYCITH"
+cluster = 1
+par = 60
+music = D_STALKS
+}
+
+map PSMAP29 "Twilight Descends"
+{
+next = "MAP15"
+secretnext = "PSMAP57"
+//sky1 = "SKYCIT1"
+sky1 = "SKYEAR3"
+cluster = 1
+//par = 60
+music = d_in_cit	
+}
+
+
+map PSMAP57 "The Marshes"
+{
+next = "MAP15"
+secretnext = "MAP15"
+//sky1 = "SKYCIT1"
+sky1 = "SKYEAR3"
+cluster = 1
+//par = 60
+music = d_shawn	
+}
+
+map PSMAP16 "Hellgate"
+{
+next = "PSMAP17"
+secretnext = "PSMAP57"
+//sky1 = "SKYCIT1"
+sky1 = "SKYHELF"
+cluster = 1
+//par = 60
+music = d_dead	
+}
+
+
+map PSMAP17 "Blood Citadel"
+{
+next = "MAP21"
+secretnext = "MAP21"
+//sky1 = "SKYCIT1"
+sky1 = "SKYHELF"
+cluster = 1
+//par = 60
+music = d_doom	
+}
+
+
+
+
+
+clearskills
+
+skill easyhard
+{
+   AutoUseHealth
+   AmmoFactor = 1
+   DamageFactor = 0.25
+   EasyBossBrain
+   SpawnFilter = hard
+   name = "Power-Fantasy"
+   mustconfirm = "Plenty of enemies and you take 75% less damage. This is barely a challenge and is only meant to be played by phone users, gaming journalists, or people just wanting a casual playthrough with no difficulty, or if you are playing a ridiculously difficulty wad such as Dark Tartarus. Press Enter to Confirm"
+}
+
+skill easy
+{
+   AmmoFactor = 1
+   DamageFactor = 1.0
+   SpawnFilter = easy
+   name = "I'm Too Young To Die"
+}
+
+skill normal
+{
+   AmmoFactor = 1
+   DamageFactor = 1.0
+   SpawnFilter = normal
+   name = "Hurt Me Plenty!"
+   defaultskill
+}
+
+
+skill Hard
+{
+   AmmoFactor = 1
+   DamageFactor = 1.0
+   SpawnFilter = Hard
+   name = "Ultra Violence"
+   mustconfirm = "If this is a custom level and/or it's your first time playing it, you should definitely choose an easier difficulty. Press Enter to Confirm"
+}
+
+
+
+
+skill HyperHard
+{
+   AmmoFactor = 1
+   FastMonsters
+   DisableCheats
+   RespawnTime = 20
+   SpawnFilter = Nightmare
+   name = "Nightmare!"
+   mustconfirm = "Enemies are much more aggressive, and respawn after 20 seconds. Press Enter to Confirm"
+}
+
+//6
+skill BlackMetal
+{
+   AmmoFactor = 1
+   DamageFactor = 1.5
+   MonsterHealth = 0.80
+   FastMonsters
+   //ACSReturn = 31
+   SpawnFilter = Nightmare
+   name = "Black Metal"
+   TextColor = "Black"
+   mustconfirm = "You take 50% more damage. Enemies are much more aggressive but have 20% less hit points. You move 25% faster. Press Enter to Confirm"
+}
+
+
+
+skill easy2
+{
+   AmmoFactor = 1
+   DamageFactor = 0.66
+   SpawnFilter = easy
+   name = "(easier) I'm Too Young To Die"
+   mustconfirm = "Just regular ITYD, but with 33% monster damage reduction for people that didn't enjoy the new damage rebalancing and makes difficulty more similar to v20b"
+}
+
+skill normal2
+{
+   AmmoFactor = 1
+   DamageFactor = 0.66
+   SpawnFilter = normal
+   name = "(easier) Hurt Me Plenty!"
+   mustconfirm = "Just regular HTMP, but with 33% monster damage reduction for people that didn't enjoy the new damage rebalancing and makes difficulty more similar to v20b"
+}
+
+
+skill Hard2
+{
+   AmmoFactor = 1
+   DamageFactor = 0.66
+   SpawnFilter = Hard
+   name = "(easier) Ultra Violence"
+   mustconfirm = "Just regular UV, but with 33% monster damage reduction for people that didn't enjoy the new damage rebalancing and makes difficulty more similar to v20b"
+}
+
+
+
+
+skill Realism1
+{
+   DamageFactor = 7.0
+   MonsterHealth = 0.5
+   FriendlyHealth = 0.5
+   ACSReturn = 32
+   //FastMonsters
+   //DisableCheats
+   SpawnFilter = easy
+   name = "Easy Realism Mode"
+   ReplaceActor = "ClipBox", "Clip"
+   ReplaceActor = "RocketBox", "RocketAmmo"
+   ReplaceActor = "Shellbox", "Shell"
+   ReplaceActor = "Cellpack", "Cell"
+   ReplaceActor = "SuperKickAttack", "SuperKickAttackRealism"
+   ReplaceActor = "Kickattack", "KickattackRealism"
+   ReplaceActor = "AirKickattack", "AirKickattackRealism"
+   ReplaceActor = "MeleeStrikeNormal", "MeleeStrikeNormalRealism"
+   ReplaceActor = "MeleeStrike2", "MeleeStrike2Realism"
+   ReplaceActor = "RocketBackblast", "RocketBackblastRealism"
+   ReplaceActor = "Tank", "TankRealism"
+    ReplaceActor = "ArtilleryTank", "ArtilleryTankRealism"
+   ReplaceActor = "AttackHelicopter", "AttackHelicopterRealism"
+   ReplaceActor = "Mech", "MechRealism"
+   
+   TextColor = "Gray"
+   mustconfirm = "You take 700% more damage, enemies have half hit points. Press Enter to Confirm"
+}
+
+
+
+skill Realism2
+{
+   DamageFactor = 7.0
+   MonsterHealth = 0.5
+   FriendlyHealth = 0.5
+   ACSReturn = 32
+   //FastMonsters
+   //DisableCheats
+   SpawnFilter = normal
+   name = "Normal Realism Mode"
+   ReplaceActor = "ClipBox", "Clip"
+   ReplaceActor = "RocketBox", "RocketAmmo"
+   ReplaceActor = "Shellbox", "Shell"
+   ReplaceActor = "Cellpack", "Cell"
+   ReplaceActor = "SuperKickAttack", "SuperKickAttackRealism"
+   ReplaceActor = "Kickattack", "KickattackRealism"
+   ReplaceActor = "AirKickattack", "AirKickattackRealism"
+   ReplaceActor = "MeleeStrikeNormal", "MeleeStrikeNormalRealism"
+   ReplaceActor = "RocketBackblast", "RocketBackblastRealism"
+   ReplaceActor = "MeleeStrike2", "MeleeStrike2Realism"
+   ReplaceActor = "Tank", "TankRealism"
+    ReplaceActor = "ArtilleryTank", "ArtilleryTankRealism"
+   ReplaceActor = "AttackHelicopter", "AttackHelicopterRealism"
+   ReplaceActor = "Mech", "MechRealism"
+   TextColor = "Gray"
+   mustconfirm = "You take 700% more damage, enemies have half hit points. Press Enter to Confirm"
+}
+
+
+
+skill Realism3
+{
+   DamageFactor = 7.0
+   MonsterHealth = 0.5
+   FriendlyHealth = 0.5
+   ACSReturn = 32
+   //FastMonsters
+   //DisableCheats
+   SpawnFilter = hard
+   name = "Hard Realism Mode"
+   ReplaceActor = "ClipBox", "Clip"
+   ReplaceActor = "RocketBox", "RocketAmmo"
+   ReplaceActor = "Shellbox", "Shell"
+   ReplaceActor = "Cellpack", "Cell"
+   ReplaceActor = "SuperKickAttack", "SuperKickAttackRealism"
+   ReplaceActor = "Kickattack", "KickattackRealism"
+   ReplaceActor = "AirKickattack", "AirKickattackRealism"
+   ReplaceActor = "MeleeStrikeNormal", "MeleeStrikeNormalRealism"
+   ReplaceActor = "RocketBackblast", "RocketBackblastRealism"
+   ReplaceActor = "MeleeStrike2", "MeleeStrike2Realism"
+   ReplaceActor = "Tank", "TankRealism"
+    ReplaceActor = "ArtilleryTank", "ArtilleryTankRealism"
+   ReplaceActor = "AttackHelicopter", "AttackHelicopterRealism"
+   ReplaceActor = "Mech", "MechRealism"
+   TextColor = "Gray"
+   mustconfirm = "You take 700% more damage, enemies have half hit points. UV enemy count. Press Enter to Confirm"
+}
+
+
+skill Realism4
+{
+   DamageFactor = 7.0
+   MonsterHealth = 0.5
+   FriendlyHealth = 0.5
+   ACSReturn = 32
+   SpawnFilter = hard
+   RespawnTime = 60
+   name = "Hardcore Realism Mode"
+   ReplaceActor = "ClipBox", "Clip"
+   ReplaceActor = "RocketBox", "RocketAmmo"
+   ReplaceActor = "Shellbox", "Shell"
+   ReplaceActor = "Cellpack", "Cell"
+   ReplaceActor = "SuperKickAttack", "SuperKickAttackRealism"
+   ReplaceActor = "Kickattack", "KickattackRealism"
+   ReplaceActor = "AirKickattack", "AirKickattackRealism"
+   ReplaceActor = "MeleeStrikeNormal", "MeleeStrikeNormalRealism"
+   ReplaceActor = "RocketBackblast", "RocketBackblastRealism"
+   ReplaceActor = "MeleeStrike2", "MeleeStrike2Realism"
+   ReplaceActor = "Tank", "TankRealism"
+    ReplaceActor = "ArtilleryTank", "ArtilleryTankRealism"
+   ReplaceActor = "AttackHelicopter", "AttackHelicopterRealism"
+   ReplaceActor = "Mech", "MechRealism"
+   TextColor = "Gray"
+   mustconfirm = "You take 700% more damage, enemies have half hit points. UV enemy count. And enemies respawn after 60 seconds. Press Enter to Confirm"
+}
+
+
+skill Realism5
+{
+   DamageFactor = 7.0
+   MonsterHealth = 0.5
+   FriendlyHealth = 0.5
+   ACSReturn = 32
+   SpawnFilter = hard
+   FastMonsters
+   RespawnTime = 60
+   name = "Brutal Realism Mode"
+   ReplaceActor = "ClipBox", "Clip"
+   ReplaceActor = "RocketBox", "RocketAmmo"
+   ReplaceActor = "Shellbox", "Shell"
+   ReplaceActor = "Cellpack", "Cell"
+   ReplaceActor = "SuperKickAttack", "SuperKickAttackRealism"
+   ReplaceActor = "Kickattack", "KickattackRealism"
+   ReplaceActor = "AirKickattack", "AirKickattackRealism"
+   ReplaceActor = "MeleeStrikeNormal", "MeleeStrikeNormalRealism"
+   ReplaceActor = "RocketBackblast", "RocketBackblastRealism"
+   ReplaceActor = "MeleeStrike2", "MeleeStrike2Realism"
+   ReplaceActor = "Tank", "TankRealism"
+   ReplaceActor = "ArtilleryTank", "ArtilleryTankRealism"
+   ReplaceActor = "AttackHelicopter", "AttackHelicopterRealism"
+   ReplaceActor = "Mech", "MechRealism"
+   TextColor = "Gray"
+   mustconfirm = "Only the most elite of the players can deal with this. 700% monster damage, 50% monster health, faster projectiles, less ammo, enemies respawn in 60 sec. Run it with Tactical mode and you got an arcadey Hideous Destructor. Press Enter to Confirm"
+}
+
+
+map MAP13B lookup "HUSTR_13"
+{
+	titlepatch = "CWILV12"
+	next = "MAP14"
+	secretnext = "MAP31"
+	sky1 = "SKYCIT1"
+	cluster = 7
+	par = 210
+	music = "$MUSIC_DOOM"
+}
+
+map MAP15B lookup "HUSTR_15"
+{
+	titlepatch = "CWILV14"
+	next = "MAP16B"
+	secretnext = "MAP31"
+	sky1 = "SKYCIT1"
+	cluster = 7
+	par = 210
+	music = "$MUSIC_RUNNI2"
+}
+
+map MAP16B lookup "HUSTR_16"
+{
+	titlepatch = "CWILV15"
+	next = "MAP17B"
+	secretnext = "MAP17"
+	sky1 = "SKYCIT1"
+	cluster = 7
+	par = 150
+	music = "$MUSIC_DEAD2"
+}
+
+map MAP17B lookup "HUSTR_17"
+{
+	titlepatch = "CWILV16"
+	next = "MAP18B"
+	secretnext = "MAP18"
+	sky1 = "SKYCIT1"
+	cluster = 7
+	par = 420
+	music = "$MUSIC_STLKS3"
+}
+
+
+
+map PSXMAP16 "Hellgate"
+{
+	next = "MAP18"
+	secretnext = "MAP18"
+	sky1 = "SKYHEL1", 0.1
+	cluster = 7
+	par = 420
+	music = "$MUSIC_STLKS3"
+}
+
+
+
+map PSXMAP57 "The Marshes"
+{
+	next = "PSXMAP58"
+	secretnext = "PSXMAP58"
+	sky1 = "SKYEAR3", 0.1
+	cluster = 7
+	par = 420
+	music = "$MUSIC_ADRIAN"
+}
+
+
+map PSXMAP58 "Twilight Descends"
+{
+	next = "MAP15"
+	secretnext = "MAP15"
+	sky1 = "SKYEAR3", 0.1
+	cluster = 7
+	par = 420
+	music = "$MUSIC_ADRIAN"
+}
+
+map E2M8 lookup "HUSTR_E2M8"
+{
+	levelnum = 18
+	titlepatch = "WILV17"
+	next = "EndGame2"
+	secretnext = "E2M9"
+	sky1 = "SKY2"
+	cluster = 2
+	par = 30
+	nointermission
+	nosoundclipping
+	SpecialAction = "CyberdemonBoss", "Exit_Normal"
+	cyberdemonspecial
+	specialaction_exitlevel
+	music = "$MUSIC_E2M8"
+}
+
+map E3M8 lookup "HUSTR_E3M8"
+{
+	levelnum = 28
+	titlepatch = "WILV27"
+	next = "endbunny"
+	secretnext = "E3M9"
+	sky1 = "SKY3"
+	cluster = 3
+	par = 30
+	nointermission
+	nosoundclipping
+	SpecialAction = "SuperMastermind", "Exit_Normal"
+	spidermastermindspecial
+	specialaction_exitlevel
+	music = "$MUSIC_E3M8"
+}
+
+map E4M8 lookup "HUSTR_E4M8"
+{
+	levelnum = 38
+	titlepatch = "WILV37"
+	next = "EndGame4"
+	secretnext = "E4M9"
+	sky1 = "SKY4"
+	cluster = 4
+	nointermission
+	nosoundclipping
+	SpecialAction = "MotherDemon", "Floor_LowerToLowest", 666, 8
+	spidermastermindspecial
+	specialaction_lowerfloor
+	music = "$MUSIC_E2M5"
+}
