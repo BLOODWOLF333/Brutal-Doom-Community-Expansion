@@ -463,37 +463,32 @@ ACTOR Cacodemon_ : Cacodemon Replaces Cacodemon
         Stop
 
 FatalityMarine:
-        TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
-       CFPF A 1
-	   TNT1 A 0 A_PlaySound("DSFDTHE")
-       CFPF A 10
-		 TNT1 AAA 0 A_CustomMissile ("XDeath1", 1, 0, random (0, 360), 2, random (0, 160))
-         TNT1 AA 0 A_CustomMissile ("BrainBlood", 25, 0, random (0, 360), 2, random (0, 160))
-	  
-	  CFPF B 9
-		 TNT1 AAA 0 A_CustomMissile ("XDeath1", 1, 0, random (0, 360), 2, random (0, 160))
-         TNT1 AA 0 A_CustomMissile ("BrainBlood", 25, 0, random (0, 360), 2, random (0, 160))
-	  CFPF C 9
+	TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
+	CFPF A 8
+	TNT1 A 0 A_PlaySound("DSFDTHE")
+	TNT1 AAA 0 A_CustomMissile ("XDeath1", 1, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AA 0 A_CustomMissile ("BrainBlood", 25, 0, random (0, 360), 2, random (0, 160))
 
-	  	  CFPF B 9
-		 TNT1 AAA 0 A_CustomMissile ("XDeath1", 1, 0, random (0, 360), 2, random (0, 160))
-         TNT1 AA 0 A_CustomMissile ("BrainBlood", 25, 0, random (0, 360), 2, random (0, 160))
-	  CFPF C 9
-	  
-	  	  CFPF B 9
-		 TNT1 AAA 0 A_CustomMissile ("XDeath1", 1, 0, random (0, 360), 2, random (0, 160))
-         TNT1 AA 0 A_CustomMissile ("BrainBlood", 25, 0, random (0, 360), 2, random (0, 160))
-	  CFPF C 9
-	  
-	  CFPF B 9
-	   TNT1 AAA 0 A_CustomMissile ("XDeath1", 1, 0, random (0, 360), 2, random (0, 160))
-      TNT1 AA 0 A_CustomMissile ("BrainBlood", 25, 0, random (0, 360), 2, random (0, 160))
-	  CFPF C 9
-       TNT1 A 0 A_TakeInventory("Curbstomp_Marine",1)
-	   TNT1 A 0 A_SpawnItem("RipGuts", 0, 40)
-TNT1 A 0 A_SpawnItem ("PlayerJustGotCutInHalf", 1)
-TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
-Goto See
+	CFPF B 8
+	TNT1 AAA 0 A_CustomMissile ("XDeath1", 1, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AA 0 A_CustomMissile ("BrainBlood", 25, 0, random (0, 360), 2, random (0, 160))
+	CFPF C 8
+
+	CFPF B 8
+	TNT1 AAA 0 A_CustomMissile ("XDeath1", 1, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AA 0 A_CustomMissile ("BrainBlood", 25, 0, random (0, 360), 2, random (0, 160))
+	CFPF C 9
+
+	CFPF B 8
+	TNT1 AAA 0 A_CustomMissile ("XDeath1", 1, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AA 0 A_CustomMissile ("BrainBlood", 25, 0, random (0, 360), 2, random (0, 160))
+	CFPF C 8
+	
+	TNT1 A 0 A_TakeInventory("Curbstomp_Marine",1)
+	TNT1 A 0 A_SpawnItem("RipGuts", 0, 40)
+	TNT1 A 0 A_SpawnItem ("PlayerJustGotCutInHalf", 1)
+	TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
+	Goto See
 
 Death.Ice:
 	Death.Freeze:

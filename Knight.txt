@@ -576,14 +576,11 @@ Death.ExplosiveImpact:
 
    CurbstompMarine:
         TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
-		KTFP AAAA 3
-		KTFP BCDE 3
+		KTFP ABCD 8
 		TNT1 A 0 A_SpawnItemEx("FootStep5", 0, 0, 40, 0, 0)
 	    EXPL A 0 Radius_Quake (2, 24, 0, 15, 0)
-        KTFP E 8
-        KTFP F 24
-        KTFP MGGGGG 3
-        KTFP H 2
+        KTFP EF 8
+        KTFP MGH 4
 	    EXPL A 0 Radius_Quake (2, 24, 0, 15, 0)
         TNT1 AAA 0 A_CustomMissile ("Brains1", 11, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("Brains2", 11, 0, random (0, 360), 2, random (0, 160))
@@ -592,8 +589,7 @@ Death.ExplosiveImpact:
 		TNT1 A 0 A_CustomMissile ("Brains5", 11, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAAAA 0 A_CustomMissile ("XDeath1", 1, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_CustomMissile ("MuchBlood2", 1, 0, random (0, 360), 2, random (0, 160))
-        KTFP IJ 2
-	    KTFP KLLLLL 4
+        KTFP IJKL 4
         TNT1 A 0 A_TakeInventory("Curbstomp_Marine",1)
         TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
 		TNT1 A 0 A_SpawnItem ("CurbstompedMarine", 1)
