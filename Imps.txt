@@ -594,6 +594,7 @@ Pain.ExplosiveImpact:
 		TNT1 A 0 A_Pain
 		TROO H 1 A_FaceTarget
 		TNT1 A 0 A_Scream
+		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_Recoil(13)
 		TNT1 A 0 ThrustThingZ(0,20,0,1)
 		TNT1 AA 0 A_CustomMissile ("BloodMist", 40, 0, random (0, 360), 2, random (30, 90))
@@ -865,6 +866,7 @@ Pain.ExplosiveImpact:
 		TNT1 A 0 A_PlaySound("misc/xdeath4")
 		TNT1 A 0 A_CustomMissile ("XDeathImpHeadBeheaded", 50, 0, random (0, 360), 2, random (40, 90))
 		TNT1 A 0 A_Jump(32, "Deathchickenhead")
+		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("DyingImpNoHeadClean")
 		TNT1 A -1
 		Stop
@@ -1037,6 +1039,7 @@ DeathNoGuts:
 	
 	Death.Blast2:
 		TNT1 A 0 A_XScream
+		TNT1 A 0 A_NoBlocking
 		TNT1 AAA 0 A_CustomMissile ("Guts", 32, 0, random (150, 210), 2, random (0, 40))
 		TNT1 AAA 0 A_CustomMissile ("XDeath1", 32, 0, random (150, 210), 2, random (0, 40))
 		TNT1 A 0 A_CustomMissile ("XDeathImpArm", 32, 0, random (150, 210), 2, random (0, 40))
