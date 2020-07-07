@@ -327,8 +327,7 @@ ACTOR BrutalPistol : BrutalWeapon
 		PIST F 0 A_Refire
         Goto Ready	
  	Spawn:
-		PIST A 0
-		PIST G -1
+		TNT1 A 0 A_SpawnItemEx ("PistolSpawner")
 		Stop
 		
 		
