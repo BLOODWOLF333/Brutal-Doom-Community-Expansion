@@ -246,7 +246,7 @@ ACTOR GrenadeLauncher : BrutalWeapon
 		Goto Ready
 	
 	Spawn:
-		GLAP A -1
+		TNT1 A 0 A_SpawnItemEx ("GrenadeLauncherSpawner")
 		Stop
 		
 	}
