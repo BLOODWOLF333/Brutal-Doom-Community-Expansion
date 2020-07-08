@@ -1,4 +1,4 @@
-ACTOR Rocket_Launcher : BrutalWeapon Replaces RocketLauncher
+ACTOR Rocket_Launcher : BrutalWeapon
 {
 	Game Doom
 	SpawnID 29
@@ -340,7 +340,7 @@ ACTOR Rocket_Launcher : BrutalWeapon Replaces RocketLauncher
         Goto Ready	
 
 	Spawn:
-		TNT1 A 0 A_SpawnItemEx ("RocketLauncherSpawner")
+		RLAU A -1
 		Stop
 		
 	Unload:
