@@ -904,6 +904,8 @@ ACTOR BikeHUD : BrutalWeapon
 		TNT1 A 1 BRIGHT 
 		TNT1 A 0 A_SetPitch(-6)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
 		TNT1 A 0 A_TakeInventory("PitchFrontToken", 20)
 		Goto Flash
 	
@@ -917,6 +919,8 @@ ACTOR BikeHUD : BrutalWeapon
 		TNT1 A 1 BRIGHT
 		TNT1 A 0 A_SetPitch(-12)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
 		TNT1 A 0 A_TakeInventory("PitchFrontToken2", 20)
 		Goto Flash
 	
@@ -930,6 +934,8 @@ ACTOR BikeHUD : BrutalWeapon
 		TNT1 A 1 BRIGHT
 		TNT1 A 0 A_SetPitch(6)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
 		TNT1 A 0 A_TakeInventory("PitchBackToken", 20)
 		Goto Flash
 	
@@ -943,6 +949,8 @@ ACTOR BikeHUD : BrutalWeapon
 		TNT1 A 1 BRIGHT
 		TNT1 A 0 A_SetPitch(12)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
 		TNT1 A 0 A_TakeInventory("PitchBackToken2", 20)
 		Goto Flash	
 	
@@ -952,6 +960,7 @@ ACTOR BikeHUD : BrutalWeapon
 		RIFF A 0 A_FireCustomMissile("FlashlightAlerter", 0, 0, 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
 		NULL A 0 A_JumpIfInventory("PitchFrontToken2", 1, "LampPitchFrontHard")
 		NULL A 0 A_JumpIfInventory("PitchFrontToken", 1, "LampPitChFront")
 		NULL A 0 A_JumpIfInventory("PitchBackToken2", 1, "LampPitchBackHard")
@@ -961,6 +970,7 @@ ACTOR BikeHUD : BrutalWeapon
 		TNT1 A 1 BRIGHT
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
 		NULL A 0 A_JumpIfInventory("PitchFrontToken2", 1, "LampPitchFrontHard")
 		NULL A 0 A_JumpIfInventory("PitchFrontToken", 1, "LampPitChFront")
 		NULL A 0 A_JumpIfInventory("PitchBackToken2", 1, "LampPitchBackHard")
@@ -970,6 +980,7 @@ ACTOR BikeHUD : BrutalWeapon
 		TNT1 A 1 BRIGHT
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "LightEnd")
 		NULL A 0 A_JumpIfInventory("PitchFrontToken2", 1, "LampPitchFrontHard")
 		NULL A 0 A_JumpIfInventory("PitchFrontToken", 1, "LampPitChFront")
@@ -979,6 +990,7 @@ ACTOR BikeHUD : BrutalWeapon
 		TNT1 A 1 BRIGHT
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
 		NULL A 0 A_JumpIfInventory("PitchFrontToken2", 1, "LampPitchFrontHard")
 		NULL A 0 A_JumpIfInventory("PitchFrontToken", 1, "LampPitChFront")
 		NULL A 0 A_JumpIfInventory("PitchBackToken2", 1, "LampPitchBackHard")
