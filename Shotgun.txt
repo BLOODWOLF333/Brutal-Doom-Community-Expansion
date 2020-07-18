@@ -526,7 +526,7 @@ ACTOR Shot_Gun : BrutalWeapon
 		SHTN A 0 A_Takeinventory("Reloading",1)
 		SHTN A 0 A_JumpIfInventory("ShotgunWasEmpty", 1, "Pump2")
 		SHTN FEDCBA 1 A_WeaponReady
-		SHTN A 0 A_Takeinventory("Reloading",1)
+		SHTN A 1 A_Takeinventory("Reloading",1)
 		Goto Ready
 	
 	ReloadSlugs:

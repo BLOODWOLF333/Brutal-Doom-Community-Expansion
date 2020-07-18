@@ -315,8 +315,8 @@ ACTOR RailGun : BrutalWeapon
 		
 	DontNeedToReload:
 		TNT1 AAAA 0
-		RLNG A 0 A_Takeinventory("Reloading",1)
-        RLNG A 0 A_Refire
+		RAIL A 1 A_Takeinventory("Reloading",1)
+        RAIL A 0 A_Refire
 		Goto Ready
 	
 	Unload:
