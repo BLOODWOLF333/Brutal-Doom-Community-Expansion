@@ -1,5 +1,6 @@
 ACTOR DyingZombieman
 {
+	MONSTER
     Radius 12
     Height 30
     Speed 9
@@ -24,7 +25,6 @@ ACTOR DyingZombieman
 	+FRIGHTENED
 	-SOLID
 	+DONTSPLASH
-	MONSTER
 	+FRIENDLY//
 	-COUNTKILL
 	+GHOST
@@ -161,6 +161,7 @@ ACTOR DyingZombieman
 
 ACTOR ZombiemanFallingBeheaded
 {
+	MONSTER
     Radius 12
     Height 50
 	Health 20
@@ -175,7 +176,7 @@ ACTOR ZombiemanFallingBeheaded
 	Damagefactor "Slide", 0.5	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 1.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
 	BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
-	+SHOOTABLE    +FLOORCLIP	-SOLID	+DONTSPLASH	MONSTER
+	+SHOOTABLE    +FLOORCLIP	-SOLID	+DONTSPLASH
 	+FRIENDLY	+GHOST	+THRUGHOST -COUNTKILL
 	Mass 500
     States
@@ -254,6 +255,7 @@ ACTOR ZombiemanFallingBeheaded
 
 ACTOR ZombiemanFallingSplattered
 {
+	MONSTER
     Radius 12
     Height 50
 	Health 20
@@ -268,7 +270,7 @@ ACTOR ZombiemanFallingSplattered
 	Damagefactor "Slide", 0.5	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 1.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
 	BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
-	+SHOOTABLE    +FLOORCLIP	-SOLID	+DONTSPLASH	MONSTER
+	+SHOOTABLE    +FLOORCLIP	-SOLID	+DONTSPLASH
 	+FRIENDLY	+GHOST	+THRUGHOST
 	-COUNTKILL
 	Mass 500
@@ -357,6 +359,7 @@ ACTOR ZombiemanFallingSplattered
 
 ACTOR ZombiemanFallingHoleOnStomach
 {
+	MONSTER
     Radius 12
     Height 50
 	Health 20
@@ -371,7 +374,7 @@ ACTOR ZombiemanFallingHoleOnStomach
 	Damagefactor "Slide", 0.5	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 1.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
 	BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
-	+SHOOTABLE    +FLOORCLIP	-SOLID	+DONTSPLASH	MONSTER
+	+SHOOTABLE    +FLOORCLIP	-SOLID	+DONTSPLASH
 	+FRIENDLY	+GHOST	+THRUGHOST
 	-COUNTKILL
 	Mass 500
@@ -686,6 +689,7 @@ ACTOR DyingZombiemanLostTeeth: RifleZombie
 	+NOPAIN
 	+FRIENDLY
 	-COUNTKILL
+	-SOLID
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 10.0
 	Damagefactor "Cut", 10.0	Damagefactor "Extremepunches", 2.0	Damagefactor "Fatality", 5.0
@@ -740,6 +744,7 @@ ACTOR DyingZombiemanLostTeeth: RifleZombie
 
 ACTOR SergeantFallingSplattered
 {
+	MONSTER
     Radius 12
     Height 50
 	Health 20
@@ -754,7 +759,7 @@ ACTOR SergeantFallingSplattered
 	Damagefactor "Slide", 0.5	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 1.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
 	BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
-	+SHOOTABLE    +FLOORCLIP	-SOLID	+DONTSPLASH	MONSTER
+	+SHOOTABLE    +FLOORCLIP	-SOLID	+DONTSPLASH
 	+FRIENDLY	+GHOST	+THRUGHOST
 	-COUNTKILL
 	Mass 500
@@ -843,6 +848,7 @@ ACTOR SergeantFallingSplattered
 
 ACTOR SergeantFallingHoleOnStomach
 {
+	MONSTER
     Radius 12
     Height 50
 	Health 20
@@ -857,8 +863,13 @@ ACTOR SergeantFallingHoleOnStomach
 	Damagefactor "Slide", 0.5	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 1.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
 	BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
-	+SHOOTABLE    +FLOORCLIP	-SOLID	+DONTSPLASH	MONSTER
-	+FRIENDLY	+GHOST	+THRUGHOST
+	+SHOOTABLE
+	+FLOORCLIP
+	-SOLID
+	+DONTSPLASH
+	+FRIENDLY
+	+GHOST
+	+THRUGHOST
 	-COUNTKILL
 	Mass 500
     States
@@ -941,6 +952,7 @@ ACTOR SergeantFallingHoleOnStomach
 
 ACTOR DyingSergeant
 {
+	MONSTER
 	Game Doom
 	Radius 16
 	Height 32
@@ -961,7 +973,6 @@ ACTOR DyingSergeant
 	+SHOOTABLE
 	+FLOORCLIP
 	+DONTSPLASH
-	MONSTER
 	+FRIENDLY//
 	-COUNTKILL
 	+GHOST
@@ -3228,6 +3239,7 @@ ACTOR ImpBrutalizedWithNoLeg
 
 ACTOR DyingImpNoArm
 {
+	Monster
 	Game Doom
 	Radius 16
 	Height 21
@@ -3237,7 +3249,6 @@ ACTOR DyingImpNoArm
 	Mass 999999
 	-SOLID
 	+SHOOTABLE
-	//MONSTER
 	+GHOST
 	-COUNTKILL
 	+THRUGHOST
@@ -3508,7 +3519,6 @@ ACTOR ImpDyingOfBloodLoss : Imp
 
 ACTOR ImpSaciLol: DyingImpNoLeg
 {
-	//MONSTER
 	+GHOST
 	+THRUGHOST
 	-COUNTKILL
