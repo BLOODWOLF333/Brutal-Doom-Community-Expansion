@@ -787,10 +787,11 @@ ACTOR FlashlightProjectile: FastProjectile
 	+NOTIMEFREEZE
 	-ACTIVATEIMPACT
 	-ACTIVATEPCROSS
+	+CLIENTSIDEONLY
 	States
 	{
 	Spawn:
-        TNT1 A 2
+        TNT1 A 3
 		Stop
 
     Death:
@@ -816,7 +817,7 @@ ACTOR FlashlightAlerter: FastProjectile
 	States
 	{
 	Spawn:
-        TNT1 A 2
+        TNT1 A 3
 		Stop
 
     Death:
@@ -830,18 +831,15 @@ ACTOR FlashlightAlerter: FastProjectile
 
 ACTOR FlashlightProjectile2: FlashlightProjectile
 {
-	Radius 22
-	Height 2
-	+CLIENTSIDEONLY
+	Radius 24
+	Height 24
 }
 
 
 ACTOR FlashlightProjectile3: FlashlightProjectile
 {
-	Radius 1
-	Height 1
-	+CLIENTSIDEONLY
-	Speed 600
+	Radius 12
+	Height 12
 }
 
 
