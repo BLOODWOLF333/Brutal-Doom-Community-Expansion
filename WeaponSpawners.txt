@@ -44,7 +44,7 @@ ACTOR RifleSpawner: CustomInventory Replaces Pistol
 		TNT1 A 0 A_GiveInventory("Clip2", 30)
 		Stop
 	Purist:
-	    TNT1 A 0 A_GiveInventory("Clip2", 20)
+	    TNT1 A 0 A_GiveInventory("Clip2", 10)
 		Stop
 	DualRifle:
 		TNT1 A 0 A_GiveInventory("DualRifles", 1)
@@ -116,7 +116,7 @@ ACTOR PistolSpawner: CustomInventory
 		TNT1 A 0 A_GiveInventory("Clip1", 15)
 		Stop
 	Purist:
-	    TNT1 A 0 A_GiveInventory("Clip2", 20)
+	    TNT1 A 0 A_GiveInventory("Clip2", 10)
 		Stop
 	DualPistol:
 		TNT1 A 0
@@ -158,7 +158,7 @@ ACTOR MP40Spawner: CustomInventory
 		TNT1 A 0 A_GiveInventory("Mauser9mm", 32)
 		Stop
 	Purist:
-	    TNT1 A 0 A_GiveInventory("Clip2", 20)
+	    TNT1 A 0 A_GiveInventory("Clip2", 10)
 		Stop
 	Dual:
 		TNT1 A 0 A_GiveInventory("DualMP40", 1)
@@ -208,11 +208,10 @@ ACTOR ShotgunSpawner: CustomInventory
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
 		TNT1 A 0 A_GiveInventory("Shot_Gun", 1)
-		TNT1 A 0 A_GiveInventory("AmmoShell", 8)
+		TNT1 A 0 A_GiveInventory("AmmoShell", 4)
 		Stop
 	Purist:
 	    TNT1 A 0 A_GiveInventory("ClassicShotgun", 1)
-		TNT1 A 0 A_GiveInventory("AmmoShell", 8)
 		Stop
     }
 }
@@ -235,11 +234,10 @@ ACTOR ShotgunSpawnerDroped: ShotgunSpawner
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
 		TNT1 A 0 A_GiveInventory("Shot_Gun", 1)
-		TNT1 A 0 A_GiveInventory("AmmoShell", 8)
+		TNT1 A 0 A_GiveInventory("AmmoShell", 4)
 		Stop
 	Purist:
 	    TNT1 A 0 A_GiveInventory("ClassicShotgun", 1)
-		TNT1 A 0 A_GiveInventory("AmmoShell", 8)
 		Stop
     }
 }
@@ -273,7 +271,6 @@ ACTOR RevolverSpawner: CustomInventory
 		Stop
 	Purist:
 	    TNT1 A 0 A_GiveInventory("ClassicShotgun", 1)
-		TNT1 A 0 A_GiveInventory("AmmoShell", 8)
 		Stop
     }
 }
@@ -376,11 +373,10 @@ ACTOR SSGSpawner: CustomInventory
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
 		TNT1 A 0 A_GiveInventory("SSG", 1)
-		TNT1 A 0 A_GiveInventory("AmmoShell", 8)
+		TNT1 A 0 A_GiveInventory("AmmoShell", 2)
 		Stop
 	Purist:
 	    TNT1 A 0 A_GiveInventory("ClassicSSG", 1)
-		TNT1 A 0 A_GiveInventory("AmmoShell", 8)
 		Stop
     }
 }
@@ -441,11 +437,10 @@ ACTOR ChaingunSpawner: CustomInventory
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
 		TNT1 A 0 A_GiveInventory("Minigun", 1)
-		TNT1 A 0 A_GiveInventory("Clip2", 100)
+		TNT1 A 0 A_GiveInventory("Clip2", 50)
 		Stop
 	Purist:
 	    TNT1 A 0 A_GiveInventory("ClassicChaingun", 1)
-		TNT1 A 0 A_GiveInventory("Clip2", 20)
 		TNT1 A 1
 		TNT1 A -1
 		Stop
@@ -488,7 +483,6 @@ ACTOR SMGSpawner: CustomInventory
 		Stop	
 	Purist:
 	    TNT1 A 0 A_GiveInventory("ClassicSMG", 1)
-		TNT1 A 0 A_GiveInventory("Clip2", 20)
 		Stop
     }
 }
@@ -520,12 +514,11 @@ ACTOR MachinegunSpawner: CustomInventory
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
 		TNT1 A 0 A_GiveInventory("Machinegun", 1)
-		TNT1 A 0 A_GiveInventory("Clip2", 100)
+		TNT1 A 0 A_GiveInventory("Clip2", 50)
 		Stop
 
 	Purist:
 	    TNT1 A 0 A_GiveInventory("ClassicChaingun", 1)
-		TNT1 A 0 A_GiveInventory("Clip2", 20)
 		Stop
     }
 }
@@ -642,11 +635,10 @@ ACTOR DropedChaingunSpawner: ChaingunSpawner
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
 		TNT1 A 0 A_GiveInventory("Minigun", 1)
-		TNT1 A 0 A_GiveInventory("Clip2", 20)
+		TNT1 A 0 A_GiveInventory("Clip2", 50)
 		Stop
 	Purist:
 	    TNT1 A 0 A_GiveInventory("ClassicChaingun", 1)
-		TNT1 A 0 A_GiveInventory("Clip2", 20)
 		Stop
     }
 }
@@ -677,12 +669,11 @@ ACTOR RocketLauncherSpawner : CustomInventory
 	Pickup:
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
-		TNT1 A 0 A_GiveInventory("AmmoRocket", 2)
+		TNT1 A 0 A_GiveInventory("AmmoRocket", 1)
 		TNT1 A 0 A_GiveInventory("Rocket_Launcher", 1)
 		Stop
 	Purist:
 		TNT1 A 0
-		TNT1 A 0 A_GiveInventory("AmmoRocket", 2)
 	    TNT1 A 0 A_GiveInventory("ClassicRocketLauncher", 1)
 		Stop
     }
@@ -716,11 +707,10 @@ ACTOR GrenadeLauncherSpawner: CustomInventory 2551
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
 		TNT1 A 0 A_GiveInventory("GrenadeLauncher", 1)
-		TNT1 A 0 A_GiveInventory("AmmoRocket", 2)
+		TNT1 A 0 A_GiveInventory("AmmoRocket", 1)
 		Stop
 	Purist:
 	    TNT1 A 0 A_GiveInventory("ClassicRocketLauncher", 1)
-		TNT1 A 0 A_GiveInventory("AmmoRocket", 2)
 		Stop
     }
 }
@@ -826,16 +816,15 @@ ACTOR PLasmagunSpawner: CustomInventory
 		TNT1 A 0 A_JumpIfInventory("Plasma_Gun", 1, "DualPlasma")
 	PickupNormal:	
 		TNT1 A 0 A_GiveInventory("Plasma_Gun", 1)
-		TNT1 A 0 A_GiveInventory("AmmoCell", 40)
+		TNT1 A 0 A_GiveInventory("AmmoCell", 50)
 		Stop
 	Purist:
 	    TNT1 A 0 A_GiveInventory("ClassicPlasmaRifle", 1)
-		TNT1 A 0 A_GiveInventory("AmmoCell", 40)
 		Stop
 	DualPlasma:
 		TNT1 A 0
 		TNT1 A 0 A_GiveInventory("DUalPlasmaRifles", 1)
-		TNT1 A 0 A_GiveInventory("AmmoCell", 40)
+		TNT1 A 0 A_GiveInventory("AmmoCell", 50)
 		Stop	
     }
 }
@@ -894,11 +883,10 @@ ACTOR RailgunSpawner: CustomInventory  2552
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
 		TNT1 A 0 A_GiveInventory("Railgun", 1)
-		TNT1 A 0 A_GiveInventory("AmmoCell", 40)
+		TNT1 A 0 A_GiveInventory("AmmoCell", 50)
 		Stop
 	Purist:
 	    TNT1 A 0 A_GiveInventory("ClassicPlasmaRifle", 1)
-		TNT1 A 0 A_GiveInventory("AmmoCell", 40)
 		Stop
     }
 }
@@ -1044,11 +1032,10 @@ ACTOR BFG9000Spawner: CustomInventory
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
 		TNT1 A 0 A_GiveInventory("BIG_FUCKING_GUN", 1)
-		TNT1 A 0 A_GiveInventory("AmmoCell", 100)
+		TNT1 A 0 A_GiveInventory("AmmoCell", 50)
 		Stop
 	Purist:
 	    TNT1 A 0 A_GiveInventory("VanillaBFG9000", 1)
-		TNT1 A 0 A_GiveInventory("AmmoCell", 100)
 		Stop
     }
 }
@@ -1079,11 +1066,10 @@ ACTOR BFG10KSpawner: CustomInventory 2553
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
 		TNT1 A 0 A_GiveInventory("BFG10K", 1)
-		TNT1 A 0 A_GiveInventory("AmmoCell", 100)
+		TNT1 A 0 A_GiveInventory("AmmoCell", 50)
 		Stop
 	Purist:
 	    TNT1 A 0 A_GiveInventory("VanillaBFG9000", 1)
-		TNT1 A 0 A_GiveInventory("AmmoCell", 100)
 		Stop
     }
 }
@@ -1115,11 +1101,9 @@ ACTOR UnmakerSpawner: CustomInventory 8845
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
 		TNT1 A 0 A_GiveInventory("Unmaker", 1)
-		TNT1 A 0 A_GiveInventory("SoulAmmo", 100)
 		Stop
 	Purist:
 	    TNT1 A 0 A_GiveInventory("VanillaBFG9000", 1)
-		TNT1 A 0 A_GiveInventory("AmmoCell", 100)
 		Stop
     }
 }

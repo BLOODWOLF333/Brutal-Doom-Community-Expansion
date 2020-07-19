@@ -37,7 +37,7 @@ ACTOR Clip2 : Ammo
 	Inventory.PickupMessage "Picked up a Rifle Magazine."
 	Inventory.Amount 30
 	Inventory.MaxAmount 300
-	Ammo.BackpackAmount 60
+	Ammo.BackpackAmount 30
 	Ammo.BackpackMaxAmount 600
 	Inventory.Icon "CLIPA0"
 	Inventory.PickupSound "CLIPICK2"
@@ -65,7 +65,7 @@ ACTOR Clip2 : Ammo
 	Inventory.PickupMessage "Picked up a Pistol Magazine."
 	Inventory.Amount 15
 	Inventory.MaxAmount 200
-	Ammo.BackpackAmount 30
+	Ammo.BackpackAmount 15
 	Ammo.BackpackMaxAmount 400
 	Inventory.Icon "CLIPC0"
 	Inventory.PickupSound "CLIPICK"
@@ -172,7 +172,7 @@ ACTOR ClipBox2 : Clip2
 	SpawnID 139
 	Inventory.PickupMessage "Picked up a box of rifle ammunition."
 	Inventory.PickupSound "CBOXPICK"
-	Inventory.Amount 100
+	Inventory.Amount 50
 	Scale 0.9
 	States
 	{
@@ -202,9 +202,9 @@ ACTOR BuzzSawAmmo : Ammo
 	Game Doom
 	Inventory.PickupMessage "Picked up a belt of MG42 ammo."
 	Inventory.PickupSound "CBOXPICK"
-	Inventory.Amount 100
+	Inventory.Amount 50
 	Inventory.MaxAmount 300
-	Ammo.BackpackAmount 100
+	Ammo.BackpackAmount 50
 	Ammo.BackpackMaxAmount 600
 	Inventory.Icon "HBUSE0"
 	Scale 0.6
@@ -277,7 +277,7 @@ ACTOR AmmoRocket : Ammo
 	Inventory.PickupMessage "$GOTROCKET"
 	Inventory.Amount 1
 	Inventory.MaxAmount 50
-	Ammo.BackpackAmount 2
+	Ammo.BackpackAmount 1
 	Ammo.BackpackMaxAmount 100
 	Inventory.Icon "ROCKA0"
 	Inventory.Pickupsound "RCKCLIP"
@@ -431,9 +431,9 @@ ACTOR AmmoCell : Ammo Replaces Cell
 	Game Doom
 	SpawnID 75
 	Inventory.PickupMessage "$GOTCELL"
-	Inventory.Amount 20
+	Inventory.Amount 50
 	Inventory.MaxAmount 300
-	Ammo.BackpackAmount 40
+	Ammo.BackpackAmount 50
 	Ammo.BackpackMaxAmount 600
 	Inventory.Icon "CELLA0"
 	Scale 0.9
@@ -543,7 +543,7 @@ ACTOR AmmoShell : Ammo
 	Inventory.PickupMessage "$GOTSHELLS"
 	Inventory.Amount 4
 	Inventory.MaxAmount 50
-	Ammo.BackpackAmount 8
+	Ammo.BackpackAmount 4
 	Ammo.BackpackMaxAmount 100
 	Inventory.Icon "SHELA0"
 	Inventory.Pickupsound "SHELPK1"
