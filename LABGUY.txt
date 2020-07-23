@@ -284,6 +284,7 @@ ACTOR Labguy: RifleZombie
 		Loop
 
 		Pain.Taunt:
+		Pain.KillMe:
 		TNT1 A 0
 		POSS B 0 A_Pain
 		TNT1 A 0 A_ChangeFlag("FASTER", 1)
@@ -313,23 +314,18 @@ ACTOR Labguy: RifleZombie
 		SCZA E 6
 		Goto See
 
-		Pain.Taunt:
-		Pain.KillMe:
-		TNT1 A 0
-		TNT1 A 0 HealThing(1)
-		Goto See
-
 		Death.KillMe:
 		Death.Taunt:
 		Death.Avoid:
 		TNT1 A 0
-		//TNT1 A 0 A_ChangeFlag("SOLID", 0)
+		TNT1 A 0 A_ChangeFlag("SOLID", 0)
 		TNT1 A 0 A_SpawnItem("Labguy")
 		TNT1 A 0
 		Stop
 
 		Pain:
 		Pain.Cut:
+		Pain.Saw:
 		Pain.Shrapnel:
 		Pain.Head:
 		TNT1 A 0 A_JumpIfInventory ("IsDown", 1, 7)
@@ -347,6 +343,7 @@ ACTOR Labguy: RifleZombie
 		Goto See
 
 		Pain.Melee:
+		Pain.Fatality:
 		TNT1 A 0 A_JumpIfInventory ("IsDown", 1, 7)
 		TNT1 A 0 A_JumpIfInventory ("SKLabguy", 1, "GotoStealthKill")
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
@@ -389,8 +386,10 @@ ACTOR Labguy: RifleZombie
 
 		Pain.Kick:
 		Pain.Stomp:
+		Pain.HeavyImpact:
 		Pain.ExtremePunches:
 		Pain.BlackHole:
+		Pain.Slide:
 		TNT1 A 0
 		FS11 G 1 A_Pain
 		TNT1 A 0 A_JumpIfInventory ("IsDown", 1, "Pain")
@@ -541,6 +540,7 @@ ACTOR Labguy: RifleZombie
 		Stop
 
 		Death:
+		Death.Minor:
 		TNT1 A 0 A_JumpIfInventory ("IsDown", 1, "Death.Down")
 		TNT1 A 0
 		TNT1 AA 0 A_CustomMissile ("brutal_FlyingBlood", 7, 0, random (0, 360), 2, random (0, 160))
