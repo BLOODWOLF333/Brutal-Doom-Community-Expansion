@@ -63,7 +63,14 @@ Actor BFG10k : BrutalWeapon
 		BG2G A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		BG2G A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		Loop
-	
+
+	Deselect:
+		BG2G A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("Unloading", 1)
+		TNT1 A 0 A_TakeInventory("Reloading", 1)
+		BG2G EEEEEEE 1 BRIGHT A_Lower
+		Loop
+
   Select:
 	BG2G A 0 A_Giveinventory("GoSpecial",1)
   	BG2G A 0 A_Takeinventory("FistsSelected",1)
@@ -83,17 +90,8 @@ Actor BFG10k : BrutalWeapon
 	BG2G A 0 A_Takeinventory("FlameCannonSelected",1)
 	BG2G A 0 A_Takeinventory("HasBarrel",1)
 
-Deselect:
-	BG2G A 0 A_TakeInventory("TossGrenade", 1)
-	TNT1 A 0 A_TakeInventory("Unloading", 1)
-	TNT1 A 0 A_TakeInventory("Reloading", 1)
-	TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
-	BG2G A 1 BRIGHT A_Lower
-	Loop
-
  SelectAnimation:	
-    BG2G E 1 BRIGHT A_Raise
-	BG2G EEEEEEEE 0 A_Raise
+    BG2G EEEEEE 1 BRIGHT A_Raise
 	BG2G A 0 A_GunFlash
 	BG2G A 0 A_PlaySound("BFGREADY", 3)
 	BG2G E 1 BRIGHT 

@@ -109,7 +109,7 @@ ACTOR NukeLauncher : BrutalWeapon 7452
 		NKLG A 0 A_TakeInventory("TossGrenade", 1)
 		TNT1 A 0 A_TakeInventory("Unloading", 1)
 		TNT1 A 0 A_TakeInventory("Reloading", 1)
-		NKLG A 1 A_Lower
+		NKLG AAAAAAA 1 A_Lower
 		Loop
 	Select:
 		NKLG A 0 A_Giveinventory("GoSpecial",1)
@@ -130,16 +130,9 @@ ACTOR NukeLauncher : BrutalWeapon 7452
 		NKLG A 0 A_Takeinventory("FlameCannonSelected",1)
 		NKLG A 0 A_Takeinventory("HasBarrel",1)
 		NKLG A 0 A_TakeInventory("TossGrenade", 1)
-		NKLG AAA 1 A_Raise
-		
-		NKLG A 0 A_PlaySound("BFGREADY")
-        TNT1 AAA 0
-		TNT1 AAAAAAAAA 0 A_Raise
-		Goto SelectAnimation
-		
-	SelectAnimation:
-		TNT1 A 1
 		NKLG A 0 A_GunFlash
+		NKLG AAAAAAA 1 A_Raise
+		NKLG A 0 A_PlaySound("BFGREADY")
 		Goto Ready
 		
     Spawn:

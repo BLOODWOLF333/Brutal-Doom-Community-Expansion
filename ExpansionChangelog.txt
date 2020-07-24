@@ -10,6 +10,9 @@
 //									Changed the backpack to only give the small pick-up of all ammo types
 //									Changed the cellpack to give 50 cells (consistent with the plasma weapon magazine sizes)
 //	AssaultShotgun.txt:				Changed to only give 4 shells on pick up
+//									Added a check to not allow changing shells if there is no reserve ammo
+//	BFG.txt:						Fixed Select and Deselect states
+//	BFG10K.txt:						Fixed Select and Deselect States
 //	ClassicWeapons.txt:				Adjusted AmmoGive of weapons
 //	DEFAULTWEAPON.txt:				Changed the flashlight projectiles to last for 3 tics instead of 2 to fix flickering online
 //	DemonRunesPatch.txt:			Change DemonMorph power-up time to only 30 seconds
@@ -22,6 +25,10 @@
 //	Leg.txt:						Set Damagefactor "Fire" back to 0.0
 //	Mummy.txt:						Changed the fire death frames from SKEL to MUMA and ZKEL for mummy and experiment
 //	MP40.txt:						Adjusted AmmoGive of the Buzzsaw
+//	NukeLauncher.txt:				Fixed Select and Deselect states
+//	Shotgun.txt:					Added a check to not allow changing shells if there is no reserve ammo
+//									Made the ChangeShell state check if 9 shells are loaded and then go to FinishedInsertingShells else goto InsertingShells
+//	SSG.txt:						Added a check to not allow changing shells if there is no reserve ammo
 //	Unmaker.txt:					Adjusted AmmoGive of the weapon
 //	WeaponSpawners.txt:				Adjusted the ammount of ammo given when picking up weapons
 //
