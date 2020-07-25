@@ -15,7 +15,6 @@ ACTOR DualMP40 : BrutalWeapon
 	+WEAPON.NOAUTOFIRE
 	+WEAPON.NO_AUTO_SWITCH
 	+WEAPON.CHEATNOTWEAPON
-	+WEAPON.NOALERT
 	Scale 0.9
 	Tag "Dual MP40's"
 	States
@@ -150,7 +149,7 @@ ACTOR DualMP40 : BrutalWeapon
 		MP42 A 0 A_JumpIfInventory("MP40Ammo",1,1)
         Goto FireLeft
 		MP42 A 0 A_PlaySound("FARSHT", 6)
-        MP42 A 0 A_PlaySound("pfire", 1)
+        MP42 A 0 A_PlaySound("MP40", 1)
 		MP42 A 0 A_SpawnItemEx("PlayerMuzzle1",32,5,28)
 		MP42 B 1 BRIGHT A_FireBullets (1.7, 1.6, -1, 15, "WeakPuff", FBF_NORANDOM)
         TNT1 A 0 A_FireCustomMissile("DecorativeTracer",random(-1,1),0,-5,0,0,random(-1,1))
@@ -163,7 +162,7 @@ ACTOR DualMP40 : BrutalWeapon
 		MP42 A 0 A_JumpIfInventory("DualMP40Ammo",1,1)
         Goto NoAmmo
 		MP42 A 0 A_PlaySound("FARSHT", 6)
-        MP42 A 0 A_PlaySound("pfire", 1)
+        MP42 A 0 A_PlaySound("MP40", 1)
 		MP42 A 0 A_SpawnItemEx("PlayerMuzzle1",32,-5,28)
 		MP42 D 1 BRIGHT A_FireBullets (1.7, 1.6, -1, 15, "WeakPuff", FBF_NORANDOM)
         TNT1 A 0 A_FireCustomMissile("DecorativeTracer",random(-1,1),0,5,0,0,random(-1,1))
