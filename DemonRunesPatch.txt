@@ -46,11 +46,11 @@ ACTOR D4BaronHUDPatch : D4BaronHUD Replaces D4BaronHUD
 	{
 		Ready:
 			TNT1 A 0
-			TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "Steady")
-			TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "Steady")
-			TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "Steady")
-			TNT1 A 0 A_JumpIfInventory("ImpFatality3", 1, "Steady")
-			TNT1 A 0 A_JumpIfInventory("DemonFatality", 1, "Steady")
+			TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "Ready")
+			TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "Ready")
+			TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "Ready")
+			TNT1 A 0 A_JumpIfInventory("ImpFatality3", 1, "Ready")
+			TNT1 A 0 A_JumpIfInventory("DemonFatality", 1, "Ready")
 			TNT1 A 0 A_JumpIfInventory("HasExplosiveBarrel", 1, "ReadyBarrel")
 			TNT1 A 0 A_JumpIfInventory("HasZombiemanChunk", 1, "ReadyZombieman")
 			TNT1 A 0 A_JumpIfInventory("HasSergeantChunk", 1, "ReadySergeant")
@@ -188,24 +188,76 @@ ACTOR D4RevenantHUDPatch : D4RevenantHUD Replaces D4RevenantHUD
 	{
 		Fire:
 			TNT1 A 0
-			D4RW A 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
 			TNT1 A 0 A_PlaySound("MICRO1", 1)
 			TNT1 A 0 A_FireCustomMissile("revenantseekermissiles2", random(-2,2),0,-12,0,0,random(-1,1))
 			D4RW B 2 BRIGHT
 			D4RW A 4 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
 			TNT1 A 0 A_PlaySound("MICRO1", 1)
 			TNT1 A 0 A_FireCustomMissile("revenantseekermissiles2", random(-2,2),0,12,0,0,random(-1,1))
-			D4RW C 2 BRIGHT A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+			D4RW C 2 BRIGHT
 			D4RW A 4 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
-			TNT1 A 0 A_PlaySound("MICRO1", 1)
-			TNT1 A 0 A_FireCustomMissile("revenantseekermissiles2", random(-2,2),0,-12,0,0,random(-1,1))
-			D4RW B 2 BRIGHT  A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
-			D4RW A 4  A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
-			TNT1 A 0 A_PlaySound("MICRO1", 1)
-			TNT1 A 0 A_FireCustomMissile("revenantseekermissiles2", random(-2,2),0,12,0,0,random(-1,1))
-			D4RW C 2 BRIGHT  A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
-			D4RW A 17 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
-			D4RW A 1 A_Refire
+			D4RW A 0 A_Refire
 			Goto Ready
+			
+		AltFire:
+			TNT1 A 0 A_TakeInventory("FiredPrimary", 1)
+			TNT1 A 0 A_Recoil(-2)
+			TNT1 A 0 A_JumpIfInventory("PSeq2", 1, "LeftHaymaker")
+			D4RP ABC 1
+			TNT1 A 0 A_Giveinventory("Punching",1)
+			TNT1 A 0 A_PlaySound("skeleton/swing", 1)
+			RIFF A 0 A_FireCustomMissile("PlayerRevenantPunch", 0, 0, 0, -29)
+			Goto FinishHaymaker
+			
+		FinishHaymaker:
+			TNT1 A 0 
+			TNT1 A 0 A_GiveInventory("PSeq2", 1)
+			D4RP E 1 A_SetAngle(angle+1.0)
+			D4RP F 1 A_SetAngle(angle+2.0)
+			D4RP G 1 A_SetAngle(angle+3.0)
+			D4RP H 1 A_SetAngle(angle+2.0)
+
+			D4RH AAAAAAAA 1 A_SetAngle(angle-1.0)
+			Goto Ready
+			
+		LeftHaymaker:
+			TNT1 A 0
+			D4RP IJK 1
+			TNT1 A 0 A_Giveinventory("Punching",1)
+			TNT1 A 0 A_PlaySound("skeleton/swing", 1)
+			RIFF A 0 A_FireCustomMissile("PlayerRevenantPunch", 0, 0, 0, -29)
+			Goto FinishLeftHaymaker
+		
+		FinishLeftHaymaker:
+			TNT1 A 0 A_SetAngle(angle+3)
+			TNT1 A 0 A_TakeInventory("PSeq2", 1)
+			D4RP L 1 A_SetAngle(angle+1.0)
+			D4RP M 1 A_SetAngle(angle+2.0)
+			D4RP N 1 A_SetAngle(angle+3.0)
+			D4RP O 1 A_SetAngle(angle+2.0)
+
+			D4RH AAAAAAAA 1 A_SetAngle(angle-1.0)
+			Goto Ready
+	}
+}
+
+ACTOR PlayerRevenantPunch: MeleeStrike1Smash
+{
+	//DamageType RVFT
+    Damage (random(50,50))
+    Speed 33
+	Obituary "%o ate %k's fist."
+	States
+	{
+	Spawn:
+		TNT1 A 2
+		Stop
+	Death:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("skeleton/melee", 6)
+		EXPL AAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 Radius_Quake (2, 6, 0, 5, 0)//(intensity, duration, damrad, tremrad, tid)
+		TNT1 A 4
+		Stop
 	}
 }
