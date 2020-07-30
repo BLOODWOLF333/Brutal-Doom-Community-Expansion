@@ -220,17 +220,19 @@ ACTOR BrutalPistol : BrutalWeapon
 	FireEndTactical:
 		PIST F 0
 		PIST F 0 A_JumpIfInventory("IsRunning", 1, "FireEndTactical2")
-		PIST E 1 A_WeaponReady(1)
+		PIST D 1
 		PLAY A 0 ACS_ExecuteAlways(853, 0, 0, 0, 0)//Makes player slower.
-		PIST F 7 A_WeaponReady(1)
+		PIST F 2 A_WeaponReady(1)
+		PIST F 0 A_REfire
 		Goto Ready
 		
 	FireEndTactical2:
 		PIST F 0
 		PLAY A 0 ACS_ExecuteAlways(852, 0, 0, 0, 0)//Makes player faster.
 		PIST F 0 A_GiveInventory("UsedStamina", 4)
-		PIST E 1 A_WeaponReady(1)
-		PIST F 5 A_WeaponReady(1)
+		PIST D 1 
+		PIST F 2 A_WeaponReady(1)
+		PIST F 0 A_REfire
 		Goto Sprinting
 		
 	NoAmmo:
