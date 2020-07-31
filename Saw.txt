@@ -28,7 +28,6 @@ states
 		
 	
 	Select:
-		
 		SAWG A 0 
 		SAWG A 0 A_Takeinventory("FistsSelected",1)
 		SAWG A 0 A_Giveinventory("GoSpecial",1)
@@ -66,7 +65,7 @@ states
 		Goto REady
 		
 	Deselect:
-	    SAWG A 0 
+	    SAWY EDCBA 1
 		SAWG A 0 A_StopSound(6)
 		AXEG A 0 A_Takeinventory("PowerBloodOnVisor",1)
 		AXEG A 0 A_Takeinventory("PowerBlueBloodOnVisor",1)
@@ -77,8 +76,8 @@ states
 		TNT1 A 0 A_TakeInventory("StartDualWield",1)
 		SAWG A 0 A_StopsoundEx("Weapon")
 		TNT1 A 0 A_SetCrosshair(0)
-		SAWG A 0 A_Lower
-		SAWN A 1 A_Lower
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1 A_Lower
 		wait
 
     Steady:
@@ -88,10 +87,10 @@ states
 	
 	Ready:
 	Ready3:
+		TNT1 A 0 A_SetCrosshair(41)
 	Reload:
 	ReadyToFire:
 		SAWG A 0
-
 		SAWG A 0 A_StopSound(4)
 		SAWG A 0 A_StopSound(1)
 		SAWG A 0 A_Giveinventory("HasCutingWeapon",1)
@@ -205,30 +204,27 @@ states
 		SAWG A 0 A_TakeInventory("ChainsawHitRed", 1)
 		SAWG A 0 A_TakeInventory("ChainsawHitBlue", 1)
 		SAWG A 0 A_TakeInventory("ChainsawHitGreen", 1)
-		SAWG A 0 A_Giveinventory("HasCutingWeapon",1)
 		SAWG A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"FireRed")
 		SAWG A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"FireGreen")
 		SAWG A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"FireBlue")
 		SAWG A 0 A_PlaySoundEx("weapons/chainsaw/loop","Weapon",0)
 
 		CSA1 ABCD 1
-		//TNT1 A 3
 		SAWG A 0 A_PlaySound("weapons/chainsaw/draw", 4)
 		CSA1 EFG 1
-		TNT1 AAA 0 A_Saw("", "", 1, "SSawPuff2", 0, 64, 32, 0)
-		CSA1 H 1 A_FireCustomMissile("SawDamageHorizontal2", 0, 0, 0, 0)
+		CSA1 H 1 A_FireCustomMissile("SawDamageHorizontal2", 2, 0, 0, 0)
 		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "FireContinueRed")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "FireContinueBlue")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "FireContinueGreen")
-		CSA1 J 1 A_FireCustomMissile("SawDamageHorizontal", 0, 0, 0, 0)
+		CSA1 J 1 A_FireCustomMissile("SawDamageHorizontal", 1, 0, 0, 0)
 		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "FireContinueRed")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "FireContinueBlue")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "FireContinueGreen")
-		CSA1 K 1 A_FireCustomMissile("SawDamageHorizontal2", 0, 0, 0, 0)
+		CSA1 K 1 A_FireCustomMissile("SawDamageHorizontal2", -1, 0, 0, 0)
 		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "FireContinueRed")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "FireContinueBlue")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "FireContinueGreen")
-		CSA1 L 1 A_FireCustomMissile("SawDamageHorizontal", 0, 0, 0, 0)
+		CSA1 L 1 A_FireCustomMissile("SawDamageHorizontal", -2, 0, 0, 0)
 		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "FireContinueRed")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "FireContinueBlue")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "FireContinueGreen")
@@ -249,67 +245,55 @@ states
 		SAWG A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"AltFire2Blue")
 		CSA2 ABCDDEEEF 1
 		SAWG A 0 A_PlaySound("weapons/chainsaw/draw", 4)
-		CSA2 GHI 1 A_JumpIfInventory("ChainsawHitRed", 1, "AltContinue2Red")
-		TNT1 AAA 0 A_Saw("", "", 1, "SSawPuff2", 0, 64, 0, 16)
-		CSA2 J 1 A_FireCustomMissile("SawDamageVertical", 0, 0, 0, 0)
+		CSA2 GHI 1
+		CSA2 J 1 A_FireCustomMissile("SawDamageVertical", 0, 0, 0, 0, 0, 2)
 		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "AltContinue2Red")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "AltContinue2Blue")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "AltContinue2Green")
-		CSA2 M 1 A_FireCustomMissile("SawDamageVertical2", 0, 0, 0, 0)
+		CSA2 M 1 A_FireCustomMissile("SawDamageVertical2", 0, 0, 0, 0, 0, 1)
 		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "AltContinue2Red")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "AltContinue2Blue")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "AltContinue2Green")
-		CSA2 N 1 A_FireCustomMissile("SawDamageVertical", 0, 0, 0, 0)
+		CSA2 N 1 A_FireCustomMissile("SawDamageVertical", 0, 0, 0, 0, 0, -1)
 		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "AltContinue2Red")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "AltContinue2Blue")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "AltContinue2Green")
-		CSA2 O 1 A_FireCustomMissile("SawDamageVertical2", 0, 0, 0, 0)
+		CSA2 O 1 A_FireCustomMissile("SawDamageVertical2", 0, 0, 0, 0, 0, -2)
 		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "AltContinue2Red")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "AltContinue2Blue")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "AltContinue2Green")
 		TNT1 A 5
 		CSA2 PQ 1
-		goto readytofire
-		
-	AltContinue2:
-		CSA2 JKL 1 A_FireCustomMissile("SawDamageHorizontal", 0, 0, 0, 0)
-		SAWG A 0 A_PlaySound("weapons/chainsaw/loop", 4)
-		SAWG A 0 A_JumpIfCloser(119, "AltContinue2")
-		CSA2 MNO 1
-		TNT1 A 5
-		CSA2 PQ 1
+		SAWG A 0 A_ReFire
 		goto readytofire	
-		
 		
 	FireRed:
 		SAWG A 0
 		SAWG A 0 A_PlaySoundEx("weapons/chainsaw/loop","Weapon",0)
+
 		CSR1 ABCD 1
-		TNT1 A 3
 		SAWG A 0 A_PlaySound("weapons/chainsaw/draw", 4)
 		CSR1 EFG 1
-		
-		TNT1 AAAA 0 A_Saw("", "", 1, "SSawPuff2", 0, 64, 32, 0)
-		CSR1 H 1 A_JumpIfInventory("ChainsawHitRed", 1, "FireContinueRed")
-		
-		SAWG A 0 A_PlaySound("weapons/chainsaw/loop", 4)	
-		CSR1 I 1 A_Saw("", "", 1, "SSawPuff2", 0, 64, 32, 0)
-		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "FireContinueRed")
-		CSR1 J 1 A_Saw("", "", 1, "SSawPuff2", 0, 64, 32,0)
+		CSR1 H 1 A_FireCustomMissile("SawDamageHorizontal2", 2, 0, 0, 0)
 		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "FireContinueRed")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "FireContinueBlue")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "FireContinueGreen")
+		CSR1 J 1 A_FireCustomMissile("SawDamageHorizontal", 1, 0, 0, 0)
 		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "FireContinueRed")
-		CSR1 K 1 A_Saw("", "", 1, "SSawPuff2", 0, 64, 32, 0)
+		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "FireContinueBlue")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "FireContinueGreen")
+		CSR1 K 1 A_FireCustomMissile("SawDamageHorizontal2", -1, 0, 0, 0)
 		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "FireContinueRed")
-		
-		
-		
-		CSR1 L 1
+		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "FireContinueBlue")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "FireContinueGreen")
+		CSR1 L 1 A_FireCustomMissile("SawDamageHorizontal", -2, 0, 0, 0)
+		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "FireContinueRed")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "FireContinueBlue")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "FireContinueGreen")
 		TNT1 A 5
+		
 		CSR1 MNO 1
 		SAWG A 0 A_ReFire
-		SAWG A 0 A_StopSound(1)
 		goto readytofire
 		
 	FireContinueRed:
@@ -319,9 +303,14 @@ states
 		SAWG A 0 A_TakeInventory("ChainsawHitGreen", 1)
 		NULL A 0 ACS_Execute(580, 0, 0, 0, 0)
 		
-		SAWG A 0 A_PlaySound("weapons/chainsaw/loop", 4)	
-		CSR1 RSTU 1 A_Saw("", "", 1, "SSawPuff2", 0, 64, 32, 0)
+		SAWG A 0 A_PlaySound("weapons/chainsaw/loop", 4)
+		CSR1 R 1 A_FireCustomMissile("SawDamageHorizontal2", 2, 0, 0, 0)
+		CSR1 S 1 A_FireCustomMissile("SawDamageHorizontal", 1, 0, 0, 0)
+		CSR1 T 1 A_FireCustomMissile("SawDamageHorizontal2", -1, 0, 0, 0)
+		CSR1 U 1 A_FireCustomMissile("SawDamageHorizontal", -2, 0, 0, 0)
 		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "FireContinueRed")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "FireContinueBlue")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "FireContinueGreen")
 		
 		CSR1 IJ 1
 		CSR1 KLM 2
@@ -331,26 +320,29 @@ states
 		SAWG A 0 A_StopSound(4)
 		goto Ready.Blood	
 		
-	
-	
-	
-	
-	
-	
 	AltFire2Red:
-		SAWG A 0
 		CSR2 ABCDDEEEF 1
 		SAWG A 0 A_PlaySound("weapons/chainsaw/draw", 4)
-		CSR2 GHI 1 A_JumpIfInventory("ChainsawHitRed", 1, "AltContinue2Red")
-		TNT1 AAA 0 A_Saw("", "", 0, "SSawPuff", 0, 64, 0, 16)
-		CSR2 J 1
+		CSR2 GHI 1
+		CSR2 J 1 A_FireCustomMissile("SawDamageVertical", 0, 0, 0, 0, 0, 2)
 		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "AltContinue2Red")
-		CSR2 MNO 1 A_JumpIfInventory("ChainsawHitRed", 1, "AltContinue2Red")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "AltContinue2Blue")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "AltContinue2Green")
+		CSR2 M 1 A_FireCustomMissile("SawDamageVertical2", 0, 0, 0, 0, 0, 1)
+		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "AltContinue2Red")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "AltContinue2Blue")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "AltContinue2Green")
+		CSR2 N 1 A_FireCustomMissile("SawDamageVertical", 0, 0, 0, 0, 0, -1)
+		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "AltContinue2Red")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "AltContinue2Blue")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "AltContinue2Green")
+		CSR2 O 1 A_FireCustomMissile("SawDamageVertical2", 0, 0, 0, 0, 0, -2)
 		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "AltContinue2Red")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "AltContinue2Blue")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "AltContinue2Green")
 		TNT1 A 5
 		CSR2 PQ 1
+		SAWG A 0 A_ReFire
 		goto readytofire
 	
 	AltContinue2Red:
@@ -358,43 +350,48 @@ states
 		SAWG A 0 A_TakeInventory("ChainsawHitRed", 1)
 		SAWG A 0 A_TakeInventory("ChainsawHitBlue", 1)
 		SAWG A 0 A_TakeInventory("ChainsawHitGreen", 1)
-		CSR2 JK 1 A_Saw("", "", 1, "SSawPuff", 0, 64, 0, 16)
-		CSR2 L 1 A_Saw("", "", 2, "SSawPuff", 0, 64, 0, 16)
 		NULL A 0 ACS_Execute(580, 0, 0, 0, 0)
-		SAWG A 0 A_PlaySound("weapons/chainsaw/draw", 4)
+		SAWG A 0 A_PlaySound("weapons/chainsaw/loop", 4)
+		CSR2 J 1 A_FireCustomMissile("SawDamageVertical", 0, 0, 0, 0, 0, 1)
+		CSR2 K 1 A_FireCustomMissile("SawDamageVertical2", 0, 0, 0, 0, 0, 0)
+		CSR2 L 1 A_FireCustomMissile("SawDamageVertical", 0, 0, 0, 0, 0, -1)
 		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "AltContinue2Red")
-		CSR2 MNO 1 A_JumpIfInventory("ChainsawHitRed", 1, "AltContinue2Red")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "AltContinue2Blue")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "AltContinue2Green")
+		CSR2 MNO 1 
 		TNT1 A 5 
 		CSR2 PQ 1
+		SAWG A 0 A_ReFire
+		SAWG A 0 A_StopSound(4)
 		goto Ready.Blood
-		
 		
 	FireBlue:
 		SAWG A 0
 		SAWG A 0 A_PlaySoundEx("weapons/chainsaw/loop","Weapon",0)
+
 		CSB1 ABCD 1
-		TNT1 A 3
 		SAWG A 0 A_PlaySound("weapons/chainsaw/draw", 4)
 		CSB1 EFG 1
-		
-		TNT1 AAAA 0 A_Saw("", "", 1, "SSawPuff2", 0, 64, 32, 0)
-		CSB1 H 1 A_JumpIfInventory("ChainsawHitBlue", 1, "FireContinueBlue")
-		
-		SAWG A 0 A_PlaySound("weapons/chainsaw/loop", 4)	
-		CSB1 I 1 A_Saw("", "", 1, "SSawPuff2", 0, 64, 32, 0)
-		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "FireContinueBlue")
-		CSB1 J 1 A_Saw("", "", 1, "SSawPuff2", 0, 64, 32, 0)
+		CSB1 H 1 A_FireCustomMissile("SawDamageHorizontal2", 2, 0, 0, 0)
 		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "FireContinueRed")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "FireContinueBlue")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "FireContinueGreen")
-		CSB1 K 1 A_Saw("", "", 1, "SSawPuff2", 0, 64, 32, 0)
+		CSB1 J 1 A_FireCustomMissile("SawDamageHorizontal", 1, 0, 0, 0)
+		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "FireContinueRed")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "FireContinueBlue")
-		
-		CSB1 L 1
+		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "FireContinueGreen")
+		CSB1 K 1 A_FireCustomMissile("SawDamageHorizontal2", -1, 0, 0, 0)
+		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "FireContinueRed")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "FireContinueBlue")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "FireContinueGreen")
+		CSB1 L 1 A_FireCustomMissile("SawDamageHorizontal", -2, 0, 0, 0)
+		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "FireContinueRed")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "FireContinueBlue")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "FireContinueGreen")
 		TNT1 A 5
+		
 		CSB1 MNO 1
 		SAWG A 0 A_ReFire
-		SAWG A 0 A_StopSound(1)
 		goto readytofire
 		
 	FireContinueBlue:
@@ -404,38 +401,46 @@ states
 		SAWG A 0 A_TakeInventory("ChainsawHitGreen", 1)
 		NULL A 0 ACS_Execute(583, 0, 0, 0, 0)
 		
-		SAWG A 0 A_PlaySound("weapons/chainsaw/loop", 4)	
-		CSB1 RSTU 1 A_Saw("", "", 1, "SSawPuff2", 0, 64, 32, 0)
+		SAWG A 0 A_PlaySound("weapons/chainsaw/loop", 4)
+		CSB1 R 1 A_FireCustomMissile("SawDamageHorizontal2", 2, 0, 0, 0)
+		CSB1 S 1 A_FireCustomMissile("SawDamageHorizontal", 1, 0, 0, 0)
+		CSB1 T 1 A_FireCustomMissile("SawDamageHorizontal2", -1, 0, 0, 0)
+		CSB1 U 1 A_FireCustomMissile("SawDamageHorizontal", -2, 0, 0, 0)
+		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "FireContinueRed")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "FireContinueBlue")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "FireContinueGreen")
 		
-		
-		CSB1 IJKLM 2
+		CSB1 IJ 1
+		CSB1 KLM 2
 		TNT1 A 5
-		CSB2 MNO 1
+		CSB1 MNO 2
 		SAWG A 0 A_ReFire
 		SAWG A 0 A_StopSound(4)
 		goto Ready.BlueBlood
 	
-	
-	
-	
-	
-	
 	AltFire2Blue:
-		SAWG A 0
 		CSB2 ABCDDEEEF 1
 		SAWG A 0 A_PlaySound("weapons/chainsaw/draw", 4)
-		CSB2 GHI 1 A_JumpIfInventory("ChainsawHitBlue", 1, "AltContinue2Blue")
-		TNT1 AAA 0 A_Saw("", "", 1, "SSawPuff2", 0, 64, 0, 16)
-		TNT1 AAAA 0 A_FireCustomMissile("SawDamageVertical", 0, 0, 0, random(-10,10))
-		CSB2 J 1
+		CSB2 GHI 1
+		CSB2 J 1 A_FireCustomMissile("SawDamageVertical", 0, 0, 0, 0, 0, 2)
+		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "AltContinue2Red")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "AltContinue2Blue")
-		CSB2 MNO 1 A_JumpIfInventory("ChainsawHitBlue", 1, "AltContinue2Blue")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "AltContinue2Green")
+		CSB2 M 1 A_FireCustomMissile("SawDamageVertical2", 0, 0, 0, 0, 0, 1)
+		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "AltContinue2Red")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "AltContinue2Blue")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "AltContinue2Green")
+		CSB2 N 1 A_FireCustomMissile("SawDamageVertical", 0, 0, 0, 0, 0, -1)
+		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "AltContinue2Red")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "AltContinue2Blue")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "AltContinue2Green")
+		CSB2 O 1 A_FireCustomMissile("SawDamageVertical2", 0, 0, 0, 0, 0, -2)
 		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "AltContinue2Red")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "AltContinue2Blue")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "AltContinue2Green")
 		TNT1 A 5
 		CSB2 PQ 1
+		SAWG A 0 A_ReFire
 		goto readytofire
 	
 	AltContinue2Blue:
@@ -443,56 +448,48 @@ states
 		SAWG A 0 A_TakeInventory("ChainsawHitRed", 1)
 		SAWG A 0 A_TakeInventory("ChainsawHitBlue", 1)
 		SAWG A 0 A_TakeInventory("ChainsawHitGreen", 1)
-		CSB2 J 1 A_FireCustomMissile("SawDamageVertical", 0, 0, 0, 0)
-		CSB2 K 1
-		CSB2 J 1 A_FireCustomMissile("SawDamageVertical2", 0, 0, 0, 0)
-		CSB2 K 1
-		SAWG A 0 A_PlaySound("weapons/chainsaw/draw", 4)
+		NULL A 0 ACS_Execute(583, 0, 0, 0, 0)
+		SAWG A 0 A_PlaySound("weapons/chainsaw/loop", 4)
+		CSB2 J 1 A_FireCustomMissile("SawDamageVertical", 0, 0, 0, 0, 0, 1)
+		CSB2 K 1 A_FireCustomMissile("SawDamageVertical2", 0, 0, 0, 0, 0, 0)
+		CSB2 L 1 A_FireCustomMissile("SawDamageVertical", 0, 0, 0, 0, 0, -1)
+		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "AltContinue2Red")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "AltContinue2Blue")
-		CSB2 M 1 A_JumpIfInventory("ChainsawHitBlue", 1, "AltContinue2Blue")
-		SAWG A 0 A_FireCustomMissile("SawDamageVertical", 0, 0, 0, 0)
-		CSB2 N 1 A_JumpIfInventory("ChainsawHitBlue", 1, "AltContinue2Blue")
-		SAWG A 0 A_FireCustomMissile("SawDamageVertical2", 0, 0, 0, 0)
-		CSB2 O 1 A_JumpIfInventory("ChainsawHitBlue", 1, "AltContinue2Blue")
-		SAWG A 0 A_FireCustomMissile("SawDamageVertical", 0, 0, 0, 0)
+		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "AltContinue2Green")
+		CSB2 MNO 1 
 		TNT1 A 5 
 		CSB2 PQ 1
+		SAWG A 0 A_ReFire
+		SAWG A 0 A_StopSound(4)
 		goto Ready.BlueBlood
-		
-		
-		
-		
-			
-		
-		
-		
 		
    Firegreen:
 		SAWG A 0
 		SAWG A 0 A_PlaySoundEx("weapons/chainsaw/loop","Weapon",0)
+
 		CSG1 ABCD 1
-		TNT1 A 3
 		SAWG A 0 A_PlaySound("weapons/chainsaw/draw", 4)
 		CSG1 EFG 1
-		
-		TNT1 AAAA 0 A_Saw("", "", 1, "SSawPuff2", 0, 64, 32, 0)
-		CSG1 H 1 A_JumpIfInventory("ChainsawHitgreen", 1, "FireContinuegreen")
-		
-		SAWG A 0 A_PlaySound("weapons/chainsaw/loop", 4)	
-		CSG1 I 1 A_Saw("", "", 1, "SSawPuff2", 0, 64, 32, 0)
-		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "FireContinueBlue")
-		CSG1 J 1 A_Saw("", "", 1, "SSawPuff2", 0, 64, 32, 0)
+		CSG1 H 1 A_FireCustomMissile("SawDamageHorizontal2", 2, 0, 0, 0)
 		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "FireContinueRed")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "FireContinueBlue")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "FireContinueGreen")
-		CSG1 K 1 A_Saw("", "", 1, "SSawPuff2", 0, 64, 32, 0)
-		SAWG A 0 A_JumpIfInventory("ChainsawHitgreen", 1, "FireContinuegreen")
-		
-		CSG1 L 1
+		CSG1 J 1 A_FireCustomMissile("SawDamageHorizontal", 1, 0, 0, 0)
+		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "FireContinueRed")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "FireContinueBlue")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "FireContinueGreen")
+		CSG1 K 1 A_FireCustomMissile("SawDamageHorizontal2", -1, 0, 0, 0)
+		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "FireContinueRed")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "FireContinueBlue")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "FireContinueGreen")
+		CSG1 L 1 A_FireCustomMissile("SawDamageHorizontal", -2, 0, 0, 0)
+		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "FireContinueRed")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "FireContinueBlue")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "FireContinueGreen")
 		TNT1 A 5
+		
 		CSG1 MNO 1
 		SAWG A 0 A_ReFire
-		SAWG A 0 A_StopSound(1)
 		goto readytofire
 		
 	FireContinuegreen:
@@ -502,36 +499,46 @@ states
 		SAWG A 0 A_TakeInventory("ChainsawHitGreen", 1)
 		NULL A 0 ACS_Execute(582, 0, 0, 0, 0)
 		
-		SAWG A 0 A_PlaySound("weapons/chainsaw/loop", 4)	
-		CSG1 RSTU 1 A_Saw("", "", 1, "SSawPuff2", 0, 64, 32, 0)
-		SAWG A 0 A_JumpIfInventory("ChainsawHitgreen", 1, "FireContinuegreen")
+		SAWG A 0 A_PlaySound("weapons/chainsaw/loop", 4)
+		CSG1 R 1 A_FireCustomMissile("SawDamageHorizontal2", 2, 0, 0, 0)
+		CSG1 S 1 A_FireCustomMissile("SawDamageHorizontal", 1, 0, 0, 0)
+		CSG1 T 1 A_FireCustomMissile("SawDamageHorizontal2", -1, 0, 0, 0)
+		CSG1 U 1 A_FireCustomMissile("SawDamageHorizontal", -2, 0, 0, 0)
+		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "FireContinueRed")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "FireContinueBlue")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "FireContinueGreen")
 		
-		
-		CSG1 IJKLM 2
+		CSG1 IJ 1
+		CSG1 KLM 2
 		TNT1 A 5
-		CSG2 MNO 1
+		CSG1 MNO 2
 		SAWG A 0 A_ReFire
 		SAWG A 0 A_StopSound(4)
 		goto Ready.GreenBlood
 		
-	
-	
-	
-	
-	
-	
 	AltFire2Green:
-		SAWG A 0
 		CSG2 ABCDDEEEF 1
 		SAWG A 0 A_PlaySound("weapons/chainsaw/draw", 4)
-		CSG2 GHI 1 A_JumpIfInventory("ChainsawHitGreen", 1, "AltContinue2Green")
-		TNT1 AAA 0 A_Saw("", "", 1, "SSawPuff2", 0, 64, 0, 16)
-		TNT1 AAAA 0 A_FireCustomMissile("SawDamageVertical", 0, 0, 0, random(-10,10))
-		CSG2 J 1
+		CSG2 GHI 1
+		CSG2 J 1 A_FireCustomMissile("SawDamageVertical", 0, 0, 0, 0, 0, 2)
+		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "AltContinue2Red")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "AltContinue2Blue")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "AltContinue2Green")
-		CSG2 MNO 1 A_JumpIfInventory("ChainsawHitGreen", 1, "AltContinue2Green")
+		CSG2 M 1 A_FireCustomMissile("SawDamageVertical2", 0, 0, 0, 0, 0, 1)
+		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "AltContinue2Red")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "AltContinue2Blue")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "AltContinue2Green")
+		CSG2 N 1 A_FireCustomMissile("SawDamageVertical", 0, 0, 0, 0, 0, -1)
+		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "AltContinue2Red")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "AltContinue2Blue")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "AltContinue2Green")
+		CSG2 O 1 A_FireCustomMissile("SawDamageVertical2", 0, 0, 0, 0, 0, -2)
+		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "AltContinue2Red")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "AltContinue2Blue")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "AltContinue2Green")
 		TNT1 A 5
 		CSG2 PQ 1
+		SAWG A 0 A_ReFire
 		goto readytofire
 	
 	AltContinue2Green:
@@ -539,20 +546,19 @@ states
 		SAWG A 0 A_TakeInventory("ChainsawHitRed", 1)
 		SAWG A 0 A_TakeInventory("ChainsawHitBlue", 1)
 		SAWG A 0 A_TakeInventory("ChainsawHitGreen", 1)
-		CSG2 J 1 A_FireCustomMissile("SawDamageVertical", 0, 0, 0, 0)
-		CSG2 K 1
-		CSG2 J 1 A_FireCustomMissile("SawDamageVertical2", 0, 0, 0, 0)
-		CSG2 K 1
-		SAWG A 0 A_PlaySound("weapons/chainsaw/draw", 4)
+		NULL A 0 ACS_Execute(582, 0, 0, 0, 0)
+		SAWG A 0 A_PlaySound("weapons/chainsaw/loop", 4)
+		CSG2 J 1 A_FireCustomMissile("SawDamageVertical", 0, 0, 0, 0, 0, 1)
+		CSG2 K 1 A_FireCustomMissile("SawDamageVertical2", 0, 0, 0, 0, 0, 0)
+		CSG2 L 1 A_FireCustomMissile("SawDamageVertical", 0, 0, 0, 0, 0, -1)
+		SAWG A 0 A_JumpIfInventory("ChainsawHitRed", 1, "AltContinue2Red")
+		SAWG A 0 A_JumpIfInventory("ChainsawHitBlue", 1, "AltContinue2Blue")
 		SAWG A 0 A_JumpIfInventory("ChainsawHitGreen", 1, "AltContinue2Green")
-		SAWG A 0 A_FireCustomMissile("SawDamageVertical", 0, 0, 0, 0)
-		CSG2 M 1 A_JumpIfInventory("ChainsawHitGreen", 1, "AltContinue2Green")
-		SAWG A 0 A_FireCustomMissile("SawDamageVertical2", 0, 0, 0, 0)
-		CSG2 N 1 A_JumpIfInventory("ChainsawHitGreen", 1, "AltContinue2Green")
-		SAWG A 0 A_FireCustomMissile("SawDamageVertical", 0, 0, 0, 0)
-		CSG2 O 1 A_JumpIfInventory("ChainsawHitGreen", 1, "AltContinue2Green")
+		CSG2 MNO 1 
 		TNT1 A 5 
 		CSG2 PQ 1
+		SAWG A 0 A_ReFire
+		SAWG A 0 A_StopSound(4)
 		goto Ready.GreenBlood		
 		
 		
@@ -838,18 +844,18 @@ states
 
 ACTOR SawDamageHorizontal: FastProjectile
 {
-	Radius 22
-	Height 2
-	DamageType Cut
+	Radius 16
+	Height 8
+	DamageType Saw
 	Projectile 
 	+FORCEXYBILLBOARD
 	+EXTREMEDEATH
 	+BLOODSPLATTER
 	RenderStyle Add
-	Decal "BulletDecalNew1"
 	Alpha 0.6
-    Damage (random(5,6))
-    Speed 50
+	Scale 0.15
+    Damage (random(5,5))
+    Speed 32
 	//HitObituary "$OB_IMPHIT"
 	SeeSound "none"
 	DeathSound "none"
@@ -859,20 +865,23 @@ ACTOR SawDamageHorizontal: FastProjectile
 	{
 	Spawn:
 		SAWG A 0 BRIGHT
-        TNT1 A 1 //A_PlaySound("weapons/gswing")
+        TNT1 A 1
 		Stop
-	Death:
-			SAWG A 0
-			//SAWG A 0 A_SpawnItem("SSAwPuff")
-			//SAWG A 0 A_PlaySound("DSSAWAL", 1)
-			TNT1 A 1 Radius_Quake(2, 3, 0, 4, 0)
-			TNT1 A 10
-			Stop
 	XDeath:
 		SAWG A 0
 		TNT1 A 1 Radius_Quake(2, 3, 0, 4, 0)
 		SAWG A 0 A_PlaySound("CSAWFLESH", 1)
 		TNT1 A 10
+		Stop
+	Death:
+	Crash:
+		TNT1 A 0
+		TNT1 AB 1 bright
+		TNT1 A 0 A_Jump (128,3)
+		TNT1 A 0 A_SpawnItem ("Sparks", 0)
+		TNT1 AAAAAA 0 A_CustomMissile ("SparkX", 2, 0, random (0, 360), 2, random (30, 170))
+		BPUF C 1 bright A_PlaySound("weapons/chainsaw/hitwall")
+		BPUF D 1 bright
 		Stop
 	}
 }
@@ -886,8 +895,9 @@ ACTOR SawDamageHorizontal2: SawDamageHorizontal
 ACTOR SawDamageVertical: SawDamageHorizontal
 {
 	DamageType Saw
-    Damage (random(7,8))
 	decal "SawVertical"
+	Radius 8
+	Height 16
 }
 
 
