@@ -218,17 +218,19 @@ ACTOR BrutalSMG : BrutalWeapon
 		SMGG A 0 A_PlaySound("FARSHT", 6)
         SMGG A 0 A_PlaySound("SMGFIRE", 1)
 		SMGG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
-		SMGF A 1 BRIGHT A_FireBullets (1.5, 1.6, -1, 12, "WeakPuff", FBF_NORANDOM)
+		SMGF A 1 BRIGHT A_FireBullets (1.2, 1.3, -1, 12, "WeakPuff", FBF_NORANDOM)
+		TNT1 A 0 A_ZoomFactor(0.99)
         TNT1 A 0 A_FireCustomMissile("DecorativeTracer",random(-1,1),0,0,0,0,random(-1,1))
 		SMGG A 0 A_Takeinventory("BDSMGAmmo",1)
 		SMGG A 0 A_Takeinventory("BDDualSMGAmmo",1)
         SMGF B 1
+		TNT1 A 0 A_ZoomFactor(1.0)
 		SMGG A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,0,-9)
 		SMGG A 0 A_JumpIfInventory("IsTacticalClass", 1, 2)//Tactical mode skips a frame, fires faster
 		SMGF C 1 
 		
 		RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
-		RIFG A 0 A_SetPitch(pitch-0.4)
+		RIFG A 0 A_SetPitch(pitch-0.2)
 		RIFG A 0
 		
 		SMGG A 0 A_ReFire
@@ -240,16 +242,18 @@ ACTOR BrutalSMG : BrutalWeapon
 		SMGG A 0 A_PlaySound("FARSHT", 6)
         SMGG A 0 A_PlaySound("SMGFIRE", 1)
 		SMGG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
-		SMGA B 1 BRIGHT A_FireBullets (1.0, 1.1, 1, 12, "WeakPuff", FBF_NORANDOM)
+		SMGA B 1 BRIGHT A_FireBullets (0.7, 0.8, 1, 12, "WeakPuff", FBF_NORANDOM)
+		TNT1 A 0 A_ZoomFactor(1.29)
         TNT1 A 0 A_FireCustomMissile("DecorativeTracer",random(-1,1),0,0,0,0,random(-1,1))
 		SMGG A 0 A_Takeinventory("BDSMGAmmo",1)
 		SMGG A 0 A_Takeinventory("BDDualSMGAmmo",1)
         SMGA C 1
+		TNT1 A 0 A_ZoomFactor(1.3)
 		SMGG A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,0,-9)
 		SMGG A 0 A_JumpIfInventory("IsTacticalClass", 1, 2)//Tactical mode skips a frame, fires faster
 		SMGA D 1 
 		RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
-		RIFG A 0 A_SetPitch(pitch-0.2)
+		RIFG A 0 A_SetPitch(pitch-0.1)
 		RIFG A 0
 		SMGG A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
 		SMGG A 0 A_JumpIfInventory("FiredSecondary",1,"HoldAim")//If still pressing alt fire, it means its holding aim

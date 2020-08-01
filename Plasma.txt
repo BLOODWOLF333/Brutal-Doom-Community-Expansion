@@ -159,9 +159,11 @@ ACTOR Plasma_Gun : BrutalWeapon
 		PLSN A 0 A_TakeInventory("DoublePlasmaAmmo", 1)
 		PLSN A 0 A_JumpIfInventory("DMgame", 1, "FireDM")
 		PLST A 1 BRIGHT A_FireCustomMissile("Plasma_Ball", frandom(-0.6,0.6), 1, 0, -5, 0, frandom(-0.7,0.7))
+		TNT1 A 0 A_ZoomFactor(0.99)
 		RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
-		RIFG A 0 A_SetPitch(-0.4 + pitch)
+		RIFG A 0 A_SetPitch(-0.2 + pitch)
 		PLST B 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(1.0)
 		PLST C 1 BRIGHT 
 		PLST D 1 BRIGHT 
 		PLSN A 0 A_Takeinventory("PlasmaAmmo",1)
@@ -170,9 +172,11 @@ ACTOR Plasma_Gun : BrutalWeapon
 	FireDM:	
 		PLSN A 0 
 		PLST A 1 BRIGHT A_FireCustomMissile("PlasmaBallDM", frandom(-0.6,0.6), 1, 0, -5, 0, frandom(-0.7,0.7))
+		TNT1 A 0 A_ZoomFactor(0.99)
 		RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
-		RIFG A 0 A_SetPitch(-0.4 + pitch)
+		RIFG A 0 A_SetPitch(-0.2 + pitch)
 		PLST B 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(1.0)
 		PLST C 1 BRIGHT 
 		PLST D 1 BRIGHT 
 		PLSN A 0 A_Takeinventory("PlasmaAmmo",1)
@@ -188,10 +192,6 @@ ACTOR Plasma_Gun : BrutalWeapon
 		
 	PLSN A 0 A_PlaySound("PLSCHARG")
 		PLSA A 1 BRIGHT A_SpawnItemEx("PlasmaFlareSpawn",32,0,28)
-		PLSA B 1 BRIGHT A_Takeinventory("PlasmaAmmo",2)
-		PLSA C 1 BRIGHT A_SpawnItemEx("PlasmaFlareSpawn",32,0,28)
-		PLSA D 1 BRIGHT 
-		PLSA A 1 BRIGHT A_SpawnItemEx("PlasmaFlareSpawn",32,0,28)
 		PLSA B 1 BRIGHT A_Takeinventory("PlasmaAmmo",1)
 		PLSA C 1 BRIGHT A_SpawnItemEx("PlasmaFlareSpawn",32,0,28)
 		PLSA D 1 BRIGHT 
@@ -207,6 +207,14 @@ ACTOR Plasma_Gun : BrutalWeapon
 		PLSA B 1 BRIGHT A_Takeinventory("PlasmaAmmo",1)
 		PLSA C 1 BRIGHT A_SpawnItemEx("PlasmaFlareSpawn",32,0,28)
 		PLSA D 1 BRIGHT 
+		PLSA A 1 BRIGHT A_SpawnItemEx("PlasmaFlareSpawn",32,0,28)
+		PLSA B 1 BRIGHT A_Takeinventory("PlasmaAmmo",1)
+		PLSA C 1 BRIGHT A_SpawnItemEx("PlasmaFlareSpawn",32,0,28)
+		PLSA D 1 BRIGHT 
+		PLSA A 1 BRIGHT A_SpawnItemEx("PlasmaFlareSpawn",32,0,28)
+		PLSA B 1 BRIGHT A_Takeinventory("PlasmaAmmo",1)
+		PLSA C 1 BRIGHT A_SpawnItemEx("PlasmaFlareSpawn",32,0,28)
+		PLSA D 1 BRIGHT
 		PLSA A 1 BRIGHT A_SpawnItemEx("PlasmaFlareSpawn",32,0,28)
 		PLSA B 1 BRIGHT A_Takeinventory("PlasmaAmmo",1)
 		PLSA C 1 BRIGHT A_SpawnItemEx("PlasmaFlareSpawn",32,0,28)
@@ -253,22 +261,25 @@ AltHold:
 
 	PLSN A 0 A_StopSound(6)
 	PLST A 1 BRIGHT A_PlaySound("PLSALTFR")
-	PLST B 2 BRIGHT A_Recoil(3)
+	TNT1 A 0 A_ZoomFactor(0.98)
+	PLST B 2 BRIGHT A_Recoil(2)
+	TNT1 A 0 A_ZoomFactor(1.0)
 	PLSN A 0 A_StopSound(6)
 	TNT1 A 0 A_JumpIfInventory("DMGame", 1, "LetFlyDM")
-	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.8,2.8), 0, 0, -5, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.8,2.8), 0, 0, -5, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.8,2.8), 0, 0, -5, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.8,2.8), 0, 0, -5, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.8,2.8), 0, 0, -5, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.8,2.8), 0, 0, -5, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.8,2.8), 0, 0, -5, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.8,2.8), 0, 0, -5, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.8,2.8), 0, 0, -5, 0, frandom(-2.8,2.8))
+	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, -5, 0, frandom(-2.8,2.8))
+	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, -5, 0, frandom(-2.8,2.8))
+	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, -5, 0, frandom(-2.8,2.8))
+	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, -5, 0, frandom(-2.8,2.8))
+	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, -5, 0, frandom(-2.8,2.8))
+	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, -5, 0, frandom(-2.8,2.8))
+	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, -5, 0, frandom(-2.8,2.8))
+	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, -5, 0, frandom(-2.8,2.8))
+	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, -5, 0, frandom(-2.8,2.8))
+	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, -5, 0, frandom(-2.8,2.8))
 		PLSN A 0 A_SpawnItemEx("PlasmaFlareSpawn",32,0,28)
 		PLSN A 0 A_Takeinventory("DoublePlasmaAmmo",10)
         PLSN KLKJ 1 BRIGHT
-		PLSN A 0 A_SetPitch(pitch - 3.6)
+		PLSN A 0 A_SetPitch(pitch - 1.8)
         PLSN BCD 1
 		PLSN EEEEEEEEEEEE 3 A_FireCustomMissile("SmokeSpawner",0,0,10,5)
 		PLSN DCB 1
@@ -278,19 +289,20 @@ AltHold:
 		
 		
 	LetFlyDM:	
-	PLSN A 0 A_FireCustomMissile("PlasmaBallDM", frandom(-2.8,2.8), 0, 0, -5, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBallDM", frandom(-2.8,2.8), 0, 0, -5, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBallDM", frandom(-2.8,2.8), 0, 0, -5, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBallDM", frandom(-2.8,2.8), 0, 0, -5, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBallDM", frandom(-2.8,2.8), 0, 0, -5, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBallDM", frandom(-2.8,2.8), 0, 0, -5, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBallDM", frandom(-2.8,2.8), 0, 0, -5, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBallDM", frandom(-2.8,2.8), 0, 0, -5, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBallDM", frandom(-2.8,2.8), 0, 0, -5, 0, frandom(-2.8,2.8))
+	PLSN A 0 A_FireCustomMissile("PlasmaBallDM", frandom(-2.7,2.7), 0, 0, -5, 0, frandom(-2.8,2.8))
+	PLSN A 0 A_FireCustomMissile("PlasmaBallDM", frandom(-2.7,2.7), 0, 0, -5, 0, frandom(-2.8,2.8))
+	PLSN A 0 A_FireCustomMissile("PlasmaBallDM", frandom(-2.7,2.7), 0, 0, -5, 0, frandom(-2.8,2.8))
+	PLSN A 0 A_FireCustomMissile("PlasmaBallDM", frandom(-2.7,2.7), 0, 0, -5, 0, frandom(-2.8,2.8))
+	PLSN A 0 A_FireCustomMissile("PlasmaBallDM", frandom(-2.7,2.7), 0, 0, -5, 0, frandom(-2.8,2.8))
+	PLSN A 0 A_FireCustomMissile("PlasmaBallDM", frandom(-2.7,2.7), 0, 0, -5, 0, frandom(-2.8,2.8))
+	PLSN A 0 A_FireCustomMissile("PlasmaBallDM", frandom(-2.7,2.7), 0, 0, -5, 0, frandom(-2.8,2.8))
+	PLSN A 0 A_FireCustomMissile("PlasmaBallDM", frandom(-2.7,2.7), 0, 0, -5, 0, frandom(-2.8,2.8))
+	PLSN A 0 A_FireCustomMissile("PlasmaBallDM", frandom(-2.7,2.7), 0, 0, -5, 0, frandom(-2.8,2.8))
+	PLSN A 0 A_FireCustomMissile("PlasmaBallDM", frandom(-2.7,2.7), 0, 0, -5, 0, frandom(-2.8,2.8))
 		PLSN A 0 A_SpawnItemEx("PlasmaFlareSpawn",32,0,28)
 		PLSN A 0 A_Takeinventory("DoublePlasmaAmmo",10)
         PLSN KLKJ 1 BRIGHT
-		PLSN A 0 A_SetPitch(pitch - 3.6)
+		PLSN A 0 A_SetPitch(pitch - 1.8)
         PLSN BCD 1
 		PLSN EEEEEEEEEEEE 3 A_FireCustomMissile("SmokeSpawner",0,0,10,5)
 		PLSN DCB 1
@@ -370,7 +382,8 @@ AltHold:
 		RIFG A 0 A_Takeinventory("Zoomed",1)
 		RIFG A 0 A_Takeinventory("ADSmode",1)
 		RIFG A 0 A_JumpIfInventory("TurboReload",1,"TurboReload")
-		TNT1 A 0 A_PlaySound("weapons/empty", 4)
+		PLSN A 5 BRIGHT A_PlaySound("BEP", 4)
+		RIFG A 0 A_JumpIfInventory("AmmoCell",1,"Ready3")//If they press AltFire with less than 10 cells
 		NoAmmo2:
 		RIFG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 	    RIFG A 0 A_JumpIfInventory("Taunting",1,"Taunt")

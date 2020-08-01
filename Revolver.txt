@@ -113,15 +113,18 @@ ACTOR Revolver : BrutalWeapon 5874
 		TNT1 A 0 A_FireCustomMissile("DecorativeTracer",random(-1,1),0,0,0,0,random(-1,1))
 		REVO A 0 A_Takeinventory("RevolverAmmo",1)
 		REVO A 0 A_GiveInventory("SpentRound",1)
-		REVO A 0 A_FireBullets (1.1, 1.2, -1, 100, "RevoPuff", FBF_NORANDOM)
+		REVO A 0 A_FireBullets (1.4, 1.5, -1, 100, "RevoPuff", FBF_NORANDOM)
 		REVO A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
-		REVO A 0 A_SetPitch(pitch-0.8)
-		REVO A 0 A_SetPitch(pitch-0.8)
-		REVO CD 1 BRIGHT
-		REVO E 1 
-		REVO FG 1 A_SetPitch(pitch+0.2)
-		REVO F 1 A_SetPitch(pitch+0.2)
-		REVO E 1 A_SetPitch(pitch+0.2)
+		REVO A 0 A_SetPitch(pitch-2.0)
+		REVO A 0 A_SetPitch(pitch-2.0)
+		REVO C 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(0.98)
+		REVO D 1 BRIGHT A_SetPitch(pitch+0.4)
+		TNT1 A 0 A_ZoomFactor(1.0)
+		REVO E 1 A_SetPitch(pitch+0.4)
+		REVO FG 1 A_SetPitch(pitch+0.4)
+		REVO F 1 A_SetPitch(pitch+0.4)
+		REVO E 1
 		REVO K 4
 		REVO LMN 1
 		TNT1 A 0 A_PlaySound("REVOHAM", 4)
@@ -135,17 +138,20 @@ ACTOR Revolver : BrutalWeapon 5874
 		REVO A 0 A_PlaySound("REVOFIR", 1)
 		REVO A 0 A_FireCustomMissile("DistantFireSoundShotgun", random(-1,1), 0, 0, -12, 0, random(-1,1))
         REVO A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
-		TNT1 A 0 A_FireCustomMissile("DecorativeTracer",random(-1,1),0,0,0,0,random(-1,1))
+		TNT1 A 0 A_FireCustomMissile("DecorativeTracer",random(-2,2),0,0,0,0,random(-2,2))
 		REVO A 0 A_Takeinventory("RevolverAmmo",1)
 		REVO A 0 A_GiveInventory("SpentRound",1)
-		REVO A 0 A_FireBullets (1.6, 1.7, -1, 100, "RevoPuff", FBF_NORANDOM)
+		REVO A 0 A_FireBullets (1.9, 2.0, -1, 100, "RevoPuff", FBF_NORANDOM)
 		REVO A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
-		REVO A 0 A_SetPitch(pitch-0.4)
-		REVO A 0 A_SetPitch(pitch-0.4)
-		REVA CD 1 BRIGHT
-		REVA E 1 A_SetPitch(pitch+0.1)
-		REVA FG 1 A_SetPitch(pitch+0.1)
-		REVA F 1 A_SetPitch(pitch+0.1)
+		REVO A 0 A_SetPitch(pitch-1.0)
+		REVO A 0 A_SetPitch(pitch-1.0)
+		REVA C 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(0.99)
+		REVA D 1 BRIGHT A_SetPitch(pitch+0.2)
+		TNT1 A 0 A_ZoomFactor(1.0)
+		REVA E 1 A_SetPitch(pitch+0.2)
+		REVA FG 1 A_SetPitch(pitch+0.2)
+		REVA F 1 A_SetPitch(pitch+0.2)
 		REVA E 1 
 		REVA K 1 A_PlaySound("REVOHAM", 4)
 		REVA A 1 A_Refire("Fire")

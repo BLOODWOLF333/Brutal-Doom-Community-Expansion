@@ -1,0 +1,1772 @@
+ACTOR EvidenceCheckerGreenTorch
+{
+	+THRUACTORS
+	+NOCLIP
+	+NOBLOCKMAP
+	Radius 1
+	Height 1
+
+		States
+		{
+		Spawn:
+			TNT1 A 0
+			MARN A 0 ACS_NamedExecuteAlways("BDDisableMapEnhancements", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+			TNT1 A 0 A_SetANgle(0)
+			
+			TNT1 A 0 A_JumpIf(x == 1392, "EvidencePMAP01")
+			TNT1 A 0 A_JumpIf(x == 464, "EvidenceD2MAP12")
+			TNT1 A 0 A_JumpIf(x == -1024, "EvidenceD2MAP13")
+			TNT1 A 0 A_JumpIf(x == 352, "EvidenceD2MAP16")
+			TNT1 A 0 A_JumpIf(x == 2192, "EvidenceD2MAP20")
+			TNT1 A 0 A_JumpIf(x == 162, "EvidenceTNTMAP02")
+			
+			TNT1 A 1
+			Stop
+		EvidencePMAP01:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 48, "IsPMAP01")
+			Stop
+			
+		
+		IsPMAP01:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Congo ", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("PMap01DecorationSpawn", -1392, -48, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop
+			
+		EvidenceTNTMAP02:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 507, "IsTNTMAP02")
+			TNT1 A 1
+			Stop
+			
+			
+		
+			
+			
+		Evidence2TNTMAP02:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(z == 80, "IsTNTMAP02")
+			TNT1 A 1
+			Stop
+			
+		
+		IsTNTMAP02:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Human BBQ", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("TNTMap02DecorationSpawn", -162, -507, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+			
+			
+		EvidenceD2MAP12:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 1840, "IsMap12")
+			Stop
+			
+		IsMap12:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("The Factory ", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("D2Map12DecorationSpawn", -464, -1840, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop
+			
+		EvidenceD2MAP13:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == -1760, "IsMap13")
+			Stop
+			
+		IsMap13:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("DownTown ", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("Map13DecorationSpawn", 1024, 1760, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+			
+			
+		EvidenceD2MAP16:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 416, "IsMap16")
+			Stop
+			
+		IsMap16:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Suburbs ", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("Map16DecorationSpawn", -352, -416, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+			
+		EvidenceD2MAP20:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == -2864, "IsMap20")
+			Stop
+			
+		IsMap20:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Gotcha! ", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("D2Map20DecorationSpawn", -2192, 2864, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+		Vanilla:
+			TNT1 A 0
+			Stop	
+			}
+}
+
+
+
+
+
+ACTOR EvidenceCheckerbLUETorch
+{
+	+THRUACTORS
+	+NOCLIP
+	+NOBLOCKMAP
+	Radius 1
+	Height 1
+
+		States
+		{
+		Spawn:
+			TNT1 A 0
+			MARN A 0 ACS_NamedExecuteAlways("BDDisableMapEnhancements", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+			TNT1 A 0 A_SetANgle(0)
+			TNT1 A 0 A_JumpIf(x == -32, "EvidenceTNTMAP01")
+			TNT1 A 1
+			Stop
+		EvidenceTNTMAP01:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 1008, "IsTNTMAP01")
+			Stop
+			
+		Evidence2TNTMAP01:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(z == -72, "Evidence2TNTMAP01")
+			Stop	
+			
+		
+		IsTNTMAP01:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("System Control", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("TNTMap01DecorationSpawn", 32, -1008, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop
+			}
+}
+
+ACTOR EvidenceCheckerChainsaw
+{
+	+THRUACTORS
+	+NOCLIP
+	+NOBLOCKMAP
+	Radius 1
+	Height 1
+
+		States
+		{
+		Spawn:
+			TNT1 A 0
+			MARN A 0 ACS_NamedExecuteAlways("BDDisableMapEnhancements", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+			TNT1 A 0 A_SetANgle(0)
+			TNT1 A 0 A_JumpIf(x == -480, "EvidenceD2MAP01")
+			TNT1 A 1
+			Stop
+		
+		EvidenceD2MAP01:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 848, "IsD2Map01")
+			TNT1 A 0 A_JumpIf(y == 856, "IsD2Map01Old")//it was in a different position on some versions.
+			TNT1 A 1
+			Stop
+			
+		IsD2Map01:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Entryway ", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("D2Map01DecorationSpawn", 480, -848, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop
+			
+		IsD2Map01Old:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Entryway ", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("D2Map01DecorationSpawn", 480, -856, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+		
+		Vanilla:
+			TNT1 A 0
+			Stop
+			}
+}
+
+
+
+
+
+ACTOR EvidenceCheckerLightpost
+{
+	+THRUACTORS
+	+NOCLIP
+	+NOBLOCKMAP
+	Radius 1
+	Height 1
+
+		States
+		{
+		Spawn:
+			TNT1 A 0
+		  MARN A 0 ACS_NamedExecuteAlways("BDDisableMapEnhancements", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+		  TNT1 A 0 A_SetANgle(0)
+		  TNT1 A 0 A_JumpIf(x == 3232, "EvidenceE1M1")
+		  TNT1 A 0 A_JumpIf(x == 32, "EvidenceE1M2")
+		  TNT1 A 0 A_JumpIf(x == -592, "EvidenceTNTMAp04")
+		  TNT1 A 0 A_JumpIf(x == 368, "EvidenceTNTMAp05")
+		  TNT1 A 0 A_JumpIf(x == 528, "EvidenceTNTMAp06")
+		  TNT1 A 0 A_JumpIf(x == -256, "EvidenceTNTMAp08")
+			TNT1 A 1
+			Stop
+		
+		EvidenceE1M1:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == -3040, "IsE1M1")
+			TNT1 A 1
+			Stop
+			
+	
+		IsE1M1:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Hangar ", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("E1M1DecorationSpawn", -3232, 3040, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+			
+		EvidenceE1M2:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == -480, "IsE1M2")
+			TNT1 A 1
+			Stop
+			
+	
+		IsE1M2:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Nuclear Power Plant", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("E1M2DecorationSpawn", -32, 480, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+			
+		EvidenceTNTMap04:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 432, "TNTMap04")
+			TNT1 A 1
+			Stop
+			
+	
+		TNTMap04:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Wormhole ", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("TNTMap04DecorationSpawn", 592, -432, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop		
+			
+			
+			
+		EvidenceTNTMap05:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 456, "TNTMap05")
+			TNT1 A 1
+			Stop
+			
+	
+		TNTMap05:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Hanger ", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("TNTMap05DecorationSpawn", -368, -456, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+			
+		EvidenceTNTMap06:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == -2160, "TNTMap06")
+			TNT1 A 1
+			Stop
+			
+	
+		TNTMap06:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Open Season", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("TNTMap06DecorationSpawn", -528, 2160, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+			
+		EvidenceTNTMap08:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 2432, "TNTMap08")
+			TNT1 A 1
+			Stop
+			
+	
+		TNTMap08:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Metal", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("TNTMap08DecorationSpawn", -256, 2432, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop		
+			
+			
+		Vanilla:
+			TNT1 A 0
+			Stop
+			}
+}
+
+
+
+
+ACTOR EvidenceCheckerInvisibility
+{
+	+THRUACTORS
+	+NOCLIP
+	+NOBLOCKMAP
+	Radius 1
+	Height 1
+
+		States
+		{
+		Spawn:
+			TNT1 A 0
+		  MARN A 0 ACS_NamedExecuteAlways("BDDisableMapEnhancements", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+		  TNT1 A 0 A_SetANgle(0)
+		  TNT1 A 0 A_JumpIf(x == -64, "EvidenceMAP07")
+		  TNT1 A 0 A_JumpIf(x == 800, "EvidenceMAP10")//or 14
+		  TNT1 A 0 A_JumpIf(x == 1056, "EvidenceMAP09")
+		  TNT1 A 0 A_JumpIf(x == -3056, "EvidenceMAP17")
+		  TNT1 A 0 A_JumpIf(x == 1608, "EvidenceTNTMAp15")
+		  TNT1 A 0 A_JumpIf(x == -480, "EvidenceE1M8")
+		  
+			TNT1 A 1
+			Stop
+		
+		EvidenceMAP07:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == -832, "IsMap07")
+			TNT1 A 1
+			Stop
+			
+		EvidenceMAP09:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 416, "IsMap09")
+			TNT1 A 1
+			Stop	
+		
+		EvidenceMAP10:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == -1072, "IsMap14")
+			TNT1 A 0 A_JumpIf(y == -1632, "IsMap10")
+			TNT1 A 1
+			Stop
+			
+		EvidenceMAP17:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == -2560, "IsMap17")
+			TNT1 A 1
+			Stop	
+			
+		EvidenceTNTMAP15:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 2140, "IsTNTMap15")
+			TNT1 A 1
+			Stop		
+			
+			
+	
+		IsMAP07:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Dead Simple ", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("D2Map07DecorationSpawn", 64, 832, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop
+			
+		IsMAP09:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("O of Destruction ", 2, BIGFONT)
+			TNT1 A 0 ACS_NamedExecuteAlways("MapEnhancementD2Map01")
+			TNT1 A 1
+			Stop	
+			
+			
+		IsMAP10:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Refueling Base ", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("D2Map10DecorationSpawn", -800, 1632, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+		IsMAP14:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("The Inmost Dens", 2, BIGFONT)
+			TNT1 A 0 ACS_NamedExecuteAlways("MapEnhancementD2Map01")
+			TNT1 A 1
+			Stop	
+			
+		IsMAP17:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Tenements", 2, BIGFONT)
+			TNT1 A 0 ACS_NamedExecuteAlways("MapEnhancementD2Map01")
+			TNT1 A 1
+			Stop		
+			
+			
+		IsTNTMAP15:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Dead Zone", 2, BIGFONT2140
+			TNT1 A 0 A_SpawnItemEx("TNTMap15DecorationSpawn", -1608, 2140, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 0 ACS_ExecuteALways(275)
+			TNT1 A 1
+			Stop			
+			
+		EvidenceE1M8:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 3344, "IsE1M8")
+			TNT1 A 1
+			Stop		
+			
+			
+	
+		IsE1M8:
+			TNT1 A 0
+			TNT1 A 0 A_jumpIf(z != 0, "Vanilla")
+			TNT1 A 0 A_SpawnItemEx("E1M8DecorationSpawn", 480, -3344, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+
+		Vanilla:
+			TNT1 A 0
+			Stop
+			}
+}
+
+
+
+
+
+ACTOR EvidenceCheckerbERSERk
+{
+	+THRUACTORS
+	+NOCLIP
+	+NOBLOCKMAP
+	Radius 1
+	Height 1
+
+		States
+		{
+		Spawn:
+			TNT1 A 0
+		  MARN A 0 ACS_NamedExecuteAlways("BDDisableMapEnhancements", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+		  TNT1 A 0 A_SetANgle(0)
+		  TNT1 A 0 A_JumpIf(x == -752, "EvidenceScythe2")
+		  TNT1 A 0 A_JumpIf(x == -2290, "EvidenceScythe2")
+		  TNT1 A 0 A_JumpIf(x == 1856, "EvidenceScythe2")
+		  TNT1 A 0 A_JumpIf(x == 32, "EvidenceScythe2")
+		  TNT1 A 0 A_JumpIf(x == 352, "EvidenceScythe2")
+		  TNT1 A 0 A_JumpIf(x == 1664, "EvidenceScythe2")
+		  TNT1 A 0 A_JumpIf(x == 832, "EvidenceScythe2")
+		  TNT1 A 0 A_JumpIf(x == -144, "EvidenceScythe2")
+		  TNT1 A 0 A_JumpIf(x == 1072, "EvidenceScythe2")
+		  TNT1 A 0 A_JumpIf(x == -3913, "EvidenceEpic1")
+		  TNT1 A 0 A_JumpIf(x == 2002, "EvidenceEpic1")
+		  TNT1 A 0 A_JumpIf(x == -1429, "EvidenceTNTMap03")
+		  TNT1 A 0 A_JumpIf(x == -127, "EvidenceTNTMap07")
+		   TNT1 A 0 A_JumpIf(x == 240, "EvidenceTNTMap09")
+		   TNT1 A 0 A_JumpIf(x == -1664, "EvidenceE2M5")
+		   TNT1 A 0 A_JumpIf(x == 752, "EvidenceE2M6")
+		   TNT1 A 0 A_JumpIf(x == 848, "EvidenceE3M2")
+		   TNT1 A 0 A_JumpIf(x == 1472, "EvidenceE3M3")
+		   TNT1 A 0 A_JumpIf(x == 976, "EvidenceE3M4")
+		   TNT1 A 0 A_JumpIf(x == 496, "EvidenceE3M5")
+		   TNT1 A 0 A_JumpIf(x == 784, "EvidenceE3M6")
+			TNT1 A 1
+			Stop
+		
+		EvidenceScythe2:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == -2399, "IsScythe2")
+			TNT1 A 0 A_JumpIf(y == 928, "IsScythe2")
+			TNT1 A 0 A_JumpIf(y == -304, "IsScythe2")
+			TNT1 A 0 A_JumpIf(y == 160, "IsScythe2")
+			TNT1 A 0 A_JumpIf(y == -1072, "IsScythe2")
+			TNT1 A 0 A_JumpIf(y == -1432, "IsScythe2")
+			TNT1 A 0 A_JumpIf(y == -784, "IsScythe2")
+			TNT1 A 0 A_JumpIf(y == -3816, "IsScythe2")
+			TNT1 A 1
+			Stop
+			
+		EvidenceEpic1:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(y == -3588, "IsEpic1Map2")
+			TNT1 A 0 A_JumpIf(y == -10334, "IsEpic1Map5")
+			TNT1 A 1
+			Stop
+			
+		EvidenceTNTMap03:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(y == -103, "IsTNTMap03")
+			TNT1 A 1
+			Stop	
+			
+		IsTNTMAp03:
+			TNT1 A 0
+			 TNT1 A 0 ACS_ExecuteALways(263)
+			TNT1 A 0 A_SpawnItemEx("TNTMap03DecorationSpawn", 1429, 103, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+			
+		EvidenceTNTMap07:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(y == -1751, "IsTNTMap07")
+			TNT1 A 1
+			Stop	
+			
+		IsTNTMAp07:
+			TNT1 A 0
+			 TNT1 A 0 ACS_ExecuteALways(267)
+			TNT1 A 0 A_SpawnItemEx("TNTMap07DecorationSpawn", 127, 1751, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+			
+		EvidenceTNTMap09:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(y == -368, "IsTNTMap09")
+			TNT1 A 1
+			Stop	
+			
+		IsTNTMap09:
+			TNT1 A 0
+			 TNT1 A 0 ACS_ExecuteALways(261)
+			TNT1 A 0 A_SpawnItemEx("TNTMap09DecorationSpawn", -240, 368, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop		
+			
+	
+		IsScythe2:
+			TNT1 A 0
+			TNT1 A 0 ACS_ExecuteAlways(3127)
+			//TNT1 A 0 A_SpawnItemEx("Scythe09DecorationSpawn", 2290, 2399, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+		IsEpic1Map2:
+			TNT1 A 0
+			TNT1 A 0 A_SpawnItemEx("Epic1Map2DecorationSpawn", 3913, 3588, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop
+			
+			
+		IsEpic1Map5:
+			TNT1 A 0
+			//TNT1 A 0 A_SpawnItemEx("Epic1Map5DecorationSpawn", -2002, 10334, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+		EvidenceE2M5:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(y == 1216, "IsE2M5")
+			TNT1 A 1
+			Stop	
+			
+		EvidenceE2M6:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(y == 2192, "IsE2M6")
+			TNT1 A 1
+			Stop		
+			
+		IsE2M5:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(z != 40, "Vanilla")
+			TNT1 A 0 A_SpawnItemEx("E2M5DecorationSpawn", 1664, -1216, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+		IsE2M6:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(z != 24, "Vanilla")
+			TNT1 A 0 A_SpawnItemEx("E2M6DecorationSpawn", -752, 2192, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop
+			
+		EvidenceE3M2:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(y == 208, "IsE3M2")
+			TNT1 A 1
+			Stop	
+			
+		IsE3M2:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(z != 32, "Vanilla")
+			TNT1 A 0 A_SpawnItemEx("E3M2DecorationSpawn", -848, 208, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+		EvidenceE3M3:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(y == 736, "IsE3M3")
+			TNT1 A 1
+			Stop	
+			
+		IsE3M3:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(z != -8, "Vanilla")
+			TNT1 A 0 A_SpawnItemEx("E3M3DecorationSpawn", -1472, -736, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop
+			
+		EvidenceE3M4:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(y == 400, "IsE3M4")
+			TNT1 A 1
+			Stop	
+			
+		IsE3M4:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(z != 0, "Vanilla")
+			TNT1 A 0 A_SpawnItemEx("E3M4DecorationSpawn", -976, -400, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+
+	EvidenceE3M5:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(y == 1200, "IsE3M5")
+			TNT1 A 1
+			Stop	
+			
+		IsE3M5:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(z != 0, "Vanilla")
+			TNT1 A 0 A_SpawnItemEx("E3M5DecorationSpawn", -496, -1200, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+		
+		EvidenceE3M6:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(y == 720, "IsE3M6")
+			TNT1 A 1
+			Stop	
+			
+		IsE3M6:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(z != 32, "Vanilla")
+			TNT1 A 0 A_SpawnItemEx("E3M6DecorationSpawn", -784, -720, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+
+		Vanilla:
+			TNT1 A 0
+			Stop
+			}
+}
+
+
+
+
+
+
+
+
+ACTOR EvidenceCheckerBlueKey
+{
+	+THRUACTORS
+	+NOCLIP
+	+NOBLOCKMAP
+	Radius 1
+	Height 1
+
+		States
+		{
+		Spawn:
+			TNT1 A 0
+			MARN A 0 ACS_NamedExecuteAlways("BDDisableMapEnhancements", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+			TNT1 A 0 A_SetANgle(0)
+			TNT1 A 0 A_JumpIf(x == -160, "EvidenceE1M3")
+			TNT1 A 0 A_JumpIf(x == 160, "EvidenceE1M4")
+			TNT1 A 0 A_JumpIf(x == 192, "EvidenceE1M5")
+			TNT1 A 0 A_JumpIf(x == -1536, "EvidenceE1M6")
+			TNT1 A 0 A_JumpIf(x == -1024, "EvidenceE1M7")
+			TNT1 A 0 A_JumpIf(x == 704, "EvidenceE1M9")
+			TNT1 A 0 A_JumpIf(x == -992, "EvidenceE2M3")
+			TNT1 A 0 A_JumpIf(x == -512, "EvidenceE2M4")
+			TNT1 A 0 A_JumpIf(x == 928, "EvidenceD2MAP02")
+			TNT1 A 0 A_JumpIf(x == 4608, "EvidenceD2MAP03")
+			TNT1 A 0 A_JumpIf(x == -832, "EvidenceD2MAP04")
+			TNT1 A 0 A_JumpIf(x == 976, "EvidenceD2MAP05")
+			TNT1 A 0 A_JumpIf(x == -800, "EvidenceD2MAP06")
+			TNT1 A 0 A_JumpIf(x == 448, "EvidenceD2MAP06B")
+			TNT1 A 0 A_JumpIf(x == -480, "EvidenceD2MAP09")
+			TNT1 A 0 A_JumpIf(x == -1072, "EvidenceD2MAP15")
+			TNT1 A 0 A_JumpIf(x == -6240, "EvidenceD2ReloadMAp20")
+			TNT1 A 0 A_JumpIf(x == -112, "EvidenceD2MAP24")
+			TNT1 A 0 A_JumpIf(x == -1584, "EvidencePLMap04")
+			TNT1 A 0 A_JumpIf(x == 4544, "EvidencePLMap05")
+			TNT1 A 0 A_JumpIf(x == -4024, "EvidenceTNTMap22")
+			
+			TNT1 A 1
+			Stop
+		EvidenceE1M3:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == -864, "IsE1M3")
+			Stop	
+			
+		EvidenceE1M4:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 800, "IsE1M4")
+			Stop	
+			
+		EvidenceE1M5:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 1040, "IsE1M5")
+			Stop		
+			
+		EvidenceE1M6:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == -1728, "IsE1M6")
+			Stop
+			
+			
+		EvidenceE1M7:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 272, "IsE1M7")
+			Stop	
+			
+		EvidenceE1M9:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == -1024, "IsE1M9")
+			Stop		
+			
+		EvidenceE2M3:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 672, "IsE2M3")
+			Stop
+			
+		EvidenceE2M4:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == -2304, "IsE2M4")
+			Stop
+			
+		EvidenceD2MAP02:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 576, "IsD2MAP02")
+			Stop
+			
+		EvidenceD2MAP03:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 3360, "IsD2MAP03")
+			Stop	
+			
+			
+		EvidenceD2MAP04:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 304, "IsD2MAP04")
+			Stop	
+			
+			
+		EvidenceD2MAP05:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == -640, "IsD2MAP05")
+			Stop	
+			
+			
+		EvidenceD2MAP06:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 608, "IsD2MAP06")
+			Stop	
+			
+		EvidenceD2MAP06B:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 224, "IsD2MAP06")
+			Stop	
+			
+		EvidenceD2MAP09:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 1504, "IsD2MAP09")
+			Stop	
+			
+			
+		EvidenceD2MAP15:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == -3040, "IsD2MAP15")
+			Stop	
+			
+			
+		EvidenceD2MAP24:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 288, "IsD2MAP24")
+			Stop	
+			
+			
+		EvidenceD2ReloadMAP20:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 2448, "IsD2ReloadMAP20")
+			Stop
+			
+		EvidencePLMap04:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == -627, "IsPLMap04")
+			Stop
+			
+		EvidencePLMap05:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == -4672, "IsPLMap05")
+			Stop
+				
+		
+		IsE1M3:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Toxin Refinery", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("E1M3DecorationSpawn", 160, 864, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop
+		
+		IsE1M4:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIF(z != 144, "Vanilla")
+			TNT1 A 0 //TEST-A_PrintBold("CommandControl", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("E1M4DecorationSpawn", -160, -800, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop
+			
+		IsE1M5:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Phobos Labs", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("E1M5DecorationSpawn", -192, -1040, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+		IsE1M6:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Central Processing", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("E1M6DecorationSpawn", 1536, 1728, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop
+			
+		IsE1M7:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIF(z != 32, "Vanilla")
+			TNT1 A 0 //TEST-A_PrintBold("Central Processing", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("E1M7DecorationSpawn", 1024, -272, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop
+			
+		IsE1M9:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIF(z != 88, "Vanilla")
+			TNT1 A 0 //TEST-A_PrintBold("Central Processing", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("E1M9DecorationSpawn", -704, 1024, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+		IsE2M3:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIF(z != 24, "Vanilla")
+			TNT1 A 0 //TEST-A_PrintBold("Central Processing", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("E2M3DecorationSpawn", 992, -672, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+		IsE2M4:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIF(z != 288, "Vanilla")
+			TNT1 A 0 //TEST-A_PrintBold("Deimos Lab", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("E2M4DecorationSpawn", 512, 2304, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop		
+		
+		IsD2MAP02:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Underhalls", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("D2Map02DecorationSpawn", -928, -576, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop
+			
+		IsD2MAP03:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("The Gantlet", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("D2Map03DecorationSpawn", -4608, -3360, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop
+			
+		IsD2MAP04:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("The Gantlet", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("D2Map04DecorationSpawn", 832, -304, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop
+			
+		IsD2MAP05:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("The Waste Tunnels", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("D2Map05DecorationSpawn", -976, 640, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop
+			
+		IsD2MAP06:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("The Crusher", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("D2Map06DecorationSpawn", 800, -608, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop
+			
+		IsD2MAP06B:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("The Crusher", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("D2Map06DecorationSpawn", -448, -224, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop
+			
+			
+		IsD2MAP09:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("The Pit", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("D2Map09DecorationSpawn", 480, -1504, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop
+			
+		IsD2MAP15:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Industrial Zone", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("D2Map15DecorationSpawn", 1072, 3040, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+		IsD2MAP24:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("The Chasm", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("D2Map24DecorationSpawn", 112, -288, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+			
+		IsD2ReloadMap20:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("The Chasm", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("D2ReloadMap20DecorationSpawn", 6240, -2448, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+		IsPLMap04:
+			TNT1 A 0
+			TNT1 A 0 //A_PrintBold("Caged", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("PLMap04DecorationSpawn", 1584, 627, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+		IsPLMap05:
+			TNT1 A 0
+			TNT1 A 0 //A_PrintBold("Caged", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("PLMap05DecorationSpawn", -4544, 4672, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop		
+			
+			
+		EvidenceTNTMAP22:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == -1080, "EvidenceTNTMAP22Part2")
+			TNT1 A 1
+			Stop	
+			
+		EvidenceTNTMAP22Part2:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(z == 0, "IsTNTMAP22")
+			TNT1 A 1
+			Stop			
+			
+		IsTNTMAP22:
+			TNT1 A 0
+			TNT1 A 0 //A_PrintBold("", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("TNTMap22DecorationSpawn", 4024, 1080, -240, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop		
+			
+		Vanilla:
+			TNT1 A 0
+			Stop
+			
+			}
+}
+
+
+
+
+
+
+
+
+
+
+ACTOR EvidenceCheckerBlueSkull
+{
+	+THRUACTORS
+	+NOCLIP
+	+NOBLOCKMAP
+	Radius 1
+	Height 1
+
+		States
+		{
+		Spawn:
+			TNT1 A 0
+			MARN A 0 ACS_NamedExecuteAlways("BDDisableMapEnhancements", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+			TNT1 A 0 A_SetANgle(0)
+			TNT1 A 0 A_JumpIf(x == 1936, "EvidenceD2MAP18")
+			TNT1 A 0 A_JumpIf(x == 1088, "EvidenceD2MAP19")
+			TNT1 A 0 A_JumpIf(x == -1312, "EvidenceD2MAP25")
+			TNT1 A 0 A_JumpIf(x == -448, "EvidencePLMap06")
+			TNT1 A 0 A_JumpIf(x == 1408, "EvidencePLMap29")
+			TNT1 A 0 A_JumpIf(x == -992, "EvidenceTNTMap16")
+			TNT1 A 0 A_JumpIf(x == -2080, "EvidenceTNTMap28")
+			TNT1 A 0 A_JumpIf(x == 160, "EvidenceE3M7")
+			TNT1 A 1
+			Stop
+			
+		EvidenceE3M7:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(y == -1632, "IsE3M7")
+			TNT1 A 1
+			Stop	
+			
+		IsE3M7:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(z != 0, "Vanilla")
+			TNT1 A 0 A_SpawnItemEx("E3M7DecorationSpawn", -160, 1632, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+		EvidenceD2MAP18:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 1488, "IsD2MAP18")
+			Stop
+			
+		IsD2MAP18:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("The Courtyard", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("D2Map18DecorationSpawn", -1936, -1488, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop
+			
+		EvidenceD2MAP19:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 896, "IsD2MAP19")
+			Stop
+			
+		IsD2MAP19:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(z != 112, "Vanilla")
+			TNT1 A 0 A_SpawnItemEx("D2Map19DecorationSpawn", -1088, -896, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+		EvidencePLMAP29:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == -768, "IsPLMAP29")
+			Stop	
+			
+		IsPLMAP29:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Odyssey of Noises", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("PLMap29DecorationSpawn", -1488, 768, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+			
+		EvidencePLMAP06:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 1056, "IsPLMAP06")
+			Stop	
+			
+		IsPLMAP06:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Odyssey of Noises", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("PLMap06DecorationSpawn", 448, -1056, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+				
+			
+		EvidenceTNTMap16:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == -2264, "IsTNTMap16")
+			Stop	
+			
+		IsTNTMap16:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Deepest Reaches", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("TNTMap16DecorationSpawn", 992, 2264, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+		
+		
+	EvidenceTNTMAP28:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 480, "EvidenceTNTMAP28Part2")
+			TNT1 A 1
+			Stop	
+			
+	EvidenceTNTMAP28Part2:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(z == 0, "IsTNTMAP28")
+			TNT1 A 1
+			Stop			
+			
+		IsTNTMAP28:
+			TNT1 A 0
+			TNT1 A 0 //A_PrintBold("", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("TNTMap28DecorationSpawn", 2080, -480, -240, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+		
+			
+		EvidenceD2MAP25:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 3456, "IsD2MAP25")
+			Stop
+			
+		
+		IsD2MAP25:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Bloodfalls", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("D2Map25DecorationSpawn", 1312, -3456, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop
+		
+		Vanilla:
+			TNT1 A 0
+			Stop
+			
+			}
+}
+
+
+
+
+
+
+
+
+
+
+ACTOR EvidenceCheckerBlueKey2
+{
+	+THRUACTORS
+	+NOCLIP
+	+NOBLOCKMAP
+	Radius 1
+	Height 1
+
+		States
+		{
+		Spawn:
+			TNT1 A 0
+			MARN A 0 ACS_NamedExecuteAlways("BDDisableMapEnhancements", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+			TNT1 A 0 A_SetANgle(0)
+			TNT1 A 0 A_JumpIf(x == 1936, "EvidenceD2MAP18")
+			
+			TNT1 A 0 A_JumpIf(x == -1312, "EvidenceD2MAP25")
+			TNT1 A 0 A_JumpIf(x == 1408, "EvidencePLMap29")
+			TNT1 A 1
+			Stop
+			
+		EvidenceD2MAP18:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 1488, "IsD2MAP18")
+			Stop
+			
+	
+			
+		
+		IsD2MAP18:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("The Courtyard", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("D2Map18DecorationSpawn", -1936, -1488, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop
+		EvidencePLMAP29:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == -768, "IsPLMAP29")
+			Stop	
+			
+		IsPLMAP29:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Odyssey of Noises", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("PLMap29DecorationSpawn", -1488, 768, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+		
+			
+		EvidenceD2MAP25:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 3456, "IsD2MAP25")
+			Stop
+			
+		
+		IsD2MAP25:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Bloodfalls", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("D2Map25DecorationSpawn", 1312, -3456, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop
+		
+		Vanilla:
+			TNT1 A 0
+			Stop
+			
+			}
+}
+
+
+
+
+
+
+ACTOR EvidenceCheckerRedKey
+{
+	+THRUACTORS
+	+NOCLIP
+	+NOBLOCKMAP
+	Radius 1
+	Height 1
+
+		States
+		{
+		Spawn:
+			TNT1 A 0
+			MARN A 0 ACS_NamedExecuteAlways("BDDisableMapEnhancements", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+			TNT1 A 0 A_SetANgle(0)
+			TNT1 A 0 A_JumpIf(x == 1696, "EvidencePLMap03")
+			TNT1 A 0 A_JumpIf(x == -120, "EvidenceTNTMAp10")
+			TNT1 A 0 A_JumpIf(x == -64, "EvidenceTNTMAP11")
+			TNT1 A 0 A_JumpIf(x == -1184, "EvidenceTNTMAP12")
+			TNT1 A 0 A_JumpIf(x == 4000, "EvidenceTNTMAP13")
+			TNT1 A 0 A_JumpIf(x == -960, "EvidenceTNTMAP14")
+			TNT1 A 0 A_JumpIf(x == -32, "EvidenceTNTMAP17")
+			TNT1 A 0 A_JumpIf(x == -1952, "EvidenceTNTMAP18")
+			TNT1 A 0 A_JumpIf(x == 1280, "EvidenceTNTMAP19")
+			TNT1 A 0 A_JumpIf(x == -5, "EvidenceTNTMAP23")
+			TNT1 A 0 A_JumpIf(x == -5542, "EvidenceTNTMAP27")
+			TNT1 A 0 A_JumpIf(x == 2656, "EvidenceE2M2")
+			TNT1 A 0 A_JumpIf(x == 1760, "EvidenceE2M7")
+			TNT1 A 1
+			Stop
+			
+		EvidencePLMAP03:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 288, "IsPLMap03")
+			Stop
+			
+			
+		IsPLMAP03:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Aztec", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("PLMap03DecorationSpawn", -1696, -288, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+		EvidenceE2M2:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 2016, "IsE2M2")
+			Stop	
+			
+		IsE2M2:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(z != 24, "Vanilla")
+			TNT1 A 0 A_SpawnItemEx("E2M2DecorationSpawn", -2656, -2016, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+		EvidenceE2M7:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == -224, "IsE2M7")
+			Stop	
+			
+		IsE2M7:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(z != 176, "Vanilla")
+			TNT1 A 0 A_SpawnItemEx("E2M7DecorationSpawn", -1760, 224, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop		
+			
+		EvidenceTNTMAP10:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 828, "IsTNTMap10")
+			Stop
+			
+		IsTNTMAP10:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Aztec", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("TNTMap10DecorationSpawn", 120, -828, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+		
+	EvidenceTNTMAP11:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 1328, "EvidenceTNTMAP11Part2")
+			TNT1 A 1
+			Stop	
+			
+	EvidenceTNTMAP11Part2:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(z == 222, "IsTNTMAP11")
+			TNT1 A 1
+			Stop	
+			
+				
+		IsTNTMAP11:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Storage Area", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("TNTMap11DecorationSpawn", 64, -1328, -222, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop		
+			
+			
+			
+	EvidenceTNTMAP12:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 2208, "ConfirmTNTMAP12")
+			Stop		
+			
+	ConfirmTNTMAP12:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(z == 112, "IsTNTMap12")
+			Stop	
+
+			
+		IsTNTMAP12:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Storage Area", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("TNTMap12DecorationSpawn", -1184, 2208, -222, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop			
+			
+	EvidenceTNTMAP13:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 2944, "EvidenceTNTMAP13Part2")
+			TNT1 A 1
+			Stop	
+			
+	EvidenceTNTMAP13Part2:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(z == 240, "IsTNTMAP13")
+			TNT1 A 1
+			Stop			
+			
+		IsTNTMAP13:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Nukage Processing", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("TNTMap13DecorationSpawn", -4000, -2944, -240, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop
+			
+			
+			
+	EvidenceTNTMAP14:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 320, "EvidenceTNTMAP14Part2")
+			TNT1 A 1
+			Stop	
+			
+	EvidenceTNTMAP14Part2:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(z == 160, "IsTNTMAP14")
+			TNT1 A 1
+			Stop			
+			
+		IsTNTMAP14:
+			TNT1 A 0
+			TNT1 A 0 //A_PrintBold("sTEEL WORKS", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("TNTMap14DecorationSpawn", 960, -320, -240, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop
+			
+			
+			
+	EvidenceTNTMAP17:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 1672, "EvidenceTNTMAP17Part2")
+			TNT1 A 1
+			Stop	
+			
+	EvidenceTNTMAP17Part2:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(z == 235, "IsTNTMAP17")
+			TNT1 A 1
+			Stop			
+			
+		IsTNTMAP17:
+			TNT1 A 0
+			TNT1 A 0 //A_PrintBold("", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("TNTMap17DecorationSpawn", 32, -1672, -240, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+			
+	EvidenceTNTMAP18:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == -160, "EvidenceTNTMAP18Part2")
+			TNT1 A 1
+			Stop	
+			
+	EvidenceTNTMAP18Part2:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(z == -92, "IsTNTMAP18")
+			TNT1 A 1
+			Stop			
+			
+		IsTNTMAP18:
+			TNT1 A 0
+			TNT1 A 0 //A_PrintBold("", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("TNTMap18DecorationSpawn", 1952, 160, -240, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop		
+			
+			
+	EvidenceTNTMAP19:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 616, "EvidenceTNTMAP19Part2")
+			TNT1 A 1
+			Stop	
+			
+	EvidenceTNTMAP19Part2:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(z == 24, "IsTNTMAP19")
+			TNT1 A 1
+			Stop			
+			
+		IsTNTMAP19:
+			TNT1 A 0
+			TNT1 A 0 //A_PrintBold("", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("TNTMap19DecorationSpawn", 1280, -616, -240, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+			
+			
+	
+			
+			
+		EvidenceTNTMAP23:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 713, "EvidenceTNTMAP23Part2")
+			TNT1 A 1
+			Stop	
+			
+	EvidenceTNTMAP23Part2:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(z == 32, "IsTNTMAP23")
+			TNT1 A 1
+			Stop			
+			
+		IsTNTMAP23:
+			TNT1 A 0
+			TNT1 A 0 //A_PrintBold("", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("TNTMap23DecorationSpawn", 5, -713, -240, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop				
+	
+	
+	EvidenceTNTMAP24:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == -160, "EvidenceTNTMAP24Part2")
+			TNT1 A 1
+			Stop	
+			
+	EvidenceTNTMAP24Part2:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(z == -92, "IsTNTMAP24")
+			TNT1 A 1
+			Stop			
+			
+		IsTNTMAP24:
+			TNT1 A 0
+			TNT1 A 0 //A_PrintBold("", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("TNTMap24DecorationSpawn", 1952, 160, -240, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+		
+			
+	
+			
+			
+	EvidenceTNTMAP27:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 1594, "EvidenceTNTMAP27Part2")
+			TNT1 A 1
+			Stop	
+			
+	EvidenceTNTMAP27Part2:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(z == -320, "IsTNTMAP27")
+			TNT1 A 1
+			Stop			
+			
+		IsTNTMAP27:
+			TNT1 A 0
+			TNT1 A 0 //A_PrintBold("", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("TNTMap27DecorationSpawn", 5542, -1594, -240, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop			
+	
+	
+			
+			
+	EvidenceTNTMAP29:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == -160, "EvidenceTNTMAP29Part2")
+			TNT1 A 1
+			Stop	
+			
+	EvidenceTNTMAP29Part2:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(z == -92, "IsTNTMAP29")
+			TNT1 A 1
+			Stop			
+			
+		IsTNTMAP29:
+			TNT1 A 0
+			TNT1 A 0 //A_PrintBold("", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("TNTMap29DecorationSpawn", 1952, 160, -240, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop			
+			
+		Vanilla:
+			TNT1 A 0
+			Stop
+			
+			}
+}
+
+
+
+
+
+
+ACTOR EvidenceCheckerYellowSkull
+{
+	+THRUACTORS
+	+NOCLIP
+	+NOBLOCKMAP
+	Radius 1
+	Height 1
+
+		States
+		{
+		Spawn:
+			TNT1 A 0
+			MARN A 0 ACS_NamedExecuteAlways("BDDisableMapEnhancements", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+			TNT1 A 0 A_SetANgle(0)
+			TNT1 A 0 A_JumpIf(x == -1264, "EvidencePLMap02")
+			TNT1 A 0 A_JumpIf(x == -16, "EvidencePLMap07")
+			TNT1 A 0 A_JumpIf(x == -2192, "EvidenceTNTMap20")
+			TNT1 A 0 A_JumpIf(x == -505, "EvidenceTNTMap21")
+			TNT1 A 0 A_JumpIf(x == 288, "EvidenceTNTMap29")
+			TNT1 A 0 A_JumpIf(x == 1816, "EvidenceTNTMap25")
+			TNT1 A 0 A_JumpIf(x == -1952, "EvidenceTNTMap26")
+			TNT1 A 1
+			Stop
+			
+		EvidencePLMAP02:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == -657, "IsPLMAP02")
+			Stop	
+			
+			
+		EvidenceTNTMap29:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == -1632, "TNTMap29Confirm")
+			Stop	
+			
+			
+			
+		IsPLMAP02:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Well of Souls", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("PLMap02DecorationSpawn", 1264, 657, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+			
+		TNTMAp29Confirm:	
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(z == 128, "ISTNTMap29")
+			Stop	
+			
+		ISTNTMAp29:
+			TNT1 A 0
+			TNT1 A 0 A_PrintBold("River Styx", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("TNTMap29DecorationSpawn", -288, 1632, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+			
+		EvidencePLMAP07:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 16, "IsPLMAP07")
+			Stop
+			
+		IsPLMAP07:
+			TNT1 A 0
+			TNT1 A 0 //TEST-A_PrintBold("Well of Souls", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("PLMap07DecorationSpawn", 16, -16, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+		
+		EvidenceTNTMAP20:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 1952, "EvidenceTNTMAP20Part2")
+			TNT1 A 1
+			Stop	
+			
+	EvidenceTNTMAP20Part2:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(z == 16, "IsTNTMAP20")
+			TNT1 A 1
+			Stop			
+			
+		IsTNTMAP20:
+			TNT1 A 0
+			TNT1 A 0 //A_PrintBold("", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("TNTMap20DecorationSpawn", 2192, -1952, -240, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+			
+			
+			
+	EvidenceTNTMAP21:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 608, "EvidenceTNTMAP21Part2")
+			TNT1 A 1
+			Stop	
+			
+	EvidenceTNTMAP21Part2:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(z == 256, "IsTNTMAP21")
+			TNT1 A 1
+			Stop			
+			
+		IsTNTMAP21:
+			TNT1 A 0
+			TNT1 A 0 //A_PrintBold("", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("TNTMap21DecorationSpawn", 505, -608, -240, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop			
+			
+		EvidenceTNTMAP25:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == -2176, "EvidenceTNTMAP25Part2")
+			TNT1 A 1
+			Stop	
+			
+	EvidenceTNTMAP25Part2:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(z == -200, "IsTNTMAP25")
+			TNT1 A 1
+			Stop			
+			
+		IsTNTMAP25:
+			TNT1 A 0
+			TNT1 A 0 //A_PrintBold("", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("TNTMap25DecorationSpawn", 1816, 2176, -240, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop		
+				
+				
+	EvidenceTNTMAP26:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 2112, "EvidenceTNTMAP26Part2")
+			TNT1 A 1
+			Stop	
+			
+	EvidenceTNTMAP26Part2:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(z == 368, "IsTNTMAP26")
+			TNT1 A 1
+			Stop			
+			
+		IsTNTMAP26:
+			TNT1 A 0
+			TNT1 A 0 //A_PrintBold("", 2, BIGFONT)
+			TNT1 A 0 A_SpawnItemEx("TNTMap26DecorationSpawn", 1952, -2112, -240, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop		
+		
+		
+		Vanilla:
+			TNT1 A 0
+			Stop
+			
+			}
+}
+
+
+
+
+ACTOR EvidenceCheckerRedPillar
+{
+	+THRUACTORS
+	+NOCLIP
+	+NOBLOCKMAP
+	Radius 1
+	Height 1
+
+		States
+		{
+		Spawn:
+			TNT1 A 0
+			MARN A 0 ACS_NamedExecuteAlways("BDDisableMapEnhancements", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+			TNT1 A 0 A_SetANgle(0)
+			TNT1 A 0 A_JumpIf(x == -160, "EvidenceE3M1")
+			TNT1 A 0 A_JumpIf(x == -32, "EvidenceE3M9")
+			TNT1 A 1
+			Stop
+			
+		EvidenceE3M1:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 64, "IsE3M1")
+			TNT1 A 1
+			Stop	
+
+		IsE3M1:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(z != 0, "Vanilla")
+			TNT1 A 0 A_SpawnItemEx("E3M1DecorationSpawn", 160, -64, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop
+			
+		EvidenceE3M9:
+			TNT1 A 1
+			TNT1 A 0 A_JumpIf(y == 64, "IsE3M1")
+			TNT1 A 1
+			Stop	
+
+		IsE3M9:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(z != 0, "Vanilla")
+			TNT1 A 0 A_SpawnItemEx("E3M1DecorationSpawn", 160, -64, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+			TNT1 A 1
+			Stop	
+
+		Vanilla:
+			TNT1 A 0
+			Stop
+			
+			}
+}

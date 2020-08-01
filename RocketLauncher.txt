@@ -226,6 +226,7 @@ ACTOR Rocket_Launcher : BrutalWeapon
         RLNG A 0 A_PlaySound ("DSRFIRE")
 		RLNG A 0 BRIGHT A_FireCustomMissile("Alerter")
 		RLNF A 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(0.98)
 		RLNG A 0 A_FireCustomMissile("Rocket2", 0, 1, 0, -6)
 		RLNG A 0 A_FireCustomMissile("RocketGlassBreaker", 0, 1, 0, -6) 
 		Goto RecoilAnimation
@@ -234,17 +235,19 @@ ACTOR Rocket_Launcher : BrutalWeapon
 		RLNG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
         RLNG A 0 A_PlaySound ("DSRFIRE")
 		RLNF A 1 BRIGHT A_FireCustomMissile("RocketDM", 0, 1, 0, -6)
+		TNT1 A 0 A_ZoomFactor(0.98)
 		RLNG A 0 A_FireCustomMissile("RocketGlassBreaker", 0, 1, 0, -6) 
 		
 	RecoilAnimation:	
 		RLNG A 0 A_Takeinventory("RocketRounds",1)
 		RLNF B 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(1.0)
 		RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
-		RIFG A 0 A_SetPitch(-1.2 + pitch)
-        RLNF C 1 A_SetPitch(-1.2 + pitch)
-        RLNF D 1 
-		RLNF E 1 
-		RLNF FGH 1 A_SetPitch(0.4 + pitch)
+		RIFG A 0 A_SetPitch(-1.0 + pitch)
+        RLNF C 1 A_SetPitch(-1.0 + pitch)
+        RLNF D 1 A_SetPitch(0.2 + pitch)
+		RLNF E 1 A_SetPitch(0.2 + pitch)
+		RLNF FGH 1 A_SetPitch(0.2 + pitch)
 		
 		RLNG A 0 A_JumpIfInventory("Reloading",1,"Reload")
 		RLNG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
@@ -264,6 +267,7 @@ ACTOR Rocket_Launcher : BrutalWeapon
         RLNG A 0 A_PlaySound ("DSRFIRE")
 		RLNG A 0 BRIGHT A_FireCustomMissile("Alerter")
 		SNIP A 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(2.99)
 		RLNG A 0 A_FireCustomMissile("Rocket2", 0, 1, 0, -6)
 		RLNG A 0 A_FireCustomMissile("RocketGlassBreaker", 0, 1, 0, -6) 
 		Goto ZoomedRecoil
@@ -272,18 +276,20 @@ ACTOR Rocket_Launcher : BrutalWeapon
 		RLNG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
         RLNG A 0 A_PlaySound ("DSRFIRE")
 		SNIP A 1 BRIGHT A_FireCustomMissile("RocketDM", 0, 1, 0, -6)
+		TNT1 A 0 A_ZoomFactor(2.99)
 		RLNG A 0 A_FireCustomMissile("RocketGlassBreaker", 0, 1, 0, -6) 
 		
 	ZoomedRecoil:	
 		RLNG A 0 A_Takeinventory("RocketRounds",1)
 		SNIP A 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(3.0)
 		RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
-		RIFG A 0 A_SetPitch(-0.6 + pitch)
-        SNIP A 1 BRIGHT A_SetPitch(-0.6 + pitch)
-        SNIP A 1 BRIGHT
-		SNIP A 1 BRIGHT
+		RIFG A 0 A_SetPitch(-0.5 + pitch)
+        SNIP A 1 BRIGHT A_SetPitch(-0.5 + pitch)
+        SNIP A 1 BRIGHT A_SetPitch(0.1 + pitch)
+		SNIP A 1 BRIGHT A_SetPitch(0.1 + pitch)
 		SNIP AAA 1 BRIGHT A_SetPitch(0.1 + pitch)
-		SNIP AAA 1 BRIGHT A_SetPitch(0.1 + pitch)
+		SNIP AAA 1 BRIGHT 
 		SNIP AAA 2 BRIGHT
         SNIP A 1 BRIGHT
 		RLNG A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
