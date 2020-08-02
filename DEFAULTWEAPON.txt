@@ -71,7 +71,7 @@ ACTOR BrutalWeapon : DoomWeapon
 		TNT1 A 0
 		TNT1 A 0 A_TakeInventory("PressedUse", 100)
 		RIFF A 0 A_FireCustomMissile("UseAttack", 0, 0, 0, 0)
-		RIFF A 0 A_FireCustomMissile("StealthAttack", 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("StealthAttack", 0, 0, 0, -17)
 		TNT1 A 1
 		TNT1 A 0 A_JumpIfInventory("FlashlightOn", 1, "WaitFlashlightOn")
 		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "Interrupt")
@@ -164,7 +164,7 @@ ACTOR BrutalWeapon : DoomWeapon
 		TNT1 A 0 A_Takeinventory("ADSmode",1)
 		TNT1 A 0 A_PlaySound("KICK")
 		RIBA ACE 1
-		RIFF A 0 A_FireCustomMissile("KickAttack", 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("KickAttack", 0, 0, 0, -17)
 		RIBA G 5
 		RIBA A 0 A_Takeinventory("Kicking",1)
 		RIBA FEDCBA 1
@@ -194,7 +194,7 @@ ACTOR BrutalWeapon : DoomWeapon
 		TNT1 A 0 A_PlaySound("KICK")
 		TNT1 A 0 SetPlayerProperty(0,1,0)
 		KICK BCD 1
-		RIFF A 0 A_FireCustomMissile("KickAttack", 0, 0, 0, -7)
+		RIFF A 0 A_FireCustomMissile("KickAttack", 0, 0, 0, -17)
         KICK H 5
 		KICK A 0 A_Takeinventory("Kicking",1)
 		KICK I 1
@@ -210,7 +210,7 @@ ACTOR BrutalWeapon : DoomWeapon
 		TNT1 A 0 A_PlaySound("KICK")
 		TNT1 A 0 SetPlayerProperty(0,1,0)
 		KICK BCD 1
-        RIFF A 0 A_FireCustomMissile("SuperKickAttack", 0, 0, 0, -7)
+        RIFF A 0 A_FireCustomMissile("SuperKickAttack", 0, 0, 0, -17)
         KICK H 5
 		KICK A 0 A_Takeinventory("Kicking",1)
 		KICK I 1
@@ -226,7 +226,7 @@ ACTOR BrutalWeapon : DoomWeapon
 		TNT1 A 0 A_PlaySound("KICK")
 		TNT1 A 0 A_Recoil (-6)
 		KICK JKLMN 1
-        RIFF A 0 A_FireCustomMissile("AirKickAttack", 0, 0, 0, -31)
+        RIFF A 0 A_FireCustomMissile("AirKickAttack", 0, 0, 0, -17)
         KICK O 3
 		KICK A 0 A_Takeinventory("Kicking",1)
 		KICK PQRST 2
@@ -239,7 +239,7 @@ ACTOR BrutalWeapon : DoomWeapon
 		TNT1 A 0 A_PlaySound("KICK")
 		TNT1 A 0 A_Recoil (-6)
 		KICK JKLMN 1
-        RIFF A 0 A_FireCustomMissile("SuperAirKickAttack", 0, 0, 0, -31)
+        RIFF A 0 A_FireCustomMissile("SuperAirKickAttack", 0, 0, 0, -17)
         KICK O 3
 		KICK A 0 A_Takeinventory("Kicking",1)
 		KICK PQRST 2
@@ -607,7 +607,7 @@ ACTOR BrutalWeapon : DoomWeapon
 		TNT1 A 0 A_Recoil(-1)
 
 		KICK JKLMN 1 A_Recoil(-1)
-        RIFF A 0 A_FireCustomMissile("ExecutionAttackStompWall", 0, 0, 0, -7)
+        RIFF A 0 A_FireCustomMissile("ExecutionAttackStompWall", 0, 0, 0, -17)
 		
         KICK OOO 2  A_Recoil(-1)
 		KICK A 0 A_Takeinventory("Kicking",1)
@@ -687,7 +687,7 @@ ACTOR BrutalWeapon : DoomWeapon
 		
 	Execution1:	
 		KICK BCD 1
-		RIFF A 0 A_FireCustomMissile("ExecutionAttackKick", 0, 0, 0, -7)
+		RIFF A 0 A_FireCustomMissile("ExecutionAttackKick", 0, 0, 0, -17)
         KICK H 5
 		KICK A 0 A_Takeinventory("Kicking",1)
 		KICK I 1

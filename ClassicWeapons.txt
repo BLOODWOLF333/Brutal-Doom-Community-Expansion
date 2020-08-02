@@ -43,10 +43,20 @@ ACTOR ClassicWeapon : Weapon
 		  TNT1 A 0 A_Jump(255, "Ready3")
 		  TNT1 A 1
 		Loop
+	
+	Tryuse:
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("PressedUse", 100)
+		RIFF A 0 A_FireCustomMissile("UseAttack", 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("StealthAttack", 0, 0, 0, -17)
+		TNT1 A 1
+		Goto Flash 
+	
 	Flash:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("SwitchFlashlight",1,"SwitchFlashlight")
 		TNT1 A 0 A_JumpIfInventory("FlashlightOn", 1, "FlashOn")
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "TryUse")
 		TNT1 A 4
 		TNT1 A 0 A_TakeInventory("UsedStamina", 1)
 		Goto Flash
@@ -94,43 +104,26 @@ ACTOR ClassicWeapon : Weapon
 		TNT1 A 0 A_Light0
 		TNT1 A 0 A_PlaySound("FLASHOFF", 5)
         Goto Flash
-	
-	
-	RifleBash:
-		TNT1 A 0
-		TNT1 A 0 A_Takeinventory("Zoomed",1)
-        TNT1 A 0 A_ZoomFactor(1.0)
-		TNT1 A 0 A_Takeinventory("ADSmode",1)
-		
-		TNT1 A 0 A_PlaySound("KICK")
-		RIBA ACE 1
-		RIFF A 0 A_FireCustomMissile("KickAttack", 0, 0, 0, 0)
-		RIBA G 5
-		RIBA A 0 A_Takeinventory("Kicking",1)
-		RIBA FEDCBA 1
-		TNT1 AAAA 1
-		TNT1 A 0 A_JumpIfInventory("Kicking",1,"RifleBash")
-		TNT1 A 0 SetPlayerProperty(0,0,0)
-		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
-		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
-		RIBA A 0 A_Takeinventory("Kicking",1)
-		Goto SelectingAnimation
 		
 	DoKick:
-		TNT1 A 2
+		TNT1 AA 1 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_Takeinventory("HasPlasmaWeapon",1)
+		TNT1 A 0 A_TAkeinventory("HasCutingWeapon",1)
 		TNT1 A 0 A_Takeinventory("Zoomed",1)
+		TNT1 A 0 A_Takeinventory("PowerLightAmp",1)
         TNT1 A 0 A_ZoomFactor(1.0)
 		TNT1 A 0 A_Takeinventory("ADSmode",1)
-		
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		NULL A 0 A_JumpIf (momZ > 0, "AirKick")
 		NULL A 0 A_JumpIf (momZ < 0, "AirKick")
+		TNT1 A 0 A_JumpIfInventory("IsCrouching", 1, "SlideAttack")
+		
         TNT1 A 0 A_jumpifinventory("PowerStrength",1,"BerserkerKick")
 		//TNT1 A 0 A_JumpIfInventory("RifleSelected", 1, "RifleBash")
 		TNT1 A 0 A_PlaySound("KICK")
 		TNT1 A 0 SetPlayerProperty(0,1,0)
 		KICK BCD 1
-		RIFF A 0 A_FireCustomMissile("KickAttack", 0, 0, 0, -7)
+		RIFF A 0 A_FireCustomMissile("KickAttack", 0, 0, 0, -17)
         KICK H 5
 		KICK A 0 A_Takeinventory("Kicking",1)
 		KICK I 1
@@ -139,14 +132,14 @@ ACTOR ClassicWeapon : Weapon
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
 		RIBA A 0 A_Takeinventory("Kicking",1)
-		Goto SelectingAnimation
+		Goto GoingToReady
 		
 	
     BerserkerKick:
 		TNT1 A 0 A_PlaySound("KICK")
 		TNT1 A 0 SetPlayerProperty(0,1,0)
 		KICK BCD 1
-        RIFF A 0 A_FireCustomMissile("SuperKickAttack", 0, 0, 0, -7)
+        RIFF A 0 A_FireCustomMissile("SuperKickAttack", 0, 0, 0, -17)
         KICK H 5
 		KICK A 0 A_Takeinventory("Kicking",1)
 		KICK I 1
@@ -162,7 +155,7 @@ ACTOR ClassicWeapon : Weapon
 		TNT1 A 0 A_PlaySound("KICK")
 		TNT1 A 0 A_Recoil (-6)
 		KICK JKLMN 1
-        RIFF A 0 A_FireCustomMissile("AirKickAttack", 0, 0, 0, -31)
+        RIFF A 0 A_FireCustomMissile("AirKickAttack", 0, 0, 0, -17)
         KICK O 3
 		KICK A 0 A_Takeinventory("Kicking",1)
 		KICK PQRST 2
@@ -175,7 +168,7 @@ ACTOR ClassicWeapon : Weapon
 		TNT1 A 0 A_PlaySound("KICK")
 		TNT1 A 0 A_Recoil (-6)
 		KICK JKLMN 1
-        RIFF A 0 A_FireCustomMissile("SuperAirKickAttack", 0, 0, 0, -31)
+        RIFF A 0 A_FireCustomMissile("SuperAirKickAttack", 0, 0, 0, -17)
         KICK O 3
 		KICK A 0 A_Takeinventory("Kicking",1)
 		KICK PQRST 2
@@ -183,6 +176,222 @@ ACTOR ClassicWeapon : Weapon
 		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
 		RIBA A 0 A_Takeinventory("Kicking",1)
 		Goto GoingToReady
+
+	SlideAttack:
+		TNT1 A 0 SetPlayerProperty(0,1,0)
+		KICK A 0 A_Takeinventory("Kicking",1)
+		TNT1 A 0 A_PlaySound("KICK")
+		TNT1 A 0 A_Recoil (-6)
+		TNT1 A 0 A_PlaySound("SlideKickStart", 5)
+		KICK LMN 1
+		TNT1 A 0 A_SetPItch(10)
+		TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"BerserkSlide")
+        RIFF A 0 A_FireCustomMissile("SlideAttack", 0, 0, 0, 10)
+        KICK O 1
+		TNT1 A 0 A_Recoil (-2)
+		TNT1 A 0 A_SetPItch(10)
+		TNT1 A 0 A_JumpIfInventory("KickHasHit", 1, "FinishSlideHitWall")
+		TNT1 A 0 A_JumpIfInventory("IsCrouching", 1, 1)
+		Goto FinishSlide
+		KICK O 1 A_FireCustomMissile("SlideAttack", 0, 0, 0, 10)
+		TNT1 A 0 A_Recoil (-2)
+		TNT1 A 0 A_SetPItch(10)
+		TNT1 A 0 A_JumpIfInventory("KickHasHit", 1, "FinishSlideHitWall")
+		TNT1 A 0 A_JumpIfInventory("IsCrouching", 1, 1)
+		Goto FinishSlide
+		
+		KICK O 1 A_FireCustomMissile("SlideAttack", 0, 0, 0, 10)
+		TNT1 A 0 A_Recoil (-2)
+		TNT1 A 0 A_SetPItch(10)
+		TNT1 A 0 A_JumpIfInventory("KickHasHit", 1, "FinishSlideHitWall")
+		TNT1 A 0 A_JumpIfInventory("IsCrouching", 1, 1)
+		Goto FinishSlide
+		
+		KICK O 1 A_FireCustomMissile("SlideAttack", 0, 0, 0, 10)
+		TNT1 A 0 A_Recoil (-2)
+		TNT1 A 0 A_SetPItch(10)
+		TNT1 A 0 A_JumpIfInventory("KickHasHit", 1, "FinishSlideHitWall")
+		TNT1 A 0 A_JumpIfInventory("IsCrouching", 1, 1)
+		Goto FinishSlide
+		
+		KICK O 1 A_FireCustomMissile("SlideAttack", 0, 0, 0, 10)
+		TNT1 A 0 A_Recoil (-2)
+		TNT1 A 0 A_SetPItch(10)
+		TNT1 A 0 A_JumpIfInventory("KickHasHit", 1, "FinishSlideHitWall")
+		TNT1 A 0 A_JumpIfInventory("IsCrouching", 1, 1)
+		Goto FinishSlide
+		
+		KICK O 1 A_FireCustomMissile("SlideAttack", 0, 0, 0, 10)
+		TNT1 A 0 A_Recoil (-2)
+		TNT1 A 0 A_SetPItch(10)
+		TNT1 A 0 A_JumpIfInventory("KickHasHit", 1, "FinishSlideHitWall")
+		TNT1 A 0 A_JumpIfInventory("IsCrouching", 1, 1)
+		Goto FinishSlide
+		
+		KICK O 1 A_FireCustomMissile("SlideAttack", 0, 0, 0, 10)
+		TNT1 A 0 A_Recoil (-2)
+		TNT1 A 0 A_SetPItch(10)
+		TNT1 A 0 A_JumpIfInventory("KickHasHit", 1, "FinishSlideHitWall")
+		TNT1 A 0 A_JumpIfInventory("IsCrouching", 1, 1)
+		Goto FinishSlide
+		
+		KICK O 1 A_FireCustomMissile("SlideAttack", 0, 0, 0, 10)
+		TNT1 A 0 A_Recoil (-2)
+		TNT1 A 0 A_SetPItch(10)
+		TNT1 A 0 A_JumpIfInventory("KickHasHit", 1, "FinishSlideHitWall")
+		TNT1 A 0 A_JumpIfInventory("IsCrouching", 1, 1)
+		Goto FinishSlide
+		
+		KICK O 1 A_FireCustomMissile("SlideAttack", 0, 0, 0, 10)
+		TNT1 A 0 A_Recoil (-2)
+		TNT1 A 0 A_SetPItch(10)
+		TNT1 A 0 A_JumpIfInventory("KickHasHit", 1, "FinishSlideHitWall")
+		TNT1 A 0 A_JumpIfInventory("IsCrouching", 1, 1)
+		Goto FinishSlide
+		
+		KICK O 1 A_FireCustomMissile("SlideAttack", 0, 0, 0, 10)
+		TNT1 A 0 A_Recoil (-2)
+		TNT1 A 0 A_SetPItch(10)
+		TNT1 A 0 A_JumpIfInventory("KickHasHit", 1, "FinishSlideHitWall")
+		TNT1 A 0 A_JumpIfInventory("IsCrouching", 1, 1)
+		Goto FinishSlide
+		
+		KICK O 1 A_FireCustomMissile("SlideAttack", 0, 0, 0, 10)
+		TNT1 A 0 A_Recoil (-2)
+		TNT1 A 0 A_SetPItch(10)
+		TNT1 A 0 A_JumpIfInventory("KickHasHit", 1, "FinishSlideHitWall")
+		TNT1 A 0 A_JumpIfInventory("IsCrouching", 1, 1)
+		Goto FinishSlide
+		
+		KICK O 1 A_FireCustomMissile("SlideAttack", 0, 0, 0, 10)
+		TNT1 A 0 A_Recoil (-2)
+		TNT1 A 0 A_SetPItch(10)
+		TNT1 A 0 A_JumpIfInventory("KickHasHit", 1, "FinishSlideHitWall")
+		TNT1 A 0 A_JumpIfInventory("IsCrouching", 1, 1)
+		Goto FinishSlide
+		
+		KICK O 1 A_FireCustomMissile("SlideAttack", 0, 0, 0, 10)
+		TNT1 A 0 A_Recoil (-2)
+		TNT1 A 0 A_SetPItch(10)
+		TNT1 A 0 A_JumpIfInventory("KickHasHit", 1, "FinishSlideHitWall")
+		TNT1 A 0 A_JumpIfInventory("IsCrouching", 1, 1)
+		TNT1 A 0 A_TAkeInventory("KickHasHit", 1)
+		Goto FinishSlide
+		
+	BerserkSlide:
+		TNT1 A 0
+		RIFF A 0 A_FireCustomMissile("BerserkSlide", 0, 0, 0, 10)
+        KICK O 1
+		TNT1 A 0 A_Recoil (-2)
+		TNT1 A 0 A_SetPItch(10)
+		TNT1 A 0 A_JumpIfInventory("KickHasHit", 1, "FinishSlideHitWall")
+		TNT1 A 0 A_JumpIfInventory("IsCrouching", 1, 1)
+		Goto FinishSlide
+		KICK O 1 A_FireCustomMissile("BerserkSlide", 0, 0, 0, 10)
+		TNT1 A 0 A_Recoil (-2)
+		TNT1 A 0 A_SetPItch(10)
+		TNT1 A 0 A_JumpIfInventory("KickHasHit", 1, "FinishSlideHitWall")
+		TNT1 A 0 A_JumpIfInventory("IsCrouching", 1, 1)
+		Goto FinishSlide
+		
+		KICK O 1 A_FireCustomMissile("BerserkSlide", 0, 0, 0, 10)
+		TNT1 A 0 A_Recoil (-2)
+		TNT1 A 0 A_SetPItch(10)
+		TNT1 A 0 A_JumpIfInventory("KickHasHit", 1, "FinishSlideHitWall")
+		TNT1 A 0 A_JumpIfInventory("IsCrouching", 1, 1)
+		Goto FinishSlide
+		
+		KICK O 1 A_FireCustomMissile("BerserkSlide", 0, 0, 0, 10)
+		TNT1 A 0 A_Recoil (-2)
+		TNT1 A 0 A_SetPItch(10)
+		TNT1 A 0 A_JumpIfInventory("KickHasHit", 1, "FinishSlideHitWall")
+		TNT1 A 0 A_JumpIfInventory("IsCrouching", 1, 1)
+		Goto FinishSlide
+		
+		KICK O 1 A_FireCustomMissile("BerserkSlide", 0, 0, 0, 10)
+		TNT1 A 0 A_Recoil (-2)
+		TNT1 A 0 A_SetPItch(10)
+		TNT1 A 0 A_JumpIfInventory("KickHasHit", 1, "FinishSlideHitWall")
+		TNT1 A 0 A_JumpIfInventory("IsCrouching", 1, 1)
+		Goto FinishSlide
+		
+		KICK O 1 A_FireCustomMissile("BerserkSlide", 0, 0, 0, 10)
+		TNT1 A 0 A_Recoil (-2)
+		TNT1 A 0 A_SetPItch(10)
+		TNT1 A 0 A_JumpIfInventory("KickHasHit", 1, "FinishSlideHitWall")
+		TNT1 A 0 A_JumpIfInventory("IsCrouching", 1, 1)
+		Goto FinishSlide
+		
+		KICK O 1 A_FireCustomMissile("BerserkSlide", 0, 0, 0, 10)
+		TNT1 A 0 A_Recoil (-2)
+		TNT1 A 0 A_SetPItch(10)
+		TNT1 A 0 A_JumpIfInventory("KickHasHit", 1, "FinishSlideHitWall")
+		TNT1 A 0 A_JumpIfInventory("IsCrouching", 1, 1)
+		Goto FinishSlide
+		
+		KICK O 1 A_FireCustomMissile("BerserkSlide", 0, 0, 0, 10)
+		TNT1 A 0 A_Recoil (-2)
+		TNT1 A 0 A_SetPItch(10)
+		TNT1 A 0 A_JumpIfInventory("KickHasHit", 1, "FinishSlideHitWall")
+		TNT1 A 0 A_JumpIfInventory("IsCrouching", 1, 1)
+		Goto FinishSlide
+		
+		KICK O 1 A_FireCustomMissile("BerserkSlide", 0, 0, 0, 10)
+		TNT1 A 0 A_Recoil (-2)
+		TNT1 A 0 A_SetPItch(10)
+		TNT1 A 0 A_JumpIfInventory("KickHasHit", 1, "FinishSlideHitWall")
+		TNT1 A 0 A_JumpIfInventory("IsCrouching", 1, 1)
+		Goto FinishSlide
+		
+		KICK O 1 A_FireCustomMissile("BerserkSlide", 0, 0, 0, 10)
+		TNT1 A 0 A_Recoil (-2)
+		TNT1 A 0 A_SetPItch(10)
+		TNT1 A 0 A_JumpIfInventory("KickHasHit", 1, "FinishSlideHitWall")
+		TNT1 A 0 A_JumpIfInventory("IsCrouching", 1, 1)
+		Goto FinishSlide
+		
+		KICK O 1 A_FireCustomMissile("BerserkSlide", 0, 0, 0, 10)
+		TNT1 A 0 A_Recoil (-2)
+		TNT1 A 0 A_SetPItch(10)
+		TNT1 A 0 A_JumpIfInventory("KickHasHit", 1, "FinishSlideHitWall")
+		TNT1 A 0 A_JumpIfInventory("IsCrouching", 1, 1)
+		Goto FinishSlide
+		
+		KICK O 1 A_FireCustomMissile("BerserkSlide", 0, 0, 0, 10)
+		TNT1 A 0 A_Recoil (-2)
+		TNT1 A 0 A_SetPItch(10)
+		TNT1 A 0 A_JumpIfInventory("KickHasHit", 1, "FinishSlideHitWall")
+		TNT1 A 0 A_JumpIfInventory("IsCrouching", 1, 1)
+		Goto FinishSlide
+		
+		KICK O 1 A_FireCustomMissile("BerserkSlide", 0, 0, 0, 10)
+		TNT1 A 0 A_Recoil (-2)
+		TNT1 A 0 A_SetPItch(10)
+		TNT1 A 0 A_JumpIfInventory("KickHasHit", 1, "FinishSlideHitWall")
+		TNT1 A 0 A_JumpIfInventory("IsCrouching", 1, 1)
+		TNT1 A 0 A_TAkeInventory("KickHasHit", 1)
+		Goto FinishSlide
+		
+	FinishSlide:	
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("SlideKickStop", 5)
+		KICK PQRST 2
+		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		RIBA A 0 A_Takeinventory("Kicking",1)
+		TNT1 A 0 SetPlayerProperty(0,0,0)
+		Goto GoingToReady	
+		
+	FinishSlideHitwall:	
+		TNT1 A 0
+		TNT1 A 0 A_Stop
+		KICK PQRST 2
+		TNT1 A 0 A_TAkeInventory("KickHasHit", 1)
+		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		RIBA A 0 A_Takeinventory("Kicking",1)
+		TNT1 A 0 SetPlayerProperty(0,0,0)
+		Goto GoingToReady	
 
     Taunt:
 		TNT1 A 0 A_Takeinventory("Zoomed",1)
@@ -237,10 +446,6 @@ ACTOR ClassicWeapon : Weapon
 		TNT1 A 0 A_Print("No Grenades Left.")
 		Goto GoingToReady
 		
-		
-		
-		
-		
 	DoExecution:
 		TNT1 A 1
 		TNT1 A 0 A_ChangeFLag("NOPAIN", 1)
@@ -253,20 +458,20 @@ ACTOR ClassicWeapon : Weapon
 		TNT1 A 0 A_JumpIfInventory("ExecuteBashWall", 1, "BashWall")
 		TNT1 A 0 A_JumpIfInventory("ExecuteStompWall", 1, "StompWall")
 		
-		TNT1 A 0 A_SetPitch(80)
+		TNT1 A 0 A_SetPitch(70)
 		
 		TNT1 A 5
-		TNT1 A 0 A_Jump(256, "Execution1", "Execution2", "Execution3")
+		TNT1 A 0 A_Jump(256, "Execution1")
 		
 	
-	Stompwall:
+	Stompwall://Not used
 		TNT1 A 0 A_Stop
 		TNT1 A 0 A_JumpIfInventory("IsFloating", 1, "ExecuteAirStomp")
 		TNT1 A 0 A_SetPitch(10)
 		TNT1 A 0 A_Recoil(-1)
 
 		KICK JKLMN 1 A_Recoil(-1)
-        RIFF A 0 A_FireCustomMissile("ExecutionAttackStompWall", 0, 0, 0, -7)
+        RIFF A 0 A_FireCustomMissile("ExecutionAttackStompWall", 0, 0, 0, -17)
 		
         KICK OOO 2  A_Recoil(-1)
 		KICK A 0 A_Takeinventory("Kicking",1)
@@ -346,7 +551,7 @@ ACTOR ClassicWeapon : Weapon
 	Execution1:	
 		KICK BCD 1
 		TNT1 A 0 A_JumpIfInventory("IsFloating", 1, "ExecuteAirStomp")
-		RIFF A 0 A_FireCustomMissile("ExecutionAttackKick", 0, 0, 0, -7)
+		RIFF A 0 A_FireCustomMissile("ExecutionAttackKick", 0, 0, 0, -17)
         KICK H 5
 		KICK A 0 A_Takeinventory("Kicking",1)
 		KICK I 1
@@ -429,12 +634,12 @@ ACTOR ClassicWeapon : Weapon
 ACTOR ClassicFist : ClassicWeapon
 {
 	Game Doom
-	Weapon.SelectionOrder 4
+	Weapon.SelectionOrder 10
 	Weapon.Kickback 100
 	Obituary "$OB_MPFIST"
 	Tag "$TAG_FIST"
+	+WEAPON.WIMPY_WEAPON
 	+WEAPON.MELEEWEAPON
-	
 	+WEAPON.NOALERT
 	Tag "Fists"
 	States
@@ -442,17 +647,12 @@ ACTOR ClassicFist : ClassicWeapon
 	
 	Ready:
 	Ready3:
-	    
-		
 		PKFS A 1 A_WeaponReady
-		
 		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-		
-		
 		Loop
 	Deselect:
 		PKFS A 1 A_Lower
@@ -463,30 +663,27 @@ ACTOR ClassicFist : ClassicWeapon
 		Loop
 	Fire:
 	    TNT1 A 0 A_jumpifinventory("PowerStrength",1,"Fire2")
-		PKFS B 1 A_Giveinventory("Punching",1)
+		PKFS B 2 A_Giveinventory("Punching",1)
 		TNT1 A 0 A_PlaySound("skeleton/swing")
-		PKFS CD 1
-		PKFS E 2 A_FireCustomMissile("MeleeStrike2", 0, 0, 0, -5)
-		PKFS FGHIJKL 2
+		PKFS C 2 A_FireCustomMissile("MeleeStrike2", 0, 0, 0, 0)
+		PKFS DEFGHIJ 2
+		PKFS KL 2 A_Refire
 		Goto Ready
 	Fire2:
-		PKFS B 1 A_Giveinventory("Punching",1)
+		PKFS B 2 A_Giveinventory("Punching",1)
 		TNT1 A 0 A_PlaySound("weapons/gswing")
-		PKFS CD 1
-		PKFS E 2 A_FireCustomMissile("MeleeStrike1Smash", 0, 0, 0, -5)
-		PKFS FGHIJK 2
+		PKFS C 2 A_FireCustomMissile("MeleeStrike1Smash", 0, 0, 0, 0)
+		PKFS DEFGHIJ 2
+		PKFS KL 2 A_Refire
 		Goto Ready	
 	}
 }
-
-
-
 
 ACTOR ClassicSaw : ClassicWeapon
 {
 	Game Doom
 	Weapon.Kickback 0
-	Weapon.SelectionOrder 2
+	Weapon.SelectionOrder 7
 	Weapon.UpSound "weapons/sawup"
 	Weapon.ReadySound "none"
 	Inventory.PickupMessage "$GOTCHAINSAW"
@@ -512,20 +709,19 @@ ACTOR ClassicSaw : ClassicWeapon
 		TNT1 A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"Ready.Blood")
         TNT1 A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"Ready.BlueBlood")
         TNT1 A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"Ready.GreenBlood")
-		VSAW ABAB 2 A_WeaponReady
+		VSAW AB 4 A_WeaponReady
 		Loop
 		
 	Ready.Blood:
-		VSRW ABAB 2 A_WeaponReady
-		
+		VSRW AB 4 A_WeaponReady
 		Goto Ready
 		
 	Ready.BlueBlood:
-		VSBW ABAB 2 A_WeaponReady
+		VSBW AB 4 A_WeaponReady
 		Goto Ready
 		
 	Ready.GreenBlood:
-		VSGW ABAB 2 A_WeaponReady
+		VSGW AB 4 A_WeaponReady
 		Goto Ready	
 		
 	Deselect:
@@ -544,14 +740,14 @@ ACTOR ClassicSaw : ClassicWeapon
 		TNT1 A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"Fire.Blood")
         TNT1 A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"Fire.BlueBlood")
         TNT1 A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"Fire.GreenBlood")
-		VSAW CD 2 A_Saw("weapons/chainsaw/loop", "CSAWCUT", 1, "SSawPuff")
+		VSAW CD 4 A_Saw("DSSAWHIT","CSAWCUT",20,"SSawPuff2",SF_NORANDOM)
 		SAWG B 0 A_ReFire
 		Goto Ready
 		
 	Fire.Blood:
 		TNT1 A 0 A_TakeInventory("PowerBlueBloodOnVisor", 1)
 		TNT1 A 0 A_TakeInventory("PowerGreenBloodOnVisor", 1)
-		VSRW CD 2 A_Saw("weapons/chainsaw/loop", "CSAWCUT", 1, "SSawPuff")
+		VSRW CD 4 A_Saw("DSSAWHIT","CSAWCUT",20,"SSawPuff2",SF_NORANDOM)
 		TNT1 A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"Fire.BlueBlood")
         TNT1 A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"Fire.GreenBlood")
 		SAWG B 0 A_ReFire
@@ -560,7 +756,7 @@ ACTOR ClassicSaw : ClassicWeapon
 	Fire.BlueBlood:
 		TNT1 A 0 A_TakeInventory("PowerBloodOnVisor", 1)
 		TNT1 A 0 A_TakeInventory("PowerGreenBloodOnVisor", 1)
-		VSBW CD 2 A_Saw("weapons/chainsaw/loop", "CSAWCUT", 1, "SSawPuff")
+		VSBW CD 4 A_Saw("DSSAWHIT","CSAWCUT",20,"SSawPuff2",SF_NORANDOM)
 		TNT1 A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"Fire.Blood")
         TNT1 A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"Fire.GreenBlood")
 		SAWG B 0 A_ReFire
@@ -569,7 +765,7 @@ ACTOR ClassicSaw : ClassicWeapon
 	Fire.GreenBlood:
 		TNT1 A 0 A_TakeInventory("PowerBlueBloodOnVisor", 1)
 		TNT1 A 0 A_TakeInventory("PowerBloodOnVisor", 1)
-		VSGW CD 2 A_Saw("weapons/chainsaw/loop", "CSAWCUT", 1, "SSawPuff")
+		VSGW CD 4 A_Saw("DSSAWHIT","CSAWCUT",20,"SSawPuff2",SF_NORANDOM)
 		TNT1 A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"Fire.Blood")
         TNT1 A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"Fire.BlueBlood")
 		SAWG B 0 A_ReFire
@@ -581,17 +777,15 @@ ACTOR ClassicSaw : ClassicWeapon
 	}
 }
 
-
 ACTOR ClassicPistol : ClassicWeapon
 {
 	Game Doom
-	Weapon.SelectionOrder 3
+	Weapon.SelectionOrder 6
 	Weapon.AmmoUse 1
 	Weapon.AmmoGive 10
 	Weapon.AmmoType "clip2"
 	Obituary "$OB_MPPISTOL"
-	
-	+WEAPON.NOAUTOFIRE
+	+WEAPON.WIMPY_WEAPON
 	Tag "Pistol"
 	Inventory.Pickupmessage "$PICKUP_PISTOL_DROPPED"
 	Tag "$TAG_PISTOL"
@@ -599,62 +793,52 @@ ACTOR ClassicPistol : ClassicWeapon
 	{
 	Ready:
 	Ready3:
-	    
-		
 		PKPI A 1 A_WeaponReady
-		
 		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-		
-		
 		Loop
+		
 	Deselect:
 		PKPI A 1 A_Lower
-		
-		
 		Loop
+		
 	Select:
 		PKPI A 1 A_Raise
 		TNT1 A 0 A_GunFlash
 		Loop
+		
 	Fire:
-		TNT1 A 0 A_FireBullets (3, 1, 1, 25, "WeakPuff", FBF_NORANDOM | FBF_USEAMMO)
+		PKPI A 4
 		TNT1 A 0 A_PlaySound("pfire", 1)
-		RIFF A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0)
-		TNT1 A 0 A_ZoomFactor(0.98)
-        PKPI F 1 BRIGHT
-		PKPI CDE 1 A_ZoomFactor(1.0)
+		TNT1 A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(2,2))
+		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
+		TNT1 A 0 A_FireBullets (2.8, 2.8, 1, 15, "WeakPuff", FBF_NORANDOM | FBF_USEAMMO)
+		PKPI F 6 BRIGHT 
+		TNT1 A 0 A_SetPitch(pitch-0.1)
 		TNT1 A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,0,-9)
 		PKPI D 1
-		PKPI C 1 A_WeaponReady(1)
-		PKPI B 0 A_WeaponReady(1)
-		PKPI A 5 A_WeaponReady(1)
-		TNT1 A 0 A_ReFire
+		TNT1 A 0 A_SetPitch(pitch+0.1)
+		PKPI D 3
+		PKPI B 5 A_Refire
 		Goto Ready
 		
  	Spawn:
-		PIST G 0
 		PIST G -1
 		Stop
-		
 	}
 }
-
-
-
 
 ACTOR ClassicSMG : ClassicWeapon
 {
 	Game Doom
-	Weapon.SelectionOrder 2
+	Weapon.SelectionOrder 4
 	Weapon.AmmoUse 1
-	Weapon.AmmoGive 10
+	Weapon.AmmoGive 20
 	Weapon.AmmoType "clip2"
 	Obituary "$OB_MPPISTOL"
-	
 	+WEAPON.NOAUTOFIRE
 	Tag "Sub-Machinegun"
 	Inventory.Pickupmessage "You got the Sub-Machinegun!"
@@ -663,74 +847,60 @@ ACTOR ClassicSMG : ClassicWeapon
 	{
 	Ready:
 	Ready3:
-	    
-		
 		VSMG A 1 A_WeaponReady
-		
 		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-		
-		
 		Loop
 	Deselect:
 		VSMG A 1 A_Lower
-		
-		
 		Loop
 	Select:
 		VSMG A 1 A_Raise
 		TNT1 A 0 A_GunFlash
 		Loop
 	Fire:
-		TNT1 A 0 A_FireBullets (5, 3, -1, 20, "WeakPuff", FBF_NORANDOM | FBF_USEAMMO)
+		TNT1 A 0 A_FireBullets (2.8, 2.8, -1, 15, "WeakPuff", FBF_NORANDOM | FBF_USEAMMO)
 		TNT1 A 0 A_PlaySound("pfire", 1)
-		RIFF A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0)
-		TNT1 A 0 A_ZoomFactor(0.98)
-        VSMG B 1 BRIGHT
-		VSMG E 1 A_ZoomFactor(1.0)
+		RIFF A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
+		TNT1 A 0 A_ZoomFactor(0.99)
+        VSMG B 2 BRIGHT
 		TNT1 A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,0,-9)
+		VSMG E 2 A_ZoomFactor(1.0)
 		
-		
-		TNT1 A 0 A_FireBullets (9, 3, -1, 20, "WeakPuff", FBF_NORANDOM | FBF_USEAMMO)
+		TNT1 A 0 A_FireBullets (2.8, 2.8, -1, 15, "WeakPuff", FBF_NORANDOM | FBF_USEAMMO)
 		TNT1 A 0 A_PlaySound("pfire", 1)
-		RIFF A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0)
-		TNT1 A 0 A_ZoomFactor(0.98)
-        VSMG C 1 BRIGHT
-		VSMG E 1 A_ZoomFactor(1.0)
+		RIFF A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
+		TNT1 A 0 A_ZoomFactor(0.99)
+        VSMG D 2 BRIGHT
 		TNT1 A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,0,-9)
+		VSMG E 2 A_ZoomFactor(1.0)
 		
-		
-		TNT1 A 0 A_FireBullets (9, 3, -1, 20, "WeakPuff", FBF_NORANDOM | FBF_USEAMMO)
+		TNT1 A 0 A_FireBullets (2.8, 2.8, -1, 15, "WeakPuff", FBF_NORANDOM | FBF_USEAMMO)
 		TNT1 A 0 A_PlaySound("pfire", 1)
-		RIFF A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0)
-		TNT1 A 0 A_ZoomFactor(0.98)
-        VSMG D 1 BRIGHT
-		VSMG E 1 A_ZoomFactor(1.0)
+		RIFF A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
+		TNT1 A 0 A_ZoomFactor(0.99)
+        VSMG C 2 BRIGHT
 		TNT1 A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,0,-9)
+		VSMG E 2 A_ZoomFactor(1.0)
 		
 		TNT1 A 0 A_ReFire
 		Goto Ready
  	Spawn:
 		SMGZ A -1
 		Stop
-		
 	}
 }
-
-
-
 
 ACTOR ClassicShotgun : ClassicWeapon
 {
 	Game Doom
-	Weapon.SelectionOrder 2
+	Weapon.SelectionOrder 5
 	Weapon.AmmoUse 1
 	Weapon.AmmoGive 4
 	Weapon.AmmoType "AmmoShell"
-	
 	Tag "Shotgun"
 	Inventory.PickupMessage "$GOTSHOTGUN"
 	Obituary "$OB_MPSHOTGUN"
@@ -739,49 +909,35 @@ ACTOR ClassicShotgun : ClassicWeapon
 	{
 	Ready:
 	Ready3:
-	    
 		PKSG A 1 A_WeaponReady
-		
 		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-		
-		
-		
 		Loop
 	Deselect:
-	    
 		PKSG A 1 A_Lower
-		
-		
-		
 		Loop
 	Select:
 		PKSG A 1 A_Raise
 		TNT1 A 0 A_GunFlash
-		
 		Loop
 	Fire:
-		PKSG A 1
-		TNT1 AAAAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-5,5),0,0,-12,0,random(-1,1))
-		TNT1 A 0 A_FireBullets (5.5, 1.0, 5, 14, "ShotgunPuff", FBF_NORANDOM | FBF_USEAMMO)
-		TNT1 A 0 A_FireBullets (2.0, 1.0, 4, 14, "ShotgunPuff", FBF_NORANDOM)
+		PKSG A 3
 		TNT1 A 0 A_PlaySound("weapons/sg", 1)
-		PKSG B 2 BRIGHT A_SetPitch(-4.0 + pitch)
-		TNT1 A 0 A_ZoomFactor(0.97)
-		PKSG C 1
-		TNT1 A 0 A_ZoomFactor(1.00)
-		PKSG CDDE 1 A_SetPitch(1.0 + pitch)
-		PKSG A 4
-		PKSG FGHI 1
+		TNT1 AAAAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-3,3),0,0,0,0,random(-3,3))
+		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
+		TNT1 A 0 A_FireBullets (2.8, 2.8, 7, 15, "ShotgunPuff", FBF_NORANDOM | FBF_USEAMMO)
+		PKSG B 7 BRIGHT
+		TNT1 A 0 A_SetPitch(pitch-0.7)
+		PKSG CDEFGHI 1 A_SetPitch(pitch+0.1)
 		TNT1 A 0 A_FireCustomMissile ("ShotCaseSpawn", 0, 0, -4, -4)
 		SHTG A 0 A_PlaySound("weapons/sgpump", 3)
-		PKSG JKKLLMMMLLKKJIHGF 1
-		PKSG A 3
-		TNT1 A 0 A_Refire
-		PKSG A 10 A_WeaponReady
+		PKSG JKLM 1
+		PKSG LKJIHGF 1
+		PKSG A 6
+		PKSG A 7 A_ReFire
 		Goto Ready
 	Spawn:
 		SHOT A -1
@@ -789,37 +945,28 @@ ACTOR ClassicShotgun : ClassicWeapon
 	}
 }	
 
-
-
-
 ACTOR ClassicSSG : ClassicWeapon
 {
 	Game Doom
-	Weapon.SelectionOrder 1
+	Weapon.SelectionOrder 2
 	Weapon.AmmoUse 2
 	Weapon.AmmoGive 2
 	Weapon.AmmoType "AmmoShell"
 	Inventory.PickupMessage "$GOTSHOTGUN2"
 	Obituary "$OB_MPSSHOTGUN"
 	Tag "$TAG_SUPERSHOTGUN"
-	+WEAPON.NOAUTOFIRE
 	Tag "Super Shotgun"
 	States
 	{
 	
 	Ready:
 	Ready3:
-	    
 		PKSS A 1 A_WeaponReady
-		
 		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-		
-		
-		
 		Loop
 	Deselect:
 		PKSS A 1 A_Lower
@@ -829,34 +976,24 @@ ACTOR ClassicSSG : ClassicWeapon
 		TNT1 A 0 A_GunFlash
 		Loop
 	Fire:
-	    PKSS A 1
-		TNT1 A 0 A_firebullets (0,0,1,15,"shotpuff",0,180)
-		TNT1 AAAAAAAAAAAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-10,10),0,0,-12,0,random(-3,3))
-		TNT1 A 0 A_FireBullets (10.0, 3.0, 9, 14, "ShotgunPuff", FBF_NORANDOM | FBF_USEAMMO)
-		TNT1 A 0 A_FireBullets (5.0, 2.0, 9, 14, "ShotgunPuff", FBF_NORANDOM)
-		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle2",30,5,27)
+	    PKSS A 3
 		TNT1 A 0 A_playsound("SSHFIRE", 1)
-		PKSS B 2 BRIGHT A_SetPitch(-6.0 + pitch)
-		TNT1 A 0 A_ZoomFactor(0.95)
-		PKSS C 1
-		TNT1 A 0 A_ZoomFactor(1.0)
-		PKSS DEFAAA 1 A_SetPitch(1.0 + pitch)
-		PKSS A 5
-		TNT1 A 0 A_CheckReload
-		PKSS GHIJKL 1
+		TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-5,5),0,0,0,0,random(-3,3))
+		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
+		TNT1 A 0 A_FireBullets (5.6, 2.8, 20, 15, "ShotPuff", FBF_USEAMMO | FBF_NORANDOM)
+		PKSS B 7 BRIGHT
+		TNT1 A 0 A_SetPitch(pitch-2.0)
+		PKSS CDEFGHIJKL 1 A_SetPitch(pitch+0.2)
+		PKSS L 2 A_CheckReload
+		PKSS MNOP 2
 		TNT1 A 0 A_PlaySound("weapons/sshoto", 4)
-		PKSS MNOPQR 1
-		TNT1 AA 0 A_FireCustomMissile("SSGCaseSpawner",0,0,-10)
-		PKES S 4
-		PKSS STUV 2
+		TNT1 A 0 A_FireCustomMissile("SSGCaseSpawner",0,0,-10)
+		PKSS QRSTUV 2
 		TNT1 A 0 A_PlaySound("weapons/sshotl", 4)
-		PKSS XWYZ 1
-		//TNT1 A 10
-		PKS2 ABCD 2
+		PKSS WXYZ 2
 		TNT1 A 0 A_PlaySound("weapons/sshotc", 4)
-		PKS2 EFG 2
-		PKSS A 5
-		TNT1 A 0 A_Refire
+		PKS2 ABCDEFG 1
+		PKSS A 5 A_ReFire 
 		Goto Ready
 	Spawn:
 		SGN2 A -1
@@ -864,13 +1001,10 @@ ACTOR ClassicSSG : ClassicWeapon
 	}
 }
 
-
-
-
 ACTOR ClassicChaingun : ClassicWeapon
 {
 	Game Doom
-	Weapon.SelectionOrder 1
+	Weapon.SelectionOrder 3
 	Weapon.AmmoUse 1
 	Weapon.AmmoGive 50
 	Weapon.AmmoType "clip2"
@@ -883,57 +1017,46 @@ ACTOR ClassicChaingun : ClassicWeapon
 	
 	Ready:
 	Ready3:
-	    
-		PKCG A 1 A_WeaponReady
-		
+		PKCG G 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-		
-		
-		
 		Loop
 	Deselect:
-		PKCG A 1 A_Lower
-		
-		
-		
+		PKCG G 1 A_Lower
 		Loop
 	Select:
-	    
-		PKCG A 1 A_Raise
+		PKCG G 1 A_Raise
 		TNT1 A 0 A_GunFlash
-		
 		Loop
 	Fire:
-		TNT1 A 0 BRIGHT A_FireBullets (5, 1, 1, 16, "MachineGunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
-        TNT1 A 0 A_FireCustomMissile("DecorativeTracer", random(-3,3), 0, 0, -12, 0, random(-3,3))
+		TNT1 A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 1)
-		TNT1 A 0 A_FireCustomMissile("rIFLECaseSpawn",5,0,12,-16)
-		PKCG F 1 BRIGHT 
-		TNT1 A 0 A_SetPitch(-0.5 + pitch)
-		PKCG G 1 A_SpawnItemEx("PlayerMuzzle1",30,5,30)
-		PKCG H 1 A_SetPitch(0.5 + pitch)
-		
-		
-		TNT1 A 0 BRIGHT A_FireBullets (5, 1, 1, 16, "MachineGunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
-        TNT1 A 0 A_FireCustomMissile("DecorativeTracer", random(-3,3), 0, 0, -12, 0, random(-3,3))
-		TNT1 A 0 A_PlaySound("CHGNSHOT", 1)
-		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",5,0,12,-16)
+		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
+		TNT1 A 0 A_FireBullets(2.8, 2.8, 1, 15, "MachineGunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
 		PKCG E 1 BRIGHT 
-		TNT1 A 0 A_SetPitch(-0.5 + pitch)
-		PKCG G 1 A_SpawnItemEx("PlayerMuzzle1",30,5,30)
-		PKCG H 1 A_SetPitch(0.5 + pitch)
-		
-		TNT1 A 0 A_ReFire
-		PKCG ABCDAABBCCCDDDD 1 A_WeaponReady(1)
+		TNT1 A 0 A_SetPitch(pitch-0.1)
+		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",5,0,12,-16)
+		PKCG B 1
+		TNT1 A 0 A_SetPitch(pitch+0.1)
+		PKCG HG 1
+		TNT1 A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
+		TNT1 A 0 A_PlaySound("CHGNSHOT", 1)
+		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
+		TNT1 A 0 A_FireBullets(2.8, 2.8, 1, 15, "MachineGunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
+		PKCG F 1 BRIGHT
+		TNT1 A 0 A_SetPitch(pitch-0.1)
+		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",5,0,12,-16)
+		PKCG B 1
+		TNT1 A 0 A_SetPitch(pitch+0.1)
+		PKCG HG 1
+		PKCG G 0 A_ReFire
 		Goto Ready
 	Spawn:
 		MGUN A -1
 		Stop
-		
 	}
 }
 
@@ -941,11 +1064,12 @@ ACTOR ClassicChaingun : ClassicWeapon
 ACTOR ClassicRocketLauncher : ClassicWeapon
 {
 	Game Doom
-	Weapon.SelectionOrder 4
+	Weapon.SelectionOrder 8
 	Weapon.AmmoUse 1
 	Weapon.AmmoGive 1
 	Weapon.AmmoType "AmmoRocket"
-	
+	+WEAPON.NOAUTOFIRE
+	+WEAPON.EXPLOSIVE
 	Tag "Rocket Launcher"
 	Inventory.PickupMessage "$GOTLAUNCHER"
 	Tag "$TAG_ROCKETLAUNCHER"
@@ -954,38 +1078,33 @@ ACTOR ClassicRocketLauncher : ClassicWeapon
 	
 	Ready:
 	Ready3:
-	    
 		PKRL A 1 A_WeaponReady
-		
 		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-		
-		
-		
 		Loop
 	Deselect:
 		PKRL A 1 A_Lower
-		
-		
-		
 		Loop
 	Select:
 		PKRL A 1 A_Raise
 		TNT1 A 0 A_GunFlash
-		
 		Loop
 	Fire:
-		PKRL BC 2 BRIGHT
 		TNT1 A 0 A_PlaySound ("DSRFIRE")
 		TNT1 A 0 A_FireCustomMissile("WeakRocket", 0, 1, 0, -10)
-		TNT1 A 0 A_SetPitch(-2.0 + pitch)
+		RLNG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
+		PKRL B 2 BRIGHT
+		TNT1 A 0 A_SetPitch(-1.0 + pitch)
+		PKRL C 2 BRIGHT
+		TNT1 A 0 A_SetPitch(0.2 + pitch)
 		PKRL D 2 BRIGHT
-		PKRL EFGHIJ 2 A_SetPitch(0.25 + pitch)
-		PKRL AA 1 A_SetPitch(0.25 + pitch)
-		TNT1 A 0 A_Refire
+		TNT1 A 0 A_SetPitch(0.2 + pitch)
+		PKRL EFG 2 A_SetPitch(0.2 + pitch)
+		PKRL HIJ 2
+		PKRL A 2 A_Refire
 		Goto Ready
 	Spawn:
 		LAUN A -1
@@ -1001,7 +1120,6 @@ ACTOR ClassicPlasmaRifle : ClassicWeapon
 	Weapon.AmmoUse 1
 	Weapon.AmmoGive 40
 	Weapon.AmmoType "AmmoCell"
-	
 	Tag "Plasma Rifle"
 	Inventory.PickupMessage "$GOTPLASMA"
 	Tag "$TAG_PLASMARIFLE"
@@ -1009,23 +1127,15 @@ ACTOR ClassicPlasmaRifle : ClassicWeapon
 	{
 	Ready:
 	Ready3:
-	    
 		3LSG A 1 A_WeaponReady
-		
 		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-		
-		
-		
 		Loop
 	Deselect:
 	    TNT1 A 0 A_Takeinventory("HasPlasmaWeapon",1)
-		
-		
-		
 		3LSG A 1 A_Lower
 		Loop
 	Select:
@@ -1034,13 +1144,14 @@ ACTOR ClassicPlasmaRifle : ClassicWeapon
 		3LSG A 1 A_Raise
 		Loop
 	Fire:
-		TNT1 A 0 A_FireCustomMissile("ClassicPlasmaBall", 0, 1, 0, -10)
+		3LSF C 1 BRIGHT
+		TNT1 A 0 A_SetPitch(-0.1 + pitch)
 		3LSF EF 1 BRIGHT
-		3KPL A 1
-		TNT1 A 0 A_Refire
-		3KPL ABCDEFF 1
-		3KPL G 6
-		3KPL FFEDCBA 1
+		TNT1 A 0 A_SetPitch(0.1 + pitch)
+		PLSN A 0 A_SpawnItemEx("PlasmaFlareSpawn",32,0,28)
+		TNT1 A 0 A_FireCustomMissile("ClassicPlasmaBall", 0, 1, 0, -10)
+		3KPL ABCDEFGFEDCBA 1 A_Refire
+		3KPL A 7 A_Refire
 		Goto Ready
 	Spawn:
 		PLAS A -1
@@ -1051,10 +1162,10 @@ ACTOR ClassicPlasmaRifle : ClassicWeapon
 ACTOR ClassicPlasmaBall
 {
 	Game Doom
-	Radius 4
-	Height 4
+	Radius 13
+	Height 8
 	Speed 25
-	Damage 7
+	Damage (random(40,40))
 	Projectile
 	+RANDOMIZE
 	RenderStyle Add
@@ -1099,11 +1210,13 @@ ACTOR VanillaBFG9000 : ClassicWeapon
 {
 	Game Doom
 	Height 20
-	Weapon.SelectionOrder 2
+	Weapon.SelectionOrder 9
 	Weapon.AmmoUse 40
 	Weapon.AmmoGive 40
 	Weapon.AmmoType "AmmoCell"
 	+WEAPON.NOAUTOFIRE
+	+WEAPON.BFG
+	+WEAPON.EXPLOSIVE
 	Tag "BFG 9000"
 	Inventory.PickupMessage "$GOTBFG9000"
 	States
@@ -1111,7 +1224,6 @@ ACTOR VanillaBFG9000 : ClassicWeapon
 	
 	Ready3:
 	Ready:
-	Reload:
 		BFGN A 1 A_WeaponReady
         TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
@@ -1121,68 +1233,50 @@ ACTOR VanillaBFG9000 : ClassicWeapon
 		Loop
 		
 	Deselect:
-	    TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
-		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
 		BFGN A 1 A_Lower
 		Loop
 		
 	Select:
-		TNT1 A 0 A_Takeinventory("FistsSelected",1)
-		TNT1 A 0 A_Takeinventory("SawSelected",1)
-		TNT1 A 0 A_Takeinventory("ShotgunSelected",1)
-		TNT1 A 0 A_Takeinventory("SSGSelected",1)
-		TNT1 A 0 A_Takeinventory("MinigunSelected",1)
-		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
-		TNT1 A 0 A_Takeinventory("RocketLauncherSelected",1)
-		TNT1 A 0 A_Takeinventory("GrenadeLauncherSelected",1)
-		TNT1 A 0 A_Giveinventory("BFGSelected",1)
-		TNT1 A 0 A_Takeinventory("BFG10kSelected",1)
-		TNT1 A 0 A_Takeinventory("RailGunSelected",1)
-		TNT1 A 0 A_Takeinventory("SubMachineGunSelected",1)
-		TNT1 A 0 A_Takeinventory("RevenantLauncherSelected",1)
-		TNT1 A 0 A_Takeinventory("LostSoulSelected",1)
-		TNT1 A 0 A_Takeinventory("FlameCannonSelected",1)
-		TNT1 A 0 A_Takeinventory("HasBarrel",1)
-		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
 		TNT1 A 0 A_GunFlash
-		TNT1 A 1 A_Raise
-		TNT1 AAAAAAAA 0 A_Raise
-		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
-        TNT1 A 0 A_PlaySound("BFGREADY")
-		SelectAnimation:
-		BFGS ABCDE 1
-		Goto Ready
-		
-		
-		
+		TNT1 A 0 A_Giveinventory("BFGSelected",1)
+		BFGN A 1 A_Raise
+		Loop
 	Fire:
-        TNT1 A 0 A_PlaySound("BFGCHARGE")
-		BFGC ABCDABCDABCDABCD 1 BRIGHT
-		BFGC ABCDABCDABCDABCD 1 BRIGHT
-        BFGA A 2 BRIGHT A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)
-        TNT1 A 0 A_PlaySound("BFGFIRE")
-		TNT1 AAA 0 A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)
-        TNT1 A 0 A_Recoil(8)
-        //TNT1 A 0 A_ZoomFactor(1.3)
-		
-        TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter", 0, 0, -1, 0)
-		TNT1 A 0 A_JumpIfInventory("DMgame", 1, 4)
+		TNT1 A 0 A_PlaySound("BFGCHARGE")
+		BFGC ABCDABCDABCDABCDABCD 1 BRIGHT
+		BFGC ABCDABCDAB 1 BRIGHT
+		TNT1 A 0 A_PlaySound("BFGFIRE")
+		BFGA ABCD 2 BRIGHT A_SpawnItemEx("GreenFlareSpawn",32,0,28)
+		TNT1 A 0 A_Recoil(8)
+		TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter", 0, 0, -1, 0)
+		TNT1 A 0 A_JumpIfInventory("DMgame", 1, 2)
 		TNT1 A 0 BRIGHT A_FireCustomMissile("BFGBall")
-		TNT1 A 0
 		Goto RecoilFire
-		TNT1 AAA 0
 		TNT1 A 0 BRIGHT A_FireCustomMissile("BFGBallDM")
-		
-	RecoilFire:	
-		BFGA B 2 BRIGHT
-		TNT1 A 0 A_FireCustomMissile("ShakeYourAssDouble", 0, 0, 0, 0)
-        BFGA CDEF 2 BRIGHT A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)
-        //TNT1 A 0 A_ZoomFactor(1.0)
-        BFGN A 1 BRIGHT
-		BFGN A 4
-        TNT1 A 0  A_Refire
+	RecoilFire:
+		BFGA E 2 BRIGHT A_SpawnItemEx("GreenFlareSpawn",32,0,28)
+		TNT1 A 0 A_SetPitch(-10.0 + pitch)
+		BFGN A 2 A_ReFire
+		TNT1 A 0 A_SetPitch(1.0 + pitch)
+		BFGN A 2 A_ReFire
+		TNT1 A 0 A_SetPitch(1.0 + pitch)
+		BFGN A 2 A_ReFire
+		TNT1 A 0 A_SetPitch(1.0 + pitch)
+		BFGN A 2 A_ReFire
+		TNT1 A 0 A_SetPitch(1.0 + pitch)
+		BFGN A 2 A_ReFire
+		TNT1 A 0 A_SetPitch(1.0 + pitch)
+		BFGN A 2 A_ReFire
+		TNT1 A 0 A_SetPitch(1.0 + pitch)
+		BFGN A 2 A_ReFire
+		TNT1 A 0 A_SetPitch(1.0 + pitch)
+		BFGN A 2 A_ReFire
+		TNT1 A 0 A_SetPitch(1.0 + pitch)
+		BFGN A 2 A_ReFire
+		TNT1 A 0 A_SetPitch(1.0 + pitch)
+		BFGN A 2 A_ReFire
+		TNT1 A 0 A_SetPitch(1.0 + pitch)
 		Goto Ready
-		
 	Spawn:
 		BFUG A -1
 		Stop		
