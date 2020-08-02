@@ -3408,12 +3408,32 @@ ACTOR ImpDyingOfBloodLoss : Imp
 	Damagefactor "Head", 1.5	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
+	PainSound "imp/pain"
 	States
 	{
 	Spawn:
 	    TROD E 1
 		TNT1 A 0 A_ChangeFLag("USESPECIAL", 1)
-        TROD EFEFEFEFEFEFEFEFEFEFEFEF 10 A_SpawnItem ("HeadshotTarget10", 0, 22,0)
+        TROD EF 10 A_SpawnItem ("HeadshotTarget10", 0, 22,0)
+		TNT1 A 0 A_PlaySound ("imp/pain")
+		TROD EF 10 A_SpawnItem ("HeadshotTarget10", 0, 22,0)
+		TNT1 A 0 A_PlaySound ("imp/pain")
+		TROD EF 10 A_SpawnItem ("HeadshotTarget10", 0, 22,0)
+		TNT1 A 0 A_PlaySound ("imp/pain")
+		TROD EF 10 A_SpawnItem ("HeadshotTarget10", 0, 22,0)
+		TNT1 A 0 A_PlaySound ("imp/pain")
+		TROD EF 10 A_SpawnItem ("HeadshotTarget10", 0, 22,0)
+		TNT1 A 0 A_PlaySound ("imp/pain")
+		TROD EF 10 A_SpawnItem ("HeadshotTarget10", 0, 22,0)
+		TNT1 A 0 A_PlaySound ("imp/pain")
+		TROD EF 10 A_SpawnItem ("HeadshotTarget10", 0, 22,0)
+		TNT1 A 0 A_PlaySound ("imp/pain")
+		TROD EF 10 A_SpawnItem ("HeadshotTarget10", 0, 22,0)
+		TNT1 A 0 A_PlaySound ("imp/pain")
+		TROD EF 10 A_SpawnItem ("HeadshotTarget10", 0, 22,0)
+		TNT1 A 0 A_PlaySound ("imp/pain")
+		TROD EF 10 A_SpawnItem ("HeadshotTarget10", 0, 22,0)
+		TNT1 A 0 A_PlaySound ("imp/pain")
 		Goto Death
 		
 	Death.Shotgun:
