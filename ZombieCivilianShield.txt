@@ -1,4 +1,4 @@
-ACTOR ImpShield : Rifle
+ACTOR ZombieCivilianShield : Rifle
 {
 	Weapon.AmmoUse1 1
 	Weapon.AmmoGive1 30
@@ -9,8 +9,8 @@ ACTOR ImpShield : Rifle
 	States
 	{
 	Ready:
-		ISHG A 2 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("MeatAmmo", 80, 2)
+		VSHG A 2 A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("MeatAmmo", 50, 2)
 		TNT1 A 0 A_SpawnItemEx("MeatShield", 16, -11, 0, 8)
         Loop
 		TNT1 AAA 0
@@ -22,7 +22,7 @@ ACTOR ImpShield : Rifle
 	    TNT1 A 0 A_TakeInventory("MeatAmmo", 100)
 		TNT1 A 0 A_Raise
 		Wait
-    Fire:
+	Fire:
 	    TNT1 A 0
         TNT1 A 0 A_JumpIfInventory("BDPistolAmmo", 1, 1)
 		Goto AltFire
@@ -33,41 +33,37 @@ ACTOR ImpShield : Rifle
         TNT1 A 0 A_FireCustomMissile("SmokeSpawner",0,0,16)
 		TNT1 A 0 A_FireCustomMissile("MeatShieldTracer", random(1,-1), 0, 5, 0)
 		TNT1 A 0 A_TakeInventory("BDPistolAmmo", 1)
-		ISHF A 2 BRIGHT
-		ISHF B 2 
+		VSHF A 2 BRIGHT
+		VSHF B 2
 		TNT1 A 0 A_SpawnItemEx("MeatShield", 16, -11, 0, 8)
-		ISHF C 2
-		ISHG A 1
+		VSHF C 2
+		VSHG A 1
 		TNT1 A 0 A_Refire
 		Goto Ready
-		
 
     AltFire:
-		GRZ3 D 1 offset(-4, 32)
-		GRZ3 D 1 offset(-9, 33)
-		GRZ3 D 1 offset(-16, 34)
-		GRZ3 D 2 offset(-24, 35)
-		GRZ3 D 3 offset(-36, 48)
-		GRZ3 D 1 offset(-24, 35)
-		GRZ3 B 1 offset(-16, 34)
-		GRZ3 B 1 offset(-9, 33)
-		GRZ3 B 1 offset(-1, 32)
+		GRZ7 D 1 offset(-4, 32)
+		GRZ7 D 1 offset(-9, 33)
+		GRZ7 D 1 offset(-16, 34)
+		GRZ7 D 2 offset(-24, 35)
+		GRZ7 D 3 offset(-36, 48)
+		GRZ7 D 1 offset(-24, 35)
+		GRZ7 B 1 offset(-16, 34)
+		GRZ7 B 1 offset(-9, 33)
+		GRZ7 B 1 offset(-1, 32)
         TNT1 A 0 A_PlaySound("skeleton/swing")
-		TNT1 A 0 A_FireCustomMissile("ThrowedImp", 0, 0, 0)
-		TNT1 A 0 A_TakeInventory("GoSpecial",1)
+		TNT1 A 0 A_FireCustomMissile("ThrowedZombieCivilian", 0, 0, 0, 0)
 		TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
-		TNT1 A 0 A_TakeInventory("HasImpShield",1)
+		TNT1 A 0 A_TakeInventory("HasZombieCivilianShield",1)
 		TNT1 A 0 A_Giveinventory("Punching",1)
         THEF B 4 
-        THEF C 4
+        THEF C 4 
 		TNT1 A 0 A_Giveinventory("Punching",1)
 		THEF D 4
 		TNT1 A 0 A_TakeInventory("GoSpecial",1)
 		TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
-		TNT1 A 0 A_TakeInventory("HasImpShield",1)
 		TNT1 A 0 A_Giveinventory("Punching",1)
-		TNT1 A 0 A_TakeInventory("ImpShield",1)
-		TNT1 A 10
+		TNT1 A 0 A_TakeInventory("ZombieCivilianShield",1)
 		Goto Ready
  	Spawn:
 		8876 A -1
@@ -76,56 +72,53 @@ ACTOR ImpShield : Rifle
 	    TNT1 A 0
 		TNT1 A 0 A_SpawnItem("ZombiemanHeadExplode", 0, 50)
 		TNT1 A 0 A_TakeInventory("GoSpecial",1)
-		ISHF DEFGHIJJ 5
+		VSHG DEFGHII 5
 		TNT1 A 0 A_TakeInventory("GoSpecial",1)
 		TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
-		TNT1 A 0 A_TakeInventory("HasImpShield",1)
+		TNT1 A 0 A_TakeInventory("HasZombieCivilianShield",1)
 		TNT1 A 0 A_Giveinventory("Punching",1)
 		Goto Altfire+9
-		
 	}
 }
-
-ACTOR ThrowedImp: ThrowedZman
+ACTOR ThrowedZombieCivilian: ThrowedZman
 {
-	Damage 10
+	Damage 6
 	States
 	{
 	Spawn:
 		TNT1 A 0
-		TNT1 A 0 A_Playsound("imp/death", 1)
+		TNT1 A 0 A_Playsound("BURNZOM", 1)
 	Flying:
-        X723 H 2
+        X727 H 2
 		TNT1 A 0 A_ChangeFlag("THRUGHOST", 0)
-		X723 GFEDCBA 2
+		X727 GFEDCBA 2
 		Loop
 		
     Death:
-	Xdeath:
 		TNT1 A 0
 		TNT1 A 0 A_StopSound(1)
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_CheckCeiling("HitCeil")
 		TNT1 A 0 A_JumpIfHealthLower(-40, "Death.Gibs")
-		TNT1 A 0 A_JumpIfHealthLower(1, "Death.Shotgun")
-		X723 H 2
+		TNT1 A 0 A_JumpIfHealthLower(1, "Death.Chaingun")
+		X727 H 2
 		NULL AA 0 A_CustomMissile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_SpawnItem("MuchBlood")
-		NULL A 0 A_CustomMissile ("ThrowedImpRicochet", 0, 0, 0, 2, 38)
+	    TNT1 A 0 A_SpawnItem("MuchBlood2")
+		NULL A 0 A_CustomMissile ("ThrowedZombieCivilianRicochet", 0, 0, 0, 2, 38)
 		Stop
 	
 	HitCeil:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("MuchBlood")
-		NULL A 0 A_CustomMissile ("ThrowedImpRicochet", 0, 0, 0, 2, -5)
+		TNT1 A 0 A_SpawnItem("MuchBlood2")
+		NULL A 0 A_CustomMissile ("ThrowedZombieCivilianRicochet", 0, 0, 0, 2, -5)
 		Stop
 		
 	Crashing:
 		TNT1 A 0 A_StopSound(1)
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItem("MuchBlood")
+		TNT1 A 0 A_SpawnItem("MuchBlood2")
 		NULL AA 0 A_CustomMissile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_SpawnItem("DeadIMp")
+		TNT1 A 0 A_SpawnItem("DeadFormerScientist")
 		TNT1 A 3
 		Stop
 		
@@ -135,21 +128,21 @@ ACTOR ThrowedImp: ThrowedZman
 	Death.Kick:
 		TNT1 A 0 A_StopSound(1)
 		TNT1 A 0 A_NoBlocking
-		NULL A 0 A_CustomMissile ("ThrowedImpRicochet", 0, 0, 180, 2, 32)
+		NULL A 0 A_CustomMissile ("ThrowedZombieCivilianRicochet", 0, 0, 180, 2, 32)
 		Stop
 	
 	Death.Gibs:
 	Death.Explosives:
-	Death.Shotgun:
+	Death.Chaingun:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("ImpXDeath")
+		TNT1 A 0 A_SpawnItem("SargeXDeath")
 		Stop
 	}
 }
 
 
 
-ACTOR ThrowedImpRicochet: ThrowedImp
+ACTOR ThrowedZombieCivilianRicochet: ThrowedZombieCivilian
 {
     +BOUNCEONWALLS
 	+THRUGHOST
@@ -161,46 +154,24 @@ ACTOR ThrowedImpRicochet: ThrowedImp
 	States
 	{
 	Spawn:
-        X723 H 2
+        X727 H 2
 		TNT1 A 0 A_ChangeFlag("THRUGHOST", 0)
-		X723 GFEDCBA 2
+		X727 GFEDCBA 2
 		Loop
     Death:
-	Xdeath:
 		TNT1 A 0
 		TNT1 A 0 A_StopSound(1)
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_JumpIfHealthLower(-40, "Death.Gibs")
-		TNT1 A 0 A_JumpIfHealthLower(1, "Death.Shotgun")
+		TNT1 A 0 A_JumpIfHealthLower(1, "Death.Chaingun")
 	Goto Crashing
 	}
 }
 
-ACTOR ThrowedImp2: ThrowedImp
-{
-    +NOGRAVITY
-	Damage 8
-}
-
-
-ACTOR ThrowedImpDead: ThrowedImp
-{
-	States
-	{
-	Spawn:
-		TNT1 A 0
-        X723 H 2
-		TNT1 A 0 A_ChangeFlag("THRUGHOST", 0)
-		X723 GFEDCBA 2 A_CustomMissile("Brutal_FlyingBlood", 0, 0, random(0,360), 2, random(0,360))
-		Loop
-		
-	}
-}
 
 
 
-
-ACTOR ExtremePunchedImp: ThrowedImp
+ACTOR ExtremePunchedZombieCivilian: ThrowedZombieCivilian
 {
 	Radius 10
 	Height 14
@@ -209,7 +180,7 @@ ACTOR ExtremePunchedImp: ThrowedImp
 	States
 	{
 	Spawn:
-        ID11 AA 2 A_CustomMissile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 90))
+        FSMS II 2 A_CustomMissile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 90))
 		TNT1 A 0 A_ChangeFlag("THRUGHOST", 0)
 		Loop
     Death:
@@ -219,38 +190,38 @@ ACTOR ExtremePunchedImp: ThrowedImp
 		TNT1 A 0 A_SetAngle(angle-180)
 		TNT1 A 0 A_Stop
 		TNT1 A 0 A_ChangeFlag("LOWGRAVITY", 1)
-		TNT1 AA 0 A_CustomMissile ("BloodMistBig", 40, 0, random (0, 360), 2, random (30, 90))
-		TNT1 AAA 0 A_CustomMissile ("BloodMist", 40, 0, random (0, 360), 2, random (30, 90))
+		TNT1 AA 0 A_CustomMissile ("XDeath2", 32, 0, random (170, 190), 2, random (0, 0))
+		TNT1 AA 0 A_CustomMissile ("XDeath3", 32, 0, random (170, 190), 2, random (0, 0))
+		TNT1 A 0 A_SpawnItem("Muchblood2", 0, 40)
 		
-	    TNT1 AAA 0 bright A_CustomMissile ("SuperGoreSpawner", 35, 0, random (170, 190), 2, random (0, 40))
-        TNT1 AA 0 A_CustomMissile ("XDeath2", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 A 0 A_CustomMissile ("XDeath3", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAA 0 A_CustomMissile ("Guts", 32, 0, random (150, 210), 2, random (0, 40))
-		TNT1 AA 0 A_CustomMissile ("XDeathImpArm", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 A 0 A_CustomMissile ("ImpHeadExplode", 60, 0, random (170, 190), 2, random (0, 40))
+	    TNT1 AAA 0 A_CustomMissile ("Guts", 32, 0, random (150, 210), 2, random (0, 40))
+		TNT1 AA 0 A_CustomMissile ("XDeathArm1", 32, 0, random (170, 190), 2, random (0, 40))
+		TNT1 A 0 A_CustomMissile ("ShotgunguyHeadExplode", 32, 0, random (170, 190), 2, random (0, 40))
         TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
-        IZD1 EEEEEFF 6
-		TNT1 A 0 A_ChangeFlag("LOWGRAVITY", 1)
-		IZD1 G 6
+        SZD1 EEEEEFF 6
+		TNT1 A 0 A_ChangeFlag("LOWGRAVITY", 0)
+		SZD1 GH 6
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
-		TNT1 A 0 A_SpawnItem("DeadImpIZD1H")
+		TNT1 A 0 A_SpawnItem("DeadShotgunguySZD1H")
 		TNT1 A -1
         Stop
 		
 	Floor:	
 		TNT1 AA 0 A_CustomMissile ("XDeath1", 35, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_Recoil(-30)
-		TR06 ABCDE 3 A_CustomMissile ("Brutal_LiquidBlood3", 15, 0, random (0, 360), 2, random (0, 40))
-		TR06 FGHIJK 3 A_JumpIf((MomY == 0), "DSFStop")
+		POS4 ABCD 3 A_CustomMissile ("Brutal_LiquidBlood3", 15, 0, random (0, 360), 2, random (0, 40))
+		POS4 EFGHIJ 3 A_JumpIf((MomY == 0), "DSFStop")
 		Goto DSFStop+1
-		
 		
 	DSFStop:
 		TNT1 A 0 A_SpawnItem("Ploft3")
+		TNT1 A 0 A_Stop
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		TNT1 A 0 A_CustomMissile ("SuperWallRedBlood", 2, 0, random (170, 190), 2, random (0, 0))
-		TNT1 A 0 A_SpawnItem("DeadImpTR06K")
+		POS4 J 0
+		TNT1 A 0 A_SpawnItem("DeadZombiemanShotguntotheFace1")
+		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
 		TNT1 A -1
 		Stop
 	}
