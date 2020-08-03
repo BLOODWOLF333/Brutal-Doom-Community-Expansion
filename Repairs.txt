@@ -387,34 +387,15 @@ Actor DestroyedArmouredVehicleTemp : DestroyedArmouredVehicle
 	States
 	{
 		Spawn:
+			TNT1 A 0 A_JumpIfInventory("BrutalCounter",105,"Extinguish")
 			8762 B 1 A_CustomMissile ("FlamethrowerFireParticles", 36, 0, random (0, 360), 2, random (40, 90))
 			8762 B 9
-			8762 B 1 A_CustomMissile ("FlamethrowerFireParticles", 36, 0, random (0, 360), 2, random (40, 90))
-			8762 B 9
-			8762 B 1 A_CustomMissile ("FlamethrowerFireParticles", 36, 0, random (0, 360), 2, random (40, 90))
-			8762 B 9
-			8762 B 1 A_CustomMissile ("FlamethrowerFireParticles", 36, 0, random (0, 360), 2, random (40, 90))
-			8762 B 9
-			8762 B 1 A_CustomMissile ("FlamethrowerFireParticles", 36, 0, random (0, 360), 2, random (40, 90))
-			8762 B 9
-			8762 B 1 A_CustomMissile ("FlamethrowerFireParticles", 36, 0, random (0, 360), 2, random (40, 90))
-			8762 B 9
-			8762 B 1 A_CustomMissile ("FlamethrowerFireParticles", 36, 0, random (0, 360), 2, random (40, 90))
-			8762 B 9 
-			8762 B 1 A_CustomMissile ("FlamethrowerFireParticles", 36, 0, random (0, 360), 2, random (40, 90))
-			8762 B 9
-			8762 B 1 A_CustomMissile ("FlamethrowerFireParticles", 36, 0, random (0, 360), 2, random (40, 90))
-			8762 B 9
-			8762 B 1 A_CustomMissile ("FlamethrowerFireParticles", 36, 0, random (0, 360), 2, random (40, 90))
-			8762 B 9
-			8762 B 1 A_CustomMissile ("FlamethrowerFireParticles", 36, 0, random (0, 360), 2, random (40, 90))
-			8762 B 9
-			8762 B 1 A_CustomMissile ("FlamethrowerFireParticles", 36, 0, random (0, 360), 2, random (40, 90))
-			8762 B 9
-			8762 B 1 A_CustomMissile ("FlamethrowerFireParticles", 36, 0, random (0, 360), 2, random (40, 90))
-			8762 B 9
-			8762 B 1 A_CustomMissile ("FlamethrowerFireParticles", 36, 0, random (0, 360), 2, random (40, 90))
-			8762 B 9 A_NoBlocking
+			TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+			Loop
+		Extinguish:
+			TNT1 A 0 A_SpawnItem("BarrelExplosionSmokeColumn")
+			8762 B 1 A_NoBlocking
+			8762 B -1
 			Stop
 	}
 }
@@ -478,34 +459,15 @@ Actor DestroyedAircraftTemp : DestroyedArmouredVehicle
 	States
 	{
 		Spawn:
+			TNT1 A 0 A_JumpIfInventory("BrutalCounter",105,"Extinguish")
 			8762 C 1 A_CustomMissile ("FlamethrowerFireParticles", 36, 0, random (0, 360), 2, random (40, 90))
 			8762 C 9
-			8762 C 1 A_CustomMissile ("FlamethrowerFireParticles", 36, 0, random (0, 360), 2, random (40, 90))
-			8762 C 9
-			8762 C 1 A_CustomMissile ("FlamethrowerFireParticles", 36, 0, random (0, 360), 2, random (40, 90))
-			8762 C 9
-			8762 C 1 A_CustomMissile ("FlamethrowerFireParticles", 36, 0, random (0, 360), 2, random (40, 90))
-			8762 C 9
-			8762 C 1 A_CustomMissile ("FlamethrowerFireParticles", 36, 0, random (0, 360), 2, random (40, 90))
-			8762 C 9
-			8762 C 1 A_CustomMissile ("FlamethrowerFireParticles", 36, 0, random (0, 360), 2, random (40, 90))
-			8762 C 9
-			8762 C 1 A_CustomMissile ("FlamethrowerFireParticles", 36, 0, random (0, 360), 2, random (40, 90))
-			8762 C 9
-			8762 C 1 A_CustomMissile ("FlamethrowerFireParticles", 36, 0, random (0, 360), 2, random (40, 90))
-			8762 C 9
-			8762 C 1 A_CustomMissile ("FlamethrowerFireParticles", 36, 0, random (0, 360), 2, random (40, 90))
-			8762 C 9
-			8762 C 1 A_CustomMissile ("FlamethrowerFireParticles", 36, 0, random (0, 360), 2, random (40, 90))
-			8762 C 9
-			8762 C 1 A_CustomMissile ("FlamethrowerFireParticles", 36, 0, random (0, 360), 2, random (40, 90))
-			8762 C 9
-			8762 C 1 A_CustomMissile ("FlamethrowerFireParticles", 36, 0, random (0, 360), 2, random (40, 90))
-			8762 C 9
-			8762 C 1 A_CustomMissile ("FlamethrowerFireParticles", 36, 0, random (0, 360), 2, random (40, 90))
-			8762 C 9
-			8762 C 1 A_CustomMissile ("FlamethrowerFireParticles", 36, 0, random (0, 360), 2, random (40, 90))
-			8762 C 9 A_NoBlocking
+			TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+			Loop
+		Extinguish:
+			TNT1 A 0 A_SpawnItem("BarrelExplosionSmokeColumn")
+			8762 C 1 A_NoBlocking
+			8762 C -1
 			Stop
 	}
 }

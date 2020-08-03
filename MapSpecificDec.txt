@@ -304,9 +304,9 @@ DamageFactor "Plasma", 200.0 DamageFactor "PLasma2", 200.0
 		Death.Plasma:
 			TNT1 A 0
 			TNT1 A 0 A_NoBlocking
-			TNT1 A 0 A_SpawnItem("BarrelExplosionSmokeColumnInfinite")
-			TNT1 A 0 A_CustomMissile("TinyBurningPieceInfinite")
-			TNT1 A 0 A_SpawnItemEx("RealisticFireSparksLoop", 0, 0, 16)			
+			TNT1 A 0 A_SpawnItem("BarrelExplosionSmokeColumn")
+			TNT1 A 0 A_CustomMissile("TinyBurningPieceTemp")
+			TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTemp", 0, 0, 16)			
 			BPDC A 1
 			BPDC A -1
 			Stop
@@ -410,17 +410,22 @@ Radius 16
 	Death.Fire:
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("HDFlamesGFX1", 0, 0, 10)
+		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1", 0, 0, 10)
 		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
-		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksLoopBig", 0, 0, 25)	
+		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 25)	
 		TNT1 A 0 A_Jump(255, "Burning")
 		TNT1 A 0
 		Stop
 		
-		
-		Burning:
-			BPDC P 20 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
-			Loop
+	Burning:
+		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+		BPDC P 20 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+		Loop
+	Extinguish:
+		TNT1 A 0 A_StopSound(1)
+		BPDC A -1
+		Stop
 }}
 
 
@@ -451,16 +456,22 @@ sCALE 0.6
 	Death.Fire:
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("HDFlamesGFX1", 0, 0, -50)
-		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksLoopBig", 0, 0, 55)	
+		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1", 0, 0, -50)
+		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 55)	
 		TNT1 A 0 A_Jump(255, "Burning")
 		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
 		TNT1 A 0
 		Stop
 		
-		Burning:
-			BPDC U 20 BRIGHT A_CustomMissile ("BurnDamageSmall", -16)
-			Loop
+	Burning:
+		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+		BPDC U 20 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+		Loop
+	Extinguish:
+		TNT1 A 0 A_StopSound(1)
+		TNT1 A -1
+		Stop
 }}
 
 ACTOR BDVines2: BDVines1 11834
@@ -469,14 +480,19 @@ ACTOR BDVines2: BDVines1 11834
 +FLOAT
  States
 	{
-		Spawn:
+	Spawn:
 		SPDC V 1
 		SPDC V -1
 		Stop
-	
-		Burning:
-			BPDC V 20 BRIGHT A_CustomMissile ("BurnDamageSmall", -16)
-			Loop
+	Burning:
+		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+		BPDC V 20 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+		Loop
+	Extinguish:
+		TNT1 A 0 A_StopSound(1)
+		TNT1 A -1
+		Stop
 }}
 
 
@@ -498,10 +514,15 @@ ACTOR BDecJunglePlant: BDECBush
 		TNT1 AAA 0 A_CustomMissile ("BDECFoliageParticle5a", 15, 0, random (0, 360), 2, random (20, 90))
 		TNT1 AA 0 A_CustomMissile ("BDECFoliageParticle5B", 15, 0, random (0, 360), 2, random (20, 90))
 		Stop
-		
-		Burning:
-			BPDC W 20 A_CustomMissile ("BurnDamageSmall", 16)
-			Loop
+	Burning:
+		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+		BPDC W 20 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+		Loop
+	Extinguish:
+		TNT1 A 0 A_StopSound(1)
+		BPDC A -1
+		Stop
 }}
 
 
@@ -561,19 +582,22 @@ BloodType "TreeBlood"
 	Death.Plasma2:
 	Death.Fire:
 		TNT1 A 0
-		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksLoopBig", 0, 0, 165)
-		TNT1 A 0 A_SpawnItemEx("HDFlamesGFX1Big", 0, 0, 80)
-		TNT1 A 0 A_SpawnItemEx("HDFlamesGFX1Slim", 0, 0, 10)
+		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 165)
+		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Big", 0, 0, 80)
+		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Slim", 0, 0, 10)
 		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
 		TNT1 A 0 A_Jump(255, "Burning")
 		TNT1 A 0
 		Stop
-		
-		
-		Burning:
-			BPDC Q 15 BRIGHT //A_CustomMissile("FireballExplosionFlamesBig", 45, 0, random (0, 360), 2, random (50, 130))
-			TNT1 A 0 A_CustomMissile ("BurnDamageLarge", 16)
-			Loop
+	Burning:
+		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+		BPDC Q 20 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+		Loop
+	Extinguish:
+		TNT1 A 0 A_StopSound(1)
+		BPDC H -1
+		Stop
 }}
 
 
@@ -607,18 +631,22 @@ ACTOR BDECGreenTree2: BDECGreenTree1 15851
 	Death.Plasma2:
 	Death.Fire:
 		TNT1 A 0
-		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksLoopBig", 0, 0, 165)
-		TNT1 A 0 A_SpawnItemEx("HDFlamesGFX1Big", 0, 0, 40)
-		TNT1 A 0 A_SpawnItemEx("HDFlamesGFX1Slim", 0, 0, 10)
+		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 165)
+		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Big", 0, 0, 40)
+		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Slim", 0, 0, 10)
 		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
 		TNT1 A 0 A_Jump(255, "Burning")
 		TNT1 A 0
 		Stop
-		
-		Burning:
-			BPDC R 15 BRIGHT //A_CustomMissile("FireballExplosionFlamesBig", 45, 0, random (0, 360), 2, random (50, 130))
-			TNT1 A 0 A_CustomMissile ("BurnDamageLarge", 16)
-			Loop
+	Burning:
+		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+		BPDC R 20 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+		Loop
+	Extinguish:
+		TNT1 A 0 A_StopSound(1)
+		BPDC P -1
+		Stop
 }}
 
 ACTOR BDECGreenTree3: BDECGreenTree2 15852
@@ -643,12 +671,15 @@ ACTOR BDECGreenTree3: BDECGreenTree2 15852
 		TNT1 AAA 0 A_CustomMissile ("WoodParticleTiny", 55, 0, random (0, 360), 2, random (20, 90))
 		TNT1 AAA 0 A_CustomMissile ("WoodParticleBig", 65, 0, random (0, 360), 2, random (20, 90))
 		Stop
-		
-		
 	Burning:
-			BPDC S 15 BRIGHT //A_CustomMissile("FireballExplosionFlamesBig", 45, 0, random (0, 360), 2, random (50, 130))
-			TNT1 A 0 A_CustomMissile ("BurnDamageLarge", 16)
-			Loop	
+		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+		BPDC S 20 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+		Loop
+	Extinguish:
+		TNT1 A 0 A_StopSound(1)
+		BPDC H -1
+		Stop
 }}
 
 
@@ -684,18 +715,22 @@ ACTOR BDPalmTree: BDECGreenTree2 15853
 	Death.Plasma2:
 	Death.Fire:
 		TNT1 A 0
-		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksLoopBig", 0, 0, 205)
-		TNT1 A 0 A_SpawnItemEx("HDFlamesGFX1Slim", 0, 0, 10)
-		TNT1 A 0 A_SpawnItemEx("HDFlamesGFX1", 0, 0, 120)
+		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 205)
+		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Slim", 0, 0, 10)
+		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1", 0, 0, 120)
 		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
 		TNT1 A 0 A_Jump(255, "Burning")
 		TNT1 A 0
 		Stop
-		
-		Burning:
-			BPDC X 15 BRIGHT //A_CustomMissile("FireballExplosionFlamesBig", 45, 0, random (0, 360), 2, random (50, 130))
-			TNT1 A 0 A_CustomMissile ("BurnDamageLarge", 16)
-			Loop
+	Burning:
+		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+		BPDC X 20 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+		Loop
+	Extinguish:
+		TNT1 A 0 A_StopSound(1)
+		BPDC X -1
+		Stop
 }}
 
 ACTOR BDECDeadTree1: BDECGreenTree1 11008
@@ -727,16 +762,21 @@ ACTOR BDECDeadTree1: BDECGreenTree1 11008
 	Death.Plasma2:
 	Death.Fire:
 		TNT1 A 0
-		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksLoopBig", 0, 0, 55)
+		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 55)
 		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
-		TNT1 A 0 A_SpawnItemEx("HDFlamesGFX1Big", 0, 0, 10)
+		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Big", 0, 0, 10)
 		TNT1 A 0 A_Jump(255, "Burning")
 		TNT1 A 0
 		Stop
-		Burning:
-			BPDC G 15 BRIGHT //A_CustomMissile("FireballExplosionFlamesBig", 45, 0, random (0, 360), 2, random (50, 130))
-			TNT1 A 0 A_CustomMissile ("BurnDamageLarge", 16)
-			Loop
+	Burning:
+		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+		BPDC G 20 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+		Loop
+	Extinguish:
+		TNT1 A 0 A_StopSound(1)
+		BPDC G -1
+		Stop
 }}
 
 
@@ -749,18 +789,16 @@ ACTOR BDECDeadTree2: BDECDeadTree1 11009
 		SPDC H 1
 		SPDC H -1
 		Stop
-		
-		
-		Burning:
-			BPDC H 15 BRIGHT //A_CustomMissile("FireballExplosionFlamesBig", 45, 0, random (0, 360), 2, random (50, 130))
-			TNT1 A 0 A_CustomMissile ("BurnDamageLarge", 16)
-			Loop
+	Burning:
+		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+		BPDC H 20 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+		Loop
+	Extinguish:
+		TNT1 A 0 A_StopSound(1)
+		BPDC H -1
+		Stop
 }}
-
-
-
-
-
 
 ACTOR BDECOldTree1: BDECGreenTree1
 {
@@ -794,16 +832,21 @@ ACTOR BDECOldTree1: BDECGreenTree1
 	Death.Plasma2:
 	Death.Fire:
 		TNT1 A 0
-		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksLoopBig", 0, 0, 55)
+		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 55)
 		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
-		TNT1 A 0 A_SpawnItemEx("HDFlamesGFX1Big", 0, 0, 10)
+		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Big", 0, 0, 10)
 		TNT1 A 0 A_Jump(255, "Burning")
 		TNT1 A 0
 		Stop
-		Burning:
-			BPDC G 15 BRIGHT //A_CustomMissile("FireballExplosionFlamesBig", 45, 0, random (0, 360), 2, random (50, 130))
-			TNT1 A 0 A_CustomMissile ("BurnDamageLarge", 16)
-			Loop
+	Burning:
+		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+		BPDC G 20 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+		Loop
+	Extinguish:
+		TNT1 A 0 A_StopSound(1)
+		BPDC G -1
+		Stop
 }}
 
 
@@ -824,14 +867,18 @@ ACTOR BDECOldTree2: BDECOldTree1
 	Death.Plasma2:
 	Death.Fire:
 		TNT1 A 0
-		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksLoopBig", 0, 0, 55)
+		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 55)
 		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
-		TNT1 A 0 A_SpawnItemEx("HDFlamesGFX1", 0, 0, 10)
-		
-		Burning:
-			BPDC H 15 BRIGHT //A_CustomMissile("FireballExplosionFlamesBig", 45, 0, random (0, 360), 2, random (50, 130))
-			TNT1 A 0 A_CustomMissile ("BurnDamageSmall", 16)
-			Loop
+		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1", 0, 0, 10)
+	Burning:
+		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+		BPDC H 20 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+		Loop
+	Extinguish:
+		TNT1 A 0 A_StopSound(1)
+		BPDC H -1
+		Stop
 }}
 
 
