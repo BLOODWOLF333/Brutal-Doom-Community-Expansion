@@ -110,6 +110,7 @@ Actor BFG10k : BrutalWeapon
 	Goto Ready
     BG2G K 1 BRIGHT A_SpawnItemEx("GreenFlareSpawn",32,0,28)
 	BG2G A 0 A_PlaySound("10KFIRE", 1)
+	TNT1 A 0 A_FireCustomMissile("Alerter")
 	BG2G A 0 A_JumpIfInventory("DMgame", 1, 10)
     BG2G L 1 BRIGHT A_FireCustomMissile("BFG10K_Ball",frandom(-1.2,1.2),1,0,0,0,frandom(-1.4,1.4))
 	TNT1 A 0 A_Recoil(4)

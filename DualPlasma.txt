@@ -168,7 +168,7 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 		Goto FireLeft
         DUPL A 0 A_PlaySound("PLSM9", CHAN_WEAPON)
 		DUPL A 0 A_FireCustomMissile("PlasmaFlareSpawn", 8, 0, 0, 0)
-		
+		TNT1 A 0 A_FireCustomMissile("Alerter")
 		DUPL A 0 A_JumpIfInventory("DMgame", 1, "FireDM")
 		DUPL B 1 BRIGHT A_FireCustomMissile("Plasma_Ball", frandom(-1.6, 1.6), 1, 8, -5, 0, frandom(-1.2, 1.2))
 		DUPL A 0 A_ZoomFactor(0.99)
