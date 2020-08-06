@@ -435,7 +435,7 @@ ACTOR ClassicWeapon : Weapon
 		TNT1 A 0 A_PLaySound ("GRNTOSS")
 		PRTH HI 1
 		TNT1 A 0 A_TakeInventory("GrenadeAmmo", 1)
-		TNT1 A 0 A_FireCustomMissile("HandGrenade", random(-2,2), 0, 0, 0, 0, 0)
+		TNT1 A 0 A_FireCustomMissile("HandGrenade", 0, 0, 0, 0, 0, 0)
 	    TNT1 A 0 A_TakeInventory("FiredGrenade", 1)
 		PRTH JKLM 1
 		TNT1 A 1 
@@ -973,6 +973,7 @@ ACTOR ClassicSSG : ClassicWeapon
 		Loop
 	Fire:
 	    PKSS A 3
+		TNT1 A 0 A_FireCustomMissile("Alerter")
 		TNT1 A 0 A_playsound("SSHFIRE", 1)
 		TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-5,5),0,0,0,0,random(-3,3))
 		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
@@ -1085,6 +1086,7 @@ ACTOR ClassicRocketLauncher : ClassicWeapon
 		Loop
 	Fire:
 		TNT1 A 0 A_PlaySound ("DSRFIRE")
+		TNT1 A 0 A_FireCustomMissile("Alerter")
 		TNT1 A 0 A_FireCustomMissile("WeakRocket", 0, 1, 0, -10)
 		RLNG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		PKRL B 2 BRIGHT A_ZoomFactor(0.98)
@@ -1132,6 +1134,7 @@ ACTOR ClassicPlasmaRifle : ClassicWeapon
 	Fire:
 		3LSF C 1 BRIGHT A_ZoomFactor(0.99)
 		3LSF EF 1 BRIGHT A_ZoomFactor(1.0)
+		TNT1 A 0 A_FireCustomMissile("Alerter")
 		PLSN A 0 A_SpawnItemEx("PlasmaFlareSpawn",32,0,28)
 		TNT1 A 0 A_FireCustomMissile("ClassicPlasmaBall", 0, 1, 0, -10)
 		3KPL ABCDEFGFEDCBA 1 A_Refire
@@ -1233,7 +1236,7 @@ ACTOR VanillaBFG9000 : ClassicWeapon
 		BFGA ABCD 2 BRIGHT A_SpawnItemEx("GreenFlareSpawn",32,0,28)
 		TNT1 A 0 A_ZoomFactor(0.95)
 		TNT1 A 0 A_Recoil(8)
-		TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter", 0, 0, -1, 0)
+		TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter")
 		TNT1 A 0 A_JumpIfInventory("DMgame", 1, 2)
 		TNT1 A 0 BRIGHT A_FireCustomMissile("BFGBall")
 		Goto RecoilFire
