@@ -42,7 +42,7 @@ ACTOR BrutalPistol : BrutalWeapon
 		PIST F 1 A_WeaponReady(WRF_NOFIRE)
 		PIST F 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		PIST F 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
-		Goto Ready
+		Goto Ready3
 		
 	StartSprint:
 		PIST F 1 A_WeaponReady(WRF_NOFIRE)

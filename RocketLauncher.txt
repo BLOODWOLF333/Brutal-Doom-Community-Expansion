@@ -50,7 +50,7 @@ ACTOR Rocket_Launcher : BrutalWeapon
 		RLNG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		RLNG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		RLNG A 0 A_JumpIfInventory("Reloading",1,"Reload")
-		RLNG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
+		RLNG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint2")
 		RLNG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		Loop	
 		
@@ -96,7 +96,13 @@ ACTOR Rocket_Launcher : BrutalWeapon
 		RLNG A 1 A_WeaponReady(WRF_NOFIRE)
 		RLNG A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		RLNG A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
-		Goto Ready
+		Goto Ready3
+		
+	CheckSprint2:
+		SNIP A 1 A_WeaponReady(WRF_NOFIRE)
+		RLNG A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready2")
+		RLNG A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
+		Goto Ready2
 		
 	StartSprint:
 		RLNG A 1 A_WeaponReady(WRF_NOFIRE)
