@@ -34,6 +34,7 @@ ACTOR Machinegun : BrutalWeapon
 		MGN1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		MGN1 A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		MGN1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		MGN1 A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
 		Loop	
 		//MGN1 A 0 A_JumpIfInventory("Clip2",1,"Ready")
 		//Goto IdleNoAmmo
