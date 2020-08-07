@@ -19,39 +19,41 @@ ACTOR MiniGun : BrutalWeapon
 	Spawn:
 		MGUN A -1
 		Stop
-		
-		 Ready: 
-		 Ready3:
-		  CHAG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		
-		  CHAG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
-		  CHAG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
-		  CHAG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
-		  CHAG A 1 A_WeaponReady
-		  CHAG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-		  CHAG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
-			
-		  CHAG A 0 A_JumpIfInventory("Spin",1,"Ready2")
-		  CHAG A 0 A_JumpIfInventory("Clip2",1,"Ready")
-		  Goto IdleNoAmmo
-		  
-		  IdleNoAmmo:
-		  CHAE A 1 A_WeaponReady
-		  CHAG A 0 A_TakeInventory ("Spin",1)
-		  CHAG A 0 A_JumpIfInventory("Clip2",1,"Ready")
-		  CHAG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		  CHAG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
-		  CHAG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-		  Loop
 
-		Ready2:
-		  CHAG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		  CHAG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
-		  CHAG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-		  CHAG ABCD 1 A_WeaponReady 
-		  CHAG A 0 A_AlertMonsters
-		  CHAG A 0 A_PlaySound("CHAINSPI", 5)
-		  Loop
+	Ready: 
+	Ready3:
+		CHAG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+
+		CHAG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		CHAG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		CHAG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		CHAG A 1 A_WeaponReady
+		CHAG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		CHAG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
+
+		CHAG A 0 A_JumpIfInventory("Spin",1,"Ready2")
+		CHAG A 0 A_JumpIfInventory("Clip2",1,"Ready")
+		Goto IdleNoAmmo
+
+	IdleNoAmmo:
+		CHAE A 1 A_WeaponReady
+		CHAG A 0 A_TakeInventory ("Spin",1)
+		CHAG A 0 A_JumpIfInventory("Clip2",1,"Ready")
+		CHAG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		CHAG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		CHAG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		Loop
+
+	Ready2:
+		CHAG A 0
+		CHAG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		CHAG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		CHAG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		CHAG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint2")
+		CHAG ABCD 1 A_WeaponReady 
+		CHAG A 0 A_AlertMonsters
+		CHAG A 0 A_PlaySound("CHAINSPI", 5)
+		Loop
 		  
 	CheckSprint:
 		CHAG A 1 A_WeaponReady(WRF_NOFIRE)
@@ -59,11 +61,24 @@ ACTOR MiniGun : BrutalWeapon
 		CHAG A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
 		Goto Ready
 		
+	CheckSprint2:
+		CHAG ABCD 1 A_WeaponReady(WRF_NOFIRE)
+		CHAG A 0 A_AlertMonsters
+		CHAG A 0 A_PlaySound("CHAINSPI", 5)
+		CHAG A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready2")
+		CHAG A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint2")
+		Goto Ready2
+		
 	StartSprint:
 		CHAG A 1 A_WeaponReady(WRF_NOFIRE)
-		CHAG A 0 A_Takeinventory("Zoomed",1)
-		CHAG A 0 A_Takeinventory("ADSmode",1)
-		CHAG A 0 A_ZoomFactor(1.0)
+		CHAG A 0 A_JumpIfInventory("UsedStamina", 40, "StopSprintTired")
+		Goto Sprinting
+		
+	StartSprint2:
+		CHAG ABCD 1 A_WeaponReady(WRF_NOFIRE)
+		CHAG A 0 A_TakeInventory("Spin",1)
+		CHAG A 0 A_PlaySound("CHAINSTO", 6)
+		CHAG A 0 A_StopSound(5)
 		CHAG A 0 A_JumpIfInventory("UsedStamina", 40, "StopSprintTired")
 		
 	Sprinting:	
