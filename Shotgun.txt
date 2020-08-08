@@ -17,13 +17,14 @@ ACTOR Shot_Gun : BrutalWeapon
 	+WEAPON.NOAUTOFIRE
 	+WEAPON.NOALERT
 	+FORCEXYBILLBOARD
-	Scale 0.9
+	Scale 0.8
 	Tag "Shotgun"
 	States
 	{
 		
     Spawn:
-		SHTC A -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("ShotgunSpawner")
 		Stop
     	
 	Select:

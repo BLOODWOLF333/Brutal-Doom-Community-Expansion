@@ -1,7 +1,7 @@
 ACTOR AssaultShotgun : BrutalWeapon
 {
 	Weapon.AmmoUse1 0
-	Weapon.AmmoGive1 4
+	Weapon.AmmoGive1 0
 	Weapon.AmmoUse2 0
 	Weapon.AmmoGive2 0
 	YScale 0.6
@@ -562,7 +562,8 @@ ACTOR AssaultShotgun : BrutalWeapon
 		Goto Ready3
 	
  	Spawn:
-		A12P A -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("AssaultShotgunSpawner")
 		Stop
 	}
 }

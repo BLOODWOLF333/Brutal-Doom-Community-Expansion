@@ -17,7 +17,8 @@ ACTOR MiniGun : BrutalWeapon
 	States
 	{
 	Spawn:
-		MGUN A -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("ChaingunSpawner")
 		Stop
 
 	Ready: 

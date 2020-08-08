@@ -219,7 +219,8 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 
 
 	Spawn:
-		PLAS A -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("PLasmagunSpawner")
 		Stop
 
     Reload:
@@ -342,5 +343,11 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 	}
 }
 
-
-
+ACTOR DoublePlasmaAmmo : Ammo //Your weapon's magazine ammo.
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 100 //Your weapon's magazine ammo limit. Always leave one more bullet, so you can do the 12+1 effect.
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 100
+   Inventory.Icon "PLASB0"
+}

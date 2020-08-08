@@ -15,6 +15,7 @@ ACTOR RailGun : BrutalWeapon
 	+WEAPON.NOALERT
 	damagetype "Railgun"
 	Weapon.SelectionOrder 50
+	Scale 0.8
 	States
 	{
 	
@@ -360,7 +361,8 @@ ACTOR RailGun : BrutalWeapon
 		Loop	
 		
  	Spawn:
-		SRCG A -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("RailgunSpawner")
 		Stop
 		
 	CheckSprint:
@@ -725,4 +727,13 @@ RAIL A 0
 TNT1 A 1
 Stop	
 }
+}
+
+ACTOR RailgunAmmo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 50
+   Ammo.BackpackAmount 0
+   Inventory.Icon "SRCGA0"
+   Ammo.BackpackMaxAmount 50
 }

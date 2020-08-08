@@ -15,7 +15,7 @@ ACTOR BrutalSMG : BrutalWeapon
 	+WEAPON.NOAUTOFIRE
 	+WEAPON.NOALERT
     +FORCEXYBILLBOARD
-	Scale 0.9
+	Scale 0.8
 	Tag "Sub-MachineGun"
 	States
 	{
@@ -408,7 +408,8 @@ ACTOR BrutalSMG : BrutalWeapon
 		
 		
  	Spawn:
-		SMGZ A -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("SMGSpawner")
 		Stop
 		
 		
@@ -447,3 +448,11 @@ ACTOR BrutalSMG : BrutalWeapon
 	}
 }
 
+ACTOR BDSMGAmmo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 41
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 41
+   Inventory.Icon SMGZA0
+}

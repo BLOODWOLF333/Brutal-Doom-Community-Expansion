@@ -12,6 +12,8 @@ ACTOR Unmaker : BrutalWeapon
 	+WEAPON.EXPLOSIVE
 	+WEAPON.NO_AUTO_SWITCH
 	Inventory.PickupMessage "$GOTUNMAKER"
+	YScale 1.0
+	XScale 1.2
 	States
 	{
 	Steady:
@@ -151,7 +153,8 @@ ACTOR Unmaker : BrutalWeapon
 		GOto Ready
 		
     Spawn:
-        UNHW A -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("UnmakerSpawner")
 		Stop
 		
 	Fire:
@@ -252,3 +255,12 @@ Actor UnmakerLaserTrail
 		Stop
 	}
 }	
+
+ACTOR SoulAmmo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 300
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 600
+   Inventory.Icon "BDSLA0"
+}

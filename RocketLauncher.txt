@@ -20,6 +20,7 @@ ACTOR Rocket_Launcher : BrutalWeapon
 	+WEAPON.NOALERT
 	Inventory.PickupMessage "$GOTLAUNCHER"
 	Tag "Rocket Launcher"
+	Scale 0.8
 	States
 	{
 	
@@ -353,7 +354,8 @@ ACTOR Rocket_Launcher : BrutalWeapon
         Goto Ready	
 
 	Spawn:
-		RLAU A -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("RocketLauncherSpawner")
 		Stop
 		
 	Unload:

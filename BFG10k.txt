@@ -16,10 +16,13 @@ Actor BFG10k : BrutalWeapon
 	+WEAPON.NOAUTOFIRE
 	+WEAPON.EXPLOSIVE
 	+WEAPON.NO_AUTO_SWITCH
+	YScale 0.7
+	XScale 0.9
   States
   {
 	Spawn:
-		BFG2 A -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("BFG10KSpawner")
 		Stop
 	
 	Ready:

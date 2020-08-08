@@ -15,9 +15,8 @@ ACTOR NukeLauncher : BrutalWeapon 7452
 	+WEAPON.EXPLOSIVE
 	+WEAPON.NO_AUTO_SWITCH
 	Inventory.PickupMessage "You got the Nuclear Missile Launcher (Slot 7)"
-	VisibleToPlayerClass BDoomer, Doomer2, TacticalDoomer, Purist
-	Inventory.ForbiddenTo ""
 	Tag "Nuclear Missile Launcher"
+	Scale 0.8
 	States
 	{
 	
@@ -133,7 +132,8 @@ ACTOR NukeLauncher : BrutalWeapon 7452
 		Goto Ready
 		
     Spawn:
-        NKLG D -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("NukeLauncherSpawner")
         Stop
 		
    Fire:
@@ -152,4 +152,19 @@ ACTOR NukeLauncher : BrutalWeapon 7452
 		NKLG AAAAA 1 BRIGHT A_SetPitch(1.0 + pitch)
 		Goto Ready+6
 	}
+}
+
+ACTOR FakeNukeLauncherSprite: RifleSpawner
+{
+ Scale 0.8
+ VisibleToPlayerClass BDoomer, Doomer2, TacticalDoomer
+ +NOGRAVITY
+ +FLOAT +NOCLIP +NOINTERACTION
+ States
+    {
+	 Spawn:
+		NKLG D 0
+		NKLG D 4
+		Stop
+    }
 }

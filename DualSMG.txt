@@ -327,7 +327,8 @@ ACTOR DualSMG : BrutalWeapon
 	
 	
 	Spawn:
-		SMGZ A -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("SMGSpawner")
 		Stop
 		
 		
@@ -335,4 +336,13 @@ ACTOR DualSMG : BrutalWeapon
 		TNT1 A 1
 		Goto Ready	
 	}
+}
+
+ACTOR BDDualSMGAmmo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 82
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 82
+   Inventory.Icon SMGZB0
 }

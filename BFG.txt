@@ -16,6 +16,7 @@ ACTOR BIG_FUCKING_GUN : BrutalWeapon
 	+WEAPON.NO_AUTO_SWITCH
 	Tag "BFG 9000"
     Inventory.PickupMessage "$GOTBFG9000"
+	Scale 0.8
 	States
 	{
 	
@@ -170,7 +171,8 @@ ACTOR BIG_FUCKING_GUN : BrutalWeapon
 		Goto Ready3
 
 	Spawn:
-		BFUG A -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("BFG9000Spawner")
 		Stop	
 	}
 }
