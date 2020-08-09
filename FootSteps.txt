@@ -4,12 +4,12 @@ ACTOR Purist : Doomer
 	Player.DisplayName "Purist (Oldschool mode)"
 	Player.StartItem "ClassicPistol"
 	Player.StartItem "ClassicFist"
-	Player.StartItem "Clip2", 50
+	Player.StartItem "Clip2", 30
 	Player.StartItem "IsPlayer", 1
 	Player.StartItem "IsPlayingAsPurist", 1
 	Player.StartItem "AmmoDroper"
 	Player.StartItem "IsNOTTacticalClass", 1
-	DamageFactor "KillMeBot", 0.0
+	Player.StartItem "GrenadeAmmo", 1
 	Species "Marines"
 }
 
@@ -47,9 +47,8 @@ ACTOR BDoomer : Doomer
 	Player.StartItem "DoublePlasmaAmmo", 100
 	Player.StartItem "RailgunAmmo", 50
 	//Slot9
-	Player.StartItem "GrenadeAmmo", 2
+	Player.StartItem "GrenadeAmmo", 1
 	Player.StartItem "AmmoDroper"
-	DamageFactor "KillMeBot", 0.0
 	Species "Marines"
 }
 
@@ -63,7 +62,7 @@ ACTOR Doomer2 : Doomer
 	Player.StartItem "IsPlayer", 1
 	Player.StartItem "IsNOTTacticalClass", 1
 	Player.StartItem "NeverSelectedShotgun", 1
-	Player.StartItem "Clip1", 60
+	Player.StartItem "Clip1", 30
 	//Slot2
 	Player.StartItem "BDPistolAmmo", 16
 	Player.StartItem "BDDualPistolAmmo", 32
@@ -87,9 +86,8 @@ ACTOR Doomer2 : Doomer
 	Player.StartItem "DoublePlasmaAmmo", 100
 	Player.StartItem "RailgunAmmo", 50
 	//Slot9
-	Player.StartItem "GrenadeAmmo", 2
+	Player.StartItem "GrenadeAmmo", 1
 	Player.StartItem "AmmoDroper"
-	DamageFactor "KillMeBot", 0.0
 	Species "Marines"
 }
 
@@ -129,7 +127,6 @@ ACTOR TacticalDoomer : Doomer
 	//Slot9
 	Player.StartItem "GrenadeAmmo", 1
 	Player.StartItem "AmmoDroper"
-	DamageFactor "KillMeBot", 0.0
 	Species "Marines"
 }	   
 
