@@ -12,6 +12,7 @@ ACTOR GrenadeLauncher : BrutalWeapon
 	Weapon.SelectionOrder 2700
 	Inventory.PickupMessage "$GOTGL"
 	Tag "Grenade Launcher"
+	Scale 0.8
 	States
 	{
 	
@@ -248,10 +249,18 @@ ACTOR GrenadeLauncher : BrutalWeapon
 		Goto Ready
 	
 	Spawn:
-		GLAP A -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("GrenadeLauncherSpawner")
 		Stop
 		
 	}
 }
 
-
+ACTOR GLAmmo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 1
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 1
+   Inventory.Icon "GLAPA0"
+}

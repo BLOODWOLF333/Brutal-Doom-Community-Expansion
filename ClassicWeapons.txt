@@ -772,7 +772,8 @@ ACTOR ClassicSaw : ClassicWeapon
 		Goto Ready
 	
 	Spawn:
-		CSAW A -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("ChainsawSpawner")
 		Stop
 	}
 }
@@ -824,7 +825,8 @@ ACTOR ClassicPistol : ClassicWeapon
 		Goto Ready
 		
  	Spawn:
-		PIST G -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("PistolSpawner")
 		Stop
 	}
 }
@@ -887,7 +889,8 @@ ACTOR ClassicSMG : ClassicWeapon
 		TNT1 A 0 A_ReFire
 		Goto Ready
  	Spawn:
-		SMGZ A -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("SMGSpawner")
 		Stop
 	}
 }
@@ -937,7 +940,8 @@ ACTOR ClassicShotgun : ClassicWeapon
 		PKSG A 7 A_ReFire
 		Goto Ready
 	Spawn:
-		SHOT A -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("ShotgunSpawner")
 		Stop
 	}
 }	
@@ -995,7 +999,8 @@ ACTOR ClassicSSG : ClassicWeapon
 		PKSS A 5 A_ReFire 
 		Goto Ready
 	Spawn:
-		SGN2 A -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("SSGSpawner")
 		Stop	
 	}
 }
@@ -1048,7 +1053,8 @@ ACTOR ClassicChaingun : ClassicWeapon
 		PKCG G 0 A_ReFire
 		Goto Ready
 	Spawn:
-		MGUN A -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("ChaingunSpawner")
 		Stop
 	}
 }
@@ -1096,7 +1102,8 @@ ACTOR ClassicRocketLauncher : ClassicWeapon
 		PKRL A 2 A_Refire
 		Goto Ready
 	Spawn:
-		LAUN A -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("RocketLauncherSpawner")
 		Stop
 	}
 }
@@ -1142,7 +1149,8 @@ ACTOR ClassicPlasmaRifle : ClassicWeapon
 		3KPL A 7 A_Refire
 		Goto Ready
 	Spawn:
-		PLAS A -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("PLasmagunSpawner")
 		Stop
 	}
 }
@@ -1248,7 +1256,8 @@ ACTOR VanillaBFG9000 : ClassicWeapon
 		BFGN A 20 A_ReFire
 		Goto Ready
 	Spawn:
-		BFUG A -1
-		Stop		
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("BFG9000Spawner")
+		Stop			
 	}
 }

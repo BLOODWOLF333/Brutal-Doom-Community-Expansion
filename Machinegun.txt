@@ -15,12 +15,14 @@ ACTOR Machinegun : BrutalWeapon
 	Inventory.PickupMessage "$GOTMG"
 	Obituary "%o was mowed down by %k's Machine Gun."
 	AttackSound "none"
-	Scale 0.7
+	YScale 0.8
+	XScale 1.0
 	Tag "MachineGun"
 	States
 	{
 	Spawn:
-		MGN1 Z -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("MachinegunSpawner")
 		Stop
 		
 	Ready: 

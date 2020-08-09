@@ -406,7 +406,17 @@ ACTOR DualRifles : BrutalWeapon
 		
 		
  	Spawn:
-		RIFL A -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("RifleSpawner")
 		Stop
 	}
+}
+
+	ACTOR DoubleRifleAmmo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 62
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 62
+   Inventory.Icon "RIFLB0"
 }

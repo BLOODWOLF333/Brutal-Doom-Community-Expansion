@@ -16,7 +16,8 @@ ACTOR SSG : BrutalWeapon
 	Inventory.PickupMessage "$GOTSHOTGUN2"
 	Obituary "$OB_MPSSHOTGUN"
 	Inventory.PickupSound "CLIPINSS"
-	Scale 0.9
+	YScale 0.8
+	XScale 1.0
 	Tag "Super Shotgun"
 	States
 	{
@@ -770,7 +771,8 @@ ACTOR SSG : BrutalWeapon
 	  Goto Ready
 
 	Spawn:
-		SGN2 A -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("SSGSpawner")
 		Stop
 
 	Unload:
@@ -819,4 +821,13 @@ ACTOR SSG : BrutalWeapon
 		SHO9 FG 1
 		Goto Ready
 	}
+}
+
+ACTOR SSGAmmo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 2
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 2
+   Inventory.Icon "SGN2A0"
 }

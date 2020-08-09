@@ -12,11 +12,13 @@ Actor Chain_saw : BrutalWeapon
 	inventory.pickupsound "weapons/chainsaw/draw"
 	Inventory.PickupMessage "$GOTCHAINSAW"
 	Tag "Chainsaw"
+	Scale 0.8
 states
 	{
 		
 	Spawn:
-		CSAW A -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("ChainsawSpawner")
 		Stop
 	
 	PuristGun:

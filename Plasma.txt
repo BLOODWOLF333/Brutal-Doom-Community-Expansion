@@ -12,6 +12,7 @@ ACTOR Plasma_Gun : BrutalWeapon
 	+FORCEXYBILLBOARD
 	Tag "Plasma Rifle"
 	Inventory.PickupMessage "$GOTPLASMA"
+	Scale 0.9
 	States
 	{
 	
@@ -372,7 +373,8 @@ AltHold:
 
 	
 	Spawn:
-		PLAS A -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("PLasmagunSpawner")
 		Stop
 		
 	NoAmmo:
@@ -579,12 +581,14 @@ ACTOR PlasmaBallDM: Plasma_Ball Replaces PlasmaBall
 	Damage (random(40, 40))
 }
 
-
-
-
-
-
-
+ACTOR PlasmaAmmo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 50
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 50
+   Inventory.Icon "PLASA0"
+}
 
 ACTOR InvisiblePLasmaAmmo: CustomInventory
 {

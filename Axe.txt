@@ -213,8 +213,8 @@ ACTOR BrutalAxe : BrutalWeapon
 		TNT1 A 1
 		Goto Ready	
 	Spawn:
-		AXE1 A 1
-		AXE1 A -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("AxeSpawner")
 		Stop
 		
 	RedBloodReady:

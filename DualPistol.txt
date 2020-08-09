@@ -443,11 +443,21 @@ ACTOR DualPistols : BrutalWeapon
         Goto Ready
 	
  	Spawn:
-		PIST G -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("PistolSpawner")
 		Stop
 		
 	Steady:
 		TNT1 A 1
 		Goto Ready	
 	}
+}
+
+ACTOR BDDualPistolAmmo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 32
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 32
+   Inventory.Icon PISTH0
 }

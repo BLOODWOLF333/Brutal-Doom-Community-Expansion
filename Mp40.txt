@@ -15,7 +15,7 @@ ACTOR MP40 : BrutalWeapon
 	+WEAPON.CHEATNOTWEAPON
 	+WEAPON.NOALERT
 	Weapon.SelectionOrder 1700
-    Scale 1.0
+    Scale 0.9
 	States
 	{
 	
@@ -385,9 +385,19 @@ ACTOR MP40 : BrutalWeapon
 		Goto Ready	
 
  	Spawn:
-		MP40 I -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("MP40Spawner")
 		Stop
 	}
+}
+
+ACTOR MP40Ammo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 32
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 32
+   Inventory.Icon "MP40I0"
 }
 
 ACTOR HitlersBuzzsaw : BrutalWeapon
@@ -397,12 +407,13 @@ ACTOR HitlersBuzzsaw : BrutalWeapon
 	Weapon.AmmoUse 1
 	Weapon.AmmoGive 50
 	Weapon.AmmoType "BuzzsawAmmo"
+	Inventory.PickupSound "CBOXPKUP"
 	Inventory.PickupMessage "$GOTMG42"
 	Obituary "%o was cut in half by %k's MG42"
 	+WEAPON.CHEATNOTWEAPON
 	+WEAPON.NOAUTOAIM
 	+WEAPON.NOAUTOFIRE
-	Scale 0.8
+	Scale 1.0
 	States
 	{
 	
@@ -524,8 +535,8 @@ ACTOR HitlersBuzzsaw : BrutalWeapon
 		TNT1 A 0 A_Refire
 		Goto Ready
 	Spawn:
-		HBUS D -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("BuzzsawSpawner")
 		Stop
 	}
 }
-

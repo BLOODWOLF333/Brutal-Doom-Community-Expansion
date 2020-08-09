@@ -4,8 +4,8 @@ ACTOR Rifle : BrutalWeapon
 	Weapon.AmmoGive1 0
 	Weapon.AmmoUse2 0
 	Weapon.AmmoGive2 0
-	YScale 0.6
-	XScale 0.8
+	YScale 0.8
+	XScale 0.9
 	Weapon.SelectionOrder 900
 	Weapon.AmmoType1 "Clip2"
 	Weapon.AmmoType2 "RifleAmmo"
@@ -18,7 +18,6 @@ ACTOR Rifle : BrutalWeapon
 	+WEAPON.NOALERT
 	+FORCEXYBILLBOARD
 	Tag "Assault Rifle"
-    Scale 0.8
 	States
 	{
 	TacticalWarning:
@@ -452,7 +451,8 @@ ACTOR Rifle : BrutalWeapon
 		
 		
  	Spawn:
-		RIFL A -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("RifleSpawner")
 		Stop
 		
 	DualWield:

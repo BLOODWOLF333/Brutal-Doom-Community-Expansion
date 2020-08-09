@@ -300,7 +300,8 @@ ACTOR DualMP40 : BrutalWeapon
 	
 	
 	Spawn:
-		MP40 I -1
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("MP40Spawner")
 		Stop
 		
 		
@@ -308,4 +309,13 @@ ACTOR DualMP40 : BrutalWeapon
 		TNT1 A 1
 		Goto Ready	
 	}
+}
+
+ACTOR DualMP40Ammo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 64
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 64
+   Inventory.Icon "MP40J0" 
 }
