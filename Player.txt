@@ -4733,14 +4733,8 @@ SFNZ C 8
 		TNT1 A 0 A_CustomMissile("ExecutionLeftWallDetect", 52, 0, 90, 2)
 		TNT1 A 0 A_Stop
 		PLAY AA 1
-		TNT1 A 0 A_JumpIfInventory("ExecuteStompWall", 1, "ExecuteImpWall")
 		PLAY A 0 A_JumpIfInventory("ExecuteBashWall", 1, "Punch")
 		TNT1 A 0 A_SpawnItemEx("ImpExecute1",16,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		Goto RifleKick
-		
-	ExecuteImpWall:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx("ImpExecute2",2,0,0,0,0,0, angle)
 		Goto RifleKick
 
 	ExecuteZombieman:
@@ -4751,14 +4745,14 @@ SFNZ C 8
 		NULL A 0 A_GiveInventory("BDWeaponACtion", 1)
 		NULL A 0 A_TakeInventory("ExecuteDownedZombieman", 1)
 		TNT1 A 0 A_CheckFloor("ZombiemanExecuteFloor")
-		TNT1 A 0 A_SpawnItemEx("ZombiemanExecute1",16,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx("ZombiemanExecute1",14,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		Goto RifleKick
 		
 	  ZombiemanExecuteFloor:
 		TNT1 A 0
 		TNT1 A 0 A_Stop
 		PLAY AA 1
-		TNT1 A 0 A_SpawnItemEx("ZombiemanExecute1",16,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx("ZombiemanExecute1",14,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		Goto RifleKick
 
 	ExecuteShotgunguy:
@@ -4769,14 +4763,14 @@ SFNZ C 8
 		NULL A 0 A_GiveInventory("BDWeaponACtion", 1)
 		NULL A 0 A_TakeInventory("ExecuteDownedShotgunguy", 1)
 		TNT1 A 0 A_CheckFloor("ShotgunguyExecuteFloor")
-		TNT1 A 0 A_SpawnItemEx("ShotgunguyExecute1",16,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx("ShotgunguyExecute1",14,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		Goto RifleKick
 		
 	  ShotgunguyExecuteFloor:
 		TNT1 A 0
 		TNT1 A 0 A_Stop
 		PLAY AA 1
-		TNT1 A 0 A_SpawnItemEx("ShotgunguyExecute1",16,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx("ShotgunguyExecute1",14,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		Goto RifleKick
 
       FatalityChecker:
