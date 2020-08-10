@@ -720,7 +720,7 @@ ACTOR ArtilleryTankGun : DoomWeapon
 		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 1, 1)
 		Goto NoAmmo
 		
-		TNT1 A 0 A_FireCustomMissile("Alerter")
+		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		TNLH H 1 BRIGHT A_FireCustomMissile("AutocannonFlash", 0, 0, -32, -16, 0, 0)
 		TNLH I 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", -0.2, 0, -32, -16, 0, 0.1)
 		TNT1 A 0 A_TakeInventory("HeavyMachinegunAmmo", 1)
@@ -730,7 +730,7 @@ ACTOR ArtilleryTankGun : DoomWeapon
 		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 1, 1)
 		Goto NoAmmo
 		
-		TNT1 A 0 A_FireCustomMissile("Alerter")
+		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		TNLH K 1 BRIGHT A_FireCustomMissile("AutocannonFlash", 0, 0, 32, -16, 0, 0)
 		TNLH L 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", 0.2, 0, 32, -16, 0, 0.1)
 		TNT1 A 0 A_TakeInventory("HeavyMachinegunAmmo", 1)
@@ -745,7 +745,7 @@ ACTOR ArtilleryTankGun : DoomWeapon
 		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 1, 1)
 		Goto NoAmmoZoom
 		
-		TNT1 A 0 A_FireCustomMissile("Alerter")
+		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		TNT1 H 1 BRIGHT A_FireCustomMissile("AutocannonFlash", 0, 0, -32, -16, 0, 0)
 		TNT1 I 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", -0.2, 0, -32, -16, 0, 0.1)
 		TNT1 A 0 A_TakeInventory("HeavyMachinegunAmmo", 1)
@@ -755,7 +755,7 @@ ACTOR ArtilleryTankGun : DoomWeapon
 		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 1, 1)
 		Goto NoAmmo
 		
-		TNT1 A 0 A_FireCustomMissile("Alerter")
+		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		TNT1 K 1 BRIGHT A_FireCustomMissile("AutocannonFlash", 0, 0, 32, -16, 0, 0)
 		TNT1 L 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", 0.2, 0, 32, -16, 0, 0.1)
 		TNT1 A 0 A_TakeInventory("HeavyMachinegunAmmo", 1)
@@ -772,7 +772,7 @@ ACTOR ArtilleryTankGun : DoomWeapon
 		Goto NoAmmo
 		TNT1 A 0 A_JumpIfInventory("DMgame",1,"AltFireDM")
 		
-		TNT1 A 0 A_FireCustomMissile("Alerter")
+		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		TNT1 A 0 A_FireCustomMissile("TankMissile", 0.5, 0, random(56,72), random(56,72), 0, -0.5)
 		TNLH G 15 BRIGHT
 		TNT1 A 0 A_FireCustomMissile("TankMissile", -0.5, 0, random(-72,-56), random(56,72), 0, -0.5)
@@ -782,7 +782,7 @@ ACTOR ArtilleryTankGun : DoomWeapon
 	
 	AltFireDM:
 		TNT1 A 0
-		TNT1 A 0 A_FireCustomMissile("Alerter")
+		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		TNT1 A 0 A_FireCustomMissile("TankMissileDM", 0.5, 0, random(56,72), random(56,72), 0, -0.5)
 		TNLH G 15 BRIGHT
 		TNT1 A 0 A_FireCustomMissile("TankMissileDM", -0.5, 0, random(-72,-56), random(56,72), 0, -0.5)
@@ -795,7 +795,7 @@ ACTOR ArtilleryTankGun : DoomWeapon
 		Goto NoAmmoZoom
 		TNT1 A 0 A_JumpIfInventory("DMgame",1,"AltFire2DM")
 		
-		TNT1 A 0 A_FireCustomMissile("Alerter")
+		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		TNT1 A 0 A_FireCustomMissile("TankMissile", 0.5, 0, random(56,72), random(56,72), 0, -0.5)
 		TNT1 A 15 BRIGHT
 		TNT1 A 0 A_FireCustomMissile("TankMissile", -0.5, 0, random(-72,-56), random(56,72), 0, -0.5)
@@ -805,7 +805,7 @@ ACTOR ArtilleryTankGun : DoomWeapon
 	
 	AltFire2DM:
 		TNT1 A 0
-		TNT1 A 0 A_FireCustomMissile("Alerter")
+		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		TNT1 A 0 A_FireCustomMissile("TankMissileDM", 0.5, 0, random(56,72), random(56,72), 0, -0.5)
 		TNT1 A 15 BRIGHT
 		TNT1 A 0 A_FireCustomMissile("TankMissileDM", -0.5, 0, random(-72,-56), random(56,72), 0, -0.5)

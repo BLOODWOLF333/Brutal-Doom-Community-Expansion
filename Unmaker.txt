@@ -163,7 +163,7 @@ ACTOR Unmaker : BrutalWeapon
 		UNHF ABCD 1
 		TNT1 A 0 A_ZoomFactor(0.97)
 	Hold:
-		TNT1 A 0 A_FireCustomMissile("Alerter")
+		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 	    UNHF E 1 BRIGHT A_SpawnItemEX("RedFlareSpawn",32,0,28)
 		UNHG A 0 A_PlaySOund("UNMLOP", 6, 1, 1)
 		UNHG A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 0, 0, 8192, 1, 32.0, 0, "UnmakerLaserTrail")

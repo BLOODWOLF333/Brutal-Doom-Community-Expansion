@@ -199,7 +199,7 @@ ACTOR AssaultShotgun : BrutalWeapon
 		RIFF A 0 A_FireCustomMissile("DistantFireSoundShotgun", random(-1,1), 0, 0, -12, 0, random(-1,1))
 		TNT1 AAAAAAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-12,12), 0, -1, 0, 0, random(-9,9))
 		TNT1 AAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles2", random(-12,12), 0, -1, 0, 0, random(-9,9))
-		TNT1 A 0 A_FireCustomMissile("Alerter")
+		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		A12G A 0 A_JumpIfInventory("Zoomed",1,"Fire2")
 		A12F A 1 BRIGHT A_AlertMonsters
 		TNT1 A 0 A_ZoomFactor(0.98)
@@ -227,7 +227,7 @@ ACTOR AssaultShotgun : BrutalWeapon
 		RIFF A 0 A_FireCustomMissile("DistantFireSoundShotgun", random(-1,1), 0, 0, -12, 0, random(-1,1))
 		TNT1 AAAAAAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-12,12), 0, -1, 0, 0, random(-9,9))
 		TNT1 AAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles2", random(-12,12), 0, -1, 0, 0, random(-9,9))
-		TNT1 A 0 A_FireCustomMissile("Alerter")
+		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		A12G A 0 A_JumpIfInventory("Zoomed",1,"Fire2")
 		A12F A 1 BRIGHT A_AlertMonsters
 		TNT1 A 0 A_ZoomFactor(0.98)

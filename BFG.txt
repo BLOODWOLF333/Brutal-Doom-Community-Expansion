@@ -149,7 +149,7 @@ ACTOR BIG_FUCKING_GUN : BrutalWeapon
         BFGN A 0 A_PlaySound("BFGFIRE")
         BFGN A 0 A_Recoil(8)
         
-        BFGN A 0 BRIGHT A_FireCustomMissile("Alerter")
+        BFGN A 0 BRIGHT A_FireCustomMissile("Alerter",0,0)
 		BFGN A 0 A_JumpIfInventory("DMgame", 1, 4)
 		BFGN A 0 BRIGHT A_FireCustomMissile("BFGBall")
 		BFGN A 0

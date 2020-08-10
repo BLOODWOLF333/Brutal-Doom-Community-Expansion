@@ -231,7 +231,7 @@ ACTOR Rocket_Launcher : BrutalWeapon
 		RLNG A 0 A_JumpIfInventory("DMgame",1,"DM")
 		RLNG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
         RLNG A 0 A_PlaySound ("DSRFIRE")
-		RLNG A 0 BRIGHT A_FireCustomMissile("Alerter")
+		RLNG A 0 BRIGHT A_FireCustomMissile("Alerter",0,0)
 		RLNF A 1 BRIGHT
 		TNT1 A 0 A_ZoomFactor(0.98)
 		RLNG A 0 A_FireCustomMissile("Rocket2", 0, 1, 0, -6)
@@ -272,7 +272,7 @@ ACTOR Rocket_Launcher : BrutalWeapon
 		RLNG A 0 A_JumpIfInventory("DMgame",1,"ZoomedFireDM")
 		RLNG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
         RLNG A 0 A_PlaySound ("DSRFIRE")
-		RLNG A 0 BRIGHT A_FireCustomMissile("Alerter")
+		RLNG A 0 BRIGHT A_FireCustomMissile("Alerter",0,0)
 		SNIP A 1 BRIGHT
 		TNT1 A 0 A_ZoomFactor(2.99)
 		RLNG A 0 A_FireCustomMissile("Rocket2", 0, 1, 0, -6)
