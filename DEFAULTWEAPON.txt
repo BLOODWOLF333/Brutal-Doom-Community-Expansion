@@ -45,16 +45,15 @@ ACTOR BrutalWeapon : DoomWeapon
 		  TNT1 A 1
 		  Goto GoingToReady
 		
-		
 	Tryuse:
 		TNT1 A 0
 		TNT1 A 0 A_TakeInventory("PressedUse", 100)
 		RIFF A 0 A_FireCustomMissile("UseAttack", 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("StealthAttack", 0, 0, 0, -17)
-		TNT1 A 1
 		TNT1 A 0 A_JumpIfInventory("FlashlightOn", 1, "WaitFlashlightOn")
-		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "Interrupt")
-		Goto Flash 
+		//TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "Interrupt")
+		TNT1 A 1
+		Goto Flash
 		
 	Interrupt:	
 		TNT1 A 0
@@ -67,21 +66,21 @@ ACTOR BrutalWeapon : DoomWeapon
 	WaitFlashlightOn:	
 		TNT1 A 0
 		TNT1 A 0 A_TakeInventory("PRessedUse", 1)
-		TNT1 A 1
 		RIFF A 0 A_FireCustomMissile("FlashlightAlerter", 0, 0, 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
-		TNT1 A 1
+		TNT1 A 1 BRIGHT
 		RIFF A 0 A_FireCustomMissile("FlashlightAlerter", 0, 0, 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
-		TNT1 A 1
+		TNT1 A 1 BRIGHT
 		RIFF A 0 A_FireCustomMissile("FlashlightAlerter", 0, 0, 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
+		TNT1 A 1 BRIGHT
 		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "WaitFlashlightOn")
 		Goto Flash	
 		
@@ -96,28 +95,29 @@ ACTOR BrutalWeapon : DoomWeapon
 		Goto Flash
 	
 	FlashOn:
-	    TNT1 A 1 BRIGHT
-		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "TryUse")
+	    TNT1 A 0
 		RIFF A 0 A_FireCustomMissile("FlashlightAlerter", 0, 0, 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
-		
 		TNT1 A 1 BRIGHT
+		
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
-		
 		TNT1 A 1 BRIGHT
-		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
-		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
-		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "TryUse")
-		TNT1 A 1 BRIGHT
+		
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
+		TNT1 A 1 BRIGHT
 		
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
+		TNT1 A 1 BRIGHT
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "TryUse")
 		TNT1 A 0 A_TakeInventory("UsedStamina", 1)
 		Goto Flash
 		
@@ -720,7 +720,7 @@ ACTOR FlashlightProjectile: FastProjectile
 	States
 	{
 	Spawn:
-        TNT1 A 3
+        TNT1 A 2
 		Stop
 
     Death:
@@ -744,12 +744,12 @@ ACTOR FlashlightAlerter: FastProjectile
 	-ACTIVATEIMPACT
 	-ACTIVATEPCROSS
 	+CLIENTSIDEONLY
-	+NONETID
+	//+NONETID
 	+PAINLESS
 	States
 	{
 	Spawn:
-        TNT1 A 3
+        TNT1 A 2
 		Stop
 
     Death:

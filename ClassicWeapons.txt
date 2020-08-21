@@ -14,7 +14,6 @@ ACTOR ClassicWeapon : Weapon
 		  TNT1 A 0 A_TakeInventory("TossGrenade",1)
 		  TNT1 A 0 A_TakeInventory("IsRunning",1)
 		  TNT1 A 0 A_TakeInventory("Reloading",1)
-		  TNT1 A 0 A_SetCrosshair(0)
 		  TNT1 A 2 A_Jump(256,"Ready3")
 		  Loop
 		
@@ -47,9 +46,39 @@ ACTOR ClassicWeapon : Weapon
 		TNT1 A 0 A_TakeInventory("PressedUse", 100)
 		RIFF A 0 A_FireCustomMissile("UseAttack", 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("StealthAttack", 0, 0, 0, -17)
+		TNT1 A 0 A_JumpIfInventory("FlashlightOn", 1, "WaitFlashlightOn")
+		//TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "Interrupt")
 		TNT1 A 1
-		Goto Flash 
-	
+		Goto Flash
+		
+	Interrupt:	
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("PRessedUse", 1)
+		TNT1 A 10
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "Interrupt")
+		Goto Flash
+		
+	WaitFlashlightOn:	
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("PRessedUse", 1)
+		RIFF A 0 A_FireCustomMissile("FlashlightAlerter", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
+		TNT1 A 1 BRIGHT
+		RIFF A 0 A_FireCustomMissile("FlashlightAlerter", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
+		TNT1 A 1 BRIGHT
+		RIFF A 0 A_FireCustomMissile("FlashlightAlerter", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
+		TNT1 A 1 BRIGHT
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "WaitFlashlightOn")
+		Goto Flash	
+		
 	Flash:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("SwitchFlashlight",1,"SwitchFlashlight")
@@ -57,38 +86,35 @@ ACTOR ClassicWeapon : Weapon
 		TNT1 A 1
 		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "TryUse")
 		TNT1 A 1
+		TNT1 A 0 A_TakeInventory("UsedStamina", 1)
 		Goto Flash
 	
 	FlashOn:
+	    TNT1 A 0
+		RIFF A 0 A_FireCustomMissile("FlashlightAlerter", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
+		TNT1 A 1 BRIGHT
+		
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
 		TNT1 A 1 BRIGHT
 		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "TryUse")
-		TNT1 A 0 A_SpawnItemEx("FlashlightSource", 32, 8, 30)
+		
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
-		
 		TNT1 A 1 BRIGHT
-		TNT1 A 0 A_SpawnItemEx("FlashlightSource", 32, 8, 30)
+		
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
-		
 		TNT1 A 1 BRIGHT
-		TNT1 A 0 A_SpawnItemEx("FlashlightSource", 32, 8, 30)
-		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
-		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
-		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
-		
-		TNT1 A 1 BRIGHT
-		TNT1 A 0 A_SpawnItemEx("FlashlightSource", 32, 8, 30)
-		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
-		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
-		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
-		
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "TryUse")
 		TNT1 A 0 A_TakeInventory("UsedStamina", 1)
-		
 		Goto Flash
-		
 		
 	SwitchFlashlight:
 		TNT1 A 0
@@ -96,8 +122,8 @@ ACTOR ClassicWeapon : Weapon
 		TNT1 A 0 A_JumpIfInventory("FlashlightOn",1,"TurnFlashOff")
 		TNT1 A 0 A_Giveinventory("FlashlightOn",1)
 		TNT1 A 0 A_PlaySound("FLASHON", 5)
-		
         Goto Flash
+		
 	TurnFlashOff:
 		TNT1 A 0 A_Takeinventory("FlashlightOn",1)
 		TNT1 A 0 A_Light0
