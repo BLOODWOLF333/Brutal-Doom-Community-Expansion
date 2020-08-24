@@ -9,11 +9,15 @@
 //	ClassicWeapons.txt:				Reordered the flashlight states to prevent flickering when pressing use
 //									Notated out the TNT1 A 2 line to prevent blinking with no grenades
 //	CVARS.txt:						Turned the marine spawns into switch statements in the BDInitialize script
-//	DEFAULTWEAPON.txt:				Added FlashLightProjectile flags to FlashLightAlerter
+//	DEFAULTWEAPON.txt:				Added FlashLightProjectile flags to FlashLightAlerter and removed +CLIENTSIDEONLY
 //									Reordered the flashlight states to prevent flickering when pressing use
 //									Notated out the TNT1 A 2 line to prevent blinking with no grenades
+//	DualPlasma.txt:					Added A_Refire to ReloadingSequence state
 //	Mancubus.txt:					Changed Mancubus drop to GasSpawner (for purist mode)
-//	
+//	MP40.txt:						Removed A_WeaponReady from Reload state
+//	Plasma.txt:						Changed check in NoAmmo from AmmoCell to PlasmaAmmo
+//	RocketLauncher.txt:				Removed A_WeaponReady from Reload state
+//
 //	Stable v0.3.0
 //
 //	DEFAULTWEAPON.txt:				Added +PAINLESS flag to flashlightprojectile
@@ -264,7 +268,7 @@
 //	Revolver2.txt:					Set Weapon.AmmoGive to 0
 //	Saw.txt:						Added TNT1 A 0 A_TakeInventory("Reloading", 1) to Deselect state
 //	ShotgunMarine.txt:				Changed to DropItem "ShotgunSpawnerDroped" like the ShotgunGuy
-//	SSG.txt:						Added A_TakeInventory("SSGAlt",1) to FinishUnload state 
+//	SSG.txt:						Added A_TakeInventory("SSGAlt",1) to FinishUnload state
 //	SubMachinegun.txt:				Fixed PickupMessage
 //	Unmaker.txt:					Added TNT1 A 0 A_TakeInventory("Reloading", 1) to Deselect state
 //	WeaponSpawners.txt:				Fixed Pickupmessages
@@ -284,8 +288,8 @@
 //	Axe.txt:						Added A_Setcrosshair(41) to Select and A_Setcrosshair(0) to Deselect states
 //									Added TNT1 A 0 A_TakeInventory("Unloading", 1) to Deselect state
 //	Baron.txt:						Removed the Translation property from the DeadBaron actor
-//									Changed A_SetInvulnerable to A_ChangeFlag("NOPAIN") for monster fatalities 
-//	Belphegor.txt:					Changed A_SetInvulnerable to A_ChangeFlag("NOPAIN") for monster fatalities 
+//									Changed A_SetInvulnerable to A_ChangeFlag("NOPAIN") for monster fatalities
+//	Belphegor.txt:					Changed A_SetInvulnerable to A_ChangeFlag("NOPAIN") for monster fatalities
 //	BFG.txt:						Added TNT1 A 0 A_TakeInventory("Unloading", 1) to Deselect state
 //	BFG10K.txt:						Added TNT1 A 0 A_TakeInventory("Unloading", 1) to Deselect state
 //	+CapturedMarine.txt:			Set health to 100, Normalized the DamageFactors, set DamageFactor "Use", to 1000.0, and set DamageFactor "Stealth", to 0.0
@@ -304,7 +308,7 @@
 //	Grenades.txt:					Added TNT1 A 0 A_TakeInventory("Unloading", 1) to Deselect state
 //	Health2.txt:					Reverted the conditional flare spawns when out of the player's sight
 //	HellishMissile.txt:				Added TNT1 A 0 A_TakeInventory("Unloading", 1) to Deselect state
-//	Knight.txt:						Changed A_SetInvulnerable to A_ChangeFlag("NOPAIN") for monster fatalities 
+//	Knight.txt:						Changed A_SetInvulnerable to A_ChangeFlag("NOPAIN") for monster fatalities
 //	Lamps.txt:						Reverted the conditional flare spawns when out of the player's sight
 //	Machinegun.txt:					Added lines to check for AmmoRocket first before allowing a jump to ReloadGrenade in the Reload state
 //									Added TNT1 A 0 A_TakeInventory("Unloading", 1) to Deselect state
@@ -316,7 +320,7 @@
 //									Added TNT1 A 0 A_TakeInventory("Unloading", 1) to HitlersBuzzsaw Deselect state
 //	NukeLauncher.txt:				Added TNT1 A 0 A_TakeInventory("Unloading", 1) to Deselect state
 //	Railgun.txt:					Added A_Setcrosshair(41) Altfire and A_SetCrosshair(0) to all states that reset zoom to 1.0
-//	Revenant.txt:					Notated-out the A_ChangeFlag("Shootable") for monster fatalities 
+//	Revenant.txt:					Notated-out the A_ChangeFlag("Shootable") for monster fatalities
 //	Rifle.txt:						Added A_Setcrosshair(41) Altfire and A_SetCrosshair(0) to all states that reset zoom to 1.0
 //	RocketLauncher.txt:				Added A_Setcrosshair(41) Altfire and A_SetCrosshair(0) to all states that reset zoom to 1.0
 //									Added a GoTaunt state like the Railgun so that PowerLightAmp will be removed if jumping to Taunt from a zoomed state.

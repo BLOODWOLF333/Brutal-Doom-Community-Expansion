@@ -16,52 +16,41 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 	Inventory.PickupMessage "You got dual plasma rifles! (Slot 2)"
 	States
 	{
-	
-	PuristGun:
-		TNT1 A 1
-		DUPL A 0 A_GiveInventory("ClassicPlasmaRifle", 1)
-		DUPL A 0 A_TakeInventory("Plasma_Gun", 1)
-		DUPL A 0 A_TakeInventory("DualPlasmaRifles", 1)
-		
-		TNT1 A 10
-		Goto Ready	
-		
-	Ready3:
 	Ready:
-        DUPL A 1 A_WeaponReady(WRF_ALLOWRELOAD)
-		DUPL A 0 A_JumpIfInventory("Unloading",1,"Unload")
+	Ready3:
         DUPL A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         DUPL A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		DUPL A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		DUPL A 0 A_JumpIfInventory("Salute2", 1, "Salute")
         DUPL A 0 A_JumpIfInventory("Reloading",1,"Reload")
 		DUPL A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		DUPL A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+		DUPL A 0 A_JumpIfInventory("Unloading",1,"Unload")
 		DUPL A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		DUPL A 0 A_JumpIfInventory("StartDualWield",1,"DualWield")
-		
 		Loop
-		
+
 	DualWield:
 		DUPL A 1
 		DUPL A 0 A_Takeinventory("StartDualWield",1)
 		DUPL A 0 A_SelectWEapon("Plasma_Gun")
-		Goto Ready	
-		
+		Goto Ready
+
 	CheckSprint:
 		DUPL A 1 A_WeaponReady(WRF_NOFIRE)
 		DUPL A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		DUPL A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
 		Goto Ready
-		
+
 	StartSprint:
 		DUPL A 1 A_WeaponReady(WRF_NOFIRE)
 		DUPL A 0 A_Takeinventory("Zoomed",1)
 		DUPL A 0 A_Takeinventory("ADSmode",1)
 		DUPL A 0 A_ZoomFactor(1.0)
 		DUPL A 0 A_JumpIfInventory("UsedStamina", 40, "StopSprintTired")
-		
-	Sprinting:	
-		DUPL A 0 offset(-9,32) 
+
+	Sprinting:
+		DUPL A 0 offset(-9,32)
 		DUPL A 0 offset(-9,32) A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		DUPL A 0 offset(-9,32) A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
 		PLAY A 0 offset(-9,32) ACS_ExecuteAlways(852, 0, 0, 0, 0)//Makes player faster.
@@ -91,7 +80,7 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 		DUPL A 0 offset(-9,32) A_WeaponReady(WRF_NOBOB)
 		DUPL A 0 offset(-9,32) A_JumpIfInventory("IsRunning", 1, "Sprinting")
 		Goto StopSprint
-		
+
 	StopSprintTired:
 		DUPL A 1
 		PLAY A 0 ACS_ExecuteAlways(853, 0, 0, 0, 0)//Makes player slower.
@@ -111,8 +100,8 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 		DUPL A 1
 		DUPL A 0 A_JumpIfInventory("UsedStamina", 60, "StopSprintTired")
 		PLAY A 0 ACS_ExecuteAlways(853, 0, 0, 0, 0)//Makes player slower.
-		Goto Ready	
-		
+		Goto Ready
+
 	Deselect:
 		DUPL A 0 A_Takeinventory("Reloading",1)
 		DUPL A 0 A_Takeinventory("HasPlasmaWeapon",1)
@@ -125,7 +114,7 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 		TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1 A_Lower
 		Wait
-		
+
 	Select:
 		DUPL A 0
 	    DUPL A 0 A_Giveinventory("HasPlasmaWeapon",1)
@@ -149,7 +138,6 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 		TNT1 A 1 A_Raise
 		TNT1 AAAAAA 0 A_Raise
 		DUPL A 0 A_GunFlash
-	    DUPL A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "PuristGun")
 		DUPL A 0 A_PlaySound("PLSDRAW")
 		SelectAnimation:
         DUPL A 1 Offset(0, 50)
@@ -160,7 +148,7 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 		DUPL A 0 A_Takeinventory("StartDualWield",1)
 		DUPL A 0 A_GunFlash
 		Goto Ready
-		
+
 	Fire:
 		DUPL A 0
         DUPL A 0 A_JumpIfInventory("Reloading",1,"Reload")
@@ -176,7 +164,7 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 		DUPL A 0 A_Takeinventory("DoublePlasmaAmmo",1)
 		TNT1 A 0 A_SetPitch(-0.2 + pitch)
 		DUPL C 0
-		
+
 	FireLeft:
 		DUPL A 0 A_JumpIfInventory("Reloading",1,"Reload")
         DUPL A 0 A_JumpIfInventory("DoublePlasmaAmmo",1,1)
@@ -192,15 +180,15 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 		DUPL C 2
 		DUPL A 0 A_Refire("Fire")
 		Goto Ready
-		
-	FireDM:	
-		DUPL A 0 
+
+	FireDM:
+		DUPL A 0
 		DUPL B 1 BRIGHT A_FireCustomMissile("PlasmaBallDM", frandom(-1.6, 1.6), 1, 8, -5, 0, frandom(-1.2, 1.2))
 		DUPL A 0 A_ZoomFactor(0.99)
 		DUPL A 0 A_Takeinventory("PlasmaAmmo",1)
 		DUPL A 0 A_Takeinventory("DoublePlasmaAmmo",1)
 		TNT1 A 0 A_SetPitch(-0.2 + pitch)
-		
+
 		DUPL A 0 A_JumpIfInventory("Reloading",1,"Reload")
         DUPL A 0 A_JumpIfInventory("DoublePlasmaAmmo",1,2)
         Goto NoAmmo
@@ -224,7 +212,6 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 		Stop
 
     Reload:
-
 		DUPL A 0 A_Takeinventory("Reloading",1)
 		DUPL A 0
 		DUPL A 0 A_JumpIfInventory("AmmoCell",1,1)
@@ -239,9 +226,7 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 		DUPL A 1 Offset(0, 42)
 		DUPL A 1 Offset(0, 50)
 		DUPL A 0 Offset(0, 32)
-		
-		
-		
+
 		TNT1 A 5
 		PLSR B 1
 		DUPL A 0 A_PlaySound("PLREADY", 1)
@@ -258,16 +243,13 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 		DUPL A 0 A_TakeInventory("FiredPrimary", 1)
 		DUPL A 0 A_TakeInventory("FiredSecondary", 1)
 		TNT1 A 5
-		
-		
+
 		DUPL A 1 Offset(0, 50)
 		DUPL A 1 Offset(0, 42)
 		DUPL A 1 Offset(0, 38)
 		DUPL A 1 Offset(0, 34)
 		DUPL A 0 Offset(0, 32)
-		
-		
-		
+
 		ReloadingSequence:
 		TNT1 AAAAAAAAAA 0
 		DUPL A 0 A_JumpIfInventory("DoublePlasmaAmmo",100,15)
@@ -279,22 +261,18 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 		DUPL A 0 A_Takeinventory("AmmoCell",1)
 		Goto ReloadingSequence
 		TNT1 AAAAAAAA 0
-		
+		TNT1 A 0 A_Refire
 		DUPL A 1 A_Takeinventory("Reloading",1)
         Goto Ready
-		
-		
-		
+
 	TurboReload:
 		DUPL A 0 A_Takeinventory("Unloading",1)
 		DUPL A 0 A_JumpIfInventory("AmmoCell",1,3)
 		Goto Ready
-		DUPL AAA 0 
+		DUPL AAA 0
 		Goto ReloadingSequence
-		
-		
-	Unload:
 
+	Unload:
 		DUPL A 0 A_Takeinventory("Unloading",1)
 		DUPL A 0 A_JumpIfInventory("DoublePlasmaAmmo",1,7)
 		Goto Ready
@@ -306,7 +284,7 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 		P2SR AB 1
 		P2SR CDJJJJJJ 1
 		P2SR IHGFDECBA 2
-		
+
 	UnloadingSequence:
 		DUPL A 0
 		DUPL A 0 A_Takeinventory("Unloading",1)
@@ -316,8 +294,8 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 		DUPL A 0 A_Takeinventory("PlasmaAmmo",1)
 		DUPL A 0 A_Takeinventory("DoublePlasmaAmmo",1)
 		DUPL A 0 A_Giveinventory("AmmoCell",1)
-		Goto UnloadingSequence	
-		
+		Goto UnloadingSequence
+
 	NoAmmo:
 		RIFG A 0
 		RIFG A 0 A_ZoomFactor(1.0)
@@ -339,7 +317,7 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 		TNT1 A 0 A_JumpIfInventory("NoAutoReload", 1, "NoAmmo2")
 		RIFG A 0 A_JumpIfInventory("AmmoCell",1,"Reload")
 		RIFG A 0 A_JumpIfInventory("FiredPrimary",1,"NoAmmo2")
-		Goto Ready3	
+		Goto Ready3
 	}
 }
 
