@@ -13,6 +13,7 @@ ACTOR Plasma_Gun : BrutalWeapon
 	Tag "Plasma Rifle"
 	Inventory.PickupMessage "$GOTPLASMA"
 	Scale 0.9
+	DropItem "PLasmagunSpawner"
 	States
 	{
 
@@ -373,8 +374,7 @@ AltHold:
 
 
 	Spawn:
-		TNT1 A 0
-		TNT1 A 1 A_SpawnItem("PLasmagunSpawner")
+		PLAS A -1
 		Stop
 
 	NoAmmo:

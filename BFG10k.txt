@@ -18,13 +18,13 @@ Actor BFG10k : BrutalWeapon
 	+WEAPON.NO_AUTO_SWITCH
 	YScale 0.7
 	XScale 0.9
+	DropItem "BFG10KSpawner"
   States
   {
 	Spawn:
-		TNT1 A 0
-		TNT1 A 1 A_SpawnItem("BFG10KSpawner")
+		BFG2 A -1
 		Stop
-	
+
 	Ready:
 	Ready3:
 	SteadY:
@@ -94,20 +94,20 @@ Actor BFG10k : BrutalWeapon
 	BG2G A 0 A_Takeinventory("FlameCannonSelected",1)
 	BG2G A 0 A_Takeinventory("HasBarrel",1)
 
- SelectAnimation:	
+ SelectAnimation:
     BG2G EEEEEE 1 BRIGHT A_Raise
 	BG2G A 0 A_GunFlash
 	BG2G A 0 A_PlaySound("BFGREADY", 3)
-	BG2G E 1 BRIGHT 
+	BG2G E 1 BRIGHT
     Goto Ready
-	
+
   Fire:
 	BG2G A 0 A_JumpIfInventory("AmmoCell",5,1)
 	Goto Ready
     BG2G E 20 BRIGHT A_PlaySound("10KSTART", 4)
     BG2G FGHIJ 2 BRIGHT
     Goto Hold
-	
+
   Hold:
 	BG2G A 0 A_JumpIfInventory("AmmoCell",5,1)
 	Goto Ready
@@ -139,19 +139,19 @@ Actor BFG10k : BrutalWeapon
     BG2G N 0 A_ReFire
     BG2G O 35 A_PlaySound("10KSTOP", 4)
     Goto Ready
-	
+
  CheckSprint:
 		BG2G ABCD 3 BRIGHT A_WeaponReady(WRF_NOFIRE)
 		BG2G A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		BG2G A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
 		Goto Ready3
-		
+
 	StartSprint:
 		BG2G A 1 BRIGHT A_WeaponReady(WRF_NOFIRE)
 		BG2G A 0 A_JumpIfInventory("UsedStamina", 40, "StopSprintTired")
-		
-	Sprinting:	
-		BG2G A 0 offset(-9,32) 
+
+	Sprinting:
+		BG2G A 0 offset(-9,32)
 		BG2G A 0 offset(-9,32) A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		BG2G A 0 offset(-9,32) A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
 		PLAY A 0 offset(-9,32) ACS_ExecuteAlways(852, 0, 0, 0, 0)//Makes player faster.
@@ -181,9 +181,9 @@ Actor BFG10k : BrutalWeapon
 		BG2G A 0 offset(-9,32) A_WeaponReady(WRF_NOBOB)
 		BG2G A 0 offset(-9,32) A_JumpIfInventory("IsRunning", 1, "Sprinting")
 		Goto StopSprint
-		
+
 	StopSprintTired:
-		BG2G A 1 BRIGHT 
+		BG2G A 1 BRIGHT
 		PLAY A 0 ACS_ExecuteAlways(853, 0, 0, 0, 0)//Makes player slower.
 		BG2G A 0 A_PlaySound("Tired", 2)
 		BG2G A 0 A_TakeInventory("UsedStamina", 2)
@@ -197,12 +197,12 @@ Actor BFG10k : BrutalWeapon
 		BG2G A 0 A_TakeInventory("UsedStamina", 2)
 		BG2G A 5 BRIGHT A_WeaponReady
 		Goto Ready
-		
+
 	StopSprint:
-		BG2G A 1 BRIGHT 
+		BG2G A 1 BRIGHT
 		BG2G A 0 A_JumpIfInventory("UsedStamina", 60, "StopSprintTired")
 		PLAY A 0 ACS_ExecuteAlways(853, 0, 0, 0, 0)//Makes player slower.
-		Goto Ready	
+		Goto Ready
   }
 }
 
@@ -271,7 +271,7 @@ ACTOR GreenExplosionFire
 	Radius 1
 	Height 1
 	Speed 3
-	Damage 0 
+	Damage 0
     +NOBLOCKMAP
     +NOTELEPORT
     +DONTSPLASH

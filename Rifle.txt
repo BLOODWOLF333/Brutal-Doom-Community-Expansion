@@ -18,6 +18,7 @@ ACTOR Rifle : BrutalWeapon
 	+WEAPON.NOALERT
 	+FORCEXYBILLBOARD
 	Tag "Assault Rifle"
+	DropItem "RifleSpawner"
 	States
 	{
 	TacticalWarning:
@@ -451,8 +452,7 @@ ACTOR Rifle : BrutalWeapon
 
 
  	Spawn:
-		TNT1 A 0
-		TNT1 A 1 A_SpawnItem("RifleSpawner")
+		RIFL A -1
 		Stop
 
 	DualWield:
