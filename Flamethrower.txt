@@ -13,9 +13,10 @@ ACTOR Flamethrower2 : BrutalWeapon
 	+WEAPON.NO_AUTO_SWITCH
 	Inventory.PickupMessage "You got the Flamethrower (Slot 9)"
 	Tag "Flamethrower"
+	DropItem "FlameThrowerSpawner"
 	States
 	{
-	
+
 	Ready:
 	Ready3:
 	Reload:
@@ -28,19 +29,19 @@ ACTOR Flamethrower2 : BrutalWeapon
 		FLMT A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		FLMT A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		Goto Ready3
-		
+
 	CheckSprint:
 		FLMT ABC 1 BRIGHT A_WeaponReady(WRF_NOFIRE)
 		FLMT A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		FLMT A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
 		Goto Ready
-		
+
 	StartSprint:
 		FLMT A 1 BRIGHT A_WeaponReady(WRF_NOFIRE)
 		FLMT A 0 A_JumpIfInventory("UsedStamina", 40, "StopSprintTired")
-		
-	Sprinting:	
-		FLMT A 0 offset(-9,32) 
+
+	Sprinting:
+		FLMT A 0 offset(-9,32)
 		FLMT A 0 offset(-9,32) A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		FLMT A 0 offset(-9,32) A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
 		PLAY A 0 offset(-9,32) ACS_ExecuteAlways(852, 0, 0, 0, 0)//Makes player faster.
@@ -70,9 +71,9 @@ ACTOR Flamethrower2 : BrutalWeapon
 		FLMT A 0 offset(-9,32) A_WeaponReady(WRF_NOBOB)
 		FLMT A 0 offset(-9,32) A_JumpIfInventory("IsRunning", 1, "Sprinting")
 		Goto StopSprint
-		
+
 	StopSprintTired:
-		FLMT A 1 BRIGHT 
+		FLMT A 1 BRIGHT
 		PLAY A 0 ACS_ExecuteAlways(853, 0, 0, 0, 0)//Makes player slower.
 		FLMT A 0 A_PlaySound("Tired", 2)
 		FLMT A 0 A_TakeInventory("UsedStamina", 2)
@@ -87,16 +88,16 @@ ACTOR Flamethrower2 : BrutalWeapon
 		FLMT ABCAC 1 BRIGHT A_WeaponReady
 		Goto Ready
 	StopSprint:
-		FLMT A 1 BRIGHT 
+		FLMT A 1 BRIGHT
 		FLMT A 0 A_JumpIfInventory("UsedStamina", 60, "StopSprintTired")
 		PLAY A 0 ACS_ExecuteAlways(853, 0, 0, 0, 0)//Makes player slower.
 		Goto Ready
-		
+
 	DryFire:
-	    FLMT ABCAC 1 BRIGHT 
+	    FLMT ABCAC 1 BRIGHT
 		FLMT A 0 A_PlaySound("weapons/empty")
 		Goto Ready+6
-	
+
 	Deselect:
 	    FLMT A 0 A_StopSound(CHAN_WEAPON)
 		FLMT A 0 A_TakeInventory("TossGrenade", 1)
@@ -125,36 +126,35 @@ ACTOR Flamethrower2 : BrutalWeapon
 		FLMT A 0 A_Takeinventory("HasBarrel",1)
 		FLMT A 0 A_TakeInventory("TossGrenade", 1)
 		FLMT AAA 1 BRIGHT A_Raise
-		
+
 		FLMT A 0 A_PlaySound("BFGREADY")
         TNT1 AAA 0
 		TNT1 AAAAAAAAA 0 A_Raise
 		Goto SelectAnimation
-		
+
 	SelectAnimation:
 		TNT1 A 1
 		FLMT A 0 A_GunFlash
 		Goto Ready
-		
+
     Spawn:
-        TNT1 A 0
-		TNT1 A 1 A_SpawnItem("FlameThrowerSpawner")
+        FLMT F -1
         Stop
-		
+
    Fire:
         FLMT A 0
 		FLMT A 0 A_JumpIf(waterlevel > 1, "DryFire")
         FLMT A 0 A_JumpIfInventory("Gas", 5, "Flamethrower")
 		FLMT A 0 A_StopSound(CHAN_WEAPON)
 		Goto DryFire
-		
+
 	Flamethrower:
 		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
         FLMT A 0 BRIGHT A_FireCustomMissile("FlamethrowerMissile", 0, 1, 0, -12, 0, 8)
 		FLMT A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		FLMT A 0 A_PlaySound("FLAMER", CHAN_WEAPON, 1, 1)
 		FLMT A 0 A_TakeInventory("Gas", 5)
-		
+
 		FLMT A 0 A_JumpIfInventory("Gas", 4, 2)
 		FLMT A 0 A_StopSound(CHAN_WEAPON)
 		Goto DryFire
@@ -163,7 +163,7 @@ ACTOR Flamethrower2 : BrutalWeapon
 		FLMT A 0 A_PlaySound("FLAMER", CHAN_WEAPON, 1, 1)
 		FLMT A 0 A_TakeInventory("Gas", 4)
 		FLMT DE 1 BRIGHT
-		
+
 		FLMT A 0 A_JumpIfInventory("Gas", 6, 2)
 		FLMT A 0 A_StopSound(CHAN_WEAPON)
 		Goto DryFire
@@ -172,7 +172,7 @@ ACTOR Flamethrower2 : BrutalWeapon
 		FLMT A 0 A_PlaySound("FLAMER", CHAN_WEAPON, 1, 1)
 		FLMT A 0 A_TakeInventory("Gas", 6)
 		FLMT DE 1 BRIGHT
-		
+
 		FLMT A 0 A_JumpIfInventory("Gas", 5, 2)
 		FLMT A 0 A_StopSound(CHAN_WEAPON)
 		Goto DryFire
@@ -181,7 +181,7 @@ ACTOR Flamethrower2 : BrutalWeapon
 		FLMT A 0 A_PlaySound("FLAMER", CHAN_WEAPON, 1, 1)
 		FLMT A 0 A_TakeInventory("Gas", 5)
 		FLMT DE 1 BRIGHT
-		
+
 		FLMT A 0 A_JumpIfInventory("Gas", 5, 2)
 		FLMT A 0 A_StopSound(CHAN_WEAPON)
 		Goto DryFire
@@ -189,7 +189,7 @@ ACTOR Flamethrower2 : BrutalWeapon
 		FLMT A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		FLMT A 0 A_PlaySound("FLAMER", CHAN_WEAPON, 1, 1)
 		FLMT A 0 A_TakeInventory("Gas", 5)
-		
+
 		FLMT A 0 A_JumpIfInventory("Gas", 6, 2)
 		FLMT A 0 A_StopSound(CHAN_WEAPON)
 		Goto DryFire
@@ -198,7 +198,7 @@ ACTOR Flamethrower2 : BrutalWeapon
 		FLMT A 0 A_PlaySound("FLAMER", CHAN_WEAPON, 1, 1)
 		FLMT A 0 A_TakeInventory("Gas", 6)
 		FLMT DE 1 BRIGHT
-		
+
 		FLMT A 0 A_JumpIfInventory("Gas", 4, 2)
 		FLMT A 0 A_StopSound(CHAN_WEAPON)
 		Goto DryFire
@@ -207,7 +207,7 @@ ACTOR Flamethrower2 : BrutalWeapon
 		FLMT A 0 A_PlaySound("FLAMER", CHAN_WEAPON, 1, 1)
 		FLMT A 0 A_TakeInventory("Gas", 4)
 		FLMT DE 1 BRIGHT
-		
+
 		FLMT A 0 A_JumpIfInventory("Gas", 5, 2)
 		FLMT A 0 A_StopSound(CHAN_WEAPON)
 		Goto DryFire

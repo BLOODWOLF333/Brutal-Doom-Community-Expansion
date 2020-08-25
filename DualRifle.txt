@@ -4,8 +4,8 @@ ACTOR DualRifles : BrutalWeapon
 	Weapon.AmmoGive1 0
 	Weapon.AmmoUse2 0
 	Weapon.AmmoGive2 0
-	YScale 0.6
-	XScale 0.8
+	YScale 0.8
+	XScale 0.9
 	Weapon.SelectionOrder 900
 	Weapon.AmmoType1 "Clip2"
 	Weapon.AmmoType2 "dOUBLERifleAmmo"
@@ -18,7 +18,7 @@ ACTOR DualRifles : BrutalWeapon
 	+WEAPON.NO_AUTO_SWITCH
 	+FORCEXYBILLBOARD
 	Tag "Dual Rifles"
-    Scale 0.8
+	DropItem "RifleSpawner"
 	States
 	{
 
@@ -381,8 +381,7 @@ ACTOR DualRifles : BrutalWeapon
 		Goto Ready
 
  	Spawn:
-		TNT1 A 0
-		TNT1 A 1 A_SpawnItem("RifleSpawner")
+		RIFL A -1
 		Stop
 	}
 }

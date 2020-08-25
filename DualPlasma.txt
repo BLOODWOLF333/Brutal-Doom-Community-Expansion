@@ -14,6 +14,8 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 	+FORCEXYBILLBOARD
 	Tag "Dual Plasma Rifles"
 	Inventory.PickupMessage "You got dual plasma rifles! (Slot 2)"
+	DropItem "PLasmagunSpawner"
+	scale 0.9
 	States
 	{
 	Ready:
@@ -207,8 +209,7 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 
 
 	Spawn:
-		TNT1 A 0
-		TNT1 A 1 A_SpawnItem("PLasmagunSpawner")
+		PLAS A -1
 		Stop
 
     Reload:

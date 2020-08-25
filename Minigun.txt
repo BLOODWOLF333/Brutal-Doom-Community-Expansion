@@ -14,14 +14,14 @@ ACTOR MiniGun : BrutalWeapon
 	Obituary "%o was mowed down by %k's Minigun."
 	AttackSound "none"
 	Scale 0.9
+	DropItem "ChaingunSpawner"
 	States
 	{
 	Spawn:
-		TNT1 A 0
-		TNT1 A 1 A_SpawnItem("ChaingunSpawner")
+		MGUN A -1
 		Stop
 
-	Ready: 
+	Ready:
 	Ready3:
 		CHAG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 
@@ -51,17 +51,17 @@ ACTOR MiniGun : BrutalWeapon
 		CHAG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		CHAG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		CHAG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint2")
-		CHAG ABCD 1 A_WeaponReady 
+		CHAG ABCD 1 A_WeaponReady
 		CHAG A 0 A_AlertMonsters
 		CHAG A 0 A_PlaySound("CHAINSPI", 5)
 		Loop
-		  
+
 	CheckSprint:
 		CHAG A 1 A_WeaponReady(WRF_NOFIRE)
 		CHAG A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		CHAG A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
 		Goto Ready
-		
+
 	CheckSprint2:
 		CHAG ABCD 1 A_WeaponReady(WRF_NOFIRE)
 		CHAG A 0 A_AlertMonsters
@@ -69,21 +69,21 @@ ACTOR MiniGun : BrutalWeapon
 		CHAG A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready2")
 		CHAG A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint2")
 		Goto Ready2
-		
+
 	StartSprint:
 		CHAG A 1 A_WeaponReady(WRF_NOFIRE)
 		CHAG A 0 A_JumpIfInventory("UsedStamina", 40, "StopSprintTired")
 		Goto Sprinting
-		
+
 	StartSprint2:
 		CHAG ABCD 1 A_WeaponReady(WRF_NOFIRE)
 		CHAG A 0 A_TakeInventory("Spin",1)
 		CHAG A 0 A_PlaySound("CHAINSTO", 6)
 		CHAG A 0 A_StopSound(5)
 		CHAG A 0 A_JumpIfInventory("UsedStamina", 40, "StopSprintTired")
-		
-	Sprinting:	
-		CHSP A 0 offset(-9,32) 
+
+	Sprinting:
+		CHSP A 0 offset(-9,32)
 		CHAG A 0 offset(-9,32) A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		CHAG A 0 offset(-9,32) A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
 		PLAY A 0 offset(-9,32) ACS_ExecuteAlways(852, 0, 0, 0, 0)//Makes player faster.
@@ -112,7 +112,7 @@ ACTOR MiniGun : BrutalWeapon
 		CHAG A 0 offset(-9,32) A_WeaponReady(WRF_NOBOB)
 		CHAG A 0 offset(-9,32) A_JumpIfInventory("IsRunning", 1, "Sprinting")
 		Goto StopSprint
-		
+
 	StopSprintTired:
 		CHAG A 1
 		PLAY A 0 ACS_ExecuteAlways(853, 0, 0, 0, 0)//Makes player slower.
@@ -132,7 +132,7 @@ ACTOR MiniGun : BrutalWeapon
 		CHSP A 1
 		CHAG A 0 A_JumpIfInventory("UsedStamina", 60, "StopSprintTired")
 		PLAY A 0 ACS_ExecuteAlways(853, 0, 0, 0, 0)//Makes player slower.
-		Goto Ready 
+		Goto Ready
 
 		Deselect:
 			CHAG A 0 A_TakeInventory ("Spin",1)
@@ -174,7 +174,7 @@ ACTOR MiniGun : BrutalWeapon
 			CHAG A 0 A_PlaySound("CHGNPKUP")
 			CHGS AAAAAA 1 A_Raise
 			TNT1 AAAAAA 0 A_Raise
-		
+
 		SelectAnimation:
 			CHAG A 0
 			CHAG A 0 A_GunFlash
@@ -184,8 +184,8 @@ ACTOR MiniGun : BrutalWeapon
 		NoAmmo:
 			CHAE A 10 A_PlaySound("weapons/empty")
 			Goto IdleNoAmmo
-			
-			
+
+
 		Fire:
 			CHAG A 0
 			CHAG A 0 A_JumpIfInventory("Spin",1,"Hold")
@@ -200,10 +200,10 @@ ACTOR MiniGun : BrutalWeapon
 		Hold:
 			CHAG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 			CHAG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
-			
+
 			CHAG A 0 A_PlaySound("CHGNSHOT", 1)
 			CHAG A 0 A_PlaySound("FARMGN", 5)
-			
+
 			CHAF A 1 BRIGHT A_FireBullets(1.8, 1.9, -1, 16, "MachineGunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
 			TNT1 A 0 A_ZoomFactor(0.99)
 			CHAG A 0 A_Firecustommissile("50CaseSpawn",0,0,-12,-18)
@@ -212,10 +212,10 @@ ACTOR MiniGun : BrutalWeapon
 			CHAG A 0 A_JumpIfInventory("IsTacticalClass", 1, 2)//Tactical mode skips a frame, fires faster
 			CHAF B 1
 			TNT1 A 0 A_ZoomFactor(1.0)
-			
+
 			RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
 			RIFG A 0 A_SetPitch(pitch-0.4)
-			
+
 			CHAG A 0 A_PlaySound("CHGNSHOT", 1)
 			CHAG A 0 A_PlaySound("FARMGN", 5)
 			CHAF C 1 BRIGHT A_FireBullets(1.8, 1.9, -1, 16, "MachineGunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
@@ -226,60 +226,60 @@ ACTOR MiniGun : BrutalWeapon
 			CHAG A 0 A_JumpIfInventory("IsTacticalClass", 1, 2)//Tactical mode skips a frame, fires faster
 			CHAF D 1
 			TNT1 A 0 A_ZoomFactor(1.0)
-			
+
 			RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
 			RIFG A 0 A_SetPitch(pitch-0.4)
 			RIFG A 0
-			
-			
+
+
 			MNGG B 0 A_ReFire
 			CHAG A 0 A_PlaySound("MINIGEN", 5)
 			CHAG A 0 A_JumpIfInventory("Spin",1,"Ready2")
-			
+
 		 CHAG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		 CHAG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		 CHAG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		 CHAG A 0 A_PlaySound("CHAINSTO", 5)
 		 CHAG A 1 A_WeaponReady
-		
+
 		 CHAG B 1 A_WeaponReady
 		 CHAG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		 CHAG A 0 A_Refire
-		
+
 		 CHAG C 1 A_WeaponReady
 		 CHAG A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
 		 CHAG D 1 A_WeaponReady
-				
+
 
 		 CHAG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		 
+
 		 CHAG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		 CHAG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		 CHAG A 1 A_WeaponReady
 		 CHAG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		 CHAG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		 CHAG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
-		
+
 		 CHAG B 1 A_WeaponReady
 		 CHAG A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
 		 CHAG C 2 A_WeaponReady
-		
+
 		 CHAG D 2 A_WeaponReady
 		 CHAG A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
-		 CHAG A 0 A_JumpIfInventory("Spin",1,"Ready2") 
+		 CHAG A 0 A_JumpIfInventory("Spin",1,"Ready2")
 		 CHAG A 0 A_TakeInventory("Spin", 1)
 		 CHAG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		 CHAG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		 CHAG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		 CHAG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		 CHAG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
-		 
+
 		 CHAG A 2 A_WeaponReady
-		
+
 		 CHAG B 2 A_WeaponReady
 		 CHAG A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
 		 CHAG C 2 A_WeaponReady
-		
+
 		 CHAG D 2 A_WeaponReady
 		 CHAG A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
 		 CHAG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
@@ -290,13 +290,13 @@ ACTOR MiniGun : BrutalWeapon
 		 CHAG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		 CHAG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		 CHAG ABCD 3 A_WeaponReady
-		 
+
 		 goto Ready
 
 
 
 	  AltFire:
-		 
+
 		 CHAG A 0 A_JumpIfInventory("Spin",1,"StopAlt")
 		 CHAG A 0 A_GiveInventory ("Spin",1)
 		 //CHAG A 0 SetPlayerProperty(0,1,0)
@@ -321,17 +321,17 @@ ACTOR MiniGun : BrutalWeapon
 		 Goto Ready
 
 
-		
-		
+
+
 		PuristGun:
 			TNT1 A 1
 			CHAG A 0 A_GiveInventory("ClassicChaingun", 1)
 			CHAG A 0 A_TakeInventory("MiniGun", 1)
 			TNT1 A 10
-			Goto Ready2	
-		
-		
-		
+			Goto Ready2
+
+
+
 		}
 }
 

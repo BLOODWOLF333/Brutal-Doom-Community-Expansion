@@ -4,8 +4,6 @@ ACTOR AssaultShotgun : BrutalWeapon
 	Weapon.AmmoGive1 0
 	Weapon.AmmoUse2 0
 	Weapon.AmmoGive2 0
-	YScale 0.6
-	XScale 0.8
 	Weapon.SelectionOrder 350
 	Weapon.AmmoType1 "AmmoShell"
 	Weapon.AmmoType2 "AssaultShotgunAmmo"
@@ -19,6 +17,7 @@ ACTOR AssaultShotgun : BrutalWeapon
 	+FORCEXYBILLBOARD
     Scale 0.8
 	Tag "Assault Shotgun"
+	DropItem "AssaultShotgunSpawner"
 	States
 	{
 	SelectAnimation:
@@ -562,8 +561,7 @@ ACTOR AssaultShotgun : BrutalWeapon
 		Goto Ready3
 
  	Spawn:
-		TNT1 A 0
-		TNT1 A 1 A_SpawnItem("AssaultShotgunSpawner")
+		A12P A -1
 		Stop
 	}
 }

@@ -19,6 +19,7 @@ ACTOR DualPistols : BrutalWeapon
     +FORCEXYBILLBOARD
 	Scale 0.9
 	Tag "Dual Pistols"
+	Dropitem "PistolSpawner"
 	States
 	{
 	Ready3:
@@ -443,8 +444,7 @@ ACTOR DualPistols : BrutalWeapon
         Goto Ready
 
  	Spawn:
-		TNT1 A 0
-		TNT1 A 1 A_SpawnItem("PistolSpawner")
+		PIST G -1
 		Stop
 
 	Steady:

@@ -17,6 +17,7 @@ ACTOR BrutalSMG : BrutalWeapon
     +FORCEXYBILLBOARD
 	Scale 0.8
 	Tag "Sub-MachineGun"
+	DropItem "SMGSpawner"
 	States
 	{
 
@@ -409,8 +410,7 @@ ACTOR BrutalSMG : BrutalWeapon
 
 
  	Spawn:
-		TNT1 A 0
-		TNT1 A 1 A_SpawnItem("SMGSpawner")
+		SMGZ A -1
 		Stop
 
 
