@@ -1,0 +1,89 @@
+#library "EnemyScouterThing"
+#include "zcommon.acs"
+
+str enemyname;
+int enemyhealthmax;
+int enemyhealth;
+
+script "EnemyScouterThing" ENTER
+{
+	if	(GetCvar( "bd_disablescanner") == 1)
+	{
+		terminate;
+	}
+
+	while(TRUE)
+	{
+
+		//NOTE:	PickActor requires careful handling. See the zdoom wiki about that!
+		//		Actor's old TID needs to be saved, assigned a new TID, then restored back to old TID to keep things operational.
+		int old_tid = PickActor(0, GetActorAngle(0), GetActorPitch(0), 2048.0, 0, MF_SHOOTABLE | !MF_CORPSE, ML_BLOCKEVERYTHING | ML_BLOCKHITSCAN , PICKAF_RETURNTID);
+
+		int new_tid = UniqueTID();
+
+		if(PickActor(0, GetActorAngle(0), GetActorPitch(0), 2048.0, new_tid, MF_SHOOTABLE | !MF_CORPSE, ML_BLOCKEVERYTHING | ML_BLOCKHITSCAN , PICKAF_FORCETID))
+		{
+			//GET ACTOR INFO
+			enemyname = GetActorProperty(new_tid, APROP_NameTag);			//name
+			enemyhealthmax = GetActorProperty(new_tid, APROP_SpawnHealth);	//max hp
+			if(enemyhealthmax == 0)
+			{
+				enemyhealthmax = 100;
+			}
+			enemyhealth = GetActorProperty(new_tid, APROP_HEALTH); 			//current hp
+
+			//ACTOR HEALTH DISPLAY
+			if(GetActorProperty(new_tid, APROP_Speed) > 0)
+			{
+				if (enemyhealth >= 1)
+				{
+					//ACTOR NAME DISPLAY
+					HudMessage(s:enemyname; HUDMSG_FADEOUT, 112223, CR_DARKRED, 0.5, 0.02, 0.6, 0.2);
+
+					int pc = enemyhealth * 100 / enemyhealthmax;
+
+					if(pc>=75)
+					{
+						HudMessage(	s:"\n",
+						d:enemyhealth,
+						s:"/",
+						d:enemyhealthmax;
+						HUDMSG_FADEOUT, 112224, CR_TAN, 0.5, 0.02, 0.6, 0.2);
+					}
+					else if(pc>=50)
+					{
+						HudMessage(	s:"\n",
+						d:enemyhealth,
+						s:"/",
+						d:enemyhealthmax;
+						HUDMSG_FADEOUT, 112224, CR_GOLD, 0.5, 0.02, 0.6, 0.2);
+					}
+					else if(pc>=25)
+					{
+						HudMessage(	s:"\n",
+						d:enemyhealth,
+						s:"/",
+						d:enemyhealthmax;
+						HUDMSG_FADEOUT, 112224, CR_ORANGE, 0.5, 0.02, 0.6, 0.2);
+					}
+					else if(pc>=0)
+					{
+						HudMessage(	s:"\n",
+						d:enemyhealth,
+						s:"/",
+						d:enemyhealthmax;
+						HUDMSG_FADEOUT, 112224, CR_RED, 0.5, 0.02, 0.6, 0.2);
+					}
+					//ACTOR FRIENDLY INDICATOR
+					if(GetActorProperty(new_tid, APROP_Friendly) == TRUE)
+					{
+						HudMessage(	s:"\n\n-Friendly-";
+						HUDMSG_FADEOUT, 112225, CR_GREEN, 0.5, 0.02, 0.6, 0.2);
+					}
+				}//if (enemyhealth >= 1)
+			}//if(GetActorProperty(new_tid, APROP_Speed) > 0)
+		Thing_ChangeTID(new_tid, old_tid);
+		}//if(PickActor(0, GetActorAngle(0), GetActorPitch(0), 2048.0, new_tid, MF_SHOOTABLE | !MF_CORPSE, ML_BLOCKEVERYTHING | ML_BLOCKHITSCAN, PICKAF_FORCETID))
+		Delay(1);
+	}//while(TRUE)
+}//script "EnemyScouterThing" ENTER
