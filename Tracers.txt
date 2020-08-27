@@ -6,7 +6,6 @@ Actor Tracer: FastProjectile
 	+RANDOMIZE
 	+FORCEXYBILLBOARD
 	+DONTSPLASH
-	// +BLOODSPLATTER 
 	+NOEXTREMEDEATH
 	damage 0
 	radius 2
@@ -27,11 +26,11 @@ Actor Tracer: FastProjectile
 			//TNT1 A 0 A_JumpIfInTargetInventory("IsTacticalClass", 1, "Tactical")
 			tnt1 a 2
 			Stop
-			
+
 		XDeath:
 			TNT1 A 0
 			Stop
-		
+
 		Tactical:
 			TNT1 A 0
 			TNT1 A 0 A_Explode(8, 50)
@@ -51,8 +50,7 @@ Actor DecorativeTracer: Tracer
 
 Actor MonsterTracer: Tracer
 {
-+BLOODSPLATTER 
-+THRUGHOST
++BLOODSPLATTER
 -DONTSPLASH
 +MISSILE
 -DONTHURTSPECIES
@@ -68,22 +66,22 @@ States
 		TNT1 A 0 ThrustThingZ(0,random(-8, 8),0,1)
 		TRAC A 1 BRIGHT
 		Goto Spawn2
-		
+
 	Spawn2:
 		TRAC A 1 BRIGHT
-		Loop	
-		
+		Loop
+
 Death:
     TNT1 A 1 A_SpawnItem("HitPuffTracer")
 	//TNT1 A 0 A_SpawnItemEx ("MonsterPenetrator",cos(-pitch)*25,0,0+(sin(pitch)*25),cos(-pitch)*100,0,sin(pitch)*100,0,SXF_TRANSFERPITCH)
     TNT1 A 0
 	TNT1 A 0 //A_PlaySound("bulletwhistle")
 	Stop
-	
+
 XDeath:
     TNT1 A 0
 	TNT1 A 0 //A_PlaySound("bulletwhistle")
-	Stop	
+	Stop
 }
 }
 
@@ -91,8 +89,7 @@ XDeath:
 
 Actor ShotgunguyTracer: Tracer
 {
-+BLOODSPLATTER 
-+THRUGHOST
++BLOODSPLATTER
 -DONTSPLASH
 +MISSILE
 damage (random(12,12))
@@ -105,22 +102,22 @@ States
 		TNT1 A 0 ThrustThingZ(0,random(-8, 8),0,1)
 		TRAC A 1 BRIGHT
 		Goto Spawn2
-		
+
 	Spawn2:
 		TRAC A 1 BRIGHT
-		Loop	
-		
+		Loop
+
 	Death:
     TNT1 A 1 A_SpawnItem("HitPuffTracer")
 	//TNT1 A 0 A_SpawnItemEx ("MonsterPenetrator",cos(-pitch)*25,0,0+(sin(pitch)*25),cos(-pitch)*100,0,sin(pitch)*100,0,SXF_TRANSFERPITCH)
     TNT1 A 0
 	TNT1 A 0 //A_PlaySound("bulletwhistle")
 	Stop
-	
+
 	XDeath:
     TNT1 A 0
 	TNT1 A 0 //A_PlaySound("bulletwhistle")
-	Stop	
+	Stop
 }
 }
 
@@ -132,8 +129,7 @@ damage (random(11,11))
 
 Actor MonsterMinigunTracer: MonsterTracer
 {
-+BLOODSPLATTER 
-+THRUGHOST
++BLOODSPLATTER
 -DONTSPLASH
 speed 50
 
@@ -146,7 +142,7 @@ States
 {
 Spawn:
 		TRAC A 1 BRIGHT
-		
+
 		TRAC A -1 BRIGHT
 		Loop
 	Death:
@@ -155,11 +151,11 @@ Spawn:
     TNT1 A 0
 	TNT1 A 0 //A_PlaySound("bulletwhistle")
 	Stop
-	
+
 	XDeath:
     TNT1 A 0
 	TNT1 A 0 //A_PlaySound("bulletwhistle")
-	Stop	
+	Stop
 }
 }
 
@@ -180,7 +176,7 @@ States
 Death:
     TNT1 A 1 A_SpawnItem("HitPuffTracer")
     Stop
-	
+
 Spawn:
 	TRAC A 1 BRIGHT
 	Loop
@@ -190,8 +186,7 @@ Spawn:
 
 Actor MarineTracer: Tracer
 {
-+BLOODSPLATTER 
-+THRUGHOST
++BLOODSPLATTER
 +MTHRUSPECIES
 -DONTSPLASH
 -GHOST
@@ -210,7 +205,7 @@ XDEath:
 TNT1 A 0
 //TNT1 A 0 A_Explode(2, 5)
 TNT1 A 1
-Stop	
+Stop
 }
 }
 
@@ -224,10 +219,10 @@ States
 		TNT1 A 0 ThrustThingZ(0,random(-9, 9),0,1)
 		TRAC A 1 BRIGHT
 		Goto Spawn2
-		
+
 	Spawn2:
 		TRAC A 1 BRIGHT
-		Loop	
+		Loop
 }
 }
 
@@ -243,10 +238,10 @@ States
 		TNT1 A 0 ThrustThingZ(0,random(-9, 9),0,1)
 		TRAC A 1 BRIGHT
 		Goto Spawn2
-		
+
 	Spawn2:
 		TRAC A 1 BRIGHT
-		Loop	
+		Loop
 }
 }
 
@@ -254,8 +249,7 @@ States
 
 Actor Alerter: MonsterTracer
 {
--BLOODSPLATTER 
-+THRUGHOST
+-BLOODSPLATTER
 +DONTSPLASH
 -ACTIVATEIMPACT
 -ACTIVATEMCROSS
@@ -304,8 +298,8 @@ States
 	TNT1 A 0
 	TNT1 A 0 A_Stop
     TNT1 A 0
-    Stop	
-		
+    Stop
+
 }
 }
 
@@ -313,8 +307,7 @@ States
 Actor Taunter: MonsterTracer
 {
 
--BLOODSPLATTER 
-+THRUGHOST
+-BLOODSPLATTER
 +DONTSPLASH
 radius 16
 height 16
@@ -333,14 +326,14 @@ States
 		PUZZ Z 1 BRIGHT
 		Loop
 XDeath:
-Melee:		
+Melee:
 Death:
     TNT1 A 1
 	//TNT1 AAAA 0 A_CustomMissile ("LongExplosionSpawner", 20, 0, random (0, 360), 2, random (0, 180))
     //TNT1 AAAAAA 0 A_CustomMissile ("ExplosionSpawner", 20, 0, random (0, 180), 2, random (0, 180))
 	//TNT1 AAAAA 0 A_SpawnItem("BarrelExplosion")
 	TNT1 A 100
-	
+
 	Stop
 }
 }
@@ -351,8 +344,7 @@ Death:
 
 Actor MastermindTracer: Tracer
 {
-+BLOODSPLATTER 
-+THRUGHOST
++BLOODSPLATTER
 -DONTSPLASH
 +FORCERADIUSDMG
 speed 80
@@ -420,7 +412,7 @@ States
 Actor SuperMastermindTracer: MastermindTracer
 {
 Speed 120
-Damage (random(25,30)) 
+Damage (random(25,30))
 Height 24
 }
 
@@ -462,8 +454,7 @@ actor MastermindTracerTrail18: MastermindTracerTrail {    Alpha 0.05 }
 
 Actor NaziAlerter: Tracer
 {
--BLOODSPLATTER 
-+THRUGHOST
+-BLOODSPLATTER
 speed 150
 Decal "None"
 Radius 16
@@ -599,22 +590,22 @@ States
 		TNT1 A 0 A_CustomMissile("SpawnBulletDecalBackwards", 0, 0, 0)
 		TRAC A 10 BRIGHT
 		sTOP
-		
+
 Death:
 	TNT1 A 0
 	TNT1 A 0 A_CheckFloor("XDeath")
 	TNT1 A 0 A_CheckCeiling("XDeath")
     TNT1 A 1 A_SpawnItem("HitPuffTracer")
 	Stop
-	
-DeathSpecial:	
-	
+
+DeathSpecial:
+
     Stop
 XDEath:
 TNT1 A 0
 //TNT1 A 0 A_Explode(2, 5)
 TNT1 A 1
-Stop	
+Stop
 }
 }
 
@@ -649,7 +640,7 @@ XDEath:
 TNT1 A 0
 //TNT1 A 0 A_Explode(2, 5)
 TNT1 A 1
-Stop	
+Stop
 }
 }
 
@@ -672,14 +663,14 @@ Death:
 	TNT1 A 0
 	TNT1 A 0 A_CheckFloor("XDeath")
 	TNT1 A 0 A_CheckCeiling("XDeath")
-	
+
     TNT1 A 1 A_SpawnItem("HitPuffTracer")
     Stop
 XDEath:
 TNT1 A 0
 //TNT1 A 0 A_Explode(2, 5)
 TNT1 A 1
-Stop	
+Stop
 }
 }
 
