@@ -15,27 +15,27 @@ ACTOR TheSpiderMastermind Replaces SpiderMastermind
 	Mass 6000
 	Speed 20
 	PainChance 30
-	
+
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 30.0
 	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0	Damagefactor "HangingHook", 0.0
 	Damagefactor "Head", 1.5	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
-	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "Extremepunches", 0.5
-	Damagefactor "Fatality", 0.5	Damagefactor "HeadKick", 0.5	Damagefactor "HelperMarineFatallity", 0.5
+	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "Extremepunches", 1.0
+	Damagefactor "Fatality", 2.5	Damagefactor "HeadKick", 0.5	Damagefactor "HelperMarineFatallity", 0.5
 	Damagefactor "Kick", 0.5	Damagefactor "Leg", 0.5	Damagefactor "LowKick", 0.5
 	Damagefactor "Melee", 0.5	Damagefactor "MonsterKnocked", 0.5	Damagefactor "Stomp", 0.5
 	Damagefactor "Trample", 0.5	Damagefactor "Slide", 0.5
 	Damagefactor "Burn", 0.5	Damagefactor "Fire", 0.5	Damagefactor "Flames", 0.5
 	Damagefactor "GreenFire", 0.5	Damagefactor "HumanBBQ", 0.5
-	
+
 	PainChance "Head", 16	PainChance "Taunt", 255	PainChance "Extremepunches", 4
 	PainChance "Fatality", 4	PainChance "HelperMarineFatallity", 4	PainChance "Kick", 4
 	PainChance "LowKick", 4	PainChance "Melee", 4	PainChance "MonsterKnocked", 4
 	PainChance "Slide", 4	PainChance "Trample", 4
 	PainChance "Burn", 4	PainChance "Fire", 4	PainChance "Flames", 4
 	PainChance "GreenFire", 4	PainChance "HumanBBQ", 4
-	
+
 	Monster
 	//MinMissileChance 200
 	DeathHeight 0
@@ -76,7 +76,7 @@ ACTOR TheSpiderMastermind Replaces SpiderMastermind
 		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
 		TNT1 A 0 A_SpawnItemEx ("VanillaSpiderMastermind",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
 		Stop
-		
+
     Spawn:
 		SPID A 1
 		TNT1 A 0 A_GiveInventory("TargetIsAMastermind")
@@ -89,14 +89,14 @@ ACTOR TheSpiderMastermind Replaces SpiderMastermind
 		TNT1 A 0 A_JumpIfInventory("nonewenemies", 1, "Stand")
 		TNT1 A 0 A_Jump(4, "ReplaceJuggernaut")
 		Goto Stand
-	
+
 	ReplaceJuggernaut:
 		TNT1 A 0 A_JumpIf((CeilingZ - FloorZ) < 138,"Stand")
 		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
 		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
 		TNT1 A 0 A_SpawnItemEx ("Juggernaut",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS ,0, tid)
 		Stop
-	
+
 	ReplaceForBOSS:
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
@@ -110,7 +110,7 @@ ACTOR TheSpiderMastermind Replaces SpiderMastermind
 		TNT1 A 0 A_SpawnItemEx ("SuperMastermind",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
 		TNT1 A 10
 		Stop
-		
+
 	ReplaceForMotherDemon1:
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
@@ -131,14 +131,14 @@ ACTOR TheSpiderMastermind Replaces SpiderMastermind
 		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
 		TNT1 A 0 A_SpawnItemEx ("MotherDemon",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
 		TNT1 A 10
-		Stop		
-	
-	Stand:	
+		Stop
+
+	Stand:
 		SPID A 10 A_Look
 		Loop
-		
+
 	See:
-		
+
 		SPID A 2 A_Metal
 		SPID A 2 A_Chase
 		SPID B 2 A_Chase
@@ -156,24 +156,24 @@ ACTOR TheSpiderMastermind Replaces SpiderMastermind
 	    TNT1 A 0 A_TakeInventory ("BrutalCounter2", 500)
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
 		TNT1 A 0 A_ChangeFlag("NODROPOFF", 0)
-		SPID A 4 A_FaceTarget 
-		SPID A 4 A_FaceTarget 
-		SPID A 4 A_FaceTarget 
+		SPID A 4 A_FaceTarget
+		SPID A 4 A_FaceTarget
+		SPID A 4 A_FaceTarget
         SPID G 4 A_FaceTarget
 
 		SPID G 3 A_FaceTarget
 		SPID H 2 BRIGHT A_CustomMissile("MastermindTracer", 42, 0, random(-3, 3), 1, random(-2, 2))
 		TNT1 A 0 A_SpawnItem ("MasterMindCaseSpawn", 0, 60,0)
-		
+
 		TNT1 A 0 A_GiveInventory ("BrutalCounter2", 1)
 		TNT1 A 0 A_JumpIfInventory ("BrutalCounter2", 30, "StopFiring")
 		SPID G 0 A_SpidRefire
 		Goto Missile+7
-	
+
 	StopFiring:
-		SPID A 6 A_FaceTarget 
+		SPID A 6 A_FaceTarget
 		Goto See
-	
+
 	Avoid:
 		 TNT1 A 0
 		 TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
@@ -186,7 +186,7 @@ ACTOR TheSpiderMastermind Replaces SpiderMastermind
 		 TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
 		 TNT1 A 0 A_ChangeFlag("NODROPOFF", 0)
 		 Goto Missile+6
-		
+
 	Pain:
 		SPID I 4 A_Pain
         Goto See
@@ -196,13 +196,13 @@ ACTOR TheSpiderMastermind Replaces SpiderMastermind
 		TNT1 A 0 A_Recoil(10)
 		SPID I 2 A_Pain
 		Goto See
-		
+
 	Pain.Explosive:
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 A_Recoil(10)
 		SPID I 2 A_Pain
 		Goto Avoid
-		
+
 	Death:
 		SPID J 1
 		SPID J 20 A_Scream
@@ -217,7 +217,7 @@ ACTOR TheSpiderMastermind Replaces SpiderMastermind
 		TNT1 AAAAAAAAAA 0 A_CustomMissile ("BloodMistXXBig", 100, 0, random (0, 360), 2, random (40, 90))
         TNT1 AAA 0 A_CustomMissile ("MastermindLeg", 40, 0, random (0, 360), 2, random (40, 90))
 		TNT1 A 0 A_SpawnItem ("GiantBloodSpot")
-		
+
 		TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
 		SPID NOPQR 5
         SPID S 300
@@ -232,7 +232,7 @@ ACTOR TheSpiderMastermind Replaces SpiderMastermind
 		TNT1 A 0 A_NoBlocking
 		SPID J 5 A_Scream
 		tnt1 a 0 A_FaceTarget
-		SPID K 3 
+		SPID K 3
 		SPID LM 3
 		TNT1 AAA 0 A_CustomMissile ("XDeath2", 42, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_CustomMissile ("XDeath3", 42, 0, random (0, 360), 2, random (0, 160))
@@ -256,7 +256,7 @@ Death.decaptate:
 		TNT1 AAAAAAAAAAAAAAAAA 0 A_CustomMissile ("XDeath1", 120, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_CustomMissile ("XSpiderMastermindCuttedBrain", 120, 0, random (0, 360), 2, random (50, 130))
 		SPIY AAAAAAAAAAA 8 A_SpawnItem("MuchBlood", 0, 120)
-		
+
 		EXPL A 0 Radius_Quake (8, 100, 0, 22, 0)
         TNT1 AAAAAA 0 A_CustomMissile ("ExplosionSpawner", 50, 0, random (0, 360), 2, random (0, 360))
         TNT1 AAAA 0 A_CustomMissile ("SuperGoreSPawner", 110, 0, random (0, 360), 2, random (0, 180))
@@ -313,7 +313,7 @@ ACTOR XSpiderMastermindCuttedBrain
     +MOVEWITHSECTOR
     +CLIENTSIDEONLY
     +RIPPER
-    +BLOODLESSIMPACT 
+    +BLOODLESSIMPACT
 	-DONTSPLASH
 	+THRUGHOST
 damagetype Blood
@@ -363,7 +363,7 @@ ACTOR MastermindStep
 	States
 	{
 	Spawn:
-     
+
 NULL A 0 A_CustomMissile("FootStep6", 0, 0, 150)
 NULL A 0 A_CustomMissile("FootStep6", 0, 0, -150)
 NULL A 0 A_CustomMissile("FootStep6", 0, 0, -30)
@@ -376,7 +376,7 @@ NULL A 0 A_CustomMissile("FootStep6", 0, 0, -120)
 NULL A 0 A_CustomMissile("FootStep6", 0, 0, 120)
         TNT1 A 0 A_SpawnItemEx("FootStep5", 0, 0, 40, 0, 0)
 		EXPL AAA 0 A_CustomMissile ("ExplosionSMoke", 0, 0, random (0, 360), 2, random (0, 360))
-		
+
 		EXPL A 0 A_Explode(300, 50, 0)
 		TNT1 A 4
 		MNSM ABCDEFGHIJKLMNOPQ 0
@@ -417,17 +417,17 @@ ACTOR MastermindLeg
 		TNT1 A 0 A_Explode(300, 100)
 		EXPL AAAAAAA 0 A_CustomMissile ("ExplosionSMoke", 0, 0, random (0, 360), 2, random (0, 360))
 		Goto KeepRotating
-	KeepRotating:	
+	KeepRotating:
         SPP4 AB 2
 		SPP4 CDEFGH 2 A_CheckFloor("Rest")
 		Loop
-	Rest:	
+	Rest:
 	    SPP4 A 1
 		TNT1 A 0 A_Explode(50, 100)
 		EXPL AAAAAAA 0 A_CustomMissile ("ExplosionSMoke", 0, 0, random (0, 360), 2, random (0, 360))
 		SPP4 A -1
         Stop
-		
+
      Underwater:
 	 Splash:
 	    SPP4 A 4
@@ -453,7 +453,7 @@ ACTOR StompedMastermind
 		TNT1 A 0 A_ChangeFlag("SOLID", 1)
 		FTS2 F -1
         Stop
-    
+
 	Death:
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_Explode(300, 400)
@@ -483,7 +483,7 @@ ACTOR Titan
 	MaxStepHeight 272
 	MaxDropOffHeight 280
 	PainChance 30
-	
+
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 30.0
 	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0	Damagefactor "HangingHook", 0.0
@@ -496,14 +496,14 @@ ACTOR Titan
 	Damagefactor "Trample", 0.5	Damagefactor "Slide", 0.5
 	Damagefactor "Burn", 0.5	Damagefactor "Fire", 0.5	Damagefactor "Flames", 0.5
 	Damagefactor "GreenFire", 0.5	Damagefactor "HumanBBQ", 0.5
-	
+
 	PainChance "Head", 16	PainChance "Taunt", 255	PainChance "Extremepunches", 4
 	PainChance "Fatality", 4	PainChance "HelperMarineFatallity", 4	PainChance "Kick", 4
 	PainChance "LowKick", 4	PainChance "Melee", 4	PainChance "MonsterKnocked", 4
 	PainChance "Slide", 4	PainChance "Trample", 4
 	PainChance "Burn", 4	PainChance "Fire", 4	PainChance "Flames", 4
 	PainChance "GreenFire", 4	PainChance "HumanBBQ", 4
-	
+
 	Monster
 	//MinMissileChance 200
 	DeathHeight 0
@@ -527,11 +527,11 @@ ACTOR Titan
 	ActiveSound "spider/active"
 	States
 	{
-	
+
     Spawn:
 		KPRM A 10 A_Look
 		Loop
-		
+
 	See:
 		KPRM A 20 A_Explode(9999, 370)
 		KPRM BBBBB 2 A_Chase("", "")

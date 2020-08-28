@@ -15,27 +15,27 @@ Actor BaronPlayerPatch : BaronPlayer Replaces BaronPlayer
 	-PICKUP
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 10.0
-	Damagefactor "Cut", 10.0	Damagefactor "Extremepunches", 1.0	Damagefactor "Fatality", 2.5
+	Damagefactor "Extremepunches", 1.0	Damagefactor "Fatality", 2.5
 	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0
 	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
 	Damagefactor "HelperMarineFatallity", 0.0	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0
-	Damagefactor "LowKick", 0.25	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0
-	Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "Saw", 10.0
+	Damagefactor "LowKick", 0.0	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0
+	Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0
 	Damagefactor "Slide", 0.5	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "Kick", 0.5
 	Damagefactor "Melee", 0.5	Damagefactor "Shrapnel", 0.5	Damagefactor "Slime", 0.0
 	Damagefactor "Stealth", 0.5	Damagefactor "Stomp", 0.5	Damagefactor "Trample", 0.5
 	Damagefactor "Burn", 0.5	Damagefactor "Fire", 0.5	Damagefactor "Flames", 0.5
 	Damagefactor "GreenFire", 0.5	Damagefactor "HumanBBQ", 0.5	Damagefactor "Lava", 0.0
-	Damagefactor "ExplosiveImpact", 0.5
 
-	PainChance "Avoid", 0	PainChance "Burn", 16	PainChance "Cut", 255
+	PainChance "Avoid", 0	PainChance "Burn", 16
 	PainChance "ExplosiveImpact", 16	PainChance "Extremepunches", 16	PainChance "Fatality", 16
 	PainChance "Fire", 16	PainChance "Flames", 16	PainChance "GreenFire", 16
 	PainChance "HumanBBQ", 16
 	PainChance "Kick", 16	PainChance "LowKick", 16	PainChance "Melee", 16
-	PainChance "Saw", 255	PainChance "Slide", 16
+	PainChance "Slide", 16
 	PainChance "Stealth", 16	PainChance "Trample", 16
+
 	Player.MorphWeapon "D4BaronHUDPatch"
 }
 
@@ -61,7 +61,7 @@ ACTOR D4BaronHUDPatch : D4BaronHUD Replaces D4BaronHUD
 			TNT1 A 0 A_JumpIfInventory("FiredPrimary", 1, "Fire")
 			TNT1 A 0 A_JumpIfInventory("FiredSecondary", 1, "AltFire")
 			Loop
-			
+
 		Fire:
 			TNT1 A 0
 			TNT1 A 0 A_JumpIfInventory("HasExplosiveBarrel", 1, "MissileBarrel")
@@ -75,17 +75,17 @@ ACTOR D4BaronHUDPatch : D4BaronHUD Replaces D4BaronHUD
 			HBRG A 17
 			HBRG A 1 A_Refire
 			Goto Ready
-		
+
 		MeleeAttack://Right swipe
 			TNT1 A 0
 			HBRG A 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
 			TNT1 A 0 A_Recoil(-3)
 			TNT1 A 0 A_JumpIfInventory("HeavyStrikeRight",1,"Melee2")
-			
+
 			HBRM ABC 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
 			TNT1 A 0 A_PlaySound("weapons/gswing")
 			HBRM DEF 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
-			
+
 			TNT1 A 0 A_GiveInventory("HeavyStrikeRight", 1)
 			TNT1 AAAA 0 A_FireCustomMissile("SuperKickAttack", 0, 0, 0, -24)
 			HBRM GH 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
@@ -94,17 +94,17 @@ ACTOR D4BaronHUDPatch : D4BaronHUD Replaces D4BaronHUD
 			TNT1 A 0 A_JumpIfInventory("FiredPrimary", 1, "Fire")
 			TNT1 A 0 A_JumpIfInventory("FiredSecondary", 1, "AltFire")
 			Goto Ready
-	
+
 		Melee2://Left swipe
 			TNT1 A 0
 			HBRG A 1
 			TNT1 A 0 A_Recoil(-3)
 			TNT1 A 0 A_JumpIfInventory("HeavyStrikeLeft",1,"MeleeAttack")
-			
+
 			HBRN ABC 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
 			TNT1 A 0 A_PlaySound("weapons/gswing")
 			HBRN DEF 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
-			
+
 			TNT1 A 0 A_GiveInventory("HeavyStrikeLeft", 1)
 			TNT1 AAAA 0 A_FireCustomMissile("SuperKickAttack", 0, 0, 0, -24)
 			HBRN GH 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
@@ -113,7 +113,7 @@ ACTOR D4BaronHUDPatch : D4BaronHUD Replaces D4BaronHUD
 			TNT1 A 0 A_JumpIfInventory("FiredPrimary", 1, "Fire")
 			TNT1 A 0 A_JumpIfInventory("FiredSecondary", 1, "AltFire")
 			Goto Ready
-			
+
 		AltFire://Right swipe
 			TNT1 A 0
 			TNT1 A 0 A_JumpIfInventory("HasExplosiveBarrel", 1, "MissileBarrel")
@@ -123,11 +123,11 @@ ACTOR D4BaronHUDPatch : D4BaronHUD Replaces D4BaronHUD
 			HBRG A 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
 			TNT1 A 0 A_Recoil(-3)
 			TNT1 A 0 A_JumpIfInventory("HeavyStrikeRight",1,"Melee2")
-			
+
 			HBRM ABC 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
 			TNT1 A 0 A_PlaySound("weapons/gswing")
 			HBRM DEF 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
-			
+
 			TNT1 A 0 A_GiveInventory("HeavyStrikeRight", 1)
 			TNT1 A 0 A_FireCustomMissile("BaronAttackOnBarrel", 0, 0, 0, -16)
 			TNT1 AAAA 0 A_FireCustomMissile("SuperKickAttack", 0, 0, 0, -24)
@@ -157,26 +157,25 @@ Actor RevenantPlayerPatch : RevenantPlayer Replaces RevenantPlayer
 	-PICKUP
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 10.0
-	Damagefactor "Cut", 10.0	Damagefactor "Extremepunches", 1.0	Damagefactor "Fatality", 2.5
+	Damagefactor "Extremepunches", 1.0	Damagefactor "Fatality", 2.5
 	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0
 	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
 	Damagefactor "HelperMarineFatallity", 0.0	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0
-	Damagefactor "LowKick", 0.25	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0
-	Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "Saw", 10.0
+	Damagefactor "LowKick", 0.0	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0
+	Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0
 	Damagefactor "Slide", 0.5	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "Kick", 0.5
 	Damagefactor "Melee", 0.5	Damagefactor "Shrapnel", 0.5	Damagefactor "Slime", 0.0
 	Damagefactor "Stealth", 0.5	Damagefactor "Stomp", 0.5	Damagefactor "Trample", 0.5
 	Damagefactor "Burn", 0.5	Damagefactor "Fire", 0.5	Damagefactor "Flames", 0.5
 	Damagefactor "GreenFire", 0.5	Damagefactor "HumanBBQ", 0.5	Damagefactor "Lava", 0.0
-	Damagefactor "ExplosiveImpact", 0.5
 
-	PainChance "Avoid", 0	PainChance "Burn", 16	PainChance "Cut", 255
+	PainChance "Avoid", 0	PainChance "Burn", 16
 	PainChance "ExplosiveImpact", 16	PainChance "Extremepunches", 16	PainChance "Fatality", 16
 	PainChance "Fire", 16	PainChance "Flames", 16	PainChance "GreenFire", 16
 	PainChance "HumanBBQ", 16
 	PainChance "Kick", 16	PainChance "LowKick", 16	PainChance "Melee", 16
-	PainChance "Saw", 255	PainChance "Slide", 16
+	PainChance "Slide", 16
 	PainChance "Stealth", 16	PainChance "Trample", 16
 	Player.MorphWeapon "D4RevenantHUDPatch"
 }
@@ -198,7 +197,7 @@ ACTOR D4RevenantHUDPatch : D4RevenantHUD Replaces D4RevenantHUD
 			D4RW A 4 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
 			D4RW A 0 A_Refire
 			Goto Ready
-			
+
 		AltFire:
 			TNT1 A 0 A_TakeInventory("FiredPrimary", 1)
 			TNT1 A 0 A_Recoil(-2)
@@ -208,9 +207,9 @@ ACTOR D4RevenantHUDPatch : D4RevenantHUD Replaces D4RevenantHUD
 			TNT1 A 0 A_PlaySound("skeleton/swing", 1)
 			RIFF A 0 A_FireCustomMissile("PlayerRevenantPunch", 0, 0, 0, -29)
 			Goto FinishHaymaker
-			
+
 		FinishHaymaker:
-			TNT1 A 0 
+			TNT1 A 0
 			TNT1 A 0 A_GiveInventory("PSeq2", 1)
 			D4RP E 1 A_SetAngle(angle+1.0)
 			D4RP F 1 A_SetAngle(angle+2.0)
@@ -219,7 +218,7 @@ ACTOR D4RevenantHUDPatch : D4RevenantHUD Replaces D4RevenantHUD
 
 			D4RH AAAAAAAA 1 A_SetAngle(angle-1.0)
 			Goto Ready
-			
+
 		LeftHaymaker:
 			TNT1 A 0
 			D4RP IJK 1
@@ -227,7 +226,7 @@ ACTOR D4RevenantHUDPatch : D4RevenantHUD Replaces D4RevenantHUD
 			TNT1 A 0 A_PlaySound("skeleton/swing", 1)
 			RIFF A 0 A_FireCustomMissile("PlayerRevenantPunch", 0, 0, 0, -29)
 			Goto FinishLeftHaymaker
-		
+
 		FinishLeftHaymaker:
 			TNT1 A 0 A_SetAngle(angle+3)
 			TNT1 A 0 A_TakeInventory("PSeq2", 1)
