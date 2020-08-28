@@ -8,8 +8,7 @@ ACTOR BasicAmmoPickup : Ammo
  -INVENTORY.ALWAYSPICKUP
  Inventory.Amount 0
  Inventory.MaxAmount 99999
- Inventory.PickupMessage ""
- Inventory.PickupSound "none"
+ +Quiet
 }
 
 // Backpack ---------------------------------------------------------------
@@ -21,6 +20,7 @@ ACTOR AmmoSupply : BackpackItem Replaces Backpack
 	Height 26
 	Inventory.PickupMessage "$GOTBACKPACK"
 	Inventory.PickupSound "BACKPACK"
+	-INVENTORY.ALWAYSPICKUP
 	States
 	{
 	Spawn:
@@ -50,7 +50,7 @@ ACTOR Clip2 : Ammo
 	}
 }
 
-ACTOR FakeClip1Sprite: CustomInventory
+ACTOR FakeClip1Sprite: BasicAmmoPickup
 {
  Scale 0.9
  VisibleToPlayerClass BDoomer, Doomer2, TacticalDoomer
@@ -68,7 +68,7 @@ ACTOR FakeClip1Sprite: CustomInventory
     }
 }
 
-ACTOR FakeClip2Sprite: CustomInventory
+ACTOR FakeClip2Sprite: BasicAmmoPickup
 {
  Scale 0.9
  VisibleToPlayerClass Purist
@@ -112,7 +112,7 @@ ACTOR Clip2Spawner: CustomInventory
 		Stop
     }
 }
-	
+
 	ACTOR Clip1 : Ammo
 {
 	Game Doom
@@ -147,7 +147,7 @@ ACTOR Clip1Spawner: CustomInventory
 		TNT1 A 1
 		TNT1 A 0 A_ChangeFlag("THRUACTORS", 0)
 	Stay:
-		TNT1 A 0 
+		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("FakeClip1Sprite")
 		TNT1 A 0 A_SpawnItem("FakeClip2Sprite")
 		TNT1 A 2
@@ -182,7 +182,7 @@ ACTOR Mauser9mm : Ammo
 	}
 }
 
-ACTOR FakeMauser9mmSprite: CustomInventory
+ACTOR FakeMauser9mmSprite: BasicAmmoPickup
 {
  Scale 0.6
  VisibleToPlayerClass BDoomer, Doomer2, TacticalDoomer
@@ -216,7 +216,7 @@ ACTOR Mauser9mmSpawner: CustomInventory
 		TNT1 A 1
 		TNT1 A 0 A_ChangeFlag("THRUACTORS", 0)
 	Stay:
-		TNT1 A 0 
+		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("FakeMauser9mmSprite")
 		TNT1 A 0 A_SpawnItem("FakeClip2Sprite")
 		TNT1 A 2
@@ -242,8 +242,8 @@ Actor ClipReplacer : BasicAmmoPickup Replaces Clip
 		TNT1 A 2
 		TNT1 A 0 A_Jump(4, "Spawn3") // Mauser 9mm
 		TNT1 A 0 A_Jump(16, "Spawn2") // Pistol Ammo
-		
-	Vanilla:	
+
+	Vanilla:
 	Spawn1:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx ("Clip2Spawner",0,0,0,0,0,0,0,0,0)
@@ -282,7 +282,7 @@ ACTOR Clip1Drop: CustomInventory
 		TNT1 A 1
 		TNT1 A 0 A_ChangeFlag("THRUACTORS", 0)
 	Stay:
-		TNT1 A 0 
+		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("FakeClip1Sprite")
 		TNT1 A 0 A_SpawnItem("FakeClip2Sprite")
 		TNT1 A 2
@@ -314,7 +314,7 @@ ACTOR ClipBox2 : Clip2
 	}
 }
 
-ACTOR FakeClipBoxSprite: CustomInventory
+ACTOR FakeClipBoxSprite: BasicAmmoPickup
 {
  Scale 0.9
  VisibleToPlayerClass Purist
@@ -348,7 +348,7 @@ ACTOR PistolAmmoBox: Clip1
   }
 }
 
-ACTOR FakePABSprite: CustomInventory
+ACTOR FakePABSprite: BasicAmmoPickup
 {
  Scale 0.9
  VisibleToPlayerClass BDoomer, Doomer2, TacticalDoomer
@@ -382,7 +382,7 @@ ACTOR PistolAmmoBoxSpawner: CustomInventory
 		TNT1 A 1
 		TNT1 A 0 A_ChangeFlag("THRUACTORS", 0)
 	Stay:
-		TNT1 A 0 
+		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("FakePABSprite")
 		TNT1 A 0 A_SpawnItem("FakeClipBoxSprite")
 		TNT1 A 2
@@ -417,7 +417,7 @@ ACTOR BuzzSawAmmo : Ammo
 	}
 }
 
-ACTOR FakeBuzzsawAmmoSprite: CustomInventory
+ACTOR FakeBuzzsawAmmoSprite: BasicAmmoPickup
 {
  Scale 0.6
  VisibleToPlayerClass BDoomer, Doomer2, TacticalDoomer
@@ -451,7 +451,7 @@ ACTOR BuzzSawAmmoSpawner: CustomInventory
 		TNT1 A 1
 		TNT1 A 0 A_ChangeFlag("THRUACTORS", 0)
 	Stay:
-		TNT1 A 0 
+		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("FakeBuzzsawAmmoSprite")
 		TNT1 A 0 A_SpawnItem("FakeClipBoxSprite")
 		TNT1 A 2
@@ -478,8 +478,8 @@ Actor ClipBoxReplacer : BasicAmmoPickup Replaces ClipBox
 		TNT1 A 0 A_Jump(4, "Spawn3") // Buzzsaw ammo
 		TNT1 A 0 A_Jump(16, "Spawn2") // Pistol ammo box
 		TNT1 A 2
-		
-	Vanilla:	
+
+	Vanilla:
 	Spawn1:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx ("ClipBox2",0,0,0,0,0,0,0,0,0)
@@ -520,8 +520,8 @@ ACTOR AmmoRocket : Ammo
 	+NOBLOOD
 	+NORADIUSDMG
 	+FORCERADIUSDMG
-	
-	damagefactor "Shrapnel", 0.0  damagefactor "Trample", 0.0 
+
+	damagefactor "Shrapnel", 0.0  damagefactor "Trample", 0.0
 	damagefactor "Head", 0.0	damagefactor "FriendBullet", 0.0    damagefactor "Taunt", 0.0    damagefactor "KillMe", 0.0
 	damagefactor "CancelTeleportFog", 0.0	damagefactor "BHFTOnBarrel", 0.0	damagefactor "GibRemoving", 0.0
 	damagefactor "SpawnMarine", 0.0	damagefactor "TeleportRemover", 0.0	damagefactor "MinorHead", 0.0
@@ -540,7 +540,7 @@ ACTOR AmmoRocket : Ammo
 		TNT1 A 0 A_JumpIfInventory("Clip1", 1, "NoShootable")
 		ROCK A -1
 		Stop
-		
+
 	NoShootable:
 		ROCK A 1
 		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
@@ -562,7 +562,7 @@ ACTOR AmmoRocket : Ammo
 		TNT1 A 0 A_SpawnItemEx ("RocketExplosion",0,0,13,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		//TNT1 A 0 A_SpawnItemEx ("RocketPenetrator",cos(-pitch)*42,0,0+(sin(pitch)*42),cos(-pitch)*40,0,sin(pitch)*40,0,SXF_TRANSFERPITCH)
 		//TNT1 AA 0 A_SpawnItem("SuperExpensiveParticleSpawner")
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx ("LiquidExplosionEffectSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 0 A_PlaySound("FAREXPL", 3)
@@ -575,7 +575,7 @@ ACTOR AmmoRocket : Ammo
 	}
 }
 
-ACTOR FakeRocketSprite: CustomInventory
+ACTOR FakeRocketSprite: BasicAmmoPickup
 {
 	Scale 0.9
 	VisibleToPlayerClass Purist
@@ -612,13 +612,13 @@ ACTOR AmmoRocketBox : AmmoRocket Replaces RocketBox
 		TNT1 A 0 A_JumpIfInventory("Clip1", 1, "NoShootable")
 		BROK A -1
 		Stop
-	
+
 	NoShootable:
 		BROK A 1
 		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
 		BROK A -1
 		Stop
-		
+
 	Death:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx ("ExplosionSplashSpawner", 0, 0, -20)
@@ -643,7 +643,7 @@ ACTOR AmmoRocketBox : AmmoRocket Replaces RocketBox
 		TNT1 A 15
 		TNT1 A 0 A_PlaySound("distantexp", 5)
 		TNT1 AAAAA 4 A_CustomMissile ("HeavyExplosionSmoke", 2, 0, random (0, 360), 2, random (0, 360))
-		Stop	
+		Stop
 	}
 }
 
@@ -657,15 +657,15 @@ ACTOR AmmoRocketReplacer : BasicAmmoPickup Replaces RocketAmmo
 		TNT1 A 2
 		TNT1 A 0 A_Jump(4, "Spawn2") // Grenade Ammo
 		TNT1 A 2
-		
-	Vanilla:	
+
+	Vanilla:
 	Spawn1:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx ("AmmoRocket",0,0,0,0,0,0,0,0,0)
 		TNT1 A 1
 		TNT1 A -1
 		Stop
-	
+
 	Spawn2:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx ("GrenadeAmmo",0,0,0,0,0,0,0,0,0)
@@ -696,7 +696,7 @@ ACTOR AmmoCell : Ammo Replaces Cell
 	}
 }
 
-ACTOR FakeCellSprite: CustomInventory
+ACTOR FakeCellSprite: BasicAmmoPickup
 {
 	Scale 0.9
 	VisibleToPlayerClass Purist
@@ -731,7 +731,7 @@ ACTOR AmmoCellPack : AmmoCell
 	}
 }
 
-ACTOR FakeCellPackSprite: CustomInventory
+ACTOR FakeCellPackSprite: BasicAmmoPickup
 {
 	Scale 0.9
 	VisibleToPlayerClass Purist
@@ -768,7 +768,7 @@ ACTOR Gas : Ammo
    }
 }
 
-ACTOR FakeGasSprite: CustomInventory
+ACTOR FakeGasSprite: BasicAmmoPickup
 {
 	Scale 0.9
 	VisibleToPlayerClass BDoomer, Doomer2, TacticalDoomer
@@ -801,7 +801,7 @@ ACTOR GasSpawner: CustomInventory
 		TNT1 A 1
 		TNT1 A 0 A_ChangeFlag("THRUACTORS", 0)
 	Stay:
-		TNT1 A 0 
+		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("FakeGasSprite")
 		TNT1 A 0 A_SpawnItem("FakeCellPackSprite")
 		TNT1 A 2
@@ -838,7 +838,7 @@ ACTOR Nuke : Ammo
 	}
 }
 
-ACTOR FakeNukeSprite: CustomInventory
+ACTOR FakeNukeSprite: BasicAmmoPickup
 {
 	Scale 0.9
 	VisibleToPlayerClass BDoomer, Doomer2, TacticalDoomer
@@ -871,7 +871,7 @@ ACTOR NukeSpawner: CustomInventory
 		TNT1 A 1
 		TNT1 A 0 A_ChangeFlag("THRUACTORS", 0)
 	Stay:
-		TNT1 A 0 
+		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("FakeNukeSprite")
 		TNT1 A 0 A_SpawnItem("FakeCellPackSprite")
 		TNT1 A 2
@@ -898,22 +898,22 @@ ACTOR AmmoCellPackReplacer : BasicAmmoPickup Replaces CellPack
 		TNT1 A 0 A_Jump(2, "Spawn2") // Nuclear Missile
 		TNT1 A 0 A_Jump(4, "Spawn2") // Gas
 		TNT1 A 2
-		
-	Vanilla:	
+
+	Vanilla:
 	Spawn1:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx ("AmmoCellPack",0,0,0,0,0,0,0,0,0)
 		TNT1 A 1
 		TNT1 A -1
 		Stop
-	
+
 	Spawn2:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx ("GasSpawner",0,0,0,0,0,0,0,0,0)
 		TNT1 A 1
 		TNT1 A -1
 		Stop
-	
+
 	Spawn3:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx ("NukeSpawner",0,0,0,0,0,0,0,0,0)
@@ -945,7 +945,7 @@ ACTOR AmmoShell : Ammo
 	}
 }
 
-ACTOR FakeAmmoShellSprite: CustomInventory
+ACTOR FakeAmmoShellSprite: BasicAmmoPickup
 {
  Scale 0.9
  VisibleToPlayerClass Purist
@@ -981,7 +981,7 @@ ACTOR AmmoShellBox : AmmoShell
 	}
 }
 
-ACTOR FakeShellBoxSprite: CustomInventory
+ACTOR FakeShellBoxSprite: BasicAmmoPickup
 {
  Scale 0.9
  VisibleToPlayerClass Purist
@@ -1031,7 +1031,7 @@ Actor SlugRounds: CustomInventory
   }
 }
 
-ACTOR FakeSlugRoundsSprite: CustomInventory
+ACTOR FakeSlugRoundsSprite: BasicAmmoPickup
 {
  Scale 0.9
  VisibleToPlayerClass BDoomer, Doomer2, TacticalDoomer
@@ -1065,7 +1065,7 @@ ACTOR SlugRoundsSpawner: CustomInventory
 		TNT1 A 1
 		TNT1 A 0 A_ChangeFlag("THRUACTORS", 0)
 	Stay:
-		TNT1 A 0 
+		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("FakeSlugRoundsSprite")
 		TNT1 A 0 A_SpawnItem("FakeShellBoxSprite")
 		TNT1 A 2
@@ -1103,7 +1103,7 @@ ACTOR AmmoMagnum : Ammo
 	}
 }
 
-ACTOR FakeAmmoMagnumSprite: CustomInventory
+ACTOR FakeAmmoMagnumSprite: BasicAmmoPickup
 {
  Scale 0.6
  VisibleToPlayerClass BDoomer, Doomer2, TacticalDoomer
@@ -1136,7 +1136,7 @@ ACTOR AmmoMagnumSpawner: CustomInventory
 		TNT1 A 1
 		TNT1 A 0 A_ChangeFlag("THRUACTORS", 0)
 	Stay:
-		TNT1 A 0 
+		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("FakeAmmoMagnumSprite")
 		TNT1 A 0 A_SpawnItem("FakeAmmoShellSprite")
 		TNT1 A 2
@@ -1167,7 +1167,7 @@ ACTOR AmmoMagnumBox : AmmoMagnum
 	}
 }
 
-ACTOR FakeMagnumBoxSprite: CustomInventory
+ACTOR FakeMagnumBoxSprite: BasicAmmoPickup
 {
  Scale 0.9
  VisibleToPlayerClass BDoomer, Doomer2, TacticalDoomer
@@ -1200,7 +1200,7 @@ ACTOR MagnumBoxSpawner: CustomInventory
 		TNT1 A 1
 		TNT1 A 0 A_ChangeFlag("THRUACTORS", 0)
 	Stay:
-		TNT1 A 0 
+		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("FakeMagnumBoxSprite")
 		TNT1 A 0 A_SpawnItem("FakeShellBoxSprite")
 		TNT1 A 2
@@ -1226,15 +1226,15 @@ ACTOR AmmoShellReplacer : BasicAmmoPickup Replaces Shell
 		TNT1 A 2
 		TNT1 A 0 A_Jump(2, "Spawn2") // Magnum Ammo
 		TNT1 A 2
-		
-	Vanilla:	
+
+	Vanilla:
 	Spawn1:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx ("AmmoShell",0,0,0,0,0,0,0,0,0)
 		TNT1 A 1
 		TNT1 A -1
 		Stop
-	
+
 	Spawn2:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx ("AmmoMagnumSpawner",0,0,0,0,0,0,0,0,0)
@@ -1255,22 +1255,22 @@ ACTOR AmmoShellBoxReplacer : BasicAmmoPickup Replaces ShellBox
 		TNT1 A 0 A_Jump(2, "Spawn3") // Magnum Ammo Box
 		TNT1 A 0 A_Jump(4, "Spawn2") // Slug Rounds Upgrade
 		TNT1 A 2
-		
-	Vanilla:	
+
+	Vanilla:
 	Spawn1:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx ("AmmoShellBox",0,0,0,0,0,0,0,0,0)
 		TNT1 A 1
 		TNT1 A -1
 		Stop
-	
+
 	Spawn2:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx ("SlugRoundsSpawner",0,0,0,0,0,0,0,0,0)
 		TNT1 A 1
 		TNT1 A -1
 		Stop
-	
+
 	Spawn3:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx ("MagnumBoxSpawner",0,0,0,0,0,0,0,0,0)
@@ -1278,7 +1278,7 @@ ACTOR AmmoShellBoxReplacer : BasicAmmoPickup Replaces ShellBox
 		TNT1 A -1
 		Stop
 	}
-}	
+}
 
 ACTOR GrenadeAmmo : Ammo
 {
