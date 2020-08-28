@@ -9,32 +9,32 @@ ACTOR TehArchvile: Archvile Replaces Archvile
 	Health 700
 	GibHealth 30
 	PainChance 10
-	
+
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 10.0
 	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0	Damagefactor "HangingHook", 0.0
 	Damagefactor "Head", 1.5	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
-	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "Extremepunches", 0.5
-	Damagefactor "Fatality", 0.5	Damagefactor "HeadKick", 0.5	Damagefactor "HelperMarineFatallity", 0.5
+	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "Extremepunches", 1.0
+	Damagefactor "Fatality", 2.5	Damagefactor "HeadKick", 0.5	Damagefactor "HelperMarineFatallity", 0.5
 	Damagefactor "Kick", 0.5	Damagefactor "Leg", 0.5	Damagefactor "LowKick", 0.5
 	Damagefactor "Melee", 0.5	Damagefactor "MonsterKnocked", 0.5	Damagefactor "Stomp", 0.5
 	Damagefactor "Trample", 0.5	Damagefactor "Slide", 0.5
 	Damagefactor "Burn", 0.5	Damagefactor "Fire", 0.5	Damagefactor "Flames", 0.5
 	Damagefactor "GreenFire", 0.5	Damagefactor "HumanBBQ", 0.5
-	
+
 	PainChance "Head", 255	PainChance "Taunt", 255	PainChance "Extremepunches", 16
 	PainChance "Fatality", 16	PainChance "HelperMarineFatallity", 16	PainChance "Kick", 16
 	PainChance "LowKick", 16	PainChance "Melee", 16	PainChance "MonsterKnocked", 16
 	PainChance "Slide", 16	PainChance "Trample", 16
 	PainChance "Burn", 16	PainChance "Fire", 16	PainChance "Flames", 16
 	PainChance "GreenFire", 16	PainChance "HumanBBQ", 16
-	
+
 	BloodType "Brutal_Blood", "SawBlood", "SawBlood"
 	Monster
 	MaxTargetRange 896
-	+QUICKTORETALIATE 
-	+FLOORCLIP 
+	+QUICKTORETALIATE
+	+FLOORCLIP
 	+NOTARGET
     DamageType Burn
 	DropItem "DemonStrengthRune", 16
@@ -59,8 +59,8 @@ ACTOR TehArchvile: Archvile Replaces Archvile
 		TNT1 A 0 A_GiveInventory("EnemyIsArchvile")
 		MARN A 0 ACS_ExecuteAlways(177, 0, 0, 0, 0)//Check if you are playing on an Wolfenstein level
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCHeckClassicMonsters", 0, 0, 0, 0)//Check if Vanilla Mode is activated
-		
-	Spawn2:	
+
+	Spawn2:
 		DIAB B 20 A_Look
 		TNT1 A 0 A_SpawnItem("HeadshotTarget20", 0, 52)
 		Loop
@@ -78,12 +78,12 @@ ACTOR TehArchvile: Archvile Replaces Archvile
 	Missile:
 		DIAB E 0 BRIGHT A_VileStart
 		TNT1 A 0 A_SpawnItem("HeadshotTarget20", 0, 52)
-		DIAB E 10 A_FaceTarget 
-		DIAB E 1 A_VileTarget 
+		DIAB E 10 A_FaceTarget
+		DIAB E 1 A_VileTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget20", 0, 52)
 		DIAB E 7 A_VileTarget
 
-		DIAB E 1 A_VileTarget 
+		DIAB E 1 A_VileTarget
         TNT1 A 0 A_CustomMissile ("SmallFlameTrails", 85, 35, random (0, 40), 2, random (0, 160))
         TNT1 A 0 A_CustomMissile ("SmallFlameTrails", 85, -35, random (0, 40), 2, random (0, 160))
         DIAB E 3 A_FaceTarget
@@ -92,14 +92,14 @@ ACTOR TehArchvile: Archvile Replaces Archvile
         DIAB F 3 BRIGHT A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget20", 0, 52)
 		DIAB F 3 BRIGHT A_FaceTarget
-		DIAB E 1 A_VileTarget 
+		DIAB E 1 A_VileTarget
         TNT1 A 0 A_CustomMissile ("SmallFlameTrails", 85, 35, random (0, 40), 2, random (0, 160))
         TNT1 A 0 A_CustomMissile ("SmallFlameTrails", 85, -35, random (0, 40), 2, random (0, 160))
-        DIAB F 3 A_FaceTarget 
+        DIAB F 3 A_FaceTarget
         TNT1 A 0 A_CustomMissile ("SmallFlameTrails", 85, 35, random (0, 40), 2, random (0, 160))
         TNT1 A 0 A_CustomMissile ("SmallFlameTrails", 85, -35, random (0, 40), 2, random (0, 160))
         DIAB F 3 BRIGHT A_FaceTarget
-		DIAB E 1 A_VileTarget 
+		DIAB E 1 A_VileTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget20", 0, 52)
         TNT1 A 0 A_CustomMissile ("SmallFlameTrails", 85, 35, random (0, 40), 2, random (0, 160))
         TNT1 A 0 A_CustomMissile ("SmallFlameTrails", 85, -35, random (0, 40), 2, random (0, 160))
@@ -107,7 +107,7 @@ ACTOR TehArchvile: Archvile Replaces Archvile
         TNT1 A 0 A_CustomMissile ("SmallFlameTrails", 85, 35, random (0, 40), 2, random (0, 160))
         TNT1 A 0 A_CustomMissile ("SmallFlameTrails", 85, -35, random (0, 40), 2, random (0, 160))
         DIAB F 3 BRIGHT A_FaceTarget
-		DIAB E 1 A_VileTarget 
+		DIAB E 1 A_VileTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget20", 0, 52)
         TNT1 A 0 A_CustomMissile ("SmallFlameTrails", 85, 35, random (0, 40), 2, random (0, 160))
         TNT1 A 0 A_CustomMissile ("SmallFlameTrails", 85, -35, random (0, 40), 2, random (0, 160))
@@ -116,20 +116,20 @@ ACTOR TehArchvile: Archvile Replaces Archvile
         TNT1 A 0 A_CustomMissile ("SmallFlameTrails", 85, -35, random (0, 40), 2, random (0, 160))
         DIAB F 3 BRIGHT A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget20", 0, 52)
-		DIAB JKLMN 3 BRIGHT A_FaceTarget 
+		DIAB JKLMN 3 BRIGHT A_FaceTarget
 		DIAB O 3 BRIGHT A_VileAttack
 		DIAB P 3 BRIGHT
 		Goto See
-		
+
 	Heal:
-        TNT1 A 0 
+        TNT1 A 0
 		TNT1 A 0 A_SpawnItem("PentagramSpawner")
 		DIBR X 10 BRIGHT
 		Goto See
 	Pain:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 52)
-		DIAB Q 5   
+		DIAB Q 5
 		DIAB Q 5 A_Pain
 		Goto See
 
@@ -139,7 +139,7 @@ ACTOR TehArchvile: Archvile Replaces Archvile
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 52)
         TNT1 A 0 A_FaceTarget
         TNT1 A 0 A_Recoil(8)
-		DIAB Q 10 A_Pain  
+		DIAB Q 10 A_Pain
 		DIAB Q 10
 		Goto See
 
@@ -165,9 +165,9 @@ ACTOR TehArchvile: Archvile Replaces Archvile
 	Death:
 		TNT1 A 0
 		TNT1 A 0 A_Jump(64, "Death.ARm")
-		
-	Death.Simple:	
-		TNT1 A 0 A_Scream 
+
+	Death.Simple:
+		TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
 		DIAB RSTUVWX 5 A_SpawnItem ("MuchBlood", 40)
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
@@ -177,7 +177,7 @@ ACTOR TehArchvile: Archvile Replaces Archvile
 
 	Death.Arm:
 	Death.Minigun:
-		TNT1 A 0 A_Scream 
+		TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
 		TNT1 AA 0 A_CustomMissile ("XDeath1", 52, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("XDeathArchvileArm", 52, 0, random (0, 360), 2, random (40, 120))
@@ -186,18 +186,18 @@ ACTOR TehArchvile: Archvile Replaces Archvile
 		TNT1 A 0 A_SpawnItem("DyingArchvileNoArm")
 		TNT1 A -1
 		Stop
-		
+
 	Death.Shotgun:
 	Death.SSG:
 	TNT1 A 0
-	
+
 	TNT1 A 0 A_Jump(96, "Death.ARm")
 	TNT1 A 0 A_Jump(96, "Death.Cut")
 	TNT1 A 0 A_JumpIfInTargetInventory("SSGSelected", 1, "BrutalDeath")
 	TNT1 A 0 A_Jump(96, "BrutalDeath")
 	TNT1 A 0
 	Goto Death
-	
+
 	Death.Desintegrate:
 		TNT1 A 0
 		TNT1 A 0 A_Scream
@@ -205,24 +205,24 @@ ACTOR TehArchvile: Archvile Replaces Archvile
 		TNT1 AA 0 A_SpawnItemEx("TinyBurningPiece", random (-15, 15), random (-15, 15))
 		TNT1 AAA 0 A_SpawnItemEx("TinyBurningPiece2", random (-35, 35), random (-35, 35))
 		Goto RippedOpen
-		
+
 	Death.Cut:
 		TNT1 A 0
 		TNT1 A 0 A_Scream
 		TNT1 A 0 A_CustomMissile ("XDeathArchvileArm", 52, 0, random (0, 360), 2, random (60, 120))
 		TNT1 A 0 A_CustomMissile ("XDeathArchvile", 42, 0, random (0, 360), 2, random (60, 120))
-		Goto RippedOpen	
-		
+		Goto RippedOpen
+
 	Death.Deletus:
 		TNT1 A 0
 		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
 		TNT1 A 0 A_NoBlocking
-		Stop	
-		
+		Stop
+
 	BrutalDeath:
 	Death.Saw:
 	Death.Blast:
-	
+
 	TNT1 A 0
 	TNT1 A 0 A_SpawnItem("SplatteredLarge")
 	TNT1 A 0 A_Scream
@@ -236,7 +236,7 @@ ACTOR TehArchvile: Archvile Replaces Archvile
 	TNT1 A 0 A_CustomMissile ("XDeath3", 52, 0, random (0, 360), 2, random (30, 120))
 	TNT1 A 0 A_CustomMissile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160))
     TNT1 A 0 A_CustomMissile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (0, 160))
-	
+
     TNT1 A 0 A_SpawnItem("MuchBlood2", 0, 40)
 	TNT1 AAAA 0 A_CustomMissile ("SuperWallRedBlood", 32, 0, random (170, 190), 2, random (0, 40))
 	TNT1 AAAA 0 A_CustomMissile ("BloodMistBig", 40, 0, random (0, 360), 2, random (30, 90))
@@ -253,7 +253,7 @@ ACTOR TehArchvile: Archvile Replaces Archvile
 	XDeath:
     Death.ExplosiveImpact:
 	Death.Explosives:
-		
+
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("SplatteredLarge")
 		TNT1 A 0 A_XScream
@@ -297,10 +297,10 @@ ACTOR TehArchvile: Archvile Replaces Archvile
 		TNT1 A 0 A_SpawnItem("MuchBlood2", 0, 40)
 		TNT1 AAA 0 A_CustomMissile ("Guts", 32, 0, random (0, 360), 2, random (60, 120))
 		TNT1 A 0 A_NoBlocking
-		XVIP ABCDEFGHIJKLMNOPQ 2 
+		XVIP ABCDEFGHIJKLMNOPQ 2
 		XVIP Q -1
 		Stop
-		
+
 	    Death.Fire:
         TNT1 A 0
         TNT1 A 0 A_Scream
@@ -347,7 +347,7 @@ ACTOR TehArchvile: Archvile Replaces Archvile
 	    TNT1 A 0 A_ChangeFlag("SOLID", 0)
         TNT1 A 0 A_SpawnItem("ArchVile")
         Stop
-	
+
 	Death.Ice:
 	Death.Freeze:
 	Death.Frost:
@@ -364,7 +364,7 @@ ACTOR ArchvileFire2 Replaces ArchvileFire
     Scale 1.0
 	+NOBLOCKMAP +NOGRAVITY
 	RenderStyle Add
-	
+
 	Alpha 0.8
 	States
 	{
@@ -378,7 +378,7 @@ ACTOR ArchvileFire2 Replaces ArchvileFire
 		INFE T 1 bright A_FireCrackle
 		TNT1 A 2
 		Stop
-		
+
 	}
 }
 
@@ -453,7 +453,7 @@ actor DeadArchvileVID3L: DeadArchvile
     {
     Spawn:
 VID3 L -1
-       Stop    }}	   
+       Stop    }}
 
 ACTOR DyingArchvileNoArm: TehArchvile
 {
@@ -470,7 +470,7 @@ ACTOR DyingArchvileNoArm: TehArchvile
 	BurnHeight 0
     States
     {
-	
+
 		Spawn:
 		See:
 		 TNT1 A 0
@@ -485,13 +485,13 @@ ACTOR DyingArchvileNoArm: TehArchvile
 		 TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 52)
 		 VID2 KKKLLL 2 A_CustomMissile ("Brutal_LiquidBlood", 24, 0, random (0, 360), 2, random (0, 45))
 		 TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 52)
-		Death: 
+		Death:
 		 VID2 A 0 A_Scream
 		 TNT1 A 0 A_NoBlocking
 		 VID2 MN 6
 		 TNT1 A 0 A_SpawnItem("DeadArchvileVID2O")
 		 Stop
-		 
+
 	Death.Desintegrate:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("BarrelExplosionSmokeColumn")
@@ -518,7 +518,7 @@ ACTOR DyingArchvileNoArm: TehArchvile
 		TNT1 A 0 A_SpawnItem("DeadArchvileVID3Q")
 		TNT1 A -1
 		Stop
-	
+
 	BrutalDeath:
 	Death.Saw:
 	Death.Minigun:
@@ -551,4 +551,4 @@ ACTOR DyingArchvileNoArm: TehArchvile
 		TNT1 A -1
 		Stop
 	}
-}		   
+}
