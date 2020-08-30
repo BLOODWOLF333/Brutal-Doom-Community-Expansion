@@ -110,12 +110,12 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_TakeInventory("IsFloating", 100)
 
         MARN DD 2 A_JumpIf (momZ !=0, "IsJumpin")
-		MARN D 0 //A_TakeInventory("UsedStamina", 5)
+		MARN D 0 A_TakeInventory("UsedStamina", 1)
 		MARN DD 2 A_JumpIf (momZ !=0, "IsJumpin")
         MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 
 		MARN DD 2 A_JumpIf (momZ !=0, "IsJumpin")
-		MARN D 0 //A_TakeInventory("UsedStamina", 5)
+		MARN D 0 A_TakeInventory("UsedStamina", 1)
 		MARN DD 2 A_JumpIf (momZ !=0, "IsJumpin")
         MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 
@@ -208,13 +208,15 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         PLA1 A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 
-		PLA1 D 0 //A_TakeInventory("UsedStamina", 5)
+		PLA1 D 0 A_TakeInventory("UsedStamina", 1)
 
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "FISTSee")
 		TNT1 A 0 A_JumpIf (momy >=3 || momy <=-3, "FISTSee")
         PLA1 AA 2 A_JumpIf (momZ !=0, "FistIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         PLA1 A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
+
+		PLA1 D 0 A_TakeInventory("UsedStamina", 1)
 
 		NULL A 0 A_JumpIfInventory("HasImpShield", 1, "SeeImpShield")
 		NULL A 0 A_JumpIfInventory("HasZmanShield", 1, "SeeZmanShield")
@@ -283,13 +285,15 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         MAR3 A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 
-		MAR3 D 0 //A_TakeInventory("UsedStamina", 5)
+		PLA1 D 0 A_TakeInventory("UsedStamina", 1)
 
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "ShotgunSee")
 		TNT1 A 0 A_JumpIf (momy >=3 || momy <=-3, "ShotgunSee")
         MAR3 AA 2 A_JumpIf (momZ !=0, "ShotgunIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         MAR3 A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
+
+		PLA1 D 0 A_TakeInventory("UsedStamina", 1)
 
 		Loop
 
@@ -348,13 +352,14 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 
-		NULL D 0 //A_TakeInventory("UsedStamina", 5)
+		PLA1 D 0 A_TakeInventory("UsedStamina", 1)
 
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "MinigunSee")
 		TNT1 A 0 A_JumpIf (momy >=3 || momy <=-3, "MinigunSee")
         MAR4 AA 2 A_JumpIf (momZ !=0, "MinigunIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
+		PLA1 D 0 A_TakeInventory("UsedStamina", 1)
 
 		Loop
 
@@ -413,13 +418,14 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 
-		NULL D 0 //A_TakeInventory("UsedStamina", 5)
+		PLA1 D 0 A_TakeInventory("UsedStamina", 1)
 
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "SSGSee")
 		TNT1 A 0 A_JumpIf (momy >=3 || momy <=-3, "SSGSee")
         MSSG AA 2 A_JumpIf (momZ !=0, "SSGIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
+		PLA1 D 0 A_TakeInventory("UsedStamina", 1)
 
 		Loop
 
@@ -478,13 +484,14 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 
-		NULL D 0 //A_TakeInventory("UsedStamina", 5)
+		PLA1 D 0 A_TakeInventory("UsedStamina", 1)
 
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "RocketLauncherSee")
 		TNT1 A 0 A_JumpIf (momy >=3 || momy <=-3, "RocketLauncherSee")
         MAR5 AA 2 A_JumpIf (momZ !=0, "RocketLauncherIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
+		PLA1 D 0 A_TakeInventory("UsedStamina", 1)
 
 		Loop
 
@@ -543,13 +550,14 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 
-		NULL D 0 //A_TakeInventory("UsedStamina", 5)
+		PLA1 D 0 A_TakeInventory("UsedStamina", 1)
 
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "PLasmagunSee")
 		TNT1 A 0 A_JumpIf (momy >=3 || momy <=-3, "PLasmagunSee")
         MAR6 AA 2 A_JumpIf (momZ !=0, "PLasmagunIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
+		PLA1 D 0 A_TakeInventory("UsedStamina", 1)
 
 		Loop
 
@@ -608,13 +616,14 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 
-		NULL D 0 //A_TakeInventory("UsedStamina", 5)
+		PLA1 D 0 A_TakeInventory("UsedStamina", 1)
 
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "RailgunSee")
 		TNT1 A 0 A_JumpIf (momy >=3 || momy <=-3, "RailgunSee")
         MRRG AA 2 A_JumpIf (momZ !=0, "RailgunIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
+		PLA1 D 0 A_TakeInventory("UsedStamina", 1)
 
 		Loop
 
@@ -673,13 +682,14 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 
-		NULL D 0 //A_TakeInventory("UsedStamina", 5)
+		PLA1 D 0 A_TakeInventory("UsedStamina", 1)
 
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "BFG9kSee")
 		TNT1 A 0 A_JumpIf (momy >=3 || momy <=-3, "BFG9kSee")
         MAR7 AA 2 A_JumpIf (momZ !=0, "BFG9kIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
+		PLA1 D 0 A_TakeInventory("UsedStamina", 1)
 
 		Loop
 
@@ -738,13 +748,14 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 
-		NULL D 0 //A_TakeInventory("UsedStamina", 5)
+		PLA1 D 0 A_TakeInventory("UsedStamina", 1)
 
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "BFG10kSee")
 		TNT1 A 0 A_JumpIf (momy >=3 || momy <=-3, "BFG10kSee")
         M10K AA 2 A_JumpIf (momZ !=0, "BFG10kIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
+		PLA1 D 0 A_TakeInventory("UsedStamina", 1)
 
 		Loop
 
@@ -803,13 +814,14 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 
-		NULL D 0 //A_TakeInventory("UsedStamina", 5)
+		PLA1 D 0 A_TakeInventory("UsedStamina", 1)
 
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "GrenadeLauncherSee")
 		TNT1 A 0 A_JumpIf (momy >=3 || momy <=-3, "GrenadeLauncherSee")
         MRGL AA 2 A_JumpIf (momZ !=0, "GrenadeLauncherIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
+		PLA1 D 0 A_TakeInventory("UsedStamina", 1)
 
 		Loop
 
@@ -868,13 +880,14 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 
-		NULL D 0 //A_TakeInventory("UsedStamina", 5)
+		PLA1 D 0 A_TakeInventory("UsedStamina", 1)
 
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "FlamerSee")
 		TNT1 A 0 A_JumpIf (momy >=3 || momy <=-3, "FlamerSee")
         MMFC AA 2 A_JumpIf (momZ !=0, "FlamerIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
+		PLA1 D 0 A_TakeInventory("UsedStamina", 1)
 
 		Loop
 
@@ -933,13 +946,14 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 
-		NULL D 0 //A_TakeInventory("UsedStamina", 5)
+		PLA1 D 0 A_TakeInventory("UsedStamina", 1)
 
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "RevLauncherSee")
 		TNT1 A 0 A_JumpIf (momy >=3 || momy <=-3, "RevLauncherSee")
         MHML AA 2 A_JumpIf (momZ !=0, "RevLauncherIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
+		PLA1 D 0 A_TakeInventory("UsedStamina", 1)
 
 		Loop
 
@@ -998,13 +1012,14 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 
-		NULL D 0 //A_TakeInventory("UsedStamina", 5)
+		PLA1 D 0 A_TakeInventory("UsedStamina", 1)
 
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "SubMGSee")
 		TNT1 A 0 A_JumpIf (momy >=3 || momy <=-3, "SubMGSee")
         MAR6 AA 2 A_JumpIf (momZ !=0, "SubMGIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
+		PLA1 D 0 A_TakeInventory("UsedStamina", 1)
 
 		Loop
 
@@ -1065,13 +1080,14 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 
-		NULL D 0 //A_TakeInventory("UsedStamina", 5)
+		PLA1 D 0 A_TakeInventory("UsedStamina", 1)
 
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "ChainsawSee")
 		TNT1 A 0 A_JumpIf (momy >=3 || momy <=-3, "ChainsawSee")
         MAR1 AA 2 A_JumpIf (momZ !=0, "ChainsawIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
+		PLA1 D 0 A_TakeInventory("UsedStamina", 1)
 
 		Loop
 
@@ -1116,7 +1132,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		Loop
 
 	ADSStand:
-		MAR2 A 1
+		MAR2 AA 2
 		MAR2 A 0 A_JumpIf (momy >=3 || momy <=-3, "ADSMove")
 		MAR2 A 0 A_JumpIf (momx >=3 || momx <=-3, "ADSMove")
 		MARN D 0 A_JumpIf (momZ !=0, "IsJumpin")
@@ -1124,9 +1140,10 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
         MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 		NULL A 0 A_JumpIfInventory("RollLeft", 1, "RollLeft")
 		MAR2 A 0 A_JumpIfInventory("RollRight", 1, "RollRight")
-		MARN D 0 //A_TakeInventory("UsedStamina", 3)
+		PLA1 D 0 A_TakeInventory("UsedStamina", 1)
 
-		MAR2 A 5 A_JumpIfInventory("ADSMode", 1, 1)
+		MAR2 AA 2 A_JumpIfInventory("ADSMode", 1, 2)
+		PLA1 D 0 A_TakeInventory("UsedStamina", 1)
 		Goto StandStill
 		MAR2 A 0
 		Loop
