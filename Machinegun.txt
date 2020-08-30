@@ -195,9 +195,8 @@ ACTOR Machinegun : BrutalWeapon
 			RIFG A 0 A_SetPitch(pitch-0.4)
 			MGN1 D 1
 			TNT1 A 0 A_ZoomFactor(1.0)
-			MGN1 E 1
-
-
+			TNT1 A 0 A_JumpIfInventory("IsTacticalClass", 1, 2)//Tactical mode skips a frame, fires faster
+			MGN1 E 1 A_WeaponReady(1)
 			MGN1 A 0 A_Refire
 			goto Ready
 

@@ -181,7 +181,7 @@ ACTOR DualPistols : BrutalWeapon
 		PI2G A 1
 		PI2G A 0 A_TakeInventory("PistolFireAnimation1")
 		PI2G A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,-10,-4)
-		PI2G A 2 A_WeaponReady(WRF_NOBOB)
+		PI2G A 1 A_WeaponReady(WRF_NOBOB)
 		TNT1 A 0 A_Refire("Fire")
 		Goto Ready
 
@@ -277,9 +277,8 @@ ACTOR DualPistols : BrutalWeapon
 		PI2F E 1 A_FireCustomMissile("PistolCaseSpawn",5,0,-10,-4)
 		TNT1 A 0 A_ZoomFactor(1.0)
 
-		PI2F I 1
-		PI2F J 1 A_WeaponReady(WRF_NOBOB)
-		PI2F K 1 A_WeaponReady(WRF_NOBOB)
+		PI2F I 2
+		PI2G A 1 A_WeaponReady(WRF_NOBOB)
 		Goto Ready
 
 	AltFire:

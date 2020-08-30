@@ -159,27 +159,31 @@ ACTOR Plasma_Gun : BrutalWeapon
 		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		PLSN A 0 A_JumpIfInventory("DMgame", 1, "FireDM")
 		PLST A 1 BRIGHT A_FireCustomMissile("Plasma_Ball", frandom(-0.6,0.6), 1, 0, -5, 0, frandom(-0.7,0.7))
+		PLSN A 0 A_Takeinventory("PlasmaAmmo",1)
 		TNT1 A 0 A_ZoomFactor(0.99)
 		RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
 		RIFG A 0 A_SetPitch(-0.2 + pitch)
 		PLST B 1 BRIGHT
 		TNT1 A 0 A_ZoomFactor(1.0)
 		PLST C 1 BRIGHT
+		TNT1 A 0 A_JumpIfInventory("IsTacticalClass", 1, 2)//Tactical mode skips a frame, fires faster
 		PLST D 1 BRIGHT
-		PLSN A 0 A_Takeinventory("PlasmaAmmo",1)
+		TNT1 A 0 A_Refire
 		Goto Ready
 
 	FireDM:
 		PLSN A 0
 		PLST A 1 BRIGHT A_FireCustomMissile("PlasmaBallDM", frandom(-0.6,0.6), 1, 0, -5, 0, frandom(-0.7,0.7))
+		PLSN A 0 A_Takeinventory("PlasmaAmmo",1)
 		TNT1 A 0 A_ZoomFactor(0.99)
 		RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
 		RIFG A 0 A_SetPitch(-0.2 + pitch)
 		PLST B 1 BRIGHT
 		TNT1 A 0 A_ZoomFactor(1.0)
 		PLST C 1 BRIGHT
+		TNT1 A 0 A_JumpIfInventory("IsTacticalClass", 1, 2)//Tactical mode skips a frame, fires faster
 		PLST D 1 BRIGHT
-		PLSN A 0 A_Takeinventory("PlasmaAmmo",1)
+		TNT1 A 0 A_Refire
 		Goto Ready
 
 // Charging up secondary ------------------------------------------------------------
