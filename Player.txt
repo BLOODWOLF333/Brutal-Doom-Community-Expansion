@@ -23,7 +23,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 	Species "Marines"
     BloodType "Player_Blood", "Player_BloodSaw", "Player_Blood"
 	Player.Face "STF"
-	
+
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 10.0
 	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0
@@ -32,7 +32,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 100.0	Damagefactor "Repair", 0.0
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
-	
+
 	Player.ColorRange 112, 127
 	Player.StartItem "Rifle"
 	Player.StartItem "Melee_Attacks"
@@ -71,14 +71,14 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		MARN A 0 ACS_ExecuteAlways(289, 0, 0, 0, 0)//Check if playing in realism mode.
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Disable Camera.
 		MARN A 0 ACS_NamedExecuteAlways("CheckIfDM", 0, 0, 0, 0)//Check if Coop
-		
+
 		TNT1 A 0 A_SetScale(0.8, 0.9)
 		TNT1 A 0 A_JumpIfInventory("GenderFemale", 1, 3)
 		TNT1 A 0 A_SetScale(1.0, 1.0)
 		TNT1 AAA 0
 		MARN D 2
 		MARN A 0 A_JumpIfInventory("DMgame", 1, "DM")
-		
+
 	DM:
 		MARN D 1
 		NULL A 0 SetPlayerProperty(0,0,0)
@@ -86,8 +86,8 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_ChangeFlag("MTHRUSPECIES", 0)
 		Goto StandStill
 
-	StandStill:	
-	    MARN D 0 
+	StandStill:
+	    MARN D 0
 		TNT1 A 0 A_Changeflag("NOPAIN", 0)
 		MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
@@ -110,12 +110,12 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_TakeInventory("IsFloating", 100)
 
         MARN DD 2 A_JumpIf (momZ !=0, "IsJumpin")
-		MARN D 0 A_TakeInventory("UsedStamina", 5)
+		MARN D 0 //A_TakeInventory("UsedStamina", 5)
 		MARN DD 2 A_JumpIf (momZ !=0, "IsJumpin")
         MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 
 		MARN DD 2 A_JumpIf (momZ !=0, "IsJumpin")
-		MARN D 0 A_TakeInventory("UsedStamina", 5)
+		MARN D 0 //A_TakeInventory("UsedStamina", 5)
 		MARN DD 2 A_JumpIf (momZ !=0, "IsJumpin")
         MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 
@@ -123,7 +123,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		Loop
 
 	See:
-		MARN A 0 
+		MARN A 0
 		MARN A 0 A_TakeInventory("IsStandingStill", 1)
 		MARN A 0 A_TakeInventory("ChainguyguyContinue", 1)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
@@ -141,18 +141,18 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_JumpIfInventory("BFGSelected", 1, "BFG9Ksee")
 		TNT1 A 0 A_JumpIfInventory("FlameCannonSelected", 1, "FlamerSee")
 		TNT1 A 0 A_JumpIfInventory("SawSelected", 1, "ChainSawSee")
-		
+
 		NULL A 0 A_JumpIfInventory("ADSMode", 1, "ADSMove")
-		
+
 		MARN AAA 1 A_JumpIf (momZ != 0, "IsJumpin")
 		MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		
+
 		MARN BBB 1 A_JumpIf (momZ != 0, "IsJumpin")
 		MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		MARN B 0 A_SpawnItemEx("FootStep6", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
 		MARN CCC 1 A_JumpIf (momZ != 0, "IsJumpin")
 		MARN C 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		
+
 		MARN BBB 1 A_JumpIf (momZ != 0, "IsJumpin")
 		MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 
@@ -160,11 +160,11 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		MARN B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		MARN A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
 		MARN A 0 A_JumpIfInventory("BootsSmearedWithGreenBlood", 1, "SeeSmearedWithGreenBlood")
-		
+
 		MARN A 0 A_GiveInventory("IsStandingStill", 1)
-		
+
 		Goto StandStill
-		
+
    IsJumpin:
         MARN A 3
 		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
@@ -172,15 +172,15 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
 		MARN A 1 A_JumpIf (momZ != 0, "InAir")
 		Goto StandStill
-		
-	InAir:	
+
+	InAir:
 		MARJ A 3
 		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
-        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")	
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		TNT1 A 0 SetPlayerProperty(0,0,0)
 		TNT1 A 0 A_JumpIf (momZ == 0, "Land")
 		Loop
-	
+
 	Land:
         TNT1 A 0
 		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
@@ -193,48 +193,48 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		Goto StandStill
 
 	//SKIN FISTS
-	
-	FISTStandStill:	
-	    PLA1 D 0 
+
+	FISTStandStill:
+	    PLA1 D 0
 		MARN A 0 A_GiveInventory("IsStandingStill", 1)
 		TNT1 A 0 A_TakeInventory("SwitchToFist", 1)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		PLA1 A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 		TNT1 A 0 A_TakeInventory("IsFloating", 100)
-		
+
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "FISTSee")
 		TNT1 A 0 A_JumpIf (momy >=3 || momy <=-3, "FISTSee")
         PLA1 AA 2 A_JumpIf (momZ !=0, "FistIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         PLA1 A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
-		
-		PLA1 D 0 A_TakeInventory("UsedStamina", 5)
-		
+
+		PLA1 D 0 //A_TakeInventory("UsedStamina", 5)
+
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "FISTSee")
 		TNT1 A 0 A_JumpIf (momy >=3 || momy <=-3, "FISTSee")
         PLA1 AA 2 A_JumpIf (momZ !=0, "FistIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         PLA1 A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
-		
+
 		NULL A 0 A_JumpIfInventory("HasImpShield", 1, "SeeImpShield")
 		NULL A 0 A_JumpIfInventory("HasZmanShield", 1, "SeeZmanShield")
 		NULL A 0 A_JumpIfInventory("HasSguyShield", 1, "SeeSguyShield")
-		NULL A 0 A_JumpIfInventory("HasBarrel", 1, "BarrelStand")	
+		NULL A 0 A_JumpIfInventory("HasBarrel", 1, "BarrelStand")
 		Loop
 
 	FISTSee:
-		TNT1 A 0 
+		TNT1 A 0
 		PLA1 A 0 A_TakeInventory("ChainguyguyContinue", 1)
 		MARN A 0 A_TakeInventory("IsStandingStill", 1)
 		PLA1 AAA 1 A_JumpIf (momZ != 0, "FISTIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		PLA1 A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-				
+
 		NULL A 0 A_JumpIfInventory("HasImpShield", 1, "SeeImpShield")
 		NULL A 0 A_JumpIfInventory("HasZmanShield", 1, "SeeZmanShield")
 		NULL A 0 A_JumpIfInventory("HasSguyShield", 1, "SeeSguyShield")
-		NULL A 0 A_JumpIfInventory("HasBarrel", 1, "BarrelStand")	
-		
+		NULL A 0 A_JumpIfInventory("HasBarrel", 1, "BarrelStand")
+
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		PLA1 BBB 1 A_JumpIf (momZ != 0, "FISTIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
@@ -243,48 +243,48 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		PLA1 CCC 1 A_JumpIf (momZ != 0, "FISTIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		PLA1 C 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		
+
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		PLA1 DDD 1 A_JumpIf (momZ != 0, "FISTIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		PLA1 B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		
+
 		PLA1 B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		PLA1 A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
 		PLA1 A 0 A_JumpIfInventory("BootsSmearedWithGreenBlood", 1, "SeeSmearedWithGreenBlood")
-		
+
 		Goto FISTStandStill
-		
+
    FISTIsJumpin:
-        PLA1 A 3 
+        PLA1 A 3
         PLA1 B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		PLA1 A 1 A_JumpIf (momZ != 0, "FISTInAir")
 		Goto FISTStandStill
-		
-	FISTInAir:	
-		PLA1 J 1 
+
+	FISTInAir:
+		PLA1 J 1
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
-        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")	
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		TNT1 A 0 A_JumpIf (momZ == 0, "Land")
 		Loop
 
 	//SKIN SHOTGUN
-	
-	ShotgunStandStill:	
+
+	ShotgunStandStill:
 	    MAR3 D 0
 		MARN A 0 A_GiveInventory("IsStandingStill", 1)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MAR3 A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 		TNT1 A 0 A_TakeInventory("IsFloating", 100)
-		
+
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "ShotgunSee")
 		TNT1 A 0 A_JumpIf (momy >=3 || momy <=-3, "ShotgunSee")
         MAR3 AA 2 A_JumpIf (momZ !=0, "ShotgunIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         MAR3 A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
-		
-		MAR3 D 0 A_TakeInventory("UsedStamina", 5)
-		
+
+		MAR3 D 0 //A_TakeInventory("UsedStamina", 5)
+
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "ShotgunSee")
 		TNT1 A 0 A_JumpIf (momy >=3 || momy <=-3, "ShotgunSee")
         MAR3 AA 2 A_JumpIf (momZ !=0, "ShotgunIsJumpin")
@@ -299,7 +299,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		MAR3 AAA 1 A_JumpIf (momZ != 0, "ShotgunIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MAR3 A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-				
+
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MAR3 BBB 1 A_JumpIf (momZ != 0, "ShotgunIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
@@ -308,7 +308,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		MAR3 CCC 1 A_JumpIf (momZ != 0, "ShotgunIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MAR3 C 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		
+
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MAR3 DDD 1 A_JumpIf (momZ != 0, "ShotgunIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
@@ -317,39 +317,39 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		MAR3 B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		MAR3 A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
 		MAR3 A 0 A_JumpIfInventory("BootsSmearedWithGreenBlood", 1, "SeeSmearedWithGreenBlood")
-		
+
 		Goto ShotgunStandStill
-		
+
    ShotgunIsJumpin:
         MAR3 A 3
         MAR3 B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		MAR3 A 1 A_JumpIf (momZ != 0, "ShotgunInAir")
 		Goto ShotgunStandStill
-		
-	ShotgunInAir:	
+
+	ShotgunInAir:
 		MAR3 J 1
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
-        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")	
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		TNT1 A 0 A_JumpIf (momZ == 0, "Land")
 		Loop
 
 	//SKIN MINIGUN
-	
-	MinigunStandStill:	
+
+	MinigunStandStill:
 	    NULL D 0
 		NULL A 0 A_GiveInventory("IsStandingStill", 1)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 		NULL A 0 A_TakeInventory("IsFloating", 100)
-		
+
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "MinigunSee")
 		NULL A 0 A_JumpIf (momy >=3 || momy <=-3, "MinigunSee")
         MAR4 AA 2 A_JumpIf (momZ !=0, "MinigunIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
-		
-		NULL D 0 A_TakeInventory("UsedStamina", 5)
-		
+
+		NULL D 0 //A_TakeInventory("UsedStamina", 5)
+
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "MinigunSee")
 		TNT1 A 0 A_JumpIf (momy >=3 || momy <=-3, "MinigunSee")
         MAR4 AA 2 A_JumpIf (momZ !=0, "MinigunIsJumpin")
@@ -373,7 +373,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		MAR4 CCC 1 A_JumpIf (momZ != 0, "MinigunIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL C 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		
+
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MAR4 DDD 1 A_JumpIf (momZ != 0, "MinigunIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
@@ -382,39 +382,39 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithGreenBlood", 1, "SeeSmearedWithGreenBlood")
-		
+
 		Goto MinigunStandStill
-		
+
    MinigunIsJumpin:
         MAR4 A 3
         NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		NULL A 1 A_JumpIf (momZ != 0, "MinigunInAir")
 		Goto MinigunStandStill
-		
-	MinigunInAir:	
+
+	MinigunInAir:
 		MAR4 J 1
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
-        NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")	
+        NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		TNT1 A 0 A_JumpIf (momZ == 0, "Land")
 		Loop
 
 	//SKIN SSG
-	
-	SSGStandStill:	
+
+	SSGStandStill:
 	    NULL D 0
 		NULL A 0 A_GiveInventory("IsStandingStill", 1)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 		NULL A 0 A_TakeInventory("IsFloating", 100)
-		
+
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "SSGSee")
 		NULL A 0 A_JumpIf (momy >=3 || momy <=-3, "SSGSee")
         MSSG AA 2 A_JumpIf (momZ !=0, "SSGIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
-		
-		NULL D 0 A_TakeInventory("UsedStamina", 5)
-		
+
+		NULL D 0 //A_TakeInventory("UsedStamina", 5)
+
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "SSGSee")
 		TNT1 A 0 A_JumpIf (momy >=3 || momy <=-3, "SSGSee")
         MSSG AA 2 A_JumpIf (momZ !=0, "SSGIsJumpin")
@@ -438,7 +438,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		MSSG CCC 1 A_JumpIf (momZ != 0, "SSGIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL C 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		
+
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MSSG DDD 1 A_JumpIf (momZ != 0, "SSGIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
@@ -447,39 +447,39 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithGreenBlood", 1, "SeeSmearedWithGreenBlood")
-		
+
 		Goto SSGStandStill
-		
+
    SSGIsJumpin:
-        MSSG A 3 
+        MSSG A 3
         NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		NULL A 1 A_JumpIf (momZ != 0, "SSGInAir")
 		Goto SSGStandStill
-		
-	SSGInAir:	
+
+	SSGInAir:
 		MSSG J 1
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
-        NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")	
+        NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		TNT1 A 0 A_JumpIf (momZ == 0, "Land")
 		Loop
 
 	//SKIN ROCKET LAUNCHER
-	
-	RocketLauncherStandStill:	
+
+	RocketLauncherStandStill:
 	    NULL D 0
 		NULL A 0 A_GiveInventory("IsStandingStill", 1)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 		NULL A 0 A_TakeInventory("IsFloating", 100)
-		
+
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "RocketLauncherSee")
 		NULL A 0 A_JumpIf (momy >=3 || momy <=-3, "RocketLauncherSee")
         MAR5 AA 2 A_JumpIf (momZ !=0, "RocketLauncherIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
-		
-		NULL D 0 A_TakeInventory("UsedStamina", 5)
-		
+
+		NULL D 0 //A_TakeInventory("UsedStamina", 5)
+
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "RocketLauncherSee")
 		TNT1 A 0 A_JumpIf (momy >=3 || momy <=-3, "RocketLauncherSee")
         MAR5 AA 2 A_JumpIf (momZ !=0, "RocketLauncherIsJumpin")
@@ -503,7 +503,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		MAR5 CCC 1 A_JumpIf (momZ != 0, "RocketLauncherIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL C 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		
+
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MAR5 DDD 1 A_JumpIf (momZ != 0, "RocketLauncherIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
@@ -512,39 +512,39 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithGreenBlood", 1, "SeeSmearedWithGreenBlood")
-		
+
 		Goto RocketLauncherStandStill
-		
+
    RocketLauncherIsJumpin:
         MAR5 A 3
         NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		NULL A 1 A_JumpIf (momZ != 0, "RocketLauncherInAir")
 		Goto RocketLauncherStandStill
-		
-	RocketLauncherInAir:	
+
+	RocketLauncherInAir:
 		MAR5 J 1
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
-        NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")	
+        NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		TNT1 A 0 A_JumpIf (momZ == 0, "Land")
 		Loop
 
 	//SKIN PLASMAGUN
-	
-	PLasmagunStandStill:	
+
+	PLasmagunStandStill:
 	    NULL D 0
 		NULL A 0 A_GiveInventory("IsStandingStill", 1)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 		NULL A 0 A_TakeInventory("IsFloating", 100)
-		
+
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "PLasmagunSee")
 		NULL A 0 A_JumpIf (momy >=3 || momy <=-3, "PLasmagunSee")
         MAR6 AA 2 A_JumpIf (momZ !=0, "PLasmagunIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
-		
-		NULL D 0 A_TakeInventory("UsedStamina", 5)
-		
+
+		NULL D 0 //A_TakeInventory("UsedStamina", 5)
+
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "PLasmagunSee")
 		TNT1 A 0 A_JumpIf (momy >=3 || momy <=-3, "PLasmagunSee")
         MAR6 AA 2 A_JumpIf (momZ !=0, "PLasmagunIsJumpin")
@@ -568,7 +568,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		MAR6 CCC 1 A_JumpIf (momZ != 0, "PLasmagunIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL C 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		
+
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MAR6 DDD 1 A_JumpIf (momZ != 0, "PLasmagunIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
@@ -577,39 +577,39 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithGreenBlood", 1, "SeeSmearedWithGreenBlood")
-		
+
 		Goto PLasmagunStandStill
-		
+
    PLasmagunIsJumpin:
         MAR6 A 3
         NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		NULL A 1 A_JumpIf (momZ != 0, "PLasmagunInAir")
 		Goto PLasmagunStandStill
-		
-	PLasmagunInAir:	
+
+	PLasmagunInAir:
 		MAR6 J 1
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
-        NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")	
+        NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		TNT1 A 0 A_JumpIf (momZ == 0, "Land")
 		Loop
 
 	//SKIN RAILGUN
-	
-	RailgunStandStill:	
+
+	RailgunStandStill:
 	    NULL D 0
 		NULL A 0 A_GiveInventory("IsStandingStill", 1)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 		NULL A 0 A_TakeInventory("IsFloating", 100)
-		
+
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "RailgunSee")
 		NULL A 0 A_JumpIf (momy >=3 || momy <=-3, "RailgunSee")
         MRRG AA 2 A_JumpIf (momZ !=0, "RailgunIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
-		
-		NULL D 0 A_TakeInventory("UsedStamina", 5)
-		
+
+		NULL D 0 //A_TakeInventory("UsedStamina", 5)
+
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "RailgunSee")
 		TNT1 A 0 A_JumpIf (momy >=3 || momy <=-3, "RailgunSee")
         MRRG AA 2 A_JumpIf (momZ !=0, "RailgunIsJumpin")
@@ -633,7 +633,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		MRRG CCC 1 A_JumpIf (momZ != 0, "RailgunIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL C 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		
+
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MRRG DDD 1 A_JumpIf (momZ != 0, "RailgunIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
@@ -642,39 +642,39 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithGreenBlood", 1, "SeeSmearedWithGreenBlood")
-		
+
 		Goto RailgunStandStill
-		
+
    RailgunIsJumpin:
         MRRG A 3
         NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		NULL A 1 A_JumpIf (momZ != 0, "RailgunInAir")
 		Goto RailgunStandStill
-		
-	RailgunInAir:	
+
+	RailgunInAir:
 		MRRG J 1
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
-        NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")	
+        NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		TNT1 A 0 A_JumpIf (momZ == 0, "Land")
-		Loop	
-				
+		Loop
+
 	//SKIN BFG9k
-	
-	BFG9kStandStill:	
+
+	BFG9kStandStill:
 	    NULL D 0
 		NULL A 0 A_GiveInventory("IsStandingStill", 1)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 		NULL A 0 A_TakeInventory("IsFloating", 100)
-		
+
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "BFG9kSee")
 		NULL A 0 A_JumpIf (momy >=3 || momy <=-3, "BFG9kSee")
         MAR7 AA 2 A_JumpIf (momZ !=0, "BFG9kIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
-		
-		NULL D 0 A_TakeInventory("UsedStamina", 5)
-		
+
+		NULL D 0 //A_TakeInventory("UsedStamina", 5)
+
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "BFG9kSee")
 		TNT1 A 0 A_JumpIf (momy >=3 || momy <=-3, "BFG9kSee")
         MAR7 AA 2 A_JumpIf (momZ !=0, "BFG9kIsJumpin")
@@ -698,7 +698,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		MAR7 CCC 1 A_JumpIf (momZ != 0, "BFG9kIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL C 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		
+
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MAR7 DDD 1 A_JumpIf (momZ != 0, "BFG9kIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
@@ -707,39 +707,39 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithGreenBlood", 1, "SeeSmearedWithGreenBlood")
-		
+
 		Goto BFG9kStandStill
-		
+
    BFG9kIsJumpin:
         MAR7 A 3
         NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		NULL A 1 A_JumpIf (momZ != 0, "BFG9kInAir")
 		Goto BFG9kStandStill
-		
-	BFG9kInAir:	
+
+	BFG9kInAir:
 		MAR7 J 1
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
-        NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")	
+        NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		TNT1 A 0 A_JumpIf (momZ == 0, "Land")
 		Loop
 
 	//SKIN BFG10k
-	
-	BFG10kStandStill:	
+
+	BFG10kStandStill:
 	    NULL D 0
 		NULL A 0 A_GiveInventory("IsStandingStill", 1)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 		NULL A 0 A_TakeInventory("IsFloating", 100)
-		
+
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "BFG10kSee")
 		NULL A 0 A_JumpIf (momy >=3 || momy <=-3, "BFG10kSee")
         M10K AA 2 A_JumpIf (momZ !=0, "BFG10kIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
-		
-		NULL D 0 A_TakeInventory("UsedStamina", 5)
-		
+
+		NULL D 0 //A_TakeInventory("UsedStamina", 5)
+
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "BFG10kSee")
 		TNT1 A 0 A_JumpIf (momy >=3 || momy <=-3, "BFG10kSee")
         M10K AA 2 A_JumpIf (momZ !=0, "BFG10kIsJumpin")
@@ -763,7 +763,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		M10K CCC 1 A_JumpIf (momZ != 0, "BFG10kIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL C 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		
+
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		M10K DDD 1 A_JumpIf (momZ != 0, "BFG10kIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
@@ -772,39 +772,39 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithGreenBlood", 1, "SeeSmearedWithGreenBlood")
-		
+
 		Goto BFG10kStandStill
-		
+
    BFG10kIsJumpin:
         M10K A 3
         NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		NULL A 1 A_JumpIf (momZ != 0, "BFG10kInAir")
 		Goto BFG10kStandStill
-		
-	BFG10kInAir:	
+
+	BFG10kInAir:
 		M10K J 1
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
-        NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")	
+        NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		TNT1 A 0 A_JumpIf (momZ == 0, "Land")
 		Loop
 
 	//SKIN GrenadeLauncher
-	
-	GrenadeLauncherStandStill:	
+
+	GrenadeLauncherStandStill:
 	    NULL D 0
 		NULL A 0 A_GiveInventory("IsStandingStill", 1)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 		NULL A 0 A_TakeInventory("IsFloating", 100)
-		
+
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "GrenadeLauncherSee")
 		NULL A 0 A_JumpIf (momy >=3 || momy <=-3, "GrenadeLauncherSee")
         MRGL AA 2 A_JumpIf (momZ !=0, "GrenadeLauncherIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
-		
-		NULL D 0 A_TakeInventory("UsedStamina", 5)
-		
+
+		NULL D 0 //A_TakeInventory("UsedStamina", 5)
+
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "GrenadeLauncherSee")
 		TNT1 A 0 A_JumpIf (momy >=3 || momy <=-3, "GrenadeLauncherSee")
         MRGL AA 2 A_JumpIf (momZ !=0, "GrenadeLauncherIsJumpin")
@@ -828,7 +828,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		MRGL CCC 1 A_JumpIf (momZ != 0, "GrenadeLauncherIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL C 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		
+
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MRGL DDD 1 A_JumpIf (momZ != 0, "GrenadeLauncherIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
@@ -837,39 +837,39 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithGreenBlood", 1, "SeeSmearedWithGreenBlood")
-		
+
 		Goto GrenadeLauncherStandStill
-		
+
    GrenadeLauncherIsJumpin:
         MRGL A 3
         NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		NULL A 1 A_JumpIf (momZ != 0, "GrenadeLauncherInAir")
 		Goto GrenadeLauncherStandStill
-		
-	GrenadeLauncherInAir:	
+
+	GrenadeLauncherInAir:
 		MRGL J 1
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
-        NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")	
+        NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		TNT1 A 0 A_JumpIf (momZ == 0, "Land")
 		Loop
-		
+
 	//SKIN Flamer
-	
-	FlamerStandStill:	
+
+	FlamerStandStill:
 	    NULL D 0
 		NULL A 0 A_GiveInventory("IsStandingStill", 1)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 		NULL A 0 A_TakeInventory("IsFloating", 100)
-		
+
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "FlamerSee")
 		NULL A 0 A_JumpIf (momy >=3 || momy <=-3, "FlamerSee")
         MMFC AA 2 A_JumpIf (momZ !=0, "FlamerIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
-		
-		NULL D 0 A_TakeInventory("UsedStamina", 5)
-		
+
+		NULL D 0 //A_TakeInventory("UsedStamina", 5)
+
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "FlamerSee")
 		TNT1 A 0 A_JumpIf (momy >=3 || momy <=-3, "FlamerSee")
         MMFC AA 2 A_JumpIf (momZ !=0, "FlamerIsJumpin")
@@ -893,7 +893,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		MMFC CCC 1 A_JumpIf (momZ != 0, "FlamerIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL C 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		
+
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MMFC DDD 1 A_JumpIf (momZ != 0, "FlamerIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
@@ -902,39 +902,39 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithGreenBlood", 1, "SeeSmearedWithGreenBlood")
-		
+
 		Goto FlamerStandStill
-		
+
    FlamerIsJumpin:
         MMFC A 3
         NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		NULL A 1 A_JumpIf (momZ != 0, "FlamerInAir")
 		Goto FlamerStandStill
-		
-	FlamerInAir:	
+
+	FlamerInAir:
 		MMFC J 1
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
-        NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")	
+        NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		TNT1 A 0 A_JumpIf (momZ == 0, "Land")
 		Loop
-		
+
 	//SKIN RevLauncher
-	
-	RevLauncherStandStill:	
+
+	RevLauncherStandStill:
 	    NULL D 0
 		NULL A 0 A_GiveInventory("IsStandingStill", 1)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 		NULL A 0 A_TakeInventory("IsFloating", 100)
-		
+
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "RevLauncherSee")
 		NULL A 0 A_JumpIf (momy >=3 || momy <=-3, "RevLauncherSee")
         MHML AA 2 A_JumpIf (momZ !=0, "RevLauncherIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
-		
-		NULL D 0 A_TakeInventory("UsedStamina", 5)
-		
+
+		NULL D 0 //A_TakeInventory("UsedStamina", 5)
+
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "RevLauncherSee")
 		TNT1 A 0 A_JumpIf (momy >=3 || momy <=-3, "RevLauncherSee")
         MHML AA 2 A_JumpIf (momZ !=0, "RevLauncherIsJumpin")
@@ -958,7 +958,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		MHML CCC 1 A_JumpIf (momZ != 0, "RevLauncherIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL C 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		
+
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MHML DDD 1 A_JumpIf (momZ != 0, "RevLauncherIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
@@ -967,39 +967,39 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithGreenBlood", 1, "SeeSmearedWithGreenBlood")
-		
+
 		Goto RevLauncherStandStill
-		
+
    RevLauncherIsJumpin:
         MHML A 3
         NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		NULL A 1 A_JumpIf (momZ != 0, "RevLauncherInAir")
 		Goto RevLauncherStandStill
-		
-	RevLauncherInAir:	
+
+	RevLauncherInAir:
 		MHML J 1
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
-        NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")	
+        NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		TNT1 A 0 A_JumpIf (momZ == 0, "Land")
 		Loop
 
 		//SKIN SubMG
-	
-	SubMGStandStill:	
+
+	SubMGStandStill:
 	    NULL D 0
 		NULL A 0 A_GiveInventory("IsStandingStill", 1)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 		NULL A 0 A_TakeInventory("IsFloating", 100)
-		
+
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "SubMGSee")
 		NULL A 0 A_JumpIf (momy >=3 || momy <=-3, "SubMGSee")
         MAR6 AA 2 A_JumpIf (momZ !=0, "SubMGIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
-		
-		NULL D 0 A_TakeInventory("UsedStamina", 5)
-		
+
+		NULL D 0 //A_TakeInventory("UsedStamina", 5)
+
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "SubMGSee")
 		TNT1 A 0 A_JumpIf (momy >=3 || momy <=-3, "SubMGSee")
         MAR6 AA 2 A_JumpIf (momZ !=0, "SubMGIsJumpin")
@@ -1023,7 +1023,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		MAR6 CCC 1 A_JumpIf (momZ != 0, "SubMGIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL C 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		
+
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MAR6 DDD 1 A_JumpIf (momZ != 0, "SubMGIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
@@ -1032,9 +1032,9 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithGreenBlood", 1, "SeeSmearedWithGreenBlood")
-		
+
 		Goto SubMGStandStill
-		
+
    SubMGIsJumpin:
         MAR6 A 3
         MAR6 A 1 A_JumpIf (momZ != 0, "SubMGInAir")
@@ -1042,31 +1042,31 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
 		NULL A 1 A_JumpIf (momZ != 0, "SubMGInAir")
 		Goto SubMGStandStill
-		
-	SubMGInAir:	
+
+	SubMGInAir:
 		MAR6 J 1
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
-        NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")	
+        NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		TNT1 A 0 A_JumpIf (momZ == 0, "Land")
 		Loop
 
 		//SKIN Chainsaw
-	
-	ChainsawStandStill:	
+
+	ChainsawStandStill:
 	    NULL D 0
 		NULL A 0 A_GiveInventory("IsStandingStill", 1)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 		NULL A 0 A_TakeInventory("IsFloating", 100)
-		
+
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "ChainsawSee")
 		NULL A 0 A_JumpIf (momy >=3 || momy <=-3, "ChainsawSee")
         MAR1 AA 2 A_JumpIf (momZ !=0, "ChainsawIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
-		
-		NULL D 0 A_TakeInventory("UsedStamina", 5)
-		
+
+		NULL D 0 //A_TakeInventory("UsedStamina", 5)
+
 		TNT1 A 0 A_JumpIf (momx >=3 || momx <=-3, "ChainsawSee")
 		TNT1 A 0 A_JumpIf (momy >=3 || momy <=-3, "ChainsawSee")
         MAR1 AA 2 A_JumpIf (momZ !=0, "ChainsawIsJumpin")
@@ -1090,7 +1090,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		MAR1 CCC 1 A_JumpIf (momZ != 0, "ChainsawIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL C 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		
+
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MAR1 DDD 1 A_JumpIf (momZ != 0, "ChainsawIsJumpin")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
@@ -1099,24 +1099,24 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithGreenBlood", 1, "SeeSmearedWithGreenBlood")
-		
+
 		Goto ChainsawStandStill
-		
+
    ChainsawIsJumpin:
         MAR1 A 3
         NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		NULL A 1 A_JumpIf (momZ != 0, "ChainsawInAir")
 		Goto ChainsawStandStill
-		
-	ChainsawInAir:	
+
+	ChainsawInAir:
 		MAR1 J 1
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
-        NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")	
+        NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		TNT1 A 0 A_JumpIf (momZ == 0, "Land")
 		Loop
 
 	ADSStand:
-		MAR2 A 1 
+		MAR2 A 1
 		MAR2 A 0 A_JumpIf (momy >=3 || momy <=-3, "ADSMove")
 		MAR2 A 0 A_JumpIf (momx >=3 || momx <=-3, "ADSMove")
 		MARN D 0 A_JumpIf (momZ !=0, "IsJumpin")
@@ -1124,15 +1124,15 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
         MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 		NULL A 0 A_JumpIfInventory("RollLeft", 1, "RollLeft")
 		MAR2 A 0 A_JumpIfInventory("RollRight", 1, "RollRight")
-		MARN D 0 A_TakeInventory("UsedStamina", 3)
-		
+		MARN D 0 //A_TakeInventory("UsedStamina", 3)
+
 		MAR2 A 5 A_JumpIfInventory("ADSMode", 1, 1)
 		Goto StandStill
 		MAR2 A 0
 		Loop
 
 	ADSMove:
-		TNT1 A 0 
+		TNT1 A 0
 		MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		MAR2 AB 3 A_JumpIfInventory("Kicking", 1, "Kick")
 		MARN D 0 A_JumpIf (momZ !=0, "IsJumpin")
@@ -1142,8 +1142,8 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		MAR2 A 0 A_JumpIfInventory("RollRight", 1, "RollRight")
 		MAR2 CB 3 A_JumpIfInventory("Kicking", 1, "Kick")
 		MAR2 A 0 A_SpawnItemEx("FootStep6", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
-		
-		MARN D 0 A_TakeInventory("UsedStamina", 1)
+
+		MARN D 0 //A_TakeInventory("UsedStamina", 1)
 
 		MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		MARN D 0 A_JumpIf (momZ !=0, "IsJumpin")
@@ -1155,23 +1155,23 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		MARN A 0 A_SpawnItemEx("RedBloodFootPrintLeft", 0, 7)
 		TNT1 A 0 A_GiveInventory("FootPrintAlternate", 1)
 		TNT1 A 0 A_TakeInventory("BootsSmearedWithRedBlood", 1)
-		Goto StandStill	
-		
+		Goto StandStill
+
 	SeeSmearedWithRedBlood2:
 		TNT1 A 0
 		MARN A 0 A_SpawnItemEx("RedBloodFootPrintRight", 0, -7)
 		TNT1 A 0 A_TakeInventory("FootPrintAlternate", 1)
 		TNT1 A 0 A_TakeInventory("BootsSmearedWithRedBlood", 1)
 		Goto StandStill
-		
+
 	SeeSmearedWithBlueBlood:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("FootPrintAlternate", 1, "SeeSmearedWithBlueBlood2")
 		MARN A 0 A_SpawnItemEx("BlueBloodFootPrintLeft", 0, 7)
 		TNT1 A 0 A_GiveInventory("FootPrintAlternate", 1)
 		TNT1 A 0 A_TakeInventory("BootsSmearedWithBlueBlood", 1)
-		Goto StandStill	
-		
+		Goto StandStill
+
 	SeeSmearedWithBlueBlood2:
 		TNT1 A 0
 		MARN A 0 A_SpawnItemEx("BlueBloodFootPrintRight", 0, -7)
@@ -1185,8 +1185,8 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		MARN A 0 A_SpawnItemEx("GreenBloodFootPrintLeft", 0, 7)
 		TNT1 A 0 A_GiveInventory("FootPrintAlternate", 1)
 		TNT1 A 0 A_TakeInventory("BootsSmearedWithGreenBlood", 1)
-		Goto StandStill	
-		
+		Goto StandStill
+
 	SeeSmearedWithGreenBlood2:
 		TNT1 A 0
 		MARN A 0 A_SpawnItemEx("GreenBloodFootPrintRight", 0, -7)
@@ -1211,20 +1211,20 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
         PKI1 AB 3 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
 		PKI1 CB 3 A_JumpIfInventory("KickHasHit", 1, "KickHit")
         NULL A 0 A_TakeInventory("Kicking",1)
-        Goto StandStill	
-		
+        Goto StandStill
+
 	AirKick:
 	    AKIK AAAAA 2 A_JumpIfInventory("KickHasHit", 1, "KickHit")
 		NULL A 0 A_TakeInventory("Kicking",1)
 		Goto StandStill
-		
+
 	KickHit:
 		TNT1 A 0 A_Stop
 		NULL A 0 A_TakeInventory("Kicking",1)
 		NULL A 0 A_TakeInventory("KickHasHit",1)
 		TNT1 A 0 A_Recoil(3)
 		Goto StandStill
-	
+
     Punch:
         PLA1 H 1
 		NULL A 0 A_TakeInventory("Punching", 1)
@@ -1237,19 +1237,19 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
         MARN A 0 A_JumpIfInventory("SwitchToFist", 1, "FistStandStill")
 		Goto StandStill
-		
+
 	SayOneLiner:
 		MARN A 1
 		NULL A 0 A_PlaySound("ONELIN", 2)
 		NULL A 0 A_TakeInventory("oneliner", 1)
 		Goto StandStill
-	
+
 	AdvancedTaunt:
 		MARN A 1
 		NULL A 0 A_PlaySound("TAUNT0", 2)
 		NULL A 0 A_TakeInventory("advtaunting", 1)
 		Goto StandStill
-	
+
 	FistTaunt:
 		NULL A 0
 		NULL A 0 A_PlaySound("MTAUN", 2)
@@ -1260,7 +1260,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL A 0 A_TakeInventory("RollLeft", 1)
 		NULL A 0 A_TakeInventory("RollRight", 1)
 		NULL A 0 A_ChangeFlag ("NOPAIN", 1)
-	
+
 		NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera//Start Camera
 		NULL A 0 ThrustThing(angle*256/360+192,20,0,0)//Thrust Right
 		TNT1 AAAA 1 A_SpawnItemEx("PROLSpriteE", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
@@ -1274,19 +1274,19 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL A 0 A_TakeInventory("RollRight", 1)
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 		MARN A 4
-	
+
 		NULL A 0 A_ChangeFlag ("NOPAIN", 0)
 		NULL A 0 A_TakeInventory("RollLeft", 1)
 		NULL A 0 A_TakeInventory("RollRight", 1)
 		NULL A 0 A_TakeInventory("GoSpecial", 1)
 		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
 		Goto StandStill
-	
+
 	RollLeft:
 		NULL A 0 A_TakeInventory("RollLeft", 1)
 		NULL A 0 A_TakeInventory("RollRight", 1)
 		NULL A 0 A_ChangeFlag ("NOPAIN", 1)
-		
+
 		NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)
 		NULL A 0 ThrustThing(angle*256/360+64,20,0,0)//Thrust Left
 		TNT1 AAAA 1 A_SpawnItemEx("PROLSpriteA", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
@@ -1300,24 +1300,24 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL A 0 A_TakeInventory("RollRight", 1)
         NULL A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 		MARN A 4
-	
+
 		NULL A 0 A_ChangeFlag ("NOPAIN", 0)
 		NULL A 0 A_TakeInventory("RollLeft", 1)
 		NULL A 0 A_TakeInventory("RollRight", 1)
-		
+
 		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
 		Goto StandStill
 
 	Pump:
 		NULL A 0 A_TakeInventory("Pumping")
 		NULL A 0 A_TakeInventory("GoSpecial")
-		PLA3 JKJ 4 
+		PLA3 JKJ 4
 		Goto StandStill
 	NoMovePump:
-	    
+
 		NULL A 0 A_TakeInventory("Pumping")
 		NULL A 0 A_TakeInventory("GoSpecial")
-		PLA3 JKJ 4 
+		PLA3 JKJ 4
 		Goto See
 
     HeavyWounds:
@@ -1352,7 +1352,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
         NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL A 0 A_JumpIfInventory("HasBarrel", 1, "BarrelMove")
 		Goto See
-		
+
 	 BarrelStand:
 	    NULL A 0 A_TakeInventory("Punching", 1)
 		PBAR A 1
@@ -1371,7 +1371,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		PLAY GGGG 1 A_SetPitch(pitch-4)
 		PLAY GGGG 1 A_SetPitch(pitch+4)
 		Goto Pain
-		
+
 	Pain.Kick:
 	Pain.Extremepunches:
 		TNT1 A 0
@@ -1396,7 +1396,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 SetPlayerProperty(0,0,0)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Disable Camera.
 		Goto See
-		
+
 	Death.Melee:
 	DEATh.Kick:
 		TNT1 A 0
@@ -1412,7 +1412,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_SpawnItem("GrowingBloodPool")
 		PNKI D -1
 		Goto See
-		
+
 	Death.Trample:
         NULL A 0
 		NULL A 0 A_Scream
@@ -1421,7 +1421,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
         PNKI BC 4
 		PNKI D -1
 		Stop
-		
+
 	PainIsDown:
         NULL A 0 A_Pain
         PNKI C 4
@@ -1432,7 +1432,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_ChangeFlag("SOLID", 1)
 		TNT1 A 0 SetPlayerProperty(0,0,0)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Disable Camera.
-		Goto See	
+		Goto See
 	Pain:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("IsDown", 1, "PainIsDown")
@@ -1458,8 +1458,8 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		//TNT1 A 0 A_JumpIfInTargetInventory("EnemyIsArchvile", 1, "Pain.ArchvileAttack")
 		TNT1 AA 0
 		PLAY G 4
-		Goto SpecialChecker	
-		
+		Goto SpecialChecker
+
 	Pain.Falling:
 		TNT1 A 0
 		NULL A 0 A_CustomMissile ("CameraShake", 50, 0, random (0, 360), 2, random (0, 160))
@@ -1485,14 +1485,14 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 	    NULL A 0 A_JumpIfInventory("SKChaingunguy", 1, "StealthKilLChaingunguy")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL A 0 A_JumpIfInventory("IsCurbstompingZombieman", 1, "CurbstompZombieman")
-	    NULL A 0 A_JumpIfInventory("IsCurbstompingSergeant", 1, "CurbstompSergeant")   
+	    NULL A 0 A_JumpIfInventory("IsCurbstompingSergeant", 1, "CurbstompSergeant")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedImp", 1, "ExecuteImp")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedZombieman", 1, "ExecuteZombieman")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedShotgunguy", 1, "ExecuteShotgunguy")
         PLA1 G 1
         NULL A 0 A_TakeInventory("GoSpecial", 1)
 		NULL A 0 A_JumpIfInventory("IsCurbstompingZombieman", 1, "CurbstompZombieman")
-	    NULL A 0 A_JumpIfInventory("IsCurbstompingSergeant", 1, "CurbstompSergeant")   
+	    NULL A 0 A_JumpIfInventory("IsCurbstompingSergeant", 1, "CurbstompSergeant")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedImp", 1, "ExecuteImp")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedZombieman", 1, "ExecuteZombieman")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedShotgunguy", 1, "ExecuteShotgunguy")
@@ -1511,10 +1511,10 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		MARN A 0 A_JumpIfInventory("MinigunSelected", 1, "MinigunStandStill")
 		NULL A 0 A_JumpIfInventory("SwitchToFist", 1, "FistStandStill")
         NULL A 0 A_TakeInventory("GoSpecial", 1)
-		
+
 		NULL A 0 A_JumpIfInventory("PVPFatality", 1, "FatalityPVP")
         NULL A 0 A_JumpIfInventory("IsCurbstompingZombieman", 1, "CurbstompZombieman")
-	    NULL A 0 A_JumpIfInventory("IsCurbstompingSergeant", 1, "CurbstompSergeant")        
+	    NULL A 0 A_JumpIfInventory("IsCurbstompingSergeant", 1, "CurbstompSergeant")
         NULL A 0 A_JumpIfInventory("SKZombieman", 1, "StealthKilLZombieMan")
 	    NULL A 0 A_JumpIfInventory("SKShotgunGuy", 1, "StealthKilLShotgunGuy")
 		NULL A 0 A_JumpIfInventory("SKLabguy", 1, "StealthKilLLabGuy")
@@ -1556,16 +1556,16 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 	    NULL A 0 A_JumpIfInventory("ArchVileFatality", 1, "FatalityArchVile")
 		NULL A 0 A_JumpIfInventory("ArchVileFatality2", 1, "FatalityArchVile2")
 		NULL A 0 A_JumpIfInventory("BelphegorFatality", 1, "FatalityBelphegor")
-		TNT1 A 0 A_JumpIfInventory("VolcabusFatality", 1, "FatalityVolcabus")	
-		TNT1 A 0 A_JumpIfInventory("VolcabusFatality2", 1, "FatalityVolcabus2")	
+		TNT1 A 0 A_JumpIfInventory("VolcabusFatality", 1, "FatalityVolcabus")
+		TNT1 A 0 A_JumpIfInventory("VolcabusFatality2", 1, "FatalityVolcabus2")
 		TNT1 A 0 A_JumpIfInventory("Arachnotron2FatalityA", 1, "FatalityArachnotron2A")
-		TNT1 A 0 A_JumpIfInventory("Arachnotron2FatalityB", 1, "FatalityArachnotron2B")	
+		TNT1 A 0 A_JumpIfInventory("Arachnotron2FatalityB", 1, "FatalityArachnotron2B")
 	    NULL A 0 A_JumpIfInventory("PEFatality", 1, "FatalityPE")
 		NULL A 0 A_JumpIfInventory("MastermindFatality", 1, "FatalityMastermind")
 		NULL A 0 A_JumpIfInventory("CyberdemonFatality", 1, "FatalityCyberdemon")
 		PLA1 G 4
 		Goto SpecialChecker
-	
+
 	Pain.ArchvileAttack:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("IsDown", 1, "PainIsDown")
@@ -1642,7 +1642,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL A 0 A_SpawnItem ("GrowingBloodPool")
 		PLAY N -1
 		Stop
-		
+
 	Death.Falling:
 		TNT1 A 0
 		TNT1 A 0 A_Stop
@@ -1673,9 +1673,9 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
-		XPL1 A 10 
+		XPL1 A 10
         XPL1 B 20
-        XPL1 CDE 10 
+        XPL1 CDE 10
 		NULL A 0 A_SpawnItem ("GrowingBloodPool")
 		PPOD A 0 A_SpawnItemEx("MarineEattenByDemon", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
 		NULL A -1
@@ -1689,7 +1689,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
         NULL A 0 A_Takeinventory("Kicking",1)
 		MARN A 0 A_GiveInventory("PlayerIsDead", 1)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-		
+
 		NULL A 0 A_CustomMissile ("XDeath1", 1, 0, random (0, 360), 2, random (0, 160))
 		NULL A 0 A_CustomMissile ("XDeath2", 1, 0, random (0, 360), 2, random (0, 160))
 		NULL A 0 A_CustomMissile ("XDeath3", 1, 0, random (0, 360), 2, random (0, 160))
@@ -1755,13 +1755,13 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL A 0 A_SpawnItem ("GrowingBloodPool")
         XPL3 F -1
         Stop
-		
+
 	Death.Falls:
 		NULL A 1 A_NoBlocking
 		TNT1 A 0 A_PlaySound("PLFALDE", 4)
 		NULL A -1
 		Stop
-		
+
 	XDeath:
     Death.Explosive:
 	Death.Explosives:
@@ -1788,7 +1788,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 	    NULL AAAAAA 0 bright A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
 		XDMG E -1
 		Stop
-		
+
 	Death.ArchvileExplode:
 		TNT1 A 0
 		PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
@@ -1937,7 +1937,7 @@ Death.Plasma: Death.Plasma2:
 		PBR1 HHHHHHHHHHHHHHHHHHHHHH 8 A_CustomMissile ("PlasmaSmoke", 10, 0, random (0, 360), 2, random (0, 160))
 		PBR1 H -1
 		Stop
-	
+
     Death.superplasma:
         NULL A 0
         NULL A 0 A_XScream
@@ -1985,7 +1985,7 @@ Death.Plasma: Death.Plasma2:
 		 TNT1 A 0 A_SpawnItem("BarrelExplosionSmokeColumn")
         PBUR EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 4 A_CustomMissile ("GreenFlameTrailsbIG", 8, random (-10, 10), random (0, 180), 2, random (20, 90))
         PBUR E -1
-        Stop	
+        Stop
 
 	Death.Fire:
     Death.flames:
@@ -2001,7 +2001,7 @@ Death.Plasma: Death.Plasma2:
         NULL A 1
         NULL A -1
 		Stop
-		
+
    Death.Desintegrate:
 		MARN A 0 A_GiveInventory("PlayerIsDead", 1)
 	    NULL A 0 A_Takeinventory("Kicking",1)
@@ -2012,7 +2012,7 @@ Death.Plasma: Death.Plasma2:
 		NULL A 1
         NULL A -1
         Stop
-	  
+
     Death.Stomp:
 		MARN A 0 A_GiveInventory("PlayerIsDead", 1)
 		NULL AAAAAA 0 bright A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
@@ -2026,7 +2026,7 @@ Death.Plasma: Death.Plasma2:
 		NULL A 1 A_NoBlocking
 		NULL A -1
 		Stop
-	
+
     Crush:
         NULL A 0 A_PlaySound("misc/xdeath4")
         CRS1 A 5
@@ -2040,18 +2040,18 @@ Death.Plasma: Death.Plasma2:
 		NULL A 0 ACS_Execute(acsFatality, 0)
 		FTYZ A 2 A_ChangeFlag("GHOST", 1)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-		
+
         //////////////////////////////////////////////////////
         FTYZ AB 4
-		
+
         NULL A 0  A_PlaySound("grunt/pain")
         FTYZ BC 3
         FTYZ DEF 3
 
         NULL A 0 A_PlaySound("BURNZOM", 3)
-		
+
 		//The actor CameraShake makes the screen shake near the player, improving the overal felling of the fatalities
-		
+
 		TNT1 A 0 A_PlaySound("BONECR1", 1)
 		FTYZ FGFGFGF 4
 
@@ -2061,7 +2061,7 @@ Death.Plasma: Death.Plasma2:
          NULL AAA 0 A_CustomMissile ("Brutal_FlyingBlood", 50, 0, random (0, 360), 2, random (0, 160))
          FTYZ I 4
 		 NULL A 0 A_PlaySound ("misc/xdeath", 3)
-		
+
 		 NULL A 0 ACS_Execute(580, 0, 0, 0, 0)
 		 NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
 		 NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
@@ -2087,7 +2087,7 @@ Death.Plasma: Death.Plasma2:
 		NULL A 0 ACS_Execute(acsFatality, 0)
 		FPZ2 A 2 A_ChangeFlag("GHOST", 1)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-		
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
         FPZ2 AB 4
@@ -2124,7 +2124,7 @@ Death.Plasma: Death.Plasma2:
 		NULL A 0 ACS_Execute(acsFatality, 0)
 		FPZ3 A 2 A_ChangeFlag("GHOST", 1)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-		
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
         FPZ3 A 6
@@ -2134,7 +2134,7 @@ Death.Plasma: Death.Plasma2:
 		NULL A 0 A_CustomMissile("BDBodyThud", 2, 0, 0, 2, -90)
         NULL A 0 A_PlaySound("grunt/pain", 1)
 		FPZ3 EFGGGG 2
-        
+
 		FPZ3 HHHIIIIIIIIHJJJ 1
         NULL A 0 ACS_Execute(580, 0, 0, 0, 0)
         NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
@@ -2143,7 +2143,7 @@ Death.Plasma: Death.Plasma2:
 		NULL A 0 A_PlaySound("player/cyborg/fist", 4)
 		TNT1 A 0 A_SpawnItemEx("Blood", 0, -2, 4)
 		TNT1 A 0 A_SpawnItemEx("SplatteredSmall")
-		
+
 		FPZ3 KKKLLLLLLKJJJ 1
         NULL A 0 ACS_Execute(580, 0, 0, 0, 0)
         NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
@@ -2174,7 +2174,7 @@ Death.Plasma: Death.Plasma2:
 		NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
 	    NULL A 0 A_PlaySound("player/cyborg/fist", 4)
 		TNT1 A 0 A_SpawnItemEx("Blood", 0, -2, 4)
-		
+
 		FPZ3 PPPQQQQQQPRRR 1
         NULL A 0 ACS_Execute(580, 0, 0, 0, 0)
         NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
@@ -2182,7 +2182,7 @@ Death.Plasma: Death.Plasma2:
 		NULL A 0 A_PlaySound("player/cyborg/fist", 4)
 		TNT1 A 0 A_SpawnItemEx("Blood", 0, -2, 4)
 		FPZ3 RP 3
-		
+
         //////////////////////////////////////////////////////
         NULL A 0 A_TakeInventory("GoFatality", 1)
 		NULL A 0 A_TakeInventory("ZombieManFatality3",1)
@@ -2191,7 +2191,7 @@ Death.Plasma: Death.Plasma2:
 		//NULL A 0 A_SpawnItem ("ZombieManDyingAfterFatality")
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
         NULL A 0 SetPlayerProperty(0,0,0)
-        Goto StandStill	
+        Goto StandStill
 
 FatalityZMan4://Pounding to floor
         NULL A 0 SetPlayerProperty(0,1,0)
@@ -2206,7 +2206,7 @@ FatalityZMan4://Pounding to floor
 		NULL A 0 A_PlaySound("player/cyborg/fist", 4)
 		FPZ4 CDEEE 3
 		FPZ4 FGH 2
-        
+
 		FPZ4 HHI 2
         NULL A 0 ACS_Execute(580, 0, 0, 0, 0)
         NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
@@ -2226,7 +2226,7 @@ FatalityZMan4://Pounding to floor
 		TNT1 A 0 A_SpawnItemEx("MuchBlood", 0, 16, 4)
 		NULL A 0 A_CustomMissile ("Teeth", 15, 0, random (0, 360), 2, random (0, 160))
 		FPZ4 OOOMN 2
-		
+
 		FPZ4 NNM 2
         NULL A 0 ACS_Execute(580, 0, 0, 0, 0)
         NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
@@ -2236,7 +2236,7 @@ FatalityZMan4://Pounding to floor
 		TNT1 A 0 A_SpawnItemEx("MuchBlood", 0, 16, 4)
 		NULL A 0 A_CustomMissile ("Teeth", 15, 0, random (0, 360), 2, random (0, 160))
 		FPZ4 OOOMN 2
-		
+
 		FPZ4 NNM 2
         NULL A 0 ACS_Execute(580, 0, 0, 0, 0)
         NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
@@ -2246,7 +2246,7 @@ FatalityZMan4://Pounding to floor
 		TNT1 A 0 A_SpawnItemEx("MuchBlood", 0, 16, 4)
 		NULL A 0 A_CustomMissile ("Teeth", 15, 0, random (0, 360), 2, random (0, 160))
 		FPZ4 OOOMN 2
-		
+
 		FPZ4 NNM 2
         NULL A 0 ACS_Execute(580, 0, 0, 0, 0)
         NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
@@ -2275,12 +2275,12 @@ FatalityZMan4://Pounding to floor
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
 	   //////////////////////////////////////////////////////
 	   TNT1 A 0 A_PlaySound("player/cyborg/fist", 4)
-	   FRAA AB 2 
+	   FRAA AB 2
 	   TNT1 A 0 A_PlaySound("misc/xdeath4c", 3)
 	   TNT1 A 0 A_PlaySound("grunt/pain", 2)
 	   FRAA ABABAB 2
 	   FRAA ABAB 2 A_CustomMissile ("Blood", 40, 0, random (0, 360), 2, random (40, 90))
-	   
+
 	   TNT1 A 0 A_PlaySound("misc/xdeath4c", 5)
 	   TNT1 A 0 A_PlaySound("misc/xdeath4f", 7)
 	   TNT1 AAA 0 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (40, 90))
@@ -2297,7 +2297,7 @@ FatalityZMan4://Pounding to floor
     FatalityImp://Stomp
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-        
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
         FTYI ABB 4
@@ -2323,13 +2323,13 @@ FatalityZMan4://Pounding to floor
 		TNT1 A 0 A_GiveInventory("BootsSmearedWithRedBlood", 6)
 		NULL A 0 A_CustomMissile ("StompedImp", 1, 0, random (0, 360), 2, random (0, 160))
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
-        NULL A 0 SetPlayerProperty(0,0,0)	
+        NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
     FatalityImp2://Spine Pull
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-        
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
 		NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
@@ -2340,16 +2340,16 @@ FatalityZMan4://Pounding to floor
 		NULL A 0  A_PlaySound("imp/pain", 4)
 		NULL A 0  A_PlaySound("BONECR2", 1)
 		XXXX AAA 0 A_CustomMissile ("XDeath1", 48, 0, random (0, 360), 2, random (40, 90))
-		
+
 		FTBI BC 2
 		NULL A 0  A_PlaySound("imp/die", 4)
-		
+
 		FTBI D 25
 		NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_SpawnItemEx("SplatteredSmall", 0, 15)
 		NULL A 0 ACS_Execute(580, 0, 0, 0, 0)
 		NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
-		
+
 		NULL A 0 A_SpawnItem("MuchBlood2", 0, 48)
 		XXXX AAA 0 A_CustomMissile ("XDeath1", 48, 0, random (0, 360), 2, random (40, 90))
 		XXXX AAA 0 A_CustomMissile ("XDeath2b", 48, 0, random (0, 360), 2, random (40, 90))
@@ -2367,7 +2367,7 @@ FatalityZMan4://Pounding to floor
       FatalityImp3://impse without se
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-		
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
         FTCI AB 2
@@ -2376,7 +2376,7 @@ FatalityZMan4://Pounding to floor
 		NULL A 0 A_PlaySound("player/cyborg/fist", 4)
 		FTCI CDE 2
 		FTCI E 6
-        
+
 		FTCI FGG 4
 		FTCI H 2
         NULL A 0 ACS_Execute(580, 0, 0, 0, 0)
@@ -2389,7 +2389,7 @@ FatalityZMan4://Pounding to floor
 		FTCI I 5
 		FTCI H 2
 		FTCI G 3
-		
+
 		FTCI H 2
         NULL A 0 ACS_Execute(580, 0, 0, 0, 0)
         NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
@@ -2401,7 +2401,7 @@ FatalityZMan4://Pounding to floor
 		FTCI I 5
 		FTCI H 2
 		FTCI G 3
-		
+
 		FTCI H 2
         NULL A 0 ACS_Execute(580, 0, 0, 0, 0)
         NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
@@ -2414,7 +2414,7 @@ FatalityZMan4://Pounding to floor
 		FTCI I 5
 		FTCI H 2
 		FTCI G 3
-		
+
 		FTCI H 2
         NULL A 0 ACS_Execute(580, 0, 0, 0, 0)
         NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
@@ -2426,9 +2426,9 @@ FatalityZMan4://Pounding to floor
 		FTCI I 5
 		FTCI H 2
 		FTCI G 3
-		
+
 		FTCI H 2
-		
+
         NULL A 0 ACS_Execute(580, 0, 0, 0, 0)
         NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
 		NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
@@ -2444,8 +2444,8 @@ FatalityZMan4://Pounding to floor
 		//NULL A 0 A_SpawnItem ("ZombieManDyingAfterFatality")
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
         NULL A 0 SetPlayerProperty(0,0,0)
-        Goto StandStill	
-		
+        Goto StandStill
+
 	FatalityImp4://punches standing still
 	   TNT1 A 0 SetPlayerProperty(0,1,0)
        TNT1 A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)
@@ -2461,18 +2461,18 @@ FatalityZMan4://Pounding to floor
 		TNT1 A 0 A_SpawnItemEx ("Blood", 0, -15, 60)
 		TNT1 A 0 A_CustomMissile ("Teeth", 54, -7, random (0, 360), 2, random (0, 160))
 	   FTDI B 4
-	   
+
 	   FTDI C 6
-	   
+
 	   TNT1 A 0 ACS_Execute(580, 0, 0, 0, 0)
        TNT1 A 0 ACS_Execute(581, 0, 0, 0, 0)
 		TNT1 A 0 A_PlaySound("imp/pain", 1)
 		TNT1 A 0 A_PlaySound("player/cyborg/fist", 4)
-		
+
 		TNT1 A 0 A_SpawnItemEx ("Blood", 0, -15, 60)
 		TNT1 AA 0 A_CustomMissile ("Teeth", 52, -6, random (0, 360), 2, random (0, 160))
 	   FTDI B 4
-	   
+
 	   FTDI C 6
 	   TNT1 A 0 ACS_Execute(580, 0, 0, 0, 0)
        TNT1 A 0 ACS_Execute(581, 0, 0, 0, 0)
@@ -2483,7 +2483,7 @@ FatalityZMan4://Pounding to floor
 		TNT1 A 0 A_SpawnItemEx ("Blood", 0, -15, 60)
 		TNT1 AAA 0 A_CustomMissile ("Teeth", 53, -6, random (0, 360), 2, random (0, 160))
 	   FTDI D 4
-	   
+
 	   FTDI E 6
 	   TNT1 A 0 ACS_Execute(580, 0, 0, 0, 0)
        TNT1 A 0 ACS_Execute(581, 0, 0, 0, 0)
@@ -2505,7 +2505,7 @@ FatalityZMan4://Pounding to floor
 		NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_SpawnItemEx ("ImpHeadExplode", 0, -15, 60)
 	   FTDI F 4
-	   
+
 	   FTDI GH 4
 	   FTDI J 14
 
@@ -2520,7 +2520,7 @@ FatalityZMan4://Pounding to floor
     FatalitySergeant://To be or not to be... thats a brutal question
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-        
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
         FTYS A 6 A_PlaySound("grunt/pain", 3)
@@ -2539,7 +2539,7 @@ FatalityZMan4://Pounding to floor
 		NULL A 0 A_SPawnItem("MuchBlood2", 0, 30)
         FTYS FGHIIP 2 A_CustomMissile ("Blood", 1, 0, random (0, 360), 2, random (0, 160))
 
-        FTYS QR 5 
+        FTYS QR 5
         NULL A 0 A_SpawnItemEx("FootStep5", 0, 0, 40, 0, 0)
         FTYS R 15
 		TNT1 A 0 A_GiveInventory("ShotgunguyHead", 1)
@@ -2554,7 +2554,7 @@ FatalityZMan4://Pounding to floor
     FatalitySergeant2://Split personality
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-        
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
         FTYS J 3
@@ -2584,18 +2584,18 @@ FatalityZMan4://Pounding to floor
 	FatalitySergeant3://Shotgun Impale
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-        
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
         FSP3 A 4
-		
+
 		FSP3 B 4 A_PlaySound("grunt/pain")
 		NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
 		FSP3 CDE 2
 		FSP3 E 6
-		
+
 		FSP3 FG 3
-		NULL A 0 A_PlaySound("grunt/death")		
+		NULL A 0 A_PlaySound("grunt/death")
 		NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
 		NULL A 0 ACS_Execute(580, 0, 0, 0, 0)
 		NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
@@ -2603,17 +2603,17 @@ FatalityZMan4://Pounding to floor
 		//NULL AA 0 A_CustomMissile ("XDeath2", 20, 0, random (0, 360), 2, random (0, 160))
 		//NULL AA 0 A_CustomMissile ("XDeath3", 20, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 AAA 0 A_CustomMissile ("BloodMistSmall", 30, 0, random (0, 360), 2, random (20, 90))
-		
+
         FSP3 HIIIIII 3
-	   
-	   NULL A 0 A_PlaySound("weapons/sg")	
+
+	   NULL A 0 A_PlaySound("weapons/sg")
 	   NULL A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
 		NULL A 0 ACS_Execute(580, 0, 0, 0, 0)
 		NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
 		NULL AAAAA 0 A_CustomMissile ("XDeath1", 70, 0, random (0, 360), 2, random (0, 160))
 		NULL AA 0 A_CustomMissile ("XDeath2", 70, 0, random (0, 360), 2, random (0, 160))
 		NULL AA 0 A_CustomMissile ("XDeath3", 70, 0, random (0, 360), 2, random (0, 160))
-		
+
 		TNT1 AAAAAAAAAAA 0 A_CustomMissile ("BloodMist", 80, 0, random (0, 360), 2, random (20, 90))
         NULL A 0 A_CustomMissile ("FlyingImpaledSergeant", 50, 0, random (0, 360), 2, random (70, 110))
 
@@ -2625,7 +2625,7 @@ FatalityZMan4://Pounding to floor
 		NULL A 0 A_TakeInventory("SergeantFatality3",1)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
         NULL A 0 SetPlayerProperty(0,0,0)
-        Goto StandStill	
+        Goto StandStill
 
       FatalitySergeant4:
 			NULL A 0 SetPlayerProperty(0,1,0)
@@ -2634,32 +2634,32 @@ FatalityZMan4://Pounding to floor
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
 			 //////////////////////////////////////////////////////
 			SGF8 A 5
-			
+
 			SGF8 B 5
 			TNT1 A 0  A_PlaySound("grunt/pain")
 			NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
 			//SCREAMS!
 			SGF8 A 4
-			
+
 			SGF8 B 4
 			TNT1 A 0  A_PlaySound("grunt/pain")
 			NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
 			//SCREAMS!
 			SGF8 A 4
-			
+
 			SGF8 B 4
 			TNT1 A 0  A_PlaySound("grunt/pain")
 			TNT1 A 0 A_PlaySound("misc/xdeath4a", 4)
 			NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
 			//SPLATTERS!
-			
+
 			SGF8 CD 4
 			TNT1 A 0 A_PlaySound("BURNZOM", 3)
 			TNT1 AAAAAAA 0 A_CustomMissile ("PlayerFlyingBlood", 29, -5, random (0, 360), 2, random (0, 160))
 			TNT1 AAAAA 0 A_CustomMissile ("Blood", 29, -5, random (0, 360), 2, random (0, 160))
 			TNT1 A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)
 			//
-			
+
 			SGF8 EF 4 A_CustomMissile ("Blood", 24, -11, random (0, 360), 2, random (0, 160))
 			TNT1 A 0 A_PlaySound("misc/xdeath2c", 5)
 			SGF8 G 5
@@ -2679,7 +2679,7 @@ FatalityZMan4://Pounding to floor
 			TNT1 AA 0 A_CustomMissile ("Blood", 29, -27, random (0, 360), 2, random (0, 160))
 			SGF8 KL 5 A_CustomMissile ("Blood", 29, -27, random (0, 360), 2, random (0, 160))
 			TNT1 A 0 A_Stopsound(3)
-			
+
 			XXXX AAA 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
 			SGF8 LL 6
 			TNT1 AAAA 0 A_CustomMissile ("CeilBloodLauncherLong", 50, 0, random (0, 360), 2, random (50, 130))
@@ -2689,19 +2689,19 @@ FatalityZMan4://Pounding to floor
 			TNT1 AAA 0 A_CustomMissile ("Guts", 50, 0, random (0, 360), 2, random (0, 160))
 			TNT1 AAAAAA 0 A_CustomMissile ("PlayerFlyingBlood", 60, 0, random (0, 360), 2, random (0, 160))
 			SGF8 MMM 4
-			
+
 			TNT1 A 0 A_TakeInventory("SergeantFatality4",1)
 			TNT1 A 0 A_TakeInventory("GoFatality", 1)
 			TNT1 A 0 A_SpawnItem("FatalizedSGGuy4", 1)
 			TNT1 A 0 A_ChangeFlag("GHOST", 0)
 			MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
 			NULL A 0 SetPlayerProperty(0,0,0)
-			Goto StandStill	
+			Goto StandStill
 
     FatalityComando:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-        
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
         CFTA AAABCDE 2
@@ -2716,7 +2716,7 @@ FatalityZMan4://Pounding to floor
 		NULL A 0 A_CustomMissile ("CameraShakeMinor", 50, 0, random (0, 360), 2, random (0, 160))
 		NULL A 0 A_CustomMissile ("GoreSound", 22, 0, random (0, 360), 2, random (0, 160))
          CFTA L 7
-	    
+
         CFTA M 15
         CFTA OPQR 4
 		NULL A 0  A_PlaySound("BONECR1", 1)
@@ -2724,7 +2724,7 @@ FatalityZMan4://Pounding to floor
         CFTA R 20
 		NULL A 0 ACS_Execute(580, 0, 0, 0, 0)
 		NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
-         
+
 		 NULL A 0  A_PlaySound("BONECR2", 1)
 		 NULL A 0 A_CustomMissile ("CameraShakeMinor", 50, 0, random (0, 360), 2, random (0, 160))
 		 NULL A 0 A_CustomMissile ("Muchblood2", 20, 0, random (0, 360), 2, random (0, 160))
@@ -2743,7 +2743,7 @@ FatalityZMan4://Pounding to floor
 	   FatalityComando2:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-        
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
         CFTC A 1
@@ -2775,7 +2775,7 @@ FatalityZMan4://Pounding to floor
     FatalityDemon:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-        
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
         FDEM A 4
@@ -2784,7 +2784,7 @@ FatalityZMan4://Pounding to floor
 		NULL A 0  A_PlaySound("BONECR1", 1)
         FDEM C 8
         FDEM C 1 A_PlaySound("demon/pain")
-		
+
         FDEM CDCDCD 3
 		NULL A 0  A_PlaySound("BONECR2", 1)
 		NULL A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
@@ -2801,11 +2801,11 @@ FatalityZMan4://Pounding to floor
         NULL A 0 SetPlayerProperty(0,0,0)
         NULL A 0 A_SpawnItemEx("DyingDemon", 0, 1, 1, 1, 1)
         Goto StandStill
-		
+
 		FatalityDemon2:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-        
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
 		FDEM J 2
@@ -2831,18 +2831,18 @@ FatalityZMan4://Pounding to floor
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
-		
+
 	FatalityDemon3:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-        
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
 		FD2M A 2
 		NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
         FDEM J 0 A_PlaySound("demon/pain")
         FD2M A 10
-		
+
         FD2M B 3
 		FD7M B 1
 		FD2M C 3
@@ -2851,7 +2851,7 @@ FatalityZMan4://Pounding to floor
 		NULL A 0 A_PlaySound("player/cyborg/fist", 1)
 		NULL A 0 A_SpawnItem("Blood", 0, 20)
 		FD2M BD 4
-		
+
 		 FD2M E 4
 		 FD2M F 15
 		 FD2M GHH 4
@@ -2859,7 +2859,7 @@ FatalityZMan4://Pounding to floor
 		 NULL AAA 0 A_SpawnItem("Blood", 0, 5)
 		 NULL A 0 A_SpawnItem("MeatDeath", 0, 1)
 		FD2M IJJJJ 5
-		 
+
         //////////////////////////////////////////////////////
         NULL A 0 A_TakeInventory("DemonFatality3",1)
 		NULL A 0 A_TakeInventory("GoFatality", 1)
@@ -2871,7 +2871,7 @@ FatalityZMan4://Pounding to floor
     FatalityCacoDemon:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-        
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
         CACF ABC 4
@@ -2896,7 +2896,7 @@ FatalityZMan4://Pounding to floor
 		FatalityCacoDemon2:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-        
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
         CA2F AB 4
@@ -2905,7 +2905,7 @@ FatalityZMan4://Pounding to floor
 		NULL A 0  A_PlaySound("BONECR1", 1)
         CA2F F 2
 		NULL A 0 A_PlaySound("caco/pain")
-      
+
 		CA2F F 8
 		NULL A 0 A_PlaySound("misc/xdeath2")
 		NULL A 0  A_PlaySound("BONECR1", 3)
@@ -2926,7 +2926,7 @@ FatalityZMan4://Pounding to floor
     FatalityRevenant:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-        
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
 		NULL A 0  A_PlaySound("BONECR1", 1)
@@ -2964,7 +2964,7 @@ FatalityZMan4://Pounding to floor
     FatalityRevenant2:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-        
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
         FRE2 A 5
@@ -2974,8 +2974,8 @@ FatalityZMan4://Pounding to floor
 		 NULL A 0 A_CustomMissile ("Muchblood2", 40, 0, random (0, 360), 2, random (50, 130))
          NULL AA 0 A_CustomMissile ("XDeath2", 40, 0, random (0, 360), 2, random (0, 160))
 		 NULL AA 0 A_CustomMissile ("XDeath3", 40, 0, random (0, 360), 2, random (0, 160))
-        FRE2 BCDEFGGGGG 3 
-		
+        FRE2 BCDEFGGGGG 3
+
         //////////////////////////////////////////////////////
         NULL A 0 A_TakeInventory("GoFatality", 1)
 		NULL A 0 A_TakeInventory("RevenantFatality2",1)
@@ -2987,11 +2987,11 @@ FatalityZMan4://Pounding to floor
     FatalityFatso:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-        
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
         FATF A 6
-		
+
         NULL A 0 A_CustomMissile ("Blood", 45, 0, random (0, 360), 2, random (0, 160))
         NULL AAAAAAA 0 A_CustomMissile ("Brutal_FlyingBloodTrail", 45, 0, random (0, 180), 2, random (0, 180))
         FATF A 6 A_PlaySound("misc/xdeath4")
@@ -3025,7 +3025,7 @@ FatalityZMan4://Pounding to floor
     FatalityBaron:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-        
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
         BHF1 AAABCDEF 2
@@ -3050,7 +3050,7 @@ FatalityZMan4://Pounding to floor
 	     NULL A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
 
 		 NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
-		 
+
          NULL AAAAAAAAA 0 A_CustomMissile ("XDeath1Green", 10, 0, random (0, 360), 2, random (0, 160))
          NULL AAA 0 A_CustomMissile ("MuchBlood3Green", 50, 0, random (0, 360), 2, random (0, 160))
 
@@ -3068,7 +3068,7 @@ FatalityZMan4://Pounding to floor
     FatalityHK:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-        
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
         HKF1 A 1
@@ -3081,7 +3081,7 @@ FatalityZMan4://Pounding to floor
 		HKF1 C 5
 		NULL A 0 A_PlaySound("imp/melee")
 		HKF1 C 5
-        
+
 		 NULL A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
 
 		NULL AAAAAAA 0 A_CustomMissile ("XDeath1Green", 50, 0, random (0, 360), 2, random (0, 160))
@@ -3103,7 +3103,7 @@ FatalityZMan4://Pounding to floor
 	FatalityHK3:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-        
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
         NULL A 0 A_PlaySound("weapons/gswing", 1)
@@ -3123,7 +3123,7 @@ FatalityZMan4://Pounding to floor
          NULL AA 0 A_CustomMissile ("Muchblood2Green", 50, 0, random (0, 360), 2, random (0, 160))
 		 NULL A 0 A_CustomMissile ("XDeathHellKnightArm", 40, 0, 90, 2, random (0, 20))
         HKF3 EFGG 7 A_CustomMissile ("Green_Blood", 40, 0, random (0, 360), 2, random (0, 160))
-		
+
 		NULL A 0 A_PlaySound("PSXDPN")
 		HKF3 H 15
 
@@ -3143,7 +3143,7 @@ FatalityZMan4://Pounding to floor
 FatalityHK2:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-        
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
@@ -3151,9 +3151,9 @@ FatalityHK2:
 		NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
 		NULL A 0 SetPlayerProperty(0,1,0)
 		NULL A 0 A_PlaySound("PSXDPN")
-		
+
 		HKF2 DEFFGH 8
-		
+
 		 NULL A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
          NULL A 0 A_PlaySound("PSXDPN")
 		 HKF2 IJIJIJ 4
@@ -3180,7 +3180,7 @@ FatalityHK2:
     FatalityArachnotron:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-        
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
 		NULL A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
@@ -3209,18 +3209,18 @@ FatalityHK2:
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
-		
+
 	FatalityArachnotron2:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-        
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
 		NULL A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
         ARF1 ABABABABABABAB 2
 		NULL A 0 A_SpawnItem("Spark_UpOnce",0,60)
 		ARF1 CD 3
-		NULL A 0 A_PlaySound("baby/death")	
+		NULL A 0 A_PlaySound("baby/death")
 		ARF1 EFFFF 3
 	    ARF3 GHHHH 3
 		ARF3 G 2
@@ -3247,7 +3247,7 @@ FatalityHK2:
 	FatalityArachnotron3:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-        
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
 		ARF2 A 6
@@ -3264,7 +3264,7 @@ FatalityHK2:
          NULL AAAAA 0 A_CustomMissile ("XDeath1", 10, 0, random (0, 360), 2, random (0, 160))
          NULL AAAAA 0 A_CustomMissile ("XDeath2", 10, 0, random (0, 360), 2, random (0, 160))
          NULL A 0 A_CustomMissile ("MuchBlood2", 50, 0, random (0, 360), 2, random (0, 160))
-		
+
 		ARF2 CDE 3
         NULL A 0 A_CustomMissile ("XDeathArachnotronHead", 50, 0, random (0, 360), 2, random (40, 130))
 		//////////////////////////////////////////////////////
@@ -3281,7 +3281,7 @@ FatalityHK2:
 		NULL A 0 ACS_Execute(acsFatality, 0)
 		AVF1 A 2 A_ChangeFlag("GHOST", 1)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-		
+
         //////////////////////////////////////////////////////
         AVF1 A 1
 		NULL A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
@@ -3326,24 +3326,24 @@ FatalityHK2:
 		TNT1 A 0 A_ChangeFlag("GHOST", 0)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
         NULL A 0 SetPlayerProperty(0,0,0)
-        Goto StandStill	
-		
+        Goto StandStill
+
 	FatalityArchVile2:
 		NULL A 0 SetPlayerProperty(0,1,0)
 		NULL A 0 ACS_Execute(acsFatality, 0)
 		AVF2 A 2 A_ChangeFlag("GHOST", 1)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-		
+
 		//////////////////////////////////////////////////////
 		TNT1 A 0 A_PlaySound("weapons/fistwhoosh")
 		AVF2 A 5
 		TNT1 AAAA 0 A_CustomMissile ("PlayerFlyingBlood", 55, 10, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_PlaySound("player/cyborg/fist", 4)
 		AVF2 B 4
-		
+
 		AVF2 C 6
 		TNT1 A 0 A_PlaySound("weapons/fistwhoosh")
-		
+
 		AVF2 D 4
 		NULL A 0  A_PlaySound("BONECR1", 5)
 		AVF2 EDEDE 3
@@ -3355,7 +3355,7 @@ FatalityHK2:
 		NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
 		NULL A 0 A_SpawnItemEx ("MuchBlood", 0, 10, 60)
 		AVF2 F 5 A_PlaySound("vile/pain",8)
-		
+
 		AVF2 GGGH 4
 		TNT1 A 0 A_PlaySound("misc/xdeath4b", 4)
 		NULL A 0 A_SpawnItemEx ("MuchBlood", 0, 15, 60)
@@ -3389,34 +3389,34 @@ FatalityHK2:
 		TNT1 A 0 A_PlaySound("misc/xdeath4b", 4)
 		NULL A 0 A_SpawnItemEx ("MuchBlood", 0, 18, 55)
 		NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
-		
+
 		TNT1 A 0 A_PlaySound("vile/death",9)
-		AVF2 OPUV 3 
+		AVF2 OPUV 3
 		TNT1 A 0 A_Playsound("CLAP",2)
 		NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
 		NULL A 0 A_SpawnItemEx ("MuchBlood", 0, 7, 15)
 		TNT1 A 0 A_PlaySound("misc/xdeath4b", 4)
 		AVF2 Q 6
 		AVF2 RS 3
-		
+
 		NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
 		NULL A 0 A_SpawnItemEx ("MuchBlood", 0, 7, 15)
 		TNT1 A 0 A_PlaySound("misc/xdeath4b", 4)
 		AVF2 Q 6
 		AVF2 RS 3
-		
+
 		NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
 		NULL A 0 A_SpawnItemEx ("MuchBlood", 0, 7, 15)
 		TNT1 A 0 A_PlaySound("misc/xdeath4b", 4)
 		AVF2 Q 6
 		AVF2 RS 3
-		
+
 		NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
 		NULL A 0 A_SpawnItemEx ("MuchBlood", 0, 7, 15)
 		TNT1 A 0 A_PlaySound("misc/xdeath4b", 4)
 		AVF2 Q 6
 		AVF2 RS 3
-		
+
 		NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
 		NULL A 0 A_SpawnItemEx ("MuchBlood", 0, 7, 15)
 		TNT1 A 0 A_PlaySound("misc/xdeath4b", 4)
@@ -3428,13 +3428,13 @@ FatalityHK2:
 		TNT1 A 0 A_PlaySound("misc/xdeath4b", 4)
 		AVF2 Q 8
 		AVF2 RS 4
-		
+
 		NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
 		NULL A 0 A_SpawnItemEx ("MuchBlood", 0, 7, 15)
 		TNT1 A 0 A_PlaySound("misc/xdeath4b", 4)
 		AVF2 Q 8
 		AVF2 RS 4
-		
+
 		NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
 		NULL A 0 A_SpawnItemEx ("MuchBlood", 0, 7, 15)
 		TNT1 A 0 A_PlaySound("misc/xdeath4b", 4)
@@ -3447,8 +3447,8 @@ FatalityHK2:
 		TNT1 A 0 A_ChangeFlag("GHOST", 0)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
         NULL A 0 SetPlayerProperty(0,0,0)
-        Goto StandStill	
-		
+        Goto StandStill
+
 	FatalityBelphegor:
 	   TNT1 A 0 SetPlayerProperty(0,1,0)
        TNT1 A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)
@@ -3457,7 +3457,7 @@ FatalityHK2:
 	   //////////////////////////////////////////////////////
 	   TNT1 A 0 A_PlaySound("weapons/fistwhoosh",7)
 	   BS4F A 5
-	   
+
 	   TNT1 A 0 A_PlaySound("misc/gibbed")
 	   BS4F B 3
 	   TNT1 AAA 0 A_CustomMissile ("Brutal_FlyingBlood", 71, 0, random (0, 360), 2, random (0, 160))
@@ -3485,23 +3485,23 @@ FatalityHK2:
 		TNT1 AAAAAAAA 0 A_CustomMissile ("Guts", 50, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_CustomMissile ("XDeath2", 55, 0, random (170, 190), 2, random (0, 40))
 		TNT1 A 0 A_CustomMissile ("XDeath3", 51, 0, random (170, 190), 2, random (0, 40))
-	   BS4F HI 6 
+	   BS4F HI 6
 	   TNT1 AAAAAAAA 0 A_CustomMissile ("Brutal_FlyingBlood", 1, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_CustomMissile ("XDeath1", 53, 0, random (170, 190), 2, random (0, 40))
 		TNT1 A 0 A_CustomMissile ("XDeath2", 55, 0, random (170, 190), 2, random (0, 40))
 	   BS4F II 3
-	   
+
 	   TNT1 A 0 A_TakeInventory("GoFatality", 1)
 		TNT1 A 0 A_TakeInventory("BelphegorFatality",1)
 		TNT1 A 0 A_SpawnItem ("FatalizedBelphegor", 20)
 		TNT1 A 0 A_CustomMissile ("XDeathHellKnightTorso", 32, 0, random (0, 135), 2, random (0, 65))
         TNT1 A 0 SetPlayerProperty(0,0,0)
-	   Goto StandStill	
+	   Goto StandStill
 
 		FatalityVolcabus:
 		TNT1 A 0 SetPlayerProperty(0,1,0)
 		TNT1 A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)
-		
+
 		TNT1 A 0 ACS_Execute(acsFatality, 0)
 		//////////////////////////////////////////////////////
 		FA2F AA 6
@@ -3515,9 +3515,9 @@ FatalityHK2:
 		TNT1 AA 0 A_CustomMissile ("XDeath1", 48, -7, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_CustomMissile ("XDeath2", 48, -7, random (0, 360), 2, random (0, 160))
 		FA2F B 5
-		
+
 		FA2F C 10
-		
+
 		TNT1 A 0 ACS_Execute(580, 0, 0, 0, 0)
 		TNT1 A 0 ACS_Execute(581, 0, 0, 0, 0)
 		NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
@@ -3528,9 +3528,9 @@ FatalityHK2:
 		TNT1 AA 0 A_CustomMissile ("XDeath3", 48, -7, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_CustomMissile ("XDeath2", 48, -7, random (0, 360), 2, random (0, 160))
 		FA2F B 5
-		
+
 		FA2F C 8
-		
+
 		TNT1 A 0 ACS_Execute(580, 0, 0, 0, 0)
 		 TNT1 A 0 ACS_Execute(581, 0, 0, 0, 0)
 		NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
@@ -3542,9 +3542,9 @@ FatalityHK2:
 		TNT1 AA 0 A_CustomMissile ("XDeath1", 48, -7, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_CustomMissile ("XDeath3", 48, -7, random (0, 360), 2, random (0, 160))
 		FA2F D 5
-		
+
 		FA2F C 8
-		
+
 		TNT1 A 0 ACS_Execute(580, 0, 0, 0, 0)
 		 TNT1 A 0 ACS_Execute(581, 0, 0, 0, 0)
 		NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
@@ -3555,8 +3555,8 @@ FatalityHK2:
 		TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 32, -5, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_CustomMissile ("XDeath1", 48, -7, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_CustomMissile ("XDeath2", 48, -7, random (0, 360), 2, random (0, 160))
-		FA2F FFF 2 A_CustomMissile ("PlayerFlyingBlood", 33, -6, random (0, 360), 2, random (0, 160))	
-		
+		FA2F FFF 2 A_CustomMissile ("PlayerFlyingBlood", 33, -6, random (0, 360), 2, random (0, 160))
+
 		FA2F E 8
 		TNT1 A 0 ACS_Execute(580, 0, 0, 0, 0)
 		TNT1 A 0 ACS_Execute(581, 0, 0, 0, 0)
@@ -3571,8 +3571,8 @@ FatalityHK2:
 		TNT1 AAA 0 A_CustomMissile ("SmallBrainPiece", 48, -7, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_CustomMissile ("XDeath1", 48, -7, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_CustomMissile ("XDeath2", 48, -7, random (0, 360), 2, random (0, 160))
-		FA2F FFF 2 A_CustomMissile ("PlayerFlyingBlood", 48, -6, random (0, 360), 2, random (0, 160))	
-		
+		FA2F FFF 2 A_CustomMissile ("PlayerFlyingBlood", 48, -6, random (0, 360), 2, random (0, 160))
+
 		FA2F E 8
 		TNT1 A 0 ACS_Execute(580, 0, 0, 0, 0)
 		TNT1 A 0 ACS_Execute(581, 0, 0, 0, 0)
@@ -3587,14 +3587,14 @@ FatalityHK2:
 		TNT1 AAA 0 A_CustomMissile ("SmallBrainPiece", 48, -7, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_CustomMissile ("XDeath1", 48, -7, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_CustomMissile ("XDeath2", 48, -7, random (0, 360), 2, random (0, 160))
-		FA2F FFF 2	A_CustomMissile ("PlayerFlyingBlood", 48, -6, random (0, 360), 2, random (0, 160))	
-		
+		FA2F FFF 2	A_CustomMissile ("PlayerFlyingBlood", 48, -6, random (0, 360), 2, random (0, 160))
+
 		TNT1 A 0 A_TakeInventory("GoFatality", 1)
 		TNT1 A 0 A_TakeInventory("VolcabusFatality",1)
 		TNT1 A 0 A_SpawnItem ("FatalizedVolcabus", 45)
 		 MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
 			NULL A 0 SetPlayerProperty(0,0,0)
-		Goto StandStill	
+		Goto StandStill
 
 FatalityVolcabus2:
 		TNT1 A 0 SetPlayerProperty(0,1,0)
@@ -3604,7 +3604,7 @@ FatalityVolcabus2:
 		FA3F A 8
 		TNT1 A 0 A_PlaySound("player/cyborg/fist", 4)
 		TNT1 A 0 A_Playsound("misc/gibbed",3)
-		TNT1 AAAAAAA 0 A_CustomMissile ("Blood", 45, 0, random (0, 360), 2, random (0, 160))						
+		TNT1 AAAAAAA 0 A_CustomMissile ("Blood", 45, 0, random (0, 360), 2, random (0, 160))
 		FA3F B 8
 		TNT1 AAAAAAAAAAAAAAAAA 0 A_CustomMissile ("Brutal_FlyingBloodTrail", 45, 0, random (0, 180), 2, random (0, 180))
 		FA3F C 5 A_PlaySound("Volcabus/pain", 1)
@@ -3614,30 +3614,30 @@ FatalityVolcabus2:
 		TNT1 AA 0 A_CustomMissile ("XDeath1", 50, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_CustomMissile ("XDeath2", 50, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_CustomMissile ("XDeath3", 50, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AA 0 A_CustomMissile ("Guts", 48, -6, random (0, 360), 2, random (0, 160))		
+		TNT1 AA 0 A_CustomMissile ("Guts", 48, -6, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 ACS_Execute(580, 0, 0, 0, 0)
 
 		TNT1 AAAAAAAAAAAAAAAAA 0 A_CustomMissile ("Brutal_FlyingBloodTrail", 45, 0, random (0, 180), 2, random (0, 180))
 		FA3F E 6 A_PlaySound("Volcabus/pain", 1)
 		FA3F F 6 A_PlaySound("misc/xdeath4", 3)
 		TNT1 AAA 0 A_CustomMissile ("Blood", 45, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AA 0 A_CustomMissile ("Guts", 48, -6, random (0, 360), 2, random (0, 160))			
-	
+		TNT1 AA 0 A_CustomMissile ("Guts", 48, -6, random (0, 360), 2, random (0, 160))
+
 		TNT1 AAAAAAAAAAAAAAAAA 0 A_CustomMissile ("Brutal_FlyingBloodTrail", 45, 0, random (0, 180), 2, random (0, 180))
 		FA3F G 5 A_PlaySound("Volcabus/pain", 1)
 		FA3F H 6 A_PlaySound("misc/xdeath4", 3)
 		TNT1 AAA 0 A_CustomMissile ("Blood", 45, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AA 0 A_CustomMissile ("Guts", 48, -6, random (0, 360), 2, random (0, 160))	
-		
+		TNT1 AA 0 A_CustomMissile ("Guts", 48, -6, random (0, 360), 2, random (0, 160))
+
 		TNT1 AAAAAAAAAAAAAAAAA 0 A_CustomMissile ("Brutal_FlyingBloodTrail", 45, 0, random (0, 180), 2, random (0, 180))
 		FA3F I 5 A_PlaySound("Volcabus/pain", 1)
 		FA3F J 6 A_PlaySound("misc/xdeath4", 3)
 		TNT1 AAA 0 A_CustomMissile ("Blood", 45, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_CustomMissile ("Guts", 48, -6, random (0, 360), 2, random (0, 160))
 
-		NULL A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))		
+		NULL A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
 		FA3F K 10
-				
+
 		//////////////////////////////////////////////////////
 		TNT1 A 0 A_TakeInventory("VolcabusFatality2",1)
 		TNT1 A 0 A_TakeInventory("GoFatality", 1)
@@ -3647,10 +3647,10 @@ FatalityVolcabus2:
 		TNT1 A 0 A_UnSetInvulnerable
 		Goto StandStill
 
-	FatalityArachnotron2B:		
+	FatalityArachnotron2B:
 		NULL A 0 SetPlayerProperty(0,1,0)
 		NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-		
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
 		//////////////////////////////////////////////////////
 		ARF6 A 6
@@ -3666,9 +3666,9 @@ FatalityVolcabus2:
 		 NULL AAAAA 0 A_CustomMissile ("XDeath1", 10, 0, random (0, 360), 2, random (0, 160))
 		 NULL AAAAA 0 A_CustomMissile ("XDeath2", 10, 0, random (0, 360), 2, random (0, 160))
 		 NULL A 0 A_CustomMissile ("MuchBlood2", 50, 0, random (0, 360), 2, random (0, 160))
-		
+
 		ARF6 CD 7
-		NULL A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))		
+		NULL A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
 		ARF6 EF 7
 		NULL A 0 A_CustomMissile ("XDeathArachnotronHead2", 50, 0, random (0, 360), 2, random (40, 130))
 		//////////////////////////////////////////////////////
@@ -3678,12 +3678,12 @@ FatalityVolcabus2:
 		//NULL A 0 A_CustomMissile ("SpiderLeg", 30, 0, 0, 2, 0)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
 			NULL A 0 SetPlayerProperty(0,0,0)
-		Goto StandStill				
+		Goto StandStill
 
 	FatalityArachnotron2A:
 		NULL A 0 SetPlayerProperty(0,1,0)
 		NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-		
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
 		//////////////////////////////////////////////////////
 		NULL A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
@@ -3695,7 +3695,7 @@ FatalityVolcabus2:
 		NULL A 0 A_PlaySound("baby/death")
 		ARF5 EFFFF 3
 		ARF5 GGHHI 3
-		
+
 		TNT1 A 0 A_PlaySound("misc/gibbed", 3)
 		NULL A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
 		NULL A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
@@ -3708,7 +3708,7 @@ FatalityVolcabus2:
 		NULL AAAAA 0 A_CustomMissile ("XDeath3", 10, 0, random (0, 360), 2, random (0, 160))
 		NULL A 0 A_CustomMissile ("MuchBlood2", 50, 0, random (0, 360), 2, random (0, 160))
 		ARF5 JKLMMMMMMMMM 3 A_CustomMissile ("Brutal_LiquidBlood2", 16, 0, random (0, 360), 2, random (60, 120))
-		
+
 		//////////////////////////////////////////////////////
 		NULL A 0 A_TakeInventory("Arachnotron2FatalityA",1)
 		NULL A 0 A_TakeInventory("GoFatality", 1)
@@ -3717,31 +3717,31 @@ FatalityVolcabus2:
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
 			NULL A 0 SetPlayerProperty(0,0,0)
 		Goto StandStill
-		
+
 FatalityPE:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-        
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
         PA1F A 3
 		FATF E 0 A_PlaySound("demon/pain")
 		NULL A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
 		PA1F A 9
-		
+
 		NULL A 0 ACS_Execute(580, 0, 0, 0, 0)
         NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
-		
+
         NULL AAAAAA 0 A_CustomMissile ("Blood", 55, 0, random (0, 180), 2, random (0, 180))
         NULL AA 0 A_CustomMissile ("XDeath1", 55, 0, random (0, 360), 2, random (0, 160))
         NULL A 0 A_PlaySound("demon/pain")
-		
+
 		PA1F BCDEEEEEFGHI 3
-		
+
 		NULL A 0 A_PlaySound("demon/pain")
-        
+
 		PA1F JKKKK 3
-		
+
 		PA1F L 4
 		NULL AAAA 0 A_CustomMissile ("XDeath1", 10, 0, random (0, 360), 2, random (0, 160))
         NULL AAA 0 A_CustomMissile ("XDeath2", 10, 0, random (0, 360), 2, random (0, 160))
@@ -3749,48 +3749,48 @@ FatalityPE:
 		NULL A 0 ACS_Execute(580, 0, 0, 0, 0)
         NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
 		NULL A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
-		
+
 		  PA1F MNNNNNNN 3
 
 		  PA1F OPQR 3
-		  
+
 		NULL AAAA 0 A_CustomMissile ("XDeath1", 10, 0, random (0, 360), 2, random (0, 160))
         NULL AAA 0 A_CustomMissile ("XDeath2", 10, 0, random (0, 360), 2, random (0, 160))
 		NULL AAA 0 A_CustomMissile ("MuchBlood", 90, 0, random (0, 360), 2, random (0, 160))
-		
+
 		NULL A 0 ACS_Execute(580, 0, 0, 0, 0)
         NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
 
 		NULL A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
-		  
+
 		  PA1F RQPQR 3
 
 		  NULL AAAA 0 A_CustomMissile ("XDeath1", 10, 0, random (0, 360), 2, random (0, 160))
         NULL AAA 0 A_CustomMissile ("XDeath2", 10, 0, random (0, 360), 2, random (0, 160))
 		NULL AAA 0 A_CustomMissile ("MuchBlood", 90, 0, random (0, 360), 2, random (0, 160))
-		
+
 		NULL A 0 ACS_Execute(580, 0, 0, 0, 0)
         NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
 
 		NULL A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
-		
+
 		PA1F RQPQR 3
 
 		  NULL AAAA 0 A_CustomMissile ("XDeath1", 10, 0, random (0, 360), 2, random (0, 160))
         NULL AAA 0 A_CustomMissile ("XDeath2", 10, 0, random (0, 360), 2, random (0, 160))
 		NULL AAA 0 A_CustomMissile ("MuchBlood", 90, 0, random (0, 360), 2, random (0, 160))
-		
+
 		NULL A 0 ACS_Execute(580, 0, 0, 0, 0)
         NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
 
 		NULL A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
-		
+
 		PA1F RQPQR 3
 
 		  NULL AAAA 0 A_CustomMissile ("XDeath1", 10, 0, random (0, 360), 2, random (0, 160))
         NULL AAA 0 A_CustomMissile ("XDeath2", 10, 0, random (0, 360), 2, random (0, 160))
 		NULL AAA 0 A_CustomMissile ("MuchBlood", 90, 0, random (0, 360), 2, random (0, 160))
-		
+
 		NULL A 0 ACS_Execute(580, 0, 0, 0, 0)
         NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
 
@@ -3799,7 +3799,7 @@ FatalityPE:
 		PA1F S 30
 		PA1F STSTST 6 A_CustomMissile ("MuchBlood", 30, 0, random (0, 360), 2, random (0, 160))
 		PA1F S 9
-		
+
         //////////////////////////////////////////////////////
         NULL A 0 A_TakeInventory("PEFatality",1)
         NULL A 0 A_TakeInventory("GoFatality", 1)
@@ -3886,7 +3886,7 @@ FatalityLabGuy1: //Face kicker
 		FSF1 H 4
 		FSF1 M 4
 		TNT1 A 0 A_PlaySound("SALUTE", 4)
-		FSF1 G 6		
+		FSF1 G 6
 		/////// FINISH HIM!
 		FSF1 F 35
 		FSF1 G 3
@@ -3907,7 +3907,7 @@ FatalityLabGuy1: //Face kicker
         MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
 			NULL A 0 SetPlayerProperty(0,0,0)
 		Goto StandStill
-	
+
 FatalityLabGuy2: // axe mutilator
        	TNT1 A 0 SetPlayerProperty(0,1,0)
         TNT1 A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)
@@ -3925,7 +3925,7 @@ FatalityLabGuy2: // axe mutilator
 		FSF2 E 5
 		FSF2 F 15
 		NULL A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160)) 
+		TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("XDeath1", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 ACS_Execute(580, 0, 0, 0, 0)
@@ -3933,12 +3933,12 @@ FatalityLabGuy2: // axe mutilator
 		NULL A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_PlaySound("misc/xdeath4c", 4)
 		FSF2 G 12
-		
+
 		FSF2 H 10
 		NULL A 0 A_CustomMissile ("LabGuyHead", 1, 0, random (0, 360), 2, random (0, 160))
 		FSF2 P 2
 		TNT1 A 0 A_PlaySound("misc/xdeath4a", 4)
-		TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160)) 
+		TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_CustomMissile ("XDeath1", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("XDeath4", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
@@ -3948,7 +3948,7 @@ FatalityLabGuy2: // axe mutilator
 		FSF2 P 2
         FSF2 IPJ 4
 		TNT1 A 0 A_PlaySound("misc/xdeath4b", 4)
-		TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160)) 
+		TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("XDeath2", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 ACS_Execute(580, 0, 0, 0, 0)
@@ -3957,7 +3957,7 @@ FatalityLabGuy2: // axe mutilator
 		FSF2 P 2
         FSF2 IPJ 4
 		TNT1 A 0 A_PlaySound("misc/xdeath4a", 4)
-		TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160)) 
+		TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_CustomMissile ("XDeath1", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 ACS_Execute(580, 0, 0, 0, 0)
@@ -3966,7 +3966,7 @@ FatalityLabGuy2: // axe mutilator
 		FSF2 P 2
         FSF2 KQL 4
 		TNT1 A 0 A_PlaySound("misc/xdeath4b", 4)
-		TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160)) 
+		TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("XDeath1", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 ACS_Execute(580, 0, 0, 0, 0)
@@ -3975,7 +3975,7 @@ FatalityLabGuy2: // axe mutilator
 		FSF2 Q 2
 		 FSF2 KQL 4
 		TNT1 A 0 A_PlaySound("misc/xdeath4a", 4)
-		TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160)) 
+		TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("XDeath1", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_CustomMissile ("Xdeath3", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
@@ -3985,7 +3985,7 @@ FatalityLabGuy2: // axe mutilator
 		 FSF2 Q 2
 		 FSF2 MRN 4
 		 TNT1 A 0 A_PlaySound("misc/xdeath4b", 4)
-		TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160)) 
+		TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAAA 0 A_CustomMissile ("XDeath1", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 ACS_Execute(580, 0, 0, 0, 0)
@@ -3994,7 +3994,7 @@ FatalityLabGuy2: // axe mutilator
 		 FSF2 R 2
 		 FSF2 MRN 4
 		TNT1 A 0 A_PlaySound("misc/xdeath4a", 4)
-		TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160)) 
+		TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_CustomMissile ("XDeath1", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_CustomMissile ("Guts", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
@@ -4004,7 +4004,7 @@ FatalityLabGuy2: // axe mutilator
 		 FSF2 R 2
 		 FSF2 MRN 4
 		TNT1 A 0 A_PlaySound("misc/xdeath4a", 4)
-		TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160)) 
+		TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("XDeath1", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_CustomMissile ("Guts", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
@@ -4034,7 +4034,7 @@ FatalityLabGuy3: //axe - face
 		TNT1 A 0 A_Playsound("misc/xdeath4c",1)
 		TNT1 AA 0 A_CustomMissile ("SmallBrainPieceFast", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10))
 		TNT1 A 0 A_CustomMissile ("SmallBrainPiece", 50, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160)) 
+		TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 ACS_Execute(580, 0, 0, 0, 0)
         TNT1 A 0 ACS_Execute(581, 0, 0, 0, 0)
 		FSF3 EFGH 5
@@ -4050,7 +4050,7 @@ FatalityLabGuy3: //axe - face
     CurbstompZombieman:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-        
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
         01CB A 3
@@ -4072,13 +4072,13 @@ NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
 		 NULL A 0 A_CustomMissile ("StompedZombieman", 1, 0, random (0, 360), 2, random (0, 160))
         NULL A 0 A_TakeInventory("GoFatality", 1)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
-		NULL A 0 SetPlayerProperty(0,0,0)	
+		NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
 		CurbstompSergeant:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-        
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
         02CB A 3
@@ -4100,14 +4100,14 @@ NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
 		TNT1 A 0 A_GiveInventory("BootsSmearedWithRedBlood", 6)
 		 NULL A 0 A_CustomMissile ("StompedSergeant", 1, 0, random (0, 360), 2, random (0, 160))
 		 MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
-        NULL A 0 SetPlayerProperty(0,0,0)	
+        NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
 	FatalityMastermind:
         NULL A 0 SetPlayerProperty(0,1,0)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
         NULL A 0 ACS_NamedExecuteAlways("BDBigCamera", 0, 0, 0, 0)//Start Camera
-        
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
 		NULL A 0 SetPlayerProperty(0,1,0)
@@ -4122,20 +4122,20 @@ NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
 		TNT1 A 0 A_PlaySound("BIKECLW", 1)
 		NULL A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
 		FTSM H 25
-		
+
 		FTSM IJJKL 3
 		NULL A 0 A_PlaySound("misc/xdeath1")
 		PUFF A 0 A_PlaySound("player/cyborg/fist", 3)
 		NULL A 0 A_PlaySound("SPIPAIN1", 4)
 		TNT1 A 0 A_SpawnItemEX("MuchBlood", 0, 56, 48)
 		FTSM L 3
-		
+
 		FTSM IJJKL 3
 		NULL A 0 A_PlaySound("misc/xdeath1")
 		NULL A 0 A_PlaySound("SPIPAIN1", 4)
 		PUFF A 0 A_PlaySound("player/cyborg/fist", 3)
 		TNT1 A 0 A_SpawnItemEX("MuchBlood", 0, 56, 48)
-		
+
 		FTSM M 6
 
 		FTSM NOON 3
@@ -4144,7 +4144,7 @@ NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
 		PUFF A 0 A_PlaySound("player/cyborg/fist", 3)
 		TNT1 A 0 A_SpawnItemEX("MuchBlood", 0, 56, 48)
 		FTSM M 6
-		
+
 		FTSM NOON 3
 		NULL A 0 A_PlaySound("misc/xdeath1")
 		NULL A 0 A_PlaySound("SPIPAIN1", 4)
@@ -4152,41 +4152,41 @@ NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
 		TNT1 A 0 A_SpawnItemEX("MuchBlood", 0, 56, 48)
 		TNT1 A 0 A_SpawnItem("BigBloodSpot")
 		FTSM P 6
-		
+
 		FTSM QRRQ 3
 		NULL A 0 A_PlaySound("misc/xdeath1")
 		NULL A 0 A_PlaySound("SPIPAIN1", 4)
 		PUFF A 0 A_PlaySound("player/cyborg/fist", 3)
 		TNT1 A 0 A_SpawnItemEX("MuchBlood", 0, 56, 48)
 		FTSM P 3 A_PlaySound("Salute", 5)
-		
+
 		FTSM STUVW 3
 		NULL A 0 A_PlaySound("misc/xdeath1")
 		PUFF A 0 A_PlaySound("player/cyborg/fist", 3)
 		TNT1 A 0 A_SpawnItemEX("MuchBlood2", 0, 56, 48)
 		FTSM XYY 3
-		
+
 		FTSM Z 3
 		FTS2 ABC 3
 		FTS2 BA 2
 		PUFF A 0 A_PlaySound("player/cyborg/fist", 3)
 		TNT1 A 0 A_SpawnItemEX("MuchBlood2", 0, 56, 48)
 		FTSM YZ 3
-		
+
 		FTSM Z 3
 		FTS2 ABC 3
 		FTS2 BA 2
 		PUFF A 0 A_PlaySound("player/cyborg/fist", 3)
 		TNT1 A 0 A_SpawnItemEX("MuchBlood2", 0, 56, 48)
 		FTSM YZ 3
-		
+
 		FTSM Z 3
 		FTS2 ABC 3
 		FTS2 BA 2
 		PUFF A 0 A_PlaySound("player/cyborg/fist", 3)
 		TNT1 A 0 A_SpawnItemEX("MuchBlood2", 0, 56, 48)
 		FTSM YZ 3
-		
+
 		FTSM Z 3
 		FTS2 ABC 3
 		FTS2 BA 2
@@ -4198,31 +4198,31 @@ NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
 		FTS2 E 35
 		NULL A 0 A_SpawnItem ("StompedMastermind")
 		TNT1 A 0 ThrustThingZ(0, 35, 0, 1)
-		
+
 		NULL A 0 ACS_Execute(580, 0, 0, 0, 0)
 		NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
 
         //////////////////////////////////////////////////////
         NULL A 0 A_TakeInventory("MastermindFatality",1)
 		TNT1 A 0 A_GiveInventory("BootsSmearedWithRedBlood", 6)
-		 
+
         NULL A 0 A_TakeInventory("GoFatality", 1)
 		MARN A 0 ACS_NamedExecuteAlways("BDDisableCameraBig", 0, 0, 0, 0)//Stop Camera
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
-		NULL A 0 SetPlayerProperty(0,0,0)	
+		NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
 FatalityCyberdemon:
         NULL A 0 SetPlayerProperty(0,1,0)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
         NULL A 0 ACS_NamedExecuteAlways("BDBigCamera", 0, 0, 0, 0)//Start Camera
-        
+
 		NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
 		NULL A 0 SetPlayerProperty(0,1,0)
 		FTCY AB 3
 		FTCY C 3 BRIGHT A_CustomMissile("CyberBalls", 62, 0, -120, 2, -34)
-		
+
 		NULL A 0 A_PlaySound("CYBPAIN", 1)
 		TNT1 A 0 A_SpawnItemEX("MuchBlood", 0, 0, 48)
 		FTCY D 10
@@ -4243,10 +4243,10 @@ FatalityCyberdemon:
 		FTCY RSRSRSRSRS 3
 		NULL A 0 A_PlaySound("CYBPAIN", 1)
 		FTCY RSRSRSRSRS 3
-		
+
 		TNT1 A 0 A_SpawnItemEX("MuchBlood", 0, 0, 48)
 		FTCY T 10 A_PlaySound("BONECR2", 6)
-		FTCY UV 4 
+		FTCY UV 4
 		TNT1 A 0 A_SpawnItemEX("MuchBlood2", 0, 0, 64)
 		TNT1 A 0 A_SpawnItemEX("MeatDeath", 0, 0, 64)
 		FTCY W 5 A_PlaySound("BONECR2", 1)
@@ -4257,18 +4257,18 @@ FatalityCyberdemon:
 		TNT1 A 0 A_CustomMissile ("XDeathCyberdemonPiece", 60, 0, random (0, 360), 2, random (0, 180))
 		TNT1 A 0 A_CustomMissile ("XDeathCyberdemonTorso", 60, 0, random (0, 360), 2, random (0, 180))
 		FTCY X 25
-		
+
 		NULL A 0 ACS_Execute(580, 0, 0, 0, 0)
 		NULL A 0 ACS_Execute(581, 0, 0, 0, 0)
 
         //////////////////////////////////////////////////////
         NULL A 0 A_TakeInventory("CyberdemonFatality",1)
 		TNT1 A 0 A_GiveInventory("BootsSmearedWithRedBlood", 6)
-		 
+
         NULL A 0 A_TakeInventory("GoFatality", 1)
 		MARN A 0 ACS_NamedExecuteAlways("BDDisableCameraBig", 0, 0, 0, 0)//Stop Camera
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
-		NULL A 0 SetPlayerProperty(0,0,0)	
+		NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
 	Death.PussyGrab:
@@ -4278,7 +4278,7 @@ FatalityCyberdemon:
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
         NULL A 1
 		NULL A -1
-        Stop	
+        Stop
 
     Death.Fatality:
         NULL A 0 A_NoBlocking
@@ -4292,7 +4292,7 @@ FatalityCyberdemon:
 	FatalityPVP:
 		NULL A 0
 		NULL A 0 A_Jump(255, "FatalityPVP1", "FatalityPVP2", "FatalityPVP3")
-    
+
 	FatalityPVP1:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
@@ -4302,9 +4302,9 @@ FatalityCyberdemon:
         PVPF C 3
 		PVPF DDD 3 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
 		PVPF E 4
-        NULL A 0 A_CustomMissile ("RipGuts", 60, 0, random (0, 360), 2, random (0, 160))      
+        NULL A 0 A_CustomMissile ("RipGuts", 60, 0, random (0, 360), 2, random (0, 160))
 		NULL A 0 A_SpawnItemEx("XDeathHalfMarine", 0, 0, 50, 0, 5, 5)
-		NULL AAA 0 A_CustomMissile ("XDeath1", 60, 0, random (0, 360), 2, random (0, 160))  
+		NULL AAA 0 A_CustomMissile ("XDeath1", 60, 0, random (0, 360), 2, random (0, 160))
 		NULL A 0 A_SpawnItemEx("PlayerJustGotCutInHalf", 0, 0, 50, 0, -5)
 		PVPF FGGGG 4
         //////////////////////////////////////////////////////
@@ -4320,8 +4320,8 @@ FatalityCyberdemon:
         NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
         PVP1 A 10
-		NULL AA 0 A_CustomMissile ("MuchBlood", 30, 0, random (0, 360), 2, random (0, 160))  
-		NULL AAA 0 A_CustomMissile ("XDeath1", 30, 0, random (0, 360), 2, random (0, 160))  
+		NULL AA 0 A_CustomMissile ("MuchBlood", 30, 0, random (0, 360), 2, random (0, 160))
+		NULL AAA 0 A_CustomMissile ("XDeath1", 30, 0, random (0, 360), 2, random (0, 160))
         PVP1 A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
 		PVP1 BCDE 5
         //////////////////////////////////////////////////////
@@ -4336,18 +4336,18 @@ FatalityCyberdemon:
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
         NULL A 0 ACS_Execute(acsFatality, 0)
         //////////////////////////////////////////////////////
-		NULL AA 0 A_CustomMissile ("MuchBlood", 30, 0, random (0, 360), 2, random (0, 160))  
-		NULL AAA 0 A_CustomMissile ("XDeath1", 30, 0, random (0, 360), 2, random (0, 160))  
-		NULL A 0 A_CustomMissile ("XDeathArm1", 30, 0, random (0, 360), 2, random (0, 160))  
+		NULL AA 0 A_CustomMissile ("MuchBlood", 30, 0, random (0, 360), 2, random (0, 160))
+		NULL AAA 0 A_CustomMissile ("XDeath1", 30, 0, random (0, 360), 2, random (0, 160))
+		NULL A 0 A_CustomMissile ("XDeathArm1", 30, 0, random (0, 360), 2, random (0, 160))
         PVP1 A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
         PVP2 ABCCC 4
-		NULL A 0 A_CustomMissile ("RipGuts", 30, 0, random (0, 360), 2, random (0, 160))      
+		NULL A 0 A_CustomMissile ("RipGuts", 30, 0, random (0, 360), 2, random (0, 160))
 		NULL AAA 0 A_CustomMissile ("XDeath1", 30, 0, random (0, 360), 2, random (0, 160))
 		NULL AA 0 A_CustomMissile ("XDeath2", 30, 0, random (0, 360), 2, random (0, 160))
 		PVP1 A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
 		PVP2 DEEFF 5
-		NULL A 0 A_CustomMissile ("XDeathArm1", 60, 0, random (0, 360), 2, random (0, 160)) 
-		//NULL A 0 A_CustomMissile ("XDeathMarineHead1", 60, 0, random (0, 360), 2, random (0, 160)) 
+		NULL A 0 A_CustomMissile ("XDeathArm1", 60, 0, random (0, 360), 2, random (0, 160))
+		//NULL A 0 A_CustomMissile ("XDeathMarineHead1", 60, 0, random (0, 360), 2, random (0, 160))
 		NULL AA 0 A_CustomMissile ("XDeath2", 60, 0, random (0, 360), 2, random (0, 160))
 		NULL AA 0 A_CustomMissile ("XDeath3", 60, 0, random (0, 360), 2, random (0, 160))
 		PVP1 A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
@@ -4418,7 +4418,7 @@ StealthKillLabguy:
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
-		
+
     StealthKillChaingunGuy:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
@@ -4474,15 +4474,15 @@ SFNZ C 8
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
-//  Failed attemp to able a player to be saved 
-//  by other player before getting executed in an enemy's 
+//  Failed attemp to able a player to be saved
+//  by other player before getting executed in an enemy's
 //  fatality (the following lines were an idea of making the
 //  Hell Knight be shootable before he could headstomp the player).
 //  This idea was canceled due the current limits on Zdoom engine
 // (Or maybe I'm just doing it wrong).
 //  Maybe I will work on this in a future version.
 
-//	Death.UnusedHKF: 
+//	Death.UnusedHKF:
       // NULL A 0 A_CustomMissile ("HellKnightSpawner", 1, 0, random (0, 360), 2, random (0, 160))
 //       XXXX A -1
 //       Stop
@@ -4555,7 +4555,7 @@ SFNZ C 8
         NULL A 0 A_Giveinventory("GiveHealth",1)
         NULL A 0 ACS_Execute(583, 0, 0, 0, 0)
         Goto StandStill
-	
+
 	Pain.GreenBlood:
 		TNT1 A 0
         NULL A 0 A_Giveinventory("GiveHealth",1)
@@ -4608,7 +4608,7 @@ SFNZ C 8
 		NULL A 0 A_SelectWeapon("SguyShield")
 		NULL A 0 A_TakeInventory("Punching", 1)
 		Goto SeeSGuyShield
-		
+
 		SeeSGuyShield:
 	    NULL A 0 A_TakeInventory("Punching", 1)
 		MASS A 8
@@ -4639,7 +4639,7 @@ SFNZ C 8
 	//Special Checkers
 
 	SpecialChecker:
-		PLAY A 0 
+		PLAY A 0
 		NULL A 0 A_JumpIfInventory("SKZombieman", 1, "StealthKilLZombieMan")
 	    NULL A 0 A_JumpIfInventory("SKShotgunGuy", 1, "StealthKilLShotgunGuy")
 		NULL A 0 A_JumpIfInventory("SKLabguy", 1, "StealthKilLLabGuy")
@@ -4648,14 +4648,14 @@ SFNZ C 8
 	    NULL A 0 A_JumpIfInventory("SKChaingunguy", 1, "StealthKilLChaingunguy")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL A 0 A_JumpIfInventory("IsCurbstompingZombieman", 1, "CurbstompZombieman")
-	    NULL A 0 A_JumpIfInventory("IsCurbstompingSergeant", 1, "CurbstompSergeant")   
+	    NULL A 0 A_JumpIfInventory("IsCurbstompingSergeant", 1, "CurbstompSergeant")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedImp", 1, "ExecuteImp")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedZombieman", 1, "ExecuteZombieman")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedShotgunguy", 1, "ExecuteShotgunguy")
         PLAY A 1
         NULL A 0 A_TakeInventory("GoSpecial", 1)
 		NULL A 0 A_JumpIfInventory("IsCurbstompingZombieman", 1, "CurbstompZombieman")
-	    NULL A 0 A_JumpIfInventory("IsCurbstompingSergeant", 1, "CurbstompSergeant")   
+	    NULL A 0 A_JumpIfInventory("IsCurbstompingSergeant", 1, "CurbstompSergeant")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedImp", 1, "ExecuteImp")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedZombieman", 1, "ExecuteZombieman")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedShotgunguy", 1, "ExecuteShotgunguy")
@@ -4677,7 +4677,7 @@ SFNZ C 8
         Goto StandStill
 
       SpecialCheckerMoving:
-		PLAY A 0 
+		PLAY A 0
 		NULL A 0 A_JumpIfInventory("SKZombieman", 1, "StealthKilLZombieMan")
 	    NULL A 0 A_JumpIfInventory("SKShotgunGuy", 1, "StealthKilLShotgunGuy")
 		NULL A 0 A_JumpIfInventory("SKLabguy", 1, "StealthKilLLabGuy")
@@ -4686,15 +4686,15 @@ SFNZ C 8
 	    NULL A 0 A_JumpIfInventory("SKChaingunguy", 1, "StealthKilLChaingunguy")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL A 0 A_JumpIfInventory("IsCurbstompingZombieman", 1, "CurbstompZombieman")
-	    NULL A 0 A_JumpIfInventory("IsCurbstompingSergeant", 1, "CurbstompSergeant")   
+	    NULL A 0 A_JumpIfInventory("IsCurbstompingSergeant", 1, "CurbstompSergeant")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedImp", 1, "ExecuteImp")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedZombieman", 1, "ExecuteZombieman")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedShotgunguy", 1, "ExecuteShotgunguy")
         PLAY A 1
-		
+
         NULL A 0 A_TakeInventory("GoSpecial", 1)
 		NULL A 0 A_JumpIfInventory("IsCurbstompingZombieman", 1, "CurbstompZombieman")
-	    NULL A 0 A_JumpIfInventory("IsCurbstompingSergeant", 1, "CurbstompSergeant")   
+	    NULL A 0 A_JumpIfInventory("IsCurbstompingSergeant", 1, "CurbstompSergeant")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedImp", 1, "ExecuteImp")
 		NULL A 0 A_JumpIfInventory("GotMeatShield", 1, "MeatShieldChecker")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedZombieman", 1, "ExecuteZombieman")
@@ -4715,8 +4715,8 @@ SFNZ C 8
 		NULL A 0 A_JumpIfInventory("HasSguyShield", 1, "SeeSguyShield")
 		NULL A 0 A_JumpIfInventory("SwitchToFist", 1, "FistSee")
        NULL A 0 A_TakeInventory("GoSpecial", 1)
-       Goto See    
-  
+       Goto See
+
 	  ExecuteImp:
 		TNT1 A 0
 		tnt1 A 0 A_SetUserVar("user_playerangleexec", angle)
@@ -4727,8 +4727,8 @@ SFNZ C 8
 		TNT1 A 0 A_CheckFloor("ImpExecuteFloor")
 		TNT1 A 0 A_SpawnItemEx("ImpExecute1",16,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		Goto RifleKick
-		
-	  ImpExecuteFloor:	
+
+	  ImpExecuteFloor:
 		TNT1 A 0
 		TNT1 A 0 A_CustomMissile("ExecutionLeftWallDetect", 52, 0, 90, 2)
 		TNT1 A 0 A_Stop
@@ -4747,7 +4747,7 @@ SFNZ C 8
 		TNT1 A 0 A_CheckFloor("ZombiemanExecuteFloor")
 		TNT1 A 0 A_SpawnItemEx("ZombiemanExecute1",14,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		Goto RifleKick
-		
+
 	  ZombiemanExecuteFloor:
 		TNT1 A 0
 		TNT1 A 0 A_Stop
@@ -4765,7 +4765,7 @@ SFNZ C 8
 		TNT1 A 0 A_CheckFloor("ShotgunguyExecuteFloor")
 		TNT1 A 0 A_SpawnItemEx("ShotgunguyExecute1",14,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		Goto RifleKick
-		
+
 	  ShotgunguyExecuteFloor:
 		TNT1 A 0
 		TNT1 A 0 A_Stop
@@ -4779,7 +4779,7 @@ SFNZ C 8
 		TNT1 A 0 A_Stop
 		NULL A 0 A_JumpIfInventory("PVPFatality", 1, "FatalityPVP")
         NULL A 0 A_JumpIfInventory("IsCurbstompingZombieman", 1, "CurbstompZombieman")
-	    NULL A 0 A_JumpIfInventory("IsCurbstompingSergeant", 1, "CurbstompSergeant")        
+	    NULL A 0 A_JumpIfInventory("IsCurbstompingSergeant", 1, "CurbstompSergeant")
         NULL A 0 A_JumpIfInventory("SKZombieman", 1, "StealthKilLZombieMan")
 	    NULL A 0 A_JumpIfInventory("SKShotgunGuy", 1, "StealthKilLShotgunGuy")
 		NULL A 0 A_JumpIfInventory("SKLabguy", 1, "StealthKilLLabGuy")
@@ -4821,10 +4821,10 @@ SFNZ C 8
 	    NULL A 0 A_JumpIfInventory("ArchVileFatality", 1, "FatalityArchVile")
 		NULL A 0 A_JumpIfInventory("ArchVileFatality2", 1, "FatalityArchVile2")
 		NULL A 0 A_JumpIfInventory("BelphegorFatality", 1, "FatalityBelphegor")
-		TNT1 A 0 A_JumpIfInventory("VolcabusFatality", 1, "FatalityVolcabus")	
-		TNT1 A 0 A_JumpIfInventory("VolcabusFatality2", 1, "FatalityVolcabus2")	
+		TNT1 A 0 A_JumpIfInventory("VolcabusFatality", 1, "FatalityVolcabus")
+		TNT1 A 0 A_JumpIfInventory("VolcabusFatality2", 1, "FatalityVolcabus2")
 		TNT1 A 0 A_JumpIfInventory("Arachnotron2FatalityA", 1, "FatalityArachnotron2A")
-		TNT1 A 0 A_JumpIfInventory("Arachnotron2FatalityB", 1, "FatalityArachnotron2B")	
+		TNT1 A 0 A_JumpIfInventory("Arachnotron2FatalityB", 1, "FatalityArachnotron2B")
 	    NULL A 0 A_JumpIfInventory("PEFatality", 1, "FatalityPE")
 		NULL A 0 A_JumpIfInventory("MastermindFatality", 1, "FatalityMastermind")
 		NULL A 0 A_JumpIfInventory("CyberdemonFatality", 1, "FatalityCyberdemon")
@@ -4839,8 +4839,8 @@ SFNZ C 8
 		NULL A 0 A_JumpIfInventory("HasZmanShield", 1, "GotZmanShield")
 		NULL A 0 A_JumpIfInventory("HasSguyShield", 1, "GotSguyShield")
         NULL A 0 A_TakeInventory("GoSpecial", 1)
-        Goto See 
-		
+        Goto See
+
 		MeatShieldCheckerMoving:
         NULL A 1
         //NULL A 0 A_TakeInventory("GotMeatShield", 1)
@@ -4849,7 +4849,7 @@ SFNZ C 8
 		NULL A 0 A_JumpIfInventory("HasZmanShield", 1, "GotZmanShield")
 		NULL A 0 A_JumpIfInventory("HasSguyShield", 1, "GotSguyShield")
         NULL A 0 A_TakeInventory("GoSpecial", 1)
-        Goto StandStill 
+        Goto StandStill
 	}
 }
 
@@ -4876,8 +4876,8 @@ actor Player_Blood : Brutal_Blood
 		BLHT BCDEFG 1
 	    BLHT HHHHHHHHHHH 1 A_FadeOut(0.1)
 	    Stop
-		
-	DM:	
+
+	DM:
 		TNT1 A 0
 		TNT1 A 0 A_SetScale(0.6)
 		TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 7, 0, random (0, 360), 2, random (30, 60))
@@ -4907,8 +4907,8 @@ actor Player_BloodSaw : Brutal_Blood
 		BLHT BCDEFG 1
 	    BLHT GGGGGGGGGGGGGGGGGG 1 A_FadeOut(0.05)
 	    Stop
-		
-	DM:	
+
+	DM:
 		TNT1 A 0
 		TNT1 A 0 A_SetScale(0.6)
 		TNT1 A 0 A_RadiusGive("ChainsawHitRed", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
@@ -4969,8 +4969,8 @@ ACTOR BloodOnVisor : PowerupGiver 2408
    Spawn:
       NULL A 1
       Stop
-   } 
-} 
+   }
+}
 
 ACTOR PowerBloodOnVisor : PowerUp
 {
@@ -4996,8 +4996,8 @@ ACTOR BlueBloodOnVisor : PowerupGiver
    Spawn:
       NULL A 1
       Stop
-   } 
-} 
+   }
+}
 
 ACTOR PowerBlueBloodOnVisor : PowerUp
 {
@@ -5023,8 +5023,8 @@ ACTOR GreenBloodOnVisor : PowerupGiver
    Spawn:
       NULL A 1
       Stop
-   } 
-} 
+   }
+}
 
 ACTOR PowerGreenBloodOnVisor : PowerUp
 {
@@ -5054,14 +5054,14 @@ MONSTER
 +THRUACTORS
 +FRIENDLY
     States
-	
+
     {
     Spawn:
 NULL A 0
 NULL A 0 A_CHangeFlag("THRUACTORS", 0)
 NULL A 0 A_GiveInventory("ComeEatMeDemon")
 NULL A 0 A_SpawnItem ("GrowingBloodPool")
-XPL1 EEE 6 A_SpawnItem("KillMe")	
+XPL1 EEE 6 A_SpawnItem("KillMe")
 XPL1 E -1
        Loop    }}
 

@@ -17,17 +17,17 @@ ACTOR HandGrenades : BrutalWeapon
 	Tag "Frag Grenade"
 	States
 	{
-	
+
 	Ready:
 	Ready3:
 	    TNT1 A 0
 		TNT1 A 0 A_GunFlash
 		TNT1 A 0 A_JumpIfInventory("GrenadeAmmo", 1, 1)
-		
+
 		Goto NoGrenades
 		GRHO AB 1
 		Goto Steady
-		
+
 	Steady:
 		GRHO C 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
@@ -37,11 +37,11 @@ ACTOR HandGrenades : BrutalWeapon
 		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		RIFG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		Loop
-	
+
 	NoGrenades:
 		TNT1 A 1 A_WeaponReady
 		Goto Ready
-	
+
 	Deselect:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("FiredGrenade", 1, "DropGrenade")
@@ -50,13 +50,13 @@ ACTOR HandGrenades : BrutalWeapon
 		TNT1 A 0 A_TakeInventory("StartDualWield",1)
 		TNT1 A 1 A_Lower
 		Wait
-	
+
 	DropGrenade:
 		TNT1 A 0
 		TNT1 A 0 A_TakeInventory("FiredGrenade", 1)
 		TNT1 A 0 A_FireCustomMissile("HandGrenadeDroped", random(-2,2), 1, 0, 0, 0, 0)
 		Goto Deselect
-		
+
 	Select:
 		GRWG A 1 A_Raise
 		Loop
@@ -65,7 +65,7 @@ ACTOR HandGrenades : BrutalWeapon
 		TNT1 A 0 A_GiveInventory("FiredGrenade", 1)
 		TNT1 A 0 A_PLaySound ("GRNPIN")
 		GRTH EEFG 1
-		
+
 	Hold:
 	    TNT1 A 1
 		TNT1 A 1 A_Refire
@@ -74,9 +74,9 @@ ACTOR HandGrenades : BrutalWeapon
 		TNT1 A 0 A_FireCustomMissile("HandGrenade", 0, 1, 0, 0, 0, 0)
 	    TNT1 A 0 A_TakeInventory("FiredGrenade", 1)
 		GRTH JKLM 1
-		TNT1 A 3 
+		TNT1 A 3
 		Goto Ready
-		
+
 	AltFire:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("GrenadeAmmo", 1, 1)
@@ -86,7 +86,7 @@ ACTOR HandGrenades : BrutalWeapon
 		TNT1 A 0 A_GiveInventory("FiredGrenade", 1)
 		TNT1 A 0 A_PLaySound ("GRNPIN")
 		GRTH EEFG 1
-		
+
 	AltHold:
 	    TNT1 A 1
 		TNT1 A 1 A_Refire
@@ -95,74 +95,83 @@ ACTOR HandGrenades : BrutalWeapon
 		TNT1 A 0 A_FireCustomMissile("HandGrenadeAlt", 0, 1, 0, 0, 0, 0)
 	    TNT1 A 0 A_TakeInventory("FiredGrenade", 1)
 		GRTH JKLM 1
-		TNT1 A 3 
-		Goto Ready	
-		
+		TNT1 A 3
+		Goto Ready
+
  	Spawn:
 		GRND H -1
 		Stop
-		
+
 	CheckSprint:
 		GRHO C 1 A_WeaponReady(WRF_NOFIRE)
 		GRND F 0 A_JumpIfInventory("IsStandingStill", 1, "Steady")
 		GRND F 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
 		Goto Steady
-		
+
 	StartSprint:
 		GRHO A 1 A_WeaponReady(WRF_NOFIRE)
-		GRND F 0 A_JumpIfInventory("UsedStamina", 40, "StopSprintTired")
-		
-	Sprinting:	
-		PISP A 0 offset(-9,32) 
+		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		GRND F 0 A_JumpIfInventory("UsedStamina", 50, "StopSprintTired")
+
+	Sprinting:
+		PISP A 0 offset(-9,32)
 		GRND F 0 offset(-9,32) A_JumpIfInventory("IsStandingStill", 1, "Steady")
+		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
 		GRND F 0 offset(-9,32) A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
 		PLAY A 0 offset(-9,32) ACS_ExecuteAlways(852, 0, 0, 0, 0)//Makes player faster.
-		GRND F 0 offset(-9,32) A_JumpIfInventory("PowerStrength", 1, 2)
-		GRND F 0 offset(-9,32) A_GiveInventory("UsedStamina", 2)
-		GRND F 0 offset(-9,32)
 		GRHO A 1 offset(-9,34) A_SetPitch(pitch -0.5)
 		GRHO A 1 offset(-6,36) A_SetPitch(pitch -0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		GRHO A 1 offset(-3,38) A_SetPitch(pitch -0.5)
 		GRHO A 1 offset(0,38) A_SetPitch(pitch -0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		GRHO A 1 offset(3,36) A_SetPitch(pitch -0.5)
 		GRHO A 1 offset(6,34) A_SetPitch(pitch -0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		GRHO A 1 offset(9,32) A_SetPitch(pitch -0.5)
 		GRND F 0 offset(9,32) A_WeaponReady(WRF_NOBOB)
 		GRND F 0 A_JumpIfInventory("Kicking",1,"DoKick")
         GRND F 0 A_JumpIfInventory("Taunting",1,"Taunt")
-		GRND F 0 offset(-9,32) A_GiveInventory("UsedStamina", 3)
+		GRND F 0 offset(-9,32)
 		GRND F 0 offset(9,33) A_SpawnItemEx("FootStep", 0, 0, 2, 0, 0, -4)
 		GRHO A 1 offset(9,34) A_SetPitch(pitch +0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		GRHO A 1 offset(6,36) A_SetPitch(pitch +0.5)
 		GRHO A 1 offset(3,38) A_SetPitch(pitch +0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		GRHO A 1 offset(0,38) A_SetPitch(pitch +0.5)
 		GRHO A 1 offset(-3,36) A_SetPitch(pitch +0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		GRHO A 1 offset(-6,34) A_SetPitch(pitch +0.5)
 		GRHO A 1 offset(-9,32) A_SetPitch(pitch +0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		GRND F 0 offset(-9,32) A_WeaponReady(WRF_NOBOB)
 		GRND F 0 offset(-9,32) A_JumpIfInventory("IsRunning", 1, "Sprinting")
-		
 		Goto StopSprint
+
 	StopSprintTired:
-		GRHO A 1
+		GRHO A 0
 		PLAY A 0 ACS_ExecuteAlways(853, 0, 0, 0, 0)//Makes player slower.
 		GRND F 0 A_PlaySound("Tired", 2)
-		GRND F 0 A_TakeInventory("UsedStamina", 2)
-		GRND F 5 A_WeaponReady
-		GRND F 0 A_TakeInventory("UsedStamina", 2)
-		GRND F 5 A_WeaponReady
-		GRND F 0 A_TakeInventory("UsedStamina", 2)
-		GRND F 5 A_WeaponReady
-		GRND F 0 A_TakeInventory("UsedStamina", 2)
-		GRND F 5 A_WeaponReady
-		GRND F 0 A_TakeInventory("UsedStamina", 2)
-		GRND F 5 A_WeaponReady
+		GRHO A 4 A_WeaponReady
+		GRND F 0 A_TakeInventory("UsedStamina", 1)
+		GRHO A 4 A_WeaponReady
+		GRND F 0 A_TakeInventory("UsedStamina", 1)
+		GRHO A 4 A_WeaponReady
+		GRND F 0 A_TakeInventory("UsedStamina", 1)
+		GRHO A 4 A_WeaponReady
+		GRND F 0 A_TakeInventory("UsedStamina", 1)
+		GRHO A 4 A_WeaponReady
+		GRND F 0 A_TakeInventory("UsedStamina", 1)
+		GRHO A 4 A_WeaponReady
+		GRND F 0 A_TakeInventory("UsedStamina", 1)
 		Goto Ready
 	StopSprint:
 		GRHO A 1
-		GRND F 0 A_JumpIfInventory("UsedStamina", 60, "StopSprintTired")
+		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		GRND F 0 A_JumpIfInventory("UsedStamina", 50, "StopSprintTired")
 		PLAY A 0 ACS_ExecuteAlways(853, 0, 0, 0, 0)//Makes player slower.
-		Goto Ready		
+		Goto Ready
 	}
 }
 
@@ -231,7 +240,7 @@ Spawn:
 	Death:
 		TNT1 A 0
 		Stop
-	}	
+	}
 }
 
 Actor HandGrenadeDroped: HandGrenade
@@ -252,7 +261,7 @@ actor FragGrenadeExplosion
 Damagetype "Shrapnel"
 DeathSound "Explosion"
 Height 32
-States    
+States
 {
     Spawn:
 	TNT1 A 0
@@ -266,7 +275,7 @@ States
 	TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-	
+
 	TNT1 AAAAAAAAAA 0 A_CustomMissile ("BDExplosionparticlesBig", 0, 0, random (0, 360), 2, random (0, 360))
 	TNT1 AAAAA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (0, 90))
 	TNT1 AAAA 0 A_CustomMissile ("SmallExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
@@ -279,7 +288,7 @@ States
 	Stop
 	}
 }
-		
+
 actor GrenadeAlerter
 {
 	Radius 10
@@ -288,8 +297,8 @@ actor GrenadeAlerter
 	PROJECTILE
 	+NOGRAVITY	+NOTELEPORT	+NODAMAGETHRUST
 	+THRUGHOST	+NORADIUSDMG	+NOEXTREMEDEATH
-	+FORCERADIUSDMG	-BLOODSPLATTER	+BLOODLESSIMPACT 
-	+NOTARGET	+DEHEXPLOSION	+ACTIVATEMCROSS 
+	+FORCERADIUSDMG	-BLOODSPLATTER	+BLOODLESSIMPACT
+	+NOTARGET	+DEHEXPLOSION	+ACTIVATEMCROSS
 	States
 	{
 		Spawn:
