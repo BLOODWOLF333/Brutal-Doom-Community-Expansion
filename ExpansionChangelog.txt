@@ -13,10 +13,6 @@
 //	Axe.txt:						Corrected the spelling for the obituary
 //	DemonRunesPatch.txt:			Changed BaronPlayer's melee attack projectile to PlayerBaronAttack
 //									Created PlayerBaronAttack projectile that inherits from BaronAttack but with ExtremePunches damage type
-//	DualMP40.txt:					Added Inventory.ForbiddenTo TacticalDoomer
-//	DualPlasma.txt:					Added Inventory.ForbiddenTo TacticalDoomer
-//	DualRifle.txt:					Added Inventory.ForbiddenTo TacticalDoomer
-//	DualSMG.txt:					Added Inventory.ForbiddenTo TacticalDoomer
 //	Explosives.txt:					Removed +THRUGHOST from Cyberballs (was going through headshot actors)
 //	FlameCannon.txt:				Set the fake sprite to inherit from BasicWeaponPickup
 //	HellishMissile.txt:				Set the fake sprite to inherit from BasicWeaponPickup
@@ -31,6 +27,7 @@
 //	Plasma.txt:						Added a tactical mode frame skip
 //	Rifle.txt:						Added a tactical mode frame skip
 //	WeaponSpawners.txt:				Added the Quiet flag to BasicWeaponPickup and set all fake sprites to inherit from BasicWeaponPickup
+//									Added A_JumpIfInventory("IsTacticalClass", 1, "PickupNormal") to the SMG, MP40, Rifle, and Plasmagun spawners
 //
 //	Development v0.3.1
 //
