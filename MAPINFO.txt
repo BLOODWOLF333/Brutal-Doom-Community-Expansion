@@ -10,9 +10,6 @@ episode BDM01
 name = "Brutal Deathmatch"
 }
 
-
-
-
 map BDM01 "Re-Entryway"
 {
 next = "BDM02"
@@ -40,7 +37,6 @@ music = D_ADRIAN
 cluster = 1
 }
 
-
 map BDM04 "Hangarmageddon"
 {
 next = "BDM05"
@@ -50,7 +46,6 @@ music = D_E1M1
 cluster = 1
 }
 
-
 map BDM05 "Sandstorm"
 {
 next = "BDM06"
@@ -59,7 +54,6 @@ sky1 = "SKYEAR1", 0.1
 music = D_DM05
 cluster = 1
 }
-
 
 map BDM06 "Another One Bites De Dust"
 {
@@ -78,7 +72,6 @@ sky1 = "SKYEAR1", 0.1
 music = D_DM07
 cluster = 1
 }
-
 
 map BDM08 "Storage Center"
 {
@@ -145,9 +138,8 @@ secretnext = "PSMAP57"
 sky1 = "SKYEAR3"
 cluster = 1
 //par = 60
-music = d_in_cit	
+music = d_in_cit
 }
-
 
 map PSMAP57 "The Marshes"
 {
@@ -157,7 +149,7 @@ secretnext = "MAP15"
 sky1 = "SKYEAR3"
 cluster = 1
 //par = 60
-music = d_shawn	
+music = d_shawn
 }
 
 map PSMAP16 "Hellgate"
@@ -168,9 +160,8 @@ secretnext = "PSMAP57"
 sky1 = "SKYHELF"
 cluster = 1
 //par = 60
-music = d_dead	
+music = d_dead
 }
-
 
 map PSMAP17 "Blood Citadel"
 {
@@ -180,12 +171,8 @@ secretnext = "MAP21"
 sky1 = "SKYHELF"
 cluster = 1
 //par = 60
-music = d_doom	
+music = d_doom
 }
-
-
-
-
 
 clearskills
 
@@ -217,7 +204,6 @@ skill normal
    defaultskill
 }
 
-
 skill Hard
 {
    AmmoFactor = 1
@@ -226,9 +212,6 @@ skill Hard
    name = "Ultra Violence"
    mustconfirm = "If this is a custom level and/or it's your first time playing it, you should definitely choose an easier difficulty. Press Enter to Confirm"
 }
-
-
-
 
 skill HyperHard
 {
@@ -255,8 +238,6 @@ skill BlackMetal
    mustconfirm = "You take 50% more damage. Enemies are much more aggressive but have 20% less hit points. You move 25% faster. Press Enter to Confirm"
 }
 
-
-
 skill easy2
 {
    AmmoFactor = 1
@@ -275,7 +256,6 @@ skill normal2
    mustconfirm = "Just regular HTMP, but with 33% monster damage reduction for people that didn't enjoy the new damage rebalancing and makes difficulty more similar to v20b"
 }
 
-
 skill Hard2
 {
    AmmoFactor = 1
@@ -284,9 +264,6 @@ skill Hard2
    name = "(easier) Ultra Violence"
    mustconfirm = "Just regular UV, but with 33% monster damage reduction for people that didn't enjoy the new damage rebalancing and makes difficulty more similar to v20b"
 }
-
-
-
 
 skill Realism1
 {
@@ -302,22 +279,24 @@ skill Realism1
    ReplaceActor = "RocketBox", "RocketAmmo"
    ReplaceActor = "Shellbox", "Shell"
    ReplaceActor = "Cellpack", "Cell"
-   ReplaceActor = "SuperKickAttack", "SuperKickAttackRealism"
    ReplaceActor = "Kickattack", "KickattackRealism"
+   ReplaceActor = "SuperKickAttack", "SuperKickAttackRealism"
    ReplaceActor = "AirKickattack", "AirKickattackRealism"
-   ReplaceActor = "MeleeStrikeNormal", "MeleeStrikeNormalRealism"
+   ReplaceActor = "SuperAirKickattack", "SuperAirKickattackRealism"
+   ReplaceActor = "MeleeStrike1", "MeleeStrike1Realism"
+   ReplaceActor = "MeleeStrike1Smash", "MeleeStrike1SmashRealism"
+   ReplaceActor = "MeleeStrike1Fatality", "MeleeStrike1FatalityRealism"
    ReplaceActor = "MeleeStrike2", "MeleeStrike2Realism"
+   ReplaceActor = "MeleeStrike2Smash", "MeleeStrike2SmashRealism"
+   ReplaceActor = "MeleeStrike2Fatality", "MeleeStrike2FatalityRealism"
    ReplaceActor = "RocketBackblast", "RocketBackblastRealism"
    ReplaceActor = "Tank", "TankRealism"
-    ReplaceActor = "ArtilleryTank", "ArtilleryTankRealism"
+   ReplaceActor = "ArtilleryTank", "ArtilleryTankRealism"
    ReplaceActor = "AttackHelicopter", "AttackHelicopterRealism"
    ReplaceActor = "Mech", "MechRealism"
-   
    TextColor = "Gray"
    mustconfirm = "You take 700% more damage, enemies have half hit points. Press Enter to Confirm"
 }
-
-
 
 skill Realism2
 {
@@ -333,21 +312,24 @@ skill Realism2
    ReplaceActor = "RocketBox", "RocketAmmo"
    ReplaceActor = "Shellbox", "Shell"
    ReplaceActor = "Cellpack", "Cell"
-   ReplaceActor = "SuperKickAttack", "SuperKickAttackRealism"
    ReplaceActor = "Kickattack", "KickattackRealism"
+   ReplaceActor = "SuperKickAttack", "SuperKickAttackRealism"
    ReplaceActor = "AirKickattack", "AirKickattackRealism"
-   ReplaceActor = "MeleeStrikeNormal", "MeleeStrikeNormalRealism"
-   ReplaceActor = "RocketBackblast", "RocketBackblastRealism"
+   ReplaceActor = "SuperAirKickattack", "SuperAirKickattackRealism"
+   ReplaceActor = "MeleeStrike1", "MeleeStrike1Realism"
+   ReplaceActor = "MeleeStrike1Smash", "MeleeStrike1SmashRealism"
+   ReplaceActor = "MeleeStrike1Fatality", "MeleeStrike1FatalityRealism"
    ReplaceActor = "MeleeStrike2", "MeleeStrike2Realism"
+   ReplaceActor = "MeleeStrike2Smash", "MeleeStrike2SmashRealism"
+   ReplaceActor = "MeleeStrike2Fatality", "MeleeStrike2FatalityRealism"
+   ReplaceActor = "RocketBackblast", "RocketBackblastRealism"
    ReplaceActor = "Tank", "TankRealism"
-    ReplaceActor = "ArtilleryTank", "ArtilleryTankRealism"
+   ReplaceActor = "ArtilleryTank", "ArtilleryTankRealism"
    ReplaceActor = "AttackHelicopter", "AttackHelicopterRealism"
    ReplaceActor = "Mech", "MechRealism"
    TextColor = "Gray"
    mustconfirm = "You take 700% more damage, enemies have half hit points. Press Enter to Confirm"
 }
-
-
 
 skill Realism3
 {
@@ -363,20 +345,24 @@ skill Realism3
    ReplaceActor = "RocketBox", "RocketAmmo"
    ReplaceActor = "Shellbox", "Shell"
    ReplaceActor = "Cellpack", "Cell"
-   ReplaceActor = "SuperKickAttack", "SuperKickAttackRealism"
    ReplaceActor = "Kickattack", "KickattackRealism"
+   ReplaceActor = "SuperKickAttack", "SuperKickAttackRealism"
    ReplaceActor = "AirKickattack", "AirKickattackRealism"
-   ReplaceActor = "MeleeStrikeNormal", "MeleeStrikeNormalRealism"
-   ReplaceActor = "RocketBackblast", "RocketBackblastRealism"
+   ReplaceActor = "SuperAirKickattack", "SuperAirKickattackRealism"
+   ReplaceActor = "MeleeStrike1", "MeleeStrike1Realism"
+   ReplaceActor = "MeleeStrike1Smash", "MeleeStrike1SmashRealism"
+   ReplaceActor = "MeleeStrike1Fatality", "MeleeStrike1FatalityRealism"
    ReplaceActor = "MeleeStrike2", "MeleeStrike2Realism"
+   ReplaceActor = "MeleeStrike2Smash", "MeleeStrike2SmashRealism"
+   ReplaceActor = "MeleeStrike2Fatality", "MeleeStrike2FatalityRealism"
+   ReplaceActor = "RocketBackblast", "RocketBackblastRealism"
    ReplaceActor = "Tank", "TankRealism"
-    ReplaceActor = "ArtilleryTank", "ArtilleryTankRealism"
+   ReplaceActor = "ArtilleryTank", "ArtilleryTankRealism"
    ReplaceActor = "AttackHelicopter", "AttackHelicopterRealism"
    ReplaceActor = "Mech", "MechRealism"
    TextColor = "Gray"
    mustconfirm = "You take 700% more damage, enemies have half hit points. UV enemy count. Press Enter to Confirm"
 }
-
 
 skill Realism4
 {
@@ -391,20 +377,24 @@ skill Realism4
    ReplaceActor = "RocketBox", "RocketAmmo"
    ReplaceActor = "Shellbox", "Shell"
    ReplaceActor = "Cellpack", "Cell"
-   ReplaceActor = "SuperKickAttack", "SuperKickAttackRealism"
    ReplaceActor = "Kickattack", "KickattackRealism"
+   ReplaceActor = "SuperKickAttack", "SuperKickAttackRealism"
    ReplaceActor = "AirKickattack", "AirKickattackRealism"
-   ReplaceActor = "MeleeStrikeNormal", "MeleeStrikeNormalRealism"
-   ReplaceActor = "RocketBackblast", "RocketBackblastRealism"
+   ReplaceActor = "SuperAirKickattack", "SuperAirKickattackRealism"
+   ReplaceActor = "MeleeStrike1", "MeleeStrike1Realism"
+   ReplaceActor = "MeleeStrike1Smash", "MeleeStrike1SmashRealism"
+   ReplaceActor = "MeleeStrike1Fatality", "MeleeStrike1FatalityRealism"
    ReplaceActor = "MeleeStrike2", "MeleeStrike2Realism"
+   ReplaceActor = "MeleeStrike2Smash", "MeleeStrike2SmashRealism"
+   ReplaceActor = "MeleeStrike2Fatality", "MeleeStrike2FatalityRealism"
+   ReplaceActor = "RocketBackblast", "RocketBackblastRealism"
    ReplaceActor = "Tank", "TankRealism"
-    ReplaceActor = "ArtilleryTank", "ArtilleryTankRealism"
+   ReplaceActor = "ArtilleryTank", "ArtilleryTankRealism"
    ReplaceActor = "AttackHelicopter", "AttackHelicopterRealism"
    ReplaceActor = "Mech", "MechRealism"
    TextColor = "Gray"
    mustconfirm = "You take 700% more damage, enemies have half hit points. UV enemy count. And enemies respawn after 60 seconds. Press Enter to Confirm"
 }
-
 
 skill Realism5
 {
@@ -420,12 +410,17 @@ skill Realism5
    ReplaceActor = "RocketBox", "RocketAmmo"
    ReplaceActor = "Shellbox", "Shell"
    ReplaceActor = "Cellpack", "Cell"
-   ReplaceActor = "SuperKickAttack", "SuperKickAttackRealism"
    ReplaceActor = "Kickattack", "KickattackRealism"
+   ReplaceActor = "SuperKickAttack", "SuperKickAttackRealism"
    ReplaceActor = "AirKickattack", "AirKickattackRealism"
-   ReplaceActor = "MeleeStrikeNormal", "MeleeStrikeNormalRealism"
-   ReplaceActor = "RocketBackblast", "RocketBackblastRealism"
+   ReplaceActor = "SuperAirKickattack", "SuperAirKickattackRealism"
+   ReplaceActor = "MeleeStrike1", "MeleeStrike1Realism"
+   ReplaceActor = "MeleeStrike1Smash", "MeleeStrike1SmashRealism"
+   ReplaceActor = "MeleeStrike1Fatality", "MeleeStrike1FatalityRealism"
    ReplaceActor = "MeleeStrike2", "MeleeStrike2Realism"
+   ReplaceActor = "MeleeStrike2Smash", "MeleeStrike2SmashRealism"
+   ReplaceActor = "MeleeStrike2Fatality", "MeleeStrike2FatalityRealism"
+   ReplaceActor = "RocketBackblast", "RocketBackblastRealism"
    ReplaceActor = "Tank", "TankRealism"
    ReplaceActor = "ArtilleryTank", "ArtilleryTankRealism"
    ReplaceActor = "AttackHelicopter", "AttackHelicopterRealism"
@@ -433,7 +428,6 @@ skill Realism5
    TextColor = "Gray"
    mustconfirm = "Only the most elite of the players can deal with this. 700% monster damage, 50% monster health, faster projectiles, less ammo, enemies respawn in 60 sec. Run it with Tactical mode and you got an arcadey Hideous Destructor. Press Enter to Confirm"
 }
-
 
 map MAP13B lookup "HUSTR_13"
 {
@@ -479,8 +473,6 @@ map MAP17B lookup "HUSTR_17"
 	music = "$MUSIC_STLKS3"
 }
 
-
-
 map PSXMAP16 "Hellgate"
 {
 	next = "MAP18"
@@ -491,8 +483,6 @@ map PSXMAP16 "Hellgate"
 	music = "$MUSIC_STLKS3"
 }
 
-
-
 map PSXMAP57 "The Marshes"
 {
 	next = "PSXMAP58"
@@ -502,7 +492,6 @@ map PSXMAP57 "The Marshes"
 	par = 420
 	music = "$MUSIC_ADRIAN"
 }
-
 
 map PSXMAP58 "Twilight Descends"
 {

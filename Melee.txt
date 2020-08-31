@@ -352,7 +352,7 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		TNT1 A 0 A_Giveinventory("PSeq1",1)
 		TNT1 A 0 A_Giveinventory("GoSpecial",1)
 		TNT1 A 0 A_jumpifinventory("PowerStrength",1,"PowerJab")
-		PONG A 0 A_FireCustomMissile("MeleeStrikeNormal", 0, 0, 0, 0)
+		PONG A 0 A_FireCustomMissile("MeleeStrike1", 0, 0, 0, 0)
 		Goto FinishJab
 
 	PowerJabSmash:
@@ -406,10 +406,17 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		PONG A 0 A_FireCustomMissile("MeleeStrike2", 0, 0, 0, 0)
 		Goto FinishLeftCross
 
+	PowerJabSmash:
+		TNT1 A 0 A_PlaySound("weapons/gswing")
+		PONG A 0 A_FireCustomMissile("MeleeStrike2Smash", 0, 0, 0, 0)
+		TNT1 A 0 A_SetAngle(angle-3)
+		Goto FinishLeftCross
+
 	PowerLeftCross:
 		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("NoFatality", 1, "PowerJabSmash")
 		TNT1 A 0 A_PlaySound("weapons/gswing")
-		PONG A 0 A_FireCustomMissile("MeleeStrike1Smash", 0, 0, 0, 0)
+		PONG A 0 A_FireCustomMissile("MeleeStrike2Fatality", 0, 0, 0, 0)
 		TNT1 A 0 A_SetAngle(angle-3)
 
 	FinishLeftCross:
@@ -457,10 +464,17 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		RIFF A 0 A_FireCustomMissile("MeleeStrike2", 0, 0, 0, 0)
 		Goto FinishCross
 
+	PowerCrossSmash:
+		TNT1 A 0 A_PlaySound("weapons/gswing")
+		PONG A 0 A_FireCustomMissile("MeleeStrike2Smash", 0, 0, 0, 0)
+		TNT1 A 0 A_SetAngle(angle+3)
+		Goto FinishCross
+
 	PowerCross:
 		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("NoFatality", 1, "PowerCrossSmash")
 		TNT1 A 0 A_PlaySound("weapons/gswing")
-		PONG A 0 A_FireCustomMissile("MeleeStrike1Smash", 0, 0, 0, 0)
+		PONG A 0 A_FireCustomMissile("MeleeStrike2Fatality", 0, 0, 0, 0)
 		TNT1 A 0 A_SetAngle(angle+3)
 
 	FinishCross:
@@ -568,7 +582,35 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		TNT1 A 0 A_Giveinventory("Kicking",1)
 		TNT1 A 0 A_SetPitch(pitch-9)
 		TNT1 A 0 A_SetAngle(angle+9)
+		TNT1 A 0 A_jumpifinventory("PowerStrength",1,"PowerKickRight")
 		RIFF A 0 A_FireCustomMissile("KickAttack", 0, 0, 0, 0)
+		KIK2 D 1
+		TNT1 A 0 A_SetPitch(pitch+2)
+		TNT1 A 0 A_SetAngle(angle-2)
+		KIK2 D 1
+		TNT1 A 0 A_SetPitch(pitch+2)
+		TNT1 A 0 A_SetAngle(angle-2)
+		KIK2 E 1
+		TNT1 A 0 A_SetPitch(pitch+1)
+		TNT1 A 0 A_SetAngle(angle-1)
+		KIK2 E 1
+		TNT1 A 0 A_SetPitch(pitch+1)
+		TNT1 A 0 A_SetAngle(angle-1)
+		KIK2 C 1
+		TNT1 A 0 A_SetPitch(pitch+1)
+		TNT1 A 0 A_SetAngle(angle-1)
+		KIK2 B 1
+		TNT1 A 0 A_SetPitch(pitch+1)
+		TNT1 A 0 A_SetAngle(angle-1)
+		KIK2 A 1
+		TNT1 A 0 A_SetPitch(pitch+1)
+		TNT1 A 0 A_SetAngle(angle-1)
+		TNT1 A 5 A_TakeInventory("Kicking",1)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 15)
+		Goto Ready
+
+	PowerKickRight:
+		RIFF A 0 A_FireCustomMissile("SuperKickAttack", 0, 0, 0, 0)
 		KIK2 D 1
 		TNT1 A 0 A_SetPitch(pitch+2)
 		TNT1 A 0 A_SetAngle(angle-2)
@@ -600,7 +642,35 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		TNT1 A 0 A_Giveinventory("Kicking",1)
 		TNT1 A 0 A_SetPitch(pitch-9)
 		TNT1 A 0 A_SetAngle(angle-9)
+		TNT1 A 0 A_jumpifinventory("PowerStrength",1,"PowerKickLeft")
 		RIFF A 0 A_FireCustomMissile("KickAttack", 0, 0, 0, 0)
+		KIK1 D 1
+		TNT1 A 0 A_SetPitch(pitch+2)
+		TNT1 A 0 A_SetAngle(angle+2)
+		KIK1 D 1
+		TNT1 A 0 A_SetPitch(pitch+2)
+		TNT1 A 0 A_SetAngle(angle+2)
+		KIK1 E 1
+		TNT1 A 0 A_SetPitch(pitch+1)
+		TNT1 A 0 A_SetAngle(angle+1)
+		KIK1 E 1
+		TNT1 A 0 A_SetPitch(pitch+1)
+		TNT1 A 0 A_SetAngle(angle+1)
+		KIK1 C 1
+		TNT1 A 0 A_SetPitch(pitch+1)
+		TNT1 A 0 A_SetAngle(angle+1)
+		KIK1 B 1
+		TNT1 A 0 A_SetPitch(pitch+1)
+		TNT1 A 0 A_SetAngle(angle+1)
+		KIK1 A 1
+		TNT1 A 0 A_SetPitch(pitch+1)
+		TNT1 A 0 A_SetAngle(angle+1)
+		TNT1 A 5 A_TakeInventory("Kicking",1)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 15)
+		Goto Ready
+
+	PowerKickLeft:
+		RIFF A 0 A_FireCustomMissile("SuperKickAttack", 0, 0, 0, 0)
 		KIK1 D 1
 		TNT1 A 0 A_SetPitch(pitch+2)
 		TNT1 A 0 A_SetAngle(angle+2)
@@ -1512,8 +1582,20 @@ ACTOR MeleeStrike2: MeleeStrike1//Cross
 Damage (random(20,20))
 }
 
-ACTOR MeleeStrikeNormal: MeleeStrike1//Jab
-{//Needs to stay because of the the Tactical mode feautures in MAPINFO that replace this projectile
+ACTOR MeleeStrike2Fatality: MeleeStrike1//Cross without Fatality
+{
+Damage (random(40,40))
+DamageType Fatality
+-NOEXTREMEDEATH
++EXTREMEDEATH
+}
+
+ACTOR MeleeStrike2Smash: MeleeStrike1//Cross without Fatality
+{
+Damage (random(40,40))
+DamageType Extremepunches
+-NOEXTREMEDEATH
++EXTREMEDEATH
 }
 
 ACTOR MeleeStrike1Fatality: MeleeStrike1//Jab with Fatality
@@ -1550,9 +1632,9 @@ States
 }
 }
 
-ACTOR MeleeStrike1Smash: MeleeStrike1//Jab or Cross without Fatality
+ACTOR MeleeStrike1Smash: MeleeStrike1//Jab without Fatality
 {
-Damage (random(40,40))
+Damage (random(20,20))
 DamageType Extremepunches
 -NOEXTREMEDEATH
 +EXTREMEDEATH
@@ -1769,38 +1851,52 @@ Actor BerserkSlide : SlideAttack
 	Damage (random(40,40))
 }
 
-ACTOR SuperKickAttackRealism: SuperKickAttack//Power Upper
-{
-    Damage (random(6,6))
-
-}
-
 ACTOR KickAttackRealism: Kickattack
 {
     Damage (random(3,3))
+}
 
+ACTOR SuperKickAttackRealism: SuperKickAttack//Power Upper or berserk kick
+{
+    Damage (random(6,6))
 }
 
 ACTOR AirKickAttackRealism: AirKickattack
 {
     Damage (random(4,4))
-
 }
 
 ACTOR SuperAirKickAttackRealism: SuperAirKickattack
 {
     Damage (random(8,8))
-
 }
 
-ACTOR MeleeStrikeNormalRealism: MeleeStrikeNormal//Jab
+ACTOR MeleeStrike1Realism: MeleeStrike1//Jab
 {
     Damage (random(1,1))
+}
 
+ACTOR MeleeStrike1SmashRealism: MeleeStrike1Smash//Jab without Fatality
+{
+    Damage (random(2,2))
+}
+
+ACTOR MeleeStrike1FatalityRealism: MeleeStrike1Fatality//Jab with Fatality
+{
+    Damage (random(2,2))
 }
 
 ACTOR MeleeStrike2Realism: MeleeStrike2//Cross
 {
     Damage (random(2,2))
+}
 
+ACTOR MeleeStrike2SmashRealism: MeleeStrike2Smash//Cross without Fatality
+{
+    Damage (random(4,4))
+}
+
+ACTOR MeleeStrike2FatalityRealism: MeleeStrike2Fatality//Cross with Fatality
+{
+    Damage (random(4,4))
 }
