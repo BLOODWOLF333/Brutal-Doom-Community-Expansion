@@ -19,13 +19,13 @@ script "BDForwardInput" ENTER
  while (TRUE)
  {
    buttons = GetPlayerInput(-1, INPUT_BUTTONS);
-   
-   
+
+
 if (buttons & BT_FORWARD)
 {
    GiveInventory("Accelerate", 1);
    //giveinventory("HealthBonus", GetActorProperty(0, APROP_HEALTH));
-   
+
    delay(1);
 }
    delay(1);
@@ -42,7 +42,7 @@ script "BDBackInput" ENTER
  while (TRUE)
  {
    buttons = GetPlayerInput(-1, INPUT_BUTTONS);
-   
+
 if (buttons & BT_BACK)
 {
     GiveInventory("BackPedal", 1);
@@ -63,7 +63,7 @@ script "BDLeftInput" ENTER
  while (TRUE)
  {
    buttons = GetPlayerInput(-1, INPUT_BUTTONS);
-   
+
 if (buttons & BT_MOVELEFT)
 {
     GiveInventory("TurnLeft", 1);
@@ -85,18 +85,18 @@ script "BDRightInput" ENTER
  while (TRUE)
  {
    buttons = GetPlayerInput(-1, INPUT_BUTTONS);
-   
-   
+
+
 if (buttons & BT_MOVERIGHT)
 {
     GiveInventory("TurnRight", 1);
-	
+
 	//if (checkinventory("IsRunning2") == 1) { GiveInventory("RollRight", 1); }
 	//if (checkinventory("IsRunning2") == 1) { GiveInventory("GoSpecial", 1); }
 }
 
    delay(1);
-   
+
    TakeInventory("TurnRight", 1);
  }
 }
@@ -109,7 +109,7 @@ script "BDUseInput" ENTER
  while (TRUE)
  {
    buttons = GetPlayerInput(-1, INPUT_BUTTONS);
-   
+
 if (buttons & BT_USE)
 {
     GiveInventory("PressedUse", 1);
@@ -127,7 +127,7 @@ script "BDJumpInput" ENTER
  while (TRUE)
  {
    buttons = GetPlayerInput(-1, INPUT_BUTTONS);
-   
+
 if (buttons & BT_JUMP)
 {
     GiveInventory("PressedJump", 1);
@@ -265,8 +265,8 @@ Script "BDUnMorph" (VOID) NET
 
 Script "BDCHeckOnline" (VOID)//Check if player is online.
 {
-if	(GameType () > 0) 
-	SetActorState(0,"IsOnline"); 
+if	(GameType () > 0)
+	SetActorState(0,"IsOnline");
 }
 
 script "GetVehiclePreviousHealth" (VOID) NET
@@ -300,7 +300,7 @@ script "BDEnterHMG" (VOID) NET
 		GiveInventory(arrayArmorClass[PlayerNumber()], 1);
 		//Log(s:"Returned ArmorClass= ", s:GetArmorInfo(ARMORINFO_CLASSNAME));
 		//Log(s:"Returned InitialArmor= ", i:CheckInventory("BasicArmor"));
-		
+
 		if (CheckInventory("BasicArmor") > arrayArmor[PlayerNumber()])
 		{
 			While(CheckInventory("BasicArmor") > arrayArmor[PlayerNumber()])
@@ -348,7 +348,7 @@ script "BDLeaveHMG" (VOID) NET
 		GiveInventory(arrayArmorClass[PlayerNumber()], 1);
 		//Log(s:"Returned ArmorClass= ", s:GetArmorInfo(ARMORINFO_CLASSNAME));
 		//Log(s:"Returned InitialArmor#= ", i:CheckInventory("BasicArmor"));
-		
+
 		if (CheckInventory("BasicArmor") > arrayArmor[PlayerNumber()])
 		{
 			While(CheckInventory("BasicArmor") > arrayArmor[PlayerNumber()])
@@ -419,7 +419,7 @@ script "BDLeaveTank" (VOID) NET
 		GiveInventory(arrayArmorClass[PlayerNumber()], 1);
 		//Log(s:"Returned ArmorClass= ", s:GetArmorInfo(ARMORINFO_CLASSNAME));
 		//Log(s:"Returned InitialArmor#= ", i:CheckInventory("BasicArmor"));
-		
+
 		if (CheckInventory("BasicArmor") > arrayArmor[PlayerNumber()])
 		{
 			While(CheckInventory("BasicArmor") > arrayArmor[PlayerNumber()])
@@ -449,6 +449,8 @@ script "BDLeaveTank" (VOID) NET
 
 script "BDForceUnmorph" (VOID) NET
 {
+ GiveInventory("CeaseMorph",1);
+ Delay(4);
  UnMorphActor(0, 0);
 }
 
@@ -479,7 +481,7 @@ script "BDSetNewTankDirection" (VOID) NET
 Script "BDEnterTankInfo"(VOID)
 {
 setfont("TNHSA0");
-	hudmessage(s:"A"; 
+	hudmessage(s:"A";
 				HUDMSG_PLAIN, 0, CR_UNTRANSLATED, 0.5, 0.57, 1.0);
 	delay(40 * 6);
 }
@@ -488,7 +490,7 @@ Script "BDTankOrientation" (VOID)
 {
 	str Turret;
 	int healthMax;
-	
+
 		If(CheckActorClass(0, "PlayerTank"))
 		{
 			healthMax = 2500;
@@ -497,7 +499,7 @@ Script "BDTankOrientation" (VOID)
 		{
 			healthMax = 2000;
 		}
-		
+
 		If(GetActorProperty(0, APROP_HEALTH) >= (healthMax/2) + 1)
 		{
 			Turret = "TURG0";
@@ -534,7 +536,7 @@ Script "BDTankOrientation" (VOID)
 			arrayBase[6] = "BASR6";
 			arrayBase[7] = "BASR7";
 		}
-	
+
 	Int angleTurret = (GetActorAngle(0)/(65536/360));
 	//log(s:"Turret= ",i:angleTurret);//Left(0 to 180CCW) Right(360 to 180CW)
 	Int angleTracks = GetUserVariable(0,"user_tankbasedirection");
@@ -621,7 +623,7 @@ Script "BDTankHUD" (VOID)
 		{
 			hudmessage(s: "EMPTY"; HUDMSG_PLAIN, 0, CR_RED, 0.5, 0.95, 0.11);
 		}
-	
+
 	int ammoHMG = CheckInventory("HeavyMachinegunAmmo");
 	hudmessage(s: ".50 MG"; HUDMSG_PLAIN, 0, CR_WHITE, -0.1, 0.5, 0.11);
 		If(ammoHMG >= 1)
@@ -632,7 +634,7 @@ Script "BDTankHUD" (VOID)
 		{
 			hudmessage(s: "EMPTY"; HUDMSG_PLAIN, 0, CR_RED, -0.1, 0.525, 0.11);
 		}
-	
+
 	bool checkZoom = CheckInventory("TankZoom");
 		If(checkZoom == 1)
 		{
@@ -658,7 +660,7 @@ Script "BDATHUD" (VOID)
 		{
 			hudmessage(s: "EMPTY"; HUDMSG_PLAIN, 0, CR_RED, 0.5, 0.95, 0.11);
 		}
-		
+
 	int ammoRocket = CheckInventory("HelicopterRocketAmmo");
 		hudmessage(s: "MISSILE"; HUDMSG_PLAIN, 0, CR_WHITE, -0.1, 0.5, 0.11);
 		If(ammoRocket >= 1)
@@ -669,7 +671,7 @@ Script "BDATHUD" (VOID)
 		{
 			hudmessage(s: "EMPTY"; HUDMSG_PLAIN, 0, CR_RED, -0.1, 0.525, 0.11);
 		}
-		
+
 	bool checkZoom = CheckInventory("TankZoom");
 		If(checkZoom == 1)
 		{
@@ -720,7 +722,7 @@ Script "BDHelicopterHUD"(VOID)
 		{
 			hudmessage(s: "EMPTY"; HUDMSG_PLAIN, 0, CR_RED, 0.5, 0.825, 0.11);
 		}
-		
+
 	int ammoHMG = CheckInventory("HeavyMachinegunAmmo");
 		If(ammoHMG >= 1)
 		{
@@ -730,7 +732,7 @@ Script "BDHelicopterHUD"(VOID)
 		{
 			hudmessage(s: "EMPTY"; HUDMSG_PLAIN, 0, CR_RED, -0.3, 0.825, 0.11);
 		}
-	
+
 	int ammoRocket = CheckInventory("HelicopterRocketAmmo");
 		If(ammoRocket >= 1)
 		{
@@ -744,14 +746,14 @@ Script "BDHelicopterHUD"(VOID)
 	int elevationZ = ((GetActorZ(0) - GetActorFloorZ(0))/65536);
 		Hudmessage(s:"ELEVATION"; HUDMSG_PLAIN, 0, CR_WHITE, -0.65, 0.5, 0.11);
 		Hudmessage(i:elevationZ; HUDMSG_PLAIN, 0, CR_WHITE, -0.65, 0.525, 0.11);
-	
+
 	int anglePitch = (GetActorPitch(0)/(65536/360));//from 32(D) to -56(U) Zand | 90(D) to -90(U) GZDoom
 	//LOG(s: "Pitch= ", i: anglePitch);
 	int posY = (170.0/65536) - (anglePitch*3);
 		SetHudSize(640,400,false);
 		Setfont("PTCH0");
 		Hudmessage(s:"A"; HUDMSG_PLAIN | HUDMSG_LAYER_UNDERHUD, 0, 0, 320.0, (posY * 65536), 0.11);
-	
+
 	delay(1);
 }
 
@@ -776,7 +778,7 @@ Script "BDMechHUD"(VOID)
 		{
 			hudmessage(s: "[MGUN]"; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.7, 0.11);
 			hudmessage(i: leftMGAmmo; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.72, 0.11);
-		
+
 			hudmessage(s: "[MGUN]"; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.7, 0.11);
 			hudmessage(i: rightMGAmmo; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.72, 0.11);
 		}
@@ -784,31 +786,31 @@ Script "BDMechHUD"(VOID)
 		{
 			hudmessage(s: "MGUN"; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.7, 0.11);
 			hudmessage(i: leftMGAmmo; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.72, 0.11);
-		
+
 			hudmessage(s: "MGUN"; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.7, 0.11);
 			hudmessage(i: rightMGAmmo; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.72, 0.11);
 		}
-		
+
 		If(fireMode == 1)
 		{
 			hudmessage(s: "[LASER]"; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.8, 0.11);
-			
+
 			hudmessage(s: "[LASER]"; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.8, 0.11);
 		}
 		Else
 		{
 			hudmessage(s: "LASER"; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.8, 0.11);
-			
+
 			hudmessage(s: "LASER"; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.8, 0.11);
 		}
-		
+
 	int leftRocketAmmo = CheckInventory("MechRocketAmmo")/2;
 	int rightRocketAmmo = CheckInventory("MechRocketAmmo")/2;
 		If(fireMode == 2)
 		{
 			hudmessage(s: "[ROCKET]"; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.9, 0.11);
 			hudmessage(i: leftRocketAmmo; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.92, 0.11);
-		
+
 			hudmessage(s: "[ROCKET]"; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.9, 0.11);
 			hudmessage(i: rightRocketAmmo; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.92, 0.11);
 		}
@@ -816,7 +818,7 @@ Script "BDMechHUD"(VOID)
 		{
 			hudmessage(s: "ROCKET"; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.9, 0.11);
 			hudmessage(i: leftRocketAmmo; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.92, 0.11);
-		
+
 			hudmessage(s: "ROCKET"; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.9, 0.11);
 			hudmessage(i: rightRocketAmmo; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.92, 0.11);
 		}
