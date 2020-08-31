@@ -46,58 +46,68 @@ ACTOR BrutalPistol : BrutalWeapon
 
 	StartSprint:
 		PIST F 1 A_WeaponReady(WRF_NOFIRE)
-		PIST F 0 A_JumpIfInventory("UsedStamina", 40, "StopSprintTired")
+		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		PIST F 0 A_JumpIfInventory("UsedStamina", 50, "StopSprintTired")
 
 	Sprinting:
 		PISP A 0 offset(-9,32)
 		PIST F 0 offset(-9,32) A_JumpIfInventory("IsStandingStill", 1, "Ready3")
+		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
 		PIST F 0 offset(-9,32) A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
 		PLAY A 0 offset(-9,32) ACS_ExecuteAlways(852, 0, 0, 0, 0)//Makes player faster.
-		PIST F 0 offset(-9,32) A_JumpIfInventory("PowerStrength", 1, 2)
-		PIST F 0 offset(-9,32) A_GiveInventory("UsedStamina", 2)
-		PIST F 0 offset(-9,32)
 		PISP F 1 offset(-9,34) A_SetPitch(pitch -0.5)
 		PISP F 1 offset(-6,36) A_SetPitch(pitch -0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		PISP F 1 offset(-3,38) A_SetPitch(pitch -0.5)
 		PISP F 1 offset(0,38) A_SetPitch(pitch -0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		PISP F 1 offset(3,36) A_SetPitch(pitch -0.5)
 		PISP F 1 offset(6,34) A_SetPitch(pitch -0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		PISP F 1 offset(9,32) A_SetPitch(pitch -0.5)
 		PIST F 0 offset(9,32) A_WeaponReady(WRF_NOBOB)
 		PIST F 0 A_JumpIfInventory("Kicking",1,"DoKick")
         PIST F 0 A_JumpIfInventory("Taunting",1,"Taunt")
         PIST F 0 A_JumpIfInventory("Reloading",1,"Reload")
-		PIST F 0 offset(-9,32) A_GiveInventory("UsedStamina", 3)
+		PIST F 0 offset(-9,32)
 		PIST F 0 offset(9,33) A_SpawnItemEx("FootStep", 0, 0, 2, 0, 0, -4)
 		PISP F 1 offset(9,34) A_SetPitch(pitch +0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		PISP F 1 offset(6,36) A_SetPitch(pitch +0.5)
 		PISP F 1 offset(3,38) A_SetPitch(pitch +0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		PISP F 1 offset(0,38) A_SetPitch(pitch +0.5)
 		PISP F 1 offset(-3,36) A_SetPitch(pitch +0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		PISP F 1 offset(-6,34) A_SetPitch(pitch +0.5)
 		PISP F 1 offset(-9,32) A_SetPitch(pitch +0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		PIST F 0 offset(-9,32) A_WeaponReady(WRF_NOBOB)
 		PIST F 0 offset(-9,32) A_JumpIfInventory("IsRunning", 1, "Sprinting")
-
 		Goto StopSprint
+
 	StopSprintTired:
-		PIST F 1
+		PIST F 0
 		PLAY A 0 ACS_ExecuteAlways(853, 0, 0, 0, 0)//Makes player slower.
 		PIST F 0 A_PlaySound("Tired", 2)
-		PIST F 0 A_TakeInventory("UsedStamina", 2)
-		PIST F 5 A_WeaponReady
-		PIST F 0 A_TakeInventory("UsedStamina", 2)
-		PIST F 5 A_WeaponReady
-		PIST F 0 A_TakeInventory("UsedStamina", 2)
-		PIST F 5 A_WeaponReady
-		PIST F 0 A_TakeInventory("UsedStamina", 2)
-		PIST F 5 A_WeaponReady
-		PIST F 0 A_TakeInventory("UsedStamina", 2)
-		PIST F 5 A_WeaponReady
+		PISP F 4 A_WeaponReady
+		PIST F 0 A_TakeInventory("UsedStamina", 1)
+		PISP F 4 A_WeaponReady
+		PIST F 0 A_TakeInventory("UsedStamina", 1)
+		PISP F 4 A_WeaponReady
+		PIST F 0 A_TakeInventory("UsedStamina", 1)
+		PISP F 4 A_WeaponReady
+		PIST F 0 A_TakeInventory("UsedStamina", 1)
+		PISP F 4 A_WeaponReady
+		PIST F 0 A_TakeInventory("UsedStamina", 1)
+		PISP F 4 A_WeaponReady
+		PIST F 0 A_TakeInventory("UsedStamina", 1)
 		Goto Ready
+
 	StopSprint:
-		PISP A 1
-		PIST F 0 A_JumpIfInventory("UsedStamina", 60, "StopSprintTired")
+		PISP F 1
+		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		PIST F 0 A_JumpIfInventory("UsedStamina", 50, "StopSprintTired")
 		PLAY A 0 ACS_ExecuteAlways(853, 0, 0, 0, 0)//Makes player slower.
 		Goto Ready
 
@@ -237,9 +247,9 @@ ACTOR BrutalPistol : BrutalWeapon
 	FireEndTactical2:
 		PIST F 0
 		PLAY A 0 ACS_ExecuteAlways(852, 0, 0, 0, 0)//Makes player faster.
-		PIST F 0 A_GiveInventory("UsedStamina", 4)
 		PIST D 1
 		PIST F 1 A_WeaponReady(1)
+		PIST F 0 A_GiveInventory("UsedStamina", 1)
 		PIST F 0 A_REfire
 		Goto Sprinting
 
@@ -432,7 +442,7 @@ ACTOR BrutalPistol : BrutalWeapon
 	DualWield:
 		PIST F 1
 		PIST F 0 A_Takeinventory("StartDualWield",1)
-		PIST F 0 A_JumpIfInventory("IsTacticalClass", 1, "NoDual")//Tactical mode cant dual
+		//PIST F 0 A_JumpIfInventory("IsTacticalClass", 1, "NoDual")//Tactical mode cant dual
 		PIST F 0 A_JumpIfInventory("DualPistols", 1, "GetDual")
 		PIST F 0 A_Print("You must have two identical weapons to dual wield.")
 		Goto Ready
