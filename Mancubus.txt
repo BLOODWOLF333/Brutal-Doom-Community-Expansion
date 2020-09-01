@@ -648,7 +648,7 @@ Actor NoGutsFatso: CurbstompedMarine
     Mass 10000
     Health 500
     Scale 1.1
-States
+	States
     {
     Spawn:
 		FAT2 P -1
@@ -885,31 +885,38 @@ Actor DeadFatsoNoArm: DeadFat
 		Stop}}
 
 Actor FatalizedFatso: NoGutsFatso
-{Scale 1.1 Health 500 States{Spawn:
-		FATF F 1 A_PlaySound("fatso/pain")
-        FATF FFEE 10 A_CustomMissile ("Blood", 35, 0, random (0, 360), 2, random (0, 160))
+{
+	Scale 1.1
+	Health 500
+	+NOPAIN
+	States
+	{
+		Spawn:
+			FATF F 1 A_PlaySound("fatso/pain")
+			TNT1 A 0 A_NoBlocking
+			FATF FFEE 10 A_CustomMissile ("Blood", 35, 0, random (0, 360), 2, random (0, 160))
 
-		FATF F 1 A_PlaySound("fatso/pain")
-        FATF FFEE 10 A_CustomMissile ("Blood", 35, 0, random (0, 360), 2, random (0, 160))
+			FATF F 1 A_PlaySound("fatso/pain")
+			FATF FFEE 10 A_CustomMissile ("Blood", 35, 0, random (0, 360), 2, random (0, 160))
 
-		FATF F 1 A_PlaySound("fatso/pain")
-        FATF FFEE 10 A_CustomMissile ("Blood", 35, 0, random (0, 360), 2, random (0, 160))
+			FATF F 1 A_PlaySound("fatso/pain")
+			FATF FFEE 10 A_CustomMissile ("Blood", 35, 0, random (0, 360), 2, random (0, 160))
 
-		FATF F 1 A_PlaySound("fatso/pain")
-        FATF FF 10 A_CustomMissile ("Blood", 35, 0, random (0, 360), 2, random (0, 160))
+			FATF F 1 A_PlaySound("fatso/pain")
+			FATF FF 10 A_CustomMissile ("Blood", 35, 0, random (0, 360), 2, random (0, 160))
 
-		FATF E 1 A_PlaySound("fatso/death")
-		FATF EEEEEEEEE 4 A_CustomMissile ("Blood", 35, 0, random (0, 360), 2, random (0, 160))
-		FATF E -1
-        Stop }}
+			FATF E 1 A_PlaySound("fatso/death")
+			FATF EEEEEEEEE 4 A_CustomMissile ("Blood", 35, 0, random (0, 360), 2, random (0, 160))
+			FATF E -1
+			Stop
+	}
+}
 
 Actor DyingFatso01: NoGutsFatso
 {Scale 1.1
 Health 20
 Radius 28
 Height 70
--CLIENTSIDEONLY
--SOLID
 States
 	{Spawn:
 		XFT1 A 1 A_PlaySound("fatso/pain")

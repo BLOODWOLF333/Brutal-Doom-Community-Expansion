@@ -259,7 +259,7 @@ Script "BDFiredTankMainGun" (VOID) NET
 
 Script "BDUnMorph" (VOID) NET
 {
- delay (1);
+ delay (4);
  UnMorphActor(0, 0);
 }
 
@@ -290,10 +290,14 @@ script "GetVehiclePreviousHealth2" (VOID) NET
 //Entering Heavy Machinegun
 script "BDEnterHMG" (VOID) NET
 {
-	delay(6);
 	TakeInventory("PowerInvisibility",1);
 	SetActorAngle (0, GetActorAngle (261));
 	Thing_Move(0, 261, 1);
+	SetActorProperty(0, APROP_HEALTH, arrayHealth[PlayerNumber()]);
+	//Log(s:"Enter Health= ", i: GetActorProperty(0, APROP_HEALTH));
+	int thisgunmachinegunammo = CheckActorInventory(261, "HeavyMachinegunAmmo");
+	delay(6);
+	GiveInventory("HeavyMachinegunAmmo", thisgunmachinegunammo);
 	//Return ArmorClass and # of Armor Points
 	if (arrayArmorClass[PlayerNumber()] != "None")
 	{
@@ -317,11 +321,7 @@ script "BDEnterHMG" (VOID) NET
 		}
 	}
 	//Log(s:"Enter ArmorPoints= ", i:CheckInventory("BasicArmor"));
-	SetActorProperty(0, APROP_HEALTH, arrayHealth[PlayerNumber()]);
-	//Log(s:"Enter Health= ", i: GetActorProperty(0, APROP_HEALTH));
-	int thisgunmachinegunammo = CheckActorInventory(261, "HeavyMachinegunAmmo");
-	GiveInventory("HeavyMachinegunAmmo", thisgunmachinegunammo);
-	delay(1);
+	delay(2);
 }
 
 
@@ -329,20 +329,17 @@ script "BDEnterHMG" (VOID) NET
 //leaving Heavy Machinegun
 script "BDLeaveHMG" (VOID) NET
 {
-	delay (1);
 	arrayHealth[PlayerNumber()] = GetActorProperty(0, APROP_HEALTH);
 	arrayArmor[PlayerNumber()] = CheckInventory("BasicArmor");
 	arrayArmorClass[PlayerNumber()] = GetArmorInfo(ARMORINFO_CLASSNAME);
-	delay (1);
 	//Log(s:"Health= ", i: arrayHealth[PlayerNumber()]);
 	//Log(s:"Armor#= ", i: arrayArmor[PlayerNumber()]);
 	//Log(s:"ArmorClass= ", s: arrayArmorClass[PlayerNumber()]);
 	int thisgunmachinegunammo = CheckInventory("HeavyMachinegunAmmo");
-	GiveActorInventory(261, "HeavyMachinegunAmmo", thisgunmachinegunammo);
+	delay (1);
 	TakeInventory("HeavyMachinegunAmmo", 9999);
 	Thing_Move(0, 264, 1);
 	UnMorphActor(0, 0);
-	delay (1);
 	if (arrayArmorClass[PlayerNumber()] != "None")
 	{
 		GiveInventory(arrayArmorClass[PlayerNumber()], 1);
@@ -367,13 +364,13 @@ script "BDLeaveHMG" (VOID) NET
 	//Log(s:"Post ArmorPoints= ", i: CheckInventory("BasicArmor"));
 	SetActorProperty(0, APROP_HEALTH, arrayHealth[PlayerNumber()]);
 	//Log(s:"Post Health= ", i: GetActorProperty(0, APROP_HEALTH));
+	GiveActorInventory(261, "HeavyMachinegunAmmo", thisgunmachinegunammo);
 }
 
 
 //Entering Tank
 script "BDEnterTank" (VOID) NET
 {
-	delay(6);
 	TakeInventory("PowerInvisibility",1);
 	SetActorAngle (0, GetActorAngle (261));
 	Thing_Move(0, 261, 1);
@@ -385,6 +382,7 @@ script "BDEnterTank" (VOID) NET
 	int thisvehicleHelicopterRocketAmmo = CheckActorInventory(261, "HelicopterRocketAmmo");
 	int thisvehicleMechRocketAmmo = CheckActorInventory(261, "MechRocketAmmo");
 	int vehiclepreviousbaseangle = CheckActorInventory(261, "TankBaseDirection");
+	delay (6);
 	GiveInventory("HeavyMachinegunAmmo", thisgunmachinegunammo);
 	GiveInventory("TankAmmo", thisTankAmmo);
 	GiveInventory("AutocannonAmmo", thisvehicleAutocannonAmmo);
@@ -392,7 +390,7 @@ script "BDEnterTank" (VOID) NET
 	GiveInventory("MechRocketAmmo", thisvehicleMechRocketAmmo);
 	GiveInventory("IsInATank",1);
 	SetUserVariable(0, "user_tankbasedirection", vehiclepreviousbaseangle);
-	delay(1);
+	delay(2);
 }
 
 //leaving Tank
@@ -405,6 +403,7 @@ script "BDLeaveTank" (VOID) NET
 	int thisvehicleHelicopterRocketAmmo = CheckInventory("HelicopterRocketAmmo");
 	int thisvehicleMechRocketAmmo = CheckInventory("MechRocketAmmo");
 	int vehiclepreviousbaseangle = GetUserVariable(0, "user_tankbasedirection");
+	delay (1);
 	TakeInventory("HeavyMachinegunAmmo", 9999);
 	TakeInventory("TankAmmo", 9999);
 	TakeInventory("AutocannonAmmo", 9999);
@@ -413,7 +412,6 @@ script "BDLeaveTank" (VOID) NET
 	TakeInventory("IsInATank", 9);
 	Thing_Move(0, 264, 1);
 	UnMorphActor(0, 0);
-	delay (1);
 	if (arrayArmorClass[PlayerNumber()] != "None")
 	{
 		GiveInventory(arrayArmorClass[PlayerNumber()], 1);
@@ -435,14 +433,14 @@ script "BDLeaveTank" (VOID) NET
 			}
 		}
 	}
+	//Log(s:"Post ArmorPoints= ", i: CheckInventory("BasicArmor"));
 	SetActorProperty(0, APROP_HEALTH, arrayHealth[PlayerNumber()]);
 	//Log(s:"Post Health= ", i: GetActorProperty(0, APROP_HEALTH));
-	//Log(s:"Post ArmorPoints= ", i: CheckInventory("BasicArmor"));
 	SetActorProperty(261, APROP_Health, vehicleprevioushealth);
 	GiveActorInventory(261, "HeavyMachinegunAmmo", thisgunmachinegunammo);
 	GiveActorInventory(261, "TankAmmo", thisTankAmmo);
 	GiveActorInventory(261, "AutocannonAmmo", thisvehicleAutocannonAmmo);
-	GiveActorInventory(261, "HelicopterRocketAmmo", thisvehicleAutocannonAmmo);
+	GiveActorInventory(261, "HelicopterRocketAmmo", thisvehicleHelicopterRocketAmmo);
 	GiveActorInventory(261, "MechRocketAmmo", thisvehicleMechRocketAmmo);
 	GiveActorInventory(261, "TankBaseDirection", vehiclepreviousbaseangle);
 }
@@ -450,32 +448,28 @@ script "BDLeaveTank" (VOID) NET
 script "BDForceUnmorph" (VOID) NET
 {
  GiveInventory("CeaseMorph",1);
- Delay(4);
  UnMorphActor(0, 0);
+ Delay(4);
 }
 
 
 //Set Tank's new base angle after you leave it.
 script "BDSetBaseAngle" (VOID) NET
 {
- delay (1);
  int thisvehiclecurrentbaseangle = CheckInventory("TankBaseDirection");
- delay (1);
  SpawnSpot("TankBaseStationed", 0, 0, thisvehiclecurrentbaseangle*256/360);
- delay (1);
+ delay (4);
 }
 
 
 //Set the current direction of a newly spawned tank.
 script "BDSetNewTankDirection" (VOID) NET
 {
- delay (1);
  int thisvehicleinitialbaseangle = GetActorAngle(0);
  int angleformulacalculation = thisvehicleinitialbaseangle >> 8;
  int angleformulacalculationlastpart = angleformulacalculation*360/256;
- delay (1);
  GiveInventory("TankBaseDirection", angleformulacalculationlastpart);
- delay (1);
+ delay (4);
 }
 
 Script "BDEnterTankInfo"(VOID)
@@ -592,7 +586,7 @@ Script "BDTankOrientation" (VOID)
 			SetFont(arrayBase[0]);//12:00
 			Hudmessage(s:"A"; HUDMSG_PLAIN, 0, 0, 0.5, 0.05, 0.11);
 		}
-	Delay(1);
+	Delay(4);
 }
 
 Script "BDTankHUD" (VOID)
@@ -644,7 +638,7 @@ Script "BDTankHUD" (VOID)
 		{
 			hudmessage(s: "x1"; HUDMSG_PLAIN, 0, CR_WHITE, -0.875, 0.5, 0.11);
 		}
-	delay(1);
+	delay(4);
 }
 
 Script "BDATHUD" (VOID)
@@ -681,7 +675,7 @@ Script "BDATHUD" (VOID)
 		{
 			hudmessage(s: "x1"; HUDMSG_PLAIN, 0, CR_WHITE, -0.875, 0.5, 0.11);
 		}
-	delay(1);
+	delay(4);
 }
 
 Script "BDHelicopterHUD"(VOID)
@@ -742,6 +736,7 @@ Script "BDHelicopterHUD"(VOID)
 		{
 			hudmessage(s: "EMPTY"; HUDMSG_PLAIN, 0, CR_RED, -0.65, 0.825, 0.11);
 		}
+
 	//Elevation gauge & pitch ladder
 	int elevationZ = ((GetActorZ(0) - GetActorFloorZ(0))/65536);
 		Hudmessage(s:"ELEVATION"; HUDMSG_PLAIN, 0, CR_WHITE, -0.65, 0.5, 0.11);
@@ -753,8 +748,7 @@ Script "BDHelicopterHUD"(VOID)
 		SetHudSize(640,400,false);
 		Setfont("PTCH0");
 		Hudmessage(s:"A"; HUDMSG_PLAIN | HUDMSG_LAYER_UNDERHUD, 0, 0, 320.0, (posY * 65536), 0.11);
-
-	delay(1);
+	delay(4);
 }
 
 Script "BDMechHUD"(VOID)
@@ -840,5 +834,5 @@ Script "BDMechHUD"(VOID)
 		SetFont("MEKHD0");
 		Hudmessage(s:"A"; HUDMSG_PLAIN, 0, 0, 0.5, 0.85, 0.11);
 	}
-	delay(1);
+	delay(4);
 }
