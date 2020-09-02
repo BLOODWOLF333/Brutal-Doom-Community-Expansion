@@ -22,13 +22,21 @@ script "BDRespawn" Respawn NET
 	if	(GetCvar( "bd_sbartype") == 6) { GiveInventory("sbartype6", 1); }
 	if	(GetCvar( "bd_sbartype") == 7) { GiveInventory("sbartype7", 1); }
 	// Detect Player Gender
-		
-		
-	if	(GetPlayerInfo(PlayerNumber(), PLAYERINFO_GENDER) == 0)
-		GiveInventory("GenderMale", 1);		
 
-	if	(GetPlayerInfo(PlayerNumber(), PLAYERINFO_GENDER) == 1)
-		GiveInventory("GenderFemale", 1);	
+	if(GetPlayerInfo(PlayerNumber(), PLAYERINFO_GENDER) == 0)
+	{
+		GiveActorInventory(0,"GenderMale", 1);
+	}
+	if(GetPlayerInfo(PlayerNumber(), PLAYERINFO_GENDER) == 1)
+	{
+		GiveActorInventory(0, "GenderFemale", 1);
+		SetActorProperty(0, APROP_VIEWHEIGHT, 45.0);
+		SetActorProperty(0, APROP_HEIGHT, 50.0);
+		SetActorProperty(0, APROP_MASS, 100);
+		SetActorProperty(0, APROP_ATTACKZOFFSET, 19.0);
+		SetActorProperty(0, APROP_JUMPZ, 8.0);
+		SetActorProperty(0, APROP_SPEED, 1.1);
+	}
 	Delay(1);
 	//===========================
 }
@@ -38,17 +46,17 @@ script "BDInitialize" enter
     // Fade In
 	sethudsize(160, 90, TRUE);
 	setfont("BLASCR");
-	
-	if	(GameType () == GAME_SINGLE_PLAYER) 
+
+	if	(GameType () == GAME_SINGLE_PLAYER)
 		{
 		HudMessageBold(s:"a"; HUDMSG_FADEOUT, 1, CR_BLACK, 0.1, 0.1, 0.1, 1.0);
 		}
 
 	//setfont("SmallFONT");
 	//HudMessageBold(s:"Dev Build August 21 2018"; HUDMSG_PLAIN, 8, CR_WHITE, 2.0, 0.01, 9999.1, 1.0);
-		
-		
-	//===================	
+
+
+	//===================
 	//Sbar Type
 
 	if	(GetCvar( "bd_sbartype") == 1) { GiveInventory("sbartype1", 1); }
@@ -58,34 +66,43 @@ script "BDInitialize" enter
 	if	(GetCvar( "bd_sbartype") == 5) { GiveInventory("sbartype5", 1); }
 	if	(GetCvar( "bd_sbartype") == 6) { GiveInventory("sbartype6", 1); }
 	if	(GetCvar( "bd_sbartype") == 7) { GiveInventory("sbartype7", 1); }
-	
-	// Detect Player Gender
-		
-		
-	if	(GetPlayerInfo(PlayerNumber(), PLAYERINFO_GENDER) == 0)
-		GiveInventory("GenderMale", 1);		
 
-	if	(GetPlayerInfo(PlayerNumber(), PLAYERINFO_GENDER) == 1)
-		GiveInventory("GenderFemale", 1);	
-		
+	// Detect Player Gender
+
+	if(GetPlayerInfo(PlayerNumber(), PLAYERINFO_GENDER) == 0)
+	{
+		GiveActorInventory(0,"GenderMale", 1);
+	}
+	if(GetPlayerInfo(PlayerNumber(), PLAYERINFO_GENDER) == 1)
+	{
+		GiveActorInventory(0, "GenderFemale", 1);
+		SetActorProperty(0, APROP_VIEWHEIGHT, 45.0);
+		SetActorProperty(0, APROP_HEIGHT, 50.0);
+		SetActorProperty(0, APROP_MASS, 100);
+		SetActorProperty(0, APROP_ATTACKZOFFSET, 19.0);
+		SetActorProperty(0, APROP_JUMPZ, 8.0);
+		SetActorProperty(0, APROP_SPEED, 1.1);
+	}
+	Delay(1);
+
 	//===========================
-	
+
 	//Game compatibilities
 	//GiveInventory("LifeItem", 2); //Stronghold
-	
-	
+
+
 	if (checkinventory("istacticalclass") == 1) { SetActorProperty (0, APROP_Speed, 1.0); }
 	if (checkinventory("isplayingaspurist") == 1) { SetActorProperty (0, APROP_Speed, 1.0); }
 	if (checkinventory("isplayingaspurist") == 1) { TAkeInventory("IsTacticalClass", 1); }
-	
-	if	(GameType () == GAME_NET_COOPERATIVE) 
+
+	if	(GameType () == GAME_NET_COOPERATIVE)
 		{
 		ConsoleCommand("compat_clientssendfullbuttoninfo 1");
 		}
-		
-		
-	if	(GetCvar("bd_disablemapenhancements") == 0) 
-	{ 
+
+
+	if	(GetCvar("bd_disablemapenhancements") == 0)
+	{
 	ReplaceTextures("FLOOR5_3", "METAL52");
 	ReplaceTextures("FLOOR5_2", "METAL52");
 	ReplaceTextures("FLAT5", "METAL53");
@@ -96,39 +113,39 @@ script "BDInitialize" enter
 	ReplaceTextures("TLITE6_6", "LITGEN9C");
 	ReplaceTextures("FLAT2", "FLAT2B");
 	ReplaceTextures("GRNLITE1", "GRNLIT1B");
-	}	
-	
+	}
+
 
 	//Spawn surviving marines
-	
+
 	//Rifle Marines
 	Switch (checkinventory("NumberOfAllies"))
 	{
 		Case 0:
 		break;
-		
+
 		Case 1:
 		Spawn("Marine_Rifle", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 2:
 		Spawn("Marine_Rifle", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Rifle", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 3:
 		Spawn("Marine_Rifle", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Rifle", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Rifle", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 4:
 		Spawn("Marine_Rifle", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Rifle", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Rifle", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Rifle", GetActorX(0)+32, GetActorY(0), GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 5:
 		Spawn("Marine_Rifle", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Rifle", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
@@ -136,7 +153,7 @@ script "BDInitialize" enter
 		Spawn("Marine_Rifle", GetActorX(0)+32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Rifle", GetActorX(0)+32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 6:
 		Spawn("Marine_Rifle", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Rifle", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
@@ -145,7 +162,7 @@ script "BDInitialize" enter
 		Spawn("Marine_Rifle", GetActorX(0)+32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Rifle", GetActorX(0)+32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 7:
 		Spawn("Marine_Rifle", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Rifle", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
@@ -155,7 +172,7 @@ script "BDInitialize" enter
 		Spawn("Marine_Rifle", GetActorX(0)+32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Rifle", GetActorX(0), GetActorY(0)-32, GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 8:
 		Spawn("Marine_Rifle", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Rifle", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
@@ -166,7 +183,7 @@ script "BDInitialize" enter
 		Spawn("Marine_Rifle", GetActorX(0), GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Rifle", GetActorX(0), GetActorY(0)+32, GetActorZ(0), 0, 0);
 		break;
-	
+
 		Default:
 		Spawn("Marine_Rifle", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Rifle", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
@@ -178,35 +195,35 @@ script "BDInitialize" enter
 		Spawn("Marine_Rifle", GetActorX(0), GetActorY(0)+32, GetActorZ(0), 0, 0);
 		break;
 	}
-	
+
 	//Shotgun Marines
 	Switch (checkinventory("NumberOfAlliesShotgun"))
 	{
 		Case 0:
 		break;
-		
+
 		Case 1:
 		Spawn("Marine_Shotgun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 2:
 		Spawn("Marine_Shotgun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Shotgun", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 3:
 		Spawn("Marine_Shotgun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Shotgun", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Shotgun", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 4:
 		Spawn("Marine_Shotgun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Shotgun", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Shotgun", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Shotgun", GetActorX(0)+32, GetActorY(0), GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 5:
 		Spawn("Marine_Shotgun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Shotgun", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
@@ -214,7 +231,7 @@ script "BDInitialize" enter
 		Spawn("Marine_Shotgun", GetActorX(0)+32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Shotgun", GetActorX(0)+32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 6:
 		Spawn("Marine_Shotgun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Shotgun", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
@@ -223,7 +240,7 @@ script "BDInitialize" enter
 		Spawn("Marine_Shotgun", GetActorX(0)+32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Shotgun", GetActorX(0)+32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 7:
 		Spawn("Marine_Shotgun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Shotgun", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
@@ -233,7 +250,7 @@ script "BDInitialize" enter
 		Spawn("Marine_Shotgun", GetActorX(0)+32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Shotgun", GetActorX(0), GetActorY(0)-32, GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 8:
 		Spawn("Marine_Shotgun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Shotgun", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
@@ -244,7 +261,7 @@ script "BDInitialize" enter
 		Spawn("Marine_Shotgun", GetActorX(0), GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Shotgun", GetActorX(0), GetActorY(0)+32, GetActorZ(0), 0, 0);
 		break;
-	
+
 		Default:
 		Spawn("Marine_Shotgun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Shotgun", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
@@ -256,35 +273,35 @@ script "BDInitialize" enter
 		Spawn("Marine_Shotgun", GetActorX(0), GetActorY(0)+32, GetActorZ(0), 0, 0);
 		break;
 	}
-	
+
 	//Minigun Marines
 	Switch (checkinventory("NumberOfAlliesMinigun"))
 	{
 		Case 0:
 		break;
-		
+
 		Case 1:
 		Spawn("Marine_Minigun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 2:
 		Spawn("Marine_Minigun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Minigun", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 3:
 		Spawn("Marine_Minigun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Minigun", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Minigun", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 4:
 		Spawn("Marine_Minigun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Minigun", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Minigun", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Minigun", GetActorX(0)+32, GetActorY(0), GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 5:
 		Spawn("Marine_Minigun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Minigun", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
@@ -292,7 +309,7 @@ script "BDInitialize" enter
 		Spawn("Marine_Minigun", GetActorX(0)+32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Minigun", GetActorX(0)+32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 6:
 		Spawn("Marine_Minigun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Minigun", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
@@ -301,7 +318,7 @@ script "BDInitialize" enter
 		Spawn("Marine_Minigun", GetActorX(0)+32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Minigun", GetActorX(0)+32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 7:
 		Spawn("Marine_Minigun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Minigun", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
@@ -311,7 +328,7 @@ script "BDInitialize" enter
 		Spawn("Marine_Minigun", GetActorX(0)+32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Minigun", GetActorX(0), GetActorY(0)-32, GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 8:
 		Spawn("Marine_Minigun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Minigun", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
@@ -322,7 +339,7 @@ script "BDInitialize" enter
 		Spawn("Marine_Minigun", GetActorX(0), GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Minigun", GetActorX(0), GetActorY(0)+32, GetActorZ(0), 0, 0);
 		break;
-	
+
 		Default:
 		Spawn("Marine_Minigun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Minigun", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
@@ -334,35 +351,35 @@ script "BDInitialize" enter
 		Spawn("Marine_Minigun", GetActorX(0), GetActorY(0)+32, GetActorZ(0), 0, 0);
 		break;
 	}
-	
+
 	//Rocket Marines
 	Switch (checkinventory("NumberOfAlliesRocket"))
 	{
 		Case 0:
 		break;
-		
+
 		Case 1:
 		Spawn("Marine_Rocket", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 2:
 		Spawn("Marine_Rocket", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Rocket", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 3:
 		Spawn("Marine_Rocket", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Rocket", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Rocket", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 4:
 		Spawn("Marine_Rocket", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Rocket", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Rocket", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Rocket", GetActorX(0)+32, GetActorY(0), GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 5:
 		Spawn("Marine_Rocket", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Rocket", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
@@ -370,7 +387,7 @@ script "BDInitialize" enter
 		Spawn("Marine_Rocket", GetActorX(0)+32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Rocket", GetActorX(0)+32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 6:
 		Spawn("Marine_Rocket", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Rocket", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
@@ -379,7 +396,7 @@ script "BDInitialize" enter
 		Spawn("Marine_Rocket", GetActorX(0)+32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Rocket", GetActorX(0)+32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 7:
 		Spawn("Marine_Rocket", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Rocket", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
@@ -389,7 +406,7 @@ script "BDInitialize" enter
 		Spawn("Marine_Rocket", GetActorX(0)+32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Rocket", GetActorX(0), GetActorY(0)-32, GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 8:
 		Spawn("Marine_Rocket", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Rocket", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
@@ -400,7 +417,7 @@ script "BDInitialize" enter
 		Spawn("Marine_Rocket", GetActorX(0), GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Rocket", GetActorX(0), GetActorY(0)+32, GetActorZ(0), 0, 0);
 		break;
-	
+
 		Default:
 		Spawn("Marine_Rocket", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Rocket", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
@@ -412,35 +429,35 @@ script "BDInitialize" enter
 		Spawn("Marine_Rocket", GetActorX(0), GetActorY(0)+32, GetActorZ(0), 0, 0);
 		break;
 	}
-	
+
 	//Plasmagun Marines
 	Switch (checkinventory("NumberOfAlliesPlasmagun"))
 	{
 		Case 0:
 		break;
-		
+
 		Case 1:
 		Spawn("Marine_Plasmagun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 2:
 		Spawn("Marine_Plasmagun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Plasmagun", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 3:
 		Spawn("Marine_Plasmagun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Plasmagun", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Plasmagun", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 4:
 		Spawn("Marine_Plasmagun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Plasmagun", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Plasmagun", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Plasmagun", GetActorX(0)+32, GetActorY(0), GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 5:
 		Spawn("Marine_Plasmagun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Plasmagun", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
@@ -448,7 +465,7 @@ script "BDInitialize" enter
 		Spawn("Marine_Plasmagun", GetActorX(0)+32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Plasmagun", GetActorX(0)+32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 6:
 		Spawn("Marine_Plasmagun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Plasmagun", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
@@ -457,7 +474,7 @@ script "BDInitialize" enter
 		Spawn("Marine_Plasmagun", GetActorX(0)+32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Plasmagun", GetActorX(0)+32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 7:
 		Spawn("Marine_Plasmagun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Plasmagun", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
@@ -467,7 +484,7 @@ script "BDInitialize" enter
 		Spawn("Marine_Plasmagun", GetActorX(0)+32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Plasmagun", GetActorX(0), GetActorY(0)-32, GetActorZ(0), 0, 0);
 		break;
-		
+
 		Case 8:
 		Spawn("Marine_Plasmagun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Plasmagun", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
@@ -478,7 +495,7 @@ script "BDInitialize" enter
 		Spawn("Marine_Plasmagun", GetActorX(0), GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Plasmagun", GetActorX(0), GetActorY(0)+32, GetActorZ(0), 0, 0);
 		break;
-	
+
 		Default:
 		Spawn("Marine_Plasmagun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Plasmagun", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
@@ -490,7 +507,7 @@ script "BDInitialize" enter
 		Spawn("Marine_Plasmagun", GetActorX(0), GetActorY(0)+32, GetActorZ(0), 0, 0);
 		break;
 	}
-	
+
 	TakeInventory("TankGun", 1);
 	TakeInventory("ArtilleryTankGun", 1);
 	TakeInventory("HelicopterGun", 1);
@@ -526,7 +543,7 @@ SCRIPT "BDInitiate" OPEN
 	ReplaceTextures ("SLMFALL1", "CRFAL01");//CRAPFALLS
 	ReplaceTextures ("SLMFALL2", "CRFAL01");//CRAPFALLS
 	ReplaceTextures ("SLMFALL3", "CRFAL01");//CRAPFALLS
-	
+
 	// Replaces similar textures so the flat checking scripts have less stuff
 	ReplaceTextures ("NUKAGE3", "NUKAGE1");
 	ReplaceTextures ("NUKAGE2", "NUKAGE1");
@@ -538,7 +555,7 @@ SCRIPT "BDInitiate" OPEN
 	ReplaceTextures ("SLIME07", "SLIME05");
 	ReplaceTextures ("BLOOD3", "BLOOD1");
 	ReplaceTextures ("BLOOD2", "BLOOD1");
-}	
+}
 
 
 
@@ -606,7 +623,7 @@ Script "CheckIfDM" (VOID)
 {
 	if	(GameType () == GAME_NET_DEATHMATCH) 	GiveInventory("DMGame", 1);
 	Delay(1);
-	if	(GameType () == GAME_NET_DEATHMATCH) 	SetActorState(0,"DM"); 
+	if	(GameType () == GAME_NET_DEATHMATCH) 	SetActorState(0,"DM");
 }
 
 Script "BDCheckStuff" (VOID)
@@ -694,7 +711,7 @@ Script "BD_CheckBloodIntensity" (VOID)
 	{
 		if	(GetCvar("bd_bloodamount") >= 5)
 			{
-			SetActorState(0,"AbsurdBlood"); 
+			SetActorState(0,"AbsurdBlood");
 			GiveInventory("AnimuGore", 1);
 			}
 	}
@@ -703,7 +720,7 @@ Script "BD_CheckBloodIntensity" (VOID)
 	{
 	if	(GetCvar("zdoombrutalblood") >= 5)
 		{
-		SetActorState(0,"AbsurdBlood"); 
+		SetActorState(0,"AbsurdBlood");
 		GiveInventory("AnimuGore", 1);
 		}
 	}
@@ -715,7 +732,7 @@ Script "BD_CheckBloodExtra1" (VOID)
 {
 		if	(GetCvar("bd_morebloodmist") >= 1)
 			{
-			SetActorState(0,"AbsurdBlood"); 
+			SetActorState(0,"AbsurdBlood");
 			}
 }
 
@@ -734,13 +751,13 @@ script "BD_CheckIfOverLiquid" (void) //Water Small Splash
 	if (CheckActorFloorTexture(0, "FWATER2"))    GiveInventory("IsOverWater", 1);
 	if (CheckActorFloorTexture(0, "FWATER3"))    GiveInventory("IsOverWater", 1);
 	if (CheckActorFloorTexture(0, "FWATER4"))    GiveInventory("IsOverWater", 1);
-	
+
   if (CheckActorFloorTexture(0, "NUKAGE1"))    GiveInventory("IsOverNukage", 1);
   if (CheckActorFloorTexture(0, "NUKAGE2"))    GiveInventory("IsOverNukage", 1);
   if (CheckActorFloorTexture(0, "NUKAGE3"))    GiveInventory("IsOverNukage", 1);
   if (CheckActorFloorTexture(0, "NUKAGE4"))    GiveInventory("IsOverNukage", 1);
-	
-  	
+
+
   if (CheckActorFloorTexture(0, "SLIME01"))    GiveInventory("IsOverSlime", 1);
   if (CheckActorFloorTexture(0, "SLIME02"))    GiveInventory("IsOverSlime", 1);
   if (CheckActorFloorTexture(0, "SLIME03"))    GiveInventory("IsOverSlime", 1);
@@ -749,17 +766,17 @@ script "BD_CheckIfOverLiquid" (void) //Water Small Splash
   if (CheckActorFloorTexture(0, "SLIME06"))    GiveInventory("IsOverSlime", 1);
   if (CheckActorFloorTexture(0, "SLIME07"))    GiveInventory("IsOverSlime", 1);
   if (CheckActorFloorTexture(0, "SLIME08"))    GiveInventory("IsOverSlime", 1);
-  
+
   if (CheckActorFloorTexture(0, "SLIME09"))    GiveInventory("IsOverLava", 1);
   if (CheckActorFloorTexture(0, "SLIME10"))    GiveInventory("IsOverLava", 1);
   if (CheckActorFloorTexture(0, "SLIME11"))    GiveInventory("IsOverLava", 1);
   if (CheckActorFloorTexture(0, "SLIME12"))    GiveInventory("IsOverLava", 1);
-  
+
   if (CheckActorFloorTexture(0, "LAVA1"))    GiveInventory("IsOverLava", 1);
   if (CheckActorFloorTexture(0, "LAVA2"))    GiveInventory("IsOverLava", 1);
   if (CheckActorFloorTexture(0, "LAVA3"))    GiveInventory("IsOverLava", 1);
   if (CheckActorFloorTexture(0, "LAVA4"))    GiveInventory("IsOverLava", 1);
-	
+
   if (CheckActorFloorTexture(0, "BLOOD1"))    GiveInventory("IsOverBlood", 1);
   if (CheckActorFloorTexture(0, "BLOOD2"))    GiveInventory("IsOverBlood", 1);
   if (CheckActorFloorTexture(0, "BLOOD3"))    GiveInventory("IsOverBlood", 1);
