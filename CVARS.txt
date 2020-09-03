@@ -25,17 +25,17 @@ script "BDRespawn" Respawn NET
 
 	if(GetPlayerInfo(PlayerNumber(), PLAYERINFO_GENDER) == 0)
 	{
-		GiveActorInventory(0,"GenderMale", 1);
+		GiveInventory("GenderMale", 1);
 	}
 	if(GetPlayerInfo(PlayerNumber(), PLAYERINFO_GENDER) == 1)
 	{
-		GiveActorInventory(0, "GenderFemale", 1);
-		SetActorProperty(0, APROP_VIEWHEIGHT, 45.0);
-		SetActorProperty(0, APROP_HEIGHT, 50.0);
-		SetActorProperty(0, APROP_MASS, 100);
-		SetActorProperty(0, APROP_ATTACKZOFFSET, 19.0);
-		SetActorProperty(0, APROP_JUMPZ, 8.0);
-		SetActorProperty(0, APROP_SPEED, 1.1);
+		GiveInventory("GenderFemale", 1);
+		SetActorProperty(PlayerNumber(), APROP_VIEWHEIGHT, 45.0);
+		SetActorProperty(PlayerNumber(), APROP_HEIGHT, 50.0);
+		SetActorProperty(PlayerNumber(), APROP_MASS, 100);
+		SetActorProperty(PlayerNumber(), APROP_ATTACKZOFFSET, 19.0);
+		SetActorProperty(PlayerNumber(), APROP_JUMPZ, 8.0);
+		SetActorProperty(PlayerNumber(), APROP_SPEED, 1.1);
 	}
 	Delay(1);
 	//===========================
@@ -71,19 +71,18 @@ script "BDInitialize" enter
 
 	if(GetPlayerInfo(PlayerNumber(), PLAYERINFO_GENDER) == 0)
 	{
-		GiveActorInventory(0,"GenderMale", 1);
+		GiveInventory("GenderMale", 1);
 	}
 	if(GetPlayerInfo(PlayerNumber(), PLAYERINFO_GENDER) == 1)
 	{
-		GiveActorInventory(0, "GenderFemale", 1);
-		SetActorProperty(0, APROP_VIEWHEIGHT, 45.0);
-		SetActorProperty(0, APROP_HEIGHT, 50.0);
-		SetActorProperty(0, APROP_MASS, 100);
-		SetActorProperty(0, APROP_ATTACKZOFFSET, 19.0);
-		SetActorProperty(0, APROP_JUMPZ, 8.0);
-		SetActorProperty(0, APROP_SPEED, 1.1);
+		GiveInventory("GenderFemale", 1);
+		SetActorProperty(PlayerNumber(), APROP_VIEWHEIGHT, 45.0);
+		SetActorProperty(PlayerNumber(), APROP_HEIGHT, 50.0);
+		SetActorProperty(PlayerNumber(), APROP_MASS, 100);
+		SetActorProperty(PlayerNumber(), APROP_ATTACKZOFFSET, 19.0);
+		SetActorProperty(PlayerNumber(), APROP_JUMPZ, 8.0);
+		SetActorProperty(PlayerNumber(), APROP_SPEED, 1.1);
 	}
-	Delay(1);
 
 	//===========================
 
