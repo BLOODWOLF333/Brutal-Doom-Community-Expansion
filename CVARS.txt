@@ -91,8 +91,8 @@ script "BDInitialize" enter
 	//GiveInventory("LifeItem", 2); //Stronghold
 
 
-	if (checkinventory("istacticalclass") == 1) { SetActorProperty (0, APROP_Speed, 1.0); }
-	if (checkinventory("isplayingaspurist") == 1) { SetActorProperty (0, APROP_Speed, 1.0); }
+	//if (checkinventory("istacticalclass") == 1) { SetActorProperty (0, APROP_Speed, 1.0); }
+	//if (checkinventory("isplayingaspurist") == 1) { SetActorProperty (0, APROP_Speed, 1.0); }
 	if (checkinventory("isplayingaspurist") == 1) { TAkeInventory("IsTacticalClass", 1); }
 
 	if	(GameType () == GAME_NET_COOPERATIVE)
