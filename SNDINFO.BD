@@ -232,7 +232,7 @@ GRLLO1 GRLLO1
 GRLLO2 GRLLO2
 
 
-$rolloff weapons/firegrenade 3000 100 
+$rolloff weapons/firegrenade 200 1200
 
 $limit world/watersplash 4
 $limit world/sludgegloop 2
@@ -240,11 +240,11 @@ $limit world/drip 2
 $limit world/hotsiz 2
 $limit world/lavasizzle 2
 
-$volume ricochet/hit 0.7 
-$volume world/watersplash 0.3 
-$volume weapons/casing2 0.7 
+$volume ricochet/hit 0.7
+$volume world/watersplash 0.3
+$volume weapons/casing2 0.7
 
-$rolloff world/watersplash 300 300 
+$rolloff world/watersplash 200 600
 
 
 
@@ -254,12 +254,12 @@ $volume weapons/sshotl  1.5
 
 weapons/plasmarifle PLASMA
 $limit weapons/plasmarifle 0
-$volume weapons/plasmarifle 0.9 
+$volume weapons/plasmarifle 0.9
 
 
 Rocket/Launch DSRLAUN
 RKTSML RKTSML
-$rolloff world/RKTSML 1200 2000 
+$rolloff world/RKTSML 1200 2000
 
 SSHFIRE SSHFIRE
 weapons/ssg/open	SSGOPEN
@@ -319,12 +319,12 @@ $limit world/blank2 1
 $limit ricochet/hit 1
 $limit world/ricochet 1
 
-$rolloff world/ricochet1 200 700  
+$rolloff world/ricochet1 200 700
 $rolloff world/ricochet2 200 700
-$rolloff world/ricochet3 200 700 
-$rolloff world/ricochet4 200 700 
-$rolloff world/ricochet5 200 700 
-$rolloff world/ricochet6 200 700 
+$rolloff world/ricochet3 200 700
+$rolloff world/ricochet4 200 700
+$rolloff world/ricochet5 200 700
+$rolloff world/ricochet6 200 700
 $rolloff world/ricochet7 200 700
 $rolloff world/ricochet 200 700
 
@@ -336,8 +336,8 @@ BIGEXPL2 BIGEXPL2
 //First sound. Very sharp, like exploding next to you.
 
 $random Explosion {Explode1 Explode2}
-Explode1 Explode1 
-Explode2 Explode2 
+Explode1 Explode1
+Explode2 Explode2
 $limit Explosion 4
 $rolloff  Explosion 900 1400
 
@@ -521,13 +521,13 @@ fstatk3 fstatk3
 
 
 
-$random weapons/casing  { weapons/casing2 weapons/casing3 } 
+$random weapons/casing  { weapons/casing2 weapons/casing3 }
 $limit weapons/casing  5
 weapons/casing2	dscasin1
 weapons/casing2	dscasin2
 weapons/casing3	dscasin3
 
-$random 40mmCasing  { 40CAS1 40CAS2 40CAS3 } 
+$random 40mmCasing  { 40CAS1 40CAS2 40CAS3 }
 40CAS1 40CAS1
 40CAS2 40CAS2
 40CAS3 40CAS3
@@ -628,6 +628,9 @@ Weapons/GrenadeClose	DSGRCLOS
 DSCANFIR DSCANFIR
 $rolloff DSCANFIR 600 2400
 
+$alias DSJUGFIR DSRFIRE
+$rolloff DSJUGFIR 600 2400
+
 //Mags
 
 $random weapons/smallmagdrop  { weapons/smallmagdrop1 weapons/smallmagdrop2 weapons/smallmagdrop3 weapons/smallmagdrop4 }
@@ -648,7 +651,7 @@ $volume weapons/smallmagdrop 0.5
 $volume weapons/largemagdrop 0.5
 
 //Impse
-$random imp/melee { imp/melee1 imp/melee2 imp/melee3 } 
+$random imp/melee { imp/melee1 imp/melee2 imp/melee3 }
 imp/melee1	IMPCLAW1
 imp/melee2	IMPCLAW2
 imp/melee3	IMPCLAW3
@@ -727,7 +730,7 @@ zombiemarine/death5	zspdth5
 zombiemarine/death6	zspdth6
 zombiemarine/death7	zspdth7
 
-$random zombiemarine/pain 
+$random zombiemarine/pain
 { zombiemarine/pain1
 zombiemarine/pain2
 zombiemarine/pain3
@@ -783,7 +786,7 @@ BTKPAIN3 BTKPAIN3
 
 $rolloff  juggernaut/see 900 1100
 $rolloff  juggernaut/engine 900 1100
-$rolloff  juggernaut/death 900 2800
+$rolloff  juggernaut/death 900 1100
 $rolloff  juggernaut/pain 900 1100
 $rolloff  juggernaut/roam 900 1100
 
@@ -806,14 +809,14 @@ CYBPAIN CYBPAIN
 PSXDPN PSXDPN
 
 CYBTAT CYBTAT
-$rolloff CYBTAT 50 8000
+$rolloff CYBTAT 500 8000
 
 
 
 
 
 //Marine Voices
-$random MRNAT { MRNAT1 MRNAT2 MRNAT3 MRNAT4 MRNAT5 MRNAT6 NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING 
+$random MRNAT { MRNAT1 MRNAT2 MRNAT3 MRNAT4 MRNAT5 MRNAT6 NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING
 NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING
 NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING }
 MRNAT1 MRNAT1
@@ -1079,14 +1082,14 @@ LQDRIP12 LQDRIP12
 LQDRIP13 LQDRIP13
 LQDRIP14 LQDRIP14
 
-$random blooddrop  { LQDRIP1 LQDRIP2 LQDRIP3 } 
+$random blooddrop  { LQDRIP1 LQDRIP2 LQDRIP3 }
 $rolloff blooddrop 200 1000
 $random blooddrop2  { LQDRIP4 LQDRIP5 LQDRIP6 LQDRIP7 }
 $rolloff blooddrop2 200 1000
-$random blooddrop3  { LQDRIP8 LQDRIP9 LQDRIP10 LQDRIP11 LQDRIP12 LQDRIP13 LQDRIP14 LQDRIP14 } 
+$random blooddrop3  { LQDRIP8 LQDRIP9 LQDRIP10 LQDRIP11 LQDRIP12 LQDRIP13 LQDRIP14 LQDRIP14 }
 $rolloff blooddrop3 200 1000
 
-$random REVIDLE  { REVIDLE1 REVIDLE2 REVIDLE3 REVIDLE4 REVIDLE5 REVIDLE6 REVIDLE7 } 
+$random REVIDLE  { REVIDLE1 REVIDLE2 REVIDLE3 REVIDLE4 REVIDLE5 REVIDLE6 REVIDLE7 }
 REVIDLE1 REVIDLE1
 REVIDLE2 REVIDLE2
 REVIDLE3 REVIDLE3
@@ -1095,13 +1098,13 @@ REVIDLE5 REVIDLE5
 REVIDLE6 REVIDLE6
 REVIDLE7 REVIDLE7
 
-$random REVOUCH { REVIDLE1 REVIDLE2 REVIDLE3 REVIDLE4 REVIDLE5 REVIDLE6 REVIDLE7 } 
+$random REVOUCH { REVIDLE1 REVIDLE2 REVIDLE3 REVIDLE4 REVIDLE5 REVIDLE6 REVIDLE7 }
 REVOUCH1 REVOUCH1
 REVOUCH2 REVOUCH2
 REVOUCH3 REVOUCH3
 
 
-$random PINKIDL { PINKIDL1 PINKIDL2 PINKIDL3 PINKIDL4 } 
+$random PINKIDL { PINKIDL1 PINKIDL2 PINKIDL3 PINKIDL4 }
 PINKIDL1 PINKIDL1
 PINKIDL2 PINKIDL2
 PINKIDL3 PINKIDL3
