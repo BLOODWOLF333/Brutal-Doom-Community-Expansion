@@ -1249,3 +1249,40 @@ TNT1 A 0 A_Explode(3,4)
 Stop
  }
 }
+
+ACTOR DyingRevenant
+{
+	Game Doom
+	Radius 16
+	Height 60
+	Health 40
+	Mass 999999
+	-SOLID
+	+SHOOTABLE
+	Scale 1.0
+	damagefactor "Blood", 0.0    damagefactor "GreenBlood", 0.0    damagefactor "BlueBlood", 0.0    damagefactor "Taunt", 0.0    damagefactor "KillMe", 0.0  damagefactor "Avoid", 0.0  damagefactor "Taunt", 0.0
+	States
+	{
+	Spawn:
+		FRVX A 1
+		Goto Suffer
+
+	Suffer:
+        FRVX AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 4 A_SpawnItem ("MuchBlood", 0, 40)
+		Goto Death
+
+	Death:
+	    FRVX B 8
+		FRVX C -1
+		Stop
+
+	XDeath:
+	Death.Minigun: Death.Cut: Death: Death.Saw: Death.Shotgun: Death.SSG: Death.Blast:
+  	    TNT1 A 0 A_NoBlocking
+		TNT1 AAAA 0 A_CustomMissile ("RevenantBones", 5, 0, random (0, 360), 2, random (30, 150))
+		TNT1 AAA 0 A_CustomMissile ("RevenantPiece", 5, 0, random (0, 360), 2, random (30, 150))
+		TNT1 A 0 A_CustomMissile ("RevenantTorso5", 5, 0, random (0, 360), 2, random (30, 150))
+		TNT1 A 0 A_SpawnItem("HellishMissileLauncher")
+		Stop
+	}
+}
