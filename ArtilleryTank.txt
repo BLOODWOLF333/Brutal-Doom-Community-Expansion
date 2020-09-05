@@ -57,12 +57,12 @@ ACTOR ArtilleryTank: Tank 7264
 		TNT1 A 0 ACS_NamedExecuteAlways("BDSetNewTankDirection", 0, 0, 0, 0)//Check vehicle initial angle.
 		TNT1 A 0 A_SpawnItem("ArtilleryTankTurretNotReal8")
 		TNT1 A 1 A_ChangeFlag("FRIENDLY", 0)
-		TNT1 A 5 
+		TNT1 A 5
 		TNT1 A 0 Thing_ChangeTID(0, 0)
 		TNK1 C 0 A_ChangeFlag("THRUACTORS", 0)
 		TNT1 A 0 A_ChangeFlag("FRIENDLY", 1)
 		Goto StandingHere
-		
+
 	  StandingHere:
 		TNT1 A 0
 		TNT1 A 0 ACS_NamedExecuteAlways("BDSetBaseAngle", 0, 0, 0, 0)//SpawnVehicleBase
@@ -70,16 +70,16 @@ ACTOR ArtilleryTank: Tank 7264
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItem("StationedVehicleCheckRepairs")
 		Loop
-		
+
 	Active:
-		TNT1 A 0 
+		TNT1 A 0
 		TNT1 A 0 A_ChangeFLag("NOPAIN", 1)
 		TNT1 A 0 A_TakeFromTarget("PowerInvulnerable", 1)
 		TNT1 A 0 A_GiveToTarget("CeaseMorph", 1)
 		TNK1 C 0 A_ChangeFlag("FRIENDLY", 0)
 		//TNT1 A 0 A_Look
 		TNT1 A 0 Thing_ChangeTID(0, 261)
-		TNT1 A 0 ACS_NamedExecuteAlways("GetVehiclePreviousHealth", 0, 0, 0, 0)//Check Vehicle Health	
+		TNT1 A 0 ACS_NamedExecuteAlways("GetVehiclePreviousHealth", 0, 0, 0, 0)//Check Vehicle Health
 		//TNT1 A 0 A_Chase("","",CHF_DONTMOVE )
 		TNT1 A 0 A_GiveToTarget("CheckingMorphingPlayerHealth", 1)
 		TNT1 A 0 A_SpawnItem("ArtilleryTankTurretNotReal8")
@@ -95,7 +95,7 @@ ACTOR ArtilleryTank: Tank 7264
 		TNT1 A 0 Thing_ChangeTID(0, 0)
 		TNT1 A 1
 		Stop
-	Death:	
+	Death:
 	TNT1 A 1
 	TNT1 A 0 A_SpawnItem("BigExplosion1112")
 	TNT1 A 0 A_PlaySound("weapons/explode")
@@ -109,8 +109,8 @@ ACTOR ArtilleryTank: Tank 7264
 	ELEC A 0 A_Explode(100, 250)
 	TNT1 A 15
 	TNT1 A 0
-	Stop	
-	
+	Stop
+
 	Pain.Repair:
 		TNT1 A 0
 		TNT1 A 0 A_ChangeFLag("NOPAIN", 1)
@@ -140,13 +140,13 @@ ACTOR ArtilleryTankUsed: ArtilleryTank
 		TNT1 A 0 ACS_NamedExecuteAlways("BDSetBaseAngle", 0, 0, 0, 0)//SpawnVehicleBase
 		TNT1 A 0 Thing_ChangeTID(0, 261)
 		TNT1 A 1 A_ChangeFlag("FRIENDLY", 0)
-		TNT1 A 5 
+		TNT1 A 5
 		TNT1 A 0 Thing_ChangeTID(0, 0)
 		TNK1 C 0 A_ChangeFlag("THRUACTORS", 0)
 		TNT1 A 0 A_ChangeFlag("FRIENDLY", 1)
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCHeckOnline")
 		Goto StandingHere
-	
+
 	IsOnline:
 		TNT1 A 0
 		TNT1 A 1
@@ -154,7 +154,7 @@ ACTOR ArtilleryTankUsed: ArtilleryTank
 		Goto StandingHere
 
 Active:
-		TNT1 A 0 
+		TNT1 A 0
 		TNT1 A 0 A_ChangeFLag("NOPAIN", 1)
 		TNT1 A 0 A_TakeFromTarget("PowerInvulnerable", 1)
 		TNT1 A 0 A_GiveToTarget("CeaseMorph", 1)
@@ -177,7 +177,7 @@ Active:
 
 ACTOR PowerArtilleryTankSwitch : PowerMorph {PowerMorph.PlayerClass "PlayerArtilleryTank"}
 
-ACTOR ArtilleryTankMorpher : CustomInventory 
+ACTOR ArtilleryTankMorpher : CustomInventory
 {
   States
   {
@@ -208,7 +208,7 @@ ACTOR ArtilleryTankMorphActivation : PowerupGiver
   Spawn:
   TNT1 A 100
   Stop
-  
+
   PickUp:
   TNT1 A 1
   TNT1 A 1
@@ -251,21 +251,21 @@ ExitVehicle:
 	TNT1 A 0 A_ChangeFlag(NOPAIN, 1)
 	TNT1 A 0 A_JumpIfHealthLower(2, "EmergencyExit")
 	TNT1 A 0 A_TakeInventory("PressedUse", 1)
-	
+
 	TNT1 A 0 A_SpawnItemEx ("TransferPlayerOutOfVehicle", 0, 0, 92)
-	
+
 	TN2M T 1
 	TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving1" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
 	TN2M T 1
 	TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving1" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
 	TN2M T 1
 	TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving1" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
-	
+
 	TNT1 A 0 A_JumpIfInventory("CanLeaveVehicle", 1, "CanExit")
 	TNT1 A 0 A_ChangeFlag(NOPAIN, 0)
 	TNT1 A 0 A_Print("Can't leave from this direction", 1)
 	Goto Stay
-	
+
 	CanExit:
 	TNT1 A 0
 	TNT1 A 2 A_TakeInventory("IsInATank", 1)
@@ -281,14 +281,14 @@ ExitVehicle:
 	TNT1 AAA 10 A_TakeInventory("PressedUse", 1)
 	TNT1 A 0 A_TakeInventory("PressedUse", 1)
 	Goto Stay
-	
+
 	EmergencyExit:
 	TNT1 A 0
-	
+
 	TNT1 A 2 A_TakeInventory("IsInATank", 1)
 	TNT1 A 0 A_TakeInventory("PressedUse", 1)
 	TNT1 A 0 A_TakeInventory("CanLeaveVehicle", 1)
-	
+
 	TNT1 A 0 ThrustThingZ(0,120,0,1)
 	TNT1 A 0 A_SpawnItem("TankExplode")
 	PLA1 J 2
@@ -312,20 +312,20 @@ TurnLeft:
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving1" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_JumpIf(user_tankbasedirection > 359, "TurnLeft2")
 		TNT1 A 0 A_SetUserVar("user_tankbasedirection", user_tankbasedirection+4)
-		
+
 		TN2M T 2
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving2" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_JumpIf(user_tankbasedirection > 359, "TurnLeft2")
 		TNT1 A 0 A_SetUserVar("user_tankbasedirection", user_tankbasedirection+4)
 		TNT1 A 0 A_TakeInventory("TurnRight", 1)
 		TNT1 A 0 A_TakeInventory("TurnLeft", 1)
-		
+
 		TN2M T 2
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving3" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_JumpIf(user_tankbasedirection > 359, "TurnLeft2")
 		TNT1 A 0 A_SetUserVar("user_tankbasedirection", user_tankbasedirection+4)
 		Goto CheckIfStillMoves
-	
+
 	TurnLeft2:
 		TNT1 A 0 A_SetUserVar("user_tankbasedirection", 0)
 		TNT1 A 0 A_JumpIfInventory("Accelerate", 1, "TurnLeftAccel")
@@ -343,24 +343,24 @@ TurnLeftAccel:
 		TN2M T 2
 		TNT1 A 0 ThrustThing(user_tankbasedirection*256/360, 3)
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving3" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
-		
+
 		TNT1 A 0 A_PlaySound("TANK1", 5, 1, 1)
 		TNT1 A 0 A_SpawnItemEx ("TnkTreadsDamage" , 100, 0, 0, 0, 0, 0, user_tankbasedirection, SXF_ABSOLUTEANGLE | SXF_ABSOLUTEVELOCITY)
-		
+
 		TNT1 A 0 A_SpawnItemEx("TnkStep", 0, 0, 8, 0, 0, 0, user_tankbasedirection, SXF_ABSOLUTEANGLE)
 		TN2M T 2
 		TNT1 A 0 ThrustThing(user_tankbasedirection*256/360, 3)
 		TNT1 A 0 A_SetUserVar("user_tankbasedirection", user_tankbasedirection+3)
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving2" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
-		
+
 		TN2M T 2
 		TNT1 A 0 ThrustThing(user_tankbasedirection*256/360, 3)
 		TNT1 A 0 A_SetUserVar("user_tankbasedirection", user_tankbasedirection+3)
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving2" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
-		
+
 		TNT1 A 0 A_JumpIF(velz < 0, "Falling")
-		Goto CheckIfStillMoves	
-		
+		Goto CheckIfStillMoves
+
 	TurnRight:
 		TNT1 A 0
 		TN2M T 2
@@ -373,20 +373,20 @@ TurnLeftAccel:
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving1" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_JumpIf(user_tankbasedirection == 0, "TurnRIght2")
 		TNT1 A 0 A_SetUserVar("user_tankbasedirection", user_tankbasedirection-4)
-		
+
 		TN2M T 2
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving2" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_JumpIf(user_tankbasedirection == 0, "TurnRIght2")
 		TNT1 A 0 A_SetUserVar("user_tankbasedirection", user_tankbasedirection-4)
 		TNT1 A 0 A_TakeInventory("TurnLeft", 1)
 		TNT1 A 0 A_TakeInventory("TurnRight", 1)
-		
+
 		TN2M T 2
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving3" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_JumpIf(user_tankbasedirection == 0, "TurnRIght2")
 		TNT1 A 0 A_SetUserVar("user_tankbasedirection", user_tankbasedirection-4)
 		Goto CheckIfStillMoves
-	
+
 	TurnRight2:
 		TNT1 A 0 A_SetUserVar("user_tankbasedirection", 360)
 		TNT1 A 0 A_JumpIfInventory("Accelerate", 1, "TurnRightAccel")
@@ -399,29 +399,29 @@ TurnRightAccel:
 		TNT1 A 0 A_TakeInventory("Accelerate", 1)
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving1" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_JumpIf(user_tankbasedirection == 0, "TurnRIght2")
-		
+
 		TNT1 A 0 A_SetUserVar("user_tankbasedirection", user_tankbasedirection-3)
-		
+
 		TNT1 A 0 A_PlaySound("TANK1", 5, 1, 1)
 		TNT1 A 0 A_SpawnItemEx ("TnkTreadsDamage" , 100, 0, 0, 0, 0, 0, user_tankbasedirection, SXF_ABSOLUTEANGLE | SXF_ABSOLUTEVELOCITY)
-		
+
 		TNT1 A 0 A_SpawnItemEx("TnkStep", 0, 0, 8, 0, 0, 0, user_tankbasedirection, SXF_ABSOLUTEANGLE)
 		TN2M T 2
 		TNT1 A 0 ThrustThing(user_tankbasedirection*256/360, 3)
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving3" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
-		
+
 		TNT1 A 0 A_SetUserVar("user_tankbasedirection", user_tankbasedirection-3)
 		TN2M T 2
 		TNT1 A 0 ThrustThing(user_tankbasedirection*256/360, 3)
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving2" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
-		
+
 		TNT1 A 0 A_SetUserVar("user_tankbasedirection", user_tankbasedirection-3)
 		TN2M T 2
 		TNT1 A 0 ThrustThing(user_tankbasedirection*256/360, 3)
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving1" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_JumpIF(velz < 0, "Falling")
 		Goto CheckIfStillMoves
-	
+
 	CheckIfStillMoves:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "ExitVehicle")
@@ -432,7 +432,7 @@ TurnRightAccel:
 		TNT1 A 0 A_StopSound(2)
 		TNT1 A 0 A_PlaySound("TANK2", 5, 1, 1)
 		TNT1 A 0 A_PlaySound("TANK3", 2)
-		
+
 	Stay:
 	    TNT1 A 0
 		TNT1 A 0 A_PlaySound("TANK2", 5, 1, 1)
@@ -442,22 +442,22 @@ TurnRightAccel:
 		TNT1 A 0 A_JumpIfInventory("Accelerate", 1, "Accelerate")
 		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, "TurnLeft")
 		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, "TurnRight")
-		TN2M T 1 
+		TN2M T 1
 		TNT1 A 0 A_JumpIF(velz < 0, "Falling")
 		Goto Stay
 
 Pain.TracksDamaged:
 	    TNT1 A 0
-		TNT1 A 0 
-		
+		TNT1 A 0
+
 		TNT1 A 0 A_Jump(32, "DestroyTracks")
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving1" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "ExitVehicle")
 		TNT1 A 0 A_JumpIfInventory("BackPedal", 1, "BackPedal")
 		TNT1 A 0 A_JumpIfInventory("Accelerate", 1, "Accelerate")
-		TN2M T 1 
+		TN2M T 1
 		Goto Stay
-	
+
 	Pain.Repair:
 		TNT1 A 0
 		TN2E T 1 A_PlaySound("vehicle/pain")
@@ -468,9 +468,9 @@ Pain.TracksDamaged:
 		TNT1 A 0 A_GiveInventory("HelicopterRocketAmmo", 2)
 		TN2E T 1
 		Goto Stay
-	
+
 	Accelerate:
-		
+
 		TNT1 A 0 A_PlaySound("TANK1", 5, 1, 1)
 		TNT1 A 0 A_TakeInventory("TurnLeft", 1)
 		TNT1 A 0 A_TakeInventory("TurnRight", 1)
@@ -478,31 +478,31 @@ Pain.TracksDamaged:
 		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, "TurnLeftAccel")
 		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, "TurnRightAccel")
 		TNT1 A 0 A_SpawnItemEx ("TnkTreadsDamage" , 100, 0, 0, 0, 0, 0, user_tankbasedirection, SXF_ABSOLUTEANGLE | SXF_ABSOLUTEVELOCITY)
-		
+
 		TN2M T 2
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "Stay")
 		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "ExitVehicle")
 		TNT1 A 0 ThrustThing(user_tankbasedirection*256/360, 4, 1)
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving3" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
-		
+
 		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, "TurnLeftAccel")
 		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, "TurnRightAccel")
-		
+
 		TNT1 A 0 A_SpawnItemEx("TnkStep", 0, 0, 8, 0, 0, 0, user_tankbasedirection, SXF_ABSOLUTEANGLE)
 		TN2M T 2
 		TNT1 A 0 ThrustThing(user_tankbasedirection*256/360, 4, 1)
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving2" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
-		
+
 		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, "TurnLeftAccel")
 		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, "TurnRightAccel")
-		
+
 		TN2M T 2
 		TNT1 A 0 ThrustThing(user_tankbasedirection*256/360, 4, 1)
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving1" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
-		
+
 		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, "TurnLeftAccel")
 		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, "TurnRightAccel")
-		
+
 		TNT1 A 0 A_JumpIF(velz < 0, "Falling")
 		Goto CheckIfStillMoves
 
@@ -513,50 +513,50 @@ Backpedal:
 		TNT1 A 0 A_TakeInventory("TurnLeft", 1)
 		TNT1 A 0 A_TakeInventory("TurnRight", 1)
 		TNT1 A 0 A_TakeInventory("Accelerate", 1)
-		
+
 		TN2M T 2
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "Stay")
 		TNT1 A 0 ThrustThing(user_tankbasedirection*256/360+128, 4, 1)
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving3" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
-		
+
 		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, "TurnLeft")
 		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, "TurnRight")
-		
+
 		TN2M T 2
 		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "ExitVehicle")
 		TNT1 A 0 ThrustThing(user_tankbasedirection*256/360+128, 4, 1)
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving2" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
-		
+
 		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, "TurnLeft")
 		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, "TurnRight")
-		
+
 		TN2M T 2
 		TNT1 A 0 ThrustThing(user_tankbasedirection*256/360+128, 4, 1)
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving1" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
-		
+
 		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, "TurnLeft")
 		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, "TurnRight")
-		
+
 		TNT1 A 0 A_JumpIF(velz < 0, "Falling")
 		Goto CheckIfStillMoves
-		
+
 	Falling:
 		TNT1 A 0
 		TNT1 A 0 A_CheckFloor("CheckIfStillMoves")
-	
+
 	FallingForReal:
 		TNT1 A 0
-		TN2M T 1 
+		TN2M T 1
 		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "ExitVehicle")
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving1" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_JumpIF(velz == 0, "CrashIntoGround")
 		TNT1 A 0 A_GiveInventory("VehicleFallingCount", 1)
 		Loop
-		
+
 	CrashIntoGround:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfinventory("VehicleFallingCount", 6, "CrashIntoGroundViolently")
-		TN2M T 1 
+		TN2M T 1
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving1" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_SpawnItem("CrashTankIntotheGround1")
 		TNT1 A 0 A_SpawnItem("CrashTankIntotheGround2")
@@ -565,31 +565,31 @@ Backpedal:
 		TNT1 A 0 A_PlaySound("EBIKEBNC", 2)
 		TNT1 A 0 A_TakeInventory("VehicleFallingCount", 100)
 		Goto Stay
-		
+
 	CrashIntoGroundViolently:
 		TNT1 A 0
-		TN2M T 1 
+		TN2M T 1
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving1" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_SpawnItem("CrashTankIntotheGround1")
 		TNT1 A 0 A_SpawnItem("CrashTankIntotheGround2")
-		
+
 		TNT1 A 0 A_SpawnItemEx ("ExplosionSplashSpawner", 0, 0, -10)
-		
+
 		TNT1 A 0 Radius_Quake(8, 24, 0, 4, 0)
 		TNT1 A 0 A_PlaySound("BIKECLW", 1)
 		TNT1 A 0 A_PlaySound("EBIKECLS", 2)
 		TNT1 AAAA 0 A_CustomMissile ("PlasmaSmoke", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 A 0 A_TakeInventory("VehicleFallingCount", 100)
 		TNT1 A 0 A_SetPitch(-8.0 + pitch)
-		TN2M T 1 
+		TN2M T 1
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving1" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_SetPitch(4.0 + pitch)
 		TN2M T 1
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving1" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_SetPitch(4.0 + pitch)
-		Goto Stay	
+		Goto Stay
 
-Death:	
+Death:
 	XDeath:
     TNT1 A 1
 	TNT1 A 0 A_SpawnItem("BigExplosion1112")
@@ -636,11 +636,11 @@ ACTOR ArtilleryTankGun : DoomWeapon
 	+WEAPON.CHEATNOTWEAPON
 	+WEAPON.NO_AUTO_SWITCH
 	Inventory.Pickupmessage "$PICKUP_PISTOL_DROPPED"
-	Tag "$TAG_PISTOL"
+	Tag "Artillery Tank"
 	States
 	{
 	Ready:
-		TNT1 A 0 
+		TNT1 A 0
 		TNT1 A 0 A_PlaySound("TNKENGS", 4)
 		TNHD W 10
 		TNT1 A 0 A_PlaySound("INFRARED", 1)
@@ -651,127 +651,127 @@ ACTOR ArtilleryTankGun : DoomWeapon
 		TNHD X 1 A_Gunflash
 		TNT1 A 0 A_SetCrosshair(34)
 		Goto ReadyToFire
-		
+
 	ReadyToFire:
-	    TNT1 A 0 
+	    TNT1 A 0
 		TNT1 A 0 A_JumpIfinventory("TankZoom", 1, "ReadyToFire2")
 		TNT1 A 0 A_JumpIfInventory("SwitchFlashlight",1,"SwitchFlashlight")
 		TNLH G 1 A_WeaponReady(1)
 		TNT1 A 0 A_JumpIfInventory("Kicking", 1, "ZoomMode")
 		Loop
-		
+
 	ReadyToFire2:
-		TNT1 A 0 
+		TNT1 A 0
 		TNT1 A 1 A_WeaponReady(1)
 		TNT1 A 0 A_JumpIfInventory("SwitchFlashlight",1,"SwitchFlashlight")
 		TNT1 A 0 A_JumpIfInventory("Kicking", 1, "ZoomMode")
-		Loop	
-	
+		Loop
+
 	NoAmmo:
 		TNLH G 2
 		TNT1 A 0 A_Print("Ammunition Depleted", 2)
 		Goto ReadyToFire
-		
+
 	NoAmmoZoom:
 		TNT1 A 2
 		TNT1 A 0 A_Print("Ammunition Depleted", 2)
-		Goto ReadyToFire2 
-	
+		Goto ReadyToFire2
+
 	ZoomMode:
 		TNT1 A 0
-		TNT1 A 1 
+		TNT1 A 1
 		TNT1 A 0 A_JumpIfinventory("TankZoom", 1, "StopZoom")
 		TNT1 A 0 A_ZoomFactor(5.0)
 		TNT1 A 0 A_GiveInventory("TankZoom")
 		TNT1 A 1
 		TNT1 A 0 A_TakeInventory("Kicking", 1)
 		Goto ReadyToFire2
-	
+
 	StopZoom:
-		TNT1 A 0 
+		TNT1 A 0
 		TNT1 A 0 A_ZoomFactor(1.0)
 		TNT1 A 0 A_TakeInventory("TankZoom", 1)
 		TNT1 A 1
 		TNT1 A 0 A_TakeInventory("Kicking", 1)
 		Goto ReadyToFire
-	
+
 	Deselect:
 		TNHD Z 1 A_Lower
 		TNT1 A 0 SetPlayerProperty(0,0,4)
 		Loop
-		
+
 	Select:
 		TNT1 A 0
 		TNHD z 1 A_Raise
 		TNHD zzzzzzzzzzzzzzzzzzzzzz 0 A_Raise
 		TNHD z 1 A_Raise
 		Goto Ready
-	
+
 	EmergencyExit:
-		TNT1 A 0 
+		TNT1 A 0
 		TNT1 A 0 A_PlaySound("CARSTE", 1)
 		TNT1 A 0 A_GiveInventory("PressedUse")
 		TNT1 A 5
-		Goto LightEnd	
-		
+		Goto LightEnd
+
 	Fire://zero-offset = 65 pixels high
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfinventory("TankZoom", 1, "FireZoom")
 		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 1, 1)
 		Goto NoAmmo
-		
+
 		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		TNLH H 1 BRIGHT A_FireCustomMissile("AutocannonFlash", 0, 0, -32, -16, 0, 0)
 		TNLH I 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", -0.2, 0, -32, -16, 0, 0.1)
 		TNT1 A 0 A_TakeInventory("HeavyMachinegunAmmo", 1)
 		TNLH J 2 A_PlaySound("ACANO1", 1)
 		TNT1 A 0 A_PlaySound("FARCAN1", 4)
-		
+
 		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 1, 1)
 		Goto NoAmmo
-		
+
 		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		TNLH K 1 BRIGHT A_FireCustomMissile("AutocannonFlash", 0, 0, 32, -16, 0, 0)
 		TNLH L 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", 0.2, 0, 32, -16, 0, 0.1)
 		TNT1 A 0 A_TakeInventory("HeavyMachinegunAmmo", 1)
 		TNLH M 2 A_PlaySound("ACANO1", 1)
 		TNT1 A 0 A_PlaySound("FARCAN1", 4)
-		
+
 		TNT1 A 0 A_ReFire
 		Goto ReadyToFire
 
-	FireZoom:	
+	FireZoom:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 1, 1)
 		Goto NoAmmoZoom
-		
+
 		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		TNT1 H 1 BRIGHT A_FireCustomMissile("AutocannonFlash", 0, 0, -32, -16, 0, 0)
 		TNT1 I 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", -0.2, 0, -32, -16, 0, 0.1)
 		TNT1 A 0 A_TakeInventory("HeavyMachinegunAmmo", 1)
 		TNT1 J 2 A_PlaySound("ACANO1", 1)
 		TNT1 A 0 A_PlaySound("FARCAN1", 4)
-		
+
 		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 1, 1)
 		Goto NoAmmo
-		
+
 		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		TNT1 K 1 BRIGHT A_FireCustomMissile("AutocannonFlash", 0, 0, 32, -16, 0, 0)
 		TNT1 L 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", 0.2, 0, 32, -16, 0, 0.1)
 		TNT1 A 0 A_TakeInventory("HeavyMachinegunAmmo", 1)
 		TNT1 M 2 A_PlaySound("ACANO1", 1)
 		TNT1 A 0 A_PlaySound("FARCAN1", 4)
-		
+
 		TNT1 A 0 A_ReFire
 		Goto ReadyToFire2
-		
+
 	AltFire:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfinventory("TankZoom", 1, "AltFire2")
 		TNT1 A 0 A_JumpIfInventory("HelicopterRocketAmmo", 2, 1)
 		Goto NoAmmo
 		TNT1 A 0 A_JumpIfInventory("DMgame",1,"AltFireDM")
-		
+
 		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		TNT1 A 0 A_FireCustomMissile("TankMissile", 0.5, 0, random(56,72), random(56,72), 0, -0.5)
 		TNLH G 15 BRIGHT
@@ -779,7 +779,7 @@ ACTOR ArtilleryTankGun : DoomWeapon
 		TNLH G 15 BRIGHT
 		TNT1 A 0 A_TakeInventory("HelicopterRocketAmmo", 2)
 		Goto ReadyToFire
-	
+
 	AltFireDM:
 		TNT1 A 0
 		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
@@ -789,12 +789,12 @@ ACTOR ArtilleryTankGun : DoomWeapon
 		TNLH G 15 BRIGHT
 		TNT1 A 0 A_TakeInventory("HelicopterRocketAmmo", 2)
 		Goto ReadyToFire
-	
+
 	AltFire2:
 		TNT1 A 0 A_JumpIfInventory("HelicopterRocketAmmo", 2, 1)
 		Goto NoAmmoZoom
 		TNT1 A 0 A_JumpIfInventory("DMgame",1,"AltFire2DM")
-		
+
 		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		TNT1 A 0 A_FireCustomMissile("TankMissile", 0.5, 0, random(56,72), random(56,72), 0, -0.5)
 		TNT1 A 15 BRIGHT
@@ -802,7 +802,7 @@ ACTOR ArtilleryTankGun : DoomWeapon
 		TNT1 A 15 BRIGHT
 		TNT1 A 0 A_TakeInventory("HelicopterRocketAmmo", 2)
 		Goto ReadyToFire2
-	
+
 	AltFire2DM:
 		TNT1 A 0
 		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
@@ -812,9 +812,9 @@ ACTOR ArtilleryTankGun : DoomWeapon
 		TNT1 A 15 BRIGHT
 		TNT1 A 0 A_TakeInventory("HelicopterRocketAmmo", 2)
 		Goto ReadyToFire2
-	
+
 	Flash:
-		TNT1 A 0 
+		TNT1 A 0
 		TNT1 A 0 A_JumpIfHealthLower(2, "EmergencyExit")
 		TNHD K 1 Bright
 		TNT1 A 0 ACS_NamedExecuteAlways("BDATHUD")
@@ -835,27 +835,27 @@ ACTOR ArtilleryTankGun : DoomWeapon
 		NULL A 0 A_JumpIf (pitch > 220, "TooHighCheck")
 		NULL A 0 A_JumpIf (pitch > 16, "TooLowCheck")
 		Goto Flash
-	
+
 	TooHigh:
-		TNT1 A 0 
+		TNT1 A 0
 		TNT1 A 0 A_SetPitch(325)
 		Goto Flash
-	
+
 	TooLowCheck:
-		TNT1 A 0 
+		TNT1 A 0
 		TNT1 A 0 A_SetPitch(15)
 		Goto Flash
-		
+
 	TooHighCheck:
 		TNT1 A 0
 		NULL A 0 A_JumpIf (pitch < 324, "TooHigh")
 		Goto Flash
-		
+
 	TooHighCheckGZD:
 		TNT1 A 0
 		NULL A 0 A_SetPitch(-35)
 		Goto Flash
-	
+
 	SwitchFlashlight:
 		TNT1 A 0
 		TNT1 A 0 A_TakeInventory("SwitchFlashlight", 1)
@@ -865,13 +865,13 @@ ACTOR ArtilleryTankGun : DoomWeapon
 		TNT1 A 0 A_PlaySound("INFRARED", 1)
 		TNT1 A 0 A_PlaySound("FLASHON", 2)
         Goto ReadyToFire
-		
+
 	TurnFlashOff:
 		TNT1 A 0 A_Takeinventory("FlashlightOn",1)
 		TNT1 A 0 A_TakEinventory("PowerLightAmp", 1)
 		TNT1 A 0 A_PlaySound("FLASHOFF", 2)
         Goto ReadyToFire
-	
+
 	LightEnd:
 		TNT1 A 0
 		TNT1 A 0 A_TakeInventory("TankZoom", 1)
@@ -880,11 +880,11 @@ ACTOR ArtilleryTankGun : DoomWeapon
 		TNT1 A 0 A_TakEinventory("PowerLightAmp", 1)
 		TNT1 A 10
 		Stop
-		
+
 	Spawn:
 		LAUN A -1
 		Stop
-		
+
 	}
 }
 
@@ -901,11 +901,11 @@ ACTOR TankMissile: Rocket2
 	States
 	{
 	Spawn:
-	
+
 		TNT1 A 0
 		TNT1 A 0 A_PlaySound("DSMISLAU", 1, 1, 1)
 		TNT1 A 0 A_PlaySound("DSMISFIR", 4)
-		
+
 		//TNT1 A 0 ThrustThingZ(0, 6, -1, 1)
 		MISL A 0 A_CustomMissile("BackblastFlames1", 0, 0, angle-170, CMF_ABSOLUTEANGLE)
 		MISL A 1 Bright A_SeekerMissile (4,8, SMF_LOOK)
@@ -924,7 +924,7 @@ ACTOR TankMissile: Rocket2
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
 		TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
-		
+
 		MISL A 1 Bright A_SeekerMissile (4,8, SMF_LOOK)
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
@@ -956,9 +956,9 @@ ACTOR TankMissile: Rocket2
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
 		TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
-		
+
 		//TNT1 A 0 ThrustThingZ(0, 40, 1, 1)
-		
+
 		MISL A 1 Bright A_SeekerMissile (4,8, SMF_LOOK)
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
@@ -980,7 +980,7 @@ ACTOR TankMissile: Rocket2
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
 		TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
-		
+
 		//TNT1 A 0 ThrustThingZ(0, 40, 1, 1)
 
 	Live:
@@ -990,13 +990,13 @@ ACTOR TankMissile: Rocket2
 		TNT1 A 0 A_SpawnItem ("PlasmaSmoke")
 		TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
 		Loop
-	
+
 	SpawnUnderwater:
 	    TNT1 A 0 A_ChangeFlag("NOGRAVITY", 0)
 		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
 	    TNT1 A 0 A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
 	    Goto Live
-	
+
 	Death:
 	XDeath:
 		TNT1 A 0
@@ -1042,11 +1042,11 @@ ACTOR TankMissile2: Rocket2
 	States
 	{
 	Spawn:
-	
+
 		TNT1 A 0
 		TNT1 A 0 A_PlaySound("DSMISLAU", 1, 1, 1)
 		TNT1 A 0 A_PlaySound("DSMISFIR", 4)
-		
+
 		MISL A 0 A_CustomMissile("BackblastFlames1", 0, 0, angle-170, CMF_ABSOLUTEANGLE)
 		MISL A 1 Bright
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
@@ -1064,7 +1064,7 @@ ACTOR TankMissile2: Rocket2
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
 		TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
-		
+
 	Live:
 	    MISL A 1 Bright
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
@@ -1072,13 +1072,13 @@ ACTOR TankMissile2: Rocket2
 		TNT1 A 0 A_SpawnItem ("PlasmaSmoke")
 		TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
 		Loop
-	
+
 	SpawnUnderwater:
 	    TNT1 A 0 A_ChangeFlag("NOGRAVITY", 0)
 		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
 	    TNT1 A 0 A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
 	    Goto Live
-	
+
 	Death:
 	XDeath:
 		TNT1 A 0
