@@ -230,7 +230,7 @@ ACTOR Rocket_Launcher : BrutalWeapon
 
 	Fire:
 		RLNG A 0
-        RLNG A 0 A_JumpIfInventory("RocketRounds",1,2)
+        RLNG A 0 A_JumpIfInventory("RocketRounds",1,1)
         Goto NoAmmo
         TNT1 AAAA 0
 		RLNG A 0 A_ALertMonsters
@@ -322,7 +322,7 @@ ACTOR Rocket_Launcher : BrutalWeapon
 		RLNG A 0 A_Takeinventory("PowerLightAmp", 1)
 		RIFG A 0 A_SetCrosshair(0)
         RLNG A 0 A_JumpIfInventory("RocketRounds",6,"Ready")
-        RLNG A 0 A_JumpIfInventory("AmmoRocket",1,3)
+        RLNG A 0 A_JumpIfInventory("AmmoRocket",1,1)
         Goto Ready
         TNT1 AAAA 0
 
@@ -348,7 +348,7 @@ ACTOR Rocket_Launcher : BrutalWeapon
 	InsertBullets:
 		TNT1 AAAAAA 0
 		RLNG A 0 A_JumpIfInventory("RocketRounds",6,"FinishReload")
-		RLNG A 0 A_JumpIfInventory("AmmoRocket",1,3)
+		RLNG A 0 A_JumpIfInventory("AmmoRocket",1,1)
 		Goto Ready
         TNT1 AAAAAA 0
 		RLNG A 0 A_Takeinventory("HasUnloadedRL",1)
@@ -374,7 +374,7 @@ ACTOR Rocket_Launcher : BrutalWeapon
 		RLNG A 0 A_Takeinventory("PowerLightAmp", 1)
         RLNG A 0 A_ZoomFactor(1.0)
 		RIFG A 0 A_SetCrosshair(0)
-		RLNG A 0 A_JumpIfInventory("RocketRounds",1,2)
+		RLNG A 0 A_JumpIfInventory("RocketRounds",1,1)
 		Goto Ready
         TNT1 AAAA 0
 
@@ -386,7 +386,7 @@ ACTOR Rocket_Launcher : BrutalWeapon
 
 	FinishUnload:
 		TNT1 AAAAAA 0
-		RLNG A 0 A_JumpIfInventory("RocketRounds",1,3)
+		RLNG A 0 A_JumpIfInventory("RocketRounds",1,1)
 		Goto ReadyNoAmmo
         TNT1 AAAA 0
 		RLNG A 0 A_Takeinventory("RocketRounds",1)
