@@ -973,7 +973,7 @@ ACTOR ClassicRocketLauncher : ClassicWeapon
 	Fire:
 		TNT1 A 0 A_PlaySound ("DSRFIRE")
 		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
-		TNT1 A 0 A_FireCustomMissile("WeakRocket", 0, 1, 0, -10)
+		TNT1 A 0 A_FireCustomMissile("WeakRocket", 0, 1, 0, 0)
 		RLNG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		PKRL B 2 BRIGHT A_ZoomFactor(0.98)
 		PKRL CD 2 BRIGHT A_ZoomFactor(1.0)
@@ -1024,7 +1024,7 @@ ACTOR ClassicPlasmaRifle : ClassicWeapon
 		3LSF EF 1 BRIGHT A_ZoomFactor(1.0)
 		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
 		PLSN A 0 A_SpawnItemEx("PlasmaFlareSpawn",32,0,28)
-		TNT1 A 0 A_FireCustomMissile("ClassicPlasmaBall", 0, 1, 0, -10)
+		TNT1 A 0 A_FireCustomMissile("ClassicPlasmaBall", 0, 1, 0, 0)
 		3KPL ABCDEFGFEDCBA 1 A_Refire
 		3KPL A 7 A_Refire
 		Goto Ready

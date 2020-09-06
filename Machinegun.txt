@@ -219,7 +219,7 @@ ACTOR Machinegun : BrutalWeapon
 			TNT1 A 0 ACS_NamedExecuteAlways("MGGrenadeCheck")
 			MGN2 B 1 BRIGHT
 			MGN1 A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
-			TNT1 AAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-16,16), 0, -1, random(-9,9))
+			TNT1 AAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-16,16), 0, 0, 0, 0, random(-9,9))
 			MGN2 A 0 BRIGHT A_FireCustomMissile("ShortGrenade", 0, 1, 0, 0)
 			RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
 			RIFG A 0 A_SetPitch(-1.0 + pitch)

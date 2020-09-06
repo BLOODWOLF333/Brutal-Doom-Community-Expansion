@@ -163,7 +163,7 @@ ACTOR FlameCannon : BrutalWeapon
 	Fireball:
 		FLMG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
-        FLMF A 1 BRIGHT A_FireCustomMissile("BigFireBallWithGravity", 0, 1, 0, -6)
+        FLMF A 1 BRIGHT A_FireCustomMissile("BigFireBallWithGravity", 0, 1, 0, 0)
 		DUPL A 0 A_ZoomFactor(0.98)
 		RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
 		RIFG A 0 A_SetPitch(-1.0 + pitch)
@@ -178,26 +178,26 @@ ACTOR FlameCannon : BrutalWeapon
 		Goto Ready+2
 
 	Flamethrower:
-        FLMG A 0 BRIGHT A_FireCustomMissile("FlamethrowerMissile", 0, 1, 0, -12, 0, 8)
+        FLMG A 0 BRIGHT A_FireCustomMissile("FlamethrowerMissile", 0, 1, 0, 0, 0, 8)
 		FLMG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		FLMG A 0 A_PlaySound("FLAMER", CHAN_WEAPON, 1, 1)
 		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		FLMG A 0 A_TakeInventory("Gas", 7)
 		FLMF FG 1 BRIGHT
 
-		FLMG A 0 BRIGHT A_FireCustomMissile("FlamethrowerMissileNoLight", 0, 1, 0, -12, 0, 8)
+		FLMG A 0 BRIGHT A_FireCustomMissile("FlamethrowerMissileNoLight", 0, 1, 0, 0, 0, 8)
 		FLMG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		FLMG A 0 A_PlaySound("FLAMER", CHAN_WEAPON, 1, 1)
 		FLMG A 0 A_TakeInventory("Gas", 7)
 		FLMF FG 1 BRIGHT
 
-		FLMG A 0 BRIGHT A_FireCustomMissile("FlamethrowerMissileNoLight", 0, 1, 0, -12, 0, 8)
+		FLMG A 0 BRIGHT A_FireCustomMissile("FlamethrowerMissileNoLight", 0, 1, 0, 0, 0, 8)
 		FLMG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		FLMG A 0 A_PlaySound("FLAMER", CHAN_WEAPON, 1, 1)
 		FLMG A 0 A_TakeInventory("Gas", 7)
 		FLMF FG 1 BRIGHT
 
-		FLMG A 0 BRIGHT A_FireCustomMissile("FlamethrowerMissileNoLight", 0, 1, 0, -12, 0, 8)
+		FLMG A 0 BRIGHT A_FireCustomMissile("FlamethrowerMissileNoLight", 0, 1, 0, 0, 0, 8)
 		FLMG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		FLMG A 0 A_PlaySound("FLAMER", CHAN_WEAPON, 1, 1)
 		FLMG A 0 A_TakeInventory("Gas", 7)

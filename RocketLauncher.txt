@@ -243,16 +243,16 @@ ACTOR Rocket_Launcher : BrutalWeapon
 		RLNG A 0 BRIGHT A_FireCustomMissile("Alerter",0,0)
 		RLNF A 1 BRIGHT
 		TNT1 A 0 A_ZoomFactor(0.98)
-		RLNG A 0 A_FireCustomMissile("Rocket2", 0, 1, 0, -6)
-		RLNG A 0 A_FireCustomMissile("RocketGlassBreaker", 0, 1, 0, -6)
+		RLNG A 0 A_FireCustomMissile("Rocket2", 0, 1, 0, 0)
+		RLNG A 0 A_FireCustomMissile("RocketGlassBreaker", 0, 1, 0, 0)
 		Goto RecoilAnimation
 
 	DM:
 		RLNG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
         RLNG A 0 A_PlaySound ("DSRFIRE")
-		RLNF A 1 BRIGHT A_FireCustomMissile("RocketDM", 0, 1, 0, -6)
+		RLNF A 1 BRIGHT A_FireCustomMissile("RocketDM", 0, 1, 0, 0)
 		TNT1 A 0 A_ZoomFactor(0.98)
-		RLNG A 0 A_FireCustomMissile("RocketGlassBreaker", 0, 1, 0, -6)
+		RLNG A 0 A_FireCustomMissile("RocketGlassBreaker", 0, 1, 0, 0)
 
 	RecoilAnimation:
 		RLNG A 0 A_Takeinventory("RocketRounds",1)
@@ -284,16 +284,16 @@ ACTOR Rocket_Launcher : BrutalWeapon
 		RLNG A 0 BRIGHT A_FireCustomMissile("Alerter",0,0)
 		SNIP A 1 BRIGHT
 		TNT1 A 0 A_ZoomFactor(2.99)
-		RLNG A 0 A_FireCustomMissile("Rocket2", 0, 1, 0, -6)
-		RLNG A 0 A_FireCustomMissile("RocketGlassBreaker", 0, 1, 0, -6)
+		RLNG A 0 A_FireCustomMissile("Rocket2", 0, 1, 0, 0)
+		RLNG A 0 A_FireCustomMissile("RocketGlassBreaker", 0, 1, 0, 0)
 		Goto ZoomedRecoil
 
 	ZoomedFireDM:
 		RLNG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
         RLNG A 0 A_PlaySound ("DSRFIRE")
-		SNIP A 1 BRIGHT A_FireCustomMissile("RocketDM", 0, 1, 0, -6)
+		SNIP A 1 BRIGHT A_FireCustomMissile("RocketDM", 0, 1, 0, 0)
 		TNT1 A 0 A_ZoomFactor(2.99)
-		RLNG A 0 A_FireCustomMissile("RocketGlassBreaker", 0, 1, 0, -6)
+		RLNG A 0 A_FireCustomMissile("RocketGlassBreaker", 0, 1, 0, 0)
 
 	ZoomedRecoil:
 		RLNG A 0 A_Takeinventory("RocketRounds",1)
