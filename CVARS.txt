@@ -55,7 +55,6 @@ script "BDInitialize" enter
 	//setfont("SmallFONT");
 	//HudMessageBold(s:"Dev Build August 21 2018"; HUDMSG_PLAIN, 8, CR_WHITE, 2.0, 0.01, 9999.1, 1.0);
 
-
 	//===================
 	//Sbar Type
 
@@ -89,7 +88,6 @@ script "BDInitialize" enter
 	//Game compatibilities
 	//GiveInventory("LifeItem", 2); //Stronghold
 
-
 	//if (checkinventory("istacticalclass") == 1) { SetActorProperty (0, APROP_Speed, 1.0); }
 	//if (checkinventory("isplayingaspurist") == 1) { SetActorProperty (0, APROP_Speed, 1.0); }
 	if (checkinventory("isplayingaspurist") == 1) { TAkeInventory("IsTacticalClass", 1); }
@@ -98,7 +96,6 @@ script "BDInitialize" enter
 		{
 		ConsoleCommand("compat_clientssendfullbuttoninfo 1");
 		}
-
 
 	if	(GetCvar("bd_disablemapenhancements") == 0)
 	{
@@ -113,7 +110,6 @@ script "BDInitialize" enter
 	ReplaceTextures("FLAT2", "FLAT2B");
 	ReplaceTextures("GRNLITE1", "GRNLIT1B");
 	}
-
 
 	//Spawn surviving marines
 
@@ -556,8 +552,6 @@ SCRIPT "BDInitiate" OPEN
 	ReplaceTextures ("BLOOD2", "BLOOD1");
 }
 
-
-
 Script "BDCHeckJanitor" (VOID)
 {
 if	(GetCvar("bd_lowgraphicsmode") == 1) { GiveInventory("LowGraphicsMode", 1); }
@@ -576,12 +570,8 @@ if	(GetCvar("bd_lowgraphicsmode") == 1) { SetActorState(0, "NoColision", 1); }
 if	(GetCvar("zdoombrutaljanitor") == 1) { SetActorState(0, "NoColision", 1); }
 }
 
-
-
 Script "BDCHeckJanitor4" (VOID)
 {
-
-
 
 	if	(GetCvar("isrunningzandronum") == 1)
 	{
@@ -607,16 +597,16 @@ if	(GetCvar("bd_disabledecorations") == 1) { SetActorState(0,"Vanilla"); }
 
 Script "BDDisableMapEnhancements" (VOID)
 {
-if	(GetCvar("bd_disablemapenhancements") == 1) { SetActorState(0,"Vanilla"); }
+	if(GetCvar("bd_disablemapenhancements") == 1)
+	{
+		SetActorState(0,"Vanilla");
+	}
 }
-
 
 Script "BDDisableNewGuns" (VOID)
 {
 if	(GetCvar("bd_disablenewguns") == 1) { SetActorState(0,"Vanilla"); }
 }
-
-
 
 Script "CheckIfDM" (VOID)
 {
@@ -634,8 +624,6 @@ if	(GetCvar("zdoombd_shotgunstrap") == 1) { GiveInventory("useshotgunstrap", 1);
 if	(GetCvar("bd_disablenewenemies") == 1) { GiveInventory("nonewenemies", 1);}
 }
 
-
-
 Script "BDCheckWaterRipples" (VOID)
 {
 if	(GetCvar("bd_disablewaterripples2") > 0) { GiveInventory("Clip2", 10); }
@@ -646,44 +634,30 @@ Script "BDDisableFriendlyMarines" (VOID)
 if	(GetCvar("bd_disablefriendlymarines") > 0) { GiveInventory("Clip2", 10); }
 }
 
-
 Script "BDShootableAmmo" (VOID)
 {
 if	(GetCvar("bd_shootablerocketammo") < 1) { GiveInventory("Clip1", 10); }
 }
-
 
 Script "BDFootsteps" (VOID)
 {
 if	(GetCvar("bd_footstepsounds") == 0) { GiveInventory("FootStepDisabled", 1); }
 }
 
-
 Script "DemonRuneCheck" (VOID)
 {
 if	(GetCvar("bd_disabledemonspheres") == 1) { SetACtorState(0, "Cancels"); }
 }
-
-
 
 Script "CheckRocketBackblast" (VOID)
 {
 if	(GetCvar("bd_rocketbackblast") == 0) { SetACtorState(0, "Disappear"); }
 }
 
-
 Script "CheckVoxels" (VOID)
 {
 if	(GetCvar("bd_voxeldec") == 0) { SetACtorState(0, "Disappear"); }
 }
-
-
-
-
-
-
-
-
 
 Script "BD_CheckBloodIntensity" (VOID)
 {
@@ -696,7 +670,6 @@ Script "BD_CheckBloodIntensity" (VOID)
 	if	(GetCvar( "bd_bloodamount") >= 4) { SetActorState(0,"AbsurdBlood"); }
 	}
 
-
 	if	(GetCvar("isrunningzandronum") == 0)
 	{
 	if	(GetCvar("zdoombrutalblood") == 0) { SetActorState(0,"LowBlood"); }
@@ -704,7 +677,6 @@ Script "BD_CheckBloodIntensity" (VOID)
 	if	(GetCvar("zdoombrutalblood") == 3) { SetActorState(0,"LotsOfBlood"); }
 	if	(GetCvar("zdoombrutalblood") == 4) { SetActorState(0,"AbsurdBlood"); }
 	}
-
 
 	if	(GetCvar("isrunningzandronum") == 1)
 	{
@@ -726,7 +698,6 @@ Script "BD_CheckBloodIntensity" (VOID)
 
 }
 
-
 Script "BD_CheckBloodExtra1" (VOID)
 {
 		if	(GetCvar("bd_morebloodmist") >= 1)
@@ -735,14 +706,11 @@ Script "BD_CheckBloodExtra1" (VOID)
 			}
 }
 
-
 Script "BD_CheckIfLowBlood" (VOID)
 {
 if	(GetCvar("bd_bloodamount") == 1) { SetActorState(0,"Vanish"); }
 if	(GetCvar("bd_bloodamount") == 0) { SetActorState(0,"Vanish"); }
 }
-
-
 
 script "BD_CheckIfOverLiquid" (void) //Water Small Splash
 {
@@ -755,7 +723,6 @@ script "BD_CheckIfOverLiquid" (void) //Water Small Splash
   if (CheckActorFloorTexture(0, "NUKAGE2"))    GiveInventory("IsOverNukage", 1);
   if (CheckActorFloorTexture(0, "NUKAGE3"))    GiveInventory("IsOverNukage", 1);
   if (CheckActorFloorTexture(0, "NUKAGE4"))    GiveInventory("IsOverNukage", 1);
-
 
   if (CheckActorFloorTexture(0, "SLIME01"))    GiveInventory("IsOverSlime", 1);
   if (CheckActorFloorTexture(0, "SLIME02"))    GiveInventory("IsOverSlime", 1);
