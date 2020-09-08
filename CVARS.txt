@@ -603,6 +603,17 @@ Script "BDDisableMapEnhancements" (VOID)
 	}
 }
 
+Int counterMapEnhancement;
+
+Script "BDLimitMapEnhancements" (VOID)
+{
+	if(counterMapEnhancement >= 1)
+	{
+		SetActorState(0,"Vanilla");
+	}
+	counterMapEnhancement++;
+}
+
 Script "BDDisableNewGuns" (VOID)
 {
 if	(GetCvar("bd_disablenewguns") == 1) { SetActorState(0,"Vanilla"); }
