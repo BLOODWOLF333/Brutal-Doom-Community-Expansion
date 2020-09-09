@@ -195,8 +195,8 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXEF AB 1
 	    AXEG A 0 A_PlaySound("weapons/gswing", 1)
 		AXEG A 0 A_JumpIfInventory("PowerStrength", 1, "StrongAttack")
-		AXEG A 0 A_Saw("", "", 5, "AxePuffs", SF_NORANDOM, 48, 0,3)
-		AXEG A 0 A_FireCustomMissile("AxeAttack", 0, 0, 0, 0, 0, 0)
+		//AXEG A 0 A_Saw("", "", 5, "AxePuffs", SF_NORANDOM, 48, 0,3)
+		AXEG A 0 A_FireCustomMissile("AxeAttack", 0, 0, 0, -8)
 
 	EndSwing:
 		AXEG A 0
@@ -217,8 +217,8 @@ ACTOR BrutalAxe : BrutalWeapon
 
 	StrongAttack:
 		AXEG A 0
-		AXEG A 0 A_Saw("", "", 5, "AxePuffs", SF_NORANDOM, 48, 0,3)
-		AXEG A 0 A_FireCustomMissile("AxeAttackStrong", 0, 0, 0, 0, 0, 0)
+		//AXEG A 0 A_Saw("", "", 5, "AxePuffs", SF_NORANDOM, 48, 0,3)
+		AXEG A 0 A_FireCustomMissile("AxeAttackStrong", 0, 0, 0, -8)
 		Goto EndSwing
 
 	Steady:
@@ -324,8 +324,8 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXRF AB 1
 	    AXEG A 0 A_PlaySound("weapons/gswing", 1)
 		AXEG A 0 A_JumpIfInventory("PowerStrength", 1, "RedBloodStrongAttack")
-		AXEG A 0 A_Saw("", "", 5, "AxePuffs", SF_NORANDOM, 48, 0,3)
-		AXEG A 0 A_FireCustomMissile("AxeAttack", 0, 0, 0, 0, 0, 0)
+		//AXEG A 0 A_Saw("", "", 5, "AxePuffs", SF_NORANDOM, 48, 0,3)
+		AXEG A 0 A_FireCustomMissile("AxeAttack", 0, 0, 0, -8)
 
 	RedBloodEndSwing:
 		AXRF CD 1
@@ -343,8 +343,8 @@ ACTOR BrutalAxe : BrutalWeapon
 
 	RedBloodStrongAttack:
 		AXEG A 0
-		AXEG A 0 A_Saw("", "", 5, "AxePuffs", SF_NORANDOM, 48, 0,3)
-		AXEG A 0 A_FireCustomMissile("AxeAttackStrong", 0, 0, 0, 0, 0, 0)
+		//AXEG A 0 A_Saw("", "", 5, "AxePuffs", SF_NORANDOM, 48, 0,3)
+		AXEG A 0 A_FireCustomMissile("AxeAttackStrong", 0, 0, 0, -8)
 		Goto RedBloodEndSwing
 
 	BlueBloodReady:
@@ -442,8 +442,8 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXBF AB 1
 	    AXEG A 0 A_PlaySound("weapons/gswing", 1)
 		AXEG A 0 A_JumpIfInventory("PowerStrength", 1, "BlueBloodStrongAttack")
-		AXEG A 0 A_Saw("", "", 5, "AxePuffs", SF_NORANDOM, 48, 0,3)
-		AXEG A 0 A_FireCustomMissile("AxeAttack", 0, 0, 0, 0, 0, 0)
+		//AXEG A 0 A_Saw("", "", 5, "AxePuffs", SF_NORANDOM, 48, 0,3)
+		AXEG A 0 A_FireCustomMissile("AxeAttack", 0, 0, 0, -8)
 
 	BlueBloodEndSwing:
 		AXBF CD 1
@@ -461,8 +461,8 @@ ACTOR BrutalAxe : BrutalWeapon
 
 	BlueBloodStrongAttack:
 		AXEG A 0
-		AXEG A 0 A_Saw("", "", 5, "AxePuffs", SF_NORANDOM, 48, 0,3)
-		AXEG A 0 A_FireCustomMissile("AxeAttackStrong", 0, 0, 0, 0, 0, 0)
+		//AXEG A 0 A_Saw("", "", 5, "AxePuffs", SF_NORANDOM, 48, 0,3)
+		AXEG A 0 A_FireCustomMissile("AxeAttackStrong", 0, 0, 0, -8)
 		Goto BlueBloodEndSwing
 
 	GreenBloodReady:
@@ -559,8 +559,8 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXGF AB 1
 	    AXEG A 0 A_PlaySound("weapons/gswing", 1)
 		AXEG A 0 A_JumpIfInventory("PowerStrength", 1, "GreenBloodStrongAttack")
-		AXEG A 0 A_Saw("", "", 5, "AxePuffs", SF_NORANDOM, 48, 0,3)
-		AXEG A 0 A_FireCustomMissile("AxeAttack", 0, 0, 0, 0, 0, 0)
+		//AXEG A 0 A_Saw("", "", 5, "AxePuffs", SF_NORANDOM, 48, 0,3)
+		AXEG A 0 A_FireCustomMissile("AxeAttack", 0, 0, 0, -8)
 
 	GreenBloodEndSwing:
 		AXGF CD 1
@@ -578,8 +578,8 @@ ACTOR BrutalAxe : BrutalWeapon
 
 	GreenBloodStrongAttack:
 		AXEG A 0
-		AXEG A 0 A_Saw("", "", 5, "AxePuffs", SF_NORANDOM, 48, 0,3)
-		AXEG A 0 A_FireCustomMissile("AxeAttackStrong", 0, 0, 0, 0, 0, 0)
+		//AXEG A 0 A_Saw("", "", 5, "AxePuffs", SF_NORANDOM, 48, 0,3)
+		AXEG A 0 A_FireCustomMissile("AxeAttackStrong", 0, 0, 0, -8)
 		Goto GreenBloodEndSwing
 
 	//Alt Fire Mode
@@ -601,7 +601,7 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXEG DC 1
 	    AXEG A 0 A_PlaySound("weapons/gswing", 1)
 		AXEG A 0 A_JumpIfInventory("PowerStrength", 1, "AltStrongAttack")
-		AXEG A 0 A_Saw("", "", 5, "AltAxePuffs", SF_NORANDOM, 48, 3, 0)
+		//AXEG A 0 A_Saw("", "", 5, "AltAxePuffs", SF_NORANDOM, 48, 3, 0)
 		AXEG A 0 A_FireCustomMissile("AltAxeAttack", 0, 0, 0, 0)
 
 	AltEndSwing:
@@ -623,7 +623,7 @@ ACTOR BrutalAxe : BrutalWeapon
 
 	AltStrongAttack:
 		AXEG A 0
-		AXEG A 0 A_Saw("", "", 5, "AltAxePuffs", SF_NORANDOM, 48, 3, 0)
+		//AXEG A 0 A_Saw("", "", 5, "AltAxePuffs", SF_NORANDOM, 48, 3, 0)
 		AXEG A 0 A_FireCustomMissile("AltAxeAttackStrong", 0, 0, 0, 0)
 		Goto AltEndSwing
 
@@ -636,7 +636,7 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXRG DC 1
 	    AXEG A 0 A_PlaySound("weapons/gswing", 1)
 		AXEG A 0 A_JumpIfInventory("PowerStrength", 1, "AltRedBloodStrongAttack")
-		AXEG A 0 A_Saw("", "", 5, "AltAxePuffs", SF_NORANDOM, 48, 3, 0)
+		//AXEG A 0 A_Saw("", "", 5, "AltAxePuffs", SF_NORANDOM, 48, 3, 0)
 		AXEG A 0 A_FireCustomMissile("AltAxeAttack", 0, 0, 0, 0)
 
 	AltRedBloodEndSwing:
@@ -656,7 +656,7 @@ ACTOR BrutalAxe : BrutalWeapon
 
 	AltRedBloodStrongAttack:
 		AXEG A 0
-		AXEG A 0 A_Saw("", "", 5, "AltAxePuffs", SF_NORANDOM, 48, 3, 0)
+		//AXEG A 0 A_Saw("", "", 5, "AltAxePuffs", SF_NORANDOM, 48, 3, 0)
 		AXEG A 0 A_FireCustomMissile("AltAxeAttackStrong", 0, 0, 0, 0)
 		Goto AltRedBloodEndSwing
 
@@ -669,7 +669,7 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXBG DC 1
 	    AXEG A 0 A_PlaySound("weapons/gswing", 1)
 		AXEG A 0 A_JumpIfInventory("PowerStrength", 1, "AltBlueBloodStrongAttack")
-		AXEG A 0 A_Saw("", "", 5, "AltAxePuffs", SF_NORANDOM, 48, 3, 0)
+		//AXEG A 0 A_Saw("", "", 5, "AltAxePuffs", SF_NORANDOM, 48, 3, 0)
 		AXEG A 0 A_FireCustomMissile("AltAxeAttack", 0, 0, 0, 0)
 
 	AltBlueBloodEndSwing:
@@ -689,7 +689,7 @@ ACTOR BrutalAxe : BrutalWeapon
 
 	AltBlueBloodStrongAttack:
 		AXEG A 0
-		AXEG A 0 A_Saw("", "", 5, "AltAxePuffs", SF_NORANDOM, 48, 3, 0)
+		//AXEG A 0 A_Saw("", "", 5, "AltAxePuffs", SF_NORANDOM, 48, 3, 0)
 		AXEG A 0 A_FireCustomMissile("AltAxeAttackStrong", 0, 0, 0, 0)
 		Goto AltBlueBloodEndSwing
 
@@ -701,7 +701,7 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXGG DC 1
 	    AXEG A 0 A_PlaySound("weapons/gswing", 1)
 		AXEG A 0 A_JumpIfInventory("PowerStrength", 1, "AltGreenBloodStrongAttack")
-		AXEG A 0 A_Saw("", "", 5, "AltAxePuffs", SF_NORANDOM, 48, 3, 0)
+		//AXEG A 0 A_Saw("", "", 5, "AltAxePuffs", SF_NORANDOM, 48, 3, 0)
 		AXEG A 0 A_FireCustomMissile("AltAxeAttack", 0, 0, 0, 0)
 
 	AltGreenBloodEndSwing:
@@ -721,7 +721,7 @@ ACTOR BrutalAxe : BrutalWeapon
 
 	AltGreenBloodStrongAttack:
 		AXEG A 0
-		AXEG A 0 A_Saw("", "", 5, "AltAxePuffs", SF_NORANDOM, 48, 3, 0)
+		//AXEG A 0 A_Saw("", "", 5, "AltAxePuffs", SF_NORANDOM, 48, 3, 0)
 		AXEG A 0 A_FireCustomMissile("AltAxeAttackStrong", 0, 0, 0, 0)
 		Goto AltGreenBloodEndSwing
 	}
@@ -740,7 +740,7 @@ ACTOR AxeAttack: FastProjectile
 	RenderStyle Add
 	Alpha 0.6
 	Scale 0.15
-    Damage (random(95,95))
+    Damage (random(100,100))
     Speed 48
 	SeeSound "none"
 	DeathSound "none"
@@ -882,15 +882,14 @@ Actor AltAxeAttack: AxeAttack
 
 Actor AxeAttackStrong: AxeAttack
 {
-	Damage (random(195, 195))
+	Damage (random(200, 200))
 }
 
 Actor AltAxeAttackStrong: AxeAttack
 {
 	Radius 16
 	Height 8
-	Damagetype Cut
-	Damage (random(195, 195))
+	Damage (random(200, 200))
 	decal "SawHorizontal"
 }
 
@@ -959,23 +958,8 @@ ACTOR ThrowedAxe
 
 ACTOR ThrowedAxeStrong: ThrowedAxe
 {
-	Damagetype Cut
 	Damage (random(200, 200))
 	Speed 48
-	States
-	{
-	Spawn:
-		AXET ABCDEFGH 2
-		Loop
-	Death:
-	XDeath:
-	Crash:
-		TNT1 A 0
-		TNT1 A 0 A_AlertMonsters(128)
-		TNT1 A 0 A_GiveToTarget("AxeHit", 1)
-		TNT1 A 0 A_spawnItem("BrutalAxe")
-		Stop
-	}
 }
 
 ACTOR BrutalAxeOnWall: CustomInventory
