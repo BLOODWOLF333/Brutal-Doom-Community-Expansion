@@ -27,7 +27,9 @@ ACTOR Machinegun : BrutalWeapon
 
 	Ready:
 	Ready3:
-		MGN1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		MGN1 A 0 A_JumpIfInventory("Clip2",1,1)
+		Goto IdleNoAmmo
+		MGN1 AAAA 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		TNT1 A 0 ACS_NamedExecuteAlways("MGGrenadeCheck")
 		MGN1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		MGN1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
@@ -38,14 +40,19 @@ ACTOR Machinegun : BrutalWeapon
 		MGN1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
 		MGN1 A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
 		Loop
-		//MGN1 A 0 A_JumpIfInventory("Clip2",1,"Ready")
-		//Goto IdleNoAmmo
 
 	IdleNoAmmo:
+		MGN1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 ACS_NamedExecuteAlways("MGGrenadeCheck")
+		MGN1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		MGN1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		MGN1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		MGN1 F 1 A_WeaponReady
+		MGN1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		MGN1 A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
+		MGN1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
 		MGN1 A 0 A_JumpIfInventory("Clip2",1,"Ready")
 		Loop
-
 
 	CheckSprint:
 		MGN1 A 1 A_WeaponReady(WRF_NOFIRE)
@@ -167,7 +174,7 @@ ACTOR Machinegun : BrutalWeapon
 			Goto Ready
 
 		NoAmmo:
-			MGN1 A 10 A_PlaySound("weapons/empty")
+			MGN1 F 10 A_PlaySound("weapons/empty")
 			Goto IdleNoAmmo
 		NoAmmo2:
 			MGN1 A 10 A_PlaySound("weapons/empty")
@@ -187,12 +194,12 @@ ACTOR Machinegun : BrutalWeapon
 			MGN1 D 1
 			TNT1 A 0 A_ZoomFactor(1.0)
 			MGN1 E 1
-
 			RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
 			RIFG A 0 A_SetPitch(pitch-0.4)
-			RIFG A 0
 
-			MGN1 A 0
+			CHAG A 0 A_JumpIfInventory("Clip2", 1, 1)
+			Goto NoAmmo
+			TNT1 AAAA 0
 			MGN1 A 0 A_PlaySound("FARHMG", 6)
 			MGN1 A 0 A_PlaySound("HMGFIRE", 7)
 			MGN1 K 1 BRIGHT A_FireBullets(1.6, 1.7, -1, 20, "hITPuff", FBF_NORANDOM | FBF_USEAMMO)

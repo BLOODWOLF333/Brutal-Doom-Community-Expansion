@@ -233,7 +233,7 @@ ACTOR MiniGun : BrutalWeapon
 			RIFG A 0 A_SetPitch(pitch-0.4)
 			CHAF D 3
 			CHAG A 0 A_JumpIfInventory("Clip2", 1, 1)
-			Goto IdleNoAmmo
+			Goto NoAmmo
 			TNT1 AAAA 0
 			CHAG A 0 A_PlaySound("CHGNSHOT", 1)
 			CHAG A 0 A_PlaySound("FARMGN", 6)
@@ -247,7 +247,7 @@ ACTOR MiniGun : BrutalWeapon
 			RIFG A 0 A_SetPitch(pitch-0.4)
 			CHAF B 3
 			CHAG A 0 A_JumpIfInventory("Clip2", 1, 1)
-			Goto IdleNoAmmo
+			Goto NoAmmo
 			TNT1 AAAA 0
 			CHAG A 0 A_PlaySound("CHGNSHOT", 1)
 			CHAG A 0 A_PlaySound("FARMGN", 6)
@@ -261,7 +261,7 @@ ACTOR MiniGun : BrutalWeapon
 			RIFG A 0 A_SetPitch(pitch-0.4)
 			CHAF D 3
 			CHAG A 0 A_JumpIfInventory("Clip2", 1, 1)
-			Goto IdleNoAmmo
+			Goto NoAmmo
 			TNT1 AAAA 0
 			CHAG A 0 A_PlaySound("CHGNSHOT", 1)
 			CHAG A 0 A_PlaySound("FARMGN", 6)
@@ -275,7 +275,7 @@ ACTOR MiniGun : BrutalWeapon
 			RIFG A 0 A_SetPitch(pitch-0.4)
 			CHAF B 3
 			CHAG A 0 A_JumpIfInventory("Clip2", 1, 1)
-			Goto IdleNoAmmo
+			Goto NoAmmo
 			TNT1 AAAA 0
 			CHAG A 0 A_PlaySound("CHGNSHOT", 1)
 			CHAG A 0 A_PlaySound("FARMGN", 6)
@@ -289,7 +289,7 @@ ACTOR MiniGun : BrutalWeapon
 			RIFG A 0 A_SetPitch(pitch-0.4)
 			CHAF D 3
 			CHAG A 0 A_JumpIfInventory("Clip2", 1, 1)
-			Goto IdleNoAmmo
+			Goto NoAmmo
 			TNT1 AAAA 0
 			CHAG A 0 A_PlaySound("CHGNSHOT", 1)
 			CHAG A 0 A_PlaySound("FARMGN", 6)
@@ -303,7 +303,7 @@ ACTOR MiniGun : BrutalWeapon
 			RIFG A 0 A_SetPitch(pitch-0.4)
 			CHAF B 2
 			CHAG A 0 A_JumpIfInventory("Clip2", 1, 1)
-			Goto IdleNoAmmo
+			Goto NoAmmo
 			TNT1 AAAA 0
 			CHAG A 0 A_PlaySound("CHGNSHOT", 1)
 			CHAG A 0 A_PlaySound("FARMGN", 6)
@@ -317,7 +317,7 @@ ACTOR MiniGun : BrutalWeapon
 			RIFG A 0 A_SetPitch(pitch-0.4)
 			CHAF D 2
 			CHAG A 0 A_JumpIfInventory("Clip2", 1, 1)
-			Goto IdleNoAmmo
+			Goto NoAmmo
 			TNT1 AAAA 0
 			CHAG A 0 A_PlaySound("CHGNSHOT", 1)
 			CHAG A 0 A_PlaySound("FARMGN", 6)
@@ -331,7 +331,7 @@ ACTOR MiniGun : BrutalWeapon
 			RIFG A 0 A_SetPitch(pitch-0.4)
 			CHAF B 2
 			CHAG A 0 A_JumpIfInventory("Clip2", 1, 1)
-			Goto IdleNoAmmo
+			Goto NoAmmo
 			TNT1 AAAA 0
 			CHAG A 0 A_PlaySound("CHGNSHOT", 1)
 			CHAG A 0 A_PlaySound("FARMGN", 6)
@@ -345,15 +345,13 @@ ACTOR MiniGun : BrutalWeapon
 			RIFG A 0 A_SetPitch(pitch-0.4)
 			CHAF D 2
 			CHAG A 0 A_JumpIfInventory("Clip2", 1, 1)
-			Goto IdleNoAmmo
+			Goto NoAmmo
 			TNT1 AAAA 0
 			CHAG A 0 A_StopSound(5)
 		Hold:
 			CHAG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 			CHAG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
-			CHAG A 0 A_JumpIfInventory("Clip2", 1, 1)
-			Goto IdleNoAmmo
-			TNT1 AAAA 0
+
 			CHAG A 0 A_PlaySound("CHGNSHOT", 1)
 			CHAG A 0 A_PlaySound("FARMGN", 5)
 			CHAF A 1 BRIGHT A_FireBullets(1.8, 1.9, -1, 16, "MachineGunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
@@ -366,6 +364,9 @@ ACTOR MiniGun : BrutalWeapon
 			RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
 			RIFG A 0 A_SetPitch(pitch-0.4)
 
+			CHAG A 0 A_JumpIfInventory("Clip2", 1, 1)
+			Goto NoAmmo
+			TNT1 AAAA 0
 			CHAG A 0 A_PlaySound("CHGNSHOT", 1)
 			CHAG A 0 A_PlaySound("FARMGN", 5)
 			CHAF C 1 BRIGHT A_FireBullets(1.8, 1.9, -1, 16, "MachineGunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
@@ -380,63 +381,45 @@ ACTOR MiniGun : BrutalWeapon
 			RIFG A 0 A_SetPitch(pitch-0.4)
 			MNGG B 0 A_ReFire
 			CHAG A 0 A_StopSound(5)
+
 			CHAG A 0 A_JumpIfInventory("Spin",1,"Ready2")
+			CHAG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+			CHAG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+			CHAG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+			CHAG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
+			CHAG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+			CHAG A 0 A_PlaySound("CHAINSTO", 5)
+			CHAG ABCD 1 A_WeaponReady
+			CHAG A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+			CHAG A 0 A_Refire
 
-		 CHAG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		 CHAG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
-		 CHAG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
-		 CHAG A 0 A_PlaySound("CHAINSTO", 5)
-		 CHAG A 1 A_WeaponReady
+			CHAG A 0 A_JumpIfInventory("Spin",1,"Ready2")
+			CHAG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+			CHAG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+			CHAG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+			CHAG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
+			CHAG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+			CHAG AB 2 A_WeaponReady
+			CHAG A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+			CHAG CD 2 A_WeaponReady
+			CHAG A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
 
-		 CHAG B 1 A_WeaponReady
-		 CHAG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
-		 CHAG A 0 A_Refire
+			CHAG A 0 A_JumpIfInventory("Spin",1,"Ready2")
+			CHAG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+			CHAG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+			CHAG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+			CHAG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
+			CHAG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+			CHAG ABCD 3 A_WeaponReady
 
-		 CHAG C 1 A_WeaponReady
-		 CHAG A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
-		 CHAG D 1 A_WeaponReady
-
-		 CHAG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-
-		 CHAG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
-		 CHAG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
-		 CHAG A 1 A_WeaponReady
-		 CHAG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-		 CHAG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		 CHAG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
-
-		 CHAG B 1 A_WeaponReady
-		 CHAG A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
-		 CHAG C 2 A_WeaponReady
-
-		 CHAG D 2 A_WeaponReady
-		 CHAG A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
-		 CHAG A 0 A_JumpIfInventory("Spin",1,"Ready2")
-		 CHAG A 0 A_TakeInventory("Spin", 1)
-		 CHAG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
-		 CHAG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
-		 CHAG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-		 CHAG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		 CHAG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
-
-		 CHAG A 2 A_WeaponReady
-
-		 CHAG B 2 A_WeaponReady
-		 CHAG A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
-		 CHAG C 2 A_WeaponReady
-
-		 CHAG D 2 A_WeaponReady
-		 CHAG A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
-		 CHAG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-		 CHAG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		 CHAG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
-		 CHAG ABCD 2 A_WeaponReady
-		 CHAG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-		 CHAG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		 CHAG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
-		 CHAG ABCD 3 A_WeaponReady
-
-		 goto Ready
+			CHAG A 0 A_JumpIfInventory("Spin",1,"Ready2")
+			CHAG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+			CHAG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+			CHAG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+			CHAG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
+			CHAG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+			CHAG ABCD 4 A_WeaponReady
+			goto Ready
 
 	  AltFire:
 		TNT1 A 0
