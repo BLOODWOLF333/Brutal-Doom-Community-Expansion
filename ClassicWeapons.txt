@@ -740,25 +740,25 @@ ACTOR ClassicSMG : ClassicWeapon
 		TNT1 A 0 A_PlaySound("pfire", 1)
 		RIFF A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
         VSMG B 1 BRIGHT A_ZoomFactor(0.99)
-		VSMG B 1 BRIGHT A_ZoomFactor(1.0)
+		VSMG B 0 A_ZoomFactor(1.0)
 		TNT1 A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,0,-9)
-		VSMG E 1
+		VSMG E 2
 
 		TNT1 A 0 A_FireBullets (2.8, 2.8, -1, 10, "WeakPuff", FBF_NORANDOM | FBF_USEAMMO)
 		TNT1 A 0 A_PlaySound("pfire", 1)
 		RIFF A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
 		VSMG D 1 BRIGHT A_ZoomFactor(0.99)
-		VSMG D 1 BRIGHT A_ZoomFactor(1.0)
+		VSMG D 0 A_ZoomFactor(1.0)
 		TNT1 A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,0,-9)
-		VSMG E 1
+		VSMG E 2
 
 		TNT1 A 0 A_FireBullets (2.8, 2.8, -1, 10, "WeakPuff", FBF_NORANDOM | FBF_USEAMMO)
 		TNT1 A 0 A_PlaySound("pfire", 1)
 		RIFF A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
         VSMG C 1 BRIGHT A_ZoomFactor(0.99)
-		VSMG C 1 BRIGHT A_ZoomFactor(1.0)
+		VSMG C 0 A_ZoomFactor(1.0)
 		TNT1 A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,0,-9)
-		VSMG E 1
+		VSMG E 2
 
 		TNT1 A 0 A_ReFire
 		Goto Ready
@@ -867,7 +867,7 @@ ACTOR ClassicSSG : ClassicWeapon
 		PKSS L 2 A_CheckReload
 		PKSS MNOP 2
 		TNT1 A 0 A_PlaySound("weapons/sshoto", 4)
-		TNT1 A 0 A_FireCustomMissile("SSGCaseSpawner",0,0,-10)
+		TNT1 AA 0 A_FireCustomMissile("SSGCaseSpawner",0,0,-10,-20)
 		PKSS QRSTUV 2
 		TNT1 A 0 A_PlaySound("weapons/sshotl", 4)
 		PKSS WXYZ 2
@@ -920,14 +920,14 @@ ACTOR ClassicChaingun : ClassicWeapon
 		TNT1 A 0 A_FireBullets(2.8, 2.8, 1, 15, "MachineGunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
 		PKCG E 1 BRIGHT A_ZoomFactor(0.99)
 		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",5,0,12,-16)
-		PKCG BHG 1 A_ZoomFactor(1.0)
+		PKCG GHD 1 A_ZoomFactor(1.0)
 		TNT1 A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 1)
 		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 A 0 A_FireBullets(2.8, 2.8, 1, 15, "MachineGunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
 		PKCG F 1 BRIGHT A_ZoomFactor(0.99)
 		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",5,0,12,-16)
-		PKCG BHG 1 A_ZoomFactor(1.0)
+		PKCG GHD 1 A_ZoomFactor(1.0)
 		PKCG G 0 A_ReFire
 		Goto Ready
 	Spawn:
