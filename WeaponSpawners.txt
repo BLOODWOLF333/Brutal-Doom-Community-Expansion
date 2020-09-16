@@ -119,18 +119,12 @@ ACTOR MP40Spawner: CustomInventory
  Mass 1
     States
     {
-
 	 Spawn:
 		TNT1 A 0
-		TNT1 A 1
+		MP40 I 10
 		TNT1 A 0 A_ChangeFlag("THRUACTORS", 0)
-		TNT1 A 0
-	Stay:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("FakeSMGSprite")
-		TNT1 A 0 A_SpawnItem("FakeMP40Sprite")
-		TNT1 A 2
-		Loop
+		MP40 I -1
+		Stop
 	Pickup:
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
@@ -141,27 +135,11 @@ ACTOR MP40Spawner: CustomInventory
 		TNT1 A 0 A_GiveInventory("Mauser9mm", 32)
 		Stop
 	Purist:
-	    TNT1 A 0 A_GiveInventory("ClassicSMG", 1)
+	    TNT1 A 0 A_GiveInventory("ClassicMP40", 1)
 		Stop
 	Dual:
 		TNT1 A 0 A_GiveInventory("DualMP40", 1)
 		TNT1 A 0 A_GiveInventory("Mauser9mm", 32)
-		Stop
-    }
-}
-
-ACTOR FakeMP40Sprite: BasicWeaponPickup
-{
- Scale 0.9
- VisibleToPlayerClass BDoomer, Doomer2, TacticalDoomer
- +NOGRAVITY
- +FLOAT +NOCLIP +NOINTERACTION
- States
-    {
-
-	 Spawn:
-		MP40 I 0
-		MP40 I 4
 		Stop
     }
 }
@@ -1104,21 +1082,17 @@ ACTOR BuzzsawSpawner: CustomInventory
     {
 	Spawn:
 		TNT1 A 0
-		TNT1 A 1
+		HBUS D 10
 		TNT1 A 0 A_ChangeFlag("THRUACTORS", 0)
-	Stay:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("FakeBuzzsawSprite")
-		TNT1 A 0 A_SpawnItem("FakeOldBFGSprite")
-		TNT1 A 2
-		Loop
+		HBUS D -1
+		Stop
 	Pickup:
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
 		TNT1 A 0 A_GiveInventory("HitlersBuzzsaw", 1)
 		Stop
 	Purist:
-	    TNT1 A 0 A_GiveInventory("VanillaBFG9000", 1)
+	    TNT1 A 0 A_GiveInventory("ClassicBuzzsaw", 1)
 		Stop
     }
 }
@@ -1450,18 +1424,4 @@ actor ChainsawSpawnerReplacer  : BasicWeaponPickup Replaces Chainsaw
 		TNT1 A -1
 		Stop
 	}
-}
-
-ACTOR FakeBuzzsawSprite: BasicWeaponPickup
-{
- VisibleToPlayerClass BDoomer, Doomer2, TacticalDoomer
- +NOGRAVITY
- +FLOAT +NOCLIP +NOINTERACTION
- States
-    {
-	 Spawn:
-		HBUS D 0
-		HBUS D 4
-		Stop
-    }
 }

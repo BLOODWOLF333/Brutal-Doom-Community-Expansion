@@ -182,56 +182,6 @@ ACTOR Mauser9mm : Ammo
 	}
 }
 
-ACTOR FakeMauser9mmSprite: BasicAmmoPickup
-{
- Scale 0.6
- VisibleToPlayerClass BDoomer, Doomer2, TacticalDoomer
- radius 24
- height 24
- +FORCEXYBILLBOARD
- +NOGRAVITY
- +FLOAT +NOCLIP +NOINTERACTION
- States
-    {
-
-	 Spawn:
-		CLIP B 0
-		CLIP B 4
-		Stop
-    }
-}
-
-ACTOR Mauser9mmSpawner: CustomInventory
-{
- radius 24
- height 24
- +FORCEXYBILLBOARD
- Inventory.PickupMessage "Picked up a Mauser 9mm Magazine for the MP40."
- Inventory.PickupSound "CLIPICK"
- Mass 1
-    States
-    {
-	Spawn:
-		TNT1 A 0
-		TNT1 A 1
-		TNT1 A 0 A_ChangeFlag("THRUACTORS", 0)
-	Stay:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("FakeMauser9mmSprite")
-		TNT1 A 0 A_SpawnItem("FakeClip2Sprite")
-		TNT1 A 2
-		Loop
-	Pickup:
-	    TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
-		TNT1 A 0 A_GiveInventory("Mauser9mm", 32)
-		Stop
-	Purist:
-	    TNT1 A 0 A_GiveInventory("Clip2", 10)
-		Stop
-    }
-}
-
 Actor ClipReplacer : BasicAmmoPickup Replaces Clip
 {
     States
@@ -260,7 +210,7 @@ Actor ClipReplacer : BasicAmmoPickup Replaces Clip
 
 	Spawn3:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx ("Mauser9mmSpawner",0,0,0,0,0,0,0,0,0)
+		TNT1 A 0 A_SpawnItemEx ("Mauser9mm",0,0,0,0,0,0,0,0,0)
 		TNT1 A 1
 		TNT1 A -1
 		Stop
@@ -417,56 +367,6 @@ ACTOR BuzzSawAmmo : Ammo
 	}
 }
 
-ACTOR FakeBuzzsawAmmoSprite: BasicAmmoPickup
-{
- Scale 0.6
- VisibleToPlayerClass BDoomer, Doomer2, TacticalDoomer
- radius 24
- height 24
- +FORCEXYBILLBOARD
- +NOGRAVITY
- +FLOAT +NOCLIP +NOINTERACTION
- States
-    {
-
-	 Spawn:
-		HBUS E 0
-		HBUS E 4
-		Stop
-    }
-}
-
-ACTOR BuzzSawAmmoSpawner: CustomInventory
-{
- radius 24
- height 24
- +FORCEXYBILLBOARD
- Inventory.PickupMessage "Picked up a belt of MG42 ammo."
- Inventory.PickupSound "CBOXPICK"
- Mass 1
-    States
-    {
-	Spawn:
-		TNT1 A 0
-		TNT1 A 1
-		TNT1 A 0 A_ChangeFlag("THRUACTORS", 0)
-	Stay:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("FakeBuzzsawAmmoSprite")
-		TNT1 A 0 A_SpawnItem("FakeClipBoxSprite")
-		TNT1 A 2
-		Loop
-	Pickup:
-	    TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
-		TNT1 A 0 A_GiveInventory("BuzzSawAmmo", 50)
-		Stop
-	Purist:
-	    TNT1 A 0 A_GiveInventory("Clip2", 50)
-		Stop
-    }
-}
-
 Actor ClipBoxReplacer : BasicAmmoPickup Replaces ClipBox
 {
     States
@@ -496,7 +396,7 @@ Actor ClipBoxReplacer : BasicAmmoPickup Replaces ClipBox
 
 	Spawn3:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx ("BuzzSawAmmoSpawner",0,0,0,0,0,0,0,0,0)
+		TNT1 A 0 A_SpawnItemEx ("BuzzSawAmmo",0,0,0,0,0,0,0,0,0)
 		TNT1 A 1
 		TNT1 A -1
 		Stop
