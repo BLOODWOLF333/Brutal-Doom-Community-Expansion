@@ -213,7 +213,7 @@ object ShoqueAzul
 
 flickerlight CACOBALL
 {
-    color 1.0 0.1 0.5 
+    color 1.0 0.1 0.5
     size 56
     secondarySize 64
     chance 0.5
@@ -274,22 +274,52 @@ object MotherFire
 	frame FIR3 {light BIGREDTORCH }
 }
 
-pointlight VioletShotLight
+object 64UNMAKERUPGRADE1
 {
-    color 1.0 0.1 1.0
-    size 128
+    frame ART1 { light UNMAKERARTIFACT1 }
 }
 
-pointlight VioletShotLightSmall
+pulselight UNMAKERARTIFACT1
+{
+    color 1.0 0.5 0.1
+    size 40
+    secondarySize 42
+    interval 2.0
+    offset 0 10 0
+}
+
+object 64UNMAKERUPGRADE2
+{
+    frame ART2 { light UNMAKERARTIFACT2 }
+}
+
+pulselight UNMAKERARTIFACT2
 {
     color 1.0 0.1 1.0
-    size 64
+    size 40
+    secondarySize 42
+    interval 2.0
+    offset 0 10 0
 }
 
 pointlight GreenShotLight
 {
     color 0.1 1.0 0.1
     size 64
+}
+
+object 64UNMAKERUPGRADE3
+{
+    frame ART3 { light UNMAKERARTIFACT3 }
+}
+
+pulselight UNMAKERARTIFACT3
+{
+    color 0.5 1.0 1.0
+    size 40
+    secondarySize 42
+    interval 2.0
+    offset 0 10 0
 }
 
 object GreenFlareSmall

@@ -1256,8 +1256,8 @@ ACTOR ClassicUnmaker : ClassicWeapon 9902
 	Inventory.PickupSound "BFGREADY"
 	AttackSound "NULL"
 	Inventory.Icon "LGUNA0"
-	Tag "$TAG_LASER"
-	+DONTGIB
+	Tag "Unmaker"
+	DropItem "UnmakerSpawner"
 	+WEAPON.BFG
 	+WEAPON.NOAUTOAIM
 	+WEAPON.NOAUTOFIRE
@@ -1292,7 +1292,7 @@ ACTOR ClassicUnmaker : ClassicWeapon 9902
 			UNMA A 0 A_JumpIfInventory("UnmakerUpgrades", 1, "FireUpgradeOne")
 			UNMA A 0 A_GunFlash
 			UNMA A 0 A_PlaySound("weapons/unmaker", CHAN_AUTO, 0.8, 0, ATTN_NORM)
-			UNMA B 3 BRIGHT A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 0, 0, 8192, 1, 32.0, 0, "UnmakerLaserTrail")
+			UNMA B 3 BRIGHT A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail")
 			UNMA A 7
 			UNMA A 0 A_ReFire
 			Goto Ready
@@ -1302,7 +1302,7 @@ ACTOR ClassicUnmaker : ClassicWeapon 9902
 			UNMA A 0 A_JumpIfInventory("UnmakerUpgrades", 2, "FireUpgradeTwo")
 			UNMA A 0 A_GunFlash
 			UNMA A 0 A_PlaySound("weapons/unmaker", CHAN_AUTO, 0.8, 0, ATTN_NORM)
-			UNMA B 3 BRIGHT A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 0, 0, 8192, 1, 32.0, 0, "UnmakerLaserTrail")
+			UNMA B 3 BRIGHT A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail")
 			UNMA A 4
 			UNMA A 0 A_ReFire
 			Goto Ready
@@ -1312,9 +1312,9 @@ ACTOR ClassicUnmaker : ClassicWeapon 9902
 			UNMA A 0 A_JumpIfInventory("UnmakerUpgrades", 3, "FireUpgradeThree")
 			UNMA A 0 A_GunFlash
 			UNMA A 0 A_PlaySound("weapons/unmaker", CHAN_AUTO, 0.8, 0, ATTN_NORM)
-			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 1.0, 0, 8192, 1, 32.0, 0, "UnmakerLaserTrail")
+			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 1.0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail")
 			UNMA A 0 A_JumpIfNoAmmo(3)
-			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 1.0, 0, 8192, 1, 32.0, 0, "UnmakerLaserTrail")
+			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", -1.0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail")
 			UNMA B 3 BRIGHT
 			UNMA A 2
 			UNMA A 0 A_ReFire
@@ -1324,11 +1324,11 @@ ACTOR ClassicUnmaker : ClassicWeapon 9902
 		FireUpgradeThree:
 			UNMA A 0 A_GunFlash
 			UNMA A 0 A_PlaySound("weapons/unmaker", CHAN_AUTO, 0.8, 0, ATTN_NORM)
-			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 0, 0, 8192, 1, 32.0, 0, "UnmakerLaserTrail")
+			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail")
 			UNMA A 0 A_JumpIfNoAmmo(5)
-			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 3.0, 0, 8192, 1, 32.0, 0, "UnmakerLaserTrail")
+			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 3.0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail")
 			UNMA A 0 A_JumpIfNoAmmo(3)
-			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 3.0, 0, 8192, 1, 32.0, 0, "UnmakerLaserTrail")
+			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", -3.0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail")
 			UNMA B 3 BRIGHT
 			UNMA A 2
 			UNMA A 0 A_ReFire("Hold1")
@@ -1336,11 +1336,11 @@ ACTOR ClassicUnmaker : ClassicWeapon 9902
 		Hold1:
 			UNMA A 0 A_GunFlash
 			UNMA A 0 A_PlaySound("weapons/unmaker", CHAN_AUTO, 0.8, 0, ATTN_NORM)
-			UNMA A 0 A_FireCustomMissile("UnmakerLaser")
+			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail")
 			UNMA A 0 A_JumpIfNoAmmo(5)
-			UNMA A 0 A_FireCustomMissile("UnmakerLaser", 6.0)
+			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 6.0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail")
 			UNMA A 0 A_JumpIfNoAmmo(3)
-			UNMA A 0 A_FireCustomMissile("UnmakerLaser", -6.0)
+			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", -6.0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail")
 			UNMA B 3 BRIGHT
 			UNMA A 2
 			UNMA A 0 A_ReFire("Hold2")
@@ -1348,11 +1348,11 @@ ACTOR ClassicUnmaker : ClassicWeapon 9902
 		Hold2:
 			UNMA A 0 A_GunFlash
 			UNMA A 0 A_PlaySound("weapons/unmaker", CHAN_AUTO, 0.8, 0, ATTN_NORM)
-			UNMA A 0 A_FireCustomMissile("UnmakerLaser")
+			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail")
 			UNMA A 0 A_JumpIfNoAmmo(5)
-			UNMA A 0 A_FireCustomMissile("UnmakerLaser", 9.0)
+			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 9.0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail")
 			UNMA A 0 A_JumpIfNoAmmo(3)
-			UNMA A 0 A_FireCustomMissile("UnmakerLaser", -9.0)
+			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", -9.0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail")
 			UNMA B 3 BRIGHT
 			UNMA A 2
 			UNMA A 0 A_ReFire("Hold3")
@@ -1360,11 +1360,11 @@ ACTOR ClassicUnmaker : ClassicWeapon 9902
 		Hold3:
 			UNMA A 0 A_GunFlash
 			UNMA A 0 A_PlaySound("weapons/unmaker", CHAN_AUTO, 0.8, 0, ATTN_NORM)
-			UNMA A 0 A_FireCustomMissile("UnmakerLaser")
+			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail")
 			UNMA A 0 A_JumpIfNoAmmo(5)
-			UNMA A 0 A_FireCustomMissile("UnmakerLaser", 12.0)
+			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 12.0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail")
 			UNMA A 0 A_JumpIfNoAmmo(3)
-			UNMA A 0 A_FireCustomMissile("UnmakerLaser", -12.0)
+			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", -12.0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail")
 			UNMA B 3 BRIGHT
 			UNMA A 2
 			UNMA A 0 A_CheckReload

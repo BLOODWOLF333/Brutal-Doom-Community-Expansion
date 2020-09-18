@@ -23,9 +23,6 @@ ACTOR InvulnerabilitySphere_  : PowerupGiver Replaces InvulnerabilitySphere
 	}
 }
 
-
-
-
 // Soulsphere --------------------------------------------------------------
 
 ACTOR LifeSphere : CustomInventory Replaces SoulSphere
@@ -48,7 +45,7 @@ ACTOR LifeSphere : CustomInventory Replaces SoulSphere
 	}
 }
 
-ACTOR SoulSphereHealth : Health	
+ACTOR SoulSphereHealth : Health
 {
 	Inventory.Amount 100
 	Inventory.MaxAmount 200
@@ -74,12 +71,11 @@ ACTOR EnergySphere : CustomInventory Replaces Megasphere
 		TNT1 AA 0 A_GiveInventory("SoulsphereHealth", 1)
 		Stop
 	}
-}	
-
+}
 
 // infrared -----------------------------------------------------------------
 
-ACTOR NightVision : CustomInventory Replaces InfraRed
+ACTOR NightVision : CustomInventory
 {
 	Game Doom
 	SpawnID 138
@@ -97,7 +93,7 @@ ACTOR NightVision : CustomInventory Replaces InfraRed
 		SVIS C 2 Bright A_SpawnItem("WhiteFlareSmall",0,0)
 		SVIS D 3 Bright A_SpawnItem("WhiteFlareSmall",0,0)
 		Loop
-		
+
 	Pickup:
 		TNT1 A 1
 		TNT1 A 0 A_GiveInventory("HasInfrared", 1)
@@ -105,6 +101,22 @@ ACTOR NightVision : CustomInventory Replaces InfraRed
 		TNT1 A 0 ACS_ExecuteAlways(398, 0, 0, 0, 0)
 		TNT1 A 1
 		Stop
+	}
+}
+
+Actor FakeNightVisionSprite : CustomInventory
+{
+	+FORCEXYBILLBOARD
+	+NOCLIP +NOINTERACTION
+	-COUNTITEM
+	-INVENTORY.ALWAYSPICKUP
+	+Quiet
+	VisibleToPlayerClass BDoomer, Doomer2, TacticalDoomer
+	States
+	{
+		Spawn:
+			SVIS EEDDCCBBAABBCCDD 2 Bright //A_SpawnItem("WhiteFlareSmall",0,0)
+			Stop
 	}
 }
 
@@ -188,7 +200,6 @@ ACTOR SuperBlurSphere : CustomInventory
   }
 }
 
-
 ACTOR DemonStrengthRune : BerserkPack
 {
 	Game Doom
@@ -229,7 +240,7 @@ ACTOR RadSuits : CustomInventory Replaces Radsuit
 		TNT1 A 0
 		TNT1 A 0 A_GiveInventory("Radsuit3", 1)
 		TNT1 A 0 A_GiveInventory("Radsuit2", 1)
-		Stop	
+		Stop
   }
 }
 
@@ -257,7 +268,7 @@ ACTOR RadSuit3 : PowerupGiver
   +INVENTORY.AUTOACTIVATE
   +INVENTORY.ALWAYSPICKUP
   Inventory.MaxAmount 0
-  
+
   Inventory.PickupMessage "$GOTSUIT" // "Radiation Shielding Suit"
   Powerup.Type "IronFeet"
   States
@@ -268,7 +279,7 @@ ACTOR RadSuit3 : PowerupGiver
 	Loop
   }
 }
-		
+
 //A randomizer for Demon Runes
 ACTOR DemonRuneMix: CustomInventory
 {
@@ -313,10 +324,314 @@ ACTOR MorphToken : Inventory
 	Inventory.MaxAmount 1
 }
 
-actor NightVisionSpawner : RandomSpawner
+actor NightVisionReplacer : CustomInventory Replaces InfraRed
 {
-    DropItem "DemonRuneMix"
-    DropItem "NIghtvision"
-	DropItem "Flamethrower2"
-	Tag "Nightvision/Demon Rune/Flamethrower"
+    States
+    {
+	Spawn:
+		TNT1 A 0
+		MARN A 0 ACS_NamedExecuteAlways("BDDisableNewGuns", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+		TNT1 A 2
+		TNT1 A 0 A_Jump(16, "Spawn2", "Spawn3", "Spawn4")
+		TNT1 A 2
+
+	Vanilla:
+	Spawn1:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx ("NightVision",0,0,0,0,0,0,0,0,0)
+		TNT1 A 1
+		TNT1 A -1
+		Stop
+
+	Spawn2:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx ("64UnmakerUpgrade1Spawner",0,0,0,0,0,0,0,0,0)
+		TNT1 A 1
+		TNT1 A -1
+		Stop
+
+	Spawn3:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx ("64UnmakerUpgrade2Spawner",0,0,0,0,0,0,0,0,0)
+		TNT1 A 1
+		TNT1 A -1
+		Stop
+
+	Spawn4:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx ("64UnmakerUpgrade3Spawner",0,0,0,0,0,0,0,0,0)
+		TNT1 A 1
+		TNT1 A -1
+		Stop
+	}
+}
+
+/* --- UNMAKER UPGRADES ----------------------------------------------------- */
+
+ACTOR UnmakerUpgrades : Inventory
+{
+	Game Doom
+	+UNDROPPABLE
+	Inventory.MaxAmount 3
+}
+
+ACTOR UnmakerUpgrade1Icon : Inventory
+{
+	Game Doom
+	+UNDROPPABLE
+	Inventory.MaxAmount 1
+}
+
+ACTOR UnmakerUpgrade2Icon : Inventory
+{
+	Game Doom
+	+UNDROPPABLE
+	Inventory.MaxAmount 1
+}
+
+ACTOR UnmakerUpgrade3Icon : Inventory
+{
+	Game Doom
+	+UNDROPPABLE
+	Inventory.MaxAmount 1
+}
+
+ACTOR 64UnmakerUpgrade1 : CustomInventory 1042
+{
+	// Orange Artifact (First Upgrade)
+	//$Color 19
+	//$NotAngled
+	//$Category "Doom 64 Retribution"
+	Game Doom
+	SpawnID 162
+	Inventory.Amount 1
+	Inventory.MaxAmount 1
+	Inventory.InterHubAmount 1
+	Inventory.Icon "ART1A0"
+	+DONTGIB
+	+COUNTITEM
+	-INTERHUBSTRIP
+	+FLOATBOB
+	States
+	{
+		Spawn:
+			ART1 AABBCCDDEEDDCCBB 2 BRIGHT A_SpawnItem("YellowFlareMedium",0,20)
+			Loop
+		Pickup:
+			TNT1 A 0 A_JumpIfInventory("UnmakerUpgrade1Icon", 1, "AlreadyTaken")
+			TNT1 A 0 A_GiveInventory("UnmakerUpgrades", 1)
+			TNT1 A 0 A_GiveInventory("UnmakerUpgrade1Icon", 1)
+			Stop
+		AlreadyTaken:
+			TNT1 A 0
+			Fail
+	}
+}
+
+Actor FakeUnmakerUpgrade1Sprite : CustomInventory
+{
+	+FORCEXYBILLBOARD
+	+NOGRAVITY
+	+FLOAT +NOCLIP +NOINTERACTION
+	-COUNTITEM
+	-INVENTORY.ALWAYSPICKUP
+	+Quiet
+	VisibleToPlayerClass Purist
+	States
+	{
+		Spawn:
+			ART1 AABBCCDDEEDDCCBB 2 BRIGHT A_SpawnItem("YellowFlareMedium",0,20)
+			Stop
+	}
+}
+
+ACTOR 64UnmakerUpgrade1Spawner : CustomInventory
+{
+	radius 24
+	height 24
+	+FORCEXYBILLBOARD
+	Inventory.PickupMessage "$GOTARTIFACT1"
+	Inventory.PickupSound "misc/p_pkup"
+	Mass 1
+    States
+    {
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1
+		TNT1 A 0 A_ChangeFlag("THRUACTORS", 0)
+	Stay:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("FakeNightVisionSprite")
+		TNT1 A 0 A_SpawnItem("FakeUnmakerUpgrade1Sprite")
+		TNT1 A 30
+		Loop
+	Pickup:
+	    TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
+		TNT1 A 0 A_GiveInventory("NightVision", 1)
+		Stop
+	Purist:
+	    TNT1 A 0 A_GiveInventory("64UnmakerUpgrade1", 1)
+		Stop
+    }
+}
+
+ACTOR 64UnmakerUpgrade2 : CustomInventory 1043
+{
+	// Purple Artifact (Second Upgrade)
+	//$Color 5
+	//$NotAngled
+	//$Category "Doom 64 Retribution"
+	Game Doom
+	SpawnID 163
+	Inventory.Amount 1
+	Inventory.MaxAmount 1
+	Inventory.InterHubAmount 1
+	Inventory.Icon "ART2A0"
+	+DONTGIB
+	+COUNTITEM
+	-INTERHUBSTRIP
+	+FLOATBOB
+	States
+	{
+		Spawn:
+			ART2 AABBCCDDEEDDCCBB 2 BRIGHT A_SpawnItem("VioletFlareMedium",0,20)
+			Loop
+		Pickup:
+			TNT1 A 0 A_JumpIfInventory("UnmakerUpgrade2Icon", 1, "AlreadyTaken")
+			TNT1 A 0 A_GiveInventory("UnmakerUpgrades", 1)
+			TNT1 A 0 A_GiveInventory("UnmakerUpgrade2Icon", 1)
+			Stop
+		AlreadyTaken:
+			TNT1 A 0
+			Fail
+	}
+}
+
+Actor FakeUnmakerUpgrade2Sprite : CustomInventory
+{
+	+FORCEXYBILLBOARD
+	+NOGRAVITY
+	+FLOAT +NOCLIP +NOINTERACTION
+	-COUNTITEM
+	-INVENTORY.ALWAYSPICKUP
+	+Quiet
+	VisibleToPlayerClass Purist
+	States
+	{
+		Spawn:
+			ART2 AABBCCDDEEDDCCBB 2 BRIGHT A_SpawnItem("VioletFlareMedium",0,20)
+			Stop
+	}
+}
+
+ACTOR 64UnmakerUpgrade2Spawner : CustomInventory
+{
+	radius 24
+	height 24
+	+FORCEXYBILLBOARD
+	Inventory.PickupMessage "$GOTARTIFACT2"
+	Inventory.PickupSound "misc/p_pkup"
+	Mass 1
+    States
+    {
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1
+		TNT1 A 0 A_ChangeFlag("THRUACTORS", 0)
+	Stay:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("FakeNightVisionSprite")
+		TNT1 A 0 A_SpawnItem("FakeUnmakerUpgrade2Sprite")
+		TNT1 A 30
+		Loop
+	Pickup:
+	    TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
+		TNT1 A 0 A_GiveInventory("NightVision", 1)
+		Stop
+	Purist:
+	    TNT1 A 0 A_GiveInventory("64UnmakerUpgrade2", 1)
+		Stop
+    }
+}
+
+ACTOR 64UnmakerUpgrade3 : CustomInventory 1044
+{
+	// Cyan Artifact (Third Upgrade)
+	//$Color 3
+	//$NotAngled
+	//$Category "Doom 64 Retribution"
+	Game Doom
+	SpawnID 164
+	Inventory.Amount 1
+	Inventory.MaxAmount 1
+	Inventory.InterHubAmount 1
+	Inventory.Icon "ART3A0"
+	+DONTGIB
+	+COUNTITEM
+	-INTERHUBSTRIP
+	+FLOATBOB
+	States
+	{
+		Spawn:
+			ART3 AABBCCDDEEDDCCBB 2 BRIGHT A_SpawnItem("BlueFlareMedium2",0,20)
+			Loop
+		Pickup:
+			TNT1 A 0 A_JumpIfInventory("UnmakerUpgrade3Icon", 1, "AlreadyTaken")
+			TNT1 A 0 A_GiveInventory("UnmakerUpgrades", 1)
+			TNT1 A 0 A_GiveInventory("UnmakerUpgrade3Icon", 1)
+			Stop
+		AlreadyTaken:
+			TNT1 A 0
+			Fail
+	}
+}
+
+Actor FakeUnmakerUpgrade3Sprite : CustomInventory
+{
+	+FORCEXYBILLBOARD
+	+NOGRAVITY
+	+FLOAT +NOCLIP +NOINTERACTION
+	-COUNTITEM
+	-INVENTORY.ALWAYSPICKUP
+	+Quiet
+	VisibleToPlayerClass Purist
+	States
+	{
+		Spawn:
+			ART3 AABBCCDDEEDDCCBB 2 BRIGHT A_SpawnItem("BlueFlareMedium2",0,20)
+			Stop
+	}
+}
+
+ACTOR 64UnmakerUpgrade3Spawner : CustomInventory
+{
+	radius 24
+	height 24
+	+FORCEXYBILLBOARD
+	Inventory.PickupMessage "$GOTARTIFACT3"
+	Inventory.PickupSound "misc/p_pkup"
+	Mass 1
+    States
+    {
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1
+		TNT1 A 0 A_ChangeFlag("THRUACTORS", 0)
+	Stay:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("FakeNightVisionSprite")
+		TNT1 A 0 A_SpawnItem("FakeUnmakerUpgrade3Sprite")
+		TNT1 A 30
+		Loop
+	Pickup:
+	    TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
+		TNT1 A 0 A_GiveInventory("NightVision", 1)
+		Stop
+	Purist:
+	    TNT1 A 0 A_GiveInventory("64UnmakerUpgrade3", 1)
+		Stop
+    }
 }
