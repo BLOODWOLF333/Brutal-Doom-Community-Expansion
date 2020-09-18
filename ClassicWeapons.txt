@@ -776,6 +776,7 @@ ACTOR ClassicMP40 : ClassicWeapon
 	Inventory.Pickupmessage "$GOTMP40"
 	DropItem "MP40Spawner"
 	Scale 0.9
+	+WEAPON.CHEATNOTWEAPON
 	States
 	{
 	Ready:
@@ -958,14 +959,14 @@ ACTOR ClassicChaingun : ClassicWeapon
 		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 A 0 A_FireBullets(2.8, 2.8, 1, 15, "MachineGunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
 		PKCG E 1 BRIGHT A_ZoomFactor(0.99)
-		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",5,0,12,-16)
+		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",0,0,6,-18)
 		PKCG GHD 1 A_ZoomFactor(1.0)
 		TNT1 A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 1)
 		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 A 0 A_FireBullets(2.8, 2.8, 1, 15, "MachineGunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
 		PKCG F 1 BRIGHT A_ZoomFactor(0.99)
-		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",5,0,12,-16)
+		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",0,0,6,-18)
 		PKCG GHD 1 A_ZoomFactor(1.0)
 		PKCG G 0 A_ReFire
 		Goto Ready
@@ -987,6 +988,7 @@ ACTOR ClassicBuzzsaw : ClassicWeapon
 	Tag "Hitlersbuzzsaw"
 	DropItem "BuzzsawSpawner"
 	Scale 1.0
+	+WEAPON.CHEATNOTWEAPON
 	States
 	{
 
@@ -1014,7 +1016,7 @@ ACTOR ClassicBuzzsaw : ClassicWeapon
 		PKBZ B 1 BRIGHT A_ZoomFactor(0.98)
 		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		MP40 A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
-		MP40 A 0 A_FireCustomMissile("50CaseSpawn2",5,0,6,-6)
+		MP40 A 0 A_Firecustommissile("50CaseSpawn2",0,0,9,-12)
 		PKBZ A 1 A_ZoomFactor(1.0)
 		TNT1 A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
 		TNT1 A 0 A_PlaySound("MP40", 1)
@@ -1022,7 +1024,7 @@ ACTOR ClassicBuzzsaw : ClassicWeapon
 		TNT1 A 0 A_FireBullets(2.8, 2.8, 1, 15, "ExtremeBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
 		PKBZ C 1 BRIGHT A_ZoomFactor(0.98)
 		MP40 A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
-		MP40 A 0 A_FireCustomMissile("50CaseSpawn2",5,0,6,-6)
+		MP40 A 0 A_Firecustommissile("50CaseSpawn2",0,0,9,-12)
 		PKBZ A 1 A_ZoomFactor(1.0)
 		PKCG G 0 A_ReFire
 		Goto Ready

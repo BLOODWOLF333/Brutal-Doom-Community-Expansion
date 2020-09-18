@@ -190,7 +190,7 @@ ACTOR Machinegun : BrutalWeapon
 			TNT1 A 0 A_ZoomFactor(0.99)
 			MGN1 A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 			CHAF A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
-			MGN1 A 0 A_Firecustommissile("50CaseSpawn2",random(-2,2),0,0,-12,-18)
+			MGN1 A 0 A_Firecustommissile("50CaseSpawn2",0,0,0,-12,-18)
 			MGN1 D 1
 			TNT1 A 0 A_ZoomFactor(1.0)
 			MGN1 E 1
@@ -206,7 +206,7 @@ ACTOR Machinegun : BrutalWeapon
 			TNT1 A 0 A_ZoomFactor(0.99)
 			MGN1 A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 			CHAF A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
-			MGN1 A 0 A_Firecustommissile("50CaseSpawn2",random(-2,2),0,0,-12,-18)
+			MGN1 A 0 A_Firecustommissile("50CaseSpawn2",0,0,0,-12,-18)
 			RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
 			RIFG A 0 A_SetPitch(pitch-0.4)
 			MGN1 D 1
