@@ -532,6 +532,20 @@ ACTOR ClassicFist : ClassicWeapon
 	Select:
 		PKFS A 1 A_Raise
 		TNT1 A 0 A_GunFlash
+		TNT1 A 0 A_GiveInventory("FistsSelected", 1)
+		TNT1 A 0 A_TakeInventory("ShotgunSelected", 1)
+		TNT1 A 0 A_TakeInventory("MinigunSelected", 1)
+		TNT1 A 0 A_TakeInventory("SSGSelected", 1)
+		TNT1 A 0 A_TakeInventory("RocketLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("GrenadeLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("PlasmaGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RailGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RevenantLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("SubMachineGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFG10KSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFGSelected", 1)
+		TNT1 A 0 A_TakeInventory("FlameCannonSelected", 1)
+		TNT1 A 0 A_TakeInventory("SawSelected", 1)
 		Loop
 	Fire:
 	    TNT1 A 0 A_jumpifinventory("PowerStrength",1,"Fire2")
@@ -597,6 +611,10 @@ ACTOR ClassicSaw : ClassicWeapon
 
 	Deselect:
 		VSAW A 1 A_Lower
+		AXEG A 0 A_TakeInventory("HasCutingWeapon",1)
+		KICK A 0 A_Takeinventory("PowerBloodOnVisor",1)
+		KICK A 0 A_Takeinventory("PowerBlueBloodOnVisor",1)
+		KICK A 0 A_Takeinventory("PowerGreenBloodOnVisor",1)
 		Loop
 	Select:
 		VSAW A 1 A_Raise
@@ -604,6 +622,21 @@ ACTOR ClassicSaw : ClassicWeapon
 		KICK A 0 A_Takeinventory("PowerBlueBloodOnVisor",1)
 		KICK A 0 A_Takeinventory("PowerGreenBloodOnVisor",1)
 		TNT1 A 0 A_GunFlash
+		TNT1 A 0 A_TakeInventory("FistsSelected", 1)
+		TNT1 A 0 A_TakeInventory("ShotgunSelected", 1)
+		TNT1 A 0 A_TakeInventory("MinigunSelected", 1)
+		TNT1 A 0 A_TakeInventory("SSGSelected", 1)
+		TNT1 A 0 A_TakeInventory("RocketLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("GrenadeLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("PlasmaGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RailGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RevenantLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("SubMachineGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFG10KSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFGSelected", 1)
+		TNT1 A 0 A_TakeInventory("FlameCannonSelected", 1)
+		TNT1 A 0 A_GiveInventory("SawSelected", 1)
+		AXEG A 0 A_Giveinventory("HasCutingWeapon",1)
 		Loop
 	Fire:
 		TNT1 A 0
@@ -680,6 +713,20 @@ ACTOR ClassicPistol : ClassicWeapon
 	Select:
 		PKPI A 1 A_Raise
 		TNT1 A 0 A_GunFlash
+		TNT1 A 0 A_TakeInventory("FistsSelected", 1)
+		TNT1 A 0 A_TakeInventory("ShotgunSelected", 1)
+		TNT1 A 0 A_TakeInventory("MinigunSelected", 1)
+		TNT1 A 0 A_TakeInventory("SSGSelected", 1)
+		TNT1 A 0 A_TakeInventory("RocketLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("GrenadeLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("PlasmaGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RailGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RevenantLauncherSelected", 1)
+		TNT1 A 0 A_GiveInventory("SubMachineGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFG10KSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFGSelected", 1)
+		TNT1 A 0 A_TakeInventory("FlameCannonSelected", 1)
+		TNT1 A 0 A_TakeInventory("SawSelected", 1)
 		Loop
 
 	Fire:
@@ -730,6 +777,20 @@ ACTOR ClassicSMG : ClassicWeapon
 	Select:
 		VSMG A 1 A_Raise
 		TNT1 A 0 A_GunFlash
+		TNT1 A 0 A_TakeInventory("FistsSelected", 1)
+		TNT1 A 0 A_TakeInventory("ShotgunSelected", 1)
+		TNT1 A 0 A_TakeInventory("MinigunSelected", 1)
+		TNT1 A 0 A_TakeInventory("SSGSelected", 1)
+		TNT1 A 0 A_TakeInventory("RocketLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("GrenadeLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("PlasmaGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RailGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RevenantLauncherSelected", 1)
+		TNT1 A 0 A_GiveInventory("SubMachineGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFG10KSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFGSelected", 1)
+		TNT1 A 0 A_TakeInventory("FlameCannonSelected", 1)
+		TNT1 A 0 A_TakeInventory("SawSelected", 1)
 		Loop
 	Fire:
 		TNT1 A 0 A_FireBullets (2.8, 2.8, -1, 10, "WeakPuff", FBF_NORANDOM | FBF_USEAMMO)
@@ -794,6 +855,20 @@ ACTOR ClassicMP40 : ClassicWeapon
 	Select:
 		PKMP A 1 A_Raise
 		TNT1 A 0 A_GunFlash
+		TNT1 A 0 A_TakeInventory("FistsSelected", 1)
+		TNT1 A 0 A_TakeInventory("ShotgunSelected", 1)
+		TNT1 A 0 A_TakeInventory("MinigunSelected", 1)
+		TNT1 A 0 A_TakeInventory("SSGSelected", 1)
+		TNT1 A 0 A_TakeInventory("RocketLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("GrenadeLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("PlasmaGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RailGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RevenantLauncherSelected", 1)
+		TNT1 A 0 A_GiveInventory("SubMachineGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFG10KSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFGSelected", 1)
+		TNT1 A 0 A_TakeInventory("FlameCannonSelected", 1)
+		TNT1 A 0 A_TakeInventory("SawSelected", 1)
 		Loop
 	Fire:
 		TNT1 A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
@@ -840,6 +915,20 @@ ACTOR ClassicShotgun : ClassicWeapon
 	Select:
 		PKSG A 1 A_Raise
 		TNT1 A 0 A_GunFlash
+		TNT1 A 0 A_TakeInventory("FistsSelected", 1)
+		TNT1 A 0 A_GiveInventory("ShotgunSelected", 1)
+		TNT1 A 0 A_TakeInventory("MinigunSelected", 1)
+		TNT1 A 0 A_TakeInventory("SSGSelected", 1)
+		TNT1 A 0 A_TakeInventory("RocketLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("GrenadeLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("PlasmaGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RailGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RevenantLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("SubMachineGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFG10KSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFGSelected", 1)
+		TNT1 A 0 A_TakeInventory("FlameCannonSelected", 1)
+		TNT1 A 0 A_TakeInventory("SawSelected", 1)
 		Loop
 	Fire:
 		PKSG A 3
@@ -893,6 +982,20 @@ ACTOR ClassicSSG : ClassicWeapon
 	Select:
 		PKSS A 1 A_Raise
 		TNT1 A 0 A_GunFlash
+		TNT1 A 0 A_TakeInventory("FistsSelected", 1)
+		TNT1 A 0 A_TakeInventory("ShotgunSelected", 1)
+		TNT1 A 0 A_TakeInventory("MinigunSelected", 1)
+		TNT1 A 0 A_GiveInventory("SSGSelected", 1)
+		TNT1 A 0 A_TakeInventory("RocketLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("GrenadeLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("PlasmaGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RailGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RevenantLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("SubMachineGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFG10KSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFGSelected", 1)
+		TNT1 A 0 A_TakeInventory("FlameCannonSelected", 1)
+		TNT1 A 0 A_TakeInventory("SawSelected", 1)
 		Loop
 	Fire:
 	    PKSS A 3
@@ -948,10 +1051,28 @@ ACTOR ClassicChaingun : ClassicWeapon
 		Loop
 	Deselect:
 		PKCG G 1 A_Lower
+		TNT1 A 0 A_TakeInventory("HeavyAutomaticWeapon",1)
+		TNT1 A 0 A_TakeInventory("RandomHeadExploder", 1)
 		Loop
 	Select:
 		PKCG G 1 A_Raise
 		TNT1 A 0 A_GunFlash
+		MGN1 A 0 A_Giveinventory("HeavyAutomaticWeapon",1)
+		TNT1 A 0 A_TakeInventory("FistsSelected", 1)
+		TNT1 A 0 A_TakeInventory("ShotgunSelected", 1)
+		TNT1 A 0 A_GiveInventory("MinigunSelected", 1)
+		TNT1 A 0 A_TakeInventory("SSGSelected", 1)
+		TNT1 A 0 A_TakeInventory("RocketLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("GrenadeLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("PlasmaGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RailGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RevenantLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("SubMachineGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFG10KSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFGSelected", 1)
+		TNT1 A 0 A_TakeInventory("FlameCannonSelected", 1)
+		TNT1 A 0 A_TakeInventory("SawSelected", 1)
+		MGN1 A 0 A_GiveInventory("RandomHeadExploder", 1)
 		Loop
 	Fire:
 		TNT1 A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
@@ -985,7 +1106,7 @@ ACTOR ClassicBuzzsaw : ClassicWeapon
 	Weapon.AmmoType "BuzzsawAmmo"
 	Inventory.PickupMessage "$GOTMG42"
 	Obituary "%o was cut in half by %k's MG42"
-	Tag "Hitlersbuzzsaw"
+	Tag "Hitler's Buzzsaw"
 	DropItem "BuzzsawSpawner"
 	Scale 1.0
 	+WEAPON.CHEATNOTWEAPON
@@ -1003,16 +1124,35 @@ ACTOR ClassicBuzzsaw : ClassicWeapon
 		Loop
 	Deselect:
 		PKBZ A 1 A_Lower
+		TNT1 A 0 A_TakeInventory("HeavyAutomaticWeapon",1)
+		TNT1 A 0 A_TakeInventory("RandomHeadExploder", 1)
 		Loop
 	Select:
 		PKBZ A 1 A_Raise
 		TNT1 A 0 A_GunFlash
+		MGN1 A 0 A_Giveinventory("HeavyAutomaticWeapon",1)
+		TNT1 A 0 A_TakeInventory("FistsSelected", 1)
+		TNT1 A 0 A_TakeInventory("ShotgunSelected", 1)
+		TNT1 A 0 A_GiveInventory("MinigunSelected", 1)
+		TNT1 A 0 A_TakeInventory("SSGSelected", 1)
+		TNT1 A 0 A_TakeInventory("RocketLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("GrenadeLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("PlasmaGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RailGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RevenantLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("SubMachineGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFG10KSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFGSelected", 1)
+		TNT1 A 0 A_TakeInventory("FlameCannonSelected", 1)
+		TNT1 A 0 A_TakeInventory("SawSelected", 1)
+		MGN1 A 0 A_GiveInventory("RandomHeadExploder", 1)
 		Loop
 	Fire:
 		TNT1 A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
 		TNT1 A 0 A_PlaySound("MP40", 1)
 		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 A 0 A_FireBullets(2.8, 2.8, 1, 15, "ExtremeBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
+		MP40 A 0 A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0)
 		PKBZ B 1 BRIGHT A_ZoomFactor(0.98)
 		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		MP40 A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
@@ -1022,6 +1162,7 @@ ACTOR ClassicBuzzsaw : ClassicWeapon
 		TNT1 A 0 A_PlaySound("MP40", 1)
 		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 A 0 A_FireBullets(2.8, 2.8, 1, 15, "ExtremeBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
+		MP40 A 0 A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0)
 		PKBZ C 1 BRIGHT A_ZoomFactor(0.98)
 		MP40 A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
 		MP40 A 0 A_Firecustommissile("50CaseSpawn2",0,0,9,-12)
@@ -1065,6 +1206,20 @@ ACTOR ClassicRocketLauncher : ClassicWeapon
 	Select:
 		PKRL A 1 A_Raise
 		TNT1 A 0 A_GunFlash
+		TNT1 A 0 A_TakeInventory("FistsSelected", 1)
+		TNT1 A 0 A_TakeInventory("ShotgunSelected", 1)
+		TNT1 A 0 A_TakeInventory("MinigunSelected", 1)
+		TNT1 A 0 A_TakeInventory("SSGSelected", 1)
+		TNT1 A 0 A_GiveInventory("RocketLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("GrenadeLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("PlasmaGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RailGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RevenantLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("SubMachineGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFG10KSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFGSelected", 1)
+		TNT1 A 0 A_TakeInventory("FlameCannonSelected", 1)
+		TNT1 A 0 A_TakeInventory("SawSelected", 1)
 		Loop
 	Fire:
 		TNT1 A 0 A_PlaySound ("DSRFIRE")
@@ -1110,7 +1265,21 @@ ACTOR ClassicPlasmaRifle : ClassicWeapon
 		3LSG A 1 A_Lower
 		Loop
 	Select:
-	    TNT1 A 0 A_Giveinventory("HasPlasmaWeapon",1)
+	    DUPL A 0 A_Giveinventory("HasPlasmaWeapon",1)
+		TNT1 A 0 A_TakeInventory("FistsSelected", 1)
+		TNT1 A 0 A_TakeInventory("ShotgunSelected", 1)
+		TNT1 A 0 A_TakeInventory("MinigunSelected", 1)
+		TNT1 A 0 A_TakeInventory("SSGSelected", 1)
+		TNT1 A 0 A_TakeInventory("RocketLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("GrenadeLauncherSelected", 1)
+		TNT1 A 0 A_GiveInventory("PlasmaGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RailGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RevenantLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("SubMachineGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFG10KSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFGSelected", 1)
+		TNT1 A 0 A_TakeInventory("FlameCannonSelected", 1)
+		TNT1 A 0 A_TakeInventory("SawSelected", 1)
 		TNT1 A 0 A_GunFlash
 		3LSG A 1 A_Raise
 		Loop
@@ -1210,7 +1379,20 @@ ACTOR VanillaBFG9000 : ClassicWeapon
 
 	Select:
 		TNT1 A 0 A_GunFlash
-		TNT1 A 0 A_Giveinventory("BFGSelected",1)
+		TNT1 A 0 A_TakeInventory("FistsSelected", 1)
+		TNT1 A 0 A_TakeInventory("ShotgunSelected", 1)
+		TNT1 A 0 A_TakeInventory("MinigunSelected", 1)
+		TNT1 A 0 A_TakeInventory("SSGSelected", 1)
+		TNT1 A 0 A_TakeInventory("RocketLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("GrenadeLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("PlasmaGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RailGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RevenantLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("SubMachineGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFG10KSelected", 1)
+		TNT1 A 0 A_GiveInventory("BFGSelected", 1)
+		TNT1 A 0 A_TakeInventory("FlameCannonSelected", 1)
+		TNT1 A 0 A_TakeInventory("SawSelected", 1)
 		BFGN A 1 A_Raise
 		Loop
 	Fire:
@@ -1286,6 +1468,20 @@ ACTOR ClassicUnmaker : ClassicWeapon 9902
 		Select:
 			UNMA A 0 A_Raise
 			UNMA A 1 A_Raise
+			TNT1 A 0 A_TakeInventory("FistsSelected", 1)
+			TNT1 A 0 A_TakeInventory("ShotgunSelected", 1)
+			TNT1 A 0 A_TakeInventory("MinigunSelected", 1)
+			TNT1 A 0 A_TakeInventory("SSGSelected", 1)
+			TNT1 A 0 A_TakeInventory("RocketLauncherSelected", 1)
+			TNT1 A 0 A_TakeInventory("GrenadeLauncherSelected", 1)
+			TNT1 A 0 A_TakeInventory("PlasmaGunSelected", 1)
+			TNT1 A 0 A_TakeInventory("RailGunSelected", 1)
+			TNT1 A 0 A_TakeInventory("RevenantLauncherSelected", 1)
+			TNT1 A 0 A_TakeInventory("SubMachineGunSelected", 1)
+			TNT1 A 0 A_TakeInventory("BFG10KSelected", 1)
+			TNT1 A 0 A_TakeInventory("BFGSelected", 1)
+			TNT1 A 0 A_GiveInventory("FlameCannonSelected", 1)
+			TNT1 A 0 A_TakeInventory("SawSelected", 1)
 			Loop
 		Fire:
 
@@ -1300,7 +1496,9 @@ ACTOR ClassicUnmaker : ClassicWeapon 9902
 			UNMA A 0 A_JumpIfInventory("UnmakerUpgrades", 1, "FireUpgradeOne")
 			UNMA A 0 A_GunFlash
 			UNMA A 0 A_PlaySound("weapons/unmaker", CHAN_AUTO, 0.8, 0, ATTN_NORM)
+			TNT1 A 0 A_ZoomFactor(0.99)
 			UNMA B 3 BRIGHT A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail")
+			TNT1 A 0 A_ZoomFactor(1.0)
 			UNMA A 7
 			UNMA A 0 A_ReFire
 			Goto Ready
@@ -1310,7 +1508,9 @@ ACTOR ClassicUnmaker : ClassicWeapon 9902
 			UNMA A 0 A_JumpIfInventory("UnmakerUpgrades", 2, "FireUpgradeTwo")
 			UNMA A 0 A_GunFlash
 			UNMA A 0 A_PlaySound("weapons/unmaker", CHAN_AUTO, 0.8, 0, ATTN_NORM)
+			TNT1 A 0 A_ZoomFactor(0.99)
 			UNMA B 3 BRIGHT A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail")
+			TNT1 A 0 A_ZoomFactor(1.0)
 			UNMA A 4
 			UNMA A 0 A_ReFire
 			Goto Ready
@@ -1323,7 +1523,9 @@ ACTOR ClassicUnmaker : ClassicWeapon 9902
 			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 1.0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail")
 			UNMA A 0 A_JumpIfNoAmmo(3)
 			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", -1.0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail")
+			TNT1 A 0 A_ZoomFactor(0.99)
 			UNMA B 3 BRIGHT
+			TNT1 A 0 A_ZoomFactor(1.0)
 			UNMA A 2
 			UNMA A 0 A_ReFire
 			Goto Ready
@@ -1337,7 +1539,9 @@ ACTOR ClassicUnmaker : ClassicWeapon 9902
 			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 3.0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail")
 			UNMA A 0 A_JumpIfNoAmmo(3)
 			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", -3.0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail")
+			TNT1 A 0 A_ZoomFactor(0.99)
 			UNMA B 3 BRIGHT
+			TNT1 A 0 A_ZoomFactor(1.0)
 			UNMA A 2
 			UNMA A 0 A_ReFire("Hold1")
 			Goto Ready
@@ -1349,7 +1553,9 @@ ACTOR ClassicUnmaker : ClassicWeapon 9902
 			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 6.0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail")
 			UNMA A 0 A_JumpIfNoAmmo(3)
 			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", -6.0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail")
+			TNT1 A 0 A_ZoomFactor(0.99)
 			UNMA B 3 BRIGHT
+			TNT1 A 0 A_ZoomFactor(1.0)
 			UNMA A 2
 			UNMA A 0 A_ReFire("Hold2")
 			Goto Ready
@@ -1361,7 +1567,9 @@ ACTOR ClassicUnmaker : ClassicWeapon 9902
 			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 9.0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail")
 			UNMA A 0 A_JumpIfNoAmmo(3)
 			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", -9.0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail")
+			TNT1 A 0 A_ZoomFactor(0.99)
 			UNMA B 3 BRIGHT
+			TNT1 A 0 A_ZoomFactor(1.0)
 			UNMA A 2
 			UNMA A 0 A_ReFire("Hold3")
 			Goto Ready
@@ -1373,7 +1581,9 @@ ACTOR ClassicUnmaker : ClassicWeapon 9902
 			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 12.0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail")
 			UNMA A 0 A_JumpIfNoAmmo(3)
 			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", -12.0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail")
+			TNT1 A 0 A_ZoomFactor(0.99)
 			UNMA B 3 BRIGHT
+			TNT1 A 0 A_ZoomFactor(1.0)
 			UNMA A 2
 			UNMA A 0 A_CheckReload
 			Goto Ready
