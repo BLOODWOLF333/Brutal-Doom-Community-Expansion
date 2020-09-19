@@ -154,7 +154,6 @@ TNT1 A 1900 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
        Loop
     }}
 
-
 actor GreenLimbBase: LimbBase
 {
 		BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
@@ -212,8 +211,6 @@ ACTOR TinyGib
     }
 }
 
-
-
 ACTOR XDeathGuts: XDeath2
 {
     Scale 1.1
@@ -232,7 +229,6 @@ ACTOR XDeathGuts: XDeath2
         Stop
     }
 }
-
 
 ACTOR CameraShake: XDeath2
 {
@@ -254,7 +250,6 @@ ACTOR CameraShake: XDeath2
     }
 }
 
-
 ACTOR CameraShakeMinor: CameraShake
 {
     States
@@ -270,11 +265,9 @@ ACTOR CameraShakeMinor: CameraShake
     }
 }
 
-
 /////////////////
 //ARMS
 /////////////////
-
 
 ACTOR XDeathArm1
 {
@@ -408,12 +401,10 @@ Spawn:
        Loop
 }}
 
-
 ACTOR XDeathArm2: XDeathArm1
 {
 	Speed 10
 }
-
 
 ACTOR XDeathBullArm1: XDeathArm1
 {
@@ -444,7 +435,6 @@ ACTOR XDeathBullArm1: XDeathArm1
         Stop
     }
 }
-
 
 ACTOR XDeathDemonArm: XDeathBullArm1
 {
@@ -496,7 +486,6 @@ actor Gib_DemonArm: LimbBase
 		Stop
 }}
 
-
 ACTOR XDeathBullArm1Kicked: XDeathBullArm1
 {
 +ACTIVATEMCROSS
@@ -536,11 +525,6 @@ actor GibDemonHand: TinyGib
 		HND8 Y -1
 		Stop
 }}
-
-
-
-
-
 
 ACTOR XDeathImpArm: XDeathArm1
 {
@@ -653,7 +637,6 @@ Spawn:
        Stop
 }}
 
-
 ACTOR XDeathHalfImpUpperPart32
 {
     Radius 2
@@ -718,9 +701,6 @@ actor Gib_HalfImpUpperPart32: BigGibBase
 
 		}}
 
-
-
-
 /////////////////////
 //LEGS
 /////////////////////
@@ -743,7 +723,6 @@ ACTOR XDeathZombieLeg: XDeathArm1
         Stop
     }
 }
-
 
 actor Gib_ZombieLeg1: LimbBase
 {
@@ -822,7 +801,6 @@ actor GibZombieBoot: TinyGib
 		LEG1 Y -1
 		Stop}}
 
-
 ACTOR XDeathZombieLeg2: XDeathZombieLeg
 {
     Speed 8
@@ -842,7 +820,6 @@ ACTOR XDeathZombieLeg2: XDeathZombieLeg
     }
 }
 
-
 actor Gib_ZombieLeg2: Gib_ZombieLeg1
 {
     States
@@ -860,9 +837,6 @@ ACTOR XDeathZombieLegKicked: XDeathZombieLeg
 +ACTIVATEMCROSS
 +ACTIVATEIMPACT
 }
-
-
-
 
 ACTOR XDeathImpLeg: XDeathArm1
 {
@@ -1006,7 +980,6 @@ actor Gib_DemonLeg: LimbBase
 		LEG8 I -1
         Stop
 
-
     Death.plasma:
 	Death.Burn:
 	Death.Fire:
@@ -1065,12 +1038,6 @@ LEG8 Y 1
 LEG8 Y 1
        Loop
 }}
-
-
-
-
-
-
 
 ACTOR XDeathSargeLeg1: XDeathArm1
 {
@@ -1163,8 +1130,6 @@ Spawn:
        Loop
 }}
 
-
-
 ACTOR XDeathSargeLeg2: XDeathArm1
 {
     Scale 1.1
@@ -1197,11 +1162,6 @@ actor Gib_SargeLeg2: Gib_SargeLeg
 		Stop
 	}
 }
-
-
-
-
-
 
 ACTOR XDeathChainLeg: XDeathArm1
 {
@@ -1248,8 +1208,6 @@ Stop
 		TNT1 A 0 A_CustomMissile ("XDeathChainLeg", 5, 0, random (170, 190), 2, random (20, 40))
 		Stop}}
 
-
-
 ACTOR XDeathChainArm: XDeathArm1
 {
     Speed 8
@@ -1294,13 +1252,9 @@ Stop
 		TNT1 A 0 A_CustomMissile ("XDeathChainArm", 5, 0, random (170, 190), 2, random (20, 40))
 		Stop}}
 
-
-
-
 //////////////
 //GUTS
 //////////////
-
 
 ACTOR XDeathStomach: XDeathArm1
 {
@@ -1322,7 +1276,6 @@ Speed 2
         Stop
     }
 }
-
 
 ACTOR XDeathHalfMarine
 {
@@ -1366,7 +1319,6 @@ actor HalfMarineGib: BigGibBase
 	HPLA A -1
     Stop    }}
 
-
 ACTOR XDeathHalfImp
 {
     Radius 8
@@ -1396,7 +1348,6 @@ ACTOR XDeathHalfImp
     }
 }
 
-
 actor HalfImpGib: BigGibBase
 {
     States
@@ -1416,7 +1367,6 @@ actor HalfImpGib: BigGibBase
 		 TNT1 A 0 A_SpawnItem("MeatDeathSmall", 0, 10)
 		 Stop
 	   }}
-
 
 ACTOR XDeathHalfZombieman
 {
@@ -1467,9 +1417,6 @@ actor Gib_HalfZombieMan: BigGibBase
 			Stop
 	   }}
 
-
-
-
 ACTOR XDeathHalfSergeant2: XDeathHalfZombieman
 {
     States
@@ -1505,7 +1452,6 @@ actor Gib_HalfSergeant2: BigGibBase
 			TNT1 AA 0 A_CustomMissile ("XDeathArm1", 6, 0, random (0, 360), 2, random (0, 90))
 			Stop
 	   }}
-
 
 ACTOR XDeathHalfZombiemanNoArmNoHead
 {
@@ -1555,10 +1501,6 @@ Scale 1.3
 	  Stop
 	   }}
 
-
-
-
-
 ACTOR XDeathHalfShotgunguyNoArmNoHead
 {
     Radius 8
@@ -1607,7 +1549,6 @@ Scale 1.3
 	  Stop
 	   }}
 
-
 ACTOR XDeathHalfZombiemanDown
 {
     Radius 8
@@ -1647,8 +1588,6 @@ actor GibHalfZombiemanDown: BigGibBase
 		POSX E -1
        Loop    }}
 
-
-
 ACTOR XDeathHalfSergeant
 {
     Radius 8
@@ -1677,8 +1616,6 @@ ACTOR XDeathHalfSergeant
         Stop
     }
 }
-
-
 
 ACTOR XDeathHalfZombieman2
 {
@@ -1821,7 +1758,6 @@ actor GibHalfSkeleton: BigGibBase
 	}
 }
 
-
 ACTOR XDeathArchVile
 {
     Radius 8
@@ -1859,7 +1795,6 @@ actor GibArchVile: BigGibBase
 		VILP B -1
         Stop
 
-
 	Death:
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
@@ -1871,7 +1806,6 @@ actor GibArchVile: BigGibBase
 	    TNT1 AAA 0 A_CustomMissile ("XDeath3b", 12, 0, random (0, 360), 2, random (60, 120))
 		Stop
 		}}
-
 
 ACTOR XDeathArchvileLeg: XDeathArm1
 {
@@ -1891,7 +1825,6 @@ ACTOR XDeathArchvileLeg: XDeathArm1
         Stop
     }
 }
-
 
 actor Gib_ArchvileLeg: LimbBase
 {
@@ -1930,8 +1863,6 @@ actor Gib_ArchvileLeg: LimbBase
 
 }}
 
-
-
 ACTOR XDeathArchvileArm: XDeathArm1
 {
     Scale 1.1
@@ -1950,7 +1881,6 @@ ACTOR XDeathArchvileArm: XDeathArm1
         Stop
     }
 }
-
 
 actor Gib_ArchvileArm: LimbBase
 {
@@ -1989,7 +1919,6 @@ actor Gib_ArchvileArm: LimbBase
 
 }}
 
-
 ACTOR SpiderLeg
 {
     Radius 8
@@ -2021,7 +1950,6 @@ ACTOR SpiderLeg
     }
 }
 
-
 ACTOR DyingDemon
 {
     Radius 8
@@ -2045,15 +1973,6 @@ ACTOR DyingDemon
         Stop
     }
 }
-
-
-
-
-
-
-
-
-
 
 ACTOR GenericHKGib1: XDeathArm1
 {
@@ -2124,7 +2043,6 @@ ACTOR GenericHKGib4: GenericHKGib1
     }
 }
 
-
 ACTOR GenericBaronGib1: GenericHKGib1
 {
 	Scale 1.0
@@ -2147,7 +2065,6 @@ ACTOR GenericBaronGib1b: GenericBaronGib1
 	XScale -1.0
 }
 
-
 ACTOR GenericBaronGib2: GenericHKGib1
 {
 	Scale 1.0
@@ -2164,14 +2081,11 @@ ACTOR GenericBaronGib2: GenericHKGib1
     }
 }
 
-
 ACTOR GenericBaronGib2b: GenericBaronGib2
 {
 	YScale 1.1
 	XScale -1.0
 }
-
-
 
 ACTOR XDeathHellKnightArm: XDeathArm1
 {
@@ -2232,10 +2146,7 @@ actor Gib_HellKnightArm: GreenLimbBase
 	XDT5 I 0 A_SpawnItem("Gib_HellKnightArm")
 	Stop
 
-
 		} }
-
-
 
 ACTOR XDeathHellKnightLeg: XDeathArm1
 {
@@ -2297,10 +2208,6 @@ actor Gib_HellKnightLeg: GreenLimbBase
 	XDT5 I 0 A_SpawnItem("Gib_HellKnightLeg")
 	Stop	}}
 
-
-
-
-
 ACTOR XDeathHellKnightTorso: XDeathArm1
 {
     Scale 1.0
@@ -2346,8 +2253,6 @@ actor Gib_HellKnightTorso: GreenLimbBase
 	    TNT1 A 0 A_CustomMissile ("XDeathHellKnightArm", 5, 0, random (0, 360), 2, random (10, 80))
 Stop}}
 
-
-
 ACTOR XDeathBaronofHellTorso: XDeathArm1
 {
     Scale 1.3
@@ -2388,13 +2293,6 @@ Death:
 		TNT1 A 0 A_CustomMissile ("GenericBaronGib2", 5, 0, random (0, 360), 2, random (10, 80))
 Stop}}
 
-
-
-
-
-
-
-
 ACTOR XDeathMancubusArm: XDeathArm1
 {
     +SKYEXPLODE
@@ -2412,12 +2310,10 @@ ACTOR XDeathMancubusArm: XDeathArm1
    	Death:
         TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
 	    HND8 A 0
-        HND8 A 0 A_SpawnItem("FlameCannon",0,0,0,1)
+        HND8 A 0 A_SpawnItem("FlameCannonSpawner",0,0,0,1)
         Stop
     }
 }
-
-
 
 ACTOR XDeathZombieManHead: XDeathBullArm1
 {
@@ -2455,13 +2351,11 @@ ACTOR XDeathZombieManHead: XDeathBullArm1
 }
 }
 
-
 Actor XDeathZombiemanHeadBeheaded: XDeathZombieManHead
 {
 Speed 5
 Gravity 0.5
 }
-
 
 Actor XDeathZombiemanHeadOnXDeath: XDeathZombieManHead
 {
@@ -2581,7 +2475,6 @@ actor ZombiemanHead: LimbBase
 
 }}
 
-
 ACTOR XDeathZombieManHeadKicked: XDeathZombieManHead
 {
 -BOUNCEONACTORS
@@ -2590,14 +2483,11 @@ Damage 4
 Speed 14
 }
 
-
 ACTOR XDeathZombieManHeadKicked2: XDeathZombieManHeadKicked
 {
 Damagetype "HeadKick"
 Speed 8
 }
-
-
 
 ACTOR XDeathSergeantHead: XDeathZombieManHead
 {
@@ -2626,7 +2516,6 @@ ACTOR XDeathSergeantHead: XDeathZombieManHead
 
 }
 }
-
 
 Actor XDeathSergeantHeadBeheaded: XDeathSergeantHead
 {
@@ -2716,15 +2605,11 @@ Spawn:
 
 }}
 
-
-
 ACTOR XDeathSergeantHead2: XDeathSergeantHead
 {
 Damagetype "HeadKick"
 Speed 8
 }
-
-
 
 actor SergeantHeadThrown: XDeathSergeantHead
 {
@@ -2736,7 +2621,6 @@ Speed 20
 Gravity 0.4
 wallbouncefactor 0.2
 }
-
 
 ACTOR XDeathChaingunguyHead: XDeathBullArm1
 {
@@ -2765,14 +2649,11 @@ Radius 6
 }
 }
 
-
-
 Actor XDeathChaingunguyHeadBeheaded: XDeathChaingunguyHead
 {
 Speed 5
 Gravity 0.5
 }
-
 
 Actor XDeathChaingunguyHeadOnXDeath: XDeathChaingunguyHead
 {
@@ -2844,7 +2725,6 @@ damagefactor "Crush", 50.0
 		TNT1 A 20
 		Stop
 
-
 	Death.Headkick:
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
@@ -2871,7 +2751,6 @@ damagefactor "Crush", 50.0
 
 }}
 
-
 ACTOR XDeathChaingunguyHeadKicked: XDeathChaingunguyHead
 {
 -BOUNCEONACTORS
@@ -2879,14 +2758,11 @@ Damage 4
 Speed 13
 }
 
-
 ACTOR XDeathChaingunguyHeadKicked2: XDeathChaingunguyHeadKicked
 {
 Damagetype "HeadKick"
 Speed 8
 }
-
-
 
 ACTOR XDeathImpHead: XDeathChaingunguyHead
 {
@@ -2909,7 +2785,6 @@ ACTOR XDeathImpHead: XDeathChaingunguyHead
         Stop
 }
 }
-
 
 Actor XDeathImpHeadBeheaded: XDeathImpHead
 {
@@ -2966,7 +2841,6 @@ Actor GibImphead: ZombieManHead
 		TNT1 A 20
 		Stop
 
-
 	Death.Headkick:
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
@@ -2976,9 +2850,6 @@ Actor GibImphead: ZombieManHead
 		TNT1 A 0 A_PlaySound("FOOTWALL", 3)
 		TNT1 A 20
 		Stop
-
-
-
 
 	Pain:
 			TNT1 A 0
@@ -3002,10 +2873,7 @@ Damagetype "HeadKick"
 Speed 8
 }
 
-
 /////////////
-
-
 
 ACTOR XDeathArchvileHead: XDeathChaingunguyHead
 {
@@ -3029,7 +2897,6 @@ Speed 5
         Stop
 }
 }
-
 
 Actor XDeathArchvileHeadBeheaded: XDeathArchvileHead
 {
@@ -3077,7 +2944,6 @@ actor ArchvileHead: ZombieManHead
 		TNT1 A 20
 		Stop
 
-
 	Death.Headkick:
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
@@ -3104,14 +2970,11 @@ actor ArchvileHead: ZombieManHead
 
 }}
 
-
 ACTOR XDeathArchvileHead2: XDeathArchvileHead
 {
 Damagetype "HeadKick"
 Speed 8
 }
-
-
 
 ACTOR XDeathHellKnightHead: XDeathBullArm1
 {
@@ -3131,9 +2994,6 @@ ACTOR XDeathHellKnightHead: XDeathBullArm1
         Stop
 }
 }
-
-
-
 
 actor HellKnightHead: GreenLimbBase
 {
@@ -3175,7 +3035,6 @@ damagefactor "Crush", 50.0
 		TNT1 A 20
 		Stop
 
-
 Death.Headkick:
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
@@ -3202,7 +3061,6 @@ Death.Headkick:
 
 }}
 
-
 ACTOR XDeathHellKnightHeadKicked: XDeathHellKnightHead
 {
 -BOUNCEONACTORS
@@ -3216,11 +3074,6 @@ ACTOR XDeathHellKnightHeadKicked2: XDeathHellKnightHeadKicked
 Damagetype "HeadKick"
 Speed 8
 }
-
-
-
-
-
 
 ACTOR XDeathPinkyDemonHead: XDeathBullArm1
 {
@@ -3242,10 +3095,6 @@ Speed 10
         Stop
 }
 }
-
-
-
-
 
 actor PinkyDemonHead: ZombiemanHead
 {
@@ -3290,7 +3139,6 @@ damagefactor "SuperPunch", 9.0
 		TNT1 A 20
 		Stop
 
-
 Death.Headkick:
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
@@ -3300,7 +3148,6 @@ Death.Headkick:
 		TNT1 A 0 A_PlaySound("FOOTWALL", 3)
 		TNT1 A 20
 		Stop
-
 
 	Pain:
 	TNT1 A 0
@@ -3317,8 +3164,6 @@ Death.Headkick:
 
 }}
 
-
-
 ACTOR XDeathPinkyDemonHeadKicked: XDeathPinkyDemonHead
 {
 -BOUNCEONACTORS
@@ -3328,16 +3173,11 @@ Scale 1.3
 BounceFactor 0.4
 }
 
-
 ACTOR XDeathPinkyDemonHeadKicked2: XDeathPinkyDemonHeadKicked
 {
 Damagetype "HeadKick"
 Speed 8
 }
-
-
-
-
 
 ACTOR XDeathBaronHead5: XDeathBullArm1
 {
@@ -3357,8 +3197,6 @@ ACTOR XDeathBaronHead5: XDeathBullArm1
         Stop
 }
 }
-
-
 
 actor BaronHead: HellKnightHead
 {
@@ -3403,7 +3241,6 @@ damagefactor "SuperPunch", 9.0
 		TNT1 A 20
 		Stop
 
-
 	Death.Headkick:
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
@@ -3413,7 +3250,6 @@ damagefactor "SuperPunch", 9.0
 		TNT1 A 0 A_PlaySound("FOOTWALL", 3)
 		TNT1 A 20
 		Stop
-
 
 	Pain:
 	TNT1 A 0
@@ -3430,7 +3266,6 @@ damagefactor "SuperPunch", 9.0
 
 }}
 
-
 ACTOR XDeathBaronHeadKicked: XDeathBaronHead5
 {
 -BOUNCEONACTORS
@@ -3439,20 +3274,11 @@ Speed 13
 BounceFactor 0.4
 }
 
-
-
 ACTOR XDeathBaronHeadKicked2: XDeathBaronHeadKicked
 {
 Damagetype "HeadKick"
 Speed 8
 }
-
-
-
-
-
-
-
 
 ACTOR XDeathRevenantHead: XDeathBullArm1
 {
@@ -3471,9 +3297,6 @@ ACTOR XDeathRevenantHead: XDeathBullArm1
         Stop
 }
 }
-
-
-
 
 actor RevenantHead: LimbBase
 {
@@ -3518,15 +3341,12 @@ DamageFactor "HeadKick", 999.0
 		TNT1 A 0 A_CustomMissile ("XDeathRevenantHeadKicked", 5, 0, random (170, 190), 2, random (20, 40))
 		Stop
 
-
 	Death.HeadKick:
 	    XHE6 A 1 A_Pain
 	    XHE6 A 1 A_FaceTarget
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_CustomMissile ("XDeathRevenantHeadKicked3", 5, 0, random (170, 190), 2, random (20, 40))
 		Stop
-
-
 
 	Death:
 		TNT1 A 0 A_NoBlocking
@@ -3559,7 +3379,6 @@ DamageFactor "HeadKick", 999.0
 
 }}
 
-
 ACTOR XDeathRevenantHeadKicked: XDeathRevenantHead
 {
 -BOUNCEONACTORS
@@ -3583,12 +3402,6 @@ Damagetype "HeadKick"
 Speed 8
 }
 
-
-
-
-
-
-
 ACTOR XDeathMancubusHead: XDeathBullArm1
 {
 -CLIENTSIDEONLY
@@ -3608,8 +3421,6 @@ ACTOR XDeathMancubusHead: XDeathBullArm1
         Stop
 }
 }
-
-
 
 actor MancubusHead: ZombiemanHead
 {
@@ -3668,7 +3479,6 @@ damagefactor "SuperPunch", 9.0
 		TNT1 A 20
 		Stop
 
-
 	Death.HeadKick:
 	    XHE7 A 0 A_Pain
 	    XHE7 A 0 A_FaceTarget
@@ -3694,8 +3504,6 @@ damagefactor "SuperPunch", 9.0
 
 }}
 
-
-
 ACTOR XDeathMancubusHeadKicked: XDeathMancubusHead
 {
 -BOUNCEONACTORS
@@ -3704,13 +3512,11 @@ Speed 13
 BounceFactor 0.4
 }
 
-
 ACTOR XDeathMancubusHeadKicked2: XDeathMancubusHeadKicked
 {
 Damagetype "HeadKick"
 Speed 4
 }
-
 
 ACTOR XDeathMancubusLeg: XDeathBullArm1
 {
@@ -3731,8 +3537,6 @@ ACTOR XDeathMancubusLeg: XDeathBullArm1
         Stop
 }
 }
-
-
 
 actor GibMancubusLeg: LimbBase
 {
@@ -3764,7 +3568,6 @@ damagefactor "SuperPunch", 9.0
 	MAN4 G -1
     Stop
 
-
 	Death.Melee:
 	Death.SuperPunch:
 	Death.Kick:
@@ -3792,10 +3595,6 @@ damagefactor "SuperPunch", 9.0
 
 }}
 
-
-
-
-
 ACTOR XDeathMancubusTOrso: XDeathBullArm1
 {
 -CLIENTSIDEONLY
@@ -3816,8 +3615,6 @@ ACTOR XDeathMancubusTOrso: XDeathBullArm1
 }
 }
 
-
-
 actor GibMancubusTorso: BigGibBase
 {
 -CLIENTSIDEONLY
@@ -3836,10 +3633,6 @@ actor GibMancubusTorso: BigGibBase
 	MANA T -1
     Stop
 }}
-
-
-
-
 
 ACTOR XDeathCyberdemonHead: XDeathBullArm1
 {
@@ -3862,7 +3655,6 @@ ACTOR XDeathCyberdemonHead: XDeathBullArm1
         Stop
 }
 }
-
 
 actor CyberdemonHead: LimbBase
 {
@@ -3908,8 +3700,6 @@ DamageFactor "Headkick", 0.0
 	Stop
 }}
 
-
-
 ACTOR XDeathCyberdemonTorso: XDeathBullArm1
 {
 -CLIENTSIDEONLY
@@ -3931,7 +3721,6 @@ ACTOR XDeathCyberdemonTorso: XDeathBullArm1
         Stop
 }
 }
-
 
 actor CyberdemonTorso: LimbBase
 {
@@ -3973,7 +3762,6 @@ actor CyberdemonTorso: LimbBase
 	Stop
 }}
 
-
 ACTOR XDeathCyberdemonPiece: XDeathBullArm1
 {
 -CLIENTSIDEONLY
@@ -3995,7 +3783,6 @@ ACTOR XDeathCyberdemonPiece: XDeathBullArm1
         Stop
 }
 }
-
 
 actor CyberdemonPiece: LimbBase
 {
@@ -4037,9 +3824,6 @@ actor CyberdemonPiece: LimbBase
 	Stop
 }}
 
-
-
-
 ACTOR XDeathCyberdemonARm: XDeathBullArm1
 {
 -CLIENTSIDEONLY
@@ -4061,7 +3845,6 @@ ACTOR XDeathCyberdemonARm: XDeathBullArm1
         Stop
 }
 }
-
 
 actor CyberdemonArm: LimbBase
 {
@@ -4103,8 +3886,6 @@ actor CyberdemonArm: LimbBase
 	Stop
 }}
 
-
-
 ACTOR XDeathCyberdemonGun: XDeathBullArm1
 {
 -CLIENTSIDEONLY
@@ -4126,7 +3907,6 @@ ACTOR XDeathCyberdemonGun: XDeathBullArm1
         Stop
 }
 }
-
 
 actor CyberdemonGun: LimbBase
 {
@@ -4168,10 +3948,6 @@ actor CyberdemonGun: LimbBase
 	Stop
 }}
 
-
-
-
-
 ACTOR XDeathArachnotronHead: XDeath1
 {
     Speed 12
@@ -4202,14 +3978,6 @@ ACTOR XDeathArachnotronHead: XDeath1
     }
 }
 
-
-
-
-
-
-
-
-
 ACTOR BasicGib
 {
 	Radius 6
@@ -4224,9 +3992,6 @@ ACTOR BasicGib
 	Stop
 	}
 }
-
-
-
 
 ACTOR BasicMarineGib1: BasicGib
 {
@@ -4244,7 +4009,6 @@ ACTOR BasicMarineGib1: BasicGib
 	}
 }
 
-
 ACTOR BasicMarineGib2: BasicGib
 {
 	States
@@ -4260,7 +4024,6 @@ ACTOR BasicMarineGib2: BasicGib
 	Stop
 	}
 }
-
 
 ACTOR BasicMarineGib3: BasicGib
 {
@@ -4278,7 +4041,6 @@ ACTOR BasicMarineGib3: BasicGib
 	}
 }
 
-
 ACTOR BasicMarineGib4: BasicGib
 {
 	States
@@ -4294,7 +4056,6 @@ ACTOR BasicMarineGib4: BasicGib
 	Stop
 	}
 }
-
 
 ACTOR XDeathHalfDemon
 {
@@ -4336,7 +4097,6 @@ actor Gib_HalfDemon: BigGibBase
 		SARC F -1
        Stop
 
-
 	   Death: Death.Trample:
   	     TNT1 AAA 0 A_CustomMissile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 AAA 0 A_CustomMissile ("XDeathSkinPiece2", 5, 0, random (0, 360), 2, random (0, 160))
@@ -4349,7 +4109,6 @@ actor Gib_HalfDemon: BigGibBase
 		 TNT1 A 0 A_CustomMissile ("XDeathPinkyDemonHead", 2, 0, random (0, 360), 2, random (0, 160))
 		Stop
 	   }}
-
 
 ACTOR XDeathSkinPiece1: Xdeath1
 {
@@ -4379,7 +4138,6 @@ ACTOR XDeathSkinPiece1: Xdeath1
     }
 }
 
-
 ACTOR XDeathSkinPiece2: XDeathSkinPiece1
 {
     States
@@ -4399,16 +4157,6 @@ ACTOR XDeathSkinPiece2: XDeathSkinPiece1
 	    Goto Death
     }
 }
-
-
-
-
-
-
-
-
-
-
 
 ACTOR XDeathPainElementalNew1: XDeath1
 {
@@ -4440,8 +4188,6 @@ ACTOR XDeathPainElementalNew1: XDeath1
     }
 }
 
-
-
 ACTOR XDeathPainElementalNew2: XDeathPainElementalNew1
 {
     Speed 12
@@ -4470,8 +4216,6 @@ ACTOR XDeathPainElementalNew2: XDeathPainElementalNew1
     }
 }
 
-
-
 ACTOR XDeathSpiderNew1: XDeathPainElementalNew1
 {
     Scale 0.8
@@ -4483,7 +4227,6 @@ ACTOR XDeathSpiderNew2: XDeathPainElementalNew2
     Scale 0.7
 	Speed 7
 }
-
 
 ACTOR MancubusEyeballs //Eyeballs
 {
@@ -4516,7 +4259,6 @@ ACTOR MancubusEyeballs //Eyeballs
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)//Check Effects
 	    Goto Rest
 
-
 	Rest:
 		MANE Y 800
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
@@ -4527,9 +4269,6 @@ ACTOR MancubusEyeballs //Eyeballs
 	Stop
     }
 }
-
-
-
 
 ACTOR CacodemonEyeball //Eyeballs
 {
@@ -4562,7 +4301,6 @@ ACTOR CacodemonEyeball //Eyeballs
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)//Check Effects
 	    Goto Rest
 
-
 	Rest:
 		CCD5 A 800
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
@@ -4574,8 +4312,6 @@ ACTOR CacodemonEyeball //Eyeballs
     }
 }
 
-
-
 Actor ThrownCacodemonEyeBall: CacodemonEyeBall
 {
 	-THRUACTORS
@@ -4584,7 +4320,6 @@ Actor ThrownCacodemonEyeBall: CacodemonEyeBall
 	Damagetype "Kick"
 	Speed 24
 }
-
 
 ACTOR Brains1 : BigGibBase //Random bloody piece
 {
@@ -4611,7 +4346,6 @@ ACTOR Brains1 : BigGibBase //Random bloody piece
 	    XDT5 C 1
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)//Check Effects
 	    Goto Rest
-
 
 	Rest:
 		TNT1 A 0
@@ -4663,7 +4397,6 @@ ACTOR Brains2 : Brains1 //Teeth
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)//Check Effects
 	    Goto Rest
 
-
 	Rest:
 		TNT1 A 0
 		TNT1 A 0 A_Jump(255, "Rest1", "Rest2")
@@ -4712,7 +4445,6 @@ ACTOR Brains3 : Brains1 //Eyeballs
 		TNT1 A 0 A_QueueCorpse
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)//Check Effects
 	    Goto Rest
-
 
 	Rest:
 		TNT1 A 0
@@ -4819,7 +4551,6 @@ ACTOR Brains5 : Brains1 //White skinned piece 2
     }
 }
 
-
 ACTOR Brains6 : Brains1 //Brown skinned piece
 {
     Radius 2
@@ -4859,13 +4590,10 @@ ACTOR Brains6 : Brains1 //Brown skinned piece
     }
 }
 
-
-
 ACTOR Brains6Big: Brains6 //White skinned piece 1
 {
 Scale 1.8
 }
-
 
 ACTOR Brains7 : Brains1 //Brown skinned teeth
 {
@@ -4911,7 +4639,6 @@ ACTOR Brains7Big: Brains7 //White skinned piece 1
 Scale 1.3
 }
 
-
 ACTOR Brains4GreenHair: Brains4 //White skinned piece 1
 {
     States
@@ -4935,7 +4662,6 @@ ACTOR Brains4GreenHair: Brains4 //White skinned piece 1
 	Stop
     }
 }
-
 
 ACTOR Brains4GreenHairBig: Brains4 //White skinned piece 1
 {
@@ -4961,10 +4687,6 @@ ACTOR Brains4GreenHairBig: Brains4 //White skinned piece 1
     }
 }
 
-
-
-
-
 ACTOR Brains4Blonde: Brains4 //White skinned piece 1
 {
     States
@@ -4989,7 +4711,6 @@ ACTOR Brains4Blonde: Brains4 //White skinned piece 1
     }
 }
 
-
 ACTOR Brains4BlondeBig: Brains4 //White skinned piece 1
 {
     States
@@ -5013,7 +4734,6 @@ ACTOR Brains4BlondeBig: Brains4 //White skinned piece 1
 	Stop
     }
 }
-
 
 ACTOR BrainsSergeantHeadPiece: Brains4 //White skinned piece 1
 {
@@ -5041,7 +4761,6 @@ Scale 1.0
 	Stop
     }
 }
-
 
 ACTOR BrainsImpHeadPiece: Brains4 //White skinned piece 1
 {
@@ -5108,7 +4827,6 @@ ACTOR BaronHeadPiece
 	Stop
     }
 }
-
 
 ACTOR PinkyJaw: BaronHeadPiece
 {
