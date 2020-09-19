@@ -179,21 +179,20 @@ ACTOR MP40 : BrutalWeapon
 		Wait
 	Select:
 		MP40 A 0 A_Giveinventory("GoSpecial",1)
-	    MP40 A 0 A_Takeinventory("FistsSelected",1)
-		MP40 A 0 A_Takeinventory("SawSelected",1)
-		MP40 A 0 A_Takeinventory("ShotgunSelected",1)
-		MP40 A 0 A_Takeinventory("SSGSelected",1)
-		MP40 A 0 A_Takeinventory("MinigunSelected",1)
-		MP40 A 0 A_Takeinventory("PlasmaGunSelected",1)
-		MP40 A 0 A_Takeinventory("RocketLauncherSelected",1)
-		MP40 A 0 A_Takeinventory("GrenadeLauncherSelected",1)
-		MP40 A 0 A_Takeinventory("BFGSelected",1)
-		MP40 A 0 A_Takeinventory("BFG10kSelected",1)
-		MP40 A 0 A_Takeinventory("RailGunSelected",1)
-		MP40 A 0 A_Giveinventory("SubMachineGunSelected",1)
-		MP40 A 0 A_Takeinventory("RevenantLauncherSelected",1)
-		MP40 A 0 A_Takeinventory("LostSoulSelected",1)
-		MP40 A 0 A_Takeinventory("FlameCannonSelected",1)
+	    TNT1 A 0 A_TakeInventory("FistsSelected", 1)
+		TNT1 A 0 A_TakeInventory("ShotgunSelected", 1)
+		TNT1 A 0 A_TakeInventory("MinigunSelected", 1)
+		TNT1 A 0 A_TakeInventory("SSGSelected", 1)
+		TNT1 A 0 A_TakeInventory("RocketLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("GrenadeLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("PlasmaGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RailGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RevenantLauncherSelected", 1)
+		TNT1 A 0 A_GiveInventory("SubMachineGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFG10KSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFGSelected", 1)
+		TNT1 A 0 A_TakeInventory("FlameCannonSelected", 1)
+		TNT1 A 0 A_TakeInventory("SawSelected", 1)
 		MP40 A 0 A_Takeinventory("HasBarrel",1)
 		MP40 A 0 A_TakeInventory("TossGrenade", 1)
 		TNT1 A 1 A_Raise
@@ -426,6 +425,7 @@ ACTOR HitlersBuzzsaw : BrutalWeapon
 	+WEAPON.NOAUTOAIM
 	Scale 1.0
 	DropItem "BuzzsawSpawner"
+	Tag "Hitler's Buzzsaw"
 	States
 	{
 
@@ -534,11 +534,29 @@ ACTOR HitlersBuzzsaw : BrutalWeapon
 	Deselect:
 		TNT1 A 0 A_TakeInventory("Unloading", 1)
 		TNT1 A 0 A_TakeInventory("Reloading", 1)
+		TNT1 A 0 A_TakeInventory("HeavyAutomaticWeapon",1)
+		TNT1 A 0 A_TakeInventory("RandomHeadExploder", 1)
 		HBUS A 1 A_Lower
 		Loop
 	Select:
 		HBUS A 1 A_Raise
 		TNT1 AAAAAAAAAAAA 0 A_Raise
+		MGN1 A 0 A_Giveinventory("HeavyAutomaticWeapon",1)
+		TNT1 A 0 A_TakeInventory("FistsSelected", 1)
+		TNT1 A 0 A_TakeInventory("ShotgunSelected", 1)
+		TNT1 A 0 A_GiveInventory("MinigunSelected", 1)
+		TNT1 A 0 A_TakeInventory("SSGSelected", 1)
+		TNT1 A 0 A_TakeInventory("RocketLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("GrenadeLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("PlasmaGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RailGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RevenantLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("SubMachineGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFG10KSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFGSelected", 1)
+		TNT1 A 0 A_TakeInventory("FlameCannonSelected", 1)
+		TNT1 A 0 A_TakeInventory("SawSelected", 1)
+		MGN1 A 0 A_GiveInventory("RandomHeadExploder", 1)
 		GOto SelectAnimation
 
 	SelectAnimation:
