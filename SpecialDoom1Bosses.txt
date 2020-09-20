@@ -5,7 +5,7 @@ ACTOR CyberdemonBoss: TheCyberdemon 2546
 	MaxStepHeight 64
 	MaxDropOffHeight 72
     Scale 2.4
-	Radius 98
+	Radius 65
 	Height 211
 	Speed 28
 	FastSpeed 32
@@ -14,13 +14,13 @@ ACTOR CyberdemonBoss: TheCyberdemon 2546
 	Tag "Cyberdemon Lord of Deimos"
 	States
 	{
-	
+
 	Death.KillMe:
     Death.Taunt:
 	    TNT1 A 0 A_ChangeFlag("SOLID", 0)
         TNT1 A 0 A_SpawnItem("TheCyberdemon")
         Stop
-		
+
 	Pain.Killme:
 	TNT1 A 0
 	Goto Chasing
@@ -28,10 +28,10 @@ ACTOR CyberdemonBoss: TheCyberdemon 2546
     Spawn:
 		TNT1 A 0
 		TNT1 A 0 A_GiveInventory("TargetIsACyberdemon")
-		
-	Idle:	
+
+	Idle:
 		TNT1 A 0 A_SpawnItem("GreatCybersHitBox", 0, 211)
-		
+
         CYBR D 10 A_Look
 		TNT1 A 0 A_SpawnItem("GreatCybersHitBox", 0, 211)
         CYBR Z 10 A_Look
@@ -41,7 +41,7 @@ ACTOR CyberdemonBoss: TheCyberdemon 2546
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("GreatCybersHitBox", 0, 211)
 		TNT1 A 0 ACS_ExecuteAlways(621, 0, 0, 0, 0)//Health Bar
-	
+
 	Chasing:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("GreatCybersHitBox", 0, 211)
@@ -129,12 +129,12 @@ ACTOR CyberdemonBoss: TheCyberdemon 2546
 		CYBR NOP 5
 		CYBR P 350
 		Goto CheckIfBoss
-		
+
 	CheckIfBoss:
 		CYBR P 1 A_BossDeath
-		CYBR P -1 
+		CYBR P -1
 		Stop
-	
+
 	Death.Head:
 		TNT1 A 0
 		CYBR I 0 A_Fall
@@ -157,7 +157,7 @@ ACTOR CyberdemonBoss: TheCyberdemon 2546
 		CYBR NOP 0
 		CYBR P 350
 		Goto CheckIfBoss
-		
+
 	Death.Decaptate:
 		CYBR I 0 A_Fall
 	    TNT1 A 0 A_CustomMissile ("XDeathCyberdemonHead", 190, 0, random (0, 360), 2, random (0, 180))
@@ -175,7 +175,7 @@ ACTOR CyberdemonBoss: TheCyberdemon 2546
 		CYBR NOP 0
 		CYBR P 350
 		Goto CheckIfBoss
-	
+
 	Death.Fatality:
 	    TNT1 A 0
 		TNT1 A 0 A_Pain
@@ -190,15 +190,15 @@ ACTOR CyberdemonBoss: TheCyberdemon 2546
 		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
 		TNT1 A 0 A_GiveToTarget("CyberdemonFatality", 1)
 		TNT1 A 350
-        Goto CheckIfBoss	
-		
+        Goto CheckIfBoss
+
 	Death.Fatality2:
 		TNT1 A 0
 		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
 		TNT1 A 0 A_GiveToTarget("CyberdemonFatality", 1)
 		TNT1 A 350
         Goto CheckIfBoss
-	
+
 	Pain.Taunt:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("Enraged", 1, "SpecialAttack")
@@ -215,7 +215,7 @@ ACTOR CyberdemonBoss: TheCyberdemon 2546
 		CYBT EDA 4
 		TNT1 A 0 A_GiveInventory("Enraged", 1)
 		Goto Missile
-	
+
 	SpecialAttack:
 		TNT1 A 0 A_SpawnItem("GreatCybersHitBox", 0, 211)
 		CYBR E 6 A_FaceTarget
@@ -245,7 +245,7 @@ ACTOR CyberdemonBoss: TheCyberdemon 2546
 		TNT1 A 0 A_SpawnItem("GreatCybersHitBox", 0, 211)
 		CYBR F 4 BRIGHT A_CustomMissile("FastCyberBalls",120,-50,0,0)
 		Goto Chasing
-	
+
 	}
 }
 
@@ -254,7 +254,7 @@ Actor GreatCyberdemon: CyberdemonBoss 15858
 	Health 10000
 	States
 		{
-		
+
 		CheckIfBoss:
 		CYBR P 1
 		CYBR P -1
@@ -283,18 +283,18 @@ ACTOR SuperMastermind: TheSpiderMastermind 2547
 	    TNT1 A 0 A_ChangeFlag("SOLID", 0)
         TNT1 A 0 A_SpawnItem("TheSpiderMastermind")
         Stop
-	
+
     Spawn:
 		TNT1 A 0
-		
-	Idle:	
+
+	Idle:
 		SPID A 10 A_Look
 		TNT1 A 0 A_GiveInventory("TargetIsAMastermind")
 		Loop
 	See:
 		TNT1 A 0
 		TNT1 A 0 ACS_ExecuteAlways(621, 0, 0, 0, 0)//Health Bar
-		
+
 	Chasing:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("SuperMasterMindHitBox", 0, 205,0)
@@ -310,10 +310,10 @@ ACTOR SuperMastermind: TheSpiderMastermind 2547
 		SPID C 2 A_Chase
 		TNT1 A 0 A_SpawnItem("SuperMasterMindHitBox", 0, 205,0)
 		SPID C 2 A_Recoil(-3)
-		
+
 		TNT1 A 0 A_SpawnItemEx("MasterMindStep", 180, 180)
 		TNT1 A 0 A_SpawnItemEx("MasterMindStep", -180, 180)
-		
+
 		TNT1 A 0 A_SpawnItem("SuperMasterMindHitBox", 0, 205,0)
 		SPID D 2 A_Recoil(-3)
 		TNT1 A 0 A_SpawnItem("SuperMasterMindHitBox", 0, 205,0)
@@ -326,7 +326,7 @@ ACTOR SuperMastermind: TheSpiderMastermind 2547
 		TNT1 A 0 A_SpawnItem("SuperMasterMindHitBox", 0, 205,0)
 		SPID F 2 A_Chase
 		TNT1 A 0 A_SpawnItem("SuperMasterMindHitBox", 0, 205,0)
-		
+
 		TNT1 A 0 A_SpawnItemEx("MasterMindStep", 180, -180)
 		TNT1 A 0 A_SpawnItemEx("MasterMindStep", -180, -180)
 		Loop
@@ -334,11 +334,11 @@ ACTOR SuperMastermind: TheSpiderMastermind 2547
 	Missile:
 	    TNT1 A 0 A_TakeInventory ("BrutalCounter2", 500)
 		TNT1 A 0 A_SpawnItem("SuperMasterMindHitBox", 0, 205,0)
-		SPID A 4 A_FaceTarget 
+		SPID A 4 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("SuperMasterMindHitBox", 0, 205,0)
-		SPID A 4 A_FaceTarget 
+		SPID A 4 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("SuperMasterMindHitBox", 0, 205,0)
-		SPID A 4 A_FaceTarget 
+		SPID A 4 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("SuperMasterMindHitBox", 0, 205,0)
         SPID H 4 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("SuperMasterMindHitBox", 0, 205,0)
@@ -353,15 +353,15 @@ ACTOR SuperMastermind: TheSpiderMastermind 2547
 		TNT1 A 0 A_SpawnItem("SuperMasterMindHitBox", 0, 205,0)
 		TNT1 A 0 A_GiveInventory ("BrutalCounter2", 1)
 		TNT1 A 0 A_JumpIfInventory ("BrutalCounter2", 40, "StopFiring")
-		
+
 		SPID G 0 A_SpidRefire
 		Goto Missile+20
-	
+
 	StopFiring:
 	TNT1 A 0 A_SpawnItem("SuperMasterMindHitBox", 0, 205,0)
-	SPID A 6 A_FaceTarget 
+	SPID A 6 A_FaceTarget
 	Goto Chasing
-	
+
 		Avoid:
          NULL A 0 A_FaceTarget
          SPID A 6 A_FastChase
@@ -373,10 +373,10 @@ ACTOR SuperMastermind: TheSpiderMastermind 2547
          SPID C 6 A_FastChase
 		TNT1 A 0 A_SpawnItem("SuperMasterMindHitBox", 0, 205,0)
          NULL A 0 A_FaceTarget
-         SPID D 6 A_FastChase 
+         SPID D 6 A_FastChase
 		TNT1 A 0 A_SpawnItem("SuperMasterMindHitBox", 0, 205,0)
 		 Goto Missile
-		
+
 	Pain:
 		TNT1 A 0 A_SpawnItem("SuperMasterMindHitBox", 0, 205,0)
 		SPID I 4 A_Pain
@@ -408,7 +408,7 @@ ACTOR SuperMastermind: TheSpiderMastermind 2547
         TNT1 A 350
 		TNT1 A 0 A_BossDeath
 		Stop
-		
+
     Crush:
         TNT1 A 0 A_PlaySound("misc/xdeath4")
         CRS3 A 5
@@ -421,7 +421,7 @@ Death.decaptate:
 		TNT1 AAAAAAAAAAAAAAAAA 0 A_CustomMissile ("XDeath1", 120, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_CustomMissile ("XSpiderMastermindCuttedBrain", 120, 0, random (0, 360), 2, random (50, 130))
 		SPIY AAAAAAAAAAA 8 A_SpawnItem("MuchBlood", 0, 120)
-		
+
 		EXPL A 0 Radius_Quake (8, 100, 0, 22, 0)
         TNT1 AAAAAA 0 A_CustomMissile ("ExplosionSpawner", 50, 0, random (0, 360), 2, random (0, 360))
         TNT1 AAAA 0 A_CustomMissile ("SuperGoreSPawner", 110, 0, random (0, 360), 2, random (0, 180))
@@ -445,6 +445,6 @@ Death.decaptate:
 		TNT1 A 0 A_SpawnItem ("GiantBloodSpot")
         TNT1 A 350
 		TNT1 A 0 A_BossDeath
-		Stop		
+		Stop
 	}
 }
