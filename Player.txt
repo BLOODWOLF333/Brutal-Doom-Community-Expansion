@@ -3821,7 +3821,7 @@ FatalityPE:
         //////////////////////////////////////////////////////
         NULL A 0 A_TakeInventory("PEFatality",1)
         NULL A 0 A_TakeInventory("GoFatality", 1)
-		NULL A 0 A_SpawnItemEx("FatalizedPE", 0, 1, 1, 1, 1)
+		NULL A 0 A_SpawnItemEX("FatalizedPE",32)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
         MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
 			NULL A 0 SetPlayerProperty(0,0,0)
