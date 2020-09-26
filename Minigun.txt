@@ -418,6 +418,11 @@ ACTOR MiniGun : BrutalWeapon
 			CHAG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 			CHAG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 			CHAG ABCD 4 A_WeaponReady
+			CHAG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+			CHAG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+			CHAG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+			CHAG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
+			CHAG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 			CHAG ABCD 5 A_WeaponReady
 			goto Ready
 

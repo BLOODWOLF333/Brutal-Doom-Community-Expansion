@@ -42,6 +42,8 @@ Actor BaronPlayerPatch : BaronPlayer Replaces BaronPlayer
 ACTOR D4BaronHUDPatch : D4BaronHUD Replaces D4BaronHUD
 {
 	Weapon.SelectionOrder 9999
+	+WEAPON.CHEATNOTWEAPON
+	+WEAPON.NO_AUTO_SWITCH
 	States
 	{
 		Ready:
@@ -188,6 +190,8 @@ Actor RevenantPlayerPatch : RevenantPlayer Replaces RevenantPlayer
 ACTOR D4RevenantHUDPatch : D4RevenantHUD Replaces D4RevenantHUD
 {
 	Weapon.SelectionOrder 9999
+	+WEAPON.CHEATNOTWEAPON
+	+WEAPON.NO_AUTO_SWITCH
 	States
 	{
 		Fire:
