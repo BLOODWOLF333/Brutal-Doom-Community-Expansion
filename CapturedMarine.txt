@@ -14,29 +14,27 @@ Actor CapturedMarine Replaces Blursphere
 			TNT1 A 0 A_SpawnItemEx("EvidenceCheckerInvisibility", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
 			TNT1 A 0 A_JumPIfInventory("Clip2", 1, "Invisibility")
 			TNT1 A 0 A_Jump(255, "RifleMarine", "RifleMarine", "ShotgunMarine", "ShotgunMarine", "MinigunMarine", "PlasmaMarine")
-			
+
 		RifleMarine:
 			TNT1 A 0
 			TNT1 A 0 A_SpawnItem("CapturedMarineBase")
 			Stop
-			
+
 		ShotgunMarine:
 			TNT1 A 0
 			TNT1 A 0 A_SpawnItem("CapturedMarineShotgun")
-			Stop	
-			
-			
+			Stop
+
 		MinigunMarine:
 			TNT1 A 0
 			TNT1 A 0 A_SpawnItem("CapturedMarineMinigun")
-			Stop	
-			
-		
+			Stop
+
 		PlasmaMarine:
 			TNT1 A 0
 			TNT1 A 0 A_SpawnItem("CapturedMarinePlasma")
 			Stop
-		
+
 		Invisibility:
 			TNT1 A 0
 			TNT1 A 0 A_ChangeFlag("NOBLOCKMAP", 1)
@@ -44,7 +42,7 @@ Actor CapturedMarine Replaces Blursphere
 			TNT1 A 0 A_SpawnItem("SuperBlursphere")
 			TNT1 A 1
 			Stop
-		
+
 		}
 }
 
@@ -63,7 +61,7 @@ ACTOR CapturedMarineBase
 	+FLOORCLIP
     Painchance 255
     DamageType Taunt
-	
+
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 10.0
 	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0
@@ -72,7 +70,7 @@ ACTOR CapturedMarineBase
 	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 100.0	Damagefactor "Repair", 0.0
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 100.0
-	
+
 	DeathSound "*death"
 	PainSound "*pain50"
     BloodType "Brutal_Blood"
@@ -92,7 +90,7 @@ ACTOR CapturedMarineBase
 		TNT1 A 0 A_SpawnItem("SuperBlursphere")
 		TNT1 A 5000
 		Loop
-		
+
 	Spawn1:
         TNT1 A 0 A_CheckSight("Spawn2")
 		CAPT A 1 A_Stop
@@ -124,8 +122,8 @@ ACTOR CapturedMarineBase
         TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
         CAPT N 0
-        Stop	
-		
+        Stop
+
 Pain:
 Pain.Blast:
 Pain.ExplosiveImpact:
@@ -141,24 +139,23 @@ Pain.Rip:
 		TNT1 A 0 A_JumpIfInTargetInventory("EnemyIsArchvile", 1, "Conversion")
 		TNT1 A 0 A_Stop
         Goto AfterPain
-			
-			
+
 		AfterPain:
 		CAPT A 1 A_Stop
         CAPT ABCB 15 A_Stop
 		TNT1 A 0 A_CustomMissile ("OrderTitle3", 50, 0, 0, 2, 90)
         TNT1 A 0 A_SpawnItem ("KillMe")
         Loop
-     
+
 	Death:
 	Death.Bullet:
 		TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
 		TNT1 A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
 		PLAY H 10 A_PlayerScream
-		
+
 		PLAY I 10 A_NoBlocking
-		PLAY J 10 
+		PLAY J 10
 		PLAY KLM 10
 		TNT1 A 0 A_SpawnItem ("MediumBloodSpot")
 		PLAY N -1
@@ -173,7 +170,7 @@ Pain.Rip:
 		TNT1 A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL1 A 10 A_XScream
         XPL1 B 20 A_NoBlocking
-        XPL1 CDE 10 
+        XPL1 CDE 10
 		TNT1 A 0 A_SpawnItem ("MediumBloodSpot")
         XPL1 E -1
         Stop
@@ -279,7 +276,7 @@ Pain.Rip:
         MHEA CD 7
         MHEA E -1
 		Stop
-		
+
 	 Crush:
 	 Death.Stomp:
 		TNT1 A 0
@@ -296,7 +293,7 @@ Pain.Rip:
 		TNT1 A 1
 		TNT1 A 1 A_XScream
 		TNT1 A 1 A_NoBlocking
-		Stop	
+		Stop
 
 	Death.Blast:
 	Death.SuperPunch:
@@ -367,7 +364,6 @@ Pain.Rip:
         TNT1 A -1
         Stop
 
-
 		Death.GreenFire:
         TNT1 A 0
 		TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
@@ -375,14 +371,14 @@ Pain.Rip:
         TNT1 A 0 A_XScream
         TNT1 A 0 A_NoBlocking
         TNT1 AAAA 0 A_CustomMissile ("Brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160))
-		
+
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, random (0, 160))
-		
+
 		EXPL AAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("GreenFlameTrails", 50, 0, random (0, 360), 2, random (0, 360))
 		XBRN AAAA 2 BRIGHT A_SpawnItem("GreenFlare",0,43)
 		TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
@@ -407,9 +403,9 @@ Pain.Rip:
     Death.Fire:
 	Death.Flames:
 	Death.Burn:
-	
+
 	TNT1 A 0
-	
+
 		TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
 		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
         TNT1 A 0 A_PlaySound("BIGSCREA")
@@ -423,8 +419,7 @@ Pain.Rip:
         BURN VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 6 A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
         BURN V -1
       Stop
-	  
-	  
+
 	  Death.ExplosiveImpact:
 		TNT1 A 0
 		TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
@@ -477,10 +472,6 @@ Pain.Rip:
     }
 }
 
-
-
-
-
 ACTOR CapturedMarineShotgun: CapturedMarineBase
 {
 	Translation "112:127=96:111"
@@ -501,8 +492,6 @@ ACTOR CapturedMarineShotgun: CapturedMarineBase
 
     }
 }
-
-
 
 ACTOR CapturedMarineMinigun: CapturedMarineBase
 {
@@ -525,8 +514,6 @@ ACTOR CapturedMarineMinigun: CapturedMarineBase
     }
 }
 
-
-
 ACTOR CapturedMarinePlasma: CapturedMarineBase
 {
 	translation "112:127=[0,128,192]:[0,0,0]"
@@ -548,30 +535,24 @@ ACTOR CapturedMarinePlasma: CapturedMarineBase
     }
 }
 
-
 actor KillMe
 {
 	+NOTARGET
-Radius 10
-Height 10
-DamageType KillMe
-+NOGRAVITY +NOTELEPORT +NODAMAGETHRUST
-+THRUGHOST +NORADIUSDMG +NOEXTREMEDEATH
-+FORCERADIUSDMG -BLOODSPLATTER +BLOODLESSIMPACT 
-PROJECTILE	+DEHEXPLOSION	+ACTIVATEMCROSS 
-States
-{
-Spawn:
-TNT1 A 0
-        TNT1 A 0 A_Explode(3,500)
-Stop
- }
+	Radius 10
+	Height 10
+	DamageType KillMe
+	+NOGRAVITY +NOTELEPORT +NODAMAGETHRUST
+	+THRUGHOST +NORADIUSDMG +NOEXTREMEDEATH
+	+FORCERADIUSDMG -BLOODSPLATTER +BLOODLESSIMPACT
+	PROJECTILE	+DEHEXPLOSION	+ACTIVATEMCROSS
+	States
+	{
+		Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Explode(3,500)
+		Stop
+	}
 }
-
-
-
-
-
 
 actor BodyCrash1
 {
@@ -582,7 +563,7 @@ DamageType Fall
 +NODAMAGETHRUST
 +FORCERADIUSDMG
 -BLOODSPLATTER
-+BLOODLESSIMPACT 
++BLOODLESSIMPACT
 PROJECTILE
 +MISSILE
 -NOGRAVITY
@@ -605,11 +586,6 @@ Stop
  }
 }
 
-
-
-
-
-
 actor KillMeSmall: KillMe
 {
 States
@@ -620,10 +596,6 @@ TNT1 A 0
 Stop
  }
 }
-
-
-
-
 
 actor KillMeBot: KillMe
 {
@@ -651,25 +623,24 @@ Health 6
  //TNT1 A 0 A_SpawnItem ("GiantKillMe")
  PLAY A 1 A_Chase
  Goto See
- 
+
  Spawn2:
  PLAY A 1
  Goto Spawn
 	}
 }
 
-
 ACTOR MarinePunch: BaronBall
 {
 	Radius 10
 	Height 18
 	DamageType HelperMarineFatallity
-	Projectile 
+	Projectile
 	+RANDOMIZE
     Damage 10
 	+FORCEXYBILLBOARD
     +THRUGHOST
-    +BLOODSPLATTER 
+    +BLOODSPLATTER
 	RenderStyle Add
 	Alpha 0.6
 	HitObituary "$OB_IMPHIT"
@@ -694,9 +665,6 @@ ACTOR MarinePunch: BaronBall
 	}
 }
 
-
-
-
 ACTOR MarineGivingHealth
 {
 MONSTER
@@ -717,25 +685,21 @@ MeleeRange 28
 	TNT1 A 0 A_CheckSight("GiveHealth")
 	TNT1 A 0 A_PlaySound("MRNGI2")
 	Goto See
-	
+
 	See:
 		MR8S AAAAABBBBB 5 A_Chase
 		TNT1 A 0 A_CheckSight("GiveHealth")
 		Loop
-	
-	
-	
+
 	Missile:
 	GiveHealth:
 	MR8S A 1 A_FaceTarget
-	TNT1 A 0 A_NoBlocking 
+	TNT1 A 0 A_NoBlocking
 	TNT1 A 0 A_SpawnItemEx("Stimpack", 30, 0)
 	TNT1 A 0 A_SpawnItem("Marine_Rifle")
 	Stop
 }
 }
-
-
 
 ACTOR BlurSphere2: BlurSphere //Replaces BlurSphere
 {
@@ -747,8 +711,7 @@ ACTOR BlurSphere2: BlurSphere //Replaces BlurSphere
 		TNT1 A 0 A_SpawnItem("CapturedMarine")
 		Stop
 	}
-}	
-
+}
 
 Actor PoleWithNothing
 {
@@ -762,7 +725,6 @@ Spawn:
         Stop
 }}
 
-
 Actor PoleWithNothing2
 {
 +NOBLOCKMAP
@@ -774,11 +736,6 @@ Spawn:
         CAPT N -1
         Stop
 }}
-
-
-
-
-
 
 actor MonsterSightAlert
 {
@@ -795,7 +752,7 @@ States
 {
 Spawn:
 TNT1 A 1
-TNT1 A 0 
+TNT1 A 0
 TNT1 A 0 A_Explode(2,500, 0)
 TNT1 A 1
 Stop
@@ -804,13 +761,6 @@ TNT1 A 0
 Stop
  }
 }
-
-
-
-
-
-
-
 
 Actor OrderTitle1
 {
@@ -838,7 +788,6 @@ Actor OrderTitle1
   }
 }
 
-
 Actor OrderTitle2: OrderTitle1
 {
   States
@@ -850,7 +799,6 @@ Actor OrderTitle2: OrderTitle1
   }
 }
 
-
 Actor OrderTitle3: OrderTitle1
 {
   States
@@ -861,6 +809,3 @@ Actor OrderTitle3: OrderTitle1
     Stop
   }
 }
-
-
-
