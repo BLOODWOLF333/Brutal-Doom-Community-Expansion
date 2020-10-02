@@ -590,6 +590,11 @@ Script "BDCHeckClassicMonsters" (VOID)
 if	(GetCvar("bd_classicmonsters") == 1) { SetActorState(0,"ReplaceVanilla"); }
 }
 
+Script "BDCheckFuzzySpectre" (VOID)
+{
+if	(GetCvar("bd_fuzzyspectre") == 1) { SetActorState(0,"ReplaceFuzzy"); }
+}
+
 Script "BDCheckDecorations" (VOID)
 {
 if	(GetCvar("bd_disabledecorations") == 1) { SetActorState(0,"Vanilla"); }
