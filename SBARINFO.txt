@@ -33,36 +33,36 @@ InInventory sbartype2, 1
 	//drawimage armoricon, 78, 200; next to the mugshot
 		drawimage armoricon, 48, 186;
         drawnumber 6, SMALLFONT, green, armor, drawshadow | whennotzero, 60, 188, 0, yellow, 10, blue, 100;
-		
+
 		drawnumber 2, INDEXFONT, blue, SavePercent, whennotzero, 60, 182, 0, green, 46, red, 65;
 
-        
+
 // Health
-		
-		
+
+
 		//Berserk
 		InInventory PowerStrength
 		{
 		DrawImage "HASBERK", 2, 154;
 		}
-		
-		
+
+
 		InInventory GenderMale, 1
 		{
 		drawmugshot "STM", 5, 2, 154;
 		}
-		
+
 		InInventory GenderFemale, 1
 		{
 		drawmugshot "GAL", 5, -2, 154;
 		}
-		
+
         drawnumber 6, SMALLFONT, yellow, health, drawshadow, 30, 188, 0, red, 40, green, 71;
 
 //Ammo
 		drawimage ammoicon2, 240, 181;
 		drawnumber 4, DIGINUMBER, red, ammo2, 250, 185, 0;
-		
+
 		drawimage ammoicon1, 300, 181;
 		InInventory SlugMode, 1
 		{
@@ -72,26 +72,26 @@ InInventory sbartype2, 1
 
 		drawimage "ARTICAS2", 0, 124;
 
-        
-        
-		
-	//STAMINA	
+
+
+
+	//STAMINA
 	drawnumber 4, SMALLFONT, white, Ammo UsedStamina, whennotzero | interpolate(4), 166, 190, 0;
-	
-	
+
+
 	//RADSUIT
 	drawnumber 4, SMALLFONT, green, PowerupTime RadSuit, whennotzero, 166, 182, 0;
-	
+
 	//INVULNERABILITY
 	drawnumber 4, SMALLFONT, Black, PowerupTime InvulnerabilitySphere, whennotzero, 166, 182, 0;
-	
+
 	//INVISIBILITY
 	drawnumber 4, SMALLFONT, Blue, PowerupTime BlurSphere, whennotzero, 166, 176, 0;
-	
+
 	//INFRARED
 	drawnumber 4, SMALLFONT, Blue, PowerupTime ArtiTorch, whennotzero, 166, 168, 0;
-	
-	
+
+
 	//GRENADES
 	drawimage "GRNDA", 294, 160;
 	drawnumber 4, SMALLFONT, red, Ammo GrenadeAmmo, 300, 150, 0;
@@ -101,7 +101,7 @@ InInventory sbartype2, 1
 		{
      	drawnumber 8, SMALLFONT, darkred, frags, 302, 8;
        DrawString SMALLFONT, darkred, "Frags", 302, 0;
-   
+
         }
 }
 
@@ -138,9 +138,9 @@ InInventory sbartype3, 1
 		drawnumber 4, BIGFONT, red, ammo1, 310, 185, 0;
 
 		drawimage "ARTICAS2", 0, 124;
-		
 
-		
+
+
 		drawimage "ARTICAS2", 0, 124;
 
 
@@ -148,27 +148,27 @@ InInventory sbartype3, 1
 	drawnumber 4, SMALLFONT, red, Ammo GrenadeAmmo, 340, 190, 0;
 
 
-	//STAMINA	
+	//STAMINA
 	drawnumber 4, SMALLFONT, white, Ammo UsedStamina, whennotzero | interpolate(4), 166, 190, 0;
-	
-	
+
+
 	//RADSUIT
 	drawnumber 4, SMALLFONT, green, PowerupTime RADSUIT3, whennotzero, 166, 182, 0;
-	
+
 	//INVULNERABILITY
 	drawnumber 4, SMALLFONT, Black, PowerupTime InvulnerabilitySphere, whennotzero, 166, 182, 0;
-	
+
 	//INVISIBILITY
 	drawnumber 4, SMALLFONT, Blue, PowerupTime BlurSphere, whennotzero, 166, 176, 0;
-	
+
 	//INFRARED
 	drawnumber 4, SMALLFONT, Blue, PowerupTime ArtiTorch, whennotzero, 166, 168, 0;
-	
+
 	gamemode deathmatch, teamgame
 		{
      	drawnumber 8, SMALLFONT, darkred, frags, 302, 8;
        DrawString SMALLFONT, darkred, "Frags", 302, 0;
-   
+
         }
 }
 
@@ -183,7 +183,7 @@ InInventory sbartype4, 1
 	// basic layout
 	DrawImage "PLAYSCRN", -54, 0;
 	Alpha 0.5
-	
+
 
 	// health and armor bars
 	Alpha 0.75
@@ -196,18 +196,18 @@ InInventory sbartype4, 1
 
 	// ammo bar
 	Alpha 0.75
-	
+
 	UsesSecondaryAmmo
 	{
 	DrawNumber 3, DIGIFONT_LARGE, DoomNukemStatusBarGreen, Ammo2, Alignment(left), fillzeros, 247, 172;
 	DrawNumber 3, DIGIFONT_SMALL, DoomNukemStatusBarGreen, Ammo1, Alignment(left), fillzeros, 282, 178;
 	}
-	
+
 	UsesSecondaryAmmo not
 	{
 	DrawNumber 3, DIGIFONT_LARGE, DoomNukemStatusBarGreen, Ammo1, Alignment(left), fillzeros, 257, 172;
 	}
-	
+
 	// level stats
 	Alpha 0.75
 	drawnumber 4, AMMOFONT, DoomNukemIndexGreen, kills, drawshadow(2, 2), 73, 24;
@@ -229,21 +229,21 @@ InInventory sbartype4, 1
 	DrawKeyBar 1, horizontal, 9, 273, 29, 3;
 	DrawKeyBar 1, horizontal, 9, 280, 28, 4;
 	DrawKeyBar 1, horizontal, 9, 287, 27, 5;
-	
-	
-	//STAMINA	
+
+
+	//STAMINA
 	drawnumber 4, SMALLFONT, white, Ammo UsedStamina, whennotzero | interpolate(4), 166, 190, 0;
-	
-	
+
+
 	//RADSUIT
 	drawnumber 4, SMALLFONT, green, PowerupTime RADSUIT3, whennotzero, 166, 182, 0;
-	
+
 	//INVULNERABILITY
 	drawnumber 4, SMALLFONT, Black, PowerupTime InvulnerabilitySphere, whennotzero, 166, 182, 0;
-	
+
 	//INVISIBILITY
 	drawnumber 4, SMALLFONT, Blue, PowerupTime BlurSphere, whennotzero, 166, 176, 0;
-	
+
 	//INFRARED
 	drawnumber 4, SMALLFONT, Blue, PowerupTime ArtiTorch, whennotzero, 166, 168, 0;
 
@@ -254,18 +254,18 @@ InInventory sbartype4, 1
 		DrawImage "HEADSUP", -54, 0;
 		drawmugshot "STM", 5, 176, 7;
 		}
-		
+
 		InInventory GenderFemale, 1
 		{
 		DrawImage "HEADSUP2", -54, 0;
 		drawmugshot "GAL", 5, 176, 7;
 		}
-		
+
 		InInventory PowerStrength
 		{
 		DrawImage "HASBERK", -54, 7;
-		}		
-}	
+		}
+}
 
 
 
@@ -305,33 +305,33 @@ InInventory not sbartype4, 1
 	//drawimage armoricon, 78, 200; next to the mugshot
 		drawimage armoricon, 33, 186;
         drawnumber 6, SMALLFONT, green, armor, drawshadow | whennotzero, 45, 188, 0, yellow, 10, blue, 100;
-		
+
 		drawnumber 2, INDEXFONT, blue, SavePercent, whennotzero, 45, 182, 0, green, 46, red, 65;
 
 // Health
-		
+
 		InInventory GenderMale, 1
 		{
 		drawmugshot "STM", 5, -25, 154;
 		}
-		
+
 		InInventory GenderFemale, 1
 		{
 		drawmugshot "GAL", 5, -25, 154;
 		}
-		
+
 		InInventory PowerStrength
 		{
 		DrawImage "HASBERK", -25, 154;
-		}		
-		
+		}
+
         drawnumber 6, SMALLFONT, yellow, health, drawshadow, 0, 188, 0, red, 40, green, 71;
 
 
 //AMMO
 		drawimage ammoicon2, 290, 181;
 		drawnumber 4, DIGINUMBER, red, ammo2, 290, 185, 0;
-		
+
 		drawimage ammoicon1, 330, 181;
 		InInventory SlugMode, 1
 		{
@@ -341,38 +341,38 @@ InInventory not sbartype4, 1
 
 		drawimage "ARTICAS2", 0, 124;
 
-        
-        
-		
-	//STAMINA	
+
+
+
+	//STAMINA
 	drawnumber 4, SMALLFONT, white, Ammo UsedStamina, whennotzero | interpolate(4), 166, 190, 0;
-	
-	
+
+
 	//RADSUIT
 	drawnumber 4, SMALLFONT, green, PowerupTime RADSUIT3, whennotzero, 166, 182, 0;
-	
+
 	//INVULNERABILITY
 	drawnumber 4, SMALLFONT, Black, PowerupTime InvulnerabilitySphere, whennotzero, 166, 182, 0;
-	
+
 	//INVISIBILITY
 	drawnumber 4, SMALLFONT, Blue, PowerupTime BlurSphere, whennotzero, 166, 176, 0;
-	
+
 	//INFRARED
 	drawnumber 4, SMALLFONT, Blue, PowerupTime ArtiTorch, whennotzero, 166, 168, 0;
-	
-	
+
+
 	//GRENADES
 	drawimage "GRNDA", 255, 195;
 	drawnumber 4, SMALLFONT, red, Ammo GrenadeAmmo, 260, 185, 0;
-	
-	
+
+
 	gamemode deathmatch, teamgame
 	{
      	drawnumber 8, SMALLFONT, darkred, frags, 302, 8;
        DrawString SMALLFONT, darkred, "Frags", 302, 0;
-   
+
     }
-}}}	
+}}}
 //}
 
 
@@ -391,9 +391,9 @@ statusbar normal // Standard Doom Status bar
 	drawnumber 3, HUDFONT_DOOM, untranslated, armor, 221, 171;
 
 	//keys
-	drawswitchableimage keyslot 2 && 5, "nullimage", "STKEYS0", "STKEYS3", "STKEYS6", 239, 171;
-	drawswitchableimage keyslot 3 && 6, "nullimage", "STKEYS1", "STKEYS4", "STKEYS7", 239, 181;
-	drawswitchableimage keyslot 1 && 4, "nullimage", "STKEYS2", "STKEYS5", "STKEYS8", 239, 191;
+	drawswitchableimage keyslot 2 && 5, "nullimage", "STKEYS0", "STKEYS3", "STKEYS6", 238, 170;
+	drawswitchableimage keyslot 3 && 6, "nullimage", "STKEYS1", "STKEYS4", "STKEYS7", 238, 180;
+	drawswitchableimage keyslot 1 && 4, "nullimage", "STKEYS2", "STKEYS5", "STKEYS8", 238, 190;
 
 	drawnumber 3, INDEXFONT_DOOM, untranslated, ammo Clip2, 288, 173;
 	drawnumber 3, INDEXFONT_DOOM, untranslated, ammo AmmoShell, 288, 179;
@@ -408,39 +408,39 @@ statusbar normal // Standard Doom Status bar
 	{
 		drawnumber 2, HUDFONT_DOOM, untranslated, frags, 138, 171;
 	}
-	
-	
-	//STAMINA	
+
+
+	//STAMINA
 	drawnumber 4, SMALLFONT, white, Ammo UsedStamina, whennotzero | interpolate(4), 160, 160, 0;
-	
-	
+
+
 	//RADSUIT
 	drawnumber 4, SMALLFONT, green, PowerupTime RadSuit, whennotzero, 20, 160, 0;
-	
+
 	//INVULNERABILITY
 	drawnumber 4, SMALLFONT, Black, PowerupTime InvulnerabilitySphere, whennotzero, 40, 160, 0;
-	
+
 	//INVISIBILITY
 	drawnumber 4, SMALLFONT, Blue, PowerupTime BlurSphere, whennotzero, 60, 160, 0;
-	
+
 	//INFRARED
 	drawnumber 4, SMALLFONT, White, PowerupTime ArtiTorch, whennotzero, 80, 160, 0;
-	
-	
+
+
 	//GRENADES
 	drawimage "GRNDA", 335, 195;
 	drawnumber 4, SMALLFONT, red, Ammo GrenadeAmmo, 340, 185, 0;
 
-	
+
 	drawimage "STARMS", 104, 168;
 	drawnumber 3, DIGINUMBER, untranslated, ammo2, fillzeros, 141, 173;
-	
-	
+
+
 	InInventory PowerStrength
 		{
 		DrawImage "HASBERK", 143, 168;
-		}		
-	
+		}
+
 	drawselectedinventory alternateonempty, INDEXFONT, 143, 168
 	{
 
@@ -448,7 +448,7 @@ statusbar normal // Standard Doom Status bar
 		{
 		drawmugshot "STM", 5, 143, 168;
 		}
-		
+
 		InInventory GenderFemale, 1
 		{
 		drawmugshot "GAL", 5, 143, 168;
