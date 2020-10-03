@@ -722,8 +722,7 @@ ACTOR ArtilleryTankGun : DoomWeapon
 
 		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		TNLH H 1 BRIGHT A_FireCustomMissile("AutocannonFlash", 0, 0, -32, -16, 0, 0)
-		TNLH I 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", -0.2, 0, -32, -16, 0, 0.1)
-		TNT1 A 0 A_TakeInventory("HeavyMachinegunAmmo", 1)
+		TNLH I 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", -0.2, 1, -32, -16, 0, 0.1)
 		TNLH J 2 A_PlaySound("ACANO1", 1)
 		TNT1 A 0 A_PlaySound("FARCAN1", 4)
 
@@ -732,8 +731,7 @@ ACTOR ArtilleryTankGun : DoomWeapon
 
 		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		TNLH K 1 BRIGHT A_FireCustomMissile("AutocannonFlash", 0, 0, 32, -16, 0, 0)
-		TNLH L 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", 0.2, 0, 32, -16, 0, 0.1)
-		TNT1 A 0 A_TakeInventory("HeavyMachinegunAmmo", 1)
+		TNLH L 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", 0.2, 1, 32, -16, 0, 0.1)
 		TNLH M 2 A_PlaySound("ACANO1", 1)
 		TNT1 A 0 A_PlaySound("FARCAN1", 4)
 
@@ -747,8 +745,7 @@ ACTOR ArtilleryTankGun : DoomWeapon
 
 		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		TNT1 H 1 BRIGHT A_FireCustomMissile("AutocannonFlash", 0, 0, -32, -16, 0, 0)
-		TNT1 I 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", -0.2, 0, -32, -16, 0, 0.1)
-		TNT1 A 0 A_TakeInventory("HeavyMachinegunAmmo", 1)
+		TNT1 I 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", -0.2, 1, -32, -16, 0, 0.1)
 		TNT1 J 2 A_PlaySound("ACANO1", 1)
 		TNT1 A 0 A_PlaySound("FARCAN1", 4)
 
@@ -757,8 +754,7 @@ ACTOR ArtilleryTankGun : DoomWeapon
 
 		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		TNT1 K 1 BRIGHT A_FireCustomMissile("AutocannonFlash", 0, 0, 32, -16, 0, 0)
-		TNT1 L 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", 0.2, 0, 32, -16, 0, 0.1)
-		TNT1 A 0 A_TakeInventory("HeavyMachinegunAmmo", 1)
+		TNT1 L 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", 0.2, 1, 32, -16, 0, 0.1)
 		TNT1 M 2 A_PlaySound("ACANO1", 1)
 		TNT1 A 0 A_PlaySound("FARCAN1", 4)
 
@@ -773,21 +769,19 @@ ACTOR ArtilleryTankGun : DoomWeapon
 		TNT1 A 0 A_JumpIfInventory("DMgame",1,"AltFireDM")
 
 		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
-		TNT1 A 0 A_FireCustomMissile("TankMissile", 0.5, 0, random(56,72), random(56,72), 0, -0.5)
+		TNT1 A 0 A_FireCustomMissile("TankMissile", 0.5, 1, random(56,72), random(56,72), 0, -0.5)
 		TNLH G 15 BRIGHT
-		TNT1 A 0 A_FireCustomMissile("TankMissile", -0.5, 0, random(-72,-56), random(56,72), 0, -0.5)
+		TNT1 A 0 A_FireCustomMissile("TankMissile", -0.5, 1, random(-72,-56), random(56,72), 0, -0.5)
 		TNLH G 15 BRIGHT
-		TNT1 A 0 A_TakeInventory("HelicopterRocketAmmo", 2)
 		Goto ReadyToFire
 
 	AltFireDM:
 		TNT1 A 0
 		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
-		TNT1 A 0 A_FireCustomMissile("TankMissileDM", 0.5, 0, random(56,72), random(56,72), 0, -0.5)
+		TNT1 A 0 A_FireCustomMissile("TankMissileDM", 0.5, 1, random(56,72), random(56,72), 0, -0.5)
 		TNLH G 15 BRIGHT
-		TNT1 A 0 A_FireCustomMissile("TankMissileDM", -0.5, 0, random(-72,-56), random(56,72), 0, -0.5)
+		TNT1 A 0 A_FireCustomMissile("TankMissileDM", -0.5, 1, random(-72,-56), random(56,72), 0, -0.5)
 		TNLH G 15 BRIGHT
-		TNT1 A 0 A_TakeInventory("HelicopterRocketAmmo", 2)
 		Goto ReadyToFire
 
 	AltFire2:
@@ -796,21 +790,19 @@ ACTOR ArtilleryTankGun : DoomWeapon
 		TNT1 A 0 A_JumpIfInventory("DMgame",1,"AltFire2DM")
 
 		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
-		TNT1 A 0 A_FireCustomMissile("TankMissile", 0.5, 0, random(56,72), random(56,72), 0, -0.5)
+		TNT1 A 0 A_FireCustomMissile("TankMissile", 0.5, 1, random(56,72), random(56,72), 0, -0.5)
 		TNT1 A 15 BRIGHT
-		TNT1 A 0 A_FireCustomMissile("TankMissile", -0.5, 0, random(-72,-56), random(56,72), 0, -0.5)
+		TNT1 A 0 A_FireCustomMissile("TankMissile", -0.5, 1, random(-72,-56), random(56,72), 0, -0.5)
 		TNT1 A 15 BRIGHT
-		TNT1 A 0 A_TakeInventory("HelicopterRocketAmmo", 2)
 		Goto ReadyToFire2
 
 	AltFire2DM:
 		TNT1 A 0
 		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
-		TNT1 A 0 A_FireCustomMissile("TankMissileDM", 0.5, 0, random(56,72), random(56,72), 0, -0.5)
+		TNT1 A 0 A_FireCustomMissile("TankMissileDM", 0.5, 1, random(56,72), random(56,72), 0, -0.5)
 		TNT1 A 15 BRIGHT
-		TNT1 A 0 A_FireCustomMissile("TankMissileDM", -0.5, 0, random(-72,-56), random(56,72), 0, -0.5)
+		TNT1 A 0 A_FireCustomMissile("TankMissileDM", -0.5, 1, random(-72,-56), random(56,72), 0, -0.5)
 		TNT1 A 15 BRIGHT
-		TNT1 A 0 A_TakeInventory("HelicopterRocketAmmo", 2)
 		Goto ReadyToFire2
 
 	Flash:
