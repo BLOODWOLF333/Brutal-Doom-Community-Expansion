@@ -1039,14 +1039,14 @@ ACTOR attackhelicopterGun : DoomWeapon
 		TNT1 A 0 A_JumpIfinventory("TankZoom", 1, "ReadyZoom")
 		TNT1 A 0 A_JumpIfInventory("SwitchFlashlight",1,"SwitchFlashlight")
 		TNT1 A 0 A_JumpIfInventory("Kicking", 1, "ZoomMode")
-		HELH A 1 A_WeaponReady(1)
+		HELH A 2 A_WeaponReady(1)
 		Loop
 
 	ReadyZoom:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("SwitchFlashlight",1,"SwitchFlashlight")
 		TNT1 A 0 A_JumpIfInventory("Kicking", 1, "ZoomMode")
-		TNT1 A 1 A_WeaponReady(1)
+		TNT1 A 2 A_WeaponReady(1)
 		Loop
 
 	ZoomMode:
@@ -1250,18 +1250,18 @@ ACTOR attackhelicopterGun : DoomWeapon
 
 	Flash:
 		TNT1 A 0
-		TNT1 A 1 ACS_NamedExecuteAlways("BDHelicopterHUD")
-		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "LightEnd")
+		TNT1 A 0 ACS_NamedExecuteAlways("BDHelicopterHUD")
+		TNT1 A 1 A_JumpIfInventory("PressedUse", 1, "LightEnd")
 		NULL A 0 A_JumpIf (pitch < -57, "TooHighCheckGZD")
 		NULL A 0 A_JumpIf (pitch > 220, "TooHighCheck")
 		NULL A 0 A_JumpIf (pitch > 33, "TooLowCheck")
-		TNT1 A 1 ACS_NamedExecuteAlways("BDHelicopterHUD")
-		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "LightEnd")
+		TNT1 A 0 ACS_NamedExecuteAlways("BDHelicopterHUD")
+		TNT1 A 1 A_JumpIfInventory("PressedUse", 1, "LightEnd")
 		NULL A 0 A_JumpIf (pitch < -57, "TooHighCheckGZD")
 		NULL A 0 A_JumpIf (pitch > 220, "TooHighCheck")
 		NULL A 0 A_JumpIf (pitch > 33, "TooLowCheck")
-		TNT1 A 1 ACS_NamedExecuteAlways("BDHelicopterHUD")
-		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "LightEnd")
+		TNT1 A 0 ACS_NamedExecuteAlways("BDHelicopterHUD")
+		TNT1 A 1 A_JumpIfInventory("PressedUse", 1, "LightEnd")
 		NULL A 0 A_JumpIf (pitch < -57, "TooHighCheckGZD")
 		NULL A 0 A_JumpIf (pitch > 220, "TooHighCheck")
 		NULL A 0 A_JumpIf (pitch > 33, "TooLowCheck")

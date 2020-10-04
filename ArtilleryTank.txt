@@ -656,13 +656,13 @@ ACTOR ArtilleryTankGun : DoomWeapon
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfinventory("TankZoom", 1, "ReadyToFire2")
 		TNT1 A 0 A_JumpIfInventory("SwitchFlashlight",1,"SwitchFlashlight")
-		TNLH G 1 A_WeaponReady(1)
+		TNLH G 2 A_WeaponReady(1)
 		TNT1 A 0 A_JumpIfInventory("Kicking", 1, "ZoomMode")
 		Loop
 
 	ReadyToFire2:
 		TNT1 A 0
-		TNT1 A 1 A_WeaponReady(1)
+		TNT1 A 2 A_WeaponReady(1)
 		TNT1 A 0 A_JumpIfInventory("SwitchFlashlight",1,"SwitchFlashlight")
 		TNT1 A 0 A_JumpIfInventory("Kicking", 1, "ZoomMode")
 		Loop
@@ -808,20 +808,20 @@ ACTOR ArtilleryTankGun : DoomWeapon
 	Flash:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfHealthLower(2, "EmergencyExit")
-		TNHD K 1 Bright
 		TNT1 A 0 ACS_NamedExecuteAlways("BDATHUD")
+		TNHD K 1 Bright
 		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "LightEnd")
 		NULL A 0 A_JumpIf (pitch < -36, "TooHighCheckGZD")
 		NULL A 0 A_JumpIf (pitch > 220, "TooHighCheck")
 		NULL A 0 A_JumpIf (pitch > 16, "TooLowCheck")
-		TNHD K 1 Bright
 		TNT1 A 0 ACS_NamedExecuteAlways("BDATHUD")
+		TNHD K 1 Bright
 		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "LightEnd")
 		NULL A 0 A_JumpIf (pitch < -36, "TooHighCheckGZD")
 		NULL A 0 A_JumpIf (pitch > 220, "TooHighCheck")
 		NULL A 0 A_JumpIf (pitch > 16, "TooLowCheck")
-		TNHD K 1 Bright
 		TNT1 A 0 ACS_NamedExecuteAlways("BDATHUD")
+		TNHD K 1 Bright
 		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "LightEnd")
 		NULL A 0 A_JumpIf (pitch < -36, "TooHighCheckGZD")
 		NULL A 0 A_JumpIf (pitch > 220, "TooHighCheck")
