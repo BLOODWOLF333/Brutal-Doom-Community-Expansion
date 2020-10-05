@@ -1323,8 +1323,8 @@ Actor BaronBoss1: BaronofHell2
 Spawn:
 		BARO A 1
 		TNT1 A 0 A_CheckSight("WAITING")
-		TNT1 A 0 ACS_EXecuteAlways(1622)
-		TNT1 A 0 ACS_EXecuteAlways(1623)
+		TNT1 A 0 ACS_NamedExecuteAlways("BDBruiserBrothersHealth")
+		TNT1 A 0 ACS_NamedExecuteAlways("BDBruiserBrotherOne")
 		TNT1 A 0 A_changeFlag("MISSILEMORE", 1)
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
@@ -2150,7 +2150,7 @@ Spawn:
 		TNT1 A 0
 		BARO A 1
 		TNT1 A 0 A_CheckSight("WAITING")
-		TNT1 A 0 ACS_EXecuteAlways(1624)
+		TNT1 A 0 ACS_NamedExecuteAlways("BDBruiserBrotherTwo")
 		TNT1 A 0 A_changeFlag("MISSILEMORE", 1)
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")

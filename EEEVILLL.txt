@@ -10,7 +10,7 @@ States
 	Spawn:
 		PLAY A 1
 		TNT1 A 0 Thing_ChangeTID(0, 736)
-		MARN A 0 ACS_ExecuteAlways(177, 0, 0, 0, 0)//Check if you are playing on an Wolfenstein level
+		MARN A 0 ACS_NamedExecuteAlways("MapEnhancementNaziVerification", 0, 0, 0, 0)//Check if you are playing on an Wolfenstein level
 		PLAY A 3
 		TNT1 A 0 A_JumpIf(y == 1824, "IsMrX")
 		TNT1 A 0 A_GiveInventory("IsAnEvilMarine", 1)

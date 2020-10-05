@@ -54,7 +54,7 @@ ACTOR DualMP40 : BrutalWeapon
 		MP42 A 0 offset(-9,32)
 		MP42 A 0 offset(-9,32) A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		MP42 A 0 offset(-9,32) A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
-		PLAY A 0 offset(-9,32) ACS_ExecuteAlways(852, 0, 0, 0, 0)//Makes player faster.
+		PLAY A 0 offset(-9,32) ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
 		MP42 A 0 offset(-9,32) A_JumpIfInventory("PowerStrength", 1, 2)
 		MP42 A 0 offset(-9,32) A_GiveInventory("UsedStamina", 6)
 		MP42 A 0 offset(-9,32)
@@ -84,7 +84,7 @@ ACTOR DualMP40 : BrutalWeapon
 		Goto StopSprint
 	StopSprintTired:
 		MP42 A 1
-		PLAY A 0 ACS_ExecuteAlways(853, 0, 0, 0, 0)//Makes player slower.
+		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		MP42 A 0 A_PlaySound("Tired", 2)
 		MP42 A 0 A_TakeInventory("UsedStamina", 2)
 		MP42 A 5 A_WeaponReady
@@ -100,7 +100,7 @@ ACTOR DualMP40 : BrutalWeapon
 	StopSprint:
 		MP42 A 1
 		MP42 A 0 A_JumpIfInventory("UsedStamina", 60, "StopSprintTired")
-		PLAY A 0 ACS_ExecuteAlways(853, 0, 0, 0, 0)//Makes player slower.
+		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		Goto Ready
 
 	Deselect:

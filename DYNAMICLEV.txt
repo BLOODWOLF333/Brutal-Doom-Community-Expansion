@@ -1,0 +1,1562 @@
+#library "dynamiclev"
+#include "zcommon.acs"
+
+//This is the greatest piece of spaghetti code I have ever written.
+//God help me.
+//Fuck, there is no God, I am alone down here.
+//Fuck!
+
+Script "BDSmallLightSeed" (VOID)
+{
+	if (CheckActorCeilingTexture(0, "TLITE6_5"))    GiveInventory("BDECLightCheckerRed", 1);
+	if (CheckActorCeilingTexture(0, "TLITE6_6"))    GiveInventory("BDECLightCheckerOrange", 1);
+
+}
+
+Script "BDBigLightSeed" (VOID)
+{
+	if (CheckActorCeilingTexture(0, "TLITE6_4"))    GiveInventory("BDECLightCheckerOrange", 1);
+	if (CheckActorCeilingTexture(0, "TLITE6_1"))    GiveInventory("BDECLightCheckerOrange", 1);
+
+	if	(GetCvar( "vid_renderer") == 1) {
+	if (CheckActorfLOORTexture(0, "NUKAGE1"))    GiveInventory("BDECNukageChecker", 1);
+	if (CheckActorfLOORTexture(0, "NUKAGE2"))    GiveInventory("BDECNukageChecker", 1);
+	if (CheckActorfLOORTexture(0, "NUKAGE3"))    GiveInventory("BDECNukageChecker", 1);
+	if (CheckActorfLOORTexture(0, "NUKAGE4"))    GiveInventory("BDECNukageChecker", 1);
+	}
+}
+
+Script "BDScythe2Desert" (VOID)//Scythe 2 Desert Maps
+{
+	ReplaceTextures("CEIL4_1", "SANDS1");
+	ReplaceTextures("SLIME01", "FWATER1");
+}
+
+
+
+
+//DOOM E1M1 - Hangar
+Script "MapEnhancementE1M1" (VOID)
+{
+ChangeSky ("SKYPHO", "SKYPHO");
+ReplaceTextures("FLOOR7_1", "MFLR8_2");
+ReplaceTextures("BROWN144", "CLIFF05B");
+ReplaceTextures("BROWN144", "CLIFF05B");
+//ReplaceTextures("TLITE6_5", "LITGEN7B");
+//ReplaceTextures("TLITE6_6", "LITGEN9B");
+ReplaceTextures("FLOOR4_1", "METAL51");
+ReplaceTextures("FLOOR4_5", "METAL51");
+ReplaceTextures("BROWN1", "METAL24",  NOT_BOTTOM);
+ReplaceTextures("BROWN1", "LIT05S");
+ReplaceTextures("BROWN96", "METAL22");
+ReplaceTextures("LITE2", "METAL24B");
+ReplaceTextures("STONE2", "BUNKER05");
+ReplaceTextures("CEIL3_1", "METAL51");
+ReplaceTextures("CEIL3_2", "METAL51");
+delay(1);
+}
+
+
+//DOOM E1M2 - Nuclear Plant
+Script "MapEnhancementE1M2" (VOID)
+{
+ChangeSky ("SKYPHO", "SKYPHO");
+ReplaceTextures("FLOOR7_1", "MFLR8_2");
+ReplaceTextures("BROWN144", "CLIFF05B");
+ReplaceTextures("BROWN144", "CLIFF05B");
+//ReplaceTextures("TLITE6_5", "LITGEN7B");
+//ReplaceTextures("TLITE6_6", "LITGEN9B");
+ReplaceTextures("FLOOR4_1", "METAL51");
+ReplaceTextures("FLOOR4_5", "METAL51");
+ReplaceTextures("BROWN1", "METAL24");
+ReplaceTextures("LITE2", "METAL24B");
+ReplaceTextures("STONE2", "BUNKER05");
+ReplaceTextures("CEIL3_1", "METAL51");
+ReplaceTextures("STEP6", "LIT05S");
+ReplaceTextures("STEP5", "LIT05S");
+ReplaceTextures("CEIL3_2", "METAL51");
+//ReplaceTextures("CEIL3_5", "LIT05C");
+ReplaceTextures("STEP5", "STEP1");
+delay(1);
+}
+
+//DOOM E1M3 - Toxin Refinery
+Script "MapEnhancementE1M3" (VOID)
+{
+ChangeSky ("SKYPHO", "SKYPHO");
+ReplaceTextures("FLOOR7_1", "FLOOR4_8");
+ReplaceTextures("BROWN144", "CLIFF05B");
+//ReplaceTextures("TLITE6_5", "LITGEN7B");
+//ReplaceTextures("TLITE6_6", "LITGEN9B");
+ReplaceTextures("FLOOR4_1", "METAL51");
+ReplaceTextures("FLOOR4_5", "METAL51");
+ReplaceTextures("FLOOR6_2", "MFLR8_1");
+ReplaceTextures("BROWN1", "METAL24");
+ReplaceTextures("BROWN96", "METAL22");
+ReplaceTextures("LITE2", "METAL24B");
+ReplaceTextures("STONE2", "BUNKER05");
+//ReplaceTextures("CEIL3_5", "CEMENTW9");
+ReplaceTextures("STARG3", "BASE25");
+ReplaceTextures("CEIL3_1", "METAL51");
+ReplaceTextures("CEIL3_2", "METAL51");
+//ReplaceTextures("CEIL3_5", "LIT05C");
+ReplaceTextures("STEP6", "LIT05S");
+ReplaceTextures("STEP5", "LIT05S");
+delay(1);
+}
+
+//DOOM E1M4 - Command Control
+Script "MapEnhancementE1M4" (VOID)
+{
+ChangeSky ("SKYPHO", "SKYPHO");
+ReplaceTextures("FLAT5_5", "METAL54");
+ReplaceTextures("FLOOR4_1", "METAL51");
+ReplaceTextures("FLOOR4_5", "METAL51");
+ReplaceTextures("CEIL3_5", "LITGEN6");
+ReplaceTextures("MFLR8_1", "LITGEN8");
+ReplaceTextures("CEIL5_2", "METAL51");
+ReplaceTextures("FLOOR6_2", "LITGEN8", not_floor);
+ReplaceTextures("FLOOR7_2", "LITGEN8", not_floor);
+ReplaceTextures("BROWN1", "METAL24");
+ReplaceTextures("BROWN96", "METAL22");
+ReplaceTextures("LITE2", "METAL24B");
+ReplaceTextures("STARTAN3", "STARGR1");
+ReplaceTextures("STONE2", "BUNKER05");
+//ReplaceTextures("CEIL3_5", "CEMENTW9");
+ReplaceTextures("CEIL3_1", "METAL51");
+ReplaceTextures("CEIL3_2", "METAL51");
+ReplaceTextures("STEP6", "LIT05S");
+ReplaceTextures("STEP5", "LIT05S");
+delay(1);
+}
+
+
+//DOOM E1M5 - Phobos Labs
+Script "MapEnhancementE1M5" (VOID)
+{
+ChangeSky ("SKYPHO", "SKYPHO");
+//SetCVAR("sv_maprotation", 0);
+ReplaceTextures("CEIL3_5", "LITGEN8");
+ReplaceTextures("STARTAN3", "STARGR1");
+ReplaceTextures("STONE", "W_LAB4");
+ReplaceTextures("FLOOR7_1", "FLOOR4_8");
+ReplaceTextures("FLOOR4_1", "METAL51");
+ReplaceTextures("FLOOR4_5", "METAL51");
+ReplaceTextures("CEIL3_1", "METAIND2");
+ReplaceTextures("CEIL3_2", "METAIND2");
+ReplaceTextures("STONE3", "INDUS4");
+ReplaceTextures("FLAT5_4", "LITGEN8");
+ReplaceTextures("MFLR8_1", "LITGEN8");
+ReplaceTextures("BROWN1", "METAL24");
+ReplaceTextures("BROWN96", "METAL22");
+ReplaceTextures("LITE2", "METAL24B");
+ReplaceTextures("STONE2", "BUNKER05");
+ReplaceTextures("CEIL5_2", "LITGEN8");
+ReplaceTextures("STEP6", "LIT05S");
+ReplaceTextures("STEP5", "LIT05S");
+delay(1);
+}
+
+//DOOM E1M6 - CentralProcessing
+Script "MapEnhancementE1M6" (VOID)
+{
+ChangeSky ("SKYPHO", "SKYPHO");
+ReplaceTextures("FLAT5_5", "METAL54");
+ReplaceTextures("FLOOR4_1", "METAL51");
+ReplaceTextures("FLOOR4_5", "METAL51");
+ReplaceTextures("MFLR8_1", "LITGEN8");
+ReplaceTextures("CEIL5_2", "METAL51");
+ReplaceTextures("FLOOR6_2", "LITGEN8", not_floor);
+ReplaceTextures("FLOOR7_2", "LITGEN8", not_floor);
+ReplaceTextures("BROWN1", "METAL24");
+ReplaceTextures("BROWN96", "METAL22");
+ReplaceTextures("LITE2", "METAL24B");
+ReplaceTextures("STARTAN3", "STARGR1");
+ReplaceTextures("STONE2", "BUNKER05");
+delay(1);
+}
+
+//DOOM E1M7 -Computer Station
+Script "MapEnhancementE1M7" (VOID)
+{
+ChangeSky ("SKYPHO", "SKYPHO");
+ReplaceTextures("FLAT5_4", "metal56", NOT_CEILING);
+ReplaceTextures("CEIL5_1", "metal51", NOT_CEILING);
+ReplaceTextures("FLOOR7_1", "MFLR8_2");
+ReplaceTextures("FLOOR5_1", "METAL51");
+ReplaceTextures("STARTAN3", "STARGR1");
+ReplaceTextures("CEIL3_5", "LITGEN8");
+ReplaceTextures("MFLR8_1", "LITGEN8");
+ReplaceTextures("BROWN1", "METAL24");
+ReplaceTextures("BROWN96", "METAL22");
+ReplaceTextures("LITE2", "METAL24B");
+ChangefLOOR(3, "FLAT9");
+ReplaceTextures("STONE2", "BUNKER05");
+//ReplaceTextures("CEIL3_5", "CEMENTW9");
+ReplaceTextures("STEP6", "LIT05S");
+ReplaceTextures("STEP5", "LIT05S");
+delay(1);
+}
+
+
+//DOOM E1M8 -Phobos Anomaly
+Script "MapEnhancementE1M8" (VOID)
+{
+ChangeSky ("SKYPHO", "SKYPHO");
+delay(1);
+}
+
+//DOOM E1M9 - Military Base
+Script "MapEnhancementE1M9" (VOID)
+{
+ChangeSky ("SKYPHO", "SKYPHO");
+ReplaceTextures("CEIL3_5", "LITGEN8");
+ReplaceTextures("BROWN96", "METAL24", NOT_BOTTOM);
+ReplaceTextures("BROWN96", "METAL24B", NOT_MIDDLE);
+ReplaceTextures("BROWN1", "METALIN4", NOT_BOTTOM);
+ReplaceTextures("BROWN1", "GREIND5");
+ChangefLOOR(4, "FLAT9");
+delay(1);
+}
+
+
+//DOOM E2M2 CONTAINMENT AREA
+Script "MapEnhancementE2M2" (VOID)
+{
+ChangeSky ("SKYDEI", "SKYDEI");
+ReplaceTextures("WOOD1", "STARBR2");
+ReplaceTextures("WOOD3", "BROWN1");
+ReplaceTextures("WOOD5", "BROWN1");
+ReplaceTextures("WOOD4", "BROWN1");
+ReplaceTextures("SW2SATYR", "METAL");
+ReplaceTextures("SW1SATYR", "METAL");
+ReplaceTextures("SW1LION", "METAL");
+ReplaceTextures("SW2LION", "METAL");
+ReplaceTextures("WOODGARG", "STARBR2");
+ReplaceTextures("SW1WOOD", "DOORHI");
+ReplaceTextures("MARBLE1", "BUNKER07");
+ReplaceTextures("MARBLE2", "BUNKER07");
+ReplaceTextures("MARBLE3", "BUNKER07");
+ReplaceTextures("GSTONE1", "SLADWALL");
+ReplaceTextures("CEIL5_1", "LITGEN8");
+ReplaceTextures("SKINSYMB", "PIPE2");
+ReplaceTextures("DEM1_5", "METAL56");
+ReplaceTextures("FLOOR5_4", "METAL52");
+ReplaceTextures("FLAT5_5", "METAL52");
+ReplaceTextures("FLAT5_1", "METAIND3");
+ReplaceTextures("CEIL1_1", "METAL51");
+ReplaceTextures("FLAT10", "METAL51");
+ReplaceTextures("CEIL3_2", "METAL51");
+ReplaceTextures("CEIL3_1", "METAL51");
+ReplaceTextures("FLAT1_2", "METAL54");
+ReplaceTextures("BROWN1", "METAL24");
+ReplaceTextures("BROWN96", "METAL22");
+ReplaceTextures("LITE2", "METAL24B");
+ReplaceTextures("STONE2", "BUNKER05");
+ReplaceTextures("CEIL4_3", "LITGEN6");
+//ReplaceTextures("CEIL3_5", "CEMENTW9");
+ReplaceTextures("STEP6", "LIT05S");
+ReplaceTextures("STEP5", "LIT05S");
+delay(1);
+}
+
+
+
+//DOOM E2M3 REFINERY
+Script "MapEnhancementE2M3" (VOID)
+{
+ChangeSky ("SKYDEI", "SKYDEI");
+ReplaceTextures("WOOD1", "STARBR2");
+ReplaceTextures("WOOD3", "BROWN1");
+ReplaceTextures("WOOD5", "BROWN1");
+ReplaceTextures("WOOD4", "BROWN1");
+ReplaceTextures("WOODGARG", "STARBR2");
+ReplaceTextures("SW1WOOD", "DOORHI");
+ReplaceTextures("MARBLE1", "BUNKER07");
+ReplaceTextures("MARBLE2", "BUNKER07");
+ReplaceTextures("MARBLE3", "BUNKER07");
+ReplaceTextures("GSTONE1", "SLADWALL");
+ReplaceTextures("SKINSYMB", "PIPE2");
+ReplaceTextures("FLOOR5_4", "METAL52");
+ReplaceTextures("FLAT5_5", "METAL52");
+ReplaceTextures("FLAT5_1", "METAIND3");
+ReplaceTextures("CEIL1_1", "METAL51");
+ReplaceTextures("FLAT10", "METAL51");
+ReplaceTextures("CEIL3_2", "METAL51");
+ReplaceTextures("CEIL3_1", "METAL51");
+ReplaceTextures("FLOOR7_1", "METAL51");
+ReplaceTextures("MIDVINE2", "GRATX");
+ReplaceTextures("MIDBRN1", "GRATX");
+ReplaceTextures("BROVINE", "METALI2D");
+ReplaceTextures("FLAT8", "METAL54");
+ReplaceTextures("FLAT1_1", "METAL52");
+ReplaceTextures("SKSPINE1", "STARGR1");
+ReplaceTextures("DEM1_5", "LITGEN8", not_FLOOR);
+ReplaceTextures("CEIL3_4", "LITGEN9", not_FLOOR);
+ReplaceTextures("FLAT1_2", "METAL54");
+ReplaceTextures("BROWN1", "METAL24");
+ReplaceTextures("BROWN96", "METAL22");
+ReplaceTextures("LITE2", "METAL24B");
+ReplaceTextures("BROVINE2", "METALIN4");
+ReplaceTextures("STONE2", "BUNKER05");
+//ReplaceTextures("CEIL3_5", "CEMENTW9");
+ReplaceTextures("FLOOR1_1", "LITGEN6");
+//ReplaceTextures("FLOOR1_6", "LITGEN6");
+ReplaceTextures("STEP6", "LIT05S");
+ReplaceTextures("STEP5", "LIT05S");
+delay(1);
+}
+
+
+
+//DOOM E2M4 Deimos Lab
+Script "MapEnhancementE2M4" (VOID)
+{
+ChangeSky ("SKYDEI", "SKYDEI");
+ReplaceTextures("CEIL3_5", "LITGEN8", not_FLOOR);
+ReplaceTextures("FLOOR5_1", "LITGEN8", not_FLOOR);
+ReplaceTextures("FLOOR5_4", "LITGEN9", not_FLOOR);
+ReplaceTextures("CEIL4_3", "LITGEN6", not_FLOOR);
+ReplaceTextures("MARBLE1", "BUNKER07");
+ReplaceTextures("MARBLE2", "BUNKER07");
+ReplaceTextures("MARBLE3", "BUNKER07");
+ReplaceTextures("GRAYVINE", "W_LAB4");
+ReplaceTextures("GRAYVINE", "W_LAB4");
+ReplaceTextures("FLAT5_8", "FLOOR0_5");
+ReplaceTextures("FLAT1_2", "METAL54");
+ReplaceTextures("BROVINE", "METALI2D");
+ReplaceTextures("FLAT8", "METAL54");
+ReplaceTextures("FLAT1_1", "METAL52");
+ReplaceTextures("SKSPINE1", "STARGR1");
+ReplaceTextures("DEM1_5", "LITGEN8", not_FLOOR);
+ReplaceTextures("CEIL3_4", "LITGEN9", not_FLOOR);
+ReplaceTextures("FLAT1_2", "METAL54");
+ReplaceTextures("NUKAGE3", "BLOOD1");
+ReplaceTextures("NUKAGE1", "BLOOD1");
+ReplaceTextures("FLAT5_4", "LITGEN8", not_FLOOR);
+ReplaceTextures("MFLR8_1", "LITGEN8", not_FLOOR);
+ReplaceTextures("BROWN1", "METAL24");
+ReplaceTextures("BROWN96", "METAL22");
+ReplaceTextures("LITE2", "METAL24B");
+ReplaceTextures("STONE2", "BUNKER05");
+//ReplaceTextures("CEIL3_5", "CEMENTW9");
+ReplaceTextures("STEP6", "LIT05S");
+ReplaceTextures("STEP5", "LIT05S");
+}
+
+//DOOM E2M5 - Command Center
+Script "MapEnhancementE2M5" (VOID)
+{
+ChangeSky ("SKYDEI", "SKYDEI");
+//SetCVAR("sv_maprotation", 0);
+//ReplaceTextures("STARTAN3", "W_LAB3");
+//ReplaceTextures("STARG1", "W_LAB4");
+//ReplaceTextures("STONE", "W_LAB4");
+//ReplaceTextures("STARTAN1", "W_LAB4B");
+//ReplaceTextures("STARG3", "W_LAB4B");
+ReplaceTextures("BIGDOOR6", "BIGDOOR1");
+ReplaceTextures("FLAT5_1", "FLOOR5_1");
+ReplaceTextures("FLAT1_1", "FLAT3");
+ReplaceTextures("CEIL1_1", "FLAT3");
+ReplaceTextures("CEIL1_3", "CEIL1_2");
+ReplaceTextures("MFLR8_2", "FLOOR4_8");
+ReplaceTextures("FLAT5_2", "FLOOR4_8");
+ReplaceTextures("FLOOR7_1", "FLOOR5_1");
+ReplaceTextures("DEM1_5", "F_LAB5", not_CEILING);
+ReplaceTextures("DEM1_6", "F_LAB5");
+ReplaceTextures("DEM1_5", "LITGEN8", not_FLOOR);
+ReplaceTextures("WOOD1", "STARBR2");
+ReplaceTextures("WOOD3", "PIPE2");
+ReplaceTextures("STONE2", "BUNKER03");
+ReplaceTextures("STONE3", "BUNKER03");
+ReplaceTextures("MARBFAC2", "BUNKER04");
+ReplaceTextures("WOOD5", "BROWN1");
+ReplaceTextures("WOOD4", "PIPE2");
+ReplaceTextures("SW2SATYR", "METAL");
+ReplaceTextures("SW1LION", "METAL");
+ReplaceTextures("WOODGARG", "STARBR2");
+ReplaceTextures("SW1WOOD", "DOORHI");
+ReplaceTextures("FLAT5_5", "FLOOR5_3");
+ReplaceTextures("GSTVINE2", "BUNKER03");
+ReplaceTextures("CEIL3_1", "CEIL3_4");
+ReplaceTextures("MIDVINE2", "BDHAU4");
+ReplaceTextures("BROVINE2", "BDHAU1");
+ReplaceTextures("BROVINE", "BDHAU2");
+ReplaceTextures("SP_HOT1", "BDHAU2");
+ReplaceTextures("NUKAGE3", "BLOOD1");
+ReplaceTextures("CEIL4_1", "F_SKY1");
+ReplaceTextures("FWATER4", "MFLR8_2");
+ReplaceTextures("CEIL3_5", "LITGEN8");
+ReplaceTextures("FLAT5_7", "FLAT5_4");
+ReplaceTextures("FLOOR4_1", "METAL51");
+ReplaceTextures("FLOOR4_5", "METAL51");
+ReplaceTextures("MARBLE1", "BUNKER07");
+ReplaceTextures("MARBLE2", "BUNKER07");
+ReplaceTextures("MARBLE3", "BUNKER07");
+ReplaceTextures("SKINSYMB", "BUNKER07");
+ReplaceTextures("CEIL3_2", "METAL51");
+ReplaceTextures("CEIL3_1", "METAL51");
+ReplaceTextures("BROWN1", "METAL24");
+ReplaceTextures("BROWN96", "METAL22");
+ReplaceTextures("LITE2", "METAL24B");
+ReplaceTextures("STONE2", "BUNKER05");
+//ReplaceTextures("CEIL3_5", "CEMENTW9");
+ReplaceTextures("STEP6", "LIT05S");
+ReplaceTextures("STEP5", "LIT05S");
+delay(1);
+}
+
+
+Script "MapEnhancementE2M6" (VOID)
+{
+ChangeSky ("SKYDEI", "SKYDEI");
+ReplaceTextures("FLAT18", "FLOOR6_1");
+ReplaceTextures("ICKWALL1", "BDHAU1");
+ReplaceTextures("ICKWALL6", "BDHAU1");
+ReplaceTextures("ICKWALL7", "BDHAU1");
+ReplaceTextures("ICKWALL2", "BDHAU6");
+ReplaceTextures("ICKWALL2", "BDHAU6");
+ReplaceTextures("ICKWALL5", "BDHAU6");
+ReplaceTextures("ICKWALL4", "BDHAU6");
+ReplaceTextures("ICKDOOR1", "BDHAU5");
+ReplaceTextures("FLOOR0_3", "BDHAU7");
+ReplaceTextures("FLOOR5_4", "BDHAU7");
+ReplaceTextures("BROVINE", "BDHAU2");
+ReplaceTextures("FLOOR4_1", "METAL51");
+ReplaceTextures("FLOOR4_5", "METAL51");
+ReplaceTextures("BROWN1", "METAL24");
+ReplaceTextures("BROWN96", "METAL22");
+ReplaceTextures("LITE2", "METAL24B");
+ReplaceTextures("STONE2", "BUNKER05");
+//ReplaceTextures("CEIL3_5", "CEMENTW9");
+ReplaceTextures("FLAT5_2", "METAL54");
+ReplaceTextures("FLOOR7_1", "METAL54");
+ReplaceTextures("WOOD3", "METAL22");
+ReplaceTextures("WOOD4", "METAL21");
+ReplaceTextures("LITE96", "METAL24B");
+ReplaceTextures("SW2SATYR", "METAL24C");
+ReplaceTextures("SW2LION", "METAL24C");
+ReplaceTextures("WOODGARG", "METAL24C");
+ReplaceTextures("WOODSKUL", "METAL24C");
+ReplaceTextures("FLAT1_1", "METAL51");
+ReplaceTextures("CEIL1_1", "METAL21");
+ReplaceTextures("CEIL3_5", "LIT05C", not_FLOOR);
+ReplaceTextures("FLOOR4_8", "LIT05C", not_FLOOR);
+ReplaceTextures("STEP6", "LIT05S");
+ReplaceTextures("STEP5", "LIT05S");
+delay(1);
+}
+
+
+Script "MapEnhancementE2M7" (VOID)
+{
+ChangeSky ("SKYDEI", "SKYDEI");
+ReplaceTextures("BROWN1", "BUNKER07");
+ReplaceTextures("F_SKY1", "LITGEN8");
+ReplaceTextures("CEIL3_3", "LITGEN8");
+ReplaceTextures("CEIL5_2", "LIT05C", NOT_FLOOR);
+ReplaceTextures("CEIL3_6", "LITGEN8");
+ReplaceTextures("CEIL3_5", "LITGEN8", NOT_FLOOR);
+ReplaceTextures("FLAT23", "LITGEN8", NOT_FLOOR);
+ReplaceTextures("CEIL3_2", "LITGEN9B", NOT_FLOOR);
+ReplaceTextures("BROWN96", "METALI2D");
+ReplaceTextures("BROWNHUG", "METALI2D");
+ReplaceTextures("BIGDOOR6", "BIGDOOR3");
+ReplaceTextures("MARBFAC3", "STONE");
+delay(1);
+}
+
+Script "MapEnhancementE2M8" (VOID)
+{
+ChangeSky ("SKYDEI", "SKYDEI");
+delay(1);
+}
+
+
+
+Script "MapEnhancementE3M1" (VOID)
+{
+ChangeSky ("SKYHELF", "SKYHELF");
+delay(1);
+}
+
+
+Script "MapEnhancementE3M2" (VOID)
+{
+ChangeSky ("SKYHELF", "SKYHELF");
+delay(1);
+}
+
+Script "MapEnhancementE3M3" (VOID)
+{
+ChangeSky ("SKYHELF", "SKYHELF");
+ReplaceTextures("SLADWALL", "BDHEL03");
+ReplaceTextures("NUKESLAD", "BDHEL03");
+ReplaceTextures("SLADSKUL", "BDHEL02");
+ReplaceTextures("SLADPOIS", "BDHEL01");
+ReplaceTextures("CEIL3_5", "BDHEL04B");
+ReplaceTextures("CEIL3_6", "BDHEL04B");
+ReplaceTextures("FLOOR4_8", "BDHEL06");
+ReplaceTextures("FLOOR5_1", "BDHEL06");
+ReplaceTextures("FLOOR5_2", "FLAT1_1");
+ReplaceTextures("FLAT5_2", "FLAT1_1");
+ReplaceTextures("SHAWN2", "BDHEL04");
+ReplaceTextures("FLAT23", "BDHEL04");
+ReplaceTextures("ICKWALL1", "BDHEL04");
+ReplaceTextures("ICKWALL3", "BDHEL04");
+ReplaceTextures("ICKWALL2", "BDHEL04");
+ReplaceTextures("ICKWALL6", "BDHEL04");
+ReplaceTextures("ICKWALL5", "BDHEL04");
+ReplaceTextures("ICKWALL7", "BDHEL04");
+ReplaceTextures("BRNSMALL", "BDHEL07");
+ReplaceTextures("BRNSMALC", "BDHEL07");
+ReplaceTextures("BRNSMALR", "BDHEL07");
+ReplaceTextures("MIDGRATE", "BDHEL07");
+ReplaceTextures("SKULWALL", "BDHEL08");
+ReplaceTextures("SKULWAL3", "BDHEL08");
+ReplaceTextures("firewalL", "LFALL01");
+ReplaceTextures("WOOD4", "BDHEL01");
+ReplaceTextures("METAL1", "SKSPINE2");
+ReplaceTextures("STARG2", "MARBLE3");
+ReplaceTextures("STARG3", "MARBLE3");
+ReplaceTextures("STARGR2", "MARBLE3");
+ReplaceTextures("FWATER4", "SFLR6_4", NOT_FLOOR);
+ReplaceTextures("FWATER4", "LAVA1");
+ReplaceTextures("CEMENT3", "MARBLE2");
+ReplaceTextures("CEMPOIS", "MARBLE2");
+ReplaceTextures("STONE", "MARBLE2");
+ReplaceTextures("CEMENT1", "MARBLE2");
+ReplaceTextures("CEMENT2", "MARBLE2");
+ReplaceTextures("CEMENT4", "MARBLE2");
+ReplaceTextures("CEMENT5", "MARBLE2");
+delay(1);
+}
+
+Script "MapEnhancementE3M4" (VOID)
+{
+ChangeSky ("SKYHELF", "SKYHELF");
+ReplaceTextures("GSTSATYR", "BDHEL10");
+ReplaceTextures("GSTLION", "BDHEL11");
+ReplaceTextures("GSTGARG", "BDHEL10");
+ReplaceTextures("ickdoor1", "SW1WOOD");
+ReplaceTextures("BIGDOOR2", "BIGDOOR7");
+ReplaceTextures("BIGDOOR3", "BIGDOOR7");
+ReplaceTextures("BIGDOOR4", "BIGDOOR7");
+ReplaceTextures("pipe2", "SKINtek1");
+ReplaceTextures("ICKWALL1", "BDHEL04");
+ReplaceTextures("ICKWALL3", "BDHEL04");
+ReplaceTextures("ICKWALL2", "BDHEL04");
+ReplaceTextures("ICKWALL6", "BDHEL04");
+ReplaceTextures("ICKWALL5", "BDHEL04");
+ReplaceTextures("ICKWALL7", "BDHEL04");
+ReplaceTextures("STARBR2", "SKINtek2");
+ReplaceTextures("pipe1", "SKINtek2", NOT_MIDDLE);
+delay(1);
+}
+
+Script "MapEnhancementE3M5" (VOID)
+{
+ChangeSky ("SKYHELF", "SKYHELF");
+delay(1);
+}
+
+Script "MapEnhancementE3M6" (VOID)
+{
+ChangeSky ("SKYHELF", "SKYHELF");
+ReplaceTextures("FIREBLU1", "FLAT5_7");
+ReplaceTextures("FIREBLU2", "FLAT5_7");
+delay(1);
+}
+
+Script "MapEnhancementE3M7" (VOID)
+{
+ChangeSky ("SKYHELF", "SKYHELF");
+ReplaceTextures("CEIL4_2", "F_SKY1");
+ReplaceTextures("BLOOD3", "LAVA1");
+delay(1);
+}
+
+Script "MapEnhancementE3M8" (VOID)
+{
+ChangeSky ("SKYHELF", "SKYHELF");
+delay(1);
+}
+
+
+//DOOM 2 MAP 01 - Entryway
+Script "MapEnhancementD2Map01" (VOID)
+{
+ReplaceTextures("CEMENT9", "TANROCK5");
+ChangeSky ("SKYEAR5", "SKYEAR5");
+ReplaceTextures ("CEIL1_2", "CEIL4_3");
+ReplaceTextures ("CEIL1_3", "CEIL1_2");
+ReplaceTextures ("BIGBRIK1", "INDUS3");
+ReplaceTextures ("BIGBRIK2", "INDUS4");
+ReplaceTextures ("SPACEW3", "SPACM0");
+ReplaceTextures ("MIDGRATE", "GRATX");
+ReplaceTextures ("PIPEWAL1", "WFALL1", NOT_MIDDLE | NOT_TOP);
+ReplaceTextures ("", "BRONZE1", NOT_MIDDLE | NOT_TOP);
+SetCVAR("sv_maprotation", 0);
+ReplaceTextures("STONE2", "BUNKER05");
+//ReplaceTextures("CEIL3_5", "CEMENTW9");
+ReplaceTextures("STEP6", "LIT05S");
+ReplaceTextures("STEP5", "LIT05S");
+ReplaceTextures("MARBFAC3", "BRWINDOW");
+ReplaceTextures("FLOOR7_1", "METAL56", NOT_CEILING);
+ReplaceTextures("ceil5_2", "LITGEN9D", NOT_FLOOR);
+ReplaceTextures("CEIL3_3", "LITGEN9C", NOT_FLOOR);
+delay(1);
+}
+
+
+
+Script "MapEnhancementD2Map03" (VOID)
+{
+ChangeSky ("SKYEAR5", "SKYEAR5");
+ReplaceTextures ("MFLR8_2", "METAL12");
+ReplaceTextures ("FLOOR7_1", "METAL51");
+ReplaceTextures ("BROWN144", "METALI2D");
+ReplaceTextures ("METAL2", "METAL22");
+delay(1);
+}
+
+
+
+
+//DOOM 2 MAP 05 - Waste Tunnels
+Script "MapEnhancementD2Map05" (VOID)
+{
+ChangeSky ("SKYEAR5", "SKYEAR5");
+SetCVAR("sv_maprotation", 0);
+ReplaceTextures ("BIGBRIK1", "INDUS3");
+ReplaceTextures ("BIGBRIK2", "INDUS4");
+ReplaceTextures ("CEIL5_2", "MFLR8_2", NOT_ceiling);
+ReplaceTextures ("TEKBRON1", "NEWDOR2", NOT_ceiling);
+ReplaceTextures ("WOODMET1", "NEWDOR3", NOT_ceiling);
+ReplaceTextures("STEP6", "LIT05S");
+ReplaceTextures("STEP5", "STEP1");
+ReplaceTextures ("STONE4", "BUNKER05");
+ReplaceTextures ("STONE5", "BUNKER05");
+ReplaceTextures ("MIDGRATE", "GRATX");
+delay(1);
+}
+
+//DOOM 2 MAP 06 - cRUSHER
+Script "MapEnhancementD2Map06" (VOID)
+{
+ChangeSky ("SKYEAR5", "SKYEAR5");
+SetCVAR("sv_maprotation", 0);
+ChangeCeiling(20, "F_SKY1");
+ReplaceTextures ("FLAT5_4", "MFLR8_2", NOT_ceiling);
+Ceiling_RaiseByValue (20, 200, 32);
+delay(1);
+}
+
+//DOOM 2 MAP 07 - Dead Simple
+Script "MapEnhancementD2Map07" (VOID)
+{
+ReplaceTextures("RROCK19", "JUNKY15");
+ChangeSky ("SKYEAR5", "SKYEAR5");
+ChangeCeiling(667, "SLIME15");
+ChangeFloor(667, "SLIME15");
+Ceiling_LowerInstant(667, 0, 1);
+Floor_RaiseInstant(667, 0, 1);
+Floor_lOWERInstant(3, 0, 2);
+Floor_lOWERInstant(4, 0, 2);
+Floor_lOWERInstant(5, 0, 2);
+Floor_lOWERInstant(6, 0, 2);
+ReplaceTextures ("", "BRONZE1", NOT_MIDDLE | NOT_BOTTOM);
+delay(1);
+}
+
+
+//DOOM 2 MAP 10 - reFUELING BASE
+Script "MapEnhancementD2Map10" (VOID)
+{
+ChangeSky ("SKYEAR5", "SKYEAR5");
+ReplaceTextures ("CEIL3_3", "LITGEN8", NOT_FLOOR);
+ReplaceTextures ("FLOOR4_6", "LITGEN8", NOT_FLOOR);
+ReplaceTextures ("FLOOR4_6", "LITGEN8", NOT_FLOOR);
+ReplaceTextures ("CRATOP2", "LITGEN8", NOT_FLOOR);
+ReplaceTextures ("FLAT9", "LITGEN8", NOT_FLOOR);
+ReplaceTextures ("FLAT8", "LITGEN8", NOT_FLOOR);
+//ReplaceTextures ("FLAT1", "LITGEN9d", NOT_FLOOR);
+ReplaceTextures ("GRAY1", "METALI2D");
+ReplaceTextures ("tanrock7", "METALI2D");
+ReplaceTextures ("STONE6", "METALI2D");
+ReplaceTextures ("STONE7", "METALI2D");
+ReplaceTextures ("STONE4", "BUNKER05");
+ReplaceTextures ("STONE5", "BUNKER05");
+ReplaceTextures ("MFLR8_2", "METAL12");
+ReplaceTextures ("MFLR8_2", "METAL52");
+ReplaceTextures ("FLAT1_2", "METAL54");
+delay(1);
+}
+
+
+//DOOM 2 MAP 09 - The Pit
+Script "MapEnhancementD2Map09" (VOID)
+{
+ChangeSky ("SKYEAR5", "SKYEAR5");
+SetCVAR("sv_maprotation", 0);
+ReplaceTextures ("FLOOR4_1", "FLAT10");
+ReplaceTextures ("FLOOR4_1", "FLAT10");
+ReplaceTextures ("SLIME04", "NUKAGE1");
+ReplaceTextures ("BIGBRIK1", "INDUS3");
+ReplaceTextures ("BIGBRIK2", "INDUS4");
+ReplaceTextures ("MODWALL1", "TANROCK5");
+ReplaceTextures ("TANROCK4", "TANROCK5");
+ReplaceTextures ("BIGBRIK1", "INDUS3");
+ReplaceTextures ("BIGBRIK2", "INDUS4");
+delay(1);
+}
+
+
+//DOOM 2 MAP 12 - The Factory
+Script "MapEnhancementD2Map12" (VOID)
+{
+ReplaceTextures("RROCK03", "JUNKY16");
+ChangeSky ("SKYCIT1", "SKYCIT2");
+ReplaceTextures ("BIGBRIK1", "INDUS3");
+ReplaceTextures ("BIGBRIK2", "INDUS4");
+ReplaceTextures ("BIGDOOR5", "NEWDOR4B");
+ReplaceTextures("FLAT5_1", "METAIND3");
+ReplaceTextures("ZIMMER3", "METAIND5");
+ReplaceTextures("WOOD4", "DOOR1");
+ReplaceTextures("WOODGARG", "DOOR1");
+ReplaceTextures("WOOD1", "DOORSTOP");
+
+delay(1);
+}
+
+//DOOM 2 MAP 13 - Downtown
+Script "MapEnhancementD2Map13" (VOID)
+{
+ReplaceTextures("MFLR8_3", "APOCTX1");
+ReplaceTextures("LAVA4", "SLIME15");
+ReplaceTextures("MARBFAC4", "GRAY5");
+ChangeSky ("SKYCIT1", "SKYCIT2");
+delay(1);
+}
+
+
+
+//DOOM 2 MAP 15 - Industrial Zone
+Script "MapEnhancementD2Map15" (VOID)
+{
+ReplaceTextures("GRASS1", "JUNKY15");
+ReplaceTextures("GRASS2", "JUNKY15");
+ReplaceTextures("SLIME12", "NUKAGE1");
+ReplaceTextures("WOOD5", "BRONZE1");
+ReplaceTextures("WOOD12", "INDUS3");
+ReplaceTextures("BIGBRIK2", "INDUS4");
+ReplaceTextures("BROWNHUG", "ASHWALL3");
+ReplaceTextures("FLAT5_2", "FLOOR0_2");
+ReplaceTextures("FLAT5_1", "METAIND3");
+ReplaceTextures("CEIL1_1", "SLIME16");
+ReplaceTextures("WOODMET2", "NEWDOR3");
+ReplaceTextures("WOODMET4", "NEWDOR3");
+ReplaceTextures("WOODMET1", "SUPPORT3");
+ReplaceTextures("WOODVERT", "METAIND4");
+ChangeSky ("SKYCIT1", "SKYCIT2");
+delay(1);
+}
+
+
+//DOOM 2 MAP 16 - Suburbs
+Script "MapEnhancementD2Map16" (VOID)
+{
+ReplaceTextures("BIGDOOR6", "SPCDOOR3");
+ReplaceTextures("MFLR8_4", "APOCTX1");
+ChangeFloor (9, "JUNKY15");
+ChangeSky ("SKYCIT1", "SKYCIT2");
+SetCVAR("sv_maprotation", 0);
+//ChangeLevel("MAP16B", 0, CHANGELEVEL_NOINTERMISSION, -1);
+}
+
+//DOOM 2 MAP 18 - Courtyyard
+Script "MapEnhancementD2Map18" (VOID)
+{
+ReplaceTextures("RROCK20", "GRASS3");
+ReplaceTextures("NUKAGE3", "BLOOD1");
+ReplaceTextures("TANROCK5", "STONE7");
+ReplaceTextures("NUKEPOIS", "STONE5");
+ReplaceTextures("RROCK13", "APOCTX1");
+ReplaceTextures("MFLR8_4", "APOCTX1");
+ChangeSky ("SKYCITH", "SKYCITH");
+}
+
+
+//DOOM 2 MAP 19 - CASTLE
+Script "MapEnhancementD2Map19" (VOID)
+{
+ChangeSky ("SKYCITH", "SKYCITH");
+}
+
+//DOOM 2 MAP 20 - Gotcha
+Script "MapEnhancementD2Map20" (VOID)
+{
+ReplaceTextures("BIGDOOR6", "NEWDOR4");
+ReplaceTextures("TANROCK5", "STONE7");
+ReplaceTextures("ROCK1", "STONE5");
+ReplaceTextures("ROCK2", "STONE5");
+ReplaceTextures("ROCK3", "ASHWALL2");
+ReplaceTextures("ROCK5", "STONE6");
+ReplaceTextures("METAL", "BRWINDOW");
+ReplaceTextures("RROCK19", "APOCTX1");
+ChangeFloor(9, "APOCTX1");
+Floor_raiseinstant(9, 0, 23);
+ChangeSky ("SKYCITH", "SKYCITH");
+
+}
+
+
+
+
+//DOOM 2 MAP 24 - THE CHASM
+Script "MapEnhancementD2Map24" (VOID)
+{
+ReplaceTextures("CEIL5_1", "F_SKY1", NOT_FLOOR);
+ReplaceTextures("NUKAGE3", "LAVA1");
+ReplaceTextures("SFALL4", "BRICK6");
+ReplaceTextures("TEKBRON1", "BRICK6");
+ChangeSky ("SKYHEL", "SKYHEL");
+}
+
+
+//DOOM 2 MAP 25 - bLOODFALLS
+Script "MapEnhancementD2Map25" (VOID)
+{
+ReplaceTextures("FLAT5_5", "F_SKY1", NOT_FLOOR);
+ReplaceTextures("PANCASE2", "BRICK7");
+ReplaceTextures("PANEL2", "BRICK6");
+ReplaceTextures("PANEL1", "BRICKLIT");
+ChangeSky ("SKYHEL", "SKYHEL");
+}
+
+
+
+//DOOM 2 MAP 26 - mINES
+Script "MapEnhancementD2Map26" (VOID)
+{
+ChangeSky ("SKYHEL", "SKYHEL");
+}
+
+
+//DOOM 2 MAP 27 - MonsterCondo
+Script "MapEnhancementD2Map27" (VOID)
+{
+ChangeSky ("SKYHEL", "SKYHEL");
+}
+
+//DOOM 2 MAP 28 - SpiritWorld
+Script "MapEnhancementD2Map28" (VOID)
+{
+ChangeSky ("SKYHEL", "SKYHEL");
+}
+
+
+
+//DOOM 2 MAP 30 - Icon Of Sin
+Script "MapEnhancementD2Map30" (VOID)
+{
+ReplaceTextures("BIGDOOR6", "SPCDOOR3");
+ReplaceTextures("ZZZFACE1", "SKSNAKE2");
+ReplaceTextures("ZZZFACE2", "SKSNAKE2");
+ReplaceTextures("ZZZFACE3", "SKSNAKE2");
+ReplaceTextures("ZZZFACE4", "SKSNAKE2");
+ReplaceTextures("ZZZFACE5", "SKSNAKE2");
+ReplaceTextures("ZZZFACE6", "SKSNAKE2");
+ReplaceTextures("ZZZFACE7", "SKSNAKE2");
+ReplaceTextures("ZZZFACE8", "SKSNAKE2");
+ReplaceTextures("ZZZFACE9", "SKSNAKE2");
+ReplaceTextures("PIPE6", "SKSNAKE2");
+ReplaceTextures("PIPE4", "SKSNAKE2");
+ReplaceTextures("PIPE2", "SKSNAKE2");
+ReplaceTextures("BLOOD3", "SFLR6_4");
+ReplaceTextures("RROCK08", "F_SKY1");
+ReplaceTextures("SLIME08", "BLOOD1");
+ReplaceTextures("SFALL4", "BFALL1");
+ChangeSky ("SKYHELF", "SKYHELF");
+Floor_LowerToLowest(9, 32);
+SetCVAR("sv_maprotation", 0);
+//ChangeLevel("MAP16B", 0, CHANGELEVEL_NOINTERMISSION, -1);
+}
+
+
+
+//TNT MAP 01 - System Control and MAP09 - Stronghold
+Script "MapEnhancementTNTMap01" (VOID)
+{
+SetMusic("D_SADIST");
+ChangeSky ("SKYIJ1", "SKYIJ1");
+ReplaceTextures("BROWNHUG", "TANROCK5");
+ReplaceTextures("ROCK2", "TANROCK5");
+ReplaceTextures("BIGDOOR1", "TNTDOOR1");
+ReplaceTextures("DOOR1", "TNTDOR1S");
+ReplaceTextures("TEKGREN1", "GREIND1");
+ReplaceTextures("TEKGREN2", "GREIND2");
+ReplaceTextures("TEKGREN3", "GREIND3");
+ReplaceTextures("TEKGREN4", "GREIND4");
+ReplaceTextures("TEKGREN5", "GREIND5");
+ReplaceTextures("METAL2", "METALIND");
+ReplaceTextures("METAL6", "METALIND");
+ReplaceTextures("GRNLITE1", "CEIL5_1");
+ReplaceTextures("LITE3", "LIT05");
+ReplaceTextures("GRASS1", "DESERT01");
+//ReplaceTextures("SLIME15", "METALIN8", NOT_CEILING);
+SetCVAR("sv_maprotation", 0);
+delay(1);
+}
+
+
+
+//TNT MAP 02 - Human BBQ
+Script "MapEnhancementTNTMap02" (VOID)
+{
+SetMusic("D_BURN");
+ChangeSky ("SKYIJ1", "SKYIJ1");
+ReplaceTextures("TANROCK5", "BRICK9");
+ReplaceTextures("TEKWALL4", "TANROCK5");
+ReplaceTextures("BIGBRIK1", "INDUS3");
+ReplaceTextures("BIGDOOR1", "TNTDOOR1");
+ReplaceTextures("DOOR1", "TNTDOR1S");
+ReplaceTextures("TEKGREN1", "GREIND1");
+ReplaceTextures("TEKGREN2", "GREIND2");
+ReplaceTextures("TEKGREN3", "GREIND3");
+ReplaceTextures("TEKGREN4", "GREIND4");
+ReplaceTextures("TEKGREN5", "GREIND5");
+ReplaceTextures("METAL2", "METALIND");
+ReplaceTextures("METAL6", "METALIND");
+ReplaceTextures("SLIME05", "NUKAGE1");
+ReplaceTextures("GSTONE1", "BUNKER01");
+ReplaceTextures("GSTONE1", "BUNKER01");
+ReplaceTextures("GRASS1", "DESERT01");
+ReplaceTextures("TLITE6_6", "f_sky1");
+ReplaceTextures("BROWNHUG", "TANROCK8");
+ReplaceTextures("GRASS1", "DESERT01");
+ReplaceTextures("GRASS2", "DESERT01");
+//ReplaceTextures("BROWNGRN", "METALIN4");
+ReplaceTextures("LITE3", "LIT05");
+//ReplaceTextures("SLIME15", "METALIN8", NOT_CEILING);
+SetCVAR("sv_maprotation", 0);
+delay(1);
+}
+
+
+
+//TNT MAP 03 - Power Control
+Script "MapEnhancementTNTMap03" (VOID)
+{
+SetMusic("D_AIM");
+ChangeSky ("SKYIJ1", "SKYIJ1");
+ReplaceTextures("BIGBRIK1", "INDUS3");
+ReplaceTextures("BIGDOOR1", "TNTDOOR1");
+ReplaceTextures("DOOR1", "TNTDOR1S");
+ReplaceTextures("TEKGREN1", "GREIND1");
+ReplaceTextures("TEKGREN2", "GREIND2");
+ReplaceTextures("TEKGREN3", "GREIND3");
+ReplaceTextures("TEKGREN4", "GREIND4");
+ReplaceTextures("TEKGREN5", "GREIND5");
+ReplaceTextures("ASHWALL7", "BUNKER01");
+ReplaceTextures("GRASS1", "DESERT01");
+ReplaceTextures("TLITE6_6", "f_sky1");
+ReplaceTextures("BROWNHUG", "TANROCK8");
+//ReplaceTextures("BROWNGRN", "METALIN4");
+ReplaceTextures("LITE3", "LIT05");
+//ReplaceTextures("SLIME15", "METALIN8", NOT_CEILING);
+SetCVAR("sv_maprotation", 0);
+delay(1);
+}
+
+
+
+
+//TNT MAP 04 - Wormhole
+Script "MapEnhancementTNTMap04" (VOID)
+{
+SetMusic("D_BELLS");
+ChangeSky ("SKYIJ1", "SKYIJ1");
+ReplaceTextures("BIGBRIK1", "INDUS3");
+ReplaceTextures("BIGDOOR1", "TNTDOOR1");
+ReplaceTextures("DOOR1", "TNTDOR1S");
+ReplaceTextures("TEKGREN1", "GREIND1");
+ReplaceTextures("TEKGREN2", "GREIND2");
+ReplaceTextures("TEKGREN3", "GREIND3");
+ReplaceTextures("TEKGREN4", "GREIND4");
+ReplaceTextures("TEKGREN5", "GREIND5");
+ReplaceTextures("ASHWALL7", "BUNKER01");
+ReplaceTextures("GRASS1", "DESERT01");
+ReplaceTextures("GRASS2", "DESERT01");
+ReplaceTextures("TLITE6_6", "f_sky1");
+
+//ReplaceTextures("BROWNGRN", "METALIN4");
+ReplaceTextures("LITE3", "LIT05");
+//ReplaceTextures("SLIME15", "METALIN8", NOT_CEILING);
+SetCVAR("sv_maprotation", 0);
+delay(1);
+}
+
+
+
+//TNT MAP 05 - Hanger
+Script "MapEnhancementTNTMap05" (VOID)
+{
+SetMusic("D_MORE");
+ChangeSky ("SKYIJ1", "SKYIJ1");
+ReplaceTextures("BIGBRIK1", "INDUS3");
+ReplaceTextures("BIGDOOR1", "TNTDOOR1");
+ReplaceTextures("DOOR1", "TNTDOR1S");
+ReplaceTextures("TEKGREN1", "GREIND1");
+ReplaceTextures("TEKGREN2", "GREIND2");
+ReplaceTextures("TEKGREN3", "GREIND3");
+ReplaceTextures("TEKGREN4", "GREIND4");
+ReplaceTextures("TEKGREN5", "GREIND5");
+ReplaceTextures("ASHWALL7", "BUNKER01");
+ReplaceTextures("GRASS2", "SLIME14");
+ReplaceTextures("f_sky1", "CEIL5_1");
+ReplaceTextures("LITE3", "LIT05");
+SetCVAR("sv_maprotation", 0);
+delay(1);
+}
+
+
+//TNT MAP 06 - Open Season
+Script "MapEnhancementTNTMap06" (VOID)
+{
+SetMusic("D_AGONY");
+ChangeSky ("SKYIJ1", "SKYIJ1");
+ReplaceTextures("BIGDOOR1", "TNTDOOR1");
+ReplaceTextures("DOOR1", "TNTDOR1S");
+ReplaceTextures("TEKGREN1", "GREIND1");
+ReplaceTextures("TEKGREN2", "GREIND2");
+ReplaceTextures("TEKGREN3", "GREIND3");
+ReplaceTextures("TEKGREN4", "GREIND4");
+ReplaceTextures("TEKGREN5", "GREIND5");
+ReplaceTextures("ASHWALL7", "BUNKER01");
+ReplaceTextures("GRASS1", "DESERT01");
+ReplaceTextures("BROWNHUG", "TANROCK8");
+delay(1);
+}
+
+
+
+
+//TNT MAP 07 - Prison
+Script "MapEnhancementTNTMap07" (VOID)
+{
+SetMusic("D_CHAOS");
+ChangeSky ("SKYIJ1", "SKYIJ1");
+ReplaceTextures("BIGDOOR1", "TNTDOOR1");
+ReplaceTextures("DOOR1", "TNTDOR1S");
+ReplaceTextures("TEKGREN1", "GREIND1");
+ReplaceTextures("TEKGREN2", "GREIND2");
+ReplaceTextures("TEKGREN3", "GREIND3");
+ReplaceTextures("TEKGREN4", "GREIND4");
+ReplaceTextures("TEKGREN5", "GREIND5");
+ReplaceTextures("ASHWALL7", "BUNKER01");
+ReplaceTextures("FLOOR7_1", "DESERT01");
+ReplaceTextures("RROCK03", "DESERT01");
+ReplaceTextures("BROWNHUG", "TANROCK8");
+ReplaceTextures("GRASS1", "DESERT01");
+ReplaceTextures("GRASS2", "DESERT01");
+delay(1);
+}
+
+//TNT MAP 08 - Metal
+Script "MapEnhancementTNTMap08" (VOID)
+{
+SetMusic("D_BEAST");
+ChangeSky ("SKYIJ1", "SKYIJ1");
+ReplaceTextures("BIGDOOR1", "TNTDOOR1");
+ReplaceTextures("DOOR1", "TNTDOR1S");
+ReplaceTextures("TEKGREN1", "GREIND1");
+ReplaceTextures("TEKGREN2", "GREIND2");
+ReplaceTextures("TEKGREN3", "GREIND3");
+ReplaceTextures("TEKGREN4", "GREIND4");
+ReplaceTextures("TEKGREN5", "GREIND5");
+ReplaceTextures("ASHWALL7", "BUNKER01");
+ReplaceTextures ("WFALL1", "SPACM0");
+ReplaceTextures("RROCK03", "DESERT01");
+ReplaceTextures("BROWNHUG", "TANROCK8");
+ReplaceTextures("GRASS1", "DESERT01");
+ReplaceTextures("GRASS2", "DESERT01");
+delay(1);
+}
+
+
+//TNT MAP 10 - Redemption
+Script "MapEnhancementTNTMap10" (VOID)
+{
+SetMusic("D_INFINI");
+ChangeSky ("SKYIJ1", "SKYIJ1");
+ReplaceTextures("BIGDOOR1", "TNTDOOR1");
+ReplaceTextures("DOOR1", "TNTDOR1S");
+ReplaceTextures("TEKGREN1", "GREIND1");
+ReplaceTextures("TEKGREN2", "GREIND2");
+ReplaceTextures("TEKGREN3", "GREIND3");
+ReplaceTextures("TEKGREN4", "GREIND4");
+ReplaceTextures("TEKGREN5", "GREIND5");
+ReplaceTextures("ASHWALL7", "BUNKER01");
+ReplaceTextures("GRASS1", "DESERT01");
+ReplaceTextures("RROCK03", "DESERT01");
+ReplaceTextures("BROWNHUG", "TANROCK8");
+ReplaceTextures("GRASS1", "DESERT01");
+ReplaceTextures("GRASS2", "DESERT01");
+delay(1);
+}
+
+
+//TNT MAP 11 - Storage
+Script "MapEnhancementTNTMap11" (VOID)
+{
+SetMusic("D_KILL");
+ChangeSky ("SKYIJ1", "SKYIJ1");
+ReplaceTextures("BIGDOOR1", "TNTDOOR1");
+ReplaceTextures("DOOR1", "TNTDOR1S");
+ReplaceTextures("TEKGREN1", "GREIND1");
+ReplaceTextures("TEKGREN2", "GREIND2");
+ReplaceTextures("TEKGREN3", "GREIND3");
+ReplaceTextures("TEKGREN4", "GREIND4");
+ReplaceTextures("TEKGREN5", "GREIND5");
+ReplaceTextures("ASHWALL7", "BUNKER01");
+ReplaceTextures("FLOOR6_2", "DESERT01");
+ReplaceTextures("RROCK03", "DESERT01");
+ReplaceTextures("BROWNHUG", "TANROCK8");
+ReplaceTextures("GRASS1", "DESERT01");
+ReplaceTextures("GRASS2", "DESERT01");
+delay(1);
+}
+
+
+
+
+//TNT MAP 12 Crater
+Script "MapEnhancementTNTMap12" (VOID)
+{
+SetMusic("D_CHAOS");
+ChangeSky ("SKYIJ2", "SKYIJ2");
+ReplaceTextures("BIGDOOR1", "TNTDOOR1");
+ReplaceTextures("DOOR1", "TNTDOR1S");
+ReplaceTextures("TEKGREN1", "GREIND1");
+ReplaceTextures("TEKGREN2", "GREIND2");
+ReplaceTextures("TEKGREN3", "GREIND3");
+ReplaceTextures("TEKGREN4", "GREIND4");
+ReplaceTextures("TEKGREN5", "GREIND5");
+ReplaceTextures("ASHWALL7", "BUNKER01");
+ReplaceTextures("RROCK03", "DESERT01");
+ReplaceTextures("BROWN144", "TANROCK5");
+ReplaceTextures("FLOOR7_1", "DESERT01");
+delay(1);
+}
+
+
+
+//TNT MAP 13 Nukage Processing
+Script "MapEnhancementTNTMap13" (VOID)
+{
+SetMusic("D_BELLS");
+ChangeSky ("SKYIJ2", "SKYIJ2");
+ReplaceTextures("BIGDOOR1", "TNTDOOR1");
+ReplaceTextures("DOOR1", "TNTDOR1S");
+ReplaceTextures("TEKGREN1", "GREIND1");
+ReplaceTextures("TEKGREN2", "GREIND2");
+ReplaceTextures("TEKGREN3", "GREIND3");
+ReplaceTextures("TEKGREN4", "GREIND4");
+ReplaceTextures("TEKGREN5", "GREIND5");
+ReplaceTextures("ASHWALL7", "BUNKER01");
+delay(1);
+}
+
+
+
+//TNT MAP 14 Steel Works
+Script "MapEnhancementTNTMap14" (VOID)
+{
+SetMusic("D_COLD");
+ChangeSky ("SKYIJ2", "SKYIJ2");
+ReplaceTextures("BIGDOOR1", "TNTDOOR1");
+ReplaceTextures("DOOR1", "TNTDOR1S");
+ReplaceTextures("TEKGREN1", "GREIND1");
+ReplaceTextures("TEKGREN2", "GREIND2");
+ReplaceTextures("TEKGREN3", "GREIND3");
+ReplaceTextures("TEKGREN4", "GREIND4");
+ReplaceTextures("TEKGREN5", "GREIND5");
+delay(1);
+}
+
+
+
+
+//TNT MAP 15 Dead Zone
+Script "MapEnhancementTNTMap15" (VOID)
+{
+SetMusic("D_BURN2");
+ChangeSky ("SKYIJ2", "SKYIJ2");
+ReplaceTextures("BIGDOOR1", "TNTDOOR1");
+ReplaceTextures("DOOR1", "TNTDOR1S");
+ReplaceTextures("TEKGREN1", "GREIND1");
+ReplaceTextures("TEKGREN2", "GREIND2");
+ReplaceTextures("TEKGREN3", "GREIND3");
+ReplaceTextures("TEKGREN4", "GREIND4");
+ReplaceTextures("TEKGREN5", "GREIND5");
+ReplaceTextures("FLOOR7_1", "DESERT01");
+ReplaceTextures("RROCK03", "DESERT01");
+ReplaceTextures("BROWNHUG", "TANROCK8");
+ReplaceTextures("GSTVINE1", "TANROCK8");
+delay(1);
+}
+
+
+//TNT MAP 16 Deepest Reaches
+Script "MapEnhancementTNTMap16" (VOID)
+{
+SetMusic("D_BLOOD");
+ChangeSky ("SKYIJ2", "SKYIJ2");
+ReplaceTextures("BIGDOOR1", "TNTDOOR1");
+ReplaceTextures("DOOR1", "TNTDOR1S");
+ReplaceTextures("TEKGREN1", "GREIND1");
+ReplaceTextures("TEKGREN2", "GREIND2");
+ReplaceTextures("TEKGREN3", "GREIND3");
+ReplaceTextures("TEKGREN4", "GREIND4");
+ReplaceTextures("TEKGREN5", "GREIND5");
+delay(1);
+}
+
+
+//TNT MAP 17 Processing Area
+Script "MapEnhancementTNTMap17" (VOID)
+{
+SetMusic("D_MORE");
+ChangeSky ("SKYIJ2", "SKYIJ2");
+ReplaceTextures("BIGDOOR1", "TNTDOOR1");
+ReplaceTextures("DOOR1", "TNTDOR1S");
+ReplaceTextures("TEKGREN1", "GREIND1");
+ReplaceTextures("TEKGREN2", "GREIND2");
+ReplaceTextures("TEKGREN3", "GREIND3");
+ReplaceTextures("TEKGREN4", "GREIND4");
+ReplaceTextures("TEKGREN5", "GREIND5");
+delay(1);
+}
+
+
+
+//TNT MAP 18 Mill
+Script "MapEnhancementTNTMap18" (VOID)
+{
+SetMusic("D_INFINI");
+ChangeSky ("SKYIJ2", "SKYIJ2");
+ReplaceTextures("BIGDOOR1", "TNTDOOR1");
+ReplaceTextures("DOOR1", "TNTDOR1S");
+ReplaceTextures("TEKGREN1", "GREIND1");
+ReplaceTextures("TEKGREN2", "GREIND2");
+ReplaceTextures("TEKGREN3", "GREIND3");
+ReplaceTextures("TEKGREN4", "GREIND4");
+ReplaceTextures("TEKGREN5", "GREIND5");
+delay(1);
+}
+
+
+//TNT MAP 19 Shipping Respawning
+Script "MapEnhancementTNTMap19" (VOID)
+{
+SetMusic("D_CHAOS");
+ChangeSky ("SKYIJ2", "SKYIJ2");
+ReplaceTextures("BIGDOOR1", "TNTDOOR1");
+ReplaceTextures("DOOR1", "TNTDOR1S");
+ReplaceTextures("TEKGREN1", "GREIND1");
+ReplaceTextures("TEKGREN2", "GREIND2");
+ReplaceTextures("TEKGREN3", "GREIND3");
+ReplaceTextures("TEKGREN4", "GREIND4");
+ReplaceTextures("TEKGREN5", "GREIND5");
+delay(1);
+}
+
+
+
+
+//TNT MAP 20 Central Processing
+Script "MapEnhancementTNTMap20" (VOID)
+{
+SetMusic("D_HORIZO");
+ChangeSky ("SKYIJ2", "SKYIJ2");
+ReplaceTextures("BIGDOOR1", "TNTDOOR1");
+ReplaceTextures("DOOR1", "TNTDOR1S");
+ReplaceTextures("TEKGREN1", "GREIND1");
+ReplaceTextures("TEKGREN2", "GREIND2");
+ReplaceTextures("TEKGREN3", "GREIND3");
+ReplaceTextures("TEKGREN4", "GREIND4");
+ReplaceTextures("TEKGREN5", "GREIND5");
+delay(1);
+}
+
+
+//TNT MAP 21 Administration Center
+Script "MapEnhancementTNTMap21" (VOID)
+{
+SetMusic("D_BLOOD");
+ChangeSky ("SKYIJ2", "SKYIJ2");
+ReplaceTextures("BIGDOOR1", "TNTDOOR1");
+ReplaceTextures("DOOR1", "TNTDOR1S");
+ReplaceTextures("TEKGREN1", "GREIND1");
+ReplaceTextures("TEKGREN2", "GREIND2");
+ReplaceTextures("TEKGREN3", "GREIND3");
+ReplaceTextures("TEKGREN4", "GREIND4");
+ReplaceTextures("TEKGREN5", "GREIND5");
+delay(1);
+}
+
+
+//TNT MAP22: Habitat
+Script "MapEnhancementTNTMap22" (VOID)
+{
+SetMusic("D_COLD");
+ChangeSky ("SKYIJ2", "SKYIJ2");
+ReplaceTextures("BIGDOOR1", "TNTDOOR1");
+ReplaceTextures("DOOR1", "TNTDOR1S");
+ReplaceTextures("TEKGREN1", "GREIND1");
+ReplaceTextures("TEKGREN2", "GREIND2");
+ReplaceTextures("TEKGREN3", "GREIND3");
+ReplaceTextures("TEKGREN4", "GREIND4");
+ReplaceTextures("TEKGREN5", "GREIND5");
+delay(1);
+}
+
+
+//TNT MAP23: Lunar Mining Project
+Script "MapEnhancementTNTMap23" (VOID)
+{
+SetMusic("D_AIM");
+ChangeSky ("SKYIJ2", "SKYIJ2");
+ReplaceTextures("BIGDOOR1", "TNTDOOR1");
+ReplaceTextures("DOOR1", "TNTDOR1S");
+ReplaceTextures("TEKGREN1", "GREIND1");
+ReplaceTextures("TEKGREN2", "GREIND2");
+ReplaceTextures("TEKGREN3", "GREIND3");
+ReplaceTextures("TEKGREN4", "GREIND4");
+ReplaceTextures("TEKGREN5", "GREIND5");
+delay(1);
+}
+
+
+
+//TNT MAP24: Quarry
+Script "MapEnhancementTNTMap24" (VOID)
+{
+SetMusic("D_MORE");
+ChangeSky ("SKYIJ2", "SKYIJ2");
+ReplaceTextures("BIGDOOR1", "TNTDOOR1");
+ReplaceTextures("DOOR1", "TNTDOR1S");
+ReplaceTextures("TEKGREN1", "GREIND1");
+ReplaceTextures("TEKGREN2", "GREIND2");
+ReplaceTextures("TEKGREN3", "GREIND3");
+ReplaceTextures("TEKGREN4", "GREIND4");
+ReplaceTextures("TEKGREN5", "GREIND5");
+delay(1);
+}
+
+
+
+
+
+//TNT MAP25: Baron's Den
+Script "MapEnhancementTNTMap25" (VOID)
+{
+SetMusic("D_BELLS");
+ChangeSky ("SKYHEL", "SKYHEL");
+delay(1);
+}
+
+
+//TNT MAP26: Ballistyx
+Script "MapEnhancementTNTMap26" (VOID)
+{
+SetMusic("D_BLOOD");
+ChangeSky ("SKYHEL", "SKYHEL");
+delay(1);
+}
+
+
+
+//TNT MAP27: Mount Pain
+Script "MapEnhancementTNTMap27" (VOID)
+{
+SetMusic("D_BEAST");
+ChangeSky ("SKYHEL", "SKYHEL");
+delay(1);
+}
+
+
+
+//TNT MAP28: Heck
+Script "MapEnhancementTNTMap28" (VOID)
+{
+SetMusic("D_AIM");
+ChangeSky ("SKYHEL", "SKYHEL");
+delay(1);
+}
+
+
+//TNT MAP29: River Styx
+Script "MapEnhancementTNTMap29" (VOID)
+{
+SetMusic("D_DOOM3");
+ChangeSky ("SKYHEL", "SKYHEL");
+delay(1);
+}
+
+
+//TNT MAP30: last Call
+Script "MapEnhancementTNTMap30" (VOID)
+{
+SetMusic("D_BEAST");
+ChangeSky ("SKYHEL", "SKYHEL");
+delay(1);
+}
+
+
+//PLUTONIA MAP01 - CONGO
+Script "MapEnhancementPlutoniaMap01" (VOID)
+{
+ChangeSky ("SKYEAR4", "SKYEAR4");
+ReplaceTextures("SLIME05", "FWATER1");
+ReplaceTextures("A-BROWN4", "NEWDOR1");
+}
+
+//PLUTONIA MAP02 - WELL OF SOULS
+Script "MapEnhancementPlutoniaMap02" (VOID)
+{
+ChangeSky ("SKYEAR4", "SKYEAR4");
+ReplaceTextures("ROCK5", "CLIFF05C");
+ReplaceTextures("SLIME06", "BLACK");
+ReplaceTextures("GATE2", "BLACK");
+ReplaceTextures("RROCK09", "RROCK18");
+ReplaceTextures("A-VINE1", "AVINE1B");
+delay(35);
+ChangeFloor (3, "FWATER1");
+Floor_LowerToNearest(3, 255);
+}
+
+
+//PLUTONIA MAP03 - Aztec
+Script "MapEnhancementPlutoniaMap03" (VOID)
+{
+ChangeSky ("SKYEAR4", "SKYEAR4");
+ReplaceTextures("SLIME05", "SLIME01");
+}
+
+
+//PLUTONIA MAP04 - Caged
+Script "MapEnhancementPlutoniaMap04" (VOID)
+{
+ChangeSky ("SKYEAR4", "SKYEAR4");
+ReplaceTextures("METAL", "BSTONE1");
+ReplaceTextures("METAL2", "BSTONE2");
+ReplaceTextures("METAL3", "BSTONE3");
+ReplaceTextures("METAL4", "BSTONE3");
+ReplaceTextures("METAL7", "BSTONE3");
+ReplaceTextures("MIDGRATE", "BDEFEN1");
+ReplaceTextures("MIDBARS3", "BDEFEN1");
+ReplaceTextures("MIDBRONZ", "BDEFEN1");
+}
+
+
+
+//PLUTONIA MAP05 - GHOST TOWN
+Script "MapEnhancementPlutoniaMap05" (VOID)
+{
+ChangeSky ("SKYEAR4", "SKYEAR4");
+}
+
+
+//PLUTONIA MAP06 - Baron's Den
+Script "MapEnhancementPlutoniaMap06" (VOID)
+{
+ChangeSky ("SKYEAR4", "SKYEAR4");
+}
+
+
+//PLUTONIA MAP07 - Caughtyard
+Script "MapEnhancementPlutoniaMap07" (VOID)
+{
+ChangeSky ("SKYEAR4", "SKYEAR4");
+}
+
+//PLUTONIA MAP29 - ODYSSEY OF NOISES
+Script "MapEnhancementPlutoniaMap29" (VOID)
+{
+ReplaceTextures("BIGDOOR6", "NEWDOR4");
+ReplaceTextures("GRASS1", "APOCTX1");
+ReplaceTextures("RROCK13", "APOCTX1B");
+ChangeSky ("SKYCITH", "SKYCITH");
+}
+
+
+//Secret Exits to PSX levels
+Script "MapEnhancementPSMansion" (VOID)//Suburbs to Mansion
+{
+SetCVAR("sv_maprotation", 0);
+ChangeLevel("PSMAP58", 0, 0, -1);
+delay(1);
+}
+
+Script "MapEnhancementPSHellgate" (VOID)//Gotcha to Hellgate
+{
+SetCVAR("sv_maprotation", 0);
+ChangeLevel("PSMAP16", 0, 0, -1);
+delay(1);
+}
+
+Script "MapEnhancementPSTwilight" (VOID)//Downtown to Twilight Descends
+{
+SetCVAR("sv_maprotation", 0);
+ChangeLevel("PSMAP29", 0, 0, -1);
+delay(1);
+}
+
+
+
+//NAZIS
+
+script "MapEnhancementNaziVerification" (void)
+{
+
+Thing_ChangeTID(0,736);
+
+if (CheckActorFloorTexture(736, "FL0"))
+    GiveActorInventory(736, "AltEasyMarineVerification", 1);
+
+
+
+//if	(GetCvar("bd_isnazilevel") == 1) { SetActorState(0,"ISANazi");
+
+
+if (CheckActorFloorTexture(736, "FLAT5_4"))
+    GiveActorInventory(736, "NaziVerificate1", 1);
+
+if (CheckActorCeilingTexture(736, "CEIL4_2"))
+    GiveActorInventory(736, "NaziVerificate2", 1);
+
+
+if (CheckActorCeilingTexture(736, "ACEIL42"))
+    GiveActorInventory(736, "Epic2AlienVerification", 1);
+
+
+if (CheckActorFloorTexture(736, "ACEIL22"))
+    GiveActorInventory(736, "Epic2AlienVerification", 1);
+
+if (CheckActorFloorTexture(736, "ACEIL42"))
+    GiveActorInventory(736, "Epic2AlienVerification", 1);
+
+
+if (CheckActorcEILINGTexture(736, "ACEIL22"))
+    GiveActorInventory(736, "Epic2AlienVerification", 1);
+
+if (CheckActorFloorTexture(736, "ACEIL68"))
+    GiveActorInventory(736, "Epic2AlienVerification", 1);
+
+
+if (CheckActorcEILINGTexture(0, "F_SKY1"))
+    GiveActorInventory(728, "TVRRainVerification", 1);
+
+}

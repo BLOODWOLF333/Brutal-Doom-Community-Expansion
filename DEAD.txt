@@ -863,7 +863,7 @@ ACTOR DeadBloodyTwitch: BloodyTwitch Replaces BloodyTwitch
     Spawn:
 		GOR1 A 1
 		TNT1 A 0 Thing_ChangeTID(0,728)
-		MARN A 0 ACS_ExecuteAlways(177, 0, 0, 0, 0)//Check if you are playing on an TVR!
+		MARN A 0 ACS_NamedExecuteAlways("MapEnhancementNaziVerification", 0, 0, 0, 0)//Check if you are playing on an TVR!
 		GOR1 A 4
 		TNT1 A 0 A_JumpIfInventory("TVRRainVerification", 10, "Replacerain")
 		TNT1 A 0 A_SpawnItem("GoreFliesWsound", 0, random(0, 45))

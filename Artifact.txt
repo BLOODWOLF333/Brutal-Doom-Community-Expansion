@@ -98,7 +98,7 @@ ACTOR NightVision : CustomInventory
 		TNT1 A 1
 		TNT1 A 0 A_GiveInventory("HasInfrared", 1)
 		TNT1 A 0 A_GiveInventory("NightVisionGiver", 1)
-		TNT1 A 0 ACS_ExecuteAlways(398, 0, 0, 0, 0)
+		TNT1 A 0 ACS_NamedExecuteAlways("BDTakeInfraRed", 0, 0, 0, 0)
 		TNT1 A 1
 		Stop
 	}
@@ -194,7 +194,7 @@ ACTOR SuperBlurSphere : CustomInventory
 	 TNT1 A 1
      TNT1 A 0 A_GiveInventory("IsInvisible", 1)
 	 TNT1 A 0 A_GiveInventory("Blursphere", 1)
-	 TNT1 A 0 ACS_ExecuteAlways(397, 0, 0, 0, 0)
+	 TNT1 A 0 ACS_NamedExecuteAlways("BDTakeInvisibility", 0, 0, 0, 0)
 	 TNT1 A 1
 	 Stop
   }

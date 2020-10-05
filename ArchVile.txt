@@ -57,7 +57,7 @@ ACTOR TehArchvile: Archvile Replaces Archvile
     Spawn:
 		DIAB B 0
 		TNT1 A 0 A_GiveInventory("EnemyIsArchvile")
-		MARN A 0 ACS_ExecuteAlways(177, 0, 0, 0, 0)//Check if you are playing on an Wolfenstein level
+		MARN A 0 ACS_NamedExecuteAlways("MapEnhancementNaziVerification", 0, 0, 0, 0)//Check if you are playing on an Wolfenstein level
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCHeckClassicMonsters", 0, 0, 0, 0)//Check if Vanilla Mode is activated
 
 	Spawn2:

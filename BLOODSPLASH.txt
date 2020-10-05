@@ -1,0 +1,87 @@
+// Blood dripping on screen by Sergeant_Mark_IV
+// Dripping blood graphics can be found inside Bleed.wad
+
+#library "bloodsplash"
+#include "zcommon.acs"
+
+script "BDRedBloodHUD" (void)
+{
+
+	delay(1);
+	int ranx = random (0.4, 1.0);
+	int rany = random (0.4, 1.0);
+	int ran2x = random (0.0, 1.0);
+	int ran2y = random (0.0, 1.0);
+	setfont("RBLD1");
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, ranx, rany, 1.0);
+	setfont("RBLD2");
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, ran2x, ran2y, 1.0);
+
+
+
+}
+
+script "BDMoreRedBloodHUD" (void)
+{
+	SetHudSize(400,250,1);
+
+	delay(1);
+	int ranx = random (2.0, 400.0);
+	int rany = random (2.0, 250.0);
+	int ran2x = random (2.0, 400.0);
+	int ran2y = random (2.0, 250.0);
+	setfont("RBLD1");
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, ranx, rany, 1.0);
+	setfont("RBLD2");
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, ran2x, ran2y, 1.0);
+}
+
+
+
+script "BDGreenBloodHUD" (void)
+{
+
+	SetHudSize(400,250,1);
+
+	delay(1);
+	int ranx = random (2.0, 400.0);
+	int rany = random (2.0, 250.0);
+	int ran2x = random (2.0, 400.0);
+	int ran2y = random (2.0, 250.0);
+	setfont("GBLD1");
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, ranx, rany, 1.0);
+	setfont("GBLD2");
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, ran2x, ran2y, 1.0);
+}
+
+
+
+script "BDBlueBloodHUD" (void)
+{
+
+	SetHudSize(400,250,1);
+
+	delay(1);
+	int ranx = random (2.0, 400.0);
+	int rany = random (2.0, 250.0);
+	int ran2x = random (2.0, 400.0);
+	int ran2y = random (2.0, 250.0);
+	setfont("BBLD1");
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, ranx, rany, 1.0);
+	setfont("BBLD2");
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, ran2x, ran2y, 1.0);
+}
+
+
+//WATER
+script "BDWaterHUD" (void)
+{
+
+	SetHudSize(400,250,1);
+
+	delay(1);
+	int ranx = random (200.0, 300.0);
+	int rany = random (2.0, 50.0);
+	setfont("WTSP");
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, ranx, rany, 1.0);
+}
