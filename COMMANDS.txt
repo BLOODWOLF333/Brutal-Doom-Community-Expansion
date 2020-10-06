@@ -18,21 +18,21 @@ Script "BDSetInvulnerable" (void) NET
 	SetActorProperty(0, APROP_INVULNERABLE, OFF);
 }
 
-Script 301 (VOID) NET
+Script "BDKick" (VOID) NET
 {
  GiveInventory("BDWeaponAction", 1);
  GiveInventory("Kicking", 1);
  GiveInventory("GoSpecial", 1);
 }
 
-Script 302(VOID) NET
+Script "BDTaunt" (VOID) NET
 {
  GiveInventory("BDWeaponAction", 1);
  GiveInventory("Taunting", 1);
  GiveInventory("GoSpecial", 1);
 }
 
-Script 303 (VOID) NET
+Script "BDReload" (VOID) NET
 {
  GiveInventory("Reloading", 1);
  GiveInventory("BDWeaponAction", 1);
@@ -40,13 +40,13 @@ Script 303 (VOID) NET
 }
 
 
-Script 309 (VOID) NET
+Script "BDAmmoDroper" (VOID) NET
 {
  GiveInventory("AmmoDroper", 1);
  SetWeapon("AmmoDroper");
 }
 
-Script 310 (VOID) NET
+Script "BDQuickPistol" (VOID) NET
 {
 	SetPlayerproperty(0, 1, PROP_INSTANTWEAPONSWITCH );
 	SetWeapon("BrutalPistol");
@@ -56,7 +56,7 @@ Script 310 (VOID) NET
 }
 
 
-Script 363 (VOID) NET
+Script "BDUnload" (VOID) NET
 {
  GiveInventory("BDWeaponAction", 1);
  GiveInventory("Unloading", 1);
@@ -64,14 +64,14 @@ Script 363 (VOID) NET
 }
 
 
-Script 313 (VOID) NET
+Script "BDFlashlight" (VOID) NET
 {
  GiveInventory("SwitchFlashlight", 1);
  GiveInventory("GoSpecial", 1);
 }
 
 
-Script 315 (VOID) NET
+Script "BDGrenade" (VOID) NET
 {
  GiveInventory("BDWeaponAction", 1);
  GiveInventory("TossGrenade", 1);
@@ -81,28 +81,28 @@ Script 315 (VOID) NET
 
 //TAUNTING
 
-Script 431 (VOID) NET
+Script "BDSaluteOne" (VOID) NET
 {
  GiveInventory("BDWeaponAction", 1);
  GiveInventory("Salute1", 1);
  GiveInventory("GoSpecial", 1);
 }
 
-Script 432 (VOID) NET
+Script "BDSaluteTwo" (VOID) NET
 {
  GiveInventory("BDWeaponAction", 1);
  GiveInventory("Salute2", 1);
  GiveInventory("GoSpecial", 1);
 }
 
-Script 304 (VOID) NET
+Script "BDAdvTaunt" (VOID) NET
 {
  GiveInventory("BDWeaponAction", 1);
  GiveInventory("AdvTaunting", 1);
  GiveInventory("GoSpecial", 1);
 }
 
-Script 305 (VOID) NET
+Script "BDOneLiner" (VOID) NET
 {
  GiveInventory("OneLiner", 1);
  GiveInventory("GoSpecial", 1);
@@ -110,20 +110,20 @@ Script 305 (VOID) NET
 
 //ROLLS
 
-Script 306 (VOID) NET
+Script "BDRollLeft" (VOID) NET
 {
  GiveInventory("RollLeft", 1);
  GiveInventory("GoSpecial", 1);
 }
 
-Script 307 (VOID) NET
+Script "BDRollRight" (VOID) NET
 {
  GiveInventory("RollRight", 1);
  GiveInventory("GoSpecial", 1);
 }
 
 
-Script 308 (VOID) NET
+Script "BDDualWield" (VOID) NET
 {
  GiveInventory("StartDualWield", 1);
  GiveInventory("GoSpecial", 1);

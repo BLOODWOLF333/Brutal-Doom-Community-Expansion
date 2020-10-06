@@ -1,0 +1,1554 @@
+//All the liquid gore stuff goes here.
+
+
+//Hit puff actor
+
+actor Green_Blood: Brutal_Blood
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+	 states
+	 {
+	  Spawn:
+			BSPR A 0
+			TNT1 A 0 A_CustomMissile ("GreenSuperGoreMistTiny", 0, 0, random (0, 360), 2, random (0, 90))
+			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+			TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckBloodIntensity")
+			TNT1 A 0
+			TNT1 A 0 A_PlaySound("misc/XDeath5Green")
+			BSPR A 2
+			TNT1 A 0 A_CustomMissile ("GreenWaterBloodCHecker", 7, 0, random (0, 360), 2, random (30, 60))
+		Spawn2:
+			TNT1 A 0 A_CustomMissile ("Green_FlyingBlood", 7, 0, random (0, 360), 2, random (30, 60))
+			TNT1 A 0 A_CustomMissile ("Green_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (20, 90))
+			Goto LowBlood
+		Splash:
+			BLOD A 0
+			TNT1 AAA 0 A_CustomMissile ("GreenUnderblood1", 7, 0, random (0, 360), 2, random (30, 150))
+			stop
+		LotsOfBlood:
+		   TNT1 A 0
+		   
+		   TNT1 AAAA 0 A_CustomMissile ("GreenBloodMistSmall", 0, 0, random (0, 360), 2, random (0, 90))
+		   TNT1 AAAAA 0 A_CustomMissile ("Green_FlyingBlood", 7, 0, random (0, 360), 2, random (30, 70))
+		   TNT1 A 0 A_CustomMissile ("SuperWallGreenBlood", 0, 0, random (0, 360), 2, random (-15, 15))
+		   TNT1 AAAA 0 A_CustomMissile ("Green_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 90))
+		   Goto LowBlood
+		AbsurdBlood:
+		   TNT1 A 2
+		   TNT1 AAAA 0 A_CustomMissile ("SuperWallGreenBlood", 0, 0, random (0, 360), 2, random (-15, 15))
+		   TNT1 A 0 A_JumpIfInventory("AnimuGore", 1, "AnimuGore")
+		   TNT1 AA 0 A_CustomMissile ("GreenBloodMist", 0, 0, random (0, 360), 2, random (0, 90))
+		   TNT1 AAA 0 A_CustomMissile ("Green_FlyingBloodMuchFaster", 7, 0, random (0, 360), 2, random (10, 50))
+		   TNT1 A 0 A_CustomMissile ("Green_FlyingBloodMuchFaster", 7, 0, random (0, 360), 2, random (40, 60))
+		   TNT1 A 0 A_CustomMissile ("GreenBloodMistSmall", 7, 0, random (0, 360), 2, random (30, 90))
+		   TNT1 A 0 A_CustomMissile ("GreenSuperGoreMist", 0, 0, random (0, 360), 2, random (10, 90))
+		   TNT1 AAAAA 0 A_CustomMissile ("Green_FlyingBlood", 7, 0, random (0, 360), 2, random (30, 70))
+		   TNT1 AAA 0 A_CustomMissile ("GreenBloodMistSpray", 0, 0, random (0, 360), 2, random (20, 90))
+		   Goto LowBlood
+		 AnimuGore:
+		   TNT1 AAA 0 A_CustomMissile ("Green_FlyingBloodMuchFaster", 7, 0, random (0, 360), 2, random (10, 50))
+		   TNT1 A 0 A_CustomMissile ("SuperWallGreenBlood", 0, 0, random (0, 360), 2, random (-15, 15))
+		   TNT1 A 0 A_CustomMissile ("Green_FlyingBloodMuchFaster", 7, 0, random (0, 360), 2, random (40, 60))
+		   TNT1 AAAAAAA 0 A_CustomMissile ("Green_FlyingBlood", 7, 0, random (0, 360), 2, random (30, 70))
+		   TNT1 AAAAAAAAA 0 A_CustomMissile ("XDeath1Green", 0, 0, random (0, 360), 2, random (40, 80))
+		   TNT1 A 0 A_CustomMissile ("GreenSuperGoreSpawner", 0, 0, random (0, 360), 2, random (10, 90))
+		   TNT1 AAAAA 0 A_CustomMissile ("GreenBloodMistSpray", 0, 0, random (0, 360), 2, random (20, 90))
+		   Goto LowBlood
+		 LowBlood:
+			TNT1 A 0
+			BSPR BCDEFGHIJJJ 1
+			Stop
+	 }
+}
+
+
+
+//Base flying blood actor. Leaves bloodspots on the floor
+ACTOR Green_FlyingBlood: Brutal_FlyingBlood 
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+    States
+    {
+     Spawn:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+			TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Live")
+	 Spawn1:
+			TNT1 A 0
+			TNT1 A 0 A_SetScale(-0.4, 0.4)
+			Goto live
+	
+	Spawn2:
+			TNT1 A 0
+			TNT1 A 0 A_SetScale(-0.45, -0.45)
+			Goto live
+			
+	Spawn3:
+			TNT1 A 0
+			TNT1 A 0 A_SetScale(0.5, -0.5)
+			Goto live		
+			
+	 Live:
+			BLHT BCDEFG 1
+			TNT1 A 0 
+			BLHT HHHHH 100 A_JumpIf(waterlevel > 1, "Splash")
+			Stop	
+	
+	Splash:
+			BLOD A 0
+			TNT1 A 0 A_SpawnItem ("GreenUnderblood2")
+			stop
+		
+     Death:
+			TNT1 A 0
+			TNT1 A 0 A_PlaySound("blooddrop2")
+			TNT1 A 0 A_CheckFloor("DeathFloor")
+			TNT1 A 1
+			Stop
+  
+		DeathFloor:
+			TNT1 A 0
+			TNT1 A 0 A_SpawnItemEx ("Green_BloodSpot",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION |  SXF_TRANSFERTRANSLATION,0)
+			TNT1 A 0 A_PlaySound("blooddrop2")
+		    XDT1 EFGHIJKL 2
+			Stop
+			
+		NoSpawn:
+			TNT1 A 0
+			Stop
+			
+    }
+}
+
+
+//Faster version used in some specific cases
+ACTOR Green_FlyingBloodMuchFaster: Green_FlyingBlood
+{
+	 Scale 1.0
+	 Speed 8
+}
+
+
+actor Green_FlyingBloodTrail: Brutal_FlyingBloodTrail 
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+	states
+	{
+	  Spawn:
+		  TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+		  BLHT BCDEFG 1
+		  BLHT HHHHHHHHH 1 A_FadeOut(0.02)
+		  stop
+	  
+	Death:
+		TNT1 A 0
+		Stop
+
+	Splash:
+        BLOD A 0
+		TNT1 A 0 A_SpawnItem ("GreenUnderblood2")
+        stop
+
+ }
+}
+
+
+actor Green_FlyingBloodFaster: Green_FlyingBloodTrail
+{
+Speed 4
+ states
+ {
+  Spawn:
+	  TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+	  BLOD ABCDEFFFFFF 3
+	  stop
+ }
+}
+
+
+ACTOR Green_FlyingBloodFake: Brutal_FlyingBloodFake 
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+    States
+    {
+     Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+		BLOD KKKKKKKKKKKK 1 A_FadeOut(0.05)
+        Stop
+	Splash:
+        BLOD A 0
+		TNT1 A 0 A_SpawnItem ("GreenUnderblood2")
+        stop
+	Death:
+	    TNT1 A 10
+		Stop
+    }
+}
+
+ACTOR Green_FlyingBloodFakeNoDecal: Green_FlyingBloodFake { decal "none"}
+
+
+
+actor GreenBloodMist : BloodMist
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+}
+
+
+actor GreenBloodMistBig : BloodMistBig
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+}
+
+actor GreenBloodMistSmall : BloodMistSmall
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+}
+
+actor GreenBloodMistExtraBig :BloodMistExtraBig
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+}
+
+//More wattery version
+actor GreenBloodMistSpray : BloodMistSpray
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+}
+
+actor GreenBloodMistChainsaw : BloodMistChainsaw
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+}
+
+
+
+/////////////////////// BLOOD SPOTS //////////////////////////
+
+//base bloodspot actor
+ACTOR Green_BloodSpot: Brutal_Bloodspot
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+}
+
+
+//a special flying blood actor that spawns muddy water pools over liquids
+ACTOR GreenWaterBloodCHecker: WaterBloodCHecker
+{
+
+	Decal none
+	States
+    {
+    Spawn:
+	    TNT1 A 5
+        Loop
+    Death:
+        TNT1 A 0
+		TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckIfOverLiquid")
+		TNT1 A 5
+		TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverBlood", 1, "IsOverLiquid")
+        TNT1 A 10
+        Stop
+        
+	IsOverLiquid:
+		TNT1 A 1
+		TNT1 A 0 A_CheckFloor("SpawnOnWater")
+		TNT1 A 2
+		Stop
+		
+	SpawnOnWater:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItem ("GreenWaterBloodSpot", 5)
+		Stop
+    }
+}
+
+//muddy water bloodspot actor
+ACTOR GreenWaterBloodSpot: WaterBloodSpot
+{
+//Renderstyle Shaded
+StencilColor "0 55 00"
+Decal GreenBloodSplat
+ states
+ {
+	Spawn:
+		BPDL E 1 A_FadeOut(0.9)
+		BPDL EEEEEEEEEEEEEEEEEEEE 4 A_FadeIn(0.02)
+		BPDL E 100
+		BPDL EEEEEEEEEEEEEEEEEEEE 4 A_FadeOut(0.02)
+		Stop
+ }
+}
+
+//bigger bloodsplat 
+actor GreenGiantBloodSpot: GiantBloodSpot
+{
+Scale 1.1
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+}
+
+
+actor GreenMinuscleBloodSpot: Green_BloodSpot {Scale 0.25}
+actor GreenBigBloodSpot: GreenGiantBloodSpot { Scale 0.7}
+actor GreenMediumBloodSpot: GreenGiantBloodSpot { Scale 0.4}
+actor GreenMediumBloodSpot2: GreenGiantBloodSpot{ Scale 0.4}
+
+
+//Big version spawned by XDeath animations
+ACTOR SplatteredGreenSmall: Green_BloodSpot
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+}
+
+//Big version spawned by XDeath animations of bigger enemies
+ACTOR SplatteredGreenLarge: Green_BloodSpot
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+ states
+ {
+ Spawn:
+   TNT1 A 0
+   TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+   TNT1 A 0 A_CheckFloor("Live")
+   Goto Splash
+   
+  Live: 
+    TNT1 A 0
+    TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckIfOverLiquid")//Check if is under a liquid
+	TNT1 A 4
+    TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "GreenWaterBloodSpot")
+	TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "GreenWaterBloodSpot")
+	TNT1 A 0 A_JumpIfInventory("IsOverlava", 1, "GreenWaterBloodSpot")
+	TNT1 A 0 A_SpawnItemEx ("BootSmearerGreen",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	TNT1 A 0 A_QueueCorpse
+	BPDL A -1
+	Stop
+	
+ GreenWaterBloodSpot:
+	TNT1 A 0
+	TNT1 A 0 A_SpawnItem("GreenWaterBloodSpot")
+	Stop
+ }
+}
+
+
+
+//A blood pool spawned by regular enemy deaths.
+
+actor GreenGrowingBloodPool: GrowingBloodPool
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+	states
+		 {
+		 Spawn:
+		  TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+		  TNT5 A 1
+		  TNT1 A 0 A_SpawnItemEx ("BootSmearerGreen",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		  TNT5 A 2 A_QueueCorpse
+		  TNT5 A 1 A_SetScale(0.33, 0.33)
+		  TNT5 A 1 A_SetScale(0.36, 0.36)
+		  TNT5 A 1 A_SetScale(0.39, 0.39)
+		  TNT5 A 1 A_SetScale(0.42, 0.42)
+		  TNT5 A 1 A_SetScale(0.45, 0.45)
+		  TNT5 A 1 A_SetScale(0.48, 0.48)
+		  TNT5 A 1 A_SetScale(0.50, 0.50)
+		  
+		  TNT5 A 2 A_SetScale(0.53, 0.53)
+		  TNT5 A 2 A_SetScale(0.56, 0.56)
+		  TNT5 A 2 A_SetScale(0.59, 0.59)
+		  TNT5 A 2 A_SetScale(0.62, 0.62)
+		  TNT5 A 2 A_SetScale(0.65, 0.65)
+		  TNT5 A 2 A_SetScale(0.68, 0.68)
+		  TNT5 A 2 A_SetScale(0.70, 0.70)
+		  
+		  
+		  TNT5 A 3 A_SetScale(0.73, 0.73)
+		  TNT5 A 3 A_SetScale(0.76, 0.76)
+		  TNT5 A 3 A_SetScale(0.79, 0.79)
+		  TNT5 A 3 A_SetScale(0.82, 0.82)
+		  TNT5 A 3 A_SetScale(0.85, 0.85)
+		  TNT5 A 3 A_SetScale(0.88, 0.88)
+		  TNT5 A 3 A_SetScale(0.90, 0.90)
+		  
+		  TNT5 A 3 A_SetScale(0.93, 0.93)
+		  TNT5 A 3 A_SetScale(0.96, 0.96)
+		  TNT5 A 3 A_SetScale(0.99, 0.99)
+		  TNT5 A 3 A_SetScale(1.02, 1.02)
+		  TNT5 A 3 A_SetScale(1.05, 1.05)
+		  TNT5 A 3 A_SetScale(1.08, 1.08)
+		  TNT5 A 3 A_SetScale(1.11, 1.11)
+		  
+		 Live:
+		  TNT5 A 900//duration
+		  TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Splash")
+		  TNT5 A -1
+		  Stop
+		Splash:
+		  BLOD A 0
+		  stop
+		  }
+}
+
+
+
+
+//A decorative kind of flying blood spawned by arterial blood
+ACTOR Green_LiquidBlood: Brutal_LiquidBlood 
+{
+ decal "GreenBloodSmearSmall"
+ translation "168:191=112:127", "16:47=123:127"
+     States
+    {
+     Spawn:
+	 TNT1 A 0
+	 TNT1 A 0 A_CustomMissile ("Green_FlyingBloodTrail", 10, 0, random (0, 360), 2, random (0, 90))
+     BLOD AAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItem("Green_LiquidBloodTrail")
+     Stop
+	 Death:
+  	   TNT1 A 0 A_PlaySound("blooddrop2")
+	   XDT1 FGHIJKL 2
+	   TNT1 A 0
+       Stop
+    }
+}
+
+//Faster version, leaves no decals. Used to prevent decal overflow
+ACTOR Green_LiquidBlood2: Green_LiquidBlood 
+{
+ speed 4
+ scale 0.4
+ gravity 0.6
+ decal "None"
+}
+
+//Very fast version
+ACTOR Green_LiquidBloodFast: Green_LiquidBlood2
+{
+ speed 8
+}
+
+//This version leaves a bloodspot
+ACTOR Green_LiquidBlood3: Green_FlyingBlood 
+{
+Speed 3
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+    States
+    {
+	 Death:
+  	   TNT1 A 0 A_PlaySound("blooddrop2")
+	   TNT1 A 0 A_CheckFloor("SpawnFloor")
+	   TNT1 A 4
+	   Stop
+	  
+	 SpawnFloor:
+	   tnt1 a 0 A_SPawnItem("Green_BloodSpot")
+	   XDT1 FGHIJKL 2
+	   TNT1 A 0
+       Stop
+    }
+}
+
+
+//Decorative trails
+ACTOR Green_LiquidBloodTrail: Brutal_LiquidBloodTrail 
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+}
+
+//An actor that will spawn multiple arterial blood actors
+ACTOR GreenArterialBloodSpray
+{
+ Speed 0
+ +CLIENTSIDEONLY
+ +NOINTERACTION
+    States
+    {
+     Spawn:
+	 TNT1 A 0
+	 TNT1 A 0 A_stop
+		TNT1 AAAA 2 A_CustomMissile ("Green_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 6
+		TNT1 A 2 A_CustomMissile ("Green_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 6
+		TNT1 A 2 A_CustomMissile ("Green_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 6
+		TNT1 A 2 A_CustomMissile ("Green_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 6
+		TNT1 A 2 A_CustomMissile ("Green_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 9
+		TNT1 A 2 A_CustomMissile ("Green_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 9
+		TNT1 A 2 A_CustomMissile ("Green_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 9
+		TNT1 A 2 A_CustomMissile ("Green_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 9
+		TNT1 A 2 A_CustomMissile ("Green_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 12
+		TNT1 A 2 A_CustomMissile ("Green_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 12
+		TNT1 A 2 A_CustomMissile ("Green_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 16
+		TNT1 A 2 A_CustomMissile ("Green_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 19
+		TNT1 A 2 A_CustomMissile ("Green_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+       Stop
+    }
+}
+
+
+/////////////////// CEILING BLOOD //////////////////////////
+
+//Launches bloodspots on the ceiling
+ACTOR GreenCeilBloodLauncher: CeilBloodLauncher
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+    States
+		{
+		 Death:
+			TNT1 A 0
+			TNT1 A 0 A_CheckCeiling("IsOnCeil")
+			TNT1 A 0
+			stop
+			
+		 IsOnCeil:
+			TNT1 A 0
+			TNT1 A 1 A_SpawnItem("GreenCeilBloodSpot",0,0,0,1)
+			Stop
+		}
+}
+
+//Longer version (for extreme deaths)
+ACTOR GreenCeilBloodLauncherLong: GreenCeilBloodLauncher
+{
+    States
+    {
+		 Spawn:
+			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+			TNT1 A 12
+			Stop
+    }
+}
+
+// The Ceil Blood Spot
+actor GreenCeilBloodSpot: CeilBloodSpot
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+	states
+	{
+		Spawn:
+		  BPDL A 1
+		  TNT1 A 0 A_QueueCorpse
+		  TNT1 A 0 A_SpawnItem ("DripingGreenBloodLeavesSmallPool")
+		  TNT1 A 0 A_SpawnItem ("GreenCeilBloodTinyBloodSpawner")
+		Live:	
+		  BPDL A 5 ThrustThingZ(0, 20, 0, 1)
+		  Loop
+			}
+}
+
+//Bigger version of a ceil blood spot, usually left by sticky gibs.
+actor GreenCeilBloodSpotLarge: GreenCeilBloodSpot
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+}
+
+//These are the actors that spawns blood drips. They are separate from the bloodspots so the sticky gibs can spawn them separately.
+
+//Small blood drips spawner, usually caused by regular blood touching the ceiling.
+ACTOR GreenCeilBloodTinyBloodSpawner: CeilBloodTinyBloodSpawner
+{
+	 States
+		{
+		 Spawn:
+			  TNT1 A 0
+			  TNT1 A 1 A_SpawnItemEx ("DripingGreenBloodLeavesSmallPool", random (-5, 5), random (-5, 5), 0, 0, 0, -5)
+			  TNT1 AAAAAAAAAAAAAA 5 A_SpawnItemEx ("GreenBloodDripingFromCeiling", random (-5, 5), random (-5, 5), 0, 0, 0, -5)
+			  TNT1 AAAAAAAAAAAAAA 10 A_SpawnItemEx ("GreenBloodDripingFromCeiling", random (-5, 5), random (-5, 5), 0, 0, 0, -5)
+			  TNT1 AAAAAAAAAAAAAA 16 A_SpawnItemEx ("GreenBloodDripingFromCeiling", random (-5, 5), random (-5, 5), 0, 0, 0, -5)
+			  TNT1 AAAAAAAAAAAAAA 24 A_SpawnItem ("GreenBloodDripingFromCeiling")
+			  stop
+		}
+}
+
+//Large blood drips spawner, usually caused by huge chunks of meat getting stuck on the ceiling.
+ACTOR GreenCeilBloodLargeBloodSpawner: Green_FlyingBlood
+{
+	+NOGRAVITY
+	+THRUACTORS
+	+NOCLIP
+	Scale 0.5
+	 States
+		{
+		 Spawn:
+			  TNT1 A 0
+			  TNT1 A 1 A_SpawnItemEx ("DripingGreenBloodLeavesSmallPool", random (-5, 5), random (-5, 5), 0, 0, 0, -5)
+			  TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 3 A_SpawnItemEx ("GreenBloodDripingFromCeilingBig", random (-5, 5), random (-5, 5), 0, 0, 0, -5)
+			  TNT1 AAAAAAAAAAAAAA 10 A_SpawnItemEx ("GreenBloodDripingFromCeilingBig", random (-5, 5), random (-5, 5), 0, 0, 0, -5)
+			  TNT1 AAAAAAAAAAAAAA 15 A_SpawnItemEx ("GreenBloodDripingFromCeiling", random (-5, 5), random (-5, 5), 0, 0, 0, -5)
+			  TNT1 AAAAAAAAAAAAAA 20 A_SpawnItemEx ("GreenBloodDripingFromCeiling", random (-5, 5), random (-5, 5), 0, 0, 0, -5)
+			  stop 
+		}
+}
+
+//This is the actual blood driping from the ceiling actor
+ACTOR GreenBloodDripingFromCeiling: BloodDripingFromCeiling
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+}
+
+//This is a bigger and denser version of the blood drip, droped by sticky gibs
+ACTOR GreenBloodDripingFromCeilingBig: BloodDripingFromCeiling
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+}
+
+//This is the first drip spawned by the drip spawners, which leaves a small blood pool
+ACTOR DripingGreenBloodLeavesPool: DripingBloodLeavesPool
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+    States
+    {
+     Spawn:
+       TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        BLUD Z 4
+        loop
+     Death:
+	    TNT1 A 0
+		TNT1 A 0 A_SpawnItem("GreenMediumBloodSpot")
+		TNT1 A 0 A_PlaySound("blooddrop2")
+        XDT1 EFGHIJKL 2
+        stop
+    }
+}
+
+//Just like above, but leaves a smaller pool
+ACTOR DripingGreenBloodLeavesSmallPool: DripingBloodLeavesSmallPool
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+States
+{
+     Death:
+	    TNT1 A 0
+		TNT1 A 0 A_SpawnItem("GreenMinuscleBloodSpot")
+		TNT1 A 0 A_PlaySound("blooddrop2")
+        XDT1 EFGHIJKL 2
+        stop
+    }
+}
+
+//An invisible projectile only used to spawn bloodsplats on the walls, usually spawned by extreme deaths.
+ACTOR WallGreenBlood: WallRedBlood
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSmearer
+    States
+    {
+		Spawn:
+		   TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+			TNT1 ABCD 4
+			loop
+		Splash:
+			BLOD A 0
+			stop
+		 Death:
+			TNT1 A 3
+			stop
+    }
+}
+
+//This one spawns an even bigger decal
+ACTOR SuperWallGreenBlood: WallRedBlood
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSuper
+}
+
+
+//This one spawns a ridiculously bigger decal, used by BFG extreme deaths
+ACTOR GiantWallGreenBlood: WallGreenBlood
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodGiant
+}
+
+//Spawns giant blood decals all around the area. Used in Green Doom's BFG deaths.
+Actor GreenBloodSplinter
+{
+	+THRUACTORS
+	+CLIENTSIDEONLY
+	States
+		{
+			 Spawn:
+			   TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+			   TNT1 A 0 A_CustomMissile ("GiantWallGreenBlood", 40, 0, 0, 2, random (0, 35))
+			   TNT1 A 0 A_CustomMissile ("GiantWallGreenBlood", 40, 0, 45, 2, random (0, 35))
+			   TNT1 A 0 A_CustomMissile ("GiantWallGreenBlood", 40, 0, 90, 2, random (0, 35))
+			   TNT1 A 0 A_CustomMissile ("GiantWallGreenBlood", 40, 0, 135, 2, random (0, 35))
+			   TNT1 A 0 A_CustomMissile ("GiantWallGreenBlood", 40, 0, 180, 2, random (0, 35))
+			   TNT1 A 0 A_CustomMissile ("GiantWallGreenBlood", 40, 0, 225, 2, random (0, 35))
+			   TNT1 A 0 A_CustomMissile ("GiantWallGreenBlood", 40, 0, 270, 2, random (0, 35))
+			   TNT1 A 0 A_CustomMissile ("GiantWallGreenBlood", 40, 0, 315, 2, random (0, 35))
+			   Stop
+			
+			Splash:
+				BLOD A 0
+				stop
+		}
+}
+
+
+//Spawned by BD's kicked heads  to spawn blood decals and make the head bounce sound.
+ACTOR ShortWallGreenBlood: WallGreenBlood
+{
+ speed 2
+ Gravity 1
+ Radius 24
+ Height 12
+    States
+    {
+     Spawn:
+       TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        TNT1 A 3
+        Stop
+	Death:
+	    TNT1 AAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("Green_FlyingBloodFakeNoDecal", 0, 0, random (0, 360), 2, random (0, 90))
+		TNT1 A 0 A_SpawnItem("Green_BloodSpot",0,0,0,1)
+		TNT1 A 0 A_PlaySound("HEDBON")
+	    TNT1 A 20
+		Stop
+	}
+}
+
+
+
+
+
+//Blood actors spawned underwater
+ACTOR GreenUnderblood1: Underblood1
+{
+translation "168:191=112:127", "16:47=123:127"
+}
+
+//Shorter version
+ACTOR GreenUnderblood2: GreenUnderblood1
+{
+ scale 0.7
+ speed 0
+}
+//Bigger version that moves, used for gibbing.
+ACTOR GreenUnderblood3: GreenUnderblood1
+{
+ scale 2.2
+ speed 2
+ Alpha 0.3
+}
+
+
+//Big blood mists
+
+
+actor GreenSuperGore: SuperGore
+{
+	translation "168:191=112:127", "16:47=123:127"
+	Decal GreenBloodSplat
+}
+
+
+Actor GreenSuperGoreMist: SuperGoreMist
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+}
+
+
+//Used on bullet hit impacts
+Actor GreenSuperGoreMistTiny: SuperGoreMistTiny
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+}
+
+actor BigGreenSuperGore: BigSuperGore
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+}
+
+
+actor GiantGreenSuperGore: GiantSuperGore
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+}
+
+
+//Spawners for the GreenSuperGore thing
+Actor GreenSuperGoreSpawner: SuperGoreSpawner
+{
+	states
+	{
+	Spawn:
+		TNT1 A 3
+		TNT1 AAA 3 A_CustomMissile("GreenSuperGore", 7, 0, random (0, 360), 2, random (30, 60))
+		Stop
+	}
+}
+
+Actor GreenSuperGoreSpawner2: SuperGoreSpawner
+{
+	states
+	{
+	Spawn:
+		TNT1 A 3
+		TNT1 AAAAA 3 A_CustomMissile("GreenSuperGore", 7, 0, random (0, 360), 2, random (30, 60))
+		Stop
+	}
+}
+
+
+
+//Bloody footprints still requires the player to be edited to work.
+//Gives the player an inventory item to indicate the feet are smeaGreen.
+ACTOR BootSmearerGreen: BootSmearerRed
+{
+	 states
+	 {
+	 Spawn:
+		 TNT1 A 0
+		 TNT1 A 1 A_Look
+		 Goto See
+	  
+	 See:
+		 TNT1 A 1 A_Chase("","")
+		 TNT1 A 0 A_Die("LookForPlayer")
+	 Death:	
+	 Death.LookForPlayer:
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 8 A_JumpIfCloser(60, "SmearBootsWithGreenBlood")
+		Stop
+	SmearBootsWithGreenBlood:
+		TNT1 A 0 A_GiveToTarget("BootsSmearedWithGreenBlood", 8)
+		BPDL A 0
+		Stop
+	}
+}
+
+ACTOR GreenBloodFootPrintLeft: RedBloodFootPrintLeft
+{
+translation "168:191=112:127", "16:47=123:127"
+}
+
+
+ACTOR GreenBloodFootPrintRight: RedBloodFootPrintRight
+{
+translation "168:191=112:127", "16:47=123:127"
+}
+
+
+
+
+//Gib actors
+
+ACTOR XDeath1Green: XDeath1
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSuper
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Underwater")
+		BLOD AAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItem("Green_LiquidBloodTrail")
+        Stop
+    Death:
+        TNT1 A 0 A_SpawnItemEx ("Green_BloodSpot", 0, 0, 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckIfOverLiquid")
+		XDT1 EF 3
+		TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "IsOverLiquid")
+        XDT1 GHIJKL 3
+        Stop
+        TNT1 A 1
+     Underwater:
+	 Splash:
+	    BLUD C 0 ThrustThingZ (0,35,1,0)
+        XDT1 AB 3 A_CustomMissile ("Green_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+		BLUD C 0 ThrustThingZ (0,35,1,0)
+		XDT1 CD 3 A_CustomMissile ("Green_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        Loop
+		
+	IsOverLiquid:
+		TNT1 A 1
+		TNT1 A 0 A_CheckFloor("SpawnOnWater")
+		
+	SpawnOnWater:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItem ("GreenWaterBloodSpot", 5)
+		Stop
+    }
+}
+
+//A flying piece of meat
+ACTOR XDeath2Green: XDeath2
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSuper
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        XMT1 ABCDEFGH 2 A_CustomMissile ("Green_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        Loop
+    Death:
+        TNT1 AAAAAAA 0 A_CustomMissile ("Green_FlyingBloodTrail", 0, 0, random (0, 180), 2, random (0, 180))
+	    TNT1 A 0 A_CheckFloor("SpawnFloor")
+		TNT1 A 0 A_CheckCeiling("SpawnCeiling")
+		TNT1 A 0 A_SpawnItem("SmearingXDeath2Green")
+		Stop
+		
+	SpawnFloor:
+	    XMT1 M 1
+		TNT1 A 0 A_QueueCorpse
+		TNT1 A 0 A_SpawnItemEx ("Green_BloodSpot", 0, 0, 1)
+		XMT1 M -1
+		Stop
+		
+	SpawnCeiling:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx ("CeilXDeath2Green", 0, 0, 1)
+		TNT1 A 0 A_SpawnItemEx ("GreenCeilBloodSpotLarge", 0, 0, 1)
+		Stop	
+		
+	Vanish:
+	    TNT1 A 5
+		Stop
+    }
+}
+
+
+ACTOR XDeath2bGreen: XDeath2Green {	Speed 4 } //Low-range version.
+
+
+//A piece of meat that has hit the wall, and now is slowly smearing
+ACTOR SmearingXDeath2Green: SmearingXDeath2
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSuper
+    States
+    {
+	Spawn:
+		XMT1 N 10
+		TNT1 A 0 ThrustThingZ(0, 1, 1, 1)
+		TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Spawn4")
+
+	Spawn1:
+		XMT1 NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN 2 A_CheckFloor("Rest")
+		Goto Death
+	
+	Spawn2:
+		XMT1 NNNNNNNNNNNNNNNNNNNNNNNN 2 A_CheckFloor("Rest")
+		Goto Death
+	
+	Spawn3:
+		XMT1 NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN 2 A_CheckFloor("Rest")
+		Goto Death
+	
+	Spawn4:
+		XMT1 NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN 2 A_CheckFloor("Rest")
+		Goto Death
+		
+	Death:
+	    TNT1 A 0
+	    TNT1 A 0 A_SpawnItem("XDeath2GreenNoStick")
+        Stop
+		
+	Rest:
+		XMT1 M 1
+		TNT1 A 0 A_QueueCorpse
+		TNT1 A 0 A_SpawnItem("Green_BloodSpot",0,0,0,1)
+		XMT1 M -1
+		Stop
+		
+	Vanish:
+	    TNT1 A 5
+		Stop
+    }
+}
+
+//piece of meat that got stuck in the ceiling
+actor CeilXDeath2Green: CeilXdeath2
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSuper
+	states
+	{
+		Spawn:
+			TNT1 A 0
+			TNT1 A 0 A_JUmp (255, "Live1", "Live2", "Live3")
+			Goto Live1
+
+		  Live1:
+			  XMT1 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII 5 ThrustThingZ(0, 20, 0, 1)
+			  Goto Fall
+		  
+		  Live2:
+			  XMT1 IIIIIIIIIIIIIIIIIIIIIIIII 5 ThrustThingZ(0, 20, 0, 1)
+			  Goto Fall
+		  
+		  Live3:
+			  XMT1 IIIIIIIIIIIIIIIII 5 ThrustThingZ(0, 20, 0, 1)
+			  Goto Fall
+		 Fall:
+			  XMT1 F 0
+			  XMT1 JJJKKLL 2
+			  TNT1 A 0 A_SpawnItemEx("XDeath2GreenNoStick", 0, 0, 0, 0, 0, -1)
+			  stop
+		 Splash:
+			  BLOD A 0
+			  stop
+		}
+}
+
+//piece of meat that got stuck on the ceiling/wall and now is falling
+ACTOR XDeath2GreenNoStick: XDeath2NoStick
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+    States
+    {
+    Spawn:
+		XMT1 FFFGGH 2
+	Live:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+		TNT1 A 0 A_CheckFloor("Death")
+		XMT1 ABCDEFGH 3 A_CustomMissile ("Green_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        Loop
+    Death:
+        TNT1 AAAAAAA 0 A_CustomMissile ("Green_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (20, 70))
+        XMT1 M 1
+		TNT1 A 0 A_QueueCorpse
+		XMT1 M 3
+		TNT1 A 0 A_SpawnItem("Green_BloodSpot",0,0,0,1)
+		XMT1 M -1
+		Stop
+    }
+}
+
+
+
+
+//Variation of XDeath2Green
+ACTOR XDeath3Green: XDeath3
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSuper
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        XMT2 ABCDEFGH 3 A_CustomMissile ("Green_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        Loop
+    Death:
+        TNT1 AAAAAAA 0 A_CustomMissile ("Green_FlyingBloodTrail", 0, 0, random (0, 180), 2, random (0, 180))
+	    TNT1 A 0 A_CheckFloor("SpawnFloor")
+		TNT1 A 0 A_CheckCeiling("SpawnCeiling")
+		TNT1 A 0 A_SpawnItem("SmearingXDeath3Green")
+		Stop
+		
+	SpawnFloor:
+	    XMT2 I 1
+		TNT1 A 0 A_QueueCorpse
+		TNT1 A 0 A_SpawnItemEx ("Green_BloodSpot", 0, 0, 1)
+		XMT2 I -1
+		Stop
+		
+	SpawnCeiling:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx ("CeilXDeath3Green", 0, 0, 1)
+		TNT1 A 0 A_SpawnItemEx ("GreenCeilBloodSpotLarge", 0, 0, 1)
+		Stop	
+    }
+}
+
+
+ACTOR XDeath3bGreen: XDeath3Green {	Speed 4 } //Low-range version.
+
+
+//A piece of meat that has hit the wall, and now is slowly smearing
+ACTOR SmearingXDeath3Green: SmearingXDeath3
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSuper
+    States
+    {
+	Spawn:
+		XME2 G 10
+		TNT1 A 0 ThrustThingZ(0, 1, 1, 1)
+		TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Spawn4")
+
+	Spawn1:
+		XMT2 OOOOOOOOOOOOOOOO 2 A_CheckFloor("Rest")
+		Goto Death
+	
+	Spawn2:
+		XMT2 OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO 2 A_CheckFloor("Rest")
+		Goto Death
+	
+	Spawn3:
+		XMT2 OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO 2 A_CheckFloor("Rest")
+		Goto Death
+	
+	Spawn4:
+		XMT2 OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO 2 A_CheckFloor("Rest")
+		Goto Death
+	
+	Death:
+	    TNT1 A 0
+	    TNT1 A 0 A_SpawnItem("XDeath3GreenNoStick")
+        Stop
+		
+	Rest:
+		XMT2 I 1
+		TNT1 A 0 A_QueueCorpse
+		TNT1 A 0 A_SpawnItem("Green_BloodSpot",0,0,0,1)
+		XMT2 I -1
+		Stop
+		
+	Vanish:
+	    TNT1 A 5
+		Stop
+    }
+}
+
+//piece of meat that got stuck in the ceiling
+actor CeilXDeath3Green: CeilXDeath3
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSuper
+	states
+	{
+		Spawn:
+			Goto Crash
+			Death:
+			Crash:
+			TNT1 A 0
+			TNT1 A 0 A_JUmp (255, "Live1", "Live2", "Live3")
+			Goto Live1
+
+		  Live1:
+			  XMT2 JJJJJJJJJJJJJJJJJ 4 ThrustThingZ(0, 20, 0, 1)
+			  Goto Fall
+		  
+		  Live2:
+			  XMT2 JJJJJJJJJJJJJJJJJJJJJJJJJJJ 4 ThrustThingZ(0, 20, 0, 1)
+			  Goto Fall
+		  
+		  Live3:
+			  XMT2 JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ 4 ThrustThingZ(0, 20, 0, 1)
+			  Goto Fall
+		  
+		 Fall:
+			  XMT2 JJJJKKKLLM 2
+			  TNT1 A 0 A_SpawnItemEx("XDeath3GreenNoStick", 0, 0, 0, 0, 0, -1)
+			  XMT2 MMN 2
+			  stop
+		}
+}
+
+//piece of meat that got stuck on the ceiling/wall and now is falling
+ACTOR XDeath3GreenNoStick: XDeath3NoStick
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSuper
+    States
+    {
+	 Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+		TNT1 A 0 A_CheckFloor("Death")
+        XMT2 O 3
+        Loop
+    Death:
+        TNT1 AAAAAAA 0 A_CustomMissile ("Green_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (20, 70))
+        XMT2 I 1
+		TNT1 A 0 A_QueueCorpse
+		XMT2 I 3
+		TNT1 A 0 A_SpawnItem("Green_BloodSpot",0,0,0,1)
+		XMT2 I -1
+		Stop
+    }
+}
+
+//Big piece of ribcage
+ACTOR XDeath4Green: XDeath4
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        XDB6 AAAAAA 3 A_CustomMissile ("Green_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        Loop
+    Death:
+		XDB6 B 1
+		TNT1 A 0 A_QueueCorpse
+		XDB6 B -1
+		Stop
+    }
+}
+
+//Big piece of ribcage 2
+ACTOR XDeath5Green: XDeath5
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        XME5 A 3 A_CustomMissile ("Green_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        Loop
+    Death:
+        TNT1 AAAAAAA 0 A_CustomMissile ("Green_FlyingBloodTrail", 0, 0, random (0, 180), 2, random (0, 180))
+        TNT1 A 0 A_SpawnItemEx ("Green_BloodSpot", 0, 0, 1)
+		XME5 B 1
+		TNT1 A 0 A_QueueCorpse
+		XME5 B -1
+		TNT1 A 0 
+        XME5 B 3
+    Living:	
+		XME5 B 800//duration
+		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Vanish")
+        Loop
+	Vanish:
+	    TNT1 A 1
+	    Stop
+		
+    }
+}
+//Big piece of ribcage 3
+ACTOR XDeath6Green: XDeath6
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        XME5 C 3 A_CustomMissile ("Green_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        Loop
+    Death:
+        TNT1 AAAAAAA 0 A_CustomMissile ("Green_FlyingBloodTrail", 0, 0, random (0, 180), 2, random (0, 180))
+        TNT1 A 0 A_SpawnItemEx ("Green_BloodSpot", 0, 0, 1)
+		XME5 D 1
+		TNT1 A 0 A_QueueCorpse
+		XME5 D -1
+		TNT1 A 0 
+        XME5 D 3
+    Living:	
+		XME5 D 800//duration
+		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Vanish")
+        Loop
+	Vanish:
+	    TNT1 A 1
+	    Stop
+		
+    }
+}
+
+
+ACTOR XDeath5GreenBig: XDeath5Green
+{
+	XScale -1.5
+	YScale 1.5
+	Speed 6
+}
+
+ACTOR XDeath6GreenBig: XDeath6Green
+{
+	XScale -1.5
+	YScale 1.5
+	Speed 6
+}
+
+//Generic organ
+ACTOR XDeathOrgan1Green: XDeathOrgan1
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+    States
+    {
+    Spawn:
+	    XME8 A 4 A_CustomMissile ("Green_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        Loop
+    }
+}
+
+ACTOR XDeathOrgan1bGreen: XDeathOrgan1b
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+}
+
+ACTOR XDeathOrgan2Green: XDeathOrgan1bGreen
+{
+States
+{
+    Spawn:
+	    XME8 B 4 A_CustomMissile ("Green_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        Loop
+    Death:
+        XME8 B 1
+		TNT1 A 0 A_QueueCorpse
+		XME8 B -1
+        Stop
+    }
+}
+
+
+
+
+ACTOR GreenGuts: Guts
+{
+translation "168:191=112:127", "16:47=123:127"
+Decal GreenBloodSplat
+}
+
+ACTOR GreenGuts2: GreenGuts
+{
+    Speed 3
+}
+
+
+ACTOR SmallGreenBrainPiece: SmallBrainPiece
+{
+translation "16:31=152:159", "32:47=9:12", "176:191=9:12"
+    States
+    {
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Spawn4", "Fly")
+	Spawn1:
+		TNT1 A 0
+		TNT1 A 0 A_SetScale(0.35, 0.35)
+		Goto Fly
+	Spawn2:
+		TNT1 A 0
+		TNT1 A 0 A_SetScale(-0.5, 0.5)
+		Goto Fly	
+	Spawn3:
+		TNT1 A 0
+		TNT1 A 0 A_SetScale(-0.3, 0.3)
+		Goto Fly	
+	Spawn4:
+		TNT1 A 0
+		TNT1 A 0 A_SetScale(-0.25, 0.25)
+		Goto Fly	
+	Fly:	
+		XDB5 ABCDEFGH 2
+		Loop
+	Death:
+		TNT1 A 0
+		TNT1 A 0 A_CheckFloor("Rest")
+		TNT1 A 0 A_CheckCeiling("SpawnCeil")
+		TNT1 A 0 A_SpawnItemEx("SmearingGreenBrain", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERSCALE)
+		Stop
+	SpawnCeil:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx("SmallGreenBrainPieceCeil", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERSCALE)
+		Stop
+		
+    }
+}
+
+
+ACTOR GreenBrainPiece: SmallGreenBrainPiece
+{
+    States
+    {
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Spawn4", "Fly")
+	Spawn1:
+		TNT1 A 0
+		TNT1 A 0 A_SetScale(0.45, 0.45)
+		Goto Fly
+	Spawn2:
+		TNT1 A 0
+		TNT1 A 0 A_SetScale(-0.6, 0.6)
+		Goto Fly	
+	Spawn3:
+		TNT1 A 0
+		TNT1 A 0 A_SetScale(-0.4, 0.4)
+		Goto Fly	
+	Spawn4:
+		TNT1 A 0
+		TNT1 A 0 A_SetScale(-0.35, 0.35)
+		Goto Fly	
+    }
+}
+
+ACTOR SmallGreenBrainPieceFast: SmallGreenBrainPiece {  Speed 14 }
+
+
+Actor SmallGreenBrainPieceCeil: SmallBrainPieceCeil
+{
+translation "16:31=152:159", "32:47=9:12", "176:191=9:12"
+	States
+	{
+		Spawn:
+			TNT1 A 0
+			TNT1 A 0 A_JUmp (255, "Live1", "Live2", "Live3")
+			Goto Live1
+
+		  Live1:
+			  XDB5 JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ 4 ThrustThingZ(0, 20, 0, 1)
+			  Goto Fall
+		  
+		  Live2:
+			  XDB5 JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ 4 ThrustThingZ(0, 20, 0, 1)
+			  Goto Fall
+		  
+		  Live3:
+			  XDB5 JJJJJJJJJJJJJJJ 4 ThrustThingZ(0, 20, 0, 1)
+			  Goto Fall
+		  
+		 Fall:
+			  TNT1 A 0 A_SpawnItemEx("SmallGreenBrainPieceFalling", 0, 0, 0, 0, 0, -2, SXF_TRANSFERSCALE)
+			  stop
+			  }
+}
+
+ACTOR SmallGreenBrainPieceFalling: SmallBrainPieceFalling
+{
+translation "16:31=152:159", "32:47=9:12", "176:191=9:12"
+}
+
+ACTOR SmearingGreenBrain: SmearingBrain
+{
+translation "16:31=152:159", "32:47=9:12", "176:191=9:12"
+}
+
+
+
+
+
+
+actor MuchBloodGreen : Blood
+{
+ states
+ {
+  Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+		
+        TNT1 AAAAAAAAAAAA 0 A_CustomMissile ("Green_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        TNT1 AAAAAAAAAAAA 0 A_CustomMissile("Green_FlyingBloodTrail", 0, 0, 180)
+		TNT1 AAA 0 A_CustomMissile("GreenBloodMistSmall", 0, 0, random (0, 360), 2, random (30, 90))
+  	    TNT1 AAA 0 A_CustomMissile ("Green_FlyingBlood", 0, 0, random (0, 360), 2, random (0, 160))
+	    BLOD BCD 0
+        stop
+	Splash:
+        BLOD A 0
+        stop
+ }
+}
+
+
+actor MuchBlood2Green : Blood
+{
+ states
+ {
+  Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+		
+		TNT1 A 0 A_PlaySound("misc/xdeath4")
+        TNT1 AAA 0 A_CustomMissile("GreenBloodMistSmall", 0, 0, random (0, 360), 2, random (30, 90))
+        TNT1 AAAAAAAAA 0 A_CustomMissile ("Green_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        TNT1 AAAAAAAAA 0 A_CustomMissile("Green_FlyingBloodTrail", 0, 0, 180)
+  	    TNT1 AAA 0 A_CustomMissile ("Green_FlyingBlood", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_CustomMissile ("GreenBloodMistBig", 0, 0, random (0, 360), 2, random (30, 90))
+		BLOD BCD 0
+		TNT1 A 10
+        stop
+	Splash:
+        BLOD A 0
+        stop
+ }
+}
+
+actor MuchBlood3Green : Blood
+{
+ states
+ {
+  Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+		
+		TNT1 A 0 A_PlaySound("misc/xdeath4")
+        TNT1 AAAAAAAAA 0 A_CustomMissile ("Green_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        TNT1 AAAAAAAAA 0 A_CustomMissile("Green_FlyingBloodTrail", 0, 0, 180)
+  	    TNT1 AAA 0 A_CustomMissile ("Green_FlyingBlood", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAA 0 A_CustomMissile ("GreenBloodMistBig", 0, 0, random (0, 360), 2, random (30, 90))
+		BLOD BCD 0
+        stop
+	Splash:
+        BLOD A 0
+        stop
+ }
+}
+
+
+actor GreenBloodDying : Brutal_Blood
+{
+ states
+ {
+  Spawn:
+        //TNT1 AAAAA 0 A_CustomMissile ("BloodTr2", 7, 0, random (0, 360), 2, random (0, 180))
+        //TNT1 AAAAAAAAAAA 0 A_CustomMissile ("BloodTr2", 0, 0, random (0, 180), 2, random (0, 180))
+		TNT1 AAAA 3 A_CustomMissile ("Green_LiquidBlood", 10, 0, random (0, 360), 2, random (30, 80))
+        BLOD BCD 0
+        stop
+	Splash:
+        BLOD A 0
+        stop
+ }
+}
+
+
+actor GreenSawBlood : SawBlood
+{
+ states
+ {
+  Spawn:
+        TNT1 A 0
+		TNT1 A 0 A_RadiusGive("ChainsawHitGreen", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
+		TNT1 A 0 A_RadiusGive("PowerGreenBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
+		TNT1 A 0 A_CustomMissile ("GreenBloodmistChainsaw", -10, 0, random (0, 360), 2, random (60, 90))
+		TNT1 A 0 A_PlaySound("CSAWFLESH")
+		TNT1 A 0 Radius_Quake (2, 2, 0, 2, 0)
+		Stop
+ }
+}

@@ -1,0 +1,122 @@
+//********** Splashes **********
+splash 	nukage
+{
+ smallclass 	nukageSplashBasesmall
+ smallclip		6
+ baseclass		nukageSplashBase
+ sound		world/lavasizzle
+ NoAlert
+}
+
+splash Slime
+{
+	smallclass 	none
+	smallclip		6
+	smallsound		world/sludgegloopsmall
+	
+
+	baseclass		SlimeSplashBase
+	chunkclass		SlimeChunk
+	chunkxvelshift	8
+	chunkyvelshift	8
+	chunkzvelshift	8
+	chunkbasezvel	2
+	sound			world/watersplash
+	NoAlert
+}
+
+splash 	water
+{
+ smallclass 	watersplashbasesmall
+ smallclip		6
+ baseclass		watersplashbase2
+ sound			world/watersplash
+ NoAlert
+}
+
+splash 	blood
+{
+ smallclass 	bloodsplashbasesmall
+ smallclip		6
+ 
+ baseclass		bloodsplashbase3
+ sound			world/watersplash
+ NoAlert
+}
+
+splash 	lava
+{
+ smallclass 	LavaSplashBase
+ smallclip		6
+ //smallsound	world/lavasizzlesmall
+
+ baseclass		LavaSplashBase
+
+ sound		world/lavasizzle
+ NoAlert
+ 
+ 
+}
+//********** Terrain **********
+
+terrain	 nukage
+{
+ splash 	nukage
+ footclip	 1
+ liquid
+}
+
+terrain	water
+{
+ splash 	water
+ footclip	 1
+ liquid
+}
+
+terrain	lava
+{
+ splash 	lava
+ footclip	 1
+ liquid
+ damagetype		"Fire"
+}
+
+terrain	blood
+{
+ footclip	 1
+ liquid
+ splash 	blood
+}
+
+terrain Slime
+{
+ footclip	 1
+ liquid
+ splash Slime
+}
+
+
+
+
+floor BLOOD1 Blood
+floor BLOOD2 Blood
+floor BLOOD3 Blood
+floor FWATER1 Water
+floor FWATER2 Water
+floor FWATER3 Water
+floor FWATER4 Water
+floor FWATER02 Water
+floor LAVAFL Lava
+floor NUKAGE1 Nukage
+floor NUKAGE2 Nukage
+floor NUKAGE3 Nukage
+floor SLIME01 Slime
+floor SLIME02 Slime
+floor SLIME03 Slime
+floor SLIME04 Slime
+floor SLIME05 Slime
+floor SLIME06 Slime
+floor SLIME07 Slime
+floor SLIME08 Slime
+
+floor GRWAT_01 Slime

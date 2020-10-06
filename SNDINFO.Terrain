@@ -1,0 +1,194 @@
+//********** Terrain **********
+
+slime				dsmuck
+slimesmall			dsmucksm
+watersmall			dsfloush
+burn				dsburn
+burnsmall			dsburnsm
+blood1				dssplat1
+blood2				dssplat2
+$RANDOM blood { blood1 blood2 }
+bloodsmall1			dssplat3
+bloodsmall2			dssplat4
+$RANDOM bloodsmall { bloodsmall1 bloodsmall2 }
+
+// World Sounds / Terrain sounds
+
+
+water1 water1
+water2 water2
+water3 water3
+water4 water4
+$random world/watersplash		{water1 water2 water3 water4}
+$volume world/watersplash 1.1 
+$limit world/watersplash 10
+
+world/drip			dsempty
+
+dssplash	dssplash
+dssplas2	dssplas2
+world/watersplashsmall		dssplsml
+world/sludgegloop		dsploosh
+world/sludgegloopsmall		dsplosml
+world/lavasizzle		dslvsiz
+world/lavsiz2			dslvsiz2
+world/lavasizzlesmall		dslavsml
+world/thunder			dsthun
+
+
+
+$volume dssplash 0.6 
+$volume dssplas2 0.6 
+
+$limit dssplash 4
+$limit world/drip 4
+
+$limit world/watersplashsmall 4
+$limit world/sludgegloop 4
+$limit world/sludgegloopsmall 4
+$limit world/lavasizzle 4
+$limit world/lavsiz2 4
+$limit world/lavasizzlesmall 4
+
+
+
+//Hard - generic hard floor
+$random floorhard		{ floorhard01  floorhard02 floorhard03 floorhard04  floorhard05 floorhard06 }
+floorhard01	fshard1
+floorhard02	fshard2
+floorhard03	fshard3
+floorhard04	fshard4
+floorhard05	fshard5
+floorhard06	fshard6
+
+$limit floorhard 20
+
+
+//Dirt
+$random floordirt		{ floordirt01  floordirt02 floordirt03 floordirt04  floordirt05 floordirt06 }
+floordirt01	fsdirt1
+floordirt02	fsdirt2
+floordirt03	fsdirt3
+floordirt04	fsdirt4
+floordirt05	fsdirt5
+floordirt06	fsdirt6
+
+$limit floordirt 20
+
+//Gravel - loose crunchy surface
+$random floorgravel		{ floorgrav01  floorgrav02 floorgrav03 floorgrav04 }
+floorgrav01	fsgrav1
+floorgrav02	fsgrav2
+floorgrav03	fsgrav3
+floorgrav04	fsgrav4
+
+$limit floorgravel 20
+
+//Metal - hard metal
+$random floormetal		{ floormetl01  floormetl02 floormetl03 floormetl04  floormetl05 floormetl06 }
+floormetl01	fsmet01
+floormetl02	fsmet02
+floormetl03	fsmet03
+floormetl04	fsmet04
+floormetl05	fsmet05
+floormetl06	fsmet06
+
+$limit floormetal 20
+
+//Metal2 - clanky metal
+$random floormetal2		{ floormetal201  floormetal202 floormetal203 floormetal204 }
+floormetal201	fsmet201
+floormetal202	fsmet202
+floormetal203	fsmet203
+floormetal204	fsmet204
+
+$limit floormetal2 20
+
+FHVMTL FHVMTL
+
+//Rock - Hard outdoor type floor
+$random floorrock		{ floorrock01  floorrock02 floorrock03 floorrock04  floorrock05 floorrock06 floorrock07 floorrock08 }
+floorrock01	fsrock1
+floorrock02	fsrock2
+floorrock03	fsrock3
+floorrock04	fsrock4
+floorrock05	fsrock5
+floorrock06	fsrock6
+floorrock07	fsrock7
+floorrock08	fsrock8
+
+$limit floorrock 20
+
+//Snow
+$random floorsnow		{ floorsnow01  floorsnow02 floorsnow03 floorsnow04  floorsnow05 floorsnow06 }
+floorsnow01	fssnow1
+floorsnow02	fssnow2
+floorsnow03	fssnow3
+floorsnow04	fssnow4
+floorsnow05	fssnow5
+floorsnow06	fssnow6
+
+$limit floorsnow 20
+
+//Wood
+$random floorwood		{ floorwood01  floorwood02 floorwood03 floorwood04 }
+floorwood01	fswood1
+floorwood02	fswood2
+floorwood03	fswood3
+floorwood04	fswood4
+
+$limit floorwood 20
+
+
+//Tile - Hard indoor floor
+$random floortile		{ floortile01  floortile02 floortile03 floortile04  floortile05 floortile06 }
+floortile01	fstile01
+floortile02	fstile02
+floortile03	fstile03
+floortile04	fstile04
+floortile05	fstile05
+floortile06	fstile06
+
+$limit floortile 20
+
+//Tile2 - More echoey traditional tile
+$random floortile2		{ floortile201  floortile202 floortile203 floortile204  floortile205 floortile206 floortile207 floortile208 }
+floortile201	fstile21
+floortile202	fstile22
+floortile203	fstile23
+floortile204	fstile24
+floortile205	fstile25
+floortile206	fstile26
+floortile207	fstile27
+floortile208	fstile28
+
+$limit floortile2 20
+
+
+//Slimy - for the Doom snake floors
+//$random floorslimy		{ floorslimy01  floorslimy02 floorslimy03 floorslimy04 }
+floorslimy fsskinny
+
+floorslimy01	fsslimy1
+floorslimy02	fsslimy2
+floorslimy03	fsslimy3
+floorslimy04	fsslimy4
+
+$limit floorslimy 20
+
+
+WINBREA WINBREA
+$limit WINBREA 20
+
+$rolloff BDWFALL1 300 1000
+BDWFALL1 BDWFALL1
+$limit BDWFALL1 6
+
+$rolloff BDWFALL2 300 900
+BDWFALL2 BDWFALL2
+$limit BDWFALL2 6
+
+
+$rolloff BDWFALL3 500 1100
+BDWFALL3 BDWFALL3
+$limit BDWFALL3 6

@@ -1,0 +1,975 @@
+
+//Gib actors
+
+ACTOR XDeath1
+{
+    Radius 1
+    Height 1
+    Speed 8
+    Scale 0.6
+	Mass 1
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +MOVEWITHSECTOR
+    +CLIENTSIDEONLY
+	-DONTSPLASH
+	+THRUGHOST
+	+THRUACTORS
+	+FLOORCLIP
+	Mass 1
+    States
+    {
+    Spawn:
+	    BLHT ABCDEFGHI 2
+        Stop
+    Death:
+        TNT1 A 0 A_SpawnItemEx ("Brutal_BloodSpot", 0, 0, 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckIfOverLiquid")
+		XDT1 EF 3
+		TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "IsOverLiquid")
+        XDT1 GHIJKL 3
+        Stop
+        TNT1 A 1
+     Underwater:
+	 Splash:
+	    BLUD C 0 ThrustThingZ (0,35,1,0)
+        XDT1 AB 4 A_CustomMissile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+		BLUD C 0 ThrustThingZ (0,35,1,0)
+		XDT1 CD 4 A_CustomMissile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        Loop
+		
+	IsOverLiquid:
+		TNT1 A 1
+		TNT1 A 0 A_CheckFloor("SpawnOnWater")
+		
+	SpawnOnWater:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItem ("WaterBloodSpot", 5)
+		Stop
+    }
+}
+
+//A flying piece of meat
+ACTOR XDeath2: XDeath1
+{
+    +CLIENTSIDEONLY
+	+DONTSPLASH
+	Radius 2
+	Height 2
+	Gravity 0.4
+    DeathSound "misc/xdeath2"
+	Decal BrutalBloodSuper
+    Scale 1.1
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        XMT1 ABCDEFGH 2 A_CustomMissile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        Loop
+    Death:
+        TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodFaster", 0, 0, random (0, 360), 2, random (40, 90))
+		TNT1 A 0 A_CheckFloor("SpawnFloor")
+		TNT1 A 0 A_CheckCeiling("SpawnCeiling")
+		TNT1 A 0 A_SpawnItem("SmearingXDeath2")
+		Stop
+		
+	SpawnFloor:
+	    XMT1 M 1
+		TNT1 A 0 A_QueueCorpse
+		TNT1 A 0 A_SpawnItemEx ("Brutal_BloodSpot", 0, 0, 1)
+		XMT1 M -1
+		Stop
+		
+	SpawnCeiling:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx ("CeilXDeath2", 0, 0, 1)
+		TNT1 A 0 A_SpawnItemEx ("CeilBloodSpotLarge", 0, 0, 1)
+		Stop	
+		
+	Vanish:
+	    TNT1 A 5
+		Stop
+    }
+}
+
+
+ACTOR XDeath2b: XDeath2 {	Speed 4 } //Low-range version.
+
+
+//A piece of meat that has hit the wall, and now is slowly smearing
+ACTOR SmearingXDeath2
+{
+    Radius 1
+    Height 1
+	Mass 1
+	Scale 1.0
+    +NOBLOCKMAP
+    +NOTELEPORT
+	+THRUGHOST
+	+CLIENTSIDEONLY
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+	+FORCEXYBILLBOARD
+	+NOGRAVITY
+    States
+    {
+	Spawn:
+		XMT1 N 10
+		TNT1 A 0 ThrustThingZ(0, 1, 1, 1)
+		TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Spawn4")
+
+	Spawn1:
+		XMT1 NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN 2 A_CheckFloor("Rest")
+		Goto Death
+	
+	Spawn2:
+		XMT1 NNNNNNNNNNNNNNNNNNNNNNNN 2 A_CheckFloor("Rest")
+		Goto Death
+	
+	Spawn3:
+		XMT1 NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN 2 A_CheckFloor("Rest")
+		Goto Death
+	
+	Spawn4:
+		XMT1 NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN 2 A_CheckFloor("Rest")
+		Goto Death
+	
+	Death:
+	    TNT1 A 0
+	    TNT1 A 0 A_SpawnItem("XDeath2NoStick")
+        Stop
+		
+	Rest:
+		XMT1 M 1
+		TNT1 A 0 A_QueueCorpse
+		TNT1 A 0 A_SpawnItem("Brutal_BloodSpot",0,0,0,1)
+		XMT1 M -1
+		Stop
+		
+	Vanish:
+	    TNT1 A 5
+		Stop
+    }
+}
+
+//piece of meat that got stuck in the ceiling
+actor CeilXDeath2: Brutal_BloodSpot
+{
+	PROJECTILE
+	+MISSILE
+	+SPAWNCEILING
+	+MOVEWITHSECTOR
+	+NOGRAVITY
+	+DontSplash
+	+CEILINGHUGGER
+	Renderstyle Normal 
+	Scale 1.1
+	states
+	{
+		Spawn:
+			TNT1 A 0
+			TNT1 A 0 A_JUmp (255, "Live1", "Live2", "Live3")
+			Goto Live1
+
+		  Live1:
+			  XMT1 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII 5 ThrustThingZ(0, 20, 0, 1)
+			  Goto Fall
+		  
+		  Live2:
+			  XMT1 IIIIIIIIIIIIIIIIIIIIIIIII 5 ThrustThingZ(0, 20, 0, 1)
+			  Goto Fall
+		  
+		  Live3:
+			  XMT1 IIIIIIIIIIIIIIIII 5 ThrustThingZ(0, 20, 0, 1)
+			  Goto Fall
+		  
+		 Fall:
+			  XMT1 F 0
+			  XMT1 JJJKKLL 2
+			  TNT1 A 0 A_SpawnItemEx("XDeath2NoStick", 0, 0, 0, 0, 0, -1)
+			  stop
+		 Splash:
+			  BLOD A 0
+			  stop
+		}
+}
+
+//piece of meat that got stuck on the ceiling/wall and now is falling
+ACTOR XDeath2NoStick: XDeath2
+{
+    Speed 0
+	Gravity 0.4
+    DeathSound "misc/xdeath2"
+	Radius 1
+	Height 0
+    States
+    {
+    Spawn:
+		XMT1 FFFGGH 2
+	Live:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+		TNT1 A 0 A_CheckFloor("Death")
+		XMT1 ABCDEFGH 2 A_CustomMissile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        Loop
+    Death:
+        TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodFaster", 0, 0, random (0, 360), 2, random (40, 90))
+        XMT1 M 1
+		TNT1 A 0 A_QueueCorpse
+		XMT1 M 3
+		TNT1 A 0 A_SpawnItem("Brutal_BloodSpot",0,0,0,1)
+		XMT1 M -1
+		Stop
+    }
+}
+
+
+
+
+//Variation of XDeath2
+ACTOR XDeath3: XDeath2
+{
+    DeathSound "misc/xdeath3"
+	Decal BrutalBloodSuper
+	Scale 1.1
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        XMT2 ABCDEFGH 2 A_CustomMissile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        Loop
+    Death:
+        TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodFaster", 0, 0, random (0, 360), 2, random (40, 90))
+	    TNT1 A 0 A_CheckFloor("SpawnFloor")
+		TNT1 A 0 A_CheckCeiling("SpawnCeiling")
+		TNT1 A 0 A_SpawnItem("SmearingXDeath3")
+		Stop
+		
+	SpawnFloor:
+	    XMT2 I 1
+		TNT1 A 0 A_QueueCorpse
+		TNT1 A 0 A_SpawnItemEx ("Brutal_BloodSpot", 0, 0, 1)
+		XMT2 I -1
+		Stop
+		
+	SpawnCeiling:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx ("CeilXDeath3", 0, 0, 1)
+		TNT1 A 0 A_SpawnItemEx ("CeilBloodSpotLarge", 0, 0, 1)
+		Stop	
+		
+	Vanish:
+	    TNT2 A 5
+		Stop
+    }
+}
+
+
+ACTOR XDeath3b: XDeath3 {	Speed 4 } //Low-range version.
+
+
+//A piece of meat that has hit the wall, and now is slowly smearing
+ACTOR SmearingXDeath3: SmearingXDeath2
+{
+
+    States
+    {
+	Spawn:
+		XME2 G 10
+		TNT1 A 0 ThrustThingZ(0, 1, 1, 1)
+		TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Spawn4")
+
+	Spawn1:
+		XMT2 OOOOOOOOOOOOOOOO 2 A_CheckFloor("Rest")
+		Goto Death
+	
+	Spawn2:
+		XMT2 OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO 2 A_CheckFloor("Rest")
+		Goto Death
+	
+	Spawn3:
+		XMT2 OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO 2 A_CheckFloor("Rest")
+		Goto Death
+	
+	Spawn4:
+		XMT2 OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO 2 A_CheckFloor("Rest")
+		Goto Death
+	
+	Death:
+	    TNT1 A 0
+	    TNT1 A 0 A_SpawnItem("XDeath3NoStick")
+        Stop
+		
+	Rest:
+		XMT2 I 1
+		TNT1 A 0 A_QueueCorpse
+		TNT1 A 0 A_SpawnItem("Brutal_BloodSpot",0,0,0,1)
+		XMT2 I -1
+		Stop
+		
+	Vanish:
+	    TNT1 A 5
+		Stop
+    }
+}
+
+//piece of meat that got stuck in the ceiling
+actor CeilXDeath3: CeilXDeath2
+{
+	states
+	{
+		Spawn:
+			Goto Crash
+			Death:
+			Crash:
+			TNT1 A 0
+			TNT1 A 0 A_JUmp (255, "Live1", "Live2", "Live3")
+			Goto Live1
+
+		  Live1:
+			  XMT2 JJJJJJJJJJJJJJJJJ 4 ThrustThingZ(0, 20, 0, 1)
+			  Goto Fall
+		  
+		  Live2:
+			  XMT2 JJJJJJJJJJJJJJJJJJJJJJJJJJJ 4 ThrustThingZ(0, 20, 0, 1)
+			  Goto Fall
+		  
+		  Live3:
+			  XMT2 JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ 4 ThrustThingZ(0, 20, 0, 1)
+			  Goto Fall
+		  
+		 Fall:
+			  XMT2 JJJJKKKLLM 2
+			  TNT1 A 0 A_SpawnItemEx("XDeath3NoStick", 0, 0, 0, 0, 0, -1)
+			  XMT2 MMN 2
+			  stop
+		 Splash:
+			  BLOD A 0
+			  stop
+		}
+}
+
+//piece of meat that got stuck on the ceiling/wall and now is falling
+ACTOR XDeath3NoStick: XDeath2NoStick
+{
+
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+		TNT1 A 0 A_CheckFloor("Death")
+        XMT2 O 3
+        Loop
+    Death:
+        TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodFaster", 0, 0, random (0, 360), 2, random (40, 90))
+        XMT2 I 1
+		TNT1 A 0 A_QueueCorpse
+		XMT2 I 3
+		TNT1 A 0 A_SpawnItem("Brutal_BloodSpot",0,0,0,1)
+		XMT2 I -1
+		Stop
+    }
+}
+
+//Big piece of ribcage
+ACTOR XDeath4: XDeath2
+{
+    DeathSound "misc/xdeath3"
+	Scale 1.0
+	+DOOMBOUNCE
+	BounceFactor 0.01
+	Gravity 1.0
+	wallbouncefactor 0.2
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        XDB6 AAAAAA 4 A_CustomMissile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        Loop
+    Death:
+		XDB6 B 1
+		TNT1 A 0 A_QueueCorpse
+		XDB6 B -1
+		Stop
+    }
+}
+
+//Big piece of ribcage 2
+ACTOR XDeath5: XDeath2
+{
+    DeathSound "misc/xdeath3"
+	Scale 1.0
+	Gravity 0.6
+	Speed 4
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        XME5 A 4 A_CustomMissile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        Loop
+    Death:
+        TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodFaster", 0, 0, random (0, 360), 2, random (40, 90))
+        TNT1 A 0 A_SpawnItemEx ("Brutal_BloodSpot", 0, 0, 1)
+		XME5 B 1
+		TNT1 A 0 A_QueueCorpse
+		XME5 B -1
+		TNT1 A 0 
+        XME5 B 3
+    Living:	
+		XME5 B 800//duration
+		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Vanish")
+        Loop
+	Vanish:
+	    TNT1 A 1
+	    Stop
+		
+    }
+}
+//Big piece of ribcage 3
+ACTOR XDeath6: XDeath2
+{
+    DeathSound "misc/xdeath3"
+	Scale 1.0
+	Gravity 0.6
+	Speed 4
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        XME5 C 4 A_CustomMissile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        Loop
+    Death:
+        TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodFaster", 0, 0, random (0, 360), 2, random (40, 90))
+        TNT1 A 0 A_SpawnItemEx ("Brutal_BloodSpot", 0, 0, 1)
+		XME5 D 1
+		TNT1 A 0 A_QueueCorpse
+		XME5 D -1
+		TNT1 A 0 
+        XME5 D 3
+    Living:	
+		XME5 D 800//duration
+		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Vanish")
+        Loop
+	Vanish:
+	    TNT1 A 1
+	    Stop
+		
+    }
+}
+
+
+ACTOR XDeath5Big: XDeath5
+{
+	XScale -1.5
+	YScale 1.5
+	Speed 6
+}
+
+ACTOR XDeath6Big: XDeath6
+{
+	XScale -1.5
+	YScale 1.5
+	Speed 6
+}
+
+//Generic organ
+ACTOR XDeathOrgan1: XDeath2
+{
+	Scale 0.9
+	Speed 4
+    States
+    {
+    Spawn:
+	    XME8 A 4 A_CustomMissile ("Brutal_LiquidBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        Loop
+    Death:
+        XME8 A 1
+		TNT1 A 0 A_QueueCorpse
+		XME8 A -1
+        Stop
+    }
+}
+
+ACTOR XDeathOrgan1b: XDeathOrgan1
+{
+	XScale -0.7
+	YScale 0.5
+}
+
+ACTOR XDeathOrgan2: XDeathOrgan1
+{
+States
+{
+    Spawn:
+	    XME8 B 4 A_CustomMissile ("Brutal_LiquidBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        Loop
+    Death:
+        XME8 B 1
+		TNT1 A 0 A_QueueCorpse
+		XME8 B -1
+        Stop
+    }
+}
+
+
+
+
+ACTOR GoreSound: XDeath2
+{
+    SeeSound "misc/xdeath4"
+    DeathSound "none"
+    Decal "None"
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        TNT1 A 2
+        Loop
+    Death:
+        TNT1 BCDE 1
+        Stop
+        Splash:
+        TNT1 A 1
+        Stop
+    }
+}
+
+
+ACTOR Guts
+{
+    Radius 8
+    Height 12
+    Speed 6
+	Mass 1
+	BounceFactor 0.4
+	Renderstyle Translucent
+	Alpha 0.9
+	+DOOMBOUNCE
+	-BOUNCEONFLOORS
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +MOVEWITHSECTOR
+    +CLIENTSIDEONLY
+    +FORCEXYBILLBOARD
+	-EXPLODEONWATER
+	+THRUACTORS
+	Decal BrutalBloodSplat
+	Scale 1.0
+	Gravity 0.4
+    States
+    {
+    Spawn:
+		GUTS A 1
+		TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Spawn4")
+	Spawn1:
+		TNT1 A 0
+		TNT1 A 0 A_SetScale(0.9, 0.8)
+		Goto Live
+	
+	Spawn2:
+		TNT1 A 0
+		TNT1 A 0 A_SetScale(-1.0, 1.0)
+		Goto Live
+		
+	Spawn3:
+		TNT1 A 0
+		TNT1 A 0 A_SetScale(1.2, 1.0)
+		Goto Live
+		
+	Spawn4:
+		TNT1 A 0
+		TNT1 A 0 A_SetScale(-0.6, 1.0)
+		Goto Live	
+		
+	Live:	
+		GUTS ABCDEFGH 3 A_JumpIf(waterlevel > 1, "Water")
+        GUTS H -1
+		Loop
+	
+    Death:
+        //GUTS HIJ 3
+		TNT1 A 0
+		TNT1 A 0 A_SetScale(1.0, 1.0)
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "Water")
+        TNT1 A 0 
+	    Goto Rest
+		
+		
+	Rest:
+		TNT1 A 0
+		TNT1 A 0 A_QueueCorpse
+		TNT1 A 0 A_Jump(255, "Rest1", "Rest2")
+		
+	Rest1:
+        GUTS K 1
+        GUTS K -1
+		Stop
+		
+	Rest2:
+		GUTS L 1
+        GUTS L -1
+		Stop
+		
+	DoNothing:
+		TNT1 A 0
+		Stop
+	
+	Water:
+		GUTS GHIH 10
+		Loop
+    }
+}
+
+ACTOR Guts2: Guts
+{
+    Speed 3
+}
+
+
+ACTOR SmallBrainPiece: Xdeath2
+{
+    Radius 2
+    Height 2
+	Speed 10
+	Scale 0.4
+	Decal None
+    States
+    {
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Spawn4", "Fly")
+	Spawn1:
+		TNT1 A 0
+		TNT1 A 0 A_SetScale(0.2, 0.2)
+		Goto Fly
+	Spawn2:
+		TNT1 A 0
+		TNT1 A 0 A_SetScale(-0.5, 0.5)
+		Goto Fly	
+	Spawn3:
+		TNT1 A 0
+		TNT1 A 0 A_SetScale(-0.3, 0.3)
+		Goto Fly	
+	Spawn4:
+		TNT1 A 0
+		TNT1 A 0 A_SetScale(-0.2, 0.2)
+		Goto Fly	
+	Fly:	
+		XDB5 ABCDEFGH 2
+		Loop
+	Death:
+		TNT1 A 0
+		TNT1 A 0 A_CheckFloor("Rest")
+		TNT1 A 0 A_CheckCeiling("SpawnCeil")
+		TNT1 A 0 A_SpawnItemEx("SmearingBrain", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERSCALE)
+		Stop
+	SpawnCeil:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx("SmallBrainPieceCeil", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERSCALE)
+		Stop
+		
+	Rest:
+		TNT1 A 0
+		TNT1 A 0 A_QueueCorpse
+		XDT5 O 1
+		XDT5 O -1
+		Stop
+			
+	DoNothing:
+		TNT1 A 0
+		Stop
+    }
+}
+
+ACTOR SmallBrainPieceFast: SmallBrainPiece {  Speed 12 }
+ACTOR SmallBrainPieceSlow: SmallBrainPiece {  Speed 5 Gravity 0.5 }
+
+
+Actor SmallBrainPieceCeil: CeilXDeath2
+{
+Scale 0.4
+	States
+	{
+		Spawn:
+			TNT1 A 0
+			TNT1 A 0 A_JUmp (255, "Live1", "Live2", "Live3")
+			Goto Live1
+
+		  Live1:
+			  XDB5 JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ 4 ThrustThingZ(0, 20, 0, 1)
+			  Goto Fall
+		  
+		  Live2:
+			  XDB5 JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ 4 ThrustThingZ(0, 20, 0, 1)
+			  Goto Fall
+		  
+		  Live3:
+			  XDB5 JJJJJJJJJJJJJJJ 4 ThrustThingZ(0, 20, 0, 1)
+			  Goto Fall
+		  
+		 Fall:
+			  TNT1 A 0 A_SpawnItemEx("SmallBrainPieceFalling", 0, 0, 0, 0, 0, -2, SXF_TRANSFERSCALE)
+			  stop
+		 Splash:
+			  BLOD A 0
+			  stop
+			  }
+}
+
+ACTOR SmallBrainPieceFalling: SmallBrainPiece
+{
+    States
+    {
+	Spawn:
+		XDB5 P 1
+		XDB5 P -1
+		Loop
+	Death:
+		TNT1 A 0
+		TNT1 A 0 A_QueueCorpse
+		XDB5 O 1
+		XDB5 O -1
+		Stop
+    }
+}
+
+ACTOR SmearingBrain
+{
+    Radius 2
+    Height 2
+	Speed 10
+	Mass 1
+	Scale 0.4
+    +NOBLOCKMAP
+    +NOTELEPORT
+	+THRUGHOST
+	+CLIENTSIDEONLY
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+	-DONTSPLASH
+	+FORCEXYBILLBOARD
+	+QUARTERGRAVITY
+    States
+    {
+	Spawn:
+	TNT1 A 0
+	TNT1 A 0 A_ChangeFlag("NOGRAVITY", 1)
+	TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Spawn4")
+	Goto Spawn1
+	
+	Spawn1:
+	XDB5 PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP 2 A_CheckFloor("Rest")
+	Goto Death
+	
+	Spawn2:
+	XDB5 PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP 2 A_CheckFloor("Rest")
+	Goto Death
+	
+	Spawn3:
+	XDB5 PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP 2 A_CheckFloor("Rest")
+	Goto Death
+	
+	Spawn4:
+	XDB5 PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP 2 A_CheckFloor("Rest")
+	Goto Death
+	
+	Death:
+	Rest:
+	    TNT1 A 0
+		TNT1 A 0 A_QueueCorpse
+	    TNT1 A 0 A_ChangeFlag("QUARTERGRAVITY", 0)
+		XDB5 P 2 ThrustThingZ(0,-2,0,1)
+		TNT1 A 0 A_CheckFloor("Sleep")
+		XDB5 P 2 ThrustThingZ(0,-2,0,1)
+		TNT1 A 0 A_CheckFloor("Sleep")
+		XDB5 P 2 ThrustThingZ(0,-2,0,1)
+		TNT1 A 0 A_CheckFloor("Sleep")
+		XDB5 P 2 ThrustThingZ(0,-2,0,1)
+		TNT1 A 0 A_CheckFloor("Sleep")
+		XDB5 P 2 ThrustThingZ(0,-2,0,1)
+		TNT1 A 0 A_CheckFloor("Sleep")
+		XDB5 P 2 ThrustThingZ(0,-2,0,1)
+		TNT1 A 0 A_CheckFloor("Sleep")
+		XDB5 P 2 ThrustThingZ(0,-2,0,1)
+		TNT1 A 0 A_CheckFloor("Sleep")
+		XDB5 P 2 ThrustThingZ(0,-2,0,1)
+		TNT1 A 0 A_CheckFloor("Sleep")
+		XDB5 P 2 ThrustThingZ(0,-2,0,1)
+		TNT1 A 0 A_CheckFloor("Sleep")
+		XDB5 P 2 ThrustThingZ(0,-2,0,1)
+		TNT1 A 0 A_CheckFloor("Sleep")
+		XDB5 P 2 ThrustThingZ(0,-2,0,1)
+		Loop
+	Sleep:	
+        XDB5 K 1
+		XDB5 K -1
+        Stop
+	DoNothing:
+	TNT1 A 0
+	Stop
+    }
+}
+
+
+
+
+
+
+ACTOR GibEyeball
+{
+    Radius 2
+    Height 2
+	Speed 6
+	Mass 1
+    Decal BrutalBloodSplat
+    +CLIENTSIDEONLY
+	BounceFactor 0.5
+	+DOOMBOUNCE
+	+MISSILE
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+	+FLOORCLIP
+	Scale 0.8
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
+		BRIB EFGH 4
+		Loop
+	Death:
+	    BRIB E 1
+		TNT1 A 0 A_QueueCorpse
+		TNT1 A 0 
+	    Goto Rest
+		
+		
+	Rest:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(255, "Rest1", "Rest2", "Rest3", "Rest4")
+	Rest1:
+        BRIB E 800
+		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
+        Loop
+		
+	Rest2:
+		BRIB F 800
+		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
+        Loop
+	Rest3:
+        BRIB G 800
+		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
+        Loop
+		
+	Rest4:
+		BRIB H 800
+		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
+        Loop
+	DoNothing:
+	TNT1 A 0
+	Stop	
+    }
+}
+
+
+
+
+
+
+ACTOR BurningFlyingMeatPiece
+{
+    Radius 8
+    Height 8
+    Speed 16
+    Scale 0.8
+	Mass 1
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +MOVEWITHSECTOR
+    +CLIENTSIDEONLY
+    
+    +BLOODLESSIMPACT 
+    BounceFactor 0.4
+damagetype Blood
+    SeeSound "misc/xdeath4"
+    DeathSound "misc/xdeath1"
+	Decal BloodSuper
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+		XME1 ABCD 2 A_CustomMissile ("SmallFlameTrails", 2, 0, random (0, 360), 2, random (70, 110))
+        TNT1 A 0 A_CustomMissile("BloodTrails",0,0,180,2)
+        Loop
+    Death:
+        XME1 E 1 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
+		TNT1 AAAAAAA 0 A_CustomMissile ("Brutal_FlyingBloodTrail5", 0, 0, random (0, 180), 2, random (0, 180))
+        XME1 EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 7 A_CustomMissile ("FlameTrails", 10, 0, random (0, 360), 2, random (70, 110))
+        TNT1 A 0 A_QueueCorpse
+		XME1 E 9009
+        TNT1 A 1
+		Stop
+     Splash:
+        TNT1 A 0
+        Stop
+    }
+}
+
+
+
+
+
+ACTOR Teeth
+{
+   Height 2
+   Radius 2
+   Speed 6
+   Scale 0.15
+   +DOOMBOUNCE
+   - NOGRAVITY
+   +WINDTHRUST
+   +CLIENTSIDEONLY
+   +MOVEWITHSECTOR
+   +MISSILE
+   +NOBLOCKMAP
+   -DROPOFF
+   +NOTELEPORT
+   +FORCEXYBILLBOARD
+   +NOTDMATCH
+   +THRUACTORS
+   +GHOST
+   States
+   {
+   Spawn:
+      XTET ABCDEFGHABCDEFGHABCDEFGHABCDEFGHABCDEFGHABCDEFGH 3
+      Stop
+
+   Death:
+	  TNT1 A 0
+	  TNT1 A 0 A_QueueCorpse
+      LCPJ A 0 A_Jump(256,"Rest1","Rest2")
+      Goto Rest1
+    Rest1:
+      XTET C 250
+      TNT1 A 0 A_CheckSight("Vanish")
+	Rest2:
+      XTET G 250
+      TNT1 A 0 A_CheckSight("Vanish")
+    Loop
+  
+     Vanish:
+     TNT1 A 0
+     Stop
+   }
+}
+
+
+ACTOR TeethNoBounce: Teeth
+{
+-DOOMBOUNCE
+}
+

@@ -1,1 +1,226 @@
-#include DemonRunesPatch.txt
+
+
+Actor DebrisGeneral
+{
++MISSILE
++NOBLOCKMAP
++NOGRAVITY
++DROPOFF
++NOTELEPORT
++FORCEXYBILLBOARD
++NOTDMATCH
++GHOST
+radius 1
+height 1
+mass 1
+damage 0
+}
+
+#include TOKENS.txt
+//Gore N' Blood
+#include GOREGROUPS.txt
+#include BLOOD.txt
+#include MEAT.txt
+#include LIMBS.txt
+#include GREENGORE.txt
+#include BLUEGORE.txt
+#include BURN.txt
+#include DEAD.txt
+
+#include Junk.txt
+#include Leg.txt
+#include Frozen.txt
+
+#include EXECUTIONS.txt
+
+//MISC
+#include HEAD_SYS.txt
+#include PARTICLES.txt
+#include SMOKE.txt
+#include CASING.txt
+#include FIRE.txt
+#include SPARKS.txt
+#include FLARES.txt
+#include ARTIFACT.txt
+#include HEALTH2.txt
+#include DROPABLES.txt
+#include PUFF.txt
+#include AMMO.txt
+#include EEEVILLL.txt
+
+//#include ARACHBOX
+
+//Guns Guns Guns
+#include DEFAULTWEAPON.txt
+
+#include TRACERS.txt
+#include MELEE.txt
+#include SAW.txt
+#include AXE.txt
+#include RIFLE.txt
+#include DUALRIFLE.txt
+#include PISTOL.txt
+#include DUALPISTOL.txt
+#include SUBMACHINEGUN.txt
+#include DUALSMG.txt
+#include SHOTGUN.txt
+#include SSG.txt
+#include MINIGUN.txt
+#include MACHINEGUN.txt
+#include ROCKETLAUNCHER.txt
+#include EXPLOSIVES.txt
+#include PLASMA.txt
+#include DUALPLASMA.txt
+#include BFG.txt
+#include DUALMP40.txt
+#include MP40.txt
+#include UNMAKER.txt
+#include DRAGONSLAYER.txt
+#include AmmoDroper.txt
+
+#include GRENADELAUNCH.txt
+#include BFG10k.txt
+#include RAILGUN.txt
+#include REVOLVER.txt
+#include REVOLVER2.txt
+#include ASSAULTSHOTGUN.txt
+#include WeaponSpawners.txt
+
+//Enemies
+#include ZOMBIEMEN.txt
+#include ZOMBIEMENVARIATIONS.txt
+#include ZOMBIEMANVARIATION2.txt
+#include MUMMY.txt
+#include SERGEANTS.txt
+#include COMANDO.txt
+#include LABGUY.txt
+#include IMPS.txt
+#include DEMONS.txt
+#include SPECTRE.txt
+#include KNIGHT.txt
+#include BARON.txt
+#include LOSTSOUL.txt
+#include SPIDERS.txt
+#include SPIDERS2.txt
+#include REVENANT.txt
+#include MANCUBUS.txt
+#include VOLCABUS.txt
+#include CACODEMO.txt
+#include PAINELEMENTAL.txt
+#include ARCHVILE.txt
+#include CYBERDEMON.txt
+#include MASTERMIND.txt
+#include ICONOFSIN.txt
+//ST Monsters
+#include BELPHEGOR.txt
+#include JUGGERNAUT.txt
+
+//Bosses
+#include MOTHERDEMON.txt
+#include NAZIS.txt
+#include UBERSOLDAT.txt
+
+//DECORATIONS
+#include FURNITURE.txt
+#include LAMPS.txt
+#include NATURAL.txt
+#include FIREWORKS.txt
+#include TORCHES.txt
+
+#include SPLASHES.txt
+
+//MeatShields
+#include ZMANSHIELD.txt
+#include IMPSHIELD.txt
+#include SGUYSHIELD.txt
+#include CGUYSHIELD.txt
+#include NAZISHIELD.txt
+#include EvilMarineSHIELD.txt
+#include ZombieCivilianSHIELD.txt
+
+#include FlameCannon.txt
+#include Flamethrower.txt
+#include HellishMissile.txt
+#include NukeLauncher.txt
+
+//Player Classes
+#include PLAYER.txt
+#include MARINES.txt
+#include Footsteps.txt
+#include ClassicWeapons.txt
+#include RevenantRune.txt
+#include DemonRuneBaron.txt
+
+#include BossBrain.txt
+#include Grenades.txt
+#include VanillaMonsters.txt
+#include DyingGuys.txt
+#include LastStandMonsters.txt
+#include SpecialDoom1Bosses.txt
+#include CapturedMarine.txt
+#include ChaingunMarine.txt
+#include ShotgunMarine.txt
+#include PlasmagunMarine.txt
+#include RocketLauncherMarine.txt
+#include BFGMarine.txt
+#include UnderwaterMonsters.txt
+#include StealthMonsters.txt
+#include Epic2Stuff.txt
+
+#include Teleports.txt
+#include Water.txt
+#include FlatDecals.txt
+//#include BrutalChexQuest.txt
+
+//MAP ENHANCEMENT SYSTEM
+#include KeyPlacement.txt
+#include MapSpecificDec.txt
+#include MapDetection.txt
+#include Doom1Remap.txt
+#include Doom2Remap.txt
+#include PlutoniaRemap.txt
+#include TNTRemap.txt
+#include OthermapsRemap.txt
+
+//VEHICLES
+#include Tank.txt
+#include ArtilleryTank.txt
+#include Mech.txt
+#include Helicopter.txt
+#include HeavyMachinegun.txt
+#include VehicleCrashes.txt
+#include Repairs.txt
+#include EnemyTanks.txt
+#include Critters.txt
+#include BIKE.txt
+actor STPLasmaRifleReplacer : RandomSpawner
+{
+    DropItem "Plasma_Gun"
+	DropItem "Plasma_Gun"
+	DropItem "Plasma_Gun"
+    DropItem "Railgun"
+}
+
+actor STBFGReplacer : RandomSpawner
+{
+    DropItem "BIG_FUCKING_GUN"
+	DropItem "BIG_FUCKING_GUN"
+	DropItem "BIG_FUCKING_GUN"
+    DropItem "BFG10K"
+}
+
+actor STRocketLauncherReplacer : RandomSpawner
+{
+    DropItem "Rocket_Launcher"
+	DropItem "Rocket_Launcher"
+	DropItem "Rocket_Launcher"
+    DropItem "GrenadeLauncher"
+}
+
+actor STSSGReplacer : RandomSpawner
+{
+    DropItem "SSG"
+	DropItem "SSG"
+	DropItem "SSG"
+    DropItem "AssaultShotgun"
+}

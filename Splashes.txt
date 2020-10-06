@@ -1,0 +1,651 @@
+
+
+
+
+
+
+////////////////////////Blood
+
+Actor BloodParticleX
+{
+  Height 2
+  Radius 2
+  Mass 0
+  +Missile
+  +NoBlockMap
+  -NoGravity
+  +DontSplash
+  +FORCEXYBILLBOARD
+  +THRUACTORS
+  +CLIENTSIDEONLY
+  +NOTELEPORT
+  -DOOMBOUNCE
+  BounceFactor 0.1
+  Gravity 0.5
+  RenderStyle Add
+  Scale 1.0
+  Alpha 0.5
+  //Speed 2
+  Speed 2
+  //decal BloodWaterDecal
+  States
+  {
+  Spawn:
+  TNT1 A 1 
+  TNT1 A 0 A_ChangeFlag(DOOMBOUNCE, 0)
+  TNT1 A 1
+  Goto Stand
+  Stand:
+    BSPH ABCDDDDDD 4
+    Stop
+ Death:
+ BSPL ABCDEFGH 1
+ Stop
+	
+  }
+}
+
+
+Actor BloodParticleXFAster: BloodParticleX
+{
+  Speed 4
+}
+
+
+Actor BloodParticleXSpawner
+{
+	Projectile
++RANDOMIZE
++FORCEXYBILLBOARD
++NOTELEPORT
+damage 0
+radius 2
+height 0
+speed 30
+renderstyle ADD
+alpha 0.5
+scale .15
+states
+	{
+	Spawn:
+		TNT1 AA 1 A_JumpIf(waterlevel < 1, "SurfaceSpawn")
+		Stop
+	
+	SurfaceSpawn:
+		TNT1 AAAAAAAAAAA 0 A_CustomMissile ("BloodLiquidParticleX", 0, 0, random (0, 360), 2, random (10, 40))
+		TNT1 AAAAA 1 A_SpawnItem("SpawnBloodLiquidParticleX")
+		Stop
+	Death:
+		Stop
+	XDeath:
+	TNT1 A 0
+	Stop
+	}
+}
+
+
+Actor SpawnBloodLiquidParticleX
+{
++NOCLIP
++NOGRAVITY
++NOTELEPORT
+states
+	{
+	Spawn:
+        TNT1 AAA 0 A_CustomMissile ("BloodLiquidParticleX", 0, 0, random (0, 360), 2, random (10, 90))
+		Stop
+	}
+}
+
+
+Actor BloodLiquidParticleX
+{
+  Height 1
+  Radius 1
+  Mass 0
+  +Missile
+  -NoGravity
+  +DontSplash
+  +BOUNCEONCEILINGS
+  +FORCEXYBILLBOARD
+  +THRUACTORS
+  +CLIENTSIDEONLY
+  +NOTELEPORT
+  +DontSplash
+  BounceFactor 0.1
+  Gravity 0.5
+  RenderStyle Translucent
+  Scale 2.0
+  Alpha 0.3
+  //decal BloodWaterDecal
+  Speed 7
+  States
+  {
+	  Spawn:
+			MSBL ABCDEFG 2
+			MSBL H 100
+		Stop
+ Death:
+ TNT1 A 0
+ TNT1 A 0 A_SetScale(1.9, 1.9)
+ BSPL ABCDEFGH 1
+ Stop
+	
+  }
+}
+
+actor BloodSplashBase3
+{
+  Radius 1
+  Height 1
+  Mass 9999999
+  alpha .6
+  Scale 1.5
+  +NOGRAVITY
+  +THRUACTORS
+  +DONTSPLASH
+  +CLIENTSIDEONLY
+  States
+  {
+  Spawn:
+	TNT1 FF 0 A_CustomMissile ("BloodParticleX", 12, random(-5,5), random (0, 360), 2, random (50, 140))
+	TNT1 FF 0 A_CustomMissile ("BloodParticleXFaster", 12, random(-5,5), random (0, 360), 2, random (50, 140))
+	TNT1 A 0 A_RadiusGive("IsOverBlood", 64, RGF_OBJECTS, 1)
+	TNT1 A 0 A_SpawnItem("BloodSplashWaves")
+	TNT1 A 16
+	TNT1 A 0 A_SpawnItem("BloodSplashWaves")
+	TNT1 A 16 
+	TNT1 A 0 A_SpawnItem("BloodSplashWaves")
+    Stop
+  }
+}
+
+Actor BloodSplashWaves
+{
+	+CLIENTSIDEONLY
+	+THRUACTORS
+	+DONTSPLASH
+	Mass 0
+	States
+		{
+			Spawn:
+			TNT1 A 0
+			TNT1 A 0 ACS_NamedExecuteAlways("BDCheckWaterRipples", 0, 0, 0, 0)
+			TNT1 A 3
+			TNT1 A 0 A_JumpIfInventory("Clip2", 1, "Vanish")
+			BSPH DE 4 A_SetScale(1.8, 1.8)
+			BSPH FHI 4 
+			TNT1 A 1 A_SetScale(2.2, 1.4)
+			BSPH DEFHI 6 
+			TNT1 A 1 A_SetScale(2.8, 0.8)
+			BSPH DEFHI 8
+			//TNT1 A 1 A_SetScale(2.8, 0.5)
+			//SPSH DEFHI 16
+			Stop
+			
+			
+			Vanish:
+				TNT1 A 0
+				Stop
+			}
+}
+
+actor BloodSplashBaseSmall : BloodSplashBase3
+{
+  Scale 0.5
+  States
+  {
+  Spawn:
+	TNT1 FF 0 A_CustomMissile ("BloodParticleX", 12, random(-5,5), random (0, 360), 2, random (50, 140))
+	TNT1 F 0 A_CustomMissile ("BloodParticleXFaster", 12, random(-5,5), random (0, 360), 2, random (50, 140))
+	TNT1 A 0 A_RadiusGive("IsOverBlood", 64, RGF_OBJECTS, 1)
+    TNT1 A 0 A_Explode(2, 6)
+	TNT1 A 0 A_NoBlocking
+    Stop
+	}
+}
+
+
+/////////////////// Nukage
+
+
+
+Actor nukageParticleX
+{
+  Height 2
+  Radius 2
+  Mass 0
+  +Missile
+  -NoGravity
+  +DontSplash
+  +FORCEXYBILLBOARD
+  +THRUACTORS
+  +CLIENTSIDEONLY
+  +NOTELEPORT
+  Gravity 0.5
+  RenderStyle Add
+  Scale 1.0
+  Alpha 0.5
+  //Speed 2
+  
+  //decal slimesplash
+  Speed 3
+  States
+  {
+  Spawn:
+  TNT1 A 1 
+  TNT1 A 0 A_ChangeFlag(DOOMBOUNCE, 0)
+  TNT1 A 1
+  Goto Stand
+  Stand:
+    NKSH ABCDDDDDD 4
+    Stop
+ Death:
+ NSPL ABCDEFGH 1
+ Stop
+	
+  }
+}
+
+
+Actor nukageParticleXFAster: nukageParticleX
+{
+  Speed 6
+}
+
+actor nukageSplashBase
+{
+  Radius 1
+  Height 1
+  Mass 9999999
+  alpha .6
+  Scale 1.5
+  +NOGRAVITY  +THRUACTORS  +DONTSPLASH  +CLIENTSIDEONLY
+  States
+  {
+  Spawn:
+	TNT1 FFF 0 A_CustomMissile ("nukageParticleX", 12, random(-5,5), random (0, 360), 2, random (50, 140))
+	TNT1 FFF 0 A_CustomMissile ("nukageParticleXFaster", 12, random(-5,5), random (0, 360), 2, random (50, 140))
+	TNT1 A 0 A_RadiusGive("IsOverNukage", 64, RGF_OBJECTS, 1)
+	TNT1 A 16
+	TNT1 A 0 A_SpawnItem("NukageSplashWaves")
+	TNT1 A 16 
+	TNT1 A 0 A_SpawnItem("NukageSplashWaves")
+    Stop
+  }
+}
+
+Actor NukageSplashWaves
+{
+	+CLIENTSIDEONLY
+	+THRUACTORS
+	+DONTSPLASH
+	Mass 0
+	States
+		{
+			Spawn:
+			TNT1 A 0
+			TNT1 A 0 ACS_NamedExecuteAlways("BDCheckWaterRipples", 0, 0, 0, 0)
+			TNT1 A 3
+			TNT1 A 0 A_JumpIfInventory("Clip2", 1, "Vanish")
+			SLDG DE 4 BRIGHT A_SetScale(1.2, 1.4)
+			SLDG FHI 4 BRIGHT
+			TNT1 A 1 A_SetScale(1.6, 1.0)
+			SLDG DEFHI 6 BRIGHT
+			TNT1 A 1 A_SetScale(1.8, 0.6)
+			SLDG DEFHI 8 BRIGHT
+			//TNT1 A 1 A_SetScale(2.8, 0.5)
+			//SPSH DEFHI 16
+			Stop
+			
+			
+			Vanish:
+				TNT1 A 0
+				Stop
+			}
+}
+
+actor NukageSplashBaseSmall : nukageSplashBase
+{
+  Scale 0.5
+  States
+  {
+  Spawn:
+	TNT1 FFF 0 A_CustomMissile ("nukageParticleX", 12, random(-5,5), random (0, 360), 2, random (50, 140))
+	TNT1 FFF 0 A_CustomMissile ("nukageParticleXFaster", 12, random(-5,5), random (0, 360), 2, random (50, 140))
+	TNT1 A 0 A_RadiusGive("IsOverNukage", 64, RGF_OBJECTS, 1)
+	TNT1 A 0 A_Explode(2, 6)
+	TNT1 A 0 A_SpawnItem("NukageSplashWaves")
+	TNT1 A 0
+	TNT1 A 0 A_NoBlocking
+    Stop
+	
+  Death.CauseWaterSplash:
+	tNT1 A 0 A_CustomMissile ("GreenParticleXSpawner", 0, 0, random (0, 360), 2, random (80, 110))
+	//TNT1 A 0 A_SpawnItem("GiantWaterRicochet")
+	TNT1 A 0 A_PlaySound("bigspl1")
+	TNT1 A 0 A_NoBlocking
+	TNT1 AAA 0 A_SpawnItemEx ("Footstep91",random(-95,95),random(-95,95), 40,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	TNT1 A 8 
+	TNT1 AA 0 A_SpawnItemEx ("Footstep91",random(-95,95),random(-95,95), 40,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	Stop
+  }
+}
+
+
+Actor GreenParticleXSpawner: BloodParticleXSpawner
+{
+Translation "179:191=112:127"
+states
+	{
+	Spawn:
+		TNT1 AA 1 A_JumpIf(waterlevel < 1, "SurfaceSpawn")
+		Stop
+	
+	SurfaceSpawn:
+		TNT1 AAAAAAAAAAA 0 A_CustomMissile ("GreenLiquidParticleX", 0, 0, random (0, 360), 2, random (30, 45))
+		TNT1 AAAAA 1 A_SpawnItem("SpawnGreenLiquidParticleX")
+		Stop
+	Death:
+		Stop
+	XDeath:
+	TNT1 A 0
+	Stop
+	}
+}
+
+
+Actor SpawnGreenLiquidParticleX
+{
++NOCLIP
++NOGRAVITY
++NOTELEPORT
+states
+	{
+	Spawn:
+        TNT1 AAA 0 A_CustomMissile ("GreenLiquidParticleX", 0, 0, random (0, 360), 2, random (40, 85))
+		Stop
+	}
+}
+
+
+Actor GreenLiquidParticleX: BloodLiquidParticleX
+{
+  Translation "179:191=112:127"
+  RenderStyle Add
+  Alpha 0.8
+  //decal BloodWaterDecal
+  damagetype "Slime"
+  States
+  {
+	  Spawn:
+			MSBL ABCDEFG 2 BRIGHT
+			MSBL H 120 BRIGHT
+		Stop
+ Death:
+ TNT1 A 0
+ TNT1 A 0 A_SetScale(1.9, 1.9)
+ //TNT1 A 0 A_Explode(10, 120)
+ BSPL ABCDEFGH 1
+ Stop
+	
+  }
+}
+
+
+
+/////////////////// Slime
+
+
+
+Actor slimeParticleX
+{
+  Height 2
+  Radius 2
+  Mass 0
+  +Missile
+  +NoBlockMap
+  -NoGravity
+  +DontSplash
+  +FORCEXYBILLBOARD
+  +THRUACTORS
+  +CLIENTSIDEONLY
+  +NOTELEPORT
+  BounceFactor 0.1
+  Gravity 0.5
+  RenderStyle Add
+  Scale 1.0
+  Alpha 0.8
+  //decal watersplash
+  //Speed 2
+  Speed 2
+  States
+  {
+  Spawn:
+  TNT1 A 1 
+  TNT1 A 0 A_ChangeFlag(DOOMBOUNCE, 0)
+  TNT1 A 1
+  Goto Stand
+  Stand:
+    SLIM ABCDDDDDD 4
+    Stop
+ Death:
+ LSPL ABCDEFGH 1
+ Stop
+	
+  }
+}
+
+
+Actor slimeParticleXFAster: slimeParticleX
+{
+  Speed 4
+  Scale 1.2
+}
+
+Actor slimeParticleXSuperFast: slimeParticleX
+{
+  Speed 7
+  Gravity 0.7
+  Scale 1.0
+}
+
+
+Actor SlimeParticleXSpawner
+{
+	Projectile
++RANDOMIZE
++FORCEXYBILLBOARD
++NOTELEPORT
+damage 0
+radius 2
+height 0
+speed 40
+renderstyle ADD
+alpha 0.9
+scale .15
+states
+	{
+	Spawn:
+		TNT1 AAAAA 1 A_JumpIf(waterlevel < 1, "SurfaceSpawn")
+		Stop
+	
+	SurfaceSpawn:
+	    TNT1 AAAAAAAAAAAA 0 A_SpawnItem("SpawnBrownLiquidParticleX")
+		TNT1 AAAA 1 A_SpawnItem("SpawnBrownLiquidParticleX")
+		//TNT1 A 1 A_SpawnItem("WaterSplasher3", 0, 40)
+		Stop
+	Death:
+		Stop
+	XDeath:
+	TNT1 A 0
+	Stop
+	}
+}
+
+
+Actor BrownParticleXSpawner: BloodParticleXSpawner
+{
+Translation "179:191=144:151"
+states
+	{
+	Spawn:
+		TNT1 AA 1 A_JumpIf(waterlevel < 1, "SurfaceSpawn")
+		Stop
+	
+	SurfaceSpawn:
+		TNT1 AAAAAAAAAAA 0 A_CustomMissile ("BrownLiquidParticleX", 0, 0, random (0, 360), 2, random (30, 45))
+		TNT1 AAAAA 1 A_SpawnItem("SpawnBrownLiquidParticleX")
+		Stop
+	Death:
+		Stop
+	XDeath:
+	TNT1 A 0
+	Stop
+	}
+}
+
+
+Actor SpawnBrownLiquidParticleX
+{
++NOCLIP
++NOGRAVITY
++NOTELEPORT
+states
+	{
+	Spawn:
+        TNT1 AAA 0 A_CustomMissile ("BrownLiquidParticleX", 0, 0, random (0, 360), 2, random (40, 85))
+		Stop
+	}
+}
+
+
+Actor BrownLiquidParticleX: BloodLiquidParticleX
+{
+  Translation "179:191=144:151"
+  RenderStyle Add
+  Alpha 0.8
+  //decal BloodWaterDecal
+  damagetype "Slime"
+  States
+  {
+	  Spawn:
+			MSBL ABCDEFG 2 BRIGHT
+			MSBL H 120 BRIGHT
+		Stop
+ Death:
+ TNT1 A 0
+ TNT1 A 0 A_SetScale(1.9, 1.9)
+ //TNT1 A 0 A_Explode(10, 120)
+ BSPL ABCDEFGH 1
+ Stop
+	
+  }
+}
+
+
+actor slimeSplashBase
+{
+  Radius 1
+  Height 1
+  Mass 999999
+  alpha .8
+  Scale 1.5
+  +NOGRAVITY
+  +THRUACTORS
+  +DONTSPLASH
+  +CLIENTSIDEONLY
+  States
+  {
+  Spawn:
+	TNT1 FFF 0 A_CustomMissile ("slimeParticleX", 12, random(-5,5), random (0, 360), 2, random (50, 140))
+	TNT1 FFF 0 A_CustomMissile ("slimeParticleXFaster", 12, random(-5,5), random (0, 360), 2, random (50, 140))
+	TNT1 A 0 A_RadiusGive("IsOverSlime", 64, RGF_OBJECTS, 1)
+	//TNT1 A 0 A_SpawnItem("SlimeSplashWaves")
+	TNT1 A 16
+	//TNT1 A 0 A_SpawnItem("SlimeSplashWaves")
+	TNT1 A 16 
+	//TNT1 A 0 A_SpawnItem("SlimeSplashWaves")
+    Stop
+  }
+}
+
+Actor SlimeSplashWaves
+{
+	+CLIENTSIDEONLY
+	+THRUACTORS
+	+DONTSPLASH
+	Mass 0
+	States
+		{
+			Spawn:
+			TNT1 A 0
+			TNT1 A 0 ACS_NamedExecuteAlways("BDCheckWaterRipples", 0, 0, 0, 0)
+			TNT1 A 3
+			TNT1 A 0 A_JumpIfInventory("Clip2", 1, "Vanish")
+			SLIM DE 4 A_SetScale(1.8, 1.8)
+			SLIM FHI 4 
+			TNT1 A 1 A_SetScale(2.2, 1.4)
+			SLIM DEFHI 6 
+			TNT1 A 1 A_SetScale(2.8, 0.8)
+			SLIM DEFHI 8
+			//TNT1 A 1 A_SetScale(2.8, 0.5)
+			//SPSH DEFHI 16
+			Stop
+			
+			
+			Vanish:
+				TNT1 A 0
+				Stop
+			}
+}
+
+actor slimeSplashBaseSmall : slimeSplashBase
+{
+   Radius 1
+  Height 1
+  Mass 999999
+  alpha .5
+  Scale 0.2
+  +DONTSPLASH
+  +NOGRAVITY
+  +THRUACTORS
+  +DONTSPLASH
+  +CLIENTSIDEONLY
+  States
+  {
+  Spawn:
+	TNT1 FFF 0 A_CustomMissile ("slimeParticleX", 12, 0, random (0, 360), 2, random (50, 140))
+	TNT1 FF 0 A_CustomMissile ("slimeParticleXFaster", 12, 0, random (0, 360), 2, random (50, 140))
+	TNT1 A 0 A_RadiusGive("IsOverSlime", 64, RGF_OBJECTS, 1)
+    SLIM HI 6
+	SLIM HI 6
+	TNT1 A 0 A_NoBlocking
+    Stop
+  }
+}
+
+
+actor LavaSplashBase : slimeSplashBase
+{
+   Radius 1
+  Height 1
+  Mass 999999
+  alpha .5
+  Scale 0.2
+  +DONTSPLASH
+  +NOGRAVITY
+  +THRUACTORS
+  +DONTSPLASH
+  +CLIENTSIDEONLY
+  States
+  {
+  Spawn:
+	TNT1 A 0
+	TNT1 A 0 A_RadiusGive("IsOverLava", 64, RGF_OBJECTS, 1)
+    SLIM HI 6
+	SLIM HI 6
+	TNT1 A 0 A_NoBlocking
+    Stop
+  }
+}

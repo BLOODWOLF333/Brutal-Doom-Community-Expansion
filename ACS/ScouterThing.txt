@@ -1,0 +1,73 @@
+#library "EnemyScouterThing"
+#include "zcommon.acs"
+
+str enemyname;
+int enemyhealthmax;
+int enemyhealth;
+int monstercount;
+
+script "EnemyScouterThing" ENTER
+{
+	monstercount = GetLevelInfo (LEVELINFO_KILLED_MONSTERS);
+
+	while(TRUE)
+	{
+		//NOTE:	PickActor requires careful handling. See the zdoom wiki about that!
+		//		Actor's old TID needs to be saved, assigned a new TID, then restored back to old TID to keep things operational.
+		int old_tid = PickActor(0, GetActorAngle(0), GetActorPitch(0), 2048.0, 0, MF_SOLID | MF_SHOOTABLE | MF_COUNTKILL | !MF_CORPSE, ML_BLOCKEVERYTHING | ML_BLOCKHITSCAN, PICKAF_RETURNTID);
+		
+		int new_tid = UniqueTID();
+	
+		if(PickActor(0, GetActorAngle(0), GetActorPitch(0), 2048.0, new_tid, MF_SOLID | MF_SHOOTABLE | MF_COUNTKILL | !MF_CORPSE, ML_BLOCKEVERYTHING | ML_BLOCKHITSCAN, PICKAF_FORCETID))
+		{	
+		
+			//GET ACTOR INFO
+			enemyname = GetActorProperty(new_tid, APROP_NameTag);			//name
+			enemyhealthmax = GetActorProperty(new_tid, APROP_SpawnHealth);	//max hp
+			enemyhealth = GetActorProperty(new_tid, APROP_HEALTH); 			//current hp
+		
+		
+			//ACTOR HEALTH DISPLAY
+			if(enemyhealth > 0)
+			{
+				HudMessage(	s:"\n",
+						d:enemyhealth,
+						s:"/",
+						d:enemyhealthmax;
+						HUDMSG_FADEOUT, 112224, CR_GOLD, 0.5, 0.02, 0.6, 0.2);	
+						
+				//ACTOR NAME DISPLAY
+				HudMessage(	s:"", 
+						s:enemyname;
+						HUDMSG_FADEOUT, 112223, CR_DARKRED, 0.5, 0.02, 0.6, 0.2);
+				
+				//ACTOR FRIENDLY INDICATOR	
+				if (GetActorProperty(new_tid, APROP_Friendly) == TRUE)
+				{
+					HudMessage(	s:"\n\n-Friendly-";
+								HUDMSG_FADEOUT, 112225, CR_GREEN, 0.5, 0.02, 0.6, 0.2);
+				}
+				
+			}
+						
+
+			Thing_ChangeTID(new_tid, old_tid);
+		}
+		
+		/*
+		//Extra feature: Kill confirmer. Turned off, since I think it might be too obnoxious.
+		if(monstercount != GetLevelInfo (LEVELINFO_KILLED_MONSTERS))
+		{
+			monstercount = GetLevelInfo (LEVELINFO_KILLED_MONSTERS);
+			HudMessage(	s:"\n\n\n-Kill-";
+						HUDMSG_FADEINOUT, 0, CR_OLIVE, 0.5, 0.02, 0.5, 0.1, 0.5);
+			
+			//for lulz
+			//HudMessage(	s:"\n\n\nOscar Mike Tango Down";
+			//			HUDMSG_FADEINOUT, 0, CR_OLIVE, 0.5, 0.02, 0.5, 0.1, 0.5);
+		}	
+		*/
+		
+		Delay(1);
+	}
+}

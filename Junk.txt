@@ -1,0 +1,234 @@
+
+ACTOR XJunk1: XDeath1
+{
+    +CLIENTSIDEONLY
+	+DONTSPLASH
+	+DOOMBOUNCE
+	BounceFactor 0.5
+    Speed 14
+	Gravity 0.8
+    DeathSound "none"
+	SeeSound "none"
+	Decal None
+    Scale 1.0
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        JNK6 ABCD 3
+        Loop
+    Death:
+
+        //TNT1 A 0 A_SpawnItem("NashGore_BloodSpot",0,0,0,1)
+        JNK6 A 2000
+        Stop
+    Splash:
+        TNT1 A 1
+		JNK6 A -1
+        Stop
+    }
+}
+
+
+ACTOR XJunk2: XJunk1
+{
+    BounceFactor 0.3
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        JNK7 ABCD 3
+        Loop
+    Death:
+
+        //TNT1 A 0 A_SpawnItem("NashGore_BloodSpot",0,0,0,1)
+        JNK7 A 2000
+        Stop
+    Splash:
+        TNT1 A 1
+		JNK7 A -1
+        Stop
+    }
+}
+
+
+ACTOR XJunk3: XJunk1
+{
+    BounceFactor 0.7
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        JNK8 ABCD 3
+        Loop
+    Death:
+
+        //TNT1 A 0 A_SpawnItem("NashGore_BloodSpot",0,0,0,1)
+        JNK8 A 2000
+        Stop
+    Splash:
+        TNT1 A 1
+		JNK8 A -1
+        Stop
+    }
+}
+
+
+ACTOR XJunk4: XJunk1
+{
+    -DOOMBOUNCE
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        JNK4 ABCD 3
+        Loop
+    Death:
+
+        //TNT1 A 0 A_SpawnItem("NashGore_BloodSpot",0,0,0,1)
+        JNK4 A 2000
+        Stop
+    Splash:
+        TNT1 A 1
+		JNK4 A -1
+        Stop
+    }
+}
+
+
+ACTOR XJunk5: XJunk1
+{
+    -DOOMBOUNCE
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        JNK5 ABCD 3
+        Loop
+    Death:
+
+        //TNT1 A 0 A_SpawnItem("NashGore_BloodSpot",0,0,0,1)
+        JNK5 A 2000
+        Stop
+    Splash:
+        TNT1 A 1
+		JNK5 A -1
+        Stop
+    }
+}
+
+actor ArachnotronBlood: SawBlood
+{
+ states
+ {
+  HitMetal:
+	   TNT1 A 1
+	   TNT1 A 0 A_SpawnItem("HitPuff")
+	   TNT1 A 0 A_RadiusGIve("ArachnotronChasisHits", 80, RGF_MONSTERS, 1)
+	   TNT1 A 0 A_RadiusGIve("ArachnotronChasisLastHit", 80, RGF_MONSTERS, 1)
+	   //TNT1 A 0 A_GiveToTarget("ArachnotronChasisHits", 1)
+	   //TNT1 A 0 A_GiveToTarget("ArachnotronChasisLastHit", 1)
+	   Stop
+    SPAWN:
+		tnt1 a 1
+		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+		TNT1 A 0 A_JumpIf((z - floorz) > 40, 1)
+	Goto HitMetal
+		TNT1 A 0
+		TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckBloodIntensity")
+		TNT1 A 2
+		Goto Spawn2
+ }
+}
+
+
+actor ArachnotronSawBlood : ArachnotronBlood
+{
+-ALLOWPARTICLES 
+Speed 1
+ states
+ {
+  Spawn:
+		tnt1 a 1
+		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+		TNT1 A 0 A_JumpIf((z - floorz) > 45, 1)
+	Goto HitMetal
+        TNT1 A 0
+		TNT1 A 0 A_RadiusGive("ChainsawHitRed", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
+		TNT1 A 0 A_RadiusGive("PowerBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
+		TNT1 A 0 A_CustomMissile ("BloodmistChainsaw", -10, 0, random (0, 360), 2, random (60, 90))
+		TNT1 A 0 A_CustomMissile ("XDeath1", 0, 0, random (0, 360), 2, random (40, 80))
+		TNT1 A 0 A_CustomMissile ("ChainsawWallRedBlood", 0, 0, random (0, 360), 2, random (-10, 80))
+		TNT1 A 0 A_PlaySound("CSAWFLESH")
+		TNT1 A 0 Radius_Quake (2, 2, 0, 2, 0)
+		Stop
+ }
+}
+
+
+
+actor MastermindBlood: SawBlood
+{
++PUFFGETSOWNER
+ states
+ {
+  HitMetal:
+	   TNT1 A 1
+	   TNT1 A 0 A_SpawnItem("HitPuff")
+	   TNT1 A 0 A_GiveToTarget("ArachnotronChasisHits", 1)
+	   TNT1 A 0 A_GiveToTarget("ArachnotronChasisLastHit", 1)
+	   Stop
+    SPAWN:
+		tnt1 a 1
+		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+		TNT1 A 0 A_JumpIf((z - floorz) > 70, 1)
+	Goto HitMetal
+		TNT1 A 0
+		TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckBloodIntensity")
+		//TNT1 A 0 A_Chan
+		TNT1 A 0 //A_Jump
+		TNT1 A 2
+		Goto Spawn2
+ }
+}
+
+
+actor Cyberdemon_Blood : Brutal_Blood
+{
+ states
+ {
+  Spawn:
+        TNT1 A 0
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+		TNT1 A 0 A_CustomMissile ("Blood", 7, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_SpawnItem ("RicoChet")
+		//TNT1 A 0 A_SpawnItem ("BloodHit")
+        BLOD BCD 0
+        stop
+ }
+}
+
+
+
+actor Cyberdemon_SawBlood : Brutal_Blood
+{
+ states
+ {
+  Spawn:
+        TNT1 A 0
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+		TNT1 A 0 A_SpawnItem ("RicoChet")
+		TNT1 A 0
+		TNT1 A 0 A_RadiusGive("ChainsawHitRed", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
+		TNT1 A 0 A_RadiusGive("PowerBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
+		TNT1 A 0 A_CustomMissile ("BloodmistChainsaw", -10, 0, random (0, 360), 2, random (60, 90))
+		TNT1 A 0 A_CustomMissile ("ChainsawWallRedBlood", 0, 0, random (0, 360), 2, random (-10, 80))
+		TNT1 A 0 A_PlaySound("CSAWFLESH")
+		TNT1 A 0 Radius_Quake (2, 2, 0, 2, 0)
+		Stop
+		}
+}
+

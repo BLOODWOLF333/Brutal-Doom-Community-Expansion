@@ -1,0 +1,333 @@
+Actor TechPillar1 : TechPillar replaces TechPillar
+{
++SHOOTABLE
++INVULNERABLE
++NOBLOOD
++FORCEYBILLBOARD
++notarget
+Mass 900000
+}
+
+ACTOR ImpaledSkulls: HeadsOnAStick Replaces HeadsOnAStick
+{
+	Radius 16
+	Height 9
+	//Monster
+    //+FRIENDLY
+    //-SHOOTABLE
+	+NOTAUTOAIMED
+	+NOTARGET
+    Mass 999999
+	States
+	{
+	Vanilla:
+		POL2 A 1
+		POL2 A -1
+		Stop
+		
+	Spawn:
+		POL2 A 0
+		MARN A 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+		TNT1 A 1
+		
+	Spawn22:
+		POL2 B 0
+        TNT1 A 0 A_SpawnItem ("DecorativeSkullB", 1, 10)
+        TNT1 A 0 A_SpawnItem ("DecorativeSkullD", -1, 20)
+        TNT1 A 0 A_SpawnItem ("DecorativeSkullC", 1, 30)
+        TNT1 A 0 A_SpawnItem ("DecorativeSkullB", -1, 40)
+        TNT1 A 0 A_SpawnItem ("DecorativeSkullA", 1, 50)
+		Goto Stay
+    Stay:
+        POL2 V -1
+        Stop
+	}
+}
+
+ACTOR DecorativeSkullA
+{
+    Radius 3
+    Height 9
+    Scale 0.98
+	Mass 20
+    Health 1
+    Monster
+    +FRIENDLY
+    +SHOOTABLE
+    +SOLID
+    +MOVEWITHSECTOR
+    +NOBLOOD
+	+NOTAUTOAIMED
+    damagefactor "Avoid", 0.0 
+    damagefactor "KillMe", 0.0 damagefactor "Trample", 0.0
+    States
+    {
+    Spawn:
+    SKDC A 1
+	SKDC A -1
+    Stop
+    Death:
+    TNT1 A 0 A_CustomMissile ("LSpart2", 0, 0, random (0, 360), 2, random (0, 160))
+    TNT1 AAAAAA 0 A_CustomMissile ("LSpart1", 0, 0, random (0, 360), 2, random (0, 160))
+    Stop
+    }
+}
+
+ACTOR DecorativeSkullB: DecorativeSkullA
+{
+States
+{
+    Spawn:
+    SKDC B 1
+	SKDC B -1
+    Stop
+    }
+}
+
+ACTOR DecorativeSkullC: DecorativeSkullA
+{
+States
+{
+    Spawn:
+    SKDC C 1
+	SKDC C -1
+    Stop
+    }
+}
+
+ACTOR DecorativeSkullD: DecorativeSkullA
+{
+States
+{
+    Spawn:
+    SKDC D 1
+	SKDC D -1
+    Stop
+    }
+}
+
+
+ACTOR ImpaledHead: HeadOnAStick Replaces HeadOnAStick
+{
+	States
+	{
+	Vanilla:
+		POL4 A 1
+		POL4 A -1
+		Stop
+		
+	Spawn:
+		POL4 B 0
+		MARN A 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+		TNT1 A 1
+	
+	Spawn32:
+        TNT1 A 0
+        TNT1 A 0 A_Jump (128, "Spawn2","Spawn3","Spawn4")
+		POL4 I -1
+		Stop
+
+	Spawn2:
+		POL4 J -1
+		Stop
+
+	Spawn3:
+		POL4 K -1
+		Stop
+
+	Spawn4:
+		POL4 L -1
+		Stop
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// Tall green column -------------------------------------------------------
+
+ACTOR BDTallGreenColumn Replaces TallGreenColumn
+{
+	Game Doom
+	Radius 16
+	Height 52
+	ProjectilePassHeight -16
+	+SOLID
+	+USESPECIAL
+	+SHOOTABLE
+	+NOBLOOD
+	+NOTARGET
+	+INVULNERABLE
+	Mass 999999
+	States
+	{
+	Spawn:
+		COL1 A 5
+		COL1 A 5
+		TNT1 A 0 A_JumpIfInventory("MarkForDeletion", 1, "Disappear")
+		COL1 A -1
+		Stop
+	Disappear:
+		TNT1 A 0
+		TNT1 A 0 A_NoBlocking
+		Stop	
+	}
+}
+
+// Short green column ------------------------------------------------------
+
+ACTOR BDShortGreenColumn Replaces ShortGreenColumn
+{
+	Game Doom
+	Radius 16
+	Height 40
+	ProjectilePassHeight -16
+	+SOLID
+	+USESPECIAL
+	+SHOOTABLE
+	+NOBLOOD
+	+NOTARGET
+	+INVULNERABLE
+	Mass 999999
+	States
+	{
+	Spawn:
+		COL2 A 4
+		COL2 A 4
+		TNT1 A 0 A_JumpIfInventory("MarkForDeletion", 1, "Disappear")
+		COL2 A -1
+		Stop
+	Disappear:
+		TNT1 A 0
+		TNT1 A 0 A_NoBlocking
+		Stop	
+	}
+}
+
+// Tall red column ---------------------------------------------------------
+
+ACTOR BDTallRedColumn Replaces TallRedColumn
+{
+	Game Doom
+	Radius 16
+	Height 52
+	ProjectilePassHeight -16
+	+SOLID
+	+USESPECIAL
+	+SHOOTABLE
+	+NOBLOOD
+	+NOTARGET
+	+INVULNERABLE
+	Mass 999999
+	States
+	{
+	Spawn:
+		COL3 A 35
+		TNT1 A 0 A_JumpIfInventory("MarkForDeletion", 1, "Disappear")
+		COL3 A -1
+		Stop
+	Disappear:
+		TNT1 A 0
+		TNT1 A 0 A_NoBlocking
+		Stop	
+	}
+}
+
+// Short red column --------------------------------------------------------
+
+ACTOR BDShortRedColumn replaces ShortRedColumn
+{
+	Game Doom
+	Radius 16
+	Height 40
+	ProjectilePassHeight -16
+	+SOLID
+	+USESPECIAL
+	+SHOOTABLE
+	+NOBLOOD
+	+NOTARGET
+	+INVULNERABLE
+	Mass 999999
+	States
+	{
+	Spawn:
+		COL4 A 1
+		TNT1 A 0 A_SpawnItemEx("EvidenceCheckerRedPillar", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+		COL4 A 35
+		TNT1 A 0 A_JumpIfInventory("MarkForDeletion", 1, "Disappear")
+		COL4 A -1
+		Stop
+	Disappear:
+		TNT1 A 0
+		TNT1 A 0 A_NoBlocking
+		Stop	
+	}
+}
+
+// Skull column ------------------------------------------------------------
+
+ACTOR BDSkullColumn Replaces SkullColumn
+{
+	Game Doom
+	Radius 16
+	Height 40
+	ProjectilePassHeight -16
+	+SOLID
+	+USESPECIAL
+	+SHOOTABLE
+	+NOBLOOD
+	+NOTARGET
+	+INVULNERABLE
+	Mass 999999
+	States
+	{
+	Spawn:
+		COL6 A 35
+		TNT1 A 0 A_JumpIfInventory("MarkForDeletion", 1, "Disappear")
+		COL6 A -1
+		Stop
+	Disappear:
+		TNT1 A 0
+		TNT1 A 0 A_NoBlocking
+		Stop	
+	}
+}
+
+// Heart column ------------------------------------------------------------
+
+ACTOR BDHeartColumn Replaces HeartColumn 
+{
+	Game Doom
+	Radius 16
+	Height 40
+	ProjectilePassHeight -16
+	+SOLID
+	+USESPECIAL
+	+SHOOTABLE
+	+NOBLOOD
+	+NOTARGET
+	+INVULNERABLE
+	Mass 999999
+	States
+	{
+	Spawn:
+		COL5 AB 14
+		TNT1 A 0 A_JumpIfInventory("MarkForDeletion", 1, "Disappear")
+	Live:
+		COL5 AB 14
+		Loop
+	Disappear:
+		TNT1 A 0
+		TNT1 A 0 A_NoBlocking
+		Stop
+	}
+}
+

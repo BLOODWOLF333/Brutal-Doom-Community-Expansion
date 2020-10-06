@@ -16,10 +16,10 @@ Script "BaronMorph" (VOID)
 	//Log(s:"Armor#= ", i: arrayArmor[PlayerNumber()]);
 	//Log(s:"ArmorClass= ", s: arrayArmorClass[PlayerNumber()]);
 
-	GiveInventory("DRBPatch", 1);
+	GiveInventory("DemonRuneBaron", 1);
 	GiveInventory("MorphToken", 1);
 
-	While (CheckActorClass(PlayerNumber(), "BaronPlayerPatch"))
+	While (CheckActorClass(PlayerNumber(), "BaronPlayer"))
 	{
 			Delay(35);
 	}
@@ -62,10 +62,10 @@ Script "RevenantMorph" (VOID)
 	//Log(s:"Armor#= ", i: arrayArmor[PlayerNumber()]);
 	//Log(s:"ArmorClass= ", s: arrayArmorClass[PlayerNumber()]);
 
-	GiveInventory("DRRPatch", 1);
+	GiveInventory("DemonRuneRevenant", 1);
 	GiveInventory("MorphToken", 1);
 
-	While (CheckActorClass(PlayerNumber(), "RevenantPlayerPatch"))
+	While (CheckActorClass(PlayerNumber(), "RevenantPlayer"))
 	{
 			Delay(35);
 	}

@@ -1,0 +1,173 @@
+#library "chasecam"
+#include "zcommon.acs"
+
+#define C_TID		1000	//Default camera tid
+#define MAX_R		68	//Maximum radius (or distance from the player)
+#define ADJUST_R	8	//Amount to adjust the camera by
+#define VIEW_HEIGHT	42.0	//The approximate hight of the player's view
+
+bool camera_mode[8];		//Variable for turning the camera on or off.
+bool camera_mode2[8];		//Variable for turning the camera on or off.
+
+
+
+
+
+#define C_TIDX		1000	//Default camera tid
+#define MAX_RX		220	//Maximum radius (or distance from the player)
+#define VIEW_HEIGHTX	100.0	//The approximate height of the player's view
+#define VIEW_HEIGHTXMECH	200.0	//The approximate height of the player's view
+#define MAX_RXMECH		300	//Maximum radius (or distance from the player)
+
+	
+Script "BDStartCamera" (VOID)
+{
+	camera_mode[PlayerNumber ()] = ON;
+	ACS_NamedExecuteAlways ("InitializeChasecam", 0, PlayerNumber ());
+}
+
+
+Script "InitializeChasecam" (int p_num)
+{
+	int r = MAX_R;
+	
+	while (camera_mode[p_num] == ON)
+	{	
+		int a = GetActorAngle (0);
+		int p = GetActorPitch (0);
+		int x = GetActorX (0);
+		int y = GetActorY (0);
+		int momz = GetActorVelz (0);
+		int momx = GetActorVelX (0);
+		int momy = GetActorVelY (0);
+		int z = GetActorZ (0) + VIEW_HEIGHT;
+		int xyr = r * cos (p) >> 16;
+		
+		if (!ThingCountName ("ChaseCam2", C_TID+p_num))
+		{
+			while (!Spawn ("ChaseCam2", x-cos(a)*xyr, y-sin(a)*xyr, z+sin(p)*r, C_TID+p_num, a >> 8) && r > 0)
+			{
+				r -= ADJUST_R;
+				xyr = cos (p) * r >> 16;
+			}
+			
+			if (ThingCountName ("ChaseCam2", C_TID + p_num))
+				ChangeCamera (C_TID + p_num, 0, 0);
+			else
+			{
+				camera_mode[p_num] = OFF;
+				print (s:"Camera script failed to initialize.");
+			}
+		}
+
+
+
+
+
+	        else
+		{
+			while (!SetActorPosition (C_TID+p_num, x-cos(a)*xyr, y-sin(a)*xyr, z+sin(p)*r, 0) && r > 0)
+			{
+				r -= ADJUST_R;
+				xyr = cos (p) * r >> 16;
+			}
+			
+			SetActorAngle (C_TID + p_num, a);
+			SetActorPitch (C_TID + p_num, p);
+			
+			if (r < MAX_R) 
+                                r += ADJUST_R;
+		}
+		
+		delay (1);
+	}
+}
+
+
+
+
+Script "BDStopCamera" (VOID)
+{
+	camera_mode[PlayerNumber ()] = OFF;
+	Thing_Remove (C_TID + PlayerNumber ());
+}
+
+Script "BDDisableCameraDisconnect" (int p_num) DISCONNECT
+{
+       camera_mode[p_num] = OFF;
+       Thing_Remove (C_TID + p_num);
+	   camera_mode2[p_num] = OFF;
+       Thing_Remove (C_TIDX + p_num);
+}
+
+
+	
+Script "BDActivateCameraBig" (VOID)
+{
+	camera_mode2[PlayerNumber ()] = ON;
+	ACS_NamedExecuteAlways ("BDBigCamera", 0, PlayerNumber ());
+	
+}
+
+
+Script "BDBigCamera" (int p_num)
+{
+	int r = MAX_RX;
+	
+	while (camera_mode2[p_num] == ON)
+	{	
+		int a = GetActorAngle (0);
+		int p = GetActorPitch (0);
+		int x = GetActorX (0);
+		int y = GetActorY (0);
+		int z = GetActorZ (0) + VIEW_HEIGHTX;
+		int xyr = r * cos (p) >> 16;
+		
+		if (!ThingCountName ("chasecam3", C_TIDX+p_num))
+		{
+			while (!Spawn ("chasecam3", x-cos(a)*xyr, y-sin(a)*xyr, z+sin(p)*r, C_TIDX+p_num, a >> 8) && r > 0)
+			{
+				r -= ADJUST_R;
+				xyr = cos (p) * r >> 16;
+			}
+			
+			if (ThingCountName ("chasecam3", C_TIDX + p_num))
+				ChangeCamera (C_TIDX + p_num, 0, 0);
+			else
+			{
+				camera_mode2[p_num] = OFF;
+				print (s:"Camera script failed to initialize.");
+			}
+		}
+
+
+
+
+
+	        else
+		{
+			while (!SetActorPosition (C_TIDX+p_num, x-cos(a)*xyr, y-sin(a)*xyr, z+sin(p)*r, 0) && r > 0)
+			{
+				r -= ADJUST_R;
+				xyr = cos (p) * r >> 16;
+			}
+			
+			SetActorAngle (C_TIDX + p_num, a);
+			SetActorPitch (C_TIDX + p_num, p);
+			
+			if (r < MAX_RX) 
+                                r += ADJUST_R;
+		}
+		
+		delay (1);
+	}
+}
+
+
+
+
+Script "BDDisableCameraBig" (VOID)
+{
+	camera_mode2[PlayerNumber ()] = OFF;
+	Thing_Remove (C_TIDX + PlayerNumber ());
+}

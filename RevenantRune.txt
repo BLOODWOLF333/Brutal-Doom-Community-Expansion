@@ -1,0 +1,274 @@
+Actor DemonRuneRevenant : PowerupGiver
+{
+	Inventory.PickupMessage "Demon Rune!"
+	Inventory.PickupSound "misc/p_pkup"
+	Inventory.MaxAmount 0
+	+COUNTITEM
+	+INVENTORY.AUTOACTIVATE
+	+INVENTORY.ALWAYSPICKUP
+	+INVENTORY.BIGPOWERUP
+	Powerup.Type TransformRevenant
+	Powerup.Duration -30
+	States
+	{
+	Spawn:
+		DMRU ABCD 6 Bright
+		loop
+	}
+}
+
+Actor PowerTransformRevenant : PowerMorph
+{
+	PowerMorph.PlayerClass "RevenantPlayer"
+}
+
+Actor RevenantPlayer : DoomPlayer
+{
+	Radius 16
+	Height 56
+	Health 300
+	Scale 1.0
+	Player.ViewHeight 65
+	Player.AttackZOffset 29
+	Player.JumpZ 9
+	Player.MorphWeapon "D4RevenantHUD"
+	PainSound "skeleton/pain"
+	DeathSound "skeleton/death"
+	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 10.0
+	Damagefactor "Extremepunches", 1.0	Damagefactor "Fatality", 2.5
+	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0
+	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
+	Damagefactor "HelperMarineFatallity", 0.0	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0
+	Damagefactor "LowKick", 0.0	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0
+	Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0
+	Damagefactor "Slide", 0.5	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 0.0
+	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "Kick", 0.5
+	Damagefactor "Melee", 0.5	Damagefactor "Shrapnel", 0.5	Damagefactor "Slime", 0.0
+	Damagefactor "Stealth", 0.5	Damagefactor "Stomp", 0.5	Damagefactor "Trample", 0.5
+	Damagefactor "Burn", 0.5	Damagefactor "Fire", 0.5	Damagefactor "Flames", 0.5
+	Damagefactor "GreenFire", 0.5	Damagefactor "HumanBBQ", 0.5	Damagefactor "Lava", 0.0
+
+	PainChance "Avoid", 0	PainChance "Burn", 16
+	PainChance "ExplosiveImpact", 16	PainChance "Extremepunches", 16	PainChance "Fatality", 16
+	PainChance "Fire", 16	PainChance "Flames", 16	PainChance "GreenFire", 16
+	PainChance "HumanBBQ", 16
+	PainChance "Kick", 16	PainChance "LowKick", 16	PainChance "Melee", 16
+	PainChance "Slide", 16
+	PainChance "Stealth", 16	PainChance "Trample", 16
+	Player.Face D4R
+	Species "Marines"
+	+NOSKIN
+	+PLAYERPAWN.CROUCHABLEMORPH
+	-PICKUP
+	Player.CrouchSprite "SKEL"
+	Speed 0.7
+	States
+	{
+	Spawn:
+		SKEL B 5
+		Loop
+	See:
+		SKEL ABCDEF 3
+		Goto Spawn
+
+	Melee:
+	Missile:
+		SKEL J 2 BRIGHT
+		SKEL K 2
+		Goto Spawn
+	Pain:
+		SKEL L  2
+		SKEL L  2 A_Pain
+		Goto Spawn
+	Death:
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("D4RevenantHUD")
+		TNT1 A 0 A_Scream
+		TNT1 A 0 A_NoBlocking
+		SKEL MNOP 4
+		SKEL Q -1
+		Stop
+	XDeath:
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("D4RevenantHUD")
+		REDX A 1
+		TNT1 A 0 A_Scream
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_PlaySound("misc/xdeath4")
+		TNT1 AAA 0 A_CustomMissile ("XDeath1", 60, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AA 0 A_CustomMissile ("XDeath2b", 60, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AA 0 A_CustomMissile ("XDeath3b", 60, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_SpawnItem("MuchBlood2", 0, 50)
+		TNT1 AAA 0 A_CustomMissile ("RevenantDust", 30, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAA 0 A_CustomMissile ("RevenantDust2", 30, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AA 0 A_CustomMissile ("BigLSPart1", 37, 0, random (0, 360), 2, random (30, 150))
+		TNT1 AA 0 A_CustomMissile ("BigLSPart2", 37, 0, random (0, 360), 2, random (30, 150))
+		TNT1 AAAAAAA 0 A_CustomMissile ("RevenantPiece", 37, 0, random (0, 360), 2, random (30, 150))
+		TNT1 A 0 A_SpawnItem ("XDeadSkeleton22", 1)
+		TNT1 A 0 A_SpawnItem("HellishMissileLauncher", 0, 40)
+	    REDX ABCDEFGHIJK 3
+		TNT1 A 0 A_SpawnItem("GrowingBloodPool")
+		REDX K -1
+		Stop
+		}
+}
+
+
+
+ACTOR D4RevenantHUD : DoomWeapon
+{
+	Weapon.AmmoUse1 0
+	Weapon.AmmoGive1 0
+	Weapon.AmmoUse2 0
+	Weapon.AmmoGive2 0
+	Weapon.SelectionOrder 9999
+	+WEAPON.CHEATNOTWEAPON
+	+WEAPON.NO_AUTO_SWITCH
+	Tag "RevenantPlayer"
+	States
+	{
+	Ready:
+		D4RW A 1 A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+		Loop
+
+	Steady:
+		TNT1 A 0
+		TNT1 A 1  A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		Goto Select
+
+
+	Deselect:
+		D4RW CBA 1
+		D4RW AAAAAAAAAAAA 0 A_Lower
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_Lower
+		Loop
+	Select:
+		TNT1 A 1 A_Raise
+		D4RW AAAAAAAAA 0 A_Raise
+		Select2:
+		TNT1 A 0 A_PlaySound("skeleton/sight")
+		D4RW ABC 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+		Goto Ready
+
+	Fire:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("MICRO1", 1)
+		TNT1 A 0 A_FireCustomMissile("revenantseekermissiles2", random(-2,2),0,-12,0,0,random(-1,1))
+		D4RW B 2 BRIGHT
+		D4RW A 4 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+		TNT1 A 0 A_PlaySound("MICRO1", 1)
+		TNT1 A 0 A_FireCustomMissile("revenantseekermissiles2", random(-2,2),0,12,0,0,random(-1,1))
+		D4RW C 2 BRIGHT
+		D4RW A 4 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+		D4RW A 0 A_Refire
+		Goto Ready
+
+	AltFire:
+			TNT1 A 0 A_TakeInventory("FiredPrimary", 1)
+			TNT1 A 0 A_Recoil(-2)
+			TNT1 A 0 A_JumpIfInventory("PSeq2", 1, "LeftHaymaker")
+			D4RP ABC 1
+			TNT1 A 0 A_Giveinventory("Punching",1)
+			TNT1 A 0 A_PlaySound("skeleton/swing", 1)
+			RIFF A 0 A_FireCustomMissile("PlayerRevenantPunch", 0, 0, 0, -29)
+			Goto FinishHaymaker
+
+	FinishHaymaker:
+			TNT1 A 0
+			TNT1 A 0 A_GiveInventory("PSeq2", 1)
+			D4RP E 1 A_SetAngle(angle+1.0)
+			D4RP F 1 A_SetAngle(angle+2.0)
+			D4RP G 1 A_SetAngle(angle+3.0)
+			D4RP H 1 A_SetAngle(angle+2.0)
+
+			D4RH AAAAAAAA 1 A_SetAngle(angle-1.0)
+			Goto Ready
+
+		LeftHaymaker:
+			TNT1 A 0
+			D4RP IJK 1
+			TNT1 A 0 A_Giveinventory("Punching",1)
+			TNT1 A 0 A_PlaySound("skeleton/swing", 1)
+			RIFF A 0 A_FireCustomMissile("PlayerRevenantPunch", 0, 0, 0, -29)
+			Goto FinishLeftHaymaker
+
+		FinishLeftHaymaker:
+			TNT1 A 0 A_SetAngle(angle+3)
+			TNT1 A 0 A_TakeInventory("PSeq2", 1)
+			D4RP L 1 A_SetAngle(angle+1.0)
+			D4RP M 1 A_SetAngle(angle+2.0)
+			D4RP N 1 A_SetAngle(angle+3.0)
+			D4RP O 1 A_SetAngle(angle+2.0)
+
+			D4RH AAAAAAAA 1 A_SetAngle(angle-1.0)
+			Goto Ready
+
+	Spawn:
+		SHOT A -1
+		Stop
+
+	CeaseMorph:
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("CeaseMorph", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("BDForceUnmorph")
+		TNT1 A 1
+		Goto Ready
+	}
+}
+
+ACTOR PlayerRevenantPunch: MeleeStrike1Smash
+{
+	//DamageType RVFT
+	Obituary "%o ate %k's fist."
+	States
+	{
+	Spawn:
+		TNT1 A 2
+		Stop
+	Death:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("skeleton/melee", 6)
+		EXPL AAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 Radius_Quake (2, 6, 0, 5, 0)//(intensity, duration, damrad, tremrad, tid)
+		TNT1 A 4
+		Stop
+	}
+}
+
+ACTOR D4RevenantROcket: Rocket2
+{
+	Radius 8
+	Height 8
+	Damage 10
+	Scale 0.5
+	Speed 45
+	-NOEXTREMEDEATH
+	-GHOST
+	-THRUGHOST
+	+SEEKERMISSILE
+	Damagetype "ExplosiveImpact"
+	Species "Marines"
+	States
+	{
+	Spawn:
+	    MISL A 1 Bright
+		TNT1 A 0 A_SpawnItem("RedFlareSmall",-20,0)
+		TNT1 A 0 A_CustomMissile ("MeleeSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		TNT1 A 0 ThrustThingZ(0,random(-3, 2),0,1)
+		MISL A 1 Bright
+		TNT1 A 0 A_SpawnItem("RedFlareSmall",-20,0)
+		TNT1 A 0 A_CustomMissile ("MeleeSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		MISL A 1 Bright
+		TNT1 A 0 A_SpawnItem("RedFlareSmall",-20,0)
+		TNT1 A 0 A_CustomMissile ("MeleeSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		TNT1 A 0 ThrustThingZ(0,random(-3, 2),0,1)
+		MISL A 1 Bright
+		TNT1 A 0 A_SpawnItem("RedFlareSmall",-20,0)
+		TNT1 A 0 A_CustomMissile ("MeleeSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		TNT1 A 0 ThrustThing(angle*256/360+64,random(-1, 1),1, 0)
+		Loop
+	}
+}

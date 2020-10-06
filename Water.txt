@@ -1,0 +1,662 @@
+Actor UnderwaterExplosion
+{
++NOCLIP
++NOGRAVITY
+states
+	{
+	Spawn:
+		 TNT1 A 1
+		 TNT1 A 0 A_JumpIf(waterlevel < 1, "Stap")
+		 
+		TNT1 AAAAA 0 A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
+		TNT1 AAAAA 0 A_CustomMissile ("WaterExplosionPressure", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_CustomMissile ("WaterExplosionPressure2", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAAAAAAAA 0 A_CustomMissile ("EXPLOSIONBUBULZ", 0, 0, random (0, 360), 2, random (180, 360))
+		Stop
+
+		Stap:
+			TNT1 A 0
+			Stop		
+	}
+}
+
+
+Actor SmallUnderwaterExplosion
+{
++NOCLIP
++NOGRAVITY
+states
+	{
+	Spawn:
+		 TNT1 A 1
+		 TNT1 A 0 A_JumpIf(waterlevel < 1, "Stap")
+		 
+		TNT1 AAAA 0 A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
+		TNT1 AA 0 A_CustomMissile ("WaterExplosionPressure", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_CustomMissile ("WaterExplosionPressure2", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAAAAAAA 0 A_CustomMissile ("EXPLOSIONBUBULZ", 0, 0, random (0, 360), 2, random (180, 360))
+		Stop
+
+	Stap:
+		TNT1 A 0
+		Stop		
+	}
+}
+
+
+
+
+Actor UnderwaterHitPuff
+{
++NOCLIP
++NOGRAVITY
+states
+	{
+	Spawn:
+		 TNT1 A 1
+		 TNT1 A 0 A_JumpIf(waterlevel < 1, "Stap")
+		 
+		TNT1 A 0 A_CustomMissile ("WaterParticleXTinySpawner", 0, 0, random (0, 360), 2, random (60, 130))
+		TNT1 A 0 A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
+		TNT1 A 0 A_CustomMissile ("EXPLOSIONBUBULZ", 0, 0, random (0, 360), 2, random (180, 360))
+		Stop
+
+	Stap:
+		TNT1 A 0
+		Stop		
+	}
+}
+
+
+
+Actor BlueParticleXSpawner: BloodParticleXSpawner
+{
+Translation "176:191=192:196"
+states
+	{
+	Spawn:
+		TNT1 AA 1 A_JumpIf(waterlevel < 1, "SurfaceSpawn")
+		Stop
+	
+	SurfaceSpawn:
+		TNT1 AAAAAAAAAAA 0 A_CustomMissile ("BlueLiquidParticleX", 0, 0, random (0, 360), 2, random (10, 40))
+		TNT1 AAAAA 1 A_SpawnItem("SpawnBlueLiquidParticleX")
+		Stop
+	Death:
+		Stop
+	XDeath:
+	TNT1 A 0
+	Stop
+	}
+}
+
+
+Actor SpawnBlueLiquidParticleX
+{
++NOCLIP
++NOGRAVITY
++NOTELEPORT
+states
+	{
+	Spawn:
+        TNT1 AAA 0 A_CustomMissile ("BlueLiquidParticleX", 0, 0, random (0, 360), 2, random (10, 90))
+		Stop
+	}
+}
+
+
+Actor BlueLiquidParticleX: BloodLiquidParticleX
+{
+  Translation "176:191=192:196"
+  RenderStyle Add
+  Alpha 0.6
+  //decal BloodWaterDecal
+  States
+  {
+	  Spawn:
+			MSBL ABCDEFG 2
+			MSBL H 100
+		Stop
+ Death:
+ TNT1 A 0
+ TNT1 A 0 A_SetScale(1.9, 1.9)
+ BSPL ABCDEFGH 2
+ Stop
+	
+  }
+}
+
+
+Actor BUBULZ
+{
+  Height 0
+  Radius 0
+  Mass 0
+  +Missile
+  +NoBlockMap
+  +NoGravity
+  +FORCEXYBILLBOARD
+  +CLIENTSIDEONLY
+  +DOOMBOUNCE
+  +NOTELEPORT
+  +DontSplash
+  RenderStyle Add
+  Scale 0.5
+  Speed 2
+  
+  States
+  {
+	  Spawn:
+		  TNT1 A 0
+		  TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2")
+	
+	 Spawn1:
+			TNT1 A 0 ThrustThingZ(0,2,0,1)
+			BUBL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 Bright A_JumpIf(waterlevel < 1, "Death")
+			Stop
+	 Spawn2:
+		 TNT1 A 0 ThrustThingZ(0,2,0,1)
+		 BUBL BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 1 Bright A_JumpIf(waterlevel < 1, "Death")
+			Loop
+	 
+	 Death:
+	 TNT1 A 0
+	 Stop
+  }
+}
+
+
+
+Actor EXPLOSIONBUBULZ: BUBULZ
+{
+  Speed 10
+  +NOTELEPORT
+  States
+  {
+  Spawn:
+  BUBL A 10 
+  TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2")
+  Spawn1:
+	
+	BUBL A 1 BRIGHT A_JumpIf(waterlevel < 1, "Death")
+	TNT1 A 0 ThrustThingZ(0,4,0,1)
+	BUBL A 1 BRIGHT A_JumpIf(waterlevel < 1, "Death")
+	TNT1 A 0 ThrustThingZ(0,4,0,1)
+	BUBL A 1 BRIGHT A_JumpIf(waterlevel < 1, "Death")
+	TNT1 A 0 ThrustThingZ(0,4,0,1)
+	BUBL A 1 BRIGHT A_JumpIf(waterlevel < 1, "Death")
+	TNT1 A 0 ThrustThingZ(0,4,0,1)
+	BUBL A 1 BRIGHT A_JumpIf(waterlevel < 1, "Death")
+	TNT1 A 0 ThrustThingZ(0,4,0,1)
+	BUBL A 1 BRIGHT A_JumpIf(waterlevel < 1, "Death")
+	TNT1 A 0 ThrustThingZ(0,4,0,1)
+	BUBL A 1 BRIGHT A_JumpIf(waterlevel < 1, "Death")
+	TNT1 A 0 ThrustThingZ(0,4,0,1)
+	BUBL A 1 BRIGHT A_JumpIf(waterlevel < 1, "Death")
+	TNT1 A 0 ThrustThingZ(0,4,0,1)
+	BUBL A 1 BRIGHT A_JumpIf(waterlevel < 1, "Death")
+	TNT1 A 0 ThrustThingZ(0,4,0,1)
+	BUBL A 1 BRIGHT A_JumpIf(waterlevel < 1, "Death")
+	TNT1 A 0 ThrustThingZ(0,4,0,1)
+	BUBL A 1 BRIGHT A_JumpIf(waterlevel < 1, "Death")
+	TNT1 A 0 ThrustThingZ(0,4,0,1)
+	BUBL A 1 BRIGHT A_JumpIf(waterlevel < 1, "Death")
+	TNT1 A 0 ThrustThingZ(0,4,0,1)
+    BUBL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 Bright A_JumpIf(waterlevel < 1, "Death")
+    Stop
+ Spawn2:
+    BUBL B 1 BRIGHT A_JumpIf(waterlevel < 1, "Death")
+	TNT1 A 0 ThrustThingZ(0,4,0,1)
+	BUBL B 1 BRIGHT A_JumpIf(waterlevel < 1, "Death")
+	TNT1 A 0 ThrustThingZ(0,4,0,1)
+	BUBL B 1 BRIGHT A_JumpIf(waterlevel < 1, "Death")
+	TNT1 A 0 ThrustThingZ(0,4,0,1)
+	BUBL B 1 BRIGHT A_JumpIf(waterlevel < 1, "Death")
+	TNT1 A 0 ThrustThingZ(0,4,0,1)
+	BUBL B 1 BRIGHT A_JumpIf(waterlevel < 1, "Death")
+	TNT1 A 0 ThrustThingZ(0,4,0,1)
+	BUBL B 1 BRIGHT A_JumpIf(waterlevel < 1, "Death")
+	TNT1 A 0 ThrustThingZ(0,4,0,1)
+	BUBL B 1 BRIGHT A_JumpIf(waterlevel < 1, "Death")
+	TNT1 A 0 ThrustThingZ(0,4,0,1)
+	BUBL B 1 BRIGHT A_JumpIf(waterlevel < 1, "Death")
+	TNT1 A 0 ThrustThingZ(0,4,0,1)
+	BUBL B 1 BRIGHT A_JumpIf(waterlevel < 1, "Death")
+	TNT1 A 0 ThrustThingZ(0,4,0,1)
+	BUBL B 1 BRIGHT A_JumpIf(waterlevel < 1, "Death")
+	TNT1 A 0 ThrustThingZ(0,4,0,1)
+	BUBL B 1 BRIGHT A_JumpIf(waterlevel < 1, "Death")
+	TNT1 A 0 ThrustThingZ(0,4,0,1)
+	BUBL B 1 BRIGHT A_JumpIf(waterlevel < 1, "Death")
+	TNT1 A 0 ThrustThingZ(0,4,0,1)
+	BUBL B 1 BRIGHT A_JumpIf(waterlevel < 1, "Death")
+	TNT1 A 0 ThrustThingZ(0,4,0,1)
+	BUBL B 1 BRIGHT A_JumpIf(waterlevel < 1, "Death")
+	TNT1 A 0 ThrustThingZ(0,4,0,1)
+    BUBL BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 1 Bright A_JumpIf(waterlevel < 1, "Death")
+    Stop
+ 
+ Death:
+ TNT1 A 0
+ Stop
+  }
+}
+
+
+
+
+
+
+
+
+ACTOR WaterExplosionPressure
+{
+    Radius 0
+    Height 0
+	Alpha 1.0
+	RenderStyle Add
+	Scale 2.0
+	Speed 2
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +DONTSPLASH
+	+MISSILE
+	+FORCEXYBILLBOARD
+    +CLIENTSIDEONLY
+	Damage 0
+    +NOINTERACTION
+	+NOTELEPORT
+    States
+    {
+    Spawn:
+        SMOK A 0
+        Goto Death
+	Death:
+	    
+		TNT1 A 0 A_JumpIf(waterlevel < 1, "Stap")
+		SMOK BCDEEFGHI 3
+		SMOK JKLMNOPQR 1
+Stap:		
+TNT1 A 0
+Stop
+    }
+}
+
+
+ACTOR WaterExplosionPressure2
+{
+    Radius 0
+    Height 0
+	Alpha 1.0
+	RenderStyle Add
+	Scale 4.0
+	Speed 0
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +DONTSPLASH
+	+MISSILE
+	+FORCEXYBILLBOARD
+    +CLIENTSIDEONLY
+	Damage 0
+    +NOINTERACTION
+	+NOTELEPORT
+    States
+    {
+    Spawn:
+        SMOK A 0
+        Goto Death
+	Death:
+	    
+		TNT1 A 0 A_JumpIf(waterlevel < 1, "Stap")
+		SMOK ABCDEFGHIJKLMNOPQR 1
+Stap:		
+TNT1 A 0
+Stop
+    }
+}
+
+
+
+
+
+
+Actor WaterParticleXTinySpawner: BlueParticleXSpawner
+{
+speed 20
+states
+	{
+	Spawn:
+	TNT1 AAAAA 1 A_JumpIf(waterlevel < 1, "SurfaceSpawn")
+	Stop
+	
+	SurfaceSpawn:
+	    TNT1 AAAAAAA 0 A_CustomMissile ("BlueLiquidParticleXSmall", 0, 0, random (0, 360), 2, random (0, 360))
+		Stop
+Death:
+    Stop
+XDeath:
+TNT1 A 0
+Stop
+	}
+}
+
+Actor SpawnBlueLiquidParticleXSmall
+{
++NOCLIP
++NOGRAVITY
++NOTELEPORT
+states
+	{
+	Spawn:
+        TNT1 AAAAAAA 0 A_CustomMissile ("BlueLiquidParticleXSmall", 0, 0, random (0, 360), 2, random (0, 360))
+		Stop
+	}
+}
+
+
+
+Actor BlueLiquidParticleXSmall
+{
+  Height 0
+  Radius 0
+  Mass 0
+  +Missile
+  +NoBlockMap
+  -NoGravity
+  +DoomBounce
+  +FORCEXYBILLBOARD
+  +THRUACTORS
+  +CLIENTSIDEONLY
+  +NOTELEPORT
+  +DontSplash
+  BounceFactor 0.1
+  Gravity 0.5
+  RenderStyle Add
+  Scale 1.5
+  Alpha 0.4
+  //Speed 2
+  Speed 7
+  States
+  {
+  Spawn:
+  TNT1 A 1 
+  TNT1 A 0 A_ChangeFlag(DOOMBOUNCE, 0)
+  TNT1 A 1
+  Goto Stand
+  Stand:
+    LIQU ABCDDDDDDD 4
+    Stop
+ Death:
+ TNT1 A 1
+ TNT1 A 0
+ Stop
+	
+  }
+}
+
+
+
+
+
+
+
+
+
+
+Actor WaterParticleX
+{
+  Radius 2
+  Height 2
+  +Missile  -NoGravity  +FORCEXYBILLBOARD
+  +THRUACTORS  +CLIENTSIDEONLY
+  +NOTELEPORT  +DontSplash
+  decal watersplash
+  BounceFactor 0.1
+  Gravity 0.5
+  RenderStyle Add
+  Scale 1.0
+  Alpha 0.5
+  Translation "176:191=192:196"
+  Speed 2
+  States
+  {
+  Spawn:
+	  TNT1 A 1 
+	  TNT1 A 0 A_ChangeFlag(DOOMBOUNCE, 0)
+	  TNT1 A 1
+	  Goto Stand
+ Stand:
+    WSPH ABCDDDDDDDD 4
+    Stop
+ Death:
+	 TNT1 A 0
+	 TNT1 A 0 A_SetScale(0.6, 0.6)
+	 BSPL ABCDEFGH 1
+	 Stop
+		
+  }
+}
+
+
+Actor WaterParticleXFAster: WaterParticleX
+{
+  Speed 4
+}
+
+
+Actor WaterParticleXSuperFast: WaterParticleX
+{
+  Speed 6
+  Scale 1.6
+}
+
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+//********** Splashes **********
+
+actor WaterSplashBase2
+{
+  Radius 1
+  Height 1
+  Mass 999999
+  alpha .6
+  Scale 1.6
+  +NOGRAVITY
+  +THRUACTORS
+  +DONTSPLASH
+  +CLIENTSIDEONLY
+  States
+  {
+  Spawn:
+	TNT1 FF 0 A_CustomMissile ("WaterParticleX", 2, random(-5,5), random (0, 360), 2, random (50, 90))
+	TNT1 FF 0 A_CustomMissile ("WaterParticleXFaster", 2, random(-5,5), random (0, 360), 2, random (50, 90))
+	TNT1 A 0 A_RadiusGive("IsOverWater", 64, RGF_OBJECTS, 1)
+	
+	TNT1 A 0 A_SpawnItem("WaterSplashWaves")
+	TNT1 A 16
+	TNT1 A 0 A_SpawnItem("WaterSplashWaves")
+	TNT1 A 16 
+	TNT1 A 0 A_SpawnItem("WaterSplashWaves")
+    Stop
+  }
+}
+
+Actor WaterSplashWaves
+{
+	+THRUACTORS
+	+DONTSPLASH
+	+CLIENTSIDEONLY
+	Mass 0
+	Scale 1.6
+	States
+		{
+			Spawn:
+				TNT1 A 0
+				TNT1 A 0 ACS_NamedExecuteAlways("BDCheckWaterRipples", 0, 0, 0, 0)
+				TNT1 A 3
+				TNT1 A 0 A_JumpIfInventory("Clip2", 1, "Vanish")
+				SPSH DE 4 A_SetScale(1.2, 1.8)
+				SPSH FHI 4 
+				TNT1 A 0 A_SetScale(1.6, 1.4)
+				SPSH DEFHI 6 
+				TNT1 A 0 A_SetScale(1.8, 0.8)
+				SPSH DEFHI 8
+				//TNT1 A 1 A_SetScale(2.8, 0.5)
+				//SPSH DEFHI 16
+				Stop
+			
+			Vanish:
+				TNT1 A 0
+				Stop
+			}
+}
+
+
+actor WaterSplashBaseSmall
+{
+  Radius 1
+  Height 1
+  Mass 999999
+  alpha .6
+  Scale 0.7
+  +DONTSPLASH
+  +NOGRAVITY
+  +THRUACTORS
+  +CLIENTSIDEONLY
+  States
+  {
+  Spawn:
+    TNT1 FF 0 A_CustomMissile ("WaterParticleX", 12, 0, random (0, 360), 2, random (50, 140))
+	TNT1 FF 0 A_CustomMissile ("WaterParticleXFaster", 12, 0, random (0, 360), 2, random (50, 140))
+	TNT1 A 0 A_RadiusGive("IsOverWater", 64, RGF_OBJECTS, 1)
+    TNT1 A 10
+	TNT1 A 0 A_ChangeFLag("SHOOTABLE", 0)
+	TNT1 A 0 A_NoBlocking
+    Stop
+  Death.CauseWaterSplash:
+	tNT1 A 0 A_CustomMissile ("BlueParticleXSpawner", 0, 0, random (0, 360), 2, random (80, 110))
+	//TNT1 A 0 A_SpawnItem("GiantWaterRicochet")
+	TNT1 A 0 A_PlaySound("bigspl1")
+	TNT1 A 0 A_NoBlocking
+	TNT1 A 30
+	Stop
+  }
+}
+
+
+
+
+
+ACTOR ExplosionSplashSpawner 
+{
+  +THRUACTORS
+  +VULNERABLE
+  Radius 1
+  Height 1
+  Gravity 4
+  Mass 99999
+  Health 99999
+  states
+  {
+  Spawn:
+  Death:
+    TNT1 A 0
+	TNT1 A 0 ACS_NamedExecuteAlways("BDCheckFloorType3", 0, 0, 0, 0)//Check if is under grass/dirt
+	TNT1 A 0 ThrustThingZ(0,-30,0,1)
+	TNT1 A 3
+	TNT1 A 0 A_CheckFloor("Spawn2")
+	Stop
+  Spawn2:
+	TNT1 A 0
+	TNT1 A 2
+    TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "SpawnWater")
+	TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "SpawnSlime")
+	TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "SpawnNukage")
+	TNT1 A 0 A_JumpIfInventory("IsOverBlood", 1, "SpawnBlood")
+	TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "SpawnLava")
+	TNT1 A 0 A_JumpIfInventory("IsOverGrass", 1, "SpawnGrass")
+	TNT1 A 0 A_JumpIfInventory("IsOverDirt", 1, "SpawnGrass")
+	TNT1 A 0 A_JumpIfInventory("IsOverSand", 1, "SpawnSand")
+    Stop
+	
+  SpawnWater:
+	TNT1 A 0
+	TNT1 A 0 A_PlaySound("bigspl1")
+	TNT1 AAAAAAAAA 0 A_CustomMissile ("WaterParticleXSuperFast", random (50, 60), 0, random (0, 360), 2, random (10, 90))
+	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("BlueLiquidParticleX", random (0, 60), 0, random (0, 360), 2, random (30, 90))
+	TNT1 A 20
+	Stop
+	
+ SpawnSlime:	
+	TNT1 A 0
+	TNT1 A 0 A_PlaySound("bigspl1")
+	TNT1 AAAAAAAAA 0 A_CustomMissile ("SlimeParticleXSuperFast", random (50, 60), 0, random (0, 360), 2, random (10, 90))
+	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("BrownLiquidParticleX", random (0, 60), 0, random (0, 360), 2, random (30, 90))
+	TNT1 A 20
+	Stop	
+	
+ SpawnNukage:	
+	TNT1 A 0
+	TNT1 A 0 A_PlaySound("bigspl1")
+	//tNT1 AAAAAAAAA 0 A_CustomMissile ("NukageParticleXSuperFast", random (50, 60), 0, random (0, 360), 2, random (10, 90))
+	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("GreenLiquidParticleX", random (0, 60), 0, random (0, 360), 2, random (30, 90))
+	TNT1 A 20
+	Stop
+	
+	
+  SpawnBlood:	
+	TNT1 A 0
+	TNT1 A 0 A_PlaySound("bigspl1")
+	//TNT1 AAAAAAAAA 0 A_CustomMissile ("BloodParticleXSuperFast", random (50, 60), 0, random (0, 360), 2, random (10, 90))
+	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("BloodLiquidParticleX", random (0, 60), 0, random (0, 360), 2, random (30, 90))
+	TNT1 A 20
+	Stop	
+	
+	
+ SpawnLava:	
+	TNT1 A 0
+	TNT1 AAA 0 A_CustomMissile ("FlyingLava", 54, 0, random (0, 360), 2, random (20, 80))
+	TNT1 AAA 0 A_CustomMissile ("FlyingLava2", 44, 0, random (0, 360), 2, random (20, 80))
+	TNT1 AAAAAAAA 0 A_CustomMissile ("FlyingLava1b", 54, 0, random (0, 360), 2, random (30, 80))
+	TNT1 AAAAAAAAA 0 A_CustomMissile ("FlyingLava2b", 44, 0, random (0, 360), 2, random (30, 80))
+	EXPL AAAAAAAA 0 A_CustomMissile ("FlamethrowerFireParticles", 16, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 0 A_SpawnItemEx("TinyBurningPiece", random (-15, 15), random (-15, 15))
+	TNT1 A 0 A_SpawnItemEx("TinyBurningPiece2", random (-35, 35), random (-35, 35))
+	TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-45, 45), random (-45, 35))
+	TNT1 AA 20 A_CustomMissile ("BigBlackSmoke", 10, 0, random (0, 360), 2, random (40, 160))
+	TNT1 A 20
+	Stop	
+	
+ 
+ SpawnGrass:
+	TNT1 A 0
+	TNT1 AAA 0 A_CustomMissile ("MudDust", 6, 0, random (0, 360), 2, random (70, 85))
+	TNT1 A 0 A_CustomMissile ("MudDust", 6, 0, random (0, 360), 2, random (85, 90))
+	TNT1 AAAA 0 A_CustomMissile ("MudDust", 4, 0, random (0, 360), 2, random (50, 55))
+	TNT1 AAAAAA 0 A_CustomMissile ("DirtChunk1", 0, 0, random (0, 360), 2, random (30, 150))
+	TNT1 AAAAAA 0 A_CustomMissile ("DirtChunk2", 0, 0, random (0, 360), 2, random (30, 150))
+	TNT1 AA 0 A_CustomMissile ("BrownCloud", 20, 0, random (0, 360), 2, random (10, 90))
+	TNT1 AAA 0 A_CustomMissile ("BrownCloud", 60, 0, random (0, 360), 2, random (40, 90))
+    TNT1 A 0 A_PlaySound("BHITDIR1", 1)
+	TNT1 A 0 A_PlaySound("BHITDIR2", 2)
+	TNT1 A 0 A_PlaySound("BHITDIR3", 3)
+	TNT1 A 0 A_PlaySound("BHITDIR4", 4)
+	TNT1 A 0 A_PlaySound("BHITDIR5", 5)
+	Stop
+	
+	
+  SpawnSand:
+	TNT1 A 0
+	TNT1 AAAAAA 0 A_CustomMissile ("SandDust", 96, 0, random (0, 360), 2, random (60, 120))
+	TNT1 AAAAAA 0 A_CustomMissile ("SandDust", 32, 0, random (0, 360), 2, random (30, 150))
+	TNT1 AA 0 A_CustomMissile ("SandCloud", 62, 0, random (0, 360), 2, random (30, 90))
+	TNT1 AAA 0 A_CustomMissile ("SandCloud", 0, 0, random (0, 360), 2, random (10, 20))
+    TNT1 A 0 A_PlaySound("BHITDIR1", 1)
+	TNT1 A 0 A_PlaySound("BHITDIR2", 2)
+	TNT1 A 0 A_PlaySound("BHITDIR3", 3)
+	TNT1 A 0 A_PlaySound("BHITDIR4", 4)
+	TNT1 A 0 A_PlaySound("BHITDIR5", 5)
+	Stop	
+  }
+}

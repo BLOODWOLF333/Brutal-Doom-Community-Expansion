@@ -1,3 +1,9 @@
+clearplayerclasses
+addplayerclass BDoomer
+addplayerclass Doomer2
+addplayerclass Purist
+addplayerclass TacticalDoomer
+
 //Weapon Slots
 weaponsection "Brutal_Doom"
 	//Last - first selected on key press
@@ -11,3 +17,68 @@ weaponsection "Brutal_Doom"
 	setslot 8 ClassicUnmaker Unmaker HellishMissileLauncher
 	setslot 9 FlameCannon Flamethrower2
 	setslot 0 HandGrenades
+
+addkeysection "BrutalDoom - Advanced Actions" BrutalDoomActions
+
+	addmenukey "Kick" kickem
+	alias kickem "pukename \"BDKick\""
+	defaultbind Q kickem
+
+	addmenukey "Reload" reload
+	alias reload "pukename \"BDReload\""
+	defaultbind R reload
+
+	addmenukey "Flashlight" flashlightswitch
+	alias flashlightswitch "pukename \"BDFlashLight\""
+	defaultbind F flashlightswitch
+
+	addmenukey "Toss Grenade" grenadetoss
+	alias grenadetoss "pukename \"BDGrenade\""
+	defaultbind G grenadetoss
+
+	addmenukey "Unload Gun" unreloader
+	alias unreloader "pukename \"BDUnload\""
+
+	addmenukey "Open Ammo Drop Menu" selectammodroper
+	alias selectammodroper "pukename \"BDAmmoDroper\""
+
+	addmenukey "Quick Pull Pistol" quickpistol
+	alias quickpistol "pukename \"BDQuickPistol\""
+
+addkeysection "Brutal Doom - Interactions" BrutalDoomInteractions
+
+	addmenukey "Offend" brutaltaunt
+	alias brutaltaunt "pukename \"BDTaunt\""
+	defaultbind H brutaltaunt
+
+	addmenukey "Wave(1)" wave1
+	alias wave1 "pukename \"BDSaluteOne\""
+	defaultbind V wave1
+
+	addmenukey "Wave(2)" wave2
+	alias wave2 "pukename \"BDSaluteTwo\""
+	defaultbind N wave2
+
+	addmenukey "Advanced Taunt" advtaunt
+	alias advtaunt "pukename \"BDAdvTaunt\""
+	defaultbind J advtaunt
+
+	addmenukey "One-Liners" oneliner
+	alias oneliner "pukename \"BDOneLiner\""
+	defaultbind K oneliner
+
+	addmenukey "Dual Wield/Special Action" dual
+	alias dual "pukename \"BDDualWield\""
+	defaultbind X dual
+
+	addmenukey "Select Ammo Drop" selectammodrop
+	alias selectammodrop "pukename \"BDAmmoDroper\""
+	defaultbind O selectammodrop
+
+addkeysection "Brutal Doom - Advanced Moves" BrutalDoomAdvMoves
+
+	addmenukey "Roll Left" roleft
+	alias roleft "pukename \"BDRollLeft\""
+
+	addmenukey "Roll Right" roright
+	alias roright "pukename \"BDRollRight\""
