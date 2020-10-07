@@ -15,18 +15,18 @@ states
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("RedTorchVanilla")
 		Stop
-		
+
 	Spawn:
 		TTRB A 0
 		TNT1 A 0 A_Playsound("BDFireplace2", 1, 1, 1)
-		TNT1 A 2 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
-		TNT1 A 1
-		TNT1 A 2 A_SPawnItem("TallTOrch_RedFlames")
-		TNT1 A 2 A_SpawnItem("TallTOrch_RedCore")
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+		TNT1 A 2
+		TNT1 A 0 A_SPawnItem("TallTOrch_RedFlames")
+		TNT1 A 0 A_SpawnItem("TallTOrch_RedCore")
 		Goto Stay
-		
+
 	Stay:
-		TTRB AAA 10 A_CustomMissile ("TorchBall", 59, 0, random (0, 140), 2, random (0, 160))
+		TTRB AA 10 A_CustomMissile ("TorchBall", 59, 0, random (0, 140), 2, random (0, 160))
 		TTRB A 0 A_CustomMissile ("RealisticFireSparks1", 70, 0, random (0, 140), 2, random (0, 160))
 		Loop
 	}
@@ -46,7 +46,7 @@ states
 	Spawn:
 		TRKR ABCDEFGHIJKL 1 BRIGHT
 		Loop
-		
+
 	}
 }
 
@@ -59,7 +59,7 @@ states
 	Spawn:
 		TRKR MN 1 BRIGHT
 		Loop
-		
+
 	}
 }
 
@@ -71,19 +71,19 @@ states
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("BlueTorchVanilla")
 		Stop
-		
+
 	Spawn:
 		TTRB A 0
 		TNT1 A 0 A_Playsound("BDFireplace2", 1, 1, 1)
 		TNT1 A 0 A_SpawnItemEx("EvidenceCheckerBlueTorch", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
-		TNT1 A 2 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
-		TNT1 A 1
-		TNT1 A 2 A_SPawnItem("TallTOrch_BlueFlames")
-		TNT1 A 2 A_SpawnItem("TallTOrch_BlueCore")
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+		TNT1 A 2
+		TNT1 A 0 A_SPawnItem("TallTOrch_BlueFlames")
+		TNT1 A 0 A_SpawnItem("TallTOrch_BlueCore")
 		Goto Stay
-		
+
 	Stay:
-		TTRB AAA 10 A_CustomMissile ("TorchBallBlue", 59, 0, random (0, 140), 2, random (0, 160))
+		TTRB AA 10 A_CustomMissile ("TorchBallBlue", 59, 0, random (0, 140), 2, random (0, 160))
 		TTRB A 0 A_CustomMissile ("RealisticFireSparks1Blue", 70, 0, random (0, 140), 2, random (0, 160))
 		Loop
 	}
@@ -103,7 +103,7 @@ states
 	Spawn:
 		TRKB ABCDEFGHIJKL 1 BRIGHT
 		Loop
-		
+
 	}
 }
 
@@ -116,7 +116,7 @@ states
 	Spawn:
 		TRKB MN 1 BRIGHT
 		Loop
-		
+
 	}
 }
 
@@ -128,19 +128,19 @@ states
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("GreenTorchVanilla")
 		Stop
-		
+
 	Spawn:
 		TTRB A 0
 		TNT1 A 0 A_Playsound("BDFireplace2", 1, 1, 1)
 		TNT1 A 0 A_SpawnItemEx("EvidenceCheckerGreenTorch", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
-		TNT1 A 2 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
-		TNT1 A 1
-		TNT1 A 2 A_SPawnItem("TallTOrch_GreenFlames")
-		TNT1 A 2 A_SpawnItem("TallTOrch_GreenCore")
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+		TNT1 A 2
+		TNT1 A 0 A_SPawnItem("TallTOrch_GreenFlames")
+		TNT1 A 0 A_SpawnItem("TallTOrch_GreenCore")
 		Goto Stay
-		
+
 	Stay:
-		TTRB AAA 10 A_CustomMissile ("TorchBallGreen", 59, 0, random (0, 140), 2, random (0, 160))
+		TTRB AA 10 A_CustomMissile ("TorchBallGreen", 59, 0, random (0, 140), 2, random (0, 160))
 		TTRB A 0 A_CustomMissile ("RealisticFireSparks1Green", 70, 0, random (0, 140), 2, random (0, 160))
 		Loop
 	}
@@ -160,7 +160,7 @@ states
 	Spawn:
 		TRKG ABCDEFGHIJKL 1 BRIGHT
 		Loop
-		
+
 	}
 }
 
@@ -173,7 +173,7 @@ states
 	Spawn:
 		TRKG MN 1 BRIGHT
 		Loop
-		
+
 	}
 }
 
@@ -194,18 +194,18 @@ states
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("ShortBlueTorchVanilla")
 		Stop
-		
+
 	Spawn:
 		TTRB A 0
 		TNT1 A 0 A_Playsound("BDFireplace2", 1, 1, 1)
-		TNT1 A 2 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
-		TNT1 A 1
-		TNT1 A 2 A_SPawnItem("ShortTOrch_BlueFlames")
-		TNT1 A 2 A_SpawnItem("ShortTOrch_BlueCore")
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+		TNT1 A 2
+		TNT1 A 0 A_SPawnItem("ShortTOrch_BlueFlames")
+		TNT1 A 0 A_SpawnItem("ShortTOrch_BlueCore")
 		Goto Stay
-		
+
 	Stay:
-		STRB AAA 10 A_CustomMissile ("TorchBallBlue", 25, 0, random (0, 140), 2, random (0, 160))
+		STRB AA 10 A_CustomMissile ("TorchBallBlue", 25, 0, random (0, 140), 2, random (0, 160))
 		STRB A 0 A_CustomMissile ("RealisticFireSparks1Blue", 40, 0, random (0, 140), 2, random (0, 160))
 		Loop
 	}
@@ -225,7 +225,7 @@ states
 	Spawn:
 		SRKB ABCDEFGHIJKL 1 BRIGHT
 		Loop
-		
+
 	}
 }
 
@@ -238,7 +238,7 @@ states
 	Spawn:
 		SRKB MN 1 BRIGHT
 		Loop
-		
+
 	}
 }
 
@@ -253,17 +253,17 @@ states
 
 	Spawn:
 		TTRB A 0
-		
+
 		TNT1 A 0 A_Playsound("BDFireplace2", 1, 1, 1)
 		TNT1 A 0 A_SpawnItemEx("EvidenceCheckerGreenTorch", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
-		TNT1 A 2 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
-		TNT1 A 1
-		TNT1 A 2 A_SPawnItem("ShortTOrch_RedFlames")
-		TNT1 A 2 A_SpawnItem("ShortTOrch_RedCore")
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+		TNT1 A 2
+		TNT1 A 0 A_SPawnItem("ShortTOrch_RedFlames")
+		TNT1 A 0 A_SpawnItem("ShortTOrch_RedCore")
 		Goto Stay
-		
+
 	Stay:
-		STRB AAA 10 A_CustomMissile ("TorchBall", 25, 0, random (0, 140), 2, random (0, 160))
+		STRB AA 10 A_CustomMissile ("TorchBall", 25, 0, random (0, 140), 2, random (0, 160))
 		STRB A 0 A_CustomMissile ("RealisticFireSparks1", 40, 0, random (0, 140), 2, random (0, 160))
 		Loop
 	}
@@ -283,7 +283,7 @@ states
 	Spawn:
 		SRKR ABCDEFGHIJKL 1 BRIGHT
 		Loop
-		
+
 	}
 }
 
@@ -296,7 +296,7 @@ states
 	Spawn:
 		SRKR MN 1 BRIGHT
 		Loop
-		
+
 	}
 }
 
@@ -308,19 +308,19 @@ states
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("ShortGreenTorchVanilla")
 		Stop
-		
+
 	Spawn:
 		TTRB A 0
 		TNT1 A 0 A_Playsound("BDFireplace2", 1, 1, 1)
 		TNT1 A 0 A_SpawnItemEx("EvidenceCheckerGreenTorch", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
-		TNT1 A 2 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
-		TNT1 A 1
-		TNT1 A 2 A_SPawnItem("ShortTOrch_GreenFlames")
-		TNT1 A 2 A_SpawnItem("ShortTOrch_GreenCore")
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+		TNT1 A 2
+		TNT1 A 0 A_SPawnItem("ShortTOrch_GreenFlames")
+		TNT1 A 0 A_SpawnItem("ShortTOrch_GreenCore")
 		Goto Stay
-		
+
 	Stay:
-		STRB AAA 10 A_CustomMissile ("TorchBallGreen", 25, 0, random (0, 140), 2, random (0, 160))
+		STRB AA 10 A_CustomMissile ("TorchBallGreen", 25, 0, random (0, 140), 2, random (0, 160))
 		STRB A 0 A_CustomMissile ("RealisticFireSparks1Green", 40, 0, random (0, 140), 2, random (0, 160))
 		Loop
 	}
@@ -340,7 +340,7 @@ states
 	Spawn:
 		SRKG ABCDEFGHIJKL 1 BRIGHT
 		Loop
-		
+
 	}
 }
 
@@ -353,7 +353,7 @@ states
 	Spawn:
 		SRKG MN 1 BRIGHT
 		Loop
-		
+
 	}
 }
 
@@ -376,10 +376,10 @@ states
 		TNT1 A 0 A_JumpIfInventory("MarkForDeletion", 1, "Disappear")
 		TNT1 A 0 A_SpawnItem("CandelabraVanilla")
 		Stop
-		
+
 	Spawn:
 		CBRA A 0
-		CBRA A 2 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+		CBRA A 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
 		CBRA A 4
 		TNT1 A 0 A_JumpIfInventory("MarkForDeletion", 1, "Disappear")
 	Stay:
@@ -402,25 +402,25 @@ states
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("CandleVanilla")
 		Stop
-		
+
 	Spawn:
 		TTRB A 0
-		TNT1 A 2 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
-		CAND C 1
-		
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+		CAND C 2
+
 	Spawn1:
 		CAND C 1
 		TNT1 A 1 A_SpawnItemEx("CandleStick1Flare", 0, 0, 20)
 	Stay:
 		CAND C 25 bright
 		TNT1 A 0 A_Jump(128, "Stay2")
-		
+
 	Stay1:
 		CAND CBCBCB 2 BRIGHT
 		CAND C 12 BRIGHT
 		CAND CBCB 2 BRIGHT
 		Loop
-		
+
 	Stay2:
 		CAND CBCBCB 2 BRIGHT
 		CAND C 25 BRIGHT
@@ -440,7 +440,7 @@ states
 	Spawn:
 		FSO1 AB 1
 		Loop
-		
+
 	}
 }
 
@@ -457,7 +457,7 @@ states
 	Spawn:
 		NF4R ABCDEFGHIJKLMNOPQ 1 BRIGHT
 		Stop
-		
+
 	}
 }
 
@@ -485,7 +485,7 @@ states
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("BurningBarrelVanilla")
 		Stop
-		
+
 	Spawn:
 		BURB A 0
 		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
@@ -499,15 +499,15 @@ states
 		TNT1 A 0 A_SpawnItemEx("HumanBBQ", 0, 0, 68)
 		TNT1 A 0 A_SpawnItemEx("HumanBBQ", 0, 0, 72)
 		TNT1 A 0 A_SpawnItemEx("HumanBBQ", 0, 0, 76)
-		TNT1 A 2 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
 		TNT1 A 2
-		
+
 	Stay:
 		TTRB A 0 A_CustomMissile ("RealisticFireSparks1", 44, 0, random (0, 140), 2, random (0, 160))
 		TNT1 A 0 bright A_CustomMissile ("BurningBarrelTopFIre", 28, 0, random (40, 180), 2, random (50, 130))
 		BURB ABCBABCB 2
 		Loop
-	
+
 	Pain.Kick:
 	Death.ExtremePunches:
 	Death.Kick:
@@ -524,7 +524,7 @@ states
         BARK DE 3
 		BARK F -1
 		Stop
-		
+
 	Death.Explosive:
 	Death.SSG:
 		TNT1 A 0 A_NoBlocking
@@ -564,7 +564,7 @@ DamageType Fire
 +NOEXTREMEDEATH
 +FORCERADIUSDMG
 -BLOODSPLATTER
-+BLOODLESSIMPACT 
++BLOODLESSIMPACT
 PROJECTILE
 	+DEHEXPLOSION
 	+ACTIVATEMCROSS
@@ -750,8 +750,8 @@ Height 10
 DamageType HumanBBQ
 +NOGRAVITY +NOTELEPORT +NODAMAGETHRUST
 +THRUGHOST +NORADIUSDMG +NOEXTREMEDEATH
--BLOODSPLATTER +BLOODLESSIMPACT 
-PROJECTILE	+DEHEXPLOSION	+ACTIVATEMCROSS 
+-BLOODSPLATTER +BLOODLESSIMPACT
+PROJECTILE	+DEHEXPLOSION	+ACTIVATEMCROSS
 +NOPAIN
 States
 {
@@ -803,13 +803,13 @@ ACTOR BDECTorch
 		TNT1 A 2
 		TNT1 A 0 A_Stop
 	Live:
-		TORC A 2 BRIGHT 
+		TORC A 2 BRIGHT
 		TNT1 A 0 A_SpawnItem("YellowFlareSmall", 0, 30)
-		TORC B 2 BRIGHT 
+		TORC B 2 BRIGHT
 		TNT1 A 0 A_SpawnItem("RedFlareSmall", 0, 30)
-		TORC C 2 BRIGHT 
+		TORC C 2 BRIGHT
 		TNT1 A 0 A_SpawnItem("YellowFlareSmall", 0, 30)
-		TORC D 2 BRIGHT 
+		TORC D 2 BRIGHT
 		TNT1 A 0 A_SpawnItem("RedFlareSmall", 0, 30)
 		Loop
 	}
