@@ -513,43 +513,46 @@ script "BDInitialize" enter
 
 SCRIPT "BDInitiate" OPEN
 {
-	ReplaceTextures ("DSAND1", "SANDS1");
-	ReplaceTextures ("DSAND3", "SANDS1");
-	ReplaceTextures ("DSAND4", "SANDS1");
-	ReplaceTextures ("DSAND5", "SANDS1");
-	ReplaceTextures ("ETEX34", "SANDS1");
-	ReplaceTextures ("WALL81", "SANDS1");
-	ReplaceTextures ("ECEIL13", "SANDS1");
-	ReplaceTextures ("ECEIL15", "SANDS1");
-	ReplaceTextures ("GROUND20", "DESERT01");
-	ReplaceTextures ("SLUDGE01", "SLIME08");
-	ReplaceTextures ("DBRAIN1", "LFALL01");//Revilution Lava
-	ReplaceTextures ("LFALL1", "LFALL01");
-	ReplaceTextures ("LAVA1", "LAVAFL");
-	ReplaceTextures ("LAVA2", "LAVAFL");
-	ReplaceTextures ("LAVA3", "LAVAFL");
-	ReplaceTextures ("LAVA4", "LAVAFL");
-	ReplaceTextures ("LAVA01", "LAVAFL");
-	ReplaceTextures ("LAVA02", "LAVAFL");
-	ReplaceTextures ("LAVA03", "LAVAFL");
-	ReplaceTextures ("LAVA04", "LAVAFL");
-	ReplaceTextures ("LAVFALL1", "LFALL01");//Sunlust Lava
-	ReplaceTextures ("BLODGR1", "LFALL01");//AV Lava
-	ReplaceTextures ("SLMFALL1", "CRFAL01");//CRAPFALLS
-	ReplaceTextures ("SLMFALL2", "CRFAL01");//CRAPFALLS
-	ReplaceTextures ("SLMFALL3", "CRFAL01");//CRAPFALLS
+	if	(GetCvar("bd_disablemapenhancements") == 0)
+	{
+		ReplaceTextures ("DSAND1", "SANDS1");
+		ReplaceTextures ("DSAND3", "SANDS1");
+		ReplaceTextures ("DSAND4", "SANDS1");
+		ReplaceTextures ("DSAND5", "SANDS1");
+		ReplaceTextures ("ETEX34", "SANDS1");
+		ReplaceTextures ("WALL81", "SANDS1");
+		ReplaceTextures ("ECEIL13", "SANDS1");
+		ReplaceTextures ("ECEIL15", "SANDS1");
+		ReplaceTextures ("GROUND20", "DESERT01");
+		ReplaceTextures ("SLUDGE01", "SLIME08");
+		ReplaceTextures ("DBRAIN1", "LFALL01");//Revilution Lava
+		ReplaceTextures ("LFALL1", "LFALL01");
+		ReplaceTextures ("LAVA1", "LAVAFL");
+		ReplaceTextures ("LAVA2", "LAVAFL");
+		ReplaceTextures ("LAVA3", "LAVAFL");
+		ReplaceTextures ("LAVA4", "LAVAFL");
+		ReplaceTextures ("LAVA01", "LAVAFL");
+		ReplaceTextures ("LAVA02", "LAVAFL");
+		ReplaceTextures ("LAVA03", "LAVAFL");
+		ReplaceTextures ("LAVA04", "LAVAFL");
+		ReplaceTextures ("LAVFALL1", "LFALL01");//Sunlust Lava
+		ReplaceTextures ("BLODGR1", "LFALL01");//AV Lava
+		ReplaceTextures ("SLMFALL1", "CRFAL01");//CRAPFALLS
+		ReplaceTextures ("SLMFALL2", "CRFAL01");//CRAPFALLS
+		ReplaceTextures ("SLMFALL3", "CRFAL01");//CRAPFALLS
 
-	// Replaces similar textures so the flat checking scripts have less stuff
-	ReplaceTextures ("NUKAGE3", "NUKAGE1");
-	ReplaceTextures ("NUKAGE2", "NUKAGE1");
-	ReplaceTextures ("SLIME04", "SLIME01");
-	ReplaceTextures ("SLIME03", "SLIME01");
-	ReplaceTextures ("SLIME02", "SLIME01");
-	ReplaceTextures ("SLIME08", "SLIME05");
-	ReplaceTextures ("SLIME06", "SLIME05");
-	ReplaceTextures ("SLIME07", "SLIME05");
-	ReplaceTextures ("BLOOD3", "BLOOD1");
-	ReplaceTextures ("BLOOD2", "BLOOD1");
+		// Replaces similar textures so the flat checking scripts have less stuff
+		ReplaceTextures ("NUKAGE3", "NUKAGE1");
+		ReplaceTextures ("NUKAGE2", "NUKAGE1");
+		ReplaceTextures ("SLIME04", "SLIME01");
+		ReplaceTextures ("SLIME03", "SLIME01");
+		ReplaceTextures ("SLIME02", "SLIME01");
+		ReplaceTextures ("SLIME08", "SLIME05");
+		ReplaceTextures ("SLIME06", "SLIME05");
+		ReplaceTextures ("SLIME07", "SLIME05");
+		ReplaceTextures ("BLOOD3", "BLOOD1");
+		ReplaceTextures ("BLOOD2", "BLOOD1");
+	}
 }
 
 Script "BDCHeckJanitor" (VOID)
