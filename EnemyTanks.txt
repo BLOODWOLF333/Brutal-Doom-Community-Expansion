@@ -1,7 +1,7 @@
 
-ACTOR ZombieMainBattleTank 9951//Tank treads & body
+ACTOR ZombieMainBattleTank 9950//Tank treads & body
 {
-	//$category "BD Monsters"
+	//$category "BD Enemy Vehicles"
     XScale 1.94
 	YScale 1.47
 	Height 100
@@ -60,11 +60,11 @@ ACTOR ZombieMainBattleTank 9951//Tank treads & body
 
 	Spawn:
 		TNK1 B 0
-		TNK1 B 4 A_SpawnItemEx ("ZombieMainBattleTankBody1", 0, 0, 0, velx, vely, velz, angle, SXF_SETMASTER | SXF_ABSOLUTEANGLE)
+		TNK1 B 4 A_SpawnItemEx ("ZombieMainBattleTankTurret", 0, 0, 0, velx, vely, velz, angle, SXF_SETMASTER | SXF_ABSOLUTEANGLE | SXF_ABSOLUTEVELOCITY)
 		Goto Standby
 
-	Standby:
 	Idle:
+	Standby:
 	    TNK1 B 0
 		TNK1 B 2 A_Look
 		TNT1 A 0 A_SpawnItemEx ("TankEngineWeakSpot" , -65, 0, 2, 0, 0, 0, angle, SXF_ABSOLUTEANGLE | SXF_ABSOLUTEVELOCITY)
@@ -238,8 +238,9 @@ ACTOR TankCheckRight: TankCheckLeft
 	}
 }
 
-Actor ZombieMainBattleTankBody1//Turret
+Actor ZombieMainBattleTankTurret 9951
 {
+	//$category "BD Enemy Vehicles"
 	MONSTER
 	+FORCEXYBILLBOARD
 	+DONTSPLASH
@@ -266,8 +267,8 @@ Actor ZombieMainBattleTankBody1//Turret
 	states
 	{
 	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_GiveInventory("TankReady", 140)
+		TNKZ T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
+		TNKZ T 1 A_Look
 
 	Idle:
 		TNKZ T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
@@ -485,8 +486,9 @@ Actor ZombieMainBattleTankBody1//Turret
 	}
 }
 
-ACTOR ZombieArtilleryTank : ZombieMainBattleTank 9950
+ACTOR ZombieArtilleryTank : ZombieMainBattleTank 9952
 {
+	//$category "BD Enemy Vehicles"
     Radius 64
 	Height 88
 	health 2000
@@ -496,13 +498,14 @@ ACTOR ZombieArtilleryTank : ZombieMainBattleTank 9950
 	{
 	Spawn:
 		TNK1 B 0
-		TNK1 B 4 A_SpawnItemEx ("ZombieArtilleryTankBody1", 0, 0, 0, velx, vely, velz, angle, SXF_SETMASTER | SXF_ABSOLUTEANGLE)
+		TNK1 B 4 A_SpawnItemEx ("ZombieArtilleryTankTurret", 0, 0, 0, velx, vely, velz, angle, SXF_SETMASTER | SXF_ABSOLUTEANGLE | SXF_ABSOLUTEVELOCITY)
 		Goto Standby
 	}
 }
 
-Actor ZombieArtilleryTankBody1: ZombieMainBattleTankBody1
+Actor ZombieArtilleryTankTurret: ZombieMainBattleTankTurret 9953
 {
+	//$category "BD Enemy Vehicles"
 	States
 	{
 	Spawn:
@@ -640,8 +643,9 @@ Actor ZombieArtilleryTankBody1: ZombieMainBattleTankBody1
 	}
 }
 
-ACTOR ZombieHelicopter 9953
+ACTOR ZombieHelicopter 9954
 {
+	//$category "BD Enemy Vehicles"
 	Game Doom
 	Health 500
 	Scale 1.0
@@ -932,8 +936,9 @@ ACTOR ZombieHelicopter 9953
 	}
 }
 
-ACTOR ZombieMech 9954
+ACTOR ZombieMech 9955
 {
+	//$category "BD Enemy Vehicles"
 	Game Doom
 	Health 1000
 	Scale 1.0
