@@ -39,6 +39,7 @@ ACTOR Revenant1: Revenant Replaces Revenant
 	Radius 18
 	Height 58
 	Scale 0.9
+	Species "Revenant"
 	Tag "Revenant"
 	MeleeRange 56
 	States
@@ -323,26 +324,26 @@ ACTOR Revenant1: Revenant Replaces Revenant
 		SKEL L 6
 		Goto See
 
-	   FatalityMarine:
-        TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
+	FatalityMarine:
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
 		TNT1 A 0 A_PlaySound("BIGSCRE")
-       REFP A 8
-	    EXPL A 0 Radius_Quake (2, 24, 0, 15, 0)
-        TNT1 AAA 0 A_CustomMissile ("Brains1", 50, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AAAAA 0 A_CustomMissile ("XDeath1", 50, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AAA 0 A_CustomMissile ("XDeath2", 50, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
-       TNT1 A 0 A_PlaySound("XDeath1")
-	   REFP BCDE 4
-	   REFP F 8
-	   REFP GHI 4
-	   TNT1 A 0 A_PlaySound("XDeath1")
-	   REFP J 4
+		REFP A 8
+		EXPL A 0 Radius_Quake (2, 24, 0, 15, 0)
+		TNT1 AAA 0 A_CustomMissile ("Brains1", 50, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAA 0 A_CustomMissile ("XDeath1", 50, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_CustomMissile ("XDeath2", 50, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_PlaySound("XDeath1")
+		REFP BCDE 4
+		REFP F 8
+		REFP GHI 4
+		TNT1 A 0 A_PlaySound("XDeath1")
+		REFP J 4
 
-        TNT1 A 0 A_TakeInventory("Curbstomp_Marine",1)
-        TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
-TNT1 A 0 A_SpawnItem ("MarineFatalizedByRevenant", 1)
-Goto See
+		TNT1 A 0 A_TakeInventory("Curbstomp_Marine",1)
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
+		TNT1 A 0 A_SpawnItem ("MarineFatalizedByRevenant", 1)
+		Goto See
 
 	FatalityZombieman:
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)

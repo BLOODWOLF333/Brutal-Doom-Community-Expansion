@@ -10,10 +10,27 @@
 //	Stable v21.5.0
 //
 //	Sprites/Items folder:			Added Squig's fuel jug sprite to the backpack
+//									Changed DemonStrengthRune's sprite to that of a red-colored D64 UnmakerKey
 //	Sprites/Weapons folder:			Set Squig's fuel jug sprite to GSLNA0
+//	Sprites/Weapons/Beasts folder:	Created a RevenantPlayer chokehold sprite and new BaronPlayer fireball and triple fireball HUD sprites
+//									Modified D64UnmakerKey sprite's offsets so that they float off the ground
 //	All vehicle files:				Added //$category map editor support
 //	Archvile.txt:					Set DyingArchvile DropItem to "none"
+//	Artifact.txt:					Set DemonStrengthRune scale to 0.6 for new sprite
+//									Set D64UnmakerUpgrades to be forbidden to all except Purist class
+//	Baron.txt:						Set Baron's melee attack back to vanilla 10*(random(1,8))
 //	CVARS.txt:						Made the BDInitiate script only fire if the MapEnhancement system is enabled
+//	DemonMorph.txt:					Added an Int Countdown variable to force unmorph after 30 seconds
+//	DemonRuneBaron.txt:				Created a DemonSight PowerupGiver that gives the Torch power and tints the player's vision red on demonmorph
+//									Adjusted BaronPlayer's size to match that of the BDMonster
+//									Gave the BaronPalyer the triple fireball attack on kick
+//									Created a FireLeft fireball attack and enabled fatalities on small monsters
+//									Removed scream from the ThrowedZombieman2B (no head)
+//	+DemonRuneRevenant.txt:			Renamed RevenantRune.txt
+//									Enabled fatalities on zombiemen, shotgunguys, and imps
+//									Created zombieman, shotgunguy, and imp meatshield actors/projectiles for after the revenant fatality
+//	Heady_Sys.txt:					Set DamageFactor "BHFT" and "RVFT" to 0.0 for headshot actors
+//	Leg.txt:						Set DamageFactor "BHFT" and "RVFT" to 0.0 for legshot actors
 //	MapSpecificDec.txt:				Added the +FRIENDLY flag to BDdestroyabledecorative (keep alarms from falling down)
 //	Testmap.wad:					Fixed the Fatso, PainElemental, and ZombieArtilleryTank spawns
 //									Fix tank turrets not showing on the enemy vehicle spawn-platforms

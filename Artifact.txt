@@ -203,7 +203,7 @@ ACTOR SuperBlurSphere : CustomInventory
 ACTOR DemonStrengthRune : BerserkPack
 {
 	Game Doom
-    Scale 1.0
+    Scale 0.6
 	+COUNTITEM
 	+INVENTORY.ALWAYSPICKUP
 	Inventory.PickupMessage "You got the Demon Strength Rune. RIP AND TEAR!"
@@ -405,6 +405,7 @@ ACTOR 64UnmakerUpgrade1 : CustomInventory 1042
 	Inventory.Icon "ART1A0"
 	Inventory.PickupMessage "$GOTARTIFACT1"
 	Inventory.PickupSound "misc/p_pkup"
+	Inventory.ForbiddenTo BDoomer, Doomer2, TacticalDoomer
 	+DONTGIB
 	+COUNTITEM
 	-INTERHUBSTRIP
@@ -413,7 +414,7 @@ ACTOR 64UnmakerUpgrade1 : CustomInventory 1042
 	States
 	{
 		Spawn:
-			ART1 AABBCCDDEEDDCCBB 2 BRIGHT A_SpawnItem("YellowFlareMedium",0,20)
+			ART1 AABBCCDDEEDDCCBB 2 BRIGHT A_SpawnItem("YellowFlareMedium",0,45)
 			Loop
 		Pickup:
 			TNT1 A 0 A_JumpIfInventory("UnmakerUpgrade1Icon", 1, "AlreadyTaken")
@@ -488,6 +489,7 @@ ACTOR 64UnmakerUpgrade2 : CustomInventory 1043
 	Inventory.Icon "ART2A0"
 	Inventory.PickupMessage "$GOTARTIFACT2"
 	Inventory.PickupSound "misc/p_pkup"
+	Inventory.ForbiddenTo BDoomer, Doomer2, TacticalDoomer
 	+DONTGIB
 	+COUNTITEM
 	-INTERHUBSTRIP
@@ -496,7 +498,7 @@ ACTOR 64UnmakerUpgrade2 : CustomInventory 1043
 	States
 	{
 		Spawn:
-			ART2 AABBCCDDEEDDCCBB 2 BRIGHT A_SpawnItem("VioletFlareMedium",0,20)
+			ART2 AABBCCDDEEDDCCBB 2 BRIGHT A_SpawnItem("VioletFlareMedium",0,45)
 			Loop
 		Pickup:
 			TNT1 A 0 A_JumpIfInventory("UnmakerUpgrade2Icon", 1, "AlreadyTaken")
@@ -571,6 +573,7 @@ ACTOR 64UnmakerUpgrade3 : CustomInventory 1044
 	Inventory.Icon "ART3A0"
 	Inventory.PickupMessage "$GOTARTIFACT3"
 	Inventory.PickupSound "misc/p_pkup"
+	Inventory.ForbiddenTo BDoomer, Doomer2, TacticalDoomer
 	+DONTGIB
 	+COUNTITEM
 	-INTERHUBSTRIP
@@ -579,7 +582,7 @@ ACTOR 64UnmakerUpgrade3 : CustomInventory 1044
 	States
 	{
 		Spawn:
-			ART3 AABBCCDDEEDDCCBB 2 BRIGHT A_SpawnItem("BlueFlareMedium2",0,20)
+			ART3 AABBCCDDEEDDCCBB 2 BRIGHT A_SpawnItem("BlueFlareMedium2",0,45)
 			Loop
 		Pickup:
 			TNT1 A 0 A_JumpIfInventory("UnmakerUpgrade3Icon", 1, "AlreadyTaken")
