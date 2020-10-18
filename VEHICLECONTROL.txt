@@ -681,33 +681,50 @@ Script "BDATHUD" (VOID)
 Script "BDHelicopterHUD"(VOID)
 {
 	int fireMode = CheckInventory("MechFireMode");
+	int ammo20Auto = CheckInventory("AutocannonAmmo");
+	int ammoHMG = CheckInventory("HeavyMachinegunAmmo");
+	int ammoRocket = CheckInventory("HelicopterRocketAmmo");
 	//Weapon selection
-		If(fireMode == 0)
+		If(fireMode == 0 && ammo20Auto >= 1)
 		{
 			hudmessage(s: "[20mm AUTO]"; HUDMSG_PLAIN, 0, CR_YELLOW, 0.5, 0.8, 0.11);
+		}
+		Else If (fireMode == 0 && ammo20Auto == 0)
+		{
+			hudmessage(s: "20mm AUTO"; HUDMSG_PLAIN, 0, CR_WHITE, 0.5, 0.8, 0.11);
+			GiveInventory("MechFireMode",1);
 		}
 		Else
 		{
 			hudmessage(s: "20mm AUTO"; HUDMSG_PLAIN, 0, CR_WHITE, 0.5, 0.8, 0.11);
 		}
-		If(fireMode == 1)
+		If(fireMode == 1 && ammoHMG >= 1)
 		{
 			hudmessage(s: "[.50 MGx2]"; HUDMSG_PLAIN, 0, CR_YELLOW, -0.3, 0.8, 0.11);
+		}
+		Else If (fireMode == 1 && ammoHMG == 0)
+		{
+			hudmessage(s: ".50 MGx2"; HUDMSG_PLAIN, 0, CR_WHITE, -0.3, 0.8, 0.11);
+			GiveInventory("MechFireMode",1);
 		}
 		Else
 		{
 			hudmessage(s: ".50 MGx2"; HUDMSG_PLAIN, 0, CR_WHITE, -0.3, 0.8, 0.11);
 		}
-		If(fireMode == 2)
+		If(fireMode == 2 && ammoRocket >= 1)
 		{
 			hudmessage(s: "[ROCKETS]"; HUDMSG_PLAIN, 0, CR_YELLOW, -0.65, 0.8, 0.11);
+		}
+		Else If (fireMode == 2 && ammoRocket == 0)
+		{
+			hudmessage(s: "ROCKETS"; HUDMSG_PLAIN, 0, CR_WHITE, -0.65, 0.8, 0.11);
+			TakeInventory("MechFireMode",3);
 		}
 		Else
 		{
 			hudmessage(s: "ROCKETS"; HUDMSG_PLAIN, 0, CR_WHITE, -0.65, 0.8, 0.11);
 		}
 	//Ammo status
-	int ammo20Auto = CheckInventory("AutocannonAmmo");
 		If(ammo20Auto >= 1)
 		{
 			hudmessage(s: "READY"; HUDMSG_PLAIN, 0, CR_WHITE, 0.5, 0.825, 0.11);
@@ -717,7 +734,6 @@ Script "BDHelicopterHUD"(VOID)
 			hudmessage(s: "EMPTY"; HUDMSG_PLAIN, 0, CR_RED, 0.5, 0.825, 0.11);
 		}
 
-	int ammoHMG = CheckInventory("HeavyMachinegunAmmo");
 		If(ammoHMG >= 1)
 		{
 			hudmessage(s: "READY"; HUDMSG_PLAIN, 0, CR_WHITE, -0.3, 0.825, 0.11);
@@ -727,7 +743,6 @@ Script "BDHelicopterHUD"(VOID)
 			hudmessage(s: "EMPTY"; HUDMSG_PLAIN, 0, CR_RED, -0.3, 0.825, 0.11);
 		}
 
-	int ammoRocket = CheckInventory("HelicopterRocketAmmo");
 		If(ammoRocket >= 1)
 		{
 			hudmessage(i:ammoRocket; HUDMSG_PLAIN, 0, CR_WHITE, -0.65, 0.825, 0.11);
@@ -768,13 +783,22 @@ Script "BDMechHUD"(VOID)
 	int fireMode = CheckInventory("MechFireMode");
 	int leftMGAmmo = CheckInventory("HeavyMachinegunAmmo")/2;
 	int rightMGAmmo = CheckInventory("HeavyMachinegunAmmo")/2;
-		If (fireMode == 0)
+		If (fireMode == 0 && leftMGAmmo >= 1 && rightMGAmmo >= 1)
 		{
 			hudmessage(s: "[MGUN]"; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.7, 0.11);
 			hudmessage(i: leftMGAmmo; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.72, 0.11);
 
 			hudmessage(s: "[MGUN]"; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.7, 0.11);
 			hudmessage(i: rightMGAmmo; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.72, 0.11);
+		}
+		Else If (fireMode == 0 && leftMGAmmo == 0 && rightMGAmmo == 0)
+		{
+			hudmessage(s: "MGUN"; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.7, 0.11);
+			hudmessage(i: leftMGAmmo; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.72, 0.11);
+
+			hudmessage(s: "MGUN"; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.7, 0.11);
+			hudmessage(i: rightMGAmmo; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.72, 0.11);
+			GiveInventory("MechFireMode",1);
 		}
 		Else
 		{
@@ -800,13 +824,22 @@ Script "BDMechHUD"(VOID)
 
 	int leftRocketAmmo = CheckInventory("MechRocketAmmo")/2;
 	int rightRocketAmmo = CheckInventory("MechRocketAmmo")/2;
-		If(fireMode == 2)
+		If(fireMode == 2 && leftRocketAmmo >= 1 && rightRocketAmmo >= 1)
 		{
 			hudmessage(s: "[ROCKET]"; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.9, 0.11);
 			hudmessage(i: leftRocketAmmo; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.92, 0.11);
 
 			hudmessage(s: "[ROCKET]"; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.9, 0.11);
 			hudmessage(i: rightRocketAmmo; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.92, 0.11);
+		}
+		Else If (fireMode == 2 && leftRocketAmmo == 0 && rightRocketAmmo == 0)
+		{
+			hudmessage(s: "ROCKET"; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.9, 0.11);
+			hudmessage(i: leftRocketAmmo; HUDMSG_PLAIN, 0, CR_CYAN, -0.325, 0.92, 0.11);
+
+			hudmessage(s: "ROCKET"; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.9, 0.11);
+			hudmessage(i: rightRocketAmmo; HUDMSG_PLAIN, 0, CR_CYAN, -0.58, 0.92, 0.11);
+			TakeInventory("MechFireMode",3);
 		}
 		Else
 		{
