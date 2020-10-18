@@ -132,7 +132,8 @@ ACTOR Revolver2 : BrutalWeapon
 		REVO LMN 1
 		TNT1 A 0 A_PlaySound("REVOHAM", 4)
 		REVO OPQR 1
-		REVO A 1 A_Refire("Fire")
+		REVO A 1 A_JumpIfInventory("FiredPrimary",1,"Fire")
+		REVO A 0 A_Refire
 		Goto Ready3
 
 	Fire2:
@@ -161,7 +162,8 @@ ACTOR Revolver2 : BrutalWeapon
 		REVA F 1
 		REVA E 1
 		REVA K 1 A_PlaySound("REVOHAM", 4)
-		REVA A 1 A_Refire("Fire")
+		REVA A 1 A_JumpIfInventory("FiredPrimary",1,"Fire")
+		REVA A 0 A_Refire
 		Goto Ready2
 
 	AltFire://Fan The Hammer

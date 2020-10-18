@@ -68,6 +68,20 @@ ACTOR MP40 : BrutalWeapon
 		MP40 A 0 A_JumpIfInventory("StartDualWield",1,"DualWield")
 		Loop
 
+	Ready2:
+		TNT1 A 0
+		MP41 A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+		MP40 A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
+        MP40 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        MP40 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+        MP40 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		MP40 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		MP40 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		MP40 A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		MP40 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		MP40 A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint2")
+		MP40 A 0 A_JumpIfInventory("StartDualWield",1,"DualWield")
+		Loop
 
 	CheckSprint:
 		MP40 A 1 A_WeaponReady(WRF_NOFIRE)
@@ -152,21 +166,6 @@ ACTOR MP40 : BrutalWeapon
 		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		Goto Ready
 
-	Ready2:
-		TNT1 A 0
-		MP41 A 1 A_WeaponReady(WRF_ALLOWRELOAD)
-		MP40 A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
-        MP40 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-        MP40 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
-        MP40 A 0 A_JumpIfInventory("Reloading",1,"Reload")
-		MP40 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
-		MP40 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
-		MP40 A 0 A_JumpIfInventory("Unloading",1,"Unload")
-		MP40 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-		MP40 A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint2")
-		MP40 A 0 A_JumpIfInventory("StartDualWield",1,"DualWield")
-		Loop
-
 	Deselect:
 		MP40 A 0 A_Takeinventory("Zoomed",1)
 		MP40 A 0 A_TakeInventory("TossGrenade", 1)
@@ -220,10 +219,9 @@ ACTOR MP40 : BrutalWeapon
 		RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
 		RIFG A 0 A_SetPitch(pitch-0.2)
 		TNT1 A 0 A_JumpIfInventory("IsTacticalClass", 1, 2)//Tactical mode skips a frame, fires faster
-		MP40 E 1 A_WeaponReady(1)
-        MP40 A 0 A_Refire
-		Goto Ready+6
-
+        MP40 E 1
+		MP40 A 1 A_Refire
+		Goto Ready3
 
 	Fire2:
         MP40 A 0
@@ -241,8 +239,9 @@ ACTOR MP40 : BrutalWeapon
 		RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
 		RIFG A 0 A_SetPitch(pitch-0.1)
 		TNT1 A 0 A_JumpIfInventory("IsTacticalClass", 1, 2)//Tactical mode skips a frame, fires faster
-		MP41 H 1 A_WeaponReady(1)
-        MP40 A 0 A_Refire
+		MP41 H 1
+		MP40 H 0 A_JumpIfInventory("FiredSecondary",1,"HoldAim")//If still pressing alt fire, it means its holding aim
+		MP41 A 1 A_Refire
 		Goto Ready2
 
 	AltFire:
