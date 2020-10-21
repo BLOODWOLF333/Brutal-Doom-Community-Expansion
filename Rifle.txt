@@ -265,7 +265,7 @@ ACTOR Rifle : BrutalWeapon
 		RI2G A 1
 		RI2F A 0 A_JumpIfInventory("FiredSecondary",1,"HoldAim")//If still pressing alt fire, it means its holding aim
 		RI2F A 1 A_ReFire
-		Goto Ready2
+		Goto NoAim
 
     AltFire:
         RI2G A 0
@@ -285,18 +285,13 @@ ACTOR Rifle : BrutalWeapon
 		RI2G A 1 A_WeaponReady(WRF_ALLOWRELOAD)
 		RI2G A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
 		RI2G A 1 A_WeaponReady(WRF_ALLOWRELOAD)
-		RI2G A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
-		RI2G A 1 A_WeaponReady(WRF_ALLOWRELOAD)
-		RI2G A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
-		RI2G A 1 A_WeaponReady(WRF_ALLOWRELOAD)
-		RI2G A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
-		RI2G A 1 A_WeaponReady(WRF_ALLOWRELOAD)
-		RI2G A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
 		RI2G A 0 A_JumpIfInventory("FiredSecondary",1,"HoldAim")
         Goto Ready2
 
 	   HoldAim:
 	    RI2G A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
+		RI2G A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+		RI2G A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
 		RI2G A 1 A_WeaponReady(WRF_ALLOWRELOAD)
 		RI2G A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
 		RI2G A 1 A_WeaponReady(WRF_ALLOWRELOAD)
