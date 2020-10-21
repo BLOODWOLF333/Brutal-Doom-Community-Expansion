@@ -413,6 +413,7 @@ ACTOR SSG : BrutalWeapon
 		SHTZ A 0 A_Recoil(5)
 		SHTZ A 0
 		SHTZ A 0 A_FireCustomMissile("DistantFireSoundSSG", random(-1,1), 0, 0, -12, 0, random(-1,1))
+		SHO9 A 0 A_firebullets (0,0,1,40,"shotpuff",FBF_NORANDOM,300)
         SHO9 A 0 BRIGHT A_playsound("SlugSSG", 1)
 		TNT1 AAAAAAAAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-3,3), 0, 0, 0, 0, random(-1,1))
 		TNT1 AAAAAAAAAAAAAAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-12,12), 0, -1, 0, 0, random(-9,9))
@@ -420,7 +421,7 @@ ACTOR SSG : BrutalWeapon
 		SHTZ A 0 A_SpawnItemEx("PlayerMuzzle2",32,0,28)
 		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		SHOF A 1 BRIGHT
-		SHTZ A 0 A_FireBullets (2.8, 1.4, 2, 120, "ShotPuff", FBF_NORANDOM)
+		SHTZ A 0 A_FireBullets (2.8, 1.4, 2, 120, "ShotgunPuff", FBF_NORANDOM)
 		TNT1 A 0 A_ZoomFactor(0.96)
 		SHTZ A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//Tactical Mode deals extra recoil
 		SHTZ A 0 A_SetPitch(pitch-3.6)
