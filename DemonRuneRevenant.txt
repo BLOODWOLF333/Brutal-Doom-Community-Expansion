@@ -362,7 +362,7 @@ ACTOR D4RevenantHUD : DoomWeapon
 		Loop
 
 	Deselect:
-		D4RW CBA 1
+		D4RW AAA 1
 		D4RW AAAAAAAAAAAA 0 A_Lower
 		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_Lower
 		Loop
@@ -372,7 +372,7 @@ ACTOR D4RevenantHUD : DoomWeapon
 		D4RW AAAAAAAAA 0 A_Raise
 		Select2:
 		TNT1 A 0 A_PlaySound("skeleton/sight")
-		D4RW ABC 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+		D4RW AAA 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
 		Goto Ready
 
 	Fire:
