@@ -1000,6 +1000,7 @@ ACTOR ClassicSSG : ClassicWeapon
 	Fire:
 	    PKSS A 3
 		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
+		TNT1 A 0 A_firebullets (0,0,1,40,"shotpuff",FBF_NORANDOM,300)
 		TNT1 A 0 A_playsound("SSHFIRE", 1)
 		TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-5,5),0,0,0,0,random(-3,3))
 		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
