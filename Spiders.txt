@@ -361,7 +361,7 @@ Actor EnemyPlasmaBall : PlasmaBall75 Replaces PlasmaBall2
 Damage (random(10,15))
 DamageType Plasma
 Speed 22
-+DONTHURTSPECIES
++DONTHARMSPECIES
 Species "Spider"
 States
 {
@@ -397,6 +397,11 @@ DeathNothing:
 	TNT1 B 0
 	Stop
 }
+}
+
+ACTOR EvilPlasmaBall : EnemyPlasmaBall
+{
+	Species "EvilMarines"
 }
 
 Actor DeadSpider: CurbstompedMarine
