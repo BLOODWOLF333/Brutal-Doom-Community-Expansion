@@ -151,18 +151,20 @@ ACTOR ExplosiveBarrel1 Replaces ExplosiveBarrel
         TNT1 A 0 A_SpawnItem("WhiteShockwaveBig")
 		TNT1 A 0 A_NoBlocking
 	    TNT1 A 0 A_Fall
-		BEXP AB 4 BRIGHT
+		BEXP ABCD 4 BRIGHT
+		TNT1 A 1
 		TNT1 A 0 A_SpawnItemEx ("BarrelKaboom",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 1
 		TNT1 A 0 A_CustomMissile ("HighExplosiveFlames", random (10, 20), 0, random (0, 360), 2, random (10, 90))
 		TNT1 A 0 A_CustomMissile ("BDExplosionparticles3", 64, 0, random (0, 360), 2, random (40, 90))
 		TNT1 A 0 A_CustomMissile ("BDExplosionparticles4", 64, 0, random (0, 360), 2, random (40, 90))
-		BEXP C 4 BRIGHT
 		TNT1 A 0 A_SpawnItemEx ("ExplosionSplashSpawner", 0, 0, 0)
+		TNT1 A 1
 		TNT1 A 0 A_CustomMissile ("BarrelShrapnel1", 20, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("BarrelShrapnel2", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("BarrelShrapnel3", 10, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("BarrelShrapnel4", 5, 0, random (0, 360), 2, random (0, 160))
-		BEXP D 4 BRIGHT
+		TNT1 A 1
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece", 0,0,5,random (-15, 15), random (-15, 15), random (-15, 15))
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece2", 0,0,10,random (-15, 15), random (-15, 15), random (-15, 15))
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", 0,0,15,random (-15, 15), random (-15, 15), random (-15, 15))
