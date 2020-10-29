@@ -27,6 +27,7 @@ ACTOR DualMP40 : BrutalWeapon
 		MP42 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
         MP42 A 0 A_JumpIfInventory("Reloading",1,"Reload")
 		MP42 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		MP42 A 0 A_JumpIfInventory("Unloading",1,"Unload")
 		MP42 A 1 A_WeaponReady(WRF_ALLOWRELOAD)
 		MP42 A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")

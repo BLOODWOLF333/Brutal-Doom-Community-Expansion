@@ -64,6 +64,7 @@ ACTOR MP40 : BrutalWeapon
 		MP40 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		MP40 A 0 A_JumpIfInventory("Unloading",1,"Unload")
 		MP40 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		MP40 A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		MP40 A 0 A_JumpIfInventory("StartDualWield",1,"DualWield")
 		Loop
@@ -438,6 +439,7 @@ ACTOR HitlersBuzzsaw : BrutalWeapon
 		MP40 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		MP40 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		MP40 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		MP40 A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		Loop
 

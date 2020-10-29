@@ -24,6 +24,7 @@ ACTOR FlameCannon : BrutalWeapon
 		FLMG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		FLMG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		FLMG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		FLMG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		Goto Ready3
 

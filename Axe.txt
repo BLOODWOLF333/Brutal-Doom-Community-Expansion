@@ -44,6 +44,7 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXEG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		AXEG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		AXEG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		RIFG A 0 A_JumpIfInventory("StartDualWield",1,"DualWield")
 		AXEG A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"RedBloodReady")
         AXEG A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"BlueBloodReady")
@@ -235,6 +236,7 @@ ACTOR BrutalAxe : BrutalWeapon
 		RIFG A 0 A_JumpIfInventory("StartDualWield",1,"DualWield")
 		AXEG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		AXEG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		AXEG A 0 A_TakeInventory("PowerGreenBloodOnVisor", 1)
 		AXEG A 0 A_TakeInventory("PowerBlueBloodOnVisor", 1)
 		AXRG A 1 A_WeaponReady
@@ -354,6 +356,7 @@ ACTOR BrutalAxe : BrutalWeapon
 		RIFG A 0 A_JumpIfInventory("StartDualWield",1,"DualWield")
 		AXEG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		AXEG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		AXEG A 0 A_TakeInventory("PowerGreenBloodOnVisor", 1)
 		AXEG A 0 A_TakeInventory("PowerBloodOnVisor", 1)
 		AXBG A 1 A_WeaponReady
@@ -472,6 +475,7 @@ ACTOR BrutalAxe : BrutalWeapon
 		RIFG A 0 A_JumpIfInventory("StartDualWield",1,"DualWield")
 		AXEG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		AXEG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		AXEG A 0 A_TakeInventory("PowerBlueBloodOnVisor", 1)
 		AXEG A 0 A_TakeInventory("PowerBloodOnVisor", 1)
 		AXGG A 1 A_WeaponReady

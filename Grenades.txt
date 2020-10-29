@@ -31,6 +31,7 @@ ACTOR HandGrenades : BrutalWeapon
 	Steady:
 		GRHO C 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
