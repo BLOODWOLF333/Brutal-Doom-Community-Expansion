@@ -63,7 +63,7 @@ ACTOR FakeClip1Sprite: BasicAmmoPickup
     {
 	 Spawn:
 		CLIP C 0
-		CLIP C 4
+		CLIP C 2
 		Stop
     }
 }
@@ -81,7 +81,7 @@ ACTOR FakeClip2Sprite: BasicAmmoPickup
     {
 	 Spawn:
 		CLIP A 0
-		CLIP A 4
+		CLIP A 2
 		Stop
     }
 }
@@ -150,7 +150,7 @@ ACTOR Clip1Spawner: CustomInventory
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("FakeClip1Sprite")
 		TNT1 A 0 A_SpawnItem("FakeClip2Sprite")
-		TNT1 A 2
+		TNT1 A 1
 		Loop
 	Pickup:
 	    TNT1 A 0
@@ -235,7 +235,7 @@ ACTOR Clip1Drop: CustomInventory
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("FakeClip1Sprite")
 		TNT1 A 0 A_SpawnItem("FakeClip2Sprite")
-		TNT1 A 2
+		TNT1 A 1
 		Loop
 	Pickup:
 	    TNT1 A 0
@@ -278,7 +278,7 @@ ACTOR FakeClipBoxSprite: BasicAmmoPickup
 
 	 Spawn:
 		AMMO A 0
-		AMMO A 4
+		AMMO A 2
 		Stop
     }
 }
@@ -312,7 +312,7 @@ ACTOR FakePABSprite: BasicAmmoPickup
 
 	 Spawn:
 		4M0K A 0
-		4M0K A 4
+		4M0K A 2
 		Stop
     }
 }
@@ -335,7 +335,7 @@ ACTOR PistolAmmoBoxSpawner: CustomInventory
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("FakePABSprite")
 		TNT1 A 0 A_SpawnItem("FakeClipBoxSprite")
-		TNT1 A 2
+		TNT1 A 1
 		Loop
 	Pickup:
 	    TNT1 A 0
@@ -488,7 +488,7 @@ ACTOR FakeRocketSprite: BasicAmmoPickup
     {
 	 Spawn:
 		ROCK A 0
-		ROCK A 4
+		ROCK A 2
 		Stop
     }
 }
@@ -609,7 +609,7 @@ ACTOR FakeCellSprite: BasicAmmoPickup
     {
 	 Spawn:
 		CELL A 0
-		CELL A 4
+		CELL A 2
 		Stop
     }
 }
@@ -644,7 +644,7 @@ ACTOR FakeCellPackSprite: BasicAmmoPickup
     {
 	 Spawn:
 		CELP A 0
-		CELP A 4
+		CELP A 2
 		Stop
     }
 }
@@ -681,7 +681,7 @@ ACTOR FakeGasSprite: BasicAmmoPickup
     {
 	 Spawn:
 		GSLN A 0
-		GSLN A 4
+		GSLN A 2
 		Stop
     }
 }
@@ -704,7 +704,7 @@ ACTOR GasSpawner: CustomInventory
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("FakeGasSprite")
 		TNT1 A 0 A_SpawnItem("FakeCellPackSprite")
-		TNT1 A 2
+		TNT1 A 1
 		Loop
 	Pickup:
 	    TNT1 A 0
@@ -751,7 +751,7 @@ ACTOR FakeNukeSprite: BasicAmmoPickup
     {
 	 Spawn:
 		BNUK A 0
-		BNUK A 4
+		BNUK A 2
 		Stop
     }
 }
@@ -774,7 +774,7 @@ ACTOR NukeSpawner: CustomInventory
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("FakeNukeSprite")
 		TNT1 A 0 A_SpawnItem("FakeCellPackSprite")
-		TNT1 A 2
+		TNT1 A 1
 		Loop
 	Pickup:
 	    TNT1 A 0
@@ -858,7 +858,7 @@ ACTOR FakeAmmoShellSprite: BasicAmmoPickup
     {
 	 Spawn:
 		SHEL A 0
-		SHEL A 4
+		SHEL A 2
 		Stop
     }
 }
@@ -894,7 +894,7 @@ ACTOR FakeShellBoxSprite: BasicAmmoPickup
     {
 	 Spawn:
 		SBOX A 0
-		SBOX A 4
+		SBOX A 2
 		Stop
     }
 }
@@ -944,7 +944,7 @@ ACTOR FakeSlugRoundsSprite: BasicAmmoPickup
     {
 	 Spawn:
 		SLSU A 0
-		SLSU A 4
+		SLSU A 2
 		Stop
     }
 }
@@ -968,7 +968,7 @@ ACTOR SlugRoundsSpawner: CustomInventory
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("FakeSlugRoundsSprite")
 		TNT1 A 0 A_SpawnItem("FakeShellBoxSprite")
-		TNT1 A 2
+		TNT1 A 1
 		Loop
 	Pickup:
 	    TNT1 A 0
@@ -1016,7 +1016,7 @@ ACTOR FakeAmmoMagnumSprite: BasicAmmoPickup
     {
 	 Spawn:
 		MAGA A 0
-		MAGA A 4
+		MAGA A 2
 		Stop
     }
 }
@@ -1039,7 +1039,7 @@ ACTOR AmmoMagnumSpawner: CustomInventory
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("FakeAmmoMagnumSprite")
 		TNT1 A 0 A_SpawnItem("FakeAmmoShellSprite")
-		TNT1 A 2
+		TNT1 A 1
 		Loop
 	Pickup:
 	    TNT1 A 0
@@ -1080,7 +1080,7 @@ ACTOR FakeMagnumBoxSprite: BasicAmmoPickup
     {
 	 Spawn:
 		MBOX A 0
-		MBOX A 4
+		MBOX A 2
 		Stop
     }
 }
@@ -1103,7 +1103,7 @@ ACTOR MagnumBoxSpawner: CustomInventory
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("FakeMagnumBoxSprite")
 		TNT1 A 0 A_SpawnItem("FakeShellBoxSprite")
-		TNT1 A 2
+		TNT1 A 1
 		Loop
 	Pickup:
 	    TNT1 A 0
