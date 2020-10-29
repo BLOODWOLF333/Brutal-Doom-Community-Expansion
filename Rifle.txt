@@ -483,30 +483,29 @@ ACTOR Rifle : BrutalWeapon
 		RIFG A 0 A_SelectWEapon("DualRifles")
 		Goto Ready
 
-
-
 	Execution2:
 		RIFG A 0
-		RIFG A 0 A_ZoomFactor(1.1)
+		RIFG A 0 A_ZoomFactor(1.0)
 		RIBB A 1 A_Stop
         RIBB B 1 A_PlaySound("skeleton/swing")
+		TNT1 A 0 A_GiveInventory("Punching",1)
 		RIBB C 1 A_FireCustomMissile("ExecutionAttackMelee", 0, 0, 0, 0)
 		RIBB D 6 A_Stop
 		RIBB CBA 2 A_Stop
 
 		RIBB A 1 A_Stop
         RIBB B 1 A_PlaySound("skeleton/swing")
+		TNT1 A 0 A_GiveInventory("Punching",1)
 		RIBB C 1 A_FireCustomMissile("ExecutionAttackMelee", 0, 0, 0, 0)
 		RIBB D 6 A_Stop
 		RIBB CBA 2 A_Stop
 
-
 		RIBB A 1 A_Stop
         RIBB B 1 A_PlaySound("skeleton/swing")
+		TNT1 A 0 A_GiveInventory("Punching",1)
 		RIBB C 1 A_FireCustomMissile("ExecutionAttackKick", 0, 0, 0, 0)
 		RIBB D 6 A_Stop
 		RIBB CBA 2 A_Stop
-
 		TNT1 A 5
 		Goto FinishExecution
 	}
