@@ -187,68 +187,24 @@ Spawn:
 }
 
 
-Actor MarineTracer: Tracer
+Actor MarineTracer: MonsterTracer
 {
-+BLOODSPLATTER
-+MTHRUSPECIES
--DONTSPLASH
--GHOST
--THRUGHOST
-speed 100
-damage (random(12,12))
-Decal "BulletDecalNew1"
-DamageType FriendBullet
-Species "Marines"
-States
-{
-Death:
-    TNT1 A 1 A_SpawnItem("HitPuffTracer")
-    Stop
-XDEath:
-TNT1 A 0
-//TNT1 A 0 A_Explode(2, 5)
-TNT1 A 1
-Stop
-}
+	damage (random(16,16))
+	DamageType FriendBullet
+	Species "Marines"
 }
 
-Actor MarineStrongTracer: MarineTracer
+Actor MarineWeakTracer: MarineTracer
 {
-damage (random(16,16))
-States
-{
-	Spawn:
-		TRAC A 1 BRIGHT
-		TNT1 A 0 ThrustThingZ(0,random(-9, 9),0,1)
-		TRAC A 1 BRIGHT
-		Goto Spawn2
-
-	Spawn2:
-		TRAC A 1 BRIGHT
-		Loop
+	damage (random(12,12))
+	DamageType FriendBullet
 }
-}
-
 
 Actor MarineShotgunTracer: MarineTracer
 {
-damage (random(14,14))
-damagetype Shotgun
-States
-{
-	Spawn:
-		TRAC A 1 BRIGHT
-		TNT1 A 0 ThrustThingZ(0,random(-9, 9),0,1)
-		TRAC A 1 BRIGHT
-		Goto Spawn2
-
-	Spawn2:
-		TRAC A 1 BRIGHT
-		Loop
+	damage (random(13,13))
+	damagetype FriendBullet
 }
-}
-
-
 
 Actor Alerter: MonsterTracer
 {

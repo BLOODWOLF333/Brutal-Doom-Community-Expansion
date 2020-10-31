@@ -140,7 +140,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 	PainSound "*pain"
 	SeeSound "None"
 	Scale 1.0
-	Translation "112:127=117:127"
+	Translation  "112:127=32:47", "48:79=64:79"
 	BloodType "Player_Blood", "Player_BloodSaw", "Player_Blood"
 	Obituary "%o has been gunned down by a Marine."
 	Monster
@@ -372,7 +372,6 @@ ACTOR Marine_Rifle: SwitchableDecoration
 
 	Missile:
 		TNT1 A 0
-		//TNT1 A 0 A_SpawnItem("KillMeSmall")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsACyberdemon", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMastermind", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsABaronOfHell", 1, "CheckRetreat")
@@ -389,28 +388,28 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		PLAY F 3 BRIGHT A_CustomMissile("MarineMuzzle1", 28)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_CustomMissile("MarineTracer", 28)
+		TNT1 A 0 A_CustomMissile("MarineTracer", 32)
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		PLAY E 3 A_FaceTarget
 		PLAY F 3 BRIGHT A_CustomMissile("MarineMuzzle1", 28)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_CustomMissile("MarineTracer", 28)
+		TNT1 A 0 A_CustomMissile("MarineTracer", 32)
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		PLAY E 3 A_FaceTarget
 		PLAY F 3 BRIGHT A_CustomMissile("MarineMuzzle1", 28)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_CustomMissile("MarineTracer", 28)
+		TNT1 A 0 A_CustomMissile("MarineTracer", 32)
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		PLAY E 3 A_FaceTarget
 		PLAY F 3 BRIGHT A_CustomMissile("MarineMuzzle1", 28)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_CustomMissile("MarineTracer", 28)
+		TNT1 A 0 A_CustomMissile("MarineTracer", 32)
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 		TNT1 A 0 A_CposRefire
 		Goto Missile
@@ -423,7 +422,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		PLAY F 3 BRIGHT A_CustomMissile("MarineMuzzle1", 28)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_CustomMissile("MarineTracer", 28)
+		TNT1 A 0 A_CustomMissile("MarineTracer", 32)
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		PLAY E 3 A_FaceTarget
@@ -431,7 +430,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		PLAY F 3 BRIGHT A_CustomMissile("MarineMuzzle1", 28)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_CustomMissile("MarineTracer", 28)
+		TNT1 A 0 A_CustomMissile("MarineTracer", 32)
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		PLAY E 3 A_FaceTarget
@@ -439,7 +438,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		PLAY F 3 BRIGHT A_CustomMissile("MarineMuzzle1", 28)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_CustomMissile("MarineTracer", 28)
+		TNT1 A 0 A_CustomMissile("MarineTracer", 32)
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		PLAY E 3 A_FaceTarget
@@ -447,7 +446,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		PLAY F 3 BRIGHT A_CustomMissile("MarineMuzzle1", 28)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_CustomMissile("MarineTracer", 28)
+		TNT1 A 0 A_CustomMissile("MarineTracer", 32)
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 		TNT1 A 0 A_CposRefire
 		Goto Missile
@@ -460,7 +459,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		PLAY F 3 BRIGHT A_CustomMissile("MarineMuzzle1", 28)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_CustomMissile("MarineTracer", 28)
+		TNT1 A 0 A_CustomMissile("MarineTracer", 32)
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		PLAY E 3 A_FaceTarget
@@ -468,7 +467,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		PLAY F 3 BRIGHT A_CustomMissile("MarineMuzzle1", 28)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_CustomMissile("MarineTracer", 28)
+		TNT1 A 0 A_CustomMissile("MarineTracer", 32)
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		PLAY E 3 A_FaceTarget
@@ -476,7 +475,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		PLAY F 3 BRIGHT A_CustomMissile("MarineMuzzle1", 28)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_CustomMissile("MarineTracer", 28)
+		TNT1 A 0 A_CustomMissile("MarineTracer", 32)
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		PLAY E 3 A_FaceTarget
@@ -484,7 +483,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		PLAY F 3 BRIGHT A_CustomMissile("MarineMuzzle1", 28)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_CustomMissile("MarineTracer", 28)
+		TNT1 A 0 A_CustomMissile("MarineTracer", 32)
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 		TNT1 A 0 A_CposRefire
 		Goto Missile
@@ -501,7 +500,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		PLAY F 3 BRIGHT A_CustomMissile("MarineMuzzle1", 28)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_CustomMissile("MarineTracer", 28)
+		TNT1 A 0 A_CustomMissile("MarineTracer", 32)
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
         PLAY E 3 A_FaceTarget
@@ -509,7 +508,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		PLAY F 3 BRIGHT A_CustomMissile("MarineMuzzle1", 28)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_CustomMissile("MarineTracer", 28)
+		TNT1 A 0 A_CustomMissile("MarineTracer", 32)
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		PLAY E 3 A_FaceTarget
@@ -517,7 +516,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		PLAY F 3 BRIGHT A_CustomMissile("MarineMuzzle1", 28)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_CustomMissile("MarineTracer", 28)
+		TNT1 A 0 A_CustomMissile("MarineTracer", 32)
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		PLAY E 3 A_FaceTarget
@@ -525,7 +524,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		PLAY F 3 BRIGHT A_CustomMissile("MarineMuzzle1", 28)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_CustomMissile("MarineTracer", 28)
+		TNT1 A 0 A_CustomMissile("MarineTracer", 32)
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 		Goto Pain.Avoid
 
@@ -542,7 +541,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 
 		PLAY E 3 A_FaceTarget
 		PLAM A 3 A_FastChase
-		PLAM B 3 A_CustomMissile("MarinePunch",42,0,0,0)
+		PLAM B 3 A_CustomMissile("MarineKick",42,0,0,0)
 		PLAM A 3 A_FastChase
 		PLAY E 3 A_FaceTarget
 		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality3", 1, "FatalityZombieman")
@@ -566,21 +565,21 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		PLAY F 3 BRIGHT A_CustomMissile("MarineMuzzle1", 28)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_CustomMissile("MarineTracer", 28)
+		TNT1 A 0 A_CustomMissile("MarineTracer", 32)
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		PLAY E 3 A_FaceTarget
 		PLAY F 3 BRIGHT A_CustomMissile("MarineMuzzle1", 28)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_CustomMissile("MarineTracer", 28)
+		TNT1 A 0 A_CustomMissile("MarineTracer", 32)
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		PLAY E 3 A_FaceTarget
 		PLAY F 3 BRIGHT A_CustomMissile("MarineMuzzle1", 28)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_CustomMissile("MarineTracer", 28)
+		TNT1 A 0 A_CustomMissile("MarineTracer", 32)
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 	WaitforLand:
@@ -600,21 +599,21 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		PLAY F 3 BRIGHT A_CustomMissile("MarineMuzzle1", 28)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_CustomMissile("MarineTracer", 28)
+		TNT1 A 0 A_CustomMissile("MarineTracer", 32)
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		PLAY E 3 A_FaceTarget
 		PLAY F 3 BRIGHT A_CustomMissile("MarineMuzzle1", 28)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_CustomMissile("MarineTracer", 28)
+		TNT1 A 0 A_CustomMissile("MarineTracer", 32)
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		PLAY E 3 A_FaceTarget
 		PLAY F 3 BRIGHT A_CustomMissile("MarineMuzzle1", 28)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_CustomMissile("MarineTracer", 28)
+		TNT1 A 0 A_CustomMissile("MarineTracer", 32)
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 		Goto WaitforLand
 
@@ -627,7 +626,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		Goto WaitforLand
 
 	Pain.Kick:
-		PLAY A 2 A_FaceTarget
+		PLAY G 2 A_FaceTarget
 		TNT1 A 0 A_Recoil(5)
         Goto FollowPlayer
 
