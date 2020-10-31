@@ -133,6 +133,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 	Mass 130
 	MaxStepHeight 24
 	MaxDropOffHeight 128
+	MaxTargetRange 8192
 	ActiveSound "none"
 	AttackSound "none"
 	DeathSound "DSMADTH"
@@ -154,7 +155,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 	-CANNOTPUSH
 	-COUNTKILL
 	+DONTSPLASH
-	+NORADIUSDMG
+	-NORADIUSDMG
 	+USESPECIAL
 	+THRUSPECIES
 	+MTHRUSPECIES
@@ -162,15 +163,16 @@ ACTOR Marine_Rifle: SwitchableDecoration
 	+NOTAUTOAIMED
 	+NOBLOCKMONST
 	+DROPOFF
+	+SHOOTABLE
 	States
 	{
 	Active:
 		TNT1 A 0
 		TNT1 A 0 A_ChangeFlag("NOBLOCKMAP",1)
-		MR7S A 30
-		TNT1 A 0 A_SpawnItemEx ("RifleMarineGuarding",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 0 A_CustomMissile ("OrderTitle2", 50, 0, 0, 2, 90)
 		TNT1 A 0 A_PlaySound("MarineGuard", 2)
+		MR7S A 30
+		TNT1 A 0 A_SpawnItemEx ("RifleMarineGuarding",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		Stop
 
 	Spawn:
@@ -190,156 +192,175 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		TNT1 A 0 A_JumpIfInventory("RevenantFatality", 1, "FatalityRevenant")
 		NULL A 0 A_JumpIfInventory("ComandoFatality", 1, "FatalityComando")
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 1)
-		TNT1 A 0 A_ChangeFlag("FASTER", 0)
+		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 1)
+		TNT1 A 0 A_ChangeFLag("SOLID", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
-		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "FollowPLayer")
+		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "FollowPlayer")
 		PLAY AAA 1 A_Chase
 		TNT1 A 0 A_JumpIfInventory("evmarinenoway", 1, "CheckIfCanJump")
 
-		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "FollowPLayer")
+		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "FollowPlayer")
 		PLAY BBB 1 A_Chase
 		TNT1 A 0 A_CustomMissile("EvilMarineCheckFront", 28, 0, 0, 2, 0)
 
-		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "FollowPLayer")
+		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "FollowPlayer")
 		PLAY CCC 1 A_Chase
 		TNT1 A 0 A_CustomMissile("EvilMarineCheckJump", 64, 0, 0, CMF_AIMDIRECTION, 45)
 
-		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "FollowPLayer")
+		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "FollowPlayer")
 		PLAY DDD 1 A_Chase
 
 		TNT1 A 0 A_CheckSight("ForgetTarget")
-		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "FollowPLayer")
-		TNT1 A 0 A_CheckSight("FollowPLayer")
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 0)
 		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFLag("SOLID", 0)
+		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 0)
+		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
 
-		PLAY AAA 1 A_Chase
 		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "FollowPlayer")
 		TNT1 A 0 A_JumpIfCloser(256, "Waits")
-		TNT1 A 0 A_CheckSight("CheckIfPlayerSee")
+		PLAY AAA 1 A_Chase("","")
 		TNT1 A 0 A_JumpIfInventory("evmarinenoway", 1, "CheckIfCanJump")
 
-		PLAY BBB 1 A_Chase
 		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "FollowPlayer")
 		TNT1 A 0 A_JumpIfCloser(256, "Waits")
-		TNT1 A 0 A_CheckSight("CheckIfPlayerSee")
+		PLAY BBB 1 A_Chase("","")
 		TNT1 A 0 A_CustomMissile("EvilMarineCheckFront", 28, 0, 0, 2, 0)
 
-		PLAY CCC 1 A_Chase
 		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "FollowPlayer")
 		TNT1 A 0 A_JumpIfCloser(256, "Waits")
-		TNT1 A 0 A_CheckSight("CheckIfPlayerSee")
+		PLAY CCC 1 A_Chase("","")
 		TNT1 A 0 A_CustomMissile("EvilMarineCheckJump", 64, 0, 0, CMF_AIMDIRECTION, 45)
 
-		PLAY DDD 1 A_Chase
 		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "FollowPlayer")
 		TNT1 A 0 A_JumpIfCloser(256, "Waits")
-		TNT1 A 0 A_CheckSight("CheckIfPlayerSee")
+		PLAY DDD 1 A_Chase("","")
 		Goto See
 
 	CheckIfCanJump:
+		TNT1 A 0 A_ChangeFlag("FASTER", 0)
 		PLAY E 2 A_FaceTarget
 		TNT1 A 0 A_TakeInventory("evmarinenoway", 1)
 		TNT1 A 0 A_JumpIfInventory("evmarinecanjump", 1, "Jump")
 		Goto See
 
 	FollowPlayer:
-	    TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
 		TNT1 A 0 A_ChangeFlag("FASTER", 1)
+	    TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
 		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
-	    TNT1 A 0 A_JumpIfCloser(256, "Waits")
+		TNT1 A 0 A_ChangeFLag("SOLID", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
+		TNT1 A 0 A_JumpIfCloser(256, "Waits")
 		PLAY AAA 1 A_Chase
 		TNT1 A 0 A_JumpIfInventory("evmarinenoway", 1, "CheckIfCanJump")
+		TNT1 A 0 A_JumpIfCloser(256, "Waits")
 		PLAY BBB 1 A_Chase
 		TNT1 A 0 A_CustomMissile("EvilMarineCheckFront", 28, 0, 0, 2, 0)
+		TNT1 A 0 A_JumpIfCloser(256, "Waits")
 		PLAY CCC 1 A_Chase
 		TNT1 A 0 A_CustomMissile("EvilMarineCheckJump", 64, 0, 0, CMF_AIMDIRECTION, 45)
+		TNT1 A 0 A_JumpIfCloser(256, "Waits")
 		PLAY DDD 1 A_Chase
 
-		TNT1 A 0 A_JumpIfCloser(256, "Waits")
-		TNT1 A 0 A_CheckSight("CheckIfPlayerSee")
-
-		PLAY AAA 1 A_Chase
-		TNT1 A 0 A_JumpIfInventory("evmarinenoway", 1, "CheckIfCanJump")
-		PLAY BBB 1 A_Chase
-		TNT1 A 0 A_CustomMissile("EvilMarineCheckFront", 28, 0, 0, 2, 0)
-		PLAY CCC 1 A_Chase
-		TNT1 A 0 A_CustomMissile("EvilMarineCheckJump", 64, 0, 0, CMF_AIMDIRECTION, 45)
-		PLAY DDD 1 A_Chase
-
-		TNT1 A 0 A_JumpIfCloser(256, "Waits")
 		TNT1 A 0 A_CheckSight("CheckIfPlayerSee")
 		Loop
 
 	CheckIfPlayerSee:
 		TNT1 A 0
-		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
-		TNT1 A 0 A_ChangeFLag("FRIENDLY", 0)
 		TNT1 A 0 A_JumpIfCloser(512, 1)
 		Goto Pathfind
 		TNT1 AAA 0
 		Goto FollowPlayer
 
-	CheckRangeToWait:
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfCloser(256, "Waits")
-		Goto FollowPLayer
-
 	Pathfind:
-		TNT1 A 0
-		TNT1 A 0 A_ChangeFLag("FRIENDLY", 0)
+		TNT1 A 0 A_ChangeFlag("FASTER", 0)
 		TNT1 A 0 A_JumpIFInTargetInventory("IsPLayer", 1, 1)
-		Goto FollowPLayer
-		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		Goto See
+		TNT1 AAA 0
 		TNT1 A 0 A_ChangeFlag("NOBLOCKMAP", 1)
-		TNT1 A 0 A_ChangeFlag("NOCLIP", 1)
-		TNT1 A 0 A_ChangeFlag("SOLID", 0)
-		TNT1 A 0 A_Noblocking
 		TNT1 A 0 A_SpawnItemEx ("Marine1Pathfinder",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		Stop
 
 	Waits:
-		MARN D 4 A_Stop
+		MARN D 0
+		MARN D 4 A_ChangeFlag("FASTER", 0)
 		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, 2)
 		TNT1 A 0 A_ClearTarget
 		Goto See
-		TNT1 A 0 A_ChangeFLag("FRIENDLY", 1)
-		TNT1 A 0 A_ChangeFlag("FASTER", 0)
-		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
-		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
+		TNT1 AAA 0
+		TNT1 A 0 A_ChangeFLag("FRIENDLY", 0)
 		TNT1 A 0 A_ChangeFLag("SOLID", 0)
 		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 0)
-		MARN D 8 A_Stop
+		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 0)
+		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
+		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "FollowPlayer")
 		TNT1 A 0 A_Jump(16, "Waits2", "Waits3")
 		MARN D 8 A_Stop
+		TNT1 A 0 A_CheckSight("FollowPlayer")
+		TNT1 A 0 A_ClearTarget
+		TNT1 A 0 A_ChangeFLag("FRIENDLY", 1)
+		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 1)
+		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
+		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
 		MARN D 0 A_Look
+		MARN D 8 A_Stop
+		TNT1 A 0 A_ChangeFLag("FRIENDLY", 0)
+		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 0)
+		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
+		MARN D 0 A_LookEx(0,0,0,0,0,"FollowPlayer")
 		TNT1 A 0 A_JumpIfCloser(256, "Waits")
 		Goto FollowPlayer
 
 	Waits2:
-		TNT1 A 0 A_SetAngle(random(90, -90) + angle)
+		MARN D 0
 		MARN D 8 A_Stop
+		TNT1 A 0 A_SetAngle(random(90, -90) + angle)
 		TNT1 A 0 A_PlaySound("MRNWT", 2)
 		MARN D 8 A_Stop
+		TNT1 A 0 A_CheckSight("FollowPlayer")
+		TNT1 A 0 A_ClearTarget
+		TNT1 A 0 A_ChangeFLag("FRIENDLY", 1)
+		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 1)
+		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
+		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
 		MARN D 0 A_Look
+		MARN D 8 A_Stop
+		TNT1 A 0 A_ChangeFLag("FRIENDLY", 0)
+		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 0)
+		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
+		MARN D 0 A_LookEx(0,0,0,0,0,"FollowPlayer")
 		TNT1 A 0 A_JumpIfCloser(256, "Waits")
-		Goto FollowPLayer
+		Goto FollowPlayer
 
 	Waits3:
-		TNT1 A 0
+		MARN D 0
+		MARN D 8 A_Stop
+		MARN D 8 A_Stop
 		TNT1 A 0 A_JumpIfInTargetInventory("Clip2", 30, 1)
 		Goto GiveAmmo
 		TNT1 AAA 0
 		TNT1 A 0 A_SetAngle(random(90, -90) + angle)
-		MARN D 8 A_Stop
 		TNT1 A 0 A_PlaySound("MRNWC", 2)
 		MARN D 8 A_Stop
+		TNT1 A 0 A_CheckSight("FollowPlayer")
+		TNT1 A 0 A_ClearTarget
+		TNT1 A 0 A_ChangeFLag("FRIENDLY", 1)
+		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 1)
+		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
+		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
 		MARN D 0 A_Look
+		MARN D 8 A_Stop
+		TNT1 A 0 A_ChangeFLag("FRIENDLY", 0)
+		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 0)
+		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
+		MARN D 0 A_LookEx(0,0,0,0,0,"FollowPlayer")
 		TNT1 A 0 A_JumpIfCloser(256, "Waits")
-		Goto FollowPLayer
+		Goto FollowPlayer
 
 	GiveAmmo:
 		TNT1 A 0
@@ -356,8 +377,8 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMastermind", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsABaronOfHell", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMancubus", 1, "CheckRetreat")
-		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "FollowPLayer")
-		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "CheckRangeToWait")
+		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "FollowPlayer")
+		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "FollowPlayer")
 		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 1)
 		TNT1 A 0 A_ChangeFlag("SOLID", 0)
 		TNT1 A 0 A_PlaySound("MRNAT", 2)
@@ -391,10 +412,12 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		TNT1 A 0 A_PlaySound("weapons/rifle")
 		TNT1 A 0 A_CustomMissile("MarineTracer", 28)
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-		TNT1 A 0 A_MonsterRefire(192, "See")
-		Goto See
+		TNT1 A 0 A_CposRefire
+		Goto Missile
 
 	MissileLeft:
+		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "FollowPlayer")
+		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "FollowPlayer")
 		PLAY E 3 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
 		PLAY F 3 BRIGHT A_CustomMissile("MarineMuzzle1", 28)
@@ -426,10 +449,12 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		TNT1 A 0 A_PlaySound("weapons/rifle")
 		TNT1 A 0 A_CustomMissile("MarineTracer", 28)
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-		TNT1 A 0 A_MonsterRefire(192, "See")
-		Goto See
+		TNT1 A 0 A_CposRefire
+		Goto Missile
 
 	MissileRight:
+		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "FollowPlayer")
+		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "FollowPlayer")
 		PLAY E 3 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
 		PLAY F 3 BRIGHT A_CustomMissile("MarineMuzzle1", 28)
@@ -461,8 +486,8 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		TNT1 A 0 A_PlaySound("weapons/rifle")
 		TNT1 A 0 A_CustomMissile("MarineTracer", 28)
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-		TNT1 A 0 A_MonsterRefire(192, "See")
-        Goto See
+		TNT1 A 0 A_CposRefire
+		Goto Missile
 
 	CheckRetreat:
 		TNT1 A 0
@@ -505,19 +530,16 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		Goto Pain.Avoid
 
 	Melee:
-		TNT1 A 0
-		//TNT1 A 0 A_SpawnItem("KillMeSmall")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsACyberdemon", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMastermind", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsABaronOfHell", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMancubus", 1, "CheckRetreat")
-		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "FollowPLayer")
-		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "CheckRangeToWait")
+		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "FollowPlayer")
+		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "FollowPlayer")
 		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 1)
 		TNT1 A 0 A_ChangeFlag("SOLID", 0)
 		TNT1 A 0 A_PlaySound("MRNAT", 2)
 
-		TNT1 A 0
 		PLAY E 3 A_FaceTarget
 		PLAM A 3 A_FastChase
 		PLAM B 3 A_CustomMissile("MarinePunch",42,0,0,0)
@@ -537,6 +559,8 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		TNT1 A 0 A_Recoil(-6)
 		MARJ A 3
 		TNT1 A 0 A_CheckSight("WaitforLand")
+		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "Waitforland")
+		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "WaitforLand")
 		PLAY E 3 A_FaceTarget
 		TNT1 A 0 A_JumpIfCloser(128, "JumpKick")
 		PLAY F 3 BRIGHT A_CustomMissile("MarineMuzzle1", 28)
@@ -598,7 +622,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		TNT1 A 0
 		PKIK ABC 2 A_Facetarget
 		TNT1 A 0 A_Recoil(-6)
-		AKIK A 2 A_CustomMissile("MarinePunch",28,0,0,0)
+		AKIK A 2 A_CustomMissile("AirKickAttack",28,0,0,0)
 		PKIK CBA 2 A_Facetarget
 		Goto WaitforLand
 

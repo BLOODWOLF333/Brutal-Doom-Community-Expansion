@@ -111,6 +111,7 @@ ACTOR EvilMarineRifle
 	Height 56
 	Speed 12
 	FastSpeed 25
+	MaxTargetRange 4096
 	Monster
 	Damagefactor "Avoid", 1.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 10.0
@@ -209,8 +210,8 @@ ACTOR EvilMarineRifle
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 		TNT1 A 0 A_CustomMissile("ZombiemanTracer",35,0,0,0)
 		TNT1 A 0 A_JumpIfInTargetInventory("PlayerIsDead", 1, "Laugh")
-		TNT1 A 0 A_MonsterRefire(192, "See")
-		Goto See
+		TNT1 A 0 A_CposRefire
+		Goto Missile
 
 	MissileLeft:
 		TNT1 A 0
@@ -238,8 +239,8 @@ ACTOR EvilMarineRifle
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 		TNT1 A 0 A_CustomMissile("ZombiemanTracer",35,0,0,0)
 		TNT1 A 0 A_JumpIfInTargetInventory("PlayerIsDead", 1, "Laugh")
-		TNT1 A 0 A_MonsterRefire(192, "See")
-		Goto See
+		TNT1 A 0 A_CposRefire
+		Goto Missile
 
 	MissileRight:
 		TNT1 A 0
@@ -267,8 +268,8 @@ ACTOR EvilMarineRifle
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 		TNT1 A 0 A_CustomMissile("ZombiemanTracer",35,0,0,0)
 		TNT1 A 0 A_JumpIfInTargetInventory("PlayerIsDead", 1, "Laugh")
-		TNT1 A 0 A_MonsterRefire(192, "See")
-		Goto See
+		TNT1 A 0 A_CposRefire
+		Goto Missile
 
 	Melee:
 		TNT1 A 0
@@ -750,8 +751,8 @@ Actor EvilMarinePlasma: EvilMarineRifle
 		MAR6 D 2 A_FaceTarget
 		MAR6 D 2 BRIGHT A_CustomMissile("EvilPlasmaBall",35,0,0,0)
 		TNT1 A 0 A_JumpIfInTargetInventory("PlayerIsDead", 1, "Laugh")
-		TNT1 A 0 A_MonsterRefire(192, "See")
-		Goto See
+		TNT1 A 0 A_CposRefire
+		Goto Missile
 
 	MissileLeft:
 		TNT1 A 0
@@ -768,8 +769,8 @@ Actor EvilMarinePlasma: EvilMarineRifle
 		MAR6 D 2 A_FaceTarget
 		MAR6 D 2 BRIGHT A_CustomMissile("EvilPlasmaBall",35,0,0,0)
 		TNT1 A 0 A_JumpIfInTargetInventory("PlayerIsDead", 1, "Laugh")
-		TNT1 A 0 A_MonsterRefire(192, "See")
-		Goto See
+		TNT1 A 0 A_CposRefire
+		Goto Missile
 
 	MissileRight:
 		TNT1 A 0
@@ -786,8 +787,8 @@ Actor EvilMarinePlasma: EvilMarineRifle
 		MAR6 D 2 A_FaceTarget
 		MAR6 D 2 BRIGHT A_CustomMissile("EvilPlasmaBall",35,0,0,0)
 		TNT1 A 0 A_JumpIfInTargetInventory("PlayerIsDead", 1, "Laugh")
-		TNT1 A 0 A_MonsterRefire(192, "See")
-		Goto See
+		TNT1 A 0 A_CposRefire
+		Goto Missile
 
 	Melee:
 		TNT1 A 0
