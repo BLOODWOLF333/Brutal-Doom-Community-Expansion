@@ -10,50 +10,6 @@ ACTOR PrePlacedMarinePlasmaGun Replaces MarinePlasma
     }
 }
 
-
-
-
-
-ACTOR Marine_PlasmaGun1PathfinderNew: Marine1Pathfinder
-{
--FRIENDLY
-	Speed 4
-	States
-	{
-	Spawn:
-	TNT1 A 0
-	TNT1 A 0 A_GiveInventory("TargetIsAMarine", 1)
-	Goto See
-	Pain:
-    See:
-		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
-		TNT1 A 0 Thing_ChangeTID(0,98)
-		TNT1 AAAAAAAAAAAAAAAAA 1 A_Chase
-		//TNT1 A 0 Thing_Hate(98, 264, 0)
-		TNT1 A 0 A_Recoil(-5)
-		TNT1 A 0 A_SpawnItem("MarineSpawnChecker")
-		TNT1 A 1 A_FaceTarget
-		Loop
-	Death:
-	Missile:
-	    TNT1 A 0
-		TNT1 A 0 A_ChangeFlag("NOCLIP", 0)
-	    TNT1 A 0 A_Recoil(-4)
-		TNT1 A 1
-		TNT1 A 0 A_JumpIf(momx == 0, "CheckAgain")
-	SpawnMarine:
-		TNT1 A 0 A_Scream
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("Marine_PlasmaGun",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 0 A_SpawnItem("FriendlymarineTFog")
-		Stop
-	CheckAgain:
-		TNT1 A 0
-		TNT1 A 0 A_JumpIF(momy == 0, "See")
-		Goto SpawnMarine
-	}
-}
-
 ACTOR Marine_PlasmaGunSpawn: RedTorch
 {
     Radius 10
@@ -926,7 +882,7 @@ ACTOR Marine_PlasmaGunPathfinder
 	}
 }
 
-ACTOR Marine_PlasmaGunAdd: Marine1Pathfinder
+ACTOR Marine_PlasmaGunAdd: Marine_PlasmaGunPathfinder
 {
 	Speed 4
 	States
@@ -969,7 +925,7 @@ ACTOR RemoveMarinePlasmaGun
 	}
 }
 
-ACTOR RemoveMarinePlasmaGunActivate: Marine1Pathfinder
+ACTOR RemoveMarinePlasmaGunActivate: Marine_PlasmaGunPathfinder
 {
 -FRIENDLY
 -SHOOTABLE
@@ -997,6 +953,3 @@ MaxTargetRange 90000
 		Stop
 	}
 }
-
-
-

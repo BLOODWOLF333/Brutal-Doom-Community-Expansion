@@ -54,7 +54,7 @@ ACTOR HellKnight2 : HellKnight Replaces HellKnight
 		BOS2 F 6 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 52)
 		BOS2 G 6 A_CustomMissile("KnightAttack",10,0,0,0)
-TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
+		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 		Goto See2
 
 ReplaceVanilla:

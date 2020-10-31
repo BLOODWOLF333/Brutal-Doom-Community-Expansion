@@ -129,6 +129,7 @@ ACTOR EvilMarineRifle
 	+FLOORCLIP
 	+QUICKTORETALIATE
 	+DONTHURTSPECIES
+	+DONTHARMSPECIES
 	+MTHRUSPECIES
 	+MISSILEMORE
 	+DROPOFF
@@ -284,26 +285,13 @@ ACTOR EvilMarineRifle
 	Jump:
 		TNT1 A 0
 		TNT1 A 0 A_TakeInventory("evmarinecanjump", 1)
-		TNT1 A 0 ThrustThingZ(0, 30, 0, 1)
+		TNT1 A 0 ThrustThingZ(0, 32, 0, 1)
 		TNT1 A 0 A_Recoil(-6)
 		MARJ A 3
 		TNT1 A 0 A_CheckSight("WaitforLand")
-		MARJ A 3 A_Facetarget
+		MARJ A 1
 		TNT1 A 0 A_JumpIfCloser(128, "JumpKick")
-		MARJ A 3 BRIGHT A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-		TNT1 A 0 A_CustomMissile("ZombiemanTracer",35,0,0,0)
-
-		MARJ A 3 A_Facetarget
-		MARJ A 3 BRIGHT A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-		TNT1 A 0 A_CustomMissile("ZombiemanTracer",35,0,0,0)
-
-		MARJ A 3 A_Facetarget
-		MARJ A 3 BRIGHT A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-		TNT1 A 0 A_CustomMissile("ZombiemanTracer",35,0,0,0)
-		TNT1 A 0 A_JumpIfInTargetInventory("PlayerIsDead", 1, "Laugh")
+		Goto Missile
 
 	WaitforLand:
 		TNT1 A 0
@@ -313,27 +301,13 @@ ACTOR EvilMarineRifle
 	JumpBack:
 		TNT1 A 0
 		TNT1 A 0 A_TakeInventory("evmarinecanjump", 1)
-		TNT1 A 0 ThrustThingZ(0, 30, 0, 1)
+		TNT1 A 0 ThrustThingZ(0, 32, 0, 1)
 		TNT1 A 0 A_Recoil(6)
 		MARJ A 3
 		TNT1 A 0 A_CheckSight("WaitforLand")
-		MARJ A 3 A_Facetarget
+		MARJ A 1
 		TNT1 A 0 A_JumpIfCloser(128, "JumpKick")
-		MARJ A 3 BRIGHT A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-		TNT1 A 0 A_CustomMissile("ZombiemanTracer",35,0,0,0)
-
-		MARJ A 3 A_Facetarget
-		MARJ A 3 BRIGHT A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-		TNT1 A 0 A_CustomMissile("ZombiemanTracer",35,0,0,0)
-
-		MARJ A 3 A_Facetarget
-		MARJ A 3 BRIGHT A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-		TNT1 A 0 A_CustomMissile("ZombiemanTracer",35,0,0,0)
-		TNT1 A 0 A_JumpIfInTargetInventory("PlayerIsDead", 1, "Laugh")
-		Goto WaitforLand
+		Goto Missile
 
 	JumpKick:
 		TNT1 A 0
@@ -795,7 +769,7 @@ Actor EvilMarinePlasma: EvilMarineRifle
 		TNT1 A 0
 		MAR6 D 3 A_FaceTarget
 		PKIK AB 3 A_FastChase
-		PKIK C 3 A_CustomMissile("KickAttack",35,0,0,0)
+		PKIK C 3 A_CustomMissile("KickAttack",32,0,0,0)
 		PKIK B 3 A_FastChase
 		MAR6 D 3 A_FaceTarget
 		Goto See
@@ -803,20 +777,13 @@ Actor EvilMarinePlasma: EvilMarineRifle
 	Jump:
 		TNT1 A 0
 		TNT1 A 0 A_TakeInventory("evmarinecanjump", 1)
-		TNT1 A 0 ThrustThingZ(0, 30, 0, 1)
+		TNT1 A 0 ThrustThingZ(0, 32, 0, 1)
 		TNT1 A 0 A_Recoil(-6)
 		MARJ A 3
 		TNT1 A 0 A_CheckSight("WaitforLand")
-		MARJ A 2 A_FaceTarget
+		MARJ A 1
 		TNT1 A 0 A_JumpIfCloser(128, "JumpKick")
-		MARJ A 2 BRIGHT A_CustomMissile("EvilPlasmaBall",35,0,0,0)
-
-		MARJ A 2 A_FaceTarget
-		MARJ A 2 BRIGHT A_CustomMissile("EvilPlasmaBall",35,0,0,0)
-
-		MARJ A 2 A_FaceTarget
-		MARJ A 2 BRIGHT A_CustomMissile("EvilPlasmaBall",35,0,0,0)
-		TNT1 A 0 A_JumpIfInTargetInventory("PlayerIsDead", 1, "Laugh")
+		Goto Missile
 
 	WaitforLand:
 		TNT1 A 0
