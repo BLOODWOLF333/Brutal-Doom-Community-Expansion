@@ -31,7 +31,7 @@ States
 		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
 		TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
 		TNT1 A 0 A_ChangeFlag("NOBLOCKMAP", 1)
-		TNT1 A 0 A_Jump(255, "SpawnRifle", "SpawnPlasma")
+		TNT1 A 0 A_Jump(85, "SpawnPlasma")
 
 		SpawnRifle:
 		TNT1 A 0
@@ -195,23 +195,11 @@ ACTOR EvilMarineRifle
 		PLAY E 3 A_FaceTarget
 		PLAY F 3 BRIGHT A_PlaySound("weapons/rifle")
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
+		TNT1 A 0 A_GiveInventory("ZombieManAmmo",1)
 		TNT1 A 0 A_CustomMissile("ZombiemanTracer",35,0,0,0)
 
-		PLAY E 3 A_Facetarget
-		PLAY F 3 BRIGHT A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-		TNT1 A 0 A_CustomMissile("ZombiemanTracer",35,0,0,0)
-
-		PLAY E 3 A_Facetarget
-		PLAY F 3 BRIGHT A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-		TNT1 A 0 A_CustomMissile("ZombiemanTracer",35,0,0,0)
-
-		PLAY E 3 A_Facetarget
-		PLAY F 3 BRIGHT A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-		TNT1 A 0 A_CustomMissile("ZombiemanTracer",35,0,0,0)
 		TNT1 A 0 A_JumpIfInTargetInventory("PlayerIsDead", 1, "Laugh")
+		TNT1 A 0 A_JumpIfInventory("ZombieManAmmo", 20, "Reload")
 		TNT1 A 0 A_CposRefire
 		Goto Missile
 
@@ -221,26 +209,11 @@ ACTOR EvilMarineRifle
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
 		PLAY F 3 BRIGHT A_PlaySound("weapons/rifle")
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
+		TNT1 A 0 A_GiveInventory("ZombieManAmmo",1)
 		TNT1 A 0 A_CustomMissile("ZombiemanTracer",35,0,0,0)
 
-		PLAY E 3 A_Facetarget
-		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
-		PLAY F 3 BRIGHT A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-		TNT1 A 0 A_CustomMissile("ZombiemanTracer",35,0,0,0)
-
-		PLAY E 3 A_Facetarget
-		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
-		PLAY F 3 BRIGHT A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-		TNT1 A 0 A_CustomMissile("ZombiemanTracer",35,0,0,0)
-
-		PLAY E 3 A_Facetarget
-		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
-		PLAY F 3 BRIGHT A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-		TNT1 A 0 A_CustomMissile("ZombiemanTracer",35,0,0,0)
 		TNT1 A 0 A_JumpIfInTargetInventory("PlayerIsDead", 1, "Laugh")
+		TNT1 A 0 A_JumpIfInventory("ZombieManAmmo", 20, "Reload")
 		TNT1 A 0 A_CposRefire
 		Goto Missile
 
@@ -250,28 +223,24 @@ ACTOR EvilMarineRifle
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
 		PLAY F 3 BRIGHT A_PlaySound("weapons/rifle")
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
+		TNT1 A 0 A_GiveInventory("ZombieManAmmo",1)
 		TNT1 A 0 A_CustomMissile("ZombiemanTracer",35,0,0,0)
 
-		PLAY E 3 A_Facetarget
-		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
-		PLAY F 3 BRIGHT A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-		TNT1 A 0 A_CustomMissile("ZombiemanTracer",35,0,0,0)
-
-		PLAY E 3 A_Facetarget
-		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
-		PLAY F 3 BRIGHT A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-		TNT1 A 0 A_CustomMissile("ZombiemanTracer",35,0,0,0)
-
-		PLAY E 3 A_Facetarget
-		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
-		PLAY F 3 BRIGHT A_PlaySound("weapons/rifle")
-		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-		TNT1 A 0 A_CustomMissile("ZombiemanTracer",35,0,0,0)
 		TNT1 A 0 A_JumpIfInTargetInventory("PlayerIsDead", 1, "Laugh")
+		TNT1 A 0 A_JumpIfInventory("ZombieManAmmo", 20, "Reload")
 		TNT1 A 0 A_CposRefire
 		Goto Missile
+
+	Reload:
+		MWAV I 10
+		TNT1 A 0 A_PlaySound("Reload")
+		TNT1 A 0 A_CustomMissile("EmptyClipSpawn", 30, 0, random(-11, 11), 0)
+		MWAV J 10 A_TakeInventory("ZombieManAmmo", 20)
+		MWAV K 10
+		TNT1 A 0 A_PlaySound("CLIPIN")
+		MWAV J 10
+		MWAV I 10 A_FaceTarget
+		Goto See
 
 	Melee:
 		TNT1 A 0
@@ -716,16 +685,10 @@ Actor EvilMarinePlasma: EvilMarineRifle
 		TNT1 A 0 A_Jump(128, "MissileLeft", "MissileRight")
 		MAR6 D 2 A_FaceTarget
 		MAR6 D 2 BRIGHT A_CustomMissile("EvilPlasmaBall",35,0,0,0)
+		TNT1 A 0 A_GiveInventory("CommandoAmmo",1)
 
-		MAR6 D 2 A_FaceTarget
-		MAR6 D 2 BRIGHT A_CustomMissile("EvilPlasmaBall",35,0,0,0)
-
-		MAR6 D 2 A_FaceTarget
-		MAR6 D 2 BRIGHT A_CustomMissile("EvilPlasmaBall",35,0,0,0)
-
-		MAR6 D 2 A_FaceTarget
-		MAR6 D 2 BRIGHT A_CustomMissile("EvilPlasmaBall",35,0,0,0)
 		TNT1 A 0 A_JumpIfInTargetInventory("PlayerIsDead", 1, "Laugh")
+		TNT1 A 0 A_JumpIfInventory("CommandoAmmo", 50, "Reload")
 		TNT1 A 0 A_CposRefire
 		Goto Missile
 
@@ -734,16 +697,10 @@ Actor EvilMarinePlasma: EvilMarineRifle
 		MAR6 D 2 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 9, 0, 0)
 		MAR6 D 2 BRIGHT A_CustomMissile("EvilPlasmaBall",35,0,0,0)
+		TNT1 A 0 A_GiveInventory("CommandoAmmo",1)
 
-		MAR6 D 2 A_FaceTarget
-		MAR6 D 2 BRIGHT A_CustomMissile("EvilPlasmaBall",35,0,0,0)
-
-		MAR6 D 2 A_FaceTarget
-		MAR6 D 2 BRIGHT A_CustomMissile("EvilPlasmaBall",35,0,0,0)
-
-		MAR6 D 2 A_FaceTarget
-		MAR6 D 2 BRIGHT A_CustomMissile("EvilPlasmaBall",35,0,0,0)
 		TNT1 A 0 A_JumpIfInTargetInventory("PlayerIsDead", 1, "Laugh")
+		TNT1 A 0 A_JumpIfInventory("CommandoAmmo", 50, "Reload")
 		TNT1 A 0 A_CposRefire
 		Goto Missile
 
@@ -752,18 +709,22 @@ Actor EvilMarinePlasma: EvilMarineRifle
 		MAR6 D 2 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 9, 0, 0)
 		MAR6 D 2 BRIGHT A_CustomMissile("EvilPlasmaBall",35,0,0,0)
+		TNT1 A 0 A_GiveInventory("CommandoAmmo",1)
 
-		MAR6 D 2 A_FaceTarget
-		MAR6 D 2 BRIGHT A_CustomMissile("EvilPlasmaBall",35,0,0,0)
-
-		MAR6 D 2 A_FaceTarget
-		MAR6 D 2 BRIGHT A_CustomMissile("EvilPlasmaBall",35,0,0,0)
-
-		MAR6 D 2 A_FaceTarget
-		MAR6 D 2 BRIGHT A_CustomMissile("EvilPlasmaBall",35,0,0,0)
 		TNT1 A 0 A_JumpIfInTargetInventory("PlayerIsDead", 1, "Laugh")
+		TNT1 A 0 A_JumpIfInventory("CommandoAmmo", 50, "Reload")
 		TNT1 A 0 A_CposRefire
 		Goto Missile
+
+	Reload:
+		PLA6 E 10 A_FaceTarget
+		TNT1 A 0 A_PlaySound("PLREADY")
+		TNT1 A 0 A_CustomMissile("PlasmaCaseSpawn", 30, 0, random(-11, 11), 0)
+		PLA6 A 10 A_TakeInventory("CommandoAmmo", 50)
+		PLA6 B 10
+		PLA6 A 10
+		PLA6 E 10 A_FaceTarget
+		Goto See
 
 	Melee:
 		TNT1 A 0
@@ -779,18 +740,30 @@ Actor EvilMarinePlasma: EvilMarineRifle
 		TNT1 A 0 A_TakeInventory("evmarinecanjump", 1)
 		TNT1 A 0 ThrustThingZ(0, 32, 0, 1)
 		TNT1 A 0 A_Recoil(-6)
-		MARJ A 3
+		MAR6 J 3
 		TNT1 A 0 A_CheckSight("WaitforLand")
-		MARJ A 1
+		MAR6 J 1
 		TNT1 A 0 A_JumpIfCloser(128, "JumpKick")
 		Goto Missile
 
 	WaitforLand:
 		TNT1 A 0
-		MARJ AAAAAAAAAAA 3 A_Checkfloor("See")
+		MAR6 JJJJJJJJJJJ 3 A_Checkfloor("See")
 		Goto See
 
+	JumpBack:
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("evmarinecanjump", 1)
+		TNT1 A 0 ThrustThingZ(0, 32, 0, 1)
+		TNT1 A 0 A_Recoil(6)
+		MAR6 J 3
+		TNT1 A 0 A_CheckSight("WaitforLand")
+		MAR6 J 1
+		TNT1 A 0 A_JumpIfCloser(128, "JumpKick")
+		Goto Missile
+
 	Pain:
+		MAR6 E 0
 		TNT1 A 0 A_Jump(192, "RollLeft", "RollRight")
 		MAR6 E 3 A_Pain
 		Goto See

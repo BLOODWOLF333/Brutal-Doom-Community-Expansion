@@ -123,7 +123,7 @@ ACTOR CapturedMarineBase
 	+FLOORCLIP
     Painchance 255
     DamageType Taunt
-	Translation  "112:127=32:47", "48:79=64:79"
+	Translation  "112:127=32:47", "48:78=48:63"
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 10.0
 	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0
@@ -538,7 +538,7 @@ Pain.Rip:
 ACTOR CapturedMarineShotgun: CapturedMarineBase
 {
 	Health 175
-	Translation "112:127=96:111"
+	Translation "112:127=96:111", "48:78=48:63"
 	States
 	{
 	Death.Use:
@@ -559,7 +559,7 @@ ACTOR CapturedMarineShotgun: CapturedMarineBase
 ACTOR CapturedMarineMinigun: CapturedMarineBase
 {
 	Health 160
-	Translation  "112:127=32:47", "48:79=64:79"
+	Translation "112:127=32:47", "48:78=64:79"
 	States
 	{
 	Death.Use:
@@ -580,7 +580,7 @@ ACTOR CapturedMarineMinigun: CapturedMarineBase
 ACTOR CapturedMarinePlasma: CapturedMarineBase
 {
 	Health 135
-	translation "112:127=[0,128,192]:[0,0,0]"
+	translation "112:127=200:207", "48:78=48:63"
 	States
 	{
 	Death.Use:
