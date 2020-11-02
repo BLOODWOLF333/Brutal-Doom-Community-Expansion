@@ -841,7 +841,7 @@ Actor ImpaledMarineAlive1d: ImpaledMarineAlive1
 ACTOR DeadBloodyTwitch: BloodyTwitch Replaces BloodyTwitch
 {
 	Radius 16
-	Height 68
+	Height 67
 	Health 100
 	Mass 99999999
 	-SOLID
@@ -960,7 +960,7 @@ ACTOR DeadBloodyTwitchC: DeadBloodyTwitchB
 ACTOR HangingBody: Meat2 Replaces Meat2
 {
 	Radius 16
-	Height 84
+	Height 83
 	Health 100
 	Mass 99999999
 	+SOLID
@@ -1010,6 +1010,8 @@ ACTOR HangingBody: Meat2 Replaces Meat2
 
 ACTOR HangingPairOfLegs: DeadBloodyTwitchB Replaces Meat4
 {
+	Radius 16
+	Height 83
     Health 100
 	damagefactor "Fire", 0.0
 	damagefactor "HumanBBQ", 500.0
@@ -1055,6 +1057,8 @@ ACTOR NSHangingPairOfLegs : HangingPairOfLegs Replaces NonsolidMeat4
 
 ACTOR Meat2C: DeadBloodyTwitchB
 {
+	Radius 16
+	Height 83
 	-SHOOTABLE
 	damagefactor "Fire", 0.0
     States
@@ -1069,7 +1073,7 @@ ACTOR Meat2C: DeadBloodyTwitchB
 ACTOR HangingDeadGuyNoLeg: Meat3 Replaces Meat3
 {
 	Radius 16
-	Height 84
+	Height 83
 	Health 100
 	Mass 99999999
 	+SOLID
@@ -1118,7 +1122,7 @@ ACTOR HangingDeadGuyNoLeg: Meat3 Replaces Meat3
 ACTOR HangingLeg: DeadBloodyTwitchB Replaces Meat5
 {
 	Radius 16
-	Height 52
+	Height 83
 	Health 100
 	damagefactor "Fire", 0.0
 	damagefactor "HumanBBQ", 500.0
@@ -1155,7 +1159,7 @@ ACTOR HangingLeg: DeadBloodyTwitchB Replaces Meat5
 ACTOR Meat3C: DeadBloodyTwitchB
 {
 	Radius 16
-	Height 84
+	Height 83
 	-SHOOTABLE
 	damagefactor "Fire", 0.0
     States
