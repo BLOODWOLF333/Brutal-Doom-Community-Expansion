@@ -232,13 +232,14 @@ ACTOR EvilMarineRifle
 		Goto Missile
 
 	Reload:
-		MWAV I 10
+		TNT1 A 0
+		MWAV I 10 A_FaceTarget
 		TNT1 A 0 A_PlaySound("Reload")
 		TNT1 A 0 A_CustomMissile("EmptyClipSpawn", 30, 0, random(-11, 11), 0)
 		MWAV J 10 A_TakeInventory("ZombieManAmmo", 20)
-		MWAV K 10
+		MWAV K 10 A_FaceTarget
 		TNT1 A 0 A_PlaySound("CLIPIN")
-		MWAV J 10
+		MWAV J 10 A_FaceTarget
 		MWAV I 10 A_FaceTarget
 		Goto See
 
@@ -717,12 +718,13 @@ Actor EvilMarinePlasma: EvilMarineRifle
 		Goto Missile
 
 	Reload:
+		TNT1 A 0
 		PLA6 E 10 A_FaceTarget
 		TNT1 A 0 A_PlaySound("PLREADY")
 		TNT1 A 0 A_CustomMissile("PlasmaCaseSpawn", 30, 0, random(-11, 11), 0)
 		PLA6 A 10 A_TakeInventory("CommandoAmmo", 50)
-		PLA6 B 10
-		PLA6 A 10
+		PLA6 B 10 A_FaceTarget
+		PLA6 A 10 A_FaceTarget
 		PLA6 E 10 A_FaceTarget
 		Goto See
 
