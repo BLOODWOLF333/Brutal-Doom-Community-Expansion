@@ -66,6 +66,10 @@ ACTOR Marine_PlasmaGun: Marine_Rifle
 		PLA6 E 4 A_Look
 		Goto FindPlayer
 
+	ForgetTarget:
+		TNT1 A 0 A_ClearTarget
+		Goto Spawn
+
 	See:
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 1)
 		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 1)
@@ -87,8 +91,8 @@ ACTOR Marine_PlasmaGun: Marine_Rifle
 		MAR6 DDD 1 A_Chase
 		TNT1 A 0 A_CustomMissile("EvilMarineCheckJump", 64, 0, 0, CMF_AIMDIRECTION, 45)
 
-		TNT1 A 0 A_ClearTarget
-		Goto Spawn
+		TNT1 A 0 A_CheckSight("ForgetTarget")
+		Loop
 
 	CheckIfCanJumpSee:
 		TNT1 A 0
@@ -111,10 +115,16 @@ ACTOR Marine_PlasmaGun: Marine_Rifle
 		TNT1 A 0 A_ChangeFLag("SOLID", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
-		MAR6 D 4 A_LookEx(0,0,0,0,0,"FollowPlayer")
+		MAR6 D 12 A_LookEx(0,0,0,0,0,"FollowPlayer")
+		MAR6 AAA 1 A_Wander
+		MAR6 BBB 1 A_Wander
+		MAR6 CCC 1 A_Wander
+		MAR6 DDD 1 A_Wander
+		Loop
 
 	FollowPlayer:
 		TNT1 A 0
+		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "ForgetTarget")
 		TNT1 A 0 A_JumpIfCloser(256, "Waits")
 		MAR6 AAA 1 A_Chase("","")
 		TNT1 A 0 A_JumpIfCloser(256, "Waits")
@@ -157,7 +167,7 @@ ACTOR Marine_PlasmaGun: Marine_Rifle
 	Pathfind:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIFInTargetInventory("IsPLayer", 1, 1)
-		Goto FollowPlayer
+		Goto Spawn
 		TNT1 AAA 0
 		TNT1 A 0 A_SpawnItemEx ("Marine_PlasmaGunPathfinder",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		Stop
@@ -165,11 +175,9 @@ ACTOR Marine_PlasmaGun: Marine_Rifle
 	Waits:
 		PLA6 E 0
 		PLA6 E 4 A_Stop
-		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, 2)
-		TNT1 A 0 A_ClearTarget
+		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, 1)
 		Goto See
 		TNT1 AAA 0
-		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "ForgetTarget")
 		TNT1 A 0 A_Jump(16, "Waits2", "Waits3")
 		PLA6 E 8 A_Stop
 		TNT1 A 0 A_CheckSight("FollowPlayer")
