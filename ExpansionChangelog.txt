@@ -6,8 +6,14 @@
 //	Development v21.5.3
 //
 //	Sprites/Decoration folder:		Fixed offsets of GOR5A (hanging leg)
+//	All Friendly Marine Files:		Polished all states for the Marine and it's pathfinder
+//									Can now jump forward/back, roll side to side, and are more aggressive like EvilMarines
+//	All Monster Files:				Set DamageFactor "HelperMarineFatality" to 5.0 for weak and 2.5 for tough monsters
 //	All Weapon Files:				Added A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution") to every weapon's ready state
+//	CapturedMarine.txt:				Added states for all the different marine types once they are added-in later
+//									Created a MarineKick projectile for their melee attacks
 //	ClassicWeapons.txt:				Added ShotPuff to ClassicSSG Fire: state
+//	Commando.txt:					Gave the commando "CommandoAmmo" which limits the monster to 50 shots before jumping to a reload state
 //	Dead.txt:						Adjusted actor height of the hanging bodies and limbs actors
 //	EEEVILLL.txt:					Changed EvilMarineRifle's health to 160, Speed 12, FastSpeed 25, and added the +DROPOFF flag
 //									Polished all states and created a Melee: state allowing him to riflebash the player
@@ -17,6 +23,7 @@
 //	Fireworks.txt:					Polished ExplosiveBarrel1 death state to make it less resource intensive
 //	Player.txt:						Notated out the Pain.Kick state
 //	Spiders.txt:					Created EvilPlasmaBall actor
+//	Tokens.txt:						Created CommandoAmmo actor
 //
 //	Development v21.5.2
 //

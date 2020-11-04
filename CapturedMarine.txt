@@ -13,28 +13,91 @@ Actor CapturedMarine Replaces Blursphere
 			CAPT A 2
 			TNT1 A 0 A_SpawnItemEx("EvidenceCheckerInvisibility", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
 			TNT1 A 0 A_JumPIfInventory("Clip2", 1, "Invisibility")
-			TNT1 A 0 A_Jump(255, "RifleMarine", "RifleMarine", "ShotgunMarine", "ShotgunMarine", "MinigunMarine", "PlasmaMarine")
+			//TNT1 A 0 A_Jump(1, "FlameMarine")
+			//TNT1 A 0 A_Jump(2, "HMLMarine")
+			//TNT1 A 0 A_Jump(4, "BFGMarineSpawner")
+			TNT1 A 0 A_Jump(8, "PlasmaMarineSpawner")
+			//TNT1 A 0 A_Jump(16, "RocketMarineSpawner")
+			TNT1 A 0 A_Jump(32, "RifleMarineSpawner")
+			TNT1 A 0 A_Jump(64, "ShotgunMarineSpawner")
+			//TNT1 A 0 A_Jump(128, "SMGMarine")
+			Goto RifleMarine
 
-		RifleMarine:
+		MeleeMarineSpawner:
 			TNT1 A 0
-			TNT1 A 0 A_SpawnItem("CapturedMarineBase")
+			TNT1 A 0 A_Jump(85, "SawMarine")
+		BerserkMarine:
+			//TNT1 A 0 A_SpawnItem("CapturedMarineBerserk")
 			Stop
-
-		ShotgunMarine:
+		SawMarine:
+			//TNT1 A 0 A_SpawnItem("CapturedMarineSaw")
+			Stop
+////////
+		SMGMarine:
 			TNT1 A 0
+			//TNT1 A 0 A_SpawnItem("CapturedMarineSMG")
+			Stop
+////////
+		ShotgunMarineSpawner:
+			TNT1 A 0
+			//TNT1 A 0 A_Jump(85, "SSGMarine")
+		ShotgunMarine:
 			TNT1 A 0 A_SpawnItem("CapturedMarineShotgun")
 			Stop
-
-		MinigunMarine:
+		SSGMarine:
+			//TNT1 A 0 A_SpawnItem("CapturedMarineSSG")
+			Stop
+////////
+		RifleMarineSpawner:
 			TNT1 A 0
+			TNT1 A 0 A_Jump(85, "MinigunMarine")
+		RifleMarine:
+			TNT1 A 0 A_SpawnItem("CapturedMarineBase")
+			Stop
+		MinigunMarine:
 			TNT1 A 0 A_SpawnItem("CapturedMarineMinigun")
 			Stop
-
-		PlasmaMarine:
+////////
+		RocketMarineSpawner:
 			TNT1 A 0
+			TNT1 A 0 A_Jump(85, "RocketMarine")
+		GrenadeMarine:
+			//TNT1 A 0 A_SpawnItem("CapturedMarineGrenade")
+			Stop
+		RocketMarine:
+			//TNT1 A 0 A_SpawnItem("CapturedMarineRocket")
+			Stop
+////////
+		PlasmaMarineSpawner:
+			TNT1 A 0
+			//TNT1 A 0 A_Jump(85, "RailgunMarine")
+		PlasmaMarine:
 			TNT1 A 0 A_SpawnItem("CapturedMarinePlasma")
 			Stop
-
+		RailgunMarine:
+			//TNT1 A 0 A_SpawnItem("CapturedMarineRailgun")
+			Stop
+////////
+		BFGMarineSpawner:
+			TNT1 A 0
+			TNT1 A 0 A_Jump(85, "BFG10KMarine")
+		BFGMarine:
+			//TNT1 A 0 A_SpawnItem("CapturedMarineBFG")
+			Stop
+		BFG10KMarine:
+			//TNT1 A 0 A_SpawnItem("CapturedMarineBFG10K")
+			Stop
+////////
+		HMLMarine:
+			TNT1 A 0
+			//TNT1 A 0 A_SpawnItem("CapturedMarineHML")
+			Stop
+////////
+		FlameMarine:
+			TNT1 A 0
+			//TNT1 A 0 A_SpawnItem("CapturedMarineFlame")
+			Stop
+////////
 		Invisibility:
 			TNT1 A 0
 			TNT1 A 0 A_ChangeFlag("NOBLOCKMAP", 1)
@@ -42,7 +105,6 @@ Actor CapturedMarine Replaces Blursphere
 			TNT1 A 0 A_SpawnItem("SuperBlursphere")
 			TNT1 A 1
 			Stop
-
 		}
 }
 
@@ -51,7 +113,7 @@ ACTOR CapturedMarineBase
     Radius 24
     Height 48
     Speed 0
-    Health 100
+    Health 160
 	Scale 1.0
     +SHOOTABLE
 	+FLOORCLIP
@@ -61,7 +123,7 @@ ACTOR CapturedMarineBase
 	+FLOORCLIP
     Painchance 255
     DamageType Taunt
-
+	Translation  "112:127=32:47", "48:78=48:63"
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 10.0
 	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0
@@ -475,7 +537,8 @@ Pain.Rip:
 
 ACTOR CapturedMarineShotgun: CapturedMarineBase
 {
-	Translation "112:127=96:111"
+	Health 175
+	Translation "112:127=96:111", "48:78=48:63"
 	States
 	{
 	Death.Use:
@@ -490,13 +553,13 @@ ACTOR CapturedMarineShotgun: CapturedMarineBase
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
         CAPT N 0
         Stop
-
     }
 }
 
 ACTOR CapturedMarineMinigun: CapturedMarineBase
 {
-	Translation  "112:127=32:47", "48:79=64:79"
+	Health 160
+	Translation "112:127=32:47", "48:78=64:79"
 	States
 	{
 	Death.Use:
@@ -511,13 +574,13 @@ ACTOR CapturedMarineMinigun: CapturedMarineBase
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
         CAPT N 0
         Stop
-
     }
 }
 
 ACTOR CapturedMarinePlasma: CapturedMarineBase
 {
-	translation "112:127=[0,128,192]:[0,0,0]"
+	Health 135
+	translation "112:127=200:207", "48:78=48:63"
 	States
 	{
 	Death.Use:
@@ -532,7 +595,6 @@ ACTOR CapturedMarinePlasma: CapturedMarineBase
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
         CAPT N 0
         Stop
-
     }
 }
 
@@ -631,40 +693,62 @@ Health 6
 	}
 }
 
-ACTOR MarinePunch: BaronBall
+ACTOR MarinePunch: FastProjectile
 {
-	Radius 10
-	Height 18
+	Radius 12
+	Height 2
 	DamageType HelperMarineFatallity
 	Projectile
-	+RANDOMIZE
-    Damage 10
+    Damage (random(20,20))
 	+FORCEXYBILLBOARD
-    +THRUGHOST
-    +BLOODSPLATTER
+	+NOEXTREMEDEATH
 	RenderStyle Add
 	Alpha 0.6
 	HitObituary "$OB_IMPHIT"
     Obituary "$OB_IMPHIT"
-	+DONTHURTSPECIES
-
 	SeeSound "None"
 	DeathSound "none"
 	Decal "none"
-    Speed 20
+    Speed 32
 	States
 	{
 	Spawn:
-	    TNT1 A 0
+		TNT1 A 0
 		TNT1 A 0 A_PlaySound("skeleton/swing")
 		TNT1 A 4 BRIGHT
 		Stop
 	Death:
-        TNT1 A 0 A_PlaySound("player/cyborg/fist")
-		TNT1 A 0 BRIGHT
+		TNT1 A 0 A_AlertMonsters(128, AMF_TARGETEMITTER)
+		PUFF A 0 A_PlaySound("player/cyborg/fist", 3)
+		EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 10
 		Stop
 	}
 }
+
+ACTOR MarineKick: MarinePunch
+{
+	DamageType Kick
+	Damage (random(30,30))
+	Speed 48
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 4 BRIGHT
+		Stop
+	Death:
+		TNT1 A 0 A_AlertMonsters(128, AMF_TARGETEMITTER)
+		PUFF A 0 A_PlaySound("player/cyborg/fist", 3)
+		TNT1 A 0 A_SpawnItemEx ("PLOFT2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_GiveToTarget("KickHasHit", 1)
+		TNT1 A 0 Radius_Quake (2, 6, 0, 5, 0)//(intensity, duration, damrad, tremrad, tid)
+		TNT1 A 10
+		Stop
+	}
+}
+
 
 ACTOR MarineGivingHealth
 {
