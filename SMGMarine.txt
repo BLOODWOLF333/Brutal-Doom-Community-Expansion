@@ -1,4 +1,4 @@
-ACTOR PrePlacedMarineSMG Replaces MarinePlasma
+ACTOR PrePlacedMarineSMG
 {
 	translation "112:127=160:167"
 	MONSTER
@@ -83,6 +83,8 @@ ACTOR Marine_SMG: Marine_Rifle
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "FollowPlayer")
 		MRMP BBB 1 A_Chase
 		TNT1 A 0 A_JumpIfInventory("evmarinenoway", 1, "CheckIfCanJumpSee")
+
+		TNT1 A 0 A_CheckSight("ForgetTarget")
 
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "FollowPlayer")
 		MRMP CCC 1 A_Chase

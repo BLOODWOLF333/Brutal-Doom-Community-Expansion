@@ -95,11 +95,6 @@ ACTOR RandomMarine: RedTorch
     }
 }
 
-ACTOR Marine_SSG: PrePlacedMarine Replaces MarineSSG
-{
-Health 100
-}
-
 ACTOR Marine_Rifle: SwitchableDecoration
 {
 	Game Doom
@@ -198,6 +193,8 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "FollowPlayer")
 		PLAY BBB 1 A_Chase
 		TNT1 A 0 A_JumpIfInventory("evmarinenoway", 1, "CheckIfCanJumpSee")
+
+		TNT1 A 0 A_CheckSight("ForgetTarget")
 
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "FollowPlayer")
 		PLAY CCC 1 A_Chase
