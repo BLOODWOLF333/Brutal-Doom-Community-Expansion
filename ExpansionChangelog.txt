@@ -6,16 +6,22 @@
 //	Stable v21.6.0
 //
 //	All Friendly Marine Files:		Set FOV for A_LookEX to 360 when looking for the player
+//	All Monster Files:				Added DamageFactor "TankWeakSpot" 0.0
+//	All Vehicle Files:				Notated-out A_SpawnItem("StationedVehicleCheckRepairs") which is unused
 //	CapturedMarine.txt:				Created CapturedMarineFist, Saw, SMG and SSG actors
 //	CVARS.txt:						Added Marine_Fist, Saw, SMG, and SSG to the surviving marines spawn in BDInitialize script
 //	Decorate.txt:					Included FistMarine.txt, SawMarine.txt, SMGMarine.txt and SSGMarine.txt
+//	EnemyTanks.txt:					Changed EnemyTanks to spawn the EnemyTankWeakSpot actor at the rear
 //	Fireworks.txt:					Reordered spawns of explosion effects and damaging actors in ExplosiveBarrel death state
 //	+FistMarine.txt:				Set health to 200, drops the berserk pack on death, and wears white armor
 //									Melee state does fatality punches and can kick 1/4 of the time
 //									Missile state sprints at the target then goes to the melee state or can jumpkick
 //	GreenGore.txt:					Fixed greenblood making the claw sound effect on spawn from weapon fire
+//	Head_Sys.txt:					Changed TankEngineWeakSpot to "EnemyTankWeakSpot" and added a new TankEngineWeakSpot actor that takes the place of TankWeakSpotBase
 //	Mancubus.txt:					Added Species "Fatso"
+//	Marines.txt:					Created new states for the RandomMarine's spawns to include the new variatnts
 //	Player.txt:						Added DamageFactor "TankWeakSpot" 0.0 to player class
+//	Repairs.txt:					Removed TankWeakSpotBase and TankWeakSpot3 actors
 //	+SawMarine.txt:					Set health to 200, drops the ChainsawSpawner on death, and wears white armor
 //									Melee state does saw attacks and can kick 1/4 of the time
 //									Missile state sprints at the target then goes to the melee state or can jumpkick

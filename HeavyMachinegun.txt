@@ -13,7 +13,6 @@ ACTOR HeavyMachinegun: SwitchableDecoration 5462
 	+SHOOTABLE
 	+THRUACTORS
 	+NOINFIGHTING
-	-COUNTKILL
 	+NOBLOODDECALS
 	+DONTRIP
 	+NOTIMEFREEZE
@@ -24,7 +23,6 @@ ACTOR HeavyMachinegun: SwitchableDecoration 5462
 	Activation THINGSPEC_Activate | THINGSPEC_ThingTargets | THINGSPEC_NoDeathSpecial
 	Mass 0x7FFFFFFF
 	Speed 0
-
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 20.0
 	Damagefactor "Cut", 0.5	Damagefactor "Extremepunches", 0.0	Damagefactor "Fatality", 0.0
@@ -42,7 +40,7 @@ ACTOR HeavyMachinegun: SwitchableDecoration 5462
 	Damagefactor "Minigun", 0.5	Damagefactor "Minor", 0.5	Damagefactor "MonsterBullet", 0.5
 	Damagefactor "MonsterMinigun", 0.5	Damagefactor "MonsterShotgunBullet", 0.5	Damagefactor "Shotgun", 0.5
 	Damagefactor "SSG", 0.5	Damagefactor "HitGround", 3.0
-	Damagefactor "TankWeakSpot", 3.0	Damagefactor "CheckRepair", 0.0
+	Damagefactor "TankWeakSpot", 0.0	Damagefactor "CheckRepair", 0.0
 
 	PainChance "Avoid", 0	PainChance "HitGround", 255	PainChance "Repair", 255
 	States
@@ -129,7 +127,7 @@ ACTOR PlayerHeavyMachinegun : PlayerPawn
 	DeathSound "*death"
 	player.viewheight	44
     player.attackzoffset 16
-
+	Species "Marines"
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 10.0
 	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0

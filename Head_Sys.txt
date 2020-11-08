@@ -491,14 +491,14 @@ Height 36
 +DONTRIP
 }
 
-actor TankEngineWeakSpot: HeadshotTarget4
+actor EnemyTankWeakSpot: HeadshotTarget4
 {
 	Radius 24
 	Height 44
-	+NOBLOOD
-	+THRUSPECIES
 	Species "EnemyTank"
 	DamageType "TankWeakSpot"
+	+NOBLOOD
+	+THRUSPECIES
 	+DONTRIP
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 20.0
@@ -516,6 +516,51 @@ actor TankEngineWeakSpot: HeadshotTarget4
 	Damagefactor "GreenFire", 0.0	Damagefactor "HumanBBQ", 0.0	Damagefactor "Bullet", 0.5
 	Damagefactor "Minigun", 0.5	Damagefactor "Minor", 0.5	Damagefactor "MonsterBullet", 0.5
 	Damagefactor "MonsterMinigun", 0.5	Damagefactor "MonsterShotgunBullet", 0.5	Damagefactor "Shotgun", 0.5
-	Damagefactor "SSG", 0.5	Damagefactor "HitGround", 0.0
+	Damagefactor "SSG", 0.5	Damagefactor "HitGround", 0.0	damagefactor "TankWeakSpot", 0
 	Damagefactor "CheckRepair", 0.0
+}
+
+Actor TankEngineWeakSpot : HeadshotTargetBase
+{
+	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 20.0
+	Damagefactor "Cut", 0.5	Damagefactor "Extremepunches", 0.0	Damagefactor "Fatality", 0.0
+	Damagefactor "FriendBullet", 0.5	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0
+	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
+	Damagefactor "HelperMarineFatallity", 0.0	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0
+	Damagefactor "LowKick", 0.0	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0
+	Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "Saw", 0.5
+	Damagefactor "Slide", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 0.0
+	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "Kick", 0.0
+	Damagefactor "Melee", 0.0	Damagefactor "Shrapnel", 0.5	Damagefactor "Slime", 0.0
+	Damagefactor "Stealth", 0.0	Damagefactor "Stomp", 0.0	Damagefactor "Trample", 0.0
+	Damagefactor "Burn", 0.0	Damagefactor "Fire", 0.0	Damagefactor "Flames", 0.0
+	Damagefactor "GreenFire", 0.0	Damagefactor "HumanBBQ", 0.0	Damagefactor "Bullet", 0.5
+	Damagefactor "Minigun", 0.5	Damagefactor "Minor", 0.5	Damagefactor "MonsterBullet", 0.5
+	Damagefactor "MonsterMinigun", 0.5	Damagefactor "MonsterShotgunBullet", 0.5	Damagefactor "Shotgun", 0.5
+	Damagefactor "SSG", 0.5	Damagefactor "HitGround", 0.0	damagefactor "TankWeakSpot", 0
+	Damagefactor "CheckRepair", 0.0
+	//MONSTER
+	Health 2560
+	GibHealth 256
+	Radius 24
+	Height 44
+	DamageType "TankWeakSpot"
+	BloodType "TankBlood"
+	PainChance 255
+	+NEVERTARGET
+	+NOGRAVITY
+	+SHOOTABLE
+	+NOTELEPORT
+	+FORCERADIUSDMG
+	-SOLID
+	+NODAMAGETHRUST
+	+NORADIUSDMG
+	-COUNTKILL
+	-CLIENTSIDEONLY
+	+DONTHARMSPECIES
+	+NORADIUSDMG
+	+THRUACTORS
+	+THRUSPECIES
+	Species "Marines"
 }

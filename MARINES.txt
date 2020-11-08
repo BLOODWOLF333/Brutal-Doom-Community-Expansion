@@ -48,7 +48,6 @@ ACTOR RandomMarine: RedTorch
     Radius 16
     Height 56
 	-SHOOTABLE
-	Translation  "112:127=32:47"
 	States
     {
     Spawn:
@@ -58,35 +57,42 @@ ACTOR RandomMarine: RedTorch
 		TNT1 A 0 A_Look
 	See:
 		TNT1 A 0
-		TNT1 A 0 A_Jump(96, "See1", "See2")
-		TNT1 A 0 A_Jump(96, "See3")
-		TNT1 A 0 A_Jump(64, "See4")
-		//TNT1 A 0 A_Jump(32, "See5", "See6")
-		TNT1 A 0 A_Jump(255, "See1", "See2")
-		Goto See1
+		TNT1 A 0 A_Jump(16,"See8")
+		TNT1 A 0 A_Jump(32,"See6","See7")
+		TNT1 A 0 A_Jump(64,"See4","See5")
+		TNT1 A 0 A_Jump(128,"See3")
+		TNT1 A 0 A_Jump(255,"See1","See2")
 
 	See1:
-		TNT1 A 0 A_SpawnItemEx ("PrePLacedMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("Marine_Fist",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         Stop
 
 	See2:
-		TNT1 A 0 A_SpawnItemEx ("MarineShotgun",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("Marine_Saw",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         Stop
 
 	See3:
-		TNT1 A 0 A_SpawnItemEx ("MarineChaingun",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("Marine_SMG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         Stop
 
 	See4:
-		TNT1 A 0 A_SpawnItemEx ("MarinePlasma",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("Marine_Shotgun",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         Stop
 
 	See5:
-		TNT1 A 0 A_SpawnItemEx ("MarineRocket",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("Marine_SSG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         Stop
 
 	See6:
-		TNT1 A 0 A_SpawnItemEx ("MarineBFG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("Marine_Rifle",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        Stop
+
+	See7:
+		TNT1 A 0 A_SpawnItemEx ("Marine_Minigun",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        Stop
+
+	See8:
+		TNT1 A 0 A_SpawnItemEx ("Marine_Plasmagun",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         Stop
 
 	DontSpawn:
@@ -114,7 +120,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 	DamageFactor "Shotgun", 0.0	DamageFactor "Shrapnel", 0.0	Damagefactor "Slide", 0.0
 	Damagefactor "SpawnMarine", 0.0	DamageFactor "SSG", 0.0	Damagefactor "Stealth", 0.0
 	Damagefactor "Taunt", 0.0	DamageFactor "TeleportRemover", 0.0	DamageFactor "Trample", 0.0
-	Damagefactor "Use", 0.0
+	Damagefactor "Use", 0.0	DamageFactor "TankWeakSpot", 0.0
 
 	Speed 12
 	FastSpeed 25

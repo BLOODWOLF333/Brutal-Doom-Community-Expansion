@@ -120,7 +120,7 @@ ACTOR EvilMarineRifle
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	DamageFactor "SSG", 5.0
 	Damagefactor "ExtremePunches", 2.0	Damagefactor "Fatality", 5.0	Damagefactor "Taunt", 0.0
-	Damagefactor "HelperMarineFatallity", 5.0
+	Damagefactor "HelperMarineFatallity", 5.0	DamageFactor "TankWeakSpot", 0.0
 
 	PainChance "Avoid", 64	PainChance "Head", 255	PainChance "PussyGrab", 255
 
@@ -804,7 +804,7 @@ Actor EvilMarinePlasma: EvilMarineRifle
 		TNT1 A 0 A_JumpIfInTargetInventory("PlayerIsDead", 1, "Laugh")
 		TNT1 A 0 A_JumpIfInventory("CommandoAmmo", 50, "Reload")
 		TNT1 A 0 A_CposRefire
-		Goto Missile+2
+		Goto Missile
 
 	MissileLeft:
 		TNT1 A 0

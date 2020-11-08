@@ -6,7 +6,7 @@ ACTOR RepairTool : Weapon 6544
 	Inventory.PickupMessage "You got the Repair Tool (Slot 0)"
 	Obituary "$OB_MPCHAINSAW"
 	Tag "$TAG_CHAINSAW"
-	+WEAPON.MELEEWEAPON		
+	+WEAPON.MELEEWEAPON
 	+NOBLOOD
 	States
 	{
@@ -32,10 +32,6 @@ ACTOR RepairTool : Weapon 6544
 		Stop
 	}
 }
-
-
-
-
 
 ACTOR RepairMissile
 {
@@ -73,10 +69,10 @@ ACTOR RepairToolRicochet: BulletPuff
   +NOBLOCKMAP
   +NOGRAVITY
   +CLIENTSIDEONLY
-  +BLOODLESSIMPACT 
+  +BLOODLESSIMPACT
   +FORCEXYBILLBOARD
   +NOBLOOD
-  
+
 	Obituary "%o ate bullet shrapnel."
   damagetype "Shrapnel"
   Scale 0.6
@@ -86,33 +82,20 @@ ACTOR RepairToolRicochet: BulletPuff
   Spawn:
     TNT1 A 0 A_SpawnItem ("BlueFlareSmall", 0)
 	TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2")
-    
+
 	Spawn1:
 	TNT1 AA 0 A_SpawnItem ("BlueFlareSmall", 0)
 	FXB7 ABCDEFGHIJ 1 BRIGHT
     Stop
-	
+
 	Spawn2:
 	TNT1 AA 0 A_SpawnItem ("BlueFlareSmall", 0)
 	FXB8 ABCDEFGHIJ 1 BRIGHT
     Stop
-    
+
     stop
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 Actor StationedVehicleCheckRepairs
 {
@@ -129,7 +112,6 @@ TNT1 A 0
 TNT1 A 0 A_Explode(3, 50)
 Stop
 }}
-
 
 Actor RepairVehicleMissile
 {
@@ -149,7 +131,6 @@ TNT1 A 1
 TNT1 A 5
 Stop
 }}
-
 
 Actor VehicleRepairStation 8723
 {
@@ -184,15 +165,6 @@ TNT1 A 0 A_SpawnItemEx("RepairVehicleMissile", 0, 0, 20)
 TNT1 A 3
 Goto Spawn
 }}
-
-
-
-
-
-
-
-
-
 
 //Sergeant Mark IV's Tanks and Helicopter.
 //If you use this in your mod, give me credits.
@@ -277,12 +249,10 @@ Actor PressedLeft : Inventory
 inventory.maxamount 1
 }
 
-
 Actor TankZoom : Inventory
 {
 inventory.maxamount 1
 }
-
 
 Actor MaxLeft : Inventory
 {
@@ -294,12 +264,10 @@ Actor MaxRight : Inventory
 inventory.maxamount 1
 }
 
-
 Actor IsAVehicle : Inventory
 {
 inventory.maxamount 1
 }
-
 
 Actor VehicleFallingCount : Inventory
 {
@@ -327,8 +295,6 @@ Actor TankDirection : Inventory
 {
 inventory.maxamount 60
 }
-
-
 
 ACTOR TankBaseDirection : Ammo
 {
@@ -360,8 +326,6 @@ actor ChaseCam3
     stop
   }
 }
-	
-
 
 Actor DestroyedArmouredVehicle
 {
@@ -421,8 +385,7 @@ Spawn:
         TNT1 A 0 A_SpawnItem("WhiteShockwaveBig")
 		TNT1 A 0 A_NoBlocking
 	    TNT1 A 0 A_Fall
-		
-		
+
 		TNT1 A 0 A_SpawnItemEx ("BarrelKaboom",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 AAAA 0 A_CustomMissile ("FireworkSFXType2", 64, 0, random (0, 360), 2, random (30, 60))
 		TNT1 AAA 0 A_CustomMissile ("HighExplosiveFlames", random (10, 20), 0, random (0, 360), 2, random (10, 90))
@@ -441,7 +404,6 @@ Spawn:
 		Loop
 }
 }
-
 
 Actor DestroyedAircraft: DestroyedArmouredVehicle
 {
@@ -491,7 +453,6 @@ Stop
 }
 }
 
-
 ACTOR TransferPlayerOutOfVehicle
 {
 
@@ -513,32 +474,17 @@ ACTOR TransferPlayerOutOfVehicle
 		TNT1 A 2
 		TNT1 A 0 Thing_ChangeTID(0, 0)
 		Stop
-		
+
 	Death:
 		TNT1 A 0
 		Stop
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
 Actor FiredTankMainGun : Inventory
 {
 inventory.maxamount 1
 }
-
-
-
-
 
 actor TnkTreadsDamage
 {
@@ -556,7 +502,7 @@ PROJECTILE
 +DEHEXPLOSION
 +ACTIVATEMCROSS
 +EXPLODEONWATER
--BLOODSPLATTER +BLOODLESSIMPACT 
+-BLOODSPLATTER +BLOODLESSIMPACT
 States
 {
 Spawn:
@@ -571,7 +517,6 @@ PLAY A 0
 Stop
  }
 }
-
 
 actor EnemyTnkTreadsDamage: TnkTreadsDamage
 {
@@ -591,9 +536,6 @@ Stop
  }
 }
 
-
-
-
 actor TreadsDamage2: TnkTreadsDamage
 {
 Speed 12
@@ -608,7 +550,6 @@ TNT1 A 0 A_Explode(200,50,0)
 Stop
  }
 }
-
 
 actor TreadsDamage3: TnkTreadsDamage
 {
@@ -630,8 +571,6 @@ Stop
  }
 }
 
-
-
 Actor TankBlood
 {
 	+THRUACTORS
@@ -649,209 +588,7 @@ Actor TankBlood
 			TNT1 A 0 A_Stop
 			TNT1 A 0 A_PlaySound("RICMET")
 			TNT1 A 0 A_SpawnItem ("YellowFlareSmall", 0)
-			FX58 ABCD 1 BRIGHT 
+			FX58 ABCD 1 BRIGHT
 			FX58 EFGHIJ 1 bright
 			TNT1 A 60
 		Stop}}
-		
-		
-		
-		
-
-actor TankWeakSpotBase
-{
-	+NOTARGET
-damagefactor "Taunt", 0.0
-damagefactor "Blood", 0.0
-damagefactor "BlueBlood", 0.0
-damagefactor "Head", 0.0
-damagefactor "MinorHead", 0.0
-damagefactor "KillMe", 0.0
-damagefactor "Control", 0.0
-damagefactor "Trample", 0.0
-damagefactor "GibRemoving", 0.0
-//damagefactor "Melee", 0.3
-damagefactor "Alert", 0.0
-damagefactor "SSG", 1.0
-damagefactor "ExplosiveImpact", 0.0
-damagefactor "Bullet", 1.5
-damagefactor "GibRemoving", 0.0
-damagefactor "Kick", 0.0
-damagefactor "Stomp", 0.0
-damagefactor "TeleportRemover", 0.0
-damagefactor "TankShell", 5.5
-damagefactor "Plasma", 1.2
-damagefactor "Plasma2", 1.2
-damagefactor "Railgun", 1.2 damagefactor "Explosives", 1.2
-damagefactor "Repair", 0.0 damagefactor "CheckRepair", 0.0
-//MONSTER
--COUNTKILL
-Health 3000
-GibHealth 10000
-Radius 32
-Height 52
-DamageType TankWeakSpot
-BloodType "TankBlood"
-PainChance 255
-+NOGRAVITY
-+SHOOTABLE
-+NOTELEPORT
-+FORCERADIUSDMG
--SOLID
-+NODAMAGETHRUST
-+NORADIUSDMG
--COUNTKILL
--CLIENTSIDEONLY
-+NORADIUSDMG
-+THRUACTORS
-damagefactor "Trample", 0
-damagefactor "TankWeakSpot", 0
-Species "VehicleSpecial"
-States
-{
-Spawn:
-TNT1 A 4
-XXXX A 0 A_NoBlocking
-Stop
-
-Pain.Explosive:
-TNT1 A 3
-Goto Pain
-
-Pain.ExplosiveImpact:
-TNT1 A 3
-Goto Pain
-
-Pain:
-TNT1 A 0
-//TNT1 A 0 ThrustThingZ(0,-40,0,1)
-TNT1 A 0 A_NoBlocking
-TNT1 A 0 A_JumpIfHealthLower(-100, "SuperDeath")
-TNT1 A 0 A_JumpIfHealthLower(25, "Pain550")
-TNT1 A 0 A_JumpIfHealthLower(50, "Pain500")
-TNT1 A 0 A_JumpIfHealthLower(75, "Pain450")
-TNT1 A 0 A_JumpIfHealthLower(100, "Pain400")
-TNT1 A 0 A_JumpIfHealthLower(125, "Pain350")
-TNT1 A 0 A_JumpIfHealthLower(150, "Pain300")
-TNT1 A 0 A_JumpIfHealthLower(175, "Pain250")
-TNT1 A 0 A_JumpIfHealthLower(200, "Pain200")
-TNT1 A 0 A_JumpIfHealthLower(225, "Pain150")
-TNT1 A 0 A_JumpIfHealthLower(250, "Pain100")
-TNT1 A 0 A_JumpIfHealthLower(275, "Pain50")
-TNT1 A 0 A_JumpIfHealthLower(288, "Pain35")
-TNT1 A 0 A_JumpIfHealthLower(292, "Pain25")
-XDT3 A 0 A_Explode(20,20,0)//hs
-PLAY A 0
-Stop
-
-
-Pain25:
-TNT1 A 0
-XDT3 A 0 A_Explode(10,80,0)//hs
-TNT1 A 0 A_NoBlocking
-Stop
-
-
-Pain35:
-TNT1 A 0
-XDT3 A 0 A_Explode(15,80,0)//hs
-TNT1 A 0 A_NoBlocking
-Stop
-
-Pain50:
-TNT1 A 0
-XDT3 A 0 A_Explode(30,80,0)//hs
-TNT1 A 0 A_NoBlocking
-Stop
-
-Pain100:
-TNT1 A 0
-XDT3 A 0 A_Explode(80,80,0)//hs
-TNT1 A 0 A_NoBlocking
-Stop
-
-Pain150:
-TNT1 A 0
-XDT3 A 0 A_Explode(100,80,0)//hs
-TNT1 A 0 A_NoBlocking
-Stop
-
-Pain200:
-TNT1 A 0
-XDT3 A 0 A_Explode(150,80,0)//hs
-TNT1 A 0 A_NoBlocking
-Stop
-
-Pain250:
-TNT1 A 0
-XDT3 A 0 A_Explode(200,80,0)//hs
-TNT1 A 0 A_NoBlocking
-Stop
-
-Pain300:
-TNT1 A 0
-XDT3 A 0 A_Explode(300,80,0)//hs
-TNT1 A 0 A_NoBlocking
-Stop
-
-Pain350:
-TNT1 A 0
-XDT3 A 0 A_Explode(350,80,0)//hs
-TNT1 A 0 A_NoBlocking
-Stop
-
-Pain400:
-TNT1 A 0
-XDT3 A 0 A_Explode(400,80,0)//hs
-TNT1 A 0 A_NoBlocking
-Stop
-
-Pain450:
-TNT1 A 0
-XDT3 A 0 A_Explode(600,80,0)//hs
-TNT1 A 0 A_NoBlocking
-Stop
-
-Pain500:
-TNT1 A 0
-XDT3 A 0 A_Explode(1200,80,0)//hs
-TNT1 A 0 A_NoBlocking
-Stop
-
-Pain550:
-TNT1 A 0
-XDT3 A 0 A_Explode(1550,80,0)//hs
-TNT1 A 0 A_NoBlocking
-Stop
-
-Pain600:
-TNT1 A 0
-XDT3 A 0 A_Explode(1600,80,0)//hs
-TNT1 A 0 A_NoBlocking
-Stop
-
-SuperDeath:
-Death:
-TNT1 A 0
-XDT3 A 0 A_Explode(1800,80,0)//hs
-TNT1 A 0 A_NoBlocking
-Stop
- }
-}	
-
-
-
-
-		
-
-actor TankWeakSpot3: TankWeakSpotBase
-{
-States
-{
-Spawn:
-TNT1 A 3
-XXXX A 0 A_NoBlocking
-Stop
- }
-}	
-	
