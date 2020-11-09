@@ -659,6 +659,84 @@ script "BDInitialize" enter
 		break;
 	}
 
+	//Grenade Marines
+	Switch (checkinventory("NumberOfAlliesGrenade"))
+	{
+		Case 0:
+		break;
+
+		Case 1:
+		Spawn("Marine_Grenade", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
+		break;
+
+		Case 2:
+		Spawn("Marine_Grenade", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
+		break;
+
+		Case 3:
+		Spawn("Marine_Grenade", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
+		break;
+
+		Case 4:
+		Spawn("Marine_Grenade", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0)+32, GetActorY(0), GetActorZ(0), 0, 0);
+		break;
+
+		Case 5:
+		Spawn("Marine_Grenade", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0)+32, GetActorY(0), GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0)+32, GetActorY(0)-32, GetActorZ(0), 0, 0);
+		break;
+
+		Case 6:
+		Spawn("Marine_Grenade", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0)+32, GetActorY(0), GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0)+32, GetActorY(0)-32, GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0)+32, GetActorY(0)+32, GetActorZ(0), 0, 0);
+		break;
+
+		Case 7:
+		Spawn("Marine_Grenade", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0)+32, GetActorY(0), GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0)+32, GetActorY(0)-32, GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0)+32, GetActorY(0)+32, GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0), GetActorY(0)-32, GetActorZ(0), 0, 0);
+		break;
+
+		Case 8:
+		Spawn("Marine_Grenade", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0)+32, GetActorY(0), GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0)+32, GetActorY(0)-32, GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0)+32, GetActorY(0)+32, GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0), GetActorY(0)-32, GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0), GetActorY(0)+32, GetActorZ(0), 0, 0);
+		break;
+
+		Default:
+		Spawn("Marine_Grenade", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0)+32, GetActorY(0), GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0)+32, GetActorY(0)-32, GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0)+32, GetActorY(0)+32, GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0), GetActorY(0)-32, GetActorZ(0), 0, 0);
+		Spawn("Marine_Grenade", GetActorX(0), GetActorY(0)+32, GetActorZ(0), 0, 0);
+		break;
+	}
+
 	//Rocket Marines
 	Switch (checkinventory("NumberOfAlliesRocket"))
 	{

@@ -17,7 +17,7 @@ Actor CapturedMarine Replaces Blursphere
 			//TNT1 A 0 A_Jump(2, "HMLMarine")
 			//TNT1 A 0 A_Jump(4, "BFGMarineSpawner")
 			TNT1 A 0 A_Jump(8, "PlasmaMarineSpawner")
-			//TNT1 A 0 A_Jump(16, "RocketMarineSpawner")
+			TNT1 A 0 A_Jump(16, "RocketMarineSpawner")
 			TNT1 A 0 A_Jump(32, "RifleMarineSpawner")
 			TNT1 A 0 A_Jump(64, "ShotgunMarineSpawner")
 			TNT1 A 0 A_Jump(128, "SMGMarine")
@@ -59,9 +59,9 @@ Actor CapturedMarine Replaces Blursphere
 ////////
 		RocketMarineSpawner:
 			TNT1 A 0
-			TNT1 A 0 A_Jump(85, "RocketMarine")
+			//TNT1 A 0 A_Jump(85, "RocketMarine")
 		GrenadeMarine:
-			//TNT1 A 0 A_SpawnItem("CapturedMarineGrenade")
+			TNT1 A 0 A_SpawnItem("CapturedMarineGrenade")
 			Stop
 		RocketMarine:
 			//TNT1 A 0 A_SpawnItem("CapturedMarineRocket")
@@ -652,6 +652,27 @@ ACTOR CapturedMarineMinigun: CapturedMarineBase
         TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_GiveToTarget("NumberOfAlliesMinigun", 1)
 		TNT1 A 0 A_SpawnItemEx ("Marine_Minigun",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        CAPT N 1
+		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
+        CAPT N 0
+        Stop
+    }
+}
+
+ACTOR CapturedMarineGrenade: CapturedMarineBase
+{
+	Health 150
+	Translation "112:127=144:151"
+	States
+	{
+	Death.Use:
+		TNT1 A 0 A_Playsound ("LETSROCK")
+		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
+        CAPT F 12
+        TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_GiveToTarget("NumberOfAlliesGrenade", 1)
+		TNT1 A 0 A_SpawnItemEx ("Marine_Grenade",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         CAPT N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)

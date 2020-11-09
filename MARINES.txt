@@ -57,7 +57,11 @@ ACTOR RandomMarine: RedTorch
 		TNT1 A 0 A_Look
 	See:
 		TNT1 A 0
-		TNT1 A 0 A_Jump(16,"See8")
+		//TNT1 A 0 A_Jump(1,"See15")
+		//TNT1 A 0 A_Jump(2,"See14")
+		//TNT1 A 0 A_Jump(4,"See12","See13")
+		TNT1 A 0 A_Jump(8,"See10")//,"See11")
+		TNT1 A 0 A_Jump(16,"See8")//,"See9")
 		TNT1 A 0 A_Jump(32,"See6","See7")
 		TNT1 A 0 A_Jump(64,"See4","See5")
 		TNT1 A 0 A_Jump(128,"See3")
@@ -92,7 +96,35 @@ ACTOR RandomMarine: RedTorch
         Stop
 
 	See8:
+		TNT1 A 0 A_SpawnItemEx ("Marine_Grenade",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        Stop
+
+	//See9:
+		//TNT1 A 0 A_SpawnItemEx ("Marine_Rocket",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        Stop
+
+	See10:
 		TNT1 A 0 A_SpawnItemEx ("Marine_Plasmagun",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        Stop
+
+	//See11:
+		//TNT1 A 0 A_SpawnItemEx ("Marine_Railgun",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        Stop
+
+	//See12:
+		//TNT1 A 0 A_SpawnItemEx ("Marine_BFG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        Stop
+
+	//See13:
+		//TNT1 A 0 A_SpawnItemEx ("Marine_BFG10K",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        Stop
+
+	//See14:
+		//TNT1 A 0 A_SpawnItemEx ("Marine_HML",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        Stop
+
+	//See15:
+		//TNT1 A 0 A_SpawnItemEx ("Marine_Flame",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         Stop
 
 	DontSpawn:
@@ -145,7 +177,6 @@ ACTOR Marine_Rifle: SwitchableDecoration
 	DropItem "RifleDrop"
 	+FLOORCLIP
 	+QUICKTORETALIATE
-    +DONTHARMCLASS
     +FIXMAPTHINGPOS
 	+LOOKALLAROUND
 	+PUSHABLE
