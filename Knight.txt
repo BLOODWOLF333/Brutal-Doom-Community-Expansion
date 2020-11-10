@@ -64,6 +64,7 @@ ReplaceVanilla:
 		Stop
     Spawn:
 		BOS2 B 0
+		TNT1 A 0 A_GiveInventory("TargetIsABaronOfHell")
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCHeckClassicMonsters", 0, 0, 0, 0)//Check if Vanilla Mode is activated
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 

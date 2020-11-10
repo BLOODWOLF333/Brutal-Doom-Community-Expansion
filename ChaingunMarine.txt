@@ -265,6 +265,7 @@ ACTOR Marine_Minigun: Marine_Rifle
 		MAR4 F 4 A_FaceTarget
 		MAR4 G 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
+		TNT1 A 0 A_CustomMissile("Alerter",32)
 		TNT1 A 0 A_PlaySound("FARMGN", 6)
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
 		TNT1 A 0 A_GiveInventory("CommandoAmmo",1)
@@ -364,6 +365,7 @@ ACTOR Marine_Minigun: Marine_Rifle
 		TNT1 A 0 A_Recoil(5)
 		MAR4 G 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
+		TNT1 A 0 A_CustomMissile("Alerter",32)
 		TNT1 A 0 A_PlaySound("FARMGN", 6)
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
 		TNT1 A 0 A_GiveInventory("CommandoAmmo",1)
@@ -852,6 +854,7 @@ ACTOR MinigunMarineGuarding: Marine_Minigun
 		MAR4 F 4 A_FaceTarget
 		MAR4 G 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
+		TNT1 A 0 A_CustomMissile("Alerter",32)
 		TNT1 A 0 A_PlaySound("FARMGN", 6)
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
 		TNT1 A 0 A_GiveInventory("CommandoAmmo",1)

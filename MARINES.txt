@@ -61,7 +61,7 @@ ACTOR RandomMarine: RedTorch
 		//TNT1 A 0 A_Jump(2,"See14")
 		//TNT1 A 0 A_Jump(4,"See12","See13")
 		TNT1 A 0 A_Jump(8,"See10")//,"See11")
-		TNT1 A 0 A_Jump(16,"See8")//,"See9")
+		TNT1 A 0 A_Jump(16,"See8","See9")
 		TNT1 A 0 A_Jump(32,"See6","See7")
 		TNT1 A 0 A_Jump(64,"See4","See5")
 		TNT1 A 0 A_Jump(128,"See3")
@@ -99,8 +99,8 @@ ACTOR RandomMarine: RedTorch
 		TNT1 A 0 A_SpawnItemEx ("Marine_Grenade",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         Stop
 
-	//See9:
-		//TNT1 A 0 A_SpawnItemEx ("Marine_Rocket",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	See9:
+		TNT1 A 0 A_SpawnItemEx ("Marine_Rocket",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         Stop
 
 	See10:
