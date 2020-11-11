@@ -8,9 +8,9 @@
 //	All Friendly Marine Files:		Set FOV for A_LookEX to 360 when looking for the player
 //	All Monster Files:				Added DamageFactor "TankWeakSpot" 0.0
 //	All Vehicle Files:				Notated-out A_SpawnItem("StationedVehicleCheckRepairs") which is unused
-//	CapturedMarine.txt:				Created CapturedMarineFist, Grenade, Rocket, Saw, SMG and SSG actors
-//	CVARS.txt:						Added Marine_Fist, Grenade, Saw, SMG, and SSG to the surviving marines spawn in BDInitialize script
-//	Decorate.txt:					Included FistMarine.txt, GrenadeMarine.txt, SawMarine.txt, SMGMarine.txt and SSGMarine.txt
+//	CapturedMarine.txt:				Created CapturedMarineFist, Grenade, Railgun, Rocket, Saw, SMG and SSG actors
+//	CVARS.txt:						Added Marine_Fist, Grenade, Railgun, Saw, SMG, and SSG to the surviving marines spawn in BDInitialize script
+//	Decorate.txt:					Included FistMarine.txt, GrenadeMarine.txt, RailgunMarine.txt, SawMarine.txt, SMGMarine.txt and SSGMarine.txt
 //	EnemyTanks.txt:					Changed EnemyTanks to spawn the EnemyTankWeakSpot actor at the rear
 //	Explosives.txt:					Created a FriendlyGrenadeExplosion and MarineShortGrenade actors so they won't damage players
 //									Created MarineRocket2, MarineBackBlast1-3, and MarineRocketExplosion so they won't damage the players
@@ -27,6 +27,8 @@
 //	Mancubus.txt:					Added Species "Fatso"
 //	Marines.txt:					Created new states for the RandomMarine's spawns to include the new variatnts
 //	Player.txt:						Added DamageFactor "TankWeakSpot" 0.0 to player class
+//	RailgunMarine.txt:				Set health to 135, drops the RailgunSpawner on death, and wears blue armor
+//									If enemy is within 256 mapunits will attack with the SMG
 //	Repairs.txt:					Removed TankWeakSpotBase and TankWeakSpot3 actors
 //	Revenant.txt:					Adjust time of the frames for DyingRevenant actor's spawn state (after fatality)
 //	RocketLauncherMarine.txt:		Set health to 150, drops the RocketLauncherSpawner on death, and wears brown armor
@@ -38,7 +40,7 @@
 //	Spiders2.txt:					Added Species "Spider" to Ancient Arachnotron
 //	SSG.txt:						Reduced recoil to 3 instead of 5 when firing both barrels
 //	+SSGMarine.txt:					Set health to 175, drops the SSGSpawner on death, and wears grey armor
-//	Tokens.txt:						Created NumberofAlliesFist, Grenade, Saw, SMG and SSG inventory items
+//	Tokens.txt:						Created NumberofAlliesFist, Grenade, Railgun, Saw, SMG and SSG inventory items
 //	Volcabus.txt:					Added Species "Fatso"
 //
 //	Development v21.5.3

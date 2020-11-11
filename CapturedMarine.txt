@@ -69,12 +69,12 @@ Actor CapturedMarine Replaces Blursphere
 ////////
 		PlasmaMarineSpawner:
 			TNT1 A 0
-			//TNT1 A 0 A_Jump(85, "RailgunMarine")
+			TNT1 A 0 A_Jump(85, "RailgunMarine")
 		PlasmaMarine:
-			TNT1 A 0 A_SpawnItem("CapturedMarinePlasma")
+			TNT1 A 0 A_SpawnItem("CapturedMarinePlasmagun")
 			Stop
 		RailgunMarine:
-			//TNT1 A 0 A_SpawnItem("CapturedMarineRailgun")
+			TNT1 A 0 A_SpawnItem("CapturedMarineRailgun")
 			Stop
 ////////
 		BFGMarineSpawner:
@@ -702,7 +702,7 @@ ACTOR CapturedMarineRocket: CapturedMarineBase
     }
 }
 
-ACTOR CapturedMarinePlasma: CapturedMarineBase
+ACTOR CapturedMarinePlasmagun: CapturedMarineBase
 {
 	Health 135
 	translation "112:127=200:207"
@@ -715,6 +715,27 @@ ACTOR CapturedMarinePlasma: CapturedMarineBase
         TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_GiveToTarget("NumberOfAlliesPLasmagun", 1)
 		TNT1 A 0 A_SpawnItemEx ("Marine_Plasmagun",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        CAPT N 1
+		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
+        CAPT N 0
+        Stop
+    }
+}
+
+ACTOR CapturedMarineRailgun: CapturedMarineBase
+{
+	Health 135
+	translation "112:127=200:207"
+	States
+	{
+	Death.Use:
+		TNT1 A 0 A_Playsound ("LETSROCK")
+		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
+        CAPT F 12
+        TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_GiveToTarget("NumberOfAlliesRailgun", 1)
+		TNT1 A 0 A_SpawnItemEx ("Marine_Railgun",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         CAPT N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)

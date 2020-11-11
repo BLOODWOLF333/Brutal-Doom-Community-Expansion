@@ -53,7 +53,7 @@ ACTOR Marine_SMG: Marine_Rifle
 		TNT1 A 0 A_ChangeFlag("NOBLOCKMAP",1)
 		TNT1 A 0 A_CustomMissile ("OrderTitle2", 50, 0, 0, 2, 90)
 		TNT1 A 0 A_PlaySound("MarineGuard", 2)
-		MRMP B 30
+		MRMP A 30
 		TNT1 A 0 A_SpawnItemEx ("SMGMarineGuarding",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		Stop
 
@@ -64,7 +64,7 @@ ACTOR Marine_SMG: Marine_Rifle
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
 		TNT1 A 0 A_GiveInventory("TargetIsAMarine")
-		MRMP B 4 A_Look
+		MRMP A 4 A_Look
 		Goto FindPlayer
 
 	ForgetTarget:
@@ -99,14 +99,14 @@ ACTOR Marine_SMG: Marine_Rifle
 
 	CheckIfCanJumpSee:
 		TNT1 A 0
-		MRMP B 2 A_FaceTarget
+		MRMP D 2 A_FaceTarget
 		TNT1 A 0 A_TakeInventory("evmarinenoway", 1)
 		TNT1 A 0 A_JumpIfInventory("evmarinecanjump", 1, "Jump")
 		Goto See
 
 	CheckIfCanJumpFollow:
 		TNT1 A 0
-		MRMP B 2 A_FaceTarget
+		MRMP D 2 A_FaceTarget
 		TNT1 A 0 A_TakeInventory("evmarinenoway", 1)
 		TNT1 A 0 A_JumpIfInventory("evmarinecanjump", 1, "Jump")
 		Goto FollowPlayer
@@ -176,46 +176,46 @@ ACTOR Marine_SMG: Marine_Rifle
 
 	Waits:
 		MRMP B 0
-		MRMP B 4 A_Stop
+		MRMP D 4 A_Stop
 		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, 1)
 		Goto See
 		TNT1 AAA 0
 		TNT1 A 0 A_Jump(16, "Waits2", "Waits3")
 		TNT1 A 0 A_CheckSight("FollowPlayer")
-		MRMP B 4 A_Stop
+		MRMP D 4 A_Stop
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 1)
 		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
-		MRMP B 4 A_Look
+		MRMP D 4 A_Look
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 0)
 		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
-		MRMP B 4 A_LookEx(0,0,0,0,360,"FollowPlayer")
+		MRMP D 4 A_LookEx(0,0,0,0,360,"FollowPlayer")
 		Goto FindPlayer
 
 	Waits2:
 		MRMP B 0
 		TNT1 A 0 A_SetAngle(random(90, -90) + angle)
 		TNT1 A 0 A_PlaySound("MRNWT", 2)
-		MRMP B 4 A_Stop
+		MRMP D 4 A_Stop
 		TNT1 A 0 A_CheckSight("FollowPlayer")
-		MRMP B 4 A_Stop
+		MRMP D 4 A_Stop
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 1)
 		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
-		MRMP B 4 A_Look
+		MRMP D 4 A_Look
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 0)
 		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
-		MRMP B 4 A_LookEx(0,0,0,0,360,"FollowPlayer")
+		MRMP D 4 A_LookEx(0,0,0,0,360,"FollowPlayer")
 		Goto FindPlayer
 
 	Waits3:
@@ -225,28 +225,28 @@ ACTOR Marine_SMG: Marine_Rifle
 		TNT1 AAA 0
 		TNT1 A 0 A_SetAngle(random(90, -90) + angle)
 		TNT1 A 0 A_PlaySound("MRNWC", 2)
-		MRMP B 4 A_Stop
+		MRMP D 4 A_Stop
 		TNT1 A 0 A_CheckSight("FollowPlayer")
-		MRMP B 4 A_Stop
+		MRMP D 4 A_Stop
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 1)
 		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
-		MRMP B 4 A_Look
+		MRMP D 4 A_Look
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 0)
 		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
-		MRMP B 4 A_LookEx(0,0,0,0,360,"FollowPlayer")
+		MRMP D 4 A_LookEx(0,0,0,0,360,"FollowPlayer")
 		Goto FindPlayer
 
 	GiveAmmo:
 		TNT1 A 0
 		MRMP A 10 A_FaceTarget
 		TNT1 A 0 A_PlaySound("MRNGI1")
-		MRMP BA 15 A_FaceTarget
+		MRMP DA 15 A_FaceTarget
 		TNT1 A 0 A_GiveToTarget("Clip1", 15)
 		Goto Waits
 
@@ -265,15 +265,15 @@ ACTOR Marine_SMG: Marine_Rifle
 		TNT1 A 0 A_Jump(128, "MissileLeft", "MissileRight")
 
 		MRMP A 2 A_FaceTarget
-		MRMP A 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
+		MRMP D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("FARSHT", 6)
         TNT1 A 0 A_PlaySound("SMGFIRE", 1)
-		TNT1 A 0 A_GiveInventory("CommandoAmmo",1)
+		TNT1 A 0 A_GiveInventory("BDSMGAmmo",1)
 		TNT1 A 0 A_CustomMissile("MarineWeakTracer", 32)
 		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
 
-		TNT1 A 0 A_JumpIfInventory("CommandoAmmo", 40, "Reload")
+		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 40, "Reload")
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Missile
 
@@ -282,15 +282,15 @@ ACTOR Marine_SMG: Marine_Rifle
 		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "FollowPlayer")
 		MRMP A 2 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
-		MRMP A 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
+		MRMP D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("FARSHT", 6)
         TNT1 A 0 A_PlaySound("SMGFIRE", 1)
-		TNT1 A 0 A_GiveInventory("CommandoAmmo",1)
+		TNT1 A 0 A_GiveInventory("BDSMGAmmo",1)
 		TNT1 A 0 A_CustomMissile("MarineWeakTracer", 32)
 		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
 
-		TNT1 A 0 A_JumpIfInventory("CommandoAmmo", 40, "Reload")
+		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 40, "Reload")
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Missile
 
@@ -299,76 +299,76 @@ ACTOR Marine_SMG: Marine_Rifle
 		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "FollowPlayer")
 		MRMP A 2 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
-		MRMP A 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
+		MRMP D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("FARSHT", 6)
         TNT1 A 0 A_PlaySound("SMGFIRE", 1)
-		TNT1 A 0 A_GiveInventory("CommandoAmmo",1)
+		TNT1 A 0 A_GiveInventory("BDSMGAmmo",1)
 		TNT1 A 0 A_CustomMissile("MarineWeakTracer", 32)
 		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
 
-		TNT1 A 0 A_JumpIfInventory("CommandoAmmo", 40, "Reload")
+		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 40, "Reload")
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Missile
 
 	Reload:
-		MRMP B 10 A_FaceTarget
+		MRMP A 10 A_FaceTarget
 		TNT1 A 0 A_PlaySound("reload")
 		TNT1 A 0 A_CustomMissile("EmptyPistolClipSpawn", 30, 0, random(-11, 11), 0)
-		MRMP A 10 A_TakeInventory("CommandoAmmo", 40)
+		MRMP D 10 A_TakeInventory("BDSMGAmmo", 40)
+		MRMP D 10 A_FaceTarget
+		MRMP D 10 A_FaceTarget
 		MRMP A 10 A_FaceTarget
-		MRMP A 10 A_FaceTarget
-		MRMP B 10 A_FaceTarget
 		Goto See
 
 	Retreat:
 		MRMP A 2 A_FaceTarget
 		TNT1 A 0 A_Recoil(5)
-		MRMP A 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
+		MRMP D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("FARSHT", 6)
         TNT1 A 0 A_PlaySound("SMGFIRE", 1)
-		TNT1 A 0 A_GiveInventory("CommandoAmmo",1)
+		TNT1 A 0 A_GiveInventory("BDSMGAmmo",1)
 		TNT1 A 0 A_CustomMissile("MarineWeakTracer", 32)
 		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
 
-		TNT1 A 0 A_JumpIfInventory("CommandoAmmo", 40, "Reload")
+		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 40, "Reload")
 
 		MRMP A 2 A_FaceTarget
 		TNT1 A 0 A_Recoil(5)
-		MRMP A 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
+		MRMP D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("FARSHT", 6)
         TNT1 A 0 A_PlaySound("SMGFIRE", 1)
-		TNT1 A 0 A_GiveInventory("CommandoAmmo",1)
+		TNT1 A 0 A_GiveInventory("BDSMGAmmo",1)
 		TNT1 A 0 A_CustomMissile("MarineWeakTracer", 32)
 		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
 
-		TNT1 A 0 A_JumpIfInventory("CommandoAmmo", 40, "Reload")
+		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 40, "Reload")
 
 		MRMP A 2 A_FaceTarget
 		TNT1 A 0 A_Recoil(5)
-		MRMP A 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
+		MRMP D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("FARSHT", 6)
         TNT1 A 0 A_PlaySound("SMGFIRE", 1)
-		TNT1 A 0 A_GiveInventory("CommandoAmmo",1)
+		TNT1 A 0 A_GiveInventory("BDSMGAmmo",1)
 		TNT1 A 0 A_CustomMissile("MarineWeakTracer", 32)
 		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
 
-		TNT1 A 0 A_JumpIfInventory("CommandoAmmo", 40, "Reload")
+		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 40, "Reload")
 
 		MRMP A 2 A_FaceTarget
 		TNT1 A 0 A_Recoil(5)
-		MRMP A 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
+		MRMP D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("FARSHT", 6)
         TNT1 A 0 A_PlaySound("SMGFIRE", 1)
-		TNT1 A 0 A_GiveInventory("CommandoAmmo",1)
+		TNT1 A 0 A_GiveInventory("BDSMGAmmo",1)
 		TNT1 A 0 A_CustomMissile("MarineWeakTracer", 32)
 		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
 
-		TNT1 A 0 A_JumpIfInventory("CommandoAmmo", 40, "Reload")
+		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 40, "Reload")
 		Goto Pain.Avoid
 
 	Melee:
@@ -382,11 +382,11 @@ ACTOR Marine_SMG: Marine_Rifle
 		TNT1 A 0 A_ChangeFlag("SOLID", 0)
 		TNT1 A 0 A_PlaySound("MRNAT", 2)
 
-		MRMP B 3 A_FaceTarget
+		MRMP D 3 A_FaceTarget
 		PKIK AB 3 A_FastChase
 		PKIK C 3 A_CustomMissile("MarineKick",32,0,0,0)
 		PKIK B 3 A_FastChase
-		MRMP B 3 A_FaceTarget
+		MRMP D 3 A_FaceTarget
 		Goto See
 
 	Jump:
@@ -427,9 +427,9 @@ ACTOR Marine_SMG: Marine_Rifle
 		Goto Missile
 
 	Pain:
-	    MRMP B 3
+	    MRMP E 3
 		TNT1 A 0 A_Jump(128,"Pain.Avoid")
-		MRMP B 3 A_Pain
+		MRMP E 3 A_Pain
 		Goto FollowPlayer
 
 	Pain.Avoid:
@@ -796,7 +796,7 @@ ACTOR SMGMarineGuarding: Marine_SMG
 		TNT1 A 0 A_ChangeFlag("NOBLOCKMAP",1)
 		TNT1 A 0 A_CustomMissile ("OrderTitle2", 50, 0, 0, 2, 90)
 		TNT1 A 0 A_PlaySound("MarineGuard", 2)
-		MRMP B 30
+		MRMP A 30
 		TNT1 A 0 A_SpawnItemEx ("Marine_SMG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		Stop
 
@@ -808,13 +808,14 @@ ACTOR SMGMarineGuarding: Marine_SMG
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
 		TNT1 A 0 A_GiveInventory("TargetIsAMarine")
-		MRMP B 4 A_Look
+		MRMP A 4 A_Look
 		Loop
 
+	FollowPlayer:
 	See:
 		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 1)
 		TNT1 A 0 A_ChangeFlag("SOLID", 0)
-		MRMP BBBBBBBBBB 1 A_Chase
+		MRMP AAAAAAAAAADDDDDDDDDD 1 A_Chase
 		TNT1 A 0 A_ClearTarget
 		Goto Spawn
 
@@ -831,45 +832,45 @@ ACTOR SMGMarineGuarding: Marine_SMG
 		TNT1 A 0 A_Jump(128, "MissileLeft", "MissileRight")
 
 		MRMP A 2 A_FaceTarget
-		MRMP A 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
+		MRMP D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("FARSHT", 6)
         TNT1 A 0 A_PlaySound("SMGFIRE", 1)
-		TNT1 A 0 A_GiveInventory("CommandoAmmo",1)
+		TNT1 A 0 A_GiveInventory("BDSMGAmmo",1)
 		TNT1 A 0 A_CustomMissile("MarineWeakTracer", 32)
 		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
 
-		TNT1 A 0 A_JumpIfInventory("CommandoAmmo", 40, "Reload")
+		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 40, "Reload")
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Missile
 
 	MissileLeft:
-		MRMP B 2 A_FaceTarget
+		MRMP A 2 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
-		MRMP A 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
+		MRMP D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("FARSHT", 6)
         TNT1 A 0 A_PlaySound("SMGFIRE", 1)
-		TNT1 A 0 A_GiveInventory("CommandoAmmo",1)
+		TNT1 A 0 A_GiveInventory("BDSMGAmmo",1)
 		TNT1 A 0 A_CustomMissile("MarineWeakTracer", 32)
 		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
 
-		TNT1 A 0 A_JumpIfInventory("CommandoAmmo", 40, "Reload")
+		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 40, "Reload")
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Missile
 
 	MissileRight:
-		MRMP B 2 A_FaceTarget
+		MRMP A 2 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
-		MRMP A 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
+		MRMP D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("FARSHT", 6)
         TNT1 A 0 A_PlaySound("SMGFIRE", 1)
-		TNT1 A 0 A_GiveInventory("CommandoAmmo",1)
+		TNT1 A 0 A_GiveInventory("BDSMGAmmo",1)
 		TNT1 A 0 A_CustomMissile("MarineWeakTracer", 32)
 		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
 
-		TNT1 A 0 A_JumpIfInventory("CommandoAmmo", 40, "Reload")
+		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 40, "Reload")
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Missile
 
@@ -882,11 +883,11 @@ ACTOR SMGMarineGuarding: Marine_SMG
 		TNT1 A 0 A_ChangeFlag("SOLID", 0)
 		TNT1 A 0 A_PlaySound("MRNAT", 2)
 
-		MRMP B 3 A_FaceTarget
+		MRMP D 3 A_FaceTarget
 		PKIK AB 3 A_FastChase
 		PKIK C 3 A_CustomMissile("MarineKick",32,0,0,0)
 		PKIK B 3 A_FastChase
-		MRMP B 3 A_FaceTarget
+		MRMP D 3 A_FaceTarget
 		Goto See
 
 	Jump:
