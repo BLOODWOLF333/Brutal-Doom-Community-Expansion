@@ -378,7 +378,8 @@ ACTOR Marine_Rocket: Marine_Rifle
 	Reload:
 		MAR5 A 0
 		TNT1 A 0 A_PlaySound("reload")
-		MAR5 A 5 A_FaceTarget A_TakeInventory("RocketRounds", 6)
+		MAR5 A 5 A_FaceTarget
+		TNT1 A 0 A_TakeInventory("RocketRounds", 6)
 		TNT1 A 0 A_CustomMissile("EmptyDrumSpawn", 30, 0, random(-11, 11), 0)
 		MAR5 D 18 A_FaceTarget
 		MAR5 A 9 A_FaceTarget

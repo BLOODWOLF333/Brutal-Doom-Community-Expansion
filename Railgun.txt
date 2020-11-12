@@ -213,7 +213,7 @@ ACTOR RailGun : BrutalWeapon
 		RAIL A 0 A_PlaySound("BEPBEP", 2)
 		RAIL A 0 A_JumpifInventory("FiredSecondary", 1, "HoldAim")
 		SNIP A 1 BRIGHT A_Refire
-		Goto NoAim
+		Goto Ready2
 
 	SuddenStopAim:
 		RAIL A 0

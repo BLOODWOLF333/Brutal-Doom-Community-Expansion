@@ -270,7 +270,7 @@ ACTOR AssaultShotgun : BrutalWeapon
 		A12A DDD 1 BRIGHT A_SetPitch(0.3 + pitch)
 		A12G A 0 A_JumpIfInventory("FiredSecondary",1,"HoldAim")//If still pressing alt fire, it means its holding aim
 		SHTZ A 0 A_Refire
-		Goto NoAim
+		Goto Ready2
 
 	SlugFire2: //Aiming Down the Sights
 		A12A E 1 BRIGHT A_AlertMonsters
@@ -290,7 +290,7 @@ ACTOR AssaultShotgun : BrutalWeapon
 		A12A DDD 1 BRIGHT A_SetPitch(0.3 + pitch)
 		A12G A 0 A_JumpIfInventory("FiredSecondary",1,"HoldAim")//If still pressing alt fire, it means its holding aim
 		SHTZ A 0 A_Refire
-		Goto NoAim
+		Goto Ready2
 
 	AltFire:
         A12G A 0
