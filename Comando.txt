@@ -277,6 +277,8 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 		MPOS A 0 A_PlaySound("CHAINSTO")
 		MPOS E 10 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
+		MPOS E 10 A_FaceTarget
+		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
 		MPOS A 10
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
 		MPOS A 10
@@ -284,9 +286,10 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 		MPOS A 10 A_TakeInventory("CommandoAmmo", 50)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
 		MPOS E 10 A_FaceTarget
+		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
+		MPOS E 10 A_FaceTarget
 		MPOS A 0 A_PlaySound("CHGNPKUP")
-		Goto SeeContinue
-
+		Goto See
 
      SpecialAttack:
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)

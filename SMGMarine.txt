@@ -312,13 +312,12 @@ ACTOR Marine_SMG: Marine_Rifle
 		Goto Missile
 
 	Reload:
-		MRMP A 10 A_FaceTarget
+		MRMP A 0 A_FaceTarget
 		TNT1 A 0 A_PlaySound("reload")
 		TNT1 A 0 A_CustomMissile("EmptyPistolClipSpawn", 30, 0, random(-11, 11), 0)
-		MRMP D 10 A_TakeInventory("BDSMGAmmo", 40)
-		MRMP D 10 A_FaceTarget
-		MRMP D 10 A_FaceTarget
-		MRMP A 10 A_FaceTarget
+		MRMP A 9 A_TakeInventory("BDSMGAmmo", 40)
+		MRMP D 18 A_FaceTarget
+		MRMP A 9 A_FaceTarget
 		Goto See
 
 	Retreat:
