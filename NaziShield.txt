@@ -18,8 +18,7 @@ ACTOR NaziShield : Rifle
         Loop
 		TNT1 AAA 0
 		Goto Destroy
-	Deselect:
-        Goto AltFire
+
 	Select:
 		TNT1 A 0 A_Giveinventory("GoSpecial",1)
 	    TNT1 A 0 A_TakeInventory("MeatAmmo", 100)
@@ -63,6 +62,7 @@ ACTOR NaziShield : Rifle
 		TNT1 A 0 A_Refire
 		Goto Ready
 
+	Deselect:
     AltFire:
 		GRZ6 D 1 offset(-4, 32)
 		GRZ6 D 1 offset(-9, 33)
@@ -76,18 +76,12 @@ ACTOR NaziShield : Rifle
         TNT1 A 0 A_PlaySound("skeleton/swing")
 		TNT1 A 0 A_FireCustomMissile("ThrowedNazi", 0, 0, 0, 0)
 		TNT1 A 0 A_TakeInventory("GoSpecial",1)
-		TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
-		TNT1 A 0 A_TakeInventory("HasNaziShield",1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
-        THEF B 4
-        THEF C 4
-		TNT1 A 0 A_Giveinventory("Punching",1)
-		THEF D 4
-		TNT1 A 0 A_TakeInventory("GoSpecial",1)
-		TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
-		TNT1 A 0 A_TakeInventory("NaziShield",1)
-		Goto Ready
+        TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
+        TNT1 A 0 A_TakeInventory("HasNaziShield",1)
+        TNT1 A 0 A_Giveinventory("Punching",1)
+        THEF BCD 4
+        TNT1 A 0 A_TakeInventory("NaziShield",1)
+        Stop
  	Spawn:
 		8876 A -1
 		Stop
