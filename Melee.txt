@@ -36,7 +36,7 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		TNT1 A 0 A_JumpIfInventory("NoFatality", 1, "FatalityOn")
 		Goto FatalityOff
 	FatalityOn:
-	    TNT1 A 0 A_Print("RIP AND TEAR! Mode Selected: Jabs performs fatalities.")
+	    TNT1 A 0 A_Print("RIP AND TEAR! Mode Selected: Jabs perform fatalities.")
 	    PUNS BCD 1
 		PUNS E 7 A_PlaySound("Knuckled")
 		PUNS FGFE 3 A_TakeInventory("Reloading", 1)
@@ -44,7 +44,7 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		Goto Ready3
 
 	FatalityOff:
-		TNT1 A 0 A_Print("SMASH Mode Selected: Jabs crushes enemies.")
+		TNT1 A 0 A_Print("SMASH Mode Selected: Jabs crush enemies.")
 	    PUNS BCD 1
 		PUNS E 7 A_PlaySound("Knuckled")
 		PUNS FGFE 3 A_TakeInventory("Reloading", 1)
