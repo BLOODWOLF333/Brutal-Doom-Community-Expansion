@@ -41,18 +41,6 @@ Actor Tracer: FastProjectile
 Actor DecorativeTracer: Tracer
 {
 -DONTSPLASH
-States
-	{
-	Spawn:
-		TRAC A 1 BRIGHT
-		TNT1 A 0 ThrustThingZ(0,random(-4, 4),0,1)
-		TRAC A 1 BRIGHT
-		Goto Spawn2
-
-		Spawn2:
-		TRAC A 1 BRIGHT
-		Loop
-	}
 }
 
 Actor MonsterTracer: Tracer//Pistol

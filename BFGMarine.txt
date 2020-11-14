@@ -1100,10 +1100,10 @@ ACTOR Marine_BFGPathfinder
 {
 	Radius 16
 	Height 56
-	Speed 20
+	Speed 50
 	Health 4000
 	PainChance 255
-	MaxTargetRange 128
+	MaxTargetRange 32768
 	Monster
 	damagefactor "SpawnMarine", 8000.0
 	-COUNTKILL
@@ -1153,7 +1153,6 @@ ACTOR Marine_BFGPathfinder
 
 ACTOR Marine_BFGAdd: Marine_BFGPathfinder
 {
-	Speed 4
 	States
 	{
 	Spawn:
@@ -1196,11 +1195,6 @@ ACTOR RemoveMarineBFG
 
 ACTOR RemoveMarineBFGActivate: Marine_BFGPathfinder
 {
--FRIENDLY
--SHOOTABLE
-Scale 1.0
-Speed 1
-MaxTargetRange 90000
 	States
 	{
 	Missile:
