@@ -40,125 +40,116 @@ Actor Tracer: FastProjectile
 
 Actor DecorativeTracer: Tracer
 {
-//-DONTSPLASH
-//seesound "weapons/minigunfire"
-//damagetype Minigun
 -DONTSPLASH
+States
+	{
+	Spawn:
+		TRAC A 1 BRIGHT
+		TNT1 A 0 ThrustThingZ(0,random(-4, 4),0,1)
+		TRAC A 1 BRIGHT
+		Goto Spawn2
+
+		Spawn2:
+		TRAC A 1 BRIGHT
+		Loop
+	}
 }
 
-
-
-Actor MonsterTracer: Tracer
+Actor MonsterTracer: Tracer//Pistol
 {
-+BLOODSPLATTER
--DONTSPLASH
-+MISSILE
-+THRUGHOST
-speed 50
-FastSpeed 80
-damage (random(8,8))
-Decal "BulletDecalNew1"
-DamageType MonsterBullet
-States
+	+BLOODSPLATTER
+	-DONTSPLASH
+	+MISSILE
+	+THRUGHOST
+	speed 50
+	FastSpeed 80
+	damage (random(8,8))
+	Decal "BulletDecalNew1"
+	DamageType MonsterBullet
+	States
+	{
+		Spawn:
+		TRAC A 1 BRIGHT
+		TNT1 A 0 ThrustThingZ(0,random(-6, 6),0,1)
+		TRAC A 1 BRIGHT
+		Goto Spawn2
+
+		Spawn2:
+		TRAC A 1 BRIGHT
+		Loop
+
+		Death:
+		TNT1 A 1 A_SpawnItem("HitPuffTracer")
+		Stop
+
+		XDeath:
+		TNT1 A 0
+		Stop
+	}
+}
+
+Actor ShotgunguyTracer: Tracer//Shotgun
 {
-	Spawn:
+	+BLOODSPLATTER
+	-DONTSPLASH
+	+MISSILE
+	+THRUGHOST
+	damage (random(12,12))
+	Decal "BulletDecalNew1"
+	DamageType MonsterShotgunBullet
+	States
+	{
+		Spawn:
 		TRAC A 1 BRIGHT
 		TNT1 A 0 ThrustThingZ(0,random(-8, 8),0,1)
 		TRAC A 1 BRIGHT
 		Goto Spawn2
 
-	Spawn2:
+		Spawn2:
 		TRAC A 1 BRIGHT
 		Loop
-
-Death:
-    TNT1 A 1 A_SpawnItem("HitPuffTracer")
-	//TNT1 A 0 A_SpawnItemEx ("MonsterPenetrator",cos(-pitch)*25,0,0+(sin(pitch)*25),cos(-pitch)*100,0,sin(pitch)*100,0,SXF_TRANSFERPITCH)
-    TNT1 A 0
-	TNT1 A 0 //A_PlaySound("bulletwhistle")
-	Stop
-
-XDeath:
-    TNT1 A 0
-	TNT1 A 0 //A_PlaySound("bulletwhistle")
-	Stop
-}
+	}
 }
 
-
-
-Actor ShotgunguyTracer: Tracer
+Actor ZombieManTracer: MonsterTracer//Rifle
 {
-+BLOODSPLATTER
--DONTSPLASH
-+MISSILE
-+THRUGHOST
-damage (random(12,12))
-Decal "BulletDecalNew1"
-DamageType MonsterShotgunBullet
-States
-{
-	Spawn:
+	damage (random(14,14))
+	States
+	{
+		Spawn:
 		TRAC A 1 BRIGHT
-		TNT1 A 0 ThrustThingZ(0,random(-8, 8),0,1)
+		TNT1 A 0 ThrustThingZ(0,random(-2, 2),0,1)
 		TRAC A 1 BRIGHT
 		Goto Spawn2
 
-	Spawn2:
+		Spawn2:
 		TRAC A 1 BRIGHT
 		Loop
-
-	Death:
-    TNT1 A 1 A_SpawnItem("HitPuffTracer")
-	//TNT1 A 0 A_SpawnItemEx ("MonsterPenetrator",cos(-pitch)*25,0,0+(sin(pitch)*25),cos(-pitch)*100,0,sin(pitch)*100,0,SXF_TRANSFERPITCH)
-    TNT1 A 0
-	TNT1 A 0 //A_PlaySound("bulletwhistle")
-	Stop
-
-	XDeath:
-    TNT1 A 0
-	TNT1 A 0 //A_PlaySound("bulletwhistle")
-	Stop
-}
+	}
 }
 
-Actor ZombieManTracer: MonsterTracer
+Actor MonsterMinigunTracer: MonsterTracer//Minigun
 {
-damage (random(11,11))
-}
-
-
-Actor MonsterMinigunTracer: MonsterTracer
-{
-+BLOODSPLATTER
--DONTSPLASH
-+THRUGHOST
-speed 50
-
-damage (random(9,9))
-seesound "DSMINIGUN"
-damagetype MonsterMinigun
-Decal "BulletDecalNew1"
-
-States
-{
-Spawn:
+	+BLOODSPLATTER
+	-DONTSPLASH
+	+THRUGHOST
+	speed 50
+	damage (random(10,10))
+	seesound "DSMINIGUN"
+	damagetype MonsterMinigun
+	Decal "BulletDecalNew1"
+	States
+	{
+		Spawn:
 		TRAC A 1 BRIGHT
+		TNT1 A 0 ThrustThingZ(0,random(-4, 4),0,1)
+		TRAC A 1 BRIGHT
+		Goto Spawn2
 
-		TRAC A -1 BRIGHT
+		Spawn2:
+		TRAC A 1 BRIGHT
 		Loop
-	Death:
-    TNT1 A 1 A_SpawnItem("HitPuffTracer")
-	//TNT1 A 0 A_SpawnItemEx ("MonsterPenetrator",cos(-pitch)*25,0,0+(sin(pitch)*25),cos(-pitch)*100,0,sin(pitch)*100,0,SXF_TRANSFERPITCH)
-    TNT1 A 0
-	TNT1 A 0 //A_PlaySound("bulletwhistle")
-	Stop
-
-	XDeath:
-    TNT1 A 0
-	TNT1 A 0 //A_PlaySound("bulletwhistle")
-	Stop
-}
+	}
 }
 
 Actor MeatShieldTracer: Tracer
@@ -183,23 +174,32 @@ Spawn:
 }
 }
 
-Actor MarineTracer: MonsterTracer
+Actor MarineTracer: ZombiemanTracer
 {
 	damage (random(16,16))
 	DamageType FriendBullet
 	Species "Marines"
 }
 
-Actor MarineWeakTracer: MarineTracer
+Actor MarineWeakTracer: MonsterTracer
+{
+	damage (random(10,10))
+	DamageType FriendBullet
+	Species "Marines"
+}
+
+Actor MarineShotgunTracer: ShotgunGuyTracer
+{
+	damage (random(14,14))
+	damagetype FriendBullet
+	Species "Marines"
+}
+
+Actor MarineMinigunTracer: MonsterMinigunTracer
 {
 	damage (random(12,12))
 	DamageType FriendBullet
-}
-
-Actor MarineShotgunTracer: MarineTracer
-{
-	damage (random(13,13))
-	damagetype FriendBullet
+	Species "Marines"
 }
 
 Actor Alerter: MonsterTracer
