@@ -45,7 +45,7 @@ ACTOR Marine_SSG: Marine_Rifle
 	Health 175
 	DropItem "SSGSpawner"
 	translation "112:127=96:111"
-	MaxTargetRange 1024
+	MaxTargetRange 512
 	States
 	{
 	Active:
@@ -271,9 +271,10 @@ ACTOR Marine_SSG: Marine_Rifle
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("SSHFIRE", 1)
 		TNT1 A 0 A_CustomMissile("Alerter",32)
-		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), 1, random(-3, 3))
-		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), 1, random(-3, 3))
-		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), 1, random(-3, 3))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundSSG", 32)
+		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), CMF_OFFSETPITCH, random(-4, 4))
+		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), CMF_OFFSETPITCH, random(-4, 4))
+		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), CMF_OFFSETPITCH, random(-4, 4))
 		TNT1 A 0 A_Recoil(3)
 		MSSG A 6 A_FaceTarget
 		MSSG D 13 A_FaceTarget
@@ -296,9 +297,10 @@ ACTOR Marine_SSG: Marine_Rifle
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("SSHFIRE", 1)
 		TNT1 A 0 A_CustomMissile("Alerter",32)
-		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), 1, random(-3, 3))
-		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), 1, random(-3, 3))
-		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), 1, random(-3, 3))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundSSG", 32)
+		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), CMF_OFFSETPITCH, random(-4, 4))
+		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), CMF_OFFSETPITCH, random(-4, 4))
+		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), CMF_OFFSETPITCH, random(-4, 4))
 		TNT1 A 0 A_Recoil(3)
 		MSSG A 6 A_FaceTarget
 		MSSG D 13 A_FaceTarget
@@ -321,9 +323,10 @@ ACTOR Marine_SSG: Marine_Rifle
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("SSHFIRE", 1)
 		TNT1 A 0 A_CustomMissile("Alerter",32)
-		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), 1, random(-3, 3))
-		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), 1, random(-3, 3))
-		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), 1, random(-3, 3))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundSSG", 32)
+		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), CMF_OFFSETPITCH, random(-4, 4))
+		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), CMF_OFFSETPITCH, random(-4, 4))
+		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), CMF_OFFSETPITCH, random(-4, 4))
 		TNT1 A 0 A_Recoil(3)
 		MSSG A 6 A_FaceTarget
 		MSSG D 13 A_FaceTarget
@@ -344,9 +347,10 @@ ACTOR Marine_SSG: Marine_Rifle
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("SSHFIRE", 1)
 		TNT1 A 0 A_CustomMissile("Alerter",32)
-		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), 1, random(-3, 3))
-		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), 1, random(-3, 3))
-		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), 1, random(-3, 3))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundSSG", 32)
+		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), CMF_OFFSETPITCH, random(-4, 4))
+		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), CMF_OFFSETPITCH, random(-4, 4))
+		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), CMF_OFFSETPITCH, random(-4, 4))
 		TNT1 A 0 A_Recoil(3)
 		MSSG A 6 A_FaceTarget
 		MSSG D 13 A_FaceTarget
@@ -823,9 +827,10 @@ ACTOR SSGMarineGuarding: Marine_SSG
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("SSHFIRE", 1)
 		TNT1 A 0 A_CustomMissile("Alerter",32)
-		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), 1, random(-3, 3))
-		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), 1, random(-3, 3))
-		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), 1, random(-3, 3))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundSSG", 32)
+		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), CMF_OFFSETPITCH, random(-4, 4))
+		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), CMF_OFFSETPITCH, random(-4, 4))
+		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), CMF_OFFSETPITCH, random(-4, 4))
 		TNT1 A 0 A_Recoil(3)
 		MSSG A 6 A_FaceTarget
 		MSSG D 13 A_FaceTarget
@@ -846,9 +851,10 @@ ACTOR SSGMarineGuarding: Marine_SSG
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("SSHFIRE", 1)
 		TNT1 A 0 A_CustomMissile("Alerter",32)
-		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), 1, random(-3, 3))
-		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), 1, random(-3, 3))
-		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), 1, random(-3, 3))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundSSG", 32)
+		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), CMF_OFFSETPITCH, random(-4, 4))
+		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), CMF_OFFSETPITCH, random(-4, 4))
+		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), CMF_OFFSETPITCH, random(-4, 4))
 		TNT1 A 0 A_Recoil(3)
 		MSSG A 6 A_FaceTarget
 		MSSG D 13 A_FaceTarget
@@ -869,9 +875,10 @@ ACTOR SSGMarineGuarding: Marine_SSG
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("SSHFIRE", 1)
 		TNT1 A 0 A_CustomMissile("Alerter",32)
-		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), 1, random(-3, 3))
-		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), 1, random(-3, 3))
-		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), 1, random(-3, 3))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundSSG", 32)
+		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), CMF_OFFSETPITCH, random(-4, 4))
+		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), CMF_OFFSETPITCH, random(-4, 4))
+		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 32, 0, random(-6, 6), CMF_OFFSETPITCH, random(-4, 4))
 		TNT1 A 0 A_Recoil(3)
 		MSSG A 6 A_FaceTarget
 		MSSG D 13 A_FaceTarget

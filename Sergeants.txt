@@ -262,9 +262,9 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 31)
 
 		//TNT1 A 0 A_SetPitch(random (-8, 8) + pitch)
-        TNT1 AAAAA 0 A_CustomMissile("ShotgunguyTracer", 36, 0, random(-7, 7), 1, random(-4, 4))
+        TNT1 AAAAA 0 A_CustomMissile("ShotgunguyTracer", 36, 0, random(-4, 4), CMF_OFFSETPITCH, random(-4, 4))
 		TNT1 A 0 A_CustomMissile("DistantFireSoundShotgun", 32, 0, 0, 1, 0)
-		TNT1 AAAAAAAA 0 A_CustomMissile("ShotgunParticles", 36, 0, random(-9, 9), 6, random(-9, 9))
+		TNT1 AAAAAAAA 0 A_CustomMissile("ShotgunParticles", 36, 0, random(-8, 8), CMF_OFFSETPITCH, random(-8, 8))
 		TNT1 A 0 A_PlaySound("weapons/sg")
 		SPOS F 5 BRIGHT //A_CustomBulletAttack(8, 8, 10, 3, "HitPuff")
 		TNT1 A 0 A_Recoil(1)
@@ -1946,35 +1946,35 @@ Obituary "%o got punctured by a SMG Zombie."
 		PSS3 E 4 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget20", 0, 31)
 
-		TNT1 A 0 A_CustomMissile("MonsterTracer", 36, 0, random(-7, 7), 1, random(-4, 4))
+		TNT1 A 0 A_CustomMissile("MonsterTracer", 36, 0, random(-3, 3), CMF_OFFSETPITCH, random(-3, 3))
 		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
 		TNT1 A 0 A_PlaySound("FARSHT", 6)
         TNT1 A 0 A_PlaySound("SMGFIRE", 1)
 		PSS3 F 1 BRIGHT
 		PSS3 E 2 A_FaceTarget
 
-		TNT1 A 0 A_CustomMissile("MonsterTracer", 36, 0, random(-7, 7), 1, random(-4, 4))
+		TNT1 A 0 A_CustomMissile("MonsterTracer", 36, 0, random(-3, 3), CMF_OFFSETPITCH, random(-3, 3))
 		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
 		TNT1 A 0 A_PlaySound("FARSHT", 6)
         TNT1 A 0 A_PlaySound("SMGFIRE", 1)
 		PSS3 F 1 BRIGHT
 		PSS3 E 2 A_FaceTarget
 
-		TNT1 A 0 A_CustomMissile("MonsterTracer", 36, 0, random(-7, 7), 1, random(-4, 4))
+		TNT1 A 0 A_CustomMissile("MonsterTracer", 36, 0, random(-3, 3), CMF_OFFSETPITCH, random(-3, 3))
 		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
 		TNT1 A 0 A_PlaySound("FARSHT", 6)
         TNT1 A 0 A_PlaySound("SMGFIRE", 1)
 		PSS3 F 1 BRIGHT
 		PSS3 E 2 A_FaceTarget
 
-		TNT1 A 0 A_CustomMissile("MonsterTracer", 36, 0, random(-7, 7), 1, random(-4, 4))
+		TNT1 A 0 A_CustomMissile("MonsterTracer", 36, 0, random(-3, 3), CMF_OFFSETPITCH, random(-3, 3))
 		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
 		TNT1 A 0 A_PlaySound("FARSHT", 6)
         TNT1 A 0 A_PlaySound("SMGFIRE", 1)
 		PSS3 F 1 BRIGHT
 		PSS3 E 2 A_FaceTarget
 
-		TNT1 A 0 A_CustomMissile("MonsterTracer", 36, 0, random(-7, 7), 1, random(-4, 4))
+		TNT1 A 0 A_CustomMissile("MonsterTracer", 36, 0, random(-3, 3), CMF_OFFSETPITCH, random(-3, 3))
 		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
 		TNT1 A 0 A_PlaySound("FARSHT", 6)
         TNT1 A 0 A_PlaySound("SMGFIRE", 1)

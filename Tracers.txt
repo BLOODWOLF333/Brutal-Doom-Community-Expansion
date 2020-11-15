@@ -58,12 +58,6 @@ Actor MonsterTracer: Tracer//Pistol
 	{
 		Spawn:
 		TRAC A 1 BRIGHT
-		TNT1 A 0 ThrustThingZ(0,random(-6, 6),0,1)
-		TRAC A 1 BRIGHT
-		Goto Spawn2
-
-		Spawn2:
-		TRAC A 1 BRIGHT
 		Loop
 
 		Death:
@@ -85,35 +79,11 @@ Actor ShotgunguyTracer: Tracer//Shotgun
 	damage (random(12,12))
 	Decal "BulletDecalNew1"
 	DamageType MonsterShotgunBullet
-	States
-	{
-		Spawn:
-		TRAC A 1 BRIGHT
-		TNT1 A 0 ThrustThingZ(0,random(-8, 8),0,1)
-		TRAC A 1 BRIGHT
-		Goto Spawn2
-
-		Spawn2:
-		TRAC A 1 BRIGHT
-		Loop
-	}
 }
 
 Actor ZombieManTracer: MonsterTracer//Rifle
 {
 	damage (random(14,14))
-	States
-	{
-		Spawn:
-		TRAC A 1 BRIGHT
-		TNT1 A 0 ThrustThingZ(0,random(-2, 2),0,1)
-		TRAC A 1 BRIGHT
-		Goto Spawn2
-
-		Spawn2:
-		TRAC A 1 BRIGHT
-		Loop
-	}
 }
 
 Actor MonsterMinigunTracer: MonsterTracer//Minigun
@@ -126,18 +96,6 @@ Actor MonsterMinigunTracer: MonsterTracer//Minigun
 	seesound "DSMINIGUN"
 	damagetype MonsterMinigun
 	Decal "BulletDecalNew1"
-	States
-	{
-		Spawn:
-		TRAC A 1 BRIGHT
-		TNT1 A 0 ThrustThingZ(0,random(-4, 4),0,1)
-		TRAC A 1 BRIGHT
-		Goto Spawn2
-
-		Spawn2:
-		TRAC A 1 BRIGHT
-		Loop
-	}
 }
 
 Actor MeatShieldTracer: Tracer
