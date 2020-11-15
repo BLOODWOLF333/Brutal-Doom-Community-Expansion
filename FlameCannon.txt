@@ -240,6 +240,14 @@ States
 		}
 }
 
+ACTOR MarineFireBall : BigFireBallWithGravity
+{
+	DamageType "FriendBullet"
+	+MTHRUSPECIES
+	+THRUSPECIES
+	+DONTHARMSPECIES
+}
+
 ACTOR Flames
 {
 	Radius 6

@@ -1203,6 +1203,13 @@ ACTOR FlamethrowerMissile
 	}
 }
 
+ACTOR MarineFlameThrower : FlamethrowerMissile
+{
+	DamageType "FriendBullet"
+	+MTHRUSPECIES
+	+THRUSPECIES
+	+DONTHARMSPECIES
+}
 
 ACTOR FlamethrowerMissileNoLight: FlamethrowerMissile
 {
@@ -1223,6 +1230,13 @@ ACTOR FlamethrowerMissileNoLight: FlamethrowerMissile
 	}
 }
 
+ACTOR MarineFlameThrowerNoLight : FlamethrowerMissileNoLight
+{
+	DamageType "FriendBullet"
+	+MTHRUSPECIES
+	+THRUSPECIES
+	+DONTHARMSPECIES
+}
 
 ACTOR FlamethrowerMissileProper: FlamethrowerMissile
 {

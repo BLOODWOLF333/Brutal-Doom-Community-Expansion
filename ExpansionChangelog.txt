@@ -11,29 +11,33 @@
 //	AssaultShotgun.txt:				Changed zoomed fire state to goto Ready2 unless altfire button is held
 //	BFG.txt:						Modified the FriendlyBFGBall actor and created MarineBFGExtra and MarineBFGExtraGiant actors
 //	BFG10K.txt:						Changed the BFG10K_Ball death state to spawn A_BFGSpray("SuperBFGExtra",10) instead of RocketExplosion and not hurt the player
-//	BFG10KMarine.txt:				Set health to 125, drops the BFG10KSpawner on death, and wears dark green armor
+//	+BFG10KMarine.txt:				Set health to 125, drops the BFG10KSpawner on death, and wears dark green armor
 //									If enemy is within 256 mapunits will attack with the shotgun
 //	BFGMarine.txt:					Set health to 125, drops the BFGSpawner on death, and wears dark green armor
 //									If enemy is within 256 mapunits will attack with the SSG
-//	CapturedMarine.txt:				Created CapturedMarineFist, BFG, BFG10K, Grenade, HML, Railgun, Rocket, Saw, SMG and SSG actors
+//	CapturedMarine.txt:				Created CapturedMarineFist, BFG, BFG10K, Grenade, Flame, HML, Railgun, Rocket, Saw, SMG and SSG actors
 //	CGuyShield.txt:					Fixed AltFire state causing crash in GZDoom (Thanks to Mechanical Sanity for the code)
-//	CVARS.txt:						Added Marine_Fist, BFG, BFG10K, Grenade, HML, Railgun, Saw, SMG, and SSG to the surviving marines spawn in BDInitialize script
-//	Decorate.txt:					Included BFG10KMarine.txt, FistMarine.txt, GrenadeMarine.txt, HMLMarine.txt RailgunMarine.txt, SawMarine.txt, SMGMarine.txt and SSGMarine.txt
+//	CVARS.txt:						Added Marine_Fist, BFG, BFG10K, Grenade, Flame, HML, Railgun, Saw, SMG, and SSG to the surviving marines spawn in BDInitialize script
+//	Decorate.txt:					Included BFG10KMarine.txt, FistMarine.txt, FlameMarine.txt GrenadeMarine.txt, HMLMarine.txt RailgunMarine.txt, SawMarine.txt, SMGMarine.txt and SSGMarine.txt
 //	EnemyTanks.txt:					Changed EnemyTanks to spawn the EnemyTankWeakSpot actor at the rear
 //	EvilMarineShield.txt:			Fixed AltFire state causing crash in GZDoom (Thanks to Mechanical Sanity for the code)
 //	Explosives.txt:					Created a FriendlyGrenadeExplosion and MarineShortGrenade actors so they won't damage players
 //									Created MarineRocket2, MarineBackBlast1-3, and MarineRocketExplosion so they won't damage the players
+//	Fire.txt:						Created MarineFlameThrower and MarineFlameThrowerNoLight actors that don't hurt the player
 //	Fireworks.txt:					Reordered spawns of explosion effects and damaging actors in ExplosiveBarrel death state
 //	+FistMarine.txt:				Set health to 200, drops the berserk pack on death, and wears green armor
 //									Melee state does fatality punches and can kick 1/4 of the time
 //									Missile state sprints at the target then goes to the melee state or can jumpkick
+//	FlameCannon.txt:				Created MarineFireBall actor that doesn't hurt the player
+//	FlameMarine.txt					Set health to 100, drops the FlameCannonSpawner on death, and wears black armor
+//									Fires the Mancubus fireball at long range, flamethrower at mid range, and the rifle up close
 //	GreenGore.txt:					Fixed greenblood making the claw sound effect on spawn from weapon fire
-//	GrenadeMarine.txt:				Set health to 150, drops the GrenadeLauncherSpawner on death, and wears brown armor
+//	+GrenadeMarine.txt:				Set health to 150, drops the GrenadeLauncherSpawner on death, and wears brown armor
 //									If an enemy is within 384 mapunits will attack with the chainsaw
 //									Will use the grenade launcher with a pitch of 4 degrees within 768 mapunits and 8 degrees for longer ranges
 //	Head_Sys.txt:					Changed TankEngineWeakSpot to "EnemyTankWeakSpot" and added a new TankEngineWeakSpot actor that takes the place of TankWeakSpotBase
 //	HellishMissile.txt:				Created MarineSeekerMissile and MarineSeekerMissile2 actors that won't hurt the player
-//	HMLMarine.txt:					Set health to 110, drops the HMLSpawner on death, and wears orange armor
+//	+HMLMarine.txt:					Set health to 110, drops the HMLSpawner on death, and wears orange armor
 //									If an enemy is within 256 mapunits will attack with the minigun
 //	ImpShield.txt:					Fixed AltFire state causing crash in GZDoom (Thanks to Mechanical Sanity for the code)
 //	Knight.txt:						Added A_GiveInventory("TargetIsABaronOfHell") to the spawn state so friendly marines will stay out of melee distance
@@ -44,7 +48,7 @@
 //	NaziShield.txt:					Fixed AltFire state causing crash in GZDoom (Thanks to Mechanical Sanity for the code)
 //	Player.txt:						Added DamageFactor "TankWeakSpot" 0.0 to player class
 //	Railgun.txt:					Changed zoomed fire state to goto Ready2 unless altfire button is held
-//	RailgunMarine.txt:				Set health to 135, drops the RailgunSpawner on death, and wears blue armor
+//	+RailgunMarine.txt:				Set health to 135, drops the RailgunSpawner on death, and wears blue armor
 //									If enemy is within 256 mapunits will attack with the SMG
 //	Repairs.txt:					Removed TankWeakSpotBase and TankWeakSpot3 actors
 //	Revenant.txt:					Adjust time of the frames for DyingRevenant actor's spawn state (after fatality)
@@ -62,7 +66,7 @@
 //	SSG.txt:						Reduced recoil to 3 instead of 5 when firing both barrels
 //	+SSGMarine.txt:					Set health to 175, drops the SSGSpawner on death, and wears grey armor
 //	SubMachinegun.txt:				Changed zoomed fire state to goto Ready2 unless altfire button is held
-//	Tokens.txt:						Created NumberofAlliesFist, BFG10K, Grenade, HML, Railgun, Saw, SMG and SSG inventory items
+//	Tokens.txt:						Created NumberofAlliesFist, BFG10K, Grenade, Flame HML, Railgun, Saw, SMG and SSG inventory items
 //									Added Inventory.ForbiddenTo Purist, BDoomer, Doomer2 to UsedStamina
 //	Volcabus.txt:					Added Species "Fatso"
 //	ZmanShield.txt:					Fixed AltFire state causing crash in GZDoom (Thanks to Mechanical Sanity for the code)
