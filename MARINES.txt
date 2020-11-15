@@ -58,7 +58,7 @@ ACTOR RandomMarine: RedTorch
 	See:
 		TNT1 A 0
 		//TNT1 A 0 A_Jump(1,"See15")
-		//TNT1 A 0 A_Jump(2,"See14")
+		TNT1 A 0 A_Jump(2,"See14")
 		TNT1 A 0 A_Jump(4,"See12","See13")
 		TNT1 A 0 A_Jump(8,"See10","See11")
 		TNT1 A 0 A_Jump(16,"See8","See9")
@@ -119,8 +119,8 @@ ACTOR RandomMarine: RedTorch
 		TNT1 A 0 A_SpawnItemEx ("Marine_BFG10K",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         Stop
 
-	//See14:
-		//TNT1 A 0 A_SpawnItemEx ("Marine_HML",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	See14:
+		TNT1 A 0 A_SpawnItemEx ("Marine_HML",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         Stop
 
 	//See15:
@@ -1248,6 +1248,7 @@ ACTOR RemoveMarineActivate: Marine_RiflePathfinder
 -SHOOTABLE
 	States
 	{
+	Melee:
 	Missile:
 		TNT1 A 1
 		TNT1 A 0 A_TakeFromTarget("NumberOfAllies", 1)

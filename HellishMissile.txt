@@ -224,11 +224,29 @@ ACTOR revenantseekermissiles2: revenantseekermissiles
 	}
 }
 
+ACTOR MarineSeekerMissile : revenantseekermissiles2
+{
+	DamageType "FriendBullet"
+	Species "Marines"
+	+MTHRUSPECIES
+	+THRUSPECIES
+	+DONTHARMSPECIES
+}
+
 ACTOR revenantseekermissiles3: revenantseekermissiles2
 {
 	-SCREENSEEKER
 	-SEEKERMISSILE
 	Damagetype "ExplosiveImpact"
+}
+
+ACTOR MarineSeekerMissile2 : revenantseekermissiles3
+{
+	DamageType "FriendBullet"
+	Species "Marines"
+	+MTHRUSPECIES
+	+THRUSPECIES
+	+DONTHARMSPECIES
 }
 
 ACTOR RevenantMissileFriendAttackSummon
@@ -312,9 +330,18 @@ ACTOR HMLSpawner: CustomInventory
 
 ACTOR MiniHellRocketAmmo : Ammo
 {
-   Inventory.Amount 0
+   Inventory.Amount 1
    Inventory.MaxAmount 50
    Ammo.BackpackAmount 0
    Ammo.BackpackMaxAmount 100
    Inventory.Icon "HMLRA0"
+   Inventory.Pickupsound "RCKCLIP"
+   Inventory.PickupMessage "Picked up a Hellish Missile Launcher rocket."
+   Scale 0.4
+	States
+	{
+	Spawn:
+		HMLR A -1
+		Stop
+	}
 }
