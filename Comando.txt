@@ -183,7 +183,7 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 	Missile:
 		TNT1 A 0 A_TakeInventory("EnemyMemory", 15)
 		TNT1 A 0 A_TakeInventory("SKChaingunGuy", 1)
-		TNT1 A 0 A_PlaySound("CHAINSTA")
+		TNT1 A 0 A_PlaySound("CHAINSTA",5)
 		TNT1 A 0 A_GiveInventory("IsFiring", 1)
 		MPOS E 7 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
@@ -274,7 +274,8 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 
 	Reload:
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
-		MPOS A 0 A_PlaySound("CHAINSTO")
+		TNT1 A 0 A_StopSound(5)
+		MPOS A 0 A_PlaySound("CHAINSTO",5)
 		MPOS E 10 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
 		MPOS E 10 A_FaceTarget

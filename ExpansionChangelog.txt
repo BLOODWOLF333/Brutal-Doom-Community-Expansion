@@ -10,13 +10,15 @@
 //	All Vehicle Files:				Notated-out A_SpawnItem("StationedVehicleCheckRepairs") which is unused
 //	AssaultShotgun.txt:				Changed zoomed fire state to goto Ready2 unless altfire button is held
 //	BFG.txt:						Modified the FriendlyBFGBall actor and created MarineBFGExtra and MarineBFGExtraGiant actors
-//	BFGMarine.txt:					Set health to 125, drops the BFGSpawner on death, and wears dark green armor
-//									If enemy is within 256 mapunits with attack with the SSG
 //	BFG10K.txt:						Changed the BFG10K_Ball death state to spawn A_BFGSpray("SuperBFGExtra",10) instead of RocketExplosion and not hurt the player
-//	CapturedMarine.txt:				Created CapturedMarineFist, BFG, Grenade, Railgun, Rocket, Saw, SMG and SSG actors
+//	BFG10KMarine.txt:				Set health to 125, drops the BFG10KSpawner on death, and wears dark green armor
+//									If enemy is within 256 mapunits will attack with the shotgun
+//	BFGMarine.txt:					Set health to 125, drops the BFGSpawner on death, and wears dark green armor
+//									If enemy is within 256 mapunits will attack with the SSG
+//	CapturedMarine.txt:				Created CapturedMarineFist, BFG, BFG10K, Grenade, Railgun, Rocket, Saw, SMG and SSG actors
 //	CGuyShield.txt:					Fixed AltFire state causing crash in GZDoom (Thanks to Mechanical Sanity for the code)
-//	CVARS.txt:						Added Marine_Fist, BFG, Grenade, Railgun, Saw, SMG, and SSG to the surviving marines spawn in BDInitialize script
-//	Decorate.txt:					Included FistMarine.txt, GrenadeMarine.txt, RailgunMarine.txt, SawMarine.txt, SMGMarine.txt and SSGMarine.txt
+//	CVARS.txt:						Added Marine_Fist, BFG, BFG10K, Grenade, Railgun, Saw, SMG, and SSG to the surviving marines spawn in BDInitialize script
+//	Decorate.txt:					Included BFG10KMarine.txt, FistMarine.txt, GrenadeMarine.txt, RailgunMarine.txt, SawMarine.txt, SMGMarine.txt and SSGMarine.txt
 //	EnemyTanks.txt:					Changed EnemyTanks to spawn the EnemyTankWeakSpot actor at the rear
 //	EvilMarineShield.txt:			Fixed AltFire state causing crash in GZDoom (Thanks to Mechanical Sanity for the code)
 //	Explosives.txt:					Created a FriendlyGrenadeExplosion and MarineShortGrenade actors so they won't damage players
@@ -57,7 +59,7 @@
 //	SSG.txt:						Reduced recoil to 3 instead of 5 when firing both barrels
 //	+SSGMarine.txt:					Set health to 175, drops the SSGSpawner on death, and wears grey armor
 //	SubMachinegun.txt:				Changed zoomed fire state to goto Ready2 unless altfire button is held
-//	Tokens.txt:						Created NumberofAlliesFist, Grenade, Railgun, Saw, SMG and SSG inventory items
+//	Tokens.txt:						Created NumberofAlliesFist, BFG10K, Grenade, Railgun, Saw, SMG and SSG inventory items
 //									Added Inventory.ForbiddenTo Purist, BDoomer, Doomer2 to UsedStamina
 //	Volcabus.txt:					Added Species "Fatso"
 //	ZmanShield.txt:					Fixed AltFire state causing crash in GZDoom (Thanks to Mechanical Sanity for the code)
