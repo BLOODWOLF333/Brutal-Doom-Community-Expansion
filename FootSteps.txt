@@ -241,7 +241,6 @@ Actor Footstep6: FootStep //ACTUAL FOOTSTEP
 			NULL AAAA 1 A_Warp(AAPTR_target, 0, 0, 0, 0, WARPF_INTERPOLATE)
 			Stop
 
-
 		Sand:
 			TNT1 A 0
 			TNT1 A 0 A_playsound("floorgravel")
@@ -306,8 +305,6 @@ Actor Footstep6: FootStep //ACTUAL FOOTSTEP
 			}
 }
 
-
-
 Actor Footstep8: Footstep6 //Fake footstep. Actually just the player's weight used to damage enemies when standing over them.
 {
     Damage (random (4, 4))
@@ -338,7 +335,6 @@ Actor Footstep91: FootStep
     -CLIENTSIDEONLY
 	-DONTSPLASH
 }
-
 
 Actor Footstep6NoSplash: FootStep6
 {
@@ -472,7 +468,6 @@ Actor FootstepStrong: Footstep6 //Large footstep when you land from a jump.
 			NULL A 1
 			Stop
 
-
 		XDeath2:
             NULL A 1
 			NULL A 1
@@ -480,8 +475,6 @@ Actor FootstepStrong: Footstep6 //Large footstep when you land from a jump.
             Stop
          }
 }
-
-
 
 Actor HeavyFootSteps: FootStep
 {
@@ -506,9 +499,6 @@ Actor HeavyFootSteps: FootStep
          }
 }
 
-
-
-
 Actor PlayerBaronTrample: FootStep
 {
     Damage (random(100,100))
@@ -532,7 +522,6 @@ Actor PlayerBaronTrample: FootStep
 			stop
          }
 }
-
 
 Actor HeavyFootSteps32: FootStep
 {
@@ -575,15 +564,6 @@ ACTOR Bad : PowerupGiver 2305
       Stop
    }
 }
-
-
-
-
-
-
-
-
-
 
 Actor TnkStep: FootStep
 {
@@ -630,8 +610,6 @@ Actor TnkStep: FootStep
 			NULL AAAA 50 A_FadeOut(0.05)
 			Stop
 
-
-
 		Dirt:
 			TNT1 A 0
 			//TNT1 A 0 A_CustomMissile ("MudDustFromTrail", 32, -32, random (0, 360), 2, random (20, 150))
@@ -642,14 +620,12 @@ Actor TnkStep: FootStep
 			NULL AAAA 50 A_FadeOut(0.05)
 			Stop
 
-
 		Water:
 			TNT1 A 0
 			TNT1 A 0 A_PlaySound("bigspl1")
 			TNT1 A 0 A_CustomMissile ("BlueLiquidParticleX", 32, 32, random (0, 360), 2, random (10, 90))
 			TNT1 A 0 A_CustomMissile ("BlueLiquidParticleX", 32, -32, random (0, 360), 2, random (10, 90))
 			Stop
-
 
 		Blood:
 			TNT1 A 0
@@ -658,14 +634,12 @@ Actor TnkStep: FootStep
 			TNT1 A 0 A_CustomMissile ("BloodParticleX", 32, -32, random (0, 360), 2, random (10, 90))
 			Stop
 
-
 		Nukage:
 			TNT1 A 0
 			TNT1 A 0 A_PlaySound("bigspl1")
 			TNT1 A 0 A_CustomMissile ("GreenLiquidParticleX", 32, 32, random (0, 360), 2, random (10, 90))
 			TNT1 A 0 A_CustomMissile ("GreenLiquidParticleX", 32, -32, random (0, 360), 2, random (10, 90))
 			Stop
-
 
 		Slime:
 			TNT1 A 0
@@ -682,16 +656,6 @@ Actor TnkStep: FootStep
 
 			}
 }
-
-
-
-
-
-
-
-
-
-
 
 Actor Headkicking
 {
@@ -721,8 +685,6 @@ states
 		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		Goto Spawn
 }}
-
-
 
 ACTOR Headkicker
 {
@@ -757,8 +719,6 @@ ACTOR Headkicker
             Stop
          }
 }
-
-
 
 Actor BDBodyThud
 {
@@ -810,7 +770,6 @@ Actor BDBodyThud
 			TNT1 A 0 A_playsound("floorgravel")
 			NULL A 1
 			Stop
-
 
 		Sand:
 			TNT1 A 0

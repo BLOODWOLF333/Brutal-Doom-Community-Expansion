@@ -614,8 +614,11 @@ actor D4ImpBeingHold
 
 ACTOR PlayerRevenantPunch: MeleeStrike2Smash
 {
+	+THRUSPECIES
+	+MTHRUSPECIES
 	DamageType RVFT
 	Obituary "%o ate %k's fist."
+	Species "Marines"
 	States
 	{
 	Spawn:

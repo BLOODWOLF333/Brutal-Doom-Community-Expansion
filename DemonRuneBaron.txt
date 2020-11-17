@@ -75,6 +75,7 @@ Actor BaronPlayer : DoomPlayer
 	-PICKUP
 	-DONTTRANSLATE
 	+PLAYERPAWN.CROUCHABLEMORPH
+	+DONTHARMSPECIES
 	Species "Marines"
 	Player.CrouchSprite "BOSS"
 	Speed 0.4
@@ -550,6 +551,8 @@ ACTOR D4BaronHUD : DoomWeapon
 
 ACTOR PlayerBaronAttack : BaronAttack
 {
+	+THRUSPECIES
+	+MTHRUSPECIES
 	Damage (random(80,80))
 	Species "Marines"
 }
@@ -561,6 +564,8 @@ ACTOR GreenPlasmaBallPlayerTransformed: GreenPlasmaBall
 	Speed 25
 	FastSpeed 25
     -THRUGHOST
+	+THRUSPECIES
+	+MTHRUSPECIES
     Damage (random(80,80))
 	Species "Marines"
 }
