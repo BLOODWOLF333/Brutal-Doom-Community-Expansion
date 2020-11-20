@@ -39,22 +39,20 @@ Script "BDReload" (VOID) NET
  GiveInventory("GoSpecial", 1);
 }
 
-
 Script "BDAmmoDroper" (VOID) NET
 {
  GiveInventory("AmmoDroper", 1);
  SetWeapon("AmmoDroper");
 }
 
-Script "BDQuickPistol" (VOID) NET
+Script "BDQuickFist" (VOID) NET
 {
 	SetPlayerproperty(0, 1, PROP_INSTANTWEAPONSWITCH );
-	SetWeapon("BrutalPistol");
-	SetWeapon("ClassicPistol");
+	SetWeapon("Melee_Attacks");
+	SetWeapon("ClassicFist");
 	delay(5);
 	SetPlayerproperty(0, 0, PROP_INSTANTWEAPONSWITCH );
 }
-
 
 Script "BDUnload" (VOID) NET
 {
@@ -63,13 +61,11 @@ Script "BDUnload" (VOID) NET
  GiveInventory("GoSpecial", 1);
 }
 
-
 Script "BDFlashlight" (VOID) NET
 {
  GiveInventory("SwitchFlashlight", 1);
  GiveInventory("GoSpecial", 1);
 }
-
 
 Script "BDGrenade" (VOID) NET
 {
@@ -77,7 +73,6 @@ Script "BDGrenade" (VOID) NET
  GiveInventory("TossGrenade", 1);
  GiveInventory("GoSpecial", 1);
 }
-
 
 //TAUNTING
 
@@ -122,13 +117,11 @@ Script "BDRollRight" (VOID) NET
  GiveInventory("GoSpecial", 1);
 }
 
-
 Script "BDDualWield" (VOID) NET
 {
  GiveInventory("StartDualWield", 1);
  GiveInventory("GoSpecial", 1);
 }
-
 
 //==================================================================================================
 //SPRINTING
@@ -153,9 +146,7 @@ if (buttonSpeed & BT_SPEED)
    delay(4);
  }
 
-
 }
-
 
 script "CheckPrimary" ENTER
 {
@@ -177,7 +168,6 @@ if (buttons & BT_ALTATTACK)
 
 }
 
-
 script "CheckSecondary" ENTER
 {
  int buttons2;
@@ -197,7 +187,6 @@ if (buttons2 & BT_ATTACK)
  }
 }
 
-
 script "CheckCrouch" ENTER
 {
  int buttons2;
@@ -216,8 +205,6 @@ if (buttons2 & BT_CROUCH)
    delay(4);
  }
 }
-
-
 
 //Faster
 script "BDSprint" (void)
@@ -422,7 +409,6 @@ Script "BDTakeInvisibility" (VOID) NET
  TakeInventory("IsInvisible", 1);
 }
 
-
 //RAILGUN AIMING
 Script "BDTakeInfraRed" (VOID) NET
 {
@@ -445,12 +431,9 @@ script "BDBlackMetal" (void)
     if (GameSkill () == SKILL_BLACKMETAL)
         SetActorProperty (0, APROP_Speed, 1.4);
 
-
 	 if (GameSkill () == SKILL_BLACKMETAL)
 		GiveInventory("TurboReload", 1);
 }
-
-
 
 Script "MGGrenadeCheck"(VOID)
 {
