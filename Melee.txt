@@ -300,7 +300,6 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
         TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("ShotgunguyHead",1,"ShotgunguyHeadFire")
 		TNT1 A 0 A_JumpIfInventory("HasImpFatality",1,"ImpFatalityFire")
-		//TNT1 A 0 A_JumpIfInventory("HasHearthFatality",1,"HasHearthFatalityFire")
 		TNT1 A 0 A_JumpIfInventory("HasCacoEye",1,"CacoeyeFire")
 		TNT1 A 0 A_jumpifinventory("LostSoulFatality",1,"LSFire")
 		TNT1 A 0 A_JumpIfInventory("HasBarrel",1,"FireBarrel")
@@ -312,36 +311,9 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		TNT1 A 0 A_JumpIfInventory("GrabbedANazi",1,"ThrowNazi")
 		TNT1 A 0 A_JumpIfInventory("GrabbedAImp",1,"ThrowImp")
 		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
-		TNT1 A 0 A_JumpIfInventory("PSeq2", 1, "Upper")
+		TNT1 A 0 A_JumpIfInventory("PSeq2", 2, "Upper")
 		TNT1 A 0 A_JumpIfInventory("PSeq1", 2, "LeftCross")
 		TNT1 A 0 A_JumpIfInventory("PSeq1", 1, "Jab")
-		TNT1 A 0 A_TakeInventory("FireHold", 40)
-
-		PONG A 1 OffSet(0, 38)
-		PONG A 1 OffSet(0, 48)
-	Hold:
-		TNT1 A 1 A_GiveInventory("FireHold", 1)
-		TNT1 A 0 OffSet(0, 32)
-		TNT1 A 0 A_Refire
-		TNT1 A 0 A_JumpIfInventory("FireHold", 10, "LeftCrossHold")
-		TNT1 A 0 A_TakeInventory("FireHold", 40)
-		Goto Jab
-
-	AltFire:
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("GrabbedAZombieman",1,"ShieldZombieman")
-		TNT1 A 0 A_JumpIfInventory("GrabbedAShotgunguy",1,"ShieldShotgunguy")
-		TNT1 A 0 A_JumpIfInventory("GrabbedAChaingunguy",1,"ShieldChaingunguy")
-		TNT1 A 0 A_JumpIfInventory("GrabbedAZombieCivilian",1,"ShieldZombieCivilian")
-		TNT1 A 0 A_JumpIfInventory("GrabbedAEvilMarine",1,"ShieldEvilMarine")
-		TNT1 A 0 A_JumpIfInventory("GrabbedANazi",1,"ShieldNazi")
-		TNT1 A 0 A_JumpIfInventory("GrabbedAImp",1,"ShieldImp")
-		TNT1 A 0 A_jumpifinventory("LostSoulFatality",1,"LSFire")
-		TNT1 A 0 A_JumpIfInventory("HasBarrel",1,"AltFireBarrel")
-		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
-		//TNT1 A 0 A_jumpifinventory("PowerStrength",1,"PowerCross")
-		TNT1 A 0 A_Recoil(-2)
-		Goto Cross
 
 	Jab:
 		TNT1 A 0
@@ -352,12 +324,6 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		TNT1 A 0 A_Giveinventory("GoSpecial",1)
 		TNT1 A 0 A_jumpifinventory("PowerStrength",1,"PowerJab")
 		PONG A 0 A_FireCustomMissile("MeleeStrike1", 0, 0, 0, 0)
-		Goto FinishJab
-
-	PowerJabSmash:
-		TNT1 A 0
-		TNT1 A 0 A_PlaySound("weapons/gswing")
-		PONG A 0 A_FireCustomMissile("MeleeStrike1Smash", 0, 0, 0, 0)
 		Goto FinishJab
 
 	PowerJab:
@@ -372,25 +338,29 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		TNT1 A 0 A_GiveInventory("UsedStamina", 3)
 		PONG E 2 A_WeaponReady(WRF_NOPRIMARY)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
-		PONG E 1 A_WeaponReady(WRF_NOPRIMARY)
+		PONG F 1 A_WeaponReady(WRF_NOPRIMARY)
 		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
 		TNT1 A 0 A_TakeInventory("PSeq2", 1)
 		PONG G 1 A_WeaponReady
 		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		TNT1 A 0 A_JumpIfInventory("Kicking",1,"KickRight")
-		PONG FH 1 A_WeaponReady
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
-		PONG IJ 1 A_WeaponReady
+		PONG HIJ 1 A_WeaponReady
 		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		TNT1 A 0 A_TakeInventory("PSeq1", 2)
 		TNT1 A 0 A_JumpIfInventory("Kicking",1,"KickRight")
 		TNT1 A 0 A_JumpIfInventory("LostSoulFatality",1,"ReadySoul")
 		Goto Ready3
 
+	PowerJabSmash:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("weapons/gswing")
+		PONG A 0 A_FireCustomMissile("MeleeStrike1Smash", 0, 0, 0, 0)
+		Goto FinishJab
+
 	LeftCross:
 		TNT1 A 0
+		TNT1 A 0 A_Recoil(-2)
 		PONG HIJ 1
-	LeftCrossHold:
 		TNT1 A 0 A_PlaySound("*grunt", 5)
 		TNT1 AAA 1 A_SetAngle(angle+1)
 		PONG BCD 1  A_SetAngle(angle-1)
@@ -403,14 +373,9 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		PONG A 0 A_FireCustomMissile("MeleeStrike2", 0, 0, 0, 0)
 		Goto FinishLeftCross
 
-	PowerJabSmash:
-		TNT1 A 0 A_PlaySound("weapons/gswing")
-		PONG A 0 A_FireCustomMissile("MeleeStrike2Smash", 0, 0, 0, 0)
-		Goto FinishLeftCross
-
 	PowerLeftCross:
 		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("NoFatality", 1, "PowerJabSmash")
+		TNT1 A 0 A_JumpIfInventory("NoFatality", 1, "PowerLeftCrossSmash")
 		TNT1 A 0 A_PlaySound("weapons/gswing")
 		PONG A 0 A_FireCustomMissile("MeleeStrike2Fatality", 0, 0, 0, 0)
 
@@ -432,7 +397,7 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		TNT1 A 0 A_SetAngle(angle+1)
 		TNT1 A 1 A_WeaponReady(WRF_NOPRIMARY)
 		TNT1 A 0 A_SetAngle(angle+1)
-		TNT1 A 0 A_JumpIfInventory("Kicking",1,"KickLeft")
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"KickRight")
 		TNT1 A 1 A_WeaponReady(WRF_NOPRIMARY)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		TNT1 A 0 A_SetAngle(angle+1)
@@ -441,12 +406,173 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		TNT1 A 1 A_WeaponReady(WRF_NOPRIMARY)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		TNT1 A 0 A_SetAngle(angle+1)
-		TNT1 A 0 A_JumpIfInventory("Kicking",1,"KickLeft")
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"KickRight")
 		TNT1 A 0 A_JumpIfInventory("LostSoulFatality",1,"ReadySoul")
+		PONG A 1 OffSet(0, 48)
+		PONG A 1 OffSet(0, 38)
 		Goto Ready
 
+	PowerLeftCrossSmash:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("weapons/gswing")
+		PONG A 0 A_FireCustomMissile("MeleeStrike2Smash", 0, 0, 0, 0)
+		Goto FinishLeftCross
+
+	Upper:
+		TNT1 A 0
+		TNT1 A 2
+		TNT1 A 0 A_PlaySound("*grunt", 5)
+		TNT1 A 0 A_TakeInventory("PSeq1", 2)
+		TNT1 A 0 A_TakeInventory("PSeq2", 2)
+		PUN5 CDE 1
+		TNT1 A 0 A_jumpifinventory("PowerStrength",1,"PowerUpper")
+        TNT1 A 0 A_PlaySound("fstatk", 1)
+		TNT1 A 0 A_Giveinventory("Punching",1)
+		//TNT1 A 0 A_Giveinventory("GoSpecial",1)
+		TNT1 A 0 A_GiveInventory("HeavyStrikeUpward", 1)
+		RIFF A 0 A_FireCustomMissile("MeleeStrike2", 0, 0, 0, 0)
+		TNT1 A 0 A_SetPitch(pitch-8)
+		PUN5 F 1
+		PUN5 GHIJ 1 A_SetPitch(pitch+2)
+		TNT1 A 0 A_TakeInventory("HeavyStrikeUpward", 1)
+		TNT1 A 0 SetPlayerProperty(0,0,0)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 5)
+		PUN5 KL 1 A_JumpIfInventory("Kicking",1,"KickRight")
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
+		PUN5 M 1 A_JumpIfInventory("Kicking",1,"KickRight")
+        TNT1 A 1 A_JumpIfInventory("Kicking",1,"KickRight")
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
+		TNT1 AA 1 A_JumpIfInventory("Kicking",1,"KickRight")
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
+		TNT1 AA 1 A_JumpIfInventory("Kicking",1,"KickRight")
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
+		TNT1 AA 1 A_JumpIfInventory("Kicking",1,"KickRight")
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
+		Goto Ready
+
+	PowerUpper:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("NoFatality", 1, "PowerUpperSmash")
+		TNT1 A 0 A_PlaySound("weapons/gswing")
+		TNT1 A 0 A_Giveinventory("Punching",1)
+		//TNT1 A 0 A_Giveinventory("GoSpecial",1)
+		TNT1 A 0 A_GiveInventory("HeavyStrikeUpward", 1)
+		RIFF A 0 A_FireCustomMissile("MeleeStrike2Fatality", 0, 0, 0, 0)
+		TNT1 A 0 A_SetPitch(pitch-8)
+		PUN5 F 1
+		PUN5 GHIJ 1 A_SetPitch(pitch+2)
+		TNT1 A 0 A_TakeInventory("HeavyStrikeUpward", 1)
+		TNT1 A 0 SetPlayerProperty(0,0,0)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 5)
+		PUN5 KL 1 A_JumpIfInventory("Kicking",1,"KickRight")
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
+		PUN5 M 1 A_JumpIfInventory("Kicking",1,"KickRight")
+        TNT1 A 1 A_JumpIfInventory("Kicking",1,"KickRight")
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
+		TNT1 AA 1 A_JumpIfInventory("Kicking",1,"KickRight")
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
+		TNT1 AA 1 A_JumpIfInventory("Kicking",1,"KickRight")
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
+		TNT1 AA 1 A_JumpIfInventory("Kicking",1,"KickRight")
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
+		Goto Ready
+
+	PowerUpperSmash:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("weapons/gswing")
+		TNT1 A 0 A_Giveinventory("Punching",1)
+		//TNT1 A 0 A_Giveinventory("GoSpecial",1)
+		TNT1 A 0 A_GiveInventory("HeavyStrikeUpward", 1)
+		RIFF A 0 A_FireCustomMissile("MeleeStrike2Smash", 0, 0, 0, 0)
+		TNT1 A 0 A_SetPitch(pitch-8)
+		PUN5 F 1
+		PUN5 GHIJ 1 A_SetPitch(pitch+2)
+		TNT1 A 0 A_TakeInventory("HeavyStrikeUpward", 1)
+		TNT1 A 0 SetPlayerProperty(0,0,0)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 5)
+		PUN5 KL 1 A_JumpIfInventory("Kicking",1,"KickRight")
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
+		PUN5 M 1 A_JumpIfInventory("Kicking",1,"KickRight")
+        TNT1 A 1 A_JumpIfInventory("Kicking",1,"KickRight")
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
+		TNT1 AA 1 A_JumpIfInventory("Kicking",1,"KickRight")
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
+		TNT1 AA 1 A_JumpIfInventory("Kicking",1,"KickRight")
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
+		TNT1 AA 1 A_JumpIfInventory("Kicking",1,"KickRight")
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
+		Goto Ready
+
+	AltFire:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("GrabbedAZombieman",1,"ShieldZombieman")
+		TNT1 A 0 A_JumpIfInventory("GrabbedAShotgunguy",1,"ShieldShotgunguy")
+		TNT1 A 0 A_JumpIfInventory("GrabbedAChaingunguy",1,"ShieldChaingunguy")
+		TNT1 A 0 A_JumpIfInventory("GrabbedAZombieCivilian",1,"ShieldZombieCivilian")
+		TNT1 A 0 A_JumpIfInventory("GrabbedAEvilMarine",1,"ShieldEvilMarine")
+		TNT1 A 0 A_JumpIfInventory("GrabbedANazi",1,"ShieldNazi")
+		TNT1 A 0 A_JumpIfInventory("GrabbedAImp",1,"ShieldImp")
+		TNT1 A 0 A_jumpifinventory("LostSoulFatality",1,"LSFire")
+		TNT1 A 0 A_JumpIfInventory("HasBarrel",1,"AltFireBarrel")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_JumpIfInventory("PSeq1", 2, "Cross")
+		TNT1 A 0 A_JumpIfInventory("PSeq2", 2, "Cross")
+		TNT1 A 0 A_JumpIfInventory("PSeq2", 1, "RightJab")
+		TNT1 A 0 A_TakeInventory("FireHold", 40)
+	AltHold:
+		TNT1 A 1 A_GiveInventory("FireHold", 1)
+		TNT1 A 0 OffSet(0, 32)
+		TNT1 A 0 A_Refire
+		TNT1 A 0 A_JumpIfInventory("FireHold", 10, "Cross")
+		TNT1 A 0 A_TakeInventory("FireHold", 40)
+		Goto RightJab
+
+	RightJab:
+		TNT1 A 0
+		PUN3 ABC 1
+        TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_Giveinventory("Punching",1)
+		TNT1 A 0 A_Giveinventory("PSeq2",1)
+		TNT1 A 0 A_Giveinventory("GoSpecial",1)
+		TNT1 A 0 A_jumpifinventory("PowerStrength",1,"RightPowerJab")
+		PONG A 0 A_FireCustomMissile("MeleeStrike1", 0, 0, 0, 0)
+		Goto RightFinishJab
+
+	RightPowerJab:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("NoFatality", 1, "RightPowerJabSmash")
+		TNT1 A 0 A_PlaySound("weapons/gswing")
+		PONG A 0 A_FireCustomMissile("MeleeStrike1Fatality", 0, 0, 0, 0)
+
+	RightFinishJab:
+		TNT1 A 0 A_TakeInventory("Kicking", 1)
+		TNT1 A 0 A_PlaySound("fstatk", 1)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 3)
+		PUN3 D 2 A_WeaponReady(WRF_NOSECONDARY)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
+		PUN3 C 1 A_WeaponReady(WRF_NOSECONDARY)
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_TakeInventory("PSeq1", 2)
+		PUN3 B 1 A_WeaponReady
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"KickLeft")
+		PUN3 A 1 A_WeaponReady
+		TNT1 A 2 A_WeaponReady
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
+		TNT1 A 0 A_TakeInventory("PSeq2", 1)
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"KickLeft")
+		TNT1 A 0 A_JumpIfInventory("LostSoulFatality",1,"ReadySoul")
+		Goto Ready3
+
+	RightPowerJabSmash:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("weapons/gswing")
+		PONG A 0 A_FireCustomMissile("MeleeStrike1Smash", 0, 0, 0, 0)
+		Goto RightFinishJab
+
 	Cross:
-		TNT1 A 0 A_TAkeInventory("FiredPrimary", 1)
+		TNT1 A 0 A_TakeInventory("FiredPrimary", 1)
+		TNT1 A 0 A_Recoil(-2)
 		PUN3 ABC 1
 		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
 		TNT1 A 0 A_Giveinventory("Punching",1)
@@ -470,7 +596,7 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 	FinishCross:
 		TNT1 A 0 A_SetAngle(angle+2)
 		TNT1 A 0 A_PlaySound("*grunt", 5)
-		TNT1 A 0 A_GiveInventory("PSeq2", 1)
+		TNT1 A 0 A_TakeInventory("PSeq2", 2)
 		PUN3 E 1 A_SetAngle(angle+1.0)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		TNT1 A 0 A_WeaponReady(WRF_NOSECONDARY)
@@ -503,64 +629,8 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		TNT1 A 6 A_WeaponReady(WRF_NOSECONDARY)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 3)
 		TNT1 A 0 A_JumpIfInventory("Kicking",1,"KickLeft")
-		Goto Ready
-
-	Upper:
-		TNT1 A 0
-		TNT1 A 2
-		TNT1 A 0 A_PlaySound("*grunt", 5)
-		TNT1 A 0 A_TakeInventory("PSeq1", 2)
-		TNT1 A 0 A_TakeInventory("PSeq2", 2)
-		PUN5 CDE 1
-		TNT1 A 0 A_jumpifinventory("PowerStrength",1,"PowerUpper")
-        TNT1 A 0 A_PlaySound("fstatk", 1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
-		//TNT1 A 0 A_Giveinventory("GoSpecial",1)
-		TNT1 A 0 A_GiveInventory("HeavyStrikeUpward", 1)
-		RIFF A 0 A_FireCustomMissile("KickAttack", 0, 0, 0, 0)
-		TNT1 A 0 A_SetPitch(pitch-8)
-		PUN5 F 1
-		PUN5 GHIJ 1 A_SetPitch(pitch+2)
-		TNT1 A 0 A_TakeInventory("HeavyStrikeUpward", 1)
-		TNT1 A 0 SetPlayerProperty(0,0,0)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 5)
-		PUN5 KL 1 A_JumpIfInventory("Kicking",1,"KickRight")
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
-		PUN5 M 1 A_JumpIfInventory("Kicking",1,"KickRight")
-        TNT1 A 1 A_JumpIfInventory("Kicking",1,"KickRight")
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
-		TNT1 AA 1 A_JumpIfInventory("Kicking",1,"KickRight")
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
-		TNT1 AA 1 A_JumpIfInventory("Kicking",1,"KickRight")
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
-		TNT1 AA 1 A_JumpIfInventory("Kicking",1,"KickRight")
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
-		Goto Ready
-
-	PowerUpper:
-		TNT1 A 0
-		TNT1 A 0 A_PlaySound("weapons/gswing")
-		TNT1 A 0 A_Giveinventory("Punching",1)
-		//TNT1 A 0 A_Giveinventory("GoSpecial",1)
-		TNT1 A 0 A_GiveInventory("HeavyStrikeUpward", 1)
-		RIFF A 0 A_FireCustomMissile("SuperKickAttack", 0, 0, 0, 0)
-		TNT1 A 0 A_SetPitch(pitch-8)
-		PUN5 F 1
-		PUN5 GHIJ 1 A_SetPitch(pitch+2)
-		TNT1 A 0 A_TakeInventory("HeavyStrikeUpward", 1)
-		TNT1 A 0 SetPlayerProperty(0,0,0)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 5)
-		PUN5 KL 1 A_JumpIfInventory("Kicking",1,"KickRight")
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
-		PUN5 M 1 A_JumpIfInventory("Kicking",1,"KickRight")
-        TNT1 A 1 A_JumpIfInventory("Kicking",1,"KickRight")
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
-		TNT1 AA 1 A_JumpIfInventory("Kicking",1,"KickRight")
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
-		TNT1 AA 1 A_JumpIfInventory("Kicking",1,"KickRight")
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
-		TNT1 AA 1 A_JumpIfInventory("Kicking",1,"KickRight")
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
+		PONG A 1 OffSet(0, 48)
+		PONG A 1 OffSet(0, 38)
 		Goto Ready
 
 	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1452,69 +1522,12 @@ ACTOR KickAttack: FastProjectile
 	}
 }
 
-ACTOR KickAttackDetectDowned: KickAttack//Not Used
-{
-	Radius 4
-	Height 4
-	DamageType LowKick
-	Damage (random(2, 2))
-	Speed 44
-	+NOBLOOD
-	+BLOODLESSIMPACT
-	-ACTIVATEIMPACT
-	States
-	{
-	Death:
-	TNT1 A 0
-	TNT1 A 1
-	Stop
-	}
-}
-
 ACTOR SuperKickAttack: KickAttack //Power Upper
 {
     Damage (random(60,60))
 	-NOEXTREMEDEATH
 	+EXTREMEDEATH
 	DamageType Extremepunches
-}
-
-ACTOR StompAttack: KickAttack//Not Used
-{
-    Damage (random(150,200))
-	speed 44
-	DamageType Trample
-	States
-	{
-	Death:
-		    PUFF A 0 A_PlaySound("player/cyborg/fist")
-			TNT1 A 0 A_Explode(150, 15, 0)
-			EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
-			TNT1 A 10
-			Stop
-		}
-}
-
-ACTOR SuperStompAttack: KickAttack//Not Used
-{
-    Damage (random(300,500))
-	Speed 44
-	DamageType HeavyTrample
-		States
-	{
-	Death:
-		    PUFF A 0 A_PlaySound("player/cyborg/fist")
-			TNT1 A 0 A_Explode(300, 15, 0)
-			EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
-			TNT1 A 10
-			Stop
-		}
-}
-
-ACTOR HookAttack: KickAttack//Not Used
-{
-	Damage (random(30,30))
-    Speed 33
 }
 
 ACTOR AirKickAttack: KickAttack
@@ -1595,43 +1608,9 @@ DamageType Fatality
 +EXTREMEDEATH
 }
 
-ACTOR MeleeStrike1Berserked: MeleeStrike1//NotUsed
-{
-Damage (random(60,60))
--NOEXTREMEDEATH
-+EXTREMEDEATH
-DamageType ExtremePunches
-}
-
-ACTOR MeleeStrike1FatalityGrab: MeleeStrike1//Not Used
-{
-Damage (random(42,45))
-DamageType Fatality
-}
-
-ACTOR MeleeStrike1FatalityNoDamage: MeleeStrike1//Not Used
-{
-Damage (random(1,1))
-DamageType Fatality
-States
-{
-	Death:
-	    TNT1 A 0
-		Stop
-}
-}
-
 ACTOR MeleeStrike1Smash: MeleeStrike1//Jab without Fatality
 {
 Damage (random(20,20))
-DamageType Extremepunches
--NOEXTREMEDEATH
-+EXTREMEDEATH
-}
-
-ACTOR MeleeStrikeSuperHook: MeleeStrike1//Not Used
-{
-Damage (random(89,90))
 DamageType Extremepunches
 -NOEXTREMEDEATH
 +EXTREMEDEATH
