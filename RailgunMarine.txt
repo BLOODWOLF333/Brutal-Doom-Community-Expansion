@@ -31,7 +31,7 @@ ACTOR Marine_RailgunSpawn: RedTorch
 		TNT1 A 0 A_Chase
 		TNT1 A 0 A_Look
 	See:
-		TNT1 A 0 A_GiveToTarget("NumberOfAlliesRailgun", 1)
+		TNT1 A 0 ACS_NamedExecute("AddMarineRailgun")
 		TNT1 A 0 A_SpawnItemEx ("Marine_Railgun",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         Stop
 	DontSpawn:
