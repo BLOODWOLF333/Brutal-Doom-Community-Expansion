@@ -1,6 +1,7 @@
 #library "CVARS"
 #include "zcommon.acs"
 
+Int MarineSpawnCounter = 0;
 World Int 1: NumberOfAlliesFist;
 World Int 2: NumberOfAlliesSaw;
 World Int 3: NumberOfAlliesSMG;
@@ -17,44 +18,58 @@ World Int 13: NumberOfAlliesBFG10K;
 World Int 14: NumberOfAlliesHML;
 World Int 15: NumberOfAlliesFlame;
 
-script "BDRespawn" Respawn NET
+SCRIPT "BDInitiate" OPEN
 {
-//Sbar Type
-
-	TakeInventory("sbartype1", 1);
-	TakeInventory("sbartype2", 1);
-	TakeInventory("sbartype3", 1);
-	TakeInventory("sbartype4", 1);
-	TakeInventory("sbartype5", 1);
-	TakeInventory("sbartype6", 1);
-	TakeInventory("sbartype7", 1);
-	TakeInventory("GenderFemale", 1);
-	TakeInventory("GenderMale", 1);
-	if	(GetCvar( "bd_sbartype") == 1) { GiveInventory("sbartype1", 1); }
-	if	(GetCvar( "bd_sbartype") == 2) { GiveInventory("sbartype2", 1); }
-	if	(GetCvar( "bd_sbartype") == 3) { GiveInventory("sbartype3", 1); }
-	if	(GetCvar( "bd_sbartype") == 4) { GiveInventory("sbartype4", 1); }
-	if	(GetCvar( "bd_sbartype") == 5) { GiveInventory("sbartype5", 1); }
-	if	(GetCvar( "bd_sbartype") == 6) { GiveInventory("sbartype6", 1); }
-	if	(GetCvar( "bd_sbartype") == 7) { GiveInventory("sbartype7", 1); }
-	// Detect Player Gender
-
-	if(GetPlayerInfo(PlayerNumber(), PLAYERINFO_GENDER) == 0)
+	if	(GetCvar("bd_disablemapenhancements") == 0)
 	{
-		GiveInventory("GenderMale", 1);
+		ReplaceTextures ("DSAND1", "SANDS1");
+		ReplaceTextures ("DSAND3", "SANDS1");
+		ReplaceTextures ("DSAND4", "SANDS1");
+		ReplaceTextures ("DSAND5", "SANDS1");
+		ReplaceTextures ("ETEX34", "SANDS1");
+		ReplaceTextures ("WALL81", "SANDS1");
+		ReplaceTextures ("ECEIL13", "SANDS1");
+		ReplaceTextures ("ECEIL15", "SANDS1");
+		ReplaceTextures ("GROUND20", "DESERT01");
+		ReplaceTextures ("SLUDGE01", "SLIME08");
+		ReplaceTextures ("DBRAIN1", "LFALL01");//Revilution Lava
+		ReplaceTextures ("LFALL1", "LFALL01");
+		ReplaceTextures ("LAVA1", "LAVAFL");
+		ReplaceTextures ("LAVA2", "LAVAFL");
+		ReplaceTextures ("LAVA3", "LAVAFL");
+		ReplaceTextures ("LAVA4", "LAVAFL");
+		ReplaceTextures ("LAVA01", "LAVAFL");
+		ReplaceTextures ("LAVA02", "LAVAFL");
+		ReplaceTextures ("LAVA03", "LAVAFL");
+		ReplaceTextures ("LAVA04", "LAVAFL");
+		ReplaceTextures ("LAVFALL1", "LFALL01");//Sunlust Lava
+		ReplaceTextures ("BLODGR1", "LFALL01");//AV Lava
+		ReplaceTextures ("SLMFALL1", "CRFAL01");//CRAPFALLS
+		ReplaceTextures ("SLMFALL2", "CRFAL01");//CRAPFALLS
+		ReplaceTextures ("SLMFALL3", "CRFAL01");//CRAPFALLS
+		ReplaceTextures("FLOOR5_3", "METAL52");
+		ReplaceTextures("FLOOR5_2", "METAL52");
+		ReplaceTextures("FLAT5", "METAL53");
+		ReplaceTextures("FLOOR0_1", "METAL54");
+		ReplaceTextures("FLOOR0_3", "METAL55");
+		ReplaceTextures("FLOOR3_3", "METAL56");
+		ReplaceTextures("TLITE6_5", "LITGEN7B");
+		ReplaceTextures("TLITE6_6", "LITGEN9C");
+		ReplaceTextures("FLAT2", "FLAT2B");
+		ReplaceTextures("GRNLITE1", "GRNLIT1B");
+
+		// Replaces similar textures so the flat checking scripts have less stuff
+		ReplaceTextures ("NUKAGE3", "NUKAGE1");
+		ReplaceTextures ("NUKAGE2", "NUKAGE1");
+		ReplaceTextures ("SLIME04", "SLIME01");
+		ReplaceTextures ("SLIME03", "SLIME01");
+		ReplaceTextures ("SLIME02", "SLIME01");
+		ReplaceTextures ("SLIME08", "SLIME05");
+		ReplaceTextures ("SLIME06", "SLIME05");
+		ReplaceTextures ("SLIME07", "SLIME05");
+		ReplaceTextures ("BLOOD3", "BLOOD1");
+		ReplaceTextures ("BLOOD2", "BLOOD1");
 	}
-	if(GetPlayerInfo(PlayerNumber(), PLAYERINFO_GENDER) == 1)
-	{
-		GiveInventory("GenderFemale", 1);
-		SetActorProperty(PlayerNumber(), APROP_VIEWHEIGHT, 45.0);
-		SetActorProperty(PlayerNumber(), APROP_HEIGHT, 50.0);
-		SetActorProperty(PlayerNumber(), APROP_MASS, 100);
-		SetActorProperty(PlayerNumber(), APROP_ATTACKZOFFSET, 19.0);
-		SetActorProperty(PlayerNumber(), APROP_JUMPZ, 8.0);
-		SetActorProperty(PlayerNumber(), APROP_SPEED, 1.1);
-	}
-	Delay(1);
-	//===========================
 }
 
 script "BDInitialize" enter
@@ -113,22 +128,61 @@ script "BDInitialize" enter
 		ConsoleCommand("compat_clientssendfullbuttoninfo 1");
 		}
 
-	if	(GetCvar("bd_disablemapenhancements") == 0)
+	if (MarineSpawnCounter == 0)
 	{
-	ReplaceTextures("FLOOR5_3", "METAL52");
-	ReplaceTextures("FLOOR5_2", "METAL52");
-	ReplaceTextures("FLAT5", "METAL53");
-	ReplaceTextures("FLOOR0_1", "METAL54");
-	ReplaceTextures("FLOOR0_3", "METAL55");
-	ReplaceTextures("FLOOR3_3", "METAL56");
-	ReplaceTextures("TLITE6_5", "LITGEN7B");
-	ReplaceTextures("TLITE6_6", "LITGEN9C");
-	ReplaceTextures("FLAT2", "FLAT2B");
-	ReplaceTextures("GRNLITE1", "GRNLIT1B");
+		ACS_NamedExecute("BDSpawnMarines",0);
 	}
 
-	//Spawn surviving marines
+	TakeInventory("TankGun", 1);
+	TakeInventory("ArtilleryTankGun", 1);
+	TakeInventory("HelicopterGun", 1);
+	TakeInventory("MechGun", 1);
+	TakeInventory("HeavyMachinegunHUD", 1);
+	SetPlayerProperty(0, 0, PROP_BUDDHA);
+}
 
+script "BDRespawn" Respawn NET
+{
+//Sbar Type
+
+	TakeInventory("sbartype1", 1);
+	TakeInventory("sbartype2", 1);
+	TakeInventory("sbartype3", 1);
+	TakeInventory("sbartype4", 1);
+	TakeInventory("sbartype5", 1);
+	TakeInventory("sbartype6", 1);
+	TakeInventory("sbartype7", 1);
+	TakeInventory("GenderFemale", 1);
+	TakeInventory("GenderMale", 1);
+	if	(GetCvar( "bd_sbartype") == 1) { GiveInventory("sbartype1", 1); }
+	if	(GetCvar( "bd_sbartype") == 2) { GiveInventory("sbartype2", 1); }
+	if	(GetCvar( "bd_sbartype") == 3) { GiveInventory("sbartype3", 1); }
+	if	(GetCvar( "bd_sbartype") == 4) { GiveInventory("sbartype4", 1); }
+	if	(GetCvar( "bd_sbartype") == 5) { GiveInventory("sbartype5", 1); }
+	if	(GetCvar( "bd_sbartype") == 6) { GiveInventory("sbartype6", 1); }
+	if	(GetCvar( "bd_sbartype") == 7) { GiveInventory("sbartype7", 1); }
+	// Detect Player Gender
+
+	if(GetPlayerInfo(PlayerNumber(), PLAYERINFO_GENDER) == 0)
+	{
+		GiveInventory("GenderMale", 1);
+	}
+	if(GetPlayerInfo(PlayerNumber(), PLAYERINFO_GENDER) == 1)
+	{
+		GiveInventory("GenderFemale", 1);
+		SetActorProperty(PlayerNumber(), APROP_VIEWHEIGHT, 45.0);
+		SetActorProperty(PlayerNumber(), APROP_HEIGHT, 50.0);
+		SetActorProperty(PlayerNumber(), APROP_MASS, 100);
+		SetActorProperty(PlayerNumber(), APROP_ATTACKZOFFSET, 19.0);
+		SetActorProperty(PlayerNumber(), APROP_JUMPZ, 8.0);
+		SetActorProperty(PlayerNumber(), APROP_SPEED, 1.1);
+	}
+	Delay(1);
+	//===========================
+}
+
+SCRIPT "BDSpawnMarines" (VOID)
+{
 	//Fist Marines
 	Switch (NumberOfAlliesFist)
 	{
@@ -1298,57 +1352,7 @@ script "BDInitialize" enter
 		Spawn("Marine_Flame", GetActorX(0), GetActorY(0)+32, GetActorZ(0), 0, 0);
 		break;
 	}
-
-	TakeInventory("TankGun", 1);
-	TakeInventory("ArtilleryTankGun", 1);
-	TakeInventory("HelicopterGun", 1);
-	TakeInventory("MechGun", 1);
-	TakeInventory("HeavyMachinegunHUD", 1);
-	SetPlayerProperty(0, 0, PROP_BUDDHA);
-}
-
-SCRIPT "BDInitiate" OPEN
-{
-	if	(GetCvar("bd_disablemapenhancements") == 0)
-	{
-		ReplaceTextures ("DSAND1", "SANDS1");
-		ReplaceTextures ("DSAND3", "SANDS1");
-		ReplaceTextures ("DSAND4", "SANDS1");
-		ReplaceTextures ("DSAND5", "SANDS1");
-		ReplaceTextures ("ETEX34", "SANDS1");
-		ReplaceTextures ("WALL81", "SANDS1");
-		ReplaceTextures ("ECEIL13", "SANDS1");
-		ReplaceTextures ("ECEIL15", "SANDS1");
-		ReplaceTextures ("GROUND20", "DESERT01");
-		ReplaceTextures ("SLUDGE01", "SLIME08");
-		ReplaceTextures ("DBRAIN1", "LFALL01");//Revilution Lava
-		ReplaceTextures ("LFALL1", "LFALL01");
-		ReplaceTextures ("LAVA1", "LAVAFL");
-		ReplaceTextures ("LAVA2", "LAVAFL");
-		ReplaceTextures ("LAVA3", "LAVAFL");
-		ReplaceTextures ("LAVA4", "LAVAFL");
-		ReplaceTextures ("LAVA01", "LAVAFL");
-		ReplaceTextures ("LAVA02", "LAVAFL");
-		ReplaceTextures ("LAVA03", "LAVAFL");
-		ReplaceTextures ("LAVA04", "LAVAFL");
-		ReplaceTextures ("LAVFALL1", "LFALL01");//Sunlust Lava
-		ReplaceTextures ("BLODGR1", "LFALL01");//AV Lava
-		ReplaceTextures ("SLMFALL1", "CRFAL01");//CRAPFALLS
-		ReplaceTextures ("SLMFALL2", "CRFAL01");//CRAPFALLS
-		ReplaceTextures ("SLMFALL3", "CRFAL01");//CRAPFALLS
-
-		// Replaces similar textures so the flat checking scripts have less stuff
-		ReplaceTextures ("NUKAGE3", "NUKAGE1");
-		ReplaceTextures ("NUKAGE2", "NUKAGE1");
-		ReplaceTextures ("SLIME04", "SLIME01");
-		ReplaceTextures ("SLIME03", "SLIME01");
-		ReplaceTextures ("SLIME02", "SLIME01");
-		ReplaceTextures ("SLIME08", "SLIME05");
-		ReplaceTextures ("SLIME06", "SLIME05");
-		ReplaceTextures ("SLIME07", "SLIME05");
-		ReplaceTextures ("BLOOD3", "BLOOD1");
-		ReplaceTextures ("BLOOD2", "BLOOD1");
-	}
+	MarineSpawnCounter++;
 }
 
 Script "BDCHeckJanitor" (VOID)
