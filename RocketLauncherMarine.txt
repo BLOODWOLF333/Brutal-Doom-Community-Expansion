@@ -527,7 +527,7 @@ ACTOR Marine_Rocket: Marine_Rifle
 
 		PLAY I 10 A_NoBlocking
 		PLAY J 10
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineRocket",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 ACS_NamedExecute("RemoveMarineRocket")
 		PLAY KLM 10
 		TNT1 A 0 A_SpawnItem ("MediumBloodSpot")
 		PLAY N -1
@@ -539,7 +539,7 @@ ACTOR Marine_Rocket: Marine_Rifle
 		TNT1 A 0 A_CustomMissile ("XDeath1", 1, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("XDeath4", 1, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineRocket",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 ACS_NamedExecute("RemoveMarineRocket")
         XPL1 A 10 A_XScream
         XPL1 B 20 A_NoBlocking
         XPL1 CDE 10
@@ -561,7 +561,7 @@ ACTOR Marine_Rocket: Marine_Rifle
         XPL2 A 10 A_XScream
         TNT1 AA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL2 B 20 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineRocket",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 ACS_NamedExecute("RemoveMarineRocket")
         TNT1 AA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL2 C 10 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         TNT1 AA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
@@ -574,7 +574,7 @@ ACTOR Marine_Rocket: Marine_Rifle
 		TNT1 A 0
 		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)	TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
         TNT1 A 0 A_PlaySound("BIGSCREA")
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineRocket",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 ACS_NamedExecute("RemoveMarineRocket")
         PMET AABBCCDDEEFFGGHHIIIII 10 A_CustomMissile ("PlasmaSmoke", 25, 0, random (0, 180), 2, random (0, 180))
         PMET IIIIIIIIIIJJJJJJJJJJJJJJJJJJJJJJKKKKKKKKKKKKKKKKKKKKKKKKKKLLLLLLLLLLLLLLL 3 A_CustomMissile ("PlasmaSmoke", 25, 0, random (0, 180), 2, random (0, 180))
         TNT1 A 0 A_NoBlocking
@@ -595,7 +595,7 @@ ACTOR Marine_Rocket: Marine_Rifle
         TNT1 A 0 A_CustomMissile ("XDeathHalfMarine", 50, 0, random (0, 360), 2, random (0, 160))
         TNT1 AA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL2 A 10 A_XScream
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineRocket",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 ACS_NamedExecute("RemoveMarineRocket")
         TNT1 AA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL2 B 20 A_NoBlocking
         TNT1 AA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
@@ -613,7 +613,7 @@ ACTOR Marine_Rocket: Marine_Rifle
         XPL3 A 10 A_XScream
         TNT1 AAAAA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL3 B 20 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineRocket",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 ACS_NamedExecute("RemoveMarineRocket")
         TNT1 A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL3 C 10 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         TNT1 A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
@@ -639,7 +639,7 @@ ACTOR Marine_Rocket: Marine_Rifle
 		PPOD A 0 A_SpawnItemEx("BasicMarineGib4", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
         MHEA A 7 A_XScream
         MHEA B 7 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineRocket",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 ACS_NamedExecute("RemoveMarineRocket")
         MHEA CD 7
         MHEA E -1
 		Stop
@@ -655,7 +655,7 @@ ACTOR Marine_Rocket: Marine_Rifle
 		TNT1 AA 0 bright A_CustomMissile ("XDeath3", 55, 0, random (0, 360), 2, random (30, 180))
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		TNT1 A 0 A_SpawnItem ("CrushedRemains")
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineRocket",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 ACS_NamedExecute("RemoveMarineRocket")
 		TNT1 A 1
 		TNT1 A 1 A_XScream
 		TNT1 A 1 A_NoBlocking
@@ -678,7 +678,7 @@ ACTOR Marine_Rocket: Marine_Rifle
 		TNT1 A 0 A_CustomMissile ("XDeathArm1", 32, 0, random (170, 190), 2, random (0, 40))
         TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineRocket",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 ACS_NamedExecute("RemoveMarineRocket")
         MAR5 OPQRSTU 8
 		TNT1 A 0 A_SpawnItem ("MediumBloodSpot")
         MAR5 U -1
@@ -695,7 +695,7 @@ ACTOR Marine_Rocket: Marine_Rifle
 		 TNT1 A 0 A_CustomMissile ("XDeath4", 1, 0, random (0, 360), 2, random (0, 160))
         TNT1 AAAA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL4 B 20 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineRocket",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 ACS_NamedExecute("RemoveMarineRocket")
         TNT1 AAA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL4 C 20
         TNT1 AAA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
@@ -714,7 +714,7 @@ ACTOR Marine_Rocket: Marine_Rifle
 		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)	TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
         TNT1 A 0 A_XScream
         TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineRocket",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 ACS_NamedExecute("RemoveMarineRocket")
         TNT1 AAA 0 A_CustomMissile ("Brutal_FlyingBlood", 50, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160))
@@ -732,7 +732,7 @@ ACTOR Marine_Rocket: Marine_Rifle
 		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)	TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
         TNT1 A 0 A_XScream
         TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineRocket",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 ACS_NamedExecute("RemoveMarineRocket")
         TNT1 AAAA 0 A_CustomMissile ("Brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160))
 
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
@@ -752,7 +752,7 @@ ACTOR Marine_Rocket: Marine_Rifle
 	 PBUR A 1
       PBUR A 1 A_Scream
       PBUR A 1 A_NoBlocking
-	  TNT1 A 0 A_SpawnItemEx("RemoveMarineRocket",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	  TNT1 A 0 ACS_NamedExecute("RemoveMarineRocket")
        PBUR AAAABBBBCCCC 2 A_CustomMissile ("SmallFlameTrails", 32, 0, random (0, 180), 2, random (0, 180))
 	    PBUR DDDDEEEE 2 A_CustomMissile ("SmallFlameTrails", 16, 0, random (0, 180), 2, random (0, 180))
         PBUR EEEEE 4 A_CustomMissile ("SmallFlameTrails", 8, 0, random (0, 180), 2, random (0, 180))
@@ -768,7 +768,7 @@ ACTOR Marine_Rocket: Marine_Rifle
         TNT1 A 0 A_PlaySound("BIGSCREA")
       BURN W 6 A_Scream
       BURN X 6 A_NoBlocking
-	  TNT1 A 0 A_SpawnItemEx("RemoveMarineRocket",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	  TNT1 A 0 ACS_NamedExecute("RemoveMarineRocket")
        BUR2 ABCD 6 BRIGHT A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
        BURN FGHIJKL 6 BRIGHT A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
        BURN MNOPQRSTUV 6 BRIGHT A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
@@ -793,7 +793,7 @@ ACTOR Marine_Rocket: Marine_Rifle
 	    NULL A 0 A_CustomMissile ("XDeath3", 40, 0, random (0, 360), 2, random (0, 160))
 	    PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
         NULL AAAA 0 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineRocket",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 ACS_NamedExecute("RemoveMarineRocket")
 		NULL A 0 A_XScream
         XPL6 A 5
 		NULL A 0 A_NoBlocking
@@ -815,7 +815,7 @@ ACTOR Marine_Rocket: Marine_Rifle
         TNT1 A 0 A_GiveToTarget("Curbstomp_Marine",1)
 		TNT1 A 0
 		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)	TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineRocket",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 ACS_NamedExecute("RemoveMarineRocket")
 		TNT1 A -1
         Stop
 
@@ -823,7 +823,7 @@ ACTOR Marine_Rocket: Marine_Rifle
 		TNT1 A 1 A_PlayerScream
 		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
 		TNT1 A 1 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineRocket",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 ACS_NamedExecute("RemoveMarineRocket")
         TNT1 A 0 A_GiveToTarget("Fatality_Marine",1)
 		TNT1 A -1
         Stop
@@ -1595,85 +1595,4 @@ ACTOR Marine_RocketPathfinder
 		TNT1 A 0 A_JumpIF(vely == 0, "See")
 		Goto SpawnMarine
 	}
-}
-
-ACTOR Marine_RocketAdd: Marine_RocketPathfinder
-{
-	States
-	{
-	Spawn:
-	TNT1 A 0
-	TNT1 A 0 A_GiveInventory("TargetIsAMarine", 1)
-	Goto See
-	Pain:
-    See:
-		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
-		TNT1 A 0 Thing_ChangeTID(0,98)
-		TNT1 AAAAAAAAAAAAAAAAA 1 A_Chase
-		TNT1 A 0 A_Recoil(-5)
-		TNT1 A 1 A_FaceTarget
-		Loop
-	Death:
-	Missile:
-		TNT1 A 1
-		TNT1 A 0 A_Scream
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 200
-		TNT1 A 0 A_GiveToTarget("NumberOfAlliesRocket", 1)
-		Stop
-	}
-}
-
-ACTOR RemoveMarineRocket
-{
-	States
-	{
-	Spawn:
-	Pain:
-    See:
-		TNT1 A 1
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineRocketActivate",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 1
-		Stop
-	}
-}
-
-ACTOR RemoveMarineRocketActivate: Marine_RocketPathfinder
-{
-	States
-	{
-	Melee:
-	Missile:
-		TNT1 A 1
-		TNT1 A 0 A_TakeFromTarget("NumberOfAlliesRocket", 1)
-		TNT1 A 0 A_Scream
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 1
-		Stop
-	}
-}
-
-ACTOR Marine_RocketSpawnChecker
-{
-MONSTER
--COUNTKILL
-+FRIENDLY
--SOLID
--SHOOTABLE
-Health 1
-Radius 16
-Height 52
-Damagetype "SpawnMarine"
-	States
-	{
-	Spawn:
-	    TNT1 A 0
-	TNT1 A 0 A_GiveInventory("TargetIsAMarine", 1)
-	    TNT1 A 0 A_AlertMonsters
-		TNT1 A 0 A_Explode(25, 40)
-		Stop
-	Death:
-	TNT1 A 1
-	Stop
-}
 }

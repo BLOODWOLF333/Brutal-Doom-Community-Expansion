@@ -1,4 +1,4 @@
-ACTOR PrePlacedMarineSMG
+ACTOR PrePlacedMarineSMG Replaces MarinePistol
 {
 	translation "112:127=160:167"
 	MONSTER
@@ -463,7 +463,7 @@ ACTOR Marine_SMG: Marine_Rifle
 
 		PLAY I 10 A_NoBlocking
 		PLAY J 10
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineSMG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 ACS_NamedExecute("RemoveMarineSMG")
 		PLAY KLM 10
 		TNT1 A 0 A_SpawnItem ("MediumBloodSpot")
 		PLAY N -1
@@ -476,7 +476,7 @@ ACTOR Marine_SMG: Marine_Rifle
 		TNT1 A 0 A_CustomMissile ("XDeath1", 1, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("XDeath4", 1, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineSMG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 ACS_NamedExecute("RemoveMarineSMG")
         XPL1 A 10 A_XScream
         XPL1 B 20 A_NoBlocking
         XPL1 CDE 10
@@ -499,7 +499,7 @@ ACTOR Marine_SMG: Marine_Rifle
         XPL2 A 10 A_XScream
         TNT1 AA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL2 B 20 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineSMG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 ACS_NamedExecute("RemoveMarineSMG")
         TNT1 AA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL2 C 10 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         TNT1 AA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
@@ -513,7 +513,7 @@ ACTOR Marine_SMG: Marine_Rifle
 		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
 		TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
         TNT1 A 0 A_PlaySound("BIGSCREA")
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineSMG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 ACS_NamedExecute("RemoveMarineSMG")
         PMET AABBCCDDEEFFGGHHIIIII 10 A_CustomMissile ("PlasmaSmoke", 25, 0, random (0, 180), 2, random (0, 180))
         PMET IIIIIIIIIIJJJJJJJJJJJJJJJJJJJJJJKKKKKKKKKKKKKKKKKKKKKKKKKKLLLLLLLLLLLLLLL 3 A_CustomMissile ("PlasmaSmoke", 25, 0, random (0, 180), 2, random (0, 180))
         TNT1 A 0 A_NoBlocking
@@ -535,7 +535,7 @@ ACTOR Marine_SMG: Marine_Rifle
         TNT1 A 0 A_CustomMissile ("XDeathHalfMarine", 50, 0, random (0, 360), 2, random (0, 160))
         TNT1 AA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL2 A 10 A_XScream
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineSMG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 ACS_NamedExecute("RemoveMarineSMG")
         TNT1 AA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL2 B 20 A_NoBlocking
         TNT1 AA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
@@ -554,7 +554,7 @@ ACTOR Marine_SMG: Marine_Rifle
         XPL3 A 10 A_XScream
         TNT1 AAAAA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL3 B 20 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineSMG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 ACS_NamedExecute("RemoveMarineSMG")
         TNT1 A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL3 C 10 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         TNT1 A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
@@ -581,7 +581,7 @@ ACTOR Marine_SMG: Marine_Rifle
 		PPOD A 0 A_SpawnItemEx("BasicMarineGib4", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
         MHEA A 7 A_XScream
         MHEA B 7 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineSMG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 ACS_NamedExecute("RemoveMarineSMG")
         MHEA CD 7
         MHEA E -1
 		Stop
@@ -598,7 +598,7 @@ ACTOR Marine_SMG: Marine_Rifle
 		TNT1 AA 0 bright A_CustomMissile ("XDeath3", 55, 0, random (0, 360), 2, random (30, 180))
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		TNT1 A 0 A_SpawnItem ("CrushedRemains")
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineSMG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 ACS_NamedExecute("RemoveMarineSMG")
 		TNT1 A 1
 		TNT1 A 1 A_XScream
 		TNT1 A 1 A_NoBlocking
@@ -622,7 +622,7 @@ ACTOR Marine_SMG: Marine_Rifle
 		TNT1 A 0 A_CustomMissile ("XDeathArm1", 32, 0, random (170, 190), 2, random (0, 40))
         TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineSMG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 ACS_NamedExecute("RemoveMarineSMG")
         MRMP OPQRSTU 8
 		TNT1 A 0 A_SpawnItem ("MediumBloodSpot")
         MRMP U -1
@@ -640,7 +640,7 @@ ACTOR Marine_SMG: Marine_Rifle
 		 TNT1 A 0 A_CustomMissile ("XDeath4", 1, 0, random (0, 360), 2, random (0, 160))
         TNT1 AAAA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL4 B 20 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineSMG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 ACS_NamedExecute("RemoveMarineSMG")
         TNT1 AAA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL4 C 20
         TNT1 AAA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
@@ -660,7 +660,7 @@ ACTOR Marine_SMG: Marine_Rifle
 		TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
         TNT1 A 0 A_XScream
         TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineSMG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 ACS_NamedExecute("RemoveMarineSMG")
         TNT1 AAA 0 A_CustomMissile ("Brutal_FlyingBlood", 50, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160))
@@ -679,7 +679,7 @@ ACTOR Marine_SMG: Marine_Rifle
 		TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
         TNT1 A 0 A_XScream
         TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineSMG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 ACS_NamedExecute("RemoveMarineSMG")
         TNT1 AAAA 0 A_CustomMissile ("Brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160))
 
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
@@ -700,7 +700,7 @@ ACTOR Marine_SMG: Marine_Rifle
 	 PBUR A 1
       PBUR A 1 A_Scream
       PBUR A 1 A_NoBlocking
-	  TNT1 A 0 A_SpawnItemEx("RemoveMarineSMG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	  TNT1 A 0 ACS_NamedExecute("RemoveMarineSMG")
        PBUR AAAABBBBCCCC 2 A_CustomMissile ("SmallFlameTrails", 32, 0, random (0, 180), 2, random (0, 180))
 	    PBUR DDDDEEEE 2 A_CustomMissile ("SmallFlameTrails", 16, 0, random (0, 180), 2, random (0, 180))
         PBUR EEEEE 4 A_CustomMissile ("SmallFlameTrails", 8, 0, random (0, 180), 2, random (0, 180))
@@ -717,7 +717,7 @@ ACTOR Marine_SMG: Marine_Rifle
         TNT1 A 0 A_PlaySound("BIGSCREA")
       BURN W 6 A_Scream
       BURN X 6 A_NoBlocking
-	  TNT1 A 0 A_SpawnItemEx("RemoveMarineSMG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	  TNT1 A 0 ACS_NamedExecute("RemoveMarineSMG")
        BUR2 ABCD 6 BRIGHT A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
        BURN FGHIJKL 6 BRIGHT A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
        BURN MNOPQRSTUV 6 BRIGHT A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
@@ -743,7 +743,7 @@ ACTOR Marine_SMG: Marine_Rifle
 	    NULL A 0 A_CustomMissile ("XDeath3", 40, 0, random (0, 360), 2, random (0, 160))
 	    PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
         NULL AAAA 0 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineSMG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 ACS_NamedExecute("RemoveMarineSMG")
 		NULL A 0 A_XScream
         XPL6 A 5
 		NULL A 0 A_NoBlocking
@@ -766,7 +766,7 @@ ACTOR Marine_SMG: Marine_Rifle
 		TNT1 A 0
 		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
 		TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineSMG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 ACS_NamedExecute("RemoveMarineSMG")
 		TNT1 A -1
         Stop
 
@@ -774,7 +774,7 @@ ACTOR Marine_SMG: Marine_Rifle
 		TNT1 A 1 A_PlayerScream
 		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
 		TNT1 A 1 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineSMG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 ACS_NamedExecute("RemoveMarineSMG")
         TNT1 A 0 A_GiveToTarget("Fatality_Marine",1)
 		TNT1 A -1
         Stop
@@ -1009,62 +1009,5 @@ ACTOR Marine_SMGPathfinder
 		TNT1 A 1 A_FaceTarget
 		TNT1 A 0 A_JumpIF(vely == 0, "See")
 		Goto SpawnMarine
-	}
-}
-
-ACTOR Marine_SMGAdd: Marine_SMGPathfinder
-{
-	States
-	{
-	Spawn:
-	TNT1 A 0
-	TNT1 A 0 A_GiveInventory("TargetIsAMarine", 1)
-	Goto See
-	Pain:
-    See:
-		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
-		TNT1 A 0 Thing_ChangeTID(0,98)
-		TNT1 AAAAAAAAAAAAAAAAA 1 A_Chase
-		//TNT1 A 0 Thing_Hate(98, 264, 0)
-		TNT1 A 0 A_Recoil(-5)
-		TNT1 A 1 A_FaceTarget
-		Loop
-	Death:
-	Missile:
-		TNT1 A 1
-		TNT1 A 0 A_Scream
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 200
-		TNT1 A 0 A_GiveToTarget("NumberOfAlliesSMG", 1)
-		Stop
-	}
-}
-
-ACTOR RemoveMarineSMG
-{
-	States
-	{
-	Spawn:
-	Pain:
-    See:
-		TNT1 A 1
-		TNT1 A 0 A_SpawnItemEx("RemoveMarineSMGActivate",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 1
-		Stop
-	}
-}
-
-ACTOR RemoveMarineSMGActivate: Marine_SMGPathfinder
-{
-	States
-	{
-	Melee:
-	Missile:
-		TNT1 A 1
-		TNT1 A 0 A_TakeFromTarget("NumberOfAlliesSMG", 1)
-		TNT1 A 0 A_Scream
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 1
-		Stop
 	}
 }

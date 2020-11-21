@@ -1,6 +1,22 @@
 #library "CVARS"
 #include "zcommon.acs"
 
+World Int 1: NumberOfAlliesFist;
+World Int 2: NumberOfAlliesSaw;
+World Int 3: NumberOfAlliesSMG;
+World Int 4: NumberOfAlliesShotgun;
+World Int 5: NumberOfAlliesSSG;
+World Int 6: NumberOfAllies;
+World Int 7: NumberOfAlliesMinigun;
+World Int 8: NumberOfAlliesRocket;
+World Int 9: NumberOfAlliesGrenade;
+World Int 10: NumberOfAlliesPlasmagun;
+World Int 11: NumberOfAlliesRailgun;
+World Int 12: NumberOfAlliesBFG;
+World Int 13: NumberOfAlliesBFG10K;
+World Int 14: NumberOfAlliesHML;
+World Int 15: NumberOfAlliesFlame;
+
 script "BDRespawn" Respawn NET
 {
 //Sbar Type
@@ -114,7 +130,7 @@ script "BDInitialize" enter
 	//Spawn surviving marines
 
 	//Fist Marines
-	Switch (checkinventory("NumberOfAlliesFist"))
+	Switch (NumberOfAlliesFist)
 	{
 		Case 0:
 		break;
@@ -192,7 +208,7 @@ script "BDInitialize" enter
 	}
 
 	//Saw Marines
-	Switch (checkinventory("NumberOfAlliesSaw"))
+	Switch (NumberOfAlliesSaw)
 	{
 		Case 0:
 		break;
@@ -270,7 +286,7 @@ script "BDInitialize" enter
 	}
 
 	//SMG Marines
-	Switch (checkinventory("NumberOfAlliesSMG"))
+	Switch (NumberOfAlliesSMG)
 	{
 		Case 0:
 		break;
@@ -348,7 +364,7 @@ script "BDInitialize" enter
 	}
 
 	//Shotgun Marines
-	Switch (checkinventory("NumberOfAlliesShotgun"))
+	Switch (NumberOfAlliesShotgun)
 	{
 		Case 0:
 		break;
@@ -426,7 +442,7 @@ script "BDInitialize" enter
 	}
 
 	//SSG Marines
-	Switch (checkinventory("NumberOfAlliesSSG"))
+	Switch (NumberOfAlliesSSG)
 	{
 		Case 0:
 		break;
@@ -504,7 +520,7 @@ script "BDInitialize" enter
 	}
 
 	//Rifle Marines
-	Switch (checkinventory("NumberOfAllies"))
+	Switch (NumberOfAllies)
 	{
 		Case 0:
 		break;
@@ -582,7 +598,7 @@ script "BDInitialize" enter
 	}
 
 	//Minigun Marines
-	Switch (checkinventory("NumberOfAlliesMinigun"))
+	Switch (NumberOfAlliesMinigun)
 	{
 		Case 0:
 		break;
@@ -660,7 +676,7 @@ script "BDInitialize" enter
 	}
 
 	//Grenade Marines
-	Switch (checkinventory("NumberOfAlliesGrenade"))
+	Switch (NumberOfAlliesGrenade)
 	{
 		Case 0:
 		break;
@@ -738,7 +754,7 @@ script "BDInitialize" enter
 	}
 
 	//Rocket Marines
-	Switch (checkinventory("NumberOfAlliesRocket"))
+	Switch (NumberOfAlliesRocket)
 	{
 		Case 0:
 		break;
@@ -816,7 +832,7 @@ script "BDInitialize" enter
 	}
 
 	//Plasmagun Marines
-	Switch (checkinventory("NumberOfAlliesPlasmagun"))
+	Switch (NumberOfAlliesPlasmagun)
 	{
 		Case 0:
 		break;
@@ -894,7 +910,7 @@ script "BDInitialize" enter
 	}
 
 	//Railgun Marines
-	Switch (checkinventory("NumberOfAlliesRailgun"))
+	Switch (NumberOfAlliesRailgun)
 	{
 		Case 0:
 		break;
@@ -972,7 +988,7 @@ script "BDInitialize" enter
 	}
 
 	//BFG Marines
-	Switch (checkinventory("NumberOfAlliesBFG"))
+	Switch (NumberOfAlliesBFG)
 	{
 		Case 0:
 		break;
@@ -1050,7 +1066,7 @@ script "BDInitialize" enter
 	}
 
 	//BFG10K Marines
-	Switch (checkinventory("NumberOfAlliesBFG10K"))
+	Switch (NumberOfAlliesBFG10K)
 	{
 		Case 0:
 		break;
@@ -1128,7 +1144,7 @@ script "BDInitialize" enter
 	}
 
 	//HML Marines
-	Switch (checkinventory("NumberOfAlliesHML"))
+	Switch (NumberOfAlliesHML)
 	{
 		Case 0:
 		break;
@@ -1206,7 +1222,7 @@ script "BDInitialize" enter
 	}
 
 	//Flame Marines
-	Switch (checkinventory("NumberOfAlliesFlame"))
+	Switch (NumberOfAlliesFlame)
 	{
 		Case 0:
 		break;
@@ -1562,4 +1578,154 @@ Script "Check_DisabledAutoReloading" Enter
 	{
 		GiveInventory("NoAutoReload", 1);
 	}
+}
+
+Script "AddMarineFist" (VOID) NET
+{
+	NumberofAlliesFist++;
+}
+
+Script "RemoveMarineFist" (VOID) NET
+{
+	NumberofAlliesFist--;
+}
+
+Script "AddMarineSaw" (VOID) NET
+{
+	NumberofAlliesSaw++;
+}
+
+Script "RemoveMarineSaw" (VOID) NET
+{
+	NumberofAlliesSaw--;
+}
+
+Script "AddMarineSMG" (VOID) NET
+{
+	NumberofAlliesSMG++;
+}
+
+Script "RemoveMarineSMG" (VOID) NET
+{
+	NumberofAlliesSMG--;
+}
+
+Script "AddMarineShotgun" (VOID) NET
+{
+	NumberofAlliesShotgun++;
+}
+
+Script "RemoveMarineShotgun" (VOID) NET
+{
+	NumberofAlliesShotgun--;
+}
+
+Script "AddMarineSSG" (VOID) NET
+{
+	NumberofAlliesSSG++;
+}
+
+Script "RemoveMarineSSG" (VOID) NET
+{
+	NumberofAlliesSSG--;
+}
+
+Script "AddMarine" (VOID) NET
+{
+	NumberofAllies++;
+}
+
+Script "RemoveMarine" (VOID) NET
+{
+	NumberofAllies--;
+}
+
+Script "AddMarineMinigun" (VOID) NET
+{
+	NumberofAlliesMinigun++;
+}
+
+Script "RemoveMarineMinigun" (VOID) NET
+{
+	NumberofAlliesMinigun--;
+}
+
+Script "AddMarineRocket" (VOID) NET
+{
+	NumberofAlliesRocket++;
+}
+
+Script "RemoveMarineRocket" (VOID) NET
+{
+	NumberofAlliesRocket--;
+}
+
+Script "AddMarineGrenade" (VOID) NET
+{
+	NumberofAlliesGrenade++;
+}
+
+Script "RemoveMarineGrenade" (VOID) NET
+{
+	NumberofAlliesGrenade--;
+}
+
+Script "AddMarinePlasmagun" (VOID) NET
+{
+	NumberofAlliesPlasmagun++;
+}
+
+Script "RemoveMarinePlasmagun" (VOID) NET
+{
+	NumberofAlliesPlasmagun--;
+}
+
+Script "AddMarineRailgun" (VOID) NET
+{
+	NumberofAlliesRailgun++;
+}
+
+Script "RemoveMarineRailgun" (VOID) NET
+{
+	NumberofAlliesRailgun--;
+}
+
+Script "AddMarineBFG" (VOID) NET
+{
+	NumberofAlliesBFG++;
+}
+
+Script "RemoveMarineBFG" (VOID) NET
+{
+	NumberofAlliesBFG--;
+}
+
+Script "AddMarineBFG10K" (VOID) NET
+{
+	NumberofAlliesBFG10K++;
+}
+
+Script "RemoveMarineBFG10K" (VOID) NET
+{
+	NumberofAlliesBFG10K--;
+}
+
+Script "AddMarineHML" (VOID) NET
+{
+	NumberofAlliesHML++;
+}
+
+Script "RemoveMarineHML" (VOID) NET
+{
+	NumberofAlliesHML--;
+}
+
+Script "AddMarineFlame" (VOID) NET
+{
+	NumberofAlliesFlame++;
+}
+
+Script "RemoveMarineFlame" (VOID) NET
+{
+	NumberofAlliesFlame--;
 }
