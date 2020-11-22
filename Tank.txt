@@ -10,6 +10,8 @@ YScale 1.47
 -FLOORCLIP
 +NOGRAVITY
 -FLOAT
++NEVERTARGET
++CANTSEEK
 Mass 31700//35 Tons
 Radius 0
 Height 0
@@ -604,11 +606,11 @@ ACTOR Tank: SwitchableDecoration 7261
 	+SHOOTABLE
 	+THRUACTORS
 	+NOINFIGHTING
-	-COUNTKILL
 	+NOBLOODDECALS
 	+DONTRIP
 	+NOTIMEFREEZE
 	+NEVERTARGET
+	+CANTSEEK
 	//$category "BD Vehicles"
 	MaxTargetRange 120
 	BloodType "TankBlood", "TankBlood", "TankBlood"
