@@ -45,7 +45,7 @@ ACTOR RifleSpawner : CustomInventory Replaces Pistol
 	    TNT1 A 0 A_GiveInventory("ClassicSMG", 1)
 		Stop
 	DualRifle:
-		TNT1 A 0 A_GiveInventory("DualRifles", 1)
+		TNT1 A 0 A_GiveInventory("HasDualRifle", 1)
 		TNT1 A 0 A_GiveInventory("Clip2", 30)
 		Stop
     }
@@ -103,7 +103,7 @@ ACTOR PistolSpawner: CustomInventory
 		Stop
 	DualPistol:
 		TNT1 A 0
-		TNT1 A 0 A_GiveInventory("DualPistols", 1)
+		TNT1 A 0 A_GiveInventory("HasDualPistol", 1)
 		TNT1 A 0 A_GiveInventory("Clip1", 15)
 		Stop
     }
@@ -138,7 +138,7 @@ ACTOR MP40Spawner: CustomInventory
 	    TNT1 A 0 A_GiveInventory("ClassicMP40", 1)
 		Stop
 	Dual:
-		TNT1 A 0 A_GiveInventory("DualMP40", 1)
+		TNT1 A 0 A_GiveInventory("HasDualMP40", 1)
 		TNT1 A 0 A_GiveInventory("Mauser9mm", 32)
 		Stop
     }
@@ -497,7 +497,7 @@ ACTOR SMGSpawner: CustomInventory
 		Stop
 	Dual:
 		TNT1 A 0
-	    TNT1 A 0 A_GiveInventory("DualSMG", 1)
+	    TNT1 A 0 A_GiveInventory("HasDualSMG", 1)
 		TNT1 A 0 A_GiveInventory("Clip1", 40)
 		Stop
 	Purist:
@@ -857,7 +857,7 @@ ACTOR PLasmagunSpawner: CustomInventory
 		Stop
 	DualPlasma:
 		TNT1 A 0
-		TNT1 A 0 A_GiveInventory("DUalPlasmaRifles", 1)
+		TNT1 A 0 A_GiveInventory("HasDualPlasma", 1)
 		TNT1 A 0 A_GiveInventory("AmmoCell", 20)
 		Stop
     }

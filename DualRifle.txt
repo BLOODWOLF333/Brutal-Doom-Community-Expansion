@@ -143,6 +143,7 @@ ACTOR DualRifles : BrutalWeapon
 
 	DualWield:
 		DURI A 1
+		DURI A 0 A_GiveInventory("Rifle",1)
 		DURI A 0 A_Takeinventory("StartDualWield",1)
 		DURI A 0 A_SelectWEapon("Rifle")
 		Goto Ready
@@ -188,6 +189,7 @@ ACTOR DualRifles : BrutalWeapon
 		DURI A 0 A_Takeinventory("HasBarrel",1)
 		DURI A 0 A_TakeInventory("TossGrenade", 1)
 		DURI A 0 A_TakeInventory("IsRunning", 1)
+		DURI A 0 A_TakeInventory("Rifle", 1)
 		TNT1 A 1 A_Raise
 		TNT1 AAAAAAAAA 0 A_Raise
 		Goto SelectAnimation
