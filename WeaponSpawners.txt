@@ -37,6 +37,7 @@ ACTOR RifleSpawner : CustomInventory Replaces Pistol
 		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
 		TNT1 A 0 A_JumpIfInventory("IsTacticalClass", 1, "PickupNormal")
 		TNT1 A 0 A_JumpIfInventory("Rifle", 1, "DualRifle")
+		TNT1 A 0 A_JumpIfInventory("DualRifles", 1, "AmmoOnly")
 	PickupNormal:
 		TNT1 A 0 A_GiveInventory("Rifle", 1)
 		TNT1 A 0 A_GiveInventory("Clip2", 30)
@@ -46,6 +47,9 @@ ACTOR RifleSpawner : CustomInventory Replaces Pistol
 		Stop
 	DualRifle:
 		TNT1 A 0 A_GiveInventory("HasDualRifle", 1)
+		TNT1 A 0 A_GiveInventory("Clip2", 30)
+		Stop
+	AmmoOnly:
 		TNT1 A 0 A_GiveInventory("Clip2", 30)
 		Stop
     }
@@ -94,6 +98,7 @@ ACTOR PistolSpawner: CustomInventory
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
 		TNT1 A 0 A_JumpIfInventory("BrutalPistol", 1, "DualPistol")
+		TNT1 A 0 A_JumpIfInventory("DualPistols", 1, "AmmoOnly")
 	PickupNormal:
 		TNT1 A 0 A_GiveInventory("BrutalPistol", 1)
 		TNT1 A 0 A_GiveInventory("Clip1", 15)
@@ -104,6 +109,9 @@ ACTOR PistolSpawner: CustomInventory
 	DualPistol:
 		TNT1 A 0
 		TNT1 A 0 A_GiveInventory("HasDualPistol", 1)
+		TNT1 A 0 A_GiveInventory("Clip1", 15)
+		Stop
+	AmmoOnly:
 		TNT1 A 0 A_GiveInventory("Clip1", 15)
 		Stop
     }
@@ -130,6 +138,7 @@ ACTOR MP40Spawner: CustomInventory
 		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
 		TNT1 A 0 A_JumpIfInventory("IsTacticalClass", 1, "PickupNormal")
 		TNT1 A 0 A_JumpIfInventory("MP40", 1, "Dual")
+		TNT1 A 0 A_JumpIfInventory("DualMP40", 1, "AmmoOnly")
 	PickupNormal:
 		TNT1 A 0 A_GiveInventory("MP40", 1)
 		TNT1 A 0 A_GiveInventory("Mauser9mm", 32)
@@ -139,6 +148,9 @@ ACTOR MP40Spawner: CustomInventory
 		Stop
 	Dual:
 		TNT1 A 0 A_GiveInventory("HasDualMP40", 1)
+		TNT1 A 0 A_GiveInventory("Mauser9mm", 32)
+		Stop
+	AmmoOnly:
 		TNT1 A 0 A_GiveInventory("Mauser9mm", 32)
 		Stop
     }
@@ -491,6 +503,7 @@ ACTOR SMGSpawner: CustomInventory
 		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
 		TNT1 A 0 A_JumpIfInventory("IsTacticalClass", 1, "PickupNormal")
 		TNT1 A 0 A_JumpIfInventory("BrutalSMG", 1, "Dual")
+		TNT1 A 0 A_JumpIfInventory("DualSMG", 1, "AmmoOnly")
 	PickupNormal:
 		TNT1 A 0 A_GiveInventory("BrutalSMG", 1)
 		TNT1 A 0 A_GiveInventory("Clip1", 40)
@@ -502,6 +515,9 @@ ACTOR SMGSpawner: CustomInventory
 		Stop
 	Purist:
 	    TNT1 A 0 A_GiveInventory("ClassicSMG", 1)
+		Stop
+	AmmoOnly:
+		TNT1 A 0 A_GiveInventory("Clip1", 40)
 		Stop
     }
 }
@@ -848,6 +864,7 @@ ACTOR PLasmagunSpawner: CustomInventory
 		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
 		TNT1 A 0 A_JumpIfInventory("IsTacticalClass", 1, "PickupNormal")
 		TNT1 A 0 A_JumpIfInventory("Plasma_Gun", 1, "DualPlasma")
+		TNT1 A 0 A_JumpIfInventory("DualPlasmaRifles", 1, "AmmoOnly")
 	PickupNormal:
 		TNT1 A 0 A_GiveInventory("Plasma_Gun", 1)
 		TNT1 A 0 A_GiveInventory("AmmoCell", 20)
@@ -858,6 +875,9 @@ ACTOR PLasmagunSpawner: CustomInventory
 	DualPlasma:
 		TNT1 A 0
 		TNT1 A 0 A_GiveInventory("HasDualPlasma", 1)
+		TNT1 A 0 A_GiveInventory("AmmoCell", 20)
+		Stop
+	AmmoOnly:
 		TNT1 A 0 A_GiveInventory("AmmoCell", 20)
 		Stop
     }
