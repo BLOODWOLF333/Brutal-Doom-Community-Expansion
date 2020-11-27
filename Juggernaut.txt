@@ -256,31 +256,27 @@ ACTOR Juggernaut : TheSpiderMastermind 2545
 		TNT1 A 0
 		BS1B B 5 A_CustomMissile ("ExplosionSmoke", 60, 0, random (0, 360), 2, random (70, 110))
 		BS1B B 5 A_CustomMissile ("RealFlameTrailsMedium", 60, 0, random (0, 360), 2, random (0, 160))
-				BS1B B 5 A_CustomMissile ("ExplosionSmoke", 60, 0, random (0, 360), 2, random (70, 110))
+		BS1B B 5 A_CustomMissile ("ExplosionSmoke", 60, 0, random (0, 360), 2, random (70, 110))
 		BS1B B 5 A_CustomMissile ("RealFlameTrailsMedium", 60, 0, random (0, 360), 2, random (0, 160))
-				BS1B B 5 A_CustomMissile ("ExplosionSmoke", 60, 0, random (0, 360), 2, random (70, 110))
+		BS1B B 5 A_CustomMissile ("ExplosionSmoke", 60, 0, random (0, 360), 2, random (70, 110))
 		BS1B B 5 A_CustomMissile ("RealFlameTrailsMedium", 60, 0, random (0, 360), 2, random (0, 160))
-				BS1B B 5 A_CustomMissile ("ExplosionSmoke", 60, 0, random (0, 360), 2, random (70, 110))
+		BS1B B 5 A_CustomMissile ("ExplosionSmoke", 60, 0, random (0, 360), 2, random (70, 110))
 		BS1B B 5 A_CustomMissile ("RealFlameTrailsMedium", 60, 0, random (0, 360), 2, random (0, 160))
-				BS1B B 5 A_CustomMissile ("ExplosionSmoke", 60, 0, random (0, 360), 2, random (70, 110))
+		BS1B B 5 A_CustomMissile ("ExplosionSmoke", 60, 0, random (0, 360), 2, random (70, 110))
 		BS1B B 5 A_CustomMissile ("RealFlameTrailsMedium", 60, 0, random (0, 360), 2, random (0, 160))
-				BS1B B 5 A_CustomMissile ("ExplosionSmoke", 60, 0, random (0, 360), 2, random (70, 110))
+		BS1B B 5 A_CustomMissile ("ExplosionSmoke", 60, 0, random (0, 360), 2, random (70, 110))
 		BS1B B 5 A_CustomMissile ("RealFlameTrailsMedium", 60, 0, random (0, 360), 2, random (0, 160))
-				BS1B B 5 A_CustomMissile ("ExplosionSmoke", 60, 0, random (0, 360), 2, random (70, 110))
+		BS1B B 5 A_CustomMissile ("ExplosionSmoke", 60, 0, random (0, 360), 2, random (70, 110))
 		BS1B B 5 A_CustomMissile ("RealFlameTrailsMedium", 60, 0, random (0, 360), 2, random (0, 160))
-				BS1B B 5 A_CustomMissile ("ExplosionSmoke", 60, 0, random (0, 360), 2, random (70, 110))
+		BS1B B 5 A_CustomMissile ("ExplosionSmoke", 60, 0, random (0, 360), 2, random (70, 110))
 		BS1B B 5 A_CustomMissile ("RealFlameTrailsMedium", 60, 0, random (0, 360), 2, random (0, 160))
-				BS1B B 5 A_CustomMissile ("ExplosionSmoke", 60, 0, random (0, 360), 2, random (70, 110))
+		BS1B B 5 A_CustomMissile ("ExplosionSmoke", 60, 0, random (0, 360), 2, random (70, 110))
 		BS1B B 5 A_CustomMissile ("RealFlameTrailsMedium", 60, 0, random (0, 360), 2, random (0, 160))
-				BS1B B 5 A_CustomMissile ("ExplosionSmoke", 60, 0, random (0, 360), 2, random (70, 110))
+		BS1B B 5 A_CustomMissile ("ExplosionSmoke", 60, 0, random (0, 360), 2, random (70, 110))
 		BS1B B 5 A_CustomMissile ("RealFlameTrailsMedium", 60, 0, random (0, 360), 2, random (0, 160))
-				BS1B B 5 A_CustomMissile ("ExplosionSmoke", 60, 0, random (0, 360), 2, random (70, 110))
-		BS1B B 5 A_CustomMissile ("RealFlameTrailsMedium", 60, 0, random (0, 360), 2, random (0, 160))
-		Goto Decay
-
-		Decay:
-		BS1B B 8 A_CustomMissile ("ExplosionSmoke", 60, 0, random (0, 360), 2, random (70, 110))
-		Loop
+		BS1B B 5 A_CustomMissile ("ExplosionSmoke", 60, 0, random (0, 360), 2, random (70, 110))
+		BS1B B -1 A_CustomMissile ("RealFlameTrailsMedium", 60, 0, random (0, 360), 2, random (0, 160))
+		Stop
 	}
 }
 
