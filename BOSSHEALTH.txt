@@ -78,6 +78,49 @@ script "BDBruiserBrothersHealth" (void)
 
 }
 
+// EDAY10 Belphegor Bosses
+// This is just temporary for compatiblity with EDAY until/if Mark changes everything to named scripts instead of numbered
+
+script 1622 (void)
+{
+
+    //Let's write the Boss's name here.
+	setfont("BIGFONT");
+	HudMessageBold(s:"-= BOSS =-"; HUDMSG_PLAIN, 0, CR_RED, 0.5, 0.09, 0.1, 1.0);
+
+
+	//How much health the boss currently has.
+	setfont("SMALLFONT");
+	int	bosshealth1 = GetActorProperty(1161, APROP_Health);
+	int	bosshealth2 = GetActorProperty(1162, APROP_Health);
+
+	HudMessageBold(d:bosshealth1; HUDMSG_PLAIN, 0, CR_WHITE, 1.23, 0.15, 0.1, 1.0);
+	HudMessageBold(d:bosshealth2; HUDMSG_PLAIN, 0, CR_WHITE, 1.63, 0.15, 0.1, 1.0);
+
+
+	//Just a divider
+	HudMessageBold(s:"/"; HUDMSG_PLAIN, 0, CR_WHITE, 1.3, 0.15, 0.05, 1.0);
+	HudMessageBold(s:"/"; HUDMSG_PLAIN, 0, CR_WHITE, 1.7, 0.15, 0.05, 1.0);
+
+	//The boss's max health.
+	int	bossmaxhealth1 = GetActorProperty(1161, APROP_SpawnHealth);
+	HudMessageBold(d:bossmaxhealth1; HUDMSG_PLAIN, 0, CR_WHITE, 1.37, 0.15, 0.1, 1.0);
+	int	bossmaxhealth2 = GetActorProperty(1161, APROP_SpawnHealth);
+	HudMessageBold(d:bossmaxhealth1; HUDMSG_PLAIN, 0, CR_WHITE, 1.77, 0.15, 0.1, 1.0);
+	delay(1);
+
+
+	//Check if the boss still is alive. If yes, repeat the script, if not, it ends here.
+	if (GetActorProperty(1161, APROP_Health)> 1)
+	restart;
+
+	if (GetActorProperty(1162, APROP_Health)> 1)
+	restart;
+
+	Floor_LowerToLowest (666, 20);
+
+}
+
 script "BDBruiserBrotherOne" (void)
 {
 	 Thing_ChangeTID (0, 1161);
