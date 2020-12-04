@@ -341,6 +341,7 @@ ACTOR CyberRocket: Rocket2
 
 ACTOR GrenadeMissile
 {
+	Projectile
 	Radius 4
 	Height 4
 	Speed 50
@@ -353,6 +354,7 @@ ACTOR GrenadeMissile
 	+BOUNCEONWALLS
 	+BOUNCEONCEILINGS
 	+EXPLODEONWATER
+	-NOTELEPORT
 	Species "Marines"
 	DamageType Kick
     BounceFactor 0.5
