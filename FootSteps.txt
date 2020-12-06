@@ -1,22 +1,6 @@
-ACTOR Purist : Doomer
-{
-	Speed 1.0
-	Player.DisplayName "Purist (Oldschool mode)"
-	Player.StartItem "ClassicPistol"
-	Player.StartItem "ClassicFist"
-	Player.StartItem "Clip2", 30
-	Player.StartItem "IsPlayer", 1
-	Player.StartItem "IsPlayingAsPurist", 1
-	Player.StartItem "AmmoDroper"
-	Player.StartItem "IsNOTTacticalClass", 1
-	Player.StartItem "GrenadeAmmo", 1
-	Species "Marines"
-}
-
 ACTOR BDoomer : Doomer
 {
-	Speed 1.0
-	Player.DisplayName "Normal (Rifle Start)"
+	Player.DisplayName "Rifle Start"
 	Player.StartItem "Rifle"
 	Player.StartItem "Melee_Attacks"
 	Player.StartItem "HandGrenades", 1
@@ -54,8 +38,7 @@ ACTOR BDoomer : Doomer
 
 ACTOR Doomer2 : Doomer
 {
-	Speed 1.0
-	Player.DisplayName "Normal (Pistol Start)"
+	Player.DisplayName "Pistol Start"
 	Player.StartItem "BrutalPistol"
 	Player.StartItem "Melee_Attacks"
 	Player.StartItem "HandGrenades", 1
@@ -93,9 +76,8 @@ ACTOR Doomer2 : Doomer
 
 ACTOR TacticalDoomer : Doomer
 {
-	Speed 1.0
 	Player.RunHealth 999
-	Player.DisplayName "Tactical (Sprints, Recoil)"
+	Player.DisplayName "Tactical (Sprinting + Recoil)"
 	Player.StartItem "Rifle"
 	Player.StartItem "BrutalPistol"
 	Player.StartItem "Melee_Attacks"
@@ -128,6 +110,20 @@ ACTOR TacticalDoomer : Doomer
 	//Slot9
 	Player.StartItem "GrenadeAmmo", 1
 	Player.StartItem "AmmoDroper"
+	Species "Marines"
+}
+
+ACTOR Purist : Doomer
+{
+	Player.DisplayName "Purist (Classic Weapons)"
+	Player.StartItem "ClassicPistol"
+	Player.StartItem "ClassicFist"
+	Player.StartItem "Clip2", 30
+	Player.StartItem "IsPlayer", 1
+	Player.StartItem "IsPlayingAsPurist", 1
+	Player.StartItem "AmmoDroper"
+	Player.StartItem "IsNOTTacticalClass", 1
+	Player.StartItem "GrenadeAmmo", 1
 	Species "Marines"
 }
 

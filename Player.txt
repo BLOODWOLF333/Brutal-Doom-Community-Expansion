@@ -5,7 +5,6 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 	var int user_sghorizontalspread;
 	var int user_sgverticalspread;
 	var int user_playerangleexec;
-	Speed 1.0
 	Health 100
 	Radius 16
 	Height 56
@@ -68,7 +67,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		MARN A 0 A_TakeInventory("PlayerIsDead", 1)
 		TNT1 A 0 A_CustomMissile("Headkicking", 0, 0, 0, 2)
 		//TNT1 A 0 A_SpawnItemEx ("Headkicking", 0, 0, 0, velx, vely, velz, angle, SXF_SETMASTER | SXF_ABSOLUTEANGLE)
-		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower if is tactical class.
+		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player faster if tactical class.
 		MARN A 0 ACS_NamedExecuteAlways("BDBlackMetal", 0, 0, 0, 0)//Check if playing in realism mode.
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Disable Camera.
 		MARN A 0 ACS_NamedExecuteAlways("CheckIfDM", 0, 0, 0, 0)//Check if Coop

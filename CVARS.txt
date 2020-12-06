@@ -20,7 +20,7 @@ World Int 15: NumberOfAlliesFlame;
 
 SCRIPT "BDInitiate" OPEN
 {
-	if	(GetCvar("bd_disablemapenhancements") == 0)
+	if (GetCvar("bd_disablemapenhancements") == 0)
 	{
 		ReplaceTextures ("DSAND1", "SANDS1");
 		ReplaceTextures ("DSAND3", "SANDS1");
@@ -79,16 +79,12 @@ script "BDInitialize" enter
 	setfont("BLASCR");
 
 	if	(GameType () == GAME_SINGLE_PLAYER)
-		{
+	{
 		HudMessageBold(s:"a"; HUDMSG_FADEOUT, 1, CR_BLACK, 0.1, 0.1, 0.1, 1.0);
-		}
-
-	//setfont("SmallFONT");
-	//HudMessageBold(s:"Dev Build August 21 2018"; HUDMSG_PLAIN, 8, CR_WHITE, 2.0, 0.01, 9999.1, 1.0);
+	}
 
 	//===================
 	//Sbar Type
-
 	if	(GetCvar( "bd_sbartype") == 1) { GiveInventory("sbartype1", 1); }
 	if	(GetCvar( "bd_sbartype") == 2) { GiveInventory("sbartype2", 1); }
 	if	(GetCvar( "bd_sbartype") == 3) { GiveInventory("sbartype3", 1); }
@@ -98,7 +94,6 @@ script "BDInitialize" enter
 	if	(GetCvar( "bd_sbartype") == 7) { GiveInventory("sbartype7", 1); }
 
 	// Detect Player Gender
-
 	if(GetPlayerInfo(PlayerNumber(), PLAYERINFO_GENDER) == 0)
 	{
 		GiveInventory("GenderMale", 1);
@@ -115,18 +110,11 @@ script "BDInitialize" enter
 	}
 
 	//===========================
-
 	//Game compatibilities
-	//GiveInventory("LifeItem", 2); //Stronghold
-
-	//if (checkinventory("istacticalclass") == 1) { SetActorProperty (0, APROP_Speed, 1.0); }
-	//if (checkinventory("isplayingaspurist") == 1) { SetActorProperty (0, APROP_Speed, 1.0); }
-	if (checkinventory("isplayingaspurist") == 1) { TAkeInventory("IsTacticalClass", 1); }
-
 	if	(GameType () == GAME_NET_COOPERATIVE)
-		{
+	{
 		ConsoleCommand("compat_clientssendfullbuttoninfo 1");
-		}
+	}
 
 	if (MarineSpawnCounter == 0)
 	{
@@ -143,8 +131,7 @@ script "BDInitialize" enter
 
 script "BDRespawn" Respawn NET
 {
-//Sbar Type
-
+	//Sbar Type
 	TakeInventory("sbartype1", 1);
 	TakeInventory("sbartype2", 1);
 	TakeInventory("sbartype3", 1);
@@ -161,8 +148,8 @@ script "BDRespawn" Respawn NET
 	if	(GetCvar( "bd_sbartype") == 5) { GiveInventory("sbartype5", 1); }
 	if	(GetCvar( "bd_sbartype") == 6) { GiveInventory("sbartype6", 1); }
 	if	(GetCvar( "bd_sbartype") == 7) { GiveInventory("sbartype7", 1); }
-	// Detect Player Gender
 
+	// Detect Player Gender
 	if(GetPlayerInfo(PlayerNumber(), PLAYERINFO_GENDER) == 0)
 	{
 		GiveInventory("GenderMale", 1);
