@@ -67,13 +67,13 @@ ACTOR BrutalSMG : BrutalWeapon
 		RIFG A 0 A_SetCrosshair(41)
 		SMGA EF 1
         SMGG A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
-		SMGA A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+		SMGA A 1
 		SMGG A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
-		SMGA A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+		SMGA A 1
 		SMGG A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
-		SMGA A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+		SMGA A 1
 		SMGG A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
-		SMGA A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+		SMGA A 1
 		SMGG A 0 A_JumpIfInventory("FiredSecondary",1,"HoldAim")
         Goto Ready2
 

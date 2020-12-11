@@ -410,13 +410,13 @@ ACTOR Rocket_Launcher : BrutalWeapon
 		RIFG A 0 A_SetCrosshair(41)
         MIAI ABCDE 1
         RLNG A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
-		SNIP A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+		SNIP A 1
 		RLNG A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
-		SNIP A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+		SNIP A 1
 		RLNG A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
-		SNIP A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+		SNIP A 1
 		RLNG A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
-		SNIP A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+		SNIP A 1
 		RLNG A 0 A_JumpIfInventory("FiredSecondary",1,"HoldAim")
         Goto Ready2
 
