@@ -127,7 +127,7 @@ ACTOR CyberdemonBoss: TheCyberdemon 2546
 		CYBR JKL 5
 		CYBR M 5 A_NoBlocking
 		CYBR NOP 5
-		CYBR P 210
+		CYBR P 105
 		Goto CheckIfBoss
 
 	CheckIfBoss:
@@ -155,7 +155,7 @@ ACTOR CyberdemonBoss: TheCyberdemon 2546
 		CYBR JKL 0
 		CYBR M 0 A_NoBlocking
 		CYBR NOP 0
-		CYBR P 210
+		CYBR P 105
 		Goto CheckIfBoss
 
 	Death.Decaptate:
@@ -173,7 +173,7 @@ ACTOR CyberdemonBoss: TheCyberdemon 2546
 		CYBR JKL 0
 		CYBR M 0 A_NoBlocking
 		CYBR NOP 0
-		CYBR P 210
+		CYBR P 105
 		Goto CheckIfBoss
 
 	Death.Fatality:
@@ -189,14 +189,14 @@ ACTOR CyberdemonBoss: TheCyberdemon 2546
 		TNT1 A 0 A_Jump(128, "Death.Fatality2")
 		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
 		TNT1 A 0 A_GiveToTarget("CyberdemonFatality", 1)
-		TNT1 A 210
+		TNT1 A 105
         Goto CheckIfBoss
 
 	Death.Fatality2:
 		TNT1 A 0
 		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
 		TNT1 A 0 A_GiveToTarget("CyberdemonFatality", 1)
-		TNT1 A 210
+		TNT1 A 105
         Goto CheckIfBoss
 
 	Pain.Taunt:
@@ -405,7 +405,7 @@ ACTOR SuperMastermind: TheSpiderMastermind 2547
         //SPID MNOPQR 5
 		//TNT1 AAAAAAAAAAAA 0 A_CustomMissile ("PEPart2SuperFast", 32, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("GiantBloodSpot")
-        TNT1 A 210
+        TNT1 A 105
 		TNT1 A 0 A_BossDeath
 		Stop
 
@@ -443,7 +443,7 @@ Death.decaptate:
 		TNT1 A 0 A_CustomMissile ("MastermindLeg", 30, 0, 0, 2, 65)
 		//TNT1 AAAAAAAAAAAA 0 A_CustomMissile ("PEPart2SuperFast", 32, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("GiantBloodSpot")
-        TNT1 A 210
+        TNT1 A 105
 		TNT1 A 0 A_BossDeath
 		Stop
 	}
