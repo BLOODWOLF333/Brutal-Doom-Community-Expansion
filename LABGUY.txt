@@ -1073,7 +1073,7 @@ Actor DyingFormerScientistNoArm: DeadFormerScientist
 		Spawn:
 		TNT1 A 0
 
-		TNT1 A 0 A_PlaySound("BURNZOM")
+		TNT1 A 0 A_PlaySound("BURNZOM",4)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 32,0)
 		FSD2 BEBEBEBEBEBE 10 A_SpawnItem ("HeadshotTarget10", 5, 32,0)
 		FSD2 C 6
@@ -1082,6 +1082,7 @@ Actor DyingFormerScientistNoArm: DeadFormerScientist
 		FSD3 D -1
 		Stop
 		Death:
+		TNT1 A 0 A_StopSound(4)
 		FSD2 C 6 A_ChangeFlag("SHOOTABLE", 0)
 		TNT1 A 0 A_PlaySound("grunt/death")
 		TNT1 A 0 A_NoBlocking
@@ -1091,6 +1092,7 @@ Actor DyingFormerScientistNoArm: DeadFormerScientist
 
 		Death.Head:
 		Death.MinorHead:
+		TNT1 A 0 A_StopSound(4)
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 16, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
 		TNT1 A 0 A_CustomMissile ("MuchBlood2", 30, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAAA 0 A_CustomMissile ("Brains1", 30, 0, random (0, 360), 2, random (0, 160))
@@ -1112,6 +1114,7 @@ Actor DyingFormerScientistNoArm: DeadFormerScientist
 		Stop
 		XDeath:
 		Crush:
+		TNT1 A 0 A_StopSound(4)
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 16, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
 		TNT1 A 0 A_SpawnItem("GibsZ")
 		TNT1 A 0 A_CustomMissile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160))
@@ -1136,7 +1139,7 @@ Actor DyingFormerScientistNoLeg: DeadFormerScientist
 		Spawn:
 		TNT1 A 0
 
-		TNT1 A 0 A_PlaySound("BURNZOM")
+		TNT1 A 0 A_PlaySound("BURNZOM",4)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 22,0)
 		FSS7 ABC 5
 		FSS7 DEDEDEDEDEDE 10 A_SpawnItem ("HeadshotTarget10", 5, 22,0)
@@ -1146,6 +1149,7 @@ Actor DyingFormerScientistNoLeg: DeadFormerScientist
 		FSS7 F -1
 		Stop
 		Death:
+		TNT1 A 0 A_StopSound(4)
 		TNT1 A 0 A_PlaySound("grunt/death")
 		FSS7 GH 5
 		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
@@ -1156,6 +1160,7 @@ Actor DyingFormerScientistNoLeg: DeadFormerScientist
 
 		Death.Head:
 		Death.MinorHead:
+		TNT1 A 0 A_StopSound(4)
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 16, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
 		TNT1 A 0 A_CustomMissile ("MuchBlood2", 30, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAAA 0 A_CustomMissile ("Brains1", 30, 0, random (0, 360), 2, random (0, 160))
