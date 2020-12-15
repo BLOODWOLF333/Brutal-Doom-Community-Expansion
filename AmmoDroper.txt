@@ -38,10 +38,10 @@ ACTOR AmmoDroper : BrutalWeapon
 		TNT1 A 0 A_TakeInventory("StartDualWield",1)
 		TNT1 A 0 A_TakeInventory("Unloading", 1)
 		TNT1 A 0 A_TakeInventory("AmmoDropSlot", 12)
-		TNT1 A 0 A_TakeInventory("AmmoDroper", 1)
 		TNT1 AAAAAAAAA 0 A_Lower
 		TNT1 AAAAAA 1 A_Lower
-		Wait
+		TNT1 A 0 A_TakeInventory("AmmoDroper", 1)
+		Stop
 
 	Ready3:
 	SelectAnimation:
