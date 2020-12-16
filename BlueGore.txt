@@ -1,6 +1,5 @@
 //All the liquid gore stuff goes here.
 
-
 //Hit puff actor
 
 actor Blue_Blood: Brutal_Blood
@@ -62,7 +61,6 @@ Decal BlueBloodSplat
 	 }
 }
 
-
 //Base flying blood actor. Leaves bloodspots on the floor
 ACTOR Blue_FlyingBlood: Brutal_FlyingBlood
 {
@@ -121,14 +119,12 @@ Decal BlueBloodSplat
     }
 }
 
-
 //Faster version used in some specific cases
 ACTOR Blue_FlyingBloodMuchFaster: Blue_FlyingBlood
 {
 	 Scale 1.0
 	 Speed 8
 }
-
 
 actor Blue_FlyingBloodTrail: Brutal_FlyingBloodTrail
 {
@@ -154,13 +150,11 @@ Decal BlueBloodSplat
  }
 }
 
-
 actor Blue_BloodTrails: Brutal_FlyingBloodTrail
 {
 translation "168:191=192:207","16:47=240:247"
 Decal None
 }
-
 
 actor Blue_FlyingBloodFaster: Blue_FlyingBloodTrail
 {
@@ -173,7 +167,6 @@ Speed 4
 	  stop
  }
 }
-
 
 ACTOR Blue_FlyingBloodFake: Brutal_FlyingBloodFake
 {
@@ -197,14 +190,11 @@ Decal BlueBloodSplat
 
 ACTOR Blue_FlyingBloodFakeNoDecal: Blue_FlyingBloodFake { decal "none"}
 
-
-
 actor BlueBloodMist : BloodMist
 {
 translation "168:191=192:207","16:47=240:247"
 Decal BlueBloodSplat
 }
-
 
 actor BlueBloodMistBig : BloodMistBig
 {
@@ -231,14 +221,11 @@ translation "168:191=192:207","16:47=240:247"
 Decal BlueBloodSplat
 }
 
-
 actor BlueBloodMistChainsaw : BloodMistChainsaw
 {
 translation "168:191=192:207","16:47=240:247"
 Decal BlueBloodSplat
 }
-
-
 
 /////////////////////// BLOOD SPOTS //////////////////////////
 
@@ -248,7 +235,6 @@ ACTOR Blue_BloodSpot: Brutal_Bloodspot
 translation "168:191=192:207","16:47=240:247"
 Decal BlueBloodSplat
 }
-
 
 //a special flying blood actor that spawns muddy water pools over liquids
 ACTOR BlueWaterBloodCHecker: WaterBloodCHecker
@@ -306,14 +292,26 @@ actor BlueGiantBloodSpot: GiantBloodSpot
 Scale 1.1
 translation "168:191=192:207","16:47=240:247"
 Decal BlueBloodSplat
+States
+ {
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckIfOverLiquid")//Check Floortype
+		TNT1 A 3
+		TNT1 A 0 A_JumpIfInventory("IsOverSlimy", 1, "Disappear")
+		TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "Disappear")
+		TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "Disappear")
+		TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "Disappear")
+		TNT1 A 0 A_SpawnItemEx ("BootSmearerBlue",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_QueueCorpse
+		Goto SpawnAFrameOnly
+	}
 }
-
 
 actor BlueMinuscleBloodSpot: Blue_BloodSpot {Scale 0.25}
 actor BlueBigBloodSpot: BlueGiantBloodSpot { Scale 0.7}
 actor BlueMediumBloodSpot: BlueGiantBloodSpot { Scale 0.4}
 actor BlueMediumBloodSpot2: BlueGiantBloodSpot{ Scale 0.4}
-
 
 //Big version spawned by XDeath animations
 ACTOR SplatteredBlueSmall: Blue_BloodSpot
@@ -344,8 +342,10 @@ Decal BlueBloodSplat
 	TNT1 A 0 A_JumpIfInventory("IsOverlava", 1, "BlueWaterBloodSpot")
 	TNT1 A 0 A_SpawnItemEx ("BootSmearerGreen",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	TNT1 A 0 A_QueueCorpse
-	BPDL A -1
-	Stop
+  Rest:
+	BPDL A 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+	TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
+	Loop
 
  BlueWaterBloodSpot:
 	TNT1 A 0
@@ -353,8 +353,6 @@ Decal BlueBloodSplat
 	Stop
  }
 }
-
-
 
 //A blood pool spawned by regular enemy deaths.
 
@@ -403,24 +401,35 @@ states
 		  TNT5 A 3 A_SetScale(1.11, 1.11)
 
 		 Live:
-		  TNT5 A 900//duration
+		  TNT5 A 900 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		  TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Splash")
 		  TNT5 A -1
 		  Stop
 		Splash:
-		  BLOD A 0
+		  //BLOD A 0
+		  TNT1 A 0
 		  stop
-		  }
+	}
 }
-
-
-
 
 //A decorative kind of flying blood spawned by arterial blood
 ACTOR Blue_LiquidBlood: Brutal_LiquidBlood
 {
  decal "BlueBloodSmearSmall"
  translation "168:191=192:207","16:47=240:247"
+	States
+    {
+	Spawn:
+	   TNT1 A 0
+	   TNT1 A 0 A_CustomMissile ("Blue_FlyingBloodTrail", 10, 0, random (0, 360), 2, random (0, 90))
+	   BLOD AAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItem("Blue_LiquidBloodTrail")
+	   Stop
+	Death:
+  	   TNT1 A 0 A_PlaySound("blooddrop2")
+	   //XDT1 FGHIJKL 2
+	   TNT1 A 0
+       Stop
+	}
 }
 
 //Faster version, leaves no decals. Used to prevent decal overflow
@@ -459,7 +468,6 @@ Decal BlueBloodSplat
        Stop
     }
 }
-
 
 //Decorative trails
 ACTOR Blue_LiquidBloodTrail: Brutal_LiquidBloodTrail
@@ -508,7 +516,6 @@ ACTOR BlueArterialBloodSpray
     }
 }
 
-
 /////////////////// CEILING BLOOD //////////////////////////
 
 //Launches bloodspots on the ceiling
@@ -516,31 +523,31 @@ ACTOR BlueCeilBloodLauncher: CeilBloodLauncher
 {
 translation "168:191=192:207","16:47=240:247"
 Decal BlueBloodSplat
-    States
-		{
-		 Death:
-			TNT1 A 0
-			TNT1 A 0 A_CheckCeiling("IsOnCeil")
-			TNT1 A 0
-			stop
+States
+	{
+	 Death:
+		TNT1 A 0
+		TNT1 A 0 A_CheckCeiling("IsOnCeil")
+		TNT1 A 0
+		stop
 
-		 IsOnCeil:
-			TNT1 A 0
-			TNT1 A 1 A_SpawnItem("BlueCeilBloodSpot",0,0,0,1)
-			Stop
-		}
+	 IsOnCeil:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("BlueCeilBloodSpot",0,0,0,1)
+		Stop
+	}
 }
 
 //Longer version (for extreme deaths)
 ACTOR BlueCeilBloodLauncherLong: BlueCeilBloodLauncher
 {
-    States
-    {
-		 Spawn:
-			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-			TNT1 A 12
-			Stop
-    }
+States
+	{
+	Spawn:
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+		TNT1 A 12
+		Stop
+	}
 }
 
 // The Ceil Blood Spot
@@ -548,7 +555,7 @@ actor BlueCeilBloodSpot: CeilBloodSpot
 {
 translation "168:191=192:207","16:47=240:247"
 Decal BlueBloodSplat
-	states
+states
 	{
 		Spawn:
 		  BPDL A 1
@@ -558,7 +565,7 @@ Decal BlueBloodSplat
 		Live:
 		  BPDL A 5 ThrustThingZ(0, 20, 0, 1)
 		  Loop
-			}
+	}
 }
 
 //Bigger version of a ceil blood spot, usually left by sticky gibs.
@@ -683,7 +690,6 @@ translation "168:191=192:207","16:47=240:247"
 Decal BlueBloodSuper
 }
 
-
 //This one spawns a ridiculously bigger decal, used by BFG extreme deaths
 ACTOR GiantWallBlueBlood: WallBlueBlood
 {
@@ -694,28 +700,27 @@ Decal BlueBloodGiant
 //Spawns giant blood decals all around the area. Used in Blue Doom's BFG deaths.
 Actor BlueBloodSplinter
 {
-	+THRUACTORS
-	+CLIENTSIDEONLY
-	States
-		{
-			 Spawn:
-			   TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-			   TNT1 A 0 A_CustomMissile ("GiantWallBlueBlood", 40, 0, 0, 2, random (0, 35))
-			   TNT1 A 0 A_CustomMissile ("GiantWallBlueBlood", 40, 0, 45, 2, random (0, 35))
-			   TNT1 A 0 A_CustomMissile ("GiantWallBlueBlood", 40, 0, 90, 2, random (0, 35))
-			   TNT1 A 0 A_CustomMissile ("GiantWallBlueBlood", 40, 0, 135, 2, random (0, 35))
-			   TNT1 A 0 A_CustomMissile ("GiantWallBlueBlood", 40, 0, 180, 2, random (0, 35))
-			   TNT1 A 0 A_CustomMissile ("GiantWallBlueBlood", 40, 0, 225, 2, random (0, 35))
-			   TNT1 A 0 A_CustomMissile ("GiantWallBlueBlood", 40, 0, 270, 2, random (0, 35))
-			   TNT1 A 0 A_CustomMissile ("GiantWallBlueBlood", 40, 0, 315, 2, random (0, 35))
-			   Stop
++THRUACTORS
++CLIENTSIDEONLY
+States
+	{
+		 Spawn:
+		   TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+		   TNT1 A 0 A_CustomMissile ("GiantWallBlueBlood", 40, 0, 0, 2, random (0, 35))
+		   TNT1 A 0 A_CustomMissile ("GiantWallBlueBlood", 40, 0, 45, 2, random (0, 35))
+		   TNT1 A 0 A_CustomMissile ("GiantWallBlueBlood", 40, 0, 90, 2, random (0, 35))
+		   TNT1 A 0 A_CustomMissile ("GiantWallBlueBlood", 40, 0, 135, 2, random (0, 35))
+		   TNT1 A 0 A_CustomMissile ("GiantWallBlueBlood", 40, 0, 180, 2, random (0, 35))
+		   TNT1 A 0 A_CustomMissile ("GiantWallBlueBlood", 40, 0, 225, 2, random (0, 35))
+		   TNT1 A 0 A_CustomMissile ("GiantWallBlueBlood", 40, 0, 270, 2, random (0, 35))
+		   TNT1 A 0 A_CustomMissile ("GiantWallBlueBlood", 40, 0, 315, 2, random (0, 35))
+		   Stop
 
-			Splash:
-				BLOD A 0
-				stop
-		}
+		Splash:
+			BLOD A 0
+			stop
+	}
 }
-
 
 //Spawned by BD's kicked heads  to spawn blood decals and make the head bounce sound.
 ACTOR ShortWallBlueBlood: WallBlueBlood
@@ -739,10 +744,6 @@ ACTOR ShortWallBlueBlood: WallBlueBlood
 	}
 }
 
-
-
-
-
 //Blood actors spawned underwater
 ACTOR BlueUnderblood1: Underblood1
 {
@@ -763,9 +764,7 @@ ACTOR BlueUnderblood3: BlueUnderblood1
  Alpha 0.3
 }
 
-
 //Big blood mists
-
 
 actor BlueSuperGore: SuperGore
 {
@@ -773,13 +772,11 @@ actor BlueSuperGore: SuperGore
 	Decal BlueBloodSplat
 }
 
-
 Actor BlueSuperGoreMist: SuperGoreMist
 {
 translation "168:191=192:207","16:47=240:247"
 Decal BlueBloodSplat
 }
-
 
 //Used on bullet hit impacts
 Actor BlueSuperGoreMistTiny: SuperGoreMistTiny
@@ -794,13 +791,11 @@ translation "168:191=192:207","16:47=240:247"
 Decal BlueBloodSplat
 }
 
-
 actor GiantBlueSuperGore: GiantSuperGore
 {
 translation "168:191=192:207","16:47=240:247"
 Decal BlueBloodSplat
 }
-
 
 //Spawners for the BlueSuperGore thing
 Actor BlueSuperGoreSpawner: SuperGoreSpawner
@@ -813,8 +808,6 @@ Actor BlueSuperGoreSpawner: SuperGoreSpawner
 		Stop
 	}
 }
-
-
 
 //Bloody footprints still requires the player to be edited to work.
 //Gives the player an inventory item to indicate the feet are smeaBlue.
@@ -846,12 +839,10 @@ ACTOR BlueBloodFootPrintLeft: RedBloodFootPrintLeft
 translation "168:191=192:207","16:47=240:247"
 }
 
-
 ACTOR BlueBloodFootPrintRight: RedBloodFootPrintRight
 {
 translation "168:191=192:207","16:47=240:247"
 }
-
 
 //Gib actors
 
@@ -915,8 +906,11 @@ Decal BlueBloodSuper
 	    XMT1 M 1
 		TNT1 A 0 A_QueueCorpse
 		TNT1 A 0 A_SpawnItemEx ("Blue_BloodSpot", 0, 0, 1)
-		XMT1 M -1
-		Stop
+		Goto Rest
+	Rest:
+		XMT1 M 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Vanish")
+		Loop
 
 	SpawnCeiling:
 		TNT1 A 0
@@ -930,9 +924,7 @@ Decal BlueBloodSuper
     }
 }
 
-
 ACTOR XDeath2bBlue: XDeath2Blue {	Speed 4 } //Low-range version.
-
 
 //A piece of meat that has hit the wall, and now is slowly smearing
 ACTOR SmearingXDeath2Blue: SmearingXDeath2
@@ -971,8 +963,11 @@ Decal BlueBloodSuper
 		XMT1 M 1
 		TNT1 A 0 A_QueueCorpse
 		TNT1 A 0 A_SpawnItem("Blue_BloodSpot",0,0,0,1)
-		XMT1 M -1
-		Stop
+		Goto Rest1
+	Rest1:
+		XMT1 M 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Vanish")
+		Loop
 
 	Vanish:
 	    TNT1 A 5
@@ -985,33 +980,33 @@ actor CeilXDeath2Blue: CeilXdeath2
 {
 translation "168:191=192:207","16:47=240:247"
 Decal BlueBloodSuper
-	states
-	{
-		Spawn:
-			TNT1 A 0
-			TNT1 A 0 A_JUmp (255, "Live1", "Live2", "Live3")
-			Goto Live1
+states
+{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_JUmp (255, "Live1", "Live2", "Live3")
+		Goto Live1
 
-		  Live1:
-			  XMT1 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII 5 ThrustThingZ(0, 20, 0, 1)
-			  Goto Fall
+	  Live1:
+		  XMT1 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII 5 ThrustThingZ(0, 20, 0, 1)
+		  Goto Fall
 
-		  Live2:
-			  XMT1 IIIIIIIIIIIIIIIIIIIIIIIII 5 ThrustThingZ(0, 20, 0, 1)
-			  Goto Fall
+	  Live2:
+		  XMT1 IIIIIIIIIIIIIIIIIIIIIIIII 5 ThrustThingZ(0, 20, 0, 1)
+		  Goto Fall
 
-		  Live3:
-			  XMT1 IIIIIIIIIIIIIIIII 5 ThrustThingZ(0, 20, 0, 1)
-			  Goto Fall
-		 Fall:
-			  XMT1 F 0
-			  XMT1 JJJKKLL 2
-			  TNT1 A 0 A_SpawnItemEx("XDeath2BlueNoStick", 0, 0, 0, 0, 0, -1)
-			  stop
-		 Splash:
-			  BLOD A 0
-			  stop
-		}
+	  Live3:
+		  XMT1 IIIIIIIIIIIIIIIII 5 ThrustThingZ(0, 20, 0, 1)
+		  Goto Fall
+	 Fall:
+		  XMT1 F 0
+		  XMT1 JJJKKLL 2
+		  TNT1 A 0 A_SpawnItemEx("XDeath2BlueNoStick", 0, 0, 0, 0, 0, -1)
+		  stop
+	 Splash:
+		  BLOD A 0
+		  stop
+	}
 }
 
 //piece of meat that got stuck on the ceiling/wall and now is falling
@@ -1034,13 +1029,13 @@ Decal BlueBloodSplat
 		TNT1 A 0 A_QueueCorpse
 		XMT1 M 3
 		TNT1 A 0 A_SpawnItem("Blue_BloodSpot",0,0,0,1)
-		XMT1 M -1
-		Stop
+		Goto Rest
+	Rest:
+		XMT1 M 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Vanish")
+		Loop
     }
 }
-
-
-
 
 //Variation of XDeath2Blue
 ACTOR XDeath3Blue: XDeath3
@@ -1064,8 +1059,11 @@ Decal BlueBloodSuper
 	    XMT2 I 1
 		TNT1 A 0 A_QueueCorpse
 		TNT1 A 0 A_SpawnItemEx ("Blue_BloodSpot", 0, 0, 1)
-		XMT2 I -1
-		Stop
+		Goto Rest
+	Rest:
+		XMT2 M 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Vanish")
+		Loop
 
 	SpawnCeiling:
 		TNT1 A 0
@@ -1075,9 +1073,7 @@ Decal BlueBloodSuper
     }
 }
 
-
 ACTOR XDeath3bBlue: XDeath3Blue {	Speed 4 } //Low-range version.
-
 
 //A piece of meat that has hit the wall, and now is slowly smearing
 ACTOR SmearingXDeath3Blue: SmearingXDeath3
@@ -1116,8 +1112,11 @@ Decal BlueBloodSuper
 		XMT2 I 1
 		TNT1 A 0 A_QueueCorpse
 		TNT1 A 0 A_SpawnItem("Blue_BloodSpot",0,0,0,1)
-		XMT2 I -1
-		Stop
+		Goto Rest
+	Rest:
+		XMT2 I 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Vanish")
+		Loop
 
 	Vanish:
 	    TNT1 A 5
@@ -1178,8 +1177,11 @@ Decal BlueBloodSuper
 		TNT1 A 0 A_QueueCorpse
 		XMT2 I 3
 		TNT1 A 0 A_SpawnItem("Blue_BloodSpot",0,0,0,1)
-		XMT2 I -1
-		Stop
+		Goto Rest
+	Rest:
+		XMT2 I 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Vanish")
+		Loop
     }
 }
 
@@ -1197,8 +1199,11 @@ Decal BlueBloodSplat
     Death:
 		XDB6 B 1
 		TNT1 A 0 A_QueueCorpse
-		XDB6 B -1
-		Stop
+		Goto Rest
+	Rest:
+		XDB6 B 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Vanish")
+		Loop
     }
 }
 
@@ -1222,7 +1227,7 @@ Decal BlueBloodSplat
 		TNT1 A 0
         XME5 B 3
     Living:
-		XME5 B 800//duration
+		XME5 B 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Vanish")
         Loop
 	Vanish:
@@ -1251,7 +1256,7 @@ Decal BlueBloodSplat
 		TNT1 A 0
         XME5 D 3
     Living:
-		XME5 D 800//duration
+		XME5 D 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Vanish")
         Loop
 	Vanish:
@@ -1260,7 +1265,6 @@ Decal BlueBloodSplat
 
     }
 }
-
 
 ACTOR XDeath5BlueBig: XDeath5Blue
 {
@@ -1305,13 +1309,13 @@ States
     Death:
         XME8 B 1
 		TNT1 A 0 A_QueueCorpse
-		XME8 B -1
-        Stop
+		Goto Rest
+	Rest:
+		XME8 B 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Vanish")
+		Loop
     }
 }
-
-
-
 
 ACTOR BlueGuts: Guts
 {
@@ -1323,7 +1327,6 @@ ACTOR BlueGuts2: BlueGuts
 {
     Speed 3
 }
-
 
 ACTOR SmallBlueBrainPiece: SmallBrainPiece
 {
@@ -1368,7 +1371,6 @@ translation "16:47=[147,129,192]:[47,35,56]", "176:191=111:111"
 
 ACTOR SmallBlueBrainPieceFast: SmallBlueBrainPiece {  Speed 14 }
 
-
 Actor SmallBlueBrainPieceCeil: SmallBrainPieceCeil
 {
 translation "16:47=[147,129,192]:[47,35,56]", "176:191=111:111"
@@ -1394,7 +1396,7 @@ translation "16:47=[147,129,192]:[47,35,56]", "176:191=111:111"
 		 Fall:
 			  TNT1 A 0 A_SpawnItemEx("SmallBlueBrainPieceFalling", 0, 0, 0, 0, 0, -2, SXF_TRANSFERSCALE)
 			  stop
-			  }
+	}
 }
 
 ACTOR SmallBlueBrainPieceFalling: SmallBrainPieceFalling
@@ -1406,8 +1408,6 @@ ACTOR SmearingBlueBrain: SmearingBrain
 {
 translation "16:47=[147,129,192]:[47,35,56]", "176:191=111:111"
 }
-
-
 
 actor MuchBloodBlue : Blood
 {
@@ -1428,7 +1428,6 @@ actor MuchBloodBlue : Blood
         stop
  }
 }
-
 
 actor MuchBlood2Blue : Blood
 {
@@ -1490,7 +1489,6 @@ actor BlueBloodDying : Brutal_Blood
  }
 }
 
-
 actor BlueSawBlood : SawBlood
 {
  states
@@ -1503,7 +1501,7 @@ actor BlueSawBlood : SawBlood
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 			TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckBloodIntensity")
 			TNT1 A 0
-			TNT1 A 0 A_PlaySound("misc/xdeath5")
+			TNT1 A 0 A_PlaySound("misc/XDeath5")
 			BSPR A 2
 			TNT1 A 0 A_CustomMissile ("BlueWaterBloodCHecker", 7, 0, random (0, 360), 2, random (30, 60))
 		Spawn2:
@@ -1515,6 +1513,8 @@ actor BlueSawBlood : SawBlood
 		TNT1 A 0 A_RadiusGive("ChainsawHitBlue", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 		TNT1 A 0 A_RadiusGive("PowerBlueBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 		TNT1 A 0 A_CustomMissile ("BlueBloodmistChainsaw", -10, 0, random (0, 360), 2, random (60, 90))
+		TNT1 A 0 A_CustomMissile ("XDeath1Blue", 0, 0, random (0, 360), 2, random (40, 80))
+		TNT1 A 0 A_CustomMissile ("WallBlueBlood", 0, 0, random (0, 360), 2, random (-10, 80))
 		TNT1 A 0 A_PlaySound("CSAWFLESH")
 		TNT1 A 0 Radius_Quake (2, 2, 0, 2, 0)
 		Stop
