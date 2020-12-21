@@ -326,7 +326,7 @@ TNT1 A 0 A_SpawnItem("WhiteShockwaveBig")
 actor BFGSprayExplosion: RocketExplosion
 {
 +FORCERADIUSDMG
-DamageType "Desintegrate"
+DamageType Desintegrate
 States    {
     Spawn:
 	TNT1 A 0
@@ -954,7 +954,7 @@ ACTOR TankShell
 	DeathSound "weapons/rocklx"
 	Obituary "$OB_MPROCKET"
 	Decal "BigScorch"
-	Damagetype "Explosive"
+	Damagetype Explosive
 	States
 	{
 	Spawn:
@@ -1000,6 +1000,7 @@ Speed 55
 Damage (random (350, 350))
 +MTHRUSPECIES
 Species "EnemyTank"
+DamageType ExplosiveImpact
 }
 
 ACTOR TankFireEffect
