@@ -138,24 +138,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 	Game Doom
 	Health 160
 	PainChance 255
-
-	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
-	DamageFactor "Bullet", 0.0	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
-	Damagefactor "Crush", 10.0	Damagefactor "Cut", 0.0	Damagefactor "Extremepunches", 0.0
-	Damagefactor "Fatality", 0.0	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 0.0
-	Damagefactor "Glass", 0.0	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0
-	Damagefactor "HeadKick", 0.0	Damagefactor "HelperMarineFatallity", 0.0	DamageFactor "Kick", 0.0
-	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0	Damagefactor "LowKick", 0.0
-	DamageFactor "Melee", 0.0	DamageFactor "Minigun", 0.0	DamageFactor "Minor", 0.0
-	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0	DamageFactor "Railgun", 0.0
-	Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "Saw", 0.0
-	DamageFactor "Shotgun", 0.0	DamageFactor "Shrapnel", 0.0	Damagefactor "Slide", 0.0
-	Damagefactor "SpawnMarine", 0.0	DamageFactor "SSG", 0.0	Damagefactor "Stealth", 0.0
-	Damagefactor "Taunt", 0.0	DamageFactor "TeleportRemover", 0.0	DamageFactor "Trample", 0.0
-	Damagefactor "Use", 0.0	DamageFactor "TankWeakSpot", 0.0 DamageFactor "Explosive", 0.0
-	DamageFactor "Desintegrate", 0.0 DamageFactor "Normal", 0.0 DamageFactor "Extreme", 1.0
-	DamageFactor "ExplosiveImpact", 1.0
-
+	Monster
 	Speed 12
 	FastSpeed 25
 	Species "Marines"
@@ -175,7 +158,6 @@ ACTOR Marine_Rifle: SwitchableDecoration
 	Translation  "112:127=32:47"
 	BloodType "Player_Blood", "Player_BloodSaw", "Player_Blood"
 	Obituary "%o has been gunned down by a Marine."
-	Monster
 	DropItem "RifleDrop"
 	+FLOORCLIP
 	+QUICKTORETALIATE
@@ -195,6 +177,21 @@ ACTOR Marine_Rifle: SwitchableDecoration
 	+NOBLOCKMONST
 	+DROPOFF
 	+SHOOTABLE
+	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
+	DamageFactor "Bullet", 0.0	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
+	Damagefactor "Crush", 10.0	Damagefactor "Cut", 0.0	Damagefactor "Extremepunches", 0.0
+	Damagefactor "Fatality", 0.0	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 0.0
+	Damagefactor "Glass", 0.0	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0
+	Damagefactor "HeadKick", 0.0	Damagefactor "HelperMarineFatallity", 0.0	DamageFactor "Kick", 0.0
+	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0	Damagefactor "LowKick", 0.0
+	DamageFactor "Melee", 0.0	DamageFactor "Minigun", 0.0	DamageFactor "Minor", 0.0
+	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0	DamageFactor "Railgun", 0.0
+	Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "Saw", 0.0
+	DamageFactor "Shotgun", 0.0	DamageFactor "Shrapnel", 0.0	Damagefactor "Slide", 0.0
+	Damagefactor "SpawnMarine", 0.0	DamageFactor "SSG", 0.0	Damagefactor "Stealth", 0.0
+	Damagefactor "Taunt", 0.0	DamageFactor "TeleportRemover", 0.0	DamageFactor "Trample", 0.0
+	Damagefactor "Use", 0.0	DamageFactor "TankWeakSpot", 0.0 DamageFactor "Explosive", 0.0
+	DamageFactor "Desintegrate", 0.0 DamageFactor "Extreme", 0.0 DamageFactor "HeavyImpact", 0.0
 	States
 	{
 	Active:

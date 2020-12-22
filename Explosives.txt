@@ -238,7 +238,7 @@ actor RocketExplosion
 	+MISSILE
 	Radius 2
 	Height 2
-	Damagetype ExplosiveImpact
+	Damagetype Explosive
 	Obituary "%o was exploded by %k rocket."
 	States
 	{
@@ -571,7 +571,7 @@ ACTOR MarineGrenade
 ACTOR GrenadeMissileBreaksGlass: ShortGrenade
 {
     -BLOODSPLATTER
-	Damagetype "Normal"
+	Damagetype Explosive
 	+NOPAIN
 	Decal "None"
 	Damage (random (1,2))
