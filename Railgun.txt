@@ -545,7 +545,7 @@ ACTOR RailgunProjectile
 	}
 }
 
-aCTOR rAILGUNpENETRATOR1
+aCTOR RailgunPenetrator1
 {
 	PROJECTILE
 	+Missile
@@ -553,7 +553,7 @@ aCTOR rAILGUNpENETRATOR1
 	Radius 2
 	Height 2
 	Speed 40
-	Damagetype "Extreme"
+	Damagetype Railgun
 	States
 	{
 		Spawn:
@@ -684,7 +684,7 @@ Actor RailgunPenetrator: MarineTracer
 damage (random(50, 60))
 //Decal "BulletDecalNew1"
 Decal "Scorch"
-DamageType Extreme
+DamageType Railgun
 Radius 4
 Height 4
 Scale 0.2
