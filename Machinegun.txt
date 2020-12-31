@@ -8,7 +8,6 @@ ACTOR Machinegun : BrutalWeapon
 	Weapon.AmmoGive2 0
 	Weapon.AmmoUse2 1
 	+WEAPON.NOAUTOAIM
-	+WEAPON.NOAUTOFIRE
 	+FORCEXYBILLBOARD
 	+WEAPON.ALT_AMMO_OPTIONAL
 	Inventory.PickupSound "CBOXPKUP"
@@ -39,7 +38,7 @@ ACTOR Machinegun : BrutalWeapon
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		MGN1 A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		MGN1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
-		MGN1 A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
+		//MGN1 A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
 		Loop
 
 	IdleNoAmmo:
@@ -216,7 +215,6 @@ ACTOR Machinegun : BrutalWeapon
 			MGN1 A 0 A_Refire
 			goto Ready
 
-
 		AltFire:
 			MGN1 A 0
 			MGN1 A 0 A_JumpIfInventory("AmmoRocket", 1, 1)
@@ -267,4 +265,3 @@ ACTOR Machinegun : BrutalWeapon
 			Goto Ready
 		}
 }
-
