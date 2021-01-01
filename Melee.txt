@@ -945,10 +945,10 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		TNT1 A 0 A_TakeInventory("GrabbedAZombieCivilian",1)
 		TNT1 A 0 A_TakeInventory("GrabbedAImp",1)
 		TNT1 A 0 A_GiveInventory("ZMANShield",1)
+		TNT1 A 0 A_GiveInventory("HasZmanShield",1)
 		GRZ1 A 1 offset(0,40)
 		GRZ1 A 1 offset(0,48)
 		TNT1 A 0 A_SelectWeapon("ZMANShield")
-		TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
 		Goto Ready
 
 	ZombiemanDie:
@@ -1011,12 +1011,11 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		TNT1 A 0 A_TakeInventory("GrabbedAShotgunguy",1)
 		TNT1 A 0 A_TakeInventory("GrabbedAChaingunguy",1)
 		TNT1 A 0 A_TakeInventory("GrabbedAZombieCivilian",1)
-		TNT1 A 0 A_TakeInventory("GrabbedAImp",1)
 		TNT1 A 0 A_GiveInventory("ImpShield",1)
+		TNT1 A 0 A_GiveInventory("HasImpShield",1)
 		GRZ3 A 1 offset(0,40)
 		GRZ3 A 1 offset(0,48)
 		TNT1 A 0 A_SelectWeapon("ImpShield")
-		TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
 		Goto Ready
 
 	ImpDie:
@@ -1080,10 +1079,10 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		TNT1 A 0 A_TakeInventory("GrabbedAZombieCivilian",1)
 		TNT1 A 0 A_TakeInventory("GrabbedAImp",1)
 		TNT1 A 0 A_GiveInventory("SguyShield",1)
+		TNT1 A 0 A_GiveInventory("HasSguyShield",1)
 		GRZ2 A 1 offset(0,40)
 		GRZ2 A 1 offset(0,48)
 		TNT1 A 0 A_SelectWeapon("SGuyShield")
-		TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
 		Goto Ready
 
 	ShotgunguyDie:
@@ -1145,10 +1144,10 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		TNT1 A 0 A_TakeInventory("GrabbedAChaingunguy",1)
 		TNT1 A 0 A_TakeInventory("GrabbedAImp",1)
 		TNT1 A 0 A_GiveInventory("CguyShield",1)
+		TNT1 A 0 A_GiveInventory("HasSguyShield",1)
 		GRZ4 A 1 offset(0,40)
 		GRZ4 A 1 offset(0,48)
 		TNT1 A 0 A_SelectWeapon("CGuyShield")
-		TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
 		Goto Ready
 
 	ChaingunguyDie:
@@ -1210,10 +1209,10 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		TNT1 A 0 A_TakeInventory("GrabbedAZombieCivilian",1)
 		TNT1 A 0 A_TakeInventory("GrabbedAImp",1)
 		TNT1 A 0 A_GiveInventory("ZombieCivilianShield",1)
+		TNT1 A 0 A_GiveInventory("HasZmanShield",1)
 		GRZ7 A 1 offset(0,40)
 		GRZ7 A 1 offset(0,48)
 		TNT1 A 0 A_SelectWeapon("ZombieCivilianShield")
-		TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
 		Goto Ready
 
 	ZombieCivilianDie:
@@ -1275,10 +1274,10 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		TNT1 A 0 A_TakeInventory("GrabbedAEvilMarine",1)
 		TNT1 A 0 A_TakeInventory("GrabbedAImp",1)
 		TNT1 A 0 A_GiveInventory("EvilMarineShield",1)
+		TNT1 A 0 A_GiveInventory("HasZmanShield",1)
 		GRZ5 A 1 offset(0,40)
 		GRZ5 A 1 offset(0,48)
 		TNT1 A 0 A_SelectWeapon("EvilMarineShield")
-		TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
 		Goto Ready
 
 	EvilMarineDie:
@@ -1340,10 +1339,10 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		TNT1 A 0 A_TakeInventory("GrabbedANazi",1)
 		TNT1 A 0 A_TakeInventory("GrabbedAImp",1)
 		TNT1 A 0 A_GiveInventory("NaziShield",1)
+		TNT1 A 0 A_GiveInventory("HasZmanShield",1)
 		GRZ6 A 1 offset(0,40)
 		GRZ6 A 1 offset(0,48)
 		TNT1 A 0 A_SelectWeapon("NaziShield")
-		TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
 		Goto Ready
 
 	NaziDie:

@@ -494,9 +494,8 @@ ACTOR BrutalWeapon : DoomWeapon
 		TNT1 A 0
 		TNT1 A 0 A_ChangeFLag("NOPAIN", 1)
 		TNT1 A 0 A_ChangeFLag("PUSHABLE", 0)
-		TNT1 A 0 A_Stop
+		TNT1 A 0 Thing_Stop(0)
 		TNT1 A 0 SetPlayerProperty(0,1,4)
-		KICK A 0 A_Takeinventory("ExecuteDownedEnemy",1)
 		TNT1 A 0 A_JumpIfInventory("IsFloating", 1, "ExecuteAirStomp")
 		TNT1 A 0 A_JumpIfInventory("ExecuteBashWall", 1, "BashWall")//Imp-Only Execution
 		TNT1 A 5 A_SetPitch(70)//up(-) | down(+)
@@ -552,7 +551,6 @@ ACTOR BrutalWeapon : DoomWeapon
 
 	ExecuteAirStomp:
 		TNT1 A 0
-		TNT1 A 0 A_Stop
 		TNT1 A 0 A_GiveInventory("IsExecutingOnAir", 1)
 		TNT1 A 0 ThrustThingZ(0, 10, 0, 1)
 		STOM ABCCCCC 1 A_SetPitch(70)
@@ -563,63 +561,60 @@ ACTOR BrutalWeapon : DoomWeapon
         STOM D 5
 		TNT1 A 0 ThrustThingZ(0, 20, 1, 1)
 		TNT1 A 0 A_TakeInventory("IsExecutingOnAir", 1)
-		KICK A 0 A_Takeinventory("ExecuteBashWall",1)
 		Goto FinishExecution
 
 	Execution1:
-		KICK BCD 1 A_Stop
+		KICK BCD 1
 		TNT1 A 0 A_GiveInventory("Kicking",1)
 		RIFF A 0 A_FireCustomMissile("ExecutionAttackKick", 0, 0, 0, -17)
-        KICK H 5 A_Stop
-		KICK I 1 A_Stop
-		KICK GFEDCBA 1 A_Stop
-		TNT1 A 5 A_Stop
+        KICK H 5
+		KICK I 1
+		KICK GFEDCBA 1
+		TNT1 A 5
 		Goto FinishExecution
 
 	Execution2:
 		TNT1 A 0
-		PONG B 1 A_Stop
+		PONG B 1 Thing_Stop(0)
         PONG C 1 A_PlaySound("skeleton/swing")
 		TNT1 A 0 A_GiveInventory("Punching",1)
 		PONG D 1 A_FireCustomMissile("ExecutionAttackMelee", 0, 0, 0, 0)
-		PONG E 3 A_Stop
-		PONG DCB 2 A_Stop
-		PUN3 A 1 A_Stop
+		PONG E 3 Thing_Stop(0)
+		PONG DCB 2 Thing_Stop(0)
+		PUN3 A 1 Thing_Stop(0)
         PUN3 B 1 A_PlaySound("skeleton/swing")
 		TNT1 A 0 A_GiveInventory("Punching",1)
 		PUN3 C 1 A_FireCustomMissile("ExecutionAttackMelee", 0, 0, 0, 0)
-		PUN3 E 3 A_Stop
-		PUN3 CBA 2 A_Stop
+		PUN3 E 3 Thing_Stop(0)
+		PUN3 CBA 2 Thing_Stop(0)
 
-		PONG B 1 A_Stop
+		PONG B 1 Thing_Stop(0)
         PONG C 1 A_PlaySound("skeleton/swing")
 		TNT1 A 0 A_GiveInventory("Punching",1)
 		PONG D 1 A_FireCustomMissile("ExecutionAttackMelee", 0, 0, 0, 0)
-		PONG E 3 A_Stop
-		PONG DCB 2 A_Stop
-		PUN3 A 1 A_Stop
+		PONG E 3 Thing_Stop(0)
+		PONG DCB 2 Thing_Stop(0)
+		PUN3 A 1 Thing_Stop(0)
         PUN3 B 1 A_PlaySound("skeleton/swing")
 		TNT1 A 0 A_GiveInventory("Punching",1)
 		PUN3 C 1 A_FireCustomMissile("ExecutionAttackMelee", 0, 0, 0, 0)
-		PUN3 E 3 A_Stop
-		PUN3 CBA 2 A_Stop
+		PUN3 E 3 Thing_Stop(0)
+		PUN3 CBA 2 Thing_Stop(0)
 
-		PONG B 1 A_Stop
+		PONG B 1 Thing_Stop(0)
         PONG C 1 A_PlaySound("skeleton/swing")
 		TNT1 A 0 A_GiveInventory("Punching",1)
 		PONG D 1 A_FireCustomMissile("ExecutionAttackMelee", 0, 0, 0, 0)
-		PONG E 3 A_Stop
-		PONG DCB 2 A_Stop
-
-		TNT1 A 1
-		PUN3 A 1 A_Stop
+		PONG E 3 Thing_Stop(0)
+		PONG DCB 2 Thing_Stop(0)
+		PUN3 A 1 Thing_Stop(0)
         PUN3 B 1 A_PlaySound("skeleton/swing")
 		TNT1 A 0 A_GiveInventory("Punching",1)
-		PUN3 C 1
-		TNT1 A 0 A_FireCustomMissile("ExecutionAttackMelee", 0, 0, 0, 0)
-		PUN3 E 6 A_Stop
-		PUN3 CBA 2 A_Stop
-		TNT1 A 5
+		PUN3 C 1 A_FireCustomMissile("ExecutionAttackMelee", 0, 0, 0, 0)
+		PUN3 E 3 Thing_Stop(0)
+		PUN3 CBA 2 Thing_Stop(0)
+
+		TNT1 A 5 Thing_Stop(0)
 		Goto FinishExecution
 
 	FinishExecution:
@@ -628,8 +623,9 @@ ACTOR BrutalWeapon : DoomWeapon
 		TNT1 A 0 A_GiveInventory("UsedStamina", 15)
 		TNT1 A 0 A_ChangeFLag("NOPAIN", 0)
 		TNT1 A 0 A_ChangeFLag("PUSHABLE", 1)
-		TNT1 A 0 SetPlayerProperty(0,0,4)
+		TNT1 A 1 SetPlayerProperty(0,0,4)
 		KICK A 0 A_Takeinventory("ExecuteDownedEnemy",1)
+		KICK A 0 A_Takeinventory("BDWeaponAction",1)
 		TNT1 A 0 A_takeInventory("PressedUSe", 1)
 		Goto GoingToReady
 	}
