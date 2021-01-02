@@ -177,7 +177,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 	+NOBLOCKMONST
 	+DROPOFF
 	+SHOOTABLE
-	Damagefactor "Avoid", 0.1	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
+	Damagefactor "Avoid", 1.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	DamageFactor "Bullet", 0.0	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
 	Damagefactor "Crush", 10.0	Damagefactor "Cut", 0.0	Damagefactor "Extremepunches", 0.0
 	Damagefactor "Fatality", 0.0	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 0.0
@@ -192,6 +192,8 @@ ACTOR Marine_Rifle: SwitchableDecoration
 	Damagefactor "Taunt", 0.0	DamageFactor "TeleportRemover", 0.0	DamageFactor "Trample", 0.0
 	Damagefactor "Use", 0.0	DamageFactor "TankWeakSpot", 0.0 DamageFactor "Explosive", 0.0
 	DamageFactor "Desintegrate", 0.0 DamageFactor "HeavyImpact", 0.0
+
+	PainChance "Avoid", 128
 	States
 	{
 	Active:
