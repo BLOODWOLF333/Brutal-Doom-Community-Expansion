@@ -924,76 +924,73 @@ ACTOR Marine_Fist: Marine_Rifle
 	TNT1 A 0 A_ChangeFlag (Invulnerable, 1)
 	TNT1 A 0 A_Jump(128, "FatalityImp2")
 	//////////////////////////////////////////////////////
-	FTCI AB 4
+	FTCI AB 2
 	XXXX A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
 	TNT1 A 0 A_PlaySound("grunt/pain", 1)
 	TNT1 A 0 A_PlaySound("player/cyborg/fist", 4)
-	FTCI CDE 4
-	FTCI E 8
+	FTCI CDE 2
+	FTCI E 2
 
-	FTCI FGG 5
+	FTCI FGG 2
 	FTCI H 2
-	XXXX A 0 A_CustomMissile ("ShakeYourAssMinor", 1, 0, random (0, 360), 2, random (0, 160))
-	TNT1 A 0 A_PlaySound("grunt/pain", 1)
-	TNT1 A 0 A_PlaySound("player/cyborg/fist", 4)
-	TNT1 A 0 A_CustomMissile ("XDeath1", 15, 0, random (0, 360), 2, random (0, 160))
-	TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
-	TNT1 A 0 A_CustomMissile ("Teeth", 15, 0, random (0, 360), 2, random (0, 160))
-	FTCI I 10
-	FTCI H 5
-	FTCI G 8
-
+	NULL A 0 ACS_NamedExecute("BDRedBloodHUD", 0, 0, 0, 0)
+	NULL A 0 ACS_NamedExecute("BDMoreRedBloodHUD", 0, 0, 0, 0)
+	NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
+	NULL A 0 A_PlaySound("imp/pain", 1)
+	NULL A 0 A_PlaySound("player/cyborg/fist", 4)
+	NULL A 0 A_SpawnItemEX("Blood", 0, 15, 10)
+	NULL A 0 A_CustomMissile ("Teeth", 15, 0, random (0, 360), 2, random (0, 160))
+	FTCI I 2
 	FTCI H 2
-	XXXX A 0 A_CustomMissile ("ShakeYourAssMinor", 1, 0, random (0, 360), 2, random (0, 160))
-	TNT1 A 0 A_PlaySound("grunt/pain", 1)
-	TNT1 A 0 A_PlaySound("player/cyborg/fist", 4)
-	TNT1 A 0 A_CustomMissile ("XDeath1", 15, 0, random (0, 360), 2, random (0, 160))
-	TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
-	TNT1 A 0 A_CustomMissile ("Teeth", 15, 0, random (0, 360), 2, random (0, 160))
-	FTCI I 10
-	FTCI H 5
-	FTCI G 8
+	FTCI G 2
 
 	FTCI H 2
-	XXXX A 0 A_CustomMissile ("ShakeYourAssMinor", 1, 0, random (0, 360), 2, random (0, 160))
-	TNT1 A 0 A_PlaySound("grunt/pain", 1)
-	TNT1 A 0 A_PlaySound("player/cyborg/fist", 4)
-	TNT1 A 0 A_CustomMissile ("XDeath1", 15, 0, random (0, 360), 2, random (0, 160))
-	TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
-	TNT1 A 0 A_CustomMissile ("Teeth", 15, 0, random (0, 360), 2, random (0, 160))
-	FTCI I 10
-	FTCI H 5
-	FTCI G 8
+	NULL A 0 ACS_NamedExecute("BDRedBloodHUD", 0, 0, 0, 0)
+	NULL A 0 ACS_NamedExecute("BDMoreRedBloodHUD", 0, 0, 0, 0)
+	NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
+	NULL A 0 A_PlaySound("imp/pain", 1)
+	NULL A 0 A_PlaySound("player/cyborg/fist", 4)
+	NULL A 0 A_SpawnItemEX("Blood", 0, 15, 10)
+	NULL A 0 A_CustomMissile ("Teeth", 15, 0, random (0, 360), 2, random (0, 160))
+	FTCI I 2
+	FTCI H 2
+	FTCI G 2
 
 	FTCI H 2
-	XXXX A 0 A_CustomMissile ("ShakeYourAssMinor", 1, 0, random (0, 360), 2, random (0, 160))
-	TNT1 A 0 A_PlaySound("grunt/pain", 1)
-	TNT1 A 0 A_PlaySound("player/cyborg/fist", 4)
-	TNT1 A 0 A_CustomMissile ("XDeath1", 15, 0, random (0, 360), 2, random (0, 160))
-	TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
-	TNT1 A 0 A_CustomMissile ("Teeth", 15, 0, random (0, 360), 2, random (0, 160))
-	FTCI I 10
-	FTCI H 5
-	FTCI G 8
+	NULL A 0 ACS_NamedExecute("BDRedBloodHUD", 0, 0, 0, 0)
+	NULL A 0 ACS_NamedExecute("BDMoreRedBloodHUD", 0, 0, 0, 0)
+	NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
+	NULL A 0 A_PlaySound("imp/pain", 1)
+	NULL A 0 A_PlaySound("player/cyborg/fist", 4)
+	TNT1 A 0 A_SpawnItemEx("SplatteredSmall", 0, 15)
+	NULL A 0 A_SpawnItemEX("Blood", 0, 15, 10)
+	NULL A 0 A_CustomMissile ("Teeth", 15, 0, random (0, 360), 2, random (0, 160))
+	FTCI I 2
+	FTCI H 2
+	FTCI G 2
+
+	FTCI H 2
+	NULL A 0 ACS_NamedExecute("BDRedBloodHUD", 0, 0, 0, 0)
+	NULL A 0 ACS_NamedExecute("BDMoreRedBloodHUD", 0, 0, 0, 0)
+	NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
+	NULL A 0 A_PlaySound("imp/pain", 1)
+	NULL A 0 A_PlaySound("player/cyborg/fist", 4)
+	NULL A 0 A_SpawnItemEX("Blood", 0, 15, 10)
+	NULL A 0 A_CustomMissile ("Teeth", 15, 0, random (0, 360), 2, random (0, 160))
+	FTCI I 2
+	FTCI H 2
+	FTCI G 2
 
 	FTCI H 2
 
-	XXXX A 0 A_CustomMissile ("ShakeYourAssMinor", 1, 0, random (0, 360), 2, random (0, 160))
-	TNT1 A 0 A_PlaySound("grunt/pain", 1)
-	TNT1 A 0 A_PlaySound("player/cyborg/fist", 4)
-	TNT1 AAAAA 0 A_CustomMissile ("XDeath1", 15, 0, random (0, 360), 2, random (0, 160))
-	TNT1 AAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
-	TNT1 A 0 A_CustomMissile ("Teeth", 15, 0, random (0, 360), 2, random (0, 160))
-	TNT1 AAAA 0 A_CustomMissile ("PlayerFlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
-	TNT1 AAAA 0 A_CustomMissile ("Brains1", 5, 0, random (0, 360), 2, random (0, 160))
-	TNT1 A 0 A_CustomMissile ("Brains2", 5, 0, random (0, 360), 2, random (0, 160))
-	TNT1 A 0 A_CustomMissile ("Brains3", 5, 0, random (0, 360), 2, random (0, 160))
-	TNT1 A 0 A_CustomMissile ("Brains4", 5, 0, random (0, 360), 2, random (0, 160))
-	TNT1 A 0 A_CustomMissile ("Brains5", 5, 0, random (0, 360), 2, random (0, 160))
-	TNT1 A 0 A_CustomMissile ("Brains5", 5, 0, random (0, 360), 2, random (0, 160))
-	TNT1 AAAAAAAA 0 A_CustomMissile ("SmallBrainPiece", 5, 0, random (0, 360), 2, random (0, 160))
-	FTCI L 10
-	FTCI J 20
+	NULL A 0 ACS_NamedExecute("BDRedBloodHUD", 0, 0, 0, 0)
+	NULL A 0 ACS_NamedExecute("BDMoreRedBloodHUD", 0, 0, 0, 0)
+	NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
+	NULL A 0 A_PlaySound("imp/pain", 1)
+	NULL A 0 A_PlaySound("player/cyborg/fist", 4)
+	TNT1 A 0 A_SpawnItem("ImpHeadExplode", 0, 10)
+	FTCI L 2
+	FTCI J 2
 	//////////////////////////////////////////////////////
 	TNT1 A 0 A_TakeInventory("GoFatality", 1)
 	TNT1 A 0 A_ChangeFlag (shootable, 1)
