@@ -371,7 +371,7 @@ ACTOR Marine_Minigun: Marine_Rifle
 
 	CheckRetreat:
 		TNT1 A 0
-		TNT1 A 0 A_JumpIfCloser(512, "Retreat")
+		TNT1 A 0 A_JumpIfCloser(256, "Retreat")
 		Goto MissileContinue+4
 
 	Retreat:

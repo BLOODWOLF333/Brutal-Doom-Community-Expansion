@@ -93,6 +93,7 @@ ACTOR Belphegor2 : BaronofHell 2544
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 71)
 		TNT1 A 0 A_JumpIfCloser(150, "Melee2")
 		BOS3 H 8 A_CustomMissile("BelphegorGreenPlasmaBall", 47, 0, 0, 1)
+		TNT1 A 0 A_CustomMissile("Alerter", 47)
 		Goto See
 
 	 MissileAngry:
@@ -106,6 +107,7 @@ ACTOR Belphegor2 : BaronofHell 2544
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 71)
 		TNT1 A 0 A_JumpIfCloser(150, "Melee2")
 		BOS3 H 0 A_CustomMissile("BelphegorGreenPlasmaBall", 47, 0, 0, 1)
+		TNT1 A 0 A_CustomMissile("Alerter", 47)
 		BOS3 G 0 A_FaceTarget
 		BOS3 HHHH 1 A_Chase("","")
 		Goto See2

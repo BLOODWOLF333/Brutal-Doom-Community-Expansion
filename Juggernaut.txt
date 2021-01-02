@@ -99,7 +99,9 @@ ACTOR Juggernaut : TheSpiderMastermind 2545
 		TNT1 A 0 A_CustomMissile ("JuggernautBody2", 0)//Torso shooting
 		BS1B A 2 A_Chase//Tracks
 		TNT1 A 0 A_CustomMissile("MastermindTracer", 91, 52, random(-3, 3), CMF_OFFSETPITCH, random(-2,2))
+		TNT1 A 0 A_CustomMissile("Alerter",91,52)
 		TNT1 A 0 A_CustomMissile("MastermindTracer", 91, -52, random(-3, 3), CMF_OFFSETPITCH, random(-2,2))
+		TNT1 A 0 A_CustomMissile("Alerter",91,-52)
 		TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 91, 52)
 		TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 91, -52)
 		TNT1 A 0 A_CustomMissile("MasterMindCaseSpawn", 91, 52, angle-90, CMF_ABSOLUTEANGLE)
