@@ -94,6 +94,36 @@ ACTOR Spectro: BullDemon Replaces Spectre
 		TNT1 A 0 A_JumpIfInventory("ComandoFatality", 1, "FatalityComando")
 		TNT1 A 0 A_JumpIfInventory("EatMe", 1, "Eat")
 		Goto See
+
+	Death:
+	    TNT1 A 0
+		TNT1 A 0 A_Jump(96, "LeftDeath")
+        TNT1 A 0 A_Jump(96, 13)
+
+	Death.Minor:
+		TNT1 AA 0
+		SARG I 8
+		SARG J 8 A_Scream
+		SARG K 4
+		SARG L 4 A_NoBlocking
+		SARG M 4
+        TNT1 A 0 A_SpawnItem ("DeadDemon1", 1)
+		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		Stop
+        TNT1 AAAAAAAAA 0
+        TNT1 A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("XDeathDemonArm", 35, 0, random (0, 360), 2, random (0, 160))
+		SAAR A 8 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
+		SAAR B 8 A_Scream
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_SpawnItemEx ("PoorSpectroLostHisArm",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        Stop
+
+	DeathRemoveArm:
+		TNT1 A 0
+		TNT1 AAAAAA 0 A_CustomMissile ("BloodMistBig", 40, 0, random (0, 360), 2, random (40, 90))
+		TNT1 A 0 A_CustomMissile ("BloodMistExtraBig", 40, 0, random (0, 360), 2, random (40, 90))
+		Goto Death+14
 	}
 }
 
@@ -109,5 +139,48 @@ ACTOR FuzzySpectre: BullDemon
 		TNT1 A 0 A_JumpIfInventory("EatMe", 1, "Eat")
 		SARG YZYZYZYZYZ 10 A_Look
 		Loop
+
+	Death:
+	    TNT1 A 0
+		TNT1 A 0 A_Jump(96, "LeftDeath")
+        TNT1 A 0 A_Jump(96, 13)
+
+	Death.Minor:
+		TNT1 AA 0
+		SARG I 8
+		SARG J 8 A_Scream
+		SARG K 4
+		SARG L 4 A_NoBlocking
+		SARG M 4
+        TNT1 A 0 A_SpawnItem ("DeadDemon1", 1)
+		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		Stop
+        TNT1 AAAAAAAAA 0
+        TNT1 A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("XDeathDemonArm", 35, 0, random (0, 360), 2, random (0, 160))
+		SAAR A 8 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
+		SAAR B 8 A_Scream
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_SpawnItemEx ("PoorFuzzyLostHisArm",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        Stop
+
+	DeathRemoveArm:
+		TNT1 A 0
+		TNT1 AAAAAA 0 A_CustomMissile ("BloodMistBig", 40, 0, random (0, 360), 2, random (40, 90))
+		TNT1 A 0 A_CustomMissile ("BloodMistExtraBig", 40, 0, random (0, 360), 2, random (40, 90))
+		Goto Death+14
 	}
+}
+
+Actor ArmlessSpectro : ArmlessDemon
+{
+	RenderStyle Add
+    Alpha 0.45
+}
+
+Actor ArmlessFuzzy : ArmlessDemon
+{
+	+SHADOW
+	RenderStyle OptFuzzy
+	Alpha 0.5
 }
