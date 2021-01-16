@@ -182,45 +182,6 @@ ACTOR SuperBlurSphere : CustomInventory
   }
 }
 
-ACTOR DemonStrengthRuneSpawner : BerserkPack
-{
-	States
-    {
-	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_Jump(16, "Spawn2", "Spawn3", "Spawn4")
-		TNT1 A 2
-
-	Spawn1:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx ("DemonStrengthRune",0,0,0,0,0,0,0,0,0)
-		TNT1 A 1
-		TNT1 A -1
-		Stop
-
-	Spawn2:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx ("64UnmakerUpgrade1",0,0,0,0,0,0,0,0,0)
-		TNT1 A 1
-		TNT1 A -1
-		Stop
-
-	Spawn3:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx ("64UnmakerUpgrade2",0,0,0,0,0,0,0,0,0)
-		TNT1 A 1
-		TNT1 A -1
-		Stop
-
-	Spawn4:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx ("64UnmakerUpgrade3",0,0,0,0,0,0,0,0,0)
-		TNT1 A 1
-		TNT1 A -1
-		Stop
-	}
-}
-
 ACTOR DemonStrengthRune : BerserkPack
 {
 	Game Doom
@@ -315,7 +276,6 @@ ACTOR DemonRuneMix: CustomInventory
 	Inventory.PickupSound "misc/p_pkup"
     States
     {
-
 	 Spawn:
 		TNT1 A 0
 		TNT1 A 0 ACS_NamedExecuteAlways("DemonRuneCheck")
@@ -369,6 +329,13 @@ ACTOR UnmakerUpgrades : Inventory
 	Inventory.MaxAmount 3
 }
 
+ACTOR 64UnmakerUpgradeSpawner : RandomSpawner
+{
+	DropItem "64UnmakerUpgrade1"
+	DropItem "64UnmakerUpgrade2"
+	DropItem "64UnmakerUpgrade3"
+}
+
 ACTOR 64UnmakerUpgrade1 : CustomInventory 1042
 {
 	// Orange Artifact (First Upgrade)
@@ -386,8 +353,6 @@ ACTOR 64UnmakerUpgrade1 : CustomInventory 1042
 	+DONTGIB
 	+COUNTITEM
 	-INTERHUBSTRIP
-	+NOGRAVITY
-	+FLOATBOB
 	States
 	{
 		Spawn:
@@ -403,7 +368,7 @@ ACTOR 64UnmakerUpgrade1 : CustomInventory 1042
 			Stop
 		Berserk:
 			TNT1 A 0 A_GiveInventory("PowerStrength", 1)
-			TNT1 A 0 HealThing(10, 0)
+			TNT1 A 0 HealThing(100, 0)
 			TNT1 A 20
 			TNT1 A 0 A_Print ("You got the Demon Strength Rune. RIP AND TEAR!")
 			Stop
@@ -430,8 +395,6 @@ ACTOR 64UnmakerUpgrade2 : CustomInventory 1043
 	+DONTGIB
 	+COUNTITEM
 	-INTERHUBSTRIP
-	+FLOATBOB
-	+NOGRAVITY
 	States
 	{
 		Spawn:
@@ -447,7 +410,7 @@ ACTOR 64UnmakerUpgrade2 : CustomInventory 1043
 			Stop
 		Berserk:
 			TNT1 A 0 A_GiveInventory("PowerStrength", 1)
-			TNT1 A 0 HealThing(10, 0)
+			TNT1 A 0 HealThing(100, 0)
 			TNT1 A 20
 			TNT1 A 0 A_Print ("You got the Demon Strength Rune. RIP AND TEAR!")
 			Stop
@@ -474,8 +437,6 @@ ACTOR 64UnmakerUpgrade3 : CustomInventory 1044
 	+DONTGIB
 	+COUNTITEM
 	-INTERHUBSTRIP
-	+FLOATBOB
-	+NOGRAVITY
 	States
 	{
 		Spawn:
@@ -491,7 +452,7 @@ ACTOR 64UnmakerUpgrade3 : CustomInventory 1044
 			Stop
 		Berserk:
 			TNT1 A 0 A_GiveInventory("PowerStrength", 1)
-			TNT1 A 0 HealThing(10, 0)
+			TNT1 A 0 HealThing(100, 0)
 			TNT1 A 20
 			TNT1 A 0 A_Print ("You got the Demon Strength Rune. RIP AND TEAR!")
 			Stop
