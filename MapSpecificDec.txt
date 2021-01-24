@@ -413,7 +413,7 @@ Radius 16
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1", 0, 0, 10)
 		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
-		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 25)
+		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 25)
 		TNT1 A 0 A_Jump(255, "Burning")
 		TNT1 A 0
 		Stop
@@ -424,6 +424,7 @@ Radius 16
 		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
 		Loop
 	Extinguish:
+		TNT1 A 0
 		TNT1 A 0 A_StopSound(1)
 		BPDC A -1
 		Stop
@@ -458,7 +459,7 @@ sCALE 0.6
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1", 0, 0, -50)
-		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 55)
+		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 55)
 		TNT1 A 0 A_Jump(255, "Burning")
 		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
 		TNT1 A 0
@@ -470,6 +471,7 @@ sCALE 0.6
 		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
 		Loop
 	Extinguish:
+		TNT1 A 0
 		TNT1 A 0 A_StopSound(1)
 		TNT1 A -1
 		Stop
@@ -491,6 +493,7 @@ ACTOR BDVines2: BDVines1 11834
 		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
 		Loop
 	Extinguish:
+		TNT1 A 0
 		TNT1 A 0 A_StopSound(1)
 		TNT1 A -1
 		Stop
@@ -521,6 +524,7 @@ ACTOR BDecJunglePlant: BDECBush
 		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
 		Loop
 	Extinguish:
+		TNT1 A 0
 		TNT1 A 0 A_StopSound(1)
 		BPDC A -1
 		Stop
@@ -583,7 +587,7 @@ BloodType "TreeBlood"
 	Death.Plasma2:
 	Death.Fire:
 		TNT1 A 0
-		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 165)
+		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 165)
 		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Big", 0, 0, 80)
 		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Slim", 0, 0, 10)
 		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
@@ -596,6 +600,7 @@ BloodType "TreeBlood"
 		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
 		Loop
 	Extinguish:
+		TNT1 A 0
 		TNT1 A 0 A_StopSound(1)
 		BPDC H -1
 		Stop
@@ -632,7 +637,7 @@ ACTOR BDECGreenTree2: BDECGreenTree1 15851
 	Death.Plasma2:
 	Death.Fire:
 		TNT1 A 0
-		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 165)
+		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 165)
 		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Big", 0, 0, 40)
 		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Slim", 0, 0, 10)
 		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
@@ -645,6 +650,7 @@ ACTOR BDECGreenTree2: BDECGreenTree1 15851
 		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
 		Loop
 	Extinguish:
+		TNT1 A 0
 		TNT1 A 0 A_StopSound(1)
 		BPDC P -1
 		Stop
@@ -678,6 +684,7 @@ ACTOR BDECGreenTree3: BDECGreenTree2 15852
 		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
 		Loop
 	Extinguish:
+		TNT1 A 0
 		TNT1 A 0 A_StopSound(1)
 		BPDC H -1
 		Stop
@@ -716,7 +723,7 @@ ACTOR BDPalmTree: BDECGreenTree2 15853
 	Death.Plasma2:
 	Death.Fire:
 		TNT1 A 0
-		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 205)
+		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 205)
 		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Slim", 0, 0, 10)
 		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1", 0, 0, 120)
 		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
@@ -729,6 +736,7 @@ ACTOR BDPalmTree: BDECGreenTree2 15853
 		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
 		Loop
 	Extinguish:
+		TNT1 A 0
 		TNT1 A 0 A_StopSound(1)
 		BPDC X -1
 		Stop
@@ -763,7 +771,7 @@ ACTOR BDECDeadTree1: BDECGreenTree1 11008
 	Death.Plasma2:
 	Death.Fire:
 		TNT1 A 0
-		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 55)
+		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 55)
 		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
 		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Big", 0, 0, 10)
 		TNT1 A 0 A_Jump(255, "Burning")
@@ -775,6 +783,7 @@ ACTOR BDECDeadTree1: BDECGreenTree1 11008
 		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
 		Loop
 	Extinguish:
+		TNT1 A 0
 		TNT1 A 0 A_StopSound(1)
 		BPDC G -1
 		Stop
@@ -796,6 +805,7 @@ ACTOR BDECDeadTree2: BDECDeadTree1 11009
 		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
 		Loop
 	Extinguish:
+		TNT1 A 0
 		TNT1 A 0 A_StopSound(1)
 		BPDC H -1
 		Stop
@@ -833,7 +843,7 @@ ACTOR BDECOldTree1: BDECGreenTree1
 	Death.Plasma2:
 	Death.Fire:
 		TNT1 A 0
-		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 55)
+		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 55)
 		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
 		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Big", 0, 0, 10)
 		TNT1 A 0 A_Jump(255, "Burning")
@@ -845,6 +855,7 @@ ACTOR BDECOldTree1: BDECGreenTree1
 		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
 		Loop
 	Extinguish:
+		TNT1 A 0
 		TNT1 A 0 A_StopSound(1)
 		BPDC G -1
 		Stop
@@ -868,7 +879,7 @@ ACTOR BDECOldTree2: BDECOldTree1
 	Death.Plasma2:
 	Death.Fire:
 		TNT1 A 0
-		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 55)
+		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 55)
 		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
 		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1", 0, 0, 10)
 	Burning:
@@ -877,6 +888,7 @@ ACTOR BDECOldTree2: BDECOldTree1
 		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
 		Loop
 	Extinguish:
+		TNT1 A 0
 		TNT1 A 0 A_StopSound(1)
 		BPDC H -1
 		Stop
