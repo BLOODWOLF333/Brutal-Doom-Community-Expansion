@@ -838,7 +838,7 @@ ACTOR Marine_Rocket: Marine_Rifle
 	TNT1 A 0 A_ChangeFlag (shootable, 0)
 	TNT1 A 0 A_ChangeFlag (Invulnerable, 1)
 	//////////////////////////////////////////////////////
-	FPZ3 A 10
+	FPZ3 A 5
 	FPZ3 ABCDE 4
 	XXXX A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
 	TNT1 A 0 A_PlaySound("grunt/pain", 1)
@@ -912,16 +912,16 @@ ACTOR Marine_Rocket: Marine_Rifle
 	TNT1 AA 0 A_CustomMissile ("XDeath2", 60, 0, random (0, 360), 2, random (0, 160))
 	TNT1 AA 0 A_CustomMissile ("XDeath3", 60, 0, random (0, 360), 2, random (0, 160))
 	TNT1 AAAAAAAA 0 A_CustomMissile ("PlayerFlyingBlood", 60, 0, random (0, 360), 2, random (0, 160))
-	FPZ2 C 15
+	FPZ2 C 7
 	TNT1 A 0 A_PlaySound("imp/melee")
-	FPZ2 D 15
+	FPZ2 D 7
 	TNT1 AAAAA 0 A_CustomMissile ("Guts2", 32, 0, random (0, 360), 2, random (0, 160))
 	TNT1 AAA 0 A_CustomMissile ("XDeath1", 60, 0, random (0, 360), 2, random (0, 160))
 	TNT1 AAAAAAAA 0 A_CustomMissile ("PlayerFlyingBlood", 60, 0, random (0, 360), 2, random (0, 160))
 	TNT1 A 0 ACS_NamedExecute("BDRedBloodHUD", 0, 0, 0, 0)
 	FPZ2 EF 5
 	TNT1 A 0 A_PlaySound("grunt/death")
-	FPZ2 G 10
+	FPZ2 G 5
 	//////////////////////////////////////////////////////
 	TNT1 A 0 A_TakeInventory("ZombieManFatality3",1)
 	TNT1 A 0 A_SpawnItem ("ZombieManDyingAfterFatality")
@@ -1021,8 +1021,8 @@ ACTOR Marine_Rocket: Marine_Rifle
 	TNT1 A 0 A_CustomMissile ("Brains5", 5, 0, random (0, 360), 2, random (0, 160))
 	TNT1 A 0 A_CustomMissile ("Brains5", 5, 0, random (0, 360), 2, random (0, 160))
 	TNT1 AAAAAAAA 0 A_CustomMissile ("SmallBrainPiece", 5, 0, random (0, 360), 2, random (0, 160))
-	FPZ4 P 7
-	FPZ4 L 10
+	FPZ4 P 3
+	FPZ4 L 5
 	//////////////////////////////////////////////////////
 	TNT1 A 0 A_TakeInventory("ZombieManFatality3",1)
 	TNT1 A 0 A_SpawnItem ("DeadZombieManFatality3")
@@ -1040,9 +1040,9 @@ ACTOR Marine_Rocket: Marine_Rifle
 	TNT1 A 0 A_PlaySound("grunt/pain", 1)
 	TNT1 A 0 A_PlaySound("player/cyborg/fist", 4)
 	FTCI CDE 2
-	FTCI E 2
+	FTCI E 6
 
-	FTCI FGG 2
+	FTCI FGG 4
 	FTCI H 2
 	NULL A 0 ACS_NamedExecute("BDRedBloodHUD", 0, 0, 0, 0)
 	NULL A 0 ACS_NamedExecute("BDMoreRedBloodHUD", 0, 0, 0, 0)
@@ -1051,9 +1051,9 @@ ACTOR Marine_Rocket: Marine_Rifle
 	NULL A 0 A_PlaySound("player/cyborg/fist", 4)
 	NULL A 0 A_SpawnItemEX("Blood", 0, 15, 10)
 	NULL A 0 A_CustomMissile ("Teeth", 15, 0, random (0, 360), 2, random (0, 160))
-	FTCI I 2
+	FTCI I 5
 	FTCI H 2
-	FTCI G 2
+	FTCI G 3
 
 	FTCI H 2
 	NULL A 0 ACS_NamedExecute("BDRedBloodHUD", 0, 0, 0, 0)
@@ -1063,9 +1063,9 @@ ACTOR Marine_Rocket: Marine_Rifle
 	NULL A 0 A_PlaySound("player/cyborg/fist", 4)
 	NULL A 0 A_SpawnItemEX("Blood", 0, 15, 10)
 	NULL A 0 A_CustomMissile ("Teeth", 15, 0, random (0, 360), 2, random (0, 160))
-	FTCI I 2
+	FTCI I 5
 	FTCI H 2
-	FTCI G 2
+	FTCI G 3
 
 	FTCI H 2
 	NULL A 0 ACS_NamedExecute("BDRedBloodHUD", 0, 0, 0, 0)
@@ -1076,9 +1076,9 @@ ACTOR Marine_Rocket: Marine_Rifle
 	TNT1 A 0 A_SpawnItemEx("SplatteredSmall", 0, 15)
 	NULL A 0 A_SpawnItemEX("Blood", 0, 15, 10)
 	NULL A 0 A_CustomMissile ("Teeth", 15, 0, random (0, 360), 2, random (0, 160))
-	FTCI I 2
+	FTCI I 5
 	FTCI H 2
-	FTCI G 2
+	FTCI G 3
 
 	FTCI H 2
 	NULL A 0 ACS_NamedExecute("BDRedBloodHUD", 0, 0, 0, 0)
@@ -1088,9 +1088,9 @@ ACTOR Marine_Rocket: Marine_Rifle
 	NULL A 0 A_PlaySound("player/cyborg/fist", 4)
 	NULL A 0 A_SpawnItemEX("Blood", 0, 15, 10)
 	NULL A 0 A_CustomMissile ("Teeth", 15, 0, random (0, 360), 2, random (0, 160))
-	FTCI I 2
+	FTCI I 5
 	FTCI H 2
-	FTCI G 2
+	FTCI G 3
 
 	FTCI H 2
 
@@ -1100,8 +1100,8 @@ ACTOR Marine_Rocket: Marine_Rifle
 	NULL A 0 A_PlaySound("imp/pain", 1)
 	NULL A 0 A_PlaySound("player/cyborg/fist", 4)
 	TNT1 A 0 A_SpawnItem("ImpHeadExplode", 0, 10)
-	FTCI L 2
-	FTCI J 2
+	FTCI L 5
+	FTCI J 5
 	//////////////////////////////////////////////////////
 	TNT1 A 0 A_TakeInventory("GoFatality", 1)
 	TNT1 A 0 A_ChangeFlag (shootable, 1)
@@ -1113,7 +1113,7 @@ ACTOR Marine_Rocket: Marine_Rifle
 	Goto FollowPlayer
 
 	FatalityImp2:
-	FTYI ABB 7
+	FTYI ABB 3
 	FTYI CDEFG 2
 	TNT1 A 0  A_PlaySound("imp/pain")
 	TNT1 A 0 A_SpawnItemEx("FootStep5", 0, 0, 40, 0, 0)
@@ -1142,7 +1142,7 @@ ACTOR Marine_Rocket: Marine_Rifle
 	TNT1 A 0 A_PlaySound("misc/xdeath3")
 	FTYI NO 6
 	TNT1 A 0 A_PlaySound("misc/xdeath3")
-	FTYI N 8
+	FTYI N 4
 	//////////////////////////////////////////////////////
 	TNT1 A 0 A_TakeInventory("GoFatality", 1)
 	TNT1 A 0 A_TakeInventory("ImpFatality3",1)
@@ -1157,8 +1157,8 @@ ACTOR Marine_Rocket: Marine_Rifle
 	TNT1 A 0 A_ChangeFlag (shootable, 0)
 	TNT1 A 0 A_ChangeFlag (Invulnerable, 1)
 	//////////////////////////////////////////////////////
-	FTYS A 8 A_PlaySound("grunt/pain")
-	FTYS BC 8
+	FTYS A 4 A_PlaySound("grunt/pain")
+	FTYS BC 4
 	TNT1 A 0 A_PlaySound("BURNZOM", 3)
 
 	TNT1 A 0 A_PlaySound("misc/xdeath")
@@ -1174,9 +1174,9 @@ ACTOR Marine_Rocket: Marine_Rifle
 	TNT1 AAAAAAAAAA 0 A_CustomMissile ("PlayerFlyingBlood", 60, 0, random (0, 360), 2, random (0, 160))
 	FTYS FGHIPP 4 A_CustomMissile ("Blood", 1, 0, random (0, 360), 2, random (0, 160))
 
-	FTYS QR 8
+	FTYS QR 4
 	TNT1 A 0 A_SpawnItemEx("FootStep5", 0, 0, 40, 0, 0)
-	FTYS R 20
+	FTYS R 10
 	///////////////////////////////////////////////////////
 	TNT1 A 0 A_TakeInventory("GoFatality", 1)
 	TNT1 A 0 A_TakeInventory("SergeantFatality",1)
@@ -1190,7 +1190,7 @@ ACTOR Marine_Rocket: Marine_Rifle
 	TNT1 A 0 A_ChangeFlag (shootable, 0)
 	TNT1 A 0 A_ChangeFlag (Invulnerable, 1)
 	//////////////////////////////////////////////////////
-	FSP3 A 8
+	FSP3 A 4
 
 	FSP3 B 4 A_PlaySound("grunt/pain")
 	XXXX A 0 A_CustomMissile ("ShakeYourAssMinor", 1, 0, random (0, 360), 2, random (0, 160))
@@ -1216,7 +1216,7 @@ ACTOR Marine_Rocket: Marine_Rifle
 
 	FSP3 L 3 BRIGHT
 	FSP3 K 3
-	FSP3 J 40
+	FSP3 J 20
 	///////////////////////////////////////////////////////
 	TNT1 A 0 A_TakeInventory("GoFatality", 1)
 	TNT1 A 0 A_TakeInventory("SergeantFatality",1)
@@ -1241,7 +1241,7 @@ ACTOR Marine_Rocket: Marine_Rifle
 	FREV D 4
 	FREV EFGHIJJJKL 4
 	FREV M 5 A_PlaySound("skeleton/sight")
-	FREV M 10
+	FREV M 5
 	FREV N 2
 	FREV O 2
 
@@ -1274,19 +1274,19 @@ ACTOR Marine_Rocket: Marine_Rifle
 	NULL A 0 A_SpawnItemEx("FootStep5", 0, 0, 40, 0, 0)
 	XXXX A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
 	NULL A 0 A_PlaySound("CLAP")
-	CFTA EFF 7
+	CFTA EFF 3
 	CFTA GHIJK 2
 	NULL A 0 A_PlaySound("grunt/pain")
 	NULL A 0 A_SpawnItemEx("FootStep5", 0, 0, 40, 0, 0)
 	NULL A 0 A_CustomMissile ("CameraShake", 50, 0, random (0, 360), 2, random (0, 160))
 	NULL A 0 A_CustomMissile ("GoreSound", 22, 0, random (0, 360), 2, random (0, 160))
-	CFTA L 7
+	CFTA L 3
 
-	CFTA M 15
+	CFTA M 7
 	CFTA OPQR 4
 	NULL A 0 A_PlaySound("grunt/pain")
 	NULL A 0 A_PlaySound("grunt/death")
-	CFTA R 15
+	CFTA R 7
 	NULL A 0 A_PlaySound("BURNZOM")
 	NULL A 0 A_CustomMissile ("CameraShake", 50, 0, random (0, 360), 2, random (0, 160))
 	NULL AAAAAA 0 A_CustomMissile ("CeilBloodLauncher", 40, 0, random (0, 360), 2, random (50, 130))
@@ -1294,7 +1294,7 @@ ACTOR Marine_Rocket: Marine_Rifle
 	NULL AAA 0 A_CustomMissile ("XDeath2", 10, 0, random (0, 360), 2, random (0, 160))
 	NULL AAA 0 A_CustomMissile ("XDeath3", 10, 0, random (0, 360), 2, random (0, 160))
 	NULL AAAAAAAAAA 0 A_CustomMissile ("PlayerFlyingBlood", 50, 0, random (0, 360), 2, random (0, 160))
-	CFTA S 25
+	CFTA S 12
 	//////////////////////////////////////////////////////
 	NULL A 0 A_TakeInventory("ComandoFatality",1)
 	NULL A 0 A_TakeInventory("GoFatality", 1)
