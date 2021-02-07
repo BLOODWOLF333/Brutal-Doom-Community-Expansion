@@ -921,10 +921,6 @@ object BigFireBall
 	frame F2RE { light IMPBALL   }
 	frame FRFX { light ROCKETLIGHT }
 
-
-
-
-
     frame MISLB { light ROCKET_X1 }
     frame MISLC { light ROCKET_X2 }
     frame MISLD { light ROCKET_X3 }
@@ -1174,78 +1170,39 @@ object revenantseekermissiles3
 
 Glow
 {
-	Walls
+	Walls//Textures
 	{
-		LAVAFL "100 90 0" fullbright
-		LIT05C "255 220 0" fullbright
-		LIT05 fullbright
-		SFALL1 fullbright
-		SFALL2 fullbright
-		SFALL3 fullbright
-		SFALL4 fullbright
-
 		DOORBLU fullbright
 		DOORBLU2 fullbright
 		DOORRED fullbright
 		DOORRED2 fullbright
 		DOORYEL fullbright
 		DOORYEL2 fullbright
-
-		TLITE6_5 "99 0 0"
-		GRNLIT1B "99 99 99" fullbright
 		FLAT2B FULLBRIGHT
-		tlite6_1
-		tlite6_4
-
-		LITGEN9 fullbright
-		LITGEN8 fullbright
+		GRNLITE1 "99 99 99" fullbright
+		GRNLIT1B "99 99 99" fullbright
+		LAVAFL "100 90 0" fullbright
+		LIT05C "255 220 0" fullbright
+		LIT05 fullbright
 		LITGEN7 fullbright
+		LITGEN7B fullbright
+		LITGEN8 fullbright
+		LITGEN9 fullbright
+		LITGEN9B fullbright
 		LITGEN9C "99 77 00" fullbright
 		LITGEN9d "99 77 00" fullbright
-		LITGEN7B fullbright
-		LITGEN9B fullbright
-		LITGEN9B fullbright
-
 	}
-	Flats
+	Flats//Actual Flats
 	{
-	    BLOOD1
+		BDBLOOD1
+		BDBLOOD2
+		BDBLOOD3
+		BDNUKE1 "0 255 0" fullbright
+		BLOOD1
 		BLOOD2
 		BLOOD3
-
-		FLAT17
-		FLAT2 FULLBRIGHT
-		FLAT22
-		FLOOR1_7
-		RROCK01
-		RROCK02
-
-
-		RROCK05
-		RROCK06
-		RROCK07
-		RROCK08
-
-		TLITE6_5 "99 0 0"
-		GRNLITE1 "99 99 99" fullbright
-		tlite6_1
-		tlite6_4
-		grnlite1
-		ceil3_4
 		ceil3_3
-		floor1_7
-		gate4
-		gate1
-		gate3
-		TLITE6_6
-
-		LITGEN8 fullbright
-
-		NUKAGE1 "0 255 0" fullbright
-		NUKAGE2 "0 255 0" fullbright
-		NUKAGE3 "0 255 0" fullbright
-		NUKAGE4 "0 255 0" fullbright
-
+		ceil3_4
 		FHDS01 FULLBRIGHT
 		FHDS02 FULLBRIGHT
 		FHDS03 FULLBRIGHT
@@ -1278,14 +1235,35 @@ Glow
 		FHDS30 FULLBRIGHT
 		FHDS31 FULLBRIGHT
 		FHDS32 FULLBRIGHT
-
-
-
-
+		FLAT17
+		FLAT2 FULLBRIGHT
+		FLAT22
+		FLOOR1_7
+		gate1
+		gate2
+		gate3
+		gate4
+		LAVA1 "100 90 0" fullbright
+		LAVA2 "100 90 0" fullbright
+		LAVA3 "100 90 0" fullbright
+		LAVA4 "100 90 0" fullbright
+		NUKAGE1 "0 255 0" fullbright
+		NUKAGE2 "0 255 0" fullbright
+		NUKAGE3 "0 255 0" fullbright
+		RROCK01
+		RROCK02
+		RROCK05
+		RROCK06
+		RROCK07
+		RROCK08
 		SLIME09
 		SLIME10
 		SLIME11
 		SLIME12
+		tlite6_1
+		tlite6_4
+		TLITE6_5 "99 0 0"
+		TLITE6_6
 		}
 }
 
@@ -1505,7 +1483,6 @@ pointlight ALARMORANGELAMP
     offset 0 0 90
 }
 
-
 object BDECAlarm
 {
     frame SPDE { light ALARMORANGELAMP }
@@ -1517,7 +1494,6 @@ pointlight BDECRedLightWall1L
     size 16
     offset 0 0 0
 }
-
 
 object BDECRedLightWall1
 {
@@ -1531,7 +1507,6 @@ pointlight BDECBlueLightWall1L
     offset 0 0 0
 }
 
-
 object BDECBlueLightWall1
 {
     frame LIBD { light BDECBlueLightWall1L }
@@ -1543,7 +1518,6 @@ pointlight BDECBlueLightBig
     size 64
     offset 0 0 0
 }
-
 
 object BDECBlueLight
 {
@@ -1557,7 +1531,6 @@ pointlight BDECRedLightBig
     offset 0 0 0
 }
 
-
 object BDECRedLight
 {
     frame TNT1 { light BDECRedLightBig }
@@ -1569,7 +1542,6 @@ pointlight BDECYellowLightBig
     size 64
     offset 0 0 0
 }
-
 
 object BDECYellowLight
 {
@@ -1583,7 +1555,6 @@ pointlight BDECYellowLightWall1L
     offset 0 0 0
 }
 
-
 object BDECYellowLightWall1
 {
     frame LIBD { light BDECYellowLightWall1L }
@@ -1595,7 +1566,6 @@ pointlight BDECWhiteLightWall1L
     size 16
     offset 0 0 0
 }
-
 
 object BDECWhiteLightWall1
 {
