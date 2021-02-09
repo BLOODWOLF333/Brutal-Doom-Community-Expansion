@@ -222,138 +222,14 @@ ACTOR MiniGun : BrutalWeapon
 			CHAG A 0 A_JumpIfInventory("Spin",1,"Hold")
 			CHAG A 0 A_PlaySound("CHAINSTA", 5)
 			CHAG A 0 A_FireCustomMissile("Alerter", 0, 0, 0, 0)
-			CHAG B 4
-			CHAG A 0 A_PlaySound("CHGNSHOT", 1)
-			CHAG A 0 A_PlaySound("FARMGN", 6)
-			TNT1 A 0 A_ZoomFactor(0.99)
-			CHAG A 0 A_Firecustommissile("50CaseSpawn",0,0,-12,-18)
-			CHAG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
-			CHAF A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
-			CHAF C 1 BRIGHT A_FireBullets(1.8, 1.9, -1, 16, "MachineGunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
-			TNT1 A 0 A_ZoomFactor(1.0)
-			RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
-			RIFG A 0 A_SetPitch(pitch-0.4)
-			CHAF D 3
-			CHAG A 0 A_JumpIfInventory("Clip2", 1, 1)
-			Goto NoAmmo
-			TNT1 AAAA 0
-			CHAG A 0 A_PlaySound("CHGNSHOT", 1)
-			CHAG A 0 A_PlaySound("FARMGN", 6)
-			TNT1 A 0 A_ZoomFactor(0.99)
-			CHAG A 0 A_Firecustommissile("50CaseSpawn",0,0,-12,-18)
-			CHAG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
-			CHAF A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
-			CHAF A 1 BRIGHT A_FireBullets(1.8, 1.9, -1, 16, "MachineGunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
-			TNT1 A 0 A_ZoomFactor(1.0)
-			RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
-			RIFG A 0 A_SetPitch(pitch-0.4)
-			CHAF B 3
-			CHAG A 0 A_JumpIfInventory("Clip2", 1, 1)
-			Goto NoAmmo
-			TNT1 AAAA 0
-			CHAG A 0 A_PlaySound("CHGNSHOT", 1)
-			CHAG A 0 A_PlaySound("FARMGN", 6)
-			TNT1 A 0 A_ZoomFactor(0.99)
-			CHAG A 0 A_Firecustommissile("50CaseSpawn",0,0,-12,-18)
-			CHAG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
-			CHAF A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
-			CHAF C 1 BRIGHT A_FireBullets(1.8, 1.9, -1, 16, "MachineGunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
-			TNT1 A 0 A_ZoomFactor(1.0)
-			RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
-			RIFG A 0 A_SetPitch(pitch-0.4)
-			CHAF D 3
-			CHAG A 0 A_JumpIfInventory("Clip2", 1, 1)
-			Goto NoAmmo
-			TNT1 AAAA 0
-			CHAG A 0 A_PlaySound("CHGNSHOT", 1)
-			CHAG A 0 A_PlaySound("FARMGN", 6)
-			TNT1 A 0 A_ZoomFactor(0.99)
-			CHAG A 0 A_Firecustommissile("50CaseSpawn",0,0,-12,-18)
-			CHAG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
-			CHAF A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
-			CHAF A 1 BRIGHT A_FireBullets(1.8, 1.9, -1, 16, "MachineGunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
-			TNT1 A 0 A_ZoomFactor(1.0)
-			RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
-			RIFG A 0 A_SetPitch(pitch-0.4)
-			CHAF B 3
-			CHAG A 0 A_JumpIfInventory("Clip2", 1, 1)
-			Goto NoAmmo
-			TNT1 AAAA 0
-			CHAG A 0 A_PlaySound("CHGNSHOT", 1)
-			CHAG A 0 A_PlaySound("FARMGN", 6)
-			TNT1 A 0 A_ZoomFactor(0.99)
-			CHAG A 0 A_Firecustommissile("50CaseSpawn",0,0,-12,-18)
-			CHAG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
-			CHAF A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
-			CHAF C 1 BRIGHT A_FireBullets(1.8, 1.9, -1, 16, "MachineGunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
-			TNT1 A 0 A_ZoomFactor(1.0)
-			RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
-			RIFG A 0 A_SetPitch(pitch-0.4)
-			CHAF D 3
-			CHAG A 0 A_JumpIfInventory("Clip2", 1, 1)
-			Goto NoAmmo
-			TNT1 AAAA 0
-			CHAG A 0 A_PlaySound("CHGNSHOT", 1)
-			CHAG A 0 A_PlaySound("FARMGN", 6)
-			TNT1 A 0 A_ZoomFactor(0.99)
-			CHAG A 0 A_Firecustommissile("50CaseSpawn",0,0,-12,-18)
-			CHAG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
-			CHAF A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
-			CHAF A 1 BRIGHT A_FireBullets(1.8, 1.9, -1, 16, "MachineGunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
-			TNT1 A 0 A_ZoomFactor(1.0)
-			RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
-			RIFG A 0 A_SetPitch(pitch-0.4)
-			CHAF B 2
-			CHAG A 0 A_JumpIfInventory("Clip2", 1, 1)
-			Goto NoAmmo
-			TNT1 AAAA 0
-			CHAG A 0 A_PlaySound("CHGNSHOT", 1)
-			CHAG A 0 A_PlaySound("FARMGN", 6)
-			TNT1 A 0 A_ZoomFactor(0.99)
-			CHAG A 0 A_Firecustommissile("50CaseSpawn",0,0,-12,-18)
-			CHAG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
-			CHAF A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
-			CHAF C 1 BRIGHT A_FireBullets(1.8, 1.9, -1, 16, "MachineGunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
-			TNT1 A 0 A_ZoomFactor(1.0)
-			RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
-			RIFG A 0 A_SetPitch(pitch-0.4)
-			CHAF D 2
-			CHAG A 0 A_JumpIfInventory("Clip2", 1, 1)
-			Goto NoAmmo
-			TNT1 AAAA 0
-			CHAG A 0 A_PlaySound("CHGNSHOT", 1)
-			CHAG A 0 A_PlaySound("FARMGN", 6)
-			TNT1 A 0 A_ZoomFactor(0.99)
-			CHAG A 0 A_Firecustommissile("50CaseSpawn",0,0,-12,-18)
-			CHAG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
-			CHAF A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
-			CHAF A 1 BRIGHT A_FireBullets(1.8, 1.9, -1, 16, "MachineGunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
-			TNT1 A 0 A_ZoomFactor(1.0)
-			RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
-			RIFG A 0 A_SetPitch(pitch-0.4)
-			CHAF B 2
-			CHAG A 0 A_JumpIfInventory("Clip2", 1, 1)
-			Goto NoAmmo
-			TNT1 AAAA 0
-			CHAG A 0 A_PlaySound("CHGNSHOT", 1)
-			CHAG A 0 A_PlaySound("FARMGN", 6)
-			TNT1 A 0 A_ZoomFactor(0.99)
-			CHAG A 0 A_Firecustommissile("50CaseSpawn",0,0,-12,-18)
-			CHAG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
-			CHAF A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
-			CHAF C 1 BRIGHT A_FireBullets(1.8, 1.9, -1, 16, "MachineGunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
-			TNT1 A 0 A_ZoomFactor(1.0)
-			RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
-			RIFG A 0 A_SetPitch(pitch-0.4)
-			CHAF D 2
-			CHAG A 0 A_JumpIfInventory("Clip2", 1, 1)
-			Goto NoAmmo
-			TNT1 AAAA 0
+			CHAG BCD 4
+			CHAG ABCD 3
+			CHAG ABCD 2
 			CHAG A 0 A_StopSound(5)
+			CHAG A 0 A_JumpIfInventory("FiredPrimary",1,"Hold")
+			CHAG A 0 A_PlaySound("CHAINSTO", 5)
+			Goto SpinDown2
 		Hold:
-			CHAG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
-			CHAG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
-
 			CHAG A 0 A_PlaySound("CHGNSHOT", 1)
 			CHAG A 0 A_PlaySound("FARMGN", 5)
 			CHAF A 1 BRIGHT A_FireBullets(1.8, 1.9, -1, 16, "MachineGunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
@@ -366,9 +242,6 @@ ACTOR MiniGun : BrutalWeapon
 			RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
 			RIFG A 0 A_SetPitch(pitch-0.4)
 
-			CHAG A 0 A_JumpIfInventory("Clip2", 1, 1)
-			Goto NoAmmo
-			TNT1 AAAA 0
 			CHAG A 0 A_PlaySound("CHGNSHOT", 1)
 			CHAG A 0 A_PlaySound("FARMGN", 5)
 			CHAF C 1 BRIGHT A_FireBullets(1.8, 1.9, -1, 16, "MachineGunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
@@ -382,9 +255,8 @@ ACTOR MiniGun : BrutalWeapon
 			RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
 			RIFG A 0 A_SetPitch(pitch-0.4)
 			MNGG B 0 A_ReFire
-			CHAG A 0 A_JumpIfInventory("FiredPrimary",1,"Hold")
 			CHAG A 0 A_StopSound(5)
-
+		SpinDown:
 			CHAG A 0 A_JumpIfInventory("Spin",1,"Ready2")
 			CHAG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 			CHAG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
@@ -392,9 +264,9 @@ ACTOR MiniGun : BrutalWeapon
 			CHAG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 			CHAG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 			CHAG A 0 A_PlaySound("CHAINSTO", 5)
-			CHAG ABCD 1 A_WeaponReady
+			CHAG ABCD 1 A_WeaponReady(WRF_NOFIRE)
 			CHAG A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
-			CHAG A 0 A_Refire
+			CHAG A 0 A_JumpIfInventory("FiredPrimary",1,"Hold")
 
 			CHAG A 0 A_JumpIfInventory("Spin",1,"Ready2")
 			CHAG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
@@ -402,11 +274,12 @@ ACTOR MiniGun : BrutalWeapon
 			CHAG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 			CHAG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 			CHAG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-			CHAG AB 2 A_WeaponReady
+			CHAG AB 2 A_WeaponReady(WRF_NOFIRE)
 			CHAG A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
-			CHAG CD 2 A_WeaponReady
+			CHAG CD 2 A_WeaponReady(WRF_NOFIRE)
 			CHAG A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
-
+			CHAG A 0 A_JumpIfInventory("FiredPrimary",1,"Hold")
+		SpinDown2://If they didn't hold the fire button
 			CHAG A 0 A_JumpIfInventory("Spin",1,"Ready2")
 			CHAG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 			CHAG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
