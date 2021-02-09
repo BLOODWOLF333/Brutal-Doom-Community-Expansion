@@ -86,6 +86,7 @@ ACTOR RailGun : BrutalWeapon
 		RAIL A 0 A_Takeinventory("PowerLightAmp", 1)
 		RIFG A 0 A_Takeinventory("ADSmode",1)
 		RAIL A 0 A_SetCrosshair(0)
+		RIFG A 0 A_JumpIfInventory("TurboReload",1,"InsertBullets")
 		RAIL A 0 A_JumpIfInventory("HasUnloadedRG", 1, "ReadyUnloaded")
 		TNT1 A 0 A_PlaySound("weapons/empty", 4)
 	NoAmmo2:

@@ -290,6 +290,7 @@ ACTOR DualSMG : BrutalWeapon
 
 		SM2G A 0 A_Refire
         Goto Ready
+
  	 Unload:
 		SM2G A 1
 		SM2G A 0 A_Takeinventory("ADSmode",1)
@@ -299,8 +300,6 @@ ACTOR DualSMG : BrutalWeapon
         TNT1 AAA 0
 
 		SM2G A 0 A_Takeinventory("Zoomed",1)
-        SM2G A 0 A_ZoomFactor(1.0)
-		SM2G A 0 A_GiveInventory ("Pumping", 1)
 		SM2G A 0 A_Takeinventory("Reloading",1)
 		SM2G A 0 A_PlaySound("reload")
 		SM2G A 0 A_Giveinventory("HasUnloaded",1)
@@ -317,22 +316,9 @@ ACTOR DualSMG : BrutalWeapon
 		SM2G A 0 A_Giveinventory("Clip1",1)
 		Goto RemoveBullets
 
-		TNT1 AAAAAAAAAA 0
-		SM2G A 0 A_Takeinventory("Reloading",1)
-
-		SM2G A 0 A_Refire
-        Goto Ready
-		TNT1 AAAA 0
-		SM2G A 0 A_Takeinventory("Reloading",1)
-
-		SM2G A 0 A_Refire
-        Goto Ready
-
-
 	Spawn:
 		SMGZ A -1
 		Stop
-
 
 	Steady:
 		TNT1 A 1

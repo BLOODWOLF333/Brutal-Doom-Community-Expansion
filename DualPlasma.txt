@@ -238,7 +238,7 @@ ACTOR DualPlasmaRifles : BrutalWeapon
         PLSR GHHIIIJJJJJJJJIKLB 1
 		TNT1 A 10
 		P2SR B 1
-		DUPL A 0 A_PlaySound("PLREADY", 3)
+		DUPL A 0 A_PlaySound("PLREADY", 1)
 		DUPL A 0 A_FireCustomMissile("PlasmaCaseSpawn",180,0,-10,-20)
 		P2SR CDEEEEEEEEEEEEEEEF 1
         P2SR GHHIIIJJJJJJJJIKLB 1
@@ -278,9 +278,10 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 	Unload:
 		DUPL A 0 A_Takeinventory("Unloading",1)
 		DUPL A 0 A_JumpIfInventory("DoublePlasmaAmmo",1,7)
-		Goto Ready
+		Goto NoAmmo
 		TNT1 AAAAA 0
         PLSR AB 1
+		DUPL A 0 A_PlaySound("PLREADY", 1)
 		PLSR CDJJJJJJ 1
 		PLSR IHGFDECBA 2
 		TNT1 A 5
