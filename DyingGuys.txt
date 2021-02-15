@@ -16,14 +16,10 @@ ACTOR DyingZombieman
 	BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
 	+SHOOTABLE
     +FLOORCLIP
-	//+NOBLOCKMAP
-    +LOOKALLAROUND
 	+FRIGHTENED
 	-SOLID
 	+DONTSPLASH
-	+FRIENDLY//
 	-COUNTKILL
-	+GHOST
 	+THRUGHOST
 	Mass 500
 	DeathHeight 4
@@ -168,8 +164,12 @@ ACTOR ZombiemanFallingBeheaded
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
 	BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
-	+SHOOTABLE    +FLOORCLIP	-SOLID	+DONTSPLASH
-	+FRIENDLY	+GHOST	+THRUGHOST -COUNTKILL
+	+SHOOTABLE
+	+FLOORCLIP
+	-SOLID
+	+DONTSPLASH
+	+THRUGHOST
+	-COUNTKILL
 	Mass 500
     States
     {
@@ -258,8 +258,11 @@ ACTOR ZombiemanFallingSplattered
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
 	BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
-	+SHOOTABLE    +FLOORCLIP	-SOLID	+DONTSPLASH
-	+FRIENDLY	+GHOST	+THRUGHOST
+	+SHOOTABLE
+	+FLOORCLIP
+	-SOLID
+	+DONTSPLASH
+	+THRUGHOST
 	-COUNTKILL
 	Mass 500
     States
@@ -358,8 +361,11 @@ ACTOR ZombiemanFallingHoleOnStomach
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
 	BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
-	+SHOOTABLE    +FLOORCLIP	-SOLID	+DONTSPLASH
-	+FRIENDLY	+GHOST	+THRUGHOST
+	+SHOOTABLE
+	+FLOORCLIP
+	-SOLID
+	+DONTSPLASH
+	+THRUGHOST
 	-COUNTKILL
 	Mass 500
     States
@@ -460,8 +466,6 @@ ACTOR BrutalizedZombieMan1
 	+NORADIUSDMG
 	+FLOORCLIP
 	+DONTSPLASH
-	+FRIENDLY//
-	+GHOST
 	-SOLID
 	+THRUGHOST
 	-COUNTKILL
@@ -664,10 +668,8 @@ ACTOR DyingZombiemanLostTeeth: RifleZombie
     Speed 0
 	Health 20
 	-COUNTKILL
-	+GHOST
 	+THRUGHOST
 	+NOPAIN
-	+FRIENDLY
 	-COUNTKILL
 	-SOLID
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
@@ -731,8 +733,11 @@ ACTOR SergeantFallingSplattered
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
 	BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
-	+SHOOTABLE    +FLOORCLIP	-SOLID	+DONTSPLASH
-	+FRIENDLY	+GHOST	+THRUGHOST
+	+SHOOTABLE
+	+FLOORCLIP
+	-SOLID
+	+DONTSPLASH
+	+THRUGHOST
 	-COUNTKILL
 	Mass 500
     States
@@ -835,8 +840,6 @@ ACTOR SergeantFallingHoleOnStomach
 	+FLOORCLIP
 	-SOLID
 	+DONTSPLASH
-	+FRIENDLY
-	+GHOST
 	+THRUGHOST
 	-COUNTKILL
 	Mass 500
@@ -938,7 +941,6 @@ ACTOR DyingSergeant
 	+FLOORCLIP
 	+DONTSPLASH
 	-COUNTKILL
-	+GHOST
 	+THRUGHOST
 	-SOLID
 	-COUNTKILL
@@ -1141,11 +1143,7 @@ ACTOR DyingSergeantNoLeg
 	+SHOOTABLE
 	+DONTSPLASH
     +FLOORCLIP
-	//+NOBLOCKMAP
-    +LOOKALLAROUND
 	+FRIGHTENED
-	+FRIENDLY//
-	+GHOST
 	+THRUGHOST
 	-COUNTKILL
 	-SOLID
@@ -1274,7 +1272,6 @@ ACTOR DyingSergeantLegBlewedOff: DyingSergeantNoLeg
 	Mass 500
 	-SOLID
 	+SHOOTABLE
-	+GHOST
 	+THRUGHOST
 	-COUNTKILL
 	States
@@ -1401,7 +1398,6 @@ ACTOR BrutalizedSergeant1
 	+SHOOTABLE
 	+FLOORCLIP
 	+DONTSPLASH
-	+GHOST
 	+THRUGHOST
 	-COUNTKILL
 	Scale 1.0
@@ -2022,7 +2018,6 @@ ACTOR ZombiemanGotHisLegBlowed: DyingZombiemanNoArm
 
 ACTOR ZombiemanSaciLol: ZombiemanGotHisLegBlowed
 {
-	+GHOST
 	+THRUGHOST
 	-COUNTKILL
 	Speed 4
@@ -2193,11 +2188,8 @@ ACTOR DyingZManFatality5: DyingZombiemanNoArm
     Speed 0
 	Health 20
 	-COUNTKILL
-	+GHOST
 	+THRUGHOST
 	+NOPAIN
-	+FRIENDLY
-	Species "Marines"
     States
     {
 	Spawn:
@@ -2411,7 +2403,6 @@ ACTOR DyingShotgunguyHitInEye: Shotgunguy1
     Height 30
     Speed 0
 	Health 20
-	+GHOST
 	+THRUGHOST
 	+NOPAIN
 	+DONTSPLASH
@@ -3177,7 +3168,6 @@ ACTOR DyingImpNoArm
 	Mass 999999
 	-SOLID
 	+SHOOTABLE
-	+GHOST
 	-COUNTKILL
 	+THRUGHOST
 	Scale 1.0
@@ -3449,7 +3439,6 @@ ACTOR ImpDyingOfBloodLoss : Imp
 
 ACTOR ImpSaciLol: DyingImpNoLeg
 {
-	+GHOST
 	+THRUGHOST
 	-COUNTKILL
 	Speed 4

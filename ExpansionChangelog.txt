@@ -19,11 +19,14 @@
 //									Removed the reload state and jumps
 //	CVARS.txt:						Removed lines replacing the BLODGR1 animated wall texture with lava
 //									BDInitiate script will now only replace vanilla textures and flats if mapenhancements are enabled
+//	Dead.txt:						Changed MarineFatalizedbyRevenant frame to PLDH A
 //	DualPlasma.txt:					Added plasmarifle reload sound effect to Unload state
 //	DyingGuys.txt:					Created PoorSpectroLostHisArm and PoorFuzzyLostHisArm actors
+//									Removed +GHOST & +FRIENDLY flags from dying actors
 //	EvilMarineShield.txt:			Removed velocity from all MeatShield actor Spawns
 //									Added A_TakeInventory("BDDualPistolAmmo", 1) to Fire state
 //	Explosives.txt:					Changed GrenadeMissile blast radius to 150 instead of 300
+//	FistMarine.txt:					Now can do all fatalities on every enemy that it doesn't retreat from
 //	GLDEFS.txt:						Attached light to a few fire actors that were missing them
 //	Head_Sys.txt:					Created a HeadshotTargetSlumped actor that inherits from HeadshotTarget20 and has +NEVERTARGET
 //	Imps.txt:						Changed the deadslumped actor to spawn HeadshotTargetSlumped
@@ -31,13 +34,16 @@
 //									Added A_TakeInventory("BDDualPistolAmmo", 1) to Fire state
 //	LostSoul.txt:					Removed BloodColor none property
 //	Machinegun.txt:					Removed +WEAPON.NOAUTOFIRE flag
+//	Marines.txt:					Added +DONTGIB flag to prevent doors from crushing them
 //	Mastermind.txt:					Added an Idle: state to prevent morphing into a Juggernaut on target-loss
 //	Minigun.txt:					Changed the wind-up to only be 32 tics long with no firing before moving to the hold state for tactical only
 //	NaziShield.txt:					Removed velocity from all MeatShield actor Spawns
 //									Added A_TakeInventory("BDDualPistolAmmo", 1) to Fire state
 //	Player.txt:						Sped-up the ground & pound fatality sequence
+//									Sped-up the ZMan rifle bash fatality sequence
 //	Railgun.txt:					Added A_JumpIfInventory("TurboReload",1,"InsertBullets") to NoAmmo state
 //	RocketLauncher.txt:				Added A_JumpIfInventory("TurboReload",1,"InsertBullets") to NoAmmo state
+//	RocketLauncherMarine.txt:		Now can do all fatalities on every enemy that it doesn't retreat from
 //	Sergeants.txt:					Changed the deadslumped actor to spawn HeadshotTargetSlumped
 //	SGuyShield.txt:					Removed velocity from all MeatShield actor Spawns
 //									Added A_TakeInventory("BDDualPistolAmmo", 1) to Fire state

@@ -721,12 +721,13 @@ ACTOR EvilMarineRifle
 		TNT1 A -1
         Stop
 
-    Death.FatalityMarine:
+    Death.Fatality:
+	Death.HelperMarineFatallity:
 		TNT1 A 1 A_PlayerScream
 		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
 		TNT1 A 1 A_NoBlocking
 
-        TNT1 A 0 A_GiveToTarget("Fatality_Marine",1)
+        TNT1 A 0 A_GiveToTarget("PVPFatality",1)
 		TNT1 A -1
         Stop
 

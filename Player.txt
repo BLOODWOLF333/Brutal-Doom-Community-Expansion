@@ -2126,20 +2126,16 @@ Death.Plasma: Death.Plasma2:
 	FatalityZMan3://Platoon sytle rifle bashing
         NULL A 0 SetPlayerProperty(0,1,0)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
-		FPZ3 A 2 A_ChangeFlag("GHOST", 1)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-
-		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
-        FPZ3 A 6
-		NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-		FPZ3 BCD 3
+        FPZ3 A 5
+		FPZ3 ABCDE 4
         NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
 		NULL A 0 A_CustomMissile("BDBodyThud", 2, 0, 0, 2, -90)
         NULL A 0 A_PlaySound("grunt/pain", 1)
-		FPZ3 EFGGGG 2
+		FPZ3 FG 4
 
-		FPZ3 HHHIIIIIIIIHJJJ 1
+		FPZ3 HIHJ 4
         NULL A 0 ACS_NamedExecute("BDRedBloodHUD", 0, 0, 0, 0)
         NULL A 0 ACS_NamedExecute("BDMoreRedBloodHUD", 0, 0, 0, 0)
 		NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
@@ -2148,7 +2144,7 @@ Death.Plasma: Death.Plasma2:
 		TNT1 A 0 A_SpawnItemEx("Blood", 0, -2, 4)
 		TNT1 A 0 A_SpawnItemEx("SplatteredSmall")
 
-		FPZ3 KKKLLLLLLKJJJ 1
+		FPZ3 KLKJ 4
         NULL A 0 ACS_NamedExecute("BDRedBloodHUD", 0, 0, 0, 0)
         NULL A 0 ACS_NamedExecute("BDMoreRedBloodHUD", 0, 0, 0, 0)
 		NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
@@ -2157,7 +2153,7 @@ Death.Plasma: Death.Plasma2:
 		NULL AA 0 A_CustomMissile ("Teeth", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_SpawnItemEx("MuchBlood", 0, -2, 4)
 
-		FPZ3 MMMNNNNNNNMOOO 1
+		FPZ3 MNMO 4
         NULL A 0 ACS_NamedExecute("BDRedBloodHUD", 0, 0, 0, 0)
         NULL A 0 ACS_NamedExecute("BDMoreRedBloodHUD", 0, 0, 0, 0)
 		NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
@@ -2165,21 +2161,21 @@ Death.Plasma: Death.Plasma2:
 		NULL A 0 A_PlaySound("player/cyborg/fist", 4)
 		NULL AA 0 A_CustomMissile ("XDeath1", 60, 0, random (0, 360), 2, random (0, 160))
         NULL AA 0 A_CustomMissile ("BloodMistSmall", 5, 0, random (0, 360), 2, random (40, 90))
-		FPZ3 MMMNNNNNNNMOOO 1
+		FPZ3 MNMO 4
         NULL A 0 ACS_NamedExecute("BDRedBloodHUD", 0, 0, 0, 0)
         NULL A 0 ACS_NamedExecute("BDMoreRedBloodHUD", 0, 0, 0, 0)
 		NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
 		NULL A 0 A_PlaySound("player/cyborg/fist", 4)
 		TNT1 A 0 A_SpawnItemEx("ZombiemanHeadExplode", 0, -2, 8)
 
-        FPZ3 PPPQQQQQQQPRRR 1
+        FPZ3 PQPR 4
         NULL A 0 ACS_NamedExecute("BDRedBloodHUD", 0, 0, 0, 0)
         NULL A 0 ACS_NamedExecute("BDMoreRedBloodHUD", 0, 0, 0, 0)
 		NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
 	    NULL A 0 A_PlaySound("player/cyborg/fist", 4)
 		TNT1 A 0 A_SpawnItemEx("Blood", 0, -2, 4)
 
-		FPZ3 PPPQQQQQQPRRR 1
+		FPZ3 PQPR 4
         NULL A 0 ACS_NamedExecute("BDRedBloodHUD", 0, 0, 0, 0)
         NULL A 0 ACS_NamedExecute("BDMoreRedBloodHUD", 0, 0, 0, 0)
 		NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
@@ -4330,6 +4326,7 @@ FatalityCyberdemon:
         PVP1 A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
 		PVP1 BCDE 5
         //////////////////////////////////////////////////////
+		TNT1 A 0 A_SpawnItemEx("MarineFatalizedByRevenant", 1)
         NULL A 0 A_TakeInventory("PVPFatality",1)
 		NULL A 0 A_TakeInventory("GoFatality", 1)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
