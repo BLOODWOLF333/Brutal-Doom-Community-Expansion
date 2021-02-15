@@ -325,33 +325,6 @@ ACTOR Marine_HML: Marine_Rifle
 		Goto Missile
 
 	MissileClose:
-		TNT1 A 0 A_PlaySound("CHAINSTA", 5)
-		PL42 E 4 A_FaceTarget
-		PL42 H 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
-		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_CustomMissile("Alerter",32)
-		TNT1 A 0 A_PlaySound("FARMGN", 6)
-		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
-		TNT1 A 0 A_CustomMissile("MarineMinigunTracer", 32, 0, random(-2,2), CMF_OFFSETPITCH, random(-2,2))
-		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-
-		PL42 E 3 A_FaceTarget
-		PL42 H 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
-		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("FARMGN", 6)
-		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
-		TNT1 A 0 A_CustomMissile("MarineMinigunTracer", 32, 0, random(-2,2), CMF_OFFSETPITCH, random(-2,2))
-		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-
-		PL42 E 2 A_FaceTarget
-		PL42 H 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
-		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("FARMGN", 6)
-		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
-		TNT1 A 0 A_CustomMissile("MarineMinigunTracer", 32, 0, random(-2,2), CMF_OFFSETPITCH, random(-2,2))
-		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-
-	MissileCloseContinue:
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsACyberdemon", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMastermind", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsABaronOfHell", 1, "CheckRetreat")
@@ -368,12 +341,12 @@ ACTOR Marine_HML: Marine_Rifle
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		TNT1 A 0 A_MonsterRefire(0,"ForgetActiveTarget")
-		Goto MissileCloseContinue
+		Goto MissileClose
 
 	MissileLeft:
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "FollowPlayer")
 		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "FollowPlayer")
-		TNT1 A 0 A_JumpIfCloser(256,"MissileClose")
+		TNT1 A 0 A_JumpIfCloser(256,"MissileCloseLeft")
 		TNT1 A 0 A_JumpIfCloser(1024,"MissileMidLeft")
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_CustomMissile("Alerter",32)
@@ -437,12 +410,12 @@ ACTOR Marine_HML: Marine_Rifle
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		TNT1 A 0 A_MonsterRefire(0,"ForgetActiveTarget")
-		Goto MissileCloseContinue
+		Goto MissileClose
 
 	MissileRight:
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "FollowPlayer")
 		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "FollowPlayer")
-		TNT1 A 0 A_JumpIfCloser(256,"MissileClose")
+		TNT1 A 0 A_JumpIfCloser(256,"MissileCloseRight")
 		TNT1 A 0 A_JumpIfCloser(1024,"MissileMidRight")
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_CustomMissile("Alerter",32)
@@ -506,7 +479,7 @@ ACTOR Marine_HML: Marine_Rifle
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		TNT1 A 0 A_MonsterRefire(0,"ForgetActiveTarget")
-		Goto MissileCloseContinue
+		Goto MissileClose
 
 	Retreat:
 		TNT1 A 0
@@ -1067,33 +1040,6 @@ ACTOR HMLMarineGuarding: Marine_HML
 		Goto Missile
 
 	MissileClose:
-		TNT1 A 0 A_PlaySound("CHAINSTA", 5)
-		PL42 E 4 A_FaceTarget
-		PL42 H 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
-		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_CustomMissile("Alerter",32)
-		TNT1 A 0 A_PlaySound("FARMGN", 6)
-		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
-		TNT1 A 0 A_CustomMissile("MarineMinigunTracer", 32, 0, random(-2,2), CMF_OFFSETPITCH, random(-2,2))
-		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-
-		PL42 E 3 A_FaceTarget
-		PL42 H 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
-		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("FARMGN", 6)
-		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
-		TNT1 A 0 A_CustomMissile("MarineMinigunTracer", 32, 0, random(-2,2), CMF_OFFSETPITCH, random(-2,2))
-		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-
-		PL42 E 2 A_FaceTarget
-		PL42 H 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
-		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("FARMGN", 6)
-		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
-		TNT1 A 0 A_CustomMissile("MarineMinigunTracer", 32, 0, random(-2,2), CMF_OFFSETPITCH, random(-2,2))
-		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-
-	MissileCloseContinue:
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsACyberdemon", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMastermind", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsABaronOfHell", 1, "CheckRetreat")
@@ -1108,10 +1054,10 @@ ACTOR HMLMarineGuarding: Marine_HML
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		TNT1 A 0 A_MonsterRefire(0,"ForgetActiveTarget")
-		Goto MissileCloseContinue
+		Goto MissileClose
 
 	MissileLeft:
-		TNT1 A 0 A_JumpIfCloser(256,"MissileClose")
+		TNT1 A 0 A_JumpIfCloser(256,"MissileCloseLeft")
 		TNT1 A 0 A_JumpIfCloser(1024,"MissileMidLeft")
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_CustomMissile("Alerter",32)
@@ -1175,10 +1121,10 @@ ACTOR HMLMarineGuarding: Marine_HML
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		TNT1 A 0 A_MonsterRefire(0,"ForgetActiveTarget")
-		Goto MissileCloseContinue
+		Goto MissileClose
 
 	MissileRight:
-		TNT1 A 0 A_JumpIfCloser(256,"MissileClose")
+		TNT1 A 0 A_JumpIfCloser(256,"MissileCloseRight")
 		TNT1 A 0 A_JumpIfCloser(1024,"MissileMidRight")
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_CustomMissile("Alerter",32)
@@ -1242,7 +1188,7 @@ ACTOR HMLMarineGuarding: Marine_HML
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		TNT1 A 0 A_MonsterRefire(0,"ForgetActiveTarget")
-		Goto MissileCloseContinue
+		Goto MissileClose
 
 	Melee:
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsACyberdemon", 1, "CheckRetreat")
