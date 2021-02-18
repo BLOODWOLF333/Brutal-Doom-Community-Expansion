@@ -29,7 +29,7 @@ Script "BDBigLightSeed" (VOID)
 Script "BDScythe2Desert" (VOID)//Scythe 2 Desert Maps
 {
 	ReplaceTextures("CEIL4_1", "SANDS1");
-	ReplaceTextures("SLIME01", "FWATER1");
+	ReplaceTextures("SLIME01", "BDFWATER");
 }
 
 //DOOM E1M1 - Hangar
@@ -130,7 +130,7 @@ delay(1);
 Script "MapEnhancementE1M5" (VOID)
 {
 ChangeSky ("SKYPHO", "SKYPHO");
-//SetCVAR("sv_maprotation", 0);
+
 ReplaceTextures("CEIL3_5", "LITGEN8");
 ReplaceTextures("STARTAN3", "STARGR1");
 ReplaceTextures("STONE", "W_LAB4");
@@ -320,8 +320,8 @@ ReplaceTextures("SKSPINE1", "STARGR1");
 ReplaceTextures("DEM1_5", "LITGEN8", not_FLOOR);
 ReplaceTextures("CEIL3_4", "LITGEN9", not_FLOOR);
 ReplaceTextures("FLAT1_2", "METAL54");
-ReplaceTextures("NUKAGE3", "BLOOD1");
-ReplaceTextures("NUKAGE1", "BLOOD1");
+ReplaceTextures("NUKAGE3", "BDBLOOD1");
+ReplaceTextures("NUKAGE1", "BDBLOOD1");
 ReplaceTextures("FLAT5_4", "LITGEN8", not_FLOOR);
 ReplaceTextures("MFLR8_1", "LITGEN8", not_FLOOR);
 ReplaceTextures("BROWN1", "METAL24");
@@ -337,7 +337,7 @@ ReplaceTextures("STEP5", "LIT05S");
 Script "MapEnhancementE2M5" (VOID)
 {
 ChangeSky ("SKYDEI", "SKYDEI");
-//SetCVAR("sv_maprotation", 0);
+
 //ReplaceTextures("STARTAN3", "W_LAB3");
 //ReplaceTextures("STARG1", "W_LAB4");
 //ReplaceTextures("STONE", "W_LAB4");
@@ -372,7 +372,7 @@ ReplaceTextures("MIDVINE2", "BDHAU4");
 ReplaceTextures("BROVINE2", "BDHAU1");
 ReplaceTextures("BROVINE", "BDHAU2");
 ReplaceTextures("SP_HOT1", "BDHAU2");
-ReplaceTextures("NUKAGE3", "BLOOD1");
+ReplaceTextures("NUKAGE3", "BDBLOOD1");
 ReplaceTextures("CEIL4_1", "F_SKY1");
 ReplaceTextures("FWATER4", "MFLR8_2");
 ReplaceTextures("CEIL3_5", "LITGEN8");
@@ -577,9 +577,9 @@ ReplaceTextures ("BIGBRIK1", "INDUS3");
 ReplaceTextures ("BIGBRIK2", "INDUS4");
 ReplaceTextures ("SPACEW3", "SPACM0");
 ReplaceTextures ("MIDGRATE", "GRATX");
-ReplaceTextures ("PIPEWAL1", "WFALL1", NOT_MIDDLE | NOT_TOP);
+ReplaceTextures ("PIPEWAL1", "BDWFALL1", NOT_MIDDLE | NOT_TOP);
 ReplaceTextures ("", "BRONZE1", NOT_MIDDLE | NOT_TOP);
-SetCVAR("sv_maprotation", 0);
+
 ReplaceTextures("STONE2", "BUNKER05");
 //ReplaceTextures("CEIL3_5", "CEMENTW9");
 ReplaceTextures("STEP6", "LIT05S");
@@ -605,7 +605,7 @@ delay(1);
 Script "MapEnhancementD2Map05" (VOID)
 {
 ChangeSky ("SKYEAR5", "SKYEAR5");
-SetCVAR("sv_maprotation", 0);
+
 ReplaceTextures ("BIGBRIK1", "INDUS3");
 ReplaceTextures ("BIGBRIK2", "INDUS4");
 ReplaceTextures ("CEIL5_2", "MFLR8_2", NOT_ceiling);
@@ -623,7 +623,7 @@ delay(1);
 Script "MapEnhancementD2Map06" (VOID)
 {
 ChangeSky ("SKYEAR5", "SKYEAR5");
-SetCVAR("sv_maprotation", 0);
+
 ChangeCeiling(20, "F_SKY1");
 ReplaceTextures ("FLAT5_4", "MFLR8_2", NOT_ceiling);
 Ceiling_RaiseByValue (20, 200, 32);
@@ -674,10 +674,10 @@ delay(1);
 Script "MapEnhancementD2Map09" (VOID)
 {
 ChangeSky ("SKYEAR5", "SKYEAR5");
-SetCVAR("sv_maprotation", 0);
+
 ReplaceTextures ("FLOOR4_1", "FLAT10");
 ReplaceTextures ("FLOOR4_1", "FLAT10");
-ReplaceTextures ("SLIME04", "NUKAGE1");
+ReplaceTextures ("SLIME04", "BDNUKE1");
 ReplaceTextures ("BIGBRIK1", "INDUS3");
 ReplaceTextures ("BIGBRIK2", "INDUS4");
 ReplaceTextures ("MODWALL1", "TANROCK5");
@@ -719,7 +719,7 @@ Script "MapEnhancementD2Map15" (VOID)
 {
 ReplaceTextures("GRASS1", "JUNKY15");
 ReplaceTextures("GRASS2", "JUNKY15");
-ReplaceTextures("SLIME12", "NUKAGE1");
+ReplaceTextures("SLIME12", "BDNUKE1");
 ReplaceTextures("WOOD5", "BRONZE1");
 ReplaceTextures("WOOD12", "INDUS3");
 ReplaceTextures("BIGBRIK2", "INDUS4");
@@ -742,7 +742,7 @@ ReplaceTextures("BIGDOOR6", "SPCDOOR3");
 ReplaceTextures("MFLR8_4", "APOCTX1");
 ChangeFloor (9, "JUNKY15");
 ChangeSky ("SKYCIT1", "SKYCIT2");
-SetCVAR("sv_maprotation", 0);
+
 //ChangeLevel("MAP16B", 0, CHANGELEVEL_NOINTERMISSION, -1);
 }
 
@@ -750,7 +750,7 @@ SetCVAR("sv_maprotation", 0);
 Script "MapEnhancementD2Map18" (VOID)
 {
 ReplaceTextures("RROCK20", "GRASS3");
-ReplaceTextures("NUKAGE3", "BLOOD1");
+ReplaceTextures("NUKAGE3", "BDBLOOD1");
 ReplaceTextures("TANROCK5", "STONE7");
 ReplaceTextures("NUKEPOIS", "STONE5");
 ReplaceTextures("RROCK13", "APOCTX1");
@@ -837,11 +837,11 @@ ReplaceTextures("PIPE4", "SKSNAKE2");
 ReplaceTextures("PIPE2", "SKSNAKE2");
 ReplaceTextures("BLOOD3", "SFLR6_4");
 ReplaceTextures("RROCK08", "F_SKY1");
-ReplaceTextures("SLIME08", "BLOOD1");
-ReplaceTextures("SFALL4", "BFALL1");
+ReplaceTextures("SLIME08", "BDBLOOD1");
+ReplaceTextures("SFALL4", "BDBFALL1");
 ChangeSky ("SKYHELF", "SKYHELF");
 Floor_LowerToLowest(9, 32);
-SetCVAR("sv_maprotation", 0);
+
 //ChangeLevel("MAP16B", 0, CHANGELEVEL_NOINTERMISSION, -1);
 }
 
@@ -865,7 +865,7 @@ ReplaceTextures("GRNLITE1", "CEIL5_1");
 ReplaceTextures("LITE3", "LIT05");
 ReplaceTextures("GRASS1", "DESERT01");
 //ReplaceTextures("SLIME15", "METALIN8", NOT_CEILING);
-SetCVAR("sv_maprotation", 0);
+
 delay(1);
 }
 
@@ -886,7 +886,7 @@ ReplaceTextures("TEKGREN4", "GREIND4");
 ReplaceTextures("TEKGREN5", "GREIND5");
 ReplaceTextures("METAL2", "METALIND");
 ReplaceTextures("METAL6", "METALIND");
-ReplaceTextures("SLIME05", "NUKAGE1");
+ReplaceTextures("SLIME05", "BDNUKE1");
 ReplaceTextures("GSTONE1", "BUNKER01");
 ReplaceTextures("GSTONE1", "BUNKER01");
 ReplaceTextures("GRASS1", "DESERT01");
@@ -897,7 +897,7 @@ ReplaceTextures("GRASS2", "DESERT01");
 //ReplaceTextures("BROWNGRN", "METALIN4");
 ReplaceTextures("LITE3", "LIT05");
 //ReplaceTextures("SLIME15", "METALIN8", NOT_CEILING);
-SetCVAR("sv_maprotation", 0);
+
 delay(1);
 }
 
@@ -921,7 +921,7 @@ ReplaceTextures("BROWNHUG", "TANROCK8");
 //ReplaceTextures("BROWNGRN", "METALIN4");
 ReplaceTextures("LITE3", "LIT05");
 //ReplaceTextures("SLIME15", "METALIN8", NOT_CEILING);
-SetCVAR("sv_maprotation", 0);
+
 delay(1);
 }
 
@@ -946,7 +946,7 @@ ReplaceTextures("TLITE6_6", "f_sky1");
 //ReplaceTextures("BROWNGRN", "METALIN4");
 ReplaceTextures("LITE3", "LIT05");
 //ReplaceTextures("SLIME15", "METALIN8", NOT_CEILING);
-SetCVAR("sv_maprotation", 0);
+
 delay(1);
 }
 
@@ -967,7 +967,7 @@ ReplaceTextures("ASHWALL7", "BUNKER01");
 ReplaceTextures("GRASS2", "SLIME14");
 ReplaceTextures("f_sky1", "CEIL5_1");
 ReplaceTextures("LITE3", "LIT05");
-SetCVAR("sv_maprotation", 0);
+
 delay(1);
 }
 
@@ -1329,7 +1329,7 @@ delay(1);
 Script "MapEnhancementPlutoniaMap01" (VOID)
 {
 ChangeSky ("SKYEAR4", "SKYEAR4");
-ReplaceTextures("SLIME05", "FWATER1");
+ReplaceTextures("SLIME05", "BDFWATER");
 ReplaceTextures("A-BROWN4", "NEWDOR1");
 }
 
@@ -1343,7 +1343,7 @@ ReplaceTextures("GATE2", "BLACK");
 ReplaceTextures("RROCK09", "RROCK18");
 ReplaceTextures("A-VINE1", "AVINE1B");
 delay(35);
-ChangeFloor (3, "FWATER1");
+ChangeFloor (3, "BDFWATER");
 Floor_LowerToNearest(3, 255);
 }
 
@@ -1351,7 +1351,7 @@ Floor_LowerToNearest(3, 255);
 Script "MapEnhancementPlutoniaMap03" (VOID)
 {
 ChangeSky ("SKYEAR4", "SKYEAR4");
-ReplaceTextures("SLIME05", "SLIME01");
+ReplaceTextures("SLIME05", "BDSLIME1");
 }
 
 //PLUTONIA MAP04 - Caged
@@ -1398,21 +1398,18 @@ ChangeSky ("SKYCITH", "SKYCITH");
 //Secret Exits to PSX levels
 Script "MapEnhancementPSMansion" (VOID)//Suburbs to Mansion
 {
-SetCVAR("sv_maprotation", 0);
 ChangeLevel("PSMAP58", 0, 0, -1);
 delay(1);
 }
 
 Script "MapEnhancementPSHellgate" (VOID)//Gotcha to Hellgate
 {
-SetCVAR("sv_maprotation", 0);
 ChangeLevel("PSMAP16", 0, 0, -1);
 delay(1);
 }
 
 Script "MapEnhancementPSTwilight" (VOID)//Downtown to Twilight Descends
 {
-SetCVAR("sv_maprotation", 0);
 ChangeLevel("PSMAP29", 0, 0, -1);
 delay(1);
 }
