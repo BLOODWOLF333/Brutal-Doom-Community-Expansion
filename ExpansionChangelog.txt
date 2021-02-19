@@ -5,9 +5,13 @@
 //
 //	Stable v21.9.0
 //
+//	CVARS.txt:						Added a 16 tic delay to the start of BDInitialize to give the dynamic level scripts time to run first
 //	Demons.txt:						Removed the +NEVERFAST flag from the Demon actor
+//	Doom1Remap.txt:					Un-notated the goodie barrel spawns on E2M3
 //	DynamicLev.txt:					Remove all SetCVAR("sv_maprotation", 0); lines
 //									Update all texture replacements to the new names for liquids
+//									Added ReplaceTextures("PIPE6", "PIPE1"); for E2M4
+//	MapSpecificDec.txt:				Added A_RadiusGive("MarkForDeletion",...) to BDCEBarrel Spawn state
 //	Splashes.txt:					Notated-out the A_Explode lines in blood and nukage splash actors
 //
 //	Stable v21.8.0

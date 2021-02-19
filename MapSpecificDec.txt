@@ -3841,6 +3841,7 @@ states
 	{
 	Spawn:
 	    SPDF G 1
+		TNT1 A 0 A_RadiusGive("MarkForDeletion", 128, RGF_OBJECTS, 1)
 		SPDF G -1
 		Stop
 	Death:
@@ -4415,7 +4416,7 @@ Height 24
 states
 	{
 	Spawn:
-	    WLZ7 B 0
+	    WLZ7 B 1
 		TNT1 A 0 A_RadiusGive("MarkForDeletion", 128, RGF_OBJECTS, 1)
 		WLZ7 B -1
 		Stop

@@ -22,6 +22,7 @@ SCRIPT "BDInitiate" OPEN
 {
 	if (GetCvar("bd_disablemapenhancements") == 0)
 	{
+		Delay(16);//Allow DYNAMICLEV scripts to run first
 		ReplaceTextures ("BFALL1", "BDBFALL1");//Internal Animated Wall(Doom2)
 		ReplaceTextures ("BFALL2", "BDBFALL1");//Internal Animated Wall(Doom2)
 		ReplaceTextures ("BFALL3", "BDBFALL1");//Internal Animated Wall(Doom2)
