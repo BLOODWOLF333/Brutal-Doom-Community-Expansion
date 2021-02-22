@@ -114,7 +114,7 @@ ACTOR EvilMarineRifle
 	MaxTargetRange 4096
 	Monster
 	Damagefactor "Avoid", 1.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
-	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
 	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0	Damagefactor "HangingHook", 0.0
 	Damagefactor "Head", 1.5	Damagefactor "PussyGrab", 100.0	Damagefactor "Repair", 0.0
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
@@ -141,7 +141,7 @@ ACTOR EvilMarineRifle
 	ActiveSound "zombiemarine/active"
 	Obituary "%o was eliminated by an evil marine."
 	DropItem "RifleDrop"
-	Translation "48:79=[255,203,155]:[75,58,24]", "112:123=152:159", "124:127=9:12"
+	Translation "48:76=128:143", "112:127=152:159"
 	States
 	{
 	Idle:
@@ -937,7 +937,7 @@ ACTOR EasyMarineRifleAlive : EvilMarineRifle
 	ActiveSound "EvilmarineActive"
 	Obituary "%o is no longer a stone in the shoes of the UAC."
 	DropItem "RifleDrop"
-	Translation "112:127=99:111"
+	Translation "48:76=128:143", "112:127=152:159"
 	MaxStepHeight 24
 	States
 	{
@@ -951,7 +951,7 @@ ACTOR MrX : EvilMarinePlasma
 {
 	Health 400
 	Obituary "%o had a heated encounter with Mr. X."
-	Translation "112:127=32:47", "128:143=107:111", "144:151=109:111", "152:159=104:108"
+	Translation "48:76=128:143", "112:127=152:159", "128:143=[64,64,64]:[0,0,0]", "144:151=[64,64,64]:[0,0,0]", "152:159=[64,64,64]:[0,0,0]"
 	Speed 12
 	MaxStepHeight 24
 	States
