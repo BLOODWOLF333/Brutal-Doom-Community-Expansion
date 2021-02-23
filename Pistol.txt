@@ -48,7 +48,7 @@ ACTOR BrutalPistol : BrutalWeapon
 	StartSprint:
 		PIST F 1 A_WeaponReady(WRF_NOFIRE)
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		PIST F 0 A_JumpIfInventory("UsedStamina", 50, "StopSprintTired")
+		PIST F 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
 
 	Sprinting:
 		PISP A 0 offset(-9,32)
@@ -108,7 +108,7 @@ ACTOR BrutalPistol : BrutalWeapon
 	StopSprint:
 		PISP F 1
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		PIST F 0 A_JumpIfInventory("UsedStamina", 50, "StopSprintTired")
+		PIST F 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
 		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		Goto Ready
 

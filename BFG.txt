@@ -48,7 +48,7 @@ ACTOR BIG_FUCKING_GUN : BrutalWeapon
 	StartSprint:
 		BFGN A 1 A_WeaponReady(WRF_NOFIRE)
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		BFGN A 0 A_JumpIfInventory("UsedStamina", 50, "StopSprintTired")
+		BFGN A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
 
 	Sprinting:
 		BFSP A 0 offset(-9,32)
@@ -58,13 +58,13 @@ ACTOR BIG_FUCKING_GUN : BrutalWeapon
 		PLAY A 0 offset(-9,32) ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
 		BFSP A 1 offset(-9,34) A_SetPitch(pitch -0.5)
 		BFSP A 1 offset(-6,36) A_SetPitch(pitch -0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 3)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		BFSP A 1 offset(-3,38) A_SetPitch(pitch -0.5)
 		BFSP A 1 offset(0,38) A_SetPitch(pitch -0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 3)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		BFSP A 1 offset(3,36) A_SetPitch(pitch -0.5)
 		BFSP A 1 offset(6,34) A_SetPitch(pitch -0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 3)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		BFSP A 1 offset(9,32) A_SetPitch(pitch -0.5)
 		BFGN A 0 offset(9,32) A_WeaponReady(WRF_NOBOB)
 		BFGN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
@@ -73,16 +73,16 @@ ACTOR BIG_FUCKING_GUN : BrutalWeapon
 		BFGN A 0 offset(-9,32)
 		BFGN A 0 offset(9,33) A_SpawnItemEx("FootStep", 0, 0, 2, 0, 0, -4)
 		BFSP A 1 offset(9,34) A_SetPitch(pitch +0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 3)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		BFSP A 1 offset(6,36) A_SetPitch(pitch +0.5)
 		BFSP A 1 offset(3,38) A_SetPitch(pitch +0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 3)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		BFSP A 1 offset(0,38) A_SetPitch(pitch +0.5)
 		BFSP A 1 offset(-3,36) A_SetPitch(pitch +0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 3)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		BFSP A 1 offset(-6,34) A_SetPitch(pitch +0.5)
 		BFSP A 1 offset(-9,32) A_SetPitch(pitch +0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 3)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		BFGN A 0 offset(-9,32) A_WeaponReady(WRF_NOBOB)
 		BFGN A 0 offset(-9,32) A_JumpIfInventory("IsRunning", 1, "Sprinting")
 		Goto StopSprint
@@ -107,7 +107,7 @@ ACTOR BIG_FUCKING_GUN : BrutalWeapon
 	StopSprint:
 		BFSP A 1
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		BFGN A 0 A_JumpIfInventory("UsedStamina", 50, "StopSprintTired")
+		BFGN A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
 		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		Goto Ready
 

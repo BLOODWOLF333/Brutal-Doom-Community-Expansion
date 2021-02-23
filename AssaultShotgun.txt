@@ -534,7 +534,7 @@ ACTOR AssaultShotgun : BrutalWeapon
 		RIFG A 0 A_SetCrosshair(0)
 		SHTN A 0 A_Giveinventory("GoSpecial",1)
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		A12G A 0 A_JumpIfInventory("UsedStamina", 50, "StopSprintTired")
+		A12G A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
 
 	Sprinting:
 		A1SP A 0 offset(-9,32)
@@ -593,7 +593,7 @@ ACTOR AssaultShotgun : BrutalWeapon
 	StopSprint:
 		A1SP A 1 BRIGHT
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		A12G A 0 A_JumpIfInventory("UsedStamina", 50, "StopSprintTired")
+		A12G A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
 		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		Goto Ready3
 
