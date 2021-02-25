@@ -1,4 +1,3 @@
-
 Actor HasSpotedThePlayerAlready : Inventory
 {
 inventory.maxamount 1
@@ -29,10 +28,25 @@ ACTOR IconOfSin 2550
 	DeathSound "cyber/death"
 	Obituary "%o was wiped out by the Icon of Sin"
 	BLoodType "DeadBlood"
-	DamageFactor "Desintegrate", 1.0
-	DamageFactor "CauseSplash", 0.0 DamageFactor "CauseObjectsToSplashSlime", 0.0 DamageFactor "CauseObjectsToSplashNukage", 0.0
-	DamageFactor "CauseObjectsToSplashBlood", 0.0 DamageFactor "CauseObjectsToSplashLava", 0.0
-	damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
+	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
+	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0	Damagefactor "HangingHook", 0.0
+	Damagefactor "Head", 1.5	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
+	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
+	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "Extremepunches", 1.0
+	Damagefactor "Fatality", 2.5	Damagefactor "HeadKick", 0.5	Damagefactor "HelperMarineFatallity", 2.5
+	Damagefactor "Kick", 0.5	Damagefactor "Leg", 0.5	Damagefactor "LowKick", 0.5
+	Damagefactor "Melee", 0.5	Damagefactor "MonsterKnocked", 0.5	Damagefactor "Stomp", 0.5
+	Damagefactor "Trample", 0.5	Damagefactor "Slide", 0.5
+	Damagefactor "Burn", 0.5	Damagefactor "Fire", 0.5	Damagefactor "Flames", 0.5
+	Damagefactor "GreenFire", 0.5	Damagefactor "HumanBBQ", 0.5	DamageFactor "TankWeakSpot", 0.0
+
+	PainChance "Head", 16	PainChance "Taunt", 0	PainChance "Extremepunches", 4
+	PainChance "Fatality", 4	PainChance "HelperMarineFatallity", 4	PainChance "Kick", 4
+	PainChance "LowKick", 4	PainChance "Melee", 4	PainChance "MonsterKnocked", 4
+	PainChance "Slide", 4	PainChance "Trample", 4
+	PainChance "Burn", 4	PainChance "Fire", 4	PainChance "Flames", 4
+	PainChance "GreenFire", 4	PainChance "HumanBBQ", 4
 	Scale 2.6
 	Tag "Gatekeeper"
 	States
@@ -65,30 +79,20 @@ ACTOR IconOfSin 2550
 		TNT1 A 0 ACS_NamedExecuteAlways("BDBossHealth")
 		TNT1 A 0 A_JumpIfInventory("HasSpotedThePlayerAlready", 1, "Ready")
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
-
-		TNT1 A 0
-		KEPR ABCCBA 5
-
-		TNT1 A 0 //A_PLaySoundEx("brain/sight", 4, 0, 2)
-		//TNT1 A 0 ACS_Execute(56)
-		KEPT ABCBABCBABCBABCBAABCBABCBABCBABCBAABCBABCBABCBABCBA 3
-		//KEPR AB 4
-		//TNT1 A 0 A_PLaySoundEx("ICOSCRE", 4, 0, 2)
-		//TNT1 A 0 Radius_Quake(3, 7, 0, 999, 0)
-		//KEPR CDDDDDDDDDDDDDDDDDDDDDCBA 5
+		KEPR ABCCBAABCCBAABCCBAABCCBAABCCBAABCCBA 5
 		TNT1 A 0 A_GiveInventory("HasSpotedThePlayerAlready", 1)
 		Goto Missile
 
 	Ready:
 	    TNT1 A 0
 		TNT1 A 0 A_PLaySoundEx("ICOBREAT", 4, 0, 2)
-		KEPR AABBAABBAABBAABBAABBAABB 3 A_Chase
+		KEPR ABCCBA 5 A_Chase
 
 	Missile:
-	    KEPR A 1
+	    KEPR A 5
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
-	    TNT1 A 0 A_Jump(256, "FireBalls")
-	    Goto FIreballs
+	    TNT1 A 0 A_Jump(32, "HellLaser")
+	    Goto Fireballs
 	Fireballs:
 	    KEPR ABCD 4 A_FaceTarget
 		TNT1 A 0 A_PlaySound("ICOFIRE", 1)
@@ -121,40 +125,22 @@ ACTOR IconOfSin 2550
 		TNT1 A 0 A_JumpIfInTargetInventory("PlayerIsDead", 1, "Laugh")
 		Goto See
 
-
-	Thunder:
-	    KEPT ABCC 5
-		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
-		KEPT DE 1 BRIGHT
-		KEPT C 1
-		KEPT DE 1 BRIGHT
-		KEPT C 1
-		KEPT DE 1 BRIGHT
-		KEPT C 1
-		KEPT DE 1 BRIGHT
-		KEPT C 1
-		KEPT DE 1 BRIGHT
-		KEPT C 1
-		KEPT DE 1 BRIGHT
-		KEPT C 1
-		KEPT DE 1 BRIGHT
-		KEPT C 1
-		KEPT DE 1 BRIGHT
-		KEPT C 1
-		KEPT DE 1 BRIGHT
+	HellLaser:
+		TNT1 A 0
+	    KEPT ABC 5
 		TNT1 A 0 A_StopSound(4)
 		TNT1 A 0 A_PLaySoundEx("ICOTHUND", 4, 0, 2)
-		KEPT C 1
-		KEPT DE 1 BRIGHT
-		KEPT C 1
-		//TNT1 A 0 A_SpawnItemEx("SeekingThunder", 350)
-		//TNT1 A 0 A_SpawnItemEx("SeekingThunder", -350)
-		KEPT DE 1 BRIGHT
-		KEPT C 1
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
+		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"HellLaserPuff",-6.0,-3.0,0,1,16.0,0,"UnmakerLaserTrail",80)
+		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"HellLaserPuff",-4.0,-3.0,0,1,16.0,0,"UnmakerLaserTrail",80)
+		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"HellLaserPuff",-2.0,-3.0,0,1,16.0,0,"UnmakerLaserTrail",80)
+		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"HellLaserPuff",0.0,-3.0,0,1,16.0,0,"UnmakerLaserTrail",80)
+		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"HellLaserPuff",2.0,-3.0,0,1,16.0,0,"UnmakerLaserTrail",80)
+		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"HellLaserPuff",4.0,-3.0,0,1,16.0,0,"UnmakerLaserTrail",80)
+		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"HellLaserPuff",6.0,-3.0,0,1,16.0,0,"UnmakerLaserTrail",80)
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
-		KEPT CCBA 5
+		KEPT CBA 5
 		Goto Ready
-
 
 	Pain:
 		TNT1 A 0
@@ -211,7 +197,6 @@ ACTOR IconOfSin 2550
 		KEPP EFGHGFE 2
 		TNT1 A 0 A_SpawnItemEx ("KaboomWithSound", random(0, 100), random(-200, 200), random(100, 300))
 
-
 	    TNT1 A 0 A_StopSound(4)
 	    TNT1 A 0 A_PLaySoundEx("NUKEEXPL", 4, 0, 2)
 
@@ -232,7 +217,6 @@ ACTOR IconOfSin 2550
 		Stop
 	}
 }
-
 
 ACTOR GatekeeperFireBall
 {
@@ -302,15 +286,10 @@ ACTOR GatekeeperFireBall
 	}
 }
 
-
-
-
-
-
-
-
-
-
+Actor HellLaserPuff : UnmakerLaserPuff
+{
+	Species "none"
+}
 
 ACTOR GateKeeperMeatBase
 {
@@ -344,7 +323,6 @@ ACTOR GateKeeperMeatBase
 	}
 }
 
-
 Actor GateKeeperMeat1: GateKeeperMeatBase
 {
 Scale 1.0
@@ -360,16 +338,6 @@ Actor GateKeeperMeat3: GateKeeperMeat1
 XScale -1.2
 YScale 1.2
 }
-
-
-
-
-
-
-
-
-
-
 
 ACTOR GateKeeper: IconOfSin
 {
@@ -423,7 +391,7 @@ ACTOR GateKeeper: IconOfSin
 		Loop
 	See:
 	    TNT1 A 0
-		TNT1 A 0 ACS_NamedExecuteAlways("BDBossHealth")
+		TNT1 A 0 ACS_ExecuteAlways(621)
 		TNT1 A 0 A_JumpIfInventory("HasSpotedThePlayerAlready", 1, "Ready")
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
 
@@ -460,11 +428,7 @@ ACTOR GateKeeper: IconOfSin
 		TNT1 DCBA 4
 		TNT1 A 5
 		TNT1 A 0 A_JumpIfInTargetInventory("PlayerIsDead", 1, "Laugh")
-
 		Goto See
-
-
-
 
 	Pain:
 		TNT1 A 0
