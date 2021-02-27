@@ -397,7 +397,7 @@ ACTOR GateKeeper: IconOfSin
 		Loop
 	See:
 	    TNT1 A 0
-		TNT1 A 0 ACS_ExecuteAlways(621)
+		TNT1 A 0 ACS_ExecuteAlways("BDBossHealth")
 		TNT1 A 0 A_JumpIfInventory("HasSpotedThePlayerAlready", 1, "Ready")
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
 
