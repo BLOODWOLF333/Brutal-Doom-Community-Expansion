@@ -4,12 +4,12 @@ ACTOR Labguy: RifleZombie
 	Health 50
 	Radius 18
 	Height 40
-    Speed 12
-	FastSpeed 14
+    Speed 8
+	FastSpeed 12
 	PainChance 190
 
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
-	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
 	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0	DamageFactor "TankWeakSpot", 0.0
 	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 1.5	Damagefactor "PussyGrab", 100.0
 	Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0
@@ -20,107 +20,29 @@ ACTOR Labguy: RifleZombie
 	PainChance "Slide", 255	PainChance "Stealth", 255	PainChance "Taunt", 255
 
 	DamageType "Melee"
-	//MaxTargetRange 44
-	+NOBLOCKMONST
-	+DROPOFF
 	Obituary "%o has been cut down by a zombie labworker."
 	DropItem "none"
 	AttackSound "none"
 	Tag "Civilian Zombie"
 	States
 	{
-		Possession:
-		TNT1 A 0 A_SetInvulnerable
-		SCZA G 3
-		SCZA G 3 A_Pain
-		"####" "#" 35 ACS_NamedExecuteAlways("Pos - Flicker effect")
-		TNT1 A 0 A_UnSetInvulnerable
-		Goto See
-
 		Spawn:
 		TNT1 A 0
 		TNT1 A 0 A_GiveInventory("SKLabGuy", 1)
 		TNT1 A 0 A_GiveInventory("TypeZombieMan", 1)
-		TNT1 A 0 A_TakeInventory("ZombiemanAmmo", 20)
-		TNT1 A 0 A_GiveInventory("ZombieManAmmo", random(1,10))
-
 		SCZA B 1
 		Goto Stand
 
 		Stand:
-		//TNT1 A 0 A_SpawnItem ("LegTarget100")
-		TNT1 A 0 A_CheckSight("Stand2")
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem ("LegTarget100")
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget200", 0, 32)
 		SCZA ABABABABAB 10 A_Look
 		SCZA ABABABAB 10 A_Look
 		Loop
 
-		Stand2:
-		SCZA AB 14 A_Look
-		Goto Stand
-
-		WalkAround:
-		TNT1 A 0 A_TakeInventory("SKLabGuy", 1)
-
-		TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 10, 0, 0)
-
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-
-		SCZA A 2 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA A 2 A_Wander
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		TNT1 A 0 A_Recoil(-1)
-
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA B 2 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA B 2 A_Wander
-		TNT1 A 0 A_PlaySound("humans/step",3)
-
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA D 2 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA D 2 A_Wander
-		TNT1 A 0 A_PlaySound("humans/step",4)
-
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA C 2 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA C 2 A_Wander
-
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA D 2 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA D 2 A_Wander
-		TNT1 A 0 A_PlaySound("humans/step",4)
-
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA B 2 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA B 2 A_Wander
-		TNT1 A 0 A_PlaySound("humans/step",4)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		TNT1 A 0 A_Jump(32, "Stand")
-		Loop
-
 		SearchForPlayer:
 		Idle:
-		TNT1 A 0 A_JumpIfHealthLower(1, "Death")
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_TakeInventory("EnemyMemory", 30)
 		TNT1 A 0 A_GiveInventory("SKLabGuy", 1)
@@ -152,126 +74,76 @@ ACTOR Labguy: RifleZombie
 		SCZA A 4 A_Look
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
 		TNT1 A 0 A_Wander
-		TNT1 A 0 A_Recoil(-1)
 		SCZA B 4 A_Look
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
 		TNT1 A 0 A_Wander
-		TNT1 A 0 A_Recoil(-1)
 		SCZA C 4 A_Look
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
 		TNT1 A 0 A_Wander
-		TNT1 A 0 A_Recoil(-1)
 		SCZA D 4 A_Look
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
 		TNT1 A 0 A_Wander
-		TNT1 A 0 A_Recoil(-1)
 
 		TNT1 A 0 A_Jump(128, "Idle")
 		SCZA A 4 A_Look
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
 		TNT1 A 0 A_Wander
-		TNT1 A 0 A_Recoil(-1)
 		SCZA B 4 A_Look
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
 		TNT1 A 0 A_Wander
-		TNT1 A 0 A_Recoil(-1)
 		SCZA C 4 A_Look
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
 		TNT1 A 0 A_Wander
-		TNT1 A 0 A_Recoil(-1)
 		SCZA D 4 A_Look
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
 		TNT1 A 0 A_Wander
-		TNT1 A 0 A_Recoil(-1)
 		Loop
 
-		FallBack:
-		TNT1 A 0 A_CheckSight("Advance")
-		TNT1 A 0 A_ChangeFLag("NODROPOFF", 1)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		SCZA D 2 A_FaceTarget
-		SCZA D 2 A_Recoil(2)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		SCZA C 2 A_FaceTarget
-		SCZA C 2 A_Recoil(2)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		SCZA B 2 A_FaceTarget
-		SCZA B 2 A_Recoil(2)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		SCZA A 2 A_FaceTarget
-		SCZA A 2 A_Recoil(2)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		SCZA D 2 A_FaceTarget
-		SCZA D 2 A_Recoil(2)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		SCZA C 2 A_FaceTarget
-		SCZA C 2 A_Recoil(2)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		SCZA B 2 A_FaceTarget
-		SCZA B 2 A_Recoil(2)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		SCZA A 2 A_FaceTarget
-		SCZA A 2 A_Recoil(2)
-		GOto SeeContinue
-
 		See:
-		TNT1 A 0 A_JumpIfHealthLower(1, "Death")
-		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 		TNT1 A 0 A_TakeInventory("SKLabGuy", 1)
 		TNT1 A 0 A_TakeInventory("EnemyMemory", 15)
 		TNT1 A 0 A_CheckSight("SeeNeverSeen")
 		Goto SeeContinue
 
 		SeeContinue:
-		TNT1 A 0 A_JumpIfHealthLower(1, "Death")
-		//TNT1 A 0 A_JumpIfCloser(200, "FallBack")
-		Advance:
-		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
-		TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 10, 0, 0)
+		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 15, "SearchForPlayer")
 		TNT1 A 0 A_GiveInventory("EnemyMemory", 1)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
 
-		SCZA AA 2 A_Chase
-		TNT1 A 0 A_Recoil(-1)
-		TNT1 A 0 A_TakeInventory("SKLabGuy", 1)
-
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
+		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
 		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA BB 2 A_Chase
+		SCZA AAA 2 A_Chase("Melee","")
+
+		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
+		TNT1 A 0 A_SpawnItem ("LegTargetBase")
+		SCZA BBB 2 A_Chase("Melee","")
 		TNT1 A 0 A_PlaySound("humans/step",3)
 
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
+		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
 		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA CC 2 A_Chase
+		SCZA CCC 2 A_Chase("Melee","")
 
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
+		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
 		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA DD 2 A_Chase
+		SCZA DDD 2 A_Chase("Melee","")
 		TNT1 A 0 A_PlaySound("humans/step",3)
 		Loop
 
 		SeeNeverSeen:
-		//TNT1 A 0 A_JumpIfCloser(200, "FallBack")
-		Advance:
-		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
-		TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 10, 0, 0)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
 		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA AA 2 A_Chase
-		TNT1 A 0 A_Recoil(-1)
-		TNT1 A 0 A_TakeInventory("SKLabGuy", 1)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
+		SCZA AAA 2 A_Chase("Melee","")
+		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
 		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA BB 2 A_Chase
+		SCZA BBB 2 A_Chase("Melee","")
 		TNT1 A 0 A_PlaySound("humans/step",3)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
+		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
 		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA CC 2 A_Chase
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
+		SCZA CCC 2 A_Chase("Melee","")
+		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
 		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA DD 2 A_Chase
+		SCZA DDD 2 A_Chase("Melee","")
 		TNT1 A 0 A_PlaySound("humans/step",3)
 		Loop
 
@@ -290,13 +162,11 @@ ACTOR Labguy: RifleZombie
 		Goto SeeContinue
 
 		Missile:
-		Goto See
+		Goto SeeContinue
 
 		Melee:
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
 		TNT1 A 0 A_SpawnItem ("LegTarget10")
-		SCZA E 1 A_FaceTarget
-		TNT1 A 0 A_Recoil(-5)
 		SCZA E 6 A_FaceTarget
 		TNT1 A 0 A_PlaySound("skeleton/swing")
 		TNT1 A 0 A_CustomMissile("ZombieAxeAttack",25,0,0,0)
@@ -305,7 +175,7 @@ ACTOR Labguy: RifleZombie
 		SCZA F 6 A_FaceTarget
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
 		TNT1 A 0 A_SpawnItem ("LegTarget10")
-		SCZA E 6
+		SCZA E 6 A_FaceTarget
 		Goto See
 
 		Death.KillMe:
