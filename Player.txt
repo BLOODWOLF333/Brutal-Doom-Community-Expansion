@@ -4047,60 +4047,58 @@ FatalityLabGuy3: //axe - face
         Goto StandStill
 
     CurbstompZombieman:
-        NULL A 0 SetPlayerProperty(0,1,0)
-        NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-
-		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
-        //////////////////////////////////////////////////////
-        01CB A 3
-		NULL A 0 SetPlayerProperty(0,1,0)
+		TNT1 A 0 SetPlayerProperty(0,1,0)
+        TNT1 A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)
+		TNT1 A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
+		//////////////////////////////////////////////////////
+		01CB A 3
 		NULL A 0 A_PlaySound("grunt/death")
-		01CB BCCCC 3 SetPlayerProperty(0,1,0)
+		01CB BCCCC 3
 		NULL A 0 A_PlaySound("misc/xdeath1")
 		01CB D 3
-NULL A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
-NULL A 0 ACS_NamedExecute("BDRedBloodHUD", 0, 0, 0, 0)
-NULL A 0 ACS_NamedExecute("BDMoreRedBloodHUD", 0, 0, 0, 0)
+		NULL A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
+		NULL A 0 ACS_NamedExecute("BDRedBloodHUD", 0, 0, 0, 0)
+		NULL A 0 ACS_NamedExecute("BDMoreRedBloodHUD", 0, 0, 0, 0)
 
-        TNT1 A 0 A_SpawnItemEx("ZombiemanHeadExplode", 0, 20)
+		TNT1 A 0 A_SpawnItemEx("ZombiemanHeadExplode", 0, 20)
 		TNT1 A 0 A_SpawnItemEx("GrowingBloodPool", 0, 20)
-          01CB E 10
-        //////////////////////////////////////////////////////
-        NULL A 0 A_TakeInventory("IsCurbstompingZombieman",1)
+		01CB E 10
+		//////////////////////////////////////////////////////
+		NULL A 0 A_TakeInventory("IsCurbstompingZombieman",1)
+		NULL A 0 A_TakeInventory("GoFatality", 1)
+		NULL A 0 A_TakeInventory("Kicking", 1)
 		TNT1 A 0 A_GiveInventory("BootsSmearedWithRedBlood", 6)
-		 NULL A 0 A_CustomMissile ("StompedZombieman", 1, 0, random (0, 360), 2, random (0, 160))
-        NULL A 0 A_TakeInventory("GoFatality", 1)
+		NULL A 0 A_CustomMissile ("StompedZombieman", 1, 0, random (0, 360), 2, random (0, 160))
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
 		NULL A 0 SetPlayerProperty(0,0,0)
-        Goto StandStill
+		Goto StandStill
 
-		CurbstompSergeant:
-        NULL A 0 SetPlayerProperty(0,1,0)
-        NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-
-		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
-        //////////////////////////////////////////////////////
-        02CB A 3
-		NULL A 0 SetPlayerProperty(0,1,0)
+	CurbstompSergeant:
+		TNT1 A 0 SetPlayerProperty(0,1,0)
+        TNT1 A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)
+		TNT1 A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
+		//////////////////////////////////////////////////////
+		02CB A 3
 		NULL A 0 A_PlaySound("grunt/death")
-		02CB BCCCC 3 SetPlayerProperty(0,1,0)
+		02CB BCCCC 3
 		NULL A 0 A_PlaySound("misc/xdeath1")
 		02CB D 3
-NULL A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
-NULL A 0 ACS_NamedExecute("BDRedBloodHUD", 0, 0, 0, 0)
-NULL A 0 ACS_NamedExecute("BDMoreRedBloodHUD", 0, 0, 0, 0)
+		NULL A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
+		NULL A 0 ACS_NamedExecute("BDRedBloodHUD", 0, 0, 0, 0)
+		NULL A 0 ACS_NamedExecute("BDMoreRedBloodHUD", 0, 0, 0, 0)
 
-        TNT1 A 0 A_SpawnItemEx("ShotgunguyHeadExplode", 0, 20)
+		TNT1 A 0 A_SpawnItemEx("ShotgunguyHeadExplode", 0, 20)
 		TNT1 A 0 A_SpawnItemEx("GrowingBloodPool", 0, 20)
-          02CB E 10
-        //////////////////////////////////////////////////////
-        NULL A 0 A_TakeInventory("IsCurbstompingSergeant",1)
+		02CB E 10
+		//////////////////////////////////////////////////////
+		NULL A 0 A_TakeInventory("IsCurbstompingSergeant",1)
 		NULL A 0 A_TakeInventory("GoFatality", 1)
+		NULL A 0 A_TakeInventory("Kicking", 1)
 		TNT1 A 0 A_GiveInventory("BootsSmearedWithRedBlood", 6)
-		 NULL A 0 A_CustomMissile ("StompedSergeant", 1, 0, random (0, 360), 2, random (0, 160))
-		 MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
-        NULL A 0 SetPlayerProperty(0,0,0)
-        Goto StandStill
+		NULL A 0 A_CustomMissile ("StompedSergeant", 1, 0, random (0, 360), 2, random (0, 160))
+		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 SetPlayerProperty(0,0,0)
+		Goto StandStill
 
 	FatalityMastermind:
         NULL A 0 SetPlayerProperty(0,1,0)
@@ -4751,8 +4749,6 @@ SFNZ C 8
 
       FatalityChecker:
 		NULL A 0
-		NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-		TNT1 A 0 A_Stop
 		NULL A 0 A_JumpIfInventory("PVPFatality", 1, "FatalityPVP")
         NULL A 0 A_JumpIfInventory("IsCurbstompingZombieman", 1, "CurbstompZombieman")
 	    NULL A 0 A_JumpIfInventory("IsCurbstompingSergeant", 1, "CurbstompSergeant")
