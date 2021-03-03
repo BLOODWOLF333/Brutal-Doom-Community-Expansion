@@ -2156,6 +2156,10 @@ ACTOR FistMarineGuarding: Marine_Fist
 		TNT1 A 0 A_ClearTarget
 		Goto Spawn
 
+	ForgetTarget:
+		TNT1 A 0 A_ClearTarget
+		Goto Spawn
+
 	Missile:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsACyberdemon", 1, "CheckRetreat")

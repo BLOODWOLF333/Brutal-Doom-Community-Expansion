@@ -918,6 +918,10 @@ ACTOR RailgunMarineGuarding: Marine_Railgun
 		TNT1 A 0 A_ClearTarget
 		Goto Spawn
 
+	ForgetTarget:
+		TNT1 A 0 A_ClearTarget
+		Goto Spawn
+
 	Missile:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsACyberdemon", 1, "CheckRetreat")

@@ -788,10 +788,15 @@ ACTOR ShotgunMarineGuarding: Marine_Shotgun
 		MAR3 D 4 A_Look
 		Loop
 
+	FollowPlayer:
 	See:
 		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 1)
 		TNT1 A 0 A_ChangeFlag("SOLID", 0)
 		MAR3 DDDDDDDDDD 1 A_Chase
+		TNT1 A 0 A_ClearTarget
+		Goto Spawn
+
+	ForgetTarget:
 		TNT1 A 0 A_ClearTarget
 		Goto Spawn
 
