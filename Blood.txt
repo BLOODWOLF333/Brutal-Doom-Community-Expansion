@@ -204,11 +204,11 @@ actor Brutal_FlyingBloodTrail
 	mass 1
 	renderstyle Normal
 	Decal BrutalBloodSplat
+	+MISSILE
 	+NOTELEPORT
 	+NOBLOCKMAP
 	+FORCEXYBILLBOARD
 	+CLIENTSIDEONLY
-	+MISSILE
 	+THRUACTORS
 	+DONTSPLASH
 	Gravity 0.4
@@ -743,11 +743,11 @@ actor GrowingBloodPool: Brutal_BloodSpot
 	Health 600
 	RenderStyle Normal
 	Alpha 0.99
+	+MISSILE
 	+NOTELEPORT
 	+FORCEXYBILLBOARD
 	+MOVEWITHSECTOR
 	+FLOORCLIP
-	+MISSILE
 	+DONTSPLASH
 	-CLIENTSIDEONLY
 	Scale 0.3
@@ -989,9 +989,9 @@ actor CeilBloodSpot
 	+CEILINGHUGGER
 	-SKYEXPLODE
 	+THRUACTORS
+	+DONTSPLASH
 	Height 1
 	Radius 2
-	+DontSplash
 	Mass 0
 	Scale 0.5
 	Gravity 0.0
@@ -1008,6 +1008,9 @@ actor CeilBloodSpot
 		Live:
 		  BPDL A 5 ThrustThingZ(0, 20, 0, 1)
 		  Loop
+		Death:
+			TNT1 A 0
+			Stop
 			}
 }
 
@@ -1076,7 +1079,6 @@ ACTOR BloodDripingFromCeiling: Brutal_FlyingBlood
 {
 	+THRUACTORS
 	+CLIENTSIDEONLY
-	-FORCEXYBILLBOARD
 	+FORCEYBILLBOARD
 	+TOUCHY
 	Alpha 0.9
@@ -1127,7 +1129,6 @@ ACTOR BloodDripingFromCeilingBig: BloodDripingFromCeiling
 //This is the first drip spawned by the drip spawners, which leaves a small blood pool
 ACTOR DripingBloodLeavesPool: BloodDripingFromCeiling
 {
--FORCEXYBILLBOARD
 +FORCEYBILLBOARD
 
  scale 0.3
@@ -1152,7 +1153,6 @@ ACTOR DripingBloodLeavesPool: BloodDripingFromCeiling
 //Just like above, but leaves a smaller pool
 ACTOR DripingBloodLeavesSmallPool: DripingBloodLeavesPool
 {
--FORCEXYBILLBOARD
 +FORCEYBILLBOARD
 +DONTSPLASH
 States
