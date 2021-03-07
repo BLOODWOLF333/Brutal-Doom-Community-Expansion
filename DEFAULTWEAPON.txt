@@ -633,8 +633,8 @@ ACTOR BrutalWeapon : DoomWeapon
 
 ACTOR FlashlightProjectile: FastProjectile
 {
-	Radius 36
-	Height 36
+	Radius 8
+	Height 16
 	Speed 600
 	Damage 0
 	Mass 0
@@ -644,7 +644,7 @@ ACTOR FlashlightProjectile: FastProjectile
 	-ACTIVATEPCROSS
 	+CLIENTSIDEONLY
 	+NONETID
-	+PAINLESS
+	+NOINTERACTION
 	States
 	{
 	Spawn:
@@ -661,7 +661,7 @@ ACTOR FlashlightProjectile: FastProjectile
 ACTOR FlashlightAlerter: FastProjectile
 {
 	Radius 2
-	Height 2
+	Height 4
 	Speed 600
 	Damage 0
 	Mass 0
@@ -669,7 +669,9 @@ ACTOR FlashlightAlerter: FastProjectile
 	+NOTIMEFREEZE
 	-ACTIVATEIMPACT
 	-ACTIVATEPCROSS
-	+PAINLESS
+	+CLIENTSIDEONLY
+	+NONETID
+	+NOINTERACTION
 	States
 	{
 	Spawn:
@@ -686,14 +688,14 @@ ACTOR FlashlightAlerter: FastProjectile
 
 ACTOR FlashlightProjectile2: FlashlightProjectile
 {
-	Radius 24
-	Height 24
+	Radius 4
+	Height 8
 }
 
 ACTOR FlashlightProjectile3: FlashlightProjectile
 {
-	Radius 12
-	Height 12
+	Radius 2
+	Height 4
 }
 
 ACTOR FlashlightSource: FlashlightProjectile

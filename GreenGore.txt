@@ -343,7 +343,8 @@ Decal GreenBloodSplat
 	Stop
 
  Rest:
-	BPDL A 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+	BPDL A 800
+	TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 	TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 	Loop
  DoNothing:
@@ -400,7 +401,8 @@ Decal GreenBloodSplat
 		  TNT5 A 3 A_SetScale(1.11, 1.11)
 
 	Live:
-		TNT5 A 900 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		TNT5 A 900
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Splash")
 		Loop
 	Splash:
@@ -918,7 +920,8 @@ Decal GreenBloodSuper
 		TNT1 A 0 A_SpawnItemEx ("Green_BloodSpot", 0, 0, 1)
 		Goto Rest
 	Rest:
-		XMT1 M 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		XMT1 M 800
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Vanish")
 		Loop
 
@@ -975,7 +978,8 @@ Decal GreenBloodSuper
 		TNT1 A 0 A_SpawnItem("Green_BloodSpot",0,0,0,1)
 		Goto Rest1
 	Rest1:
-		XMT1 M 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		XMT1 M 800
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Vanish")
 		Loop
 
@@ -1041,7 +1045,8 @@ Decal GreenBloodSplat
 		TNT1 A 0 A_SpawnItem("Green_BloodSpot",0,0,0,1)
 		Goto Rest
 	Rest:
-		XMT1 M 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		XMT1 M 800
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Vanish")
 		Loop
     }
@@ -1071,7 +1076,8 @@ Decal GreenBloodSuper
 		TNT1 A 0 A_SpawnItemEx ("Green_BloodSpot", 0, 0, 1)
 		Goto Rest
 	Rest:
-		XMT2 I 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		XMT2 I 800
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Vanish")
 		Loop
 
@@ -1124,7 +1130,8 @@ Decal GreenBloodSuper
 		TNT1 A 0 A_SpawnItem("Green_BloodSpot",0,0,0,1)
 		Goto Rest
 	Rest:
-		XMT2 I 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		XMT2 I 800
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Vanish")
 		Loop
 
@@ -1189,7 +1196,8 @@ Decal GreenBloodSuper
 		TNT1 A 0 A_SpawnItem("Green_BloodSpot",0,0,0,1)
 		Goto Rest
 	Rest:
-		XMT2 I 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		XMT2 I 800
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Vanish")
 		Loop
     }
@@ -1211,7 +1219,8 @@ Decal GreenBloodSplat
 		TNT1 A 0 A_QueueCorpse
 		Goto Rest
 	Rest:
-		XDB6 B 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		XDB6 B 800
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Vanish")
 		Loop
     }
@@ -1237,7 +1246,8 @@ Decal GreenBloodSplat
 		TNT1 A 0
         XME5 B 3
     Living:
-		XME5 B 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		XME5 B 800
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Vanish")
         Loop
 	Vanish:
@@ -1266,7 +1276,8 @@ Decal GreenBloodSplat
 		TNT1 A 0
         XME5 D 3
     Living:
-		XME5 D 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		XME5 D 800
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Vanish")
         Loop
 	Vanish:
@@ -1320,7 +1331,8 @@ States
         XME8 B 1
 		TNT1 A 0 A_QueueCorpse
 	Rest:
-		XME8 B 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		XME8 B 800
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Vanish")
         Loop
     }

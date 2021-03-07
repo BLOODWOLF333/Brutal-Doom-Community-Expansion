@@ -18,7 +18,7 @@ actor BigGibBase
 	//+SOLID
 	-SOLID
 	+SHOOTABLE
-	
+
 	damagefactor "Shrapnel", 100.0
     damagefactor "Plasma", 20.0
 	 damagefactor "TeleportRemover", 1000.0
@@ -145,7 +145,7 @@ actor LimbBase: BigGibBase
 	//+SOLID
 	+THRUACTORS
 	+FLOORCLIP
-	
+
     DeathSound "misc/xdeath5"
     damagefactor "Blood", 0.0    damagefactor "Green_BLood", 0.0    damagefactor "BlueBlood", 0.0    damagefactor "Taunt", 0.0    damagefactor "KillMe", 0.0  damagefactor "Avoid", 0.0  damagefactor "Taunt", 0.0
     //damagefactor "Plasma", 99000.0
@@ -404,7 +404,8 @@ Death:
 	XDT5 Z 1
 	Goto Rest
  Rest:
-	XDT5 Z 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+	XDT5 Z 800
+	TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 	TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 	Loop
 
@@ -423,7 +424,8 @@ Death:
 	XDT5 Y 1
 	Goto Rest
  Rest:
-	XDT5 Y 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+	XDT5 Y 800
+	TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 	TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 	Loop
 }}
@@ -535,7 +537,8 @@ actor GibDemonArmPart: TinyGib
 		HND8 Z 1
 		Goto Rest
 	Rest:
-		HND8 Z 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		HND8 Z 800
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 		Loop
 }}
@@ -554,7 +557,8 @@ actor GibDemonHand: TinyGib
 		TNT1 A 0 A_QueueCorpse
 		Goto Rest
 	Rest:
-		HND8 Y 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		HND8 Y 800
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 		Loop
 }}
@@ -650,7 +654,8 @@ actor GibImpArmPart: TinyGib
 		TNT1 A 0 A_QueueCorpse
 		Goto Rest
 	Rest:
-		HND4 X 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		HND4 X 800
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 		Loop
 }}
@@ -669,7 +674,8 @@ actor GibImpHand: TinyGib
 		TNT1 A 0 A_QueueCorpse
 		Goto Rest
 	Rest:
-		HND4 Y 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		HND4 Y 800
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 		Loop
 }}
@@ -820,7 +826,8 @@ actor GibZombieLegPart: TinyGib
 		TNT1 A 0 A_QueueCorpse
 		Goto Rest
 	Rest:
-		LEG1 Z 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		LEG1 Z 800
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 		Loop}}
 
@@ -838,7 +845,8 @@ actor GibZombieBoot: TinyGib
 		TNT1 A 0 A_QueueCorpse
 		Goto Rest
 	Rest:
-		LEG1 Y 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		LEG1 Y 800
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 		Loop}}
 
@@ -871,7 +879,8 @@ actor Gib_ZombieLeg2: Gib_ZombieLeg1
 		LEG1 A 1 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
 		Goto Rest
 	Rest:
-		LEG1 J 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		LEG1 J 800
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 		Loop
 }}
@@ -970,7 +979,8 @@ actor GibImpLegPart: TinyGib
 		TNT1 A 0 A_QueueCorpse
 		Goto Rest
 	Rest:
-		LEG4 Z 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		LEG4 Z 800
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 		Loop
 }}
@@ -989,7 +999,8 @@ actor GibImpPaw: TinyGib
 		TNT1 A 0 A_QueueCorpse
 		Goto Rest
 	Rest:
-		LEG4 Y 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		LEG4 Y 800
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 		Loop
 }}
@@ -1074,7 +1085,8 @@ Death:
 	LEG8 Z 1
        Goto Rest
 Rest:
-	LEG8 Z 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+	LEG8 Z 800
+	TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 	TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 	Loop
 }}
@@ -1091,7 +1103,8 @@ Death:
 	LEG8 Y 1
        Goto Rest
 Rest:
-	LEG8 Y 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+	LEG8 Y 800
+	TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 	TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 	Loop
 }}
@@ -1173,7 +1186,8 @@ actor GibSargeLegPart: TinyGib
 	   LEG2 Z 1
 	   Goto Rest
 	Rest:
-		LEG2 Z 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		LEG2 Z 800
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 		Loop
 }}
@@ -1190,7 +1204,8 @@ actor GibSargeBoot: TinyGib
 	   LEG2 Y 1
 	   Goto Rest
 	Rest:
-		LEG2 Y 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		LEG2 Y 800
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 		Loop
 }}
@@ -1339,7 +1354,8 @@ Speed 2
 		TNT1 A 0 A_QueueCorpse
 		Goto Rest
 	Rest:
-		XSTO E 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		XSTO E 800
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 		Loop
     }
@@ -2019,7 +2035,8 @@ ACTOR SpiderLeg
 		TNT1 A 0 A_QueueCorpse
 	    XDSL I 1
 	Rest:
-		XDSL I 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		XDSL I 800
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 		Loop
 	DoNothing:
@@ -2071,7 +2088,8 @@ ACTOR GenericHKGib1: XDeathArm1
 	    GG71 A 0
 		Goto Rest
 	Rest:
-		GG71 A 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		GG71 A 800
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 		Loop
     }
@@ -2091,7 +2109,8 @@ ACTOR GenericHKGib2: GenericHKGib1
 	    GG71 B 0
         Goto Rest
 	Rest:
-		GG71 B 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		GG71 B 800
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 		Loop
     }
@@ -2111,7 +2130,8 @@ ACTOR GenericHKGib3: GenericHKGib1
 	    GG71 C 0
         Goto Rest
 	Rest:
-		GG71 C 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		GG71 C 800
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 		Loop
     }
@@ -2131,7 +2151,8 @@ ACTOR GenericHKGib4: GenericHKGib1
 	    GG71 D 0
         Goto Rest
 	Rest:
-		GG71 D 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		GG71 D 800
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 		Loop
     }
@@ -2151,7 +2172,8 @@ ACTOR GenericBaronGib1: GenericHKGib1
 	    GG71 E 0
         Goto Rest
 	Rest:
-		GG71 E 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		GG71 E 800
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 		Loop
     }
@@ -2177,7 +2199,8 @@ ACTOR GenericBaronGib2: GenericHKGib1
 	    GG71 F 0
         Goto Rest
 	Rest:
-		GG71 F 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		GG71 F 800
+TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 		Loop
     }
@@ -2485,7 +2508,7 @@ actor ZombiemanHead: LimbBase
 	-THRUACTORS
 	+LOOKALLAROUND
 	-COUNTKILL
-	
+
 	damagefactor "Kick", 9000.0
 	damagefactor "HeadKick", 9000.0
 	damagefactor "Pick", 999.0
@@ -4128,7 +4151,8 @@ ACTOR BasicMarineGib1: BasicGib
 	TNT1 A 0 A_Recoil(3)
 	XDMG A 0
 	Rest:
-	XDMG A 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+	XDMG A 800
+TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 	TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 	Loop
 	}
@@ -4147,7 +4171,8 @@ ACTOR BasicMarineGib2: BasicGib
 	TNT1 A 0 A_Recoil(3)
 	XDMG B 0
 	Rest:
-	XDMG B 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+	XDMG B 800
+TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 	TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 	Loop
 	}
@@ -4166,7 +4191,8 @@ ACTOR BasicMarineGib3: BasicGib
 	TNT1 A 0 A_Recoil(3)
 	XDMG C 0
 	Rest:
-	XDMG C 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+	XDMG C 800
+TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 	TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 	Loop
 	}
@@ -4185,7 +4211,8 @@ ACTOR BasicMarineGib4: BasicGib
 	TNT1 A 0 A_Recoil(3)
 	XDMG D 0
 	Rest:
-	XDMG D 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+	XDMG D 800
+TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 	TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 	Loop
 	}
@@ -4270,7 +4297,8 @@ ACTOR XDeathSkinPiece1: Xdeath1
 	Splash:
 	    Goto Death
 	 Rest:
-		XSKI B 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		XSKI B 800
+TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 		Loop
     }
@@ -4292,7 +4320,8 @@ ACTOR XDeathSkinPiece2: XDeathSkinPiece1
 	 Splash:
 	    Goto Death
 	Rest:
-		XSKI D 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		XSKI D 800
+TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 		Loop
     }
@@ -4326,7 +4355,8 @@ ACTOR XDeathPainElementalNew1: XDeath1
 		//TNT1 A 2
 		Goto Rest
 	Rest:
-		CAGI Q 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		CAGI Q 800
+TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 		CAGI Q 8029
 		Stop
@@ -4358,7 +4388,8 @@ ACTOR XDeathPainElementalNew2: XDeathPainElementalNew1
 		TNT1 A 2
 		Goto Rest
 	Rest:
-		CAGI R 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		CAGI R 800
+TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 		CAGI Q 8029
 		Stop
