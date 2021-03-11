@@ -13,7 +13,7 @@ Actor CapturedMarine Replaces Blursphere
 			CAPT A 2
 			TNT1 A 0 A_SpawnItemEx("EvidenceCheckerInvisibility", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
 			TNT1 A 0 A_JumPIfInventory("Clip2", 1, "Invisibility")
-			//TNT1 A 0 A_Jump(1, "FlameMarine")
+			TNT1 A 0 A_Jump(1, "FlameMarine")
 			TNT1 A 0 A_Jump(2, "HMLMarine")
 			TNT1 A 0 A_Jump(4, "BFGMarineSpawner")
 			TNT1 A 0 A_Jump(8, "PlasmaMarineSpawner")
@@ -94,7 +94,7 @@ Actor CapturedMarine Replaces Blursphere
 ////////
 		FlameMarine:
 			TNT1 A 0
-			//TNT1 A 0 A_SpawnItem("CapturedMarineFlame")
+			TNT1 A 0 A_SpawnItem("CapturedMarineFlame")
 			Stop
 ////////
 		Invisibility:
@@ -122,7 +122,7 @@ ACTOR CapturedMarineBase
 	+FLOORCLIP
     Painchance 255
     DamageType Taunt
-	Translation  "112:127=32:47"
+	Translation  "112:127=[220,0,0]:[0,0,0]"
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
 	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0
@@ -537,7 +537,7 @@ Pain.Rip:
 ACTOR CapturedMarineFist: CapturedMarineBase
 {
 	Health 200
-	Translation "112:127=112:127"
+	Translation  "112:127=112:127"
 	States
 	{
 	Death.Use:
@@ -558,7 +558,7 @@ ACTOR CapturedMarineFist: CapturedMarineBase
 ACTOR CapturedMarineSaw: CapturedMarineBase
 {
 	Health 200
-	Translation "112:127=112:127", "48:76=236:239"
+	Translation "112:127=112:127", "48:76=[205,133,63]:[0,0,0]"
 	States
 	{
 	Death.Use:
@@ -579,7 +579,7 @@ ACTOR CapturedMarineSaw: CapturedMarineBase
 ACTOR CapturedMarineSMG: CapturedMarineBase
 {
 	Health 185
-	Translation "112:127=160:167"
+	Translation "112:127=[255,224,0]:[0,24,0]"
 	States
 	{
 	Death.Use:
@@ -600,7 +600,7 @@ ACTOR CapturedMarineSMG: CapturedMarineBase
 ACTOR CapturedMarineShotgun: CapturedMarineBase
 {
 	Health 175
-	Translation "112:127=96:111"
+	Translation "112:127=[170,170,170]:[0,0,0]"
 	States
 	{
 	Death.Use:
@@ -621,7 +621,7 @@ ACTOR CapturedMarineShotgun: CapturedMarineBase
 ACTOR CapturedMarineSSG: CapturedMarineBase
 {
 	Health 175
-	Translation "112:127=96:111", "48:76=236:239"
+	Translation "112:127=[170,170,170]:[0,0,0]", "48:76=[205,133,63]:[0,0,0]"
 	States
 	{
 	Death.Use:
@@ -642,7 +642,7 @@ ACTOR CapturedMarineSSG: CapturedMarineBase
 ACTOR CapturedMarineMinigun: CapturedMarineBase
 {
 	Health 160
-	Translation "112:127=32:47", "48:76=236:239"
+	Translation "112:127=[220,0,0]:[0,0,0]", "48:76=[205,133,63]:[0,0,0]"
 	States
 	{
 	Death.Use:
@@ -663,7 +663,7 @@ ACTOR CapturedMarineMinigun: CapturedMarineBase
 ACTOR CapturedMarineGrenade: CapturedMarineBase
 {
 	Health 150
-	Translation "112:127=144:151", "48:76=236:239"
+	Translation "112:127=[205,133,63]:[0,0,0]", "48:76=[205,133,63]:[0,0,0]"
 	States
 	{
 	Death.Use:
@@ -684,7 +684,7 @@ ACTOR CapturedMarineGrenade: CapturedMarineBase
 ACTOR CapturedMarineHML: CapturedMarineBase
 {
 	Health 110
-	Translation "112:127=5:8"
+	Translation "112:127=[60,60,60]:[0,0,0]"
 	States
 	{
 	Death.Use:
@@ -705,7 +705,7 @@ ACTOR CapturedMarineHML: CapturedMarineBase
 ACTOR CapturedMarineRocket: CapturedMarineBase
 {
 	Health 150
-	Translation "112:127=144:151"
+	Translation "112:127=[205,133,63]:[0,0,0]"
 	States
 	{
 	Death.Use:
@@ -726,7 +726,7 @@ ACTOR CapturedMarineRocket: CapturedMarineBase
 ACTOR CapturedMarinePlasmagun: CapturedMarineBase
 {
 	Health 135
-	translation "112:127=200:207"
+	translation "112:127=[0,128,192]:[0,0,0]"
 	States
 	{
 	Death.Use:
@@ -747,7 +747,7 @@ ACTOR CapturedMarinePlasmagun: CapturedMarineBase
 ACTOR CapturedMarineRailgun: CapturedMarineBase
 {
 	Health 135
-	translation "112:127=200:207", "48:76=236:239"
+	translation "112:127=[0,128,192]:[0,0,0]", "48:76=[205,133,63]:[0,0,0]"
 	States
 	{
 	Death.Use:
@@ -768,7 +768,7 @@ ACTOR CapturedMarineRailgun: CapturedMarineBase
 ACTOR CapturedMarineBFG: CapturedMarineBase
 {
 	Health 125
-	translation "112:127=120:127", "48:76=236:239"
+	translation "112:127=[0,140,0]:[0,0,0]", "48:76=[205,133,63]:[0,0,0]"
 	States
 	{
 	Death.Use:
@@ -789,7 +789,7 @@ ACTOR CapturedMarineBFG: CapturedMarineBase
 ACTOR CapturedMarineBFG10K: CapturedMarineBase
 {
 	Health 125
-	translation "112:127=120:127"
+	translation "112:127=[0,140,0]:[0,0,0]"
 	States
 	{
 	Death.Use:
@@ -810,7 +810,7 @@ ACTOR CapturedMarineBFG10K: CapturedMarineBase
 ACTOR CapturedMarineFlame: CapturedMarineBase
 {
 	Health 100
-	Translation "112:127=208:223", "48:76=236:239"
+	Translation "112:127=[255,168,0]:[64,12,0]", "48:76=[205,133,63]:[0,0,0]"
 	States
 	{
 	Death.Use:

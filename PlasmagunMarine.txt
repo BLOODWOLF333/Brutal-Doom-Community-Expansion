@@ -1,6 +1,6 @@
 ACTOR PrePlacedMarinePlasmaGun Replaces MarinePlasma
 {
-	translation "112:127=200:207"
+	translation "112:127=[0,128,192]:[0,0,0]"
 	MONSTER
 	Height 56
 	Radius 16
@@ -22,7 +22,7 @@ ACTOR Marine_PlasmaGunSpawn: RedTorch
 	-SHOOTABLE
 	-COUNTKILL
 	-FRIENDLY
-	translation "112:127=200:207"
+	translation "112:127=[0,128,192]:[0,0,0]"
 	States
     {
     Spawn:
@@ -45,7 +45,7 @@ ACTOR Marine_PlasmaGun: Marine_Rifle
 	Health 135
 	MaxTargetRange 4096
 	DropItem "PLasmagunSpawner"
-	translation "112:127=200:207"
+	translation "112:127=[0,128,192]:[0,0,0]"
 	States
 	{
 	Active:

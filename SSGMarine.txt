@@ -1,6 +1,6 @@
 ACTOR PrePlacedMarineSSG Replaces MarineSSG
 {
-	translation "112:127=96:111", "48:76=236:239"
+	translation "112:127=[170,170,170]:[0,0,0]", "48:76=[205,133,63]:[0,0,0]"
 	MONSTER
 	Height 56
 	Radius 16
@@ -22,7 +22,7 @@ ACTOR Marine_SSGSpawn: RedTorch
 	-SHOOTABLE
 	-COUNTKILL
 	-FRIENDLY
-	translation "112:127=96:111", "48:76=236:239"
+	translation "112:127=[170,170,170]:[0,0,0]", "48:76=[205,133,63]:[0,0,0]"
 	States
     {
     Spawn:
@@ -44,7 +44,7 @@ ACTOR Marine_SSG: Marine_Rifle
 {
 	Health 175
 	DropItem "SSGSpawner"
-	translation "112:127=96:111", "48:76=236:239"
+	translation "112:127=[170,170,170]:[0,0,0]", "48:76=[205,133,63]:[0,0,0]"
 	MaxTargetRange 1024
 	States
 	{

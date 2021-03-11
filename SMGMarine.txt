@@ -1,6 +1,6 @@
 ACTOR PrePlacedMarineSMG Replaces MarinePistol
 {
-	translation "112:127=160:167"
+	translation "112:127=[255,224,0]:[0,24,0]"
 	MONSTER
 	Height 56
 	Radius 16
@@ -22,7 +22,7 @@ ACTOR Marine_SMGSpawn: RedTorch
 	-SHOOTABLE
 	-COUNTKILL
 	-FRIENDLY
-	translation "112:127=160:167"
+	translation "112:127=[255,224,0]:[0,24,0]"
 	States
     {
     Spawn:
@@ -44,7 +44,7 @@ ACTOR Marine_SMG: Marine_Rifle
 {
 	Health 185
 	DropItem "SMGSpawner"
-	translation "112:127=160:167"
+	translation "112:127=[255,224,0]:[0,24,0]"
 	MaxTargetRange 2048
 	States
 	{

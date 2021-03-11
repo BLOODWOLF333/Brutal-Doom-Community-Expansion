@@ -4,7 +4,7 @@ MONSTER
 -COUNTKILL
 Height 56
 Radius 16
-Translation "112:127=144:151"
+Translation "112:127=[205,133,63]:[0,0,0]"
     States
 	{
 	Spawn:
@@ -24,7 +24,7 @@ ACTOR Marine_RocketSpawn: RedTorch
 	-SHOOTABLE
 	-COUNTKILL
 	-FRIENDLY
-	Translation "112:127=144:151"
+	Translation "112:127=[205,133,63]:[0,0,0]"
 	States
     {
     Spawn:
@@ -47,7 +47,7 @@ ACTOR Marine_Rocket: Marine_Rifle
 	Health 175
 	MaxTargetRange 4096
 	DropItem "RocketLauncherSpawner"
-	Translation "112:127=144:151"
+	Translation "112:127=[205,133,63]:[0,0,0]"
 	States
 	{
 	Active:
@@ -1590,9 +1590,8 @@ ACTOR Marine_Rocket: Marine_Rifle
 	TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("PlayerFlyingBlood", 50, 0, random (0, 360), 2, random (0, 160))
 	FREV C 4 A_PlaySound("skeleton/pain")
 	FREV D 4
-	FREV EFGHIJJJKL 4
+	FREV EFGHIJKL 4
 	FREV M 5 A_PlaySound("skeleton/sight")
-	FREV M 5
 	FREV N 2
 	FREV O 2
 

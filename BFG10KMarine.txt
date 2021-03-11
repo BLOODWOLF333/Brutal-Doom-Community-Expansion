@@ -1,6 +1,6 @@
 ACTOR PrePlacedMarineBFG10K
 {
-	translation "112:127=120:127"
+	translation "112:127=[0,140,0]:[0,0,0]"
 	MONSTER
 	Height 56
 	Radius 16
@@ -22,7 +22,7 @@ ACTOR Marine_BFG10KSpawn: RedTorch
 	-SHOOTABLE
 	-COUNTKILL
 	-FRIENDLY
-	translation "112:127=120:127"
+	translation "112:127=[0,140,0]:[0,0,0]"
 	States
     {
     Spawn:
@@ -44,7 +44,7 @@ ACTOR Marine_BFG10K: Marine_Rifle
 {
 	Health 125
 	DropItem "BFG10KSpawner"
-	translation "112:127=120:127"
+	translation "112:127=[0,140,0]:[0,0,0]"
 	MaxTargetRange 4096
 	States
 	{

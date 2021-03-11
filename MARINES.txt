@@ -3,7 +3,7 @@ ACTOR PrePlacedMarine Replaces MarinePistol
 MONSTER
 Height 56
 Radius 16
-Translation  "112:127=32:47"
+Translation  "112:127=[220,0,0]:[0,0,0]"
 -COUNTKILL
     States
 	{
@@ -155,7 +155,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 	PainSound "*pain"
 	SeeSound "None"
 	Scale 1.0
-	Translation  "112:127=32:47"
+	Translation  "112:127=[220,0,0]:[0,0,0]"
 	BloodType "Player_Blood", "Player_BloodSaw", "Player_Blood"
 	Obituary "%o has been gunned down by a Marine."
 	DropItem "RifleDrop"
@@ -196,6 +196,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 	DamageFactor "Desintegrate", 0.0 DamageFactor "HeavyImpact", 0.0
 
 	PainChance "Avoid", 128
+	Tag "Carl"
 	States
 	{
 	Active:

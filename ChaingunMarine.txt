@@ -1,6 +1,6 @@
 ACTOR PrePlacedMarineMinigun Replaces MarineChaingun
 {
-Translation  "112:127=32:47", "48:76=236:239"
+Translation  "112:127=[220,0,0]:[0,0,0]", "48:76=[205,133,63]:[0,0,0]"
 MONSTER
 Height 56
 Radius 16
@@ -24,7 +24,7 @@ ACTOR Marine_MinigunSpawn: RedTorch
 	-SHOOTABLE
 	-COUNTKILL
 	-FRIENDLY
-	Translation  "112:127=32:47", "48:76=236:239"
+	Translation  "112:127=[220,0,0]:[0,0,0]", "48:76=[205,133,63]:[0,0,0]"
 	States
     {
     Spawn:
@@ -45,7 +45,7 @@ ACTOR Marine_MinigunSpawn: RedTorch
 ACTOR Marine_Minigun: Marine_Rifle
 {
 	DropItem "DropedChaingunSpawner"
-	Translation  "112:127=32:47", "48:76=236:239"
+	Translation  "112:127=[220,0,0]:[0,0,0]", "48:76=[205,133,63]:[0,0,0]"
 	MaxTargetRange 3072
 	States
 	{
