@@ -253,8 +253,7 @@ ACTOR TehArchvile: Archvile Replaces Archvile
 
 	XDeath:
     Death.ExplosiveImpact:
-	Death.Explosives:
-
+	Death.Explosive:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("SplatteredLarge")
 		TNT1 A 0 A_XScream
@@ -522,12 +521,13 @@ ACTOR DyingArchvileNoArm: TehArchvile
 		TNT1 A -1
 		Stop
 
+	Death.Arm:
+	Death.Blast:
 	BrutalDeath:
-	Death.Saw:
 	Death.Minigun:
+	Death.Saw:
 	Death.Shotgun:
 	Death.SSG:
-	Death.Blast:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("SplatteredLarge")
 		TNT1 A 0 A_XScream
