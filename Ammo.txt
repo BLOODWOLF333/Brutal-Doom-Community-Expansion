@@ -770,6 +770,8 @@ ACTOR NukeSpawner: CustomInventory
 		TNT1 A 0
 		TNT1 A 1
 		TNT1 A 0 A_ChangeFlag("THRUACTORS", 0)
+		TNT1 A 0 ACS_ExecuteAlways("BDCheckNuke")
+		TNT1 A 2
 	Stay:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("FakeNukeSprite")
@@ -783,6 +785,10 @@ ACTOR NukeSpawner: CustomInventory
 		Stop
 	Purist:
 	    TNT1 A 0 A_GiveInventory("AmmoCell", 100)
+		Stop
+	Cancels:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("AmmoCellPack")
 		Stop
     }
 }

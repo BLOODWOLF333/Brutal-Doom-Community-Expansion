@@ -1385,6 +1385,11 @@ Script "BDCheckFuzzySpectre" (VOID)
 if	(GetCvar("bd_fuzzyspectre") == 1) { SetActorState(0,"ReplaceFuzzy"); }
 }
 
+Script "BDCheckNuke" (VOID)
+{
+if	(GetCvar("bd_disablenuke") == 1) { SetActorState(0,"Cancels"); }
+}
+
 Script "BDCheckDecorations" (VOID)
 {
 if	(GetCvar("bd_disabledecorations") == 1) { SetActorState(0,"Vanilla"); }
