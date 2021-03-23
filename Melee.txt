@@ -1601,25 +1601,21 @@ XDeath:
 ACTOR UseAttack: KickAttack
 {
 Damage (random(1,1))
-
 DamageType Use
-+NOPAIN
 +PAINLESS
 +THRUGHOST
 +GHOST
 -ACTIVATEIMPACT
 +BLOODLESSIMPACT
 Speed 16
-Radius 4
-Height 4
 States
 {
 Death:
 XDeath:
-	    TNT1 A 0
-		TNT1 A 10
-		Stop
-		}
+	TNT1 A 0
+	TNT1 A 10
+	Stop
+}
 }
 
 ACTOR ExecutionAttackKick: KickAttack
@@ -1649,15 +1645,17 @@ ACTOR StealthAttack: KickAttack
     Damage (random(1,1))
 	speed 32
 	DamageType Stealth
-	Radius 16
-	Height 16
+	+THRUGHOST
+	+GHOST
+	-ACTIVATEIMPACT
+	+BLOODLESSIMPACT
 	States
 	{
 	Death:
 	Xdeath:
-			TNT1 A 10
-			Stop
-		}
+		TNT1 A 10
+		Stop
+	}
 }
 
 ACTOR PickMissile: StealthAttack//Doesnt fucking work
