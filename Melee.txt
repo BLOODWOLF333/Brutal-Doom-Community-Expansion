@@ -1645,9 +1645,10 @@ ACTOR StealthAttack: KickAttack
     Damage (random(1,1))
 	speed 32
 	DamageType Stealth
-	+THRUGHOST
-	+GHOST
 	-ACTIVATEIMPACT
+	-ACTIVATEPCROSS
+	-ACTIVATEMCROSS
+	-CANUSEWALLS
 	+BLOODLESSIMPACT
 	States
 	{

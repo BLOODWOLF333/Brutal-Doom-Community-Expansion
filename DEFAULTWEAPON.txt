@@ -52,7 +52,35 @@ ACTOR BrutalWeapon : DoomWeapon
 		TNT1 A 0 A_TakeInventory("PressedUse", 100)
 		RIFF A 0 A_FireCustomMissile("UseAttack", 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("StealthAttack", 0, 0, 0, -7)
-		TNT1 A 0 A_JumpIfInventory("FlashlightOn", 1, "FlashOn")
+		TNT1 A 1
+		TNT1 A 0 A_JumpIfInventory("FlashlightOn", 1, "WaitFlashOn")
+		Goto Flash
+
+	WaitFlashOn://Prevent rapid blinking while holding down the use key
+	    TNT1 A 0
+		TNT1 A 0 A_TakeInventory("PRessedUse", 1)
+		RIFF A 0 A_FireCustomMissile("FlashlightAlerter", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
+		TNT1 A 1 BRIGHT
+
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
+		TNT1 A 1 BRIGHT
+
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
+		TNT1 A 1 BRIGHT
+
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
+		TNT1 A 1 BRIGHT
+		TNT1 A 0 A_TakeInventory("UsedStamina", 1)
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "WaitFlashOn")
 		Goto Flash
 
 	Flash:
@@ -88,10 +116,9 @@ ACTOR BrutalWeapon : DoomWeapon
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
 		TNT1 A 1 BRIGHT
-		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "TryUse")
 		TNT1 A 0 A_TakeInventory("UsedStamina", 1)
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "TryUse")
 		Goto Flash
-
 
 	SwitchFlashlight:
 		TNT1 A 0
