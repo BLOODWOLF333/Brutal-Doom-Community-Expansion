@@ -1,7 +1,7 @@
 //Scripts of my old bike. Required to make the tank work.
 
 
-#library "VEHICLECONTROL"
+#library "BDControls"
 #include "zcommon.acs"
 
 int arrayHealth[32];
@@ -116,6 +116,7 @@ if (buttons & BT_USE)
 }
 
    delay(1);
+   TakeInventory("PressedUse", 1);
  }
 }
 
@@ -134,9 +135,92 @@ if (buttons & BT_JUMP)
 }
 
    delay(1);
+   TakeInventory("PressedJump", 1);
  }
 }
 
+//==================================================================================================
+//SPRINTING
+script "CheckSprint" ENTER
+{
+
+ int buttonSpeed;
+
+ while (TRUE)
+ {
+   buttonSpeed = GetPlayerInput(-1, INPUT_BUTTONS);
+
+if (buttonSpeed & BT_SPEED)
+{
+   if (checkinventory("istacticalclass") == 1) { GiveInventory("IsRunning", 1); }
+   GiveInventory("IsRunning2", 1);
+   delay(1);
+   restart;
+}
+   TakeInventory("IsRunning", 1);
+   TakeInventory("IsRunning2", 1);
+   delay(4);
+ }
+
+}
+
+script "CheckPrimary" ENTER
+{
+ int buttons;
+
+ while (TRUE)
+ {
+   buttons = GetPlayerInput(-1, INPUT_BUTTONS);
+
+if (buttons & BT_ALTATTACK)
+{
+   GiveInventory("FiredSecondary", 1);
+   delay(1);
+   restart;
+}
+   TakeInventory("FiredSecondary", 1);
+   delay(4);
+ }
+
+}
+
+script "CheckSecondary" ENTER
+{
+ int buttons2;
+
+ while (TRUE)
+ {
+   buttons2 = GetPlayerInput(-1, INPUT_BUTTONS);
+
+if (buttons2 & BT_ATTACK)
+{
+   GiveInventory("FiredPrimary", 1);
+   delay(1);
+   restart;
+}
+   TakeInventory("FiredPrimary", 1);
+   delay(4);
+ }
+}
+
+script "CheckCrouch" ENTER
+{
+ int buttons2;
+
+ while (TRUE)
+ {
+   buttons2 = GetPlayerInput(-1, INPUT_BUTTONS);
+
+if (buttons2 & BT_CROUCH)
+{
+   GiveInventory("IsCrouching", 1);
+   delay(1);
+   restart;
+}
+   TakeInventory("IsCrouching", 1);
+   delay(4);
+ }
+}
 
 Script "HeliRollRight" (VOID)
 {

@@ -8,7 +8,7 @@ Actor ArmorShard : ArmorBonus Replaces ArmorBonus
 	Height 16
 	Inventory.Pickupmessage "$GOTARMBONUS"
 	Inventory.Icon "BON2A0"
-	Armor.Savepercent 50.1
+	Armor.Savepercent 33.1
 	Armor.Saveamount 2
 	Armor.Maxsaveamount 300
 	+COUNTITEM
@@ -19,7 +19,7 @@ Actor ArmorShard : ArmorBonus Replaces ArmorBonus
 	Spawn:
 		BON2 A 0
 		BON2 A 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
-	Spawn2:	
+	Spawn2:
 		BON2 ABCDCB 2 BRIGHT A_SpawnItem("GreenFlareSmall2",0,5)
 		Loop
 	Vanilla:
@@ -40,7 +40,7 @@ Actor ArmorShardDroped : ArmorShard
 	Height 16
 	Inventory.Pickupmessage "$GOTARMBONUS"
 	Inventory.Icon "BON2A0"
-	Armor.Savepercent 50.1
+	Armor.Savepercent 33.1
 	Armor.Saveamount 5
 	Armor.Maxsaveamount 300
 	-COUNTITEM
@@ -61,7 +61,7 @@ Actor GiveArmor : BasicArmorBonus
 	Height 16
 	Inventory.Pickupmessage "$GOTARMBONUS"
 	Inventory.Icon "BON2A0"
-	Armor.Savepercent 50.1
+	Armor.Savepercent 33.1
 	Armor.Saveamount 1
 	Armor.Maxsaveamount 9999
 	+COUNTITEM
@@ -116,7 +116,7 @@ Actor HeavyArmor : BasicArmorPickup Replaces BlueArmor
 	{
 	Spawn:
 		ARM2 AAAA 2 bright A_SpawnItem("BlueFlareMedium3",0,10)
-		loop	
+		loop
 	}
 }
 
@@ -154,7 +154,7 @@ ACTOR HealthPlus : Health Replaces HealthBonus
 	Spawn:
 		BON1 A 0
 		BON1 A 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
-	Spawn2:	
+	Spawn2:
 		BON1 ABCDCB 2 BRIGHT A_SpawnItem("BlueFlareSmallItem",0,5)
 		Loop
 	Vanilla:
@@ -190,7 +190,7 @@ ACTOR Medikit2 : Health Replaces Medikit
 	Spawn:
         MEDK A 1
 		MEDK A -1
-		Stop	
+		Stop
 	}
 }
 
@@ -223,7 +223,7 @@ Actor ArmorCrueltyBonus : ArmorBonus
 	Spawn:
 		BON2 E 0
 		BON2 E 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
-	Spawn2:	
+	Spawn2:
 		BON2 EFGHGF 2 BRIGHT A_SpawnItem("RedFlareSmallItem",0,5)
 		Loop
 	Vanilla:
@@ -250,7 +250,7 @@ Actor HealthCrueltyBonus : Health
 	Spawn:
 		BON1 E 0
 		BON1 E 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
-	Spawn2:	
+	Spawn2:
 		BON1 EFGHGF 2 BRIGHT A_SpawnItem("RedFlareSmallItem",0,5)
 		Loop
 	Vanilla:
