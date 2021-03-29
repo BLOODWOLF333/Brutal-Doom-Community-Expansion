@@ -25,7 +25,6 @@ Actor ExplosionParticle
   }
 }
 
-
 Actor ExplosionParticle2: ExplosionParticle
 {
 
@@ -62,7 +61,6 @@ ACTOR ExplosionParticleVeryFast: ExplosionParticleHeavy
  Gravity 0.9
 }
 
-
 ACTOR ExplosionParticleVerySlow: ExplosionParticleHeavy
 {
  Scale 0.05
@@ -70,8 +68,6 @@ ACTOR ExplosionParticleVerySlow: ExplosionParticleHeavy
  Gravity 0.2
  Scale 0.03
 }
-
-
 
 ACTOR ShotgunParticles: ExplosionParticle2
 {
@@ -103,7 +99,6 @@ ACTOR ShotgunParticles2 : ShotgunParticles
   Alpha 0.9
 }
 
-
 ACTOR HitSpark: ExplosionParticleHeavy
 {
  speed 6
@@ -119,11 +114,6 @@ ACTOR HitSpark: ExplosionParticleHeavy
        Stop
     }
 }
-
-
-
-
-
 
 Actor ExplosionParticleSpawner
 {
@@ -141,7 +131,6 @@ Actor ExplosionParticleSpawner
     Stop
   }
 }
-
 
 Actor BluePlasmaParticleSpawner: ExplosionParticleSpawner
 {
@@ -181,7 +170,6 @@ Actor BluePlasmaParticle: ExplosionParticle
   }
 }
 
-
 Actor RailgunTrailParticle : BluePlasmaParticle
 {
   Gravity 0.0
@@ -215,8 +203,6 @@ Actor BluePlasmaFire: BluePlasmaParticle
   }
 }
 
-
-
 Actor BluePlasmaFireNonStatic: BluePlasmaFire
 {
 Speed 2
@@ -236,19 +222,18 @@ Actor PlasmaParticleX: BluePlasmaParticle
 	SPKB A 1 Bright
 	TNT1 A 0 A_ChangeFlag(DOOMBOUNCE, 0)
     Goto Stand
-  
+
   Stand:
     SPKB B 2 Bright A_FadeOut(0.06)
     Loop
-	
+
   Death:
 	 TNT1 A 1
 	 TNT1 A 0
 	 Stop
-	
+
   }
 }
-
 
 Actor BigPlasmaParticleX: PlasmaParticleX
 {
@@ -267,8 +252,6 @@ Actor PlasmaParticle: BluePlasmaParticle
     Loop
   }
 }
-
-
 
 ACTOR RailPuff: BulletPuff
 {
@@ -354,7 +337,6 @@ ACTOR RailgunPuff: BulletPuff
   }
 }
 
-
 ACTOR BarrelParticle
 {
     Radius 8
@@ -380,11 +362,10 @@ ACTOR BarrelParticle
         Loop
 
 	Death:
-        BPRT GGGGGGGGGGGGG 20 //A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160)) 
+        BPRT GGGGGGGGGGGGG 20 //A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
         Stop
     }
 }
-
 
 ACTOR Shrapnel: BarrelParticle
 {
@@ -540,8 +521,6 @@ States
 		}
 }
 
-
-
 Actor TacticalShrapnelSpawnerGrenade
 {
 +NOCLIP
@@ -556,7 +535,6 @@ States
 			Stop
 		}
 }
-
 
 Actor WoodParticle : BarrelParticle
 {
@@ -605,18 +583,6 @@ states
    }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 ACTOR SparkX: ExplosionParticleHeavy
 {
  speed 10
@@ -642,14 +608,10 @@ ACTOR SparkX: ExplosionParticleHeavy
     }
 }
 
-
 ACTOR SparkXNoModel: SparkX
 {
  Gravity 0.7
 }
-
-
-
 
 ACTOR HitSparkGroup: SparkXNoModel
 {
@@ -664,12 +626,6 @@ ACTOR HitSparkGroup: SparkXNoModel
        Stop
     }
 }
-
-
-
-
-
-
 
 ACTOR MetalShard1: BarrelParticle
 {
@@ -690,7 +646,6 @@ ACTOR MetalShard1: BarrelParticle
     }
 }
 
-
 ACTOR MetalShard2: MetalShard1
 {
     States
@@ -706,7 +661,6 @@ ACTOR MetalShard2: MetalShard1
     }
 }
 
-
 ACTOR MetalShard3: MetalShard1
 {
     States
@@ -721,11 +675,6 @@ ACTOR MetalShard3: MetalShard1
         Stop
     }
 }
-
-
-
-
-
 
 ACTOR MudDust
 {
@@ -753,24 +702,24 @@ ACTOR MudDust
 		DIRP AABCDEFHIIII 2 A_FadeOut(0.05)
 		DIRP IIIIIIII 1 A_FadeOut(0.1)
 		Stop
-		
+
 	Spawn1:
 		DIRP A 1
 		TNT1 A 0 A_SetScale(1.0, -1.0)
 		Goto Fly
-		
+
 	Spawn2:
 		DIRP A 1
 		TNT1 A 0 A_SetScale(-1.0, -1.0)
 		Goto Fly
-		
+
 	Spawn3:
 		DIRP A 1
 		TNT1 A 0 A_SetScale(-1.0, 1.0)
 		Goto Fly
-			
+
 	Death:
-	    DIRP G 300
+	    TNT1 A 0
 		Stop
 	}
 }
@@ -790,23 +739,22 @@ ACTOR MudDustSmall: MudDust
 		DIRP A 1
 		TNT1 A 0 A_SetScale(0.5, -0.5)
 		Goto Fly
-		
+
 	Spawn2:
 		DIRP A 1
 		TNT1 A 0 A_SetScale(-0.5, -0.5)
 		Goto Fly
-		
+
 	Spawn3:
 		DIRP A 1
 		TNT1 A 0 A_SetScale(-0.5, 0.5)
 		Goto Fly
-			
+
 	Death:
-	    DIRP G 300
+	    TNT1 A 0
 		Stop
 	}
 }
-
 
 ACTOR MudDustFromTrail: MudDustSmall
 {
@@ -821,7 +769,6 @@ ACTOR MudDustFromTrail: MudDustSmall
 		Stop
 	}
 }
-
 
 ACTOR SAndDust: MudDust
 {
@@ -849,7 +796,6 @@ ACTOR SandDustSmall: SandDust
     Gravity 0.4
 }
 
-
 ACTOR BrownCloud: MudDust
 {
 	+NOGRAVITY
@@ -869,7 +815,7 @@ ACTOR BrownCloud: MudDust
 		TNT1 A 0
         SM5K ABCDEFGHIJKLMNOPQRSTUVWXYZ 3
 		Stop
-		
+
 	}
 }
 
@@ -889,10 +835,9 @@ Gravity 0.1
 		TNT1 A 0
         SM5K ABCDEFGHIJKLMNOPQRSTUVWXYZ 2
 		Stop
-		
+
 	}
 }
-
 
 Actor BrownCloudShort: BrownCloudSmall
 {
@@ -904,7 +849,6 @@ Actor BrownCloudSmallLong: BrownCloudSmall
 {
 Speed 1
 }
-
 
 ////
 
@@ -921,7 +865,6 @@ ACTOR SAndCloud: BrownCloud
 		Stop
 	}
 }
-
 
 ACTOR SAndCloudShort: SAndCloud
 {
@@ -953,9 +896,6 @@ Actor SAndCloudSmall: SAndCloud
 		}
 }
 
-
-
-
 Actor SAndCloudSmallLong: SAndCloud
 {
 	Scale 1.5
@@ -971,9 +911,6 @@ Actor SAndCloudSmallLong: SAndCloud
 		Stop
 	}
 }
-
-
-
 
 Actor SAndCloudFootstep:SAndCloudSmallLong
 {
@@ -991,7 +928,6 @@ Speed 1
 		Stop
 	}
 }
-
 
 ACTOR WallChunk
 {
@@ -1062,7 +998,6 @@ ACTOR HugeWallChunk : WallChunk
 	Scale 0.4
 }
 
-
 ACTOR DirtChunk1 : WallChunk
 {
 	Scale 0.6
@@ -1070,7 +1005,6 @@ ACTOR DirtChunk1 : WallChunk
 	BounceFactor 0.5
 	Translation "128:151=74:79", "96:111=71:79"
 }
-
 
 ACTOR DirtChunk2 : WallChunk
 {
@@ -1080,9 +1014,6 @@ ACTOR DirtChunk2 : WallChunk
 	Translation "128:151=74:79", "96:111=71:79"
 }
 
-
-
-
 ACTOR DirtChunk3 : WallChunk
 {
 	Scale 0.2
@@ -1091,7 +1022,6 @@ ACTOR DirtChunk3 : WallChunk
 	Translation "128:151=74:79", "96:111=71:79"
 }
 
-
 ACTOR DirtChunk4 : WallChunk
 {
 	Scale 0.2
@@ -1099,8 +1029,6 @@ ACTOR DirtChunk4 : WallChunk
 	BounceFactor 0.3
 	Translation "128:151=74:79", "96:111=71:79"
 }
-
-
 
 ACTOR LargeGlassParticle1: WallChunk
 {
@@ -1135,15 +1063,11 @@ YScale 0.3
 BounceFactor 0.4
 }
 
-
 ACTOR LargeGlassParticle4: LargeGlassParticle1
 {
 Scale 0.4
 BounceFactor 0.3
 }
-
-
-
 
 ACTOR BDExplosionparticles: ExplosionParticle2
 {
@@ -1160,30 +1084,29 @@ ACTOR BDExplosionparticles: ExplosionParticle2
 	+NOGRAVITY
 	States
     {
-        Spawn: 
+        Spawn:
 			TNT1 A 0
 			TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Live")
 	Spawn1:
 			TNT1 A 0
 			TNT1 A 0 A_SetScale(-0.7, -0.7)
 			Goto live
-	
+
 	Spawn2:
 			TNT1 A 0
 			TNT1 A 0 A_SetScale(0.5, -0.5)
 			Goto live
-			
+
 	Spawn3:
 			TNT1 A 0
 			TNT1 A 0 A_SetScale(-0.8, 0.8)
 			Goto live
-			
-	Live:	
+
+	Live:
 			SPKS ABCDEFGHI 1 BRIGHT
 			Stop
     }
 }
-
 
 ACTOR BDExplosionparticles2: BDExplosionparticles
 {
@@ -1192,25 +1115,25 @@ ACTOR BDExplosionparticles2: BDExplosionparticles
 Speed 6
 	States
     {
-    Spawn: 
+    Spawn:
 			TNT1 A 0
 			TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Live")
 	Spawn1:
 			TNT1 A 0
 			TNT1 A 0 A_SetScale(-0.6, 0.6)
 			Goto live
-	
+
 	Spawn2:
 			TNT1 A 0
 			TNT1 A 0 A_SetScale(0.4, 0.4)
 			Goto live
-			
+
 	Spawn3:
 			TNT1 A 0
 			TNT1 A 0 A_SetScale(-0.7, 0.7)
 			Goto live
-			
-	Live:	
+
+	Live:
 			SPKS JKLMN 1 BRIGHT
 			SPKS O 35
 			SPKS OOOOOOOOOO 1 BRIGHT A_FadeOut(0.1)
@@ -1223,7 +1146,6 @@ Actor BDExplosionparticles3: BDExplosionparticles2
 Speed 7
 }
 
-
 Actor BDExplosionparticles4: BDExplosionparticles2
 {
 Speed 8
@@ -1235,19 +1157,19 @@ ACTOR BDExplosionparticlesBig: BDExplosionparticles
 	Scale 1.0
 		States
     {
-	Spawn: 
+	Spawn:
 			TNT1 A 0
 			TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Live")
 	Spawn1:
 			TNT1 A 0
 			TNT1 A 0 A_SetScale(-0.8, 0.8)
 			Goto live
-	
+
 	Spawn2:
 			TNT1 A 0
 			TNT1 A 0 A_SetScale(-1.0, -1.0)
 			Goto live
-			
+
 	Spawn3:
 			TNT1 A 0
 			TNT1 A 0 A_SetScale(-1.2, 1.2)
@@ -1255,38 +1177,34 @@ ACTOR BDExplosionparticlesBig: BDExplosionparticles
 			    }
 }
 
-
 ACTOR BDExplosionparticlesSmall: BDExplosionparticles
 {
 Scale 0.4
 States
     {
-    Spawn: 
+    Spawn:
 			TNT1 A 0
 			TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Live")
 	 Spawn1:
 			TNT1 A 0
 			TNT1 A 0 A_SetScale(-0.4, 0.4)
 			Goto live
-	
+
 	Spawn2:
 			TNT1 A 0
 			TNT1 A 0 A_SetScale(0.3, 0.3)
 			Goto live
-			
+
 	Spawn3:
 			TNT1 A 0
 			TNT1 A 0 A_SetScale(-0.5, 0.5)
 			Goto live
-			
-	Live:	
+
+	Live:
 			SPKS ABCDEFGHIJ 1 BRIGHT
 			Stop
     }
 }
-
-
-
 
 ACTOR BDECFoliageParticle1a
 {
@@ -1305,22 +1223,20 @@ ACTOR BDECFoliageParticle1a
 	  TNT1 A 0
       TNT1 A 0 A_Jump(128, "Spawn2")
 	  Goto Fly
-	  
+
 	  Spawn2:
 	  TNT1 A 0 A_SetScale(-0.8, 0.7)
 	  GOto Fly
-	  
-	  Fly: 
+
+	  Fly:
 	  PP11 A 4
 	  Loop
-	  
+
      Death:
 		PP11 A -1
         Stop
     }
 }
-
-
 
 ACTOR BDECFoliageParticle1b: BDECFoliageParticle1a
 {
@@ -1330,20 +1246,19 @@ ACTOR BDECFoliageParticle1b: BDECFoliageParticle1a
 	  TNT1 A 0
       TNT1 A 0 A_Jump(128, "Spawn2")
 	  Goto Fly
-	  
+
 	  Spawn2:
 	  TNT1 A 0 A_SetScale(-0.8, 0.7)
 	  GOto Fly
-	  
-	  Fly: 
+
+	  Fly:
 	  PP11 B 4
 	  Loop
-	  
+
      Death:
 		PP11 B -1
         Stop
 }}
-
 
 ACTOR BDECFoliageParticle2a: BDECFoliageParticle1a
 {
@@ -1353,20 +1268,19 @@ ACTOR BDECFoliageParticle2a: BDECFoliageParticle1a
 	  TNT1 A 0
       TNT1 A 0 A_Jump(128, "Spawn2")
 	  Goto Fly
-	  
+
 	  Spawn2:
 	  TNT1 A 0 A_SetScale(-0.8, 0.7)
 	  GOto Fly
-	  
-	  Fly: 
+
+	  Fly:
 	  PP12 A 4
 	  Loop
-	  
+
      Death:
 		PP12 A -1
         Stop
 }}
-
 
 ACTOR BDECFoliageParticle2b: BDECFoliageParticle1a
 {
@@ -1376,22 +1290,19 @@ ACTOR BDECFoliageParticle2b: BDECFoliageParticle1a
 	  TNT1 A 0
       TNT1 A 0 A_Jump(128, "Spawn2")
 	  Goto Fly
-	  
+
 	  Spawn2:
 	  TNT1 A 0 A_SetScale(-0.8, 0.7)
 	  GOto Fly
-	  
-	  Fly: 
+
+	  Fly:
 	  PP12 B 4
 	  Loop
-	  
+
      Death:
 		PP12 B -1
         Stop
 }}
-
-
-
 
 ACTOR BDECFoliageParticle2c: BDECFoliageParticle1a
 {
@@ -1401,22 +1312,19 @@ ACTOR BDECFoliageParticle2c: BDECFoliageParticle1a
 	  TNT1 A 0
       TNT1 A 0 A_Jump(128, "Spawn2")
 	  Goto Fly
-	  
+
 	  Spawn2:
 	  TNT1 A 0 A_SetScale(-0.8, 0.7)
 	  GOto Fly
-	  
-	  Fly: 
+
+	  Fly:
 	  PP12 C 4
 	  Loop
-	  
+
      Death:
 		PP12 C -1
         Stop
 }}
-
-
-
 
 ACTOR BDECFoliageParticle3a: BDECFoliageParticle1a
 {
@@ -1427,21 +1335,19 @@ ACTOR BDECFoliageParticle3a: BDECFoliageParticle1a
 	  TNT1 A 0
       TNT1 A 0 A_Jump(128, "Spawn2")
 	  Goto Fly
-	  
+
 	  Spawn2:
 	  TNT1 A 0 A_SetScale(-0.8, 0.7)
 	  GOto Fly
-	  
-	  Fly: 
+
+	  Fly:
 	  PP13 C 4
 	  Loop
-	  
+
      Death:
 		PP13 C -1
         Stop
 }}
-
-
 
 ACTOR BDECFoliageParticle3b: BDECFoliageParticle1a
 {
@@ -1452,21 +1358,19 @@ ACTOR BDECFoliageParticle3b: BDECFoliageParticle1a
 	  TNT1 A 0
       TNT1 A 0 A_Jump(128, "Spawn2")
 	  Goto Fly
-	  
+
 	  Spawn2:
 	  TNT1 A 0 A_SetScale(-0.8, 0.7)
 	  GOto Fly
-	  
-	  Fly: 
+
+	  Fly:
 	  PP13 B 4
 	  Loop
-	  
+
      Death:
 		PP13 B -1
         Stop
 }}
-
-
 
 ACTOR BDECFoliageParticle4a: BDECFoliageParticle1a
 {
@@ -1476,24 +1380,19 @@ ACTOR BDECFoliageParticle4a: BDECFoliageParticle1a
 	  TNT1 A 0
       TNT1 A 0 A_Jump(128, "Spawn2")
 	  Goto Fly
-	  
+
 	  Spawn2:
 	  TNT1 A 0 A_SetScale(-0.8, 0.7)
 	  GOto Fly
-	  
-	  Fly: 
+
+	  Fly:
 	  PP16 A 4
 	  Loop
-	  
+
      Death:
 		PP16 A -1
         Stop
 }}
-
-
-
-
-
 
 ACTOR BDECFoliageParticle4b: BDECFoliageParticle1a
 {
@@ -1503,24 +1402,19 @@ ACTOR BDECFoliageParticle4b: BDECFoliageParticle1a
 	  TNT1 A 0
       TNT1 A 0 A_Jump(128, "Spawn2")
 	  Goto Fly
-	  
+
 	  Spawn2:
 	  TNT1 A 0 A_SetScale(-0.8, 0.7)
 	  GOto Fly
-	  
-	  Fly: 
+
+	  Fly:
 	  PP16 B 4
 	  Loop
-	  
+
      Death:
 		PP16 B -1
         Stop
 }}
-
-
-
-
-
 
 ACTOR BDECFoliageParticle5a: BDECFoliageParticle1a
 {
@@ -1530,22 +1424,19 @@ ACTOR BDECFoliageParticle5a: BDECFoliageParticle1a
 	  TNT1 A 0
       TNT1 A 0 A_Jump(128, "Spawn2")
 	  Goto Fly
-	  
+
 	  Spawn2:
 	  TNT1 A 0 A_SetScale(-0.8, 0.7)
 	  GOto Fly
-	  
-	  Fly: 
+
+	  Fly:
 	  PP17 A 4
 	  Loop
-	  
+
      Death:
 		PP17 A -1
         Stop
 }}
-
-
-
 
 ACTOR BDECFoliageParticle5b: BDECFoliageParticle1a
 {
@@ -1555,21 +1446,19 @@ ACTOR BDECFoliageParticle5b: BDECFoliageParticle1a
 	  TNT1 A 0
       TNT1 A 0 A_Jump(128, "Spawn2")
 	  Goto Fly
-	  
+
 	  Spawn2:
 	  TNT1 A 0 A_SetScale(-0.8, 0.7)
 	  GOto Fly
-	  
-	  Fly: 
+
+	  Fly:
 	  PP17 B 4
 	  Loop
-	  
+
      Death:
 		PP17 B -1
         Stop
 }}
-
-
 
 ACTOR BDECFoliageParticle6a: BDECFoliageParticle1a
 {
@@ -1579,15 +1468,15 @@ ACTOR BDECFoliageParticle6a: BDECFoliageParticle1a
 	  TNT1 A 0
       TNT1 A 0 A_Jump(128, "Spawn2")
 	  Goto Fly
-	  
+
 	  Spawn2:
 	  TNT1 A 0 A_SetScale(-0.8, 0.7)
 	  GOto Fly
-	  
-	  Fly: 
+
+	  Fly:
 	  PP14 A 4
 	  Loop
-	  
+
      Death:
 		PP14 A -1
         Stop
@@ -1601,21 +1490,19 @@ ACTOR BDECFoliageParticle6b: BDECFoliageParticle1a
 	  TNT1 A 0
       TNT1 A 0 A_Jump(128, "Spawn2")
 	  Goto Fly
-	  
+
 	  Spawn2:
 	  TNT1 A 0 A_SetScale(-0.8, 0.7)
 	  GOto Fly
-	  
-	  Fly: 
+
+	  Fly:
 	  PP14 B 4
 	  Loop
-	  
+
      Death:
 		PP14 B -1
         Stop
 }}
-
-
 
 ACTOR BDECFoliageParticle7: BDECFoliageParticle1a
 {
@@ -1626,21 +1513,19 @@ ACTOR BDECFoliageParticle7: BDECFoliageParticle1a
 	  TNT1 A 0
       TNT1 A 0 A_Jump(128, "Spawn2")
 	  Goto Fly
-	  
+
 	  Spawn2:
 	  TNT1 A 0 A_SetScale(-0.8, 0.7)
 	  GOto Fly
-	  
-	  Fly: 
+
+	  Fly:
 	  PP15 ABCDEFGH 4
 	  Loop
-	  
+
      Death:
 		PP15 I -1
         Stop
 }}
-
-
 
 ACTOR BDECFoliageParticleLeaf: BDECFoliageParticle1a
 {
@@ -1650,7 +1535,7 @@ ACTOR BDECFoliageParticleLeaf: BDECFoliageParticle1a
      Spawn:
 	  LEVP ABCB 6
 	  Loop
-	  
+
      Death:
 		TNT1 A 0
         Stop
