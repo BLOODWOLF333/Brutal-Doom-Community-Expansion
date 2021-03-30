@@ -37,13 +37,11 @@ script "BDCheckFloorType" (void) //Water Small Splash
   if (CheckActorFloorTexture(0, "RROCK16"))    GiveInventory("IsOverGrass", 1);
   if (CheckActorFloorTexture(0, "RROCK17"))    GiveInventory("IsOverGrass", 1);
   if (CheckActorFloorTexture(0, "RROCK18"))    GiveInventory("IsOverGrass", 1);
-  if (CheckActorFloorTexture(0, "DESERT01"))    GiveInventory("IsOverGrass", 1);
-  if (CheckActorFloorTexture(0, "DESERT02"))    GiveInventory("IsOverGrass", 1);
-  if (CheckActorFloorTexture(0, "DESERT03"))    GiveInventory("IsOverGrass", 1);
   if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverGrass", 1);
 
   if (CheckActorFloorTexture(0, "SANDS1"))    GiveInventory("IsOverSand", 1);
   if (CheckActorFloorTexture(0, "SANDS2"))    GiveInventory("IsOverSand", 1);
+  if (CheckActorFloorTexture(0, "DESERT01"))    GiveInventory("IsOverSand", 1);
 }
 
 script "BDCheckFloorType2" (void) // Footstep Sounds
@@ -190,11 +188,9 @@ script "BDCheckFloorType2" (void) // Footstep Sounds
   if (CheckActorFloorTexture(0, "RROCK20"))    GiveInventory("IsOverGrass", 1);
   //if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverSlimy", 1);
 
-  if (CheckActorFloorTexture(0, "DESERT01"))    GiveInventory("IsOverGravel", 1);
-  if (CheckActorFloorTexture(0, "DESERT02"))    GiveInventory("IsOverGravel", 1);
-  if (CheckActorFloorTexture(0, "DESERT03"))    GiveInventory("IsOverGravel", 1);
   if (CheckActorFloorTexture(0, "SANDS1"))    GiveInventory("IsOverSand", 1);
   if (CheckActorFloorTexture(0, "SANDS2"))    GiveInventory("IsOverSand", 1);
+  if (CheckActorFloorTexture(0, "DESERT01"))    GiveInventory("IsOverSand", 1);
 }
 
 script "BDCheckFloorType3" (void) ///Check if Over Dirt or Grass for explosions
@@ -221,15 +217,14 @@ script "BDCheckFloorType3" (void) ///Check if Over Dirt or Grass for explosions
   if (CheckActorFloorTexture(0, "MFLR8_2"))    GiveInventory("IsOverdIRT", 1);
   if (CheckActorFloorTexture(0, "MFLR8_4"))    GiveInventory("IsOverdIRT", 1);
 
-  if (CheckActorFloorTexture(0, "DESERT01"))    GiveInventory("IsOverdIRT", 1);
-  if (CheckActorFloorTexture(0, "DESERT02"))    GiveInventory("IsOverdIRT", 1);
-  if (CheckActorFloorTexture(0, "DESERT03"))    GiveInventory("IsOverdIRT", 1);
   if (CheckActorFloorTexture(0, "JUNKY15"))    GiveInventory("IsOverdIRT", 1);
   if (CheckActorFloorTexture(0, "JUNKY16"))    GiveInventory("IsOverdIRT", 1);
   if (CheckActorFloorTexture(0, "SANDS1"))    GiveInventory("IsOverSand", 1);
   if (CheckActorFloorTexture(0, "SANDS2"))    GiveInventory("IsOverSand", 1);
 
+  if (CheckActorFloorTexture(0, "SANDS1"))    GiveInventory("IsOverSand", 1);
   if (CheckActorFloorTexture(0, "SANDS2"))    GiveInventory("IsOverSand", 1);
+  if (CheckActorFloorTexture(0, "DESERT01"))    GiveInventory("IsOverSand", 1);
 
   if (CheckActorFloorTexture(0, "SFLR6_1"))    GiveInventory("IsOverFlesh", 1);
   if (CheckActorFloorTexture(0, "SFLR6_4"))    GiveInventory("IsOverFlesh", 1);

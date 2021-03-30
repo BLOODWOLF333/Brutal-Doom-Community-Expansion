@@ -719,7 +719,7 @@ ACTOR MudDust
 		Goto Fly
 
 	Death:
-	    TNT1 A 0
+	    DIRP G 300
 		Stop
 	}
 }
@@ -772,16 +772,10 @@ ACTOR MudDustFromTrail: MudDustSmall
 
 ACTOR SAndDust: MudDust
 {
-	Scale 1.0
-	BounceFactor 0.01
-    Speed 8
-    Gravity 0.4
-	height 1
-	radius 1
 	States
 	{
 	Spawn:
-		DIRP E 1
+		DIRP ZZZZZZZZZZZZ 2 A_FadeOut(0.05)
 		Loop
 	Death:
 	    TNT1 A 0
@@ -794,6 +788,15 @@ ACTOR SandDustSmall: SandDust
     Speed 4
 	Scale 0.5
     Gravity 0.4
+	States
+	{
+	Spawn:
+		DIRP ZZZZZZZZZZZZ 2 A_FadeOut(0.05)
+		Loop
+	Death:
+	    TNT1 A 0
+		Stop
+	}
 }
 
 ACTOR BrownCloud: MudDust
