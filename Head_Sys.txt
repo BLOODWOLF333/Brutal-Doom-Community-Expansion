@@ -16,9 +16,9 @@ Mass 999999
 DamageType head
 BloodType "Brutal_Blood", "SawBlood", "SawBlood"
 PainChance 255
--COUNTKILL +NOTARGET
+-COUNTKILL +NOTARGET +DONTRIP
 +NOGRAVITY +SHOOTABLE +NOTELEPORT +FORCERADIUSDMG -SOLID +NODAMAGETHRUST
-+THRUGHOST +NORADIUSDMG +GHOST +SERVERSIDEONLY +NOTAUTOAIMED
++THRUGHOST +GHOST +SERVERSIDEONLY +NOTAUTOAIMED
 States
 {
 Spawn:
@@ -28,9 +28,8 @@ Stop
 
 Pain:
 TNT1 A 0
-TNT1 A 0 A_Stop
-TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
-TNT1 A 1
+TNT1 A 0 A_ChangeFlag("NOPAIN",1)
+TNT1 A 3
 TNT1 A 0 A_JumpIfHealthLower(1280, "Pain1280")
 TNT1 A 0 A_JumpIfHealthLower(1920, "Pain640")
 TNT1 A 0 A_JumpIfHealthLower(2240, "Pain320")
@@ -39,8 +38,16 @@ TNT1 A 0 A_JumpIfHealthLower(2480, "Pain80")
 TNT1 A 0 A_JumpIfHealthLower(2520, "Pain40")
 TNT1 A 0 A_JumpIfHealthLower(2540, "Pain20")
 TNT1 A 0 A_JumpIfHealthLower(2550, "Pain10")
-XDT3 A 0 A_Explode(5,15, 0, 0, 15)//hs
+TNT1 A 0 A_JumpIfHealthLower(2555, "Pain5")
+XDT3 A 0 A_Explode(1,15, 0, 0, 15)//hs
 PLAY A 0 A_NoBlocking
+Stop
+
+Pain5:
+TNT1 A 0
+XDT3 A 0 A_Explode(5,15, 0, 0, 15)//hs
+TNT1 A 3
+TNT1 A 0 A_NoBlocking
 Stop
 
 Pain10:
@@ -415,37 +422,37 @@ States
 actor HeadshotTarget4b: HeadshotTarget4
 {
 BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
-//BloodColor "DarkGreen"
+BloodColor "DarkGreen"
 }
 
 actor HeadshotTarget8b: HeadshotTarget8
 {
 BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
-//BloodColor "DarkGreen"
+BloodColor "DarkGreen"
 }
 
 actor HeadshotTarget6b: HeadshotTarget6
 {
 BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
-//BloodColor "DarkGreen"
+BloodColor "DarkGreen"
 }
 
 actor HeadshotTarget10b: HeadshotTarget10
 {
 BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
-//BloodColor "DarkGreen"
+BloodColor "DarkGreen"
 }
 
 actor HeadshotTarget20b: HeadshotTarget20
 {
 BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
-//BloodColor "DarkGreen"
+BloodColor "DarkGreen"
 }
 
 actor HellNobleCrotchHitbox: HeadshotTarget20
 {
 BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
-//BloodColor "DarkGreen"
+BloodColor "DarkGreen"
 Radius 2
 Height 2
 Damagetype "Leg"
