@@ -67,14 +67,12 @@ ACTOR ExplosiveBarrel1 Replaces ExplosiveBarrel
 		TNT1 A 0 A_GiveInventory("TargetIsANExplosiveBarrel", 1)
 	    BARI A 1 A_Look
 		BARI BCDCBBCDCB 1
-		TNT1 A 0 A_TAkeInventory("BarrelExpMeasure", 100)
 		Goto See
 		Loop
 
 	See:
 		BARI A 1 A_CheckSight("See2")
 	    BARI BCDCB 1
-		TNT1 A 0 A_TAkeInventory("BarrelExpMeasure", 100)
 		BARI A 1
 	    BARI BCDCB 1
 		TNT1 A 0 A_ClearTarget
@@ -113,9 +111,7 @@ ACTOR ExplosiveBarrel1 Replaces ExplosiveBarrel
 	Pain:
 	BARI A 4
 	TNT1 A 0 A_PlaySound("weapons/barrelpain", 1)
-
 	BARI ABCDCB 1
-	TNT1 A 0 A_TAkeInventory("BarrelExpMeasure", 100)
 	Goto Stay
 
 	Pain.Blood:
