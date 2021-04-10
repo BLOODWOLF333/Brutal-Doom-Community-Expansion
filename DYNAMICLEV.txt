@@ -1428,12 +1428,25 @@ Thing_ChangeTID(0,736);
 if (CheckActorFloorTexture(736, "FL0"))
     GiveActorInventory(736, "AltEasyMarineVerification", 1);
 
-//if	(GetCvar("bd_isnazilevel") == 1) { SetActorState(0,"ISANazi");
-
-if (CheckActorFloorTexture(736, "FLAT5_4"))
+if (CheckActorFloorTexture(736, "FLAT5_4"))//Doom2Map31
     GiveActorInventory(736, "NaziVerificate1", 1);
 
-if (CheckActorCeilingTexture(736, "CEIL4_2"))
+if (CheckActorFloorTexture(736, "FLAT5_5"))//Doom2Map31
+    GiveActorInventory(736, "NaziVerificate1", 1);
+
+if (CheckActorFloorTexture(736, "FLOOR0_3"))//Doom2Map32
+    GiveActorInventory(736, "NaziVerificate1", 1);
+
+if (CheckActorCeilingTexture(736, "CEIL4_2"))//Doom2Map31
+    GiveActorInventory(736, "NaziVerificate2", 1);
+
+if (CheckActorCeilingTexture(736, "FLAT1"))//Doom2Map31
+    GiveActorInventory(736, "NaziVerificate2", 1);
+
+if (CheckActorCeilingTexture(736, "FLAT5_2"))//Doom2Map31
+    GiveActorInventory(736, "NaziVerificate2", 1);
+
+if (CheckActorCeilingTexture(736, "CEIL4_1"))//Doom2Map32
     GiveActorInventory(736, "NaziVerificate2", 1);
 
 if (CheckActorCeilingTexture(736, "ACEIL42"))
