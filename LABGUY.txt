@@ -394,6 +394,7 @@ ACTOR Labguy: RifleZombie
 		TNT1 A 0 A_GiveToTarget("GoSpecial", 1)
 		TNT1 A 0 A_GiveToTarget("SKLabguy", 1)
 		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_Custommissile("BloodyAxe", 32, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_Die("Stealthy")
 		TNT1 A 0 A_Fall
 		TNT1 A 1 A_GiveToTarget("SoulAmmo", 10)
@@ -485,7 +486,7 @@ ACTOR Labguy: RifleZombie
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 A_Scream
 		TNT1 O 0 A_NoBlocking
-
+		TNT1 A 0 A_Custommissile("BloodyAxe", 32, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_SpawnItem ("BrutalizedFormerScientist1", 1)
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
 		Stop
@@ -493,7 +494,7 @@ ACTOR Labguy: RifleZombie
 		Death.LegMassacre:
 		TNT1 A 0
 		TNT1 A 0 A_CustomMissile ("MuchBlood2", 15, 0, random (0, 360), 2, random (0, 160))
-		//TNT1 A 0 A_SpawnItem ("Labguy_Noleg")
+		TNT1 A 0 A_Custommissile("BloodyAxe", 32, 0, random (0, 360), 2, random (50, 130))
 		FSS7 B 1 A_Scream
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem ("BrutalizedFormerScientistLeg")
@@ -509,7 +510,7 @@ ACTOR Labguy: RifleZombie
 		TNT1 O 0 A_NoBlocking
 		TNT1 A 0 A_CustomMissile ("RipLabguy", 0, 0, random (0, 360), 2, random (0, 160))
 		FSD1 FG 9
-		//  TNT1 A 0 A_SpawnItem ("DeadLabguy_Half")
+		TNT1 A 0 A_Custommissile("BloodyAxe", 32, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_PlaySound("BODYF",6)
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		TNT1 A 0 A_SpawnItem ("DeadLabguyFSD1H")
@@ -521,7 +522,7 @@ ACTOR Labguy: RifleZombie
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 22, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
 		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-
+		TNT1 A 0 A_Custommissile("BloodyAxe", 32, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_Jump(256,"Death.Fatality1", "Death.Fatality2", "Death.Fatality3")
 		Goto Death.Fatality1
 
@@ -546,6 +547,7 @@ ACTOR Labguy: RifleZombie
 		Death.HelperMarineFatallity:
 		TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_Custommissile("BloodyAxe", 32, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_GiveToTarget("LabGuyToken3", 1)
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
 		Stop
@@ -685,6 +687,7 @@ ACTOR Labguy: RifleZombie
 		TNT1 A 0
 		TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_Custommissile("BloodyAxe", 32, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_SpawnItem("DesintegratedHuman")
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
 		Stop
@@ -706,6 +709,7 @@ ACTOR Labguy: RifleZombie
 		TNT1 A 0
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_Custommissile("BloodyAxe", 32, 0, random (0, 360), 2, random (50, 130))
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 		TNT1 AAAA 0 A_CustomMissile ("brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160))
 
@@ -728,6 +732,7 @@ ACTOR Labguy: RifleZombie
 		TNT1 A 0
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_Custommissile("BloodyAxe", 32, 0, random (0, 360), 2, random (50, 130))
 		TNT1 AAAA 0 A_CustomMissile ("brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160))
 
 		TNT1 A 0 A_CustomMissile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
@@ -748,6 +753,7 @@ ACTOR Labguy: RifleZombie
 		//TNT1 A 0 A_JumpIfInTargetInventory("HeavyStrikeUpper", 1, "HeavyPunchUpper")
 		TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_Custommissile("BloodyAxe", 32, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 A_CustomMissile ("ExtremePunchedZombieCivilian", 8, 0, random (175, 185), 2, random (10, 20))
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
@@ -766,6 +772,7 @@ ACTOR Labguy: RifleZombie
 		TNT1 A 0 A_CustomMissile ("LabguyHead", 32, 0, random (170, 190), 2, random (0, 40))
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_Custommissile("BloodyAxe", 32, 0, random (0, 360), 2, random (50, 130))
 		FSD1 DEEFFGH 6
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		TNT1 A 0 A_PlaySound("BODYF",6)
@@ -778,6 +785,7 @@ ACTOR Labguy: RifleZombie
 		TNT1 A 0 A_JumpIfInTargetInventory("SSGSelected", 1, "Death.SSG")
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_Custommissile("BloodyAxe", 32, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_CustomMissile ("SargeXDeath", 2, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
 		Stop
@@ -796,6 +804,7 @@ ACTOR Labguy: RifleZombie
 		TNT1 A 1
 		TNT1 A 1 A_XScream
 		TNT1 A 1 A_NoBlocking
+		TNT1 A 0 A_Custommissile("BloodyAxe", 32, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
 		Stop
 
@@ -847,6 +856,7 @@ ACTOR Labguy: RifleZombie
 		TNT1 AAAA 0 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 ThrustThingZ(0,50,0,1)
 		FS14 A 1 A_Scream
+		TNT1 A 0 A_Custommissile("BloodyAxe", 32, 0, random (0, 360), 2, random (50, 130))
 		FS16 A 9
 		FS16 BCD 9 A_CheckFloor("Dead.Landmine")
 		FS16 DDDDD 9 A_CheckFloor("Dead.Landmine")
@@ -878,6 +888,7 @@ ACTOR Labguy: RifleZombie
 		TNT1 A 0
 		TNT1 A 0 A_Pain
 		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_Custommissile("BloodyAxe", 32, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_GiveToTarget("GrabbedAZombieCivilian", 1)
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
 		Stop

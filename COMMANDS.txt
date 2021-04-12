@@ -48,8 +48,14 @@ Script "BDAmmoDroper" (VOID) NET
 Script "BDQuickFist" (VOID) NET
 {
 	SetPlayerproperty(0, 1, PROP_INSTANTWEAPONSWITCH );
-	SetWeapon("Melee_Attacks");
-	SetWeapon("ClassicFist");
+	If (CheckActorClass(0, "Purist") == True)
+	{
+		SetWeapon("ClassicFist");
+	}
+	Else
+	{
+		SetWeapon("Melee_Attacks");
+	}
 	delay(5);
 	SetPlayerproperty(0, 0, PROP_INSTANTWEAPONSWITCH );
 }
