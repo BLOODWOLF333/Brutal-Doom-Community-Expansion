@@ -1340,22 +1340,6 @@ ACTOR FakeFlameThrowerSprite: BasicWeaponPickup
     }
 }
 
-ACTOR FakeSawSprite: BasicWeaponPickup
-{
- Scale 0.8
- +NOGRAVITY
- +FLOAT +NOCLIP +NOINTERACTION
- VisibleToPlayerClass Purist
- States
-    {
-
-	 Spawn:
-		CSAW A 0
-		CSAW A 2
-		Stop
-    }
-}
-
 ACTOR FakeAxeSprite: BasicWeaponPickup
 {
  Scale 0.9
@@ -1368,6 +1352,22 @@ ACTOR FakeAxeSprite: BasicWeaponPickup
 	 Spawn:
 		AXE1 A 0
 		AXE1 A 2
+		Stop
+    }
+}
+
+ACTOR FakeSawSprite: BasicWeaponPickup
+{
+ Scale 0.8
+ +NOGRAVITY
+ +FLOAT +NOCLIP +NOINTERACTION
+ VisibleToPlayerClass Purist
+ States
+    {
+
+	 Spawn:
+		CSAW A 0
+		CSAW A 2
 		Stop
     }
 }
@@ -1416,8 +1416,8 @@ ACTOR AxeSpawner: CustomInventory
 		TNT1 A 0 A_ChangeFlag("THRUACTORS", 0)
 	Stay:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("FakeAxeSprite")
 		TNT1 A 0 A_SpawnItem("FakeSawSprite")
+		TNT1 A 0 A_SpawnItem("FakeAxeSprite")
 		TNT1 A 1
 		Loop
 	Pickup:
