@@ -40,6 +40,7 @@ ACTOR BrutalAxe : BrutalWeapon
 	Ready:
         AXEG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		AXEG A 0 A_Giveinventory("HasCutingWeapon",1)
+		AXEG A 0 A_TakeInventory("HasPlasmaWeapon",1)
         AXEG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		AXEG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		AXEG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
@@ -159,6 +160,7 @@ ACTOR BrutalAxe : BrutalWeapon
 		TNT1 A 0 A_TakeInventory("BFGSelected", 1)
 		TNT1 A 0 A_TakeInventory("FlameCannonSelected", 1)
 		TNT1 A 0 A_GiveInventory("SawSelected", 1)
+		AXEG A 0 A_TakeInventory("HasPlasmaWeapon",1)
 		AXEG A 0 A_Giveinventory("HasCutingWeapon",1)
 		AXEG A 0 A_Takeinventory("HasBarrel",1)
 		A12G A 0 A_SetCrosshair(41)
@@ -931,7 +933,6 @@ ACTOR ThrowedAxe
 	Radius 8
 	Height 16
 	Speed 32
-	DamageType Cut
 	Damage (random(100, 100))
 	+MISSILE
 	+FORCEXYBILLBOARD
@@ -941,6 +942,7 @@ ACTOR ThrowedAxe
 	+THRUSPECIES
 	+BLOODSPLATTER
 	Species "Marines"
+	damagetype Cut
 	Gravity 1.0
 	scale 0.5
 	States
@@ -950,7 +952,6 @@ ACTOR ThrowedAxe
 		Loop
 	Death:
 	XDeath:
-	Crash:
 		TNT1 A 0
 		TNT1 A 0 A_GiveToTarget("AxeHit", 1)
 		TNT1 A 0 A_AlertMonsters(128)
