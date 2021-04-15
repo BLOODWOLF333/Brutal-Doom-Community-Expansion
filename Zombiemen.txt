@@ -1058,8 +1058,8 @@ ACTOR RifleZombie Replaces ZombieMan
 		Goto Death.HeadExplode
 
 	Death.Head:
-	    TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
 		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate")
+	    TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
 		TNT1 A 0 A_JumpIfInTargetInventory("FistsSelected",1, "DeathMinorhead2")
 		TNT1 A 0 A_JumpIfHealthLower(-600, "Death.SSG")
 		TNT1 A 0 A_JumpIfHealthLower(-400, "HeavyHead")

@@ -457,9 +457,8 @@ ReplaceVanilla:
 	Death.head:
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
-
-	    TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
 		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.decaptate")
+	    TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
 		TNT1 A 0 A_JumpIfHealthLower(-80, "Death.HeadExplode")
 		TNT1 A 0 A_SpawnItem("HellKnightHeadExplodeHalf", 0, 62)
 		TNT1 A 0 A_SpawnItem("DyingHellknight2")
@@ -467,7 +466,7 @@ ReplaceVanilla:
 	    Stop
 
 	Death.headExplode:
-	    TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
+	    TNT1 A 0
 	    TNT1 A 0 A_SpawnItem("HellKnightHeadExplode", 0, 62)
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking

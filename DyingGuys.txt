@@ -707,8 +707,8 @@ ACTOR DyingZombiemanLostTeeth: RifleZombie
 	Death.Head:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 16, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
-	    TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
-		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate")
+	    TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate")
+		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
 		TNT1 A 0 A_JumpIfHealthLower(-600, "XDeath")
 		TNT1 A 0 A_JumpIfHealthLower(-250, "Death.SSGHead")
 		Goto Death.HeadExplode
@@ -992,8 +992,8 @@ ACTOR DyingSergeant
     Death.Head:
 		TNT1 A 0 A_StopSound(4)
 	    TNT1 A 0 A_PlaySound("misc/xdeath4")
-		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
 		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate")
+		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
 		TNT1 A 0 A_SpawnItem("ShotgunguyHeadExplode", 0, 30)
 		TNT1 A 0 A_XScream
         TNT1 AAAAAAAAAAA 0 A_CustomMissile ("BrainBlood", 37, 0, random (0, 360), 2, random (0, 160))
@@ -1723,8 +1723,8 @@ ACTOR DyingZombiemanNoArm: DyingSergeant
 		Death.Head:
 		TNT1 A 0 A_StopSound(4)
 		TNT1 A 0 A_PlaySound("misc/xdeath4")
-		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
 		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate")
+		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
 		TNT1 A 0 A_SpawnItem("ZombiemanHeadExplode", 0, 30)
 		TNT1 A 0 A_XScream
 		TNT1 AAAAAAAAAAA 0 A_CustomMissile ("BrainBlood", 37, 0, random (0, 360), 2, random (0, 160))
@@ -1887,8 +1887,8 @@ ACTOR ZombieManDyingAfterFatality: DyingZombiemanNoArm
 		Death.Minorhead:
 		TNT1 A 0 A_StopSound(4)
 		TNT1 A 0 A_PlaySound("misc/xdeath4")
-		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
 		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate")
+		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
 		TNT1 A 0 A_SpawnItem("ZombiemanHeadExplode", 0, 30)
 		TNT1 A 0 A_XScream
 		TNT1 AAAAAAAAAAA 0 A_CustomMissile ("BrainBlood", 37, 0, random (0, 360), 2, random (0, 160))
@@ -2218,8 +2218,8 @@ ACTOR DyingZManFatality5: DyingZombiemanNoArm
 
 	Death.Head:
 		TNT1 A 0 A_StopSound(4)
-	    TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
 		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate")
+	    TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
 		TNT1 A 0 A_PlaySound("misc/xdeath4")
 		TNT1 A 0 A_SpawnItem("ZombiemanHeadExplode", 0, 40)
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 16, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
@@ -2441,8 +2441,8 @@ ACTOR DyingShotgunguyHitInEye: Shotgunguy1
 	Death.Head:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 22, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
-	    TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
 		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate")
+	    TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
 		TNT1 A 0 A_JumpIfHealthLower(-600, "XDeath")
 		TNT1 A 0 A_JumpIfHealthLower(-250, "Death.SSGHead")
 		Goto Death.HeadExplode
