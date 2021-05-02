@@ -4081,10 +4081,10 @@ States
 	Spawn:
 		BPEC R 0
 		TNT1 A 0 A_RadiusGive("MarkForDeletion", 128, RGF_OBJECTS, 1)
-		BPEC R 2 A_Look
+		BPEC R 4 A_Look
 		Loop
 	See:
-		BPEC R 2
+		BPEC R 4
 		TNT1 A 0 A_JumpIfCloser(300, "Death")
 		Loop
 	Death:

@@ -73,40 +73,40 @@ ACTOR BullDemon: Demon Replaces Demon
 		SARG YZ 10 A_Look
 
 		SARG A 0 A_Wander
-		SARG A 2 A_Look
+		SARG A 4 A_Look
 		SARG A 0 A_Wander
-		SARG A 2 A_Look
+		SARG A 4 A_Look
 		SARG B 0 A_Wander
-		SARG B 2 A_Look
+		SARG B 4 A_Look
 		SARG B 0 A_Wander
-		SARG B 2 A_Look
+		SARG B 4 A_Look
 		SARG C 0 A_Wander
-		SARG C 2 A_Look
+		SARG C 4 A_Look
 		SARG C 0 A_Wander
-		SARG C 2 A_Look
+		SARG C 4 A_Look
 		SARG D 0 A_Wander
-		SARG D 2 A_Look
+		SARG D 4 A_Look
 		SARG D 0 A_Wander
-		SARG D 2 A_Look
+		SARG D 4 A_Look
 
 		TNT1 A 0 A_Jump(128, "SearchPlayer")
 
 		SARG A 0 A_Wander
-		SARG A 2 A_Look
+		SARG A 4 A_Look
 		SARG A 0 A_Wander
-		SARG A 2 A_Look
+		SARG A 4 A_Look
 		SARG B 0 A_Wander
-		SARG B 2 A_Look
+		SARG B 4 A_Look
 		SARG B 0 A_Wander
-		SARG B 2 A_Look
+		SARG B 4 A_Look
 		SARG C 0 A_Wander
-		SARG C 2 A_Look
+		SARG C 4 A_Look
 		SARG C 0 A_Wander
-		SARG C 2 A_Look
+		SARG C 4 A_Look
 		SARG D 0 A_Wander
-		SARG D 2 A_Look
+		SARG D 4 A_Look
 		SARG D 0 A_Wander
-		SARG D 2 A_Look
+		SARG D 4 A_Look
 
 		Goto SearchPlayer
 
@@ -849,7 +849,6 @@ ACTOR BullDemon: Demon Replaces Demon
 ACTOR ArmlessDemon: Bulldemon
 {
 Health 100
-+LOOKALLAROUND
 +NOPAIN
 -COUNTKILL
 States
@@ -863,7 +862,7 @@ States
 
 	Idle:
 	Spawn:
-		SG1A A 2 A_Look
+		SG1A A 4 A_Look
 		TNT1 A 0 A_GiveInventory("DemonBleedingOut", 2)
 		TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood3", 42, 0, random (0, 360), 2, random (0, 45))
 		Loop
