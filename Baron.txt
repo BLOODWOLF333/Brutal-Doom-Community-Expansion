@@ -104,15 +104,10 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 
 	Stand:
 		TNT1 A 0
-		TNT1 A 0 A_CheckSight("Stand2")
 		BTS3 A 0 A_SpawnItem("HeadshotTarget20b", 0, 58)
 		BARO BB 10 A_Look
 		Loop
 
-	Stand2:
-		BTS3 A 0 A_SpawnItem("HeadshotTarget10b", 0, 58)
-		BARO B 10 A_Look
-		Goto Stand
 	See:
 		BARO A 0
 		TNT1 A 0 A_JumpIfInventory("HasExplosiveBarrel", 1, "MissileBarrel")
@@ -458,7 +453,7 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 	    ThrowBarrel:
 	    TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 	    BARO P 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile("ThrowedBarrel", 46, 15, 0, 11)
+		TNT1 A 0 A_CustomMissile("ThrowedBarrel", 76, 15, 0, CMF_OFFSETPITCH, 10)
 		TNT1 A 0 A_CustomMissile("Alerter", 46)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		BARO Q 4 A_FaceTarget
@@ -1340,14 +1335,10 @@ Spawn:
 
 	Stand:
 		TNT1 A 0
-		TNT1 A 0 A_CheckSight("Stand2")
 		BTS3 A 0 A_SpawnItem("HeadshotTarget20b", 0, 72)
 		BARO BB 10 A_Look
 		Loop
 
-	Stand2:
-		BARO B 10 A_Look
-		Goto Stand
 	See:
 		BARO A 0
 		//TNT1 A 0 A_CheckSight("SeeNeverSeen")
