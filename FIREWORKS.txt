@@ -134,12 +134,12 @@ ACTOR ExplosiveBarrel1 Replaces ExplosiveBarrel
         Goto Stay
 
 	Death:
-        BEXP ABCD 4 BRIGHT
-		TNT1 A 0 A_SpawnItemEx ("BarrelExplosionDamage",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        TNT1 A 0 A_SpawnItem("WhiteShockwaveBig")
+        BEXP BCD 4 BRIGHT
+		TNT1 A 0 A_Explode(200,200)
+		TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)//floor decal
+	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)//ceil decal
+		TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)//lense flares
+        TNT1 A 0 A_SpawnItem("WhiteShockwaveBig")//white ring effect
 		TNT1 A 0 A_ScreamandUnblock
 		TNT1 A 1 A_SpawnItemEx ("BarrelKaboom",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 1 Radius_Quake (2, 24, 0, 15, 0)
@@ -155,8 +155,8 @@ ACTOR ExplosiveBarrel1 Replaces ExplosiveBarrel
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece", 0,0,5,random (-15, 15), random (-15, 15), random (-15, 15))
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece2", 0,0,10,random (-15, 15), random (-15, 15), random (-15, 15))
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", 0,0,15,random (-15, 15), random (-15, 15), random (-15, 15))
-		BEXP Z 300 BRIGHT A_BarrelDestroy
-		BEXP Z 5 A_Respawn
+		TNT1 A 320 BRIGHT A_BarrelDestroy
+		TNT1 A 4 A_Respawn
 		Stop
 
 	 Death.SuperPunch:
@@ -293,7 +293,7 @@ actor BarrelKaboom: DeadMarine
 	{
 Spawn:
 TNT1 A 1
-TNT1 AAAA 0 A_CustomMissile ("ExplosionSpawner", 10, 0, random (0, 360), 2, random (10, 90))
+TNT1 A 0 A_CustomMissile ("ExplosionSpawner", 10, 0, random (0, 360), 2, random (10, 90))
 Stop
 	}
 }
@@ -362,9 +362,10 @@ Decal "FireworxScorch"
 states
 	{
 	Spawn:
-		TNT1 AA 2 A_SpawnItem("SpawnedExplosion")
+		TNT1 A 2 A_SpawnItem("SpawnedExplosion")
 		EXPL A 0 A_CustomMissile ("BigBlackSmokeLarger", 0, 0, random (0, 360), 2, random (20, 90))
-		TNT1 AA 2 A_SpawnItem("SpawnedExplosion")
+		TNT1 A 2 A_SpawnItem("SpawnedExplosion")
+		EXPL A 0 A_CustomMissile ("BigBlackSmokeLarger", 0, 0, random (0, 360), 2, random (20, 90))
 		Stop
 Death:
     MISG A 1
@@ -665,7 +666,6 @@ states
 	}
 }
 
-
 ACTOR VanillaExplosiveBarrel: ExplosiveBarrel1
 {
 	States
@@ -675,7 +675,6 @@ ACTOR VanillaExplosiveBarrel: ExplosiveBarrel1
 		Loop
 	}
 }
-
 
 ACTOR FireworkSFXType1
 {
@@ -704,7 +703,6 @@ ACTOR FireworkSFXType1
 	}
 }
 
-
 ACTOR FireworkSFXType2: FireworkSFXType1
 {
 	Radius 2
@@ -717,27 +715,5 @@ ACTOR FireworkSFXType2: FireworkSFXType1
 	Death:
 		TNT1 A 0
 		Stop
-	}
-}
-
-
-Actor BarrelExplosionDamage
-{
-+MISSILE
-Radius 2
-Height 42
-PROJECTILE
-Speed 0
-Damagetype "ExplosiveImpact"
-States
-{
-	Spawn:
-	TNT1 A 0
-	Goto Death
-
-	Death:
-	TNT1 A 0
-	TNT1 A 0 A_Explode(200,200)
-	Stop
 	}
 }

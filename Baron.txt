@@ -443,7 +443,7 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		BOBA ABC 4
 		BOBA D 1
 		TNT1 A 0 A_PlaySound("baron/sight")
-		TNT1 A 0 A_SpawnItem("BaronHoldingBarrel", 0, 76,0)
+		TNT1 A 0 A_SpawnItem("BaronHoldingBarrel", 0, 74,0)
 		WaitingToThrow:
 		BOBA D 8
 		TNT1 A 0 A_CheckSight("WaitingToThrow")
@@ -453,7 +453,7 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 	    ThrowBarrel:
 	    TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 	    BARO P 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile("ThrowedBarrel", 76, 15, 0, CMF_OFFSETPITCH, 10)
+		TNT1 A 0 A_CustomMissile("ThrowedBarrel", 74, 15, 0, CMF_OFFSETPITCH, 10)
 		TNT1 A 0 A_CustomMissile("Alerter", 46)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		BARO Q 4 A_FaceTarget
@@ -1677,7 +1677,7 @@ Spawn:
 		BOBA ABC 4
 		BOBA D 1
 		TNT1 A 0 A_PlaySound("baron/sight")
-		TNT1 A 0 A_SpawnItem("BaronHoldingBarrel", 0, 76,0)
+		TNT1 A 0 A_SpawnItem("BaronHoldingBarrel", 0, 87,0)
 		WaitingToThrow:
 		BOBA D 8
 		TNT1 A 0 A_CheckSight("WaitingToThrow")
@@ -1687,7 +1687,7 @@ Spawn:
 	    ThrowBarrel:
 	    TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 72)
 	    BARO P 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile("ThrowedBarrel", 46, 15, 0, 11)
+		TNT1 A 0 A_CustomMissile("ThrowedBarrel", 87, 15, 0, CMF_OFFSETPITCH, 10)
 		TNT1 A 0 A_CustomMissile("Alerter", 46)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 72)
 		BARO Q 4 A_FaceTarget
