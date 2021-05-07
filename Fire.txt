@@ -533,6 +533,18 @@ ACTOR FireballExplosionFlames: FlameTrails
 	}
 }
 
+ACTOR FireballExplosionFlamesM: FlameTrails
+{
+    Scale 0.8
+	Speed 1
+	States
+	{
+    Spawn:
+        FIR4 CDEFGHIJKLMNOP 1 BRIGHT
+        Stop
+	}
+}
+
 ACTOR FireballExplosionFlamesSmall: FlameTrails
 {
     Scale 0.8
@@ -545,7 +557,6 @@ ACTOR FireballExplosionFlamesSmall: FlameTrails
         Stop
 	}
 }
-
 
 ACTOR FireballExplosionFlamesBig: FlameTrails
 {
@@ -560,8 +571,6 @@ ACTOR FireballExplosionFlamesBig: FlameTrails
 	}
 }
 
-
-
 ACTOR FireballExplosionFlamesMedium: FlameTrails
 {
     Scale 1.1
@@ -573,12 +582,6 @@ ACTOR FireballExplosionFlamesMedium: FlameTrails
         Stop
 	}
 }
-
-
-
-
-
-
 
 ACTOR 12SmallFireFocusSpawnerz: BarrelExplosionSmokeColumn
 {
@@ -717,11 +720,6 @@ ACTOR FlyingBurningFuel
     }
 }
 
-
-
-
-
-
 ACTOR FlamethrowerBurningStuff
 {
     Radius 12
@@ -825,8 +823,6 @@ ACTOR FlamethrowerBurningStuff
     }
 }
 
-
-
 ACTOR FlyingLava: FlyingBurningFuel
 {
     Renderstyle ADd
@@ -913,11 +909,8 @@ ACTOR FlyingLava2b: FlyingLava1b
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Underwater")
         LAVA B 2
         Loop
-
-
     }
 }
-
 
 ACTOR FlyingLava1c: FlyingLava1b
 {
@@ -953,7 +946,6 @@ ACTOR FlyingLava2c: FlyingLava1c
     }
 }
 
-
 ACTOR FlyingLava1d: FlyingLava1c
 {
 	Speed 8
@@ -969,7 +961,143 @@ ACTOR FlyingLava1d: FlyingLava1c
     }
 }
 
+ACTOR FlyingMagenta: FlyingBurningFuel
+{
+    Renderstyle ADd
+	Alpha 1.0
+	Gravity 1.0
+	Speed 9
+	Scale 0.1
+	Radius 14
+	Height 14
+	+NODAMAGETHRUST
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Underwater")
+        LAVM A 1
+		LAVM A 1 A_SetScale(0.2, 0.2)
+		LAVM A 1 A_SetScale(0.3, 0.3)
+		LAVM A 1 A_SetScale(0.4, 0.4)
+		LAVM A 1 A_SetScale(0.5, 0.5)
+		LAVM A 1 A_SetScale(0.6, 0.6)
+		LAVM A 1 A_SetScale(0.7, 0.7)
+		LAVM A 1 A_SetScale(0.8, 0.8)
+		LAVM A 1 A_SetScale(0.9, 0.9)
+		LAVM A 1 A_SetScale(1.0, 1.0)
+	Fly:
+		LAVM A 2
+        Loop
+	Death:
+		TNT1 A 0
+		TNT1 A 0 A_Explode(32, 120, 1, 120)
+		EXPL AAAA 0 A_CustomMissile ("FireBallExplosionFlamesM", 1, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3M", random (-5, 5), random (-5, 5))
+		Stop
+    }
+}
 
+ACTOR FlyingMagenta2: FlyingMagenta
+{
+	Speed 10
+	Scale 0.2
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Underwater")
+        LAVM B 1
+		LAVM B 1 A_SetScale(0.3, 0.3)
+		LAVM B 1 A_SetScale(0.4, 0.4)
+		LAVM B 1 A_SetScale(0.5, 0.5)
+		LAVM B 1 A_SetScale(0.6, 0.6)
+		LAVM B 1 A_SetScale(0.7, 0.7)
+		LAVM B 1 A_SetScale(0.8, 0.8)
+		LAVM B 1 A_SetScale(0.9, 0.9)
+		LAVM B 1 A_SetScale(1.0, 1.0)
+		LAVM B 1 A_SetScale(1.1, 1.1)
+		LAVM B 1 A_SetScale(1.2, 1.2)
+	Fly:
+		LAVM A 2
+        Loop
+    }
+}
+
+ACTOR FlyingMagenta1b: FlyingMagenta
+{
+	Speed 12
+	Scale -0.4
+	Damage 10
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Underwater")
+        LAVM A 2
+        Loop
+    }
+}
+
+ACTOR FlyingMagenta2b: FlyingMagenta1b
+{
+	Speed 14
+	Scale -0.6
+	Damage 10
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Underwater")
+        LAVM B 2
+        Loop
+    }
+}
+
+ACTOR FlyingMagenta1c: FlyingMagenta1b
+{
+	Speed 8
+	Scale 0.3
+	+THRUACTORS
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Underwater")
+        LAVM C 2
+        Loop
+	Death:
+		TNT1 A 0
+		TNT1 A 0 A_Explode(4, 32, 1)
+		EXPL AA 0 A_CustomMissile ("FireBallExplosionFlamesM", 1, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3M", random (-5, 5), random (-5, 5))
+		Stop
+    }
+}
+
+ACTOR FlyingMagenta2c: FlyingMagenta1c
+{
+	Speed 8
+	Scale 0.3
+	+THRUACTORS
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Underwater")
+        LAVM B 2
+        Loop
+    }
+}
+
+ACTOR FlyingMagenta1d: FlyingMagenta1c
+{
+	Speed 8
+	Scale 0.3
+	Damagetype "Fire"
+	-THRUACTORS
+	Damage 2
+    States
+    {
+    Spawn:
+	    LAVM A 1
+		Goto Death
+    }
+}
 
 Actor FlyingBurningFuel2: FlyingBurningFuel
 {
@@ -980,10 +1108,6 @@ Actor FlyingBurningFuel3: FlyingBurningFuel
 {
 speed 15
 }
-
-
-
-
 
 ACTOR FlamethrowerFireParticles
 {
@@ -1017,10 +1141,18 @@ ACTOR FlamethrowerFireParticles
 	}
 }
 
-
-
-
-
+ACTOR FlamethrowerFireParticlesM : FlamethrowerFireParticles
+{
+	States
+	{
+    Spawn:
+	    TNT1 A 0
+        FIR4 ABCD 1 BRIGHT
+		TNT1 A 0 A_CustomMissile ("BigBlackSmoke", 40, 0, random (0, 360), 2, random (40, 160))
+		FIR4 EFGHIJKLMNOP 1 BRIGHT
+	    Stop
+	}
+}
 
 ACTOR FlamethrowerFireTrail
 {
@@ -1246,7 +1378,6 @@ ACTOR FlamethrowerMissileProper: FlamethrowerMissile
 	Speed 40
 }
 
-
 Actor FlamethrowerMissile2: FlamethrowerMissile
 {
 +RIPPER
@@ -1259,8 +1390,6 @@ Actor FlamethrowerMissile3: FlamethrowerMissile
 +THRUACTORS
 Decal "BigScorch"
 }
-
-
 
 ACTOR FlamethrowerMissileFatso: FlamethrowerMissile
 {
@@ -1338,14 +1467,6 @@ ACTOR FlamethrowerMissileFatso: FlamethrowerMissile
 	}
 }
 
-
-
-
-
-
-
-
-
 ACTOR TinyBurningPiece
 {
 	Damagetype "Fire"
@@ -1380,7 +1501,6 @@ ACTOR TinyBurningPiece
     }
 }
 
-
 ACTOR TinyBurningPiece2: TinyBurningPiece
 {
 	Scale 0.7
@@ -1402,8 +1522,6 @@ ACTOR TinyBurningPiece3: TinyBurningPiece
 {
 	Scale 0.5
 }
-
-
 
 ACTOR TinyBurningPieceInfinite: TinyBurningPiece
 {
@@ -1432,6 +1550,62 @@ ACTOR TinyBurningPieceTemp: TinyBurningPiece
 	TNT1 A 0
 	Stop
     }
+}
+
+ACTOR TinyBurningPieceM
+{
+	Damagetype "Fire"
+    +CLIENTSIDEONLY
+	+NONETID
+	Alpha 0.9
+	RenderStyle Add
+	Scale 1.1
+	Radius 0
+    Height 0
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +DONTSPLASH
+	Damage 0
+	States
+	{
+	Spawn:
+
+	CFCM ABC 1 BRIGHT// A_SpawnItem("RedFlareSmall", 0, 5)
+	CFCM D 1
+	//TNT1 A 0 A_Explode(2, 60)
+	CFCM EFG 1 BRIGHT// A_SpawnItem("RedFlareSmall", 0, 5)
+	CFCM H 1
+	CFCM IJK 1 BRIGHT// A_SpawnItem("RedFlareSmall", 0, 5)
+	CFCM L 1
+	TNT1 A 0 A_Jump(24, "StopBurning")
+	Loop
+
+	StopBurning:
+	CFCM NOP 1 BRIGHT A_SpawnItem("VioletFlareSmall", 0, 5)
+	Stop
+    }
+}
+
+ACTOR TinyBurningPiece2M: TinyBurningPieceM
+{
+	Scale 0.7
+	States
+	{
+	Spawn:
+
+	CFCM ABCDEFGHIJKL 1 BRIGHT
+	TNT1 A 0 A_Jump(24, "StopBurning")
+	Loop
+
+	StopBurning:
+	CFCM NOP 1 BRIGHT A_SpawnItem("VioletFlareSmall", 0, 5)
+	Stop
+    }
+}
+
+ACTOR TinyBurningPiece3M: TinyBurningPieceM
+{
+	Scale 0.5
 }
 
 ACTOR PentagramSpawner

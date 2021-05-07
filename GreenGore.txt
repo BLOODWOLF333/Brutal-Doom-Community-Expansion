@@ -291,10 +291,12 @@ States
 		TNT1 A 0
 		TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckIfOverLiquid")//Check Floortype
 		TNT1 A 3
-		TNT1 A 0 A_JumpIfInventory("IsOverSlimy", 1, "Disappear")
+		TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "Disappear")
 		TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "Disappear")
 		TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "Disappear")
+		TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "Disappear")
 		TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "Disappear")
+		TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "Disappear")
 		TNT1 A 0 A_SpawnItemEx ("BootSmearerGreen",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 0 A_QueueCorpse
 		Goto SpawnAFrameOnly
@@ -333,6 +335,7 @@ Decal GreenBloodSplat
     TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "GreenWaterBloodSpot")
 	TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "GreenWaterBloodSpot")
 	TNT1 A 0 A_JumpIfInventory("IsOverlava", 1, "GreenWaterBloodSpot")
+	TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "GreenWaterBloodSpot")
 	TNT1 A 0 A_SpawnItemEx ("BootSmearerGreen",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	TNT1 A 0 A_QueueCorpse
 	Goto Rest

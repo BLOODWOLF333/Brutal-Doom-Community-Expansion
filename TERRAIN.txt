@@ -8,6 +8,15 @@ splash 	nukage
  NoAlert
 }
 
+splash 	purple
+{
+ smallclass 	purpleSplashBasesmall
+ smallclip		6
+ baseclass		purpleSplashBase
+ sound		world/watersplash
+ NoAlert
+}
+
 splash Slime
 {
 	smallclass 	none
@@ -47,19 +56,31 @@ splash 	lava
 {
  smallclass 	LavaSplashBase
  smallclip		6
- //smallsound	world/lavasizzlesmall
-
  baseclass		LavaSplashBase
-
  sound		world/lavasizzle
  NoAlert
+}
 
+splash 	magenta
+{
+ smallclass 	magentaSplashBase
+ smallclip		6
+ baseclass		magentaSplashBase
+ sound		world/lavasizzle
+ NoAlert
 }
 //********** Terrain **********
 
 terrain	 nukage
 {
  splash 	nukage
+ footclip	 1
+ liquid
+}
+
+terrain	 purple
+{
+ splash 	purple
  footclip	 1
  liquid
 }
@@ -74,6 +95,14 @@ terrain	water
 terrain	lava
 {
  splash 	lava
+ footclip	 1
+ liquid
+ damagetype		"Fire"
+}
+
+terrain	magenta
+{
+ splash 	magenta
  footclip	 1
  liquid
  damagetype		"Fire"
@@ -96,6 +125,7 @@ terrain Slime
 floor BDBLOOD1 Blood
 floor BDFWATER Water
 floor BDNUKE1 Nukage
+floor FHDP01 Purple
 floor BDSLIME1 Slime
 floor BDSLIME2 Slime
 floor BLOOD1 Blood
@@ -111,6 +141,7 @@ floor LAVA2 Lava
 floor LAVA3 Lava
 floor LAVA4 Lava
 floor LAVAFL Lava
+floor MAGEFL Magenta
 floor NUKAGE1 Nukage
 floor NUKAGE2 Nukage
 floor NUKAGE3 Nukage

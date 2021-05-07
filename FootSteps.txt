@@ -377,7 +377,9 @@ Actor Footstep6: FootStep //ACTUAL FOOTSTEP
 			TNT1 A 0 A_JumpIfInventory("IsOverSlimy", 1, "Slimy")
 			TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "XDeath")
 			TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "XDeath")
+			TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "XDeath")
 			TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "XDeath")
+			TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "XDeath")
 
 			TNT1 A 0 A_playsound("floorhard")
 			NULL AAAA 1 A_Warp(AAPTR_target, 0, 0, 0, 0, WARPF_INTERPOLATE)
@@ -532,7 +534,9 @@ Actor FootstepStrong: Footstep6 //Large footstep when you land from a jump.
 				TNT1 A 2
 				TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "XDeath2")
 				TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "XDeath2")
+				TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "XDeath2")
 				TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "XDeath2")
+				TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "XDeath2")
 
 				TNT1 A 0 A_JumpIfInventory("IsOverDirt", 1, "Dirt")
 				TNT1 A 0 A_JumpIfInventory("IsOverGravel", 1, "Gravel")
@@ -543,7 +547,7 @@ Actor FootstepStrong: Footstep6 //Large footstep when you land from a jump.
 				TNT1 A 0 A_JumpIfInventory("IsOverSnow", 1, "Snow")
 				TNT1 A 0 A_JumpIfInventory("IsOverTile", 1, "Tile")
 				TNT1 A 0 A_JumpIfInventory("IsOverTile2", 1, "Tile2")
-				TNT1 A 0 A_JumpIfInventory("IsOverSlimy", 1, "Slimy")
+				TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "Slimy")
 				TNT1 A 0 A_AlertMonsters(200, AMF_TARGETNONPLAYER)
 				TNT1 A 0 A_playsound("LANDS1", 8)
 				NULL A 6
@@ -748,7 +752,9 @@ Actor TnkStep: FootStep
 			TNT1 A 0 A_JumpIfInventory("IsOverBlood", 1, "Blood")
 			TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "Water")
 			TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "Nukage")
+			TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "Purple")
 			TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "XDeath")
+			TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "XDeath")
 			TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "Slime")
 			TNT1 A 1
 			TNT1 A 6
@@ -793,6 +799,13 @@ Actor TnkStep: FootStep
 			TNT1 A 0 A_PlaySound("bigspl1")
 			TNT1 A 0 A_CustomMissile ("GreenLiquidParticleX", 32, 32, random (0, 360), 2, random (10, 90))
 			TNT1 A 0 A_CustomMissile ("GreenLiquidParticleX", 32, -32, random (0, 360), 2, random (10, 90))
+			Stop
+
+		Purple:
+			TNT1 A 0
+			TNT1 A 0 A_PlaySound("bigspl1")
+			TNT1 A 0 A_CustomMissile ("PurpleLiquidParticleX", 32, 32, random (0, 360), 2, random (10, 90))
+			TNT1 A 0 A_CustomMissile ("PurpleLiquidParticleX", 32, -32, random (0, 360), 2, random (10, 90))
 			Stop
 
 		Slime:
@@ -897,7 +910,9 @@ Actor BDBodyThud
 			TNT1 A 0 A_PlaySound("BodyThud", 1)
 			TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "Water")
 			TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "Water")
+			TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "Water")
 			TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "Water")
+			TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "Water")
 			TNT1 A 0 A_JumpIfInventory("IsOverDirt", 1, "Dirt")
 			TNT1 A 0 A_JumpIfInventory("IsOverSand", 1, "Sand")
 			TNT1 A 0 A_JumpIfInventory("IsOverGravel", 1, "Gravel")
@@ -908,7 +923,7 @@ Actor BDBodyThud
 			TNT1 A 0 A_JumpIfInventory("IsOverSnow", 1, "Snow")
 			TNT1 A 0 A_JumpIfInventory("IsOverTile", 1, "Tile")
 			TNT1 A 0 A_JumpIfInventory("IsOverTile2", 1, "Tile2")
-			TNT1 A 0 A_JumpIfInventory("IsOverSlimy", 1, "Slimy")
+			TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "Slimy")
 			NULL A 1
 			NULL A 6
             Stop

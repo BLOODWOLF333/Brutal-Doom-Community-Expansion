@@ -573,8 +573,10 @@ ACTOR ExplosionSplashSpawner
     TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "SpawnWater")
 	TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "SpawnSlime")
 	TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "SpawnNukage")
+	TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "SpawnPurple")
 	TNT1 A 0 A_JumpIfInventory("IsOverBlood", 1, "SpawnBlood")
 	TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "SpawnLava")
+	TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "SpawnMagenta")
 	TNT1 A 0 A_JumpIfInventory("IsOverGrass", 1, "SpawnGrass")
 	TNT1 A 0 A_JumpIfInventory("IsOverDirt", 1, "SpawnGrass")
 	TNT1 A 0 A_JumpIfInventory("IsOverSand", 1, "SpawnSand")
@@ -604,6 +606,12 @@ ACTOR ExplosionSplashSpawner
 	TNT1 A 20
 	Stop
 
+ SpawnPurple:
+	TNT1 A 0
+	TNT1 A 0 A_PlaySound("bigspl1")
+	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("PurpleLiquidParticleX", random (0, 60), 0, random (0, 360), 2, random (30, 90))
+	TNT1 A 20
+	Stop
 
   SpawnBlood:
 	TNT1 A 0
@@ -612,7 +620,6 @@ ACTOR ExplosionSplashSpawner
 	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("BloodLiquidParticleX", random (0, 60), 0, random (0, 360), 2, random (30, 90))
 	TNT1 A 20
 	Stop
-
 
  SpawnLava:
 	TNT1 A 0
@@ -628,6 +635,19 @@ ACTOR ExplosionSplashSpawner
 	TNT1 A 20
 	Stop
 
+ SpawnMagenta:
+	TNT1 A 0
+	TNT1 AAA 0 A_CustomMissile ("FlyingMagenta", 54, 0, random (0, 360), 2, random (20, 80))
+	TNT1 AAA 0 A_CustomMissile ("FlyingMagenta2", 44, 0, random (0, 360), 2, random (20, 80))
+	TNT1 AAAAAAAA 0 A_CustomMissile ("FlyingMagenta1b", 54, 0, random (0, 360), 2, random (30, 80))
+	TNT1 AAAAAAAAA 0 A_CustomMissile ("FlyingMagenta2b", 44, 0, random (0, 360), 2, random (30, 80))
+	EXPL AAAAAAAA 0 A_CustomMissile ("FlamethrowerFireParticlesM", 16, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 0 A_SpawnItemEx("TinyBurningPieceM", random (-15, 15), random (-15, 15))
+	TNT1 A 0 A_SpawnItemEx("TinyBurningPiece2M", random (-35, 35), random (-35, 35))
+	TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3M", random (-45, 45), random (-45, 35))
+	TNT1 AA 20 A_CustomMissile ("BigBlackSmoke", 10, 0, random (0, 360), 2, random (40, 160))
+	TNT1 A 20
+	Stop
 
  SpawnGrass:
 	TNT1 A 0
