@@ -10,6 +10,7 @@ Damagefactor "KillMe", 0.0	DamageFactor "SSG", 5.0	DamageFactor "Head", 0.0
 Damagefactor "Extremepunches", 2.0	Damagefactor "Fatality", 5.0	DamageFactor "HelperMarineFatality", 5.0
 Monster
 Health 2560
+GibHealth 1280
 Radius 9
 Height 18
 Mass 999999
@@ -30,11 +31,14 @@ Pain:
 TNT1 A 0
 TNT1 A 0 A_ChangeFlag("NOPAIN",1)
 TNT1 A 3
-TNT1 A 0 A_JumpIfHealthLower(1280, "Pain1280")
-TNT1 A 0 A_JumpIfHealthLower(1920, "Pain640")
-TNT1 A 0 A_JumpIfHealthLower(2240, "Pain320")
-TNT1 A 0 A_JumpIfHealthLower(2400, "Pain160")
+TNT1 A 0 A_JumpIfHealthLower(1560, "Pain1000")
+TNT1 A 0 A_JumpIfHealthLower(2060, "Pain500")
+TNT1 A 0 A_JumpIfHealthLower(2310, "Pain250")
+TNT1 A 0 A_JumpIfHealthLower(2360, "Pain200")
+TNT1 A 0 A_JumpIfHealthLower(2410, "Pain150")
+TNT1 A 0 A_JumpIfHealthLower(2460, "Pain100")
 TNT1 A 0 A_JumpIfHealthLower(2480, "Pain80")
+TNT1 A 0 A_JumpIfHealthLower(2500, "Pain60")
 TNT1 A 0 A_JumpIfHealthLower(2520, "Pain40")
 TNT1 A 0 A_JumpIfHealthLower(2540, "Pain20")
 TNT1 A 0 A_JumpIfHealthLower(2550, "Pain10")
@@ -71,6 +75,13 @@ TNT1 A 3
 TNT1 A 0 A_NoBlocking
 Stop
 
+Pain60:
+TNT1 A 0
+XDT3 A 0 A_Explode(60,15, 0, 0, 15)//hs
+TNT1 A 3
+TNT1 A 0 A_NoBlocking
+Stop
+
 Pain80:
 TNT1 A 0
 XDT3 A 0 A_Explode(80,15, 0, 0, 15)//hs
@@ -78,30 +89,44 @@ TNT1 A 3
 TNT1 A 0 A_NoBlocking
 Stop
 
-Pain160:
+Pain100:
 TNT1 A 0
-XDT3 A 0 A_Explode(160,15, 0, 0, 15)//hs
+XDT3 A 0 A_Explode(100,15, 0, 0, 15)//hs
 TNT1 A 3
 TNT1 A 0 A_NoBlocking
 Stop
 
-Pain320:
+Pain150:
 TNT1 A 0
-XDT3 A 0 A_Explode(320,15, 0, 0, 15)//hs
+XDT3 A 0 A_Explode(150,15, 0, 0, 15)//hs
 TNT1 A 3
 TNT1 A 0 A_NoBlocking
 Stop
 
-Pain640:
+Pain200:
 TNT1 A 0
-XDT3 A 0 A_Explode(640,15, 0, 0, 15)//hs
+XDT3 A 0 A_Explode(200,15, 0, 0, 15)//hs
 TNT1 A 3
 TNT1 A 0 A_NoBlocking
 Stop
 
-Pain1280:
+Pain250:
 TNT1 A 0
-XDT3 A 0 A_Explode(1280,15, 0, 0, 15)//hs
+XDT3 A 0 A_Explode(250,15, 0, 0, 15)//hs
+TNT1 A 3
+TNT1 A 0 A_NoBlocking
+Stop
+
+Pain500:
+TNT1 A 0
+XDT3 A 0 A_Explode(500,15, 0, 0, 15)//hs
+TNT1 A 3
+TNT1 A 0 A_NoBlocking
+Stop
+
+Pain1000:
+TNT1 A 0
+XDT3 A 0 A_Explode(1000,15, 0, 0, 15)//hs
 TNT1 A 3
 TNT1 A 0 A_NoBlocking
 Stop
