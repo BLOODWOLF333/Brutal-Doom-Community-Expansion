@@ -194,6 +194,9 @@ SCRIPT "BDSpawnMarines" (VOID)
 		Case 0:
 		break;
 
+		Case 0:
+		break;
+
 		Case 1:
 		Spawn("Marine_Fist", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		break;
@@ -255,14 +258,21 @@ SCRIPT "BDSpawnMarines" (VOID)
 		break;
 
 		Default:
-		Spawn("Marine_Fist", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
-		Spawn("Marine_Fist", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
-		Spawn("Marine_Fist", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
-		Spawn("Marine_Fist", GetActorX(0)+32, GetActorY(0), GetActorZ(0), 0, 0);
-		Spawn("Marine_Fist", GetActorX(0)+32, GetActorY(0)-32, GetActorZ(0), 0, 0);
-		Spawn("Marine_Fist", GetActorX(0)+32, GetActorY(0)+32, GetActorZ(0), 0, 0);
-		Spawn("Marine_Fist", GetActorX(0), GetActorY(0)-32, GetActorZ(0), 0, 0);
-		Spawn("Marine_Fist", GetActorX(0), GetActorY(0)+32, GetActorZ(0), 0, 0);
+		If (NumberOfAlliesFist < 0)
+		{
+			NumberOfAlliesFist = 0;
+		}
+		Else
+		{
+			Spawn("Marine_Fist", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
+			Spawn("Marine_Fist", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
+			Spawn("Marine_Fist", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
+			Spawn("Marine_Fist", GetActorX(0)+32, GetActorY(0), GetActorZ(0), 0, 0);
+			Spawn("Marine_Fist", GetActorX(0)+32, GetActorY(0)-32, GetActorZ(0), 0, 0);
+			Spawn("Marine_Fist", GetActorX(0)+32, GetActorY(0)+32, GetActorZ(0), 0, 0);
+			Spawn("Marine_Fist", GetActorX(0), GetActorY(0)-32, GetActorZ(0), 0, 0);
+			Spawn("Marine_Fist", GetActorX(0), GetActorY(0)+32, GetActorZ(0), 0, 0);
+		}
 		break;
 	}
 
@@ -333,6 +343,12 @@ SCRIPT "BDSpawnMarines" (VOID)
 		break;
 
 		Default:
+		If (NumberOfAlliesSaw < 0)
+		{
+			NumberOfAlliesSaw = 0;
+		}
+		Else
+		{
 		Spawn("Marine_Saw", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Saw", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Saw", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
@@ -341,6 +357,7 @@ SCRIPT "BDSpawnMarines" (VOID)
 		Spawn("Marine_Saw", GetActorX(0)+32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Saw", GetActorX(0), GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Saw", GetActorX(0), GetActorY(0)+32, GetActorZ(0), 0, 0);
+		}
 		break;
 	}
 
@@ -411,6 +428,12 @@ SCRIPT "BDSpawnMarines" (VOID)
 		break;
 
 		Default:
+		If (NumberOfAlliesSMG < 0)
+		{
+			NumberOfAlliesSMG = 0;
+		}
+		Else
+		{
 		Spawn("Marine_SMG", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_SMG", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_SMG", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
@@ -419,6 +442,7 @@ SCRIPT "BDSpawnMarines" (VOID)
 		Spawn("Marine_SMG", GetActorX(0)+32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		Spawn("Marine_SMG", GetActorX(0), GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_SMG", GetActorX(0), GetActorY(0)+32, GetActorZ(0), 0, 0);
+		}
 		break;
 	}
 
@@ -489,6 +513,12 @@ SCRIPT "BDSpawnMarines" (VOID)
 		break;
 
 		Default:
+		If (NumberOfAlliesShotgun < 0)
+		{
+			NumberOfAlliesShotgun = 0;
+		}
+		Else
+		{
 		Spawn("Marine_Shotgun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Shotgun", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Shotgun", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
@@ -497,6 +527,7 @@ SCRIPT "BDSpawnMarines" (VOID)
 		Spawn("Marine_Shotgun", GetActorX(0)+32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Shotgun", GetActorX(0), GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Shotgun", GetActorX(0), GetActorY(0)+32, GetActorZ(0), 0, 0);
+		}
 		break;
 	}
 
@@ -567,6 +598,12 @@ SCRIPT "BDSpawnMarines" (VOID)
 		break;
 
 		Default:
+		If (NumberOfAlliesSSG < 0)
+		{
+			NumberOfAlliesSSG = 0;
+		}
+		Else
+		{
 		Spawn("Marine_SSG", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_SSG", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_SSG", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
@@ -575,6 +612,7 @@ SCRIPT "BDSpawnMarines" (VOID)
 		Spawn("Marine_SSG", GetActorX(0)+32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		Spawn("Marine_SSG", GetActorX(0), GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_SSG", GetActorX(0), GetActorY(0)+32, GetActorZ(0), 0, 0);
+		}
 		break;
 	}
 
@@ -645,6 +683,12 @@ SCRIPT "BDSpawnMarines" (VOID)
 		break;
 
 		Default:
+		If (NumberOfAllies < 0)
+		{
+			NumberOfAllies = 0;
+		}
+		Else
+		{
 		Spawn("Marine_Rifle", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Rifle", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Rifle", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
@@ -653,6 +697,7 @@ SCRIPT "BDSpawnMarines" (VOID)
 		Spawn("Marine_Rifle", GetActorX(0)+32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Rifle", GetActorX(0), GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Rifle", GetActorX(0), GetActorY(0)+32, GetActorZ(0), 0, 0);
+		}
 		break;
 	}
 
@@ -723,6 +768,12 @@ SCRIPT "BDSpawnMarines" (VOID)
 		break;
 
 		Default:
+		If (NumberOfAlliesMinigun < 0)
+		{
+			NumberOfAlliesMinigun = 0;
+		}
+		Else
+		{
 		Spawn("Marine_Minigun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Minigun", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Minigun", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
@@ -731,6 +782,7 @@ SCRIPT "BDSpawnMarines" (VOID)
 		Spawn("Marine_Minigun", GetActorX(0)+32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Minigun", GetActorX(0), GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Minigun", GetActorX(0), GetActorY(0)+32, GetActorZ(0), 0, 0);
+		}
 		break;
 	}
 
@@ -801,6 +853,12 @@ SCRIPT "BDSpawnMarines" (VOID)
 		break;
 
 		Default:
+		If (NumberOfAlliesGrenade < 0)
+		{
+			NumberOfAlliesGrenade = 0;
+		}
+		Else
+		{
 		Spawn("Marine_Grenade", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Grenade", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Grenade", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
@@ -809,6 +867,7 @@ SCRIPT "BDSpawnMarines" (VOID)
 		Spawn("Marine_Grenade", GetActorX(0)+32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Grenade", GetActorX(0), GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Grenade", GetActorX(0), GetActorY(0)+32, GetActorZ(0), 0, 0);
+		}
 		break;
 	}
 
@@ -879,6 +938,12 @@ SCRIPT "BDSpawnMarines" (VOID)
 		break;
 
 		Default:
+		If (NumberOfAlliesRocket < 0)
+		{
+			NumberOfAlliesRocket = 0;
+		}
+		Else
+		{
 		Spawn("Marine_Rocket", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Rocket", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Rocket", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
@@ -887,6 +952,7 @@ SCRIPT "BDSpawnMarines" (VOID)
 		Spawn("Marine_Rocket", GetActorX(0)+32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Rocket", GetActorX(0), GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Rocket", GetActorX(0), GetActorY(0)+32, GetActorZ(0), 0, 0);
+		}
 		break;
 	}
 
@@ -957,6 +1023,12 @@ SCRIPT "BDSpawnMarines" (VOID)
 		break;
 
 		Default:
+		If (NumberOfAlliesPlasmagun < 0)
+		{
+			NumberOfAlliesPlasmagun = 0;
+		}
+		Else
+		{
 		Spawn("Marine_Plasmagun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Plasmagun", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Plasmagun", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
@@ -965,6 +1037,7 @@ SCRIPT "BDSpawnMarines" (VOID)
 		Spawn("Marine_Plasmagun", GetActorX(0)+32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Plasmagun", GetActorX(0), GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Plasmagun", GetActorX(0), GetActorY(0)+32, GetActorZ(0), 0, 0);
+		}
 		break;
 	}
 
@@ -1035,6 +1108,12 @@ SCRIPT "BDSpawnMarines" (VOID)
 		break;
 
 		Default:
+		If (NumberOfAlliesRailgun < 0)
+		{
+			NumberOfAlliesRailgun = 0;
+		}
+		Else
+		{
 		Spawn("Marine_Railgun", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Railgun", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Railgun", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
@@ -1043,6 +1122,7 @@ SCRIPT "BDSpawnMarines" (VOID)
 		Spawn("Marine_Railgun", GetActorX(0)+32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Railgun", GetActorX(0), GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Railgun", GetActorX(0), GetActorY(0)+32, GetActorZ(0), 0, 0);
+		}
 		break;
 	}
 
@@ -1113,6 +1193,12 @@ SCRIPT "BDSpawnMarines" (VOID)
 		break;
 
 		Default:
+		If (NumberOfAlliesBFG < 0)
+		{
+			NumberOfAlliesBFG = 0;
+		}
+		Else
+		{
 		Spawn("Marine_BFG", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_BFG", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_BFG", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
@@ -1121,6 +1207,7 @@ SCRIPT "BDSpawnMarines" (VOID)
 		Spawn("Marine_BFG", GetActorX(0)+32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		Spawn("Marine_BFG", GetActorX(0), GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_BFG", GetActorX(0), GetActorY(0)+32, GetActorZ(0), 0, 0);
+		}
 		break;
 	}
 
@@ -1191,6 +1278,12 @@ SCRIPT "BDSpawnMarines" (VOID)
 		break;
 
 		Default:
+		If (NumberOfAlliesBFG10K < 0)
+		{
+			NumberOfAlliesBFG10K = 0;
+		}
+		Else
+		{
 		Spawn("Marine_BFG10K", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_BFG10K", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_BFG10K", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
@@ -1199,6 +1292,7 @@ SCRIPT "BDSpawnMarines" (VOID)
 		Spawn("Marine_BFG10K", GetActorX(0)+32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		Spawn("Marine_BFG10K", GetActorX(0), GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_BFG10K", GetActorX(0), GetActorY(0)+32, GetActorZ(0), 0, 0);
+		}
 		break;
 	}
 
@@ -1269,6 +1363,12 @@ SCRIPT "BDSpawnMarines" (VOID)
 		break;
 
 		Default:
+		If (NumberOfAlliesHML < 0)
+		{
+			NumberOfAlliesHML = 0;
+		}
+		Else
+		{
 		Spawn("Marine_HML", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_HML", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_HML", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
@@ -1277,6 +1377,7 @@ SCRIPT "BDSpawnMarines" (VOID)
 		Spawn("Marine_HML", GetActorX(0)+32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		Spawn("Marine_HML", GetActorX(0), GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_HML", GetActorX(0), GetActorY(0)+32, GetActorZ(0), 0, 0);
+		}
 		break;
 	}
 
@@ -1347,6 +1448,12 @@ SCRIPT "BDSpawnMarines" (VOID)
 		break;
 
 		Default:
+		If (NumberOfAlliesFlame < 0)
+		{
+			NumberOfAlliesFlame = 0;
+		}
+		Else
+		{
 		Spawn("Marine_Flame", GetActorX(0)-32, GetActorY(0), GetActorZ(0), 0, 0);
 		Spawn("Marine_Flame", GetActorX(0)-32, GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Flame", GetActorX(0)-32, GetActorY(0)+32, GetActorZ(0), 0, 0);
@@ -1355,6 +1462,7 @@ SCRIPT "BDSpawnMarines" (VOID)
 		Spawn("Marine_Flame", GetActorX(0)+32, GetActorY(0)+32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Flame", GetActorX(0), GetActorY(0)-32, GetActorZ(0), 0, 0);
 		Spawn("Marine_Flame", GetActorX(0), GetActorY(0)+32, GetActorZ(0), 0, 0);
+		}
 		break;
 	}
 	MarineSpawnCounter++;
