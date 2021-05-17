@@ -296,7 +296,7 @@ ACTOR FakeFlameCannonSprite: BasicWeaponPickup
 
 	 Spawn:
 		MANA H 0
-		MANA H 2
+		MANA H 18
 		Stop
     }
 }
@@ -319,7 +319,7 @@ ACTOR FlameCannonSpawner: CustomInventory
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("FakeCellSprite")
 		TNT1 A 0 A_SpawnItem("FakeFlameCannonSprite")
-		TNT1 A 1
+		TNT1 A 16
 		Loop
 	Pickup:
 	    TNT1 A 0

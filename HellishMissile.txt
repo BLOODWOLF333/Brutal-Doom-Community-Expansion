@@ -257,7 +257,7 @@ ACTOR FakeHMLSprite: BasicWeaponPickup
     {
 	 Spawn:
 		FATB D 0
-		FATB D 2
+		FATB D 18
 		Stop
     }
 }
@@ -283,7 +283,7 @@ ACTOR HMLSpawner: CustomInventory
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("FakeRocketSprite")
 		TNT1 A 0 A_SpawnItem("FakeHMLSprite")
-		TNT1 A 1
+		TNT1 A 16
 		Loop
 	Pickup:
 	    TNT1 A 0
