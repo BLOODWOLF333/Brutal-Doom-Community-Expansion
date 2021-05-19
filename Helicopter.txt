@@ -80,7 +80,7 @@ ACTOR attackhelicopter: Tank 7262
 	Pain.Repair:
 		TNT1 A 0
 		TNT1 A 0 A_ChangeFLag("NOPAIN", 1)
-		TNT1 A 0 HealThing(84)
+		TNT1 A 0 HealThing(40)
 		TNT1 A 0 A_JumpIfInventory("AutocannonAmmo", 500, 2)
 		TNT1 A 0 A_GiveInventory("AutocannonAmmo", 33)
 		TNT1 A 0 A_JumpIfInventory("HelicopterRocketAmmo", 50, 2)
@@ -95,7 +95,7 @@ ACTOR attackhelicopter: Tank 7262
 
 ACTOR AttackHelicopterRealism: AttackHelicopter
 {
-Health 4000
+Health 2000
 }
 
 ACTOR attackhelicopterUsed: attackhelicopter
@@ -942,7 +942,7 @@ ACTOR Playerattackhelicopter : PlayerTank
 	Pain.Repair:
 		TNT1 A 0
 		HELA A 1 A_PlaySound("vehicle/pain")
-		TNT1 A 0 HealThing(84)
+		TNT1 A 0 HealThing(40)
 		TNT1 A 0 A_JumpIfInventory("AutocannonAmmo", 500, 2)
 		TNT1 A 0 A_GiveInventory("AutocannonAmmo", 33)
 		TNT1 A 0 A_JumpIfInventory("HelicopterRocketAmmo", 50, 2)

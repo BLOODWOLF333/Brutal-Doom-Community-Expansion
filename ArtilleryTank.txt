@@ -115,7 +115,7 @@ ACTOR ArtilleryTank: Tank 7264
 	Pain.Repair:
 		TNT1 A 0
 		TNT1 A 0 A_ChangeFLag("NOPAIN", 1)
-		TNT1 A 0 HealThing(104)
+		TNT1 A 0 HealThing(160)
 		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 1200, 2)
 		TNT1 A 0 A_GiveInventory("HeavyMachinegunAmmo", 80)
 		TNT1 A 0 A_JumpIfInventory("HelicopterRocketAmmo", 30, 2)
@@ -128,7 +128,7 @@ ACTOR ArtilleryTank: Tank 7264
 
 ACTOR ArtilleryTankRealism: ArtilleryTank
 {
-Health 10000
+Health 8000
 }
 
 ACTOR ArtilleryTankUsed: ArtilleryTank
@@ -462,7 +462,7 @@ Pain.TracksDamaged:
 	Pain.Repair:
 		TNT1 A 0
 		TN2E T 1 A_PlaySound("vehicle/pain")
-		TNT1 A 0 HealThing(104)
+		TNT1 A 0 HealThing(160)
 		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 1200, 2)
 		TNT1 A 0 A_GiveInventory("HeavyMachinegunAmmo", 80)
 		TNT1 A 0 A_JumpIfInventory("HelicopterRocketAmmo", 30, 2)

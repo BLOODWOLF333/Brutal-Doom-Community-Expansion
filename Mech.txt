@@ -109,7 +109,7 @@ ACTOR Mech: Tank 7263
 	Pain.Repair:
 		TNT1 A 0
 		TNT1 A 0 A_ChangeFLag("NOPAIN", 1)
-		TNT1 A 0 HealThing(230)
+		TNT1 A 0 HealThing(80)
 		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 2000, 2)
 		TNT1 A 0 A_GiveInventory("HeavyMachinegunAmmo", 133)
 		TNT1 A 0 A_JumpIfInventory("MechRocketAmmo", 60, 2)
@@ -452,7 +452,7 @@ ACTOR PlayerMech : PlayerTank
 	Pain.Repair:
 		TNT1 A 0
 		MECH A 1 A_PlaySound("vehicle/pain")
-		TNT1 A 0 HealThing(230)
+		TNT1 A 0 HealThing(80)
 		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 2000, 2)
 		TNT1 A 0 A_GiveInventory("HeavyMachinegunAmmo", 133)
 		TNT1 A 0 A_JumpIfInventory("MechRocketAmmo", 60, 2)
