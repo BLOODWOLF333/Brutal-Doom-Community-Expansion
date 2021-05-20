@@ -98,16 +98,10 @@ ACTOR RifleZombie Replaces ZombieMan
 		Stop
 
 	Stand:
-		PSSS B 1
-		TNT1 A 0 A_CheckSight("Stand2")
-		TNT1 AA 0 A_SpawnItem ("HeadshotTarget20", 0, 36,0)
+		PSSS B 0
+		TNT1 A 0 A_SpawnItem ("HeadshotTarget20", 0, 36,0)
 		PSSS AB 10 A_Look
 		Loop
-
-	Stand2:
-		PSSS AB 10 A_Look
-		TNT1 A 0 A_CheckSight("Stand2")
-		Goto Stand
 
 	SearchForPlayer:
 	Idle:

@@ -50,15 +50,9 @@ ACTOR Ubersoldat
 
 	STAND:
 		TNT1 A 0
-		TNT1 A 0 A_CheckSight("Stand2")
         TNT1 A 0 A_SpawnItem ("HeadshotTarget20", 0, 47)
 		CPOS BB 9 A_Look
 		Loop
-
-	Stand2:
-		CPOS B 15 A_Look
-		TNT1 A 0 A_CheckSight("Stand2")
-		Goto Stand
 
 	Idle:
 	SearchForPlayer:

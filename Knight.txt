@@ -69,14 +69,10 @@ ReplaceVanilla:
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 
 	Stand:
-		TNT1 A 0 A_CheckSight("Stand2")
+		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("HeadshotTarget20b", 0, 52)
 		BOS2 BB 5 A_Look
 		Loop
-
-	Stand2:
-		BOS2 B 11 A_Look
-		Goto Stand
 
 	See:
 	BOS2 B 0
