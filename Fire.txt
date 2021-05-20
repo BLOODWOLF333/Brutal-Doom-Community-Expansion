@@ -617,15 +617,18 @@ ACTOR SmallFireFocus24: BarrelExplosionSmokeColumn
 	States
 	{
 	Spawn:
-	FLME ABCDEFGHIJKLMNABCDEFGHIJKLMNABCDEFGHIJKLMNABCDEFGHIJKLMN 1 BRIGHT A_SpawnItem("RedFlareSmall", 0, 10)
-	FLME ABCDEFGHIJKLMNABCDEFGHIJKLMNABCDEFGHIJKLMNABCDEFGHIJKLMN 1 BRIGHT A_SpawnItem("RedFlareSmall", 0, 10)
-	FLME AB 1 BRIGHT A_SetScale(0.7, 0.7)
-	FLME ABCDEFGHIJKLMN 1 BRIGHT A_SpawnItem("RedFlareSmall", 0, 10)
-	FLME AB 1 BRIGHT A_SetScale(0.6, 0.6)
-	FLME ABCDEFGHIJKLMN 1 BRIGHT A_SpawnItem("RedFlareSmall", 0, 10)
-	FLME AB 1 BRIGHT A_SetScale(0.5, 0.35)
-	FLME CD 1 BRIGHT A_SetScale(0.4, 0.2)
-	FLME EF 1 BRIGHT A_SetScale(0.3, 0.1)
+	FLME ABCDEFGHIJKLMNABCDEFGHIJKLMNABCDEFGHIJKLMNABCDEFGHIJKLMN 2 BRIGHT A_SpawnItem("RedFlareSmall", 0, 10)
+	FLME ABCDEFGHIJKLMNABCDEFGHIJKLMNABCDEFGHIJKLMNABCDEFGHIJKLMN 2 BRIGHT A_SpawnItem("RedFlareSmall", 0, 10)
+	TNT1 A 0 BRIGHT A_SetScale(0.5, 0.5)
+	FLME ABCDEFGHIJKLMN 2 BRIGHT A_SpawnItem("RedFlareSmall", 0, 10)
+	TNT1 A 0 BRIGHT A_SetScale(0.4, 0.4)
+	FLME ABCDEFGHIJKLMN 2 BRIGHT A_SpawnItem("RedFlareSmall", 0, 10)
+	TNT1 A 0 BRIGHT A_SetScale(0.3, 0.3)
+	FLME ABCDEFGHIJKLMN 2 BRIGHT A_SpawnItem("RedFlareSmall", 0, 10)
+	TNT1 A 0 BRIGHT A_SetScale(0.2, 0.2)
+	FLME ABCDEFGHIJKLMN 2 BRIGHT A_SpawnItem("RedFlareSmall", 0, 10)
+	TNT1 A 0 BRIGHT A_SetScale(0.1, 0.1)
+	FLME ABCDEFGHIJKLMN 2 BRIGHT A_SpawnItem("RedFlareSmall", 0, 10)
 	Stop
     }
 }
@@ -1485,18 +1488,12 @@ ACTOR TinyBurningPiece
 	{
 	Spawn:
 
-	CFCF ABC 1 BRIGHT// A_SpawnItem("RedFlareSmall", 0, 5)
-	CFCF D 1
-	//TNT1 A 0 A_Explode(2, 60)
-	CFCF EFG 1 BRIGHT// A_SpawnItem("RedFlareSmall", 0, 5)
-	CFCF H 1
-	CFCF IJK 1 BRIGHT// A_SpawnItem("RedFlareSmall", 0, 5)
-	CFCF L 1
+	CFCF ABCDEFGHIJKL 2 BRIGHT
 	TNT1 A 0 A_Jump(24, "StopBurning")
 	Loop
 
 	StopBurning:
-	CFCF NOP 1 BRIGHT A_SpawnItem("RedFlareSmall", 0, 5)
+	CFCF NOP 2 BRIGHT A_SpawnItem("RedFlareSmall", 0, 5)
 	Stop
     }
 }
@@ -1508,12 +1505,12 @@ ACTOR TinyBurningPiece2: TinyBurningPiece
 	{
 	Spawn:
 
-	CFCF ABCDEFGHIJKL 1 BRIGHT
+	CFCF ABCDEFGHIJKL 2 BRIGHT
 	TNT1 A 0 A_Jump(24, "StopBurning")
 	Loop
 
 	StopBurning:
-	CFCF NOP 1 BRIGHT A_SpawnItem("RedFlareSmall", 0, 5)
+	CFCF NOP 2 BRIGHT A_SpawnItem("RedFlareSmall", 0, 5)
 	Stop
     }
 }
@@ -1530,7 +1527,7 @@ ACTOR TinyBurningPieceInfinite: TinyBurningPiece
 	{
 	Spawn:
 	TNT1 A 0 A_Explode(4, 60)
-	CFCF ABCDEFGHIJKLABCDEFGHIJKLABCDEFGHIJKLABCDEFGHIJKL 1 BRIGHT
+	CFCF ABCDEFGHIJKLABCDEFGHIJKLABCDEFGHIJKLABCDEFGHIJKL 2 BRIGHT
 	Loop
     }
 }
@@ -1543,7 +1540,7 @@ ACTOR TinyBurningPieceTemp: TinyBurningPiece
 	Spawn:
 	TNT1 A 0 A_JumpIfInventory("BrutalCounter",22,"Extinguish")
 	TNT1 A 0 A_Explode(4, 60)
-	CFCF ABCDEFGHIJKLABCDEFGHIJKLABCDEFGHIJKLABCDEFGHIJKL 1 BRIGHT
+	CFCF ABCDEFGHIJKLABCDEFGHIJKLABCDEFGHIJKLABCDEFGHIJKL 2 BRIGHT
 	TNT1 A 0 A_GiveInventory("BrutalCounter",1)
 	Loop
 	Extinguish:
@@ -1570,18 +1567,12 @@ ACTOR TinyBurningPieceM
 	{
 	Spawn:
 
-	CFCM ABC 1 BRIGHT// A_SpawnItem("RedFlareSmall", 0, 5)
-	CFCM D 1
-	//TNT1 A 0 A_Explode(2, 60)
-	CFCM EFG 1 BRIGHT// A_SpawnItem("RedFlareSmall", 0, 5)
-	CFCM H 1
-	CFCM IJK 1 BRIGHT// A_SpawnItem("RedFlareSmall", 0, 5)
-	CFCM L 1
+	CFCM ABCDEFGHIJKL 2 BRIGHT
 	TNT1 A 0 A_Jump(24, "StopBurning")
 	Loop
 
 	StopBurning:
-	CFCM NOP 1 BRIGHT A_SpawnItem("VioletFlareSmall", 0, 5)
+	CFCM NOP 2 BRIGHT A_SpawnItem("VioletFlareSmall", 0, 5)
 	Stop
     }
 }
@@ -1593,12 +1584,12 @@ ACTOR TinyBurningPiece2M: TinyBurningPieceM
 	{
 	Spawn:
 
-	CFCM ABCDEFGHIJKL 1 BRIGHT
+	CFCM ABCDEFGHIJKL 2 BRIGHT
 	TNT1 A 0 A_Jump(24, "StopBurning")
 	Loop
 
 	StopBurning:
-	CFCM NOP 1 BRIGHT A_SpawnItem("VioletFlareSmall", 0, 5)
+	CFCM NOP 2 BRIGHT A_SpawnItem("VioletFlareSmall", 0, 5)
 	Stop
     }
 }
