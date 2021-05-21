@@ -20,10 +20,11 @@ Actor ArmorShard : ArmorBonus Replaces ArmorBonus
 		BON2 A 0
 		BON2 A 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
 	Spawn2:
-		BON2 ABCDCB 2 BRIGHT A_SpawnItem("GreenFlareSmall2",0,5)
+		TNT1 A 0 A_SpawnItem("GreenFlareSmallItem",0,5)
+		BON2 ABCD 4 BRIGHT
 		Loop
 	Vanilla:
-		BON2 ABCDCB 2 BRIGHT
+		BON2 ABCD 4 BRIGHT
 		Loop
 	}
 }
@@ -49,7 +50,8 @@ Actor ArmorShardDroped : ArmorShard
 	States
 	{
 	Spawn:
-		BON2 ABCDCB 2 bright A_SpawnItem("GreenFlareSmall2",0,5)
+		TNT1 A 0 A_SpawnItem("GreenFlareSmallItem",0,5)
+		BON2 ABCD 4 BRIGHT
 		Loop
 	}
 }
@@ -69,7 +71,7 @@ Actor GiveArmor : BasicArmorBonus
 	States
 	{
 	Spawn:
-		BON2 AAABBBCCCDDDCCCBBB 2 bright
+		BON2 ABCD 4 BRIGHT
 		loop
 	}
 }
@@ -92,7 +94,8 @@ Actor LightArmor : BasicArmorPickup Replaces GreenArmor
 	States
 	{
 	Spawn:
-		ARM1 AAAA 2 bright A_SpawnItem("GreenFlareMedium",0,10)
+		TNT1 A 0 A_SpawnItem("GreenFlareMediumItem",0,10)
+		ARM1 A 16 bright
 		loop
 	}
 }
@@ -115,7 +118,8 @@ Actor HeavyArmor : BasicArmorPickup Replaces BlueArmor
 	States
 	{
 	Spawn:
-		ARM2 AAAA 2 bright A_SpawnItem("BlueFlareMedium3",0,10)
+		TNT1 A 0 A_SpawnItem("BlueFlareMediumItem",0,10)
+		ARM2 A 16 bright
 		loop
 	}
 }
@@ -133,7 +137,7 @@ ACTOR GiveHealth : Health
 	States
 	{
 	Spawn:
-		BON1 AAABBBCCCDDDCCCBBB 2 A_SpawnItem("BlueFlareSmallItem",0,5)
+		BON1 ABCD 4 BRIGHT
 		Loop
 	}
 }
@@ -155,10 +159,11 @@ ACTOR HealthPlus : Health Replaces HealthBonus
 		BON1 A 0
 		BON1 A 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
 	Spawn2:
-		BON1 ABCDCB 2 BRIGHT A_SpawnItem("BlueFlareSmallItem",0,5)
+		TNT1 A 0 A_SpawnItem("BlueFlareSmallItem",0,5)
+		BON1 ABCD 4 BRIGHT
 		Loop
 	Vanilla:
-		BON1 ABCDCB 2 BRIGHT
+		BON1 ABCD 4 BRIGHT
 		Loop
 	}
 }
@@ -224,7 +229,7 @@ Actor ArmorCrueltyBonus : ArmorBonus
 		BON2 E 0
 		BON2 E 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
 	Spawn2:
-		TNT1 A 0 A_SpawnItem("RedFlareVerySmallItem",0,5)
+		TNT1 A 0 A_SpawnItem("RedFlareSmallItem",0,5)
 		BON2 EFGH 4 BRIGHT
 		Loop
 	Vanilla:
@@ -252,7 +257,7 @@ Actor HealthCrueltyBonus : Health
 		BON1 E 0
 		BON1 E 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
 	Spawn2:
-		TNT1 A 0 A_SpawnItem("RedFlareVerySmallItem",0,5)
+		TNT1 A 0 A_SpawnItem("RedFlareSmallItem",0,5)
 		BON1 EFGH 4 BRIGHT
 		Loop
 	Vanilla:
