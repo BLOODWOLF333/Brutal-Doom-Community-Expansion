@@ -44,6 +44,21 @@ states
 	}
 }
 
+Actor RedFlareItem : Flare_General
+{
+states
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(128,2)
+		LENR A 16 bright
+		stop
+		TNT1 A 0
+		LENR B 16 bright
+		stop
+	}
+}
+
 Actor RedFlare3 : Flare_General
 {
 states
@@ -163,6 +178,23 @@ alpha 0.3
 scale 0.25
 }
 
+Actor VioletFlareMediumItem : VioletFlare
+{
+alpha 0.3
+scale 0.25
+states
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(128,2)
+		LENV A 16 bright
+		stop
+		TNT1 A 0
+		LENV B 16 bright
+		stop
+	}
+}
+
 Actor VioletFlareSmall : VioletFlare
 {
 scale 0.15
@@ -178,6 +210,21 @@ Actor YellowFlareMedium : YellowFlare
 scale 0.20
 }
 
+Actor YellowFlareMediumItem : YellowFlare
+{
+states
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(128,2)
+		LENY A 16 bright
+		stop
+		TNT1 A 0
+		LENY B 16 bright
+		stop
+	}
+}
+
 Actor YellowFlareLarge1X : YellowFlare
 {
 scale 1.0
@@ -188,6 +235,21 @@ Actor RedFlareMedium : RedFlare
 scale 0.25
 }
 
+Actor RedFlareMediumItem : RedFlare
+{
+scale 0.25
+states
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(128,2)
+		LENR A 16 bright
+		stop
+		TNT1 A 0
+		LENR B 16 bright
+		stop
+	}
+}
 
 Actor RedFlareBig : RedFlare
 {
@@ -206,16 +268,41 @@ scale 0.15
 
 Actor RedFlareSmallItem : RedFlare
 {
-alpha 0.5
-Xscale 0.18
-YScale 0.065
-+FORCEXYBILLBOARD
+scale 0.15
+states
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(128,2)
+		LENR A 16 bright
+		stop
+		TNT1 A 0
+		LENR B 16 bright
+		stop
+	}
 }
 
 Actor RedFlareVerySmall : RedFlare
 {
 alpha 0.15
 scale 0.2
+}
+
+Actor RedFlareVerySmallItem : RedFlare
+{
+alpha 0.15
+scale 0.2
+states
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(128,2)
+		LENR A 16 bright
+		stop
+		TNT1 A 0
+		LENR B 16 bright
+		stop
+	}
 }
 
 Actor RedFlareSmall2 : RedFlare
@@ -235,6 +322,23 @@ alpha 0.3
 scale 0.25
 }
 
+Actor GreenFlareMediumItem : GreenFlare
+{
+alpha 0.3
+scale 0.25
+states
+	{
+	Spawn:
+        TNT1 A 0
+	    TNT1 A 0 A_Jump(128,2)
+		LENG A 16 bright
+		stop
+		TNT1 A 0
+		LENG B 16 bright
+		stop
+	}
+}
+
 Actor BlueFlareMedium : BlueFlare
 {
 alpha 0.3
@@ -245,6 +349,23 @@ Actor BlueFlareMedium2 : BlueFlare
 {
 alpha 0.3
 scale 0.25
+}
+
+Actor BlueFlareMediumItem : BlueFlare
+{
+alpha 0.3
+scale 0.25
+states
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(128,2)
+		LENB A 16 bright
+		stop
+		TNT1 A 0
+		LENB B 16 bright
+		stop
+	}
 }
 
 Actor BlueFlareMedium3 : BlueFlare
@@ -379,6 +500,18 @@ states
 	}
 }
 
+Actor WhiteFlareSmallItem : Flare_General
+{
+alpha 0.05
+scale 0.15
+states
+	{
+	Spawn:
+		LENW A 16 bright
+		stop
+	}
+}
+
 Actor WhiteFlareMedium2 : Flare_General
 {
 alpha 0.05
@@ -387,6 +520,18 @@ states
 	{
 	Spawn:
 		LENW A 5 bright
+		stop
+	}
+}
+
+Actor WhiteFlareMediumItem : Flare_General
+{
+alpha 0.05
+scale 0.25
+states
+	{
+	Spawn:
+		LENW A 16 bright
 		stop
 	}
 }

@@ -224,10 +224,11 @@ Actor ArmorCrueltyBonus : ArmorBonus
 		BON2 E 0
 		BON2 E 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
 	Spawn2:
-		BON2 EFGHGF 2 BRIGHT A_SpawnItem("RedFlareSmallItem",0,5)
+		TNT1 A 0 A_SpawnItem("RedFlareVerySmallItem",0,5)
+		BON2 EFGH 4 BRIGHT
 		Loop
 	Vanilla:
-		BON2 EFGHGF 2 BRIGHT
+		BON2 EFGH 4 BRIGHT
 		Loop
 	}
 }
@@ -251,10 +252,11 @@ Actor HealthCrueltyBonus : Health
 		BON1 E 0
 		BON1 E 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
 	Spawn2:
-		BON1 EFGHGF 2 BRIGHT A_SpawnItem("RedFlareSmallItem",0,5)
+		TNT1 A 0 A_SpawnItem("RedFlareVerySmallItem",0,5)
+		BON1 EFGH 4 BRIGHT
 		Loop
 	Vanilla:
-		BON1 EFGHGF 2 BRIGHT
+		BON1 EFGH 4 BRIGHT
 		Loop
 	}
 }
