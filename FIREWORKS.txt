@@ -15,6 +15,10 @@ ACTOR ExplosiveBarrel1 Replaces ExplosiveBarrel
 	damagefactor "BHFTOnBarrel", 500.0 damagefactor "PussyGrab", 500.0
 	damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0    damagefactor "Avoid", 0.0
     damagefactor "KillMe", 0.0  damagefactor "TeleportRemover", 0.0 damagefactor "Slide", 0.0
+	DamageFactor "BHFT", 10.0
+	Painchance "Blood", 255
+	PainChance "Kick", 255
+	PainChance "DontCallTheBaron", 255
 	//Species "Marines"
 	Health 20
 	Radius 10
@@ -36,14 +40,10 @@ ACTOR ExplosiveBarrel1 Replaces ExplosiveBarrel
 	-DONTHURTSPECIES
 	+DOHARMSPECIES
 	Speed 0
-	MaxTargetRange 200
-	DamageFactor "BHFT", 10.0
-	Painchance "Blood", 255
-	PainChance "Kick", 255
+	MaxTargetRange 256
 	DeathSound "Explosion"
 	Obituary "$OB_BARREL"
 	Damagetype "ExplosiveImpact"
-	PainChance "DontCallTheBaron", 255
 	PainSound "weapons/barrelpain"
 	Painchance 255
 	States
@@ -134,16 +134,16 @@ ACTOR ExplosiveBarrel1 Replaces ExplosiveBarrel
         Goto Stay
 
 	Death:
-        BEXP B 4 BRIGHT
-		TNT1 A 0 A_CheckSight("Death.OutofFOV")
-		BEXP CD 4 BRIGHT
-		TNT1 A 0 A_Explode(250,128)
+        BEXP A 4 BRIGHT
+		BEXP B 4 BRIGHT A_ScreamandUnblock
+		BEXP C 4 BRIGHT
+		BEXP D 4 BRIGHT A_Explode(200,200)
+		TNT1 A 1 A_CheckSight("Death.OutofFOV")
 		TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)//floor decal
 	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)//ceil decal
 		TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)//lense flares
         TNT1 A 0 A_SpawnItem("WhiteShockwaveBig")//white ring effect
-		TNT1 A 0 A_ScreamandUnblock
-		TNT1 A 1 A_SpawnItemEx ("BarrelKaboom",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("BarrelKaboom",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 1 Radius_Quake (2, 24, 0, 15, 0)
 		TNT1 A 0 A_CustomMissile ("HighExplosiveFlames", random (10, 20), 0, random (0, 360), 2, random (10, 90))
 		TNT1 A 0 A_CustomMissile ("BDExplosionparticles3", 64, 0, random (0, 360), 2, random (40, 90))
@@ -157,16 +157,14 @@ ACTOR ExplosiveBarrel1 Replaces ExplosiveBarrel
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece", 0,0,5,random (-15, 15), random (-15, 15), random (-15, 15))
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece2", 0,0,10,random (-15, 15), random (-15, 15), random (-15, 15))
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", 0,0,15,random (-15, 15), random (-15, 15), random (-15, 15))
-		TNT1 A 1050 BRIGHT A_BarrelDestroy
-		TNT1 A 5 A_Respawn
+		TNT1 A 840 BRIGHT A_BarrelDestroy
+		TNT1 A 4 A_Respawn
 		Stop
 
 	Death.OutofFOV:
-		BEXP CD 4 BRIGHT
-		TNT1 A 0 A_Explode(250,128)
-		TNT1 A 0 A_ScreamandUnblock
-		TNT1 A 1050 BRIGHT A_BarrelDestroy
-		TNT1 A 5 A_Respawn
+		TNT1 A 0
+		TNT1 A 840 BRIGHT A_BarrelDestroy
+		TNT1 A 4 A_Respawn
 		Stop
 
 	 Death.SuperPunch:
