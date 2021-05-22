@@ -582,6 +582,7 @@ ACTOR MechGun : DoomWeapon
 		MEKH A 0 A_PlaySound("CHAINSTO", 3)
 		Goto NoAmmo
 		MEKH A 0 A_PlaySound("TANKMG", 1)
+		TNT1 A 0 A_FireCustomMissile("DistantFireSoundHMG", random(-1,1), 0, 0, -12, 0, random(-1,1))
 		MEKH A 0 A_FireCustomMissile("Alerter", 0, 0, 0, 0)
 
 		MEKH A 0 A_FireCustomMissile("HeavyMachinegunProjectile", 0.5, 0, 64, -8, 0, 0.1)
@@ -604,6 +605,7 @@ ACTOR MechGun : DoomWeapon
 		TNT1 A 0 A_PlaySound("CHAINSTO", 3)
 		Goto NoAmmoZoom
 		TNT1 A 0 A_PlaySound("TANKMG", 1)
+		TNT1 A 0 A_FireCustomMissile("DistantFireSoundHMG", random(-1,1), 0, 0, -12, 0, random(-1,1))
 		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0, 0, 0)
 
 		MEKH A 0 A_FireCustomMissile("HeavyMachinegunProjectile", 0.5, 0, 64, -8, 0, 0.1)
@@ -679,10 +681,10 @@ ACTOR MechGun : DoomWeapon
 		MEKH A 0 A_JumpIfInventory("DMgame",1,"RocketDM")
 
 		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
-		TNT1 A 0 A_PlaySound("MISLFIRE", 1)
+		TNT1 A 0 A_FireCustomMissile("DistantFireSoundRocket", random(-1,1), 0, 0, -12, 0, random(-1,1))
 		MEKH A 0 A_FireCustomMissile("MechRocket", 0.3, 0, random(40,56), random(56,72), 0, -0.5)
 		MEKH A 7 BRIGHT
-		TNT1 A 0 A_PlaySound("MISLFIRE", 1)
+		TNT1 A 0 A_FireCustomMissile("DistantFireSoundRocket", random(-1,1), 0, 0, -12, 0, random(-1,1))
 		MEKH A 0 A_FireCustomMissile("MechRocket", -0.3, 0, random(-56,-40), random(56,72), 0, -0.5)
 		MEKH A 7 BRIGHT
 		TNT1 A 0 A_TakeInventory("MechRocketAmmo", 2)
@@ -691,10 +693,10 @@ ACTOR MechGun : DoomWeapon
 	RocketDM:
 		TNT1 A 0
 		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
-		TNT1 A 0 A_PlaySound("MISLFIRE", 1)
+		TNT1 A 0 A_FireCustomMissile("DistantFireSoundRocket", random(-1,1), 0, 0, -12, 0, random(-1,1))
 		MEKH A 0 A_FireCustomMissile("MechRocketDM", 0.3, 0, random(40,56), random(56,72), 0, -0.5)
 		MEKH A 7 BRIGHT
-		TNT1 A 0 A_PlaySound("MISLFIRE", 1)
+		TNT1 A 0 A_FireCustomMissile("DistantFireSoundRocket", random(-1,1), 0, 0, -12, 0, random(-1,1))
 		MEKH A 0 A_FireCustomMissile("MechRocketDM", -0.3, 0, random(-56,-40), random(56,72), 0, -0.5)
 		MEKH A 7 BRIGHT
 		TNT1 A 0 A_TakeInventory("MechRocketAmmo", 2)
@@ -707,10 +709,10 @@ ACTOR MechGun : DoomWeapon
 		TNT1 A 0 A_JumpIfInventory("DMgame",1,"RocketZoomDM")
 
 		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
-		TNT1 A 0 A_PlaySound("MISLFIRE", 1)
+		TNT1 A 0 A_FireCustomMissile("DistantFireSoundRocket", random(-1,1), 0, 0, -12, 0, random(-1,1))
 		MEKH A 0 A_FireCustomMissile("MechRocket", 0.3, 0, random(40,56), random(56,72), 0, -0.5)
 		TNT1 A 7 BRIGHT
-		TNT1 A 0 A_PlaySound("MISLFIRE", 1)
+		TNT1 A 0 A_FireCustomMissile("DistantFireSoundRocket", random(-1,1), 0, 0, -12, 0, random(-1,1))
 		MEKH A 0 A_FireCustomMissile("MechRocket", -0.3, 0, random(-56,-40), random(56,72), 0, -0.5)
 		TNT1 A 7 BRIGHT
 		TNT1 A 0 A_TakeInventory("MechRocketAmmo", 2)
@@ -719,10 +721,10 @@ ACTOR MechGun : DoomWeapon
 	RocketZoomDM:
 		TNT1 A 0
 		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
-		TNT1 A 0 A_PlaySound("MISLFIRE", 1)
+		TNT1 A 0 A_FireCustomMissile("DistantFireSoundRocket", random(-1,1), 0, 0, -12, 0, random(-1,1))
 		MEKH A 0 A_FireCustomMissile("MechRocketDM", 0.3, 0, random(40,56), random(56,72), 0, -0.5)
 		TNT1 A 7 BRIGHT
-		TNT1 A 0 A_PlaySound("MISLFIRE", 1)
+		TNT1 A 0 A_FireCustomMissile("DistantFireSoundRocket", random(-1,1), 0, 0, -12, 0, random(-1,1))
 		MEKH A 0 A_FireCustomMissile("MechRocketDM", -0.3, 0, random(-56,-40), random(56,72), 0, -0.5)
 		TNT1 A 7 BRIGHT
 		TNT1 A 0 A_TakeInventory("MechRocketAmmo", 2)
@@ -841,14 +843,7 @@ ACTOR MechRocket: Rocket2
 	Height 8
 	Speed 50
 	Damage (random (300, 300))
-	Projectile
-	+RANDOMIZE
-	+DEHEXPLOSION
-	+ROCKETTRAIL
-	+MISSILE
-	+NOGRAVITY
-	+FORCERADIUSDMG
-	Obituary "$OB_MPROCKET"
+	SeeSound "MISLFIRE"
 }
 
 ACTOR MechRocketDM : MechRocket
@@ -858,20 +853,12 @@ ACTOR MechRocketDM : MechRocket
 	-MTHRUSPECIES
 }
 
-ACTOR MechRocket2: Rocket2
+ACTOR MechRocket2: MechRocket
 {
 	Radius 11
 	Height 8
 	Speed 25
 	Damage (random (150, 150))
-	Projectile
-	+RANDOMIZE
-	+DEHEXPLOSION
-	+ROCKETTRAIL
-	+MISSILE
-	+NOGRAVITY
-	+FORCERADIUSDMG
-	Obituary "$OB_MPROCKET"
 	Species "EnemyTank"
 	DamageType ExplosiveImpact
 }

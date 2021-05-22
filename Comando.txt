@@ -189,33 +189,33 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 		MPOS E 8 A_FaceTarget
 
     MissileContinue:
-        MPOS F 1 BRIGHT A_CustomMissile("MonsterMinigunTracer", 34, 0, random(-6, 6), CMF_OFFSETPITCH, random(-4, 4))
+        MPOS F 1 BRIGHT A_CustomMissile("MonsterMinigunTracer", 34, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
         TNT1 A 0 A_CustomMissile("EnemyMinigunBrass", 34, 0, -60, 2, random(20, 55))
 
 		MPOS E 1 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
-		TNT1 A 0 A_PlaySound("FARMGN", 6)
+		TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
 
-        MPOS H 1 BRIGHT A_CustomMissile("Tracer", 34, 0, random(-6, 6), CMF_OFFSETPITCH, random(-4, 4))
+        MPOS H 1 BRIGHT A_CustomMissile("Tracer", 34, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
         TNT1 A 0 A_CustomMissile("EnemyMinigunBrass", 34, 0, -60, 2, random(20, 55))
 		MPOS E 1 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
-		TNT1 A 0 A_PlaySound("FARMGN", 6)
+		TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
 
-		MPOS F 1 BRIGHT A_CustomMissile("MonsterMinigunTracer", 34, 0, random(-6, 6), CMF_OFFSETPITCH, random(-4, 4))
+		MPOS F 1 BRIGHT A_CustomMissile("MonsterMinigunTracer", 34, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
         TNT1 A 0 A_CustomMissile("EnemyMinigunBrass", 34, 0, -60, 2, random(20, 55))
 		MPOS E 1 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
-		TNT1 A 0 A_PlaySound("FARMGN", 6)
+		TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
 
-        MPOS H 1 BRIGHT A_CustomMissile("Tracer", 34, 0, random(-6, 6), CMF_OFFSETPITCH, random(-4, 4))
+        MPOS H 1 BRIGHT A_CustomMissile("Tracer", 34, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
         TNT1 A 0 A_CustomMissile("EnemyMinigunBrass", 34, 0, -60, 2, random(20, 55))
 		MPOS E 1 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
-		TNT1 A 0 A_PlaySound("FARMGN", 6)
+		TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
 
 		TNT1 A 0 A_JumpIfInTargetInventory("ChainguyguyContinue", 1, "MissileContinue")

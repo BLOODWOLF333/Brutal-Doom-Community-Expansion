@@ -343,32 +343,50 @@ $rolloff distantexp 1000 9000
 
 //Assault Rifle
 FARRIF FARRIF
-$limit FARRIF 80
+$limit FARRIF 128
 $rolloff  FARRIF 3000 6000
 
 //Heavy Machinegun
 FARHMG FARHMG
-$limit FARHMG 80
+$limit FARHMG 128
 $rolloff  FARHMG 3000 6000
 
-//Pistol or Shotgun
+//Shotgun
 FARSHT FARSHT
-$limit FARSHT 80
+$limit FARSHT 128
 $rolloff  FARSHT 3000 6000
+
+//Pistol
+FARSMG FARSMG
+$limit FARSMG 128
+$rolloff  FARSMG 3000 6000
 
 //Light Machinegun
 FARMGN FARMGN
-$limit FARMGN 20
+$limit FARMGN 128
 $rolloff  FARMGN 3000 6000
 
 //Autocannon
 FARCAN1 FARCAN1
-$rolloff  FARCAN1 6000 9000
+$limit FARCAN1 128
+$rolloff  FARCAN1 3000 6000
 
 //SuperShotgun or Sniper Rifle
 FARSSG FARSSG
-$limit FARSSG 80
+$limit FARSSG 128
 $rolloff  FARSSG 3000 6000
+
+//Rocket
+FARMISL FARMISL
+$rolloff  FARMISL 3000 6000
+
+//Tank Missile
+DSMISFIR DSMISFIR
+$rolloff  DSMISFIR 3000 6000
+
+//Tank Cannon
+FARTANK FARTANK
+$rolloff  FARTANK 3000 6000
 //=============================================================================================
 
 //=============================================================================================
@@ -401,7 +419,6 @@ u45/fire4		uspfire4
 Ricochet		RIC1
 
 RIFLE RIFLE
-SSHFIRE SSHFIRE
 PLASMA PLASM
 PLSCHARG PLSCHARG
 PLSALTFR PLSALTFR
@@ -576,9 +593,6 @@ Weapons/GrenadeClose	DSGRCLOS
 
 DSCANFIR DSCANFIR
 $rolloff DSCANFIR 600 2400
-
-$alias DSJUGFIR DSRFIRE
-$rolloff DSJUGFIR 600 2400
 
 //Mags
 
