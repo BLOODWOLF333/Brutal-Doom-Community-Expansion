@@ -300,7 +300,7 @@ ExitVehicle:
 	PLA1 J 100
 	Goto Stay
 
-TurnLeft:
+	TurnLeft:
 		TNT1 A 0
 		TN2M T 2
 		TNT1 A 0 A_TakeInventory("TurnLeft", 1)
@@ -330,9 +330,10 @@ TurnLeft:
 	TurnLeft2:
 		TNT1 A 0 A_SetUserVar("user_tankbasedirection", 0)
 		TNT1 A 0 A_JumpIfInventory("Accelerate", 1, "TurnLeftAccel")
+		TNT1 A 0 A_JumpIfInventory("Backpedal", 1, "TurnLeftBackpedal")
 		Goto TurnLeft
 
-TurnLeftAccel:
+	TurnLeftAccel:
 		TNT1 A 0
 		TNT1 A 0 A_TakeInventory("TurnLeft", 1)
 		TNT1 A 0 A_TakeInventory("TurnRight", 1)
@@ -391,9 +392,10 @@ TurnLeftAccel:
 	TurnRight2:
 		TNT1 A 0 A_SetUserVar("user_tankbasedirection", 360)
 		TNT1 A 0 A_JumpIfInventory("Accelerate", 1, "TurnRightAccel")
+		TNT1 A 0 A_JumpIfInventory("Backpedal", 1, "TurnRightBackpedal")
 		Goto TurnRight
 
-TurnRightAccel:
+	TurnRightAccel:
 		TNT1 A 0
 		TNT1 A 0 A_TakeInventory("TurnLeft", 1)
 		TNT1 A 0 A_TakeInventory("TurnRight", 1)
@@ -520,24 +522,84 @@ Backpedal:
 		TNT1 A 0 ThrustThing(user_tankbasedirection*256/360+128, 4, 1)
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving3" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
 
-		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, "TurnLeft")
-		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, "TurnRight")
+		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, "TurnLeftBackpedal")
+		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, "TurnRightBackpedal")
 
 		TN2M T 2
 		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "ExitVehicle")
 		TNT1 A 0 ThrustThing(user_tankbasedirection*256/360+128, 4, 1)
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving2" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
 
-		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, "TurnLeft")
-		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, "TurnRight")
+		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, "TurnLeftBackpedal")
+		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, "TurnRightBackpedal")
 
 		TN2M T 2
 		TNT1 A 0 ThrustThing(user_tankbasedirection*256/360+128, 4, 1)
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving1" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
 
-		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, "TurnLeft")
-		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, "TurnRight")
+		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, "TurnLeftBackpedal")
+		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, "TurnRightBackpedal")
 
+		TNT1 A 0 A_JumpIF(velz < 0, "Falling")
+		Goto CheckIfStillMoves
+
+	TurnLeftBackpedal:
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("TurnLeft", 1)
+		TNT1 A 0 A_TakeInventory("TurnRight", 1)
+		TNT1 A 0 A_TakeInventory("Accelerate", 1)
+		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving1" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_JumpIf(user_tankbasedirection > 359, "TurnLeft2")
+
+		TNT1 A 0 A_SetUserVar("user_tankbasedirection", user_tankbasedirection+3)
+		TN2M T 2
+		TNT1 A 0 ThrustThing(user_tankbasedirection*256/360+128, 3)
+		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving3" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
+
+		TNT1 A 0 A_PlaySound("TANK1", 5, 1, 1)
+		TNT1 A 0 A_SpawnItemEx ("TnkTreadsDamage" , 100, 0, 0, 0, 0, 0, user_tankbasedirection, SXF_ABSOLUTEANGLE | SXF_ABSOLUTEVELOCITY)
+
+		TNT1 A 0 A_SpawnItemEx("TnkStep", 0, 0, 8, 0, 0, 0, user_tankbasedirection, SXF_ABSOLUTEANGLE)
+		TN2M T 2
+		TNT1 A 0 ThrustThing(user_tankbasedirection*256/360+128, 3)
+		TNT1 A 0 A_SetUserVar("user_tankbasedirection", user_tankbasedirection+3)
+		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving2" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
+
+		TN2M T 2
+		TNT1 A 0 ThrustThing(user_tankbasedirection*256/360+128, 3)
+		TNT1 A 0 A_SetUserVar("user_tankbasedirection", user_tankbasedirection+3)
+		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving2" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
+
+		TNT1 A 0 A_JumpIF(velz < 0, "Falling")
+		Goto CheckIfStillMoves
+
+	TurnRightBackpedal:
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("TurnLeft", 1)
+		TNT1 A 0 A_TakeInventory("TurnRight", 1)
+		TNT1 A 0 A_TakeInventory("Accelerate", 1)
+		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving1" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_JumpIf(user_tankbasedirection == 0, "TurnRIght2")
+
+		TNT1 A 0 A_SetUserVar("user_tankbasedirection", user_tankbasedirection-3)
+
+		TNT1 A 0 A_PlaySound("TANK1", 5, 1, 1)
+		TNT1 A 0 A_SpawnItemEx ("TnkTreadsDamage" , 100, 0, 0, 0, 0, 0, user_tankbasedirection, SXF_ABSOLUTEANGLE | SXF_ABSOLUTEVELOCITY)
+
+		TNT1 A 0 A_SpawnItemEx("TnkStep", 0, 0, 8, 0, 0, 0, user_tankbasedirection, SXF_ABSOLUTEANGLE)
+		TN2M T 2
+		TNT1 A 0 ThrustThing(user_tankbasedirection*256/360+128, 3)
+		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving3" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
+
+		TNT1 A 0 A_SetUserVar("user_tankbasedirection", user_tankbasedirection-3)
+		TN2M T 2
+		TNT1 A 0 ThrustThing(user_tankbasedirection*256/360+128, 3)
+		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving2" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
+
+		TNT1 A 0 A_SetUserVar("user_tankbasedirection", user_tankbasedirection-3)
+		TN2M T 2
+		TNT1 A 0 ThrustThing(user_tankbasedirection*256/360+128, 3)
+		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving1" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_JumpIF(velz < 0, "Falling")
 		Goto CheckIfStillMoves
 

@@ -95,7 +95,6 @@ ACTOR IconOfSin 2550
 	    Goto Fireballs
 	Fireballs:
 	    KEPR ABCD 4 A_FaceTarget
-		TNT1 A 0 A_PlaySound("ICOFIRE", 1)
 		KEPR EF 1 BRIGHT
 		TNT1 A 0 BRIGHT A_CustomMissile("GAtekeeperFireball", 80, 0, random(-6, 6), 0)
 		KEPR GHI 3 BRIGHT
@@ -105,7 +104,6 @@ ACTOR IconOfSin 2550
 		TNT1 A 0 A_JumpIfInTargetInventory("PlayerIsDead", 1, "Laugh")
 
 		KEPR ABCD 4 A_FaceTarget
-		TNT1 A 0 A_PlaySound("ICOFIRE", 1)
 		KEPR EF 1 BRIGHT
 		TNT1 A 0 BRIGHT A_CustomMissile("GAtekeeperFireball", 80, 0, random(-6, 6), 0)
 		KEPR GHI 3 BRIGHT
@@ -115,7 +113,6 @@ ACTOR IconOfSin 2550
 		TNT1 A 0 A_JumpIfInTargetInventory("PlayerIsDead", 1, "Laugh")
 
 		KEPR ABCD 4 A_FaceTarget
-		TNT1 A 0 A_PlaySound("ICOFIRE", 1)
 		KEPR EF 1 BRIGHT
 		TNT1 A 0 BRIGHT A_CustomMissile("GAtekeeperFireball", 80, 0, random(-6, 6), 0)
 		KEPR GHI 3 BRIGHT
@@ -238,7 +235,7 @@ ACTOR GatekeeperFireBall
 	ExplosionDamage 100
 	Alpha 1
 	Decal "Scorch"
-	SeeSound "BREATHOF"
+	SeeSound "ICOFIRE"
 	DeathSound "fatso/shotx"
 	States
 	{
