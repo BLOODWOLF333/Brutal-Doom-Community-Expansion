@@ -94,12 +94,17 @@ ACTOR BrutalWeapon : DoomWeapon
 
 	Flash:
 		TNT1 A 0
+		TNT1 A 0 A_JumpIfHealthLower(1,"LightEnd")
 		TNT1 A 0 A_JumpIfInventory("SwitchFlashlight",1,"SwitchFlashlight")
 		TNT1 A 0 A_JumpIfInventory("FlashlightOn", 1, "FlashOn")
 		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "TryUse")
 		TNT1 A 4
 		TNT1 A 0 A_TakeInventory("UsedStamina", 1)
 		Goto Flash
+
+	LightEnd:
+		TNT1 A 0
+		Stop
 
 	FlashOn:
 	    TNT1 A 0
