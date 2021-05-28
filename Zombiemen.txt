@@ -1955,6 +1955,8 @@ States{Spawn:
 		TNT1 A 0 A_JumpIf(momy > 0, "LayDown")
 		TNT1 A 0 A_SpawnItemEx("HeadshotTargetSlumped", 3, 0, 22)
 		BR92 A 16
+		TNT1 A 0 A_Recoil(1)
+		BR92 A 4
         Loop
 	LayDown:
 	TNT1 A 0 A_NoBlocking
