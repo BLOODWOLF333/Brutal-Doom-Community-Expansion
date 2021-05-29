@@ -241,7 +241,7 @@ ACTOR RifleZombie Replaces ZombieMan
 	Pain.Taunt:
 	Pain.KillMe:
 		TNT1 A 0
-		TNT1 A 0 HealThing(1)
+		TNT1 A 0 HealThing(2)
 		TNT1 A 0 A_JumpIfInventory("Enraged", 1, "Missile")
 		POSR B 0 A_Pain
 		TNT1 A 0 A_ChangeFlag("FASTER", 1)
@@ -386,10 +386,10 @@ ACTOR RifleZombie Replaces ZombieMan
     Death.KillMe:
     Death.Taunt:
     Death.Avoid:
+	Death.Stealth:
 	    TNT1 A 0
 		TNT1 A 0 A_ChangeFlag("SOLID", 0)
         TNT1 A 0 A_SpawnItem("ZombieMan")
-		TNT1 A 0
         Stop
 
 	Pain.Cut:
@@ -437,9 +437,9 @@ ACTOR RifleZombie Replaces ZombieMan
 
 	Pain.Stealth:
 		TNT1 A 0
-		TNT1 A 0 A_Pain
 		TNT1 A 0 A_JumpIfInventory ("SKZombieman", 1, "GotoStealthKill")
         TNT1 A 0 A_JumpIfInventory ("IsDown", 1, "GroundExecution")
+		TNT1 A 0 HealThing(2)
 		Goto See
 
 	GroundExecution:

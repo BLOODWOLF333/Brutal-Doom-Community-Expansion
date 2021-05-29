@@ -238,8 +238,8 @@ ACTOR Ubersoldat
 
 	Pain.Stealth:
 		TNT1 A 0
-		TNT1 A 0 A_Pain
-		TNT1 A 0 A_JumpIfInventory ("SKZombieman", 1, "GotoStealthKill")
+		TNT1 A 0 A_JumpIfInventory ("SKUbersoldat", 1, "GotoStealthKill")
+		TNT1 A 0 HealThing(2)
 		Goto See
 
 	GotoStealthKill:
@@ -750,9 +750,11 @@ ACTOR Ubersoldat
     Pain.KillMe:
     Pain.Taunt:
         TNT1 A 0
+		TNT1 A 0 HealThing(2)
         Goto Missile
     Death.KillMe:
     Death.Taunt:
+	Death.Stealth:
 	    TNT1 A 0 A_ChangeFlag("SOLID", 0)
         TNT1 A 0 A_SpawnItem("Ubersoldat")
         Stop

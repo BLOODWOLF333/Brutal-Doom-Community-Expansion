@@ -613,7 +613,7 @@ ACTOR Revenant1: Revenant Replaces Revenant
     Pain.KillMe:
     Pain.Taunt:
         TNT1 A 0
-		TNT1 A 0 HealThing(1)
+		TNT1 A 0 HealThing(2)
         Goto Missile
     Death.KillMe:
     Death.Taunt:
@@ -1103,25 +1103,20 @@ ACTOR RevenantU
 	Speed 6
 
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
-	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
-	Damagefactor "Cut", 10.0	Damagefactor "Extremepunches", 2.0	Damagefactor "Fatality", 5.0
-	Damagefactor "FriendBullet", 1.0	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.1
-	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 1.5	Damagefactor "HeadKick", 1.0
-	Damagefactor "HelperMarineFatallity", 2.0	Damagefactor "KillMe", 1.0	Damagefactor "Leg", 0.5
-	Damagefactor "LowKick", 0.5	Damagefactor "MonsterKnocked", 1.0	Damagefactor "PussyGrab", 0.0
-	Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "Saw", 10.0
-	Damagefactor "Slide", 0.5	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 1.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	DamageFactor "Crush", 3.0
+	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0	Damagefactor "HangingHook", 0.0
+	Damagefactor "Head", 1.5	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
+	Damagefactor "RevenantHitStomach", 1.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "Burn", 0.5
 	Damagefactor "Fire", 0.5	Damagefactor "Flames", 0.5	Damagefactor "GreenFire", 0.5
-	Damagefactor "HumanBBQ", 0.5
+	Damagefactor "HumanBBQ", 0.5	Damagefactor "SSG", 5.0	DamageFactor "TankWeakSpot", 0.0
+	Damagefactor "ExtremePunches", 2.0	Damagefactor "Fatality", 5.0	Damagefactor "HelperMarineFatallity", 5.0
 
-	PainChance "Avoid", 0	PainChance "Burn", 16	PainChance "Cut", 255
-	PainChance "ExplosiveImpact", 255	PainChance "Extremepunches", 255	PainChance "Fatality", 255
-	PainChance "Fire", 16	PainChance "Flames", 16	PainChance "GreenFire", 16
-	PainChance "Head", 255	PainChance "HelperMarineFatallity", 255	PainChance "HumanBBQ", 16
-	PainChance "Kick", 255	PainChance "LowKick", 255	PainChance "Melee", 255
-	PainChance "MonsterKnocked", 255	PainChance "Saw", 255	PainChance "Slide", 255
-	PainChance "Stealth", 255	PainChance "Taunt", 255	PainChance "Trample", 255
+	PainChance "Head", 255
+	PainChance "Taunt", 255
+	PainChance "Burn", 16	PainChance "Fire", 16	PainChance "Flames", 16
+	PainChance "GreenFire", 16	PainChance "HumanBBQ", 16
+	Painchance "RevenantHitStomach", 255	Painchance "RevenantHitLeg", 255
 
     BloodType "RevenantBlood"
 	SeeSound "skeleton/sight"
@@ -1181,6 +1176,7 @@ ACTOR RevenantU
     Pain.KillMe:
     Pain.Taunt:
         TNT1 A 0
+		TNT1 A 0 HealThing(2)
         Goto Missile
     Death.KillMe:
     Death.Taunt:

@@ -378,9 +378,9 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 
 	Pain.Stealth:
 		TNT1 A 0
-		TNT1 A 0 A_Pain
 		TNT1 A 0 A_JumpIfInventory ("SKShotgunguy", 1, "GotoStealthKill")
         TNT1 A 0 A_JumpIfInventory ("IsDown", 1, "GroundExecution")
+		TNT1 A 0 HealThing(2)
 		Goto See
 
 	GroundExecution:
@@ -449,9 +449,10 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 		NULL A 0 A_JumpIf (momz == 0, "GetUp")
 		Loop
 
+	Pain.KillMe:
 	Pain.Taunt:
 		TNT1 A 0
-		TNT1 A 0 HealThing(1)
+		TNT1 A 0 HealThing(2)
 		TNT1 A 0 A_JumpIfInventory("Enraged", 1, "Missile")
 		POSR B 0 A_Pain
 		TNT1 A 0 A_ChangeFlag("FASTER", 1)
@@ -528,11 +529,10 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 		TNT1 A -1
 		Stop
 
-    Pain.KillMe:
-        TNT1 A 0
-        Goto Missile
     Death.KillMe:
     Death.Taunt:
+	Death.Avoid:
+	Death.Stealth:
 	    TNT1 A 0 A_ChangeFlag("SOLID", 0)
         TNT1 A 0 A_SpawnItem("ShotgunGuy")
         Stop
