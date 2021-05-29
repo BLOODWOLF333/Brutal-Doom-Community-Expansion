@@ -4101,12 +4101,9 @@ FatalityLabGuy3: //axe - face
 
 	FatalityMastermind:
         NULL A 0 SetPlayerProperty(0,1,0)
-		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
-        NULL A 0 ACS_NamedExecuteAlways("BDBigCamera", 0, 0, 0, 0)//Start Camera
-
+        NULL A 0 ACS_NamedExecuteAlways("BDActivateCameraBig", 0, 0, 0, 0)//Start Camera
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
-		NULL A 0 SetPlayerProperty(0,1,0)
 		FTSM ABCD 3
 		NULL A 0 A_PlaySound("SPIPAIN1", 4)
 		TNT1 A 0 A_SpawnItemEX("MuchBlood", 0, 56, 48)
@@ -4204,18 +4201,14 @@ FatalityLabGuy3: //axe - face
 
         NULL A 0 A_TakeInventory("GoFatality", 1)
 		MARN A 0 ACS_NamedExecuteAlways("BDDisableCameraBig", 0, 0, 0, 0)//Stop Camera
-		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
 		NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
 FatalityCyberdemon:
         NULL A 0 SetPlayerProperty(0,1,0)
-		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
-        NULL A 0 ACS_NamedExecuteAlways("BDBigCamera", 0, 0, 0, 0)//Start Camera
-
+        NULL A 0 ACS_NamedExecuteAlways("BDActivateCameraBig", 0, 0, 0, 0)//Start Camera
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
-		NULL A 0 SetPlayerProperty(0,1,0)
 		FTCY AB 3
 		FTCY C 3 BRIGHT A_CustomMissile("CyberBalls", 62, 0, -120, 2, -34)
 
@@ -4263,7 +4256,6 @@ FatalityCyberdemon:
 
         NULL A 0 A_TakeInventory("GoFatality", 1)
 		MARN A 0 ACS_NamedExecuteAlways("BDDisableCameraBig", 0, 0, 0, 0)//Stop Camera
-		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
 		NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
