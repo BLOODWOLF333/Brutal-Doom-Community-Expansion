@@ -74,24 +74,10 @@ SCRIPT "BDInitiate" OPEN
 
 script "BDInitialize" enter
 {
-    // Fade In
-	sethudsize(160, 90, TRUE);
-	setfont("BLASCR");
-
-	if	(GameType () == GAME_SINGLE_PLAYER)
-	{
-		HudMessageBold(s:"a"; HUDMSG_FADEOUT, 1, CR_BLACK, 0.1, 0.1, 0.1, 1.0);
-	}
-
-	//===================
 	//Sbar Type
 	if	(GetCvar( "bd_sbartype") == 1) { GiveInventory("sbartype1", 1); }
 	if	(GetCvar( "bd_sbartype") == 2) { GiveInventory("sbartype2", 1); }
 	if	(GetCvar( "bd_sbartype") == 3) { GiveInventory("sbartype3", 1); }
-	if	(GetCvar( "bd_sbartype") == 4) { GiveInventory("sbartype4", 1); }
-	if	(GetCvar( "bd_sbartype") == 5) { GiveInventory("sbartype5", 1); }
-	if	(GetCvar( "bd_sbartype") == 6) { GiveInventory("sbartype6", 1); }
-	if	(GetCvar( "bd_sbartype") == 7) { GiveInventory("sbartype7", 1); }
 
 	// Detect Player Gender
 	if(GetPlayerInfo(PlayerNumber(), PLAYERINFO_GENDER) == 0)
@@ -103,10 +89,8 @@ script "BDInitialize" enter
 		GiveInventory("GenderFemale", 1);
 		SetActorProperty(PlayerNumber(), APROP_VIEWHEIGHT, 45.0);
 		SetActorProperty(PlayerNumber(), APROP_HEIGHT, 50.0);
-		SetActorProperty(PlayerNumber(), APROP_MASS, 100);
+		SetActorProperty(PlayerNumber(), APROP_MASS, 90);
 		SetActorProperty(PlayerNumber(), APROP_ATTACKZOFFSET, 19.0);
-		SetActorProperty(PlayerNumber(), APROP_JUMPZ, 8.0);
-		SetActorProperty(PlayerNumber(), APROP_SPEED, 1.1);
 	}
 
 	//===========================
@@ -162,10 +146,6 @@ script "BDRespawn" Respawn NET
 	if	(GetCvar( "bd_sbartype") == 1) { GiveInventory("sbartype1", 1); }
 	if	(GetCvar( "bd_sbartype") == 2) { GiveInventory("sbartype2", 1); }
 	if	(GetCvar( "bd_sbartype") == 3) { GiveInventory("sbartype3", 1); }
-	if	(GetCvar( "bd_sbartype") == 4) { GiveInventory("sbartype4", 1); }
-	if	(GetCvar( "bd_sbartype") == 5) { GiveInventory("sbartype5", 1); }
-	if	(GetCvar( "bd_sbartype") == 6) { GiveInventory("sbartype6", 1); }
-	if	(GetCvar( "bd_sbartype") == 7) { GiveInventory("sbartype7", 1); }
 
 	// Detect Player Gender
 	if(GetPlayerInfo(PlayerNumber(), PLAYERINFO_GENDER) == 0)
@@ -177,10 +157,8 @@ script "BDRespawn" Respawn NET
 		GiveInventory("GenderFemale", 1);
 		SetActorProperty(PlayerNumber(), APROP_VIEWHEIGHT, 45.0);
 		SetActorProperty(PlayerNumber(), APROP_HEIGHT, 50.0);
-		SetActorProperty(PlayerNumber(), APROP_MASS, 100);
+		SetActorProperty(PlayerNumber(), APROP_MASS, 90);
 		SetActorProperty(PlayerNumber(), APROP_ATTACKZOFFSET, 19.0);
-		SetActorProperty(PlayerNumber(), APROP_JUMPZ, 8.0);
-		SetActorProperty(PlayerNumber(), APROP_SPEED, 1.1);
 	}
 	Delay(1);
 	//===========================

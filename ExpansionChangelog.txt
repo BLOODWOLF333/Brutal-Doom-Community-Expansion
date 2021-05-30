@@ -5,13 +5,17 @@
 //
 //	Stable-Patched v21.10.1
 //
+//	Graphics/HUDs folder:			Cut the full helmet HUD image into two parts to make it adaptive
 //	All monster files:				Modified the Pain.Stealth state so that monsters wont respond to pressing use on them after being alerted
 //	Baron.txt:						Added BDCheckStuff and a jump to "Stand" if new enemies are disabled
 //	ClassicWeapons.txt:				Added A_JumpIfHealthLower(1,"LightEnd") to Flash state and a LightEnd state
 //	DefaultWeapon.txt:				Added A_JumpIfHealthLower(1,"LightEnd") to Flash state and a LightEnd state
 //	DemonRuneBaron.txt:				Changed all non-existant ImpFatality3 token checks to "ImpFatality"
 //	Labguy.txt:						Removed bounce from BloodyAxe actor
+//	MENUDEF.txt:					Reduced HUD choices to just "Simple", "Minimalist", and "Full Helmet"
 //	Player.txt:						Changed BDCamerBig to BDActivateCameraBig in Cyberdemon and Mastermind fatality states
+//	SBARINFO.txt:					Made all the HUDs adaptive to any aspect ratio and resolution
+//									Full Helmet HUD cannot work with 640x480, 1280x1024, or 1280x800
 //	Spiders2.txt:					Added BDCheckStuff and a jump to "Vanish" if new enemies are disabled
 //									Created a "Vanish" state to remove the monster (Doom episode 3)
 //	Volcabus.txt:					Added BDCheckStuff and a jump to "Vanish" if new enemies are disabled
