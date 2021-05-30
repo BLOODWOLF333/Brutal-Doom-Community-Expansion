@@ -211,6 +211,12 @@ statusbar fullscreen, fullscreenoffsets
 		{
 		DrawImage "HASBERK", 18+center, 7;
 		}
+
+		gamemode deathmatch, teamgame
+		{
+			DrawString SMALLFONT, darkred, "Frags", 20+center, 4;
+			drawnumber 8, SMALLFONT, darkred, frags, drawshadow(1,1), 4+center, 12;
+		}
 	}
 }
 
