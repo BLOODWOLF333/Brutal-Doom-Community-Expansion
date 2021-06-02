@@ -4698,7 +4698,7 @@ SFNZ C 8
 		TNT1 A 0
 		TNT1 A 0 A_Stop
 		TNT1 A 0 A_CustomMissile("ExecutionLeftWallDetect", 52, 0, 90, 2)
-		PLAY AA 1
+		PLAY A 4
 		PLAY A 0 A_JumpIfInventory("ExecuteBashWall", 1, "Punch")
 		TNT1 A 0 A_SpawnItemEx("ImpExecute1",16,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		Goto Kick
@@ -4716,7 +4716,7 @@ SFNZ C 8
 	  ZombiemanExecuteFloor:
 		TNT1 A 0
 		TNT1 A 0 A_Stop
-		PLAY AA 1
+		PLAY A 4
 		TNT1 A 0 A_SpawnItemEx("ZombiemanExecute1",14,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		Goto Kick
 
@@ -4733,7 +4733,7 @@ SFNZ C 8
 	  ShotgunguyExecuteFloor:
 		TNT1 A 0
 		TNT1 A 0 A_Stop
-		PLAY AA 1
+		PLAY A 4
 		TNT1 A 0 A_SpawnItemEx("ShotgunguyExecute1",14,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		Goto Kick
 
