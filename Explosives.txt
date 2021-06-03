@@ -384,11 +384,10 @@ ACTOR GrenadeMissile
 		TNT1 A 0 A_SpawnItemEx ("GrenadeExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 0 A_PlaySound("Explosion", 1)
 		TNT1 A 0 A_PlaySound("FAREXPL", 3)
-		TNT1 A 1 A_SpawnItemEx ("Footstep91",0,0, 40,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 1
 		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
         EXPL A 0 Radius_Quake (3, 8, 0, 15, 0)//(intensity, duration, damrad, tremrad, tid)
-		TNT1 A 0 A_SpawnItemEx ("ExplosionSplashSpawner", 0, 0, -20)
+		TNT1 A 0 A_CustomMissile("ExplosionSplashSpawner")
         TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	    TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
