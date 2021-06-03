@@ -15,7 +15,9 @@ ACTOR Rocket2
 	+MISSILE
     +NOGRAVITY
     +EXTREMEDEATH
+	+BLOODSPLATTER
 	+SPECTRAL
+	+THRUSPECIES
 	+MTHRUSPECIES
 	SeeSound "weapons/RLL"
 	DeathSound "Explosion"
@@ -82,6 +84,7 @@ Actor RocketBackblast: FastProjectile
 	Renderstyle ADD
 	+GHOST
 	+THRUGHOST
+	+THRUSPECIES
 	Species "Marines"
 	DamageType "ExplosiveImpact"
 	States
