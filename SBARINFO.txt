@@ -67,7 +67,7 @@ statusbar fullscreen, fullscreenoffsets
 
 			//GRENADES
 			drawimage "GRNDA", -116, -2;
-			drawnumber 4, SMALLFONT, red, Ammo GrenadeAmmo, drawshadow(1,1) | whennotzero, -116, -8, 0;
+			drawnumber 4, SMALLFONT, red, Ammo GrenadeAmmo, drawshadow(1,1), -116, -8, 0;
 
 			gamemode deathmatch, teamgame
 			{
@@ -100,7 +100,7 @@ statusbar fullscreen, fullscreenoffsets
 
 		//GRENADES
 		drawimage "GRNDA", -15, -4;
-		drawnumber 4, SMALLFONT, red, Ammo GrenadeAmmo, drawshadow(1,1) | whennotzero, -15, -12, 0;
+		drawnumber 4, SMALLFONT, red, Ammo GrenadeAmmo, drawshadow(1,1), -15, -12, 0;
 
 		//STAMINA
 		drawnumber 4, SMALLFONT, white, Ammo UsedStamina, drawshadow(1,1) | whennotzero, 8+center, -8, 0;
@@ -266,7 +266,7 @@ statusbar normal // Standard Doom Status bar
 
 	//GRENADES
 	drawimage "GRNDA", 310, 168;
-	drawnumber 4, SMALLFONT, red, Ammo GrenadeAmmo, 314, 160, 0;
+	drawnumber 4, SMALLFONT, red, Ammo GrenadeAmmo, drawshadow(1,1), 314, 160, 0;
 
 	drawimage "STARMS", 104, 168;
 	drawnumber 3, DIGINUMBER, untranslated, ammo2, fillzeros, 140, 173;
