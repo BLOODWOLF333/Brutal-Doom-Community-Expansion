@@ -59,9 +59,6 @@ ACTOR HeavyMachinegun: SwitchableDecoration 5462
 		TNT1 A 0 A_TakeFromTarget("PowerInvulnerable", 1)
 		TNT1 A 0 A_GiveToTarget("CeaseMorph", 1)
 		TTR1 A 0 A_ChangeFlag("FRIENDLY", 0)
-
-	See:
-		//TNT1 A 0 A_Chase("","",CHF_DONTMOVE )
 		TNT1 A 0 A_GiveToTarget("CheckingMorphingPlayerHealth", 1)
 		TTR1 A 3
 		TNT1 A 0 A_GiveToTarget("HeavyMachinegunMorpher", 1)
