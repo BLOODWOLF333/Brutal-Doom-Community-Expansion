@@ -100,7 +100,7 @@ script "BDInitialize" enter
 		ConsoleCommand("compat_clientssendfullbuttoninfo 1");
 	}
 
-	if ((MarineSpawnCounter == 0) && (PlayerCount() >= 1))
+	if (MarineSpawnCounter == 0)
 	{
 		ACS_NamedExecute("BDSpawnMarines",0);
 	}
