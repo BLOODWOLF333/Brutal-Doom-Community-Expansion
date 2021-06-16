@@ -113,8 +113,27 @@ ACTOR NightVisionGiver : PowerupGiver
 	Powerup.Type Torch
 	Powerup.Color 99 99 99
 	Inventory.PickupMessage "$GOTVISOR"
-	//Powerup.Colormap 0.0, 0.0, 0.0, 1.0,0.5,0.5
 	Powerup.Duration -120
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_SpawnItem("WhiteFlareSmallItem",0,5)
+		SVIS ABCDE 3 BRIGHT
+		Loop
+	}
+}
+
+ACTOR VehicleInfraredGiver : PowerupGiver
+{
+	Game Doom
+	+COUNTITEM
+	+INVENTORY.AUTOACTIVATE
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.MaxAmount 0
+	Powerup.Type PowerLightAmp
+	Powerup.Color 99 99 99
+	Inventory.PickupMessage "$GOTVISOR"
+	Powerup.Duration 0x7FFFFFFD
 	States
 	{
 	Spawn:

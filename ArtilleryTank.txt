@@ -923,7 +923,7 @@ ACTOR ArtilleryTankGun : DoomWeapon
 		TNT1 A 0 A_TakeInventory("SwitchFlashlight", 1)
 		TNT1 A 0 A_JumpIfInventory("FlashlightOn",1,"TurnFlashOff")
 		TNT1 A 0 A_Giveinventory("FlashlightOn",1)
-		TNT1 A 0 A_giveinventory("PowerLightAmp", 1)
+		TNT1 A 0 A_giveinventory("VehicleInfraredGiver", 1)
 		TNT1 A 0 A_PlaySound("INFRARED", 1)
 		TNT1 A 0 A_PlaySound("FLASHON", 2)
         Goto ReadyToFire
