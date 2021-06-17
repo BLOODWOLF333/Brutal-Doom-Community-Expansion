@@ -736,9 +736,10 @@ ACTOR ClassicPistol : ClassicWeapon
 		TNT1 A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(2,2))
 		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 A 0 A_FireBullets (2.8, 2.8, 1, 15, "WeakPuff", FBF_NORANDOM | FBF_USEAMMO)
-		PKPI F 1 BRIGHT A_ZoomFactor(0.99)
-		PKPI F 1 BRIGHT A_ZoomFactor(1.0)
-		PKPI F 4 BRIGHT
+		TNT1 A 0 A_ZoomFactor(0.99)
+		PKPI F 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(1.0)
+		PKPI F 5 BRIGHT
 		TNT1 A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,0,-9)
 		PKPI D 4
 		PKPI B 5 A_Refire
@@ -800,7 +801,8 @@ ACTOR ClassicSMG : ClassicWeapon
 		TNT1 A 0 A_PlaySound("pfire", 1)
 		TNT1 A 0 A_FireCustomMissile("DistantFireSoundPistol", random(-1,1), 0, 0, -12, 0, random(-1,1))
 		RIFF A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
-        VSMG B 1 BRIGHT A_ZoomFactor(0.99)
+		TNT1 A 0 A_ZoomFactor(0.99)
+        VSMG B 1 BRIGHT
 		VSMG B 0 A_ZoomFactor(1.0)
 		TNT1 A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,0,-9)
 		VSMG E 2
@@ -809,7 +811,8 @@ ACTOR ClassicSMG : ClassicWeapon
 		TNT1 A 0 A_PlaySound("pfire", 1)
 		TNT1 A 0 A_FireCustomMissile("DistantFireSoundPistol", random(-1,1), 0, 0, -12, 0, random(-1,1))
 		RIFF A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
-		VSMG D 1 BRIGHT A_ZoomFactor(0.99)
+		TNT1 A 0 A_ZoomFactor(0.99)
+		VSMG D 1 BRIGHT
 		VSMG D 0 A_ZoomFactor(1.0)
 		TNT1 A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,0,-9)
 		VSMG E 2
@@ -818,7 +821,8 @@ ACTOR ClassicSMG : ClassicWeapon
 		TNT1 A 0 A_PlaySound("pfire", 1)
 		TNT1 A 0 A_FireCustomMissile("DistantFireSoundPistol", random(-1,1), 0, 0, -12, 0, random(-1,1))
 		RIFF A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
-        VSMG C 1 BRIGHT A_ZoomFactor(0.99)
+		TNT1 A 0 A_ZoomFactor(0.99)
+        VSMG C 1 BRIGHT
 		VSMG C 0 A_ZoomFactor(1.0)
 		TNT1 A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,0,-9)
 		VSMG E 2
@@ -883,10 +887,11 @@ ACTOR ClassicMP40 : ClassicWeapon
 		TNT1 A 0 A_FireCustomMissile("DistantFireSoundPistol", random(-1,1), 0, 0, -12, 0, random(-1,1))
 		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 A 0 A_FireBullets(2.8, 2.8, 1, 20, "WeakPuff", FBF_NORANDOM | FBF_USEAMMO)
-		PKMP B 1 BRIGHT A_ZoomFactor(0.99)
+		TNT1 A 0 A_ZoomFactor(0.99)
+		PKMP B 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(1.0)
 		TNT1 A 0 A_FireCustomMissile("PistolCaseSpawn",-5,0,8,-4)
-		PKMP C 1 A_ZoomFactor(1.0)
-		PKMP DE 1
+		PKMP CDE 1
 		PKCG G 0 A_ReFire
 		Goto Ready
  	Spawn:
@@ -947,9 +952,10 @@ ACTOR ClassicShotgun : ClassicWeapon
 		TNT1 AAAAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-3,3),0,0,0,0,random(-3,3))
 		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 A 0 A_FireBullets (2.8, 2.8, 7, 15, "ShotgunPuff", FBF_NORANDOM | FBF_USEAMMO)
-		PKSG B 1 BRIGHT A_ZoomFactor(0.98)
-		PKSG B 1 BRIGHT A_ZoomFactor(1.0)
-		PKSG B 5 BRIGHT
+		TNT1 A 0 A_ZoomFactor(0.98)
+		PKSG B 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(1.0)
+		PKSG B 6 BRIGHT
 		PKSG CDEFGHI 1
 		TNT1 A 0 A_FireCustomMissile ("ShotCaseSpawn", 0, 0, -4, -4)
 		SHTG A 0 A_PlaySound("weapons/sgpump", 3)
@@ -1019,10 +1025,11 @@ ACTOR ClassicSSG : ClassicWeapon
 		TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-5,5),0,0,0,0,random(-3,3))
 		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 A 0 A_FireBullets (5.6, 2.8, 20, 15, "ShotgunPuff", FBF_USEAMMO | FBF_NORANDOM)
-		PKSS B 1 BRIGHT A_ZoomFactor(0.96)
+		TNT1 A 0 A_ZoomFactor(0.96)
+		PKSS B 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(1.0)
 		TNT1 A 0 A_Recoil(3)
-		PKSS B 1 BRIGHT A_ZoomFactor(1.0)
-		PKSS B 5 BRIGHT
+		PKSS B 6 BRIGHT
 		PKSS CDEFGHIJKL 1
 		PKSS L 2 A_CheckReload
 		PKSS MNOP 2
@@ -1097,19 +1104,21 @@ ACTOR ClassicChaingun : ClassicWeapon
 		RIFF A 0 A_FireCustomMissile("DistantFireSoundMachinegun", random(-1,1), 0, 0, -12, 0, random(-1,1))
 		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 A 0 A_FireBullets(2.8, 2.8, 1, 15, "MachineGunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
-		PKCG E 1 BRIGHT A_ZoomFactor(0.99)
+		TNT1 A 0 A_ZoomFactor(0.99)
+		PKCG E 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(1.0)
 		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",0,0,6,-18)
-		PKCG G 1 A_ZoomFactor(1.0)
-		PKCG HD 1
+		PKCG GHD 1
 		TNT1 A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 1)
 		RIFF A 0 A_FireCustomMissile("DistantFireSoundMachinegun", random(-1,1), 0, 0, -12, 0, random(-1,1))
 		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 A 0 A_FireBullets(2.8, 2.8, 1, 15, "MachineGunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
-		PKCG F 1 BRIGHT A_ZoomFactor(0.99)
+		TNT1 A 0 A_ZoomFactor(0.99)
+		PKCG F 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(1.0)
 		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",0,0,6,-18)
-		PKCG G 1 A_ZoomFactor(1.0)
-		PKCG HD 1
+		PKCG GHD 1
 		PKCG G 0 A_ReFire
 		Goto Ready
 	Spawn:
@@ -1176,21 +1185,25 @@ ACTOR ClassicBuzzsaw : ClassicWeapon
 		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 A 0 A_FireBullets(2.8, 2.8, 1, 15, "MinigunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
 		MP40 A 0 A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0)
-		PKBZ B 1 BRIGHT A_ZoomFactor(0.98)
+		TNT1 A 0 A_ZoomFactor(0.98)
+		PKBZ B 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(1.0)
 		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		MP40 A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
 		MP40 A 0 A_Firecustommissile("50CaseSpawn2",0,0,9,-12)
-		PKBZ A 1 A_ZoomFactor(1.0)
+		PKBZ A 1
 		TNT1 A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
 		TNT1 A 0 A_PlaySound("MP40", 1)
 		TNT1 A 0 A_FireCustomMissile("DistantFireSoundHMG", random(-1,1), 0, 0, -12, 0, random(-1,1))
 		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 A 0 A_FireBullets(2.8, 2.8, 1, 15, "MinigunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
 		MP40 A 0 A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0)
-		PKBZ C 1 BRIGHT A_ZoomFactor(0.98)
+		TNT1 A 0 A_ZoomFactor(0.98)
+		PKBZ C 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(1.0)
 		MP40 A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
 		MP40 A 0 A_Firecustommissile("50CaseSpawn2",0,0,9,-12)
-		PKBZ A 1 A_ZoomFactor(1.0)
+		PKBZ A 1
 		PKCG G 0 A_ReFire
 		Goto Ready
 	Spawn:
@@ -1252,8 +1265,10 @@ ACTOR ClassicRocketLauncher : ClassicWeapon
 		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
 		TNT1 A 0 A_FireCustomMissile("WeakRocket", 0, 1, 0, 0)
 		RLNG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
-		PKRL B 1 BRIGHT A_ZoomFactor(0.98)
-		PKRL B 1 BRIGHT A_ZoomFactor(1.0)
+		TNT1 A 0 A_ZoomFactor(0.98)
+		PKRL B 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(1.0)
+		PKRL B 1 BRIGHT
 		PKRL CD 2 BRIGHT
 		PKRL EFGHIJ 2
 		PKRL A 2 A_Refire
@@ -1312,9 +1327,10 @@ ACTOR ClassicPlasmaRifle : ClassicWeapon
 		3LSG A 1 A_Raise
 		Loop
 	Fire:
-		3LSF C 1 BRIGHT A_ZoomFactor(0.99)
-		3LSF E 1 BRIGHT A_ZoomFactor(1.0)
-		3LSF F 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(0.99)
+		3LSF C 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(1.0)
+		3LSF EF 1 BRIGHT
 		TNT1 A 0 A_FireCustomMissile("Alerter", 0, 0)
 		PLSN A 0 A_SpawnItemEx("PlasmaFlareSpawn",32,0,28)
 		TNT1 A 0 A_FireCustomMissile("ClassicPlasmaBall", 0, 1, 0, 0)
@@ -1439,8 +1455,8 @@ ACTOR VanillaBFG9000 : ClassicWeapon
 		Goto RecoilFire
 		TNT1 A 0 BRIGHT A_FireCustomMissile("BFGBallDM")
 	RecoilFire:
-		BFGA E 1 BRIGHT A_SpawnItemEx("GreenFlareSpawn",32,0,28)
-		BFGA E 1 BRIGHT A_ZoomFactor(1.0)
+		BFGA E 2 BRIGHT A_SpawnItemEx("GreenFlareSpawn",32,0,28)
+		TNT1 A 0 A_ZoomFactor(1.0)
 		BFGN A 20 A_ReFire
 		Goto Ready
 	Spawn:
@@ -1523,9 +1539,10 @@ ACTOR ClassicUnmaker : ClassicWeapon 9902
 		// This will be used if the player has no upgrades
 			UNMA A 0 A_JumpIfInventory("UnmakerUpgrades", 1, "FireUpgradeOne")
 			UNMA A 0 A_PlaySound("weapons/unmaker", CHAN_AUTO, 0.8, 0, ATTN_NORM)
-			UNMA B 1 BRIGHT A_ZoomFactor(0.99)
+			TNT1 A 0 A_ZoomFactor(0.99)
 			UNMA B 1 BRIGHT A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail", -16)
-			UNMA B 1 BRIGHT A_ZoomFactor(1.0)
+			TNT1 A 0 A_ZoomFactor(1.0)
+			UNMA B 2 BRIGHT
 			UNMA A 7
 			UNMA A 0 A_ReFire
 			Goto Ready
@@ -1534,9 +1551,10 @@ ACTOR ClassicUnmaker : ClassicWeapon 9902
 		FireUpgradeOne:
 			UNMA A 0 A_JumpIfInventory("UnmakerUpgrades", 2, "FireUpgradeTwo")
 			UNMA A 0 A_PlaySound("weapons/unmaker", CHAN_AUTO, 0.8, 0, ATTN_NORM)
-			UNMA B 1 BRIGHT A_ZoomFactor(0.99)
+			TNT1 A 0 A_ZoomFactor(0.99)
 			UNMA B 1 BRIGHT A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail", -16)
-			UNMA B 1 BRIGHT A_ZoomFactor(1.0)
+			TNT1 A 0 A_ZoomFactor(1.0)
+			UNMA B 2 BRIGHT
 			UNMA A 4
 			UNMA A 0 A_ReFire
 			Goto Ready
@@ -1545,11 +1563,12 @@ ACTOR ClassicUnmaker : ClassicWeapon 9902
 		FireUpgradeTwo:
 			UNMA A 0 A_JumpIfInventory("UnmakerUpgrades", 3, "FireUpgradeThree")
 			UNMA A 0 A_PlaySound("weapons/unmaker", CHAN_AUTO, 0.8, 0, ATTN_NORM)
-			UNMA B 1 BRIGHT A_ZoomFactor(0.99)
+			TNT1 A 0 A_ZoomFactor(0.99)
 			UNMA B 1 BRIGHT A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 1.0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail", -16)
 			UNMA A 0 A_JumpIfNoAmmo(3)
 			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", -1.0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail", -16)
-			UNMA B 1 BRIGHT A_ZoomFactor(1.0)
+			TNT1 A 0 A_ZoomFactor(1.0)
+			UNMA B 2 BRIGHT
 			UNMA A 2
 			UNMA A 0 A_ReFire
 			Goto Ready
@@ -1557,49 +1576,53 @@ ACTOR ClassicUnmaker : ClassicWeapon 9902
 		// This will be used if the player has three upgrades
 		FireUpgradeThree:
 			UNMA A 0 A_PlaySound("weapons/unmaker", CHAN_AUTO, 0.8, 0, ATTN_NORM)
-			UNMA B 1 BRIGHT A_ZoomFactor(0.99)
+			TNT1 A 0 A_ZoomFactor(0.99)
 			UNMA B 1 BRIGHT A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail", -16)
 			UNMA A 0 A_JumpIfNoAmmo(5)
 			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 3.0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail", -16)
 			UNMA A 0 A_JumpIfNoAmmo(3)
 			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", -3.0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail", -16)
-			UNMA B 1 BRIGHT A_ZoomFactor(1.0)
+			TNT1 A 0 A_ZoomFactor(1.0)
+			UNMA B 2 BRIGHT
 			UNMA A 2
 			UNMA A 0 A_ReFire("Hold1")
 			Goto Ready
 		Hold1:
 			UNMA A 0 A_PlaySound("weapons/unmaker", CHAN_AUTO, 0.8, 0, ATTN_NORM)
-			UNMA B 1 BRIGHT A_ZoomFactor(0.99)
+			TNT1 A 0 A_ZoomFactor(0.99)
 			UNMA B 1 BRIGHT A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail", -16)
 			UNMA A 0 A_JumpIfNoAmmo(5)
 			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 6.0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail", -16)
 			UNMA A 0 A_JumpIfNoAmmo(3)
 			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", -6.0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail", -16)
-			UNMA B 1 BRIGHT A_ZoomFactor(1.0)
+			TNT1 A 0 A_ZoomFactor(1.0)
+			UNMA B 2 BRIGHT
 			UNMA A 2
 			UNMA A 0 A_ReFire("Hold2")
 			Goto Ready
 		Hold2:
 			UNMA A 0 A_PlaySound("weapons/unmaker", CHAN_AUTO, 0.8, 0, ATTN_NORM)
-			UNMA B 1 BRIGHT A_ZoomFactor(0.99)
+			TNT1 A 0 A_ZoomFactor(0.99)
 			UNMA B 1 BRIGHT A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail", -16)
 			UNMA A 0 A_JumpIfNoAmmo(5)
 			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 9.0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail", -16)
 			UNMA A 0 A_JumpIfNoAmmo(3)
 			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", -9.0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail", -16)
-			UNMA B 1 BRIGHT A_ZoomFactor(1.0)
+			TNT1 A 0 A_ZoomFactor(1.0)
+			UNMA B 2 BRIGHT
 			UNMA A 2
 			UNMA A 0 A_ReFire("Hold3")
 			Goto Ready
 		Hold3:
 			UNMA A 0 A_PlaySound("weapons/unmaker", CHAN_AUTO, 0.8, 0, ATTN_NORM)
-			UNMA B 1 BRIGHT A_ZoomFactor(0.99)
+			TNT1 A 0 A_ZoomFactor(0.99)
 			UNMA B 1 BRIGHT A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail", -16)
 			UNMA A 0 A_JumpIfNoAmmo(5)
 			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", 12.0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail", -16)
 			UNMA A 0 A_JumpIfNoAmmo(3)
 			UNMA A 0 A_RailAttack((random(50,50)), 0, 1, "none", "red", RGF_NOPIERCING | RGF_SILENT | RGF_EXPLICITANGLE | RGF_FULLBRIGHT, 0, "UnmakerLaserPuff", -12.0, 0, 0, 1, 32.0, 0, "UnmakerLaserTrail", -16)
-			UNMA B 1 BRIGHT A_ZoomFactor(1.0)
+			TNT1 A 0 A_ZoomFactor(1.0)
+			UNMA B 2 BRIGHT
 			UNMA A 2
 			UNMA A 0 A_CheckReload
 			Goto Ready
