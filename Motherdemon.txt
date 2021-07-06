@@ -39,15 +39,16 @@ actor Motherdemon 2548
 	PainChance "GreenFire", 4	PainChance "HumanBBQ", 4
 
 	MONSTER
-	+BOSS
 	+FLOAT
 	+NOGRAVITY
+	+BOSS
+	+FLOORCLIP
+    +DONTRIP
 	+DONTMORPH
-	+NORADIUSDMG
+	+BOSSDEATH
+    +NORADIUSDMG
 	+MISSILEMORE
 	+MISSILEEVENMORE
-	+FORCEXYBILLBOARD
-	+NOTARGET
   states
   {
   Spawn:

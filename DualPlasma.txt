@@ -278,7 +278,7 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 	Unload:
 		DUPL A 0 A_Takeinventory("Unloading",1)
 		DUPL A 0 A_JumpIfInventory("DoublePlasmaAmmo",1,7)
-		Goto NoAmmo
+		Goto Ready
 		TNT1 AAAAA 0
         PLSR AB 1
 		DUPL A 0 A_PlaySound("PLREADY", 1)
