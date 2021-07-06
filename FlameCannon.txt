@@ -8,12 +8,12 @@ ACTOR FlameCannon : BrutalWeapon
     Inventory.PickupSound "BFGREADY"
 	+WEAPON.NOAUTOAIM
 	+WEAPON.EXPLOSIVE
-	+WEAPON.NO_AUTO_SWITCH
 	Inventory.PickupMessage "You got the Mancubus Flame Cannon (Slot 9)"
 	Tag "Mancubus Flame Cannon"
+	DropItem "FlameCannonSpawner"
 	States
 	{
-	
+
 	Ready:
 	Ready3:
 	Reload:
@@ -24,168 +24,178 @@ ACTOR FlameCannon : BrutalWeapon
 		FLMG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		FLMG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		FLMG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		FLMG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		Goto Ready3
-		
+
 	CheckSprint:
 		FLMG A 1 A_WeaponReady(WRF_NOFIRE)
 		FLMG A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		FLMG A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
-		Goto Ready
-		
+		Goto Ready3
+
 	StartSprint:
 		FLMG A 1 A_WeaponReady(WRF_NOFIRE)
-		FLMG A 0 A_Takeinventory("Zoomed",1)
-		FLMG A 0 A_Takeinventory("ADSmode",1)
-		FLMG A 0 A_ZoomFactor(1.0)
-		FLMG A 0 A_JumpIfInventory("UsedStamina", 40, "StopSprintTired")
-		
-	Sprinting:	
-		FLMG A 0 offset(-9,32) 
-		FLMG A 0 offset(-9,32) A_JumpIfInventory("IsStandingStill", 1, "Ready3")
-		FLMG A 0 offset(-9,32) A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
-		PLAY A 0 offset(-9,32) ACS_ExecuteAlways(852, 0, 0, 0, 0)//Makes player faster.
-		FLMG A 0 offset(-9,32) A_JumpIfInventory("PowerStrength", 1, 2)
-		FLMG A 0 offset(-9,32) A_GiveInventory("UsedStamina", 8)
+		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		FLMG A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
+
+	Sprinting:
 		FLMG A 0 offset(-9,32)
+		FLMG A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
+		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		FLMG A 0 A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
+		PLAY A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
 		FLMG A 1 offset(-9,34) A_SetPitch(pitch -0.5)
 		FLMG A 1 offset(-6,36) A_SetPitch(pitch -0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		FLMG A 1 offset(-3,38) A_SetPitch(pitch -0.5)
 		FLMG A 1 offset(0,38) A_SetPitch(pitch -0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		FLMG A 1 offset(3,36) A_SetPitch(pitch -0.5)
 		FLMG A 1 offset(6,34) A_SetPitch(pitch -0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		FLMG A 1 offset(9,32) A_SetPitch(pitch -0.5)
-		FLMG A 0 offset(9,32) A_WeaponReady(WRF_NOBOB)
+		FLMG A 1 offset(9,32) A_WeaponReady(WRF_NOBOB)
 		FLMG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         FLMG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
-        FLMG A 0 A_JumpIfInventory("Reloading",1,"Reload")
-		FLMG A 0 offset(-9,32) A_GiveInventory("UsedStamina", 8)
-		FLMG A 0 offset(9,33) A_SpawnItemEx("FootStep", 0, 0, 2, 0, 0, -4)
+		FLMG A 1 offset(9,33) A_SpawnItemEx("FootStep", 0, 0, 2, 0, 0, -4)
 		FLMG A 1 offset(9,34) A_SetPitch(pitch +0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		FLMG A 1 offset(6,36) A_SetPitch(pitch +0.5)
 		FLMG A 1 offset(3,38) A_SetPitch(pitch +0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		FLMG A 1 offset(0,38) A_SetPitch(pitch +0.5)
 		FLMG A 1 offset(-3,36) A_SetPitch(pitch +0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		FLMG A 1 offset(-6,34) A_SetPitch(pitch +0.5)
 		FLMG A 1 offset(-9,32) A_SetPitch(pitch +0.5)
-		FLMG A 0 offset(-9,32) A_WeaponReady(WRF_NOBOB)
-		FLMG A 0 offset(-9,32) A_JumpIfInventory("IsRunning", 1, "Sprinting")
+		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
+		FLMG A 0 A_WeaponReady(WRF_NOBOB)
+		FLMG A 0 A_JumpIfInventory("IsRunning", 1, "Sprinting")
 		Goto StopSprint
-		
+
 	StopSprintTired:
-		FLMG A 1
-		PLAY A 0 ACS_ExecuteAlways(853, 0, 0, 0, 0)//Makes player slower.
+		FLMG A 0
+		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		FLMG A 0 A_PlaySound("Tired", 2)
-		FLMG A 0 A_TakeInventory("UsedStamina", 2)
-		FLMG A 5 A_WeaponReady
-		FLMG A 0 A_TakeInventory("UsedStamina", 2)
-		FLMG A 5 A_WeaponReady
-		FLMG A 0 A_TakeInventory("UsedStamina", 2)
-		FLMG A 5 A_WeaponReady
-		FLMG A 0 A_TakeInventory("UsedStamina", 2)
-		FLMG A 5 A_WeaponReady
-		FLMG A 0 A_TakeInventory("UsedStamina", 2)
-		FLMG A 5 A_WeaponReady
+		FLMG A 4 A_WeaponReady
+		FLMG A 0 A_TakeInventory("UsedStamina", 1)
+		FLMG A 4 A_WeaponReady
+		FLMG A 0 A_TakeInventory("UsedStamina", 1)
+		FLMG A 4 A_WeaponReady
+		FLMG A 0 A_TakeInventory("UsedStamina", 1)
+		FLMG A 4 A_WeaponReady
+		FLMG A 0 A_TakeInventory("UsedStamina", 1)
+		FLMG A 4 A_WeaponReady
+		FLMG A 0 A_TakeInventory("UsedStamina", 1)
+		FLMG A 4 A_WeaponReady
+		FLMG A 0 A_TakeInventory("UsedStamina", 1)
 		Goto Ready
 	StopSprint:
 		FLMG A 1
-		FLMG A 0 A_JumpIfInventory("UsedStamina", 60, "StopSprintTired")
-		PLAY A 0 ACS_ExecuteAlways(853, 0, 0, 0, 0)//Makes player slower.
+		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		FLMG A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
+		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		Goto Ready
-		
+
 	DryFire:
 	    FLMG A 10 A_PlaySound("weapons/empty")
 		Goto Ready+6
-	
+
 	Deselect:
 	    FLMG A 0 A_StopSound(CHAN_WEAPON)
 		FLMG A 0 A_TakeInventory("TossGrenade", 1)
 		TNT1 A 0 A_TakeInventory("Unloading", 1)
 		TNT1 A 0 A_TakeInventory("Reloading", 1)
+		TNT1 A 0 A_TakeInventory("StartDualWield",1)
 		FLMG A 1 A_Lower
 		Loop
 	Select:
 		FLMG A 0 A_Giveinventory("GoSpecial",1)
-		FLMG A 0 A_Takeinventory("FistsSelected",1)
-		FLMG A 0 A_Takeinventory("SawSelected",1)
-		FLMG A 0 A_Takeinventory("ShotgunSelected",1)
-		FLMG A 0 A_Takeinventory("SSGSelected",1)
-		FLMG A 0 A_Takeinventory("MinigunSelected",1)
-		FLMG A 0 A_Takeinventory("PlasmaGunSelected",1)
-		FLMG A 0 A_Takeinventory("RocketLauncherSelected",1)
-		FLMG A 0 A_Takeinventory("GrenadeLauncherSelected",1)
-		FLMG A 0 A_Takeinventory("BFGSelected",1)
-		FLMG A 0 A_Takeinventory("BFG10kSelected",1)
-		FLMG A 0 A_Takeinventory("RailGunSelected",1)
-		FLMG A 0 A_Takeinventory("SubMachineGunSelected",1)
-		FLMG A 0 A_Takeinventory("RevenantLauncherSelected",1)
-		FLMG A 0 A_Takeinventory("LostSoulSelected",1)
-		FLMG A 0 A_Giveinventory("FlameCannonSelected",1)
+		TNT1 A 0 A_TakeInventory("FistsSelected", 1)
+		TNT1 A 0 A_TakeInventory("ShotgunSelected", 1)
+		TNT1 A 0 A_TakeInventory("MinigunSelected", 1)
+		TNT1 A 0 A_TakeInventory("SSGSelected", 1)
+		TNT1 A 0 A_TakeInventory("RocketLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("GrenadeLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("PlasmaGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RailGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RevenantLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("SubMachineGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFG10KSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFGSelected", 1)
+		TNT1 A 0 A_GiveInventory("FlameCannonSelected", 1)
+		TNT1 A 0 A_TakeInventory("SawSelected", 1)
 		FLMG A 0 A_Takeinventory("HasBarrel",1)
 		FLMG A 0 A_TakeInventory("TossGrenade", 1)
 		FLMG AAA 1 A_Raise
-		
+
 		FLMG A 0 A_PlaySound("BFGREADY")
         TNT1 AAA 0
 		TNT1 AAAAAAAAA 0 A_Raise
 		Goto SelectAnimation
-		
+
 	SelectAnimation:
 		TNT1 A 1
 		FLMG A 0 A_GunFlash
 		Goto Ready
-		
+
     Spawn:
-        MANA H 1
-        Loop
-		
+        MANA H -1
+        Stop
+
 	 Fire:
         FLMG A 0
 		FLMG A 0 A_JumpIf(waterlevel > 1, "DryFire")
         FLMG A 0 A_JumpIfInventory("Gas", 16, "Fireball")
 		FLMG A 0 A_StopSound(CHAN_WEAPON)
 		Goto DryFire
-	
+
 	AltFire:
 	    FLMG A 0
 		FLMG A 0 A_JumpIf(waterlevel > 1, "DryFire")
         FLMG A 0 A_JumpIfInventory("Gas", 28, "Flamethrower")
 		FLMG A 0 A_StopSound(CHAN_WEAPON)
 		Goto DryFire
-		
-	Fireball:	
+
+	Fireball:
 		FLMG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
-        FLMF A 1 BRIGHT A_FireCustomMissile("BigFireBallWithGravity", 0, 1, 0, -6)
-		FLMG A 0 A_SetPitch(-4.0 + pitch)
+		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
+        FLMF A 1 BRIGHT A_FireCustomMissile("BigFireBallWithGravity", 0, 1, 0, 0)
+		DUPL A 0 A_ZoomFactor(0.98)
+		RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
+		RIFG A 0 A_SetPitch(-1.0 + pitch)
+		FLMG A 0 A_SetPitch(-1.0 + pitch)
 		FLMG A 0 A_TakeInventory("Gas", 16)
 		FLMG A 0 A_FireCustomMissile("ShakeYourAssDouble", 0, 0, 0, 0)
-        FLMF BC 1  
-        FLMF CD 1 A_SetPitch(+2.0 + pitch)
-		FLMG A 5
+        FLMF B 1 BRIGHT A_SetPitch(+0.2 + pitch)
+		DUPL A 0 A_ZoomFactor(1.0)
+		FLMF CC 1 BRIGHT A_SetPitch(+0.2 + pitch)
+		FLMF D 1 A_SetPitch(+0.2 + pitch)
+		FLMG A 5 A_SetPitch(+0.2 + pitch)
 		Goto Ready+2
-	
+
 	Flamethrower:
-        FLMG A 0 BRIGHT A_FireCustomMissile("FlamethrowerMissile", 0, 1, 0, -12, 0, 8)
+        FLMG A 0 BRIGHT A_FireCustomMissile("FlamethrowerMissile", 0, 1, 0, 0, 0, 8)
 		FLMG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		FLMG A 0 A_PlaySound("FLAMER", CHAN_WEAPON, 1, 1)
-		
+		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		FLMG A 0 A_TakeInventory("Gas", 7)
-		FLMF FG 1 BRIGHT A_SetAngle(random(1, -1) + angle)
-		FLMG A 0 BRIGHT A_SetPitch(random(1, -1) + pitch)
-		
-		FLMG A 0 BRIGHT A_FireCustomMissile("FlamethrowerMissileNoLight", 0, 1, 0, -12, 0, 8)
+		FLMF FG 1 BRIGHT
+
+		FLMG A 0 BRIGHT A_FireCustomMissile("FlamethrowerMissileNoLight", 0, 1, 0, 0, 0, 8)
 		FLMG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		FLMG A 0 A_PlaySound("FLAMER", CHAN_WEAPON, 1, 1)
 		FLMG A 0 A_TakeInventory("Gas", 7)
 		FLMF FG 1 BRIGHT
-		
-		FLMG A 0 BRIGHT A_FireCustomMissile("FlamethrowerMissileNoLight", 0, 1, 0, -12, 0, 8)
+
+		FLMG A 0 BRIGHT A_FireCustomMissile("FlamethrowerMissileNoLight", 0, 1, 0, 0, 0, 8)
 		FLMG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		FLMG A 0 A_PlaySound("FLAMER", CHAN_WEAPON, 1, 1)
 		FLMG A 0 A_TakeInventory("Gas", 7)
 		FLMF FG 1 BRIGHT
-		
-		FLMG A 0 BRIGHT A_FireCustomMissile("FlamethrowerMissileNoLight", 0, 1, 0, -12, 0, 8)
+
+		FLMG A 0 BRIGHT A_FireCustomMissile("FlamethrowerMissileNoLight", 0, 1, 0, 0, 0, 8)
 		FLMG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		FLMG A 0 A_PlaySound("FLAMER", CHAN_WEAPON, 1, 1)
 		FLMG A 0 A_TakeInventory("Gas", 7)
@@ -208,24 +218,32 @@ States
 	Spawn:
 	    TNT1 A 0
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)//Check Effects
-	
+
 	Spawn1:
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "SpawnCheap")
 		TNT1 A 0 A_SpawnItem ("FireballExplosionFlamesSmall")
 		BLHD AB 1 BRIGHT A_SpawnItem("RedFlare22")
 		TNT1 A 0 A_CustomMissile ("RocketSmokeTrail52", 2, 0, random (70, 110), 2, random (0, 360))
 		Loop
-		
+
 	SpawnCheap:
 		TNT1 A 0 A_SpawnItem ("FireballExplosionFlamesSmall")
 		BLHD AB 1 BRIGHT A_SpawnItem("RedFlare22")
 		Loop
-		
+
 	Death:
 		FLMG A 0
 		FLMG A 0 A_Explode (60, 150)
 		Goto ExplosionEffect
 		}
+}
+
+ACTOR MarineFireBall : BigFireBallWithGravity
+{
+	DamageType "FriendBullet"
+	+MTHRUSPECIES
+	+THRUSPECIES
+	+DONTHARMSPECIES
 }
 
 ACTOR Flames
@@ -234,11 +252,11 @@ ACTOR Flames
 	Height 8
 	Speed 30
 	Damage 1
-	Projectile 
+	Projectile
 	+RANDOMIZE
 	+FORCEXYBILLBOARD
     +RIPPER
-    +BLOODLESSIMPACT 
+    +BLOODLESSIMPACT
 	RenderStyle Add
     DamageType Flames
     Scale 2.0
@@ -266,4 +284,50 @@ ACTOR Flames
 	    FLMG A 0 A_SpawnItem("RedFlareMedium",0,0)
 		Stop
 	}
+}
+
+ACTOR FakeFlameCannonSprite: BasicWeaponPickup
+{
+	VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
+	+NOGRAVITY
+	+FLOAT +NOCLIP +NOINTERACTION
+	States
+    {
+
+	 Spawn:
+		MANA H 0
+		MANA H 18
+		Stop
+    }
+}
+
+ACTOR FlameCannonSpawner: CustomInventory
+{
+ radius 24
+ height 24
+ +FORCEXYBILLBOARD
+ inventory.pickupsound "BFGREADY"
+ Inventory.PickupMessage "You got the Mancubus Flame Cannon (Slot 9)"
+ Mass 1
+    States
+    {
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1
+		TNT1 A 0 A_ChangeFlag("THRUACTORS", 0)
+	Stay:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("FakeCellSprite")
+		TNT1 A 0 A_SpawnItem("FakeFlameCannonSprite")
+		TNT1 A 16
+		Loop
+	Pickup:
+	    TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
+		TNT1 A 0 A_GiveInventory("FlameCannon", 1)
+		Stop
+	Purist:
+	    TNT1 A 0 A_GiveInventory("AmmoCell", 20)
+		Stop
+    }
 }

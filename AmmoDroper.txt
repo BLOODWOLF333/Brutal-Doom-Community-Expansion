@@ -6,10 +6,10 @@ ACTOR AmmoDroper : BrutalWeapon
 	+WEAPON.WIMPY_WEAPON
 	+WEAPON.NO_AUTO_SWITCH
 	Weapon.SelectionOrder 9999
-	
+
     States
 	{
-	
+
 	Select:
 		TNT1 A 0
 		TNT1 A 0 A_SetCrosshair(41)
@@ -17,21 +17,32 @@ ACTOR AmmoDroper : BrutalWeapon
 		TNT1 AAAAAAAAA 0 A_Raise
 		TNT1 A 0 A_GiveInventory("AmmoDropSlot", 1)
 		TNT1 A 0 A_GiveInventory("FistsSelected", 1)
+		TNT1 A 0 A_TakeInventory("ShotgunSelected", 1)
+		TNT1 A 0 A_TakeInventory("MinigunSelected", 1)
+		TNT1 A 0 A_TakeInventory("SSGSelected", 1)
+		TNT1 A 0 A_TakeInventory("RocketLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("GrenadeLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("PlasmaGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RailGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RevenantLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("SubMachineGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFG10KSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFGSelected", 1)
+		TNT1 A 0 A_TakeInventory("FlameCannonSelected", 1)
+		TNT1 A 0 A_TakeInventory("SawSelected", 1)
 		Goto Ready
-		
+
 	Deselect:
 		TNT1 A 0
 		TNT1 A 0 A_SetCrosshair(0)
+		TNT1 A 0 A_TakeInventory("StartDualWield",1)
 		TNT1 A 0 A_TakeInventory("Unloading", 1)
+		TNT1 A 0 A_TakeInventory("AmmoDropSlot", 12)
 		TNT1 AAAAAAAAA 0 A_Lower
 		TNT1 AAAAAA 1 A_Lower
-		
-		TNT1 A 1 
-		TNT1 A 0 A_TakeInventory("AmmoDropSlot", 12)
 		TNT1 A 0 A_TakeInventory("AmmoDroper", 1)
-		TNT1 A -1
 		Stop
-	
+
 	Ready3:
 	SelectAnimation:
 	Ready:
@@ -42,8 +53,8 @@ ACTOR AmmoDroper : BrutalWeapon
 		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
         TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
 		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-		TNT1 A 0 ACS_ExecuteAlways(396)
-		
+		TNT1 A 0 ACS_NamedExecuteAlways("BDAmmoDroperHUD")
+
 		TNT1 A 0 A_JumpIfInventory("AmmoDropSlot", 12, "ReadyArmor")
 		TNT1 A 0 A_JumpIfInventory("AmmoDropSlot", 11, "ReadyHealth")
 		TNT1 A 0 A_JumpIfInventory("AmmoDropSlot", 10, "ReadyGrenade")
@@ -56,7 +67,7 @@ ACTOR AmmoDroper : BrutalWeapon
 		TNT1 A 0 A_JumpIfInventory("AmmoDropSlot", 3, "ReadyMagnum")
 		TNT1 A 0 A_JumpIfInventory("AmmoDropSlot", 2, "ReadyMauser")
 		TNT1 A 0 A_JumpIfInventory("AmmoDropSlot", 1, "ReadyPistol")
-	ReadyPistol:	
+	ReadyPistol:
 		ADRO A 1 BRIGHT A_WeaponReady
 		Goto Ready
 	ReadyMauser:
@@ -92,7 +103,7 @@ ACTOR AmmoDroper : BrutalWeapon
 	ReadyArmor:
 		ADRO K 1 BRIGHT A_WeaponReady
 		Goto Ready
-		
+
 	AltFire:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("AmmoDropSlot", 10, 4)
@@ -102,7 +113,7 @@ ACTOR AmmoDroper : BrutalWeapon
 		TNT1 A 0 A_TakeInventory("AmmoDropSlot", 12)
 		TNT1 A 0 A_GiveInventory("AmmoDropSlot", 1)
 		Goto Ready
-		
+
 	Reload:
 		TNT1 A 0
 		TNT1 A 0 A_TakeInventory("Reloading", 1)
@@ -115,10 +126,10 @@ ACTOR AmmoDroper : BrutalWeapon
 		Goto Ready
 		TNT1 A 0 A_GiveInventory("AmmoDropSlot", 1)
 		Goto Ready
-		
+
 	Fire:
 		TNT1 A 0
-		TNT1 A 0 ACS_ExecuteAlways(396)
+		TNT1 A 0 ACS_NamedExecuteAlways("BDAmmoDroperHUD")
 		TNT1 A 0 A_JumpIfInventory("AmmoDropSlot", 12, "DropArmor")
 		TNT1 A 0 A_JumpIfInventory("AmmoDropSlot", 11, "DropHealth")
 		TNT1 A 0 A_JumpIfInventory("AmmoDropSlot", 10, "DropGrenade")
@@ -131,7 +142,7 @@ ACTOR AmmoDroper : BrutalWeapon
 		TNT1 A 0 A_JumpIfInventory("AmmoDropSlot", 3, "DropMagnum")
 		TNT1 A 0 A_JumpIfInventory("AmmoDropSlot", 2, "DropMauser")
 		TNT1 A 0 A_JumpIfInventory("AmmoDropSlot", 1, "DropPistol")
-		
+
 	DropPistol:
 		ADRO A 1 BRIGHT
 		ADRO A 1 BRIGHT A_JumpIFInventory("Clip1", 10, 4)
@@ -142,7 +153,7 @@ ACTOR AmmoDroper : BrutalWeapon
 		ADRO A 10 BRIGHT A_SpawnItemEx("CLIP1Drop", random(51, 55), random(-4, 4), 40, 2, 0, 2, angle, SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_Refire
 		Goto Ready
-	
+
 	DropMauser:
 		ADRO B 1 BRIGHT
 		ADRO B 1 BRIGHT A_JumpIFInventory("Mauser9mm", 32, 4)
@@ -153,7 +164,7 @@ ACTOR AmmoDroper : BrutalWeapon
 		ADRO B 10 BRIGHT A_SpawnItemEx("Mauser9mm", random(51, 55), random(-4, 4), 40, 2, 0, 2, angle, SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_Refire
 		Goto Ready
-	
+
 	DropMagnum:
 		ADRO C 1 BRIGHT
 		ADRO C 1 BRIGHT A_JumpIFInventory("AmmoMagnum", 6, 4)
@@ -164,7 +175,7 @@ ACTOR AmmoDroper : BrutalWeapon
 		ADRO C 10 BRIGHT A_SpawnItemEx("AmmoMagnum", random(51, 55), random(-4, 4), 40, 2, 0, 2, angle, SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_Refire
 		Goto Ready
-	
+
 	DropShell:
 		ADRO D 1 BRIGHT
 		ADRO D 1 BRIGHT A_JumpIFInventory("AmmoSHell", 4, 4)
@@ -174,8 +185,8 @@ ACTOR AmmoDroper : BrutalWeapon
 		TNT1 A 0 A_TakeInventory("AmmoSHell", 4)
 		ADRO D 10 BRIGHT A_SpawnItemEx("AmmoSHell", random(51, 55), random(-4, 4), 40, 2, 0, 2, angle, SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_Refire
-		Goto Ready	
-	
+		Goto Ready
+
 	DropRifle:
 		ADRO E 1 BRIGHT
 		ADRO E 1 BRIGHT A_JumpIFInventory("Clip2", 30, 4)
@@ -185,8 +196,8 @@ ACTOR AmmoDroper : BrutalWeapon
 		TNT1 A 0 A_TakeInventory("Clip2", 30)
 		ADRO E 10 BRIGHT A_SpawnItemEx("Clip2", random(51, 55), random(-4, 4), 40, 2, 0, 2, angle, SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_Refire
-		Goto Ready	
-		
+		Goto Ready
+
 	DropMG42:
 		ADRO F 1 BRIGHT
 		ADRO F 1 BRIGHT A_JumpIFInventory("BuzzSawAmmo", 100, 4)
@@ -196,8 +207,8 @@ ACTOR AmmoDroper : BrutalWeapon
 		TNT1 A 0 A_TakeInventory("BuzzSawAmmo", 100)
 		ADRO F 10 BRIGHT A_SpawnItemEx("BuzzSawAmmo", random(51, 55), random(-4, 4), 40, 2, 0, 2, angle, SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_Refire
-		Goto Ready	
-		
+		Goto Ready
+
 	DropRocket:
 		ADRO G 1 BRIGHT
 		ADRO G 1 BRIGHT A_JumpIFInventory("AmmoRocket", 1, 4)
@@ -207,8 +218,8 @@ ACTOR AmmoDroper : BrutalWeapon
 		TNT1 A 0 A_TakeInventory("AmmoRocket", 1)
 		ADRO G 10 BRIGHT A_SpawnItemEx("AmmoRocket", random(51, 55), random(-4, 4), 40, 2, 0, 2, angle, SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_Refire
-		Goto Ready	
-		
+		Goto Ready
+
 	DropCell:
 		ADRO H 1 BRIGHT
 		ADRO H 1 BRIGHT A_JumpIFInventory("AmmoCell", 20, 4)
@@ -218,8 +229,8 @@ ACTOR AmmoDroper : BrutalWeapon
 		TNT1 A 0 A_TakeInventory("AmmoCell", 20)
 		ADRO H 10 BRIGHT A_SpawnItemEx("AmmoCell", random(51, 55), random(-4, 4), 40, 2, 0, 2, angle, SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_Refire
-		Goto Ready	
-		
+		Goto Ready
+
 	DropGas:
 		ADRO I 1 BRIGHT
 		ADRO I 1 BRIGHT A_JumpIFInventory("Gas", 50, 4)
@@ -229,8 +240,8 @@ ACTOR AmmoDroper : BrutalWeapon
 		TNT1 A 0 A_TakeInventory("Gas", 50)
 		ADRO I 10 BRIGHT A_SpawnItemEx("Gas", random(51, 55), random(-4, 4), 40, 2, 0, 2, angle, SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_Refire
-		Goto Ready		
-		
+		Goto Ready
+
 	DropGrenade:
 		ADRO J 1 BRIGHT
 		ADRO J 1 BRIGHT A_JumpIFInventory("GrenadeAmmo", 1, 4)
@@ -240,20 +251,20 @@ ACTOR AmmoDroper : BrutalWeapon
 		TNT1 A 0 A_TakeInventory("GrenadeAmmo", 1)
 		ADRO J 10 BRIGHT A_SpawnItemEx("GrenadeAmmo", random(51, 55), random(-4, 4), 40, 2, 0, 2, angle, SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_Refire
-		Goto Ready		
-	
-	DropHealth:	
+		Goto Ready
+
+	DropHealth:
 		ADRO L 1 BRIGHT
 		ADRO L 1 BRIGHT A_JumpIf(health >= 105, 4)
 		TNT1 A 0 BRIGHT A_Print("Not enough bonus health to drop", 1)
 		Goto Ready
 		TNT1 AAAA 0
-		TNT1 A 0 ACS_ExecuteAlways(395)//Decrease health by 5
+		TNT1 A 0 ACS_NamedExecuteAlways("BDMinusFiveHealth")//Decrease health by 5
 		ADRO L 10 BRIGHT A_SpawnItemEx("HealthPlusDropped", random(51, 55), random(-4, 4), 40, 2, 0, 2, angle, SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_Refire
 		Goto Ready
-	
-	DropArmor:	
+
+	DropArmor:
 		ADRO K 1 BRIGHT
 		ADRO K 1 BRIGHT A_JumpIFInventory("BasicArmor", 5, 4)
 		TNT1 A 0 BRIGHT A_Print("Not enough armor to drop", 1)
@@ -262,7 +273,7 @@ ACTOR AmmoDroper : BrutalWeapon
 		TNT1 A 0 A_TakeInventory("BasicArmor", 5)
 		ADRO K 10 BRIGHT A_SpawnItemEx("ArmorShardDroped", random(51, 55), random(-4, 4), 40, 2, 0, 2, angle, SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_Refire
-		Goto Ready	
+		Goto Ready
 	}
 }
 

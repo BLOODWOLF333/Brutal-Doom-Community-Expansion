@@ -1,0 +1,301 @@
+height 32;
+monospacefonts true, "0";
+
+statusbar fullscreen, fullscreenoffsets
+{
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// SIMPLE
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Checks if none of other HUDs are being used, making this one the default one.
+	//Previously it used to check a sbartype1 token, but this system didn't work when spectating a player
+	//in zandronum, showing no HUD at all.
+	InInventory not sbartype2, 1
+	{
+		InInventory not sbartype3, 1
+		{
+			// Keys
+			drawswitchableimage BDbluecard && BDblueSkull, "nullimage", "STKEYS0", "STKEYS3", "STKEYS6", 97, -15;
+			drawswitchableimage BDyellowcard && BDyellowSkull, "nullimage", "STKEYS1", "STKEYS4", "STKEYS7", 107, -15;
+			drawswitchableimage BDredcard && BDredSkull, "nullimage", "STKEYS2", "STKEYS5", "STKEYS8", 117, -15;
+
+			// Armor
+			drawimage armoricon, 72, -16;
+			drawnumber 2, INDEXFONT, green, SavePercent, drawshadow(1,1) | whennotzero, 85, -18, 0, yellow, 33, blue, 80;
+			drawnumber 6, SMALLFONT, green, armor, drawshadow(1,1) | whennotzero, 84, -12, 0, yellow, 49, blue, 101;
+
+			// Health
+			InInventory GenderMale, 1
+			{
+			drawmugshot "STM", 5, 15, -48;
+			}
+
+			InInventory GenderFemale, 1
+			{
+			drawmugshot "GAL", 5, 15, -48;
+			}
+
+			InInventory PowerStrength
+			{
+			DrawImage "HASBERK", 15, -48;
+			}
+			drawnumber 6, SMALLFONT, yellow, health, drawshadow(1,1), 43, -12, 0, red, 25, green, 76;
+
+			//AMMO
+			drawimage ammoicon2, -76, -24;
+			drawnumber 4, DIGINUMBER, red, ammo2, -63, -15, 0;
+			drawimage ammoicon1, -28, -24;
+			InInventory SlugMode, 1
+			{
+			drawimage "SHELB0", -28, -24;
+			}
+			drawnumber 4, DIGINUMBER, red, ammo1, -15, -15, 0;
+
+			//STAMINA
+			drawnumber 4, SMALLFONT, white, Ammo UsedStamina, drawshadow(1,1) | whennotzero, 8+center, -8, 0;
+
+			//RADSUIT
+			drawnumber 4, SMALLFONT, green, PowerupTime RadSuit, drawshadow(1,1) | whennotzero, 8+center, -16, 0;
+
+			//INVULNERABILITY
+			drawnumber 4, SMALLFONT, darkgreen, PowerupTime InvulnerabilitySphere, drawshadow(1,1) | whennotzero, 8+center, -24, 0;
+
+			//INFRARED
+			drawnumber 4, SMALLFONT, brick, PowerupTime ArtiTorch, drawshadow(1,1) | whennotzero, 8+center, -32, 0;
+
+			//INVISIBILITY
+			drawnumber 4, SMALLFONT, black, PowerupTime BlurSphere, drawshadow(1,1) | whennotzero, 8+center, -40, 0;
+
+			//GRENADES
+			drawimage "GRNDA", -116, -2;
+			drawnumber 4, SMALLFONT, red, Ammo GrenadeAmmo, drawshadow(1,1), -116, -8, 0;
+
+			gamemode deathmatch, teamgame
+			{
+				DrawString SMALLFONT, darkred, "Frags", 20+center, 4;
+				drawnumber 8, SMALLFONT, darkred, frags, drawshadow(1,1), 4+center, 12;
+			}
+		}
+	}
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// Minimalist
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	InInventory sbartype2, 1
+	{
+
+		// Keys
+		drawswitchableimage BDbluecard && BDblueSkull, "nullimage", "STKEYS0", "STKEYS3", "STKEYS6", 95, -15;
+		drawswitchableimage BDyellowcard && BDyellowSkull, "nullimage", "STKEYS1", "STKEYS4", "STKEYS7", 105, -15;
+		drawswitchableimage BDredcard && BDredSkull, "nullimage", "STKEYS2", "STKEYS5", "STKEYS8", 115, -15;
+
+		// Health
+		drawnumber 6, BIGFONT, yellow, health, drawshadow(1,1) | whennotzero, 47, -15, 0, red, 25, green, 76;
+
+		// Armor
+		drawnumber 6, BIGFONT, green, armor, drawshadow(1,1) | whennotzero, 88, -15, 0, yellow, 49, blue, 101;
+
+		//Ammo
+		drawnumber 4, BIGFONT, red, ammo2, drawshadow(1,1) | whennotzero, -80, -15, 0;
+		drawnumber 4, BIGFONT, red, ammo1, drawshadow(1,1) | whennotzero, -36, -15, 0;
+
+		//GRENADES
+		drawimage "GRNDA", -15, -4;
+		drawnumber 4, SMALLFONT, red, Ammo GrenadeAmmo, drawshadow(1,1), -15, -12, 0;
+
+		//STAMINA
+		drawnumber 4, SMALLFONT, white, Ammo UsedStamina, drawshadow(1,1) | whennotzero, 8+center, -8, 0;
+
+		//RADSUIT
+		drawnumber 4, SMALLFONT, green, PowerupTime RadSuit, drawshadow(1,1) | whennotzero, 8+center, -16, 0;
+
+		//INVULNERABILITY
+		drawnumber 4, SMALLFONT, darkgreen, PowerupTime InvulnerabilitySphere, drawshadow(1,1) | whennotzero, 8+center, -24, 0;
+
+		//INFRARED
+		drawnumber 4, SMALLFONT, brick, PowerupTime ArtiTorch, drawshadow(1,1) | whennotzero, 8+center, -32, 0;
+
+		//INVISIBILITY
+		drawnumber 4, SMALLFONT, black, PowerupTime BlurSphere, drawshadow(1,1) | whennotzero, 8+center, -40, 0;
+
+		gamemode deathmatch, teamgame
+		{
+			DrawString SMALLFONT, darkred, "Frags", 20+center, 4;
+			drawnumber 8, SMALLFONT, darkred, frags, drawshadow(1,1), 4+center, 12;
+		}
+	}
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// Doom Nukem's Full Helmet
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	InInventory sbartype3, 1
+	{
+		// basic layout
+		DrawImage "HELMBOTM", 0+center, -29, center;
+		DrawImage "HELMTOP", 0+center, 11, center;
+		Alpha 0.5
+
+		// health and armor bars
+		Alpha 0.75
+		DrawBar "HealthFu", "HealthEm", Health, horizontal, interpolate(8), -140+center, -41;
+		Alpha 0.75
+		DrawNumber 3, DIGIFONT_SMALL, DoomNukemStatusBarGreen, Health, Alignment(right), fillzeros, -92+center, -31;
+		DrawBar "ArmorFul", "ArmorEmp", Armor, horizontal, interpolate(8), -140+center, -26;
+		Alpha 0.75
+		DrawNumber 3, DIGIFONT_SMALL, DoomNukemStatusBarGreen, Armor, Alignment(right), fillzeros, -88+center, -20;
+
+		// ammo bar
+		Alpha 0.75
+		UsesSecondaryAmmo
+		{
+		DrawNumber 3, DIGIFONT_LARGE, DoomNukemStatusBarGreen, Ammo2, Alignment(left), fillzeros, 88+center, -26;
+		DrawNumber 3, DIGIFONT_SMALL, DoomNukemStatusBarGreen, Ammo1, Alignment(left), fillzeros, 128+center, -20;
+		}
+		Alpha 0.75
+		UsesSecondaryAmmo not
+		{
+		DrawNumber 3, DIGIFONT_LARGE, DoomNukemStatusBarGreen, Ammo1, Alignment(left), fillzeros, 88+center, -26;
+		}
+
+		// level stats
+		Alpha 0.75
+		drawnumber 4, AMMOFONT, DoomNukemIndexGreen, kills, drawshadow(1,1), -86+center, 24;
+		Alpha 0.75
+		drawnumber 4, AMMOFONT, DoomNukemIndexGreen, monsters, Alignment(left), drawshadow(1,1), -80+center, 24;
+		Alpha 0.75
+		drawnumber 3, AMMOFONT, DoomNukemIndexGreen, items, drawshadow(1,1), -86+center, 31;
+		Alpha 0.75
+		drawnumber 3, AMMOFONT, DoomNukemIndexGreen, totalitems, Alignment(left), drawshadow(1,1), -80+center, 31;
+		Alpha 0.75
+		drawnumber 2, AMMOFONT, DoomNukemIndexGreen, secrets, drawshadow(1,1), -80+center, 38;
+		Alpha 0.75
+		drawnumber 2, AMMOFONT, DoomNukemIndexGreen, totalsecrets, Alignment(left), drawshadow(1,1), -74+center, 38;
+
+		// keys
+		DrawKeyBar 1, horizontal, 9, 88+center, 32, 0;
+		DrawKeyBar 1, horizontal, 9, 96+center, 31, 1;
+		DrawKeyBar 1, horizontal, 9, 104+center, 30, 2;
+		DrawKeyBar 1, horizontal, 9, 112+center, 29, 3;
+		DrawKeyBar 1, horizontal, 9, 120+center, 28, 4;
+		DrawKeyBar 1, horizontal, 9, 128+center, 27, 5;
+
+		//STAMINA
+		drawnumber 4, SMALLFONT, white, Ammo UsedStamina, drawshadow(1,1) | whennotzero, 8+center, -8, 0;
+
+		//RADSUIT
+		drawnumber 4, SMALLFONT, green, PowerupTime RadSuit, drawshadow(1,1) | whennotzero, 8+center, -16, 0;
+
+		//INVULNERABILITY
+		drawnumber 4, SMALLFONT, darkgreen, PowerupTime InvulnerabilitySphere, drawshadow(1,1) | whennotzero, 8+center, -24, 0;
+
+		//INFRARED
+		drawnumber 4, SMALLFONT, brick, PowerupTime ArtiTorch, drawshadow(1,1) | whennotzero, 8+center, -32, 0;
+
+		//INVISIBILITY
+		drawnumber 4, SMALLFONT, black, PowerupTime BlurSphere, drawshadow(1,1) | whennotzero, 8+center, -40, 0;
+
+		// hud face :)
+
+		InInventory GenderMale, 1
+		{
+		DrawImage "HEADSUP", 0+center, 100, center;
+		drawmugshot "STM", 5, 16+center, 7;
+		}
+
+		InInventory GenderFemale, 1
+		{
+		DrawImage "HEADSUP2", 0+center, 100, center;
+		drawmugshot "GAL", 5, 16+center, 7;
+		}
+
+		InInventory PowerStrength
+		{
+		DrawImage "HASBERK", 18+center, 7;
+		}
+
+		gamemode deathmatch, teamgame
+		{
+			DrawString SMALLFONT, darkred, "Frags", 20+center, 4;
+			drawnumber 8, SMALLFONT, darkred, frags, drawshadow(1,1), 4+center, 12;
+		}
+	}
+}
+
+statusbar normal // Standard Doom Status bar
+{
+	drawimage "STBAR", 0, 168;
+	drawimage "STTPRCNT", 90, 171;
+	drawimage "STTPRCNT", 221, 171;
+	drawnumber 3, HUDFONT_DOOM, untranslated, ammo1, 44, 171;
+	drawnumber 3, HUDFONT_DOOM, untranslated, health, 90, 171;
+	drawnumber 3, HUDFONT_DOOM, untranslated, armor, 221, 171;
+
+	//keys
+	drawswitchableimage keyslot 2 && 5, "nullimage", "STKEYS0", "STKEYS3", "STKEYS6", 238, 169;
+	drawswitchableimage keyslot 3 && 6, "nullimage", "STKEYS1", "STKEYS4", "STKEYS7", 238, 179;
+	drawswitchableimage keyslot 1 && 4, "nullimage", "STKEYS2", "STKEYS5", "STKEYS8", 238, 189;
+
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammo Clip2, 288, 173;
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammo AmmoShell, 288, 179;
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammo AmmoRocket, 288, 185;
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammo AmmoCell, 288, 191;
+
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammocapacity Clip2, 314, 173;
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammocapacity AmmoShell, 314, 179;
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammocapacity AmmoRocket, 314, 185;
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammocapacity AmmoCell, 314, 191;
+	gamemode deathmatch, teamgame
+	{
+		DrawString SMALLFONT, darkred, "Frags", 180, 0;
+		drawnumber 8, SMALLFONT, darkred, frags, drawshadow(1,1), 164, 8;
+	}
+
+	//STAMINA
+	drawnumber 4, SMALLFONT, white, Ammo UsedStamina, whennotzero | interpolate(4), 168, 160, 0;
+
+	//RADSUIT
+	drawnumber 4, SMALLFONT, green, PowerupTime RadSuit, whennotzero, 193, 160, 0;
+
+	//INVULNERABILITY
+	drawnumber 4, SMALLFONT, darkgreen, PowerupTime InvulnerabilitySphere, whennotzero, 143, 160, 0;
+
+	//INFRARED
+	drawnumber 4, SMALLFONT, brick, PowerupTime ArtiTorch, whennotzero, 226, 160, 0;
+
+	//INVISIBILITY
+	drawnumber 4, SMALLFONT, black, PowerupTime BlurSphere, whennotzero, 118, 160, 0;
+
+	//GRENADES
+	drawimage "GRNDA", 310, 168;
+	drawnumber 4, SMALLFONT, red, Ammo GrenadeAmmo, drawshadow(1,1), 314, 160, 0;
+
+	drawimage "STARMS", 104, 168;
+	drawnumber 3, DIGINUMBER, untranslated, ammo2, fillzeros, 140, 173;
+
+	InInventory PowerStrength
+	{
+	DrawImage "HASBERK", 143, 168;
+	}
+
+	drawselectedinventory alternateonempty, INDEXFONT, 143, 168
+	{
+		InInventory GenderMale, 1
+		{
+		drawmugshot "STM", 5, 143, 168;
+		}
+
+		InInventory GenderFemale, 1
+		{
+		drawmugshot "GAL", 5, 143, 168;
+		}
+	}
+}
+
+statusbar inventory // Standard bar overlay (ZDoom Addition)
+{
+	drawinventorybar Doom, 7, INDEXFONT, 50, 170;
+}
+
+statusbar inventoryfullscreen // ZDoom HUD overlay.
+{
+	drawinventorybar Doom, translucent, 7, INDEXFONT, 50, 170;
+}

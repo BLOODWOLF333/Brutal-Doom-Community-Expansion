@@ -5,130 +5,44 @@ ACTOR Labguy: RifleZombie
 	Radius 18
 	Height 40
     Speed 12
-	FastSpeed 14
+	FastSpeed 15
 	PainChance 190
-	
-	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
-	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 10.0
-	Damagefactor "Cut", 10.0	Damagefactor "Extremepunches", 2.0	Damagefactor "Fatality", 5.0
-	Damagefactor "FriendBullet", 1.0	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.1
-	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 1.5	Damagefactor "HeadKick", 1.0
-	Damagefactor "HelperMarineFatallity", 2.0	Damagefactor "KillMe", 1.0	Damagefactor "Leg", 0.5
-	Damagefactor "LowKick", 0.5	Damagefactor "MonsterKnocked", 1.0	Damagefactor "PussyGrab", 50.0
-	Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "Saw", 10.0
-	Damagefactor "Slide", 0.5	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 1.0
-	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
 
-	PainChance "Avoid", 0	PainChance "Burn", 255	PainChance "Cut", 255
-	PainChance "ExplosiveImpact", 255	PainChance "Extremepunches", 255	PainChance "Fatality", 255
-	PainChance "Fire", 255	PainChance "Flames", 255	PainChance "GreenFire", 255
-	PainChance "Head", 255	PainChance "HelperMarineFatallity", 255	PainChance "HumanBBQ", 255
-	PainChance "Kick", 255	PainChance "LowKick", 255	PainChance "Melee", 255
-	PainChance "MonsterKnocked", 255	PainChance "Saw", 255	PainChance "Slide", 255
-	PainChance "Stealth", 255	PainChance "Taunt", 255	PainChance "Trample", 255
-	
+	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
+	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0	DamageFactor "TankWeakSpot", 0.0
+	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 1.5	Damagefactor "PussyGrab", 100.0
+	Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0
+	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "SSG", 5.0
+	Damagefactor "ExtremePunches", 2.0	Damagefactor "Fatality", 5.0	Damagefactor "HelperMarineFatallity", 5.0
+
+	PainChance "Head", 255	PainChance "PussyGrab", 255
+	PainChance "Slide", 255	PainChance "Stealth", 255	PainChance "Taunt", 255
+
 	DamageType "Melee"
-	MaxTargetRange 128
-	+NOBLOCKMONST
-	+DROPOFF
 	Obituary "%o has been cut down by a zombie labworker."
 	DropItem "none"
 	AttackSound "none"
 	Tag "Civilian Zombie"
 	States
 	{
-		Possession:
-		TNT1 A 0 A_SetInvulnerable
-		SCZA G 3
-		SCZA G 3 A_Pain
-		"####" "#" 35 ACS_NamedExecuteAlways("Pos - Flicker effect")
-		TNT1 A 0 A_UnSetInvulnerable
-		Goto See
-
 		Spawn:
 		TNT1 A 0
 		TNT1 A 0 A_GiveInventory("SKLabGuy", 1)
 		TNT1 A 0 A_GiveInventory("TypeZombieMan", 1)
-		TNT1 A 0 A_TakeInventory("ZombiemanAmmo", 20)
-		TNT1 A 0 A_GiveInventory("ZombieManAmmo", random(1,10))
-
 		SCZA B 1
 		Goto Stand
 
 		Stand:
-		//TNT1 A 0 A_SpawnItem ("LegTarget100")
-		TNT1 A 0 A_CheckSight("Stand2")
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem ("LegTarget100")
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget200", 0, 32)
 		SCZA ABABABABAB 10 A_Look
 		SCZA ABABABAB 10 A_Look
 		Loop
 
-		Stand2:
-		SCZA AB 14 A_Look
-		Goto Stand
-
-		WalkAround:
-		TNT1 A 0 A_TakeInventory("SKLabGuy", 1)
-
-		TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 10, 0, 0)
-
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-
-		SCZA A 2 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA A 2 A_Wander
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		TNT1 A 0 A_Recoil(-1)
-
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA B 2 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA B 2 A_Wander
-		TNT1 A 0 A_PlaySound("humans/step",3)
-
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA D 2 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA D 2 A_Wander
-		TNT1 A 0 A_PlaySound("humans/step",4)
-
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA C 2 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA C 2 A_Wander
-
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA D 2 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA D 2 A_Wander
-		TNT1 A 0 A_PlaySound("humans/step",4)
-
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA B 2 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA B 2 A_Wander
-		TNT1 A 0 A_PlaySound("humans/step",4)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		TNT1 A 0 A_Jump(32, "Stand")
-		Loop
-
 		SearchForPlayer:
 		Idle:
-		TNT1 A 0 A_JumpIfHealthLower(1, "Death")
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_TakeInventory("EnemyMemory", 30)
 		TNT1 A 0 A_GiveInventory("SKLabGuy", 1)
@@ -160,132 +74,84 @@ ACTOR Labguy: RifleZombie
 		SCZA A 4 A_Look
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
 		TNT1 A 0 A_Wander
-		TNT1 A 0 A_Recoil(-1)
 		SCZA B 4 A_Look
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
 		TNT1 A 0 A_Wander
-		TNT1 A 0 A_Recoil(-1)
 		SCZA C 4 A_Look
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
 		TNT1 A 0 A_Wander
-		TNT1 A 0 A_Recoil(-1)
 		SCZA D 4 A_Look
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
 		TNT1 A 0 A_Wander
-		TNT1 A 0 A_Recoil(-1)
 
 		TNT1 A 0 A_Jump(128, "Idle")
 		SCZA A 4 A_Look
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
 		TNT1 A 0 A_Wander
-		TNT1 A 0 A_Recoil(-1)
 		SCZA B 4 A_Look
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
 		TNT1 A 0 A_Wander
-		TNT1 A 0 A_Recoil(-1)
 		SCZA C 4 A_Look
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
 		TNT1 A 0 A_Wander
-		TNT1 A 0 A_Recoil(-1)
 		SCZA D 4 A_Look
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
 		TNT1 A 0 A_Wander
-		TNT1 A 0 A_Recoil(-1)
 		Loop
 
-		FallBack:
-		TNT1 A 0 A_CheckSight("Advance")
-		TNT1 A 0 A_ChangeFLag("NODROPOFF", 1)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		SCZA D 2 A_FaceTarget
-		SCZA D 2 A_Recoil(2)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		SCZA C 2 A_FaceTarget
-		SCZA C 2 A_Recoil(2)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		SCZA B 2 A_FaceTarget
-		SCZA B 2 A_Recoil(2)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		SCZA A 2 A_FaceTarget
-		SCZA A 2 A_Recoil(2)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		SCZA D 2 A_FaceTarget
-		SCZA D 2 A_Recoil(2)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		SCZA C 2 A_FaceTarget
-		SCZA C 2 A_Recoil(2)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		SCZA B 2 A_FaceTarget
-		SCZA B 2 A_Recoil(2)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		SCZA A 2 A_FaceTarget
-		SCZA A 2 A_Recoil(2)
-		GOto SeeContinue
-
 		See:
-		TNT1 A 0 A_JumpIfHealthLower(1, "Death")
-		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 		TNT1 A 0 A_TakeInventory("SKLabGuy", 1)
 		TNT1 A 0 A_TakeInventory("EnemyMemory", 15)
 		TNT1 A 0 A_CheckSight("SeeNeverSeen")
 		Goto SeeContinue
 
 		SeeContinue:
-		TNT1 A 0 A_JumpIfHealthLower(1, "Death")
-		//TNT1 A 0 A_JumpIfCloser(200, "FallBack")
-		Advance:
-		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
-		TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 10, 0, 0)
+		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 15, "SearchForPlayer")
 		TNT1 A 0 A_GiveInventory("EnemyMemory", 1)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
 
-		SCZA AA 2 A_Chase
-		TNT1 A 0 A_Recoil(-1)
-		TNT1 A 0 A_TakeInventory("SKLabGuy", 1)
-
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
+		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
 		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA BB 2 A_Chase
+		SCZA AAA 2 A_Chase("Melee","")
+
+		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
+		TNT1 A 0 A_SpawnItem ("LegTargetBase")
+		SCZA BBB 2 A_Chase("Melee","")
 		TNT1 A 0 A_PlaySound("humans/step",3)
 
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
+		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
 		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA CC 2 A_Chase
+		SCZA CCC 2 A_Chase("Melee","")
 
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
+		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
 		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA DD 2 A_Chase
+		SCZA DDD 2 A_Chase("Melee","")
 		TNT1 A 0 A_PlaySound("humans/step",3)
 		Loop
 
 		SeeNeverSeen:
-		//TNT1 A 0 A_JumpIfCloser(200, "FallBack")
-		Advance:
-		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
-		TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 10, 0, 0)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
 		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA AA 2 A_Chase
-		TNT1 A 0 A_Recoil(-1)
-		TNT1 A 0 A_TakeInventory("SKLabGuy", 1)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
+		SCZA AAA 2 A_Chase("Melee","")
+		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
 		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA BB 2 A_Chase
+		SCZA BBB 2 A_Chase("Melee","")
 		TNT1 A 0 A_PlaySound("humans/step",3)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
+		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
 		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA CC 2 A_Chase
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
+		SCZA CCC 2 A_Chase("Melee","")
+		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
 		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA DD 2 A_Chase
+		SCZA DDD 2 A_Chase("Melee","")
 		TNT1 A 0 A_PlaySound("humans/step",3)
 		Loop
 
 		Pain.Taunt:
+		Pain.KillMe:
 		TNT1 A 0
 		POSS B 0 A_Pain
+		TNT1 A 0 HealThing(2)
 		TNT1 A 0 A_ChangeFlag("FASTER", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
@@ -296,40 +162,36 @@ ACTOR Labguy: RifleZombie
 		TNT1 A 0 A_PlaySound("grunt/sight", 1)
 		Goto SeeContinue
 
-		Melee:
 		Missile:
+		Goto SeeContinue
+
+		Melee:
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
 		TNT1 A 0 A_SpawnItem ("LegTarget10")
-		SCZA E 1 A_FaceTarget
-		TNT1 A 0 A_Recoil(-5)
 		SCZA E 6 A_FaceTarget
 		TNT1 A 0 A_PlaySound("skeleton/swing")
-		TNT1 A 0 A_CustomMissile("ZombieAxeAttack",10,0,0,0)
+		TNT1 A 0 A_CustomMissile("ZombieAxeAttack",25,0,0,0)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
 		TNT1 A 0 A_SpawnItem ("LegTarget10")
 		SCZA F 6 A_FaceTarget
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
 		TNT1 A 0 A_SpawnItem ("LegTarget10")
-		SCZA E 6
-		Goto See
-
-		Pain.Taunt:
-		Pain.KillMe:
-		TNT1 A 0
-		TNT1 A 0 HealThing(1)
+		SCZA E 6 A_FaceTarget
 		Goto See
 
 		Death.KillMe:
 		Death.Taunt:
 		Death.Avoid:
+		Death.Stealth:
 		TNT1 A 0
-		//TNT1 A 0 A_ChangeFlag("SOLID", 0)
+		TNT1 A 0 A_ChangeFlag("SOLID", 0)
 		TNT1 A 0 A_SpawnItem("Labguy")
-		TNT1 A 0
 		Stop
 
 		Pain:
 		Pain.Cut:
+		Pain.Saw:
+		Pain.Shrapnel:
 		Pain.Head:
 		TNT1 A 0 A_JumpIfInventory ("IsDown", 1, 7)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
@@ -346,6 +208,7 @@ ACTOR Labguy: RifleZombie
 		Goto See
 
 		Pain.Melee:
+		Pain.Fatality:
 		TNT1 A 0 A_JumpIfInventory ("IsDown", 1, 7)
 		TNT1 A 0 A_JumpIfInventory ("SKLabguy", 1, "GotoStealthKill")
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 32)
@@ -363,9 +226,9 @@ ACTOR Labguy: RifleZombie
 
 		Pain.Stealth:
 		TNT1 A 0
-		TNT1 A 0 A_Pain
 		TNT1 A 0 A_JumpIfInventory ("SKLabguy", 1, "GotoStealthKill")
 		TNT1 A 0 A_JumpIfInventory ("IsDown", 1, "GroundExecution")
+		TNT1 A 0 HealThing(2)
 		Goto See
 
 		GroundExecution:
@@ -373,7 +236,7 @@ ACTOR Labguy: RifleZombie
 		TNT1 A 0 A_Custommissile("BloodyAxe", 32, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_GiveToTarget("ExecuteDownedZombieman", 1)
 		TNT1 A 0 A_GiveToTarget("GoSpecial", 1)
-		Stop	
+		Stop
 
 		Pain.ExplosiveImpact:
 		Pain.Explosive:
@@ -388,8 +251,10 @@ ACTOR Labguy: RifleZombie
 
 		Pain.Kick:
 		Pain.Stomp:
+		Pain.HeavyImpact:
 		Pain.ExtremePunches:
 		Pain.BlackHole:
+		Pain.Slide:
 		TNT1 A 0
 		FS11 G 1 A_Pain
 		TNT1 A 0 A_JumpIfInventory ("IsDown", 1, "Pain")
@@ -478,7 +343,7 @@ ACTOR Labguy: RifleZombie
 		TNT1 A 0 A_JumpIfCloser(200, "Death.Shotgunontheface")
 		Goto Death
 
-		Death.Shotgunontheface:	
+		Death.Shotgunontheface:
 
 		TNT1 A 0
 		TNT1 A 0 A_Jump(128, "Death.Arm", "Death.Leg")
@@ -522,7 +387,7 @@ ACTOR Labguy: RifleZombie
 		TNT1 A 1
 		TNT1 A 0 A_Explode(100, 1, 1)
 		TNT1 A 1
-		Goto See	
+		Goto See
 
 		StealthKill:
 		TNT1 A 1
@@ -530,6 +395,7 @@ ACTOR Labguy: RifleZombie
 		TNT1 A 0 A_GiveToTarget("GoSpecial", 1)
 		TNT1 A 0 A_GiveToTarget("SKLabguy", 1)
 		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_Custommissile("BloodyAxe", 32, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_Die("Stealthy")
 		TNT1 A 0 A_Fall
 		TNT1 A 1 A_GiveToTarget("SoulAmmo", 10)
@@ -540,6 +406,7 @@ ACTOR Labguy: RifleZombie
 		Stop
 
 		Death:
+		Death.Minor:
 		TNT1 A 0 A_JumpIfInventory ("IsDown", 1, "Death.Down")
 		TNT1 A 0
 		TNT1 AA 0 A_CustomMissile ("brutal_FlyingBlood", 7, 0, random (0, 360), 2, random (0, 160))
@@ -620,7 +487,7 @@ ACTOR Labguy: RifleZombie
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 A_Scream
 		TNT1 O 0 A_NoBlocking
-
+		TNT1 A 0 A_Custommissile("BloodyAxe", 32, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_SpawnItem ("BrutalizedFormerScientist1", 1)
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
 		Stop
@@ -628,7 +495,7 @@ ACTOR Labguy: RifleZombie
 		Death.LegMassacre:
 		TNT1 A 0
 		TNT1 A 0 A_CustomMissile ("MuchBlood2", 15, 0, random (0, 360), 2, random (0, 160))
-		//TNT1 A 0 A_SpawnItem ("Labguy_Noleg")
+		TNT1 A 0 A_Custommissile("BloodyAxe", 32, 0, random (0, 360), 2, random (50, 130))
 		FSS7 B 1 A_Scream
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem ("BrutalizedFormerScientistLeg")
@@ -644,7 +511,7 @@ ACTOR Labguy: RifleZombie
 		TNT1 O 0 A_NoBlocking
 		TNT1 A 0 A_CustomMissile ("RipLabguy", 0, 0, random (0, 360), 2, random (0, 160))
 		FSD1 FG 9
-		//  TNT1 A 0 A_SpawnItem ("DeadLabguy_Half")
+		TNT1 A 0 A_Custommissile("BloodyAxe", 32, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_PlaySound("BODYF",6)
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		TNT1 A 0 A_SpawnItem ("DeadLabguyFSD1H")
@@ -656,7 +523,6 @@ ACTOR Labguy: RifleZombie
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 22, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
 		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-
 		TNT1 A 0 A_Jump(256,"Death.Fatality1", "Death.Fatality2", "Death.Fatality3")
 		Goto Death.Fatality1
 
@@ -683,15 +549,15 @@ ACTOR Labguy: RifleZombie
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_GiveToTarget("LabGuyToken3", 1)
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
-		Stop	
+		Stop
 
 		HeadExploder:
 		TNT1 A 0 A_Jump(72, "Death.HeadExplode")
 		Goto Death.HeadMinor
 
 		Death.Head:
-		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
 		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate")
+		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
 		TNT1 A 0 A_JumpIfHealthLower(-50, "Death.HeadExplode")
 		TNT1 A 0 A_JumpIfInTargetInventory("RandomHeadExploder", 1, "HeadExploder")
 		Death.MinorHead:
@@ -817,9 +683,10 @@ ACTOR Labguy: RifleZombie
 		Stop
 
 		Death.Desintegrate:
-		TNT1 A 0 
+		TNT1 A 0
 		TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_Custommissile("BloodyAxe", 32, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_SpawnItem("DesintegratedHuman")
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
 		Stop
@@ -841,6 +708,7 @@ ACTOR Labguy: RifleZombie
 		TNT1 A 0
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_Custommissile("BloodyAxe", 32, 0, random (0, 360), 2, random (50, 130))
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 		TNT1 AAAA 0 A_CustomMissile ("brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160))
 
@@ -863,6 +731,7 @@ ACTOR Labguy: RifleZombie
 		TNT1 A 0
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_Custommissile("BloodyAxe", 32, 0, random (0, 360), 2, random (50, 130))
 		TNT1 AAAA 0 A_CustomMissile ("brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160))
 
 		TNT1 A 0 A_CustomMissile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
@@ -879,10 +748,11 @@ ACTOR Labguy: RifleZombie
 		Death.ExtremePunches:
 		TNT1 A 0
 		//TNT1 A 0 A_JumpIfInTargetInventory("HeavyStrikeRight", 1, "HeavyPunchRight")
-		//TNT1 A 0 A_JumpIfInTargetInventory("HeavyStrikeLeft", 1, "HeavyPunchLeft") 
+		//TNT1 A 0 A_JumpIfInTargetInventory("HeavyStrikeLeft", 1, "HeavyPunchLeft")
 		//TNT1 A 0 A_JumpIfInTargetInventory("HeavyStrikeUpper", 1, "HeavyPunchUpper")
 		TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_Custommissile("BloodyAxe", 32, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 A_CustomMissile ("ExtremePunchedZombieCivilian", 8, 0, random (175, 185), 2, random (10, 20))
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
@@ -901,6 +771,7 @@ ACTOR Labguy: RifleZombie
 		TNT1 A 0 A_CustomMissile ("LabguyHead", 32, 0, random (170, 190), 2, random (0, 40))
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_Custommissile("BloodyAxe", 32, 0, random (0, 360), 2, random (50, 130))
 		FSD1 DEEFFGH 6
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		TNT1 A 0 A_PlaySound("BODYF",6)
@@ -913,6 +784,7 @@ ACTOR Labguy: RifleZombie
 		TNT1 A 0 A_JumpIfInTargetInventory("SSGSelected", 1, "Death.SSG")
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_Custommissile("BloodyAxe", 32, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_CustomMissile ("SargeXDeath", 2, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
 		Stop
@@ -931,6 +803,7 @@ ACTOR Labguy: RifleZombie
 		TNT1 A 1
 		TNT1 A 1 A_XScream
 		TNT1 A 1 A_NoBlocking
+		TNT1 A 0 A_Custommissile("BloodyAxe", 32, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
 		Stop
 
@@ -982,6 +855,7 @@ ACTOR Labguy: RifleZombie
 		TNT1 AAAA 0 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 ThrustThingZ(0,50,0,1)
 		FS14 A 1 A_Scream
+		TNT1 A 0 A_Custommissile("BloodyAxe", 32, 0, random (0, 360), 2, random (50, 130))
 		FS16 A 9
 		FS16 BCD 9 A_CheckFloor("Dead.Landmine")
 		FS16 DDDDD 9 A_CheckFloor("Dead.Landmine")
@@ -1012,12 +886,11 @@ ACTOR Labguy: RifleZombie
 		Death.PussyGrab:
 		TNT1 A 0
 		TNT1 A 0 A_Pain
-		TNT1 A 0 A_Chase("","")
-		TNT1 A 0 A_Pain
 		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_Custommissile("BloodyAxe", 32, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_GiveToTarget("GrabbedAZombieCivilian", 1)
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
-		Stop	
+		Stop
 	}
 }
 
@@ -1025,13 +898,13 @@ ACTOR ZombieAxeAttack
 {
 	Radius 10
 	Height 18
-	Projectile 
+	Projectile
 	+RANDOMIZE
 	DamageType Rip
     Damage 4
 	+FORCEXYBILLBOARD
     +THRUGHOST
-    +BLOODSPLATTER 
+    +BLOODSPLATTER
 	RenderStyle Add
 	Alpha 0.6
 	+DONTHURTSPECIES
@@ -1039,11 +912,11 @@ ACTOR ZombieAxeAttack
 	SeeSound "None"
 	DeathSound "none"
 	Decal "none"
-    Speed 20
+    Speed 22
 	States
 	{
 	Spawn:
-		TNT1 A 4 BRIGHT
+		TNT1 A 2 BRIGHT
 		Stop
 	Death:
         TNT1 A 0 A_PlaySound("AxeHit")
@@ -1072,13 +945,13 @@ Actor DyingFormerScientistNoArm: DeadFormerScientist
     Height 32
     Health 20
     damagefactor "Head", 10.0
-	+SOLID
+	-SOLID
 	States
     {
 		Spawn:
 		TNT1 A 0
 
-		TNT1 A 0 A_PlaySound("BURNZOM")
+		TNT1 A 0 A_PlaySound("BURNZOM",4)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 32,0)
 		FSD2 BEBEBEBEBEBE 10 A_SpawnItem ("HeadshotTarget10", 5, 32,0)
 		FSD2 C 6
@@ -1087,6 +960,7 @@ Actor DyingFormerScientistNoArm: DeadFormerScientist
 		FSD3 D -1
 		Stop
 		Death:
+		TNT1 A 0 A_StopSound(4)
 		FSD2 C 6 A_ChangeFlag("SHOOTABLE", 0)
 		TNT1 A 0 A_PlaySound("grunt/death")
 		TNT1 A 0 A_NoBlocking
@@ -1096,6 +970,7 @@ Actor DyingFormerScientistNoArm: DeadFormerScientist
 
 		Death.Head:
 		Death.MinorHead:
+		TNT1 A 0 A_StopSound(4)
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 16, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
 		TNT1 A 0 A_CustomMissile ("MuchBlood2", 30, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAAA 0 A_CustomMissile ("Brains1", 30, 0, random (0, 360), 2, random (0, 160))
@@ -1117,6 +992,7 @@ Actor DyingFormerScientistNoArm: DeadFormerScientist
 		Stop
 		XDeath:
 		Crush:
+		TNT1 A 0 A_StopSound(4)
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 16, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
 		TNT1 A 0 A_SpawnItem("GibsZ")
 		TNT1 A 0 A_CustomMissile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160))
@@ -1135,13 +1011,13 @@ Actor DyingFormerScientistNoLeg: DeadFormerScientist
     Height 32
     Health 20
     damagefactor "Head", 10.0
-	+SOLID
+	-SOLID
 	States
     {
 		Spawn:
 		TNT1 A 0
 
-		TNT1 A 0 A_PlaySound("BURNZOM")
+		TNT1 A 0 A_PlaySound("BURNZOM",4)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 22,0)
 		FSS7 ABC 5
 		FSS7 DEDEDEDEDEDE 10 A_SpawnItem ("HeadshotTarget10", 5, 22,0)
@@ -1151,6 +1027,7 @@ Actor DyingFormerScientistNoLeg: DeadFormerScientist
 		FSS7 F -1
 		Stop
 		Death:
+		TNT1 A 0 A_StopSound(4)
 		TNT1 A 0 A_PlaySound("grunt/death")
 		FSS7 GH 5
 		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
@@ -1161,6 +1038,7 @@ Actor DyingFormerScientistNoLeg: DeadFormerScientist
 
 		Death.Head:
 		Death.MinorHead:
+		TNT1 A 0 A_StopSound(4)
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 16, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
 		TNT1 A 0 A_CustomMissile ("MuchBlood2", 30, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAAA 0 A_CustomMissile ("Brains1", 30, 0, random (0, 360), 2, random (0, 160))
@@ -1333,7 +1211,7 @@ actor BrutalizedFormerScientistStop3: DeadFormerScientist
 		Stop
 	}
 }
-	
+
 actor LabguyBeatenDown: DeadFormerScientist
 {
     States
@@ -1343,8 +1221,8 @@ actor LabguyBeatenDown: DeadFormerScientist
 		FSF1 L -1
 		Stop
 	}
-}	
-	
+}
+
 ACTOR BrutalizedFormerScientistLeg: BrutalizedFormerScientist1
 {
 	States
@@ -1401,7 +1279,7 @@ actor DeadLabguyFSADE: DeadFormerScientist
 		Stop
 	}
 }
-		
+
 actor DeadLabguySCZAL: DeadFormerScientist
 {
     States
@@ -1440,19 +1318,19 @@ actor DeadLabguyFSMSP: DeadFormerScientist
 		FSMS P -1
 		Stop
 	}
-}	
+}
 
 ACTOR VeryFuckedUpBrutalizedFormerScientistLeg: DeadFormerScientist
 {
-	Health 200 
+	Health 200
 	DamageFactor "ExplosiveImpact", 10.0
 	States
 	{
 		Spawn:
 		ID13 G -1
 		Stop
-		
-		Death.ExplosiveImpact:	
+
+		Death.ExplosiveImpact:
 		TNT1 A 0 ThrustThingZ(0,30,0,1)
 		ID13 ABCDEF 5
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 16, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
@@ -1460,10 +1338,10 @@ ACTOR VeryFuckedUpBrutalizedFormerScientistLeg: DeadFormerScientist
 		Stop
 	}
 }
-		  
+
 ACTOR VeryFuckedUpBrutalizedFormerScientistLeg2: VeryFuckedUpBrutalizedFormerScientistLeg
 {
-	Health 200 
+	Health 200
 	States
 	{
 		Spawn:
@@ -1471,7 +1349,7 @@ ACTOR VeryFuckedUpBrutalizedFormerScientistLeg2: VeryFuckedUpBrutalizedFormerSci
 		Stop
 	}
 }
-		
+
 ACTOR AxeSplitLabGuy: DeadFormerScientist
 {
   States
@@ -1482,7 +1360,7 @@ ACTOR AxeSplitLabGuy: DeadFormerScientist
 		Stop
 	}
 }
-	   
+
 Actor FacelessLabguy: DeadFormerScientist
 {
   States
@@ -1512,20 +1390,18 @@ Actor LabGuyHead
 		TNT1 A 0
 		FSHD BC 4
 		loop
-		
+
 		Death:
 		FSDH A 1
 		FSHD A-1
 		stop
 	}
 }
-	
+
 Actor BloodyAxe
 {
-	bouncefactor 0.1
 	speed 5
 	seesound ""
-	+DOOMBOUNCE
 	+MISSILE
 	+MOVEWITHSECTOR
 	+NOBLOCKMAP
@@ -1537,14 +1413,14 @@ Actor BloodyAxe
 		Spawn:
 		AXE1 A 6
 		loop
-		
+
 		Death:
 		AXE1 A 1
-		TNT1 A 0 A_SpawnItem("BrutalAxe")
+		TNT1 A 0 A_SpawnItem("AxeSpawner")
 		stop
 	}
 }
-	
+
 ACTOR RipLabguy
 {
     Radius 1
@@ -1612,7 +1488,7 @@ actor Gib_HalfLabGuy: BigGibBase
 		Loop
 	}
 }
-	
+
 Actor DeadLabguy_Half
 {
 	Mass 300
@@ -1621,8 +1497,8 @@ Actor DeadLabguy_Half
 	{
 		Spawn:
 		FSD1 H -1
-		Stop	
-		
+		Stop
+
 		Death:
 		TNT1 A 0 A_SpawnItem("GibsZ")
 		TNT1 AAA 0 A_CustomMissile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160))
@@ -1630,13 +1506,13 @@ Actor DeadLabguy_Half
 		TNT1 A 0 A_CustomMissile ("XDeath3", 5, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_CustomMissile ("XDeath4", 5, 0, random (0, 360), 2, random (0, 160))
 		Stop
-		
+
 		Death.Cut:
 		Death.Cutless:
 		Goto Death
 	}
 }
-		
+
 Actor Labguy_NoLeg: DeadShotgunGuy_NoLeg
 {
 	Alpha 1.0
@@ -1646,8 +1522,8 @@ Actor Labguy_NoLeg: DeadShotgunGuy_NoLeg
 	{
 		Spawn:
 		FSS7 F -1
-		Stop	
-		
+		Stop
+
 		Death:
 		TNT1 A 0 A_SpawnItem("GibsZ")
 		TNT1 AAA 0 A_CustomMissile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160))
@@ -1655,7 +1531,7 @@ Actor Labguy_NoLeg: DeadShotgunGuy_NoLeg
 		TNT1 A 0 A_CustomMissile ("XDeath3", 5, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_CustomMissile ("XDeath4", 5, 0, random (0, 360), 2, random (0, 160))
 		Stop
-		
+
 		Death.Cut:
 		Death.Cutless:
 		Goto Death

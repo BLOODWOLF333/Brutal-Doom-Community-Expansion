@@ -6,26 +6,18 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 	Mass 100
 	Speed 5
 	PainChance 255
-	
-	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
-	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 10.0
-	Damagefactor "Cut", 10.0	Damagefactor "Extremepunches", 2.0	Damagefactor "Fatality", 5.0
-	Damagefactor "FriendBullet", 1.0	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.1
-	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 1.5	Damagefactor "HeadKick", 1.0
-	Damagefactor "HelperMarineFatallity", 2.0	Damagefactor "KillMe", 1.0	Damagefactor "Leg", 0.5
-	Damagefactor "LowKick", 0.5	Damagefactor "MonsterKnocked", 1.0	Damagefactor "PussyGrab", 50.0
-	Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "Saw", 10.0
-	Damagefactor "Slide", 0.5	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 1.0
-	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
 
-	PainChance "Avoid", 0	PainChance "Burn", 255	PainChance "Cut", 255
-	PainChance "ExplosiveImpact", 255	PainChance "Extremepunches", 255	PainChance "Fatality", 255
-	PainChance "Fire", 255	PainChance "Flames", 255	PainChance "GreenFire", 255
-	PainChance "Head", 255	PainChance "HelperMarineFatallity", 255	PainChance "HumanBBQ", 255
-	PainChance "Kick", 255	PainChance "LowKick", 255	PainChance "Melee", 255
-	PainChance "MonsterKnocked", 255	PainChance "Saw", 255	PainChance "Slide", 255
-	PainChance "Stealth", 255	PainChance "Taunt", 255	PainChance "Trample", 255
-	
+	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
+	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0	DamageFactor "SSG", 5.0
+	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 1.5	Damagefactor "PussyGrab", 100.0
+	Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0
+	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	DamageFactor "TankWeakSpot", 0.0
+	Damagefactor "ExtremePunches", 2.0	Damagefactor "Fatality", 5.0	Damagefactor "HelperMarineFatallity", 5.0
+
+	PainChance "Head", 255	PainChance "PussyGrab", 255
+	PainChance "Slide", 255	PainChance "Stealth", 255	PainChance "Taunt", 255
+
 	Damagetype "Melee"
 	Monster
 	//Translation "192:207=176:191"
@@ -48,7 +40,7 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 	DropItem "DropedChaingunSpawner"
 	Obituary "%o has been mowed down by a Zombie Commando."
 	Tag "Minigun Zombie"
-	
+
 	States
 	{
 	ReplaceVanilla:
@@ -59,35 +51,30 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
     Spawn:
 		MPOS A 1
 		MPOS A 0 ACS_NamedExecuteAlways("BDCHeckClassicMonsters", 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		MPOS A 2
 		MPOS A 0 A_GiveInventory("SKChaingunGuy", 1)
 		MPOS A 0 A_JumpIfInTargetInventory("ChainguyguyContinue", 1, "MissileContinue")
 		Goto Stand
-		
+
 	STAND:
 		MPOS A 0
-		MPOS A 0 A_CheckSight("Stand2")
         MPOS A 0 A_SpawnItem ("HeadshotTarget20", 0, 41,0)
 		MPOS BB 9 A_Look
 		Loop
-		
-	Stand2:
-		MPOS B 15 A_Look
-		TNT1 A 0 A_CheckSight("Stand2")
-		Goto Stand
-		
-	Idle:	
+
+	Idle:
 	SearchForPlayer:
 		TNT1 A 0 A_ClearTarget
 	    TNT1 A 0 A_TakeInventory("EnemyMemory", 30)
 		TNT1 A 0 A_GiveInventory("SKChaingunguy", 1)
-		
+
 		MPOS A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
 		MPOS A 10 A_Look
 		MPOS A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
 		MPOS A 10 A_Look
 		MPOS A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
 		MPOS A 10 A_Look
-		
+
 		TNT1 A 0 A_SetAngle(angle - 40)
 		MPOS A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
 		MPOS A 10 A_Look
@@ -96,67 +83,67 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 		MPOS A 10 A_Look
 		MPOS A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
 		MPOS A 10 A_Look
-		
+
 		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 41,0)
 		TNT1 A 0 A_Wander
-		
+
 		MPOS A 4 A_Look
 		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 41,0)
 		TNT1 A 0 A_Wander
-		
+
 		MPOS B 4 A_Look
 		//TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 30, 0, 0)
 		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 41,0)
 		TNT1 A 0 A_Wander
-		
+
 		MPOS C 4 A_Look
 		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 41,0)
 		TNT1 A 0 A_Wander
-		
+
 		MPOS D 4 A_Look
 		//TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 30, 0, 0)
-		
+
 		TNT1 A 0 A_jump(128, "SearchForPlayer")
-		
+
 		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 41,0)
 		TNT1 A 0 A_Wander
-		
+
 		MPOS A 4 A_Look
 		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 41,0)
 		TNT1 A 0 A_Wander
-		
+
 		MPOS B 4 A_Look
 		//TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 30, 0, 0)
 		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 41,0)
 		TNT1 A 0 A_Wander
-		
+
 		MPOS C 4 A_Look
 		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 41,0)
 		TNT1 A 0 A_Wander
-		
+
 		MPOS D 4 A_Look
 		//TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 30, 0, 0)
 		Goto SearchForPlayer
-		
+
 	See:
 	TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 	TNT1 A 0 A_TakeInventory("SKChaingunGuy", 1)
 	TNT1 A 0 A_TakeInventory("EnemyMemory", 15)
 	TNT1 A 0 A_CheckSight("SeeNeverSeen")
 	Goto SeeContinue
-	
+
 	SeeContinue:
 	    TNT1 A 0 A_CheckSight("SeeNeverSeen")
-		
-	SeeContinuePart2:	
+
+	SeeContinuePart2:
 		TNT1 A 0 A_GiveInventory("EverSeenTheplayer", 1)
         //TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 30, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 12, "SearchForPlayer")
-		
+
 	SeeContinuePart36:
 		TNT1 A 0 A_GiveInventory("EnemyMemory", 1)
 		TNT1 A 0 A_TakeInventory("IsFiring", 1)
-		
+
 		MPOS A 0 A_SpawnItem("HeadshotTarget6", 0, 41,0)
 		MPOS AAA 2 A_Chase
 		MPOS A 0 A_SpawnItem("HeadshotTarget6", 0, 41,0)
@@ -165,16 +152,16 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 		MPOS CCC 2 A_Chase
 		MPOS A 0 A_SpawnItem("HeadshotTarget6", 0, 41,0)
 		MPOS DDD 2 A_Chase
-		
+
 		TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "Idle")
 		Loop
-		
+
 	SeeNeverSeen:
-		
+
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("EverSeenThePlayer", 1, "SeeContinuePart2")
         //TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 30, 0, 0)
-		
+
 		MPOS A 0 A_SpawnItem("HeadshotTarget6", 0, 41,0)
 		MPOS AAA 2 A_Chase
 		MPOS A 0 A_SpawnItem("HeadshotTarget6", 0, 41,0)
@@ -183,81 +170,69 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 		MPOS CCC 2 A_Chase
 		MPOS A 0 A_SpawnItem("HeadshotTarget6", 0, 41,0)
 		MPOS DDD 2 A_Chase
-		
+
         TNT1 A 0 A_CheckSight("SeeNeverSeen")
 		Goto SeeContinue
 
 	Missile:
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
 		TNT1 A 0 A_TakeInventory("EnemyMemory", 15)
-		
-		//TNT1 A 0 A_TakeInventory("CantFire", 1)
-		//TNT1 A 0 A_CustomMissile("MonsterTargetCheck", 34, 0, 0, 0) 
-		//TNT1 A 0 A_CustomMissile("MonsterTargetCheckFaster", 34, 0, 0, 0) 
-		MPOS E 6 A_FaceTarget
-		//TNT1 A 0 A_JumpIfInventory("CantFire",1, "SeeContinuePart36")
-		
 		TNT1 A 0 A_TakeInventory("SKChaingunGuy", 1)
-		TNT1 A 0 A_PlaySound("CHAINSTA")
-		MPOS E 4 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
-		MPOS E 7 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
-		MPOS E 7 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
-		MPOS E 7 A_FaceTarget
+		TNT1 A 0 A_PlaySound("CHAINSTA",5)
 		TNT1 A 0 A_GiveInventory("IsFiring", 1)
-		TNT1 A 0
-		MPOS E 1 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
-		
+		MPOS E 8 A_FaceTarget
+		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
+		MPOS E 8 A_FaceTarget
+		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
+		MPOS E 8 A_FaceTarget
+		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
+		MPOS E 8 A_FaceTarget
 
     MissileContinue:
-		
-        MPOS F 1 BRIGHT A_CustomMissile("MonsterMinigunTracer", 34, 0, random(-3, 3), 1, random(-2, 2))
+        MPOS F 1 BRIGHT A_CustomMissile("MonsterMinigunTracer", 34, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
         TNT1 A 0 A_CustomMissile("EnemyMinigunBrass", 34, 0, -60, 2, random(20, 55))
-		
-		MPOS E 1 A_FaceTarget 
+
+		MPOS E 1 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
-		TNT1 A 0 A_PlaySound("FARMGN", 6)
+		TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
-		
-        MPOS H 1 BRIGHT A_CustomMissile("Tracer", 34, 0, random(-3, 3), 1, random(-2, 2))
+
+        MPOS H 1 BRIGHT A_CustomMissile("Tracer", 34, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
         TNT1 A 0 A_CustomMissile("EnemyMinigunBrass", 34, 0, -60, 2, random(20, 55))
-		MPOS E 1 A_FaceTarget 
+		MPOS E 1 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
-		TNT1 A 0 A_PlaySound("FARMGN", 6)
+		TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
-		
-		MPOS F 1 BRIGHT A_CustomMissile("MonsterMinigunTracer", 34, 0, random(-3, 3), 1, random(-2, 2))
+
+		MPOS F 1 BRIGHT A_CustomMissile("MonsterMinigunTracer", 34, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
         TNT1 A 0 A_CustomMissile("EnemyMinigunBrass", 34, 0, -60, 2, random(20, 55))
-		MPOS E 1 A_FaceTarget 
+		MPOS E 1 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
-		TNT1 A 0 A_PlaySound("FARMGN", 6)
+		TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
-		
-        MPOS H 1 BRIGHT A_CustomMissile("Tracer", 34, 0, random(-3, 3), 1, random(-2, 2))
+
+        MPOS H 1 BRIGHT A_CustomMissile("Tracer", 34, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
         TNT1 A 0 A_CustomMissile("EnemyMinigunBrass", 34, 0, -60, 2, random(20, 55))
-		MPOS E 1 A_FaceTarget 
+		MPOS E 1 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
-		TNT1 A 0 A_PlaySound("FARMGN", 6)
+		TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
-		
+
 		TNT1 A 0 A_JumpIfInTargetInventory("ChainguyguyContinue", 1, "MissileContinue")
 		TNT1 A 0 A_CposRefire
 		Goto MissileContinue
 
      SpecialAttack:
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
-		MPOS E 10 A_FaceTarget 
+		MPOS E 10 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
         TNT1 A 0 A_CustomMissile("FireFightFlare", 34, 10, 15, 25)
 		MPOS F 10 //A_CustomMissile("CommandoGrenade",10,0,0,0)
         TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
 		MPOS E 10
-        Goto SeeContinue	
-		
+        Goto SeeContinue
+
 	   Pain.Melee:
 		MPOS G 4
 		TNT1 A 0 A_JumpIfInventory ("SKChaingunGuy", 1, "GotoStealthKill")
@@ -265,20 +240,19 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
         MPOS G 4 A_Pain
 		TNT1 A 0 A_TakeInventory("IsFiring", 1)
         Goto See
-		
+
 	 Pain.Stealth:
 		TNT1 A 0
-		TNT1 A 0 A_Pain
 		TNT1 A 0 A_JumpIfInventory ("SKChaingunguy", 1, "GotoStealthKill")
-        //TNT1 A 0 A_JumpIfInventory ("IsDown", 1, "GroundExecution")
+		TNT1 A 0 HealThing(2)
 		Goto See
-		
+
 	GroundExecution:
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_GiveToTarget("ExecuteDownedZombieman", 1)
 		TNT1 A 0 A_GiveToTarget("GoSpecial", 1)
 		Stop
-		
+
      Pain:
 	 Pain.Cut:
 	 Pain.Saw:
@@ -293,11 +267,11 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
         MPOS G 2 A_Pain
 		TNT1 A 0 A_TakeInventory("IsFiring", 1)
         Goto SeeContinue
-		
-	Pain.IsFiring:	
+
+	Pain.IsFiring:
 	CPDR A 3 A_SpawnItem("HeadshotTarget6", 0, 41,0)
 	TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-	
+
 	TNT1 A 0 A_CustomMissile ("MonsterMinigunTracer", 32, 15, 0, 2, -20)
 	CPDR B 3 BRIGHT
 	Goto MissileContinue
@@ -308,7 +282,7 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 		TNT1 A 0 ThrustThingZ(0,20,0,1)
 		MPOS G 6 ThrustThing(angle*256/360+128, 5, 0, 0)
 		Goto Pain
-	
+
 	Pain.Kick:
 	Pain.LowKick:
 		TNT1 A 0 A_Pain
@@ -346,9 +320,9 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 		TNT1 A 0 A_ChangeFlag("GHOST", 0)
 		TNT1 A 0 A_ChangeFlag("THRUGHOST", 0)
 		Goto See
-		
-		
-	
+
+
+
 	Death.MonsterShotgunBullet:
 	Death.Shotgun:
 	Death.HKFT:
@@ -364,14 +338,14 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
 		CPHM AB 4
-		TNT1 A 0 
+		TNT1 A 0
 		CPHM CD 4 A_JumpIf((MomY == 0), "TakeASit")
 		CPHM EF 4
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		TNT1 A 0 A_SpawnItem ("DeadChaingunGuy_KilledByMinorHead", 3)
-		
+
 		Stop
-		
+
 	Death:
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("IsFiring", 1, "Death.Rare")
@@ -382,74 +356,74 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
         CPOD B 6 A_NoBlocking
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
         CPOD CDEFG 6
-        TNT1 A 0 
+        TNT1 A 0
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
         TNT1 A 1 A_SpawnItem ("DeadChaingunGuy1", 3)
         Stop
-		
+
 	Death.Rare:
 	TNT1 A 0
 	TNT1 A 0 A_FaceTarget
 	TNT1 A 0 A_Recoil(2)
 	CPDR A 3 A_Scream
 	TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-	
+
 	TNT1 A 0 A_CustomMissile ("MonsterMinigunTracer", 32, 15, 0, 2, -20)
 	CPDR B 3 BRIGHT
-	
+
 	CPDR A 3
 	TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-	
+
 	TNT1 A 0 A_CustomMissile ("MonsterMinigunTracer", 32, 15, 0, 2, -20)
 	CPDR B 3 BRIGHT
 
 	CPDR C 2
 	TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-	
+
 	TNT1 A 0 A_CustomMissile ("MonsterMinigunTracer", 24, 15, -20, 2, -20)
 	CPDR D 2 BRIGHT
-	
+
 	CPDR C 2
 	TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-	
+
 	TNT1 A 0 A_CustomMissile ("MonsterMinigunTracer", 24, 15, -20, 2, -20)
 	CPDR D 2 BRIGHT
-	
+
 	CPDR E 2
 	TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-	
+
 	TNT1 A 0 A_CustomMissile ("MonsterMinigunTracer", 24, 15, -20, 2, 20)
 	CPDR F 2 BRIGHT
-	
+
 	CPDR G 2
 	TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-	
+
 	TNT1 A 0 A_CustomMissile ("MonsterMinigunTracer", 24, 15, -10, 2, 40)
 	CPDR H 2 BRIGHT
-	
+
 	TNT1 A 0 A_Recoil(1)
 	CPDR I 2
 	TNT1 A 0 A_JumpIf((MomY == 0), "TakeASit")
 	TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-	
+
 	TNT1 A 0 A_CustomMissile ("MonsterMinigunTracer", 24, 15, -10, 2, 40)
 	CPDR J 2 BRIGHT
 	TNT1 A 0 A_JumpIf((MomY == 0), "TakeASit")
-	
+
 	CPDR K 2
 	TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-	
+
 	TNT1 A 0 A_CustomMissile ("MonsterMinigunTracer", 12, 15, -20, 2, 40)
 	CPDR L 2 BRIGHT
 	TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 	CPDR M 2
 	TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-	
+
 	TNT1 A 0 A_CustomMissile ("MonsterMinigunTracer", 12, 15, -20, 2, 20)
 	CPDR N 2 BRIGHT
-	
+
 	CPDR M 2
-	
+
 	TNT1 A 0 A_CustomMissile ("MonsterMinigunTracer", 12, 15, -20, 2, 20)
 	CPDR N 2 BRIGHT
 	TNT1 A 0 A_NoBlocking
@@ -457,17 +431,17 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 	TNT1 A 0 A_SpawnItem("DeadChaingunguyCPDRO")
 	TNT1 A -1
 	Stop
-	
+
 	TakeASit:
 	    TNT1 AAAA 0 A_CustomMissile ("SuperWallRedBlood", 6, 0, random (170, 190), 2, random (0, 40))
 	    TNT1 A 0
 	    TNT1 A 0 A_SpawnItem("GrowingBloodPool")
-		
+
 		TNT1 A 0 A_SpawnItemEx("DeadChaingunguy_Slumped", 10)
 		Stop
 
 	Death.OriginalGibz:
-	    TNT1 A 0 
+	    TNT1 A 0
         TNT1 A 0 A_CustomMissile ("MuchBlood2", 1, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("XDeathChainArm", 35, 0, random (0, 360), 2, random (60, 120))
 		TNT1 A 0 A_CustomMissile ("XDeath1", 35, 0, random (0, 360), 2, random (60, 120))
@@ -481,7 +455,7 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
          TNT1 A 1 A_SpawnItem ("DeadChaingunGuy_Half", 3)
 		Stop
-	
+
 	Death.DropedChaingunSpawner:
 	Death.Minigun:
 	Death.Arm:
@@ -489,16 +463,16 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 	     TNT1 AA 0 A_CustomMissile ("BloodMist", 40, 0, random (0, 360), 2, random (30, 90))
 		 TNT1 A 0 A_CustomMissile ("XDeathChainArm", 45, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 A 0 A_CustomMissile ("XDeath1", 45, 0, random (0, 360), 2, random (0, 160))
-		
+
 	     CPOD H 10 A_Scream
 		 CPOD I 5
 		 CPOD I 1 A_NoBlocking
 		 TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
 		 TNT1 A 1 A_SpawnItem ("BrutalizedCommando1")
 	Stop
-		
+
     XDeath:
-        TNT1 A 0 
+        TNT1 A 0
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
@@ -509,11 +483,10 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 	HeadExploder:
 		TNT1 A 0 A_Jump(72, "Death.HeadExplode")
 		Goto Death.HeadMinor
-		
+
     Death.Head:
-	    TNT1 A 0
+	    TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.decaptate")
 		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
-		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.decaptate")
 		TNT1 A 0 A_JumpIfInTargetInventory("MinigunSelected", 1, "Death.headExplode")
 		TNT1 A 0 A_JumpIfHealthLower(-30, "Death.HeadExplode")
 		TNT1 A 0 A_JumpIfInTargetInventory("RandomHeadExploder", 1, "HeadExploder")
@@ -528,14 +501,14 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 		CPHM J 6 A_Scream
 		CPHM C 6 A_NoBlocking
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
-		CPHM DEF 6 
-        TNT1 A 0 
+		CPHM DEF 6
+        TNT1 A 0
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
          TNT1 A 0 A_SpawnItem ("DeadChaingunGuy_KilledByMinorHead", 3)
         Stop
-		
+
 		 Death.Melee:
-		 
+
 		 TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory ("SKChaingunGuy", 1, "StealthKill")
 		Death.Kick:
@@ -545,13 +518,13 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 		CPHM B 9 A_Scream
 		CPHM C 8 A_NoBlocking
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
-		CPHM DEF 8 
-        TNT1 A 0 
+		CPHM DEF 8
+        TNT1 A 0
          TNT1 A 0 A_SpawnItem ("DeadChaingunGuy_KilledByMinorHead", 3)
         Stop
-		
+
 	Death.headExplode:
-	    
+
         TNT1 A 0
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
@@ -573,7 +546,7 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 		TNT1 A 0 A_SpawnItem("BrutalizedCommandoLostHead2")
 		TNT1 A -1
 		Stop
-		
+
 	Death.cut:
 	Death.Saw:
 		TNT1 O 0 A_Jump(220, 2)
@@ -587,7 +560,7 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 		TNT1 A 0 A_CustomMissile ("XDeathGuts", 0, 0, random (0, 360), 2, random (0, 160))
 	    CPSC ABCDEFGH 8
         CPSC H 1
-        TNT1 A 0 
+        TNT1 A 0
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
          TNT1 A 1 A_SpawnItem ("DeadChaingunGuy_Half", 3)
 		Stop
@@ -602,12 +575,12 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 		TNT1 AA 0
 		TNT1 A 0 A_Jump(255, "Death.ExplosiveImpact", "Death.Leg")
 		Goto Death
-		
+
 	Death.ExplosiveImpact:
 	Death.Landmine:
 	Death.LandMine2:
 	TNT1 A 0
-	TNT1 A 0 
+	TNT1 A 0
 	TNT1 A 0 ThrustThingZ(0,40,0,1)
 	TNT1 A 0 A_SpawnItemEx("MuchBlood2", 0, 0, 40)
 	TNT1 AA 0 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
@@ -618,7 +591,7 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 	TNT1 AA 0 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
 	TNT1 AAAAAA 0 A_CustomMissile ("BloodMistLarge", 40, 0, random (0, 360), 2, random (20, 90))
 	TNT1 AAAAAAAAAAA 0 A_CustomMissile ("BrainBlood", 50, 0, random (0, 360), 2, random (0, 160))
-	
+
 	    CPDE A 1 A_Scream
 	    CPDE A 1 A_NoBlocking
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
@@ -628,7 +601,7 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 		TNT1 A 0 A_Spawnitem("DeadChaingunguyCPDEI")
 		TNT1 A -1
 		Stop
-	
+
 	Dead.Landmine:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem ("Ploft")
@@ -637,7 +610,7 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 		TNT1 A 0 A_SpawnItem("DeadChaingunguyCPDEI")
 		TNT1 A -1
 		Stop
-	
+
     Death.Plasma: Death.Plasma2:
 	Death.Plasma: Death.Plasma2:
 		TNT1 A 0
@@ -659,16 +632,16 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 		PBR1 GG 3 A_CustomMissile ("BluePlasmaFireNonStatic", 22, 0, random (0, 360), 2, random (0, 180))
 		PBR1 H -1
 		Stop
-	
+
 	Death.SuperPlasma:
         TNT1 A 0
         TNT1 A 0 A_XScream
-		TNT1 A 0 
+		TNT1 A 0
         TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
         TNT1 AAAA 0 A_CustomMissile ("Brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160))
-		
+
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160))
@@ -683,21 +656,21 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 		TNT1 AAA 0 A_CustomMissile ("BigPlasmaParticleX", 42, 0, random (0, 360), 2, random (0, 360))
         TNT1 A 0
         Stop
-		
+
 			Death.GreenFire:
         TNT1 A 0
         TNT1 A 0 A_XScream
         TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
         TNT1 AAAA 0 A_CustomMissile ("Brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160))
-		
+
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, random (0, 160))
-		
+
 		EXPL AAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("GreenFlameTrails", 50, 0, random (0, 360), 2, random (0, 360))
 		XBRN AAAA 2 BRIGHT A_SpawnItem("GreenFlare",0,43)
         Stop
@@ -708,13 +681,13 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
         TNT1 A 0 A_Scream
         TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
-		TNT1 A 0 
+		TNT1 A 0
         TNT1 A 0 A_SpawnItem("BurningcHAINGUNGUY", 0, 10)
       Stop
 
 	Death.Throwable:
 		Goto Death
-		
+
 	Death.Desintegrate:
         TNT1 A 0 A_XScream
         TNT1 A 0 A_NoBlocking
@@ -724,7 +697,7 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 		TGIB ABCDEFGHIJKLMNOPQ 4
 		TGIB Q -1
       Stop
-		
+
     Death.Fatality:
 	    TNT1 A 0 A_Pain
         TNT1 A 0 A_NoBlocking
@@ -734,7 +707,7 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 		TNT1 A 0 A_JumpIfIntargetInventory("IsPlayer", 1, 1)
 		Goto Death.ExplosiveImpact
 		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-		TNT1 A 0 
+		TNT1 A 0
         TNT1 A 0 A_Jump(130,5)
         TNT1 A 0 A_GiveToTarget("ComandoFatality", 1)
         Stop
@@ -743,13 +716,13 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
         TNT1 A 1
         TNT1 A 0
 		Stop
-		
+
 	Death.HelperMarineFatallity:
 		TNT1 A 0
 	    TNT1 A 1 A_Pain
 		TNT1 A 0 A_Chase("","")
 		TNT1 A 0 A_Scream
-		TNT1 A 0 A_NoBlocking    
+		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_GiveToTarget("ComandoFatality", 1)
 		Stop
 
@@ -757,20 +730,20 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 	    TNT1 A 0
 		TNT1 A 0 A_NoBlocking
 	    TNT1 A 0 A_Scream
-		TNT1 A 0 
+		TNT1 A 0
         TNT1 A 0 A_GiveToTarget("ComandoFatality",1)
         Stop
-	
+
 	Raise:
 		CPOS N 5
 		CPOS MLKJIH 5
 		Goto See
-		
+
 	 Death.Stomp:
 	    TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
-		CPHM CDE 2 
+		CPHM CDE 2
 	    TNT1 AA 0 A_SpawnItem("MeatDeathSmall")
 		TNT1 AAA 0 bright A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
 		TNT1 AAAA 0 bright A_CustomMissile ("XDeath1", 5, 0, random (0, 360), 2, random (30, 180))
@@ -781,29 +754,30 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 		TNT1 A 1
 		TNT1 A 1 A_XScream
 		Stop
-		
+
 	Crush:
 		TNT1 A 0
 		TNT1 AAAAA 0 A_CustomMissile ("Brutal_FlyingBloodTrail8", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 AAAA 0 A_SpawnItemEx ("BodyRemovalThing",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 1 A_XScream
-		Stop	
+		Stop
 
     Pain.KillMe:
     Pain.Taunt:
         TNT1 A 0
-		TNT1 A 0 HealThing(1)
+		TNT1 A 0 HealThing(2)
         Goto Missile
     Death.KillMe:
     Death.Taunt:
+	Death.Stealth:
 	    TNT1 A 0 A_ChangeFlag("SOLID", 0)
         TNT1 A 0 A_SpawnItem("ChaingunGuy")
         Stop
-		
+
 	 Death.ExtremePunches:
 		 TNT1 A 0
 		 //TNT1 A 0 A_JumpIfInTargetInventory("HeavyStrikeRight", 1, "HeavyPunchRight")
-		 //TNT1 A 0 A_JumpIfInTargetInventory("HeavyStrikeLeft", 1, "HeavyPunchLeft") 
+		 //TNT1 A 0 A_JumpIfInTargetInventory("HeavyStrikeLeft", 1, "HeavyPunchLeft")
 		 //TNT1 A 0 A_JumpIfInTargetInventory("HeavyStrikeUpper", 1, "HeavyPunchUpper")
 		 TNT1 A 0 A_XScream
 		 TNT1 A 0 A_NoBlocking
@@ -811,14 +785,14 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 		 TNT1 A 0 A_FaceTarget
 		 TNT1 A 0 A_CustomMissile ("ExtremePunchedChaingunguy", 8, 0, random (175, 185), 2, random (10, 20))
 		 Stop
-		 
+
 	Death.Blast:
 	Death.SSG:
 	Death.Railgun:
 	    MPSD A 1 A_Pain
 		MPSD A 1 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("Muchblood2", 0, 40)
-		
+
 	    TNT1 AAA 0 bright A_CustomMissile ("SuperGoreSpawner", 35, 0, random (170, 190), 2, random (0, 40))
         //TNT1 A 0 A_CustomMissile ("MeatDeath", 0, 0, random (0, 360), 2, random (0, 160))
 		//TNT1 AAAA 0 A_CustomMissile ("XDeath1", 32, 0, random (170, 190), 2, random (0, 40))
@@ -837,17 +811,17 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
         TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
-		TNT1 A 0 
+		TNT1 A 0
         TNT1 A 0 A_SpawnItem("BrutalizedCommandoBlasted")
 		TNT1 A -1
         Stop
-	
+
 	GotoStealthKill:
 		TNT1 A 1
 		TNT1 A 0 A_Explode(100, 1, 1)
 		TNT1 A 1
-		Goto See	
-	
+		Goto See
+
 	StealthKill:
 	TNT1 A 0
 	TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, 1)
@@ -863,7 +837,7 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 	Death.Stealthy:
 	TNT1 A 0
 	Stop
-	
+
 	Death.Ice:
 	Death.Freeze:
 	Death.Frost:
@@ -871,14 +845,12 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 	TNT1 A 0 A_ChangeFlag("SOLID", 0)
 	TNT1 A 0 A_SpawnItem("FrozenChaingunguy")
 	Stop
-	
+
 	Death.Massacre:
 	Goto Death
-	
+
 	Death.PussyGrab:
 	    TNT1 A 0
-		TNT1 A 0 A_Pain
-		TNT1 A 0 A_Chase("","")
 		TNT1 A 0 A_Pain
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
@@ -898,7 +870,7 @@ Actor DeadChaingunGuy1: CurbstompedMarine
 	+FLOORCLIP
 	-SOLID
 	+THRUACTORS
-	damagefactor "Crush", 50.0
+
     Mass 1000
     Health 100
     damagefactor "Blood", 0.0
@@ -914,7 +886,7 @@ Actor DeadChaingunGuy_NoHead: DeadChaingunGuy1
 {Health 200 States{Spawn:
 		CPHD F -1
         Stop}}
-		
+
 		Actor DeadChaingunGuy_NoHeadEXPLODED: DeadChaingunGuy1
 {Health 200 States{Spawn:
 		CPHS F -1
@@ -924,7 +896,7 @@ Actor DeadChaingunGuy_Half: DeadChaingunGuy1
 {Health 200 States{Spawn:
         CPSC H -1
         Stop}}
-		
+
 Actor DeadChaingunGuyCPDRO: DeadChaingunGuy1
 {Health 200 States{Spawn:
         CPDR O -1
@@ -980,13 +952,15 @@ States{Spawn:
 		TNT1 A 0
 		TNT1 A 0 A_Recoil(6)
 		BR95 A 6
+		Stay:
+		TNT1 A 0
 		TNT1 A 0 A_JumpIf(momx < 0, "LayDown")
-		TNT1 A 0 A_JumpIf(momy < 0, "LayDown")
-		TNT1 A 0 A_JumpIf(momx > 0, "LayDown")
 		TNT1 A 0 A_JumpIf(momy > 0, "LayDown")
-		TNT1 A 0 A_SpawnItemEx("HeadshotTarget20", 0, 0, 22)
+		TNT1 A 0 A_SpawnItemEx("HeadshotTargetSlumped", 3, 0, 22)
 		BR95 A 16
-        Loop  
+		TNT1 A 0 A_Recoil(1)
+		BR95 A 4
+        Loop
 	LayDown:
 	TNT1 A 0 A_NoBlocking
 	TNT1 A 0 A_SpawnItem("DeadChaingunguy1")
@@ -996,15 +970,15 @@ States{Spawn:
 	Death.ExplosiveImpact:
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("ChainXDeath")
-		Stop	
-	
+		Stop
+
 	Death.Head:
 		TNT1 A 0 A_NoBlocking
-		
+
 		TNT1 A 0 A_SpawnItemEx("ChaingunguyHeadExplode", 0, 0, 22)
 		TNT1 A 0 A_SpawnItem("DeadChaingunguy_Slumped_NoHead")
 		Stop
-		
+
 	Death:
 	    TNT1 A 0 A_NoBlocking
 		TNT1 AAA 0 A_CustomMissile ("Guts", 32, 0, random (150, 210), 2, random (0, 40))
@@ -1044,13 +1018,13 @@ Scale 0.9
 States{Spawn:
 		TNT1 A 0
 		BR95 B 100
-        Loop  
+        Loop
 	XDeath:
 	Death.Explosives:
 	Death.ExplosiveImpact:
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("ChainXDeath")
-		Stop	
+		Stop
 	Death:
 	    TNT1 A 0 A_NoBlocking
 		TNT1 AAA 0 A_CustomMissile ("Guts", 32, 0, random (150, 210), 2, random (0, 40))
@@ -1063,5 +1037,5 @@ States{Spawn:
 		TNT1 AAA 0 A_CustomMissile ("BloodMistBig", 40, 0, random (0, 360), 2, random (30, 90))
 		TNT1 AA 0 A_CustomMissile ("XDeathChainArm", 40, 0, random (0, 360), 2, random (30, 90))
 		//TNT1 A 0 A_SpawnItem("DeadChaingunguyJustLegsAreLeft")
-		Stop	
-		}}	   
+		Stop
+		}}

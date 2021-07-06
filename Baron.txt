@@ -6,32 +6,28 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 	Health 1200
 	+QUICKTORETALIATE
 	PainSound "PSXDPN"
-	
-	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
-	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 10.0
-	Damagefactor "Cut", 1.0	Damagefactor "Extremepunches", 1.0	Damagefactor "Fatality", 2.5
-	Damagefactor "FriendBullet", 1.0	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0
-	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 1.25	Damagefactor "HeadKick", 0.5
-	Damagefactor "HelperMarineFatallity", 1.0	Damagefactor "KillMe", 1.0	Damagefactor "Leg", 0.25
-	Damagefactor "LowKick", 0.25	Damagefactor "MonsterKnocked", 1.0	Damagefactor "PussyGrab", 0.0
-	Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "Saw", 1.0
-	Damagefactor "Slide", 0.5	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 1.0
-	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "Kick", 0.5
-	Damagefactor "Melee", 0.5	Damagefactor "Shrapnel", 0.5	Damagefactor "Slime", 0.5
-	Damagefactor "Stealth", 0.5	Damagefactor "Stomp", 0.5	Damagefactor "Trample", 0.5
-	Damagefactor "Burn", 0.5	Damagefactor "Fire", 0.5	Damagefactor "Flames", 0.5
-	Damagefactor "GreenFire", 0.5	Damagefactor "HumanBBQ", 0.5
-	Damagefactor "ExplosiveImpact", 0.5
 
-	PainChance "Avoid", 0	PainChance "Burn", 16	PainChance "Cut", 255
-	PainChance "ExplosiveImpact", 16	PainChance "Extremepunches", 16	PainChance "Fatality", 16
-	PainChance "Fire", 16	PainChance "Flames", 16	PainChance "GreenFire", 16
-	PainChance "Head", 255	PainChance "HelperMarineFatallity", 16	PainChance "HumanBBQ", 16
-	PainChance "Kick", 16	PainChance "LowKick", 16	PainChance "Melee", 16
-	PainChance "MonsterKnocked", 16	PainChance "Saw", 255	PainChance "Slide", 16
-	PainChance "Stealth", 16	PainChance "Taunt", 255	PainChance "Trample", 16
+	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	DamageFactor "Crush", 10.0
+	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0	Damagefactor "HangingHook", 0.0
+	Damagefactor "Head", 1.5	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
+	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
+	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "Extremepunches", 1.0
+	Damagefactor "Fatality", 2.5	Damagefactor "HeadKick", 0.5	Damagefactor "HelperMarineFatallity", 2.5
+	Damagefactor "Kick", 0.5	Damagefactor "Leg", 0.5	Damagefactor "LowKick", 0.5
+	Damagefactor "Melee", 0.5	Damagefactor "MonsterKnocked", 0.5	Damagefactor "Stomp", 0.5
+	Damagefactor "Trample", 0.5	Damagefactor "Slide", 0.5	DamageFactor "SSG", 2.5
+	Damagefactor "Burn", 0.5	Damagefactor "Fire", 0.5	Damagefactor "Flames", 0.5
+	Damagefactor "GreenFire", 0.5	Damagefactor "HumanBBQ", 0.5	DamageFactor "TankWeakSpot", 0.0
+
+	PainChance "Head", 255	PainChance "Taunt", 255	PainChance "Extremepunches", 16
+	PainChance "Fatality", 16	PainChance "HelperMarineFatallity", 16	PainChance "Kick", 255
+	PainChance "LowKick", 16	PainChance "Melee", 16	PainChance "MonsterKnocked", 16
+	PainChance "Slide", 16	PainChance "Trample", 16
+	PainChance "Burn", 16	PainChance "Fire", 16	PainChance "Flames", 16
+	PainChance "GreenFire", 16	PainChance "HumanBBQ", 16
 	PainChance "CallingTheBaronAFaggot", 255
-	
+
     BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
 	BloodColor "DarkGreen"
 	Obituary "%o was brutalized by a Baron of Hell."
@@ -48,95 +44,92 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 	DropItem "DemonRuneMix", 16
 	States
 	{
-	
+
 	ReplaceVanilla:
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
 		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
 		TNT1 A 0 A_SpawnItemEx ("VanillaBaronOfHell",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG | SXF_CLEARCALLERTID,tid)
-		TNT1 A 10 
+		TNT1 A 10
 		TNT1 A 1 A_BossDeath
 		TNT1 A 0 A_Die("Vanish")
 		Stop
-	
+
 	Death.Vanish:
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
 		Stop
-		
+
 	ReplaceForBoss1:
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
 		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
 		TNT1 A 0 A_SpawnItemEx ("BaronBoss1",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,tid)
-		TNT1 A 10 
+		TNT1 A 10
 		TNT1 A 1 A_BossDeath
 		TNT1 A 0 A_Fall
-		Stop	
-		
+		Stop
+
 	ReplaceForBoss2:
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
 		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
 		TNT1 A 0 A_SpawnItemEx ("BaronBoss2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,tid)
-		TNT1 A 10 
+		TNT1 A 10
 		TNT1 A 1 A_BossDeath
-		Stop		
+		Stop
     Spawn:
 		BARO B 0
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
 		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")
-		TNT1 A 0 A_JumpIfInventory("ImpFatality3", 1, "FatalityImp")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp")
 		TNT1 A 0 A_JumpIfInventory("DemonFatality", 1, "FatalityDemon")
 		TNT1 A 0 A_GiveInventory("TargetIsABaronOfHell")
 		TNT1 A 0 A_JumpIf(x == 304, "ReplaceForBoss1")
 		TNT1 A 0 A_JumpIf(x == 528, "ReplaceForBoss2")
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCHeckClassicMonsters", 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckStuff")//Check if new monsters are disabled
+		BARO B 2
+		TNT1 A 0 A_JumpIfInventory("nonewenemies", 1, "Stand")
 		TNT1 A 0 A_Jump(4, "ReplaceBelphegor")
 		Goto Stand
-		
+
 	ReplaceBelphegor:
 		TNT1 A 0 A_JumpIf((CeilingZ - FloorZ) < 93,"Stand")
 		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
 		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
 		TNT1 A 0 A_SpawnItemEx ("Belphegor2",0,0,0,0,0,0,0, SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS ,0, tid)
 		Stop
-		
+
 	Stand:
 		TNT1 A 0
-		TNT1 A 0 A_CheckSight("Stand2")
 		BTS3 A 0 A_SpawnItem("HeadshotTarget20b", 0, 58)
 		BARO BB 10 A_Look
 		Loop
-		
-	Stand2:
-		BARO B 10 A_Look
-		Goto Stand
+
 	See:
 		BARO A 0
-		//TNT1 A 0 A_CheckSight("SeeNeverSeen")
 		TNT1 A 0 A_JumpIfInventory("HasExplosiveBarrel", 1, "MissileBarrel")
 	    TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		BARO A 1
-        BTS3 ABC 1 
+        BTS3 ABC 1
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
 		BTS3 D 4
 		BTS3 CBA 1
-		//TNT1 A 0 HealThing(200)
 		Goto See2
-	
+
 	See2:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
 		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")
 		TNT1 A 0 A_JumpIfInventory("DemonFatality", 1, "FatalityDemon")
-		TNT1 A 0 A_JumpIfInventory("ImpFatality3", 1, "FatalityImp")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp")
 		TNT1 A 0 A_JumpIfInventory("HasExplosiveBarrel", 1, "MissileBarrel")
 
 	See4:
@@ -148,13 +141,13 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
         //TNT1 A 0 A_SpawnItemEx("FootSep", 0, 0)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
 		BARO AAA 2 A_Chase
-		
+
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
 		BARO BBB 2 A_Chase
-		
+
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
 		BARO CCC 2 A_Chase
-		
+
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
 		BARO DDD 2 A_Chase
 
@@ -162,7 +155,7 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMastermind", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "ForgetTarget")
 		Loop
-		
+
 	SeeNeverSeen:
 		TNT1 A 0
 		BARO A 0 A_CheckSight("SEE3")
@@ -172,7 +165,7 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		BARO AA 2 A_Chase
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		BARO AA 2 A_Chase
-		
+
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		BARO B 4 A_Chase
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
@@ -184,18 +177,18 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		BARO CC 2 A_Chase
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		BARO DD 2 A_Chase
-		
+
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		BARO DD 2 A_Chase
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsACyberdemon", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMastermind", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "ForgetTarget")
-		Loop	
+		Loop
 	See3:
         //TNT1 A 0 A_SpawnItemEx("FootSep", 0, 0)
 		BARO AABBCCDD 3 A_Chase
 		Goto See4
-		
+
 	Idle:
 	LookingForPlayer:
 	    TNT1 A 0 A_GiveInventory("SKImp", 1)
@@ -219,46 +212,46 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		BARO B 10 A_Look
         TNT1 A 0 A_SpawnItem ("HeadshotTarget10b", 0, 58)
 		BARO B 10 A_Look
-		
+
 		BARO A 0 A_Wander
-		BARO AA 2 A_Look
+		BARO A 4 A_Look
 		TNT1 A 0 A_Recoil(-2)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		
+
 		BARO B 0 A_Wander
-		BARO BB 2 A_Look
+		BARO B 4 A_Look
 		TNT1 A 0 A_Recoil(-2)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		
+
 		BARO C 0 A_Wander
-		BARO CC 2 A_Look
+		BARO C 4 A_Look
 		TNT1 A 0 A_Recoil(-2)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		
+
 		BARO D 0 A_Wander
-		BARO DD 2 A_Look
+		BARO D 4 A_Look
 		TNT1 A 0 A_Recoil(-2)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
 
 		TNT1 A 0 A_jump(128, "LookingForPlayer")
 
 		BARO A 0 A_Wander
-		BARO AA 2 A_Look
+		BARO A 4 A_Look
 		TNT1 A 0 A_Recoil(-2)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		
+
 		BARO B 0 A_Wander
-		BARO BB 2 A_Look
+		BARO B 4 A_Look
 		TNT1 A 0 A_Recoil(-2)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		
+
 		BARO C 0 A_Wander
-		BARO CC 2 A_Look
+		BARO C 4 A_Look
 		TNT1 A 0 A_Recoil(-2)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		
+
 		BARO D 0 A_Wander
-		BARO DD 2 A_Look
+		BARO D 4 A_Look
 		TNT1 A 0 A_Recoil(-2)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
 
@@ -274,16 +267,16 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
         TNT1 A 0
 		TNT1 A 0 A_CheckSight("See")
         BTS3 ABC 2  A_SpawnItem("HeadshotTarget4b", 0, 58)
-		BTS3 DEDF 3  A_SpawnItem("HeadshotTarget8b", 0, 58)
-		BTS3 DEDF 3  A_SpawnItem("HeadshotTarget8b", 0, 58)
-		BTS3 CBA 2  A_SpawnItem("HeadshotTarget8b", 0, 58)
+		BTS3 DEDF 3  A_SpawnItem("HeadshotTarget4b", 0, 58)
+		BTS3 DEDF 3  A_SpawnItem("HeadshotTarget4b", 0, 58)
+		BTS3 CBA 2  A_SpawnItem("HeadshotTarget4b", 0, 58)
 		TNT1 A 0 HealThing(200)
 		TNT1 A 0 A_Jump(96, "SpecialAttack")
 		Goto See2
-	
+
 	Melee:
 	    TNT1 A 0
-		
+
 	    TNT1 A 0 A_JumpIfInTargetInventory("TargetIsACyberdemon", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMastermind", 1, "CheckRetreat")
 		TNT1 A 0 A_FaceTarget
@@ -291,7 +284,7 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
 		BARO E 1
 		TNT1 A 0 A_JumpIfInventory("HasExplosiveBarrel", 1, "MissileBarrel")
-		
+
         BARO E 6
         TNT1 A 0 A_PlaySound("weapons/gswing")
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
@@ -299,12 +292,12 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
 		BARO G 6 A_CustomMissile("BaronAttack",10,0,0,0)
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
-		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")		
+		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
 		Goto See2
-		
+
 	Melee2:
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
-		
+
 		BARO E 6 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
 		BARO F 6 A_FaceTarget
@@ -314,12 +307,12 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
 		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")
 		TNT1 A 0 A_JumpIfInventory("DemonFatality", 1, "FatalityDemon")
-		TNT1 A 0 A_JumpIfInventory("ImpFatality3", 1, "FatalityImp")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp")
 		Goto See2
-	
+
     Missile:
 		BARO A 1
-		
+
 		TNT1 A 0 A_TakeInventory("EnemyMemory", 30)
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsACyberdemon", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMastermind", 1, "CheckRetreat")
@@ -328,45 +321,45 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
 		TNT1 A 0 A_JumpIfInTargetInventory ("TypeZombieman", 1, "See2")
-		TNT1 A 0 A_JumpIfInTargetInventory ("TypeSergeant", 1, "See2") 
-        
+		TNT1 A 0 A_JumpIfInTargetInventory ("TypeSergeant", 1, "See2")
+
 		//TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 0, 5)
 		//TNT1 A 0 A_TakeInventory("CantFire", 1)
-		//TNT1 A 0 A_CustomMissile("MonsterTargetCheck", 34, 0, 0, 0) 
-		//TNT1 A 0 A_CustomMissile("MonsterTargetCheckFaster", 34, 0, 0, 0)  
+		//TNT1 A 0 A_CustomMissile("MonsterTargetCheck", 34, 0, 0, 0)
+		//TNT1 A 0 A_CustomMissile("MonsterTargetCheckFaster", 34, 0, 0, 0)
 		BARO e 3 A_FaceTarget
 		//TNT1 A 0 A_JumpIfInventory("CantFire",1, "See4")
-		
+
 		TNT1 A 0 A_Jump (64, "SpecialAttack")
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		BARO E 2 A_FaceTarget
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160))
 		BARO E 2 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160))
 		BARO E 2 A_FaceTarget
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160))
 		BARO E 2 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160))
 		BARO E 2 A_FaceTarget
-		
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
+
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		BARO F 3 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
-		BARO G 8 A_CustomMissile("BaronBall", 36, 0, 0, 1)
-		//BARO G 8 A_CustomMissile("ThrowedZombieMan2", 36, 0, 0, 1)
+		BARO G 8 A_CustomMissile("GreenPlasmaBall", 36, 0, 0, 1)
+		TNT1 A 0 A_CustomMissile("Alerter", 36)
 		TNT1 A 0 A_TakeInventory("ComingToGetTheBarrel", 1)
 		TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "ForgetTarget")
 		Goto See2
 
     SpecialAttack:
 	    TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
-		
+
 		BARO R 3 A_FaceTarget
 	    TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
 		BARO Q 6 A_FaceTarget
@@ -394,7 +387,7 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, -40, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, -40, random (0, 140), 2, random (0, 160))
 		BARO P 2 A_FaceTarget
-		
+
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
 		BARO Q 4 A_FaceTarget
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 58, 30, random (0, 360), 2, random (70, 110))
@@ -403,9 +396,10 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 48, 30, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 48, -30, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
-		TNT1 A 0 A_CustomMissile("BaronBall", 36, 15, 9, 11) 
-		TNT1 A 0 A_CustomMissile("BaronBall", 36, 15, -9, 11)
-		BARO R 8 A_CustomMissile("BaronBall", 36, 15, 0, 11)
+		TNT1 A 0 A_CustomMissile("GreenPlasmaBall", 36, 15, 9, 11)
+		TNT1 A 0 A_CustomMissile("GreenPlasmaBall", 36, 15, -9, 11)
+		BARO R 8 A_CustomMissile("GreenPlasmaBall", 36, 15, 0, 11)
+		TNT1 A 0 A_CustomMissile("Alerter", 36)
 		TNT1 A 0 A_TakeInventory("ComingToGetTheBarrel", 1)
 		TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "ForgetTarget")
 		Goto See2
@@ -414,7 +408,7 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfCloser(600, "Retreat")
 		Goto Missile+5
-	
+
 	Retreat:
 		TNT1 A 0
         //TNT1 A 0 A_SpawnItemEx("FootSep", 0, 0)
@@ -424,7 +418,7 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
 		BARO DD 2 A_Recoil(2)
 		TNT1 A 0 A_FaceTarget
-		
+
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
 		BARO CC 2 A_Recoil(1)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
@@ -438,14 +432,13 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
 		BARO AA 2 A_Recoil(1)
 		Goto Missile+5
-	
+
 	Pain.CallingTheBaronAFaggot:
 		TNT1 A 0
-		TNT1 A 0 HealThing(1)
 		TNT1 A 0 A_GiveInventory("ComingToGetTheBarrel", 1)
 		TNT1 A 0
 		Goto See2
-	
+
 	MissileBarrel:
 		BOBA A 0
 		BOBA A 1 A_Chase("","")
@@ -453,27 +446,28 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		BOBA ABC 4
 		BOBA D 1
 		TNT1 A 0 A_PlaySound("baron/sight")
-		TNT1 A 0 A_SpawnItem("BaronHoldingBarrel", 0, 76,0)
+		TNT1 A 0 A_SpawnItem("BaronHoldingBarrel", 0, 74,0)
 		WaitingToThrow:
 		BOBA D 8
 		TNT1 A 0 A_CheckSight("WaitingToThrow")
 		BOBA E 16
 		BOBA D 8
-	
+
 	    ThrowBarrel:
 	    TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 	    BARO P 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile("ThrowedBarrel", 46, 15, 0, 11)
+		TNT1 A 0 A_CustomMissile("ThrowedBarrel", 74, 15, 0, CMF_OFFSETPITCH, 10)
+		TNT1 A 0 A_CustomMissile("Alerter", 46)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		BARO Q 4 A_FaceTarget
-		
+
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
-		BARO R 8 
+		BARO R 8
 		TNT1 A 0 A_TakeInventory("ComingToGetTheBarrel", 1)
 		TNT1 A 0 A_TakeInventory("HasExplosiveBarrel", 1)
 		BOBA A 0 A_ChangeFlag("NOPAIN", 0)
 		Goto See2
-	
+
 	WithBarrelLookFOrTheplayer:
 		TNT1 A 0
 		TNT1 A 0 A_ClearTarget
@@ -487,13 +481,13 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		BARO H  3 A_Pain
 		Goto See2
-	
+
 	Pain.Explosive:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx("MuchBlood2Green", 0, 0, 60)
 		TNT1 A 0 ThrustThingZ(0,10,0,1)
 		Goto Pain
-		
+
 	Death:
 		BXDE A  0
 		BXDE B  0 A_Scream
@@ -506,7 +500,7 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		TNT1 VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 2 A_CustomMissile ("Green_LiquidBlood", 20, 0, random (0, 360), 2, random (30, 110))
 		TNT1 V -1
 		Stop
-		
+
 	Death2:
 		BADD ABCD 6
 		TNT1 A 0 A_SpawnItem("DeadBaron")
@@ -525,12 +519,12 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		BXDE EFGH 0
         TNT1 A 0
 	    Stop
-		
+
 	Raise:
     BOSS O 8
     BOSS NMLKJI 8
-    Goto See	
-	
+    Goto See
+
 	Death.Desintegrate:
 	Death.Saw:
 		TNT1 A 0 A_Scream
@@ -551,8 +545,8 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		TNT1 A 0 A_SpawnItemEx("DeadBaronBDSSV", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
 		TNT1 VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 1 A_CustomMissile ("Green_LiquidBlood", 20, 0, random (0, 360), 2, random (30, 110))
 		TNT1 V -1
-		Stop	
-	
+		Stop
+
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 A_ChangeFLag("NOPAIN", 1)
 		TNT1 A 0 ThrustThingZ(0,30,0,1)
@@ -578,7 +572,7 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		TNT1 A 0 A_Pain
 		BNRJ ABCD 5 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		Goto Missile
-		
+
    Death.ExplosiveImpact:
         TNT1 A 0
 		TNT1 A 0 ThrustThingZ(0,35,0,1)
@@ -587,20 +581,20 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		TNT1 AAAAAA 0 A_CustomMissile ("XDeath1Green", 62, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_CustomMissile ("Muchblood2green", 62, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_Jump(255, "Death.ExplosiveImpact1", "Death.ExplosiveImpact2")
-	
-	Death.ExplosiveImpact1:	
+
+	Death.ExplosiveImpact1:
 		BOH3 A  8 A_Scream
 		BOH3 B  8 A_NoBlocking
 		BOH3 CCCCCC  8 A_CheckFloor("Land1")
 		Goto Land1
-	
+
 	Land1:
 		BOH3 D 1
 		TNT1 A 0 A_SpawnItemEx("DeadBaronBOH3D", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
 		TNT1 A -1
 	    Stop
-	
-	Death.ExplosiveImpact2:	
+
+	Death.ExplosiveImpact2:
 		BOH3 E  8 A_Scream
 		BOH3 F  8 A_NoBlocking
 		TNT1 A 0 A_BossDeath
@@ -646,13 +640,13 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 	Death.SSG:
 		TNT1 A 0
 		TNT1 A 0 A_BossDeath
-		TNT1 A 0 
-		TNT1 A 0 A_JumpIfCloser(300, "Death.Minigun")	
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfCloser(300, "Death.Minigun")
 		Goto Death
 
 	Death.head:
 		TNT1 A 0
-		TNT1 A 0 
+		TNT1 A 0
 		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
 		TNT1 AA 0 A_CustomMissile ("muchblood2green", 62, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.decaptate")
@@ -666,7 +660,7 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 	    TNT1 VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 1 A_CustomMissile ("Green_LiquidBlood", 20, 0, random (0, 360), 2, random (30, 110))
 		TNT1 A -1
 		Stop
-	
+
 	Death.decaptate:
 		TNT1 AAAAA 0 A_CustomMissile ("Xdeath1Green", 62, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_SpawnItem("MuchBlood2Green", 0, 62)
@@ -715,7 +709,7 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		TNT1 A 0 A_SpawnItem ("GreenGrowingBloodPool")
         BOSB E -1
         Stop
-		
+
 	 Death.GreenFire:
         TNT1 A 0
         TNT1 A 0 A_XScream
@@ -726,7 +720,7 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		TNT1 AA 0 A_CustomMissile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 AA 0 A_CustomMissile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 AA 0 A_CustomMissile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, random (0, 160))
-		
+
 		EXPL AAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("GreenFlameTrails", 50, 0, random (0, 360), 2, random (0, 360))
 		XBRN AAAA 2 BRIGHT A_SpawnItem("GreenFlare",0,43)
         Stop
@@ -749,14 +743,14 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
     Pain.KillMe:
     Pain.Taunt:
         TNT1 A 0
-		TNT1 A 0 HealThing(1)
+		TNT1 A 0 HealThing(2)
         Goto Missile
     Death.KillMe:
     Death.Taunt:
 	    TNT1 A 0 A_ChangeFlag("SOLID", 0)
         TNT1 A 0 A_SpawnItem("BaronOfHell")
         Stop
-		
+
 	Death.Ice:
 	Death.Freeze:
 	Death.Frost:
@@ -765,11 +759,11 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 	TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
 	TNT1 A 0 A_ChangeFlag("SOLID", 0)
 	TNT1 A 0 A_SpawnItem("FrozenBaronOfHell")
-	Stop	
-	
+	Stop
+
 	Death.Massacre:
 	Goto Death
-	
+
 	 Death.Stomp:
 	    TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
@@ -785,30 +779,30 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		GIBS Z 1
 		GIBS Z -1
 		Stop
-		
+
 	Crush:
 		TNT1 A 0
 		TNT1 AAAA 0 A_SpawnItemEx ("BodyRemovalThing",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 1 A_XScream
 		Stop
-		
+
 	 CurbstompMarine:
         TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
-		KNTF A 15
+		KNTF A 8
 		 TNT1 AAAA 0 A_CustomMissile ("XDeath2b", 25, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 AAAA 0 A_CustomMissile ("XDeath3b", 25, 0, random (0, 360), 2, random (0, 160))
-		 
-		KNTF BCD 8 A_CustomMissile ("XDeath1", 50, 0, random (0, 360), 2, random (0, 160))
+
+		KNTF BC 8 A_CustomMissile ("XDeath1", 50, 0, random (0, 360), 2, random (0, 160))
 	    EXPL A 0 Radius_Quake (2, 24, 0, 15, 0)
-		
+
 		TNT1 A 0 A_CustomMissile ("MuchBlood2", 50, 0, random (0, 360), 2, random (0, 160))
         TNT1 AA 0 A_CustomMissile ("mUCHbLOOD3", 50, 0, random (0, 360), 2, random (0, 160))
-		KNTF DDDDDDDDDDDDDDDDDDDDDD 3 A_CustomMissile ("Brutal_LiquidBlood3", 25, 0, random (0, 360), 2, random (0, 40))
+		KNTF DDDD 2 A_CustomMissile ("Brutal_LiquidBlood3", 25, 0, random (0, 360), 2, random (0, 40))
 		TNT1 A 0 A_CustomMissile ("RipGuts", 20, 0, random (0, 360), 2, random (0, 160))
-		KNTF EEEFFFGGG 4 A_CustomMissile ("XDeath1", 38, 0, random (0, 360), 2, random (0, 160))
+		KNTF EEEEFFFF 2 A_CustomMissile ("XDeath1", 38, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("RipGuts", 20, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
-		KNTF GGGGGGGGGGGGGGGGGGGGGG 3 A_CustomMissile ("Brutal_LiquidBlood3", 25, 0, random (0, 360), 2, random (0, 40))
+		KNTF GGGG 2 A_CustomMissile ("Brutal_LiquidBlood3", 25, 0, random (0, 360), 2, random (0, 40))
         TNT1 A 0 A_TakeInventory("Curbstomp_Marine",1)
         TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
 		TNT1 A 0 A_SpawnItem ("RappedMarine", 1)
@@ -816,75 +810,75 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 
    FatalityZombieman:
         TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
-       3HF1 A 20
+       3HF1 A 8
 	   TNT1 A 0 A_PlaySound("grunt/death")
-	   3HF1 BC 5
+	   3HF1 BC 8
 		TNT1 AA 0 A_CustomMissile ("XDeath1", 55, 0, random (0, 360), 2, random (0, 160))
-		3HF1 BCBC 5 A_CustomMissile ("XDeath1", 55, 0, random (0, 360), 2, random (0, 160))
+		3HF1 BCBC 8 A_CustomMissile ("XDeath1", 55, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_CustomMissile ("MuchBlood", 55, 0, random (0, 360), 2, random (0, 160))
-		3HF1 D 10
-		3HF1 E 5
+		3HF1 D 8
+		3HF1 E 8
 		 TNT1 A 0 A_CustomMissile ("XDeathZombieManHead", 65, 0, random (0, 360), 2, random (70, 120))
-		3HF1 F 30
-		3HF1 G 10
-		 
+		3HF1 F 8
+		3HF1 G 8
+
         TNT1 A 0 A_TakeInventory("ZombieManFatality",1)
         TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
-		
+
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
 		3HF1 H 8 A_Chase
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
-		BARO E 8 A_FaceTarget
+		BARO E 4 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
-		BARO F 8 A_CustomMissile("ThrowedZombieMan2", 64, 0, 0, 0) 
+		BARO F 4 A_CustomMissile("ThrowedZombieMan2", 64, 0, 0, 0)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
-		BARO G 8
+		BARO G 4
 		Goto See2
-		
+
 	FatalitySergeant:
         TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
-       3HF1 I 15
+       3HF1 I 8
 	   TNT1 A 0 A_PlaySound("grunt/death")
-	   3HF1 I 5
-	   
-	   TNT1 AAAA 0 A_CustomMissile ("GreenGuts", 30, 0, random (0, 360), 2, random (0, 160))
+	   3HF1 I 8
+
+	   TNT1 AAAA 0 A_CustomMissile ("Guts", 30, 0, random (0, 360), 2, random (0, 160))
 	   TNT1 AAA 0 A_CustomMissile ("XDeath1", 45, 0, random (0, 360), 2, random (0, 160))
 	   TNT1 AAA 0 A_CustomMissile ("XDeath2", 45, 0, random (0, 360), 2, random (0, 160))
 	   TNT1 AAA 0 A_CustomMissile ("XDeath3", 55, 0, random (0, 360), 2, random (0, 160))
 	   TNT1 A 0 A_SpawnItem("SergeantFatalizedByBaron")
-	   
-	   3HF1 J 10
-	   
-	   3HF1 KLM 15
-		 
+
+	   3HF1 J 8
+
+	   3HF1 KLM 8
+
         TNT1 A 0 A_TakeInventory("SergeantFatality",1)
         TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
-		
+
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
-		3HF1 M 1 A_Chase
+		3HF1 M 8 A_Chase
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
-		BARO E 8 A_FaceTarget
+		BARO E 4 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
-		BARO F 8 A_CustomMissile("ThrowedSergeantPiece", 64, 0, 0, 0) 
+		BARO F 4 A_CustomMissile("ThrowedSergeantPiece", 64, 0, 0, 0)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
-		BARO G 8
+		BARO G 4
         Goto See2
 
        FatalityDemon:
         TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
 		TNT1 A 0 A_PlaySound("demon/pain")
-        3HF1 N 20
-	   
+        3HF1 N 8
+
 	   TNT1 A 0 A_CustomMissile ("XDeathStomach", 60, 0, random (0, 360), 2, random (0, 160))
 	   TNT1 AAA 0 A_CustomMissile ("XDeath1", 45, 0, random (0, 360), 2, random (0, 160))
 	   TNT1 AAA 0 A_CustomMissile ("XDeath2", 45, 0, random (0, 360), 2, random (0, 160))
 	   TNT1 AAA 0 A_CustomMissile ("XDeath3", 55, 0, random (0, 360), 2, random (0, 160))
- 
-	   3HF1 OPQQQ 10 A_CustomMissile ("MuchBlood", 25, 0, random (0, 360), 2, random (0, 160))
-	   
+
+	   3HF1 OPQ 8 A_CustomMissile ("MuchBlood", 25, 0, random (0, 360), 2, random (0, 160))
+
         TNT1 A 0 A_SpawnItem ("DeadDemonHalf", 1)
-		TNT1 A 0 A_SpawnItem ("GreenGrowingBloodPool")
-		 
+		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+
         TNT1 A 0 A_TakeInventory("DemonFatality",1)
         TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
         Goto See2
@@ -893,19 +887,18 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
         TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
 		TNT1 A 0 A_PlaySound("demon/pain")
         3HF2 ABABAB 4
-	   
+
 	   TNT1 AAAAAA 0 A_SpawnItem("MuchBlood", 40)
 	   TNT1 AAA 0 A_CustomMissile ("XDeath1", 45, 0, random (0, 360), 2, random (0, 160))
 	   TNT1 AA 0 A_CustomMissile ("XDeath2", 45, 0, random (0, 360), 2, random (0, 160))
 	   TNT1 AA 0 A_CustomMissile ("XDeath3", 55, 0, random (0, 360), 2, random (0, 160))
-       TNT1 AAA 0 A_CustomMissile ("GreenGuts", 42, 0, random (0, 360), 2, random (0, 160))
-	   3HF2 CDE 6
-	   
-	   3HF2 F 1 A_Chase("","")
-	   3HF2 FFF 15
-	   3HF2 GGHHIJ 3
+       TNT1 AAA 0 A_CustomMissile ("Guts", 42, 0, random (0, 360), 2, random (0, 160))
+	   3HF2 CDE 8
+
+	   3HF2 F 8 A_Chase("","")
+	   3HF2 GHIJ 8
 	   TNT1 A 0 A_SpawnItem("DeadImp_BaronFatality")
-        TNT1 A 0 A_TakeInventory("ImpFatality3",1)
+        TNT1 A 0 A_TakeInventory("ImpFatality",1)
         TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
         Goto See2
 	}
@@ -946,7 +939,7 @@ States
         BOSB EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 8 A_CustomMissile ("PlasmaSmoke", 16, 0, random (0, 180), 2, random (0, 180))
         BOSB E -1
         Stop
-		
+
 	Death:
 		 TNT1 A 0
 	     TNT1 A 0 A_NoBlocking
@@ -984,10 +977,10 @@ States
 		 TNT1 A 0 A_NoBlocking
 		 GIBS Y 1
 		 GIBS Y -1
-		Stop		}}	
+		Stop		}}
 
 Actor DeadBaronHalfDown: DeadBaron
-{States{Spawn:        BBO2 D -1   
+{States{Spawn:        BBO2 D -1
 		Stop
 
 	Death:
@@ -999,12 +992,12 @@ Actor DeadBaronHalfDown: DeadBaron
 		 TNT1 A 0 A_SpawnItem("MuchBlood2Green", 0, 25)
 		 TNT1 A 0 A_SpawnItem("MuchBlood3Green", 0, 25)
          TNT1 AA 0 A_CustomMissile ("XDeathHellKnightLeg", 5, 0, random (0, 360), 2, random (0, 160))
-		 Stop	
+		 Stop
 
 }}
 
 Actor DeadBaronHalfUp: DeadBaron
-{States{Spawn:        BTO2 D -1        
+{States{Spawn:        BTO2 D -1
 Stop
 
 		Death:
@@ -1021,7 +1014,7 @@ Stop
 		 Stop}}
 
 Actor DeadBaronNoHead: DeadBaron
-{States{Spawn:        BADH D -1        
+{States{Spawn:        BADH D -1
 Stop
 		Death:
 		 TNT1 A 0 A_CustomMissile ("XDeathBaronOfHellTorso", 2, 0, random (0, 360), 2, random (0, 160))
@@ -1040,7 +1033,7 @@ Stop
 		 Stop	}}
 
 Actor DeadBaronBOH3D : DeadBaron
-{States{Spawn:        BOH3 D -1        
+{States{Spawn:        BOH3 D -1
 Stop
 
 	Death:
@@ -1062,11 +1055,11 @@ Stop
 		 Stop	}}
 
 Actor DeadBaronBOH3H : DeadBaronBOH3D
-{States{Spawn:        BOH3 H -1        
+{States{Spawn:        BOH3 H -1
 Stop}}
 
 Actor DeadBaronBDSSV : DeadBaron
-{States{Spawn:        BDSS V -1        
+{States{Spawn:        BDSS V -1
 Stop
 	Death:
 		 TNT1 AA 0 A_CustomMissile ("XDeathHellKnightLeg", 2, 0, random (0, 360), 2, random (0, 160))
@@ -1088,7 +1081,7 @@ Stop
 }}
 
 Actor DeadBaronClassic: DeadBaron
-{States{Spawn:        KSA8 G -1        
+{States{Spawn:        KSA8 G -1
 Stop}}
 
 ACTOR XDeathHalfBOH : DeadBaron
@@ -1104,7 +1097,7 @@ ACTOR XDeathHalfBOH : DeadBaron
     +NOTELEPORT
     +DONTSPLASH
     +MOVEWITHSECTOR
-	
+
     DeathSound "misc/xdeath1"
     States
     {
@@ -1125,20 +1118,24 @@ ACTOR DyingBaron1
 	Scale 1.1
 	Health 100
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
-	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 10.0
-	Damagefactor "Cut", 10.0	Damagefactor "Extremepunches", 1.0	Damagefactor "Fatality", 2.5
-	Damagefactor "FriendBullet", 1.0	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0
-	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 1.0	Damagefactor "HeadKick", 0.5
-	Damagefactor "HelperMarineFatallity", 1.0	Damagefactor "KillMe", 1.0	Damagefactor "Leg", 0.25
-	Damagefactor "LowKick", 0.25	Damagefactor "MonsterKnocked", 1.0	Damagefactor "PussyGrab", 0.0
-	Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "Saw", 10.0
-	Damagefactor "Slide", 0.5	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 1.0
-	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "Kick", 0.5
-	Damagefactor "Melee", 0.5	Damagefactor "Shrapnel", 0.5	Damagefactor "Slime", 0.5
-	Damagefactor "Stealth", 0.5	Damagefactor "Stomp", 0.5	Damagefactor "Trample", 0.5
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
+	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0	Damagefactor "HangingHook", 0.0
+	Damagefactor "Head", 1.5	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
+	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
+	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "Extremepunches", 0.5
+	Damagefactor "Fatality", 0.5	Damagefactor "HeadKick", 0.5	Damagefactor "HelperMarineFatallity", 0.5
+	Damagefactor "Kick", 0.5	Damagefactor "Leg", 0.5	Damagefactor "LowKick", 0.5
+	Damagefactor "Melee", 0.5	Damagefactor "MonsterKnocked", 0.5	Damagefactor "Stomp", 0.5
+	Damagefactor "Trample", 0.5
 	Damagefactor "Burn", 0.5	Damagefactor "Fire", 0.5	Damagefactor "Flames", 0.5
 	Damagefactor "GreenFire", 0.5	Damagefactor "HumanBBQ", 0.5
-	Damagefactor "ExplosiveImpact", 0.5
+
+	PainChance "Head", 255	PainChance "Taunt", 255	PainChance "Extremepunches", 16
+	PainChance "Fatality", 16	PainChance "HelperMarineFatallity", 16	PainChance "Kick", 16//255
+	PainChance "LowKick", 16	PainChance "Melee", 16	PainChance "MonsterKnocked", 16
+	PainChance "Slide", 16	PainChance "Trample", 16
+	PainChance "Burn", 16	PainChance "Fire", 16	PainChance "Flames", 16
+	PainChance "GreenFire", 16	PainChance "HumanBBQ", 16
 	BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
 	BloodColor "DarkGreen"
 	Mass 999999
@@ -1156,7 +1153,7 @@ ACTOR DyingBaron1
 		TNT1 A 0 A_CustomMissile ("Green_LiquidBlood", 35, 0, random (0, 360), 2, random (30, 110))
 		KSA8 BC 6 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		TNT1 A 0 A_CustomMissile ("Green_LiquidBlood", 35, 0, random (0, 360), 2, random (30, 110))
-		
+
 		TNT1 A 0 A_PlaySound ("PSXDPN")
 		KSA8 BC 6 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		TNT1 A 0 A_CustomMissile ("Green_LiquidBlood", 35, 0, random (0, 360), 2, random (30, 110))
@@ -1188,7 +1185,7 @@ ACTOR DyingBaron1
 		KSA8 BC 6 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		TNT1 A 0 A_CustomMissile ("Green_LiquidBlood", 35, 0, random (0, 360), 2, random (30, 110))
 		Goto Death
-	
+
 	Death:
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_Fall
@@ -1197,7 +1194,7 @@ ACTOR DyingBaron1
 		TNT1 A 0 A_SpawnItem("DeadBaronClassic")
 		TNT1 A 0 A_SpawnItem ("GreenGrowingBloodPool")
 		Stop
-	
+
 	Death.head:
 	    TNT1 A 0 A_SpawnItem("BaronOfHellHeadExplode", 0, 62)
         TNT1 AAA 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 30, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
@@ -1221,15 +1218,15 @@ ACTOR DyingBaron1
 		TNT1 A 0 A_NoBlocking
 	    TNT1 A 0 A_CustomMissile ("BaronXDeath", 0, 0, random (0, 360), 2, random (0, 160))
 	    Stop
-	
+
 	Death.Shotgun:
 	Death.SSG:
 	TNT1 A 0
 	TNT1 A 0 A_JumpIfCloser(200, "Death.Minigun")
 	Goto Death
-	Death.Minigun:	
+	Death.Minigun:
 	    TNT1 A 0 A_Scream
-		TNT1 A 0 
+		TNT1 A 0
         TNT1 A 0 A_NoBlocking
 		TNT1 AAAAAA 0 A_CustomMissile ("Xdeath1Green", 40, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_CustomMissile ("Xdeath2bGreen", 40, 0, random (0, 360), 2, random (0, 160))
@@ -1242,22 +1239,22 @@ ACTOR DyingBaron1
 		BBO2 AABCD 10
         TNT1 A 0 A_SpawnItem ("DeadBaronHalfDown", 1)
 		TNT1 A 0 A_SpawnItem ("GreenGrowingBloodPool")
-		Stop	
+		Stop
 	}
-}	
+}
 
 ACTOR BaronAttack: BaronBall
 {
 	Radius 24
 	Height 16
 	DamageType BHFT
-	Projectile 
+	Projectile
 	+RANDOMIZE
 	+FORCEXYBILLBOARD
     +THRUGHOST
 	RenderStyle Add
 	Alpha 0.6
-    Damage 25
+    Damage 10
     Speed 28
 	SeeSound "none"
 	DeathSound "none"
@@ -1285,7 +1282,7 @@ ACTOR CallingTheBaronAFaggot: BaronBall
 	Radius 4
 	Height 4
 	DamageType CallingTheBaronAFaggot
-	Projectile 
+	Projectile
 	+RANDOMIZE
 	+FORCEXYBILLBOARD
     +THRUGHOST
@@ -1314,88 +1311,58 @@ Actor BaronBoss1: BaronofHell2
 	Health 4000
 	Speed 12
 	PainChance 10
-
-	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
-	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 30.0
-	Damagefactor "Cut", 0.5	Damagefactor "Extremepunches", 1.0	Damagefactor "Fatality", 2.5
-	Damagefactor "FriendBullet", 0.5	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0
-	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 1.0	Damagefactor "HeadKick", 0.5
-	Damagefactor "HelperMarineFatallity", 1.0	Damagefactor "KillMe", 1.0	Damagefactor "Leg", 0.25
-	Damagefactor "LowKick", 0.25	Damagefactor "MonsterKnocked", 0.5	Damagefactor "PussyGrab", 0.0
-	Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "Saw", 0.5
-	Damagefactor "Slide", 0.25	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 1.0
-	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "Kick", 0.5
-	Damagefactor "Melee", 0.5	Damagefactor "Shrapnel", 0.5	Damagefactor "Slime", 0.5
-	Damagefactor "Stealth", 0.5	Damagefactor "Stomp", 0.5	Damagefactor "Trample", 0.5
-	Damagefactor "Burn", 0.5	Damagefactor "Fire", 0.5	Damagefactor "Flames", 0.5
-	Damagefactor "GreenFire", 0.5	Damagefactor "HumanBBQ", 0.5	Damagefactor "Bullet", 0.5
-	Damagefactor "Desintegrate", 0.5	Damagefactor "Explosive", 0.75	Damagefactor "ExplosiveImpact", 0.5
-	Damagefactor "Minigun", 0.5	Damagefactor "Minor", 0.5	Damagefactor "MonsterBullet", 0.5
-	Damagefactor "MonsterMinigun", 0.5	Damagefactor "MonsterShotgunBullet", 0.5	Damagefactor "Shotgun", 0.5
-	Damagefactor "SSG", 0.5
-
-	PainChance "Avoid", 0	PainChance "Burn", 16	PainChance "Cut", 16
-	PainChance "ExplosiveImpact", 16	PainChance "Extremepunches", 4	PainChance "Fatality", 4
-	PainChance "Fire", 16	PainChance "Flames", 16	PainChance "GreenFire", 16
-	PainChance "Head", 16	PainChance "HelperMarineFatallity", 4	PainChance "HumanBBQ", 16
-	PainChance "Kick", 4	PainChance "LowKick", 4	PainChance "Melee", 4
-	PainChance "MonsterKnocked", 4	PainChance "Saw", 16	PainChance "Slide", 4
-	PainChance "Stealth", 4	PainChance "Taunt", 255	PainChance "Trample", 4
-
-	MaxStepHeight 48
-	MaxDropOffHeight 48
+	MaxStepHeight 28
+	MaxDropOffHeight 38
 	Translation "16:47=22:47", "48:79=62:79"
 	Obituary "%o was brutalized by the Bruiser Brothers."
+	DropItem "64UnmakerUpgradeSpawner", 16
 	States
 {
 Spawn:
 		BARO A 1
 		TNT1 A 0 A_CheckSight("WAITING")
-		TNT1 A 0 ACS_EXecuteAlways(1622)
-		TNT1 A 0 ACS_EXecuteAlways(1623)
+		TNT1 A 0 A_GiveInventory("TargetIsABaronOfHell")
+		TNT1 A 0 ACS_NamedExecuteAlways("BDBruiserBrothersHealth")
+		TNT1 A 0 ACS_NamedExecuteAlways("BDBruiserBrotherOne")
 		TNT1 A 0 A_changeFlag("MISSILEMORE", 1)
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
 		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")
-		TNT1 A 0 A_JumpIfInventory("ImpFatality3", 1, "FatalityImp")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp")
 		TNT1 A 0 A_JumpIfInventory("DemonFatality", 1, "FatalityDemon")
 		Goto Stand
-		
+
 	Waiting:
 			BARO A 1
-			Goto Spawn	
+			Goto Spawn
 
 	Stand:
 		TNT1 A 0
-		TNT1 A 0 A_CheckSight("Stand2")
 		BTS3 A 0 A_SpawnItem("HeadshotTarget20b", 0, 72)
 		BARO BB 10 A_Look
 		Loop
-		
-	Stand2:
-		BARO B 10 A_Look
-		Goto Stand
+
 	See:
 		BARO A 0
 		//TNT1 A 0 A_CheckSight("SeeNeverSeen")
 		TNT1 A 0 A_JumpIfInventory("HasExplosiveBarrel", 1, "MissileBarrel")
 	    TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 72)
 		BARO A 1
-        BTS3 ABC 1 
+        BTS3 ABC 1
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
 		BTS3 D 4
 		BTS3 CBA 1
 		//TNT1 A 0 HealThing(200)
 		Goto See2
-	
+
 	See2:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
 		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")
 		TNT1 A 0 A_JumpIfInventory("DemonFatality", 1, "FatalityDemon")
-		TNT1 A 0 A_JumpIfInventory("ImpFatality3", 1, "FatalityImp")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp")
 		TNT1 A 0 A_JumpIfInventory("HasExplosiveBarrel", 1, "MissileBarrel")
 
 	See4:
@@ -1407,13 +1374,13 @@ Spawn:
         //TNT1 A 0 A_SpawnItemEx("FootSep", 0, 0)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
 		BARO AAA 2 A_Chase
-		
+
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
 		BARO BBB 2 A_Chase
-		
+
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
 		BARO CCC 2 A_Chase
-		
+
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
 		BARO DDD 2 A_Chase
 
@@ -1421,7 +1388,7 @@ Spawn:
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMastermind", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "ForgetTarget")
 		Loop
-		
+
 	SeeNeverSeen:
 		TNT1 A 0
 		BARO A 0 A_CheckSight("SEE3")
@@ -1431,7 +1398,7 @@ Spawn:
 		BARO AA 2 A_Chase
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 72)
 		BARO AA 2 A_Chase
-		
+
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 72)
 		BARO B 4 A_Chase
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 72)
@@ -1443,18 +1410,18 @@ Spawn:
 		BARO CC 2 A_Chase
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 72)
 		BARO DD 2 A_Chase
-		
+
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 72)
 		BARO DD 2 A_Chase
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsACyberdemon", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMastermind", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "ForgetTarget")
-		Loop	
+		Loop
 	See3:
         //TNT1 A 0 A_SpawnItemEx("FootSep", 0, 0)
 		BARO AABBCCDD 3 A_Chase
 		Goto See4
-		
+
 	Idle:
 	LookingForPlayer:
 	    TNT1 A 0 A_GiveInventory("SKImp", 1)
@@ -1478,46 +1445,46 @@ Spawn:
 		BARO B 10 A_Look
         TNT1 A 0 A_SpawnItem ("HeadshotTarget10b", 0, 72)
 		BARO B 10 A_Look
-		
+
 		BARO A 0 A_Wander
-		BARO AA 2 A_Look
+		BARO A 4 A_Look
 		TNT1 A 0 A_Recoil(-2)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		
+
 		BARO B 0 A_Wander
-		BARO BB 2 A_Look
+		BARO B 4 A_Look
 		TNT1 A 0 A_Recoil(-2)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		
+
 		BARO C 0 A_Wander
-		BARO CC 2 A_Look
+		BARO C 4 A_Look
 		TNT1 A 0 A_Recoil(-2)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		
+
 		BARO D 0 A_Wander
-		BARO DD 2 A_Look
+		BARO D 4 A_Look
 		TNT1 A 0 A_Recoil(-2)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
 
 		TNT1 A 0 A_jump(128, "LookingForPlayer")
 
 		BARO A 0 A_Wander
-		BARO AA 2 A_Look
+		BARO A 4 A_Look
 		TNT1 A 0 A_Recoil(-2)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		
+
 		BARO B 0 A_Wander
-		BARO BB 2 A_Look
+		BARO B 4 A_Look
 		TNT1 A 0 A_Recoil(-2)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		
+
 		BARO C 0 A_Wander
-		BARO CC 2 A_Look
+		BARO C 4 A_Look
 		TNT1 A 0 A_Recoil(-2)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		
+
 		BARO D 0 A_Wander
-		BARO DD 2 A_Look
+		BARO D 4 A_Look
 		TNT1 A 0 A_Recoil(-2)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
 
@@ -1539,10 +1506,10 @@ Spawn:
 		TNT1 A 0 HealThing(200)
 		TNT1 A 0 A_Jump(96, "SpecialAttack")
 		Goto See2
-	
+
 	Melee:
 	    TNT1 A 0
-		
+
 	    TNT1 A 0 A_JumpIfInTargetInventory("TargetIsACyberdemon", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMastermind", 1, "CheckRetreat")
 		TNT1 A 0 A_FaceTarget
@@ -1550,7 +1517,7 @@ Spawn:
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
 		BARO E 1
 		TNT1 A 0 A_JumpIfInventory("HasExplosiveBarrel", 1, "MissileBarrel")
-		
+
         BARO E 6
         TNT1 A 0 A_PlaySound("weapons/gswing")
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
@@ -1558,12 +1525,12 @@ Spawn:
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
 		BARO G 6 A_CustomMissile("BaronAttack",10,0,0,0)
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
-		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")		
+		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
 		Goto See2
-		
+
 	Melee2:
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
-		
+
 		BARO E 6 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
 		BARO F 6 A_FaceTarget
@@ -1573,12 +1540,12 @@ Spawn:
 		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
 		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")
 		TNT1 A 0 A_JumpIfInventory("DemonFatality", 1, "FatalityDemon")
-		TNT1 A 0 A_JumpIfInventory("ImpFatality3", 1, "FatalityImp")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp")
 		Goto See2
-	
+
     Missile:
 		BARO A 1
-		
+
 		TNT1 A 0 A_TakeInventory("EnemyMemory", 30)
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsACyberdemon", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMastermind", 1, "CheckRetreat")
@@ -1587,15 +1554,15 @@ Spawn:
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
 		TNT1 A 0 A_JumpIfInTargetInventory ("TypeZombieman", 1, "See2")
-		TNT1 A 0 A_JumpIfInTargetInventory ("TypeSergeant", 1, "See2") 
-        
+		TNT1 A 0 A_JumpIfInTargetInventory ("TypeSergeant", 1, "See2")
+
 		//TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 0, 5)
 		//TNT1 A 0 A_TakeInventory("CantFire", 1)
-		//TNT1 A 0 A_CustomMissile("MonsterTargetCheck", 34, 0, 0, 0) 
-		//TNT1 A 0 A_CustomMissile("MonsterTargetCheckFaster", 34, 0, 0, 0)  
+		//TNT1 A 0 A_CustomMissile("MonsterTargetCheck", 34, 0, 0, 0)
+		//TNT1 A 0 A_CustomMissile("MonsterTargetCheckFaster", 34, 0, 0, 0)
 		BARO e 3 A_FaceTarget
 		//TNT1 A 0 A_JumpIfInventory("CantFire",1, "See4")
-		
+
 		TNT1 A 0 A_Jump (64, "SpecialAttack")
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
 		BARO E 2 A_FaceTarget
@@ -1613,19 +1580,19 @@ Spawn:
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160))
 		BARO E 2 A_FaceTarget
-		
+
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
 		BARO F 3 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
-		BARO G 8 A_CustomMissile("BaronBall", 36, 0, 0, 1)
-		//BARO G 8 A_CustomMissile("ThrowedZombieMan2", 36, 0, 0, 1)
+		BARO G 8 A_CustomMissile("GreenPlasmaBall", 36, 0, 0, 1)
+		TNT1 A 0 A_CustomMissile("Alerter", 36)
 		TNT1 A 0 A_TakeInventory("ComingToGetTheBarrel", 1)
 		TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "ForgetTarget")
 		Goto See2
 
     SpecialAttack:
 	    TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
-		
+
 		BARO R 3 A_FaceTarget
 	    TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
 		BARO Q 6 A_FaceTarget
@@ -1653,7 +1620,7 @@ Spawn:
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, -40, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, -40, random (0, 140), 2, random (0, 160))
 		BARO P 2 A_FaceTarget
-		
+
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
 		BARO Q 4 A_FaceTarget
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 58, 30, random (0, 360), 2, random (70, 110))
@@ -1662,9 +1629,10 @@ Spawn:
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 48, 30, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 48, -30, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
-		TNT1 A 0 A_CustomMissile("BaronBall", 36, 15, 9, 11) 
-		TNT1 A 0 A_CustomMissile("BaronBall", 36, 15, -9, 11)
-		BARO R 8 A_CustomMissile("BaronBall", 36, 15, 0, 11)
+		TNT1 A 0 A_CustomMissile("GreenPlasmaBall", 36, 15, 9, 11)
+		TNT1 A 0 A_CustomMissile("GreenPlasmaBall", 36, 15, -9, 11)
+		BARO R 8 A_CustomMissile("GreenPlasmaBall", 36, 15, 0, 11)
+		TNT1 A 0 A_CustomMissile("Alerter", 36)
 		TNT1 A 0 A_TakeInventory("ComingToGetTheBarrel", 1)
 		TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "ForgetTarget")
 		Goto See2
@@ -1673,7 +1641,7 @@ Spawn:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfCloser(600, "Retreat")
 		Goto Missile+5
-	
+
 	Retreat:
 		TNT1 A 0
         //TNT1 A 0 A_SpawnItemEx("FootSep", 0, 0)
@@ -1683,7 +1651,7 @@ Spawn:
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
 		BARO DD 2 A_Recoil(2)
 		TNT1 A 0 A_FaceTarget
-		
+
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
 		BARO CC 2 A_Recoil(1)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
@@ -1697,14 +1665,14 @@ Spawn:
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
 		BARO AA 2 A_Recoil(1)
 		Goto Missile+5
-	
+
 	Pain.CallingTheBaronAFaggot:
 		TNT1 A 0
 		TNT1 A 0 HealThing(1)
 		TNT1 A 0 A_GiveInventory("ComingToGetTheBarrel", 1)
 		TNT1 A 0
 		Goto See2
-	
+
 	MissileBarrel:
 		BOBA A 0
 		BOBA A 1 A_Chase("","")
@@ -1712,27 +1680,28 @@ Spawn:
 		BOBA ABC 4
 		BOBA D 1
 		TNT1 A 0 A_PlaySound("baron/sight")
-		TNT1 A 0 A_SpawnItem("BaronHoldingBarrel", 0, 76,0)
+		TNT1 A 0 A_SpawnItem("BaronHoldingBarrel", 0, 87,0)
 		WaitingToThrow:
 		BOBA D 8
 		TNT1 A 0 A_CheckSight("WaitingToThrow")
 		BOBA E 16
 		BOBA D 8
-	
+
 	    ThrowBarrel:
 	    TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 72)
 	    BARO P 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile("ThrowedBarrel", 46, 15, 0, 11)
+		TNT1 A 0 A_CustomMissile("ThrowedBarrel", 87, 15, 0, CMF_OFFSETPITCH, 10)
+		TNT1 A 0 A_CustomMissile("Alerter", 46)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 72)
 		BARO Q 4 A_FaceTarget
-		
+
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
-		BARO R 8 
+		BARO R 8
 		TNT1 A 0 A_TakeInventory("ComingToGetTheBarrel", 1)
 		TNT1 A 0 A_TakeInventory("HasExplosiveBarrel", 1)
 		BOBA A 0 A_ChangeFlag("NOPAIN", 0)
 		Goto See2
-	
+
 	WithBarrelLookFOrTheplayer:
 		TNT1 A 0
 		TNT1 A 0 A_ClearTarget
@@ -1746,13 +1715,13 @@ Spawn:
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 72)
 		BARO H  3 A_Pain
 		Goto See2
-	
+
 	Pain.Explosive:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx("MuchBlood2Green", 0, 0, 60)
 		TNT1 A 0 ThrustThingZ(0,10,0,1)
 		Goto Pain
-		
+
 	Death:
 		BXDE A  0
 		BXDE B  0 A_Scream
@@ -1765,7 +1734,7 @@ Spawn:
 		TNT1 VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 2 A_CustomMissile ("Green_LiquidBlood", 20, 0, random (0, 360), 2, random (30, 110))
 		TNT1 V -1
 		Stop
-		
+
 	Death2:
 		BADD ABCD 6
 		TNT1 A 0 A_SpawnItem("DeadBaron")
@@ -1784,12 +1753,12 @@ Spawn:
 		BXDE EFGH 0
         TNT1 A 0
 	    Stop
-		
+
 	Raise:
     BOSS O 8
     BOSS NMLKJI 8
-    Goto See	
-	
+    Goto See
+
 	Death.Desintegrate:
 	Death.Saw:
 		TNT1 A 0 A_Scream
@@ -1810,8 +1779,8 @@ Spawn:
 		TNT1 A 0 A_SpawnItemEx("DeadBaronBDSSV", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
 		TNT1 VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 1 A_CustomMissile ("Green_LiquidBlood", 20, 0, random (0, 360), 2, random (30, 110))
 		TNT1 V -1
-		Stop	
-	
+		Stop
+
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 A_ChangeFLag("NOPAIN", 1)
 		TNT1 A 0 ThrustThingZ(0,30,0,1)
@@ -1837,7 +1806,7 @@ Spawn:
 		TNT1 A 0 A_Pain
 		BNRJ ABCD 5 A_SpawnItem("HeadshotTarget4b", 0, 72)
 		Goto Missile
-		
+
    Death.ExplosiveImpact:
         TNT1 A 0
 		TNT1 A 0 ThrustThingZ(0,35,0,1)
@@ -1846,20 +1815,20 @@ Spawn:
 		TNT1 AAAAAA 0 A_CustomMissile ("XDeath1Green", 62, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_CustomMissile ("Muchblood2green", 62, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_Jump(255, "Death.ExplosiveImpact1", "Death.ExplosiveImpact2")
-	
-	Death.ExplosiveImpact1:	
+
+	Death.ExplosiveImpact1:
 		BOH3 A  8 A_Scream
 		BOH3 B  8 A_NoBlocking
 		BOH3 CCCCCC  8 A_CheckFloor("Land1")
 		Goto Land1
-	
+
 	Land1:
 		BOH3 D 1
 		TNT1 A 0 A_SpawnItemEx("DeadBaronBOH3D", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
 		TNT1 A -1
 	    Stop
-	
-	Death.ExplosiveImpact2:	
+
+	Death.ExplosiveImpact2:
 		BOH3 E  8 A_Scream
 		BOH3 F  8 A_NoBlocking
 		TNT1 A 0 A_BossDeath
@@ -1905,13 +1874,13 @@ Spawn:
 	Death.SSG:
 		TNT1 A 0
 		TNT1 A 0 A_BossDeath
-		TNT1 A 0 
-		TNT1 A 0 A_JumpIfCloser(300, "Death.Minigun")	
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfCloser(300, "Death.Minigun")
 		Goto Death
 
 	Death.head:
 		TNT1 A 0
-		TNT1 A 0 
+		TNT1 A 0
 		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
 		TNT1 AA 0 A_CustomMissile ("muchblood2green", 62, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.decaptate")
@@ -1925,7 +1894,7 @@ Spawn:
 	    TNT1 VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 1 A_CustomMissile ("Green_LiquidBlood", 20, 0, random (0, 360), 2, random (30, 110))
 		TNT1 A -1
 		Stop
-	
+
 	Death.decaptate:
 		TNT1 AAAAA 0 A_CustomMissile ("Xdeath1Green", 62, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_SpawnItem("MuchBlood2Green", 0, 62)
@@ -1974,7 +1943,7 @@ Spawn:
 		TNT1 A 0 A_SpawnItem ("GreenGrowingBloodPool")
         BOSB E -1
         Stop
-		
+
 	 Death.GreenFire:
         TNT1 A 0
         TNT1 A 0 A_XScream
@@ -1985,7 +1954,7 @@ Spawn:
 		TNT1 AA 0 A_CustomMissile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 AA 0 A_CustomMissile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 AA 0 A_CustomMissile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, random (0, 160))
-		
+
 		EXPL AAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("GreenFlameTrails", 50, 0, random (0, 360), 2, random (0, 360))
 		XBRN AAAA 2 BRIGHT A_SpawnItem("GreenFlare",0,43)
         Stop
@@ -2008,14 +1977,14 @@ Spawn:
     Pain.KillMe:
     Pain.Taunt:
         TNT1 A 0
-		TNT1 A 0 HealThing(1)
+		TNT1 A 0 HealThing(2)
         Goto Missile
     Death.KillMe:
     Death.Taunt:
 	    TNT1 A 0 A_ChangeFlag("SOLID", 0)
         TNT1 A 0 A_SpawnItem("BaronOfHell")
         Stop
-		
+
 	Death.Ice:
 	Death.Freeze:
 	Death.Frost:
@@ -2024,11 +1993,11 @@ Spawn:
 	TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
 	TNT1 A 0 A_ChangeFlag("SOLID", 0)
 	TNT1 A 0 A_SpawnItem("FrozenBaronOfHell")
-	Stop	
-	
+	Stop
+
 	Death.Massacre:
 	Goto Death
-	
+
 	 Death.Stomp:
 	    TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
@@ -2044,30 +2013,30 @@ Spawn:
 		GIBS Z 1
 		GIBS Z -1
 		Stop
-		
+
 	Crush:
 		TNT1 A 0
 		TNT1 AAAA 0 A_SpawnItemEx ("BodyRemovalThing",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 1 A_XScream
 		Stop
-		
+
 	 CurbstompMarine:
         TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
-		KNTF A 15
+		KNTF A 8
 		 TNT1 AAAA 0 A_CustomMissile ("XDeath2b", 25, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 AAAA 0 A_CustomMissile ("XDeath3b", 25, 0, random (0, 360), 2, random (0, 160))
-		 
-		KNTF BCD 8 A_CustomMissile ("XDeath1", 50, 0, random (0, 360), 2, random (0, 160))
+
+		KNTF BC 8 A_CustomMissile ("XDeath1", 50, 0, random (0, 360), 2, random (0, 160))
 	    EXPL A 0 Radius_Quake (2, 24, 0, 15, 0)
-		
+
 		TNT1 A 0 A_CustomMissile ("MuchBlood2", 50, 0, random (0, 360), 2, random (0, 160))
         TNT1 AA 0 A_CustomMissile ("mUCHbLOOD3", 50, 0, random (0, 360), 2, random (0, 160))
-		KNTF DDDDDDDDDDDDDDDDDDDDDD 3 A_CustomMissile ("Brutal_LiquidBlood3", 25, 0, random (0, 360), 2, random (0, 40))
+		KNTF DDDD 2 A_CustomMissile ("Brutal_LiquidBlood3", 25, 0, random (0, 360), 2, random (0, 40))
 		TNT1 A 0 A_CustomMissile ("RipGuts", 20, 0, random (0, 360), 2, random (0, 160))
-		KNTF EEEFFFGGG 4 A_CustomMissile ("XDeath1", 38, 0, random (0, 360), 2, random (0, 160))
+		KNTF EEEEFFFF 2 A_CustomMissile ("XDeath1", 38, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("RipGuts", 20, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
-		KNTF GGGGGGGGGGGGGGGGGGGGGG 3 A_CustomMissile ("Brutal_LiquidBlood3", 25, 0, random (0, 360), 2, random (0, 40))
+		KNTF GGGG 2 A_CustomMissile ("Brutal_LiquidBlood3", 25, 0, random (0, 360), 2, random (0, 40))
         TNT1 A 0 A_TakeInventory("Curbstomp_Marine",1)
         TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
 		TNT1 A 0 A_SpawnItem ("RappedMarine", 1)
@@ -2075,97 +2044,96 @@ Spawn:
 
    FatalityZombieman:
         TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
-       3HF1 A 20
+       3HF1 A 8
 	   TNT1 A 0 A_PlaySound("grunt/death")
-	   3HF1 BC 5
+	   3HF1 BC 8
 		TNT1 AA 0 A_CustomMissile ("XDeath1", 55, 0, random (0, 360), 2, random (0, 160))
-		3HF1 BCBC 5 A_CustomMissile ("XDeath1", 55, 0, random (0, 360), 2, random (0, 160))
+		3HF1 BCBC 8 A_CustomMissile ("XDeath1", 55, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_CustomMissile ("MuchBlood", 55, 0, random (0, 360), 2, random (0, 160))
-		3HF1 D 10
-		3HF1 E 5
+		3HF1 D 8
+		3HF1 E 8
 		 TNT1 A 0 A_CustomMissile ("XDeathZombieManHead", 65, 0, random (0, 360), 2, random (70, 120))
-		3HF1 F 30
-		3HF1 G 10
-		 
+		3HF1 F 8
+		3HF1 G 8
+
         TNT1 A 0 A_TakeInventory("ZombieManFatality",1)
         TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
-		
+
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
 		3HF1 H 8 A_Chase
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
-		BARO E 8 A_FaceTarget
+		BARO E 4 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
-		BARO F 8 A_CustomMissile("ThrowedZombieMan2", 64, 0, 0, 0) 
+		BARO F 4 A_CustomMissile("ThrowedZombieMan2", 64, 0, 0, 0)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
-		BARO G 8
+		BARO G 4
 		Goto See2
-		
+
 	FatalitySergeant:
         TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
-       3HF1 I 15
+       3HF1 I 8
 	   TNT1 A 0 A_PlaySound("grunt/death")
-	   3HF1 I 5
-	   
-	   TNT1 AAAA 0 A_CustomMissile ("GreenGuts", 30, 0, random (0, 360), 2, random (0, 160))
+	   3HF1 I 8
+
+	   TNT1 AAAA 0 A_CustomMissile ("Guts", 30, 0, random (0, 360), 2, random (0, 160))
 	   TNT1 AAA 0 A_CustomMissile ("XDeath1", 45, 0, random (0, 360), 2, random (0, 160))
 	   TNT1 AAA 0 A_CustomMissile ("XDeath2", 45, 0, random (0, 360), 2, random (0, 160))
 	   TNT1 AAA 0 A_CustomMissile ("XDeath3", 55, 0, random (0, 360), 2, random (0, 160))
 	   TNT1 A 0 A_SpawnItem("SergeantFatalizedByBaron")
-	   
-	   3HF1 J 10
-	   
-	   3HF1 KLM 15
-		 
+
+	   3HF1 J 8
+
+	   3HF1 KLM 8
+
         TNT1 A 0 A_TakeInventory("SergeantFatality",1)
         TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
-		
+
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
-		3HF1 M 1 A_Chase
+		3HF1 M 8 A_Chase
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
-		BARO E 8 A_FaceTarget
+		BARO E 4 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
-		BARO F 8 A_CustomMissile("ThrowedSergeantPiece", 64, 0, 0, 0) 
+		BARO F 4 A_CustomMissile("ThrowedSergeantPiece", 64, 0, 0, 0)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
-		BARO G 8
+		BARO G 4
         Goto See2
 
        FatalityDemon:
         TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
 		TNT1 A 0 A_PlaySound("demon/pain")
-        3HF1 N 20
-	   
+        3HF1 N 8
+
 	   TNT1 A 0 A_CustomMissile ("XDeathStomach", 60, 0, random (0, 360), 2, random (0, 160))
 	   TNT1 AAA 0 A_CustomMissile ("XDeath1", 45, 0, random (0, 360), 2, random (0, 160))
 	   TNT1 AAA 0 A_CustomMissile ("XDeath2", 45, 0, random (0, 360), 2, random (0, 160))
 	   TNT1 AAA 0 A_CustomMissile ("XDeath3", 55, 0, random (0, 360), 2, random (0, 160))
- 
-	   3HF1 OPQQQ 10 A_CustomMissile ("MuchBlood", 25, 0, random (0, 360), 2, random (0, 160))
-	   
+
+	   3HF1 OPQ 8 A_CustomMissile ("MuchBlood", 25, 0, random (0, 360), 2, random (0, 160))
+
         TNT1 A 0 A_SpawnItem ("DeadDemonHalf", 1)
-		TNT1 A 0 A_SpawnItem ("GreenGrowingBloodPool")
-		 
+		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+
         TNT1 A 0 A_TakeInventory("DemonFatality",1)
         TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
         Goto See2
 
 	FatalityImp:
-        TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+        TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
 		TNT1 A 0 A_PlaySound("demon/pain")
         3HF2 ABABAB 4
-	   
+
 	   TNT1 AAAAAA 0 A_SpawnItem("MuchBlood", 40)
 	   TNT1 AAA 0 A_CustomMissile ("XDeath1", 45, 0, random (0, 360), 2, random (0, 160))
 	   TNT1 AA 0 A_CustomMissile ("XDeath2", 45, 0, random (0, 360), 2, random (0, 160))
 	   TNT1 AA 0 A_CustomMissile ("XDeath3", 55, 0, random (0, 360), 2, random (0, 160))
-       TNT1 AAA 0 A_CustomMissile ("GreenGuts", 42, 0, random (0, 360), 2, random (0, 160))
-	   3HF2 CDE 6
-	   
-	   3HF2 F 1 A_Chase("","")
-	   3HF2 FFF 15
-	   3HF2 GGHHIJ 3
+       TNT1 AAA 0 A_CustomMissile ("Guts", 42, 0, random (0, 360), 2, random (0, 160))
+	   3HF2 CDE 8
+
+	   3HF2 F 8 A_Chase("","")
+	   3HF2 GHIJ 8
 	   TNT1 A 0 A_SpawnItem("DeadImp_BaronFatality")
-        TNT1 A 0 A_TakeInventory("ImpFatality3",1)
-        TNT1 A 0 A_ChangeFlag("SHOOTABLE", 1)
+        TNT1 A 0 A_TakeInventory("ImpFatality",1)
+        TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
         Goto See2
 		}
 }
@@ -2178,18 +2146,19 @@ Spawn:
 		TNT1 A 0
 		BARO A 1
 		TNT1 A 0 A_CheckSight("WAITING")
-		TNT1 A 0 ACS_EXecuteAlways(1624)
+		TNT1 A 0 A_GiveInventory("TargetIsABaronOfHell")
+		TNT1 A 0 ACS_NamedExecuteAlways("BDBruiserBrotherTwo")
 		TNT1 A 0 A_changeFlag("MISSILEMORE", 1)
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
 		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")
-		TNT1 A 0 A_JumpIfInventory("ImpFatality3", 1, "FatalityImp")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp")
 		TNT1 A 0 A_JumpIfInventory("DemonFatality", 1, "FatalityDemon")
 		Goto Stand
-			
+
 Waiting:
 			BARO A 1
 			Goto Spawn
-			
+
 		}
 }

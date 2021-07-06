@@ -8,7 +8,7 @@ ACTOR MeleePuff: BulletPuff
 	+NOGRAVITY
 	+NOEXTREMEDEATH
 	+PUFFONACTORS
-	+BLOODLESSIMPACT 
+	+BLOODLESSIMPACT
 	+FORCEXYBILLBOARD
 	+DONTSPLASH
 	states
@@ -21,7 +21,7 @@ ACTOR MeleePuff: BulletPuff
 	EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
 	TNT1 A 10
 	stop
- 
+
   }
 }
 
@@ -98,7 +98,6 @@ Decal "Crack"
   }
 }
 
-
 ACTOR UberPunchPuff: SmashingPuff
 {
 DamageType SuperPunch
@@ -135,10 +134,9 @@ ACTOR HitPuff Replaces BulletPuff
   Melee:
 	TNT1 A 1
 	stop
-	
+
   }
 }
-
 
 ACTOR HitPuffTracer : HitPuff
 {
@@ -150,7 +148,6 @@ actor shotpuff : HitPuff
 DamageType SSG
 }
 
-
 actor revopuff : HitPuff
 {
 DamageType HeavyImpact
@@ -160,7 +157,6 @@ actor Shotgunpuff : HitPuff
 {
 DamageType Shotgun
 }
-
 
 actor Shotgunpuff2 : HitPuff
 {
@@ -175,10 +171,6 @@ Radius 2
 Height 2
 }
 
-
-
-
-
 actor WeakPuff : HitPuff
 {
 DamageType Minor
@@ -192,8 +184,7 @@ ACTOR RicoChet
 	-SHOOTABLE
 	+CLIENTSIDEONLY
 	+NONETID
-	+NOINTERACTION
-	+BLOODLESSIMPACT 
+	+BLOODLESSIMPACT
 	+FORCEXYBILLBOARD
 	+THRUACTORS
 	+NOGRAVITY
@@ -214,33 +205,33 @@ ACTOR RicoChet
 	TNT1 A 0 A_SpawnItemEx ("DetectCeilBullet",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	TNT1 A 0 A_SpawnItemEx ("UnderwaterHitPuff",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	PUFF A 0 bright A_PlaySound("ricochet/hit")
-    
-	
+
 	TNT1 A 0 A_SpawnItem ("YellowFlareSmall", 0)
     TNT1 A 0 A_Jump (132, 15)
-    FX58 ABCD 1 BRIGHT 
-	
+    FX58 ABCD 1 BRIGHT
+
 	FX58 EFGHIJ 1 bright
     Stop
     TNT1 AAAAA 0
-    FX57 ABCD 1 BRIGHT 
+    FX57 ABCD 1 BRIGHT
 	TNT1 A 0 A_CustomMissile("HitpuffSmoke", 2, 0, random (0, 360), 2, random (80, 90))
 	FX57 EFGHIJ 1 bright
     stop
-	
-	
+
 	SpawnFloor:
 	TNT1 A 0
 	TNT1 A 0 ACS_NamedExecuteAlways("BDCheckFloorType", 0, 0, 0, 0)//Check if is under a liquid
 	TNT1 A 2
 	TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "SpawnWater")
 	TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "SpawnNukage")
+	TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "SpawnPurple")
 	TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "SpawnSlime")
 	TNT1 A 0 A_JumpIfInventory("IsOverBlood", 1, "SpawnBlood")
 	TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "SpawnLava")
+	TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "SpawnMagenta")
 	TNT1 A 0 A_JumpIfInventory("IsOverGrass", 1, "SpawnDirt")
 	TNT1 A 0 A_JumpIfInventory("IsOverSand", 1, "SpawnSand")
-	
+
 	TNT1 A 0 A_SpawnItemEx ("DetectFloorBullet",0,0,5,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	TNT1 A 0 A_SpawnItemEx ("DetectCeilBullet",0,0,0,-5,0,0,0,SXF_NOCHECKPOSITION,0)
 	TNT1 A 0 A_SpawnItemEx ("UnderwaterHitPuff",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
@@ -248,16 +239,16 @@ ACTOR RicoChet
 	TNT1 A 0 A_SpawnItem ("YellowFlareSmall", 0)
 	TNT1 A 0 A_SetScale(-0.6)
     TNT1 A 0 A_Jump (132, 15)
-    FX58 ABCD 1 BRIGHT 
+    FX58 ABCD 1 BRIGHT
 	TNT1 A 0 A_CustomMissile("HitpuffSmoke", 2, 0, random (0, 360), 2, random (80, 90))
 	FX58 EFGHIJ 1 bright
     Stop
     TNT1 AAAAA 0
-    FX57 ABCD 1 BRIGHT 
+    FX57 ABCD 1 BRIGHT
 	TNT1 A 0 A_CustomMissile("HitpuffSmoke", 2, 0, random (0, 360), 2, random (80, 90))
 	FX57 EFGHIJ 1 bright
     stop
-	
+
 	SpawnWater:
 	TNT1 A 0
 	TNT1 AAAAA 0 A_CustomMissile ("WaterParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160))
@@ -266,7 +257,7 @@ ACTOR RicoChet
 	TNT1 A 0 A_SetScale(0.5, 0.5)
 	TNT1 AAA 0 A_CustomMissile ("WaterRicochet", random (0, 2), 0, random (0, 360), 2, random (30, 90))
 	Stop
-	
+
 	SpawnSlime:
 	TNT1 A 0
 	TNT1 AAAAA 0 A_CustomMissile ("SLimeParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160))
@@ -275,8 +266,7 @@ ACTOR RicoChet
 	TNT1 A 0 A_SetScale(0.5, 0.5)
 	SPHB ABCDE 3
 	Stop
-	
-	
+
 	SpawnNukage:
 	TNT1 A 0
 	TNT1 AAAAA 0 A_CustomMissile ("nukageParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160))
@@ -284,7 +274,15 @@ ACTOR RicoChet
 	TNT1 A 0 A_SpawnItem("NukageSplashWaves")
 	TNT1 AAA 0 A_CustomMissile ("NukageRicochet", random (0, 2), 0, random (0, 360), 2, random (30, 90))
 	Stop
-	
+
+	SpawnPurple:
+	TNT1 A 0
+	TNT1 AAAAA 0 A_CustomMissile ("PurpleParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAAA 0 A_CustomMissile ("PurpleParticleXFAster", 24, 0, random (0, 360), 2, random (30, 160))
+	TNT1 A 0 A_SpawnItem("PurpleSplashWaves")
+	TNT1 AAA 0 A_CustomMissile ("PurpleRicochet", random (0, 2), 0, random (0, 360), 2, random (30, 90))
+	Stop
+
 	SpawnBlood:
 	TNT1 A 0
 	TNT1 AAAAA 0 A_CustomMissile ("BloodParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160))
@@ -292,41 +290,44 @@ ACTOR RicoChet
 	TNT1 A 0 A_SpawnItem("BloodSplashWaves")
 	//TNT1 AAA 0 A_CustomMissile ("lavaRicochet", random (0, 2), 0, random (0, 360), 2, random (30, 90))
 	Stop
-	
+
 	SpawnLava:
 	TNT1 A 0
 	TNT1 A 0 A_CustomMissile ("OldschoolRocketSmokeTrailDarker", 12, 0, random (160, 210), 2, random (10, 90))
 	TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-5, 5), random (-5, 5))
 	TNT1 AAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 10, 0, random (0, 180), 2, random (10, 90))
 	TNT1 A 0 A_SetScale(0.5, 0.5)
-	INFE ABCDEFGHIJKLMNOPQR 1 BRIGHT 
+	INFE ABCDEFGHIJKLMNOPQR 1 BRIGHT
 	INFE ST 1 BRIGHT A_CustomMissile ("OldschoolRocketSmokeTrailDarker", 32, 0, random (160, 210), 2, random (10, 90))
 	TNT1 AAA 4 A_CustomMissile ("OldschoolRocketSmokeTrailDarker", 14, 0, random (160, 210), 2, random (10, 90))
 	Stop
-	
-	
+
+	SpawnMagenta:
+	TNT1 A 0
+	TNT1 A 0 A_CustomMissile ("OldschoolRocketSmokeTrailDarker", 12, 0, random (160, 210), 2, random (10, 90))
+	TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3M", random (-5, 5), random (-5, 5))
+	TNT1 AAAAA 0 A_CustomMissile ("MagentaParticleHeavy", 10, 0, random (0, 180), 2, random (10, 90))
+	TNT1 A 0 A_SetScale(0.5, 0.5)
+	INFM ABCDEFGHIJKLMNOPQR 1 BRIGHT
+	INFM ST 1 BRIGHT A_CustomMissile ("OldschoolRocketSmokeTrailDarker", 32, 0, random (160, 210), 2, random (10, 90))
+	TNT1 AAA 4 A_CustomMissile ("OldschoolRocketSmokeTrailDarker", 14, 0, random (160, 210), 2, random (10, 90))
+	Stop
+
 	SpawnDirt:
 	TNT1 A 0
 	TNT1 A 0 A_CustomMissile ("BrownCloudSmallLong", 0, 0, random (0, 360), 2, random (10, 150))
 	TNT1 AAA 0 A_CustomMissile ("DirtRicochet", random (0, 2), 0, random (0, 360), 2, random (30, 90))
 	Stop
-	
-	
+
 	SpawnSand:
 	TNT1 A 0
 	TNT1 A 0 A_CustomMissile ("SandCloudSmallLong", 0, 0, random (0, 360), 2, random (10, 90))
 	TNT1 A 0 A_CustomMissile ("SandCloudSmall", 0, 0, random (0, 360), 2, random (10, 90))
 	TNT1 A 0 A_CustomMissile ("SandDustSmall", 4, 0, random (0, 360), 2, random (30, 150))
-	TNT1 AAA 0 A_CustomMissile ("DirtRicochet", random (0, 2), 0, random (0, 360), 2, random (30, 90))
+	TNT1 AAA 0 A_CustomMissile ("SandRicochet", random (0, 2), 0, random (0, 360), 2, random (30, 90))
 	Stop
-	
-	
-	
-	
   }
 }
-
-
 
 ACTOR DirtRicochet: RicoChet
 {
@@ -360,12 +361,45 @@ ACTOR DirtRicochet: RicoChet
 	TNT1 A 0 A_SetScale(-0.7, 0.7)
 	SDRT ABCDEFF 1 A_FadeOut(0.1)
 	Stop
-	
+
   }
 }
 
+ACTOR SandRicochet: RicoChet
+{
+  renderstyle Translucent
+  alpha 0.9
+  Scale 0.5
+  Speed 6
+  states
+  {
+  Spawn:
+	TNT1 A 0
+	TNT1 A 0 A_PlaySound("BHITDIR")
+	TNT1 A 0 A_Jump(255, "spawn1", "Spawn2", "Spawn3", "Spawn4")
+  Spawn1:
+	TNT1 A 0
+	TNT1 A 0 A_SetScale(0.7, 0.7)
+	SSND ABCDEFF 1 A_FadeOut(0.1)
+	Stop
+ Spawn2:
+	TNT1 A 0
+	TNT1 A 0 A_SetScale(0.8, 0.8)
+	SSND ABCDEFF 1 A_FadeOut(0.1)
+	Stop
+  Spawn3:
+	TNT1 A 0
+	TNT1 A 0 A_SetScale(-0.6, 0.6)
+	SSND ABCDEFF 1 A_FadeOut(0.1)
+	Stop
+  Spawn4:
+	TNT1 A 0
+	TNT1 A 0 A_SetScale(-0.7, 0.7)
+	SSND ABCDEFF 1 A_FadeOut(0.1)
+	Stop
 
-
+  }
+}
 
 ACTOR WaterRicochet: DirtRicochet
 {
@@ -404,7 +438,6 @@ ACTOR WaterRicochet: DirtRicochet
   }
 }
 
-
 ACTOR NukageRicochet: WaterRicochet
 {
   renderstyle Add
@@ -437,6 +470,37 @@ ACTOR NukageRicochet: WaterRicochet
   }
 }
 
+ACTOR PurpleRicochet: WaterRicochet
+{
+  renderstyle Add
+  states
+  {
+  Spawn:
+	TNT1 A 0
+	TNT1 A 0 A_PlaySound("BHITDIR")
+	TNT1 A 0 A_Jump(255, "spawn1", "Spawn2", "Spawn3", "Spawn4")
+  Spawn1:
+	TNT1 A 0
+	TNT1 A 0 A_SetScale(0.7, 0.7)
+	SPHP ABCDEFF 1 A_FadeOut(0.1)
+	Stop
+ Spawn2:
+	TNT1 A 0
+	TNT1 A 0 A_SetScale(0.8, 0.8)
+	SPHP ABCDEFF 1 A_FadeOut(0.1)
+	Stop
+  Spawn3:
+	TNT1 A 0
+	TNT1 A 0 A_SetScale(-0.6, 0.6)
+	SPHP ABCDEFF 1 A_FadeOut(0.1)
+	Stop
+  Spawn4:
+	TNT1 A 0
+	TNT1 A 0 A_SetScale(-0.7, 0.7)
+	SPHP ABCDEFF 1 A_FadeOut(0.1)
+	Stop
+  }
+}
 
 ACTOR BloodRicochet: WaterRicochet
 {
@@ -484,8 +548,6 @@ ACTOR GiantWaterRicochet: RicoChet
   }
 }
 
-
-
 ACTOR RicoChetMinor: RicoChet
 {
   states
@@ -504,25 +566,24 @@ ACTOR RicoChetMinor: RicoChet
     TNT1 AA 0 A_CustomMissile ("OldschoolRocketSmokeTrail2", 2, 0, random (0, 360), 2, random (0, 360))
 
 	TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Spawn4")
-    
+
 	Spawn1:
 	IPF2 AABB 1 bright A_SpawnItem ("YellowFlareSmall", 0)
     Stop
-	
+
 	Spawn2:
 	IPF2 CCDD 1 bright A_SpawnItem ("YellowFlareSmall", 0)
     Stop
-	
+
 	Spawn3:
 	IPF2 EEFF 1 bright A_SpawnItem ("YellowFlareSmall", 0)
     Stop
-	
+
 	Spawn4:
 	IPF2 GGHH 1 bright A_SpawnItem ("YellowFlareSmall", 0)
     Stop
   }
 }
-
 
 ACTOR LargeMassWaterImpact
 {
@@ -543,11 +604,13 @@ ACTOR LargeMassWaterImpact
     TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "SpawnWater")
 	TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "SpawnSlime")
 	TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "SpawnNukage")
+	TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "SpawnPurple")
 	TNT1 A 0 A_JumpIfInventory("IsOverBlood", 1, "SpawnBlood")
 	TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "SpawnLava")
+	TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "SpawnMagenta")
 	TNT1 A 0 A_JumpIfInventory("IsOverSand", 1, "SpawnSand")
     Stop
-	
+
   SpawnWater:
 	TNT1 A 0
 	TNT1 A 0 A_PlaySound("bigspl1")
@@ -556,8 +619,8 @@ ACTOR LargeMassWaterImpact
 	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("WaterParticleXFAster", 12, 0, random (0, 360), 2, random (30, 90))
 	TNT1 A 20
 	Stop
-	
- SpawnSlime:	
+
+ SpawnSlime:
 	TNT1 A 0
 	TNT1 A 0 A_PlaySound("bigspl1")
 	TNT1 A 0 A_AlertMonsters(500, AMF_TARGETNONPLAYER)
@@ -565,9 +628,9 @@ ACTOR LargeMassWaterImpact
 	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("SlimeParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160))
 	//TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("SlimeParticleXSuperFast", 14, 0, random (0, 360), 2, random (30, 160))
 	TNT1 A 20
-	Stop	
-	
- SpawnNukage:	
+	Stop
+
+ SpawnNukage:
 	TNT1 A 0
 	TNT1 A 0 A_PlaySound("bigspl1")
 	TNT1 A 0 A_AlertMonsters(500, AMF_TARGETNONPLAYER)
@@ -576,19 +639,25 @@ ACTOR LargeMassWaterImpact
 	//TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("NukageParticleXSuperFast", 14, 0, random (0, 360), 2, random (30, 160))
 	TNT1 A 20
 	Stop
-	
-	
-  SpawnBlood:	
+
+ SpawnPurple:
+	TNT1 A 0
+	TNT1 A 0 A_PlaySound("bigspl1")
+	TNT1 A 0 A_AlertMonsters(500, AMF_TARGETNONPLAYER)
+	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("PurpleParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160))
+	TNT1 A 20
+	Stop
+
+  SpawnBlood:
 	TNT1 A 0
 	TNT1 A 0 A_PlaySound("bigspl1")
 	TNT1 A 0 A_AlertMonsters(500, AMF_TARGETNONPLAYER)
 	//TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("LiquidParticleX", 0, 0, random (0, 360), 2, random (0, 360))
 	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("BloodParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160))
 	TNT1 A 20
-	Stop	
-	
-	
- SpawnLava:	
+	Stop
+
+ SpawnLava:
 	TNT1 A 0
 	TNT1 A 0 A_CustomMissile ("FlyingLava1d", 0, 0, random (0, 360), 2, random (30, 80))
 	TNT1 AAA 0 A_CustomMissile ("FlyingLava1c", 2, 0, random (0, 360), 2, random (30, 80))
@@ -597,9 +666,19 @@ ACTOR LargeMassWaterImpact
 	TNT1 A 0 A_SpawnItemEx("TinyBurningPiece2", random (-35, 35), random (-35, 35))
 	TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-45, 45), random (-45, 35))
 	TNT1 A 20
-	Stop	
-	
-	
+	Stop
+
+ SpawnMagenta:
+	TNT1 A 0
+	TNT1 A 0 A_CustomMissile ("FlyingMagenta1d", 0, 0, random (0, 360), 2, random (30, 80))
+	TNT1 AAA 0 A_CustomMissile ("FlyingMagenta1c", 2, 0, random (0, 360), 2, random (30, 80))
+	TNT1 AAA 0 A_CustomMissile ("FlyingMagenta2c", 2, 0, random (0, 360), 2, random (30, 80))
+	TNT1 A 0 A_SpawnItemEx("TinyBurningPieceM", random (-15, 15), random (-15, 15))
+	TNT1 A 0 A_SpawnItemEx("TinyBurningPiece2M", random (-35, 35), random (-35, 35))
+	TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3M", random (-45, 45), random (-45, 35))
+	TNT1 A 20
+	Stop
+
  SpawnSand:
 	TNT1 AA 0 A_CustomMissile ("SandCloudSmallLong", 24, 0, random (0, 360), 2, random (30, 90))
 	TNT1 A 0 A_CustomMissile ("SandCloudSmall", 0, 0, random (0, 360), 2, random (10, 90))
@@ -608,8 +687,6 @@ ACTOR LargeMassWaterImpact
 	Stop
   }
 }
-
-
 
 ACTOR SilentHitPuff: hitPuff
 {
@@ -628,18 +705,8 @@ DamageType Minigun
 
 Actor MechMinigunPuff: HitPuff
 {
-DamageType Extreme
+DamageType Minigun
 -NOEXTREMEDEATH
-}
-
-Actor ExtremeBulletPuff: HitPuff
-{
-DamageType Extreme
-}
-
-Actor ExtremeBulletPuff2: HitPuff
-{
-DamageType Extreme
 }
 
 Actor ATBulletPuff: HitPuff
@@ -673,7 +740,7 @@ ACTOR SSawPuff: HitPuff
 	{
 		Spawn:
 		Death:
-		Melee:	
+		Melee:
 		XDeath:
 		TNT1 A 0
 		TNT1 AB 1 bright
@@ -682,21 +749,20 @@ ACTOR SSawPuff: HitPuff
 		TNT1 AAAAAA 0 A_CustomMissile ("SparkX", 2, 0, random (0, 360), 2, random (30, 170))
 		BPUF C 1 bright A_PlaySound("weapons/chainsaw/hitwall")
 		BPUF D 1 bright
-		Stop	
+		Stop
 	}
 }
 
-
 ACTOR SSawPuff2: SSawPuff
 {
-damagetype Cut
+damagetype Saw
+decal "SawVertical"
 }
 
 ACTOR FakeSSawPuff: SSawPuff
 {
 +THRUGHOST
 }
-
 
 Actor PuffSmoke
 {
@@ -798,7 +864,6 @@ DamageType Kick
 PROJECTILE
 +DEHEXPLOSION
 +ACTIVATEMCROSS
-DamageType MonsterKnocked
 -DONTSPLASH
 States
 {
@@ -809,7 +874,6 @@ Spawn:
 Stop
  }
 }
-
 
 actor PLOFT3
 {
@@ -837,7 +901,6 @@ Stop
  }
 }
 
-
 actor PLOFT4
 {
 	+NOTARGET
@@ -864,8 +927,6 @@ Stop
  }
 }
 
-
-
 actor PLOFT5
 {
 	+NOTARGET
@@ -891,6 +952,3 @@ TNT1 A 2
 Stop
  }
 }
-
-
-

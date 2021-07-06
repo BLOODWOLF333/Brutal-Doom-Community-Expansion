@@ -1,0 +1,237 @@
+ACTOR Spectro: BullDemon Replaces Spectre
+{
+	Mass 400
+	DropItem "DemonStrengthRune", 4
+	DropItem "SuperBlurSphere", 16
+	RenderStyle Add
+    Alpha 0.5
+	Obituary "%o has been sodomized by a Spectre."
+	Tag "Spectre"
+	States
+	{
+    Spawn:
+		SPEC A 1 BRIGHT
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCHeckClassicMonsters", 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckFuzzySpectre", 0, 0, 0, 0)//Check if FuzzySpectres is enabled
+		SPEC A 2 BRIGHT
+	Idle:
+	Spawned:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("EatMe", 1, "Eat")
+		TNT1 A 0 A_JumpIfInTargetInventory("HasInfrared", 1, "SpawnVisible")
+		SPEC AAAAAAAAAA 10 BRIGHT A_Look
+		Loop
+
+	SpawnVisible:
+		SARG AAAAAAAAAA 10 A_Look
+		Goto Spawned
+
+	ReplaceVanilla:
+		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+		TNT1 A 0 A_SpawnItemEx ("VanillaSpectre",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
+		Stop
+
+	ReplaceFuzzy:
+		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+		TNT1 A 0 A_SpawnItemEx ("FuzzySpectre",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
+		Stop
+
+	See:
+	SeeContinue:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("ZombieManFatality", 1, "FatalityZombieman")
+		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp")
+		TNT1 A 0 A_JumpIfInventory("ComandoFatality", 1, "FatalityComando")
+		TNT1 A 0 A_JumpIfInventory("ComeEatMeDemon", 1, "EnragedSee")
+		TNT1 A 0 A_CheckSight("SeeNoSee")
+        TNT1 A 0 A_JumpIfInventory("EatMe", 1, "Eat")
+		TNT1 A 0 A_TakeInventory("EnemyMemory", 17)
+		SPEC AA 2 BRIGHT A_Chase
+		TNT1 A 0 A_JumpIfInTargetInventory("HasInfrared", 1, "SeeVisible")
+		SPEC BB 2 BRIGHT A_Chase
+		TNT1 A 0 A_JumpIfInTargetInventory("HasInfrared", 1, "SeeVisible")
+		SPEC AA 2 BRIGHT A_Chase
+		TNT1 A 0 A_JumpIfInTargetInventory("HasInfrared", 1, "SeeVisible")
+		SPEC BB 2 BRIGHT A_Chase
+		TNT1 A 0 A_JumpIfInTargetInventory("HasInfrared", 1, "SeeVisible")
+		Loop
+
+	SeeNoSee:
+		SPEC AA 2 BRIGHT A_Chase
+		TNT1 A 0 A_JumpIfInTargetInventory("HasInfrared", 1, "SeeVisible")
+		SPEC BB 2 BRIGHT A_Chase
+		TNT1 A 0 A_JumpIfInTargetInventory("HasInfrared", 1, "SeeVisible")
+		SPEC AA 2 BRIGHT A_Chase
+		TNT1 A 0 A_JumpIfInTargetInventory("HasInfrared", 1, "SeeVisible")
+		SPEC BB 2 BRIGHT A_Chase
+		TNT1 A 0 A_JumpIfInTargetInventory("HasInfrared", 1, "SeeVisible")
+		TNT1 A 0 A_GiveInventory("EnemyMemory", 1)
+		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 15, "Forget")
+		Goto See
+
+	SeeVisible:
+		SARG AABBCCDD 2 A_Chase
+		Goto See
+
+	EnragedSee:
+		TNT1 A 0 A_JumpIfInventory("EatMe", 1, "Eat")
+        TNT1 A 0 A_TakeInventory("EnemyMemory", 17)
+		SPEC A 1 BRIGHT A_Chase("Melee","")
+		SPEC A 2 BRIGHT A_Chase("Melee","")
+		TNT1 A 0 A_JumpIfInTargetInventory("HasInfrared", 1, "SeeVisible")
+		SPEC B 1 BRIGHT A_Chase("Melee","")
+		SPEC B 2 BRIGHT A_Chase("Melee","")
+		TNT1 A 0 A_JumpIfInTargetInventory("HasInfrared", 1, "SeeVisible")
+		SPEC A 1 BRIGHT A_Chase("Melee","")
+		SPEC A 2 BRIGHT A_Chase("Melee","")
+		TNT1 A 0 A_JumpIfInTargetInventory("HasInfrared", 1, "SeeVisible")
+		SPEC B 1 BRIGHT A_Chase("Melee","")
+		SPEC B 2 BRIGHT A_Chase("Melee","")
+		TNT1 A 0 A_JumpIfInTargetInventory("HasInfrared", 1, "SeeVisible")
+		TNT1 A 0 A_FaceTarget
+		Loop
+
+	Death:
+	    TNT1 A 0
+		TNT1 A 0 A_Jump(96, "LeftDeath")
+        TNT1 A 0 A_Jump(96, 13)
+
+	Death.Minor:
+		TNT1 AA 0
+		SARG I 8
+		SARG J 8 A_Scream
+		SARG K 4
+		SARG L 4 A_NoBlocking
+		SARG M 4
+        TNT1 A 0 A_SpawnItem ("DeadDemon1", 1)
+		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		Stop
+
+        TNT1 AAAAAAAAA 0
+        TNT1 A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("XDeathDemonArm", 35, 0, random (0, 360), 2, random (0, 160))
+		SAAR A 8 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
+		SAAR B 8 A_Scream
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_SpawnItemEx ("PoorSpectroLostHisArm",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        Stop
+
+	Death.Eat:
+        TNT1 A 0 A_GiveToTarget("EatMe",1)
+		Goto Death+3
+
+	Death.Massacre:
+	Goto Death
+
+	Death.Minigun:
+	    TNT1 A 0
+		TNT1 A 0 A_Jump(32, "Death.Cut")
+		TNT1 A 0 A_Jump(132, "DeathRemoveArm")
+		Goto Death
+
+	DeathRemoveArm:
+		TNT1 A 0
+		TNT1 AAAAAA 0 A_CustomMissile ("BloodMistBig", 40, 0, random (0, 360), 2, random (40, 90))
+		TNT1 A 0 A_CustomMissile ("BloodMistExtraBig", 40, 0, random (0, 360), 2, random (40, 90))
+		Goto Death+14
+
+	Death.Shotgun:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfCloser(300, "Death.Strong")
+		Goto Death+4
+
+	Death.Shrapnel:
+		TNT1 A 0
+		TNT1 A 0 ThrustThingZ(0, 30, 0, 0)
+		TNT1 A 0 A_Jump(128, "Death.Strong2")
+		TNT1 A 0 A_SpawnItem("MuchBlood", 0, 32)
+		Goto Death
+	}
+}
+
+ACTOR FuzzySpectre: BullDemon
+{
+	+SHADOW
+	RenderStyle OptFuzzy
+	Alpha 0.5
+	Tag "Spectre"
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_JumpIfInventory("EatMe", 1, "Eat")
+		SARG YZYZYZYZYZ 10 A_Look
+		Loop
+
+	Death:
+	    TNT1 A 0
+		TNT1 A 0 A_Jump(96, "LeftDeath")
+        TNT1 A 0 A_Jump(96, 13)
+
+	Death.Minor:
+		TNT1 AA 0
+		SARG I 8
+		SARG J 8 A_Scream
+		SARG K 4
+		SARG L 4 A_NoBlocking
+		SARG M 4
+        TNT1 A 0 A_SpawnItem ("DeadDemon1", 1)
+		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		Stop
+
+        TNT1 AAAAAAAAA 0
+        TNT1 A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("XDeathDemonArm", 35, 0, random (0, 360), 2, random (0, 160))
+		SAAR A 8 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
+		SAAR B 8 A_Scream
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_SpawnItemEx ("PoorFuzzyLostHisArm",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        Stop
+
+	Death.Eat:
+        TNT1 A 0 A_GiveToTarget("EatMe",1)
+		Goto Death+3
+
+	Death.Massacre:
+	Goto Death
+
+	Death.Minigun:
+	    TNT1 A 0
+		TNT1 A 0 A_Jump(32, "Death.Cut")
+		TNT1 A 0 A_Jump(132, "DeathRemoveArm")
+		Goto Death
+
+	DeathRemoveArm:
+		TNT1 A 0
+		TNT1 AAAAAA 0 A_CustomMissile ("BloodMistBig", 40, 0, random (0, 360), 2, random (40, 90))
+		TNT1 A 0 A_CustomMissile ("BloodMistExtraBig", 40, 0, random (0, 360), 2, random (40, 90))
+		Goto Death+14
+
+	Death.Shotgun:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfCloser(300, "Death.Strong")
+		Goto Death+4
+
+	Death.Shrapnel:
+		TNT1 A 0
+		TNT1 A 0 ThrustThingZ(0, 30, 0, 0)
+		TNT1 A 0 A_Jump(128, "Death.Strong2")
+		TNT1 A 0 A_SpawnItem("MuchBlood", 0, 32)
+		Goto Death
+	}
+}
+
+Actor ArmlessSpectro : ArmlessDemon
+{
+	RenderStyle Add
+    Alpha 0.5
+}
+
+Actor ArmlessFuzzy : ArmlessDemon
+{
+	+SHADOW
+	RenderStyle OptFuzzy
+	Alpha 0.5
+}

@@ -1,0 +1,669 @@
+Actor DemonRuneRevenant : PowerupGiver
+{
+	Inventory.PickupMessage "Demon Rune!"
+	Inventory.PickupSound "misc/p_pkup"
+	Inventory.MaxAmount 0
+	+COUNTITEM
+	+INVENTORY.AUTOACTIVATE
+	+INVENTORY.ALWAYSPICKUP
+	+INVENTORY.BIGPOWERUP
+	Powerup.Type TransformRevenant
+	Powerup.Duration -30
+	States
+	{
+	Spawn:
+		DMRU AABBCCDD 2 Bright A_SpawnItem("RedFlareMedium",0,20)
+		loop
+	}
+}
+
+Actor PowerTransformRevenant : PowerMorph
+{
+	PowerMorph.PlayerClass "RevenantPlayer"
+}
+
+Actor RevenantPlayer : DoomPlayer
+{
+	Radius 18
+	Height 73
+	Health 300
+	Scale 0.9
+	Player.ViewHeight 65
+	Player.AttackZOffset 29
+	Player.JumpZ 9.6
+	Player.MorphWeapon "D4RevenantHUD"
+	PainSound "skeleton/pain"
+	DeathSound "skeleton/death"
+	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	DamageFactor "Crush", 3.0
+	Damagefactor "Extremepunches", 1.0	Damagefactor "Fatality", 2.5	DamageFactor "TankWeakSpot", 0.0
+	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0
+	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
+	Damagefactor "HelperMarineFatallity", 0.0	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0
+	Damagefactor "LowKick", 0.0	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0
+	Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0	DamageFactor "SSG", 5.0
+	Damagefactor "Slide", 0.5	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 0.0
+	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "Kick", 0.5
+	Damagefactor "Melee", 0.5	Damagefactor "Shrapnel", 0.5	Damagefactor "Slime", 0.0
+	Damagefactor "Stealth", 0.5	Damagefactor "Stomp", 0.5	Damagefactor "Trample", 0.5
+	Damagefactor "Burn", 0.5	Damagefactor "Fire", 0.5	Damagefactor "Flames", 0.5
+	Damagefactor "GreenFire", 0.5	Damagefactor "HumanBBQ", 0.5	Damagefactor "Lava", 0.0
+
+	PainChance "Avoid", 0	PainChance "Burn", 16
+	PainChance "ExplosiveImpact", 16	PainChance "Extremepunches", 16	PainChance "Fatality", 16
+	PainChance "Fire", 16	PainChance "Flames", 16	PainChance "GreenFire", 16
+	PainChance "HumanBBQ", 16
+	PainChance "Kick", 16	PainChance "LowKick", 16	PainChance "Melee", 16
+	PainChance "Slide", 16
+	PainChance "Stealth", 16	PainChance "Trample", 16
+	Player.Face D4R
+	Species "Marines"
+	+NOSKIN
+	+PLAYERPAWN.CROUCHABLEMORPH
+	-PICKUP
+	Player.CrouchSprite "SKEL"
+	Speed 0.625
+	States
+	{
+	Spawn:
+		SKEL B 4
+		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
+		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
+		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp")
+		TNT1 A 0 A_JumpIfInventory("Punching", 1, "Melee")
+		Loop
+	See:
+		SKEL A 3
+		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
+		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
+		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp")
+		TNT1 A 0 A_JumpIfInventory("Punching", 1, "Melee")
+		SKEL B 3
+		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
+		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
+		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp")
+		TNT1 A 0 A_JumpIfInventory("Punching", 1, "Melee")
+		SKEL C 3
+		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
+		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
+		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp")
+		TNT1 A 0 A_JumpIfInventory("Punching", 1, "Melee")
+		SKEL D 3
+		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
+		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
+		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp")
+		TNT1 A 0 A_JumpIfInventory("Punching", 1, "Melee")
+		SKEL E 3
+		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
+		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
+		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp")
+		TNT1 A 0 A_JumpIfInventory("Punching", 1, "Melee")
+		SKEL F 3
+		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
+		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
+		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp")
+		TNT1 A 0 A_JumpIfInventory("Punching", 1, "Melee")
+		Goto Spawn
+
+	Melee:
+		SKEL G 3
+		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
+		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
+		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp")
+		SKEL H 2
+		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
+		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
+		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp")
+		SKEL I 3
+		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
+		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
+		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp")
+		SKEL R 2
+		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
+		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
+		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp")
+		SKEL S 2
+		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
+		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
+		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp")
+		SKEL T 3
+		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
+		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
+		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp")
+		Goto Spawn
+
+	Missile:
+		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
+		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
+		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp")
+		TNT1 A 0 A_JumpIfInventory("Punching", 1, "Melee")
+		SKEL B 8
+		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
+		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
+		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp")
+		TNT1 A 0 A_JumpIfInventory("Punching", 1, "Melee")
+		SKEL J 6 BRIGHT
+		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
+		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
+		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp")
+		TNT1 A 0 A_JumpIfInventory("Punching", 1, "Melee")
+		SKEL K 10
+		Goto Spawn
+
+	Pain:
+		SKEL L 4 A_Pain
+		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
+		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
+		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp")
+		TNT1 A 0 A_JumpIfInventory("Punching", 1, "Melee")
+		Goto Spawn
+
+	CurbstompMarine:
+		NULL A 0 SetPlayerProperty(0,1,0)
+		TNT1 A 0 A_GiveInventory("GoFatality", 1)
+        NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
+		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
+        //////////////////////////////////////////////////////
+		TNT1 A 0 A_PlaySound("BIGSCRE")
+		REFP A 8
+		EXPL A 0 Radius_Quake (2, 24, 0, 15, 0)
+		TNT1 AAA 0 A_CustomMissile ("Brains1", 50, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAA 0 A_CustomMissile ("XDeath1", 50, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_CustomMissile ("XDeath2", 50, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_PlaySound("XDeath1")
+		REFP BCDE 4
+		REFP F 8
+		REFP GHI 4
+		TNT1 A 0 A_PlaySound("XDeath1")
+		REFP J 4
+		TNT1 A 0 A_SpawnItem ("MarineFatalizedByRevenant", 1)
+		//////////////////////////////////////////////////////
+		TNT1 A 0 A_TakeInventory("Curbstomp_Marine",1)
+		TNT1 A 0 A_TakeInventory("GoFatality", 1)
+		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+        NULL A 0 SetPlayerProperty(0,0,0)
+		Goto Spawn
+
+	FatalityZombieman:
+		NULL A 0 SetPlayerProperty(0,1,0)
+		TNT1 A 0 A_GiveInventory("GoFatality", 1)
+        NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
+		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
+        //////////////////////////////////////////////////////
+		SKF1 ABC 4
+		TNT1 A 0 A_PlaySound("grunt/pain", 1)
+		TNT1 A 0 A_PlaySound("CLAP", 4)
+		TNT1 A 0 A_SpawnItemEx("MuchBlood2", 0, -60)
+		SKF1 D 12
+
+		SKF1 EFG 4
+		TNT1 A 0 A_PlaySound("grunt/pain", 1)
+		TNT1 A 0 A_PlaySound("CLAP", 4)
+		TNT1 A 0 A_SpawnItemEx("MuchBlood2", 0, 60)
+		SKF1 H 12
+		SKF1 I 10 A_GiveInventory("HasZmanShield",1)
+		//////////////////////////////////////////////////////
+		TNT1 A 0 A_TakeInventory("ZombieManFatality",1)
+		TNT1 A 0 A_TakeInventory("GoFatality", 1)
+		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+        NULL A 0 SetPlayerProperty(0,0,0)
+		Goto Spawn
+
+	FatalitySergeant:
+		NULL A 0 SetPlayerProperty(0,1,0)
+		TNT1 A 0 A_GiveInventory("GoFatality", 1)
+        NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
+		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
+        //////////////////////////////////////////////////////
+		SKF2 ABC 4
+		TNT1 A 0 A_PlaySound("grunt/pain", 1)
+		TNT1 A 0 A_PlaySound("CLAP", 4)
+		TNT1 A 0 A_SpawnItemEx("MuchBlood2", 0, -60)
+		SKF2 D 12
+
+		SKF2 EFG 4
+		TNT1 A 0 A_PlaySound("grunt/pain", 1)
+		TNT1 A 0 A_PlaySound("CLAP", 4)
+		TNT1 A 0 A_SpawnItemEx("MuchBlood2", 0, 60)
+		SKF2 H 12
+		SKF2 I 10 A_GiveInventory("HasSguyShield",1)
+		//////////////////////////////////////////////////////
+		TNT1 A 0 A_TakeInventory("SergeantFatality",1)
+		TNT1 A 0 A_TakeInventory("GoFatality", 1)
+		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+        NULL A 0 SetPlayerProperty(0,0,0)
+		Goto Spawn
+
+	FatalityImp:
+		NULL A 0 SetPlayerProperty(0,1,0)
+		TNT1 A 0 A_GiveInventory("GoFatality", 1)
+        NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
+		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
+        //////////////////////////////////////////////////////
+		SKF3 ABC 4
+		TNT1 A 0 A_PlaySound("grunt/pain", 1)
+		TNT1 A 0 A_PlaySound("CLAP", 4)
+		TNT1 A 0 A_SpawnItemEx("MuchBlood2", 0, -60)
+		SKF3 D 12
+
+		SKF3 EFG 4
+		TNT1 A 0 A_PlaySound("grunt/pain", 1)
+		TNT1 A 0 A_PlaySound("CLAP", 4)
+		TNT1 A 0 A_SpawnItemEx("MuchBlood2", 0, 60)
+		SKF3 H 12
+		SKF3 I 10 A_GiveInventory("HasImpShield",1)
+		//////////////////////////////////////////////////////
+		TNT1 A 0 A_TakeInventory("ImpFatality",1)
+		TNT1 A 0 A_TakeInventory("ImpFatality3",1)
+		TNT1 A 0 A_TakeInventory("GoFatality", 1)
+		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+        NULL A 0 SetPlayerProperty(0,0,0)
+		Goto Spawn
+
+	Death:
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("D4RevenantHUD")
+		TNT1 A 0 A_Scream
+		TNT1 A 0 A_NoBlocking
+		SKEL MNOP 4
+		SKEL Q -1
+		Stop
+
+	XDeath:
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("D4RevenantHUD")
+		REDX A 1
+		TNT1 A 0 A_Scream
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_PlaySound("misc/xdeath4")
+		TNT1 AAA 0 A_CustomMissile ("XDeath1", 60, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AA 0 A_CustomMissile ("XDeath2b", 60, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AA 0 A_CustomMissile ("XDeath3b", 60, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_SpawnItem("MuchBlood2", 0, 50)
+		TNT1 AAA 0 A_CustomMissile ("RevenantDust", 30, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAA 0 A_CustomMissile ("RevenantDust2", 30, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AA 0 A_CustomMissile ("BigLSPart1", 37, 0, random (0, 360), 2, random (30, 150))
+		TNT1 AA 0 A_CustomMissile ("BigLSPart2", 37, 0, random (0, 360), 2, random (30, 150))
+		TNT1 AAAAAAA 0 A_CustomMissile ("RevenantPiece", 37, 0, random (0, 360), 2, random (30, 150))
+		TNT1 A 0 A_SpawnItem ("XDeadSkeleton22", 1)
+		TNT1 A 0 A_SpawnItem("HellishMissileLauncher", 0, 40)
+	    REDX ABCDEFGHIJK 3
+		TNT1 A 0 A_SpawnItem("GrowingBloodPool")
+		REDX K -1
+		Stop
+		}
+}
+
+ACTOR D4RevenantHUD : DoomWeapon
+{
+	Weapon.AmmoUse1 0
+	Weapon.AmmoGive1 0
+	Weapon.AmmoUse2 0
+	Weapon.AmmoGive2 0
+	Weapon.SelectionOrder 9999
+	+WEAPON.CHEATNOTWEAPON
+	+WEAPON.NO_AUTO_SWITCH
+	Tag "RevenantPlayer"
+	States
+	{
+	Ready:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("HasZmanShield", 1, "ReadyZombieman")
+		TNT1 A 0 A_JumpIfInventory("HasSguyShield", 1, "ReadySergeant")
+		TNT1 A 0 A_JumpIfInventory("HasImpShield", 1, "ReadyImp")
+		TNT1 A 0 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		D4RW A 1 A_WeaponReady
+		Loop
+
+	Steady:
+		TNT1 A 0
+		TNT1 A 4
+		TNT1 A 0 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+		Goto Ready
+
+	ReadyZombieman:
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		D4RM A 1 A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+		TNT1 A 0 A_FireCustomMissile("D4HoldingZombieman", 0,0,16,-4,0,0)
+		Loop
+
+	ReadySergeant:
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		D4RM A 1 A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+		TNT1 A 0 A_FireCustomMissile("D4HoldingSergeant", 0,0,16,-4,0,0)
+		Loop
+
+	ReadyImp:
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		D4RM A 1 A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+		TNT1 A 0 A_FireCustomMissile("D4HoldingImp", 0,0,16,0,0,0)
+		Loop
+
+	Deselect:
+		D4RW AAA 1
+		D4RW AAAAAAAAAAAA 0 A_Lower
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_Lower
+		Loop
+
+	Select:
+		TNT1 A 1 A_Raise
+		D4RW AAAAAAAAA 0 A_Raise
+		Select2:
+		TNT1 A 0 A_PlaySound("skeleton/sight")
+		D4RW AAA 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+		Goto Ready
+
+	Fire:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("HasZmanShield", 1, "FireZombieman")
+		TNT1 A 0 A_JumpIfInventory("HasSguyShield", 1, "FireSergeant")
+		TNT1 A 0 A_JumpIfInventory("HasImpShield", 1, "FireImp")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_PlaySound("MICRO1", 1)
+		D4RW A 0 A_ZoomFactor(0.99)
+		TNT1 A 0 A_FireCustomMissile("revenantseekermissiles2", random(-2,2),0,-12,0,0,random(-1,1))
+		D4RW B 3 BRIGHT A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+		D4RW A 0 A_ZoomFactor(1.0)
+		D4RW CDE 3 BRIGHT A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_PlaySound("MICRO1", 1)
+		D4RW A 0 A_ZoomFactor(0.99)
+		TNT1 A 0 A_FireCustomMissile("revenantseekermissiles2", random(-2,2),0,12,0,0,random(-1,1))
+		D4RW F 3 BRIGHT A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+		D4RW A 0 A_ZoomFactor(1.0)
+		D4RW GHI 3 BRIGHT A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		D4RW A 0 A_Refire
+		Goto Ready
+
+	AltFire:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("HasZmanShield", 1, "FireZombieman")
+		TNT1 A 0 A_JumpIfInventory("HasSguyShield", 1, "FireSergeant")
+		TNT1 A 0 A_JumpIfInventory("HasImpShield", 1, "FireImp")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_Recoil(-2)
+		TNT1 A 0 A_JumpIfInventory("PSeq1", 1, "LeftHaymaker")
+		D4RP ABC 1
+		TNT1 A 0 A_Giveinventory("Punching",1)
+		TNT1 A 0 A_PlaySound("skeleton/swing", 1)
+		RIFF A 0 A_FireCustomMissile("PlayerRevenantPunch", 0, 0, 0, -29)
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		Goto FinishHaymaker
+
+	FinishHaymaker:
+		TNT1 A 0
+		TNT1 A 0 A_GiveInventory("PSeq1", 1)
+		D4RP E 1 A_SetAngle(angle+1.0)
+		D4RP F 1 A_SetAngle(angle+2.0)
+		D4RP G 1 A_SetAngle(angle+3.0)
+		D4RP H 1 A_SetAngle(angle+2.0)
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		D4RH AAAAAAAA 1 A_SetAngle(angle-1.0)
+		TNT1 A 0 A_TakeInventory("Punching",1)
+		Goto Ready
+
+	LeftHaymaker:
+		TNT1 A 0
+		D4RP IJK 1
+		TNT1 A 0 A_Giveinventory("Punching",1)
+		TNT1 A 0 A_PlaySound("skeleton/swing", 1)
+		RIFF A 0 A_FireCustomMissile("PlayerRevenantPunch", 0, 0, 0, -29)
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		Goto FinishLeftHaymaker
+
+	FinishLeftHaymaker:
+		TNT1 A 0 A_SetAngle(angle+3)
+		TNT1 A 0 A_TakeInventory("PSeq1", 1)
+		D4RP L 1 A_SetAngle(angle+1.0)
+		D4RP M 1 A_SetAngle(angle+2.0)
+		D4RP N 1 A_SetAngle(angle+3.0)
+		D4RP O 1 A_SetAngle(angle+2.0)
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		D4RH AAAAAAAA 1 A_SetAngle(angle-1.0)
+		TNT1 A 0 A_TakeInventory("Punching",1)
+		Goto Ready
+
+	FireZombieman:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_Giveinventory("Punching",1)
+		D4RP ABC 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+        TNT1 A 0 A_PlaySound("weapons/gswing")
+		D4RP EF 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+
+		RIFF A 0 A_FireCustomMissile("ThrowedZman", 0, 0, 4, -4)
+		D4RP GH 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+		D4RH A 4 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+		TNT1 A 0 A_TakeInventory("HasZmanShield", 1)
+		TNT1 A 0 A_TakeInventory("Punching",1)
+		D4RH AAAA 1
+		Goto Ready
+
+	FireSergeant:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_Giveinventory("Punching",1)
+		D4RP ABC 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+        TNT1 A 0 A_PlaySound("weapons/gswing")
+		D4RP EF 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+
+		RIFF A 0 A_FireCustomMissile("ThrowedShotgunguy", 0, 0, 4, -4)
+		D4RP GH 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+		D4RH A 4 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+		TNT1 A 0 A_TakeInventory("HasSGuyShield", 1)
+		TNT1 A 0 A_TakeInventory("Punching",1)
+		D4RH AAAA 1
+		Goto Ready
+
+	FireImp:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_Giveinventory("Punching",1)
+		D4RP ABC 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+        TNT1 A 0 A_PlaySound("weapons/gswing")
+		D4RP EF 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+
+		RIFF A 0 A_FireCustomMissile("ThrowedImp", 0, 0, 4, -4)
+		D4RP GH 1 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+		D4RH A 4 A_JumpIfInventory("CeaseMorph", 1, "CeaseMorph")
+		TNT1 A 0 A_TakeInventory("HasImpShield", 1)
+		TNT1 A 0 A_TakeInventory("Punching",1)
+		D4RH AAAA 1
+		Goto Ready
+
+	Spawn:
+		SHOT A -1
+		Stop
+
+	CeaseMorph:
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("CeaseMorph", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("BDForceUnmorph")
+		TNT1 A 1
+		Goto Ready
+	}
+}
+
+actor D4HoldingZombieman
+{
+    Scale 1.0
+	PROJECTILE
+	+MISSILE
+    +CLIENTSIDEONLY
+	Speed 8
+    States
+    {
+    Spawn:
+	Death:
+		TNT1 A 0
+		TNT1 A 0
+		TNT1 A 0 A_Stop
+		TNT1 A 0 A_SpawnItem("D4ZombiemanBeingHold", 20, -20)
+        TNT1 A 2
+        stop
+    }
+}
+
+actor D4ZombiemanBeingHold
+{
+    +CLIENTSIDEONLY
+	+NOBLOCKMAP
+	+FORCEXYBILLBOARD
+    States
+    {
+    Spawn:
+	Death:
+		TNT1 A 0
+        X721 A 1
+        stop
+    }
+}
+
+actor D4HoldingSergeant
+{
+    Scale 1.0
+	PROJECTILE
+	+MISSILE
+    +CLIENTSIDEONLY
+	Speed 8
+    States
+    {
+    Spawn:
+	Death:
+		TNT1 A 0
+		TNT1 A 0
+		TNT1 A 0 A_Stop
+		TNT1 A 0 A_SpawnItem("D4SergeantBeingHold", 20, -20)
+        TNT1 A 2
+        stop
+    }
+}
+
+actor D4SergeantBeingHold
+{
+    +CLIENTSIDEONLY
+	+NOBLOCKMAP
+	+FORCEXYBILLBOARD
+    States
+    {
+    Spawn:
+	Death:
+		TNT1 A 0
+        X722 A 1
+        stop
+    }
+}
+
+actor D4HoldingImp
+{
+    Scale 1.0
+	PROJECTILE
+	+MISSILE
+    +CLIENTSIDEONLY
+	Speed 8
+    States
+    {
+    Spawn:
+	Death:
+		TNT1 A 0
+		TNT1 A 0
+		TNT1 A 0 A_Stop
+		TNT1 A 0 A_SpawnItem("D4ImpBeingHold", 20, -20)
+        TNT1 A 2
+        stop
+    }
+}
+
+actor D4ImpBeingHold
+{
+    +CLIENTSIDEONLY
+	+NOBLOCKMAP
+	+FORCEXYBILLBOARD
+    States
+    {
+    Spawn:
+	Death:
+		TNT1 A 0
+        X723 A 1
+        stop
+    }
+}
+
+ACTOR PlayerRevenantPunch: MeleeStrike2Smash
+{
+	+THRUSPECIES
+	+MTHRUSPECIES
+	DamageType RVFT
+	Obituary "%o ate %k's fist."
+	Species "Marines"
+	States
+	{
+	Spawn:
+		TNT1 A 2
+		Stop
+	Death:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("skeleton/melee", 6)
+		EXPL AAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 Radius_Quake (2, 6, 0, 5, 0)//(intensity, duration, damrad, tremrad, tid)
+		TNT1 A 4
+		Stop
+	}
+}
+
+ACTOR D4RevenantRocket: Rocket2
+{
+	Radius 8
+	Height 8
+	Damage 10
+	Scale 0.5
+	Speed 45
+	-NOEXTREMEDEATH
+	-GHOST
+	-THRUGHOST
+	+SEEKERMISSILE
+	Species "Marines"
+	States
+	{
+	Spawn:
+	    MISL A 1 Bright
+		TNT1 A 0 A_SpawnItem("RedFlareSmall",-20,0)
+		TNT1 A 0 A_CustomMissile ("MeleeSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		TNT1 A 0 ThrustThingZ(0,random(-3, 2),0,1)
+		MISL A 1 Bright
+		TNT1 A 0 A_SpawnItem("RedFlareSmall",-20,0)
+		TNT1 A 0 A_CustomMissile ("MeleeSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		MISL A 1 Bright
+		TNT1 A 0 A_SpawnItem("RedFlareSmall",-20,0)
+		TNT1 A 0 A_CustomMissile ("MeleeSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		TNT1 A 0 ThrustThingZ(0,random(-3, 2),0,1)
+		MISL A 1 Bright
+		TNT1 A 0 A_SpawnItem("RedFlareSmall",-20,0)
+		TNT1 A 0 A_CustomMissile ("MeleeSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		TNT1 A 0 ThrustThing(angle*256/360+64,random(-1, 1),1, 0)
+		Loop
+	}
+}

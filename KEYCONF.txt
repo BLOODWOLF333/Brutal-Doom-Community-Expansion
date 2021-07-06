@@ -1,13 +1,85 @@
+clearplayerclasses
+addplayerclass BDoomer
+addplayerclass Doomer3
+addplayerclass Doomer2
+addplayerclass ArcadeDoomer
+addplayerclass ArcadeDoomer3
+addplayerclass ArcadeDoomer2
+addplayerclass TacticalDoomer
+addplayerclass Purist
+
 //Weapon Slots
 weaponsection "Brutal_Doom"
-//Last - first selected on key press
-setslot 1 ClassicFist Melee_Attacks ClassicSaw Chain_Saw BrutalAxe DSWeap2 DSWeap
-setslot 2 ClassicPistol BrutalPistol ClassicSMG BrutalSMG MP40 Revolver2 Revolver 
-setslot 3 ClassicShotgun Shot_Gun ClassicSSG SSG AssaultShotgun
-setslot 4 Rifle Machinegun ClassicChaingun MiniGun HitlersBuzzsaw
-setslot 5 GrenadeLauncher ClassicRocketLauncher Rocket_Launcher
-setslot 6 ClassicPlasmaRifle Plasma_Gun RailGun
-setslot 7 NukeLauncher BFG10k VanillaBFG9000 BIG_FUCKING_GUN
-setslot 8 Unmaker HellishMissileLauncher
-setslot 9 FlameCannon Flamethrower2 
-setslot 0 HandGrenades
+	//Last - first selected on key press
+	setslot 1 ClassicFist Melee_Attacks BrutalAxe ClassicSaw Chain_Saw DSWeap2 DSWeap
+	setslot 2 ClassicPistol BrutalPistol DualPistols ClassicSMG BrutalSMG DualSMG ClassicMP40 MP40 DualMP40 Revolver2 Revolver
+	setslot 3 ClassicShotgun Shot_Gun ClassicSSG SSG AssaultShotgun
+	setslot 4 Rifle DualRifles Machinegun ClassicChaingun MiniGun ClassicBuzzsaw HitlersBuzzsaw
+	setslot 5 GrenadeLauncher ClassicRocketLauncher Rocket_Launcher
+	setslot 6 ClassicPlasmaRifle Plasma_Gun DualPlasmaRifles RailGun
+	setslot 7 NukeLauncher BFG10k VanillaBFG9000 BIG_FUCKING_GUN
+	setslot 8 ClassicUnmaker Unmaker HellishMissileLauncher
+	setslot 9 FlameCannon Flamethrower2
+	setslot 0 HandGrenades
+
+addkeysection "BrutalDoom - Advanced Actions" BrutalDoomActions
+
+	addmenukey "Kick" kickem
+	alias kickem "pukename \"BDKick\""
+	defaultbind Q kickem
+
+	addmenukey "Reload" reload
+	alias reload "pukename \"BDReload\""
+	defaultbind R reload
+
+	addmenukey "Flashlight" flashlightswitch
+	alias flashlightswitch "pukename \"BDFlashLight\""
+	defaultbind F flashlightswitch
+
+	addmenukey "Toss Grenade" grenadetoss
+	alias grenadetoss "pukename \"BDGrenade\""
+	defaultbind G grenadetoss
+
+	addmenukey "Unload Gun" unreloader
+	alias unreloader "pukename \"BDUnload\""
+
+	addmenukey "Open Ammo Drop Menu" selectammodroper
+	alias selectammodroper "pukename \"BDAmmoDroper\""
+	defaultbind O selectammodroper
+
+	addmenukey "Quick Select Fists" quickfist
+	alias quickfist "pukename \"BDQuickFist\""
+
+addkeysection "Brutal Doom - Interactions" BrutalDoomInteractions
+
+	addmenukey "Offend" brutaltaunt
+	alias brutaltaunt "pukename \"BDTaunt\""
+	defaultbind H brutaltaunt
+
+	addmenukey "Wave(1)" wave1
+	alias wave1 "pukename \"BDSaluteOne\""
+	defaultbind V wave1
+
+	addmenukey "Wave(2)" wave2
+	alias wave2 "pukename \"BDSaluteTwo\""
+	defaultbind N wave2
+
+	addmenukey "Advanced Taunt" advtaunt
+	alias advtaunt "pukename \"BDAdvTaunt\""
+	defaultbind J advtaunt
+
+	addmenukey "One-Liners" oneliner
+	alias oneliner "pukename \"BDOneLiner\""
+	defaultbind K oneliner
+
+	addmenukey "Dual Wield/Special Action" dual
+	alias dual "pukename \"BDDualWield\""
+	defaultbind X dual
+
+addkeysection "Brutal Doom - Advanced Moves" BrutalDoomAdvMoves
+
+	addmenukey "Roll Left" roleft
+	alias roleft "pukename \"BDRollLeft\""
+
+	addmenukey "Roll Right" roright
+	alias roright "pukename \"BDRollRight\""

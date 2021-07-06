@@ -1,0 +1,479 @@
+Actor HasSpotedThePlayerAlready : Inventory
+{
+inventory.maxamount 1
+}
+
+ACTOR IconOfSin 2550
+{
+	Health 40000
+	Radius 100
+	Height 200
+	Mass 99999
+	Speed 0
+	PainChance 20
+	Monster
+	//$category "BD Bosses"
+	+BOSS
+	+FLOORCLIP
+	+NORADIUSDMG
+	+DONTMORPH
+	+BOSSDEATH
+	+MISSILEMORE
+	+NOTARGET
+	+MISSILEEVENMORE
+	+FORCEXYBILLBOARD
+	+FLOAT
+	+FLOATBOB
+
+	DeathSound "cyber/death"
+	Obituary "%o was wiped out by the Icon of Sin"
+	BLoodType "DeadBlood"
+	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
+	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0	Damagefactor "HangingHook", 0.0
+	Damagefactor "Head", 1.5	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
+	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
+	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "Extremepunches", 1.0
+	Damagefactor "Fatality", 2.5	Damagefactor "HeadKick", 0.5	Damagefactor "HelperMarineFatallity", 2.5
+	Damagefactor "Kick", 0.5	Damagefactor "Leg", 0.5	Damagefactor "LowKick", 0.5
+	Damagefactor "Melee", 0.5	Damagefactor "MonsterKnocked", 0.5	Damagefactor "Stomp", 0.5
+	Damagefactor "Trample", 0.5	Damagefactor "Slide", 0.5
+	Damagefactor "Burn", 0.5	Damagefactor "Fire", 0.5	Damagefactor "Flames", 0.5
+	Damagefactor "GreenFire", 0.5	Damagefactor "HumanBBQ", 0.5	DamageFactor "TankWeakSpot", 0.0
+
+	PainChance "Head", 16	PainChance "Taunt", 0	PainChance "Extremepunches", 4
+	PainChance "Fatality", 4	PainChance "HelperMarineFatallity", 4	PainChance "Kick", 4
+	PainChance "LowKick", 4	PainChance "Melee", 4	PainChance "MonsterKnocked", 4
+	PainChance "Slide", 4	PainChance "Trample", 4
+	PainChance "Burn", 4	PainChance "Fire", 4	PainChance "Flames", 4
+	PainChance "GreenFire", 4	PainChance "HumanBBQ", 4
+	Scale 2.6
+	Tag "Gatekeeper"
+	States
+	{
+	Spawn:
+	    KEPR A 0
+
+		TNT1 A 0 A_JumpIfInventory("HasSpotedThePlayerAlready", 1, "LAUGH")
+		KEPR A 5 A_Look
+		Loop
+	Laugh:
+		KEPR A 10
+		TNT1 A 0 A_PlaySound("ICOLAUG", 4)
+		KEPR ABCBABCBABCBABCBABCB 4
+		KEPR A 10
+		TNT1 A 0 A_PlaySound("ICOLAUG", 4)
+		KEPR ABCBABCBABCBABCBABCB 4
+		KEPR A 10 A_Look
+		TNT1 A 0 A_PlaySound("ICOLAUG", 4)
+		KEPR ABCBABCBABCBABCBABCB 4
+		KEPR A 10 A_Look
+		TNT1 A 0 A_PlaySound("ICOLAUG", 4)
+		KEPR ABCBABCBABCBABCBABCBAABBCCBB 4
+		KEPR A 10 A_Look
+	KeepLooking:
+		KEPR A 5 A_Look
+		Loop
+	See:
+	    KEPR A 0
+		TNT1 A 0 ACS_NamedExecuteAlways("BDBossHealth")
+		TNT1 A 0 A_JumpIfInventory("HasSpotedThePlayerAlready", 1, "Ready")
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
+		KEPR ABCCBAABCCBAABCCBAABCCBAABCCBAABCCBA 5
+		TNT1 A 0 A_GiveInventory("HasSpotedThePlayerAlready", 1)
+		Goto Missile
+
+	Ready:
+	    TNT1 A 0
+		TNT1 A 0 A_PLaySoundEx("ICOBREAT", 4, 0, 2)
+		KEPR ABCCBA 5 A_Chase
+
+	Missile:
+	    KEPR A 5
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
+	    TNT1 A 0 A_Jump(32, "HellLaser")
+	    Goto Fireballs
+	Fireballs:
+	    KEPR ABCD 4 A_FaceTarget
+		KEPR EF 1 BRIGHT
+		TNT1 A 0 BRIGHT A_CustomMissile("GAtekeeperFireball", 80, 0, random(-6, 6), 0)
+		KEPR GHI 3 BRIGHT
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
+		KEPR DCBA 4
+		KEPR A 5
+		TNT1 A 0 A_JumpIfInTargetInventory("PlayerIsDead", 1, "Laugh")
+
+		KEPR ABCD 4 A_FaceTarget
+		KEPR EF 1 BRIGHT
+		TNT1 A 0 BRIGHT A_CustomMissile("GAtekeeperFireball", 80, 0, random(-6, 6), 0)
+		KEPR GHI 3 BRIGHT
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
+		KEPR DCBA 4
+		KEPR A 5
+		TNT1 A 0 A_JumpIfInTargetInventory("PlayerIsDead", 1, "Laugh")
+
+		KEPR ABCD 4 A_FaceTarget
+		KEPR EF 1 BRIGHT
+		TNT1 A 0 BRIGHT A_CustomMissile("GAtekeeperFireball", 80, 0, random(-6, 6), 0)
+		KEPR GHI 3 BRIGHT
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
+		KEPR DCBA 4
+		KEPR A 5
+		TNT1 A 0 A_JumpIfInTargetInventory("PlayerIsDead", 1, "Laugh")
+		Goto See
+
+	HellLaser:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySoundEX("UNMSTA", 4, 0, 2)
+	    KEPT ABC 5
+		TNT1 A 0 A_PlaySoundEX("UNMLOP", 4, 0, 2)
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
+		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"HellLaserPuff",-6.0,-3.0,0,1,16.0,0,"UnmakerLaserTrail",80)
+		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"HellLaserPuff",-4.0,-3.0,0,1,16.0,0,"UnmakerLaserTrail",80)
+		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"HellLaserPuff",-2.0,-3.0,0,1,16.0,0,"UnmakerLaserTrail",80)
+		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"HellLaserPuff",0.0,-3.0,0,1,16.0,0,"UnmakerLaserTrail",80)
+		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"HellLaserPuff",2.0,-3.0,0,1,16.0,0,"UnmakerLaserTrail",80)
+		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"HellLaserPuff",4.0,-3.0,0,1,16.0,0,"UnmakerLaserTrail",80)
+		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"HellLaserPuff",6.0,-3.0,0,1,16.0,0,"UnmakerLaserTrail",80)
+		TNT1 A 0 A_StopSound(4)
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
+		TNT1 A 0 A_PlaySoundEX("UNMSTO", 4, 0, 2)
+		KEPT CBA 5
+		TNT1 A 0 A_StopSound(4)
+		Goto Ready
+
+	Pain:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(256, "Pain1", "Pain2")
+
+	Pain1:
+		KEPP A 3 A_BrainPain
+		KEPP BCDCBA 3
+		Goto Ready
+
+	Pain2:
+		KEPP E 3 A_BrainPain
+		KEPP FGHGF 3
+		Goto Ready
+
+	Death:
+	    KEPD A 1
+		TNT1 A 0 A_StopSound(4)
+		TNT1 A 0 A_StopSound(3)
+		TNT1 A 0 A_StopSound(1)
+	    TNT1 A 0 A_PLaySoundEx("brain/death", 4, 0, 2)
+		TNT1 A 0 Radius_Quake (22, 140, 0, 64, 0)
+	    KEPP ABCDCBA 2
+		TNT1 A 0 A_SpawnItemEx ("KaboomWithSound", random(0, 100), random(-200, 200), random(100, 300))
+		KEPP EFGHGFE 2
+		TNT1 A 0 A_SpawnItemEx ("KaboomWithSound", random(0, 100), random(-200, 200), random(100, 300))
+
+		KEPP ABCDCBA 2
+		TNT1 A 0 A_SpawnItemEx ("KaboomWithSound", random(0, 100), random(-200, 200), random(100, 300))
+		KEPP EFGHGFE 2
+		TNT1 A 0 A_SpawnItemEx ("KaboomWithSound", random(0, 100), random(-200, 200), random(100, 300))
+		KEPP ABCDCBA 2
+		TNT1 A 0 A_SpawnItemEx ("KaboomWithSound", random(0, 100), random(-200, 200), random(100, 300))
+		KEPP EFGHGFE 2
+		TNT1 A 0 A_SpawnItemEx ("KaboomWithSound", random(0, 100), random(-200, 200), random(100, 300))
+		KEPP ABCDCBA 2
+		TNT1 A 0 A_SpawnItemEx ("KaboomWithSound", random(0, 100), random(-200, 200), random(100, 300))
+		KEPP EFGHGFE 2
+		TNT1 A 0 A_SpawnItemEx ("KaboomWithSound", random(0, 100), random(-200, 200), random(100, 300))
+		KEPP ABCDCBA 2
+		TNT1 A 0 A_SpawnItemEx ("KaboomWithSound", random(0, 100), random(-200, 200), random(100, 300))
+		KEPP EFGHGFE 2
+		TNT1 A 0 A_SpawnItemEx ("KaboomWithSound", random(0, 100), random(-200, 200), random(100, 300))
+		KEPP ABCDCBA 2
+		TNT1 A 0 A_SpawnItemEx ("KaboomWithSound", random(0, 100), random(-200, 200), random(100, 300))
+		KEPP EFGHGFE 2
+		TNT1 A 0 A_SpawnItemEx ("KaboomWithSound", random(0, 100), random(-200, 200), random(100, 300))
+		KEPP ABCDCBA 2
+		TNT1 A 0 A_SpawnItemEx ("KaboomWithSound", random(0, 100), random(-200, 200), random(100, 300))
+		KEPP EFGHGFE 2
+		TNT1 A 0 A_SpawnItemEx ("KaboomWithSound", random(0, 100), random(-200, 200), random(100, 300))
+		KEPP ABCDCBA 2
+		TNT1 A 0 A_SpawnItemEx ("KaboomWithSound", random(0, 100), random(-200, 200), random(100, 300))
+		KEPP EFGHGFE 2
+		TNT1 A 0 A_SpawnItemEx ("KaboomWithSound", random(0, 100), random(-200, 200), random(100, 300))
+
+	    TNT1 A 0 A_StopSound(4)
+	    TNT1 A 0 A_PLaySoundEx("NUKEEXPL", 4, 0, 2)
+
+		TNT1 AAAA 0 A_CustomMissile ("MuchMeatDeath", 300, 0, random (0, 360), 2, random (0, 160))
+        TNT1 A 0 A_CustomMissile ("RidiculousExplosionSpawner", 80, 0, 0, 2, 20)
+		TNT1 A 0 A_CustomMissile ("RidiculousExplosionSpawner", 80, 0, 90, 2, 20)
+		TNT1 A 0 A_CustomMissile ("RidiculousExplosionSpawner", 80, 0, 180, 2, 20)
+		TNT1 A 0 A_CustomMissile ("RidiculousExplosionSpawner", 80, 0, 270, 2, 20)
+		TNT1 AAAAAAAAAAAA 0 A_CustomMissile ("PEPart2SuperFast", 80, 0, random (0, 360), 2, random (0, 160))
+        TNT1 AAAA 0 A_CustomMissile ("UltraGoreSPawner", 150, 0, random (0, 360), 2, random (0, 180))
+        TNT1 AAAAAA 0 A_CustomMissile ("UltraGoreSpawner", 150, 0, random (0, 360), 2, random (0, 180))
+		TNT1 AAAAAAAAAAAAAA 0 A_CustomMissile ("BloodMistXXBig", 150, 0, random (0, 360), 2, random (70, 90))
+		 TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BloodMistXXBig", 100, 0, random (0, 360), 2, random (20, 90))
+
+		TNT1 A 100
+		TNT1 A 0 A_BrainDie
+		TNT1 A 1
+		Stop
+	}
+}
+
+ACTOR GatekeeperFireBall
+{
+	Radius 6
+	Height 8
+	Speed 40
+    Fastspeed 50
+	Damage (random(60,100))
+	Projectile
+    Scale 1.3
+	+FORCEXYBILLBOARD
+	+THRUGHOST
+	RenderStyle Add
+    DamageType Extreme
+	ExplosionRadius 200
+	ExplosionDamage 100
+	Alpha 1
+	Decal "Scorch"
+	SeeSound "ICOFIRE"
+	DeathSound "fatso/shotx"
+	States
+	{
+	Spawn:
+		BLHD CDC 1 BRIGHT
+		TNT1 A 0 A_SpawnItem ("FlamethrowerFireParticles")
+		Loop
+
+	Death:
+
+	TNT1 A 0 A_ChangeFlag("NOGRAVITY", 0)
+	TNT1 A 0 A_Explode
+	Goto ExplosionEffect
+
+	ExplosionEffect:
+	TNT1 A 0
+	TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DeathCheap")
+	TNT1 AAAA 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	EXPL A 0 A_SpawnItem("ExplosionParticleSpawner")
+	EXPL AAA 0 A_CustomMissile ("FlamethrowerFireParticles", 6, 0, random (0, 360), 2, random (0, 90))
+	//FRFX ZZZ 0 BRIGHT A_CustomMissile ("BigBlackSmoke", 2, 0, random (0, 360), 2, random (0, 30))
+	//TNT1 A 2 A_SpawnItem("BurningGroundLowDamage")
+	TNT1 A 0 A_SpawnItemEx("TinyBurningPiece", random (-15, 15), random (-15, 15))
+	TNT1 A 0 A_SpawnItemEx("TinyBurningPiece2", random (-35, 35), random (-35, 35))
+	TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-45, 45), random (-45, 35))
+	TNT1 AA 20 A_CustomMissile ("BigBlackSmoke", 0, 0, random (0, 360), 2, random (40, 160))
+	Stop
+
+	DeathCheap:
+	XDeath:
+	TNT1 A 0
+	TNT1 A 0 A_JumpIfCloser(200, "StopInAir")
+	TNT1 AAAA 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	EXPL A 0 A_SpawnItem("ExplosionParticleSpawner")
+	EXPL AAA 0 A_CustomMissile ("FlamethrowerFireParticles", 6, 0, random (0, 360), 2, random (0, 90))
+	Stop
+
+	XDeath:
+	TNT1 A 0
+	TNT1 A 0 A_JumpIfCloser(200, "StopInAir")
+	TNT1 AAAA 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	EXPL AA 0 A_CustomMissile ("FlamethrowerFireParticles", 6, 0, random (0, 360), 2, random (0, 90))
+	Stop
+
+	StopInAIr:
+	EXPL AAA 0 A_CustomMissile ("FlamethrowerFireParticles", 6, 0, random (0, 360), 2, random (0, 90))
+	Stop
+	}
+}
+
+Actor HellLaserPuff : UnmakerLaserPuff
+{
+	Species "none"
+	-DONTHARMSPECIES
+	-THRUSPECIES
+	-MTHRUSPECIES
+}
+
+ACTOR GateKeeperMeatBase
+{
+	+NOGRAVITY
+	+FLOAT
+	+FORCEXYBILLBOARD
+	Health 999999
+	Mass 9999999
+	MONSTER
+	+FRIENDLY
+	SCALE 1.0
+	+SHOOTABLE
+	+NOBLOOD
+	-COUNTKILL
+	+ACTLIKEBRIDGE
+	+GHOST
+	+FLOAT
+	+FLOATBOB
+	Radius 96
+	Height 96
+	States
+	{
+	Spawn:
+	    KEME A 1
+		KEME A 200
+		TNT1 A 0 A_Jump(32, "Beat")
+		Loop
+	Beat:
+		KEME ABCB 4
+		Goto Spawn
+	}
+}
+
+Actor GateKeeperMeat1: GateKeeperMeatBase
+{
+Scale 1.0
+}
+
+Actor GateKeeperMeat2: GateKeeperMeat1
+{
+Scale 0.8
+}
+
+Actor GateKeeperMeat3: GateKeeperMeat1
+{
+XScale -1.2
+YScale 1.2
+}
+
+ACTOR GateKeeper: IconOfSin
+{
+	Health 20000
+	Radius 120
+	Height 360
+	Mass 99999
+	Speed 0
+	PainChance 20
+	Monster
+	+BOSS
+	+FLOORCLIP
+	+NOBLOOD
+	+NORADIUSDMG
+	+DONTMORPH
+	+BOSSDEATH
+	+MISSILEMORE
+	+NOTARGET
+	+MISSILEEVENMORE
+	+FORCEXYBILLBOARD
+	+FLOAT
+	-FLOATBOB
+	DeathSound "cyber/death"
+	Obituary "%o was wiped out by the Gate Keeper"
+	BloodType "DeadBlood"
+	DamageFactor "Desintegrate", 1.0
+	States
+	{
+	Spawn:
+	    TNT1 A 0
+
+		TNT1 A 0 A_JumpIfInventory("HasSpotedThePlayerAlready", 1, "LAUGH")
+		TNT1 A 5 A_Look
+		Loop
+	Laugh:
+		TNT1 A 10
+		TNT1 A 0 A_PlaySound("ICOLAUG", 4)
+		TNT1 ABCBABCBABCBABCBABCB 4
+		TNT1 A 10
+		TNT1 A 0 A_PlaySound("ICOLAUG", 4)
+		TNT1 ABCBABCBABCBABCBABCB 4
+		TNT1 A 10 A_Look
+		TNT1 A 0 A_PlaySound("ICOLAUG", 4)
+		TNT1 ABCBABCBABCBABCBABCB 4
+		TNT1 A 10 A_Look
+		TNT1 A 0 A_PlaySound("ICOLAUG", 4)
+		TNT1 ABCBABCBABCBABCBABCBAABBCCBB 4
+		TNT1 A 10 A_Look
+	KeepLooking:
+		TNT1 A 5 A_Look
+		Loop
+	See:
+	    TNT1 A 0
+		TNT1 A 0 ACS_NamedExecuteAlways("BDBossHealth", 0, 0, 0, 0)//Health Bar
+		TNT1 A 0 A_JumpIfInventory("HasSpotedThePlayerAlready", 1, "Ready")
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
+
+		TNT1 A 0
+		TNT1 ABCCBA 5
+
+		TNT1 A 0 //A_PLaySoundEx("brain/sight", 4, 0, 2)
+		//TNT1 A 0 ACS_Execute(56)
+		TNT1 ABCBABCBABCBABCBAABCBABCBABCBABCBAABCBABCBABCBABCBA 3
+		//TNT1 AB 4
+		//TNT1 A 0 A_PLaySoundEx("ICOSCRE", 4, 0, 2)
+		//TNT1 A 0 Radius_Quake(3, 7, 0, 999, 0)
+		//TNT1 CDDDDDDDDDDDDDDDDDDDDDCBA 5
+		TNT1 A 0 A_GiveInventory("HasSpotedThePlayerAlready", 1)
+		Goto Missile
+
+	Ready:
+	    TNT1 A 0
+		TNT1 A 0 A_PLaySoundEx("ICOBREAT", 4, 0, 2)
+		TNT1 AABBAABBAABBAABBAABBAABB 3 A_Chase
+
+	Missile:
+	    TNT1 A 1
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
+	    TNT1 A 0 A_Jump(256, "FireBalls")
+	    Goto FIreballs
+	Fireballs:
+	    TNT1 ABCD 4 A_FaceTarget
+		TNT1 A 0 A_PlaySound("ICOFIRE", 1)
+		TNT1 EF 1 BRIGHT
+		TNT1 A 0 BRIGHT A_CustomMissile("GAtekeeperFireball", 80, 0, random(-16, 16), 0)
+		TNT1 GHI 3 BRIGHT
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
+		TNT1 DCBA 4
+		TNT1 A 5
+		TNT1 A 0 A_JumpIfInTargetInventory("PlayerIsDead", 1, "Laugh")
+		Goto See
+
+	Pain:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(256, "Pain1", "Pain2")
+
+	Pain1:
+		TNT1 A 3 A_BrainPain
+		TNT1 BCDCBA 3
+		Goto Ready
+
+	Pain2:
+		TNT1 E 3 A_BrainPain
+		TNT1 FGHGF 3
+		Goto Ready
+
+	Death:
+	    TNT1 A 1
+		TNT1 A 0 A_StopSound(4)
+		TNT1 A 0 A_StopSound(3)
+		TNT1 A 0 A_StopSound(1)
+	    TNT1 A 0 A_PLaySoundEx("brain/death", 4, 0, 2)
+		TNT1 A 0 Radius_Quake (22, 140, 0, 64, 0)
+	    TNT1 AAAAAAAAAA 10 A_SpawnItemEx ("KaboomWithSound", random(0, 50), random(-200, 200), random(100, 300))
+
+
+	    TNT1 A 0 A_StopSound(4)
+	    TNT1 A 0 A_PLaySoundEx("NUKEEXPL", 4, 0, 2)
+
+		TNT1 AAAA 0 A_CustomMissile ("MuchMeatDeath", 300, 0, random (0, 360), 2, random (0, 160))
+        TNT1 A 0 A_CustomMissile ("RidiculousExplosionSpawner", 80, 0, 0, 2, 20)
+		TNT1 A 0 A_CustomMissile ("RidiculousExplosionSpawner", 80, 0, 90, 2, 20)
+		TNT1 A 0 A_CustomMissile ("RidiculousExplosionSpawner", 80, 0, 180, 2, 20)
+		TNT1 A 0 A_CustomMissile ("RidiculousExplosionSpawner", 80, 0, 270, 2, 20)
+		TNT1 AAAAAAAAAAAA 0 A_CustomMissile ("PEPart2SuperFast", 80, 0, random (0, 360), 2, random (0, 160))
+        TNT1 AAAA 0 A_CustomMissile ("UltraGoreSPawner", 150, 0, random (0, 360), 2, random (0, 180))
+        TNT1 AAAAAA 0 A_CustomMissile ("UltraGoreSpawner", 150, 0, random (0, 360), 2, random (0, 180))
+		TNT1 AAAAAAAAAAAAAA 0 A_CustomMissile ("BloodMistXXBig", 150, 0, random (0, 360), 2, random (70, 90))
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BloodMistXXBig", 100, 0, random (0, 360), 2, random (20, 90))
+
+		TNT1 A 35
+		TNT1 A 0 A_BrainDie
+		TNT1 A 1
+		Stop
+	}
+}

@@ -17,32 +17,55 @@ ACTOR Shot_Gun : BrutalWeapon
 	+WEAPON.NOAUTOFIRE
 	+WEAPON.NOALERT
 	+FORCEXYBILLBOARD
-	Scale 0.9
+	Scale 0.8
 	Tag "Shotgun"
+	DropItem "ShotgunSpawner"
 	States
 	{
-		
+
     Spawn:
 		SHTC A -1
 		Stop
-    	
+
 	Select:
 		SHTN A 0 A_Giveinventory("GoSpecial",1)
-		SHTN A 0 A_Takeinventory("FistsSelected",1)
-		SHTN A 0 A_Takeinventory("SawSelected",1)
-		SHTN A 0 A_Giveinventory("ShotgunSelected",1)
-		SHTN A 0 A_Takeinventory("SSGSelected",1)
-		SHTN A 0 A_Takeinventory("MinigunSelected",1)
-		SHTN A 0 A_Takeinventory("PlasmaGunSelected",1)
-		SHTN A 0 A_Takeinventory("RocketLauncherSelected",1)
-		SHTN A 0 A_Takeinventory("GrenadeLauncherSelected",1)
-		SHTN A 0 A_Takeinventory("BFGSelected",1)
-		SHTN A 0 A_Takeinventory("BFG10kSelected",1)
-		SHTN A 0 A_Takeinventory("RailGunSelected",1)
-		SHTN A 0 A_Takeinventory("SubMachineGunSelected",1)
-		SHTN A 0 A_Takeinventory("RevenantLauncherSelected",1)
-		SHTN A 0 A_Takeinventory("LostSoulSelected",1)
-		SHTN A 0 A_Takeinventory("FlameCannonSelected",1)
+		TNT1 A 0 A_JumpIfInventory("ShotgunSlugMode",1,"SlugSelect")
+		TNT1 A 0 A_TakeInventory("FistsSelected", 1)
+		TNT1 A 0 A_GiveInventory("ShotgunSelected", 1)
+		TNT1 A 0 A_TakeInventory("MinigunSelected", 1)
+		TNT1 A 0 A_TakeInventory("SSGSelected", 1)
+		TNT1 A 0 A_TakeInventory("RocketLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("GrenadeLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("PlasmaGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RailGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RevenantLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("SubMachineGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFG10KSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFGSelected", 1)
+		TNT1 A 0 A_TakeInventory("FlameCannonSelected", 1)
+		TNT1 A 0 A_TakeInventory("SawSelected", 1)
+		SHTN A 0 A_Takeinventory("HasBarrel",1)
+		SHTN A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 AAAAAAAAA 0 A_Raise
+		TNT1 AAAA 1 A_Raise
+		Goto SelectAnimation
+
+	SlugSelect:
+		SHTN A 0 A_Giveinventory("SlugMode",1)
+		TNT1 A 0 A_TakeInventory("FistsSelected", 1)
+		TNT1 A 0 A_GiveInventory("ShotgunSelected", 1)
+		TNT1 A 0 A_TakeInventory("MinigunSelected", 1)
+		TNT1 A 0 A_TakeInventory("SSGSelected", 1)
+		TNT1 A 0 A_TakeInventory("RocketLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("GrenadeLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("PlasmaGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RailGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RevenantLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("SubMachineGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFG10KSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFGSelected", 1)
+		TNT1 A 0 A_TakeInventory("FlameCannonSelected", 1)
+		TNT1 A 0 A_TakeInventory("SawSelected", 1)
 		SHTN A 0 A_Takeinventory("HasBarrel",1)
 		SHTN A 0 A_TakeInventory("TossGrenade", 1)
 		TNT1 AAAAAAAAA 0 A_Raise
@@ -55,7 +78,7 @@ ACTOR Shot_Gun : BrutalWeapon
 		SHTN A 0 A_PlaySound("weapons/sgpump")
 		SHTN A 0 A_GunFlash
 
-	Ready3:	
+	Ready3:
 	Ready:
 		TNT1 A 0
         SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
@@ -64,51 +87,53 @@ ACTOR Shot_Gun : BrutalWeapon
 		SHTN A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		SHTN A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		SHTN A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		SHTN A 0 A_JumpIfInventory("StartDualWield",1,"ChangeShell")
 		SHTN A 0 A_JumpIfInventory("Zoomed",1,"REady2")
 		SHTN A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
 	OkToFire:
 		SHTN A 1 BRIGHT A_WeaponReady(WRF_ALLOWRELOAD)
 		SHTN A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		SHTN A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
         Goto Ready
-		
-		
+
 	Ready2:
 		TNT1 A 0
+		SHT8 A 1 BRIGHT A_WeaponReady(WRF_ALLOWRELOAD)
         SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         SHTN A 0 A_JumpIfInventory("Taunting",1,"Taunt")
         SHTN A 0 A_JumpIfInventory("Reloading",1,"Reload")
 		SHTN A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		SHTN A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		SHTN A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		SHTN A 0 A_JumpIfInventory("Unloading",1,"Unload")
-		SHTN A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
+		SHTN A 0 A_JumpIfInventory("StartDualWield",1,"ChangeShell")
+		SHTN A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint2")
 		SHTN A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
-		SHT8 A 1 BRIGHT A_WeaponReady(WRF_ALLOWRELOAD)
-		Loop	
-		
-	
+		Loop
+
 	Deselect:
 		SHTN A 0
 		SHTN A 0 A_Takeinventory("Zoomed",1)
 		SHTN A 0 A_TakeInventory("TossGrenade", 1)
 		SHTN A 0 A_Takeinventory("ADSmode",1)
 		SHTN A 0 A_Takeinventory("UseShotgunStrap",1)
+		SHTN A 0 A_Takeinventory("SlugMode",1)
         SHTN A 0 A_ZoomFactor(1.0)
 		RIFG A 0 A_SetCrosshair(0)
-		SHSS DCBA 1 BRIGHT 
+		SHSS DCBA 1 BRIGHT
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1 A_Lower
 		Wait
 
-		
     Fire:
         SHTN A 0 A_Takeinventory("Reloading",1)
 		SHTN A 0 A_JumpIfInventory("Zoomed",1,"Fire2")
+		TNT1 A 0 A_JumpIfInventory("ShotgunSlugMode",1,"SlugFire")
         SHTN A 0 A_JumpIfInventory("ShotgunAmmo",1,2)
         Goto NoAmmo
         TNT1 AAAA 0
-		SHTN A 0 A_ZoomFactor(0.96)
 		SHTN A 0 A_JumpIfInventory("ShotgunWasEmpty", 1, "Pump2")
         SHTN A 0 A_AlertMonsters
         SHTN A 0 A_PlaySound("weapons/sg", 1)
@@ -117,29 +142,56 @@ ACTOR Shot_Gun : BrutalWeapon
 		SHTN A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 AAAAAAAAAAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-12,12), 0, -1, 0, 0, random(-9,9))
 		TNT1 AAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles2", random(-12,12), 0, -1, 0, 0, random(-9,9))
-		TNT1 AAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-3,3), 0, 0, -12, 0, random(-3,3))
+		TNT1 AAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-3,3), 0, 0, 0, 0, random(-3,3))
 		SHTN A 0 A_Takeinventory("ShotgunAmmo",1)
-		SHTN A 0 A_FireBullets (5, 1, 4, 13, "ShotgunPuff", FBF_NORANDOM)
-		SHTN A 0 A_FireBullets (2.5, 2.5, 5, 13, "ShotgunPuff2", FBF_NORANDOM)
-		SHTN A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 3)//Tactical Mode deals extra damage
-		SHTN A 0 A_FireBullets (6, 3, 5, 13, "ShotgunPuff2", FBF_NORANDOM)
-		SHTN A 0 A_SetPitch(pitch-10)
-		SHTA AB 1 BRIGHT
-		SHTN A 0 A_SetPitch(-6.0 + pitch)
-		SHTN A 0 A_ZoomFactor(1.00)
-		SHTA C 1 BRIGHT A_SetPitch(+1.0 + pitch)
-		SHTA DE 1 BRIGHT A_SetPitch(+1.0 + pitch)
-		SHTN A 1 BRIGHT A_SetPitch(+3.0 + pitch)
-		SHTN A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, "Pump1")//Tactical Mode is slower to pump
-		
-		SHTN AAAAAA 1 BRIGHT A_SetPitch(pitch+0.6)
+		SHTA A 1
+		SHTN A 0 A_FireBullets (2.7, 2.8, 4, 13, "ShotgunPuff", FBF_NORANDOM)
+		SHTN A 0 A_FireBullets (2.7, 2.8, 5, 13, "ShotgunPuff2", FBF_NORANDOM)
+		SHTN A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 3)//Tactical Mode deals extra damage and recoil
+		SHTN A 0 A_FireBullets (2.7, 2.8, 5, 13, "ShotgunPuff2", FBF_NORANDOM)
+		SHTN A 0 A_SetPitch(pitch-1.8)
+		SHTN A 0 A_SetPitch(pitch-1.8)
+		TNT1 A 0 A_ZoomFactor(0.98)
+		SHTA B 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(1.0)
+		SHTA C 1 BRIGHT A_SetPitch(0.6 + pitch)
+		SHTA DE 1 BRIGHT A_SetPitch(0.6 + pitch)
+		SHTN A 1 BRIGHT
 		Goto Pump1
-		
-   Pump1:	
+
+	SlugFire:
+        SHTN A 0 A_JumpIfInventory("ShotgunAmmo",1,2)
+        Goto NoAmmo
+        TNT1 AAAA 0
+		SHTN A 0 A_JumpIfInventory("ShotgunWasEmpty", 1, "SlugPump2")
+        SHTN A 0 A_AlertMonsters
+		SHO9 A 0 A_firebullets (0,0,1,40,"shotpuff",FBF_NORANDOM,300)
+        SHTN A 0 A_PlaySound("SlugShot", 1)
+		RIFF A 0 A_FireCustomMissile("DistantFireSoundShotgun", random(-1,1), 0, 0, -12, 0, random(-1,1))
+        SHTN A 0
+		SHTN A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
+		TNT1 AAAAAAAAAAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-12,12), 0, -1, 0, 0, random(-9,9))
+		TNT1 AAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles2", random(-12,12), 0, -1, 0, 0, random(-9,9))
+		TNT1 A 0 A_FireCustomMissile("DecorativeTracer", random(-1,1), 0, 0, 0, 0, random(-1,1))
+		SHTN A 0 A_Takeinventory("ShotgunAmmo",1)
+		SHTA A 1
+		SHTN A 0 A_FireBullets (1.3, 1.4, -1, 120, "ShotgunPuff", FBF_NORANDOM)
+		SHTN A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//Tactical Mode deals extra recoil
+		SHTN A 0 A_SetPitch(pitch-1.8)
+		SHTN A 0 A_SetPitch(pitch-1.8)
+		TNT1 A 0 A_ZoomFactor(0.98)
+		SHTA B 1
+		TNT1 A 0 A_ZoomFactor(1.0)
+		SHTA C 1 BRIGHT A_SetPitch(0.6 + pitch)
+		SHTA DE 1 BRIGHT A_SetPitch(0.6 + pitch)
+		SHTN A 1
+		Goto SlugPump
+
+   Pump1:
 	   SHTN A 0
 	   SHTN A 0 A_GiveInventory ("Pumping", 1)
 	   SHTN A 0 A_GiveInventory ("GoSpecial", 1)
-	   
+
 	   SHTN BCDEFG 1
 	   SHTN A 0 A_FireCustomMissile("ShotCaseSpawn",40,0,-8,-26)
 	   SHTN A 0 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
@@ -162,10 +214,10 @@ ACTOR Shot_Gun : BrutalWeapon
 	   SHTN A 0 A_JumpIfInventory("TurboReload", 1, "TurboReload")
 	   SHTN A 0
 	   Goto ReadyToFireAgain
-   
-   
-   Pump2:	
+
+   Pump2:
 	   SHTN A 0
+	   TNT1 A 0 A_JumpIfInventory("ShotgunSlugMode", 1, "SlugPump2")
 	   SHTN A 0 A_GiveInventory ("Pumping", 1)
 	   SHTN A 0 A_GiveInventory ("GoSpecial", 1)
 	   SHTN A 0 A_TakeInventory("Reloading", 1)
@@ -181,9 +233,53 @@ ACTOR Shot_Gun : BrutalWeapon
 	   SHTN A 0 A_Takeinventory("ShotgunWasEmpty",1)
 	   SHTN GFEDC 1 A_JumpIfInventory("Kicking",1,"DoKick")
 	   Goto ReadyToFireAgain
-   
-		
-	ReadyToFireAgain:	
+
+   SlugPump:
+	   SHTN A 0
+	   SHTN A 0 A_GiveInventory ("Pumping", 1)
+	   SHTN A 0 A_GiveInventory ("GoSpecial", 1)
+
+	   SHTN BCDEFP 1
+	   SHTN A 0 A_FireCustomMissile("SlugCaseSpawn",40,0,-8,-26)
+	   SHTN A 0 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
+	   SHTN Q 1 A_PlaySound("weapons/sgpump", 3)
+	   SHTN A 0 A_JumpIfInventory("TurboReload", 1, "PumpNoReload")//Tactical Mode is slower to pump
+	   SHTN IJ 1 A_JumpIfInventory("Reloading",1,"InsertingShells")
+	   SHTN A 0 A_JumpIfInventory("ShotgunAmmo",1,5)
+	   SHTN A 0 A_JumpIfInventory("TurboReload", 1, 4)
+	   SHTN A 0 A_Giveinventory("ShotgunWasEmpty",1)
+	   SHTN A 0 A_JumpIfInventory("NoAutoReload", 1, 2)
+	   Goto InsertingShells
+	   TNT1 AA 0
+	   SHTN KL 1 A_JumpIfInventory("Reloading",1,"InsertingShells")
+	   SHTN KJIQ 1 A_JumpIfInventory("Reloading",1,"InsertingShells")
+	   SHTN A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
+	   SHTN A 0 A_Takeinventory("ShotgunWasEmpty",1)
+	   SHTN PFEDC 1 A_JumpIfInventory("Kicking",1,"DoKick")
+	   SHTN A 0 A_JumpIfInventory("Reloading",1,"InsertingShells")
+	   SHTN A 0 A_JumpIfInventory("ShotgunAmmo",1,2)
+	   SHTN A 0 A_JumpIfInventory("TurboReload", 1, "TurboReload")
+	   SHTN A 0
+	   Goto ReadyToFireAgain
+
+   SlugPump2:
+	   SHTN A 0
+	   SHTN A 0 A_GiveInventory ("Pumping", 1)
+	   SHTN A 0 A_GiveInventory ("GoSpecial", 1)
+	   SHTN A 0 A_TakeInventory("Reloading", 1)
+	   SHTN A 0 A_Takeinventory("Zoomed",1)
+	   SHTN A 0 A_ZoomFactor(1.0)
+	   SHTN FP 1
+	   SHTN Q 1 A_PlaySound("weapons/sgpump", 3)
+	   SHTN IJ 1
+	   SHTN KL 1
+	   SHTN KJIQ 1
+	   SHTN A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
+	   SHTN A 0 A_Takeinventory("ShotgunWasEmpty",1)
+	   SHTN PFEDC 1 A_JumpIfInventory("Kicking",1,"DoKick")
+	   Goto ReadyToFireAgain
+
+	ReadyToFireAgain:
 		//SHTN A 6 <-- Old frame
         SHTN A 1 BRIGHT Offset(10,36) // <-- New frames
         SHTN A 1 BRIGHT Offset(9,40) //
@@ -191,45 +287,85 @@ ACTOR Shot_Gun : BrutalWeapon
         SHTN A 1 BRIGHT Offset(0,32) //
         SHTN A 0 A_Refire
 		Goto Ready3
-		
+
 	Fire2:
 		SHTN A 0 A_Takeinventory("Reloading",1)
+		TNT1 A 0 A_JumpIfInventory("ShotgunSlugMode",1,"SlugFire2")
         SHTN A 0 A_JumpIfInventory("ShotgunAmmo",1,1)
         Goto NoAmmo
 		SHTN A 0 A_JumpIfInventory("ShotgunWasEmpty", 1, "Pump2")
         SHTN A 0 A_AlertMonsters
         SHTN A 0 A_PlaySound("weapons/sg", 1)
 		SHTN A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
-		SHTN A 0 A_FireBullets (5, 1, 4, 13, "ShotgunPuff", FBF_NORANDOM)
-		SHTN A 0 A_FireBullets (2.5, 2.5, 5, 13, "ShotgunPuff2", FBF_NORANDOM)
-		SHTN A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 3)//Tactical Mode deals extra damage
-		SHTN A 0 A_FireBullets (6, 3, 5, 13, "ShotgunPuff2", FBF_NORANDOM)
-		SHTN A 0 A_SetPitch(pitch-10)
+		SHT8 F 1 BRIGHT
+		SHTN A 0 A_FireBullets (2.2, 2.3, 4, 13, "ShotgunPuff", FBF_NORANDOM)
+		SHTN A 0 A_FireBullets (2.2, 2.3, 5, 13, "ShotgunPuff2", FBF_NORANDOM)
+		SHTN A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 3)//Tactical Mode deals extra damage and recoil
+		SHTN A 0 A_FireBullets (2.2, 2.3, 5, 13, "ShotgunPuff2", FBF_NORANDOM)
+		SHTN A 0 A_SetPitch(pitch-0.9)
+		SHTN A 0 A_SetPitch(pitch-0.9)
 		SHTN A 0
 		RIFF A 0 A_FireCustomMissile("DistantFireSoundShotgun", random(-1,1), 0, 0, -12, 0, random(-1,1))
-		TNT1 AAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-5,5), 0, 0, 0, 0, random(-5,5))
-		SHTN A 0 A_SetPitch(-10.0 + pitch)
+		TNT1 AAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
 		SHTN A 0 A_Takeinventory("ShotgunAmmo",1)
-        SHT8 F 1 BRIGHT A_SetPitch(+2.0 + pitch)
-		SHT8 GHIA 1 BRIGHT A_SetPitch(+2.0 + pitch)
+		TNT1 A 0 A_ZoomFactor(1.29)
+		SHT8 G 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(1.3)
+		SHT8 HIA 1 BRIGHT A_SetPitch(0.3 + pitch)
    Pump3:
-		SHT8 A 2 BRIGHT 
+		SHT8 A 2 BRIGHT
 		SHTN A 0 A_JumpIfInventory("ShotgunAmmo", 1, 1)
 		Goto NoAmmo3
 		SHTN A 0 A_GiveInventory ("Pumping", 1)
 		SHTN A 0 A_PlaySound("weapons/sgpump", 5)
-		SHT8 JKLL 1 BRIGHT 
+		SHT8 JKLL 1 BRIGHT
 		SHTN A 0 A_JumpIfInventory("ShotgunWasEmpty", 1, 1)
 		SHTN A 0 A_FireCustomMissile("ShotCaseSpawn",40,0,14,0)
 		SHTN A 0 A_TakeInventory("ShotgunWasEmpty", 1)
-		SHT8 LKJ 1 BRIGHT 
-		SHT8 A 1 BRIGHT 
-		SHTN A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
+		SHT8 LKJ 1 BRIGHT
+		SHT8 A 1 BRIGHT
 		SHTN A 0 A_JumpIfInventory("FiredSecondary",1,"HoldAim")//If still pressing alt fire, it means its holding aim
-		SHTN A 0 A_REfire
+		SHTN A 0 A_Refire
 		Goto Ready2
-	
-	PumpNoReload:	
+
+	SlugFire2:
+        SHTN A 0 A_JumpIfInventory("ShotgunAmmo",1,1)
+        Goto NoAmmo
+		SHTN A 0 A_JumpIfInventory("ShotgunWasEmpty", 1, "SlugPump2")
+        SHTN A 0 A_AlertMonsters
+		SHO9 A 0 A_firebullets (0,0,1,40,"shotpuff",FBF_NORANDOM,300)
+        SHTN A 0 A_PlaySound("SlugShot", 1)
+		SHTN A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
+		SHT8 F 1 BRIGHT
+		SHTN A 0 A_FireBullets (0.8, 0.9, -1, 120, "ShotgunPuff", FBF_NORANDOM)
+		SHTN A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//Tactical Mode deals extra recoil
+		SHTN A 0 A_SetPitch(pitch-0.9)
+		SHTN A 0 A_SetPitch(pitch-0.9)
+		SHTN A 0
+		RIFF A 0 A_FireCustomMissile("DistantFireSoundShotgun", random(-1,1), 0, 0, -12, 0, random(-1,1))
+		TNT1 A 0 A_FireCustomMissile("DecorativeTracer", random(-1,1), 0, 0, 0, 0, random(-1,1))
+		SHTN A 0 A_Takeinventory("ShotgunAmmo",1)
+		TNT1 A 0 A_ZoomFactor(1.29)
+		SHT8 G 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(1.3)
+		SHT8 HIA 1 BRIGHT A_SetPitch(0.3 + pitch)
+   SlugPump3:
+		SHT8 A 2 BRIGHT
+		SHTN A 0 A_JumpIfInventory("ShotgunAmmo", 1, 1)
+		Goto NoAmmo3
+		SHTN A 0 A_GiveInventory ("Pumping", 1)
+		SHTN A 0 A_PlaySound("weapons/sgpump", 5)
+		SHT8 JKLL 1 BRIGHT
+		SHTN A 0 A_JumpIfInventory("ShotgunWasEmpty", 1, 1)
+		SHTN A 0 A_FireCustomMissile("SlugCaseSpawn",40,0,14,0)
+		SHTN A 0 A_TakeInventory("ShotgunWasEmpty", 1)
+		SHT8 LKJ 1 BRIGHT
+		SHT8 A 1 BRIGHT
+		SHTN A 0 A_JumpIfInventory("FiredSecondary",1,"HoldAim")//If still pressing alt fire, it means its holding aim
+		SHTN A 0 A_Refire
+		Goto Ready2
+
+	PumpNoReload:
 	   SHTN IJ 1
 	   SHTN KL 1
 	   SHTN KJIH 1
@@ -240,131 +376,135 @@ ACTOR Shot_Gun : BrutalWeapon
 	   SHTN A 0 A_JumpIfInventory("TurboReload", 1, "TurboReload")
 	   SHTN A 0
 	   Goto ReadyToFireAgain
-	
-	
-	
+
 	AltFire:
-        SHTN A 0 
+        SHTN A 0
 		SHTN A 0 A_Giveinventory("GoSpecial",1)
 		SHTN A 0 A_JumpIfInventory("Zoomed",1,"NoAim")
 		SHTN A 0 A_Giveinventory("Zoomed",1)
-        SHTN A 0 A_ZoomFactor(1.2)
+        SHTN A 0 A_ZoomFactor(1.3)
 		SHTN A 0 A_Giveinventory("ADSmode",1)
 		RIFG A 0 A_SetCrosshair(41)
-        SHT8 ED 1 BRIGHT 
+        SHT8 ED 1 BRIGHT
 		SHTN A 0 A_JumpIfInventory("ShotgunWasEmpty", 1, "Pump3")
         SHTN A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
-		SHT8 A 1 BRIGHT A_WeaponReady(WRF_ALLOWRELOAD)
+		SHT8 A 1 BRIGHT
 		SHTN A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
-		SHT8 A 1 BRIGHT A_WeaponReady(WRF_ALLOWRELOAD)
+		SHT8 A 1 BRIGHT
 		SHTN A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
-		SHT8 A 1 BRIGHT A_WeaponReady(WRF_ALLOWRELOAD)
+		SHT8 A 1 BRIGHT
 		SHTN A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
-		SHT8 A 1 BRIGHT A_WeaponReady(WRF_ALLOWRELOAD)
-		SHTN A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
-		SHT8 A 1 BRIGHT A_WeaponReady(WRF_ALLOWRELOAD)
-		SHTN A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
-		SHT8 A 2 BRIGHT A_WeaponReady(WRF_ALLOWRELOAD)
-		SHTN A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
+		SHT8 A 1 BRIGHT
 		SHTN A 0 A_JumpIfInventory("FiredSecondary",1,"HoldAim")
         Goto Ready2
-		
-	   HoldAim:	
+
+	   HoldAim:
 	    SHTN A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
 		SHT8 A 1 BRIGHT A_WeaponReady(WRF_ALLOWRELOAD)
 		SHTN A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
 		SHT8 A 1 BRIGHT A_WeaponReady(WRF_ALLOWRELOAD)
 		SHTN A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
 		SHT8 A 1 BRIGHT A_WeaponReady(WRF_ALLOWRELOAD)
+		SHTN A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
+		SHT8 A 1 BRIGHT A_WeaponReady(WRF_ALLOWRELOAD)
 		SHTN A 0 A_JumpIfInventory("FiredSecondary",1,"HoldAim")
-		
-	NoAim:	
+
+	NoAim:
         TNT1 AAAAAA 0
 		SHTN A 0 A_Takeinventory("Zoomed",1)
         SHTN A 0 A_ZoomFactor(1.0)
 		SHTN A 0 A_Takeinventory("ADSmode",1)
 		RIFG A 0 A_SetCrosshair(0)
 		SHTN A 0 A_Giveinventory("GoSpecial",1)
-		SHT8 DE 1 BRIGHT 
+		SHT8 DE 1 BRIGHT
         Goto Ready
-		
-		
+
 	CheckSprint:
+		SHTN A 1 BRIGHT A_WeaponReady(WRF_NOFIRE)
+		SHTN A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
+		SHTN A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
+		Goto Ready3
+
+	CheckSprint2:
+		SHT8 A 1 BRIGHT A_WeaponReady(WRF_NOFIRE)
+		SHTN A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready2")
+		SHTN A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
+		Goto Ready2
+
+	StartSprint:
 		SHTN A 1 BRIGHT A_WeaponReady(WRF_NOFIRE)
 		SHTN A 0 A_Takeinventory("Zoomed",1)
         SHTN A 0 A_ZoomFactor(1.0)
 		SHTN A 0 A_Takeinventory("ADSmode",1)
 		RIFG A 0 A_SetCrosshair(0)
 		SHTN A 0 A_Giveinventory("GoSpecial",1)
-		SHTN A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
-		SHTN A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
-		Goto Ready
-		
-	StartSprint:
-		SHTN A 1 BRIGHT A_WeaponReady(WRF_NOFIRE)
-		SHTN A 0 A_Takeinventory("Zoomed",1)
-		SHTN A 0 A_Takeinventory("ADSmode",1)
-		SHTN A 0 A_ZoomFactor(1.0)
-		RIFG A 0 A_SetCrosshair(0)
-		SHTN A 0 A_JumpIfInventory("UsedStamina", 40, "StopSprintTired")
-		
-	Sprinting:	
-		STRN A 0 offset(-9,32) 
+		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		SHTN A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
+
+	Sprinting:
+		STRN A 0 offset(-9,32)
 		SHTN A 0 offset(-9,32) A_JumpIfInventory("IsStandingStill", 1, "Ready3")
+		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
 		SHTN A 0 offset(-9,32) A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
-		PLAY A 0 offset(-9,32) ACS_ExecuteAlways(852, 0, 0, 0, 0)//Makes player faster.
-		SHTN A 0 offset(-9,32) A_JumpIfInventory("PowerStrength", 1, 2)
-		SHTN A 0 offset(-9,32) A_GiveInventory("UsedStamina", 5)
-		SHTN A 0 offset(-9,32)
+		PLAY A 0 offset(-9,32) ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
 		STRN A 1 offset(-9,34) A_SetPitch(pitch -0.5)
 		STRN A 1 offset(-6,36) A_SetPitch(pitch -0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		STRN A 1 offset(-3,38) A_SetPitch(pitch -0.5)
 		STRN A 1 offset(0,38) A_SetPitch(pitch -0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		STRN A 1 offset(3,36) A_SetPitch(pitch -0.5)
 		STRN A 1 offset(6,34) A_SetPitch(pitch -0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		STRN A 1 offset(9,32) A_SetPitch(pitch -0.5)
 		SHTN A 0 offset(9,32) A_WeaponReady(WRF_NOBOB)
 		SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         SHTN A 0 A_JumpIfInventory("Taunting",1,"Taunt")
         SHTN A 0 A_JumpIfInventory("Reloading",1,"Reload")
-		SHTN A 0 offset(-9,32) A_GiveInventory("UsedStamina", 5)
+		SHTN A 0 offset(-9,32)
 		SHTN A 0 offset(9,33) A_SpawnItemEx("FootStep", 0, 0, 2, 0, 0, -4)
 		STRN A 1 offset(9,34) A_SetPitch(pitch +0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		STRN A 1 offset(6,36) A_SetPitch(pitch +0.5)
 		STRN A 1 offset(3,38) A_SetPitch(pitch +0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		STRN A 1 offset(0,38) A_SetPitch(pitch +0.5)
 		STRN A 1 offset(-3,36) A_SetPitch(pitch +0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		STRN A 1 offset(-6,34) A_SetPitch(pitch +0.5)
 		STRN A 1 offset(-9,32) A_SetPitch(pitch +0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		SHTN A 0 offset(-9,32) A_WeaponReady(WRF_NOBOB)
 		SHTN A 0 offset(-9,32) A_JumpIfInventory("IsRunning", 1, "Sprinting")
-		
 		Goto StopSprint
+
 	StopSprintTired:
-		SHTN A 1 BRIGHT 
-		PLAY A 0 ACS_ExecuteAlways(853, 0, 0, 0, 0)//Makes player slower.
+		SHTN A 0
+		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		SHTN A 0 A_PlaySound("Tired", 2)
-		SHTN A 0 A_TakeInventory("UsedStamina", 2)
-		SHTN A 5 BRIGHT A_WeaponReady
-		SHTN A 0 A_TakeInventory("UsedStamina", 2)
-		SHTN A 5 BRIGHT A_WeaponReady
-		SHTN A 0 A_TakeInventory("UsedStamina", 2)
-		SHTN A 5 BRIGHT A_WeaponReady
-		SHTN A 0 A_TakeInventory("UsedStamina", 2)
-		SHTN A 5 BRIGHT A_WeaponReady
-		SHTN A 0 A_TakeInventory("UsedStamina", 2)
-		SHTN A 5 BRIGHT A_WeaponReady
+		STRN A 4 BRIGHT A_WeaponReady
+		SHTN A 0 A_TakeInventory("UsedStamina", 1)
+		STRN A 4 BRIGHT A_WeaponReady
+		SHTN A 0 A_TakeInventory("UsedStamina", 1)
+		STRN A 4 BRIGHT A_WeaponReady
+		SHTN A 0 A_TakeInventory("UsedStamina", 1)
+		STRN A 4 BRIGHT A_WeaponReady
+		SHTN A 0 A_TakeInventory("UsedStamina", 1)
+		STRN A 4 BRIGHT A_WeaponReady
+		SHTN A 0 A_TakeInventory("UsedStamina", 1)
+		STRN A 4 BRIGHT A_WeaponReady
+		SHTN A 0 A_TakeInventory("UsedStamina", 1)
 		Goto Ready
 	StopSprint:
 		STRN A 1
-		SHTN A 0 A_JumpIfInventory("UsedStamina", 60, "StopSprintTired")
-		PLAY A 0 ACS_ExecuteAlways(853, 0, 0, 0, 0)//Makes player slower.
+		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		SHTN A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
+		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		Goto Ready
-	
-	
+
     ReloadWithNoAmmoLeft:
     Reload:
-	    SHTN A 0 
+	    SHTN A 0
 		SHTN A 0 A_TakeInventory("Reloading", 1)
 		SHTN A 0 A_JumpIfInventory("AmmoShell", 1, 2)
 		Goto Ready
@@ -376,27 +516,28 @@ ACTOR Shot_Gun : BrutalWeapon
 		SHTN A 0 A_JumpIfInventory("ShotgunAmmo",9,"OkToFire")
 		SHTN A 0 A_JumpIfInventory("ShotgunAmmo", 1, "ReloadNormally")//Check if there is a shell in the chamber
 		SHTN A 0 A_GiveInventory("ShotgunWasEmpty", 1)//This means there is no shell in the chamber
-	
-	ReloadNormally:	
+
+	ReloadNormally:
         SHTN A 0 A_JumpIfInventory("AmmoShell",1,1)//If there is no reserve ammo, don't reload, go back to Ready
         Goto Ready
 		SHTN A 0 A_Takeinventory("HasUnloaded",1)
 		SHTN A 0 A_JumpIfInventory("TurboReload", 1, "TurboReload")//Check if reloads are disabled.
 		SHTN B 1 A_GiveInventory ("Pumping", 1)
 		SHTN CDE 1
-        
+
 	 InsertingShells:
-		SHTN A 0 
+		SHTN A 0
 		SHTN A 0 A_JumpIfInventory("AmmoShell",1,2)//if there are no more reserve shells, finish reload.
-        Goto Pump2
+        Goto FinishedInsertingShells
 		SHTN A 0
 		SHTN A 0 A_GiveInventory ("Pumping", 1)
 		SSHR A 0 A_TakeInventory("Reloading", 1)
         SHTN A 0 A_JumpIfInventory("ShotgunAmmo",8,"CheckIfFinishReload")
         SHTN A 0 A_Giveinventory("ShotgunAmmo",1)
 		SHTN A 0 A_Takeinventory("AmmoShell",1)
-        
-	InsertShellAnimation:	
+		TNT1 A 0 A_JumpIfInventory("ShotgunSlugMode",1,"ReloadSlugs")
+
+	InsertShellAnimation:
 		SHTN A 0
 		SSHR AAABC 1
         SSHR D 1 A_PlaySound("insertshell")
@@ -406,57 +547,92 @@ ACTOR Shot_Gun : BrutalWeapon
 		SHTN A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		SHTN A 0 A_JumpIfInventory("ShotgunAmmo",9,"FinishedInsertingShells")//If there are 8+1 shells, stop it immediately
         Goto InsertingShells
-		
+
 	CheckIfFinishReload:
-		SSHR A 1 
-		SHTN A 0 A_JumpIfInventory("ShotgunWasEmpty", 1, "FinishedInsertingShells")//If shotgun was empty, 
+		SSHR A 1
+		SHTN A 0 A_JumpIfInventory("ShotgunWasEmpty", 1, "FinishedInsertingShells")//If shotgun was empty,
 		//Play the insert shell animation again, and insert the 9th shell
 		SHTN A 0 A_JumpIfInventory("AmmoShell",1,1)//if there are no more reserve shells, finish reload.
         Goto Pump2
 		SHTN A 0 A_Giveinventory("ShotgunAmmo",1)
 		SHTN A 0 A_Takeinventory("AmmoShell",1)
+		SHTN A 0 A_JumpIfInventory("ShotgunSlugMode",1,"ReloadSlugs")
         Goto InsertShellAnimation
-		
+
 	FinishedInsertingShells:
 		SHTN A 0 A_Takeinventory("Reloading",1)
 		SHTN A 0 A_JumpIfInventory("ShotgunWasEmpty", 1, "Pump2")
 		SHTN FEDCBA 1 A_WeaponReady
-		SHTN A 0 A_Takeinventory("Reloading",1)
+		SHTN A 1 A_Takeinventory("Reloading",1)
 		Goto Ready
-		
-	
+
+	ReloadSlugs:
+        SSHR AAAAJK 1
+        SSHR D 1 A_PlaySound("insertshell")
+        SSHR EF 1 A_WeaponReady(WRF_NOBOB)
+        SSHR A 0 A_JumpIfInventory("Reloading", 1, "Pump2")
+        TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKickReloading")
+		TNT1 A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
+        SHTN A 0 A_JumpIfInventory("ShotgunAmmo",9,"FinishedInsertingShells")//If there are 8+1 shells, stop it immediately
+        Goto InsertingShells
+
+	ChangeShell:
+		SHTN A 1 BRIGHT
+		TNT1 A 0 A_TakeInventory("StartDualWield", 1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_Takeinventory("Zoomed",1)
+		TNT1 A 0 A_Takeinventory("ADSmode",1)
+		RIFG A 0 A_SetCrosshair(0)
+		TNT1 A 0 A_JumpIfInventory("AmmoShell", 1, 1)
+		Goto Ready
+		TNT1 A 0 A_JumpIfInventory("SlugRoundsUpgrade", 1, "SlugMode")
+		Goto NoUpgrades
+
+	NoUpgrades:
+		TNT1 A 0 A_Print("You need the Slug Shells Upgrade for Alt-Fire mode.", 2)
+		SHTN A 3 BRIGHT
+		Goto Ready
+
+	SlugMode:
+		SHTN A 1 BRIGHT
+		SHTN BCDE 1
+		TNT1 A 0 A_JumpIfInventory("ShotgunSlugMode", 1, "BuckShotMode")
+		SSHR AAAJK 2
+		SSHR D 1 A_PlaySound("insertshell")
+		SSHR EF 1
+		TNT1 A 0 A_GiveInventory("SlugMode", 1)
+		TNT1 A 0 A_GiveInventory("ShotgunSlugMode", 1)
+		TNT1 A 0 A_Print("Slug Shells Loaded", 2)
+		SHTN A 0 A_JumpIfInventory("ShotgunAmmo",9,"FinishedInsertingShells")//If there are 8+1 shells, stop it immediately
+        Goto InsertingShells
+
+	BuckShotMode:
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("SlugMode", 1)
+		TNT1 A 0 A_TakeInventory("ShotgunSlugMode", 1)
+		SSHR AAABC 2
+		SSHR D 1 A_PlaySound("insertshell")
+		SSHR EF 1
+		TNT1 A 0 A_Print("Buckshot Shells Loaded", 2)
+		SHTN A 0 A_JumpIfInventory("ShotgunAmmo",9,"FinishedInsertingShells")//If there are 8+1 shells, stop it immediately
+        Goto InsertingShells
+
 	 TurboReload:
-		SHSS BC 0
-	TurboBullets:	
 		SHTN A 0
-		SHTN A 0 A_JumpIfInventory("ShotgunAmmo",9,"FinishTurboReload")
-        SHTN A 0 A_JumpIfInventory("AmmoShell",1,3)
+	TurboInsertShells:
+		SHTN A 0 A_JumpIfInventory("AmmoShell",1,2)//if there are no more reserve shells, finish reload.
         Goto FinishTurboReload
-        TNT1 AAAA 0
-        SHTN A 0 A_Giveinventory("ShotgunAmmo",1)
-		SHTN A 0 A_Takeinventory("AmmoShell",1)
-		Goto TurboBullets
-	FinishTurboReload:
-		SHTN A 0 A_TakeInventory("ShotgunWasEmpty", 1)
-		SHTN A 1 BRIGHT 
-		SHTN A 1 BRIGHT A_Refire
-		Goto Ready3
-		
-	TurboReload2:
-		SHSS BC 0
-	TurboBullets2:	
 		SHTN A 0
-		SHTN A 0 A_JumpIfInventory("ShotgunAmmo",9,"FinishTurboReload")
-        SHTN A 0 A_JumpIfInventory("AmmoShell",1,3)
-        Goto FinishTurboReload2
-        TNT1 AAAA 0
+		SHTN A 0 A_GiveInventory ("Pumping", 1)
+		SSHR A 0 A_TakeInventory("Reloading", 1)
+        SHTN A 0 A_JumpIfInventory("ShotgunAmmo",9,"FinishTurboReload")
         SHTN A 0 A_Giveinventory("ShotgunAmmo",1)
 		SHTN A 0 A_Takeinventory("AmmoShell",1)
-		Goto TurboBullets2
-	FinishTurboReload2:
-		SHTN A 0 A_TakeInventory("ShotgunWasEmpty", 1)
-		SHT8 A 1 BRIGHT A_Refire
-		Goto Ready2
+		Goto TurboInsertShells
+	FinishTurboReload:
+		SHTN A 0 A_Takeinventory("Reloading",1)
+		SHTN A 1 A_JumpIfInventory("ShotgunWasEmpty", 1, "Pump2")
+		Goto Ready
 
       PuristGun:
 		TNT1 A 1
@@ -464,11 +640,9 @@ ACTOR Shot_Gun : BrutalWeapon
 		SHTN A 0 A_TakeInventory("Shot_Gun", 1)
 		TNT1 A 10
 		Goto Ready2
-		
-	
-		
+
 	Unload:
-		SHTN A 1 BRIGHT 
+		SHTN A 1 BRIGHT
 		SHTN A 0 A_ZoomFactor(1.0)
 		SHTN A 0 A_Takeinventory("Unloading",1)
 		SHTN A 0 A_Takeinventory("ADSmode",1)
@@ -476,13 +650,13 @@ ACTOR Shot_Gun : BrutalWeapon
 		RIFG A 0 A_SetCrosshair(0)
 		SHTN A 0 A_GiveInventory("ShotgunWasEmpty", 1)
         SHTN A 0 A_JumpIfInventory("ShotgunAmmo",1,3)
-        Goto NoAmmo
+        Goto Ready
         TNT1 AAA 0
 		SHTN A 0 A_Takeinventory("Zoomed",1)
 		SHTN A 0 A_GiveInventory ("Pumping", 1)
 		SHTN A 0 A_Takeinventory("Unloading",1)
 		SHTN ABCDEF 1
-		
+
 	RemoveBullets:
 		TNT1 AAAA 0
 		SHTN A 0 A_JumpIfInventory("ShotgunAmmo",1,3)
@@ -490,7 +664,7 @@ ACTOR Shot_Gun : BrutalWeapon
         TNT1 AAAAAA 0
 		SHTN A 0 A_Takeinventory("ShotgunAmmo",1)
 		SHTN A 0 A_Giveinventory("AmmoShell",1)
-		
+		TNT1 A 0 A_JumpIfInventory("ShotgunSlugMode",1,"RemoveSlugBullets")
 		SHTN G 1
 	   SHTN H 1 A_PlaySound("weapons/sgpump", 3)
 	   //SHTN A 0 A_SetPitch(+1 + pitch)
@@ -501,14 +675,21 @@ ACTOR Shot_Gun : BrutalWeapon
 	   SHTN A 0 A_Giveinventory("ShotgunWasEmpty",1)
 	   SHTN GF 1
 		Goto RemoveBullets
-	
+
+	RemoveSlugBullets:
+		SHTN P 1
+		SHTN Q 1 A_PlaySound("weapons/sgpump", 3)
+		SHTN IJKLKJIQ 1
+		TNT1 A 0 A_Giveinventory("ShotgunWasEmpty",1)
+		SHTN PF 1
+		Goto RemoveBullets
+
 	FInishUnload:
 		SHTN EDCBA 1
 		SHTN A 0 A_Takeinventory("Unloading",1)
 		SHTN A 0 A_GiveInventory("HasUnloaded",1)
-		Goto OkToFire	
-		
-		
+		Goto OkToFire
+
 	DoKickReloading:
 		NULL A 0 A_JumpIf (momZ > 0, "AirKick")
 		NULL A 0 A_JumpIf (momZ < 0, "AirKick")
@@ -519,16 +700,14 @@ ACTOR Shot_Gun : BrutalWeapon
         KICK H 3
 		KICK A 0 A_Takeinventory("Kicking",1)
 		KICK I 1
-		KICK GFEDCBA 1 
+		KICK GFEDCBA 1
 		RIBA A 0 A_Takeinventory("Kicking",1)
 		SHTN A 0 SetPlayerProperty(0,0,0)
 		Goto FinishedInsertingShells
-		
+
 	Steady:
 		TNT1 A 1
 		Goto Ready
-		
-		
 
 	NoAmmo:
 		RIFG A 0
@@ -553,8 +732,7 @@ ACTOR Shot_Gun : BrutalWeapon
 		RIFG A 0 A_JumpIfInventory("AmmoShell",1,"Reload")
 		RIFG A 0 A_JumpIfInventory("FiredPrimary",1,"NoAmmo2")
 		Goto Ready3
-		
-		
+
 	NoAmmo3:
 		RIFG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 	    RIFG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
@@ -565,12 +743,12 @@ ACTOR Shot_Gun : BrutalWeapon
 		RIFG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		SHT8 A 4 BRIGHT A_WeaponReady(WRF_ALLOWRELOAD | WRF_NOPRIMARY)
 		RIFG A 0 A_JumpIfInventory("Reloading",1,"Reload")
-		RIFG A 0 A_JumpIfInventory("TurboReload",1,"TurboReload2")
+		RIFG A 0 A_JumpIfInventory("TurboReload",1,"TurboReload")
 		TNT1 A 0 A_JumpIfInventory("NoAutoReload", 1, "NoAmmo3")
 		RIFG A 0 A_JumpIfInventory("AmmoShell",1,"Reload")
 		RIFG A 0 A_JumpIfInventory("FiredPrimary",1,"NoAmmo3")
-		Goto Ready3	
-			
+		Goto Ready2
+
 	}
 }
 
@@ -583,5 +761,7 @@ ACTOR ShotgunAmmo : Ammo
    Inventory.Icon "SHTCA0"
 }
 
-
-
+ACTOR ShotgunSlugMode : Inventory
+{
+	Inventory.MaxAmount 1
+}

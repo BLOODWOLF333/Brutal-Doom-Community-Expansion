@@ -7,38 +7,31 @@ ACTOR PainElemental1 Replaces PainElemental
     Scale 1.0
 	Speed 9
 	PainChance 128
-	
+
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
-	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 10.0
-	Damagefactor "Cut", 10.0	Damagefactor "Extremepunches", 2.0	Damagefactor "Fatality", 5.0
-	Damagefactor "FriendBullet", 1.0	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.1
-	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 1.0	Damagefactor "HeadKick", 1.0
-	Damagefactor "HelperMarineFatallity", 2.0	Damagefactor "KillMe", 1.0	Damagefactor "Leg", 0.5
-	Damagefactor "LowKick", 0.5	Damagefactor "MonsterKnocked", 1.0	Damagefactor "PussyGrab", 0.0
-	Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "Saw", 10.0
-	Damagefactor "Slide", 0.5	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 1.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	DamageFactor "Crush", 4.0
+	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0	Damagefactor "HangingHook", 0.0
+	Damagefactor "Head", 1.5	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
+	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "Burn", 0.5
 	Damagefactor "Fire", 0.5	Damagefactor "Flames", 0.5	Damagefactor "GreenFire", 0.5
-	Damagefactor "HumanBBQ", 0.5
+	Damagefactor "HumanBBQ", 0.5	Damagefactor "SSG", 5.0	DamageFactor "TankWeakSpot", 0.0
+	Damagefactor "ExtremePunches", 2.0	Damagefactor "Fatality", 5.0	Damagefactor "HelperMarineFatallity", 5.0
 
-	PainChance "Avoid", 0	PainChance "Burn", 16	PainChance "Cut", 255
-	PainChance "ExplosiveImpact", 255	PainChance "Extremepunches", 255	PainChance "Fatality", 255
-	PainChance "Fire", 16	PainChance "Flames", 16	PainChance "GreenFire", 16
-	PainChance "Head", 255	PainChance "HelperMarineFatallity", 255	PainChance "HumanBBQ", 16
-	PainChance "Kick", 255	PainChance "LowKick", 255	PainChance "Melee", 255
-	PainChance "MonsterKnocked", 255	PainChance "Saw", 255	PainChance "Slide", 255
-	PainChance "Stealth", 255	PainChance "Taunt", 255	PainChance "Trample", 255
-	
+	PainChance "Taunt", 255
+	PainChance "Burn", 16	PainChance "Fire", 16	PainChance "Flames", 16
+	PainChance "GreenFire", 16	PainChance "HumanBBQ", 16
+
 	Monster
-	+FLOAT 
+	+FLOAT
 	+NOGRAVITY
 	+FORCEXYBILLBOARD
 	SeeSound "pain/sight"
 	PainSound "pain/pain"
 	DeathSound "pain/death"
 	ActiveSound "pain/active"
-    BloodType "Brutal_Blood", "SawBlood", "SawBlood" damagefactor "HangingHook", 0
-	DropItem "HealthPlusNoCount" 16
+    BloodType "Brutal_Blood", "SawBlood", "SawBlood"
+	DropItem "DemonStrengthRune" 4
     damagetype Flames
 	DeathHeight 4
 	BurnHeight 0
@@ -60,17 +53,17 @@ SearchPlayer:
 		TNT1 A 0 A_SetAngle(angle + 30)
 		PAIN A 10 A_Look
 		TNT1 A 0 A_SetAngle(angle - 30)
-		
+
 		PAIN AA 3 A_Wander
-		PAIN A 2 A_look
+		PAIN A 4 A_Look
 		PAIN BB 3 A_Wander
-		PAIN B 2 A_look
+		PAIN B 4 A_Look
 		PAIN CC 3 A_Wander
-		PAIN C 2 A_look
+		PAIN C 4 A_Look
 		PAIN BB 3 A_Wander
-		PAIN B 2 A_look
+		PAIN B 4 A_Look
 		PAIN AA 3 A_Wander
-		PAIN A 2 A_look
+		PAIN A 4 A_Look
 		Loop
 
 	See:
@@ -78,15 +71,15 @@ SearchPlayer:
 		TNT1 A 0 A_CheckSight("See2")
 		TNT1 A 0 A_TakeInventory("EnemyMemory", 10)
 		PAIN AABBCC 3 A_Chase
-		
+
 		Loop
-	
+
 	See2:
 	    TNT1 A 0 A_JumpIfInventory("EnemyMemory", 18, "SearchPlayer")
 		TNT1 A 0 A_GiveInventory("EnemyMemory", 1)
 		PAIN AABBCC 3 A_Chase
 		Goto See
-		
+
 	Missile:
 		TNT1 A 0 A_Stop
 	    TNT1 A 0 A_TakeInventory("EnemyMemory", 30)
@@ -96,7 +89,7 @@ SearchPlayer:
 		PAIN F 2 BRIGHT A_PainAttack
 		PAIN ED 7
 		Goto See
-	
+
 	    Death.Fatality:
 		TNT1 A 0 A_Pain
 		TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1)
@@ -104,11 +97,12 @@ SearchPlayer:
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 28, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
 		TNT1 A 0 A_SpawnItemEx("ArmorCrueltyBonus2", 0, 0, 28, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
+	Death.HelperMarineFatallity:
         TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
         TNT1 A 0 A_GiveToTarget("PEFatality", 1)
         Stop
-		
+
 	Pain:
 		PAIN G 6
 		PAIN G 6 A_Pain
@@ -129,10 +123,10 @@ SearchPlayer:
 		TNT1 AAAAAA 0 A_CustomMissile ("FireworkSFXType1", 0, 0, random (0, 360), 2, random (10, 80))
 		TNT1 AAAAAA 0 bright A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
         TNT1 AAAAAAAAA 0 A_CustomMissile ("CeilBloodLauncherLong", 0, 0, random (0, 360), 2, random (50, 130))
-		
+
 		TNT1 AAA 0 A_CustomMissile ("XDeathPainElementalNew1", 32, 0, random (0, 360), 2, random (30, 90))
         TNT1 AAA 0 A_CustomMissile ("XDeathPainElementalNew2", 32, 0, random (0, 360), 2, random (30, 90))
-		
+
 		TNT1 AAAAAAAAAAAA 0 A_CustomMissile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (30, 90))
 		TNT1 AA 0 A_CustomMissile ("XDeath2", 30, 0, random (0, 360), 2, random (40, 90))
 		TNT1 AA 0 A_CustomMissile ("XDeath3", 30, 0, random (0, 360), 2, random (40, 90))
@@ -154,7 +148,7 @@ SearchPlayer:
     Pain.KillMe:
     Pain.Taunt:
         TNT1 A 0
-		TNT1 A 0 HealThing(1)
+		TNT1 A 0 HealThing(2)
         Goto Missile
     Death.KillMe:
     Death.Taunt:
@@ -167,7 +161,7 @@ SearchPlayer:
 	TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
 	TNT1 A 0 A_ChangeFlag("SOLID", 0)
 	TNT1 A 0 A_SpawnItem("FrozenPainElemental")
-	Stop	
+	Stop
 	}
 }
 
@@ -184,7 +178,7 @@ ACTOR PEPart1
     +MOVEWITHSECTOR
     +CLIENTSIDEONLY
     +RIPPER
-    +BLOODLESSIMPACT 
+    +BLOODLESSIMPACT
     +DOOMBOUNCE
 	+SKYEXPLODE
     BounceFactor 0.5
@@ -206,7 +200,7 @@ damagetype Blood
         TNT1 A 0 A_CustomMissile ("SmallFlameTrails", 2, 0, random (0, 360), 2, random (70, 110))
         Loop
     Death:
-        ID22 F 1 
+        ID22 F 1
 		TNT1 A 0 A_QueueCorpse
         ID22 F -1
         Stop
@@ -230,7 +224,7 @@ ACTOR PEPart2
     +MOVEWITHSECTOR
     +CLIENTSIDEONLY
     +RIPPER
-    +BLOODLESSIMPACT 
+    +BLOODLESSIMPACT
     +DOOMBOUNCE
 	+SKYEXPLODE
     BounceFactor 0.5
@@ -246,16 +240,16 @@ damagetype Blood
 		TNT1 A 0 bright A_SpawnItem("YellowFlare",0,2)
 		TNT1 A 0 A_SPawnItem("PlasmaSmoke")
         TNT1 A 0 A_CustomMissile ("SmallFlameTrails", 2, 0, random (0, 360), 2, random (70, 110))
-	
+
         ID22 B 2 A_CustomMissile("BloodTrails",0,0,180,2)
 		TNT1 A 0 bright A_SpawnItem("YellowFlare",0,2)
         TNT1 A 0 A_CustomMissile ("SmallFlameTrails", 2, 0, random (0, 360), 2, random (70, 110))
-        
+
 		ID22 C 2 A_CustomMissile("BloodTrails",0,0,180,2)
 		TNT1 A 0 bright A_SpawnItem("YellowFlare",0,2)
         TNT1 A 0 A_SPawnItem("PlasmaSmoke")
 		TNT1 A 0 A_CustomMissile ("SmallFlameTrails", 2, 0, random (0, 360), 2, random (70, 110))
-        
+
 		ID22 D 2 A_CustomMissile("BloodTrails",0,0,180,2)
 		TNT1 A 0 bright A_SpawnItem("YellowFlare",0,2)
         TNT1 A 0 A_CustomMissile ("SmallFlameTrails", 2, 0, random (0, 360), 2, random (70, 110))
@@ -282,48 +276,62 @@ States
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
         ID22 A 1 A_CustomMissile("BloodTrails",0,0,180,2)
 		TNT1 A 0 bright A_SpawnItem("YellowFlare",0,2)
-		
+
         TNT1 A 0 A_CustomMissile ("SmallFlameTrails", 2, 0, random (0, 360), 2, random (70, 110))
-	
+
         ID22 B 1 A_CustomMissile("BloodTrails",0,0,180,2)
 		TNT1 A 0 bright A_SpawnItem("YellowFlare",0,2)
         TNT1 A 0 A_CustomMissile ("SmallFlameTrails", 2, 0, random (0, 360), 2, random (70, 110))
-        
+
 		ID22 C 1 A_CustomMissile("BloodTrails",0,0,180,2)
 		TNT1 A 0 bright A_SpawnItem("YellowFlare",0,2)
-        
+
 		TNT1 A 0 A_CustomMissile ("SmallFlameTrails", 2, 0, random (0, 360), 2, random (70, 110))
-        
+
 		ID22 D 1 A_CustomMissile("BloodTrails",0,0,180,2)
 		TNT1 A 0 bright A_SpawnItem("YellowFlare",0,2)
         TNT1 A 0 A_CustomMissile ("SmallFlameTrails", 2, 0, random (0, 360), 2, random (70, 110))
 		Loop
-	}	
+	}
 }
 
 Actor FatalizedPE
 {
+	Game Doom
     Radius 12
     Height 32
     Scale 1.0
-    +SHOOTABLE
-    +NOTELEPORT
-    +MOVEWITHSECTOR
-    +CORPSE
-	-SOLID
-	+PUSHABLE
-	+THRUSPECIES
-	SPecies "Marines"
-    Mass 10000
-    Health 100
-    damagefactor "Blood", 0.0
-    damagefactor "Trample", 0.0
+    -COUNTKILL
+	+SHOOTABLE
+	+NOICEDEATH
+    +PUSHABLE
+	+SLIDESONWALLS
+    +WINDTHRUST
+    +TELESTOMP
+	+NOBLOCKMONST
+	+EXTREMEDEATH
+	+CORPSE
+	+FLOORCLIP
+	+FORCEXYBILLBOARD
+	-THRUACTORS
+	+SOLID
+    Mass 300
+    Health 300
+    Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
+	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0	Damagefactor "HangingHook", 0.0
+	Damagefactor "Head", 1.5	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
+	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
+	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "Burn", 0.5
+	Damagefactor "Fire", 0.5	Damagefactor "Flames", 0.5	Damagefactor "GreenFire", 0.5
+	Damagefactor "HumanBBQ", 0.5	DamageFactor "Trample", 0.0
+	Damagefactor "ExtremePunches", 2.0	Damagefactor "Fatality", 5.0
 States
     {
     Spawn:
 		PA1F U -1
         Stop
-	
+
 	Death:
 		TNT1 AAAAAAAAAAAA 0 A_CustomMissile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (30, 90))
 		TNT1 AA 0 A_CustomMissile ("XDeath2", 30, 0, random (0, 360), 2, random (40, 90))

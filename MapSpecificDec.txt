@@ -28,12 +28,12 @@ ACTOR BDdecorationBase2
 	//$category BD Decorations
 }
 
-
 ACTOR BDdestroyabledecorative
 {
     Radius 12
     Height 4
     Mass 9999
+	+FRIENDLY
     +SHOOTABLE
 	+NOBLOOD
 	+SOLID
@@ -54,9 +54,6 @@ ACTOR BDdestroyabledecorative
     damagefactor "KillMe", 0.0 damagefactor "Trample", 0.0
 }
 
-
-
-
 ACTOR BDECRubbleSpawner: BDdecorationBase 11001
 {
  States
@@ -69,7 +66,6 @@ ACTOR BDECRubbleSpawner: BDdecorationBase 11001
 		SPDC C -1
 		Stop
 }}
-
 
 ACTOR BDECRubble1: BDdecorationBase
 {
@@ -104,7 +100,6 @@ ACTOR BDECRubble3: BDdecorationBase
 		Stop
 }}
 
-
 ACTOR BDECBusSign: BDdecorationBase 11002
 {
  States
@@ -115,7 +110,6 @@ ACTOR BDECBusSign: BDdecorationBase 11002
 		Stop
 }}
 
-
 ACTOR BDECStopSign: BDdecorationBase 11003
 {
  States
@@ -125,7 +119,6 @@ ACTOR BDECStopSign: BDdecorationBase 11003
 		SPDC E -1
 		Stop
 }}
-
 
 ACTOR BDECDestroyedCar: BDdecorationBase 11004
 {
@@ -145,7 +138,7 @@ ACTOR BDECDestroyedCar: BDdecorationBase 11004
 		TNT1 A 0 A_SpawnItemEx("BDECCarColision", -40, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
 		ELEC C -1
 		Stop
-		
+
 		Death.Stomp:
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
@@ -153,7 +146,6 @@ ACTOR BDECDestroyedCar: BDdecorationBase 11004
 		ELEC C -1
 		Stop
 }}
-
 
 ACTOR BDECDestroyedCarBlue: BDECDestroyedCar 11005
 {
@@ -186,12 +178,6 @@ ACTOR BDECCarColision: BDdecorationBase
 		Stop
 }}
 
-
-
-
-
-
-
 Actor BDECburningtires: BDdecorationbase 11010
 {
 +RANDOMIZE
@@ -201,28 +187,28 @@ height 12
 Scale 0.7
 states
 	{
-	
+
 	Spawn:
 		SPDC I 1 BRIGHT
 		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
 		TNT1 A 0
-		
+
 	Stay:
 		TNT1 A 0 bright A_CustomMissile ("BigBlackSmokePillar", 48, 0, random (40, 180), 2, random (60, 120))
-		
-		TTRB A 0 A_CustomMissile ("RealisticFireSparks1", 32, 0, random (0, 140), 2, random (0, 160))
+
+		TTRB A 0 A_CustomMissile ("RealisticFireSparks1", 22, 0, random (0, 140), 2, random (0, 160))
 		SPDC IJKL 2 BRIGHT A_SpawnItem("RedFlare3Flat",0,22)
-		
-		TTRB A 0 A_CustomMissile ("RealisticFireSparks1", 32, 0, random (0, 140), 2, random (0, 160))
+
+		TTRB A 0 A_CustomMissile ("RealisticFireSparks1", 22, 0, random (0, 140), 2, random (0, 160))
 		SPDC IJKL 2 BRIGHT A_SpawnItem("RedFlare3Flat",0,22)
-		
-		TTRB A 0 A_CustomMissile ("RealisticFireSparks1", 32, 0, random (0, 140), 2, random (0, 160))
+
+		TTRB A 0 A_CustomMissile ("RealisticFireSparks1", 22, 0, random (0, 140), 2, random (0, 160))
 		SPDC IJKL 2 BRIGHT A_SpawnItem("RedFlare3Flat",0,22)
-		
-		TTRB A 0 A_CustomMissile ("RealisticFireSparks1", 32, 0, random (0, 140), 2, random (0, 160))
+
+		TTRB A 0 A_CustomMissile ("RealisticFireSparks1", 22, 0, random (0, 140), 2, random (0, 160))
 		SPDC IJKL 2 BRIGHT A_SpawnItem("RedFlare3Flat",0,22)
-		
-		TTRB A 0 A_CustomMissile ("RealisticFireSparks1", 32, 0, random (0, 140), 2, random (0, 160))
+
+		TTRB A 0 A_CustomMissile ("RealisticFireSparks1", 22, 0, random (0, 140), 2, random (0, 160))
 		SPDC IJKL 2 BRIGHT A_SpawnItem("RedFlare3Flat",0,22)
 		Loop
 	}
@@ -241,14 +227,12 @@ ACTOR BDECDestroyedLightPost: BDdecorationBase 11011
 		TNT1 A 0 A_Jump(128, "Spawn2")
 		SPDC N -1
 		Stop
-		
+
 		Spawn2:
 		SPDC O 1
 		SPDC O -1
 		Stop
 }}
-
-
 
 ACTOR BDECGrassSpawner: BDdecorationBase 15848
 {
@@ -296,7 +280,7 @@ DamageFactor "Plasma", 200.0 DamageFactor "PLasma2", 200.0
 		SPDC M 1
 		SPDC M -1
 		Stop
-		
+
 		Death.Fire:
 		Death.Burn:
 		Death.Flames:
@@ -304,34 +288,28 @@ DamageFactor "Plasma", 200.0 DamageFactor "PLasma2", 200.0
 		Death.Plasma:
 			TNT1 A 0
 			TNT1 A 0 A_NoBlocking
-			TNT1 A 0 A_SpawnItem("BarrelExplosionSmokeColumnInfinite")
-			TNT1 A 0 A_CustomMissile("TinyBurningPieceInfinite")
-			TNT1 A 0 A_SpawnItemEx("RealisticFireSparksLoop", 0, 0, 16)			
+			TNT1 A 0 A_SpawnItem("BarrelExplosionSmokeColumn")
+			TNT1 A 0 A_CustomMissile("TinyBurningPieceTemp")
+			TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTemp", 0, 0, 16)
 			BPDC A 1
 			BPDC A -1
 			Stop
 }}
-
-
-
 
 ACTOR BDECGrass2: BDECGrass
 {
 Scale 0.5
 }
 
-
 ACTOR BDECGrass3: BDECGrass
 {
 Scale 0.7
 }
 
-
 ACTOR BDECGrass4: BDECGrass
 {
 Scale 1.0
 }
-
 
 ACTOR BDECGrassSpecial: BDECGrass
 {
@@ -348,32 +326,30 @@ States
 	Randomizes:
 		TNT1 A 0
 		TNT1 A 0 A_Jump(255, "SpawnForest1", "SpawnForest2", "SpawnForest3", "SpawnForest4")
-		
+
 	SpawnFOrest1:
 		SPDC M 1
 		SPDC M -1
 		Stop
-		
+
 	SpawnFOrest2:
 		SPDC M 1
 		TNT1 A 0 A_SetScale (-0.6, 0.6)
 		SPDC M -1
 		Stop
-		
+
 	SpawnFOrest3:
 		SPDC M 1
 		TNT1 A 0 A_SetScale (0.8, 0.8)
 		SPDC M -1
 		Stop
-		
+
 	SpawnFOrest4:
 		SPDC M 1
 		TNT1 A 0 A_SetScale (-1.1, 1.1)
 		SPDC M -1
-		Stop	
+		Stop
 }}
-
-
 
 ACTOR BDECBush: BDdecorationBase 15849
 {
@@ -392,8 +368,7 @@ Radius 16
 		SPDC P 1
 		SPDC P -1
 		Stop
-		
-		
+
 		Death.Explosives:
 		XDeath:
 		TNT1 A 1
@@ -402,7 +377,7 @@ Radius 16
 		TNT1 AAA 0 A_CustomMissile ("BDECFoliageParticle3a", 15, 0, random (0, 360), 2, random (20, 90))
 		TNT1 A 0 A_CustomMissile ("BDECFoliageParticle3b", 15, 0, random (0, 360), 2, random (20, 90))
 		Stop
-		
+
 	Death.Burn:
 	Death.Flames:
 	Death.Plasma:
@@ -410,20 +385,24 @@ Radius 16
 	Death.Fire:
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("HDFlamesGFX1", 0, 0, 10)
+		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1", 0, 0, 10)
 		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
-		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksLoopBig", 0, 0, 25)	
+		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 25)
 		TNT1 A 0 A_Jump(255, "Burning")
 		TNT1 A 0
 		Stop
-		
-		
-		Burning:
-			BPDC P 20 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
-			Loop
+
+	Burning:
+		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+		BPDC P 20 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+		Loop
+	Extinguish:
+		TNT1 A 0
+		TNT1 A 0 A_StopSound(1)
+		BPDC A -1
+		Stop
 }}
-
-
 
 ACTOR BDVines1: BDECBush 11034
 {
@@ -443,7 +422,7 @@ sCALE 0.6
 		SPDC U 1
 		SPDC U -1
 		Stop
-		
+
 		Death.Burn:
 	Death.Flames:
 	Death.Plasma:
@@ -451,16 +430,23 @@ sCALE 0.6
 	Death.Fire:
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("HDFlamesGFX1", 0, 0, -50)
-		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksLoopBig", 0, 0, 55)	
+		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1", 0, 0, -50)
+		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 55)
 		TNT1 A 0 A_Jump(255, "Burning")
 		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
 		TNT1 A 0
 		Stop
-		
-		Burning:
-			BPDC U 20 BRIGHT A_CustomMissile ("BurnDamageSmall", -16)
-			Loop
+
+	Burning:
+		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+		BPDC U 20 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+		Loop
+	Extinguish:
+		TNT1 A 0
+		TNT1 A 0 A_StopSound(1)
+		TNT1 A -1
+		Stop
 }}
 
 ACTOR BDVines2: BDVines1 11834
@@ -469,17 +455,21 @@ ACTOR BDVines2: BDVines1 11834
 +FLOAT
  States
 	{
-		Spawn:
+	Spawn:
 		SPDC V 1
 		SPDC V -1
 		Stop
-	
-		Burning:
-			BPDC V 20 BRIGHT A_CustomMissile ("BurnDamageSmall", -16)
-			Loop
+	Burning:
+		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+		BPDC V 20 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+		Loop
+	Extinguish:
+		TNT1 A 0
+		TNT1 A 0 A_StopSound(1)
+		TNT1 A -1
+		Stop
 }}
-
-
 
 ACTOR BDecJunglePlant: BDECBush
 {
@@ -489,7 +479,7 @@ ACTOR BDecJunglePlant: BDECBush
 		SPDC W 1
 		SPDC W -1
 		Loop
-		
+
 		Death.Explosives:
 		XDeath:
 		TNT1 A 1
@@ -498,12 +488,17 @@ ACTOR BDecJunglePlant: BDECBush
 		TNT1 AAA 0 A_CustomMissile ("BDECFoliageParticle5a", 15, 0, random (0, 360), 2, random (20, 90))
 		TNT1 AA 0 A_CustomMissile ("BDECFoliageParticle5B", 15, 0, random (0, 360), 2, random (20, 90))
 		Stop
-		
-		Burning:
-			BPDC W 20 A_CustomMissile ("BurnDamageSmall", 16)
-			Loop
+	Burning:
+		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+		BPDC W 20 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+		Loop
+	Extinguish:
+		TNT1 A 0
+		TNT1 A 0 A_StopSound(1)
+		BPDC A -1
+		Stop
 }}
-
 
 ACTOR BDecJunglePlant2: BDecJunglePlant
 {
@@ -513,7 +508,7 @@ ACTOR BDecJunglePlant2: BDecJunglePlant
 		Spawn:
 		SPDC Z 1
 		SPDC Z -1
-		Loop	
+		Loop
 }}
 
 ACTOR BDECGreenTree1 15850
@@ -539,7 +534,7 @@ BloodType "TreeBlood"
 		SPDC Q 1
 		SPDC Q -1
 		Stop
-		
+
 		Death:
 		TRE1 B 1
 		TNT1 A 0 A_NoBlocking
@@ -561,21 +556,24 @@ BloodType "TreeBlood"
 	Death.Plasma2:
 	Death.Fire:
 		TNT1 A 0
-		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksLoopBig", 0, 0, 165)
-		TNT1 A 0 A_SpawnItemEx("HDFlamesGFX1Big", 0, 0, 80)
-		TNT1 A 0 A_SpawnItemEx("HDFlamesGFX1Slim", 0, 0, 10)
+		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 165)
+		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Big", 0, 0, 80)
+		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Slim", 0, 0, 10)
 		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
 		TNT1 A 0 A_Jump(255, "Burning")
 		TNT1 A 0
 		Stop
-		
-		
-		Burning:
-			BPDC Q 15 BRIGHT //A_CustomMissile("FireballExplosionFlamesBig", 45, 0, random (0, 360), 2, random (50, 130))
-			TNT1 A 0 A_CustomMissile ("BurnDamageLarge", 16)
-			Loop
+	Burning:
+		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+		BPDC Q 20 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+		Loop
+	Extinguish:
+		TNT1 A 0
+		TNT1 A 0 A_StopSound(1)
+		BPDC H -1
+		Stop
 }}
-
 
 ACTOR BDECGreenTree2: BDECGreenTree1 15851
 {
@@ -585,8 +583,7 @@ ACTOR BDECGreenTree2: BDECGreenTree1 15851
 		SPDC R 1
 		SPDC R -1
 		Stop
-		
-		
+
 		Death:
 		TRE1 B 1
 		TNT1 A 0 A_NoBlocking
@@ -600,25 +597,30 @@ ACTOR BDECGreenTree2: BDECGreenTree1 15851
 		TNT1 AAA 0 A_CustomMissile ("WoodParticleTiny", 55, 0, random (0, 360), 2, random (20, 90))
 		TNT1 AAA 0 A_CustomMissile ("WoodParticleBig", 65, 0, random (0, 360), 2, random (20, 90))
 		Stop
-		
+
 	Death.Burn:
 	Death.Flames:
 	Death.Plasma:
 	Death.Plasma2:
 	Death.Fire:
 		TNT1 A 0
-		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksLoopBig", 0, 0, 165)
-		TNT1 A 0 A_SpawnItemEx("HDFlamesGFX1Big", 0, 0, 40)
-		TNT1 A 0 A_SpawnItemEx("HDFlamesGFX1Slim", 0, 0, 10)
+		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 165)
+		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Big", 0, 0, 40)
+		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Slim", 0, 0, 10)
 		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
 		TNT1 A 0 A_Jump(255, "Burning")
 		TNT1 A 0
 		Stop
-		
-		Burning:
-			BPDC R 15 BRIGHT //A_CustomMissile("FireballExplosionFlamesBig", 45, 0, random (0, 360), 2, random (50, 130))
-			TNT1 A 0 A_CustomMissile ("BurnDamageLarge", 16)
-			Loop
+	Burning:
+		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+		BPDC R 20 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+		Loop
+	Extinguish:
+		TNT1 A 0
+		TNT1 A 0 A_StopSound(1)
+		BPDC P -1
+		Stop
 }}
 
 ACTOR BDECGreenTree3: BDECGreenTree2 15852
@@ -629,7 +631,7 @@ ACTOR BDECGreenTree3: BDECGreenTree2 15852
 		SPDC S 1
 		SPDC S -1
 		Stop
-	
+
 	Death:
 		TRE1 B 1
 		TNT1 A 0 A_NoBlocking
@@ -643,15 +645,17 @@ ACTOR BDECGreenTree3: BDECGreenTree2 15852
 		TNT1 AAA 0 A_CustomMissile ("WoodParticleTiny", 55, 0, random (0, 360), 2, random (20, 90))
 		TNT1 AAA 0 A_CustomMissile ("WoodParticleBig", 65, 0, random (0, 360), 2, random (20, 90))
 		Stop
-		
-		
 	Burning:
-			BPDC S 15 BRIGHT //A_CustomMissile("FireballExplosionFlamesBig", 45, 0, random (0, 360), 2, random (50, 130))
-			TNT1 A 0 A_CustomMissile ("BurnDamageLarge", 16)
-			Loop	
+		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+		BPDC S 20 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+		Loop
+	Extinguish:
+		TNT1 A 0
+		TNT1 A 0 A_StopSound(1)
+		BPDC H -1
+		Stop
 }}
-
-
 
 ACTOR BDPalmTree: BDECGreenTree2 15853
 {
@@ -663,8 +667,7 @@ ACTOR BDPalmTree: BDECGreenTree2 15853
 		SPDC X 1
 		SPDC X -1
 		Loop
-		
-		
+
 			Death:
 		TRE1 B 1
 		TNT1 A 0 A_NoBlocking
@@ -677,25 +680,30 @@ ACTOR BDPalmTree: BDECGreenTree2 15853
 		TNT1 AAA 0 A_CustomMissile ("WoodParticleTiny", 65, 0, random (0, 360), 2, random (20, 90))
 		TNT1 AAA 0 A_CustomMissile ("WoodParticleBig", 85, 0, random (0, 360), 2, random (20, 90))
 		Stop
-		
+
 	Death.Burn:
 	Death.Flames:
 	Death.Plasma:
 	Death.Plasma2:
 	Death.Fire:
 		TNT1 A 0
-		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksLoopBig", 0, 0, 205)
-		TNT1 A 0 A_SpawnItemEx("HDFlamesGFX1Slim", 0, 0, 10)
-		TNT1 A 0 A_SpawnItemEx("HDFlamesGFX1", 0, 0, 120)
+		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 205)
+		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Slim", 0, 0, 10)
+		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1", 0, 0, 120)
 		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
 		TNT1 A 0 A_Jump(255, "Burning")
 		TNT1 A 0
 		Stop
-		
-		Burning:
-			BPDC X 15 BRIGHT //A_CustomMissile("FireballExplosionFlamesBig", 45, 0, random (0, 360), 2, random (50, 130))
-			TNT1 A 0 A_CustomMissile ("BurnDamageLarge", 16)
-			Loop
+	Burning:
+		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+		BPDC X 20 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+		Loop
+	Extinguish:
+		TNT1 A 0
+		TNT1 A 0 A_StopSound(1)
+		BPDC X -1
+		Stop
 }}
 
 ACTOR BDECDeadTree1: BDECGreenTree1 11008
@@ -706,8 +714,7 @@ ACTOR BDECDeadTree1: BDECGreenTree1 11008
 		SPDC G 1
 		SPDC G -1
 		Stop
-		
-		
+
 		Death:
 		TRE1 B 1
 		TNT1 A 0 A_NoBlocking
@@ -720,26 +727,30 @@ ACTOR BDECDeadTree1: BDECGreenTree1 11008
 		TNT1 AAA 0 A_CustomMissile ("WoodParticleTiny", 55, 0, random (0, 360), 2, random (20, 90))
 		TNT1 AAA 0 A_CustomMissile ("WoodParticleBig", 65, 0, random (0, 360), 2, random (20, 90))
 		Stop
-		
+
 	Death.Burn:
 	Death.Flames:
 	Death.Plasma:
 	Death.Plasma2:
 	Death.Fire:
 		TNT1 A 0
-		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksLoopBig", 0, 0, 55)
+		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 55)
 		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
-		TNT1 A 0 A_SpawnItemEx("HDFlamesGFX1Big", 0, 0, 10)
+		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Big", 0, 0, 10)
 		TNT1 A 0 A_Jump(255, "Burning")
 		TNT1 A 0
 		Stop
-		Burning:
-			BPDC G 15 BRIGHT //A_CustomMissile("FireballExplosionFlamesBig", 45, 0, random (0, 360), 2, random (50, 130))
-			TNT1 A 0 A_CustomMissile ("BurnDamageLarge", 16)
-			Loop
+	Burning:
+		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+		BPDC G 20 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+		Loop
+	Extinguish:
+		TNT1 A 0
+		TNT1 A 0 A_StopSound(1)
+		BPDC G -1
+		Stop
 }}
-
-
 
 ACTOR BDECDeadTree2: BDECDeadTree1 11009
 {
@@ -749,18 +760,17 @@ ACTOR BDECDeadTree2: BDECDeadTree1 11009
 		SPDC H 1
 		SPDC H -1
 		Stop
-		
-		
-		Burning:
-			BPDC H 15 BRIGHT //A_CustomMissile("FireballExplosionFlamesBig", 45, 0, random (0, 360), 2, random (50, 130))
-			TNT1 A 0 A_CustomMissile ("BurnDamageLarge", 16)
-			Loop
+	Burning:
+		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+		BPDC H 20 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+		Loop
+	Extinguish:
+		TNT1 A 0
+		TNT1 A 0 A_StopSound(1)
+		BPDC H -1
+		Stop
 }}
-
-
-
-
-
 
 ACTOR BDECOldTree1: BDECGreenTree1
 {
@@ -770,8 +780,7 @@ ACTOR BDECOldTree1: BDECGreenTree1
 		BPDC J 1
 		BPDC j -1
 		Stop
-		
-		
+
 		Death:
 		TRE1 B 1
 		TNT1 A 0 A_NoBlocking
@@ -787,26 +796,30 @@ ACTOR BDECOldTree1: BDECGreenTree1
 		TNT1 AAA 0 A_CustomMissile ("WoodParticleTiny", 55, 0, random (0, 360), 2, random (20, 90))
 		TNT1 AAA 0 A_CustomMissile ("WoodParticleBig", 65, 0, random (0, 360), 2, random (20, 90))
 		Stop
-		
+
 	Death.Burn:
 	Death.Flames:
 	Death.Plasma:
 	Death.Plasma2:
 	Death.Fire:
 		TNT1 A 0
-		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksLoopBig", 0, 0, 55)
+		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 55)
 		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
-		TNT1 A 0 A_SpawnItemEx("HDFlamesGFX1Big", 0, 0, 10)
+		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Big", 0, 0, 10)
 		TNT1 A 0 A_Jump(255, "Burning")
 		TNT1 A 0
 		Stop
-		Burning:
-			BPDC G 15 BRIGHT //A_CustomMissile("FireballExplosionFlamesBig", 45, 0, random (0, 360), 2, random (50, 130))
-			TNT1 A 0 A_CustomMissile ("BurnDamageLarge", 16)
-			Loop
+	Burning:
+		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+		BPDC G 20 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+		Loop
+	Extinguish:
+		TNT1 A 0
+		TNT1 A 0 A_StopSound(1)
+		BPDC G -1
+		Stop
 }}
-
-
 
 ACTOR BDECOldTree2: BDECOldTree1
 {
@@ -817,23 +830,27 @@ ACTOR BDECOldTree2: BDECOldTree1
 		BPDC I 1
 		BPDC I -1
 		Stop
-		
+
 	Death.Burn:
 	Death.Flames:
 	Death.Plasma:
 	Death.Plasma2:
 	Death.Fire:
 		TNT1 A 0
-		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksLoopBig", 0, 0, 55)
+		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 55)
 		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
-		TNT1 A 0 A_SpawnItemEx("HDFlamesGFX1", 0, 0, 10)
-		
-		Burning:
-			BPDC H 15 BRIGHT //A_CustomMissile("FireballExplosionFlamesBig", 45, 0, random (0, 360), 2, random (50, 130))
-			TNT1 A 0 A_CustomMissile ("BurnDamageSmall", 16)
-			Loop
+		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1", 0, 0, 10)
+	Burning:
+		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+		BPDC H 20 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+		Loop
+	Extinguish:
+		TNT1 A 0
+		TNT1 A 0 A_StopSound(1)
+		BPDC H -1
+		Stop
 }}
-
 
 Actor BDECbigfire
 {
@@ -851,34 +868,33 @@ states
 		TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Spawn4")
 	    TNT1 A 0
         TNT1 A 0 A_Playsound("props/redfire")
-		
+
 	Spawn1:
 		FIRE A 1
 		TNT1 A 0 A_SpawnItem("BDECrealisticFireSparksT1", 0, 140)
 		Goto Stay
-		
+
 	Spawn2:
 		FIRE A 1
 		TNT1 A 0 A_SpawnItem("BDECrealisticFireSparksT2", 0, 140)
 		Goto Stay
-		
+
 	Spawn3:
 		FIRE A 1
 		TNT1 A 0 A_SpawnItem("BDECrealisticFireSparksT3", 0, 140)
 		Goto Stay
-		
+
 	Spawn4:
 		FIRE A 1
 		TNT1 A 0 A_SpawnItem("BDECrealisticFireSparksT4", 0, 140)
-		Goto Stay	
-		
-	Stay:	
+		Goto Stay
+
+	Stay:
   		F1RE ABCDEFGH 1 bright
 		F2RE ABCDEFGH 1 bright
 		Loop
 	}
 }
-
 
 ACTOR BDECrealisticFireSparksT1
 {
@@ -913,14 +929,11 @@ ACTOR BDECRealisticFireSparksT3: BDECrealisticFireSparksT1
 	XScale -2.0
 }
 
-
 ACTOR BDECRealisticFireSparksT4: BDECrealisticFireSparksT1
 {
     YScale 3.0
 	XScale 2.5
 }
-
-
 
 ACTOR LightShaft 11017
 {
@@ -946,9 +959,6 @@ ACTOR LightShaft 11017
 	}
 }
 
-
-
-
 ACTOR BDECSmallShaft1Red 11018
 {
 Radius 8
@@ -962,7 +972,7 @@ YScale 0.5
 +NOBLOOD
 +DONTFALL
 +NOTAUTOAIMED
-damagefactor "Bullet", 10.0 damagefactor "Shotgun", 10.0 damagefactor "Minigun", 10.0 
+damagefactor "Bullet", 10.0 damagefactor "Shotgun", 10.0 damagefactor "Minigun", 10.0
 damagefactor "Avoid", 0.0
 	damagefactor "Blood", 0.0    damagefactor "BlueBlood", 0.0    damagefactor "GreenBlood", 0.0  damagefactor "Water", 0.0
 	damagefactor "RevenantHitStomach", 0.0
@@ -985,8 +995,8 @@ States
 	 XXX1 A 2 BRIGHT
 	 TNT1 A 0 A_SpawnItemEx("BDECRedFlareb", 0, 0, 0)
 	 Loop
-	
-	Death:	
+
+	Death:
 		XXX1 B 0 A_SpawnItem("BreakingLamp",0, -12)
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_KillChildren
@@ -1022,10 +1032,10 @@ States
 			XXX1 A 1
 			XXX1 A -1
 			Stop
-			
+
 		Death:
 			XXX1 A 1
-			Stop	
+			Stop
 }		}
 
 Actor RemoveLampBr
@@ -1042,7 +1052,6 @@ States
 			XXX1 A 0
 			Stop
 }		}
-		
 
 ACTOR DestroyedCeilLamp
 {
@@ -1062,9 +1071,6 @@ States
  Stop
 }
 }
-
-
-
 
 ACTOR FloorShaft1Red 11019
 {
@@ -1086,7 +1092,6 @@ States
  Stop
 }
 }
-
 
 ACTOR BDECRedFlare: BDECSmallShaft1Red
 {
@@ -1165,7 +1170,6 @@ States
 }
 }
 
-
 ACTOR BDECWhiteFlareLarge: BDECRedFlare
 {
 XScale 1.7
@@ -1180,14 +1184,12 @@ States
 }
 }
 
-
 ACTOR BDECWhiteFlareLargeFLAT: BDECWhiteFlareLarge
 {
 XScale 1.7
 YScale 0.8
 Alpha 0.4
 }
-
 
 ACTOR BDECWhiteFlareLargeSmaller: BDECRedFlare
 {
@@ -1202,7 +1204,6 @@ States
  Stop
 }
 }
-
 
 ACTOR BDECWhiteFlareSmallLamp: BDECRedFlare
 {
@@ -1236,9 +1237,6 @@ States
 }
 }
 
-
-
-
 ACTOR BDECSmallShaft1WhiteLarge: BDECSmallShaft1Red 11022
 {
 Alpha 0.25
@@ -1252,7 +1250,6 @@ States
  Stop
 }
 }
-
 
 ACTOR BDECSmallShaft1Yellow: BDECSmallShaft1Red 11023
 {
@@ -1343,14 +1340,13 @@ States
 		XXX1 A 1 BRIGHT
 		TNT1 A 0 A_SpawnItemEx("BDECOrangeFlareb", 0, 0, 0)
 		Loop
-		 
-	Death:	
+
+	Death:
 		XXX1 B 0 A_SpawnItem("BreakingLamp",0, -16)
 		XXX1 B 0 A_SpawnItemEx("DestroyedCeilLampBig", 0, 0, 0, 0, 0, 0, 0)//random (0, 360))
 		Stop
 }
 }
-
 
 ACTOR BDECOrangeFlare: BDECRedFlare
 {
@@ -1375,8 +1371,6 @@ States
  Stop
 }
 }
-
-
 
 ACTOR BDECvolumetricLight 11027
 {
@@ -1405,7 +1399,6 @@ ACTOR BDECvolumetricLightLong : BDECvolumetricLight  11028
 	YScale 3.0
 	Alpha 0.2
 }
-
 
 ACTOR BDECvolumetricLightGreen : BDECvolumetricLight 11029
 {
@@ -1443,7 +1436,6 @@ ACTOR BDECvolumetricLightRed : BDECvolumetricLight
 	}
 }
 
-
 ACTOR BDECvolumetricLightRedCeiling : BDECvolumetricLightRed
 {
 	+NOGRAVITY
@@ -1462,7 +1454,6 @@ ACTOR BDECvolumetricLightRedCeiling : BDECvolumetricLightRed
 		Stop
 	}
 }
-
 
 ACTOR BDECvolumetricLightRedCeilingSpawner: BDdecorationBase
 {
@@ -1497,11 +1488,6 @@ ACTOR BDecLightPostLit: BDdecorationBase
 		Loop
 }}
 
-
-
-
-
-
 ACTOR BDecRiverPlant: BDECGrass
 {
 Scale 1.0
@@ -1514,7 +1500,6 @@ Scale 1.0
 
 }}
 
-
 ACTOR BDecRiverPlantSpawner: BDdecorationBase
 {
  States
@@ -1525,11 +1510,6 @@ ACTOR BDecRiverPlantSpawner: BDdecorationBase
 		TNT1 A 0
 		Stop
 }}
-
-
-
-
-
 
 Actor BDECChairSimple: BDdestroyabledecorative
 {
@@ -1554,8 +1534,6 @@ states
 	}
 }
 
-
-
 Actor BDECTable: BDECChairSimple
 {
 Health 50
@@ -1572,11 +1550,6 @@ states
 		Stop
 	}
 }
-
-
-
-
-
 
 Actor BDECChairModern: BDECChairSimple
 {
@@ -1596,25 +1569,24 @@ states
 	}
 }
 
-
 ACTOR BDECcagedlight : BDdestroyabledecorative 15857
 {
 	Height 4
 	Radius 12
 	Health 5
 	Mass 99999
-	+NOGRAVITY +FIXMAPTHINGPOS +SOLID +FLOAT +DONTFALL
+	+NOGRAVITY +FIXMAPTHINGPOS +SOLID +FLOAT +DONTFALL +SPAWNCEILING
 	States
 	{
 	Spawn:
 	    CAGE A 1
 		TNT1 A 0 ThrustThingZ(0,955,0,1)
-		
+
 	Stay:
 		CAGE A 2 BRIGHT
 		TNT1 A 0 A_SpawnItemEx("BDecWhiteFlareCagedLamp", 0, 0, -4)
 		Loop
-		
+
 	Death:
 		CAGE B 1
 		TNT1 A 0 A_SpawnItem("BreakingLamp")
@@ -1622,7 +1594,6 @@ ACTOR BDECcagedlight : BDdestroyabledecorative 15857
 		Stop
 	}
 }
-
 
 ACTOR BDECIndustrialLamp : BDdestroyabledecorative 15878
 {
@@ -1632,19 +1603,19 @@ ACTOR BDECIndustrialLamp : BDdestroyabledecorative 15878
 	XScale 2.0
 	YScale 1.0
 	Mass 99999
-	+NOGRAVITY +FIXMAPTHINGPOS +SOLID +FLOAT +DONTFALL
+	+NOGRAVITY +FIXMAPTHINGPOS +SOLID +FLOAT +DONTFALL +SPAWNCEILING
 	States
 	{
 	Spawn:
 	    CAGE C 1
 		TNT1 A 0 ThrustThingZ(0,955,0,1)
-		
+
 	Stay:
 		CAGE C 2 BRIGHT
 		TNT1 AA 0 A_SpawnItemEx("BDecWhiteFlareCagedLamp", 0, 0, -8)
 		TNT1 A 0 A_SpawnItemEx("BDecShaftLamp2", 0, 0, -10)
 		Loop
-		
+
 	Death:
 		CAGE D 1
 		TNT1 A 0 A_SpawnItem("BreakingLamp")
@@ -1652,8 +1623,6 @@ ACTOR BDECIndustrialLamp : BDdestroyabledecorative 15878
 		Stop
 	}
 }
-
-
 
 ACTOR BDECIndustrialLamp2 : BDECIndustrialLamp
 {
@@ -1678,7 +1647,6 @@ States
 }
 }
 
-
 ACTOR BDECcagedlight2: BDECcagedlight 15859
 {
 	Height 20
@@ -1689,19 +1657,18 @@ ACTOR BDECcagedlight2: BDECcagedlight 15859
 	Spawn:
 	    SPDE F 1
 		TNT1 A 0 ThrustThingZ(0,955,0,1)
-		
+
 	Stay:
 		SPDE F 2 BRIGHT
 		TNT1 A 0 A_SpawnItemEx("BDecOrangeFlareCagedLamp", 0, 0, 4)
 		Loop
-		
+
 	Death:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("BreakingLamp")
 		Stop
 	}
 }
-
 
 ACTOR BDecOrangeFlareCagedLamp : BDecWhiteFlareCagedLamp
 {
@@ -1714,8 +1681,6 @@ States
 }
 }
 
-
-
 ACTOR BDECCeilLamp: BDECcagedlight
 {
 	Height 40
@@ -1726,12 +1691,12 @@ ACTOR BDECCeilLamp: BDECcagedlight
 	Spawn:
 	    SPDE G 1
 		TNT1 A 0 ThrustThingZ(0,955,0,1)
-		
+
 	Stay:
 		SPDE G 2 BRIGHT
 		TNT1 A 0 A_SpawnItemEx("BDecShaftLamp", 0, 0, 4)
 		Loop
-		
+
 	Death:
 		SPDE I 1
 		TNT1 A 0 A_SpawnItem("BreakingLamp")
@@ -1739,8 +1704,6 @@ ACTOR BDECCeilLamp: BDECcagedlight
 		Stop
 	}
 }
-
-
 
 ACTOR BDECCeilLampLong: BDECCeilLamp
 {
@@ -1752,12 +1715,12 @@ ACTOR BDECCeilLampLong: BDECCeilLamp
 	Spawn:
 	    SPDE H 1
 		TNT1 A 0 ThrustThingZ(0,955,0,1)
-		
+
 	Stay:
 		SPDE H 2 BRIGHT
 		TNT1 A 0 A_SpawnItemEx("BDecShaftLamp", 0, 0, 4)
 		Loop
-		
+
 	Death:
 		SPDE J 1
 		TNT1 A 0 A_SpawnItem("BreakingLamp")
@@ -1765,7 +1728,6 @@ ACTOR BDECCeilLampLong: BDECCeilLamp
 		Stop
 	}
 }
-
 
 ACTOR BDECCeilLampLong2: BDECCeilLamp
 {
@@ -1777,12 +1739,12 @@ ACTOR BDECCeilLampLong2: BDECCeilLamp
 	Spawn:
 	    SPDE H 1
 		TNT1 A 0 ThrustThingZ(0,955,0,1)
-		
+
 	Stay:
 		SPDE H 2 BRIGHT
 		TNT1 A 0 A_SpawnItemEx("BDecShaftLamp2", 0, 0, 4)
 		Loop
-		
+
 	Death:
 		SPDE J 1
 		TNT1 A 0 A_SpawnItem("BreakingLamp")
@@ -1790,7 +1752,6 @@ ACTOR BDECCeilLampLong2: BDECCeilLamp
 		Stop
 	}
 }
-
 
 ACTOR BDecShaftLamp : BDecWhiteFlareCagedLamp
 {
@@ -1806,7 +1767,6 @@ States
 }
 }
 
-
 ACTOR BDecShaftLamp2 : BDecWhiteFlareCagedLamp
 {
 XScale 0.7
@@ -1820,7 +1780,6 @@ States
  Stop
 }
 }
-
 
 ACTOR BDECAntenna1 : BDdecorationBase2
 {
@@ -1836,10 +1795,9 @@ ACTOR BDECAntenna1 : BDdecorationBase2
 	    SPDE K 1
 		SPDE K -1
 		Loop
-		
+
 	}
 }
-
 
 ACTOR BDECAntenna2 : BDECAntenna1
 {
@@ -1864,10 +1822,9 @@ ACTOR BDECAntenna3 : BDdecorationBase2
 	    BPEC W 35
 		BPEC X 2
 		Loop
-		
+
 	}
 }
-
 
 ACTOR BDECAntenna3b : BDECAntenna3
 {
@@ -1875,8 +1832,6 @@ ACTOR BDECAntenna3b : BDECAntenna3
 	Radius 16
 	sCALE 1.0
 }
-
-
 
 ACTOR BDECGrateBar : BDdecorationBase2
 {
@@ -1894,24 +1849,22 @@ ACTOR BDECGrateBar : BDdecorationBase2
 		TNT1 A 1
 		TNT1 A 0 A_CheckFloor("Spawned")
 		Stop
-		
-	Spawned:	
+
+	Spawned:
 	    SPDE L 1
 		TNT1 A 0 Thing_ChangeTID(0, 19)
 		SPDE L -1
 		Loop
-		
+
 	}
 }
-
-
 
 ACTOR BDECGrateFence1 : BDdecorationBase
 {
 	Height 98
 	Radius 1
 	Health 999
-Mass 99999999	
+Mass 99999999
 	States
 	{
 	Spawn:
@@ -1928,9 +1881,6 @@ Mass 99999999
 		Stop
 	}
 }
-
-
-
 
 ACTOR BDECGrateBarDS : BDdecorationBase2
 {
@@ -1949,18 +1899,16 @@ ACTOR BDECGrateBarDS : BDdecorationBase2
 		TNT1 A 1
 		TNT1 A 0 A_CheckFloor("Spawned")
 		Stop
-		
-	Spawned:	
+
+	Spawned:
 	    SPDE L 4
 		TNT1 A 0 A_jumpIf(z==16, "Spawned")
 		TNT1 A 0 A_noBlocking
 		TNT1 A 0 A_Scream
 		Stop
-		
+
 	}
 }
-
-
 
 ACTOR BDECGrateFenceDS : BDdecorationBase
 {
@@ -1987,9 +1935,6 @@ ACTOR BDECGrateFenceDS : BDdecorationBase
 	}
 }
 
-
-
-
 Actor BDECDestroyFenceSwitch: BDdestroyabledecorative
 {
 Health 1
@@ -2002,7 +1947,7 @@ states
 	    TNT1 A 1
 		TNT1 A -1
 		Stop
-		
+
 	Death:
 		TNT1 A 0
 		TNT1 A 0 Thing_Destroy(19, 1, 0)
@@ -2029,13 +1974,12 @@ states
 	}
 }
 
-
 Actor BDECBed2: BDECChairSimple 15898
 {
 Mass 12000
 Health 600
 Scale 0.6
-Height 42 
+Height 42
 rADIUS 20
 -PUSHABLE
 +ACTLIKEBRIDGE
@@ -2048,8 +1992,6 @@ states
 		Stop
 	}
 }
-
-
 
 Actor BDECLocker1: BDECChairSimple
 {
@@ -2075,9 +2017,6 @@ states
 	}
 }
 
-
-
-
 Actor BDECPipe1A: BDdecorationBase2
 {
 +SOLID
@@ -2093,7 +2032,6 @@ states
 	}
 }
 
-
 Actor BDECPipe1B: BDECPipe1A
 {
 Height 100
@@ -2106,9 +2044,6 @@ Height 192
 YScale 1.8
 }
 
-
-
-
 Actor BDECPipe2A: BDECPipe1A
 {
 states
@@ -2118,7 +2053,6 @@ states
 		Stop
 	}
 }
-
 
 Actor BDECPipe2B: BDECPipe2A
 {
@@ -2132,10 +2066,6 @@ Height 192
 YScale 1.8
 }
 
-
-
-
-
 Actor BDECPipe3A: BDECPipe1A
 {
 states
@@ -2146,7 +2076,6 @@ states
 	}
 }
 
-
 Actor BDECPipe3F: BDECPipe1A
 {
 states
@@ -2156,7 +2085,6 @@ states
 		Stop
 	}
 }
-
 
 Actor BDECPipe3G: BDECPipe3A
 {
@@ -2170,22 +2098,17 @@ Height 192
 YScale 1.8
 }
 
-
 Actor BDECPipe3D: BDECPipe3A
 {
 Height 220
 YScale 2.8
 }
 
-
-
 Actor BDECPipe3B: BDECPipe3A
 {
 Height 100
 YScale 1.2
 }
-
-
 
 Actor BDECGasPipe: BDECPipe1A
 {
@@ -2199,7 +2122,7 @@ states
 		SPDE S 0 A_SpawnItem("BDECPipe3B", 0, 71)
 	    SPDE S -1
 		Stop
-		
+
 	Death:
 		TNT1 A 0 A_Noblocking
 		TNT1 A 0 A_SpawnItemEx("BDECDestroyedGasPipe", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
@@ -2227,7 +2150,6 @@ states
 		Stop
 	}
 }
-
 
 Actor BDECUACSHIP: BDdecorationBase2 13845
 {
@@ -2271,8 +2193,6 @@ states
 	}
 }
 
-
-
 ACTOR BDECShipColision1
 {
  +SOLID
@@ -2294,7 +2214,6 @@ ACTOR BDECShipColision1
  }
 }
 
-
 ACTOR BDECShipColision2: BDECShipColision1
 {
  Radius 8
@@ -2307,13 +2226,11 @@ ACTOR BDECShipColision3: BDECShipColision1
  Height 64
 }
 
-
 ACTOR BDECShipColision4: BDECShipColision1
 {
  Radius 64
  Height 64
 }
-
 
 ACTOR BDECShipColision5: BDECShipColision1
 {
@@ -2321,15 +2238,11 @@ ACTOR BDECShipColision5: BDECShipColision1
  Height 16
 }
 
-
 ACTOR BDECShipColision6: BDECShipColision1
 {
  Radius 32
  Height 96
 }
-
-
-
 
 ACTOR BDECAlarm : BDdestroyabledecorative
 {
@@ -2347,13 +2260,13 @@ States
  Spawn:
  SPDE U 1
  TNT1 A 0 ThrustThingZ(0,955,0,1)
-		
+
 	Stay:
  SPDE UUUUVVVVWWWWXXXX 1 BRIGHT A_SetAngle(angle -15)
  SPDE UUUUVVVVWWWWXXXXUUUUVVVVWWWWXXXXUUUUVVVVWWWWXXXXUUUUVVVVWWWWXXXXUUUUVVVVWWWWXXXXUUUUVVVVWWWWXXXXUUUUVVVVWWWWXXXX 1 BRIGHT A_SetAngle(angle -15)
  TNT1 A 0 A_PlaySound ("BDALARM", 1)
  Loop
- 
+
    Death:
     TNT1 A 0
 	TNT1 A 0 A_StopSound(1)
@@ -2362,9 +2275,6 @@ States
 	Stop
 }
 }
-
-
-
 
 ACTOR BDECcables1: BDdecorationBase
 {
@@ -2378,16 +2288,12 @@ States
  TNT1 A 0 ThrustThingZ(0,955,0,1)
  SPDF B 5
  TNT1 A 0 A_SpawnItem("BDSpark_Down")
- 
+
  Stay:
  SPDF B 1
  SPDF B-1
  Stop
 }}
-
-
-
-
 
 ACTOR BDECRedLightWall: BDdecorationBase
 {
@@ -2407,7 +2313,6 @@ States
  Stop
 }}
 
-
 ACTOR BDECRedLightWall1: BDdecorationBase
 {
 MONSTER
@@ -2426,8 +2331,6 @@ States
  Stop
 }}
 
-
-
 ACTOR BDECBlueLightWall: BDECRedLightWall
 {
 States
@@ -2444,7 +2347,6 @@ States
  Stop
 }}
 
-
 ACTOR BDECBlueLightWall1: BDECRedLightWall1
 {
 States
@@ -2454,10 +2356,6 @@ States
  LIBD I -1 BRIGHT
  Stop
 }}
-
-
-
-
 
 ACTOR BDECyellowLightWall: BDECRedLightWall
 {
@@ -2475,7 +2373,6 @@ States
  Stop
 }}
 
-
 ACTOR BDECyellowLightWall1: BDECRedLightWall1
 {
 States
@@ -2485,8 +2382,6 @@ States
  LIBD J -1 BRIGHT
  Stop
 }}
-
-
 
 ACTOR BDECwhiteLightWall: BDECRedLightWall
 {
@@ -2503,7 +2398,6 @@ States
  TNT1 A -1
  Stop
 }}
-
 
 ACTOR BDECwhiteLightWall1: BDECRedLightWall1
 {
@@ -2529,8 +2423,6 @@ States
 		Stop
 		}
 }
-
-
 
 ACTOR BDECNukageGlow
 {
@@ -2558,7 +2450,6 @@ States
 		}
 }
 
-
 ACTOR BDECNukageGlowCompact: BDECNukageGlow
 {
 XScale 2.2
@@ -2582,7 +2473,6 @@ States
 		}
 }
 
-
 ACTOR BDECLargeFireFocus
 {
 Radius 1
@@ -2603,37 +2493,33 @@ States
 		TNT1 A 0 A_Playsound("props/redfire", 1, 1, 1)
 		TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Spawn4")
 	    TNT1 A 0
-        
-		
+
 	Spawn1:
 		FIRE A 1
 		TNT1 A 0 A_SpawnItem("BDECrealisticFireSparksT1", 0, 100)
 		Goto Stay
-		
+
 	Spawn2:
 		FIRE A 1
 		TNT1 A 0 A_SpawnItem("BDECrealisticFireSparksT2", 0, 100)
 		Goto Stay
-		
+
 	Spawn3:
 		FIRE A 1
 		TNT1 A 0 A_SpawnItem("BDECrealisticFireSparksT3", 0, 100)
 		Goto Stay
-		
+
 	Spawn4:
 		FIRE A 1
 		TNT1 A 0 A_SpawnItem("BDECrealisticFireSparksT4", 0, 100)
-		Goto Stay	
-		
-	Stay:	
+		Goto Stay
+
+	Stay:
   		TNT1 A 0 bright A_CustomMissile ("BigBlackSmokePillar", 72, 0, random (40, 180), 2, random (60, 120))
 		TNT1 AAAAAAAAAA 6 A_CustomMissile ("FlamethrowerFireParticles", random (2, 60), 0, random (0, 360), 2, random (40, 90))
 		Loop
 		}
 }
-
-
-
 
 ACTOR BDECAddRedLight
 {
@@ -2653,16 +2539,11 @@ States
 		}
 }
 
-
-
-
 ACTOR BDECAddbLUELight :  BDECAddRedLight
 {
 Radius 1
 Renderstyle Add
 }
-
-
 
 ACTOR BDECAddRedLightLarge :  BDECAddRedLight
 {
@@ -2678,9 +2559,6 @@ Radius 1
 Renderstyle Add
 }
 
-
-
-
 ACTOR BDTitleMapThing 8347
 {
     Radius 12
@@ -2690,10 +2568,6 @@ ACTOR BDTitleMapThing 8347
 	+NOBLOOD
 	+SOLID
 }
-
-
-
-
 
 ACTOR SmallLightSeeder1024
 {
@@ -2715,7 +2589,7 @@ States
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 512, 0)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 768, 0)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 1024, 0)
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -1024, -1024)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -768, -1024)
@@ -2726,7 +2600,7 @@ States
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 512, -1024)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 768, -1024)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 1024, -1024)
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -1024, -768)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -768, -768)
@@ -2737,7 +2611,7 @@ States
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 512, -768)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 768, -768)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 1024, -768)
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -1024, -512)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -768, -512)
@@ -2748,7 +2622,7 @@ States
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 512, -512)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 768, -512)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 1024, -512)
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -1024, -256)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -768, -256)
@@ -2759,7 +2633,7 @@ States
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 512, -256)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 768, -256)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 1024, -256)
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -1024, 256)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -768, 256)
@@ -2770,7 +2644,7 @@ States
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 512, 256)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 768, 256)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 1024, 256)
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -1024, 512)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -768, 512)
@@ -2781,7 +2655,7 @@ States
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 512, 512)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 768, 512)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 1024, 512)
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -1024, 768)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -768, 768)
@@ -2792,7 +2666,7 @@ States
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 512, 768)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 768, 768)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 1024, 768)
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -1024, 1024)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -768, 1024)
@@ -2803,15 +2677,10 @@ States
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 512, 1024)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 768, 1024)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 1024, 1024)
-		
-		
-		
-		
+
 		TNT1 A 0
 		Stop
 }}
-
-
 
 ACTOR SmallLightSeeder512
 {
@@ -2829,40 +2698,38 @@ States
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 0, 0)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 288, 0)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 544, 0)
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -544, -544)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -288, -544)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 0, -544)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 288, -544)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 544, -544)
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -544, -288)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -288, -288)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 0, -288)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 288, -288)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 544, -288)
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -544, 288)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -288, 288)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 0, 288)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 288, 288)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 544, 288)
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -544, 544)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -288, 544)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 0, 544)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 288, 544)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 544, 544)
-		
+
 		TNT1 A 0
 		Stop
-		
-		
-		
+
 	Spawn:
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -576, 0)
@@ -2870,41 +2737,39 @@ States
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 0, 0)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 288, 0)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 576, 0)
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -576, -576)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -288, -576)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 0, -576)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 288, -576)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 576, -576)
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -576, -288)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -288, -288)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 0, -288)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 288, -288)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 576, -288)
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -576, 288)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -288, 288)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 0, 288)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 288, 288)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 576, 288)
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -576, 576)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", -288, 576)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 0, 576)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 288, 576)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeeder256", 576, 576)
-		
+
 		TNT1 A 0
 		Stop
-		
 
 }}
-
 
 ACTOR SmallLightSeeder256
 {
@@ -2924,7 +2789,7 @@ States
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", 64, 0)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", 96, 0)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", 128, 0)
-		
+
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", -128, -128)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", -96, -128)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", -64, -128)
@@ -2934,7 +2799,7 @@ States
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", 64, -128)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", 96, -128)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", 128, -128)
-		
+
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", -128, -96)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", -96, -96)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", -64, -96)
@@ -2944,8 +2809,7 @@ States
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", 64, -96)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", 96, -96)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", 128, -96)
-		
-		
+
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", -128, -64)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", -96, -64)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", -64, -64)
@@ -2955,7 +2819,7 @@ States
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", 64, -64)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", 96, -64)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", 128, -64)
-		
+
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", -128, -32)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", -96, -32)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", -64, -32)
@@ -2965,7 +2829,7 @@ States
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", 64, -32)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", 96, -32)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", 128, -32)
-		
+
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", -128, 32)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", -96, 32)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", -64, 32)
@@ -2975,7 +2839,7 @@ States
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", 64, 32)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", 96, 32)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", 128, 32)
-		
+
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", -128, 64)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", -96, 64)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", -64, 64)
@@ -2985,7 +2849,7 @@ States
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", 64, 64)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", 96, 64)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", 128, 64)
-		
+
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", -128, 96)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", -96, 96)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", -64, 96)
@@ -2995,7 +2859,7 @@ States
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", 64, 96)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", 96, 96)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", 128, 96)
-		
+
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", -128, 128)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", -96, 128)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", -64, 128)
@@ -3005,11 +2869,10 @@ States
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", 64, 128)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", 96, 128)
 		TNT1 A 0 A_SpawnItemEx("SmallLightSeed", 128, 128)
-		
+
 		TNT1 A 0
 		Stop
 }}
-
 
 ACTOR SmallLightSeed
 {
@@ -3025,31 +2888,25 @@ States
 	{
 	Spawn:
 		TNT1 A 0
-		TNT1 A 0 ACS_ExecuteAlways(3125, 0, 0, 0)
+		TNT1 A 0 ACS_NamedExecute("BDSmallLightSeed", 0, 0, 0)
 		TNT1 A 2
 		TNT1 A 0 A_JumpIfInventory("BDECLightCheckerRed", 1, "PlaceRed")
 		TNT1 A 0 A_JumpIfInventory("BDECLightCheckerOrange", 1, "PlaceOrange")
 		Stop
-	
+
 	PlaceRed:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx("BDECsmallshaft1Red", 0, 0, 9999)
 		Stop
-		
+
 	PlaceOrange:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx("BDECsmallshaft1Orange", 0, 0, 9999)
-		Stop	
-		
+		Stop
+
 }}
 
-
-
-
 // Big Seeds ==========================================================================
-
-
-
 
 ACTOR BigLightSeeder1024
 {
@@ -3071,7 +2928,7 @@ States
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 512, 0)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 768, 0)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 1024, 0)
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -1024, -1024)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -768, -1024)
@@ -3082,7 +2939,7 @@ States
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 512, -1024)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 768, -1024)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 1024, -1024)
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -1024, -768)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -768, -768)
@@ -3093,7 +2950,7 @@ States
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 512, -768)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 768, -768)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 1024, -768)
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -1024, -512)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -768, -512)
@@ -3104,7 +2961,7 @@ States
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 512, -512)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 768, -512)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 1024, -512)
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -1024, -256)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -768, -256)
@@ -3115,7 +2972,7 @@ States
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 512, -256)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 768, -256)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 1024, -256)
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -1024, 256)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -768, 256)
@@ -3126,7 +2983,7 @@ States
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 512, 256)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 768, 256)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 1024, 256)
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -1024, 512)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -768, 512)
@@ -3137,7 +2994,7 @@ States
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 512, 512)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 768, 512)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 1024, 512)
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -1024, 768)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -768, 768)
@@ -3148,7 +3005,7 @@ States
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 512, 768)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 768, 768)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 1024, 768)
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -1024, 1024)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -768, 1024)
@@ -3159,18 +3016,10 @@ States
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 512, 1024)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 768, 1024)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 1024, 1024)
-		
-		
-		
-		
+
 		TNT1 A 0
 		Stop
 }}
-
-
-
-
-
 
 ACTOR BigLightSeeder512
 {
@@ -3188,40 +3037,38 @@ States
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 0, 0)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 320, 0)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 640, 0)
-		
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -640, -640)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -320, -640)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 0, -640)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 320, -640)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 640, -640)
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -640, -320)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -320, -320)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 0, -320)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 320, -320)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 640, -320)
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -640, 320)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -320, 320)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 0, 320)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 320, 320)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 640, 320)
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -640, 640)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -320, 640)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 0, 640)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 320, 640)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 640, 640)
-		
+
 		TNT1 A 0
 		Stop
-		
-	
+
 	Spawn2:
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -576, 0)
@@ -3229,40 +3076,38 @@ States
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 0, 0)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 320, 0)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 576, 0)
-		
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -576, -576)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -320, -576)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 0, -576)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 320, -576)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 576, -576)
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -576, -320)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -320, -320)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 0, -320)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 320, -320)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 576, -320)
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -576, 320)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -320, 320)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 0, 320)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 320, 320)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 576, 320)
-		
+
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -576, 576)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", -320, 576)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 0, 576)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 320, 576)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeeder256", 576, 576)
-		
+
 		TNT1 A 0
 		Stop
 }}
-
 
 ACTOR BigLightSeeder256
 {
@@ -3278,37 +3123,34 @@ States
 		TNT1 A 0 A_SpawnItemEx("BigLightSeed", 0, 0)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeed", 64, 0)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeed", 128, 0)
-		
+
 		TNT1 A 0 A_SpawnItemEx("BigLightSeed", -128, -128)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeed", -64, -128)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeed", 0, -128)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeed", 64, -128)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeed", 128, -128)
-		
-		
+
 		TNT1 A 0 A_SpawnItemEx("BigLightSeed", -128, -64)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeed", -64, -64)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeed", 0, -64)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeed", 64, -64)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeed", 128, -64)
-		
+
 		TNT1 A 0 A_SpawnItemEx("BigLightSeed", -128, 64)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeed", -64, 64)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeed", 0, 64)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeed", 64, 64)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeed", 128, 64)
-		
 
 		TNT1 A 0 A_SpawnItemEx("BigLightSeed", -128, 128)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeed", -64, 128)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeed", 0, 128)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeed", 64, 128)
 		TNT1 A 0 A_SpawnItemEx("BigLightSeed", 128, 128)
-		
+
 		TNT1 A 0
 		Stop
 }}
-
 
 ACTOR BigLightSeed
 {
@@ -3324,32 +3166,31 @@ States
 	{
 	Spawn:
 		TNT1 A 0
-		TNT1 A 0 ACS_ExecuteAlways(3126, 0, 0, 0)
+		TNT1 A 0 ACS_NamedExecute("BDBigLightSeed", 0, 0, 0)
 		TNT1 A 2
 		TNT1 A 0 A_JumpIfInventory("BDECLightCheckerWhite", 1, "PlaceWhite")
 		TNT1 A 0 A_JumpIfInventory("BDECLightCheckerOrange", 1, "PlaceOrange")
 		TNT1 A 0 A_JumpIfInventory("BDECNukageChecker", 1, "BDECNukageChecker")
 		Stop
-	
+
 	PlaceWhite:
 		TNT1 A 0
 		//TNT1 A 0 A_SpawnItemEx("BDECsmallshaft1WhiteBig", 0, 0, 9999)
 		TNT1 A 0 A_JumpIfInventory("BDECNukageChecker", 1, "BDECNukageChecker")
 		Stop
-		
+
 	PlaceOrange:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx("BigShaftOrange1", 0, 0, 9999)
 		TNT1 A 0 A_JumpIfInventory("BDECNukageChecker", 1, "BDECNukageChecker")
-		Stop	
-	
+		Stop
+
 	BDECNukageChecker:
 		TNT1 A 1
 		TNT1 A 0 A_SpawnItemEx("BDECNukageGlowCompact", 0, 0, -9999)
-		Stop	
-		
-}}
+		Stop
 
+}}
 
 ACTOR BDecMap16SecretExit: BDdecorationBase
 {
@@ -3374,14 +3215,12 @@ ACTOR BDecMap16SecretExit: BDdecorationBase
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_CustomMissile ("RealisticFireSparks1", 1, 0, random (0, 140), 2, random (0, 160))
 		Loop
-		
+
 		Die:
 		TNT1 A 0
-		TNT1 A 0 ACS_ExecuteAlways(1216)
+		TNT1 A 0 ACS_NamedExecuteAlways("MapEnhancementPSMansion")
 		Stop
 }}
-
-
 
 ACTOR BDecMap20SecretExit: BDdecorationBase
 {
@@ -3399,12 +3238,12 @@ ACTOR BDecMap20SecretExit: BDdecorationBase
 		TNT1 A 1 BRIGHT A_JumpIfCloser(150, "Die")
 		TNT1 A 0 A_ClearTarget
 		TTRB A 0 A_SpawnItemEx ("RealisticFireSparks1", random (-40, 40), random (-40, 40), random (0, 60))
-		
+
 		Loop
-		
+
 		Die:
 		TNT1 A 0
-		TNT1 A 0 ACS_ExecuteAlways(1214)
+		TNT1 A 0 ACS_NamedExecuteAlways("MapEnhancementPSHellgate")
 		Stop
 }}
 
@@ -3434,7 +3273,6 @@ states
 	}
 }
 
-
 ACTOR D2MAP13SecretExit: BDdecorationBase
 {
  XScale 1.0
@@ -3452,14 +3290,12 @@ ACTOR D2MAP13SecretExit: BDdecorationBase
 		TNT1 A 5 BRIGHT A_JumpIfCloser(40, "Die")
 		TNT1 A 0 A_ClearTarget
 		Loop
-		
+
 		Die:
 		TNT1 A 0
-		TNT1 A 0 ACS_ExecuteAlways(1213)
+		TNT1 A 0 ACS_NamedExecuteAlways("MapEnhancementPSTwilight")
 		Stop
 }}
-
-
 
 ACTOR BDECDestroyableWindowAdd3: BDdecorationBase
 {
@@ -3485,8 +3321,7 @@ ACTOR BDECDestroyableWindow1: BDdecorationBase 15845
 		TNT1 A 0 A_SpawnItemEx("BDECWIndowGlass1")
 		TNT1 A 0 A_SpawnItemEx("BDECWIndowGlass1", 0, 0, 0, 0, 0, 0, 180)
 		TNT1 A 0 A_SpawnItemEx("BDECWIndowFrame1", 0, 0, 0, 0, 0, 0, 180)
-		
-		
+
 		TNT1 A 0 A_SpawnItemEx("BDECWindowColision1", -4, 0, 0, 0, 0, 0, 90)
 		TNT1 A 0 A_SpawnItemEx("BDECWindowColision1", -8, 0, 0, 0, 0, 0, 90)
 		TNT1 A 0 A_SpawnItemEx("BDECWindowColision1", -12, 0, 0, 0, 0, 0, 90)
@@ -3495,7 +3330,7 @@ ACTOR BDECDestroyableWindow1: BDdecorationBase 15845
 		TNT1 A 0 A_SpawnItemEx("BDECWindowColision1", -24, 0, 0, 0, 0, 0, 90)
 		TNT1 A 0 A_SpawnItemEx("BDECWindowColision1", -28, 0, 0, 0, 0, 0, 90)
 		TNT1 A 0 A_SpawnItemEx("BDECWindowColision1", -32, 0, 0, 0, 0, 0, 90)
-		
+
 		TNT1 A 0 A_SpawnItemEx("BDECWindowColision1", -4, 0, 0, 0, 0, 0, -90)
 		TNT1 A 0 A_SpawnItemEx("BDECWindowColision1", -8, 0, 0, 0, 0, 0, -90)
 		TNT1 A 0 A_SpawnItemEx("BDECWindowColision1", -12, 0, 0, 0, 0, 0, -90)
@@ -3506,7 +3341,6 @@ ACTOR BDECDestroyableWindow1: BDdecorationBase 15845
 		TNT1 A 0 A_SpawnItemEx("BDECWindowColision1", -32, 0, 0, 0, 0, 0, -90)
 		Stop
 }}
-
 
 ACTOR BDECWIndowFrame1: BDdecorationBase //The frame of the window
 {
@@ -3522,10 +3356,6 @@ ACTOR BDECWIndowFrame1: BDdecorationBase //The frame of the window
 		XXX1 A -1
 		Stop
 }}
-
-
-
-
 
 Actor BDECWIndowGlass1: BDdestroyabledecorative
 {
@@ -3559,7 +3389,6 @@ Actor BDECWIndowGlass1: BDdestroyabledecorative
 	}
 }
 
-
 Actor BDECWindowColision1: BDdestroyabledecorative
 {
 Health 1
@@ -3579,7 +3408,6 @@ states
 	}
 }
 
-
 Actor GlassBreakDamage
 {
 +MISSILE
@@ -3593,7 +3421,7 @@ States
 	Spawn:
 	TNT1 A 0
 	Goto Death
-	
+
 	Death:
 	TNT1 A 1
 	TNT1 A 0 A_Explode(32,2)
@@ -3608,15 +3436,13 @@ States
 	Spawn:
 	TNT1 A 0
 	Goto Death
-	
+
 	Death:
 	TNT1 A 1
 	TNT1 A 0 A_Explode(32,16)
 	Stop
 	}
 }
-
-
 
 Actor GlassBreakDamageBig: GlassBreakDamage
 {
@@ -3625,14 +3451,13 @@ States
 	Spawn:
 	TNT1 A 0
 	Goto Death
-	
+
 	Death:
 	TNT1 A 1
 	TNT1 A 0 A_Explode(32,42)
 	Stop
 	}
 }
-
 
 ACTOR BDECDestroyableWindow2: BDdecorationBase 15846 //This version fits a 96 pixel window
 {
@@ -3645,8 +3470,7 @@ ACTOR BDECDestroyableWindow2: BDdecorationBase 15846 //This version fits a 96 pi
 		TNT1 A 0 A_SpawnItemEx("BDECWIndowGlass2")
 		TNT1 A 0 A_SpawnItemEx("BDECWIndowGlass2", 0, 0, 0, 0, 0, 0, 180)
 		TNT1 A 0 A_SpawnItemEx("BDECWIndowFrame2", 0, 0, 0, 0, 0, 0, 180)
-		
-		
+
 		TNT1 A 0 A_SpawnItemEx("BDECWindowColision1", -4, 0, 0, 0, 0, 0, 90)
 		TNT1 A 0 A_SpawnItemEx("BDECWindowColision1", -8, 0, 0, 0, 0, 0, 90)
 		TNT1 A 0 A_SpawnItemEx("BDECWindowColision1", -12, 0, 0, 0, 0, 0, 90)
@@ -3659,7 +3483,7 @@ ACTOR BDECDestroyableWindow2: BDdecorationBase 15846 //This version fits a 96 pi
 		TNT1 A 0 A_SpawnItemEx("BDECWindowColision1", -40, 0, 0, 0, 0, 0, 90)
 		TNT1 A 0 A_SpawnItemEx("BDECWindowColision1", -44, 0, 0, 0, 0, 0, 90)
 		TNT1 A 0 A_SpawnItemEx("BDECWindowColision1", -48, 0, 0, 0, 0, 0, 90)
-		
+
 		TNT1 A 0 A_SpawnItemEx("BDECWindowColision1", -4, 0, 0, 0, 0, 0, -90)
 		TNT1 A 0 A_SpawnItemEx("BDECWindowColision1", -8, 0, 0, 0, 0, 0, -90)
 		TNT1 A 0 A_SpawnItemEx("BDECWindowColision1", -12, 0, 0, 0, 0, 0, -90)
@@ -3674,8 +3498,6 @@ ACTOR BDECDestroyableWindow2: BDdecorationBase 15846 //This version fits a 96 pi
 		TNT1 A 0 A_SpawnItemEx("BDECWindowColision1", -48, 0, 0, 0, 0, 0, -90)
 		Stop
 }}
-
-
 
 ACTOR BDECWIndowFrame2: BDECWIndowFrame1 //The frame of the window
 {
@@ -3707,7 +3529,6 @@ Actor BDECWIndowGlass2: BDECWIndowGlass1
 	}
 }
 
-
 ACTOR BDECDestroyableWindow2Add3: BDdecorationBase //Add 3 windows of size 96
 {
  +THRUACTORS
@@ -3721,8 +3542,6 @@ ACTOR BDECDestroyableWindow2Add3: BDdecorationBase //Add 3 windows of size 96
 		Stop
 }}
 
-
-
 Actor BDECWaterfall 15847
 {
 +THRUACTORS
@@ -3734,10 +3553,10 @@ States
 		TNT1 A 0
 		TNT1 A 0 A_PlaySoundEx("BDWFALL1", 1, 1)
 		Goto Live
-		
+
 	Live:
 		TNT1 A 24
-		
+
 		//TNT1 A 0 A_SpawnItemEx ("Footstep6NoDamage",random(-32,32),random(-32,32), 8,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		Loop
 	}
@@ -3754,16 +3573,13 @@ States
 		TNT1 A 0
 		TNT1 A 0 A_PlaySoundEx("BDWFALL2", 1, 1)
 		Goto Live
-		
+
 	Live:
 		TNT1 A 24
 		//TNT1 A 0 A_SpawnItemEx ("Footstep6NoDamage",random(-32,32),random(-32,32), 8,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		Loop
 	}
 }
-
-
-
 
 Actor BDECBarrel: BDECChairSimple 15855
 {
@@ -3781,6 +3597,7 @@ states
 	{
 	Spawn:
 	    SPDF G 1
+		TNT1 A 0 A_RadiusGive("MarkForDeletion", 128, RGF_OBJECTS, 1)
 		SPDF G -1
 		Stop
 	Death:
@@ -3795,8 +3612,6 @@ states
 	}
 }
 
-
-
 Actor BDECBarrelSpawn3
 {
 states
@@ -3809,9 +3624,6 @@ states
 		Stop
 	}
 }
-
-
-
 
 ACTOR BDECchainHook: BDECcagedlight 15856
 {
@@ -3833,24 +3645,24 @@ ACTOR BDECchainHook: BDECcagedlight 15856
 		TNT1 A 0 ThrustThingZ(0,955,0,1)
 		TNT1 A 0 A_Jump(128, "Spawn2")
 		Goto Stay
-		
+
 	Stay:
 		SPDF I 5
 		TNT1 A 0 A_CustomMissile("HookColision", 0, 0, 0, 2)
 		Loop
-		
+
 	Spawn2:
 		SPDF I 1
 		TNT1 A 0 A_SetScale(-0.8, 0.8)
 		Goto Stay
-		
+
 	Pain:
 		TNT1 A 0
 		TNT1 A 0 A_PlaySOund("chainrattle", 1)
 		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
 	Work:
 		TNT1 A 0
-		
+
 		SPDF JKLMNNMLKJIOPQRSSRQPOI 1
 		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 1)
 		SPDF JKLMNNMLKJIOPQRSSRQPOI 1
@@ -3868,7 +3680,6 @@ ACTOR BDECchainHook: BDECcagedlight 15856
 	}
 }
 
-
 Actor BDECHookSpawn4
 {
 states
@@ -3882,8 +3693,6 @@ states
 		Stop
 	}
 }
-
-
 
 Actor BDECHookSpawn9
 {
@@ -3903,20 +3712,16 @@ states
 	}
 }
 
-
-
-
-
 ACTOR HookColision
 {
 	Radius 2
 	Height 50
 	DamageType HangingHook
-	Projectile 
+	Projectile
     Damage 0
 	+MISSILE
 	+THRUGHOST
-    +BLOODSPLATTER 
+    +BLOODSPLATTER
 	+NOTARGET
 	+FRIENDLY
 	RenderStyle Add
@@ -3934,9 +3739,6 @@ ACTOR HookColision
 		Stop
 	}
 }
-
-
-
 
 // Actors that spawns dynamic lights made by computers
 Actor BDECComputerLight1: BDdecorationBase2
@@ -3973,7 +3775,6 @@ states
 	}
 }
 
-
 Actor BDECBlueLight: BDECComputerLight1
 {
 states
@@ -3984,7 +3785,6 @@ states
 		Stop
 	}
 }
-
 
 Actor BDECYellowLight: BDECComputerLight1
 {
@@ -3997,7 +3797,6 @@ states
 	}
 }
 
-
 Actor BDECRedLight: BDECComputerLight1
 {
 states
@@ -4008,8 +3807,6 @@ states
 		Stop
 	}
 }
-
-
 
 Actor BDECPCLight: BDECComputerLight1
 {
@@ -4037,8 +3834,6 @@ states
 	}
 }
 
-
-
 Actor PlutoniaBottomlessPit
 {
 states
@@ -4049,10 +3844,6 @@ states
 		Loop
 	}
 }
-
-
-
-
 
 Actor PlutoniaBridge
 {
@@ -4075,7 +3866,6 @@ states
 	}
 }
 
-
 Actor PlutoniaBridgeShort
 {
 
@@ -4091,8 +3881,6 @@ Actor PlutoniaBridgeShort
 			Stop
 	}
 }
-
-
 
 Actor PlutoniaBridgeLong
 {
@@ -4112,8 +3900,6 @@ Actor PlutoniaBridgeLong
 	}
 }
 
-
-
 Actor BDECCandleCorridor
 {
 
@@ -4129,10 +3915,6 @@ Actor BDECCandleCorridor
 			Stop
 	}
 }
-
-
-
-
 
 Actor BDECJungleLine1
 {
@@ -4153,7 +3935,6 @@ Actor BDECJungleLine1
 	}
 }
 
-
 Actor BDECGrassLine1
 {
 
@@ -4169,9 +3950,6 @@ Actor BDECGrassLine1
 	}
 }
 
-
-
-
 actor DeletusVeryLarge
 {
 	+NOTARGET
@@ -4180,8 +3958,8 @@ Height 10
 DamageType Deletus
 +NOGRAVITY +NOTELEPORT +NODAMAGETHRUST
 +THRUGHOST +NORADIUSDMG +NOEXTREMEDEATH
-+FORCERADIUSDMG -BLOODSPLATTER +BLOODLESSIMPACT 
-PROJECTILE	+DEHEXPLOSION	+ACTIVATEMCROSS 
++FORCERADIUSDMG -BLOODSPLATTER +BLOODLESSIMPACT
+PROJECTILE	+DEHEXPLOSION	+ACTIVATEMCROSS
 States
 {
 Spawn:
@@ -4190,9 +3968,6 @@ TNT1 A 0
 Stop
  }
 }
-
-
-
 
 Actor BDECFountain// 15858
 {
@@ -4207,13 +3982,12 @@ States
 		TNT1 A 0
 		TNT1 A 0 A_PlaySoundEx("BDWFALL3", 1, 1)
 		Goto Live
-		
+
 	Live:
 		BPDC KLM 2
 		Loop
 	}
 }
-
 
 Actor BDECSpecimenTanks1
 {
@@ -4242,7 +4016,6 @@ States
 	}
 }
 
-
 Actor BDECSpecimenTanks3: BDECSpecimenTanks1
 {
 States
@@ -4253,7 +4026,6 @@ States
 		Stop
 	}
 }
-
 
 Actor BDECSpecimenTank: BDECSpecimenTanks1
 {
@@ -4280,8 +4052,8 @@ States
 		TNT1 A 0 A_Noblocking
 		TNT1 A 0 A_Scream
 		Goto Dead
-		
-	Dead:	
+
+	Dead:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("MuchBlood2", 0, 10)
 		TNT1 A 0 A_SpawnItem("MuchBlood2", 0, 30)
@@ -4300,19 +4072,19 @@ States
 	}
 }
 
-
 Actor BDECSpecimenTankHasSpecimen: BDECSpecimenTank
 {
 -FRIENDLY
++AMBUSH
 States
 {
 	Spawn:
 		BPEC R 0
 		TNT1 A 0 A_RadiusGive("MarkForDeletion", 128, RGF_OBJECTS, 1)
-		BPEC R 2 A_Look
+		BPEC R 4 A_Look
 		Loop
 	See:
-		BPEC R 2
+		BPEC R 4
 		TNT1 A 0 A_JumpIfCloser(300, "Death")
 		Loop
 	Death:
@@ -4322,8 +4094,6 @@ States
 		Goto Dead
 	}
 }
-
-
 
 Actor BDECSpecimenTankDestroyed: BDECSpecimenTanks1
 {
@@ -4340,10 +4110,6 @@ States
 	}
 }
 
-
-
-
-
 Actor BDECPlantPot: BDECChairSimple 25855
 {
 Health 10
@@ -4354,7 +4120,7 @@ Height 24
 states
 	{
 	Spawn:
-	    WLZ7 B 0
+	    WLZ7 B 1
 		TNT1 A 0 A_RadiusGive("MarkForDeletion", 128, RGF_OBJECTS, 1)
 		WLZ7 B -1
 		Stop
@@ -4375,8 +4141,6 @@ states
 	}
 }
 
-
-
 ACTOR BDECHellFire
 {
     Radius 12
@@ -4396,8 +4160,6 @@ ACTOR BDECHellFire
 	Loop
 	}
 }
-
-
 
 ACTOR BDECPentagram 25856
 {
@@ -4429,12 +4191,6 @@ ACTOR BDECPentagram 25856
 	}
 }
 
-
-
-
-
-
-
 ACTOR BDSpawnBaron
 {
 	States
@@ -4448,7 +4204,6 @@ ACTOR BDSpawnBaron
         Stop
 	}
 }
-
 
 ACTOR BDSpawnCacodemon
 {
@@ -4466,8 +4221,6 @@ Radius 2
         Stop
 	}
 }
-
-
 
 ACTOR BDSpawnImps
 {
@@ -4489,7 +4242,6 @@ ACTOR BDSpawnImps
 	}
 }
 
-
 ACTOR BDECHellGrowth : BDdecorationBase2
 {
 	Height 96
@@ -4504,10 +4256,9 @@ ACTOR BDECHellGrowth : BDdecorationBase2
 		BPEC Z 1
 		BPEC Z -1
 		Loop
-		
+
 	}
 }
-
 
 ACTOR BDECHellGrowthSmall : BDdecorationBase2
 {
@@ -4523,11 +4274,9 @@ ACTOR BDECHellGrowthSmall : BDdecorationBase2
 		BPEC Y 1
 		BPEC Y -1
 		Loop
-		
+
 	}
 }
-
-
 
 ACTOR BDECHellKeep
 {
@@ -4543,8 +4292,6 @@ ACTOR BDECHellKeep
 		Loop
 	}
 }
-
-
 
 ACTOR BDECHellKeepColision
 {

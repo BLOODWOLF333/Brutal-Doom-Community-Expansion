@@ -4,29 +4,24 @@ ACTOR Mancubus : Fatso Replaces Fatso
     Scale 1.1
 	MaxStepHeight 16
 	MaxDropOffHeight 24
-	
-	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
-	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 10.0
-	Damagefactor "Cut", 1.0	Damagefactor "Extremepunches", 1.0	Damagefactor "Fatality", 2.5
-	Damagefactor "FriendBullet", 1.0	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0
-	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 1.25	Damagefactor "HeadKick", 0.5
-	Damagefactor "HelperMarineFatallity", 1.0	Damagefactor "KillMe", 1.0	Damagefactor "Leg", 0.25
-	Damagefactor "LowKick", 0.25	Damagefactor "MonsterKnocked", 1.0	Damagefactor "PussyGrab", 0.0
-	Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "Saw", 1.0
-	Damagefactor "Slide", 0.5	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 1.0
-	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "Kick", 0.5
-	Damagefactor "Melee", 0.5	Damagefactor "Shrapnel", 0.5	Damagefactor "Slime", 0.5
-	Damagefactor "Stealth", 0.5	Damagefactor "Stomp", 0.5	Damagefactor "Trample", 0.5
-	Damagefactor "ExplosiveImpact", 0.5
 
-	PainChance "Avoid", 0	PainChance "Burn", 255	PainChance "Cut", 255
-	PainChance "ExplosiveImpact", 16	PainChance "Extremepunches", 16	PainChance "Fatality", 16
-	PainChance "Fire", 255	PainChance "Flames", 255	PainChance "GreenFire", 255
-	PainChance "Head", 255	PainChance "HelperMarineFatallity", 16	PainChance "HumanBBQ", 255
-	PainChance "Kick", 16	PainChance "LowKick", 16	PainChance "Melee", 16
-	PainChance "MonsterKnocked", 16	PainChance "Saw", 255	PainChance "Slide", 16
-	PainChance "Stealth", 16	PainChance "Taunt", 255	PainChance "Trample", 16
-	
+	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	DamageFactor "Crush", 6.0
+	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0	Damagefactor "HangingHook", 0.0
+	Damagefactor "Head", 1.5	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
+	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
+	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "Extremepunches", 1.0
+	Damagefactor "Fatality", 2.5	Damagefactor "HeadKick", 0.5	Damagefactor "HelperMarineFatallity", 2.5
+	Damagefactor "Kick", 0.5	Damagefactor "Leg", 0.5	Damagefactor "LowKick", 0.5
+	Damagefactor "Melee", 0.5	Damagefactor "MonsterKnocked", 0.5	Damagefactor "Stomp", 0.5
+	Damagefactor "Trample", 0.5	Damagefactor "Slide", 0.5	Damagefactor "SSG", 2.5
+	DamageFactor "TankWeakSpot", 0.0
+
+	PainChance "Head", 255	PainChance "Taunt", 255	PainChance "Extremepunches", 16
+	PainChance "Fatality", 16	PainChance "HelperMarineFatallity", 16	PainChance "Kick", 16
+	PainChance "LowKick", 16	PainChance "Melee", 16	PainChance "MonsterKnocked", 16
+	PainChance "Slide", 16	PainChance "Trample", 16
+
 	Radius 40
 	Height 56
     GibHealth 30
@@ -35,21 +30,22 @@ ACTOR Mancubus : Fatso Replaces Fatso
 	Speed 8
 	FAstSpeed 12
     BloodType "Brutal_Blood", "SawBlood", "SawBlood"
-	DropItem "Gas" 4
+	DropItem "DemonStrengthRune", 16
 	Obituary "%o was incinerated by a Mancubus."
     +DONTHURTSPECIES
 	+THRUGHOST
 	-FASTER
 	DeathHeight 6
 	BurnHeight 0
+	Species "Fatso"
 	Tag "Mancubus"
 
-States
+	States
       {
 
 	ReplaceVanilla:
 		TNT1 A 0 A_GiveInventory ("RifleAmmo", 1)
-		
+
 	Idle:
 	LookingForPlayer:
 	    TNT1 A 0 A_GiveInventory("SKImp", 1)
@@ -73,46 +69,46 @@ States
 		FATT B 10 A_Look
         TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 54)
 		FATT B 10 A_Look
-		
+
 		FATT A 0 A_Wander
-		FATT AA 2 A_Look
+		FATT A 4 A_Look
 		TNT1 A 0 A_Recoil(-1)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 54)
-		
+
 		FATT B 0 A_Wander
-		FATT BB 2 A_Look
+		FATT B 4 A_Look
 		TNT1 A 0 A_Recoil(-1)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 54)
-		
+
 		FATT C 0 A_Wander
-		FATT CC 2 A_Look
+		FATT C 4 A_Look
 		TNT1 A 0 A_Recoil(-1)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 54)
-		
+
 		FATT D 0 A_Wander
-		FATT DD 2 A_Look
+		FATT D 4 A_Look
 		TNT1 A 0 A_Recoil(-1)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 54)
 
 		TNT1 A 0 A_jump(128, "LookingForPlayer")
 
 		FATT A 0 A_Wander
-		FATT AA 2 A_Look
+		FATT A 4 A_Look
 		TNT1 A 0 A_Recoil(-1)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 54)
-		
+
 		FATT B 0 A_Wander
-		FATT BB 2 A_Look
+		FATT B 4 A_Look
 		TNT1 A 0 A_Recoil(-1)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 54)
-		
+
 		FATT C 0 A_Wander
-		FATT CC 2 A_Look
+		FATT C 4 A_Look
 		TNT1 A 0 A_Recoil(-1)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 54)
-		
+
 		FATT D 0 A_Wander
-		FATT DD 2 A_Look
+		FATT D 4 A_Look
 		TNT1 A 0 A_Recoil(-1)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 54)
 		Goto LookingForPlayer
@@ -122,7 +118,7 @@ States
 		TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
 		TNT1 A 0 A_GiveInventory("LookingForPlayer", 1)
 		Goto LookingForPlayer
-	
+
     Spawn:
 		FATT B 1
 		TNT1 A 0 A_GiveInventory("TargetIsAMancubus")
@@ -132,34 +128,27 @@ States
 		TNT1 A 0 A_JumpIfInventory("nonewenemies", 1, "Stand")
 		TNT1 A 0 A_Jump(4, "ReplaceVolcabus")
 		Goto Stand
-		
+
 	ReplaceVolcabus:
 		TNT1 A 0 A_JumpIf((CeilingZ - FloorZ) < 99,"Stand")
 		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
 		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
 		TNT1 A 0 A_SpawnItemEx ("Volcabus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS ,0, tid)
 		Stop
-		
+
     Stand:
 		TNT1 A 0
-		TNT1 A 0 A_CheckSight("Stand2")
 		TNT1 A 0 A_SpawnItem("HeadshotTarget100", 0, 54)
 		FATT BBBBBBBBBB 10 A_Look
-		Loop
-		
-	Stand2:
-		TNT1 A 0
-		FATT BB 10 A_Look
-		TNT1 A 0 A_CheckSight("Stand2")
 		Loop
 
     Death.minorhead:
     Death.head:
 		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
-		
+
 		TNT1 A 0 A_SpawnItem("MancubusHeadExplode", 0, 50)
 		FATT KKK 2 A_CustomMissile ("Brutal_LiquidBlood2", 50, 0, random (0, 360), 2, random (30, 50))
-		FATT LLL 2 A_CustomMissile ("Brutal_LiquidBlood2", 40, 0, random (0, 360), 2, random (30, 50)) 
+		FATT LLL 2 A_CustomMissile ("Brutal_LiquidBlood2", 40, 0, random (0, 360), 2, random (30, 50))
 		TNT1 A 0 A_Scream
 		TNT1 A 0 A_BossDeath
 		FATT MMM 2 A_CustomMissile ("Brutal_LiquidBlood2", 30, 0, random (0, 360), 2, random (20, 50))
@@ -170,7 +159,7 @@ States
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		TNT1 A -1
         Stop
-		
+
 	Death.decaptate:
 		TNT1 AAAAAA 0 A_CustomMissile ("Xdeath1", 62, 0, random (50, 130), 2, random (50, 130))
 		TNT1 A 0 A_CustomMissile ("XdeathMancubusHead", 62, 0, random (50, 130), 2, random (50, 130))
@@ -189,17 +178,17 @@ States
 	FAT3 C 6 A_NoBlocking
 	FAT3 DEF 6
 	FAT3  F 1 A_BossDeath
-	
+
 	TNT1 A 0 A_SpawnItem ("DeadFAT3F", 1)
 	TNT1 A -1
 	Stop
-	
+
     Death2:
 		FATK A 6
 		FATK B 6 A_Scream
 		FATK C 6 A_NoBlocking
 		FATK DEF 6
-		FATK F 1 A_BossDeath    
+		FATK F 1 A_BossDeath
 	    TNT1 A 0 A_SpawnItem ("DeadFat", 1)
 		TNT1 A -1
         Stop
@@ -207,7 +196,7 @@ States
 	See:
 		FATT A 0
 		TNT1 A 0 A_TakeInventory("EnemyMemory", 5)
-	
+
 	LookingForPlayer:
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 54)
 		////TNT1 A 0 A_SpawnItemEx("HeavyFootSteps", 0, -10)
@@ -227,12 +216,12 @@ States
         FATT FF 4 A_Chase
 		TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "ForgetTarget")
 		TNT1 A 0 A_CheckSight("LookingForPlayer")
-		Goto See	
-		
+		Goto See
+
 	Missile:
 	    TNT1 A 0 A_JumpIfCloser(180, "Melee")
-		
-	Fireballz:	
+
+	Fireballz:
 		FATT G 0 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 54)
 		FATT G 4 A_FaceTarget
@@ -242,24 +231,30 @@ States
 		FATT G 10 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 54)
 		TNT1 A 0 A_CustomMissile("BigFireBall",30,-25,10,0)
+		TNT1 A 0 A_CustomMissile("Alerter", 30,-25)
 		TNT1 A 0 A_CustomMissile("BigFireBall",30,25,0,0)
+		TNT1 A 0 A_CustomMissile("Alerter", 30,25)
 		FATT H 10 BRIGHT
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 54)
 		FATT IG 5 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 54)
 		TNT1 A 0 A_CustomMissile("BigFireBall",30,-25,0,0)
+		TNT1 A 0 A_CustomMissile("Alerter", 30,-25)
 		TNT1 A 0 A_CustomMissile("BigFireBall",30,25,-10,0)
+		TNT1 A 0 A_CustomMissile("Alerter", 30,25)
 		FATT H 10 BRIGHT
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 54)
 		FATT IG 5 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 54)
 		TNT1 A 0 A_CustomMissile("BigFireBall",30,-25,4,0)
+		TNT1 A 0 A_CustomMissile("Alerter", 30,-25)
 		TNT1 A 0 A_CustomMissile("BigFireBall",30,25,-4,0)
+		TNT1 A 0 A_CustomMissile("Alerter", 30,25)
 		FATT H 10 BRIGHT
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 54)
 		FATT IG 5
 		Goto See
-		
+
 	Melee:
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 54)
 		TNT1 A 0 A_JumpIfInventory("RifleAmmo", 1, "Fireballz")
@@ -294,13 +289,13 @@ States
 		FATT H 1 BRIGHT A_CustomMissile("FlamethrowerMissileFatso",30,-25,15,0)
 		TNT1 A 0 A_CustomMissile("FlamethrowerMissileFatso",30,25,-15,0)
 
-		Goto See	
+		Goto See
 	Pain:
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 54)
 		FATT J 3
 		FATT J 3 A_Pain
 		Goto See
-		
+
 	Pain.Explosive:
 	TNT1 A 0
 	TNT1 A 0 A_SpawnItemEx("MuchBlood2", 0, 0, 60)
@@ -317,13 +312,13 @@ States
 		FAT4 C 4 A_Stop
 		FAT4 BA 4
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
-		Goto See	
+		Goto See
 
 	Pain.Kick:
         TNT1 A 0 A_FaceTarget
         TNT1 A 0 A_Recoil(2)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 54)
-		FATT J 9 A_Pain  
+		FATT J 9 A_Pain
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 54)
 		FATT J 8
 		Goto See
@@ -336,20 +331,21 @@ States
 		TNT1 AAA 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 30, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
 	    TNT1 A 0 A_GiveToTarget("GoFatality", 1)
         TNT1 A 0 A_GiveToTarget("FatsoFatality", 1)
+		TNT1 A 0 A_NoBlocking
         TNT1 A 1 A_BossDeath
-        TNT1 A 0 
+        TNT1 A 0
 		Stop
 	Death.Shotgun:
-		TNT1 A 0 
+		TNT1 A 0
 		TNT1 A 0 A_JumpIfInTargetInventory("SSGSelected", 1, "Death.SSG")
 		TNT1 A 0 A_Jump(96, "Death.Minigun")
 		Goto Death
-		
+
 	Death.SSG:
 		TNT1 A 0
 		TNT1 A 0 A_Stop
 		TNT1 A 0 A_Scream
-		TNT1 A 0 A_noBlocking
+		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_BossDeath
 		TNT1 A 0 A_Jump(255, "DeathSSG1", "DEathSSG2", "Death.Cut")
 	DeathSSG1:
@@ -358,13 +354,13 @@ States
 		TNT1 AA 0 A_CustomMissile ("MuchBlood", 55, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_CustomMissile ("XDeathMancubusArm", 30, 0, random (0, 360), 2, random (50, 130))
 		XFT2 AAAAAAAAAAAA 2 A_CustomMissile ("Brutal_LiquidBlood2", 50, 0, random (0, 360), 2, random (30, 50))
-		
+
 		XFT2 BC 5
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 	    TNT1 A 0 A_SpawnItem ("FUckedFatso1", 1)
 		TNT1 A -1
         Stop
-		
+
 	DeathSSG2:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("MancubusHeadExplode", 0, 50)
@@ -381,6 +377,7 @@ States
 	Death.Arm:
 	Death.Minigun:
 		TNT1 A 0
+		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_BossDeath
 		TNT1 A 0 A_CustomMissile ("XDeathMancubusArm", 30, 0, random (0, 360), 2, random (50, 130))
 		TNT1 AA 0 A_CustomMissile ("MuchBlood", 55, 0, random (0, 360), 2, random (0, 160))
@@ -388,8 +385,8 @@ States
 		XFT1 AAAAAAAA 1 A_CustomMissile ("Brutal_LiquidBlood2", 50, 0, random (0, 360), 2, random (30, 50))
 		TNT1 A 0 A_SpawnItem("DyingFatso01")
 		TNT1 A -1
-        Stop		
-		
+        Stop
+
 	Death.Saw:
 		TNT1 O 0 A_Jump(195, 2)
 		Goto Death.Minigun
@@ -405,8 +402,8 @@ States
 	    TNT1 A 0 A_SpawnItem ("NoGutsFatso", 1)
 		TNT1 A -1
         Stop
-		
-	Death.Cut:	
+
+	Death.Cut:
 	Death.Railgun:
 		TNT1 A 0
 		TNT1 A 0 A_Stop
@@ -426,14 +423,14 @@ States
 		TNT1 AAAAAAAAAAAAAAAAAA 4 A_CustomMissile ("Brutal_LiquidBlood2", 40, 0, random (0, 360), 2, random (30, 50))
 		TNT1 A -1
         Stop
-		
-	Death.Fire: Death.Burn: Death.Flames:	
+
+	Death.Fire: Death.Burn: Death.Flames:
 		BF4T AAA 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
 		TNT1 A 0 A_Pain
 		BF4T BBB 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
 		BF4T CCC 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
 		BF4T BBB 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
-		
+
 		BF4T AAA 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
 		TNT1 A 0 A_Pain
 		BF4T BBB 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
@@ -447,13 +444,14 @@ States
 		BF4T BBB 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
 		BF4T CCC 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
 		BF4T BBB 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
-		
+
 		BF4T AAA 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
 		TNT1 A 0 A_Pain
 		BF4T BBB 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
 		BF4T CCC 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
 		BF4T BBB 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
 		TNT1 A 0 A_SpawnItemEx ("DetectFloorCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_BossDeath
 		TNT1 A 0 A_SpawnItem("BarrelExplosionSmokeColumn")
 		TNT1 AA 0 A_SpawnItemEx("TinyBurningPiece", random (-15, 15), random (-15, 15))
@@ -463,7 +461,7 @@ States
 		BF4T FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 10 A_CustomMissile ("BurnParticles", 12, 0, random (0, 180), 2, random (50, 90))
         CARB L -1
         Stop
-		
+
 	Death.SuperPlasma:
     Death.Plasma: Death.Plasma2:
         TNT1 A 0 A_BossDeath
@@ -471,14 +469,14 @@ States
         TNT1 A 0 A_NoBlocking
 		CRB7 GGG 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
 		TNT1 A 0 A_Playsound("props/redfire")
-		
+
         TNT1 AAA 0 A_CustomMissile ("Brutal_FlyingBlood", 50, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 AA 0 A_CustomMissile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 AA 0 A_CustomMissile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, random (0, 160))
 		CRB7 HH 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
 		EXPL AAAAAA 0 A_CustomMissile ("ExplosionSmoke", 32, 0, random (0, 360), 2, random (0, 360))
         CRB7 IIJJ 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
-		
+
 		TNT1 A 0 A_SpawnItemEx ("DetectFloorCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 0 A_SpawnItem("BarrelExplosionSmokeColumn")
 		TNT1 AA 0 A_SpawnItemEx("TinyBurningPiece", random (-15, 15), random (-15, 15))
@@ -509,9 +507,9 @@ States
         XFBT B 4 A_NoBlocking
 		TNT1 A 0 A_SpawnItem ("SplatteredLarge")
 		TNT1 A 0 A_Stop
-        XFBT CDEF 4 
+        XFBT CDEF 4
         XFBT F 1 A_BossDeath
-		
+
 	    TNT1 A 0 A_SpawnItem ("XDeadFat", 1)
 		TNT1 A -1
         Stop
@@ -522,9 +520,11 @@ States
 		TNT1 A 1 A_XScream
 		Stop
 
+Pain.KillMe:
 Pain.Taunt:
 		TNT1 A 0
 		SPOS B 0 A_Pain
+		TNT1 A 0 HealThing(2)
 		TNT1 A 0 A_ChangeFlag("FASTER", 1)
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
@@ -541,10 +541,6 @@ Pain.Taunt:
 		TNT1 A 0 A_GiveInventory("Enraged", 1)
 		Goto Missile
 
-    Pain.KillMe:
-        TNT1 A 0
-		TNT1 A 0 HealThing(1)
-		Goto Missile
     Death.KillMe:
     Death.Taunt:
 	    TNT1 A 0 A_ChangeFlag("SOLID", 0)
@@ -556,8 +552,8 @@ Pain.Taunt:
 	TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
 	TNT1 A 0 A_ChangeFlag("SOLID", 0)
 	TNT1 A 0 A_SpawnItem("FrozenMancubus")
-	Stop	
-	
+	Stop
+
 	Death.Massacre:
 	Goto Death
 
@@ -565,8 +561,8 @@ Pain.Taunt:
     FATT R 5
     FATT QPONMLK 5
     Goto See
-       } 
-} 
+       }
+}
 
 ACTOR BigFireBall Replaces Fatshot
 {
@@ -577,7 +573,7 @@ ACTOR BigFireBall Replaces Fatshot
 	Speed 20
     Fastspeed 25
 	Damage (random(40,40))
-	Projectile 
+	Projectile
     Scale 0.6
 	+FORCEXYBILLBOARD
 	+THRUGHOST
@@ -595,26 +591,26 @@ ACTOR BigFireBall Replaces Fatshot
 	Spawn:
 	    TNT1 A 0
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)//Check Effects
-	
+
 	Spawn1:
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "SpawnCheap")
-		TNT1 A 0 
+		TNT1 A 0
 		BLHD AB 1 BRIGHT A_SpawnItem ("FireballExplosionFlamesSmall")
 		TNT1 A 0 A_SpawnItem("RedFlare22")
 		TNT1 A 0 A_CustomMissile ("RocketSmokeTrail52", 2, 0, random (70, 110), 2, random (0, 360))
 		Loop
-		
+
 	SpawnCheap:
 		TNT1 A 0 A_SpawnItem ("FireballExplosionFlamesSmall")
 		BLHD AB 1 BRIGHT A_SpawnItem("RedFlare22")
-		Loop	
-		
+		Loop
+
 	Death:
-	
+
 	TNT1 A 0 A_ChangeFlag("NOGRAVITY", 0)
 	TNT1 A 0 A_Explode(10, 50, 0)
 	Goto ExplosionEffect
-	
+
 	ExplosionEffect:
 	TNT1 A 0
 	TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DeathCheap")
@@ -630,7 +626,7 @@ ACTOR BigFireBall Replaces Fatshot
 	TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-45, 45), random (-45, 35))
 	TNT1 AA 20 A_CustomMissile ("BigBlackSmoke", 0, 0, random (0, 360), 2, random (40, 160))
 	Stop
-		
+
 	DeathCheap:
 	XDeath:
 	TNT1 A 0
@@ -642,7 +638,7 @@ ACTOR BigFireBall Replaces Fatshot
 	EXPL A 0 A_CustomMissile ("FlamethrowerFireParticles", 6, 0, random (0, 360), 2, random (0, 90))
 	Stop
 
-	StopInAIr:	
+	StopInAIr:
 	EXPL AAA 0 A_CustomMissile ("FlamethrowerFireParticles", 6, 0, random (0, 360), 2, random (0, 90))
 	Stop
 	}
@@ -650,11 +646,12 @@ ACTOR BigFireBall Replaces Fatshot
 
 Actor NoGutsFatso: CurbstompedMarine
 {
-    Radius 24
+    Radius 40
+	Height 19
     Mass 10000
     Health 500
     Scale 1.1
-States
+	States
     {
     Spawn:
 		FAT2 P -1
@@ -662,7 +659,7 @@ States
     Death:
         TNT1 A 0 A_SpawnItem("GutsPile")
 		 TNT1 A 0 A_NoBlocking
-		 TNT1 AAA 0 A_CustomMissile ("UltraGoreSpawner", 5, 0, random (0, 360), 2, random (30, 60))
+		 TNT1 AAA 0 A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 60))
 		 TNT1 AAAA 0 A_CustomMissile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 AAAA 0 A_CustomMissile ("XDeath2b", 25, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 AAAA 0 A_CustomMissile ("XDeath3b", 25, 0, random (0, 360), 2, random (0, 160))
@@ -675,7 +672,7 @@ States
 		TNT1 AA 0 A_CustomMissile ("XDeathMancubusLeg", 20, 0, random (0, 360), 2, random (40, 160))
 		TNT1 A 0 A_CustomMissile ("XDeathMancubusHead", 20, 0, random (0, 360), 2, random (40, 160))
 		Stop
-		
+
     Death.flames:
     Death.burn:
     Death.Plasma: Death.Plasma2:
@@ -688,8 +685,8 @@ States
 		EXPL AAAAAA 0 A_CustomMissile ("ExplosionSmoke", 32, 0, random (0, 360), 2, random (0, 360))
         CARB LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL 10 A_CustomMissile ("SmallSmoke", 1, 0, random (0, 360), 2, random (0, 160))
         CARB L -1
-		
-	Crush:	
+
+	Crush:
 	Death.CrushedBodies:
 		TNT1 A 0 A_NoBlocking
 		TNT1 AA 0 A_SpawnItem("MeatDeathSmall")
@@ -698,22 +695,22 @@ States
 		TNT1 AA 0 bright A_CustomMissile ("XDeath2b", 1, random (-30, 30), random (0, 360), 2, random (30, 180))
 		TNT1 AA 0 bright A_CustomMissile ("XDeath3b", 1, random (-30, 30), random (0, 360), 2, random (30, 180))
 		CRS3 B 1 A_XScream
-		CRS3 B -1 
-		Stop 	
-  
+		CRS3 B -1
+		Stop
+
     }
 }
 
 Actor NoGutsFatso2: NoGutsFatso
 {Health 500 States{Spawn:
 		XFAT I -1
-        Stop    
+        Stop
 		}}
 
 Actor DeadFat: NoGutsFatso
 {
-    Radius 16
-    Height 18
+    Radius 40
+    Height 23
     Scale 1.1
     Mass 10000
     Health 500
@@ -740,7 +737,7 @@ States
         CARB LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL 10 A_CustomMissile ("SmallSmoke", 1, 0, random (0, 360), 2, random (0, 160))
         CARB L -1
         Stop
-	
+
 		}}
 
 Actor DeadFAT3F: DeadFat
@@ -750,12 +747,12 @@ States
     Spawn:
 		FAT3 F -1
         Stop
-		
+
 	Death:
 	Death.Cut:
 	Death.Saw:
 		 TNT1 A 0 A_NoBlocking
-		 TNT1 AAA 0 A_CustomMissile ("UltraGoreSpawner", 5, 0, random (0, 360), 2, random (30, 60))
+		 TNT1 AAA 0 A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 60))
 		 TNT1 AAAA 0 A_CustomMissile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 AAAA 0 A_CustomMissile ("XDeath2b", 25, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 AAAA 0 A_CustomMissile ("XDeath3b", 25, 0, random (0, 360), 2, random (0, 160))
@@ -766,17 +763,17 @@ States
 		 TNT1 AAAA 0 A_CustomMissile ("BloodMistSmall", 35, 0, random (0, 360), 2, random (40, 90))
 		 TNT1 A 0 A_SpawnItem("RipGuts", 0, 40)
 		 TNT1 A 0 A_SpawnItem("NoGutsFatso", 0)
-		 Stop	
+		 Stop
     }}
 
 Actor DeadFatNoHead: DeadFat
 {Health 500 States{Spawn:
 		FATT T -1
-        Stop    
+        Stop
        Death:
-        
+
 		 TNT1 A 0 A_NoBlocking
-		 TNT1 AAA 0 A_CustomMissile ("UltraGoreSpawner", 5, 0, random (0, 360), 2, random (30, 60))
+		 TNT1 AAA 0 A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 60))
 		 TNT1 AAAA 0 A_CustomMissile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 AAAA 0 A_CustomMissile ("XDeath2b", 25, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 AAAA 0 A_CustomMissile ("XDeath3b", 25, 0, random (0, 360), 2, random (0, 160))
@@ -793,18 +790,18 @@ Actor DeadFatNoHead: DeadFat
 Actor DeadFatNoHead_RemovedWeapon: DeadFatNoHead
 {Health 500 States{Spawn:
 		FAT2 R -1
-        Stop    
+        Stop
 		}}
 
 Actor XDeadFat: DeadFat
 {Health 500 States{Spawn:
 		XFBT F -1
-        Stop   
-		
+        Stop
+
        Death:
         TNT1 A 0 A_SpawnItem("GutsPile")
 		 TNT1 A 0 A_NoBlocking
-		 TNT1 AAA 0 A_CustomMissile ("UltraGoreSpawner", 5, 0, random (0, 360), 2, random (30, 60))
+		 TNT1 AAA 0 A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 60))
 		 TNT1 AAAA 0 A_CustomMissile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 AAAA 0 A_CustomMissile ("XDeath2b", 25, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 AAAA 0 A_CustomMissile ("XDeath3b", 25, 0, random (0, 360), 2, random (0, 160))
@@ -819,12 +816,12 @@ Actor XDeadFat: DeadFat
 Actor FuckedFatso1: DeadFat
 {Health 500 States{Spawn:
 		XFT2 D -1
-        Stop   
-		
+        Stop
+
        Death:
         TNT1 A 0 A_SpawnItem("GutsPile")
 		 TNT1 A 0 A_NoBlocking
-		 TNT1 AAA 0 A_CustomMissile ("UltraGoreSpawner", 5, 0, random (0, 360), 2, random (30, 60))
+		 TNT1 AAA 0 A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 60))
 		 TNT1 AAAA 0 A_CustomMissile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 AAAA 0 A_CustomMissile ("XDeath2b", 25, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 AAAA 0 A_CustomMissile ("XDeath3b", 25, 0, random (0, 360), 2, random (0, 160))
@@ -838,12 +835,12 @@ Actor FuckedFatso1: DeadFat
 Actor FuckedFatso2: DeadFat
 {Health 500 States{Spawn:
 		XFT3 D -1
-        Stop   
-		
+        Stop
+
        Death:
         TNT1 A 0 A_SpawnItem("GutsPile")
 		 TNT1 A 0 A_NoBlocking
-		 TNT1 AAA 0 A_CustomMissile ("UltraGoreSpawner", 5, 0, random (0, 360), 2, random (30, 60))
+		 TNT1 AAA 0 A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 60))
 		 TNT1 AAAA 0 A_CustomMissile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 AAAA 0 A_CustomMissile ("XDeath2b", 25, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 AAAA 0 A_CustomMissile ("XDeath3b", 25, 0, random (0, 360), 2, random (0, 160))
@@ -857,8 +854,8 @@ Actor FuckedFatso2: DeadFat
 Actor DeadFatLegStumps: DeadFat
 {Health 200 States{Spawn:
 		XFT4 C -1
-        Stop   
-		
+        Stop
+
        Death:
         TNT1 A 0 A_NoBlocking
 		 TNT1 AA 0 A_CustomMissile ("MuchBlood2", 35, 0, random (0, 360), 2, random (0, 160))
@@ -873,12 +870,12 @@ Actor DeadFatLegStumps: DeadFat
 Actor DeadFatsoNoArm: DeadFat
 {Health 500 States{Spawn:
 		XFT1 D -1
-        Stop   
-		
+        Stop
+
        Death:
         TNT1 A 0 A_SpawnItem("GutsPile")
 		 TNT1 A 0 A_NoBlocking
-		 TNT1 AAA 0 A_CustomMissile ("UltraGoreSpawner", 5, 0, random (0, 360), 2, random (30, 60))
+		 TNT1 AAA 0 A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 60))
 		 TNT1 AAAA 0 A_CustomMissile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 AAAA 0 A_CustomMissile ("XDeath2b", 25, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 AAAA 0 A_CustomMissile ("XDeath3b", 25, 0, random (0, 360), 2, random (0, 160))
@@ -891,42 +888,51 @@ Actor DeadFatsoNoArm: DeadFat
 		Stop}}
 
 Actor FatalizedFatso: NoGutsFatso
-{Scale 1.1 Health 500 States{Spawn:
-		FATF F 1 A_PlaySound("fatso/pain")
-        FATF FFEE 10 A_CustomMissile ("Blood", 35, 0, random (0, 360), 2, random (0, 160))
-		
-		FATF F 1 A_PlaySound("fatso/pain")
-        FATF FFEE 10 A_CustomMissile ("Blood", 35, 0, random (0, 360), 2, random (0, 160))
-		
-		FATF F 1 A_PlaySound("fatso/pain")
-        FATF FFEE 10 A_CustomMissile ("Blood", 35, 0, random (0, 360), 2, random (0, 160))
-		
-		FATF F 1 A_PlaySound("fatso/pain")
-        FATF FF 10 A_CustomMissile ("Blood", 35, 0, random (0, 360), 2, random (0, 160))
-		
-		FATF E 1 A_PlaySound("fatso/death")
-		FATF EEEEEEEEE 4 A_CustomMissile ("Blood", 35, 0, random (0, 360), 2, random (0, 160))
-		FATF E -1
-        Stop }}
+{
+	Scale 1.1
+	Health 500
+	+NOPAIN
+	Radius 40
+	Height 33
+	States
+	{
+		Spawn:
+			FATF F 1 A_PlaySound("fatso/pain")
+			TNT1 A 0 A_NoBlocking
+			FATF FFEE 10 A_CustomMissile ("Blood", 35, 0, random (0, 360), 2, random (0, 160))
+
+			FATF F 1 A_PlaySound("fatso/pain")
+			FATF FFEE 10 A_CustomMissile ("Blood", 35, 0, random (0, 360), 2, random (0, 160))
+
+			FATF F 1 A_PlaySound("fatso/pain")
+			FATF FFEE 10 A_CustomMissile ("Blood", 35, 0, random (0, 360), 2, random (0, 160))
+
+			FATF F 1 A_PlaySound("fatso/pain")
+			FATF FF 10 A_CustomMissile ("Blood", 35, 0, random (0, 360), 2, random (0, 160))
+
+			FATF E 1 A_PlaySound("fatso/death")
+			FATF EEEEEEEEE 4 A_CustomMissile ("Blood", 35, 0, random (0, 360), 2, random (0, 160))
+			FATF E -1
+			Stop
+	}
+}
 
 Actor DyingFatso01: NoGutsFatso
 {Scale 1.1
-Health 20 
-Radius 28
-Height 70
--CLIENTSIDEONLY
--SOLID
+Health 20
+Radius 40
+Height 77
 States
 	{Spawn:
 		XFT1 A 1 A_PlaySound("fatso/pain")
         XFT1 EEEEEEEEEEEEEEEE 3 A_CustomMissile ("Brutal_LiquidBlood2", 40, 0, random (0, 360), 2, random (30, 50))
-		
+
 		XFT1 A 3 A_PlaySound("fatso/pain")
         XFT1 EEEEEEEEEEEEEEEE 3 A_CustomMissile ("Brutal_LiquidBlood2", 40, 0, random (0, 360), 2, random (30, 50))
-		
+
 		XFT1 A 3 A_PlaySound("fatso/pain")
         XFT1 EEEEEEEEEEEEEEEE 3 A_CustomMissile ("Brutal_LiquidBlood2", 40, 0, random (0, 360), 2, random (30, 50))
-		
+
 		XFT1 A 3 A_PlaySound("fatso/pain")
         XFT1 EEEEEEEEEEEEEEEE 3 A_CustomMissile ("Brutal_LiquidBlood2", 40, 0, random (0, 360), 2, random (30, 50))
 		TNT1 A 0
@@ -935,7 +941,7 @@ States
 		XFT1 BC 4
 		TNT1 A 0 A_SpawnItem("DeadFatsoNoArm")
 		Stop
-		
+
 		Death:
 			TNT1 A 0
 			TNT1 A 0 A_NoBlocking
@@ -959,7 +965,7 @@ Health 20 States
 		XFT2 BC 4
 		TNT1 A 0 A_SpawnItem("FuckedFatso1")
 		Stop
-		
+
 		Death:
 			TNT1 A 0
 			TNT1 A 0 A_SpawnItem("MancubusHeadExplode", 0, 50)
@@ -970,8 +976,8 @@ Health 20 States
 			TNT1 A 0 A_SpawnItem("DyingFatso03")
 			Stop
 			}
-}			
-			
+}
+
 Actor DyingFatso03: DyingFatso02
 {Scale 1.1
 Health 20 States
@@ -982,7 +988,7 @@ Health 20 States
 		XFT3 B 4
 		TNT1 A 0 A_SpawnItem("FuckedFatso2")
 		Stop
-		
+
 		Death:
 			TNT1 A 0
 			TNT1 A 0 A_SpawnItem("RipGuts", 0, 40)

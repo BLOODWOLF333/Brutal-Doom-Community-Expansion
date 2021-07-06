@@ -8,113 +8,119 @@ ACTOR GrenadeLauncher : BrutalWeapon
     +WEAPON.NOAUTOAIM
 	+WEAPON.NOAUTOFIRE
 	+WEAPON.EXPLOSIVE
-	+WEAPON.NO_AUTO_SWITCH
 	Weapon.SelectionOrder 2700
 	Inventory.PickupMessage "$GOTGL"
 	Tag "Grenade Launcher"
+	Scale 0.8
+	DropItem "GrenadeLauncherSpawner"
 	States
 	{
-	
+
 	Ready:
 	Ready3:
+		GLAN A 1 A_WeaponReady(WRF_ALLOWRELOAD)
         GLAN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		GLAN A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		GLAN A 0 A_JumpIfInventory("Salute2", 1, "Salute")
         GLAN A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		GLAN A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-		GLAN A 0 A_JumpIfInventory("IsRunning", 1, "Sprinting")
-		
-		GLAN A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
+		GLAN A 0 A_JumpIfInventory("IsRunning", 1, "CheckSprint")
 		GLAN A 0 A_JumpIfInventory("Unloading", 1, "Unload")
 		GLAN A 0 A_JumpIfInventory("Reloading", 1, "Reload")
         Goto Ready
+
 	Deselect:
 		GLAN A 0
+		TNT1 A 0 A_TakeInventory("StartDualWield",1)
         GLSW CBA 1
 		TNT1 AAAAAAAAA 0 A_Lower
 		TNT1 A 1 A_Lower
 		Wait
 	Select:
 		GLAN A 0 A_Giveinventory("GoSpecial",1)
-		GLAN A 0 A_Takeinventory("FistsSelected",1)
-		GLAN A 0 A_Takeinventory("SawSelected",1)
-		GLAN A 0 A_Takeinventory("ShotgunSelected",1)
-		GLAN A 0 A_Takeinventory("SSGSelected",1)
-		GLAN A 0 A_Takeinventory("MinigunSelected",1)
-		GLAN A 0 A_Takeinventory("PlasmaGunSelected",1)
-		GLAN A 0 A_Takeinventory("RocketLauncherSelected",1)
-		GLAN A 0 A_Giveinventory("GrenadeLauncherSelected",1)
-		GLAN A 0 A_Takeinventory("BFGSelected",1)
-		GLAN A 0 A_Takeinventory("BFG10kSelected",1)
-		GLAN A 0 A_Takeinventory("RailGunSelected",1)
-		GLAN A 0 A_Takeinventory("SubMachineGunSelected",1)
-		GLAN A 0 A_Takeinventory("RevenantLauncherSelected",1)
-		GLAN A 0 A_Takeinventory("LostSoulSelected",1)
-		GLAN A 0 A_Takeinventory("FlameCannonSelected",1)
+		TNT1 A 0 A_TakeInventory("FistsSelected", 1)
+		TNT1 A 0 A_TakeInventory("ShotgunSelected", 1)
+		TNT1 A 0 A_TakeInventory("MinigunSelected", 1)
+		TNT1 A 0 A_TakeInventory("SSGSelected", 1)
+		TNT1 A 0 A_TakeInventory("RocketLauncherSelected", 1)
+		TNT1 A 0 A_GiveInventory("GrenadeLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("PlasmaGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RailGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RevenantLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("SubMachineGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFG10KSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFGSelected", 1)
+		TNT1 A 0 A_TakeInventory("FlameCannonSelected", 1)
+		TNT1 A 0 A_TakeInventory("SawSelected", 1)
 		GLAN A 0 A_Takeinventory("HasBarrel",1)
-	
+
 		MISG A 1 A_Raise
 		TNT1 AAAAAAAAAA 0 A_Raise
 		Goto SelectAnimation
-		
+
 	SelectAnimation:
 		GLAN A 0
 		GLAN A 0 A_PlaySound("RLANDRAW")
 		GLAN A 0 A_GunFlash
         GLSW ABC 1
 		Goto Ready
-		
+
 	Fire:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("GLAmmo", 1, 2)
 		Goto NoAmmo
 		TNT1 A 0
 		TNT1 A 0 A_TakeInventory("GLAmmo", 1)
+		GLAF A 1 BRIGHT
 		GLAN A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
-		TNT1 AAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-16,16), 0, -1, random(-9,9))
+		TNT1 AAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-16,16), 0, 0, 0, 0, random(-9,9))
 		GLAN A 0 A_PlaySound("weapons/firegrenade")
 		GLAN A 0 A_FireCustomMissile("GrenadeMissileBreaksGlass", 0, 0, 0, 0)
-		GLAN A 0 A_ZoomFactor(0.9)
-		GLAN A 0 A_Recoil(8)
-		GLAF A 1 BRIGHT 
-        GLAF C 1
-		GLAN A 0 A_ZoomFactor(1.0)
 		GLAN A 0 A_FireCustomMissile("ShortGrenade", 0, 1, 0, 0)
-		GLAN A 0 A_SetPitch(-8.0 + pitch)
-		GLAF CCBBB 1 A_SetPitch(1.0 + pitch)
-		GLAN A 5 A_SetPitch(1.0 + pitch)
+		RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
+		RIFG A 0 A_SetPitch(-1.0 + pitch)
+		GLAN A 0 A_SetPitch(-1.0 + pitch)
+		GLAN A 0 A_Recoil(2)
+		TNT1 A 0 A_ZoomFactor(0.98)
+        GLAF C 1
+		TNT1 A 0 A_ZoomFactor(1.0)
+
+		GLAF CCBBB 1 A_SetPitch(0.2 + pitch)
+		GLAN A 5
         Goto NoAmmo2
-		
+
 	AltFire:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("GLAmmo", 1, 2)
 		Goto NoAmmo
 		TNT1 A 0
 		TNT1 A 0 A_TakeInventory("GLAmmo", 1)
+		GLAF A 1 BRIGHT
 		GLAN A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
-		TNT1 AAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-16,16), 0, -1, random(-9,9))
+		TNT1 AAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-16,16), 0, 0, 0, 0, random(-9,9))
 		GLAN A 0 A_FireCustomMissile("GrenadeMissileBreaksGlass", 0, 0, 0, 0)
-		GLAF A 1 BRIGHT 
-		
 		GLAN A 0 A_PlaySound("weapons/firegrenade")
 		GLAN A 0 A_FireCustomMissile("GrenadeMissile", 0, 1, 0, 0)
-		GLAN A 0 A_SetPitch(-8.0 + pitch)
-		GLAN A 0 A_ZoomFactor(0.9)
-		GLAN A 0 A_Recoil(8)
+		RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
+		RIFG A 0 A_SetPitch(-1.0 + pitch)
+		GLAN A 0 A_SetPitch(-1.0 + pitch)
+		GLAN A 0 A_Recoil(2)
+		TNT1 A 0 A_ZoomFactor(0.98)
         GLAF C 1
-		GLAN A 0 A_ZoomFactor(1.0)
-		GLAF CCBBB 1 A_SetPitch(1.0 + pitch)
-		GLAN A 5 A_SetPitch(1.0 + pitch)
+		TNT1 A 0 A_ZoomFactor(1.0)
+		GLAF CCBBB 1 A_SetPitch(0.2 + pitch)
+		GLAN A 5
         Goto NoAmmo2
-		
-	Reload:	
+
+	Reload:
 		TNT1 A 0
 		TNT1 A 0 A_TakeInventory("Reloading", 1)
 		TNT1 A 0 A_JumpIfInventory("GLAmmo", 1, "Ready3")
 		TNT1 A 0 A_JumpIfInventory("AmmoRocket", 1, 2)
 		Goto Ready
 		TNT1 AA 0
-		
+
 		GLR1 ABCDEFGHIJKL 1
 		GLAN A 0 A_PlaySound("Weapons/GrenadeOpen")
 		GLR1 MMM 1 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
@@ -130,17 +136,17 @@ ACTOR GrenadeLauncher : BrutalWeapon
 		GLAN A 1
 		TNT1 A 0 A_TakeInventory("Reloading", 1)
 		Goto Ready
-		
-		
-		
-	Unload:	
+
+
+
+	Unload:
 		GLAN A 1
 		TNT1 A 0 A_TakeInventory("Unloading", 1)
 		TNT1 A 0 A_TakeInventory("Reloading", 1)
 		TNT1 A 0 A_JumpIfInventory("GLAmmo", 1, 2)
 		Goto Ready
 		TNT1 AA 0
-		
+
 		GLR1 ABCDEFGHIJKL 1
 		GLAN A 0 A_PlaySound("Weapons/GrenadeOpen")
 		TNT1 A 0 A_GiveInventory("AmmoRocket", 1)
@@ -152,9 +158,9 @@ ACTOR GrenadeLauncher : BrutalWeapon
 		GLAN A 1
 		TNT1 A 0 A_TakeInventory("Unloading", 1)
 		TNT1 A 0 A_TakeInventory("Reloading", 1)
-		Goto Ready	
-		
-		
+		Goto Ready
+
+
 	NoAmmo:
 		RIFG A 0
 		RIFG A 0 A_ZoomFactor(1.0)
@@ -176,80 +182,93 @@ ACTOR GrenadeLauncher : BrutalWeapon
 		TNT1 A 0 A_JumpIfInventory("NoAutoReload", 1, "NoAmmo2")
 		RIFG A 0 A_JumpIfInventory("AmmoRocket",1,"Reload")
 		RIFG A 0 A_JumpIfInventory("FiredPrimary",1,"NoAmmo2")
-		Goto Ready3	
+		Goto Ready3
 
 	CheckSprint:
 		GLAN A 1 A_WeaponReady(WRF_NOFIRE)
 		GLAN A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		GLAN A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
-		Goto Ready
-		
+		Goto Ready3
+
 	StartSprint:
 		GLAN A 1 A_WeaponReady(WRF_NOFIRE)
-		GLAN A 0 A_Takeinventory("Zoomed",1)
-		GLAN A 0 A_Takeinventory("ADSmode",1)
-		GLAN A 0 A_ZoomFactor(1.0)
-		GLAN A 0 A_JumpIfInventory("UsedStamina", 40, "StopSprintTired")
-		
-	Sprinting:	
+		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		GLAN A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
+
+	Sprinting:
 		GLAN S 1
-		GLAN S 0 offset(-9,32) 
+		GLAN S 0 offset(-9,32)
 		GLAN A 0 offset(-9,32) A_JumpIfInventory("IsStandingStill", 1, "Ready3")
+		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
 		GLAN A 0 offset(-9,32) A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
-		PLAY A 0 offset(-9,32) ACS_ExecuteAlways(852, 0, 0, 0, 0)//Makes player faster.
-		GLAN A 0 offset(-9,32) A_JumpIfInventory("PowerStrength", 1, 2)
-		GLAN A 0 offset(-9,32) A_GiveInventory("UsedStamina", 5)
-		GLAN A 0 offset(-9,32)
+		PLAY A 0 offset(-9,32) ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
 		GLAN S 1 offset(-9,34) A_SetPitch(pitch -0.5)
 		GLAN S 1 offset(-6,36) A_SetPitch(pitch -0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		GLAN S 1 offset(-3,38) A_SetPitch(pitch -0.5)
 		GLAN S 1 offset(0,38) A_SetPitch(pitch -0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		GLAN S 1 offset(3,36) A_SetPitch(pitch -0.5)
 		GLAN S 1 offset(6,34) A_SetPitch(pitch -0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		GLAN S 1 offset(9,32) A_SetPitch(pitch -0.5)
 		GLAN A 0 offset(9,32) A_WeaponReady(WRF_NOBOB)
 		GLAN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         GLAN A 0 A_JumpIfInventory("Taunting",1,"Taunt")
         GLAN A 0 A_JumpIfInventory("Reloading",1,"Reload")
-		GLAN A 0 offset(-9,32) A_GiveInventory("UsedStamina", 5)
+		GLAN A 0 offset(-9,32)
 		GLAN A 0 offset(9,33) A_SpawnItemEx("FootStep", 0, 0, 2, 0, 0, -4)
 		GLAN S 1 offset(9,34) A_SetPitch(pitch +0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		GLAN S 1 offset(6,36) A_SetPitch(pitch +0.5)
 		GLAN S 1 offset(3,38) A_SetPitch(pitch +0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		GLAN S 1 offset(0,38) A_SetPitch(pitch +0.5)
 		GLAN S 1 offset(-3,36) A_SetPitch(pitch +0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		GLAN S 1 offset(-6,34) A_SetPitch(pitch +0.5)
 		GLAN S 1 offset(-9,32) A_SetPitch(pitch +0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		GLAN A 0 offset(-9,32) A_WeaponReady(WRF_NOBOB)
 		GLAN A 0 offset(-9,32) A_JumpIfInventory("IsRunning", 1, "Sprinting")
 		Goto StopSprint
-		
+
 	StopSprintTired:
-		GLAN A 1
-		PLAY A 0 ACS_ExecuteAlways(853, 0, 0, 0, 0)//Makes player slower.
+		GLAN A 0
+		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		GLAN A 0 A_PlaySound("Tired", 2)
-		GLAN A 0 A_TakeInventory("UsedStamina", 2)
-		GLAN A 5 A_WeaponReady
-		GLAN A 0 A_TakeInventory("UsedStamina", 2)
-		GLAN A 5 A_WeaponReady
-		GLAN A 0 A_TakeInventory("UsedStamina", 2)
-		GLAN A 5 A_WeaponReady
-		GLAN A 0 A_TakeInventory("UsedStamina", 2)
-		GLAN A 5 A_WeaponReady
-		GLAN A 0 A_TakeInventory("UsedStamina", 2)
-		GLAN A 5 A_WeaponReady
+		GLAN S 4 A_WeaponReady
+		GLAN A 0 A_TakeInventory("UsedStamina", 1)
+		GLAN S 4 A_WeaponReady
+		GLAN A 0 A_TakeInventory("UsedStamina", 1)
+		GLAN S 4 A_WeaponReady
+		GLAN A 0 A_TakeInventory("UsedStamina", 1)
+		GLAN S 4 A_WeaponReady
+		GLAN A 0 A_TakeInventory("UsedStamina", 1)
+		GLAN S 4 A_WeaponReady
+		GLAN A 0 A_TakeInventory("UsedStamina", 1)
+		GLAN S 4 A_WeaponReady
+		GLAN A 0 A_TakeInventory("UsedStamina", 1)
 		Goto Ready
 	StopSprint:
 		GLAN S 1
-		GLAN A 0 A_JumpIfInventory("UsedStamina", 60, "StopSprintTired")
-		PLAY A 0 ACS_ExecuteAlways(853, 0, 0, 0, 0)//Makes player slower.
+		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		GLAN A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
+		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		Goto Ready
-	
+
 	Spawn:
 		GLAP A -1
 		Stop
-		
+
 	}
 }
 
-
+ACTOR GLAmmo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 1
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 1
+   Inventory.Icon "GLAPA0"
+}

@@ -1,22 +1,6 @@
-ACTOR Purist : Doomer
-{
-	Speed 1.0
-	Player.DisplayName "Purist (Oldschool mode)"
-	Player.StartItem "ClassicPistol"
-	Player.StartItem "ClassicFist"
-	Player.StartItem "Clip2", 50
-	Player.StartItem "IsPlayer", 1
-	Player.StartItem "IsPlayingAsPurist", 1
-	Player.StartItem "AmmoDroper"
-	Player.StartItem "IsNOTTacticalClass", 1
-	DamageFactor "KillMeBot", 0.0
-	Species "Marines"
-}
-
 ACTOR BDoomer : Doomer
 {
-	Speed 1.0
-	Player.DisplayName "Normal (Rifle Start)"
+	Player.DisplayName "Rifle Start"
 	Player.StartItem "Rifle"
 	Player.StartItem "Melee_Attacks"
 	Player.StartItem "HandGrenades", 1
@@ -47,23 +31,21 @@ ACTOR BDoomer : Doomer
 	Player.StartItem "DoublePlasmaAmmo", 100
 	Player.StartItem "RailgunAmmo", 50
 	//Slot9
-	Player.StartItem "GrenadeAmmo", 2
+	Player.StartItem "GrenadeAmmo", 1
 	Player.StartItem "AmmoDroper"
-	DamageFactor "KillMeBot", 0.0
 	Species "Marines"
 }
 
 ACTOR Doomer2 : Doomer
 {
-	Speed 1.0
-	Player.DisplayName "Normal (Pistol Start)"
+	Player.DisplayName "Pistol Start"
 	Player.StartItem "BrutalPistol"
 	Player.StartItem "Melee_Attacks"
 	Player.StartItem "HandGrenades", 1
 	Player.StartItem "IsPlayer", 1
 	Player.StartItem "IsNOTTacticalClass", 1
 	Player.StartItem "NeverSelectedShotgun", 1
-	Player.StartItem "Clip1", 60
+	Player.StartItem "Clip1", 30
 	//Slot2
 	Player.StartItem "BDPistolAmmo", 16
 	Player.StartItem "BDDualPistolAmmo", 32
@@ -87,17 +69,170 @@ ACTOR Doomer2 : Doomer
 	Player.StartItem "DoublePlasmaAmmo", 100
 	Player.StartItem "RailgunAmmo", 50
 	//Slot9
-	Player.StartItem "GrenadeAmmo", 2
+	Player.StartItem "GrenadeAmmo", 1
 	Player.StartItem "AmmoDroper"
-	DamageFactor "KillMeBot", 0.0
+	Species "Marines"
+}
+
+ACTOR Doomer3 : Doomer
+{
+	Player.DisplayName "Shotgun Start"
+	Player.StartItem "Shot_Gun"
+	Player.StartItem "Melee_Attacks"
+	Player.StartItem "HandGrenades", 1
+	Player.StartItem "IsPlayer", 1
+	Player.StartItem "IsNOTTacticalClass", 1
+	Player.StartItem "NeverSelectedShotgun", 1
+	Player.StartItem "AmmoShell", 8
+	//Slot2
+	Player.StartItem "BDPistolAmmo", 16
+	Player.StartItem "BDDualPistolAmmo", 32
+	Player.StartItem "BDSMGAmmo", 41
+	Player.StartItem "BDDualSMGAmmo", 82
+	Player.StartItem "MP40Ammo", 32
+	Player.StartItem "DualMP40Ammo", 64
+	Player.StartItem "RevolverAmmo", 6
+	//Slot3
+	Player.StartItem "ShotgunAmmo", 9
+	Player.StartItem "SSGAmmo", 2
+	Player.StartItem "AssaultShotgunAmmo", 20
+	//Slot4
+	Player.StartItem "RifleAmmo", 31
+	Player.StartItem "DoubleRifleAmmo", 62
+	//Slot5
+	Player.StartItem "RocketRounds", 6
+	Player.StartItem "GLAmmo", 1
+	//Slot6
+	Player.StartItem "PlasmaAmmo", 50
+	Player.StartItem "DoublePlasmaAmmo", 100
+	Player.StartItem "RailgunAmmo", 50
+	//Slot9
+	Player.StartItem "GrenadeAmmo", 1
+	Player.StartItem "AmmoDroper"
+	Species "Marines"
+}
+
+ACTOR ArcadeDoomer : Doomer
+{
+	Player.DisplayName "Arcade Rifle (No Reload)"
+	Player.StartItem "Rifle"
+	Player.StartItem "Melee_Attacks"
+	Player.StartItem "HandGrenades", 1
+	Player.StartItem "IsPlayer", 1
+	Player.StartItem "IsNOTTacticalClass", 1
+	Player.StartItem "NeverSelectedShotgun", 1
+	Player.StartItem "TurboReload", 1
+	Player.StartItem "Clip2", 30
+	//Slot2
+	Player.StartItem "BDPistolAmmo", 16
+	Player.StartItem "BDDualPistolAmmo", 32
+	Player.StartItem "BDSMGAmmo", 41
+	Player.StartItem "BDDualSMGAmmo", 82
+	Player.StartItem "MP40Ammo", 32
+	Player.StartItem "DualMP40Ammo", 64
+	Player.StartItem "RevolverAmmo", 6
+	//Slot3
+	Player.StartItem "ShotgunAmmo", 9
+	Player.StartItem "SSGAmmo", 2
+	Player.StartItem "AssaultShotgunAmmo", 20
+	//Slot4
+	Player.StartItem "RifleAmmo", 31
+	Player.StartItem "DoubleRifleAmmo", 62
+	//Slot5
+	Player.StartItem "RocketRounds", 6
+	Player.StartItem "GLAmmo", 1
+	//Slot6
+	Player.StartItem "PlasmaAmmo", 50
+	Player.StartItem "DoublePlasmaAmmo", 100
+	Player.StartItem "RailgunAmmo", 50
+	//Slot9
+	Player.StartItem "GrenadeAmmo", 1
+	Player.StartItem "AmmoDroper"
+	Species "Marines"
+}
+
+ACTOR ArcadeDoomer2 : Doomer
+{
+	Player.DisplayName "Arcade Pistol (No Reload)"
+	Player.StartItem "BrutalPistol"
+	Player.StartItem "Melee_Attacks"
+	Player.StartItem "HandGrenades", 1
+	Player.StartItem "IsPlayer", 1
+	Player.StartItem "IsNOTTacticalClass", 1
+	Player.StartItem "NeverSelectedShotgun", 1
+	Player.StartItem "TurboReload", 1
+	Player.StartItem "Clip1", 30
+	//Slot2
+	Player.StartItem "BDPistolAmmo", 16
+	Player.StartItem "BDDualPistolAmmo", 32
+	Player.StartItem "BDSMGAmmo", 41
+	Player.StartItem "BDDualSMGAmmo", 82
+	Player.StartItem "MP40Ammo", 32
+	Player.StartItem "DualMP40Ammo", 64
+	Player.StartItem "RevolverAmmo", 6
+	//Slot3
+	Player.StartItem "ShotgunAmmo", 9
+	Player.StartItem "SSGAmmo", 2
+	Player.StartItem "AssaultShotgunAmmo", 20
+	//Slot4
+	Player.StartItem "RifleAmmo", 31
+	Player.StartItem "DoubleRifleAmmo", 62
+	//Slot5
+	Player.StartItem "RocketRounds", 6
+	Player.StartItem "GLAmmo", 1
+	//Slot6
+	Player.StartItem "PlasmaAmmo", 50
+	Player.StartItem "DoublePlasmaAmmo", 100
+	Player.StartItem "RailgunAmmo", 50
+	//Slot9
+	Player.StartItem "GrenadeAmmo", 1
+	Player.StartItem "AmmoDroper"
+	Species "Marines"
+}
+
+ACTOR ArcadeDoomer3 : Doomer
+{
+	Player.DisplayName "Arcade Shotgun (No Reload)"
+	Player.StartItem "Shot_Gun"
+	Player.StartItem "Melee_Attacks"
+	Player.StartItem "HandGrenades", 1
+	Player.StartItem "IsPlayer", 1
+	Player.StartItem "IsNOTTacticalClass", 1
+	Player.StartItem "NeverSelectedShotgun", 1
+	Player.StartItem "TurboReload", 1
+	Player.StartItem "AmmoShell", 8
+	//Slot2
+	Player.StartItem "BDPistolAmmo", 16
+	Player.StartItem "BDDualPistolAmmo", 32
+	Player.StartItem "BDSMGAmmo", 41
+	Player.StartItem "BDDualSMGAmmo", 82
+	Player.StartItem "MP40Ammo", 32
+	Player.StartItem "DualMP40Ammo", 64
+	Player.StartItem "RevolverAmmo", 6
+	//Slot3
+	Player.StartItem "ShotgunAmmo", 9
+	Player.StartItem "SSGAmmo", 2
+	Player.StartItem "AssaultShotgunAmmo", 20
+	//Slot4
+	Player.StartItem "RifleAmmo", 31
+	Player.StartItem "DoubleRifleAmmo", 62
+	//Slot5
+	Player.StartItem "RocketRounds", 6
+	Player.StartItem "GLAmmo", 1
+	//Slot6
+	Player.StartItem "PlasmaAmmo", 50
+	Player.StartItem "DoublePlasmaAmmo", 100
+	Player.StartItem "RailgunAmmo", 50
+	//Slot9
+	Player.StartItem "GrenadeAmmo", 1
+	Player.StartItem "AmmoDroper"
 	Species "Marines"
 }
 
 ACTOR TacticalDoomer : Doomer
 {
-	Speed 1.0
-	Player.RunHealth 999
-	Player.DisplayName "Tactical (Sprints, Recoil)"
+	Player.ForwardMove 1.0,0.5
+	Player.DisplayName "Tactical (Sprinting + Recoil)"
 	Player.StartItem "Rifle"
 	Player.StartItem "BrutalPistol"
 	Player.StartItem "Melee_Attacks"
@@ -111,6 +246,7 @@ ACTOR TacticalDoomer : Doomer
 	Player.StartItem "Clip2", 30
 	//Slot2
 	Player.StartItem "BDPistolAmmo", 16
+	Player.StartItem "BDDualPistolAmmo", 32
 	Player.StartItem "BDSMGAmmo", 41
 	Player.StartItem "MP40Ammo", 32
 	Player.StartItem "RevolverAmmo", 6
@@ -129,15 +265,31 @@ ACTOR TacticalDoomer : Doomer
 	//Slot9
 	Player.StartItem "GrenadeAmmo", 1
 	Player.StartItem "AmmoDroper"
-	DamageFactor "KillMeBot", 0.0
 	Species "Marines"
-}	   
+}
+
+ACTOR Purist : Doomer
+{
+	Player.DisplayName "Purist (Classic Weapons)"
+	Player.StartItem "ClassicPistol"
+	Player.StartItem "ClassicFist"
+	Player.StartItem "Clip2", 30
+	Player.StartItem "IsPlayer", 1
+	Player.StartItem "IsPlayingAsPurist", 1
+	Player.StartItem "AmmoDroper"
+	Player.StartItem "IsNOTTacticalClass", 1
+	Player.StartItem "GrenadeAmmo", 1
+	Species "Marines"
+}
 
 actor ChaseCam2
 {
   height 0
   radius 0
   +NOGRAVITY
+  -SOLID
+  +NOBLOCKMAP
+  +NOCLIP
   states
   {
   Spawn:
@@ -161,7 +313,7 @@ ACTOR FootStep
     DamageType Trample
     Damage 0
 	+NODAMAGETHRUST
-	+BLOODLESSIMPACT 
+	+BLOODLESSIMPACT
 	+THRUACTORS
 	gravity 1
 	mass 1000
@@ -207,7 +359,7 @@ Actor Footstep6: FootStep //ACTUAL FOOTSTEP
             NULL A 0
 			TNT1 A 0 ACS_NamedExecuteAlways("BDCheckFloorType2")//Check Floortype
 			TNT1 A 0 ACS_NamedExecuteAlways("BDFootsteps")//Check Footsteps
-			
+
 			TNT1 A 2
 			TNT1 A 0 A_JumpIfInventory("FootStepDisabled", 1, "XDeath")
 			TNT1 A 0 A_Warp(AAPTR_target, 0, 0, 0, 0, WARPF_INTERPOLATE)
@@ -222,100 +374,99 @@ Actor Footstep6: FootStep //ACTUAL FOOTSTEP
 			TNT1 A 0 A_JumpIfInventory("IsOverSnow", 1, "Snow")
 			TNT1 A 0 A_JumpIfInventory("IsOverTile", 1, "Tile")
 			TNT1 A 0 A_JumpIfInventory("IsOverTile2", 1, "Tile2")
-			TNT1 A 0 A_JumpIfInventory("IsOverSlimy", 1, "Slimy")
+			TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "Slimy")
 			TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "XDeath")
 			TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "XDeath")
+			TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "XDeath")
 			TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "XDeath")
-			
+			TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "XDeath")
+
 			TNT1 A 0 A_playsound("floorhard")
 			NULL AAAA 1 A_Warp(AAPTR_target, 0, 0, 0, 0, WARPF_INTERPOLATE)
             Stop
-			
+
 		Dirt:
 			NULL A 0
 			TNT1 A 0 A_playsound("floordirt")
 			NULL AAAA 1 A_Warp(AAPTR_target, 0, 0, 0, 0, WARPF_INTERPOLATE)
 			Stop
-		
+
 		Gravel:
 			NULL A 0
 			TNT1 A 0 A_playsound("floorgravel")
 			NULL AAAA 1 A_Warp(AAPTR_target, 0, 0, 0, 0, WARPF_INTERPOLATE)
 			Stop
-			
-			
+
 		Sand:
 			TNT1 A 0
 			TNT1 A 0 A_playsound("floorgravel")
 			TNT1 A 0 A_CustomMissile ("SandCloudFootStep", 0, 0, random (0, 360), 2, random (10, 90))
 			NULL AAAA 1 A_Warp(AAPTR_target, 0, 0, 0, 0, WARPF_INTERPOLATE)
 			Stop
-			
+
 		Metal:
 			NULL A 0
 			TNT1 A 0 A_playsound("floormetal")
 			NULL AAAA 1 A_Warp(AAPTR_target, 0, 0, 0, 0, WARPF_INTERPOLATE)
 			Stop
-			
+
 		Metal2:
 			NULL A 0
 			TNT1 A 0 A_playsound("floormetal2")
 			NULL AAAA 1 A_Warp(AAPTR_target, 0, 0, 0, 0, WARPF_INTERPOLATE)
 			Stop
-			
+
 		Rock:
 			NULL A 0
 			TNT1 A 0 A_playsound("floorrock")
 			NULL AAAA 1 A_Warp(AAPTR_target, 0, 0, 0, 0, WARPF_INTERPOLATE)
 			Stop
-			
+
 		Wood:
 			NULL A 0
 			TNT1 A 0 A_playsound("floorwood")
 			NULL AAAA 1 A_Warp(AAPTR_target, 0, 0, 0, 0, WARPF_INTERPOLATE)
-			Stop	
-			
+			Stop
+
 		Snow:
 			NULL A 0
 			TNT1 A 0 A_playsound("floorsnow")
 			NULL AAAA 1 A_Warp(AAPTR_target, 0, 0, 0, 0, WARPF_INTERPOLATE)
-			Stop	
-			
+			Stop
+
 		Tile:
 			NULL A 0
 			TNT1 A 0 A_playsound("floortile")
 			NULL AAAA 1 A_Warp(AAPTR_target, 0, 0, 0, 0, WARPF_INTERPOLATE)
-			Stop	
-			
+			Stop
+
 		Tile2:
 			NULL A 0
 			TNT1 A 0 A_playsound("floortile2")
 			NULL AAAA 1 A_Warp(AAPTR_target, 0, 0, 0, 0, WARPF_INTERPOLATE)
-			Stop		
-			
+			Stop
+
 		Slimy:
 			NULL A 0
 			TNT1 A 0 A_playsound("floorSlimy")
 			NULL AAAA 1 A_Warp(AAPTR_target, 0, 0, 0, 0, WARPF_INTERPOLATE)
-			Stop		
-		
+			Stop
+
 		XDeath:
             NULL A 1
 			NULL A 1
 			NULL A 6
-            Stop	
-			
+            Stop
+
 			}
 }
-
-
 
 Actor Footstep8: Footstep6 //Fake footstep. Actually just the player's weight used to damage enemies when standing over them.
 {
     Damage (random (4, 4))
 	-EXPLODEONWATER
 	-DOOMBOUNCE
-	
+
 	Damagetype "Minor"
 	States
 	{
@@ -328,7 +479,7 @@ Actor Footstep8: Footstep6 //Fake footstep. Actually just the player's weight us
             NULL A 0
 			TNT1 A 2
             Stop
-		}	
+		}
 }
 
 Actor Footstep91: FootStep
@@ -340,7 +491,6 @@ Actor Footstep91: FootStep
     -CLIENTSIDEONLY
 	-DONTSPLASH
 }
-
 
 Actor Footstep6NoSplash: FootStep6
 {
@@ -380,12 +530,14 @@ Actor FootstepStrong: Footstep6 //Large footstep when you land from a jump.
 				TNT1 A 0 A_SpawnItem("LargeMassWaterImpact")
 				NULL A 0 A_Explode(60,10,0, 0, 10)
 				TNT1 A 0 ACS_NamedExecuteAlways("BDCheckFloorType2")
-				
+
 				TNT1 A 2
 				TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "XDeath2")
 				TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "XDeath2")
+				TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "XDeath2")
 				TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "XDeath2")
-				
+				TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "XDeath2")
+
 				TNT1 A 0 A_JumpIfInventory("IsOverDirt", 1, "Dirt")
 				TNT1 A 0 A_JumpIfInventory("IsOverGravel", 1, "Gravel")
 				TNT1 A 0 A_JumpIfInventory("IsOverMetal", 1, "Metal")
@@ -395,12 +547,12 @@ Actor FootstepStrong: Footstep6 //Large footstep when you land from a jump.
 				TNT1 A 0 A_JumpIfInventory("IsOverSnow", 1, "Snow")
 				TNT1 A 0 A_JumpIfInventory("IsOverTile", 1, "Tile")
 				TNT1 A 0 A_JumpIfInventory("IsOverTile2", 1, "Tile2")
-				TNT1 A 0 A_JumpIfInventory("IsOverSlimy", 1, "Slimy")
+				TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "Slimy")
 				TNT1 A 0 A_AlertMonsters(200, AMF_TARGETNONPLAYER)
 				TNT1 A 0 A_playsound("LANDS1", 8)
 				NULL A 6
 				Stop
-				
+
 		Dirt:
 			NULL A 0
 			TNT1 A 0 A_playsound("floordirt")
@@ -408,7 +560,7 @@ Actor FootstepStrong: Footstep6 //Large footstep when you land from a jump.
 			TNT1 AA 0 A_CustomMissile ("BrownCloudSmall", 0, 0, random (0, 360), 2, random (10, 40))
 			NULL A 1
 			Stop
-		
+
 		Gravel:
 			NULL A 0
 			TNT1 A 0 A_playsound("floorgravel")
@@ -419,22 +571,22 @@ Actor FootstepStrong: Footstep6 //Large footstep when you land from a jump.
 			TNT1 A 0 A_playsound("floorgrav03", 3)
 			TNT1 A 0 A_playsound("floorgrav04", 4)
 			NULL A 1
-			Stop	
-				
+			Stop
+
 		Metal:
 			NULL A 0
 			TNT1 A 0 A_AlertMonsters(500, AMF_TARGETNONPLAYER)
 			TNT1 A 0 A_playsound("FHVMTL", 1)
 			NULL A 1
 			Stop
-			
+
 		Metal2:
 			NULL A 0
 			TNT1 A 0 A_AlertMonsters(500, AMF_TARGETNONPLAYER)
 			TNT1 A 0 A_playsound("FHVMTL", 1)
 			NULL A 1
 			Stop
-			
+
 		Rock:
 			NULL A 0
 			TNT1 A 0 A_AlertMonsters(150, AMF_TARGETNONPLAYER)
@@ -445,45 +597,42 @@ Actor FootstepStrong: Footstep6 //Large footstep when you land from a jump.
 			TNT1 A 0 A_playsound("floorrock04", 4)
 			NULL A 1
 			Stop
-			
+
 		Wood:
 			NULL A 0
 			TNT1 A 0 A_AlertMonsters(300, AMF_TARGETNONPLAYER)
 			TNT1 A 0 A_playsound("floorwood")
 			NULL A 1
-			Stop	
-			
+			Stop
+
 		Snow:
 			NULL A 0
 			TNT1 A 0 A_AlertMonsters(150, AMF_TARGETNONPLAYER)
 			TNT1 A 0 A_playsound("floorsnow")
 			NULL A 1
-			Stop	
-			
+			Stop
+
 		Tile:
 			NULL A 0
 			TNT1 A 0 A_AlertMonsters(200, AMF_TARGETNONPLAYER)
 			TNT1 A 0 A_playsound("floortile")
 			NULL A 1
-			Stop	
-			
+			Stop
+
 		Tile2:
 			NULL A 0
 			TNT1 A 0 A_AlertMonsters(200, AMF_TARGETNONPLAYER)
 			TNT1 A 0 A_playsound("floortile2")
 			NULL A 1
 			Stop
-		
-		
+
 		XDeath2:
             NULL A 1
 			NULL A 1
 			NULL A 6
-            Stop	
+            Stop
          }
 }
-
-
 
 Actor HeavyFootSteps: FootStep
 {
@@ -505,11 +654,8 @@ Actor HeavyFootSteps: FootStep
 			tnt1 A 1
 			NULL A 1 A_Explode(600,10,0)
 			stop
-         }	
+         }
 }
-
-
-
 
 Actor PlayerBaronTrample: FootStep
 {
@@ -532,9 +678,8 @@ Actor PlayerBaronTrample: FootStep
 			tnt1 A 1
 			NULL A 1 A_Explode(80,30,0)
 			stop
-         }	
+         }
 }
-
 
 Actor HeavyFootSteps32: FootStep
 {
@@ -556,7 +701,7 @@ Actor HeavyFootSteps32: FootStep
 			tnt1 A 1
 			NULL A 1 A_Explode(900,10,0)
 			stop
-         }	
+         }
 }
 
 ACTOR Bad : PowerupGiver 2305
@@ -575,17 +720,8 @@ ACTOR Bad : PowerupGiver 2305
    Spawn:
       NULL A 1
       Stop
-   } 
-} 
-
-
-
-
-
-
-
-
-
+   }
+}
 
 Actor TnkStep: FootStep
 {
@@ -616,12 +752,14 @@ Actor TnkStep: FootStep
 			TNT1 A 0 A_JumpIfInventory("IsOverBlood", 1, "Blood")
 			TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "Water")
 			TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "Nukage")
+			TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "Purple")
 			TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "XDeath")
+			TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "XDeath")
 			TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "Slime")
 			TNT1 A 1
 			TNT1 A 6
             Stop
-	
+
 		Sand:
 			TNT1 A 0
 			TNT1 A 0 A_CustomMissile ("SandDustSmall", 32, -32, random (0, 360), 2, random (20, 150))
@@ -631,9 +769,7 @@ Actor TnkStep: FootStep
 			NULL A 300
 			NULL AAAA 50 A_FadeOut(0.05)
 			Stop
-			
-			
-			
+
 		Dirt:
 			TNT1 A 0
 			//TNT1 A 0 A_CustomMissile ("MudDustFromTrail", 32, -32, random (0, 360), 2, random (20, 150))
@@ -642,58 +778,51 @@ Actor TnkStep: FootStep
 			TNT1 A 0 A_CustomMissile ("BrownCloudShort", 2, -32, random (0, 360), 2, random (10, 90))
 			NULL A 300
 			NULL AAAA 50 A_FadeOut(0.05)
-			Stop	
-			
-			
+			Stop
+
 		Water:
 			TNT1 A 0
 			TNT1 A 0 A_PlaySound("bigspl1")
 			TNT1 A 0 A_CustomMissile ("BlueLiquidParticleX", 32, 32, random (0, 360), 2, random (10, 90))
 			TNT1 A 0 A_CustomMissile ("BlueLiquidParticleX", 32, -32, random (0, 360), 2, random (10, 90))
 			Stop
-			
-			
+
 		Blood:
 			TNT1 A 0
 			TNT1 A 0 A_PlaySound("bigspl1")
 			TNT1 A 0 A_CustomMissile ("BloodParticleX", 32, 32, random (0, 360), 2, random (10, 90))
 			TNT1 A 0 A_CustomMissile ("BloodParticleX", 32, -32, random (0, 360), 2, random (10, 90))
-			Stop	
-			
-			
+			Stop
+
 		Nukage:
 			TNT1 A 0
 			TNT1 A 0 A_PlaySound("bigspl1")
 			TNT1 A 0 A_CustomMissile ("GreenLiquidParticleX", 32, 32, random (0, 360), 2, random (10, 90))
 			TNT1 A 0 A_CustomMissile ("GreenLiquidParticleX", 32, -32, random (0, 360), 2, random (10, 90))
 			Stop
-			
-			
+
+		Purple:
+			TNT1 A 0
+			TNT1 A 0 A_PlaySound("bigspl1")
+			TNT1 A 0 A_CustomMissile ("PurpleLiquidParticleX", 32, 32, random (0, 360), 2, random (10, 90))
+			TNT1 A 0 A_CustomMissile ("PurpleLiquidParticleX", 32, -32, random (0, 360), 2, random (10, 90))
+			Stop
+
 		Slime:
 			TNT1 A 0
 			TNT1 A 0 A_PlaySound("bigspl1")
 			TNT1 A 0 A_CustomMissile ("BrownLiquidParticleX", 32, 32, random (0, 360), 2, random (10, 90))
 			TNT1 A 0 A_CustomMissile ("BrownLiquidParticleX", 32, -32, random (0, 360), 2, random (10, 90))
-			Stop	
-		
+			Stop
+
 		XDeath:
             TNT1 A 1
 			TNT1 A 1
 			TNT1 A 6
-            Stop	
-			
+            Stop
+
 			}
 }
-
-
-
-
-
-
-
-
-
-
 
 Actor Headkicking
 {
@@ -701,7 +830,7 @@ PROJECTILE
 +MISSILE
 +FORCEXYBILLBOARD +DONTSPLASH
 +THRUACTORS +NOGRAVITY
-+NOCLIP +NOBLOOD +NOPAIN 
++NOCLIP +NOBLOOD +NOPAIN
 +CLIENTSIDEONLY
 +PAINLESS
 damage 0
@@ -717,14 +846,12 @@ states
 		TNT1 A 0 A_JumpIfInTargetInventory("Accelerate", 1, "kick")
 		TNT1 A 1
 		Loop
-		
-	Kick:	
+
+	Kick:
 		TNT1 A 0 A_Warp(AAPTR_TARGET, 0, 0, 0, 0)
 		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		Goto Spawn
 }}
-
-
 
 ACTOR Headkicker
 {
@@ -742,7 +869,7 @@ ACTOR Headkicker
     DamageType Headkick
     Damage 0
 	+NODAMAGETHRUST
-	+BLOODLESSIMPACT 
+	+BLOODLESSIMPACT
 	+NOPAIN
 	+THRUACTORS
 	gravity 1
@@ -759,8 +886,6 @@ ACTOR Headkicker
             Stop
          }
 }
-
-
 
 Actor BDBodyThud
 {
@@ -779,13 +904,15 @@ Actor BDBodyThud
             NULL A 0
 			TNT1 A 0 ACS_NamedExecuteAlways("BDCheckFloorType2")//Check Floortype
 			//TNT1 A 0 ACS_NamedExecuteAlways("BDFootsteps")//Check Footsteps
-			
+
 			TNT1 A 2
 			TNT1 A 0 A_JumpIfInventory("FootStepDisabled", 1, "XDeath")
 			TNT1 A 0 A_PlaySound("BodyThud", 1)
 			TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "Water")
 			TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "Water")
+			TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "Water")
 			TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "Water")
+			TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "Water")
 			TNT1 A 0 A_JumpIfInventory("IsOverDirt", 1, "Dirt")
 			TNT1 A 0 A_JumpIfInventory("IsOverSand", 1, "Sand")
 			TNT1 A 0 A_JumpIfInventory("IsOverGravel", 1, "Gravel")
@@ -796,84 +923,83 @@ Actor BDBodyThud
 			TNT1 A 0 A_JumpIfInventory("IsOverSnow", 1, "Snow")
 			TNT1 A 0 A_JumpIfInventory("IsOverTile", 1, "Tile")
 			TNT1 A 0 A_JumpIfInventory("IsOverTile2", 1, "Tile2")
-			TNT1 A 0 A_JumpIfInventory("IsOverSlimy", 1, "Slimy")
+			TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "Slimy")
 			NULL A 1
 			NULL A 6
             Stop
-			
+
 		Dirt:
 			NULL A 0
 			TNT1 A 0 A_playsound("floordirt")
 			NULL A 1
 			Stop
-		
+
 		Gravel:
 			NULL A 0
 			TNT1 A 0 A_playsound("floorgravel")
 			NULL A 1
 			Stop
-			
-			
+
 		Sand:
 			TNT1 A 0
 			TNT1 A 0 A_playsound("floorgravel")
 			TNT1 A 0 A_CustomMissile ("SandCloudSmall", 0, 0, random (0, 360), 2, random (10, 90))
 			Stop
-			
+
 		Metal:
 			NULL A 0
 			TNT1 A 0 A_playsound("floormetal")
 			NULL A 1
 			Stop
-			
+
 		Metal2:
 			NULL A 0
 			TNT1 A 0 A_playsound("floormetal2")
 			NULL A 1
 			Stop
-			
+
 		Rock:
 			NULL A 0
 			TNT1 A 0 A_playsound("floorrock")
 			NULL A 1
 			Stop
-			
+
 		Wood:
 			NULL A 0
 			TNT1 A 0 A_playsound("floorwood")
 			NULL A 1
-			Stop	
-			
+			Stop
+
 		Snow:
 			NULL A 0
 			TNT1 A 0 A_playsound("floorsnow")
 			NULL A 1
-			Stop	
-			
+			Stop
+
 		Tile:
 			NULL A 0
 			TNT1 A 0 A_playsound("floortile")
 			NULL A 1
-			Stop	
-			
+			Stop
+
 		Tile2:
 			NULL A 0
 			TNT1 A 0 A_playsound("floortile2")
 			NULL A 1
-			Stop		
-			
+			Stop
+
 		Slimy:
 			NULL A 0
 			TNT1 A 0 A_playsound("floorSlimy")
 			NULL A 1
-			Stop		
-		
+			Stop
+
 		XDeath:
             NULL A 1
 			NULL A 1
 			NULL A 6
-            Stop	
-			
+            Stop
+
 		Water:
 			TNT1 A 0
 			TNT1 A 0 A_AlertMonsters(500, AMF_TARGETNONPLAYER)

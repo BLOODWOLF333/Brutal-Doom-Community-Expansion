@@ -1,0 +1,307 @@
+//This is just a joke weapon. There is no way to obtain it in-game without cheat codes.
+//I would strongly recommend to not have headphones when using this weapon.
+
+ACTOR DSweap : BrutalWeapon
+{
+	Obituary "%o was choped down by %k's Dragonslayer."
+    AttackSound "None"
+    Inventory.PickupSound "AXEDRAW"
+	Inventory.Pickupmessage "You got something that looks too big to be called a sword!"
+    +WEAPON.NOAUTOAIM
+    +WEAPON.NOAUTOFIRE
+    +FORCEXYBILLBOARD
+	damagetype Saw
+	+WEAPON.NOALERT
+	+WEAPON.AXEBLOOD
+	+WEAPON.CHEATNOTWEAPON
+	VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
+	Weapon.SelectionOrder 20
+	Scale 0.9
+	Tag "Dragonslayer"
+	States
+	{
+
+	Ready3:
+	Ready:
+        TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_Giveinventory("HasCutingWeapon",1)
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		DSLA A 1 A_WeaponReady
+		Loop
+
+	Select:
+		TNT1 A 0 A_Giveinventory("GoSpecial",1)
+		TNT1 A 0 A_Takeinventory("FistsSelected",1)
+		TNT1 A 0 A_Takeinventory("SawSelected",1)
+		TNT1 A 0 A_Takeinventory("ShotgunSelected",1)
+		TNT1 A 0 A_Takeinventory("SSGSelected",1)
+		TNT1 A 0 A_Takeinventory("MinigunSelected",1)
+		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RocketLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("GrenadeLauncherSelected",1)
+		TNT1 A 0 A_Giveinventory("HasCutingWeapon",1)
+		TNT1 A 0 A_Takeinventory("BFGSelected",1)
+		TNT1 A 0 A_Takeinventory("BFG10kSelected",1)
+		TNT1 A 0 A_Takeinventory("RailGunSelected",1)
+		TNT1 A 0 A_Takeinventory("SubMachineGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RevenantLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("LostSoulSelected",1)
+		TNT1 A 0 A_Takeinventory("FlameCannonSelected",1)
+		TNT1 A 0 A_Takeinventory("HasBarrel",1)
+		DSLA A 1
+		DSLA AAAAAA 1 A_Raise
+		Goto Ready
+
+	Deselect:
+		DSLA A 1 A_Lower
+		Loop
+
+    Fire:
+		TNT1 A 0
+        DSLC ABCD 1
+	Hold:
+		DSLA B 1 Offset(-32, 32)
+		TNT1 A 0 A_Refire
+	    TNT1 A 0 A_PlaySound("weapons/gswing", 1)
+		DSLA C 1
+		TNT1 A 0 A_FireCustomMissile("DSAttack", 5, 40, 0, 0, 2)
+		TNT1 A 0 A_FireCustomMissile("DSAttack2", 5, 40, 0, 0, 2)
+		TNT1 A 0 A_FireCustomMissile("DSAttack2", 25, 40, 0, 0, 2)
+		TNT1 A 0 A_FireCustomMissile("DSAttack2", -15, 40, 0, 0, 2)
+		TNT1 A 0 A_FireCustomMissile("DSAttack", 20, 0,40, 0, 2)
+		TNT1 A 0 A_FireCustomMissile("DSAttack", 35, 0,40, 0, 2)
+		TNT1 A 0 A_FireCustomMissile("DSAttack", 50,0, 40, 0, 2)
+		TNT1 A 0 A_FireCustomMissile("DSAttack", -10, 0,40, 0, 2)
+		TNT1 A 0 A_FireCustomMissile("DSAttack", -25, 0,40, 0, 2)
+		TNT1 A 0 A_FireCustomMissile("DSAttack", -40, 0, 40, 0, 2)
+		DSLA C 1 Offset(-50, 33)
+		DSLA C 1 Offset(-120, 36)
+		DSLA C 1 Offset(-260, 40)
+		DSLA C 1 Offset(-320, 49)
+		DSLA C 1 Offset(-490, 59)
+		DSLA C 1 Offset(-620, 72)
+		TNT1 A 0 A_Recoil(-7)
+		TNT1 A 0 A_TakeInventory("FiredPrimary", 1)
+		TNT1 AA 1 A_SetAngle(angle+8)
+		TNT1 AA 1 A_SetAngle(angle+4)
+		TNT1 AA 1 A_SetAngle(angle+2)
+		TNT1 A 0 A_TakeInventory("FiredPrimary", 1)
+		TNT1 A 5
+		TNT1 AAAAAAAA 1 A_JumpIfInventory("FiredPrimary", 1, "Attack2")
+		DSLC D 1 Offset(-64, 128)
+		DSLC D 1 Offset(-32, 64)
+		DSLC DCBA 1 A_SetAngle(angle-2)
+		Goto Ready
+
+	Attack2:
+		DSLA E 1
+		TNT1 A 0 A_PlaySound("weapons/gswing", 1)
+		TNT1 A 0 A_FireCustomMissile("DSAttack", -5, 0, -40, 0, 2)
+		TNT1 A 0 A_FireCustomMissile("DSAttack2", -5, 0, -40, 0, 2)
+		TNT1 A 0 A_FireCustomMissile("DSAttack2", 15, 0, -40, 0, 2)
+		TNT1 A 0 A_FireCustomMissile("DSAttack2", -22, 0, -40, 0, 2)
+		TNT1 A 0 A_FireCustomMissile("DSAttack", 10, 0,-40, 0, 2)
+		TNT1 A 0 A_FireCustomMissile("DSAttack", 25, 0,-40, 0, 2)
+		TNT1 A 0 A_FireCustomMissile("DSAttack", 40,0, -40, 0, 2)
+		TNT1 A 0 A_FireCustomMissile("DSAttack", -20, 0,-40, 0, 2)
+		TNT1 A 0 A_FireCustomMissile("DSAttack", -35, 0,-40, 0, 2)
+		TNT1 A 0 A_FireCustomMissile("DSAttack", -50, 0, -40, 0, 2)
+
+		DSLA E 1 Offset(50, 33)
+		DSLA E 1 Offset(120, 36)
+		DSLA E 1 Offset(260, 40)
+		DSLA E 1 Offset(320, 49)
+		DSLA E 1 Offset(490, 59)
+		DSLA E 1 Offset(620, 72)
+		TNT1 A 0 A_Recoil(-7)
+		TNT1 AA 1 A_SetAngle(angle-8)
+		TNT1 AA 1 A_SetAngle(angle-4)
+		TNT1 AA 1 A_SetAngle(angle-2)
+		DSLC D 1 Offset(64, 128)
+		DSLC D 1 Offset(32, 64)
+		DSLC DCBA 1 A_SetAngle(angle+2)
+		Goto Ready
+
+	Spawn:
+		DSLC P 1
+		DSLC P -1
+		Stop
+
+
+
+	}
+}
+
+
+
+
+ACTOR DSAttack: FastProjectile
+{
+	Radius 24
+	Height 2
+	DamageType Cut
+	+MISSILE
+	+FORCEXYBILLBOARD
+	+FORCERADIUSDMG
+	+BLOODSPLATTER
+	RenderStyle Add
+	Alpha 0.6
+    Damage (random(200,200))
+    Speed 60
+	SeeSound "none"
+	DeathSound "none"
+	decal "SawHorizontal"
+	Scale 0.01
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 BRIGHT
+		Stop
+
+	Death:
+				TNT1 A 0
+				TNT1 A 0
+				TNT1 A 0 Radius_Quake (4, 6, 0, 5, 0)//(intensity, duration, damrad, tremrad, tid)
+				TNT1 A 0 A_SpawnItem ("Sparks", 0)
+				TNT1 A 0 A_Explode(10, 24, 0)
+				TNT1 A 0 A_PlaySound("BRKCLANG", 6)
+				TNT1 A 0 A_ALertMonsters(1200)
+				TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (0, 360), 2, random (30, 170))
+				TNT1 A 0 A_CheckFloor("SpawnFloor")
+				TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("SparkX", 2, 0, random (0, 360), 2, random (30, 170))
+				TNT1 A 0 A_JumpIfInTargetInventory("PowerStrength", 1, "Berserk")
+				TNT1 A 10
+				Stop
+
+
+	SpawnFloor:
+	TNT1 A 0
+	AXEG A 0 Acs_namedexecutealways("BDCheckFloorType", 0, 0, 0, 0)
+	TNT1 A 2
+	TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "SpawnWater")
+	TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "SpawnNukage")
+	TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "SpawnSlime")
+	TNT1 A 0 A_JumpIfInventory("IsOverBlood", 1, "SpawnBlood")
+	TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "SpawnLava")
+	TNT1 A 0 A_JumpIfInventory("IsOverGrass", 1, "SpawnDirt")
+	TNT1 A 0 A_JumpIfInventory("IsOverSand", 1, "SpawnSand")
+
+	PUFF A 0 bright A_PlaySound("ricochet/hit")
+	TNT1 A 0 A_SpawnItem ("YellowFlareSmall", 0)
+	TNT1 A 0 A_SetScale(-0.6)
+    TNT1 A 0 A_Jump (132, 15)
+    FX58 ABCD 1 BRIGHT
+	TNT1 A 0 A_CustomMissile("OldschoolRocketSmokeTrail2Bigger", 2, 0, random (0, 360), 2, random (0, 360))
+	FX58 EFGHIJ 1 bright
+    Stop
+    TNT1 AAAAA 0
+    FX57 ABCD 1 BRIGHT
+	TNT1 A 0 A_CustomMissile("OldschoolRocketSmokeTrail2Bigger", 2, 0, random (0, 360), 2, random (0, 360))
+	FX57 EFGHIJ 1 bright
+    stop
+
+	SpawnWater:
+	TNT1 A 0
+	TNT1 AAAAA 0 A_CustomMissile ("WaterParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAAA 0 A_CustomMissile ("WaterParticleXSuperFast", 24, 0, random (0, 360), 2, random (30, 160))
+	TNT1 A 0 A_SpawnItem("WaterSplashWaves")
+	TNT1 A 0 A_SetScale(0.5, 0.5)
+	SPHW ABCDE 3
+	Stop
+
+	SpawnSlime:
+	TNT1 A 0
+	TNT1 AAAAA 0 A_CustomMissile ("SLimeParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAAA 0 A_CustomMissile ("SlimeParticleXFAster", 24, 0, random (0, 360), 2, random (30, 160))
+	TNT1 A 0 A_SpawnItem("SlimeSplashWaves")
+	TNT1 A 0 A_SetScale(0.5, 0.5)
+	SPHB ABCDE 3
+	Stop
+
+
+	SpawnNukage:
+	TNT1 A 0
+	TNT1 AAAAA 0 A_CustomMissile ("nukageParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAAA 0 A_CustomMissile ("nukageParticleXFAster", 24, 0, random (0, 360), 2, random (30, 160))
+	TNT1 A 0 A_SpawnItem("NukageSplashWaves")
+	TNT1 A 0 A_SetScale(0.5, 0.5)
+	SPHG ABCDE 3
+	Stop
+
+	SpawnBlood:
+	TNT1 A 0
+	TNT1 AAAAA 0 A_CustomMissile ("BloodParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAAA 0 A_CustomMissile ("BloodParticleXFAster", 24, 0, random (0, 360), 2, random (30, 160))
+	TNT1 A 0 A_SpawnItem("BloodSplashWaves")
+	TNT1 A 0 A_SetScale(0.5, 0.5)
+	SPHR ABCDE 3
+	Stop
+
+	SpawnLava:
+	TNT1 A 0
+	TNT1 A 0 A_CustomMissile ("OldschoolRocketSmokeTrailDarker", 12, 0, random (160, 210), 2, random (10, 90))
+	TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-5, 5), random (-5, 5))
+	TNT1 AAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 10, 0, random (0, 180), 2, random (10, 90))
+	TNT1 A 0 A_SetScale(0.5, 0.5)
+	INFE ABCDEFGHIJKLMNOPQR 1 BRIGHT
+	INFE ST 1 BRIGHT A_CustomMissile ("OldschoolRocketSmokeTrailDarker", 32, 0, random (160, 210), 2, random (10, 90))
+	TNT1 AAA 4 A_CustomMissile ("OldschoolRocketSmokeTrailDarker", 14, 0, random (160, 210), 2, random (10, 90))
+	Stop
+
+
+	SpawnDirt:
+	TNT1 A 0
+	TNT1 A 0 A_CustomMissile ("BrownCloudSmallLong", 0, 0, random (0, 360), 2, random (10, 150))
+	TNT1 AA 0 A_CustomMissile ("DirtChunk3", 0, 0, random (0, 360), 2, random (30, 150))
+	TNT1 AA 0 A_CustomMissile ("DirtChunk4", 0, 0, random (0, 360), 2, random (30, 150))
+	TNT1 A 0 A_CustomMissile ("MudDustSmall", 4, 0, random (0, 360), 2, random (30, 150))
+	TNT1 A 0 A_SpawnItem("DirtRicochet")
+	Stop
+
+
+	SpawnSand:
+	TNT1 A 0
+	TNT1 A 0 A_CustomMissile ("SandCloudSmallLong", 0, 0, random (0, 360), 2, random (10, 90))
+	TNT1 A 0 A_CustomMissile ("SandCloudSmall", 0, 0, random (0, 360), 2, random (10, 90))
+	TNT1 A 0 A_CustomMissile ("SandDustSmall", 4, 0, random (0, 360), 2, random (30, 150))
+	Stop
+
+
+
+
+	XDeath:
+	Melee:
+	Crash:
+			TNT1 A 0
+			PUFF A 0 A_PlaySound("player/cyborg/fist", 3)
+			TNT1 A 0 A_PlaySound("AXEHIT", 6)
+			TNT1 A 0 A_PlaySound("B2KCLANG", 1)
+			TNT1 A 0 A_SpawnItemEx ("PLOFT2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+			TNT1 A 0 Radius_Quake (2, 6, 0, 5, 0)//(intensity, duration, damrad, tremrad, tid)
+			TNT1 A 0 A_JumpIfInTargetInventory("PowerStrength", 1, "Berserk")
+			TNT1 A 10
+			Stop
+
+	Berserk:
+		TNT1 A 1
+		TNT1 A 0 A_explode(90, 5, 0)
+		TNT1 A 10
+		Stop
+
+	}
+}
+
+
+
+Actor DSAttack2: DSAttack
+{
++RIPPER
+-BLOODSPLATTER
++NOBLOOD
+Damagetype "Extreme"
+Damage (random(5,5))
+}

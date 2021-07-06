@@ -3,36 +3,43 @@
 #library "DemonMorph"
 #include "zcommon.acs"
 
-World Int 1: arrayHealth[];
-World Int 2: arrayArmor[];
-World Str 3: arrayArmorClass[];
+World Int 16: arrayHealth[];
+World Int 17: arrayArmor[];
+World Str 18: arrayArmorClass[];
 
 Script "BaronMorph" (VOID)
 {
+	Int Countdown;
 	arrayHealth[PlayerNumber()] = GetActorProperty(0, APROP_HEALTH);
 	arrayArmor[PlayerNumber()] = CheckInventory("BasicArmor");
 	arrayArmorClass[PlayerNumber()] = GetArmorInfo(ARMORINFO_CLASSNAME);
 	//Log(s:"Health= ", i: arrayHealth[PlayerNumber()]);
 	//Log(s:"Armor#= ", i: arrayArmor[PlayerNumber()]);
 	//Log(s:"ArmorClass= ", s: arrayArmorClass[PlayerNumber()]);
-	
-	GiveInventory("DRBPatch", 1);
+
+	GiveInventory("DemonRuneBaron", 1);
+	GiveInventory("DemonSight", 1);
 	GiveInventory("MorphToken", 1);
-	
-	While (CheckActorClass(PlayerNumber(), "BaronPlayerPatch"))
+
+	While (CheckActorClass(PlayerNumber(), "BaronPlayer"))
 	{
-			Delay(5);
+			Delay(35);
+			Countdown++;
+		If(Countdown == 30)
+		{
+			GiveInventory("CeaseMorph",1);
+		}
 	}
-	
+
 	SetActorProperty(PlayerNumber(), APROP_HEALTH, arrayHealth[PlayerNumber()]);
 	//Log(s:"Returned Health= ", i:GetActorProperty(PlayerNumber(), APROP_HEALTH));
-	
+
 	if (arrayArmorClass[PlayerNumber()] != "None")
 	{
 		GiveInventory(arrayArmorClass[PlayerNumber()], 1);
 		//Log(s:"Returned ArmorClass= ", s:GetArmorInfo(ARMORINFO_CLASSNAME));
 		//Log(s:"Returned InitialArmor#= ", i:CheckInventory("BasicArmor"));
-		
+
 		if (CheckInventory("BasicArmor") > arrayArmor[PlayerNumber()])
 		{
 			While(CheckInventory("BasicArmor") > arrayArmor[PlayerNumber()])
@@ -50,35 +57,43 @@ Script "BaronMorph" (VOID)
 	}
 	TakeInventory("MorphToken", 1);
 	TakeInventory("CeaseMorph", 1);
-	Delay(2);
+	TakeInventory("DemonSight", 1);
+	Delay(4);
 }
 
 Script "RevenantMorph" (VOID)
 {
+	Int Countdown;
 	arrayHealth[PlayerNumber()] = GetActorProperty(0, APROP_HEALTH);
 	arrayArmor[PlayerNumber()] = CheckInventory("BasicArmor");
 	arrayArmorClass[PlayerNumber()] = GetArmorInfo(ARMORINFO_CLASSNAME);
 	//Log(s:"Health= ", i: arrayHealth[PlayerNumber()]);
 	//Log(s:"Armor#= ", i: arrayArmor[PlayerNumber()]);
 	//Log(s:"ArmorClass= ", s: arrayArmorClass[PlayerNumber()]);
-	
-	GiveInventory("DRRPatch", 1);
+
+	GiveInventory("DemonRuneRevenant", 1);
+	GiveInventory("DemonSight", 1);
 	GiveInventory("MorphToken", 1);
-	
-	While (CheckActorClass(PlayerNumber(), "RevenantPlayerPatch"))
+
+	While (CheckActorClass(PlayerNumber(), "RevenantPlayer"))
 	{
-			Delay(5);
+			Delay(35);
+			Countdown++;
+		If(Countdown == 30)
+		{
+			GiveInventory("CeaseMorph",1);
+		}
 	}
-	
+
 	SetActorProperty(PlayerNumber(), APROP_HEALTH, arrayHealth[PlayerNumber()]);
 	//Log(s:"Returned Health= ", i:GetActorProperty(PlayerNumber(), APROP_HEALTH));
-	
+
 	if (arrayArmorClass[PlayerNumber()] != "None")
 	{
 		GiveInventory(arrayArmorClass[PlayerNumber()], 1);
 		//Log(s:"Returned ArmorClass= ", s:GetArmorInfo(ARMORINFO_CLASSNAME));
 		//Log(s:"Returned InitialArmor#= ", i:CheckInventory("BasicArmor"));
-		
+
 		if (CheckInventory("BasicArmor") > arrayArmor[PlayerNumber()])
 		{
 			While(CheckInventory("BasicArmor") > arrayArmor[PlayerNumber()])
@@ -96,7 +111,8 @@ Script "RevenantMorph" (VOID)
 	}
 	TakeInventory("MorphToken", 1);
 	TakeInventory("CeaseMorph", 1);
-	Delay(2);
+	TakeInventory("DemonSight", 1);
+	Delay(4);
 }
 
 Script "MorphedLevelChange" Enter
@@ -105,13 +121,13 @@ Script "MorphedLevelChange" Enter
 	{
 		SetActorProperty(PlayerNumber(), APROP_HEALTH, arrayHealth[PlayerNumber()]);
 		//Log(s:"Returned Health= ", i:GetActorProperty(PlayerNumber(), APROP_HEALTH));
-		
+
 		if (arrayArmorClass[PlayerNumber()] != "None")
 		{
 			GiveInventory(arrayArmorClass[PlayerNumber()], 1);
 			//Log(s:"Returned ArmorClass= ", s:GetArmorInfo(ARMORINFO_CLASSNAME));
 			//Log(s:"Returned InitialArmor#= ", i:CheckInventory("BasicArmor"));
-			
+
 			if (CheckInventory("BasicArmor") > arrayArmor[PlayerNumber()])
 			{
 				While(CheckInventory("BasicArmor") > arrayArmor[PlayerNumber()])
@@ -129,6 +145,7 @@ Script "MorphedLevelChange" Enter
 		}
 		TakeInventory("MorphToken", 1);
 		TakeInventory("CeaseMorph", 1);
-		Delay(2);
+		TakeInventory("DemonSight", 1);
+		Delay(4);
 	}
 }

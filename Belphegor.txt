@@ -22,12 +22,12 @@ ACTOR Belphegor2 : BaronofHell 2544
 	Radius 24//62SpriteW(120%=74)
 	Height 71//74SpriteH(120%=89)
 	Tag "Belphegor"
-	Painchance "Slide", 16
+	DropItem "64UnmakerUpgradeSpawner", 4
 	States
 	{
 	Spawn:
-
 		BOS3 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
+		TNT1 A 0 A_GiveInventory("TargetIsABaronOfHell")
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 71)
 		BOS3 B 10 A_Look
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 71)
@@ -44,17 +44,18 @@ ACTOR Belphegor2 : BaronofHell 2544
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 71)
 		BOS3 BBBB 2 A_Chase
 		Loop
-		
+
 	See2:
 		B0S3 PPP 1 A_Chase("","")
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 71)
 		B0S3 QQQ 1 A_Chase("","")
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 71)
 		B0S3 RRR 1 A_Chase
-		Loop	
-		
+		Loop
+
 	Pain.Taunt:
 		TNT1 A 0
+		TNT1 A 0 HealThing(2)
 		TNT1 A 0 A_CHangeFlag("FASTER", 1)
 		TNT1 A 0 A_CHangeFlag("NOPAIN", 1)
 		TNT1 A 0 A_GiveInventory("Token1", 1)
@@ -74,7 +75,7 @@ ACTOR Belphegor2 : BaronofHell 2544
 		BOS3 H 8 A_FaceTarget
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 		Goto See
-		
+
 	Melee2:
 		TNT1 AAAA 0 A_CustomMissile("KnightAttack",10,0,0,0)
 		TNT1 A 0 A_PlaySound("weapons/gswing")
@@ -92,7 +93,8 @@ ACTOR Belphegor2 : BaronofHell 2544
 		BOS3 G 8 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 71)
 		TNT1 A 0 A_JumpIfCloser(150, "Melee2")
-		BOS3 H 8 A_CustomMissile("BelphegorGreenPlasmaBall", 47, 0, 0, 1) 
+		BOS3 H 8 A_CustomMissile("BelphegorGreenPlasmaBall", 47, 0, 0, 1)
+		TNT1 A 0 A_CustomMissile("Alerter", 47)
 		Goto See
 
 	 MissileAngry:
@@ -105,7 +107,8 @@ ACTOR Belphegor2 : BaronofHell 2544
 		BOS3 GGGG 1 A_Chase("","")
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 71)
 		TNT1 A 0 A_JumpIfCloser(150, "Melee2")
-		BOS3 H 0 A_CustomMissile("BelphegorGreenPlasmaBall", 47, 0, 0, 1) 
+		BOS3 H 0 A_CustomMissile("BelphegorGreenPlasmaBall", 47, 0, 0, 1)
+		TNT1 A 0 A_CustomMissile("Alerter", 47)
 		BOS3 G 0 A_FaceTarget
 		BOS3 HHHH 1 A_Chase("","")
 		Goto See2
@@ -178,21 +181,20 @@ ACTOR Belphegor2 : BaronofHell 2544
 		TNT1 A 0
 		TNT1 A 0 HealThing(1)
 		Goto Missile
-		
+
     Death.Eat:
         TNT1 A 0 A_GiveToTarget("EatMe",1)
 		 Goto Death+3
-        Stop	
+        Stop
 
    CurbstompMarine:
         TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
-        BS3F AB 10
-	    BS3F CDEF 2
+        BS3F AB 8
+	    BS3F CDEF 8
 	    EXPL A 0 Radius_Quake (2, 24, 0, 15, 0)
-		BS3F GF 4
-		BS3F HHIII 2
-		BS3F J 15
-		BS3F K 6
+		BS3F HI 8
+		BS3F J 4
+		BS3F K 4
 		EXPL A 0 Radius_Quake (2, 24, 0, 15, 0)
 		TNT1 AAAAA 0 bright A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
 		TNT1 AAA 0 A_CustomMissile ("XDeath2", 5, 0, random (0, 360), 2, random (0, 160))
@@ -200,52 +202,34 @@ ACTOR Belphegor2 : BaronofHell 2544
         TNT1 A 0 A_CustomMissile ("MuchBlood2", 50, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAAA 0 A_CustomMissile ("XDeath1", 1, 0, random (0, 360), 2, random (0, 160))
         TNT1 AAAAA 0 A_CustomMissile ("PlayerFlyingBlood", 50, 0, random (0, 360), 2, random (0, 160))
-		BS3F L 15
+		BS3F L 4
 		BS3F NM 4
-		BS3F N 1
+		BS3F N 4
 	    TNT1 AAAA 0 bright A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
 		EXPL A 0 Radius_Quake (2, 24, 0, 15, 0)
 		TNT1 AAAA 0 A_CustomMissile ("BloodMistBig", 10, 0, random (0, 360), 2, random (30, 90))
 		TNT1 AAA 0 A_CustomMissile ("Blood", 10, 0, random (0, 360), 2, random (30, 90))
 		TNT1 AAA 0 A_CustomMissile ("XDeath1", 10, 0, random (0, 360), 2, random (30, 90))
-		BS3F NOPPP 3
-   
+		BS3F OP 4
+
 		BS3F NM 4
-		BS3F N 1
+		BS3F N 4
 	    TNT1 AAAA 0 bright A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
 		EXPL A 0 Radius_Quake (2, 24, 0, 15, 0)
 		TNT1 AAAA 0 A_CustomMissile ("BloodMistBig", 10, 0, random (0, 360), 2, random (30, 90))
 		TNT1 AAA 0 A_CustomMissile ("Blood", 10, 0, random (0, 360), 2, random (30, 90))
 		TNT1 AAA 0 A_CustomMissile ("XDeath1", 10, 0, random (0, 360), 2, random (30, 90))
-		BS3F NOPPP 3
-   
+		BS3F OP 4
+
 		BS3F NM 4
-		BS3F N 1
+		BS3F N 4
 	    TNT1 AAAA 0 bright A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
 		EXPL A 0 Radius_Quake (2, 24, 0, 15, 0)
 		TNT1 AAAA 0 A_CustomMissile ("BloodMistBig", 10, 0, random (0, 360), 2, random (30, 90))
 		TNT1 AAA 0 A_CustomMissile ("Blood", 10, 0, random (0, 360), 2, random (30, 90))
 		TNT1 AAA 0 A_CustomMissile ("XDeath1", 10, 0, random (0, 360), 2, random (30, 90))
-		BS3F NOPPP 3
-   
-		BS3F NM 4
-		BS3F N 1
-	    TNT1 AAAA 0 bright A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
-		EXPL A 0 Radius_Quake (2, 24, 0, 15, 0)
-		TNT1 AAAA 0 A_CustomMissile ("BloodMistBig", 10, 0, random (0, 360), 2, random (30, 90))
-		TNT1 AAA 0 A_CustomMissile ("Blood", 10, 0, random (0, 360), 2, random (30, 90))
-		TNT1 AAA 0 A_CustomMissile ("XDeath1", 10, 0, random (0, 360), 2, random (30, 90))
-		BS3F NOPPP 3
-   
-		BS3F NM 4
-		BS3F N 1
-	    TNT1 AAAA 0 bright A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
-		EXPL A 0 Radius_Quake (2, 24, 0, 15, 0)
-		TNT1 AAAA 0 A_CustomMissile ("BloodMistBig", 10, 0, random (0, 360), 2, random (30, 90))
-		TNT1 AAA 0 A_CustomMissile ("Blood", 10, 0, random (0, 360), 2, random (30, 90))
-		TNT1 AAA 0 A_CustomMissile ("XDeath1", 10, 0, random (0, 360), 2, random (30, 90))
-		BS3F NOPPP 3
-   
+		BS3F OP 4
+
 		TNT1 A 0 A_TakeInventory("Curbstomp_Marine")
         TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
 	Goto See
@@ -258,7 +242,7 @@ ACTOR BelphegorGreenPlasmaBall: BaronBall
 	Height 16
 	Speed 30
 	FastSpeed 30
-	Projectile 
+	Projectile
 	+RANDOMIZE
 	+FORCEXYBILLBOARD
     +THRUGHOST
@@ -274,9 +258,9 @@ ACTOR BelphegorGreenPlasmaBall: BaronBall
 	{
 	Spawn:
 	    TNT1 A 0 A_SpawnItem("GreenFlare22",0,0)
-		FRPG K 1 BRIGHT A_SpawnItemEx("GreenExplosionFlameTrail", 0, 0, 0, 0, 0, 0, 0, 128) 
+		FRPG K 1 BRIGHT A_SpawnItemEx("GreenExplosionFlameTrail", 0, 0, 0, 0, 0, 0, 0, 128)
 		Loop
-	
+
 	Death:
 		BFE1 A 0 Bright
 		EXPL A 0 Radius_Quake (2, 54, 0, 15, 0)
@@ -301,8 +285,8 @@ Actor DeadBelphegor: CurbstompedMarine
 	States
     {
     Spawn:
-		BOS3 l 1
-		BOS3 l -1
+		BOS3 L 1
+		BOS3 L -1
         Stop
 	Raise:
 		BOS3 O 8
@@ -324,7 +308,7 @@ Actor DeadBelphegor: CurbstompedMarine
 		 TNT1 A 0 A_CustomMissile ("XDeathOrgan1Green", 15, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 A 0 A_CustomMissile ("XDeathOrgan2Green", 15, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 A 0 A_SpawnItem("DeadBelphegorXDeath")
-		 Stop	
+		 Stop
     Death.Plasma: Death.Plasma2:
     Death.Flames:
     Death.Burn:
@@ -336,7 +320,7 @@ Actor DeadBelphegor: CurbstompedMarine
         BOSB EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 8 A_CustomMissile ("PlasmaSmoke", 16, 0, random (0, 180), 2, random (0, 180))
         BOSB E -1
         Stop
-		
+
 	Death.CrushedBodies:
 		 TNT1 A 0 A_SetAngle(0)
 		 TNT1 A 0 bright A_CustomMissile ("GreenSuperGoreSpawner", 1, -40, random (0, 360), 2, random (25, 45))
@@ -358,7 +342,7 @@ Actor DeadBelphegor: CurbstompedMarine
 		 GIBS Y 1
 		 GIBS Y -1
 		Stop
-		
+
 		}}
 
 Actor DeadBelphegorXDeath: DeadBelphegor
@@ -367,7 +351,7 @@ Actor DeadBelphegorXDeath: DeadBelphegor
 	States
     {
     Spawn:
-		
+
 		BO3G E 1
 		BO3G E -1
         Stop
@@ -386,7 +370,7 @@ Actor DeadBelphegorXDeath: DeadBelphegor
 		 TNT1 AA 0 A_CustomMissile ("XDeath6Green", 25, 0, random (0, 360), 2, random (20, 90))
 		 TNT1 AAA 0 A_SpawnItem("MuchBlood2Green", 0, 25)
 		 TNT1 A 0 A_SpawnItem("MuchBlood3Green", 0, 25)
-		 Stop	
+		 Stop
 		 }
 }
 

@@ -13,30 +13,90 @@ Actor CapturedMarine Replaces Blursphere
 			CAPT A 2
 			TNT1 A 0 A_SpawnItemEx("EvidenceCheckerInvisibility", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
 			TNT1 A 0 A_JumPIfInventory("Clip2", 1, "Invisibility")
-			TNT1 A 0 A_Jump(255, "RifleMarine", "RifleMarine", "ShotgunMarine", "ShotgunMarine", "MinigunMarine", "PlasmaMarine")
-			
-		RifleMarine:
+			TNT1 A 0 A_Jump(1, "FlameMarine")
+			TNT1 A 0 A_Jump(2, "HMLMarine")
+			TNT1 A 0 A_Jump(4, "BFGMarineSpawner")
+			TNT1 A 0 A_Jump(8, "PlasmaMarineSpawner")
+			TNT1 A 0 A_Jump(16, "RocketMarineSpawner")
+			TNT1 A 0 A_Jump(32, "RifleMarineSpawner")
+			TNT1 A 0 A_Jump(64, "ShotgunMarineSpawner")
+			TNT1 A 0 A_Jump(128, "SMGMarine")
+
+		MeleeMarineSpawner:
 			TNT1 A 0
+			TNT1 A 0 A_Jump(85, "SawMarine")
+		FistMarine:
+			TNT1 A 0 A_SpawnItem("CapturedMarineFist")
+			Stop
+		SawMarine:
+			TNT1 A 0 A_SpawnItem("CapturedMarineSaw")
+			Stop
+////////
+		SMGMarine:
+			TNT1 A 0
+			TNT1 A 0 A_SpawnItem("CapturedMarineSMG")
+			Stop
+////////
+		ShotgunMarineSpawner:
+			TNT1 A 0
+			TNT1 A 0 A_Jump(85, "SSGMarine")
+		ShotgunMarine:
+			TNT1 A 0 A_SpawnItem("CapturedMarineShotgun")
+			Stop
+		SSGMarine:
+			TNT1 A 0 A_SpawnItem("CapturedMarineSSG")
+			Stop
+////////
+		RifleMarineSpawner:
+			TNT1 A 0
+			TNT1 A 0 A_Jump(85, "MinigunMarine")
+		RifleMarine:
 			TNT1 A 0 A_SpawnItem("CapturedMarineBase")
 			Stop
-			
-		ShotgunMarine:
-			TNT1 A 0
-			TNT1 A 0 A_SpawnItem("CapturedMarineShotgun")
-			Stop	
-			
-			
 		MinigunMarine:
-			TNT1 A 0
 			TNT1 A 0 A_SpawnItem("CapturedMarineMinigun")
-			Stop	
-			
-		
-		PlasmaMarine:
-			TNT1 A 0
-			TNT1 A 0 A_SpawnItem("CapturedMarinePlasma")
 			Stop
-		
+////////
+		RocketMarineSpawner:
+			TNT1 A 0
+			TNT1 A 0 A_Jump(85, "RocketMarine")
+		GrenadeMarine:
+			TNT1 A 0 A_SpawnItem("CapturedMarineGrenade")
+			Stop
+		RocketMarine:
+			TNT1 A 0 A_SpawnItem("CapturedMarineRocket")
+			Stop
+////////
+		PlasmaMarineSpawner:
+			TNT1 A 0
+			TNT1 A 0 A_Jump(85, "RailgunMarine")
+		PlasmaMarine:
+			TNT1 A 0 A_SpawnItem("CapturedMarinePlasmagun")
+			Stop
+		RailgunMarine:
+			TNT1 A 0 A_SpawnItem("CapturedMarineRailgun")
+			Stop
+////////
+		BFGMarineSpawner:
+			TNT1 A 0
+			TNT1 A 0 A_Jump(85, "BFG10KMarine")
+		BFGMarine:
+			TNT1 A 0 A_SpawnItem("CapturedMarineBFG")
+			Stop
+		BFG10KMarine:
+			TNT1 A 0 A_SpawnItem("CapturedMarineBFG10K")
+			Stop
+////////
+		HMLMarine:
+			TNT1 A 0
+			TNT1 A 0 A_SpawnItem("CapturedMarineHML")
+			Stop
+////////
+		FlameMarine:
+			TNT1 A 0
+			TNT1 A 0 A_SpawnItem("CapturedMarineFlame")
+			Stop
+////////
 		Invisibility:
 			TNT1 A 0
 			TNT1 A 0 A_ChangeFlag("NOBLOCKMAP", 1)
@@ -44,7 +104,6 @@ Actor CapturedMarine Replaces Blursphere
 			TNT1 A 0 A_SpawnItem("SuperBlursphere")
 			TNT1 A 1
 			Stop
-		
 		}
 }
 
@@ -53,7 +112,7 @@ ACTOR CapturedMarineBase
     Radius 24
     Height 48
     Speed 0
-    Health 100
+    Health 160
 	Scale 1.0
     +SHOOTABLE
 	+FLOORCLIP
@@ -63,18 +122,17 @@ ACTOR CapturedMarineBase
 	+FLOORCLIP
     Painchance 255
     DamageType Taunt
-	
+	Translation  "112:127=[220,0,0]:[0,0,0]"
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
-	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Crush", 10.0
-	Damagefactor "Cut", 10.0	Damagefactor "Extremepunches", 2.0	Damagefactor "Fatality", 5.0
-	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.1
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
+	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0
 	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
 	Damagefactor "HelperMarineFatallity", 0.0	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0
-	Damagefactor "LowKick", 0.5	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 100.0
-	Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "Saw", 10.0
-	Damagefactor "Slide", 0.5	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 0.0
-	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 1000.0	Damagefactor "Stealth", 0.0
-	
+	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 100.0	Damagefactor "Repair", 0.0
+	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
+	DamageFactor "SSG", 5.0	DamageFactor "TankWeakSpot", 0.0
+	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 200.0
+
 	DeathSound "*death"
 	PainSound "*pain50"
     BloodType "Brutal_Blood"
@@ -94,7 +152,7 @@ ACTOR CapturedMarineBase
 		TNT1 A 0 A_SpawnItem("SuperBlursphere")
 		TNT1 A 5000
 		Loop
-		
+
 	Spawn1:
         TNT1 A 0 A_CheckSight("Spawn2")
 		CAPT A 1 A_Stop
@@ -108,10 +166,10 @@ ACTOR CapturedMarineBase
         Goto Spawn1
 
 	Death.Use:
-		TNT1 A 0 A_Playsound ("LETSROCK")
+		TNT1 A 0 A_Playsound ("MRNAW")
         CAPT F 12
         TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_GiveToTarget("NumberOfAllies", 1)
+		TNT1 A 0 ACS_NamedExecute("AddMarine")
 		TNT1 A 0 A_SpawnItemEx ("Marine_Rifle",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         CAPT N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
@@ -126,8 +184,8 @@ ACTOR CapturedMarineBase
         TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
         CAPT N 0
-        Stop	
-		
+        Stop
+
 Pain:
 Pain.Blast:
 Pain.ExplosiveImpact:
@@ -143,24 +201,23 @@ Pain.Rip:
 		TNT1 A 0 A_JumpIfInTargetInventory("EnemyIsArchvile", 1, "Conversion")
 		TNT1 A 0 A_Stop
         Goto AfterPain
-			
-			
+
 		AfterPain:
 		CAPT A 1 A_Stop
         CAPT ABCB 15 A_Stop
 		TNT1 A 0 A_CustomMissile ("OrderTitle3", 50, 0, 0, 2, 90)
         TNT1 A 0 A_SpawnItem ("KillMe")
         Loop
-     
+
 	Death:
 	Death.Bullet:
 		TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
 		TNT1 A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
 		PLAY H 10 A_PlayerScream
-		
+
 		PLAY I 10 A_NoBlocking
-		PLAY J 10 
+		PLAY J 10
 		PLAY KLM 10
 		TNT1 A 0 A_SpawnItem ("MediumBloodSpot")
 		PLAY N -1
@@ -175,7 +232,7 @@ Pain.Rip:
 		TNT1 A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL1 A 10 A_XScream
         XPL1 B 20 A_NoBlocking
-        XPL1 CDE 10 
+        XPL1 CDE 10
 		TNT1 A 0 A_SpawnItem ("MediumBloodSpot")
         XPL1 E -1
         Stop
@@ -195,7 +252,7 @@ Pain.Rip:
         XPL2 A 10 A_XScream
         TNT1 AA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL2 B 20 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         TNT1 AA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL2 C 10 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         TNT1 AA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
@@ -209,7 +266,7 @@ Pain.Rip:
 		TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
 		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
         TNT1 A 0 A_PlaySound("BIGSCREA")
-		TNT1 A 0 A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         PMET AABBCCDDEEFFGGHHIIIII 10 A_CustomMissile ("PlasmaSmoke", 25, 0, random (0, 180), 2, random (0, 180))
         PMET IIIIIIIIIIJJJJJJJJJJJJJJJJJJJJJJKKKKKKKKKKKKKKKKKKKKKKKKKKLLLLLLLLLLLLLLL 3 A_CustomMissile ("PlasmaSmoke", 25, 0, random (0, 180), 2, random (0, 180))
         TNT1 A 0 A_NoBlocking
@@ -231,7 +288,7 @@ Pain.Rip:
         TNT1 A 0 A_CustomMissile ("XDeathHalfMarine", 50, 0, random (0, 360), 2, random (0, 160))
         TNT1 AA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL2 A 10 A_XScream
-		TNT1 A 0 A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         TNT1 AA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL2 B 20 A_NoBlocking
         TNT1 AA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
@@ -250,7 +307,7 @@ Pain.Rip:
         XPL3 A 10 A_XScream
         TNT1 AAAAA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL3 B 20 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         TNT1 A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL3 C 10 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         TNT1 A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
@@ -277,11 +334,11 @@ Pain.Rip:
 		PPOD A 0 A_SpawnItemEx("BasicMarineGib4", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
         MHEA A 7 A_XScream
         MHEA B 7 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         MHEA CD 7
         MHEA E -1
 		Stop
-		
+
 	 Crush:
 	 Death.Stomp:
 		TNT1 A 0
@@ -294,11 +351,11 @@ Pain.Rip:
 		TNT1 AA 0 bright A_CustomMissile ("XDeath3", 55, 0, random (0, 360), 2, random (30, 180))
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		TNT1 A 0 A_SpawnItem ("CrushedRemains")
-		TNT1 A 0 A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 1
 		TNT1 A 1 A_XScream
 		TNT1 A 1 A_NoBlocking
-		Stop	
+		Stop
 
 	Death.Blast:
 	Death.SuperPunch:
@@ -318,7 +375,7 @@ Pain.Rip:
 		TNT1 A 0 A_CustomMissile ("XDeathArm1", 32, 0, random (170, 190), 2, random (0, 40))
         TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         PLAY OPQRSTU 8
 		TNT1 A 0 A_SpawnItem ("MediumBloodSpot")
         PLAY U -1
@@ -336,7 +393,7 @@ Pain.Rip:
 		 TNT1 A 0 A_CustomMissile ("XDeath4", 1, 0, random (0, 360), 2, random (0, 160))
         TNT1 AAAA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL4 B 20 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         TNT1 AAA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL4 C 20
         TNT1 AAA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
@@ -365,10 +422,9 @@ Pain.Rip:
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, random (0, 160))
 		EXPL AAAAAA 0 A_CustomMissile ("ExplosionSmoke", 32, 0, random (0, 360), 2, random (0, 360))
         TNT1 A 1
-		TNT1 A 0 A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         TNT1 A -1
         Stop
-
 
 		Death.GreenFire:
         TNT1 A 0
@@ -377,17 +433,17 @@ Pain.Rip:
         TNT1 A 0 A_XScream
         TNT1 A 0 A_NoBlocking
         TNT1 AAAA 0 A_CustomMissile ("Brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160))
-		
+
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, random (0, 160))
-		
+
 		EXPL AAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("GreenFlameTrails", 50, 0, random (0, 360), 2, random (0, 360))
 		XBRN AAAA 2 BRIGHT A_SpawnItem("GreenFlare",0,43)
-		TNT1 A 0 A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         Stop
 
     Death.burn:
@@ -398,7 +454,7 @@ Pain.Rip:
 	 PBUR A 1
       PBUR A 1 A_Scream
       PBUR A 1 A_NoBlocking
-	  TNT1 A 0 A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	  TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
        PBUR AAAABBBBCCCC 2 A_CustomMissile ("SmallFlameTrails", 32, 0, random (0, 180), 2, random (0, 180))
 	    PBUR DDDDEEEE 2 A_CustomMissile ("SmallFlameTrails", 16, 0, random (0, 180), 2, random (0, 180))
         PBUR EEEEE 4 A_CustomMissile ("SmallFlameTrails", 8, 0, random (0, 180), 2, random (0, 180))
@@ -409,24 +465,23 @@ Pain.Rip:
     Death.Fire:
 	Death.Flames:
 	Death.Burn:
-	
+
 	TNT1 A 0
-	
+
 		TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
 		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
         TNT1 A 0 A_PlaySound("BIGSCREA")
 		TNT1 A 0 A_JumpIfInTargetInventory("EnemyIsArchvile", 1, "Conversion")
       BURN W 6 A_Scream
       BURN X 6 A_NoBlocking
-	  TNT1 A 0 A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	  TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
        BUR2 ABCD 6 BRIGHT A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
        BURN FGHIJKL 6 BRIGHT A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
        BURN MNOPQRSTUV 6 BRIGHT A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
         BURN VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 6 A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
         BURN V -1
       Stop
-	  
-	  
+
 	  Death.ExplosiveImpact:
 		TNT1 A 0
 		TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
@@ -449,7 +504,7 @@ Pain.Rip:
         XPL6 A 5
 		NULL A 0 A_NoBlocking
         XPL6 BCDE 5
-		TNT1 A 0 A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         XPL6 F -1
         Stop
 
@@ -463,7 +518,7 @@ Pain.Rip:
 		TNT1 A 0
 		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
 		TNT1 A 5
-		TNT1 A 0 A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A -1
         Stop
 
@@ -472,108 +527,325 @@ Pain.Rip:
 		TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
 		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
 		TNT1 A 1 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         TNT1 A 0 A_GiveToTarget("Fatality_Marine",1)
 		TNT1 A -1
         Stop
     }
 }
 
-
-
-
-
-ACTOR CapturedMarineShotgun: CapturedMarineBase
+ACTOR CapturedMarineFist: CapturedMarineBase
 {
-	Translation "112:127=96:111"
+	Health 200
+	Translation  "112:127=[0,255,0]:[0,0,0]"
 	States
 	{
 	Death.Use:
-		TNT1 A 0 A_Playsound ("LETSROCK")
+		TNT1 A 0 A_Playsound ("MRNAW")
 		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
         CAPT F 12
         TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_GiveToTarget("NumberOfAlliesShotgun", 1)
+		TNT1 A 0 ACS_NamedExecute("AddMarineFist")
+		TNT1 A 0 A_SpawnItemEx ("Marine_Fist",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        CAPT N 1
+		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
+        CAPT N 0
+        Stop
+    }
+}
+
+ACTOR CapturedMarineSaw: CapturedMarineBase
+{
+	Health 200
+	Translation "112:127=[0,255,0]:[0,0,0]", "48:76=[205,133,63]:[0,0,0]"
+	States
+	{
+	Death.Use:
+		TNT1 A 0 A_Playsound ("MRNAW")
+		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
+        CAPT F 12
+        TNT1 A 0 A_NoBlocking
+		TNT1 A 0 ACS_NamedExecute("AddMarineSaw")
+		TNT1 A 0 A_SpawnItemEx ("Marine_Saw",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        CAPT N 1
+		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
+        CAPT N 0
+        Stop
+    }
+}
+
+ACTOR CapturedMarineSMG: CapturedMarineBase
+{
+	Health 185
+	Translation "112:127=[255,224,0]:[0,24,0]"
+	States
+	{
+	Death.Use:
+		TNT1 A 0 A_Playsound ("MRNAW")
+		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
+        CAPT F 12
+        TNT1 A 0 A_NoBlocking
+		TNT1 A 0 ACS_NamedExecute("AddMarineSMG")
+		TNT1 A 0 A_SpawnItemEx ("Marine_SMG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        CAPT N 1
+		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
+        CAPT N 0
+        Stop
+    }
+}
+
+ACTOR CapturedMarineShotgun: CapturedMarineBase
+{
+	Health 175
+	Translation "112:127=[170,170,170]:[0,0,0]"
+	States
+	{
+	Death.Use:
+		TNT1 A 0 A_Playsound ("MRNAW")
+		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
+        CAPT F 12
+        TNT1 A 0 A_NoBlocking
+		TNT1 A 0 ACS_NamedExecute("AddMarineShotgun")
 		TNT1 A 0 A_SpawnItemEx ("Marine_Shotgun",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         CAPT N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
         CAPT N 0
         Stop
-
     }
 }
 
-
-
-ACTOR CapturedMarineMinigun: CapturedMarineBase
+ACTOR CapturedMarineSSG: CapturedMarineBase
 {
-	Translation  "112:127=32:47", "48:79=64:79"
+	Health 175
+	Translation "112:127=[170,170,170]:[0,0,0]", "48:76=[205,133,63]:[0,0,0]"
 	States
 	{
 	Death.Use:
-		TNT1 A 0 A_Playsound ("LETSROCK")
+		TNT1 A 0 A_Playsound ("MRNAW")
 		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
         CAPT F 12
         TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_GiveToTarget("NumberOfAlliesMinigun", 1)
+		TNT1 A 0 ACS_NamedExecute("AddMarineSSG")
+		TNT1 A 0 A_SpawnItemEx ("Marine_SSG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        CAPT N 1
+		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
+        CAPT N 0
+        Stop
+    }
+}
+
+ACTOR CapturedMarineMinigun: CapturedMarineBase
+{
+	Health 160
+	Translation "112:127=[220,0,0]:[0,0,0]", "48:76=[205,133,63]:[0,0,0]"
+	States
+	{
+	Death.Use:
+		TNT1 A 0 A_Playsound ("MRNAW")
+		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
+        CAPT F 12
+        TNT1 A 0 A_NoBlocking
+		TNT1 A 0 ACS_NamedExecute("AddMarineMinigun")
 		TNT1 A 0 A_SpawnItemEx ("Marine_Minigun",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         CAPT N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
         CAPT N 0
         Stop
-
     }
 }
 
-
-
-ACTOR CapturedMarinePlasma: CapturedMarineBase
+ACTOR CapturedMarineGrenade: CapturedMarineBase
 {
+	Health 150
+	Translation "112:127=[205,133,63]:[0,0,0]", "48:76=[205,133,63]:[0,0,0]"
+	States
+	{
+	Death.Use:
+		TNT1 A 0 A_Playsound ("MRNAW")
+		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
+        CAPT F 12
+        TNT1 A 0 A_NoBlocking
+		TNT1 A 0 ACS_NamedExecute("AddMarineGrenade")
+		TNT1 A 0 A_SpawnItemEx ("Marine_Grenade",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        CAPT N 1
+		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
+        CAPT N 0
+        Stop
+    }
+}
+
+ACTOR CapturedMarineHML: CapturedMarineBase
+{
+	Health 110
+	Translation "112:127=[60,60,60]:[0,0,0]"
+	States
+	{
+	Death.Use:
+		TNT1 A 0 A_Playsound ("MRNAW")
+		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
+        CAPT F 12
+        TNT1 A 0 A_NoBlocking
+		TNT1 A 0 ACS_NamedExecute("AddMarineHML")
+		TNT1 A 0 A_SpawnItemEx ("Marine_HML",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        CAPT N 1
+		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
+        CAPT N 0
+        Stop
+    }
+}
+
+ACTOR CapturedMarineRocket: CapturedMarineBase
+{
+	Health 150
+	Translation "112:127=[205,133,63]:[0,0,0]"
+	States
+	{
+	Death.Use:
+		TNT1 A 0 A_Playsound ("MRNAW")
+		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
+        CAPT F 12
+        TNT1 A 0 A_NoBlocking
+		TNT1 A 0 ACS_NamedExecute("AddMarineRocket")
+		TNT1 A 0 A_SpawnItemEx ("Marine_Rocket",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        CAPT N 1
+		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
+        CAPT N 0
+        Stop
+    }
+}
+
+ACTOR CapturedMarinePlasmagun: CapturedMarineBase
+{
+	Health 135
 	translation "112:127=[0,128,192]:[0,0,0]"
 	States
 	{
 	Death.Use:
-		TNT1 A 0 A_Playsound ("LETSROCK")
+		TNT1 A 0 A_Playsound ("MRNAW")
 		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
         CAPT F 12
         TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_GiveToTarget("NumberOfAlliesPLasmagun", 1)
+		TNT1 A 0 ACS_NamedExecute("AddMarinePlasmagun")
 		TNT1 A 0 A_SpawnItemEx ("Marine_Plasmagun",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         CAPT N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
         CAPT N 0
         Stop
-
     }
 }
 
+ACTOR CapturedMarineRailgun: CapturedMarineBase
+{
+	Health 135
+	translation "112:127=[0,128,192]:[0,0,0]", "48:76=[205,133,63]:[0,0,0]"
+	States
+	{
+	Death.Use:
+		TNT1 A 0 A_Playsound ("MRNAW")
+		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
+        CAPT F 12
+        TNT1 A 0 A_NoBlocking
+		TNT1 A 0 ACS_NamedExecute("AddMarineRailgun")
+		TNT1 A 0 A_SpawnItemEx ("Marine_Railgun",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        CAPT N 1
+		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
+        CAPT N 0
+        Stop
+    }
+}
+
+ACTOR CapturedMarineBFG: CapturedMarineBase
+{
+	Health 125
+	translation "112:127=[0,140,0]:[0,0,0]", "48:76=[205,133,63]:[0,0,0]"
+	States
+	{
+	Death.Use:
+		TNT1 A 0 A_Playsound ("MRNAW")
+		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
+        CAPT F 12
+        TNT1 A 0 A_NoBlocking
+		TNT1 A 0 ACS_NamedExecute("AddMarineBFG")
+		TNT1 A 0 A_SpawnItemEx ("Marine_BFG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        CAPT N 1
+		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
+        CAPT N 0
+        Stop
+    }
+}
+
+ACTOR CapturedMarineBFG10K: CapturedMarineBase
+{
+	Health 125
+	translation "112:127=[0,140,0]:[0,0,0]"
+	States
+	{
+	Death.Use:
+		TNT1 A 0 A_Playsound ("MRNAW")
+		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
+        CAPT F 12
+        TNT1 A 0 A_NoBlocking
+		TNT1 A 0 ACS_NamedExecute("AddMarineBFG10K")
+		TNT1 A 0 A_SpawnItemEx ("Marine_BFG10K",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        CAPT N 1
+		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
+        CAPT N 0
+        Stop
+    }
+}
+
+ACTOR CapturedMarineFlame: CapturedMarineBase
+{
+	Health 100
+	Translation "112:127=[255,168,0]:[64,12,0]", "48:76=[205,133,63]:[0,0,0]"
+	States
+	{
+	Death.Use:
+		TNT1 A 0 A_Playsound ("MRNAW")
+		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
+        CAPT F 12
+        TNT1 A 0 A_NoBlocking
+		TNT1 A 0 ACS_NamedExecute("AddMarineFlame")
+		TNT1 A 0 A_SpawnItemEx ("Marine_Flame",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        CAPT N 1
+		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
+        CAPT N 0
+        Stop
+    }
+}
 
 actor KillMe
 {
 	+NOTARGET
-Radius 10
-Height 10
-DamageType KillMe
-+NOGRAVITY +NOTELEPORT +NODAMAGETHRUST
-+THRUGHOST +NORADIUSDMG +NOEXTREMEDEATH
-+FORCERADIUSDMG -BLOODSPLATTER +BLOODLESSIMPACT 
-PROJECTILE	+DEHEXPLOSION	+ACTIVATEMCROSS 
-States
-{
-Spawn:
-TNT1 A 0
-        TNT1 A 0 A_Explode(3,500)
-Stop
- }
+	Radius 10
+	Height 10
+	DamageType KillMe
+	+NOGRAVITY +NOTELEPORT +NODAMAGETHRUST
+	+THRUGHOST +NORADIUSDMG +NOEXTREMEDEATH
+	+FORCERADIUSDMG -BLOODSPLATTER +BLOODLESSIMPACT
+	PROJECTILE	+DEHEXPLOSION	+ACTIVATEMCROSS
+	States
+	{
+		Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Explode(1,256)
+		Stop
+	}
 }
-
-
-
-
-
 
 actor BodyCrash1
 {
@@ -584,7 +856,7 @@ DamageType Fall
 +NODAMAGETHRUST
 +FORCERADIUSDMG
 -BLOODSPLATTER
-+BLOODLESSIMPACT 
++BLOODLESSIMPACT
 PROJECTILE
 +MISSILE
 -NOGRAVITY
@@ -607,25 +879,16 @@ Stop
  }
 }
 
-
-
-
-
-
 actor KillMeSmall: KillMe
 {
 States
 {
 Spawn:
 TNT1 A 0
-        TNT1 A 0 A_Explode(3,400)
+        TNT1 A 0 A_Explode(1,128)
 Stop
  }
 }
-
-
-
-
 
 actor KillMeBot: KillMe
 {
@@ -635,7 +898,7 @@ States
 {
 Spawn:
 TNT1 A 0
-        TNT1 A 0 A_Explode(3,800)
+        TNT1 A 0 A_Explode(1,256)
 Stop
  }
 }
@@ -653,51 +916,92 @@ Health 6
  //TNT1 A 0 A_SpawnItem ("GiantKillMe")
  PLAY A 1 A_Chase
  Goto See
- 
+
  Spawn2:
  PLAY A 1
  Goto Spawn
 	}
 }
 
-
-ACTOR MarinePunch: BaronBall
+ACTOR MarinePunch: FastProjectile
 {
-	Radius 10
-	Height 18
+	Radius 12
+	Height 2
 	DamageType HelperMarineFatallity
-	Projectile 
-	+RANDOMIZE
-    Damage 10
+	Projectile
+    Damage (random(20,20))
 	+FORCEXYBILLBOARD
-    +THRUGHOST
-    +BLOODSPLATTER 
+	+NOEXTREMEDEATH
+	+THRUSPECIES
+	+MTHRUSPECIES
 	RenderStyle Add
 	Alpha 0.6
 	HitObituary "$OB_IMPHIT"
     Obituary "$OB_IMPHIT"
-	+DONTHURTSPECIES
-
 	SeeSound "None"
 	DeathSound "none"
 	Decal "none"
-    Speed 20
+    Speed 32
+	Species "Marines"
 	States
 	{
 	Spawn:
-	    TNT1 A 0
+		TNT1 A 0
 		TNT1 A 0 A_PlaySound("skeleton/swing")
 		TNT1 A 4 BRIGHT
 		Stop
 	Death:
-        TNT1 A 0 A_PlaySound("player/cyborg/fist")
-		TNT1 A 0 BRIGHT
+		TNT1 A 0 A_AlertMonsters(128, AMF_TARGETEMITTER)
+		PUFF A 0 A_PlaySound("player/cyborg/fist", 3)
+		EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 10
 		Stop
 	}
 }
 
+ACTOR MarineKick: MarinePunch
+{
+	DamageType Kick
+	Damage (random(30,30))
+	Speed 48
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 4 BRIGHT
+		Stop
+	Death:
+		TNT1 A 0 A_AlertMonsters(128, AMF_TARGETEMITTER)
+		PUFF A 0 A_PlaySound("player/cyborg/fist", 3)
+		TNT1 A 0 A_SpawnItemEx ("PLOFT2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_GiveToTarget("KickHasHit", 1)
+		TNT1 A 0 Radius_Quake (2, 6, 0, 5, 0)//(intensity, duration, damrad, tremrad, tid)
+		TNT1 A 10
+		Stop
+	}
+}
 
+ACTOR MarineAirKick: MarineKick
+{
+	Radius 20
+	Height 32
+    Damage (random(40,40))
+}
 
+ACTOR SuperMarineKick: MarineKick
+{
+    Damage (random(60,60))
+	DamageType Extremepunches
+}
+
+ACTOR SuperMarineAirKick: MarineKick
+{
+	Radius 20
+	Height 32
+	DamageType Extremepunches
+    Damage (random(80,80))
+}
 
 ACTOR MarineGivingHealth
 {
@@ -719,25 +1023,21 @@ MeleeRange 28
 	TNT1 A 0 A_CheckSight("GiveHealth")
 	TNT1 A 0 A_PlaySound("MRNGI2")
 	Goto See
-	
+
 	See:
 		MR8S AAAAABBBBB 5 A_Chase
 		TNT1 A 0 A_CheckSight("GiveHealth")
 		Loop
-	
-	
-	
+
 	Missile:
 	GiveHealth:
 	MR8S A 1 A_FaceTarget
-	TNT1 A 0 A_NoBlocking 
+	TNT1 A 0 A_NoBlocking
 	TNT1 A 0 A_SpawnItemEx("Stimpack", 30, 0)
 	TNT1 A 0 A_SpawnItem("Marine_Rifle")
 	Stop
 }
 }
-
-
 
 ACTOR BlurSphere2: BlurSphere //Replaces BlurSphere
 {
@@ -749,8 +1049,7 @@ ACTOR BlurSphere2: BlurSphere //Replaces BlurSphere
 		TNT1 A 0 A_SpawnItem("CapturedMarine")
 		Stop
 	}
-}	
-
+}
 
 Actor PoleWithNothing
 {
@@ -764,7 +1063,6 @@ Spawn:
         Stop
 }}
 
-
 Actor PoleWithNothing2
 {
 +NOBLOCKMAP
@@ -776,11 +1074,6 @@ Spawn:
         CAPT N -1
         Stop
 }}
-
-
-
-
-
 
 actor MonsterSightAlert
 {
@@ -797,7 +1090,7 @@ States
 {
 Spawn:
 TNT1 A 1
-TNT1 A 0 
+TNT1 A 0
 TNT1 A 0 A_Explode(2,500, 0)
 TNT1 A 1
 Stop
@@ -806,13 +1099,6 @@ TNT1 A 0
 Stop
  }
 }
-
-
-
-
-
-
-
 
 Actor OrderTitle1
 {
@@ -840,7 +1126,6 @@ Actor OrderTitle1
   }
 }
 
-
 Actor OrderTitle2: OrderTitle1
 {
   States
@@ -852,7 +1137,6 @@ Actor OrderTitle2: OrderTitle1
   }
 }
 
-
 Actor OrderTitle3: OrderTitle1
 {
   States
@@ -863,6 +1147,3 @@ Actor OrderTitle3: OrderTitle1
     Stop
   }
 }
-
-
-
