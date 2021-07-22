@@ -153,14 +153,17 @@ ACTOR TheSpiderMastermind Replaces SpiderMastermind
 		SPID A 2 A_Chase
 		SPID B 2 A_Chase
 		SPID B 2 A_Chase
+		TNT1 A 0 A_SpawnItem("HeavyFootSteps2")
 		SPID C 2 A_Chase
 		SPID C 2 A_Metal
 		SPID D 2 A_Chase
 		SPID D 2 A_Chase
+		TNT1 A 0 A_SpawnItem("HeavyFootSteps2")
 		SPID E 2 A_Chase
 		SPID E 2 A_Chase
 		SPID F 2 A_Chase
 		SPID F 2 A_Metal
+		TNT1 A 0 A_SpawnItem("HeavyFootSteps2")
 		Loop
 
 	Missile:
@@ -349,52 +352,6 @@ damagetype Blood
         TNT1 A 0
         Stop
     }
-}
-
-ACTOR MastermindStep
-{
-	Radius 32
-	Height 32
-	Speed 0
-    Damage 50
-	renderstyle translucent
-	alpha 0.75
-	DamageType Stomp
-    MeleeDamage 0
-    Gravity 2.0
-	Scale 0.4
-    Decal "Cracks"
-    -NOGRAVITY
-    +EXTREMEDEATH
-	//MONSTER
-	//-COUNTKILL
-	//+SHOOTABLE
-	//+NOBLOOD
-	//Health 50000
-	Obituary "%o has been stepped on by a Mastermind."
-    Health 5
-	States
-	{
-	Spawn:
-
-NULL A 0 A_CustomMissile("FootStep6", 0, 0, 150)
-NULL A 0 A_CustomMissile("FootStep6", 0, 0, -150)
-NULL A 0 A_CustomMissile("FootStep6", 0, 0, -30)
-NULL A 0 A_CustomMissile("FootStep6", 0, 0, 30)
-NULL A 0 A_CustomMissile("FootStep6", 0, 0, -60)
-NULL A 0 A_CustomMissile("FootStep6", 0, 0, 60)
-NULL A 0 A_CustomMissile("FootStep6", 0, 0, -90)
-NULL A 0 A_CustomMissile("FootStep6", 0, 0, 90)
-NULL A 0 A_CustomMissile("FootStep6", 0, 0, -120)
-NULL A 0 A_CustomMissile("FootStep6", 0, 0, 120)
-        TNT1 A 0 A_SpawnItemEx("FootStep5", 0, 0, 40, 0, 0)
-		EXPL AAA 0 A_CustomMissile ("ExplosionSMoke", 0, 0, random (0, 360), 2, random (0, 360))
-
-		EXPL A 0 A_Explode(300, 50, 0)
-		TNT1 A 4
-		MNSM ABCDEFGHIJKLMNOPQ 0
-		Stop
-	}
 }
 
 ACTOR MastermindLeg

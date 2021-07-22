@@ -322,16 +322,16 @@ ACTOR FootStep
 		{
 		Spawn:
 			NULL A 2
-			NULL A 1 //A_Explode(10,4,0)
+			NULL A 1
 			stop
         Death:
-            NULL A 1
-			NULL A 1 //A_Explode(10,4,0)
+            NULL A 2
+			NULL A 1
             Stop
          }
 }
 
-Actor Footstep5: FootStep
+Actor Footstep5: FootStep//In Fatalities
 {
     Damage 0
     -CLIENTSIDEONLY
@@ -352,8 +352,7 @@ Actor Footstep6: FootStep //ACTUAL FOOTSTEP
 		Spawn:
 			NULL A 0
 			NULL A 0 ThrustThingZ(0, 10, 1, 1)
-			NULL A 1 //A_Explode(10,4,0)
-			NULL A 1
+			NULL A 2
 			Stop
         Death:
             NULL A 0
@@ -461,28 +460,7 @@ Actor Footstep6: FootStep //ACTUAL FOOTSTEP
 			}
 }
 
-Actor Footstep8: Footstep6 //Fake footstep. Actually just the player's weight used to damage enemies when standing over them.
-{
-    Damage (random (4, 4))
-	-EXPLODEONWATER
-	-DOOMBOUNCE
-
-	Damagetype "Minor"
-	States
-	{
-		Spawn:
-			NULL A 0
-			NULL A 1 //A_Explode(10,4,0)
-			NULL A 4
-			Stop
-		Death:
-            NULL A 0
-			TNT1 A 2
-            Stop
-		}
-}
-
-Actor Footstep91: FootStep
+Actor Footstep91: FootStep//Splashes
 {
     Damage (random (1, 1))
 	Radius 2
@@ -492,24 +470,9 @@ Actor Footstep91: FootStep
 	-DONTSPLASH
 }
 
-Actor Footstep6NoSplash: FootStep6
-{
-    +DONTSPLASH
-	Mass 0
-	Height 16
-}
-
-Actor Footstep6NoDamage: FootStep6
-{
-    Damage 0
-}
-
 Actor FootstepStrong: Footstep6 //Large footstep when you land from a jump.
 {
-    Damage (random (95, 95))
-	//Speed 0
-	//Radius 16
-	//Damage 15
+    Damage (random (100, 100))
 	-BLOODSPLATTER
 	+BLOODLESSIMPACT
 	Damagetype "Trample"
@@ -528,15 +491,15 @@ Actor FootstepStrong: Footstep6 //Large footstep when you land from a jump.
 				TNT1 A 2
 				TNT1 A 0 A_JumpIfInventory("FootStepDisabled", 1, "XDeath")
 				TNT1 A 0 A_SpawnItem("LargeMassWaterImpact")
-				NULL A 0 A_Explode(60,10,0, 0, 10)
+				NULL A 0 A_Explode(5, 10, 0, 0, 10)
 				TNT1 A 0 ACS_NamedExecuteAlways("BDCheckFloorType2")
 
 				TNT1 A 2
-				TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "XDeath2")
-				TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "XDeath2")
-				TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "XDeath2")
-				TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "XDeath2")
-				TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "XDeath2")
+				TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "XDeath")
+				TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "XDeath")
+				TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "XDeath")
+				TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "XDeath")
+				TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "XDeath")
 
 				TNT1 A 0 A_JumpIfInventory("IsOverDirt", 1, "Dirt")
 				TNT1 A 0 A_JumpIfInventory("IsOverGravel", 1, "Gravel")
@@ -626,7 +589,7 @@ Actor FootstepStrong: Footstep6 //Large footstep when you land from a jump.
 			NULL A 1
 			Stop
 
-		XDeath2:
+		XDeath:
             NULL A 1
 			NULL A 1
 			NULL A 6
@@ -634,74 +597,29 @@ Actor FootstepStrong: Footstep6 //Large footstep when you land from a jump.
          }
 }
 
-Actor HeavyFootSteps: FootStep
+Actor PlayerBaronTrample: FootStep6
 {
-    Damage 1
-    -CLIENTSIDEONLY
-	DamageType "Stomp"
-	Obituary "%o was trampled by a Mancubus."
-	States
-		{
-		Spawn:
-			tnt1 A 2
-			NULL A 1 A_Explode(600,10,0)
-			stop
-        Death:
-            tnt1 A 1
-			NULL A 1 A_Explode(600,10,0)
-            Stop
-		Crash:
-			tnt1 A 1
-			NULL A 1 A_Explode(600,10,0)
-			stop
-         }
-}
-
-Actor PlayerBaronTrample: FootStep
-{
-    Damage (random(100,100))
+    Damage (random(60,60))
     -CLIENTSIDEONLY
 	-DONTSPLASH
 	DamageType "Stomp"
 	Obituary "%o was trampled by a Baron."
-	States
-		{
-		Spawn:
-			tnt1 A 2
-			NULL A 1 A_Explode(80,30,0)
-			stop
-        Death:
-            tnt1 A 1
-			NULL A 1 A_Explode(80,30,0)
-            Stop
-		Crash:
-			tnt1 A 1
-			NULL A 1 A_Explode(80,30,0)
-			stop
-         }
 }
 
-Actor HeavyFootSteps32: FootStep
+Actor HeavyFootSteps: FootStepStrong
 {
-    Damage 1
+    Damage (random(250,250))
     -CLIENTSIDEONLY
 	DamageType "Stomp"
 	Obituary "%o was trampled by a Cyberdemon."
-	States
-		{
-		Spawn:
-			tnt1 A 2
-			NULL A 1 A_Explode(900,10,0)
-			stop
-        Death:
-            tnt1 A 1
-			NULL A 1 A_Explode(900,10,0)
-            Stop
-		Crash:
-			tnt1 A 1
-			NULL A 1 A_Explode(900,10,0)
-			stop
-         }
+}
+
+Actor HeavyFootSteps2: FootStepStrong
+{
+    Damage (random(200,200))
+    -CLIENTSIDEONLY
+	DamageType "Stomp"
+	Obituary "%o has been stepped on by a SpiderMastermind."
 }
 
 ACTOR Bad : PowerupGiver 2305
@@ -723,9 +641,9 @@ ACTOR Bad : PowerupGiver 2305
    }
 }
 
-Actor TnkStep: FootStep
+Actor TnkStep: FootStepStrong
 {
-    Damage (random (4, 5))
+    Damage (random (5, 5))
     -CLIENTSIDEONLY
 	-DONTSPLASH
 	-EXPLODEONWATER
@@ -740,7 +658,6 @@ Actor TnkStep: FootStep
 		{
 		Spawn:
 			TNT1 A 0
-			TNT1 A 1 //A_Explode(10,4,0)
 			TNT1 A 4
 			Stop
         Death:
@@ -772,8 +689,6 @@ Actor TnkStep: FootStep
 
 		Dirt:
 			TNT1 A 0
-			//TNT1 A 0 A_CustomMissile ("MudDustFromTrail", 32, -32, random (0, 360), 2, random (20, 150))
-			//TNT1 A 0 A_CustomMissile ("MudDustFromTrail", 32, 32, random (0, 360), 2, random (20, 150))
 			TNT1 A 0 A_CustomMissile ("BrownCloudShort", 2, 32, random (0, 360), 2, random (10, 90))
 			TNT1 A 0 A_CustomMissile ("BrownCloudShort", 2, -32, random (0, 360), 2, random (10, 90))
 			NULL A 300
@@ -821,7 +736,7 @@ Actor TnkStep: FootStep
 			TNT1 A 6
             Stop
 
-			}
+		}
 }
 
 Actor Headkicking

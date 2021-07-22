@@ -471,24 +471,20 @@ ACTOR VanillaCyberdemon: TheCyberdemon
 
 		See:
 		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
-		TNT1 A 0 A_SpawnItem("HeavyFootSteps32")
-		CYBR A 3 A_Hoof
-		CYBR A 3
+		TNT1 A 0 A_SpawnItem("HeavyFootSteps")
+		CYBR A 2 A_Hoof
+		CYBR AAA 2 A_Chase
+		TNT1 A 0 A_JumpIfCloser(128, "Stomp")
 		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
-		CYBR AA 2 A_Chase
-		CYBR BB 2 A_Chase
+		CYBR BBBB 2 A_Chase
+		TNT1 A 0 A_SpawnItem("HeavyFootSteps")
+		TNT1 A 0 A_JumpIfCloser(128, "Stomp")
 		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
-        CYBR BBC 2 A_Chase
-		TNT1 A 0 A_SpawnItem("HeavyFootSteps32")
+        CYBR C 2 A_Metal
+		CYBR CCC 2 A_Chase
+		TNT1 A 0 A_JumpIfCloser(128, "Stomp")
 		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
-        CYBR C 2 A_Chase
-		CYBR C 2
-		CYBR C 2 A_Metal
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
-		CYBR D 2 A_Chase
-		CYBR D 2 A_Chase
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 106)
-		CYBR DD 2 A_Chase
+		CYBR DDDD 2 A_Chase
 		Loop
 
 		Stomp:
