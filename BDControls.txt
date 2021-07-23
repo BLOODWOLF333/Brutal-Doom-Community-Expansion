@@ -382,6 +382,7 @@ script "BDEnterHMG" (VOID) NET
 	int thisgunmachinegunammo = CheckActorInventory(261, "HeavyMachinegunAmmo");
 	delay(6);
 	GiveInventory("HeavyMachinegunAmmo", thisgunmachinegunammo);
+	GiveInventory("MorphToken", 1);
 	//Return ArmorClass and # of Armor Points
 	if (arrayArmorClass[PlayerNumber()] != "None")
 	{
@@ -422,6 +423,7 @@ script "BDLeaveHMG" (VOID) NET
 	int thisgunmachinegunammo = CheckInventory("HeavyMachinegunAmmo");
 	delay (1);
 	TakeInventory("HeavyMachinegunAmmo", 9999);
+	TakeInventory("MorphToken", 1);
 	Thing_Move(0, 264, 1);
 	UnMorphActor(0, 0);
 	if (arrayArmorClass[PlayerNumber()] != "None")
@@ -473,6 +475,7 @@ script "BDEnterTank" (VOID) NET
 	GiveInventory("HelicopterRocketAmmo", thisvehicleHelicopterRocketAmmo);
 	GiveInventory("MechRocketAmmo", thisvehicleMechRocketAmmo);
 	GiveInventory("IsInATank",1);
+	GiveInventory("MorphToken", 1);
 	SetUserVariable(0, "user_tankbasedirection", vehiclepreviousbaseangle);
 	delay(2);
 }
@@ -494,6 +497,7 @@ script "BDLeaveTank" (VOID) NET
 	TakeInventory("HelicopterRocketAmmo", 9999);
 	TakeInventory("MechRocketAmmo", 9999);
 	TakeInventory("IsInATank", 9);
+	TakeInventory("MorphToken", 1);
 	Thing_Move(0, 264, 1);
 	UnMorphActor(0, 0);
 	if (arrayArmorClass[PlayerNumber()] != "None")
@@ -533,6 +537,7 @@ script "BDForceUnmorph" (VOID) NET
 {
  GiveInventory("CeaseMorph",1);
  UnMorphActor(0, 0);
+ TakeInventory("MorphToken", 1);
  Delay(1);
 }
 
