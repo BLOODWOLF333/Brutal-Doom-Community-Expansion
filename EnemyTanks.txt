@@ -284,8 +284,28 @@ Actor ZombieMainBattleTankTurret 9952
 		TNKZ T 1 A_FaceTarget(4)
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
 		TNT1 A 0 A_JumpIfTargetInLOS("Missile", 6)
-		TNT1 A 0 A_CheckSight("Idle")
+		TNKZ T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
+		TNT1 A 0 A_GiveInventory("TankReady", 1)
+		TNKZ T 1 A_FaceTarget(4)
+		TNT1 A 0 A_GiveInventory("TankReady", 1)
+		TNT1 A 0 A_JumpIfTargetInLOS("Missile", 6)
+		TNKZ T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
+		TNT1 A 0 A_GiveInventory("TankReady", 1)
+		TNKZ T 1 A_FaceTarget(4)
+		TNT1 A 0 A_GiveInventory("TankReady", 1)
+		TNT1 A 0 A_JumpIfTargetInLOS("Missile", 6)
+		TNKZ T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
+		TNT1 A 0 A_GiveInventory("TankReady", 1)
+		TNKZ T 1 A_FaceTarget(4)
+		TNT1 A 0 A_GiveInventory("TankReady", 1)
+		TNT1 A 0 A_JumpIfTargetInLOS("Missile", 6)
+		TNT1 A 0 A_CheckSight("ForgetTarget")
 		Loop
+
+	ForgetTarget:
+		TNT1 A 0
+		TNT1 A 0 A_ClearTarget
+		Goto Idle
 
 	Missile:
 		TNKZ T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
@@ -533,8 +553,22 @@ Actor ZombieArtilleryTankTurret: ZombieMainBattleTankTurret 9949
 		TN2Z T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
 		TN2Z T 1 A_FaceTarget(6)
 		TNT1 A 0 A_JumpIfTargetInLOS("Missile", 6)
-		TNT1 A 0 A_CheckSight("Idle")
+		TN2Z T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
+		TN2Z T 1 A_FaceTarget(6)
+		TNT1 A 0 A_JumpIfTargetInLOS("Missile", 6)
+		TN2Z T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
+		TN2Z T 1 A_FaceTarget(6)
+		TNT1 A 0 A_JumpIfTargetInLOS("Missile", 6)
+		TN2Z T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
+		TN2Z T 1 A_FaceTarget(6)
+		TNT1 A 0 A_JumpIfTargetInLOS("Missile", 6)
+		TNT1 A 0 A_CheckSight("ForgetTarget")
 		Loop
+
+	ForgetTarget:
+		TNT1 A 0
+		TNT1 A 0 A_ClearTarget
+		Goto Idle
 
 	Missile:
 		TNT1 A 0
@@ -769,7 +803,22 @@ ACTOR ZombieHelicopter 9953
 		TNT1 A 0 A_JumpIf((Z-floorz) < 512, "LiftOff")
 		HELZ ABCD 1 A_Chase
 		TNT1 A 0 A_JumpIfCloser(256, "FallBack")
+		TNT1 A 0 A_JumpIf((Z-floorz) < 512, "LiftOff")
+		HELZ ABCD 1 A_Chase
+		TNT1 A 0 A_JumpIfCloser(256, "FallBack")
+		TNT1 A 0 A_JumpIf((Z-floorz) < 512, "LiftOff")
+		HELZ ABCD 1 A_Chase
+		TNT1 A 0 A_JumpIfCloser(256, "FallBack")
+		TNT1 A 0 A_JumpIf((Z-floorz) < 512, "LiftOff")
+		HELZ ABCD 1 A_Chase
+		TNT1 A 0 A_JumpIfCloser(256, "FallBack")
+		TNT1 A 0 A_CheckSight("ForgetTarget")
 		Loop
+
+	ForgetTarget:
+		TNT1 A 0
+		TNT1 A 0 A_ClearTarget
+		Goto Spawn
 
 	FallBack:
 		HELZ ABCD 1 A_Recoil(3)
@@ -1065,9 +1114,14 @@ ACTOR ZombieMech 9954
 		MEKE G 4 A_Chase
 		TNT1 A 0 A_SpawnItemEx ("EnemyTnkTreadsDamage" , 50, 0, 0, 0, 0, 0, angle, SXF_ABSOLUTEANGLE | SXF_ABSOLUTEVELOCITY)
 		TNT1 A 0 A_PlaySound("MECHWLK", 15)
-		TNT1 A 0 A_CheckSight("Spawn")
+		TNT1 A 0 A_CheckSight("ForgetTarget")
 		TNT1 A 0 A_Jump(16, "Jump")
 		Loop
+
+	ForgetTarget:
+		TNT1 A 0
+		TNT1 A 0 A_ClearTarget
+		Goto Spawn
 
 	AvoidLeft:
 		MEKE H 0 ThrustThingZ(0, 96, 0, 0)

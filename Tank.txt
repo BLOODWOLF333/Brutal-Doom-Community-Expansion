@@ -1151,8 +1151,8 @@ var int user_tankbasedirection;
 		TNT1 A 0 ThrustThing(user_tankbasedirection*256/360+128, 3, 1)
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving3" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
 
-		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, "TurnLeftBackpedal")
-		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, "TurnRightBackpedal")
+		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, "TurnRightBackpedal")
+		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, "TurnLeftBackpedal")
 
 		TNK1 T 2
 		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "ExitVehicle")
@@ -1166,8 +1166,8 @@ var int user_tankbasedirection;
 		TNT1 A 0 ThrustThing(user_tankbasedirection*256/360+128, 3, 1)
 		TNT1 A 0 A_SpawnItemEx ("TankBaseNotRealMoving1" , 0, 0, 0, momx, momy, momz, user_tankbasedirection, SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE)
 
-		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, "TurnLeftBackpedal")
-		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, "TurnRightBackpedal")
+		TNT1 A 0 A_JumpIfInventory("TurnRight", 1, "TurnRightBackpedal")
+		TNT1 A 0 A_JumpIfInventory("TurnLeft", 1, "TurnLeftBackpedal")
 
 		TNT1 A 0 A_JumpIF(velz < 0, "Falling")
 		Goto CheckIfStillMoves
