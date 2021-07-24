@@ -245,7 +245,10 @@ ACTOR HeavyMachinegunHUD : DoomWeapon
 	Weapon.AmmoType "HeavyMachinegunAmmo"
 	Obituary "%o was chewed up by a heavy machinegun."
 	Weapon.SelectionOrder 9999
+	+WEAPON.AMMO_OPTIONAL
+	+WEAPON.ALT_AMMO_OPTIONAL
 	+WEAPON.NOAUTOAIM
+	+WEAPON.EXPLOSIVE
 	+WEAPON.CHEATNOTWEAPON
 	+WEAPON.NO_AUTO_SWITCH
 	Inventory.Pickupmessage "$PICKUP_PISTOL_DROPPED"
