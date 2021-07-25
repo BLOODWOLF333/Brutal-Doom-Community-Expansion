@@ -50,7 +50,7 @@ ACTOR TheCyberdemon: Cyberdemon Replaces Cyberdemon
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
 		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
-		TNT1 A 0 A_SpawnItemEx ("VanillaCyberdemon",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
+		TNT1 A 0 A_SpawnItemEx ("VanillaCyberdemon",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERSPECIAL,0)
 		TNT1 A 100
 		TNT1 A 0
 		Stop
@@ -61,7 +61,7 @@ ACTOR TheCyberdemon: Cyberdemon Replaces Cyberdemon
 		TNT1 A 0 ACS_NamedExecuteAlways("MapEnhancementE2M8")
 		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
 		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
-		TNT1 A 0 A_SpawnItemEx ("CyberdemonBoss",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
+		TNT1 A 0 A_SpawnItemEx ("CyberdemonBoss",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERSPECIAL,0)
 		TNT1 A 0
 		Stop
 

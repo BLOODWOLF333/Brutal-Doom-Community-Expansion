@@ -90,7 +90,7 @@ ACTOR Mancubus : Fatso Replaces Fatso
 		TNT1 A 0 A_JumpIf((CeilingZ - FloorZ) < 99,"Stand")
 		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
 		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
-		TNT1 A 0 A_SpawnItemEx ("Volcabus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS ,0, tid)
+		TNT1 A 0 A_SpawnItemEx ("Volcabus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | SXF_TRANSFERSPECIAL,0, tid)
 		Stop
 
     Stand:
