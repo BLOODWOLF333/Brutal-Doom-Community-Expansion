@@ -359,7 +359,7 @@ script "GetVehiclePreviousHealth" (VOID) NET
   delay(1);
 }
 
-script "GetVehiclePreviousHealth2" (VOID) NET
+script "GetPlayerValues" (VOID) NET
 {
 	arrayHealth[PlayerNumber()] = GetActorProperty(0, APROP_HEALTH);
 	arrayArmor[PlayerNumber()] = CheckInventory("BasicArmor");
