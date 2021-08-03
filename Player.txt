@@ -1413,7 +1413,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_Stop
 		TNT1 A 0 A_SpawnItem("GrowingBloodPool")
 		PNKI D -1
-		Goto See
+		Stop
 
 	Death.Trample:
         NULL A 0
@@ -2031,10 +2031,10 @@ Death.Plasma: Death.Plasma2:
 		Stop
 
     //Crush:
-        NULL A 0 A_PlaySound("misc/xdeath4")
-        CRS1 A 5
-        CRS1 A -1
-        Stop
+        //NULL A 0 A_PlaySound("misc/xdeath4")
+        //CRS1 A 5
+        //CRS1 A -1
+        //Stop
 
 // FATALITIES
 
