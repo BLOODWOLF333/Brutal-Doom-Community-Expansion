@@ -10,26 +10,32 @@ pulselight EXPLOSIONFLASH
 
 object SuperBFGBall
 {
-    frame BFS1A { light BFGBALL }
-    frame BFS1B { light BFGBALL }
+    frame BFS1 { light BFGBALL }
+    frame BFGB { light BFGEXPLO }
+}
 
-    frame BFE1A { light BFGEXPLO }
-    frame BFE1B { light BFGEXPLO }
-	frame BFE1C { light BFGEXPLO }
-	frame BFE1D { light BFGEXPLO }
-	frame BFE1E { light BFGEXPLO }
+object BFGBallDM
+{
+    frame BFS1 { light BFGBALL }
+    frame BFGB { light BFGEXPLO }
 }
 
 object FriendlyBFGBAll
 {
-    frame BFS1A { light BFGBALL }
-    frame BFS1B { light BFGBALL }
+    frame BFS1 { light BFGBALL }
+    frame BFGB { light BFGEXPLO }
+}
 
-    frame BFE1A { light BFGEXPLO }
-    frame BFE1B { light BFGEXPLO }
-	frame BFE1C { light BFGEXPLO }
-	frame BFE1D { light BFGEXPLO }
-	frame BFE1E { light BFGEXPLO }
+object ClassicBFGBall
+{
+    frame BFS1 { light BFGBALL }
+    frame BFGB { light BFGEXPLO }
+}
+
+object ClassicBFGBallDM
+{
+    frame BFS1 { light BFGBALL }
+    frame BFGB { light BFGEXPLO }
 }
 
 flickerlight BFGEXPLO
@@ -1131,6 +1137,11 @@ object ROCKET2
     frame MISL { light ROCKETLIGHT }
 }
 
+object WeakRocket
+{
+    frame MISL { light ROCKETLIGHT }
+}
+
 object CyberBalls
 {
     frame WIVB { light ROCKETLIGHT }
@@ -1858,6 +1869,12 @@ object PlasmaFlare
 }
 
 object Plasma_Ball
+{
+    frame PLSS { light PLASMABALLSMALL }
+	frame PLSE { light PLASMABALL }
+}
+
+object ClassicPlasmaBall
 {
     frame PLSS { light PLASMABALLSMALL }
 	frame PLSE { light PLASMABALL }
