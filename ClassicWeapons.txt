@@ -647,14 +647,14 @@ ACTOR ClassicSaw : ClassicWeapon
 		TNT1 A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"Fire.Blood")
         TNT1 A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"Fire.BlueBlood")
         TNT1 A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"Fire.GreenBlood")
-		VSAW CD 4 A_Saw("DSSAWHIT","CSAWCUT",2,"SSawPuff2")
+		VSAW CD 4 A_Saw("DSSAWHIT","CSAWCUT",20,"SSawPuff2",SF_NORANDOM)
 		SAWG B 0 A_ReFire
 		Goto Ready
 
 	Fire.Blood:
 		TNT1 A 0 A_TakeInventory("PowerBlueBloodOnVisor", 1)
 		TNT1 A 0 A_TakeInventory("PowerGreenBloodOnVisor", 1)
-		VSRW CD 4 A_Saw("DSSAWHIT","CSAWCUT",2,"SSawPuff2")
+		VSRW CD 4 A_Saw("DSSAWHIT","CSAWCUT",20,"SSawPuff2",SF_NORANDOM)
 		TNT1 A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"Fire.BlueBlood")
         TNT1 A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"Fire.GreenBlood")
 		SAWG B 0 A_ReFire
@@ -663,7 +663,7 @@ ACTOR ClassicSaw : ClassicWeapon
 	Fire.BlueBlood:
 		TNT1 A 0 A_TakeInventory("PowerBloodOnVisor", 1)
 		TNT1 A 0 A_TakeInventory("PowerGreenBloodOnVisor", 1)
-		VSBW CD 4 A_Saw("DSSAWHIT","CSAWCUT",2,"SSawPuff2")
+		VSBW CD 4 A_Saw("DSSAWHIT","CSAWCUT",20,"SSawPuff2",SF_NORANDOM)
 		TNT1 A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"Fire.Blood")
         TNT1 A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"Fire.GreenBlood")
 		SAWG B 0 A_ReFire
@@ -672,7 +672,7 @@ ACTOR ClassicSaw : ClassicWeapon
 	Fire.GreenBlood:
 		TNT1 A 0 A_TakeInventory("PowerBlueBloodOnVisor", 1)
 		TNT1 A 0 A_TakeInventory("PowerBloodOnVisor", 1)
-		VSGW CD 4 A_Saw("DSSAWHIT","CSAWCUT",2,"SSawPuff2")
+		VSGW CD 4 A_Saw("DSSAWHIT","CSAWCUT",20,"SSawPuff2",SF_NORANDOM)
 		TNT1 A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"Fire.Blood")
         TNT1 A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"Fire.BlueBlood")
 		SAWG B 0 A_ReFire
@@ -735,10 +735,10 @@ ACTOR ClassicPistol : ClassicWeapon
 
 	Fire:
 		PKPI A 4
-		PKPI F 6 BRIGHT A_FireBullets(5.6, 0, 1, 5, "WeakPuff")
 		PKPI A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 A 0 A_PlaySound("pfire", 1)
 		TNT1 A 0 A_FireCustomMissile("DistantFireSoundPistol", random(-1,1), 0, 0, -12, 0, random(-1,1))
+		PKPI F 6 BRIGHT A_FireBullets(5.6, 0, 1, 15, "WeakPuff", FBF_NORANDOM)
 		PKPI D 4 A_FireCustomMissile("PistolCaseSpawn",5,0,0,-9)
 		PKPI B 5 A_Refire
 		Goto Ready
@@ -795,24 +795,24 @@ ACTOR ClassicSMG : ClassicWeapon
 		TNT1 A 0 A_TakeInventory("SawSelected", 1)
 		Loop
 	Fire:
-        VSMG B 1 BRIGHT A_FireBullets (5.6, 0, 1, 3, "WeakPuff")
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 A 0 A_PlaySound("pfire", 1)
 		TNT1 A 0 A_FireCustomMissile("DistantFireSoundPistol", random(-1,1), 0, 0, -12, 0, random(-1,1))
+        VSMG B 1 BRIGHT A_FireBullets (5.6, 0, 1, 9, "WeakPuff", FBF_NORANDOM)
 		VSMG C 1 BRIGHT
 		VSMG E 1 A_FireCustomMissile("PistolCaseSpawn",5,0,0,-9)
 
-		VSMG D 1 BRIGHT A_FireBullets (5.6, 0, 1, 3, "WeakPuff")
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 A 0 A_PlaySound("pfire", 1)
 		TNT1 A 0 A_FireCustomMissile("DistantFireSoundPistol", random(-1,1), 0, 0, -12, 0, random(-1,1))
+		VSMG D 1 BRIGHT A_FireBullets (5.6, 0, 1, 9, "WeakPuff", FBF_NORANDOM)
 		VSMG B 1 BRIGHT
 		VSMG E 1 A_FireCustomMissile("PistolCaseSpawn",5,0,0,-9)
 
-		VSMG C 1 BRIGHT A_FireBullets (5.6, 0, 1, 3, "WeakPuff")
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 A 0 A_PlaySound("pfire", 1)
 		TNT1 A 0 A_FireCustomMissile("DistantFireSoundPistol", random(-1,1), 0, 0, -12, 0, random(-1,1))
+		VSMG C 1 BRIGHT A_FireBullets (5.6, 0, 1, 9, "WeakPuff", FBF_NORANDOM)
 		VSMG D 1 BRIGHT
 		VSMG E 1 A_FireCustomMissile("PistolCaseSpawn",5,0,0,-9)
 
@@ -871,10 +871,10 @@ ACTOR ClassicMP40 : ClassicWeapon
 		TNT1 A 0 A_TakeInventory("SawSelected", 1)
 		Loop
 	Fire:
-		PKMP B 2 BRIGHT A_FireBullets(5.6, 0, 1, 4, "WeakPuff")
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 A 0 A_PlaySound("MP40", 1)
 		TNT1 A 0 A_FireCustomMissile("DistantFireSoundPistol", random(-1,1), 0, 0, -12, 0, random(-1,1))
+		PKMP B 2 BRIGHT A_FireBullets(5.6, 0, 1, 12, "WeakPuff", FBF_NORANDOM)
 		PKMP E 2 A_FireCustomMissile("PistolCaseSpawn",5,0,0,-9)
 		PKCG G 0 A_ReFire
 		Goto Ready
@@ -931,10 +931,10 @@ ACTOR ClassicShotgun : ClassicWeapon
 		Loop
 	Fire:
 		PKSG A 3
-		PKSG B 7 BRIGHT A_FireBullets (5.6, 0, 7, 5, "ShotgunPuff")
 		TNT1 A 0 A_PlaySound("weapons/sg", 1)
 		RIFF A 0 A_FireCustomMissile("DistantFireSoundShotgun", random(-1,1), 0, 0, -12, 0, random(-1,1))
 		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
+		PKSG B 7 BRIGHT A_FireBullets (5.6, 0, 7, 15, "ShotgunPuff", FBF_NORANDOM)
 		PKSG GIK 3
 		SHTG A 0 A_PlaySound("weapons/sgpump", 3)
 		PKSG M 6 A_FireCustomMissile ("ShotCaseSpawn", 0, 0, -4, -4)
@@ -997,10 +997,10 @@ ACTOR ClassicSSG : ClassicWeapon
 		Loop
 	Fire:
 	    PKSS A 3
-		PKSS B 7 BRIGHT A_FireBullets (11.2, 7.1, 20, 5, "ShotgunPuff")
+		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 A 0 A_playsound("SSHFIRE", 1)
 		SHTZ A 0 A_FireCustomMissile("DistantFireSoundSSG", random(-1,1), 0, 0, -12, 0, random(-1,1))
-		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
+		PKSS B 7 BRIGHT A_FireBullets (11.2, 7.1, 20, 15, "ShotgunPuff", FBF_NORANDOM)
 		PKSS J 7
 		PKSS L 7 A_CheckReload
 		PKSS O 7 A_PlaySound("weapons/sshoto", 4)
@@ -1068,17 +1068,17 @@ ACTOR ClassicChaingun : ClassicWeapon
 		MGN1 A 0 A_GiveInventory("RandomHeadExploder", 1)
 		Loop
 	Fire:
-		PKCG E 1 BRIGHT A_FireBullets(5.6, 0, 1, 5, "MinigunBulletPuff")
+		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 1)
 		RIFF A 0 A_FireCustomMissile("DistantFireSoundMachinegun", random(-1,1), 0, 0, -12, 0, random(-1,1))
-		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
+		PKCG E 1 BRIGHT A_FireBullets(5.6, 0, 1, 15, "MinigunBulletPuff", FBF_NORANDOM)
 		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",0,0,6,-18)
 		PKCG GHD 1
 
-		PKCG E 1 BRIGHT A_FireBullets(5.6, 0, 1, 5, "MinigunBulletPuff")
+		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 1)
 		RIFF A 0 A_FireCustomMissile("DistantFireSoundMachinegun", random(-1,1), 0, 0, -12, 0, random(-1,1))
-		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
+		PKCG E 1 BRIGHT A_FireBullets(5.6, 0, 1, 15, "MinigunBulletPuff", FBF_NORANDOM)
 		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",0,0,6,-18)
 		PKCG GHD 1
 
@@ -1143,17 +1143,17 @@ ACTOR ClassicBuzzsaw : ClassicWeapon
 		MGN1 A 0 A_GiveInventory("RandomHeadExploder", 1)
 		Loop
 	Fire:
-		PKBZ B 1 BRIGHT A_FireBullets(5.6, 0, 1, 5, "MachineGunBulletPuff")
+		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 A 0 A_PlaySound("MP40", 1)
 		TNT1 A 0 A_FireCustomMissile("DistantFireSoundHMG", random(-1,1), 0, 0, -12, 0, random(-1,1))
-		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
+		PKBZ B 1 BRIGHT A_FireBullets(5.6, 0, 1, 15, "MachineGunBulletPuff", FBF_NORANDOM)
 		PKBZ C 1 BRIGHT
 		PKBZ A 1 A_Firecustommissile("50CaseSpawn2",0,0,9,-12)
 
-		PKBZ C 1 BRIGHT A_FireBullets(5.6, 0, 1, 5, "MachineGunBulletPuff")
+		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 A 0 A_PlaySound("MP40", 1)
 		TNT1 A 0 A_FireCustomMissile("DistantFireSoundHMG", random(-1,1), 0, 0, -12, 0, random(-1,1))
-		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
+		PKBZ C 1 BRIGHT A_FireBullets(5.6, 0, 1, 15, "MachineGunBulletPuff", FBF_NORANDOM)
 		PKBZ B 1 BRIGHT
 		PKBZ A 1 A_Firecustommissile("50CaseSpawn2",0,0,9,-12)
 
@@ -1238,7 +1238,7 @@ ACTOR ClassicRocket
 	Radius 11
 	Height 8
 	Speed 20
-	Damage 20
+	Damage (random(160,160))
 	DamageType Explosive
 	Decal "Scorch"
 	Projectile
@@ -1359,7 +1359,7 @@ ACTOR ClassicPlasmaBall
 	Radius 13
 	Height 8
 	Speed 25
-	Damage 5
+	Damage (random(40,40))
 	damagetype Plasma
 	Projectile
 	+RANDOMIZE
@@ -1485,7 +1485,7 @@ ACTOR ClassicBFGBall
 	Radius 13
 	Height 8
 	Speed 25
-	Damage 100
+	Damage (random(800,800))
 	Damagetype Desintegrate
 	Decal BFGLightning
 	Projectile
