@@ -1419,10 +1419,8 @@ delay(1);
 }
 
 //NAZIS
-
 script "MapEnhancementNaziVerification" (void)
 {
-
 Thing_ChangeTID(0,736);
 
 if (CheckActorFloorTexture(736, "FL0"))
@@ -1449,22 +1447,6 @@ if (CheckActorCeilingTexture(736, "FLAT5_2"))//Doom2Map31
 if (CheckActorCeilingTexture(736, "CEIL4_1"))//Doom2Map32
     GiveActorInventory(736, "NaziVerificate2", 1);
 
-if (CheckActorCeilingTexture(736, "ACEIL42"))
-    GiveActorInventory(736, "Epic2AlienVerification", 1);
-
-if (CheckActorFloorTexture(736, "ACEIL22"))
-    GiveActorInventory(736, "Epic2AlienVerification", 1);
-
-if (CheckActorFloorTexture(736, "ACEIL42"))
-    GiveActorInventory(736, "Epic2AlienVerification", 1);
-
-if (CheckActorcEILINGTexture(736, "ACEIL22"))
-    GiveActorInventory(736, "Epic2AlienVerification", 1);
-
-if (CheckActorFloorTexture(736, "ACEIL68"))
-    GiveActorInventory(736, "Epic2AlienVerification", 1);
-
 if (CheckActorcEILINGTexture(0, "F_SKY1"))
     GiveActorInventory(728, "TVRRainVerification", 1);
-
 }

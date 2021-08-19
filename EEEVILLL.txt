@@ -12,15 +12,8 @@ States
 		MARN A 0 ACS_NamedExecuteAlways("MapEnhancementNaziVerification", 0, 0, 0, 0)//Check if you are playing on an Wolfenstein level
 		PLAY A 3
 		TNT1 A 0 A_JumpIfInventory("AltEasyMarineVerification", 1, "ISEasyMarine")
-		TNT1 A 0 A_JumpIfInventory("Epic2AlienVerification", 1, "ISEpic2Alien")
 		TNT1 A 0 A_JumpIfInventory("NaziVerificate1", 1, "VerificateNazi")
 		TNT1 A 3
-		TNT1 A 0 A_JumpIf(x == 736, "IsMrX")//Scythe2Map16
-		TNT1 A 0 A_JumpIf(x == 800, "IsMrX")//Scythe2Map16
-		TNT1 A 0 A_JumpIf(x == 864, "IsMrX")//Scythe2Map16
-		TNT1 A 0 A_JumpIf(x == 640, "IsMrX")//Scythe2Map16
-		TNT1 A 0 A_JumpIf(x == -160, "IsMrX")//Scythe2Map26
-		TNT1 A 0 A_JumpIf(x == -2560, "ReplaceGoingDown")//GoingDownMap30
 
 		IsRegularZombie:
 		PLAY A 3
@@ -62,25 +55,6 @@ States
 		TNT1 A 0 A_SpawnItemEx("Ubersoldat", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERPOINTERS | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERSPECIAL)
 		Stop
 
-	ReplaceGoingDown:
-		TNT1 A 0
-		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
-		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
-		TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
-		TNT1 A 0 A_ChangeFlag("NOBLOCKMAP", 1)
-		TNT1 A 0 A_RadiusGive("BarrelExpMeasure", 10000, RGF_GIVESELF | RGF_MONSTERS | RGF_CORPSES, 10)
-		TNT1 A 0 A_SpawnItemEx("Motherdemon", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION | SXF_TRANSFERPOINTERS | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERSPECIAL)
-		Stop
-
-	ISEpic2Alien:
-		TNT1 A 0
-		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
-		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
-		TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
-		TNT1 A 0 A_ChangeFlag("NOBLOCKMAP", 1)
-		TNT1 A 0 A_SpawnItemEx("Epic2Alien", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERPOINTERS | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERSPECIAL)
-		Stop
-
 	ISEasyMarine:
 		TNT1 A 0
 		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
@@ -88,15 +62,6 @@ States
 		TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
 		TNT1 A 0 A_ChangeFlag("NOBLOCKMAP", 1)
 		TNT1 A 0 A_SpawnItemEx("EasyMarineRifleAlive", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERPOINTERS | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERSPECIAL)
-		Stop
-
-	IsMrX:
-		TNT1 A 0
-		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
-		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
-		TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
-		TNT1 A 0 A_ChangeFlag("NOBLOCKMAP", 1)
-		TNT1 A 0 A_SpawnItemEx("MrX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERPOINTERS | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERSPECIAL)
 		Stop
 		}
 }
@@ -953,154 +918,5 @@ ACTOR EasyMarineRifleAlive : EvilMarineRifle
 		Spawn:
 		PLAY E 4 A_Look
 		Loop
-	}
-}
-
-ACTOR MrX : EvilMarinePlasma
-{
-	Health 400
-	Obituary "%o had a heated encounter with Mr. X."
-	Translation "48:76=128:143", "112:127=152:159", "128:143=[64,64,64]:[0,0,0]", "144:151=[64,64,64]:[0,0,0]", "152:159=[64,64,64]:[0,0,0]"
-	Speed 12
-	MaxStepHeight 24
-	States
-	{
-	Idle:
-		MAR6 DDDDDDD 5 A_Look
-		TNT1 A 0 A_Jump(32, 4)
-		TNT1 A 0 A_SetAngle(angle - 40)
-		MAR6 DD 5 A_Look
-		TNT1 A 0 A_SetAngle(angle + 40)
-		MAR6 D 5 A_Look
-		TNT1 A 0 A_Jump(32, 4)
-		TNT1 A 0 A_SetAngle(angle + 40)
-		MAR6 DD 5 A_Look
-		TNT1 A 0 A_SetAngle(angle - 40)
-		MAR6 DD 5 A_Look
-
-		MAR6 AAA 1 A_Wander
-		TNT1 A 0 A_Look
-
-		MAR6 BBB 1 A_Wander
-		TNT1 A 0 A_Look
-
-		MAR6 CCC 1 A_Wander
-		TNT1 A 0 A_Look
-
-		MAR6 DDD 1 A_Wander
-		TNT1 A 0 A_Look
-		Loop
-
-	Spawn:
-		MAR6 D 4 A_Look
-		Loop
-	See:
-		MAR6 AAA 1 A_Chase
-		TNT1 A 0 A_JumpIfInventory("evmarinenoway", 1, "CheckIfCanJump")
-		MAR6 BBB 1 A_Chase
-		TNT1 A 0 A_CustomMissile("EvilMarineCheckFront", 28, 0, 0, 2, 0)
-		MAR6 CCC 1 A_Chase
-		TNT1 A 0 A_CustomMissile("EvilMarineCheckJump", 64, 0, 0, CMF_AIMDIRECTION, 45)
-		MAR6 DDD 1 A_Chase
-		Loop
-
-	CheckIfCanJump:
-		MAR6 D 2 A_FaceTarget
-		TNT1 A 0 A_TakeInventory("evmarinenoway", 1)
-		TNT1 A 0 A_JumpIfInventory("evmarinecanjump", 1, "Jump")
-		Goto See
-
-	Missile:
-		TNT1 A 0
-		TNT1 A 0 A_Jump(128, "MissileLeft", "MissileRight")
-		MAR6 D 6 A_FaceTarget
-		MAR6 D 3 BRIGHT A_CustomMissile("PurplePlasmaBall",32,0,0,0)
-		TNT1 A 0 A_GiveInventory("PlasmaAmmo",1)
-
-		TNT1 A 0 A_JumpIfInTargetInventory("PlayerIsDead", 1, "Laugh")
-		TNT1 A 0 A_JumpIfInventory("PlasmaAmmo", 50, "Reload")
-		TNT1 A 0 A_CposRefire
-		Goto Missile
-
-	MissileLeft:
-		TNT1 A 0
-		MAR6 D 6 A_FaceTarget
-		TNT1 A 0 ThrustThing(angle*256/360+192, 9, 0, 0)
-		MAR6 D 3 BRIGHT A_CustomMissile("PurplePlasmaBall",32,0,0,0)
-		TNT1 A 0 A_GiveInventory("PlasmaAmmo",1)
-
-		TNT1 A 0 A_JumpIfInTargetInventory("PlayerIsDead", 1, "Laugh")
-		TNT1 A 0 A_JumpIfInventory("PlasmaAmmo", 50, "Reload")
-		Goto Missile
-
-	MissileRight:
-		TNT1 A 0
-		MAR6 D 6 A_FaceTarget
-		TNT1 A 0 ThrustThing(angle*256/360+64, 9, 0, 0)
-		MAR6 D 3 BRIGHT A_CustomMissile("PurplePlasmaBall",32,0,0,0)
-		TNT1 A 0 A_GiveInventory("PlasmaAmmo",1)
-
-		TNT1 A 0 A_JumpIfInTargetInventory("PlayerIsDead", 1, "Laugh")
-		TNT1 A 0 A_JumpIfInventory("PlasmaAmmo", 50, "Reload")
-		Goto Missile
-
-	Reload:
-		TNT1 A 0
-		PLA6 E 10 A_FaceTarget
-		TNT1 A 0 A_PlaySound("PLREADY")
-		TNT1 A 0 A_CustomMissile("PlasmaCaseSpawn", 30, 0, random(-11, 11), 0)
-		PLA6 A 10 A_TakeInventory("PlasmaAmmo", 50)
-		PLA6 B 10 A_FaceTarget
-		PLA6 A 10 A_FaceTarget
-		PLA6 E 10 A_FaceTarget
-		Goto See
-
-	Melee:
-		TNT1 A 0
-		MAR6 D 3 A_FaceTarget
-		PKIK AB 3 A_FastChase
-		PKIK C 3 A_CustomMissile("KickAttack",32,0,0,0)
-		PKIK B 3 A_FastChase
-		MAR6 D 3 A_FaceTarget
-		Goto See
-
-	Jump:
-		TNT1 A 0
-		TNT1 A 0 A_TakeInventory("evmarinecanjump", 1)
-		TNT1 A 0 ThrustThingZ(0, 32, 0, 1)
-		TNT1 A 0 A_Recoil(-6)
-		MAR6 J 3
-		TNT1 A 0 A_CheckSight("WaitforLand")
-		MAR6 J 1
-		TNT1 A 0 A_JumpIfCloser(128, "JumpKick")
-		Goto Missile
-
-	WaitforLand:
-		TNT1 A 0
-		MAR6 JJJJJJJJJJJ 3 A_Checkfloor("See")
-		Goto See
-
-	JumpBack:
-		TNT1 A 0
-		TNT1 A 0 A_TakeInventory("evmarinecanjump", 1)
-		TNT1 A 0 ThrustThingZ(0, 32, 0, 1)
-		TNT1 A 0 A_Recoil(6)
-		MAR6 J 3
-		TNT1 A 0 A_CheckSight("WaitforLand")
-		MAR6 J 1
-		TNT1 A 0 A_JumpIfCloser(128, "JumpKick")
-		Goto Missile
-
-	Pain:
-		MAR6 E 3
-		TNT1 A 0 A_Jump(64, "Pain.Avoid")
-		MAR6 E 3 A_Pain
-		Goto See
-
-	Laugh:
-		TNT1 A 0 A_FaceTarget
-		TNT1 A 0 A_PlaySound("EVMRLAUG")
-		PLAY G 30
-		Goto Idle
 	}
 }
