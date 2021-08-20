@@ -28,13 +28,10 @@ ACTOR Mancubus : Fatso Replaces Fatso
     Health 600
 	Mass 1000
 	Speed 8
-	FAstSpeed 12
     BloodType "Brutal_Blood", "SawBlood", "SawBlood"
 	DropItem "DemonStrengthRune", 16
 	Obituary "%o was incinerated by a Mancubus."
     +DONTHURTSPECIES
-	+THRUGHOST
-	-FASTER
 	DeathHeight 6
 	BurnHeight 0
 	Species "Fatso"
@@ -48,14 +45,8 @@ ACTOR Mancubus : Fatso Replaces Fatso
 
 	See:
 		FATT A 0
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 5)
-
-	Idle:
-	LookingForPlayer:
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 54)
-		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 10, "ForgetTarget")
-		TNT1 A 0 A_GiveInventory("EnemyMemory", 1)
-		FATT AAA 4 A_Chase
+		FATT AA 4 A_Chase
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 54)
         FATT BB 4 A_Chase
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 54)
@@ -66,15 +57,34 @@ ACTOR Mancubus : Fatso Replaces Fatso
         FATT EE 4 A_Chase
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 54)
         FATT FF 4 A_Chase
-		TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "ForgetTarget")
+		TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "LookingForPlayer")
+		TNT1 A 0 A_CheckSight("LookingForPlayer")
+		Goto See
+
+	LookingForPlayer:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 10, "ForgetTarget")
+		TNT1 A 0 A_GiveInventory("EnemyMemory", 1)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 54)
+		FATT AA 4 A_Wander
+		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 54)
+        FATT BB 4 A_Wander
+		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 54)
+        FATT CC 4 A_Wander
+		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 54)
+        FATT DD 4 A_Wander
+		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 54)
+        FATT EE 4 A_Wander
+		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 54)
+        FATT FF 4 A_Wander
 		TNT1 A 0 A_CheckSight("LookingForPlayer")
 		Goto See
 
 	ForgetTarget:
+		TNT1 A 0
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
-		TNT1 A 0 A_GiveInventory("LookingForPlayer", 1)
-		Goto LookingForPlayer
+		Goto Idle
 
     Spawn:
 		FATT B 1
@@ -94,6 +104,7 @@ ACTOR Mancubus : Fatso Replaces Fatso
 		Stop
 
     Stand:
+	Idle:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("HeadshotTarget100", 0, 54)
 		FATT BBBBBBBBBB 10 A_Look
