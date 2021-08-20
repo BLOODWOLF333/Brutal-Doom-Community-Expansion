@@ -851,6 +851,27 @@ Actor EvilMarinePlasma: EvilMarineRifle
 		TNT1 A 0 A_Jump(64, "Pain.Avoid")
 		MAR6 E 3 A_Pain
 		Goto See
+
+	Pain.Avoid:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(128, "RollLeft", "RollRight")
+		Goto JumpBack
+
+	RollLeft:
+		TNT1 A 0
+		TNT1 A 0 A_FaceTarget
+		TNT1 A 0 ThrustThing(angle*256/360+192, 10, 0, 0)
+		PROL EDCBA 3
+		TNT1 A 0 A_CheckSight("See")
+		Goto Missile
+
+	RollRight:
+		TNT1 A 0
+		TNT1 A 0 A_FaceTarget
+		TNT1 A 0 ThrustThing(angle*256/360+64, 10, 0, 0)
+		PROL ABCDE 3
+		TNT1 A 0 A_CheckSight("See")
+		Goto Missile
 	}
 }
 
