@@ -19,12 +19,28 @@ splash 	purple
 
 splash Slime
 {
-	smallclass 	none
+	smallclass		none
 	smallclip		6
 	smallsound		world/sludgegloopsmall
 
 	baseclass		SlimeSplashBase
 	chunkclass		SlimeChunk
+	chunkxvelshift	8
+	chunkyvelshift	8
+	chunkzvelshift	8
+	chunkbasezvel	2
+	sound			world/watersplash
+	NoAlert
+}
+
+splash Tar
+{
+	smallclass		none
+	smallclip		6
+	smallsound		world/sludgegloopsmall
+
+	baseclass		TarSplashBase
+	chunkclass		SludgeChunk
 	chunkxvelshift	8
 	chunkyvelshift	8
 	chunkzvelshift	8
@@ -122,16 +138,25 @@ terrain Slime
  splash Slime
 }
 
+terrain Tar
+{
+ footclip	 1
+ liquid
+ splash Tar
+}
+
 floor BDBLOOD1 Blood
 floor BLOOD1 Blood
 floor BLOOD2 Blood
 floor BLOOD3 Blood
 
-floor BDFWATER Water
-floor FWATER1 Water
-floor FWATER2 Water
-floor FWATER3 Water
-floor FWATER4 Water
+floor LAVA1 Lava
+floor LAVA2 Lava
+floor LAVA3 Lava
+floor LAVA4 Lava
+floor LAVAFL Lava
+
+floor MAGEFL Magenta
 
 floor BDNUKE1 Nukage
 floor NUKAGE1 Nukage
@@ -152,10 +177,10 @@ floor SLIME06 Slime
 floor SLIME07 Slime
 floor SLIME08 Slime
 
-floor LAVA1 Lava
-floor LAVA2 Lava
-floor LAVA3 Lava
-floor LAVA4 Lava
-floor LAVAFL Lava
+floor FHDT01 Tar
 
-floor MAGEFL Magenta
+floor BDFWATER Water
+floor FWATER1 Water
+floor FWATER2 Water
+floor FWATER3 Water
+floor FWATER4 Water

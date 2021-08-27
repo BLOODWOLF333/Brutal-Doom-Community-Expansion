@@ -780,6 +780,7 @@ ACTOR AxeAttack: FastProjectile
 		AXEG A 0 A_JumpIfInventory("IsOverNukage", 1, "SpawnNukage")
 		AXEG A 0 A_JumpIfInventory("IsOverPurple", 1, "SpawnPurple")
 		AXEG A 0 A_JumpIfInventory("IsOverSlime", 1, "SpawnSlime")
+		AXEG A 0 A_JumpIfInventory("IsOverTar", 1, "SpawnTar")
 		AXEG A 0 A_JumpIfInventory("IsOverBlood", 1, "SpawnBlood")
 		AXEG A 0 A_JumpIfInventory("IsOverLava", 1, "SpawnLava")
 		AXEG A 0 A_JumpIfInventory("IsOverMagenta", 1, "SpawnMagenta")
@@ -819,6 +820,16 @@ ACTOR AxeAttack: FastProjectile
 		AXEG A 0 A_SpawnItem("SlimeSplashWaves")
 		AXEG A 0 A_SetScale(0.5, 0.5)
 		SPHB ABCDE 3
+		Stop
+
+	SpawnTar:
+		AXEG A 0
+		TNT1 A 0 A_PlaySound("bigspl1", 1)
+		TNT1 AAAAA 0 A_CustomMissile ("TarParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160))
+		TNT1 AAAAA 0 A_CustomMissile ("TarParticleXFAster", 24, 0, random (0, 360), 2, random (30, 160))
+		AXEG A 0 A_SpawnItem("TarSplashWaves")
+		AXEG A 0 A_SetScale(0.5, 0.5)
+		SPHT ABCDE 3
 		Stop
 
 	SpawnNukage:

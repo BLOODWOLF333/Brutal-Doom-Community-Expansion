@@ -30,7 +30,7 @@ Actor BloodParticleX
   TNT1 A 1
   Goto Stand
   Stand:
-    BSPH ABCDDDDDD 4
+    SLDG ABCDDDDDD 4
     Stop
  Death:
  BSPL ABCDEFGH 1
@@ -163,12 +163,12 @@ Actor BloodSplashWaves
 			TNT1 A 0 ACS_NamedExecuteAlways("BDCheckWaterRipples", 0, 0, 0, 0)
 			TNT1 A 3
 			TNT1 A 0 A_JumpIfInventory("Clip2", 1, "Vanish")
-			BSPH DE 4 A_SetScale(1.8, 1.8)
-			BSPH FHI 4
+			SLDG DE 4 A_SetScale(1.8, 1.8)
+			SLDG FHI 4
 			TNT1 A 1 A_SetScale(2.2, 1.4)
-			BSPH DEFHI 6
+			SLDG DEFHI 6
 			TNT1 A 1 A_SetScale(2.8, 0.8)
-			BSPH DEFHI 8
+			SLDG DEFHI 8
 			//TNT1 A 1 A_SetScale(2.8, 0.5)
 			//SPSH DEFHI 16
 			Stop
@@ -280,10 +280,7 @@ Actor NukageSplashWaves
 			SLDG DEFHI 6 BRIGHT
 			TNT1 A 1 A_SetScale(1.8, 0.6)
 			SLDG DEFHI 8 BRIGHT
-			//TNT1 A 1 A_SetScale(2.8, 0.5)
-			//SPSH DEFHI 16
 			Stop
-
 
 			Vanish:
 				TNT1 A 0
@@ -354,7 +351,7 @@ states
 
 Actor GreenLiquidParticleX: BloodLiquidParticleX
 {
-  Translation "179:191=112:127"
+  Translation "179:191=112:127", "45:47=112:127"
   RenderStyle Add
   Alpha 0.8
   //decal BloodWaterDecal
@@ -530,11 +527,9 @@ states
 
 Actor PurpleLiquidParticleX: BloodLiquidParticleX
 {
-  Translation "179:191=[160,32,240]:[80,16,120]"
+  Translation "179:191=[160,32,240]:[80,16,120]", "45:47=[160,32,240]:[80,16,120]"
   RenderStyle Add
   Alpha 0.8
-  //decal BloodWaterDecal
-  damagetype "Slime"
   States
   {
 	Spawn:
@@ -580,7 +575,7 @@ Actor slimeParticleX
   TNT1 A 1
   Goto Stand
   Stand:
-    SLIM ABCDDDDDD 4
+    SLDG ABCDDDDDD 4
     Stop
  Death:
  LSPL ABCDEFGH 1
@@ -670,7 +665,7 @@ states
 
 Actor BrownLiquidParticleX: BloodLiquidParticleX
 {
-  Translation "179:191=144:151"
+  Translation "179:191=144:151", "45:47=144:151"
   RenderStyle Add
   Alpha 0.8
   //decal BloodWaterDecal
@@ -730,21 +725,18 @@ Actor SlimeSplashWaves
 			TNT1 A 0 ACS_NamedExecuteAlways("BDCheckWaterRipples", 0, 0, 0, 0)
 			TNT1 A 3
 			TNT1 A 0 A_JumpIfInventory("Clip2", 1, "Vanish")
-			SLIM DE 4 A_SetScale(1.8, 1.8)
-			SLIM FHI 4
+			SLDG DE 4 A_SetScale(1.8, 1.8)
+			SLDG FHI 4
 			TNT1 A 1 A_SetScale(2.2, 1.4)
-			SLIM DEFHI 6
+			SLDG DEFHI 6
 			TNT1 A 1 A_SetScale(2.8, 0.8)
-			SLIM DEFHI 8
-			//TNT1 A 1 A_SetScale(2.8, 0.5)
-			//SPSH DEFHI 16
+			SLDG DEFHI 8
 			Stop
-
 
 			Vanish:
 				TNT1 A 0
 				Stop
-			}
+		}
 }
 
 actor slimeSplashBaseSmall : slimeSplashBase
@@ -820,4 +812,129 @@ actor MagentaSplashBase : slimeSplashBase
 	TNT1 A 0 A_NoBlocking
     Stop
   }
+}
+
+actor TarSplashBase
+{
+  Radius 1
+  Height 1
+  Mass 999999
+  alpha .8
+  Scale 1.5
+  +NOGRAVITY
+  +THRUACTORS
+  +DONTSPLASH
+  +CLIENTSIDEONLY
+  States
+  {
+  Spawn:
+	TNT1 FFF 0 A_CustomMissile ("TarParticleX", 12, random(-5,5), random (0, 360), 2, random (50, 140))
+	TNT1 FFF 0 A_CustomMissile ("TarParticleXFaster", 12, random(-5,5), random (0, 360), 2, random (50, 140))
+	TNT1 A 0 A_RadiusGive("IsOverTar", 64, RGF_OBJECTS, 1)
+	//TNT1 A 0 A_SpawnItem("SlimeSplashWaves")
+	TNT1 A 16
+	//TNT1 A 0 A_SpawnItem("SlimeSplashWaves")
+	TNT1 A 16
+	//TNT1 A 0 A_SpawnItem("SlimeSplashWaves")
+    Stop
+  }
+}
+
+Actor TarParticleX
+{
+  Height 2
+  Radius 2
+  Mass 0
+  +Missile
+  +NoBlockMap
+  -NoGravity
+  +DontSplash
+  +FORCEXYBILLBOARD
+  +THRUACTORS
+  +CLIENTSIDEONLY
+  +NOTELEPORT
+  BounceFactor 0.1
+  Gravity 0.5
+  RenderStyle Add
+  Scale 1.0
+  Alpha 0.8
+  //decal watersplash
+  //Speed 2
+  Speed 2
+  States
+  {
+  Spawn:
+  TNT1 A 1
+  TNT1 A 0 A_ChangeFlag(DOOMBOUNCE, 0)
+  TNT1 A 1
+  Goto Stand
+  Stand:
+    TARS ABCDDDDDD 4
+    Stop
+ Death:
+ TSPL ABCDEFGH 1
+ Stop
+
+  }
+}
+
+Actor TarParticleXFAster: TarParticleX
+{
+  Speed 4
+  Scale 1.2
+}
+
+Actor TarParticleXSuperFast: TarParticleX
+{
+  Speed 7
+  Gravity 0.7
+  Scale 1.0
+}
+
+Actor TarSplashWaves
+{
+	+CLIENTSIDEONLY
+	+THRUACTORS
+	+DONTSPLASH
+	Mass 0
+	States
+		{
+			Spawn:
+			TNT1 A 0
+			TNT1 A 0 ACS_NamedExecuteAlways("BDCheckWaterRipples", 0, 0, 0, 0)
+			TNT1 A 3
+			TNT1 A 0 A_JumpIfInventory("Clip2", 1, "Vanish")
+			SLDG DE 4 A_SetScale(1.8, 1.8)
+			SLDG FHI 4
+			TNT1 A 1 A_SetScale(2.2, 1.4)
+			SLDG DEFHI 6
+			TNT1 A 1 A_SetScale(2.8, 0.8)
+			SLDG DEFHI 8
+			Stop
+
+			Vanish:
+				TNT1 A 0
+				Stop
+		}
+}
+
+Actor BlackLiquidParticleX: BloodLiquidParticleX
+{
+	Translation "179:191=[128,128,128]:[0,0,0]", "45:47=[128,128,128]:[0,0,0]"
+	RenderStyle Add
+	Alpha 0.8
+	States
+	{
+		Spawn:
+		MSBL ABCDEFG 2 BRIGHT
+		MSBL H 120 BRIGHT
+		Stop
+
+		Death:
+		TNT1 A 0
+		TNT1 A 0 A_SetScale(1.9, 1.9)
+		BSPL ABCDEFGH 1
+		Stop
+
+	}
 }

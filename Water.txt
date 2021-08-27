@@ -489,20 +489,18 @@ Actor WaterSplashWaves
 				TNT1 A 0 ACS_NamedExecuteAlways("BDCheckWaterRipples", 0, 0, 0, 0)
 				TNT1 A 3
 				TNT1 A 0 A_JumpIfInventory("Clip2", 1, "Vanish")
-				SPSH DE 4 A_SetScale(1.2, 1.8)
-				SPSH FHI 4
+				SLDG DE 4 A_SetScale(1.2, 1.8)
+				SLDG FHI 4
 				TNT1 A 0 A_SetScale(1.6, 1.4)
-				SPSH DEFHI 6
+				SLDG DEFHI 6
 				TNT1 A 0 A_SetScale(1.8, 0.8)
-				SPSH DEFHI 8
-				//TNT1 A 1 A_SetScale(2.8, 0.5)
-				//SPSH DEFHI 16
+				SLDG DEFHI 8
 				Stop
 
 			Vanish:
 				TNT1 A 0
 				Stop
-			}
+		}
 }
 
 
@@ -566,6 +564,7 @@ ACTOR ExplosionSplashSpawner
 	TNT1 A 2
     TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "SpawnWater")
 	TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "SpawnSlime")
+	TNT1 A 0 A_JumpIfInventory("IsOverTar", 1, "SpawnTar")
 	TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "SpawnNukage")
 	TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "SpawnPurple")
 	TNT1 A 0 A_JumpIfInventory("IsOverBlood", 1, "SpawnBlood")
@@ -592,10 +591,17 @@ ACTOR ExplosionSplashSpawner
 	TNT1 A 20
 	Stop
 
+ SpawnTar:
+	TNT1 A 0
+	TNT1 A 0 A_PlaySound("bigspl1")
+	TNT1 AAAAAAAAA 0 A_CustomMissile ("TarParticleXSuperFast", random (50, 60), 0, random (0, 360), 2, random (10, 90))
+	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("BlackLiquidParticleX", random (0, 60), 0, random (0, 360), 2, random (30, 90))
+	TNT1 A 20
+	Stop
+
  SpawnNukage:
 	TNT1 A 0
 	TNT1 A 0 A_PlaySound("bigspl1")
-	//tNT1 AAAAAAAAA 0 A_CustomMissile ("NukageParticleXSuperFast", random (50, 60), 0, random (0, 360), 2, random (10, 90))
 	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("GreenLiquidParticleX", random (0, 60), 0, random (0, 360), 2, random (30, 90))
 	TNT1 A 20
 	Stop
@@ -610,7 +616,6 @@ ACTOR ExplosionSplashSpawner
   SpawnBlood:
 	TNT1 A 0
 	TNT1 A 0 A_PlaySound("bigspl1")
-	//TNT1 AAAAAAAAA 0 A_CustomMissile ("BloodParticleXSuperFast", random (50, 60), 0, random (0, 360), 2, random (10, 90))
 	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("BloodLiquidParticleX", random (0, 60), 0, random (0, 360), 2, random (30, 90))
 	TNT1 A 20
 	Stop
