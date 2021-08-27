@@ -55,6 +55,7 @@ script "BDCheckFloorType" (void) //Ricochets
 
 	if (CheckActorFloorTexture(0, "SNOW1"))    GiveInventory("IsOverSnow", 1);
 	if (CheckActorFloorTexture(0, "SNOW2"))    GiveInventory("IsOverSnow", 1);
+	if (CheckActorFloorTexture(0, "SNOW3"))    GiveInventory("IsOverSnow", 1);
 }
 
 script "BDCheckFloorType2" (void) // Footstep Sounds
@@ -157,6 +158,7 @@ script "BDCheckFloorType2" (void) // Footstep Sounds
 	if (CheckActorFloorTexture(0, "MFLR8_4"))    GiveInventory("IsOverSand", 1);
 	if (CheckActorFloorTexture(0, "SNOW1"))    GiveInventory("IsOverSand", 1);
 	if (CheckActorFloorTexture(0, "SNOW2"))    GiveInventory("IsOverSand", 1);
+	if (CheckActorFloorTexture(0, "SNOW3"))    GiveInventory("IsOverSand", 1);
 
 	if (CheckActorFloorTexture(0, "CEIL3_1"))    GiveInventory("IsOverTile", 1);
 	if (CheckActorFloorTexture(0, "CEIL3_2"))    GiveInventory("IsOverTile", 1);
@@ -235,6 +237,7 @@ script "BDCheckFloorType3" (void) ///Check if Over Dirt or Grass for explosions
 
 	if (CheckActorFloorTexture(0, "SNOW1"))    GiveInventory("IsOverSnow", 1);
 	if (CheckActorFloorTexture(0, "SNOW2"))    GiveInventory("IsOverSnow", 1);
+	if (CheckActorFloorTexture(0, "SNOW3"))    GiveInventory("IsOverSnow", 1);
 
 	if (CheckActorFloorTexture(0, "SFLR6_1"))    GiveInventory("IsOverFlesh", 1);
 	if (CheckActorFloorTexture(0, "SFLR6_4"))    GiveInventory("IsOverFlesh", 1);
