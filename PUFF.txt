@@ -230,8 +230,10 @@ ACTOR RicoChet
 	TNT1 A 0 A_JumpIfInventory("IsOverBlood", 1, "SpawnBlood")
 	TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "SpawnLava")
 	TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "SpawnMagenta")
+	TNT1 A 0 A_JumpIfInventory("IsOverYava", 1, "SpawnYava")
 	TNT1 A 0 A_JumpIfInventory("IsOverGrass", 1, "SpawnDirt")
 	TNT1 A 0 A_JumpIfInventory("IsOverSand", 1, "SpawnSand")
+	TNT1 A 0 A_JumpIfInventory("IsOverSnow", 1, "SpawnSnow")
 
 	TNT1 A 0 A_SpawnItemEx ("DetectFloorBullet",0,0,5,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	TNT1 A 0 A_SpawnItemEx ("DetectCeilBullet",0,0,0,-5,0,0,0,SXF_NOCHECKPOSITION,0)
@@ -321,6 +323,17 @@ ACTOR RicoChet
 	TNT1 AAA 4 A_CustomMissile ("OldschoolRocketSmokeTrailDarker", 14, 0, random (160, 210), 2, random (10, 90))
 	Stop
 
+	SpawnYava:
+	TNT1 A 0
+	TNT1 A 0 A_CustomMissile ("OldschoolRocketSmokeTrailDarker", 12, 0, random (160, 210), 2, random (10, 90))
+	TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3Y", random (-5, 5), random (-5, 5))
+	TNT1 AAAAA 0 A_CustomMissile ("YellowParticleHeavy", 10, 0, random (0, 180), 2, random (10, 90))
+	TNT1 A 0 A_SetScale(0.5, 0.5)
+	INFY ABCDEFGHIJKLMNOPQR 1 BRIGHT
+	INFY ST 1 BRIGHT A_CustomMissile ("OldschoolRocketSmokeTrailDarker", 32, 0, random (160, 210), 2, random (10, 90))
+	TNT1 AAA 4 A_CustomMissile ("OldschoolRocketSmokeTrailDarker", 14, 0, random (160, 210), 2, random (10, 90))
+	Stop
+
 	SpawnDirt:
 	TNT1 A 0
 	TNT1 A 0 A_CustomMissile ("BrownCloudSmallLong", 0, 0, random (0, 360), 2, random (10, 150))
@@ -333,6 +346,14 @@ ACTOR RicoChet
 	TNT1 A 0 A_CustomMissile ("SandCloudSmall", 0, 0, random (0, 360), 2, random (10, 90))
 	TNT1 A 0 A_CustomMissile ("SandDustSmall", 4, 0, random (0, 360), 2, random (30, 150))
 	TNT1 AAA 0 A_CustomMissile ("SandRicochet", random (0, 2), 0, random (0, 360), 2, random (30, 90))
+	Stop
+
+	SpawnSnow:
+	TNT1 A 0
+	TNT1 A 0 A_CustomMissile ("SnowCloudSmallLong", 0, 0, random (0, 360), 2, random (10, 90))
+	TNT1 A 0 A_CustomMissile ("SnowCloudSmall", 0, 0, random (0, 360), 2, random (10, 90))
+	TNT1 A 0 A_CustomMissile ("SnowDustSmall", 4, 0, random (0, 360), 2, random (30, 150))
+	TNT1 AAA 0 A_CustomMissile ("SnowRicochet", random (0, 2), 0, random (0, 360), 2, random (30, 90))
 	Stop
   }
 }
@@ -404,6 +425,42 @@ ACTOR SandRicochet: RicoChet
 	TNT1 A 0
 	TNT1 A 0 A_SetScale(-0.7, 0.7)
 	SSND ABCDEFF 1 A_FadeOut(0.1)
+	Stop
+
+  }
+}
+
+ACTOR SnowRicochet: RicoChet
+{
+  renderstyle Translucent
+  alpha 0.9
+  Scale 0.5
+  Speed 6
+  states
+  {
+  Spawn:
+	TNT1 A 0
+	TNT1 A 0 A_PlaySound("BHITDIR")
+	TNT1 A 0 A_Jump(255, "spawn1", "Spawn2", "Spawn3", "Spawn4")
+  Spawn1:
+	TNT1 A 0
+	TNT1 A 0 A_SetScale(0.7, 0.7)
+	SSNW ABCDEFF 1 A_FadeOut(0.1)
+	Stop
+ Spawn2:
+	TNT1 A 0
+	TNT1 A 0 A_SetScale(0.8, 0.8)
+	SSNW ABCDEFF 1 A_FadeOut(0.1)
+	Stop
+  Spawn3:
+	TNT1 A 0
+	TNT1 A 0 A_SetScale(-0.6, 0.6)
+	SSNW ABCDEFF 1 A_FadeOut(0.1)
+	Stop
+  Spawn4:
+	TNT1 A 0
+	TNT1 A 0 A_SetScale(-0.7, 0.7)
+	SSNW ABCDEFF 1 A_FadeOut(0.1)
 	Stop
 
   }

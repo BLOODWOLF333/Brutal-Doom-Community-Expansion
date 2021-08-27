@@ -1102,6 +1102,144 @@ ACTOR FlyingMagenta1d: FlyingMagenta1c
     }
 }
 
+ACTOR FlyingYava: FlyingBurningFuel
+{
+    Renderstyle ADd
+	Alpha 1.0
+	Gravity 1.0
+	Speed 9
+	Scale 0.1
+	Radius 14
+	Height 14
+	+NODAMAGETHRUST
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Underwater")
+        YAVA A 1
+		YAVA A 1 A_SetScale(0.2, 0.2)
+		YAVA A 1 A_SetScale(0.3, 0.3)
+		YAVA A 1 A_SetScale(0.4, 0.4)
+		YAVA A 1 A_SetScale(0.5, 0.5)
+		YAVA A 1 A_SetScale(0.6, 0.6)
+		YAVA A 1 A_SetScale(0.7, 0.7)
+		YAVA A 1 A_SetScale(0.8, 0.8)
+		YAVA A 1 A_SetScale(0.9, 0.9)
+		YAVA A 1 A_SetScale(1.0, 1.0)
+	Fly:
+		YAVA A 2
+        Loop
+	Death:
+		TNT1 A 0
+		TNT1 A 0 A_Explode(32, 120, 1, 120)
+		EXPL AAAA 0 A_CustomMissile ("FireBallExplosionFlames", 1, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3Y", random (-5, 5), random (-5, 5))
+		Stop
+    }
+}
+
+ACTOR FlyingYava2: FlyingYava
+{
+	Speed 10
+	Scale 0.2
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Underwater")
+        YAVA B 1
+		YAVA B 1 A_SetScale(0.3, 0.3)
+		YAVA B 1 A_SetScale(0.4, 0.4)
+		YAVA B 1 A_SetScale(0.5, 0.5)
+		YAVA B 1 A_SetScale(0.6, 0.6)
+		YAVA B 1 A_SetScale(0.7, 0.7)
+		YAVA B 1 A_SetScale(0.8, 0.8)
+		YAVA B 1 A_SetScale(0.9, 0.9)
+		YAVA B 1 A_SetScale(1.0, 1.0)
+		YAVA B 1 A_SetScale(1.1, 1.1)
+		YAVA B 1 A_SetScale(1.2, 1.2)
+	Fly:
+		YAVA A 2
+        Loop
+    }
+}
+
+ACTOR FlyingYava1b: FlyingYava
+{
+	Speed 12
+	Scale -0.4
+	Damage 10
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Underwater")
+        YAVA A 2
+        Loop
+    }
+}
+
+ACTOR FlyingYava2b: FlyingYava1b
+{
+	Speed 14
+	Scale -0.6
+	Damage 10
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Underwater")
+        YAVA B 2
+        Loop
+    }
+}
+
+ACTOR FlyingYava1c: FlyingYava1b
+{
+	Speed 8
+	Scale 0.3
+	+THRUACTORS
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Underwater")
+        YAVA C 2
+        Loop
+	Death:
+		TNT1 A 0
+		TNT1 A 0 A_Explode(4, 32, 1)
+		EXPL AA 0 A_CustomMissile ("FireBallExplosionFlames", 1, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3Y", random (-5, 5), random (-5, 5))
+		Stop
+    }
+}
+
+ACTOR FlyingYava2c: FlyingYava1c
+{
+	Speed 8
+	Scale 0.3
+	+THRUACTORS
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Underwater")
+        YAVA B 2
+        Loop
+    }
+}
+
+ACTOR FlyingYava1d: FlyingYava1c
+{
+	Speed 8
+	Scale 0.3
+	Damagetype "Fire"
+	-THRUACTORS
+	Damage 2
+    States
+    {
+    Spawn:
+	    YAVA A 1
+		Goto Death
+    }
+}
+
 Actor FlyingBurningFuel2: FlyingBurningFuel
 {
 speed 8
@@ -1595,6 +1733,56 @@ ACTOR TinyBurningPiece2M: TinyBurningPieceM
 }
 
 ACTOR TinyBurningPiece3M: TinyBurningPieceM
+{
+	Scale 0.5
+}
+
+ACTOR TinyBurningPieceY
+{
+	Damagetype "Fire"
+    +CLIENTSIDEONLY
+	+NONETID
+	Alpha 0.9
+	RenderStyle Add
+	Scale 1.1
+	Radius 0
+    Height 0
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +DONTSPLASH
+	Damage 0
+	States
+	{
+	Spawn:
+
+	CFCY ABCDEFGHIJKL 2 BRIGHT
+	TNT1 A 0 A_Jump(24, "StopBurning")
+	Loop
+
+	StopBurning:
+	CFCY NOP 2 BRIGHT A_SpawnItem("YellowFlareSmall", 0, 5)
+	Stop
+    }
+}
+
+ACTOR TinyBurningPiece2Y: TinyBurningPieceY
+{
+	Scale 0.7
+	States
+	{
+	Spawn:
+
+	CFCY ABCDEFGHIJKL 2 BRIGHT
+	TNT1 A 0 A_Jump(24, "StopBurning")
+	Loop
+
+	StopBurning:
+	CFCY NOP 2 BRIGHT A_SpawnItem("YellowFlareSmall", 0, 5)
+	Stop
+    }
+}
+
+ACTOR TinyBurningPiece3Y: TinyBurningPieceY
 {
 	Scale 0.5
 }

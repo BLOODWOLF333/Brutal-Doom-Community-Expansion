@@ -73,7 +73,7 @@ splash 	lava
  smallclass 	LavaSplashBase
  smallclip		6
  baseclass		LavaSplashBase
- sound		world/lavasizzle
+ sound			world/lavasizzle
  NoAlert
 }
 
@@ -83,6 +83,15 @@ splash 	magenta
  smallclip		6
  baseclass		magentaSplashBase
  sound		world/lavasizzle
+ NoAlert
+}
+
+splash 	yava
+{
+ smallclass 	YavaSplashBase
+ smallclip		6
+ baseclass		YavaSplashBase
+ sound			world/lavasizzle
  NoAlert
 }
 //********** Terrain **********
@@ -119,6 +128,14 @@ terrain	lava
 terrain	magenta
 {
  splash 	magenta
+ footclip	 1
+ liquid
+ damagetype		"Fire"
+}
+
+terrain	yava
+{
+ splash 	yava
  footclip	 1
  liquid
  damagetype		"Fire"
@@ -180,7 +197,10 @@ floor SLIME08 Slime
 floor FHDT01 Tar
 
 floor BDFWATER Water
+floor FHDI01 Water
 floor FWATER1 Water
 floor FWATER2 Water
 floor FWATER3 Water
 floor FWATER4 Water
+
+floor YAVAFL Yava
