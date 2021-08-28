@@ -439,7 +439,6 @@ ACTOR RifleZombie Replaces ZombieMan
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory ("SKZombieman", 1, "GotoStealthKill")
         TNT1 A 0 A_JumpIfInventory ("IsDown", 1, "GroundExecution")
-		TNT1 A 0 HealThing(2)
 		Goto See
 
 	GroundExecution:

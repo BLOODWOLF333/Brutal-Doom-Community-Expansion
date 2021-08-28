@@ -1490,6 +1490,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 	    NULL A 0 A_JumpIfInventory("IsCurbstompingSergeant", 1, "CurbstompSergeant")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedImp", 1, "ExecuteImp")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedZombieman", 1, "ExecuteZombieman")
+		NULL A 0 A_JumpIfInventory("ExecuteDownedLabGuy", 1, "ExecuteLabguy")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedShotgunguy", 1, "ExecuteShotgunguy")
         PLA1 G 1
         NULL A 0 A_TakeInventory("GoSpecial", 1)
@@ -1497,6 +1498,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 	    NULL A 0 A_JumpIfInventory("IsCurbstompingSergeant", 1, "CurbstompSergeant")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedImp", 1, "ExecuteImp")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedZombieman", 1, "ExecuteZombieman")
+		NULL A 0 A_JumpIfInventory("ExecuteDownedLabGuy", 1, "ExecuteLabguy")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedShotgunguy", 1, "ExecuteShotgunguy")
         NULL A 0 A_JumpIfInventory("RollLeft", 1, "RollLeft")
 		NULL A 0 A_JumpIfInventory("RollRight", 1, "RollRight")
@@ -4618,6 +4620,7 @@ SFNZ C 8
 	    NULL A 0 A_JumpIfInventory("IsCurbstompingSergeant", 1, "CurbstompSergeant")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedImp", 1, "ExecuteImp")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedZombieman", 1, "ExecuteZombieman")
+		NULL A 0 A_JumpIfInventory("ExecuteDownedLabGuy", 1, "ExecuteLabguy")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedShotgunguy", 1, "ExecuteShotgunguy")
         PLAY A 1
         NULL A 0 A_TakeInventory("GoSpecial", 1)
@@ -4625,6 +4628,7 @@ SFNZ C 8
 	    NULL A 0 A_JumpIfInventory("IsCurbstompingSergeant", 1, "CurbstompSergeant")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedImp", 1, "ExecuteImp")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedZombieman", 1, "ExecuteZombieman")
+		NULL A 0 A_JumpIfInventory("ExecuteDownedLabGuy", 1, "ExecuteLabguy")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedShotgunguy", 1, "ExecuteShotgunguy")
         NULL A 0 A_JumpIfInventory("RollLeft", 1, "RollLeft")
 		NULL A 0 A_JumpIfInventory("RollRight", 1, "RollRight")
@@ -4656,6 +4660,7 @@ SFNZ C 8
 	    NULL A 0 A_JumpIfInventory("IsCurbstompingSergeant", 1, "CurbstompSergeant")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedImp", 1, "ExecuteImp")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedZombieman", 1, "ExecuteZombieman")
+		NULL A 0 A_JumpIfInventory("ExecuteDownedLabGuy", 1, "ExecuteLabguy")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedShotgunguy", 1, "ExecuteShotgunguy")
         PLAY A 1
 
@@ -4665,6 +4670,7 @@ SFNZ C 8
 		NULL A 0 A_JumpIfInventory("ExecuteDownedImp", 1, "ExecuteImp")
 		NULL A 0 A_JumpIfInventory("GotMeatShield", 1, "MeatShieldChecker")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedZombieman", 1, "ExecuteZombieman")
+		NULL A 0 A_JumpIfInventory("ExecuteDownedLabGuy", 1, "ExecuteLabguy")
 		NULL A 0 A_JumpIfInventory("ExecuteDownedShotgunguy", 1, "ExecuteShotgunguy")
         NULL A 0 A_JumpIfInventory("RollLeft", 1, "RollLeft")
 		NULL A 0 A_JumpIfInventory("RollRight", 1, "RollRight")
@@ -4718,6 +4724,23 @@ SFNZ C 8
 		TNT1 A 0 A_Stop
 		PLAY A 4
 		TNT1 A 0 A_SpawnItemEx("ZombiemanExecute1",14,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		Goto Kick
+
+	ExecuteLabGuy:
+		TNT1 A 0
+		//tnt1 A 0 A_SetUserVar("user_playerangleexec", angle)
+		NULL A 0 A_GiveInventory("ExecuteDownedEnemy", 1)
+		NULL A 0 A_GiveInventory("BDWeaponACtion", 1)
+		NULL A 0 A_TakeInventory("ExecuteDownedLabGuy", 1)
+		TNT1 A 0 A_CheckFloor("LabGuyExecuteFloor")
+		TNT1 A 0 A_SpawnItemEx("LabGuyExecute1",14,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		Goto Kick
+
+	  LabGuyExecuteFloor:
+		TNT1 A 0
+		TNT1 A 0 A_Stop
+		PLAY A 4
+		TNT1 A 0 A_SpawnItemEx("LabGuyExecute1",14,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		Goto Kick
 
 	ExecuteShotgunguy:

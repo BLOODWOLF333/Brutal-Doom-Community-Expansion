@@ -134,6 +134,70 @@ Actor ZombiemanExecute1: ImpExecute1
 		}
 }
 
+Actor LabGuyExecute1: ImpExecute1
+{
+	States
+	{
+		Spawn:
+		15EZ A 35
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		NULL A 0 A_SpawnItem ("LabguyBeatenDown")
+		Stop
+
+		Pain:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("grunt/pain")
+		TNT1 A 0 A_SpawnItem("Blood", 0, 1)
+		15EZ B 3
+		15EZ C 30
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		NULL A 0 A_SpawnItem ("LabguyBeatenDown")
+		Stop
+
+		Death:
+
+		15EZ C 1
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		TNT1 A 0 A_SpawnItem("ZombiemanHeadExplode")
+		TNT1 A 0 A_SpawnItemEx("SplatteredSmall", 0, 15)
+		TNT1 A 0 A_GiveInventory("BootsSmearedWithRedBlood", 6)
+		15EZ B 8
+		15EZ D 15
+		NULL A 0 A_SpawnItem ("LabguyBeatenDown")
+		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 4, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
+		Stop
+
+	Death.Fatality:
+		15EZ C 1
+		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+		TNT1 AAAA 0 A_SpawnItem("Blood", 0, 1)
+		15EZ C 1 A_FaceTarget
+		TNT1 A 0 A_Recoil(13)
+		TNT1 A 0 ThrustThingZ(0,20,0,1)
+		TNT1 A 0 A_Scream
+		TNT1 A 0 A_CustomMissile ("MuchBlood2", 15, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_CustomMissile ("XDeath1", 15, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAAA 0 A_CustomMissile ("Teeth", 15, 0, random (0, 360), 2, random (0, 160))
+        TNT1 AA 0 A_CustomMissile ("XDeath1", 35, 0, random (0, 360), 2, random (0, 160))
+        FSMS MNOP 4 A_CustomMissile ("Brutal_LiquidBlood3", 15, 0, random (0, 360), 2, random (0, 40))
+		FSMS PPPPPP 4 A_JumpIf((MomY == 0), "DSFStop2")
+		Goto DSFStop2+1
+
+	DSFStop2:
+		TNT1 A 0 A_SpawnItem("Ploft3")
+		TNT1 A 0 A_Stop
+		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_CustomMissile ("SuperWallRedBlood", 2, 0, random (170, 190), 2, random (0, 0))
+		FSMS P 0
+		TNT1 A 0 A_SpawnItem("DeadLabguyFSMSP")
+		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 4, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
+		Stop
+		}
+}
+
 Actor ShotgunguyExecute1: ZombiemanExecute1
 {
 	States
