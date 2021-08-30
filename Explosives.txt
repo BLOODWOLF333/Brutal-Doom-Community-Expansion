@@ -199,8 +199,8 @@ Species "none"
 
 actor JuggernautRocket: Rocket2
 {
-	speed 20
-	Damage (random (100, 110))
+	speed 30
+	Damage (random (120, 120))
 	Species "SpiderMastermind"
 	DamageType ExplosiveImpact
 	States
@@ -652,9 +652,9 @@ ACTOR CyberBalls: Rocket2
 	Radius 10
 	Height 8
 	Projectile
-	Speed 20
-	FastSpeed 30
-    Damage (random (250, 250))
+	Speed 25
+	FastSpeed 35
+    Damage (random (150, 150))
 	DamageType Extreme
     Decal "Scorch"
 	Renderstyle Add
@@ -691,8 +691,8 @@ SpawnUnderwater:
 
 Actor FastCyberballs: Cyberballs
 {
-Speed 30
-FastSpeed 40
+Speed 35
+FastSpeed 45
 Scale 3.4
 Radius 15
 Height 12
@@ -905,9 +905,10 @@ Gravity 0.1
 
 Actor EnemyTankShell: TankShell
 {
-Speed 55
-Damage (random (675, 675))
+Speed 66
+Damage (random (400, 400))
 +MTHRUSPECIES
+Gravity 0.2
 Species "EnemyTank"
 DamageType ExplosiveImpact
 }

@@ -1316,10 +1316,10 @@ ACTOR attackhelicopterGun : DoomWeapon
 
 Actor AssaultHelicopterRocket: Rocket2
 {
-Speed 100
+Speed 50
 +FORCERADIUSDMG
 Scale 1.0
-Damage (random (150, 150))
+Damage (random (300, 300))
 SeeSound "MISLFIRE"
 States
 	{
@@ -1368,10 +1368,11 @@ Actor AssaultHelicopterRocketDM: AssaultHelicopterRocket
 
 Actor EnemyHelicopterRocket: AssaultHelicopterRocket
 {
-Speed 75
+Speed 30
 Scale 1.0
 Species "EnemyTank"
 DamageType ExplosiveImpact
+Damage (random(120,120))
 States
 	{
 	Spawn:
