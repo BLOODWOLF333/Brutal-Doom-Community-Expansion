@@ -51,7 +51,7 @@ Actor MonsterTracer: Tracer//Pistol
 	+THRUGHOST
 	speed 50
 	FastSpeed 80
-	damage (random(8,8))
+	damage (random(12,12))
 	Decal "BulletDecalNew1"
 	DamageType MonsterBullet
 	States
@@ -76,7 +76,7 @@ Actor ShotgunguyTracer: Tracer//Shotgun
 	-DONTSPLASH
 	+MISSILE
 	+THRUGHOST
-	damage (random(12,12))
+	damage (random(8,8))
 	Decal "BulletDecalNew1"
 	DamageType MonsterShotgunBullet
 }
@@ -129,14 +129,14 @@ Actor MarineTracer: ZombiemanTracer
 
 Actor MarineWeakTracer: MonsterTracer
 {
-	damage (random(10,10))
+	damage (random(14,14))
 	DamageType FriendBullet
 	Species "Marines"
 }
 
 Actor MarineShotgunTracer: ShotgunGuyTracer
 {
-	damage (random(14,14))
+	damage (random(10,10))
 	damagetype FriendBullet
 	Species "Marines"
 }
