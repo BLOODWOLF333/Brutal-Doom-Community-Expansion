@@ -179,11 +179,11 @@ ACTOR ShotgunSpawner: CustomInventory
 	Pickup:
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
-		TNT1 A 0 A_JumpIfInventory("Shot_Gun2", 1, "Pickup2")
+		TNT1 A 0 A_JumpIfInventory("Shot_Gun2", 1, "AmmoOnly")
 		TNT1 A 0 A_GiveInventory("Shot_Gun", 1)
 		TNT1 A 0 A_GiveInventory("AmmoShell", 4)
 		Stop
-	Pickup2:
+	AmmoOnly:
 		TNT1 A 0
 		TNT1 A 0 A_GiveInventory("AmmoShell", 4)
 		Stop
@@ -210,11 +210,11 @@ ACTOR ShotgunSpawnerDroped: ShotgunSpawner
 	Pickup:
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
-		TNT1 A 0 A_JumpIfInventory("Shot_Gun2", 1, "Pickup2")
+		TNT1 A 0 A_JumpIfInventory("Shot_Gun2", 1, "AmmoOnly")
 		TNT1 A 0 A_GiveInventory("Shot_Gun", 1)
 		TNT1 A 0 A_GiveInventory("AmmoShell", 4)
 		Stop
-	Pickup2:
+	AmmoOnly:
 		TNT1 A 0
 		TNT1 A 0 A_GiveInventory("AmmoShell", 4)
 		Stop
@@ -247,11 +247,11 @@ ACTOR RevolverSpawner: CustomInventory
 	Pickup:
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
-		TNT1 A 0 A_JumpIfInventory("Revolver2", 1, "Pickup2")
+		TNT1 A 0 A_JumpIfInventory("Revolver2", 1, "AmmoOnly")
 		TNT1 A 0 A_GiveInventory("Revolver", 1)
 		TNT1 A 0 A_GiveInventory("AmmoMagnum", 6)
 		Stop
-	Pickup2:
+	AmmoOnly:
 		TNT1 A 0
 		TNT1 A 0 A_GiveInventory("AmmoMagnum", 6)
 		Stop
@@ -359,11 +359,11 @@ ACTOR SSGSpawner: CustomInventory
 	Pickup:
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
-		TNT1 A 0 A_JumpIfInventory("SSG2", 1, "Pickup2")
+		TNT1 A 0 A_JumpIfInventory("SSG2", 1, "AmmoOnly")
 		TNT1 A 0 A_GiveInventory("SSG", 1)
 		TNT1 A 0 A_GiveInventory("AmmoShell", 2)
 		Stop
-	Pickup2:
+	AmmoOnly:
 		TNT1 A 0
 		TNT1 A 0 A_GiveInventory("AmmoShell", 2)
 		Stop
@@ -427,11 +427,11 @@ ACTOR AssaultShotgunSpawner: CustomInventory
 	Pickup:
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
-		TNT1 A 0 A_JumpIfInventory("AssaultShotgun2", 1, "Pickup2")
+		TNT1 A 0 A_JumpIfInventory("AssaultShotgun2", 1, "AmmoOnly")
 		TNT1 A 0 A_GiveInventory("AssaultShotgun", 1)
 		TNT1 A 0 A_GiveInventory("AmmoShell", 4)
 		Stop
-	Pickup2:
+	AmmoOnly:
 		TNT1 A 0
 		TNT1 A 0 A_GiveInventory("AmmoShell", 4)
 		Stop
