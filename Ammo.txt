@@ -845,6 +845,25 @@ ACTOR AmmoShell : Ammo
 	}
 }
 
+ACTOR AmmoSlug : Ammo
+{
+	Game Doom
+	Inventory.PickupMessage "$GOTSLUGS"
+	Inventory.Amount 4
+	Inventory.MaxAmount 50
+	Ammo.BackpackAmount 4
+	Ammo.BackpackMaxAmount 100
+	Inventory.Icon "SHELB0"
+	Inventory.Pickupsound "SHELPK1"
+	Scale 0.9
+	States
+	{
+	Spawn:
+		SHEL B -1
+		Stop
+	}
+}
+
 ACTOR FakeAmmoShellSprite: BasicAmmoPickup
 {
  Scale 0.9
@@ -859,6 +878,55 @@ ACTOR FakeAmmoShellSprite: BasicAmmoPickup
 	 Spawn:
 		SHEL A 0
 		SHEL A 18
+		Stop
+    }
+}
+
+ACTOR FakeAmmoSlugSprite: BasicAmmoPickup
+{
+ Scale 0.9
+ VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
+ radius 24
+ height 24
+ +FORCEXYBILLBOARD
+ +NOGRAVITY
+ +FLOAT +NOCLIP +NOINTERACTION
+ States
+    {
+	 Spawn:
+		SHEL B 0
+		SHEL B 18
+		Stop
+    }
+}
+
+ACTOR AmmoSlugSpawner: CustomInventory
+{
+ radius 24
+ height 24
+ +FORCEXYBILLBOARD
+ Inventory.PickupMessage "$GOTSLUGS"
+ Inventory.PickupSound "SHELPK1"
+ Mass 1
+    States
+    {
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1
+		TNT1 A 0 A_ChangeFlag("THRUACTORS", 0)
+	Stay:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("FakeAmmoSlugSprite")
+		TNT1 A 0 A_SpawnItem("FakeAmmoShellSprite")
+		TNT1 A 16
+		Loop
+	Pickup:
+	    TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
+		TNT1 A 0 A_GiveInventory("AmmoSlug", 4)
+		Stop
+	Purist:
+	    TNT1 A 0 A_GiveInventory("AmmoShell", 4)
 		Stop
     }
 }
@@ -881,6 +949,21 @@ ACTOR AmmoShellBox : AmmoShell
 	}
 }
 
+ACTOR AmmoSlugBox : AmmoShell
+{
+	Game Doom
+	Inventory.PickupMessage "$GOTSLUGBOX"
+	Inventory.Amount 20
+	Inventory.Pickupsound "SHELPK2"
+	Scale 0.9
+	States
+	{
+	Spawn:
+		SLSU A -1
+		Stop
+	}
+}
+
 ACTOR FakeShellBoxSprite: BasicAmmoPickup
 {
  Scale 0.9
@@ -899,39 +982,7 @@ ACTOR FakeShellBoxSprite: BasicAmmoPickup
     }
 }
 
-Actor SlugRoundsUpgrade : Inventory
-{
-inventory.maxamount 1
-}
-
-Actor SlugMode : Inventory
-{
-inventory.maxamount 1
-}
-
-Actor SlugRounds: CustomInventory
-{
-  Game Doom
-  Scale 0.9
-  +INVENTORY.ALWAYSPICKUP
-  +COUNTITEM
-  Inventory.PickupMessage "Picked up a box of Slugs."
-  Inventory.PickupSound "weapons/sgpump"
-  VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
-  Inventory.ForbiddenTo Purist
-  States
-  {
-  Spawn:
-    SLSU A -1
-    Stop
-  Pickup:
-    TNT1 A 0 A_GiveInventory("SlugRoundsUpgrade", 1)
-	TNT1 A 0 A_GiveInventory("AmmoShell", 20)
-    Stop
-  }
-}
-
-ACTOR FakeSlugRoundsSprite: BasicAmmoPickup
+ACTOR FakeSlugBoxSprite: BasicAmmoPickup
 {
  Scale 0.9
  VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
@@ -949,14 +1000,14 @@ ACTOR FakeSlugRoundsSprite: BasicAmmoPickup
     }
 }
 
-ACTOR SlugRoundsSpawner: CustomInventory
+ACTOR SlugBoxSpawner: CustomInventory
 {
  radius 24
  height 24
  +FORCEXYBILLBOARD
  +INVENTORY.ALWAYSPICKUP
- Inventory.PickupMessage "Picked up a box of Slugs."
- Inventory.PickupSound "weapons/sgpump"
+ Inventory.PickupMessage "$GOTSLUGBOX"
+ Inventory.PickupSound "SHELPK2"
  Mass 1
     States
     {
@@ -966,15 +1017,14 @@ ACTOR SlugRoundsSpawner: CustomInventory
 		TNT1 A 0 A_ChangeFlag("THRUACTORS", 0)
 	Stay:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("FakeSlugRoundsSprite")
+		TNT1 A 0 A_SpawnItem("FakeSlugBoxSprite")
 		TNT1 A 0 A_SpawnItem("FakeShellBoxSprite")
 		TNT1 A 16
 		Loop
 	Pickup:
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
-		TNT1 A 0 A_GiveInventory("SlugRoundsUpgrade", 1)
-		TNT1 A 0 A_GiveInventory("AmmoShell", 20)
+		TNT1 A 0 A_GiveInventory("AmmoSlug", 20)
 		Stop
 	Purist:
 	    TNT1 A 0 A_GiveInventory("AmmoShell", 20)
@@ -1124,7 +1174,8 @@ ACTOR AmmoShellReplacer : BasicAmmoPickup Replaces Shell
 		TNT1 A 0
 		MARN A 0 ACS_NamedExecuteAlways("BDDisableNewGuns", 0, 0, 0, 0)//Check if advanced decorations are disabled.
 		TNT1 A 2
-		TNT1 A 0 A_Jump(2, "Spawn2") // Magnum Ammo
+		TNT1 A 0 A_Jump(32, "Spawn2") // Slug Ammo
+		TNT1 A 0 A_Jump(2, "Spawn3") // Magnum Ammo
 		TNT1 A 2
 
 	Vanilla:
@@ -1136,6 +1187,13 @@ ACTOR AmmoShellReplacer : BasicAmmoPickup Replaces Shell
 		Stop
 
 	Spawn2:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx ("AmmoSlugSpawner",0,0,0,0,0,0,0,0,0)
+		TNT1 A 1
+		TNT1 A -1
+		Stop
+
+	Spawn3:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx ("AmmoMagnumSpawner",0,0,0,0,0,0,0,0,0)
 		TNT1 A 1
@@ -1152,8 +1210,8 @@ ACTOR AmmoShellBoxReplacer : BasicAmmoPickup Replaces ShellBox
 		TNT1 A 0
 		MARN A 0 ACS_NamedExecuteAlways("BDDisableNewGuns", 0, 0, 0, 0)//Check if advanced decorations are disabled.
 		TNT1 A 2
-		TNT1 A 0 A_Jump(4, "Spawn3") // Magnum Ammo Box
-		TNT1 A 0 A_Jump(16, "Spawn2") // Slug Rounds Upgrade
+		TNT1 A 0 A_Jump(32, "Spawn2") // Slug Ammo Box
+		TNT1 A 0 A_Jump(2, "Spawn3") // Magnum Ammo Box
 		TNT1 A 2
 
 	Vanilla:
@@ -1166,7 +1224,7 @@ ACTOR AmmoShellBoxReplacer : BasicAmmoPickup Replaces ShellBox
 
 	Spawn2:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx ("SlugRoundsSpawner",0,0,0,0,0,0,0,0,0)
+		TNT1 A 0 A_SpawnItemEx ("SlugBoxSpawner",0,0,0,0,0,0,0,0,0)
 		TNT1 A 1
 		TNT1 A -1
 		Stop
