@@ -815,6 +815,20 @@ States
 		HKDD D -1
         Stop
 
+	Pain.Kick:
+	Pain.ExplosiveImpact:
+		TNT1 A 0
+		TNT1 A 0 ThrustThingZ(0,25,0,1)
+		TNT1 A 0 A_Jump(256, "Spawn")
+		Goto Death
+
+	Pain.Trample:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("floorslimy")
+		TNT1 A 0 ThrustThingZ(0,25,1,1)
+		TNT1 A 0 A_Jump(256, "Spawn")
+		Goto Death
+
 	Death:
 		 GIBS Y 0
 	     TNT1 A 0 A_NoBlocking
