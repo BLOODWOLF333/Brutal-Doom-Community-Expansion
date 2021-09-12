@@ -132,9 +132,9 @@ ACTOR ExplosiveBarrel1 Replaces ExplosiveBarrel
 
 	Death:
         BEXP A 4 BRIGHT
-		BEXP B 4 BRIGHT A_Scream
-		BEXP C 4 BRIGHT
-		BEXP D 4 BRIGHT A_Explode(200,200)
+		BEXP C 4 BRIGHT A_Scream
+		BEXP D 4 BRIGHT
+		BEXP E 4 BRIGHT A_Explode(200,200)
 		TNT1 A 1 A_CheckRange(1024,"Death.Far")
 		TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)//floor decal
 	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)//ceil decal
