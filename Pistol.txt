@@ -195,10 +195,10 @@ ACTOR BrutalPistol : BrutalWeapon
 		PIST F 0 A_Takeinventory("BDDualPistolAmmo",1)
 		PIST F 0 A_JumpIfInventory("BDPistolAmmo",1,2)
 		Goto NoAmmo
-        PIST B 1
+        PIST C 1
 		TNT1 A 0 A_ZoomFactor(1.0)
 		PIST F 0 A_FireCustomMissile("PistolCaseSpawn",5,0,0,-9)
-		PIST C 1
+		PIST F 1
 		TNT1 A 0 A_FireCustomMissile("DistantFireSoundPistol", random(-1,1), 0, 0, -12, 0, random(-1,1))
         PIST F 0 A_PlaySound("PFIRE", 1)
 		PIST F 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
@@ -211,10 +211,10 @@ ACTOR BrutalPistol : BrutalWeapon
 		PIST F 0 A_JumpIfInventory("BDPistolAmmo",1,2)
 		Goto NoAmmo
         PIST B 0
-        PIST B 1
+        PIST C 1
 		TNT1 A 0 A_ZoomFactor(1.0)
 		PIST F 0 A_FireCustomMissile("PistolCaseSpawn",5,0,0,-9)
-		PIST C 1
+		PIST F 1
 		TNT1 A 0 A_FireCustomMissile("DistantFireSoundPistol", random(-1,1), 0, 0, -12, 0, random(-1,1))
         PIST F 0 A_PlaySound("PFIRE", 1)
 		PIST F 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
@@ -227,16 +227,15 @@ ACTOR BrutalPistol : BrutalWeapon
 		PIST F 0 A_JumpIfInventory("BDPistolAmmo",1,2)
 		Goto NoAmmo
         PIST B 0
-        PIST B 1
+        PIST C 1
 		TNT1 A 0 A_ZoomFactor(1.0)
 		PIST F 0 A_FireCustomMissile("PistolCaseSpawn",5,0,0,-9)
-		PIST C 1
-		PIST DF 2
+		PIST F 1
 		PIST F 0 A_JumpIfInventory("Reloading",1,"Reload")
 		PIST F 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		PIST F 0 A_JumpIfInventory("Reloading",1,"Reload")
 		PIST F 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-		PIST F 1 A_WeaponReady(WRF_NOBOB | WRF_ALLOWRELOAD)
+		PIST F 2 A_WeaponReady(WRF_NOBOB | WRF_ALLOWRELOAD)
 		Goto Ready
 
 	FireEndTactical:
@@ -244,7 +243,7 @@ ACTOR BrutalPistol : BrutalWeapon
 		PIST F 0 A_JumpIfInventory("IsRunning", 1, "FireEndTactical2")
 		PIST D 1
 		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
-		PIST F 1 A_WeaponReady(1)
+		PIST F 2 A_WeaponReady(1)
 		PIST F 0 A_REfire
 		Goto Ready
 
@@ -252,8 +251,8 @@ ACTOR BrutalPistol : BrutalWeapon
 		PIST F 0
 		PLAY A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
 		PIST D 1
-		PIST F 1 A_WeaponReady(1)
 		PIST F 0 A_GiveInventory("UsedStamina", 1)
+		PIST F 2 A_WeaponReady(1)
 		PIST F 0 A_REfire
 		Goto Sprinting
 

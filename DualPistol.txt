@@ -175,9 +175,26 @@ ACTOR DualPistols : BrutalWeapon
 		PI2G A 0 A_Takeinventory("BDDualPistolAmmo",1)
 		PI2G A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,10,-4)
 		TNT1 A 0 A_SetPitch(-0.2 + pitch)
-		PI2F B 1
+		PI2F C 1
 		TNT1 A 0 A_ZoomFactor(1.0)
-		PI2F C 3
+
+		PI2G A 0 A_JumpIfInventory("BDDualPistolAmmo",1,1)
+        Goto NoAmmo
+		TNT1 A 0 A_FireCustomMissile("DistantFireSoundPistol", random(-1,1), 0, 0, -12, 0, random(-1,1))
+        PI2G A 0 A_PlaySound("pfire", 2)
+		PIST F 0 A_AlertMonsters
+		PI2G A 0 A_SpawnItemEx("PlayerMuzzle1",32,4,28)
+		PI2F D 1 BRIGHT A_FireBullets (1.8, 1.4, -1, 14, "WeakPuff", FBF_NORANDOM)
+		TNT1 A 0 A_ZoomFactor(0.99)
+        TNT1 A 0 A_FireCustomMissile("DecorativeTracer",random(-1,1),0,-5,0,0,random(-1,1))
+		PI2G A 0 A_Takeinventory("BDDualPistolAmmo",1)
+		PI2G A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,-10,-4)
+		TNT1 A 0 A_SetPitch(-0.2 + pitch)
+		PI2F F 1
+		TNT1 A 0 A_ZoomFactor(1.0)
+		PI2G A 2 A_WeaponReady(WRF_NOBOB | WRF_ALLOWRELOAD)
+		TNT1 A 0 A_Refire("Fire")
+		Goto Ready
 
 	FireLeft:
 		PI2G A 0 A_JumpIfInventory("BDDualPistolAmmo",1,1)
@@ -194,8 +211,8 @@ ACTOR DualPistols : BrutalWeapon
 		TNT1 A 0 A_SetPitch(-0.2 + pitch)
         PI2F E 1
 		TNT1 A 0 A_ZoomFactor(1.0)
-		PI2F F 3
-		PIST F 0 A_JumpIfInventory("IsTacticalClass", 1, 2)
+		PI2F F 1
+		PI2G A 1
 		PI2G A 2 A_WeaponReady(WRF_NOBOB | WRF_ALLOWRELOAD)
 		TNT1 A 0 A_Refire("Fire")
 		Goto Ready
@@ -208,14 +225,97 @@ ACTOR DualPistols : BrutalWeapon
 		PI2G A 0 A_PlaySound("pfire", 1)
 		PIST F 0 A_AlertMonsters
 		PI2G A 0 A_SpawnItemEx("PlayerMuzzle1",32,-4,28)
-		TNT1 A 0 A_ZoomFactor(0.99)
 		PI2F A 1 BRIGHT A_FireBullets (1.8, 1.4, -1, 14, "WeakPuff", FBF_NORANDOM)
-		TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_ZoomFactor(0.99)
         TNT1 A 0 A_FireCustomMissile("DecorativeTracer",random(-1,1),0,5,0,0,random(-1,1))
 		PI2G A 0 A_Takeinventory("BDPistolAmmo",1)
 		PI2G A 0 A_Takeinventory("BDDualPistolAmmo",1)
 		PI2G A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,10,-4)
 		TNT1 A 0 A_SetPitch(-0.2 + pitch)
+		PI2F B 1
+		TNT1 A 0 A_ZoomFactor(1.0)
+
+		PI2G A 0 A_JumpIfInventory("BDDualPistolAmmo",1,1)
+        Goto NoAmmo
+		TNT1 A 0 A_FireCustomMissile("DistantFireSoundPistol", random(-1,1), 0, 0, -12, 0, random(-1,1))
+		PI2G A 0 A_PlaySound("pfire", 2)
+		PIST F 0 A_AlertMonsters
+		PI2G A 0 A_SpawnItemEx("PlayerMuzzle1",32,4,28)
+		PI2F D 1 BRIGHT A_FireBullets (1.8, 1.4, -1, 14, "WeakPuff", FBF_NORANDOM)
+		TNT1 A 0 A_ZoomFactor(0.99)
+        TNT1 A 0 A_FireCustomMissile("DecorativeTracer",random(-1,1),0,-5,0,0,random(-1,1))
+		PI2G A 0 A_Takeinventory("BDDualPistolAmmo",1)
+		PI2G A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,-10,-4)
+		TNT1 A 0 A_SetPitch(-0.2 + pitch)
+        PI2F E 1
+		TNT1 A 0 A_ZoomFactor(1.0)
+
+		//FIRE2RIGHT2
+		PI2G A 0 A_JumpIfInventory("BDPistolAmmo", 1, 1)
+		Goto Fire2Left2
+		TNT1 A 0 A_FireCustomMissile("DistantFireSoundPistol", random(-1,1), 0, 0, -12, 0, random(-1,1))
+		PI2G A 0 A_PlaySound("pfire", 1)
+		PIST F 0 A_AlertMonsters
+		PI2G A 0 A_SpawnItemEx("PlayerMuzzle1",32,-4,28)
+		PI2F A 1 BRIGHT A_FireBullets (2.0, 1.6, -1, 14, "WeakPuff", FBF_NORANDOM)
+		TNT1 A 0 A_ZoomFactor(0.99)
+        TNT1 A 0 A_FireCustomMissile("DecorativeTracer",random(-1,1),0,5,0,0,random(-1,1))
+		PI2G A 0 A_Takeinventory("BDPistolAmmo",1)
+		PI2G A 0 A_Takeinventory("BDDualPistolAmmo",1)
+		PI2G A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,10,-4)
+		TNT1 A 0 A_SetPitch(-0.2 + pitch)
+		PI2F B 1
+		TNT1 A 0 A_ZoomFactor(1.0)
+
+		PI2G A 0 A_JumpIfInventory("BDDualPistolAmmo",1,1)
+        Goto NoAmmo
+		TNT1 A 0 A_FireCustomMissile("DistantFireSoundPistol", random(-1,1), 0, 0, -12, 0, random(-1,1))
+		PI2G A 0 A_PlaySound("pfire", 2)
+		PIST F 0 A_AlertMonsters
+		PI2G A 0 A_SpawnItemEx("PlayerMuzzle1",32,4,28)
+		PI2F D 1 BRIGHT A_FireBullets (2.0, 1.6, -1, 14, "WeakPuff", FBF_NORANDOM)
+		TNT1 A 0 A_ZoomFactor(0.99)
+        TNT1 A 0 A_FireCustomMissile("DecorativeTracer",random(-1,1),0,-5,0,0,random(-1,1))
+		PI2G A 0 A_Takeinventory("BDDualPistolAmmo",1)
+		PI2G A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,-10,-4)
+		TNT1 A 0 A_SetPitch(-0.2 + pitch)
+        PI2F E 1
+		TNT1 A 0 A_ZoomFactor(1.0)
+
+		//FIRE2RIGHT3
+		PI2G A 0 A_JumpIfInventory("BDPistolAmmo", 1, 1)
+		Goto Fire2Left3
+		TNT1 A 0 A_FireCustomMissile("DistantFireSoundPistol", random(-1,1), 0, 0, -12, 0, random(-1,1))
+        PI2G A 0 A_PlaySound("pfire", 1)
+		PIST F 0 A_AlertMonsters
+		PI2G A 0 A_SpawnItemEx("PlayerMuzzle1",32,-4,28)
+		PI2F A 1 BRIGHT A_FireBullets (2.3, 1.9, -1, 14, "WeakPuff", FBF_NORANDOM)
+		TNT1 A 0 A_ZoomFactor(0.99)
+        TNT1 A 0 A_FireCustomMissile("DecorativeTracer",random(-1,1),0,5,0,0,random(-1,1))
+		PI2G A 0 A_Takeinventory("BDPistolAmmo",1)
+		PI2G A 0 A_Takeinventory("BDDualPistolAmmo",1)
+		PI2G A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,10,-4)
+		TNT1 A 0 A_SetPitch(-0.2 + pitch)
+		PI2F B 1
+		TNT1 A 0 A_ZoomFactor(1.0)
+
+		PI2G A 0 A_JumpIfInventory("BDDualPistolAmmo",1,1)
+        Goto NoAmmo
+		TNT1 A 0 A_FireCustomMissile("DistantFireSoundPistol", random(-1,1), 0, 0, -12, 0, random(-1,1))
+		PI2G A 0 A_PlaySound("pfire", 2)
+		PIST F 0 A_AlertMonsters
+		PI2G A 0 A_SpawnItemEx("PlayerMuzzle1",32,4,28)
+		PI2F D 1 BRIGHT A_FireBullets (2.3, 1.9, -1, 14, "WeakPuff", FBF_NORANDOM)
+		TNT1 A 0 A_ZoomFactor(0.99)
+        TNT1 A 0 A_FireCustomMissile("DecorativeTracer",random(-1,1),0,-5,0,0,random(-1,1))
+		PI2G A 0 A_Takeinventory("BDDualPistolAmmo",1)
+		PI2G A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,-10,-4)
+		TNT1 A 0 A_SetPitch(-0.2 + pitch)
+        PI2F E 1
+		TNT1 A 0 A_ZoomFactor(1.0)
+
+		PI2G A 2 A_WeaponReady(WRF_NOBOB | WRF_ALLOWRELOAD)
+		Goto Ready
 
 	Fire2Left:
 		PI2G A 0 A_JumpIfInventory("BDDualPistolAmmo",1,1)
@@ -233,21 +333,6 @@ ACTOR DualPistols : BrutalWeapon
         PI2F E 1
 		TNT1 A 0 A_ZoomFactor(1.0)
 		PI2F F 1
-		//FIRE2RIGHT2
-		PI2G A 0 A_JumpIfInventory("BDPistolAmmo", 1, 1)
-		Goto Fire2Left2
-		TNT1 A 0 A_FireCustomMissile("DistantFireSoundPistol", random(-1,1), 0, 0, -12, 0, random(-1,1))
-		PI2G A 0 A_PlaySound("pfire", 1)
-		PIST F 0 A_AlertMonsters
-		PI2G A 0 A_SpawnItemEx("PlayerMuzzle1",32,-4,28)
-		TNT1 A 0 A_ZoomFactor(0.99)
-		PI2F A 1 BRIGHT A_FireBullets (2.0, 1.6, -1, 14, "WeakPuff", FBF_NORANDOM)
-		TNT1 A 0 A_ZoomFactor(1.0)
-        TNT1 A 0 A_FireCustomMissile("DecorativeTracer",random(-1,1),0,5,0,0,random(-1,1))
-		PI2G A 0 A_Takeinventory("BDPistolAmmo",1)
-		PI2G A 0 A_Takeinventory("BDDualPistolAmmo",1)
-		PI2G A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,10,-4)
-		TNT1 A 0 A_SetPitch(-0.2 + pitch)
 
 	Fire2Left2:
 		PI2G A 0 A_JumpIfInventory("BDDualPistolAmmo",1,1)
@@ -265,21 +350,6 @@ ACTOR DualPistols : BrutalWeapon
         PI2F E 1
 		TNT1 A 0 A_ZoomFactor(1.0)
 		PI2F F 1
-		//FIRE2RIGHT3
-		PI2G A 0 A_JumpIfInventory("BDPistolAmmo", 1, 1)
-		Goto Fire2Left3
-		TNT1 A 0 A_FireCustomMissile("DistantFireSoundPistol", random(-1,1), 0, 0, -12, 0, random(-1,1))
-        PI2G A 0 A_PlaySound("pfire", 1)
-		PIST F 0 A_AlertMonsters
-		PI2G A 0 A_SpawnItemEx("PlayerMuzzle1",32,-4,28)
-		TNT1 A 0 A_ZoomFactor(0.99)
-		PI2F A 1 BRIGHT A_FireBullets (2.3, 1.9, -1, 14, "WeakPuff", FBF_NORANDOM)
-		TNT1 A 0 A_ZoomFactor(1.0)
-        TNT1 A 0 A_FireCustomMissile("DecorativeTracer",random(-1,1),0,5,0,0,random(-1,1))
-		PI2G A 0 A_Takeinventory("BDPistolAmmo",1)
-		PI2G A 0 A_Takeinventory("BDDualPistolAmmo",1)
-		PI2G A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,10,-4)
-		TNT1 A 0 A_SetPitch(-0.2 + pitch)
 
 	Fire2Left3:
 		PI2G A 0 A_JumpIfInventory("BDDualPistolAmmo",1,1)
@@ -298,7 +368,7 @@ ACTOR DualPistols : BrutalWeapon
 		TNT1 A 0 A_ZoomFactor(1.0)
 		PI2F F 1
 
-		PI2F I 6 A_WeaponReady(WRF_NOBOB | WRF_ALLOWRELOAD)
+		PI2G A 2 A_WeaponReady(WRF_NOBOB | WRF_ALLOWRELOAD)
 		Goto Ready
 
 	AltFire:
