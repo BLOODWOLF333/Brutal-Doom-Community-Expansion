@@ -311,12 +311,16 @@ ACTOR BrutalSMG : BrutalWeapon
         Goto Ready
         TNT1 AAA 0
 		SMGG A 0 A_JumpIfInventory("TurboReload",1,"TurboReload")
-		SMGG A 0 A_JumpIfInventory("HasUnloaded", 1, 2)
-		RIFR C 0 A_FireCustomMissile("EmptyPistolClipSpawn",0,0,0,-20)
-		SMGG A 0 A_PlaySound("reload")
-        SMGR ABCDEEEFGHIJKKKKKKKKKK 1
-        SMGR LMNOPQEEEDCBA 1
-
+		SMGG A 0 A_JumpIfInventory("HasUnloaded", 1, "PutMag")
+		SMGG A 0 A_PlaySound("RELO1")
+        SMGR ABCDEFGHIJ 1
+		SMGR K 8 A_FireCustomMissile("EmptyPistolClipSpawn",0,0,0,-20)
+	PutMag:
+		SMGR K 8
+        SMGR LMNOP 1
+		SMGR Q 4 A_PlaySound("RELO2")
+		SMGR EDCBA 1
+		TNT1 A 0 A_Takeinventory("HasUnloaded",1)
 		SMGG A 0 A_JumpIfInventory("BDSMGAmmo",1,"InsertBullets2")//40+1 effect
 		Goto InsertBullets
 
@@ -368,8 +372,6 @@ ACTOR BrutalSMG : BrutalWeapon
 		SMGG A 0 A_Refire
         Goto Ready
 
-
-
 	 Unload:
 		SMGG A 1
 		SMGG A 0 A_Takeinventory("ADSmode",1)
@@ -383,9 +385,10 @@ ACTOR BrutalSMG : BrutalWeapon
 		RIFG A 0 A_SetCrosshair(0)
 		SMGG A 0 A_GiveInventory ("Pumping", 1)
 		SMGG A 0 A_Takeinventory("Reloading",1)
-		SMGG A 0 A_PlaySound("reload")
+		SMGG A 0 A_PlaySound("RELO1")
 		SMGG A 0 A_Giveinventory("HasUnloaded",1)
-        SMGR ABCDEEEFGHIJKKKKKKKKKK 1
+        SMGR ABCDEFGHIJ 1
+		SMGR K 8
 
 	RemoveBullets:
 		TNT1 AAAA 0
