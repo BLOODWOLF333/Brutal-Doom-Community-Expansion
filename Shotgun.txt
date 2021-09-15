@@ -393,7 +393,7 @@ ACTOR Shot_Gun : BrutalWeapon
 
 	 InsertingShells:
 		SHTN A 0
-		SHTN A 0 A_JumpIfInventory("AmmoShell",1,2)//if there are no more reserve shells, finish reload.
+		SHTN A 0 A_JumpIfInventory("AmmoShell",1,1)//if there are no more reserve shells, finish reload.
         Goto FinishedInsertingShells
 		SHTN A 0
 		SHTN A 0 A_GiveInventory ("Pumping", 1)
@@ -404,10 +404,10 @@ ACTOR Shot_Gun : BrutalWeapon
 
 	InsertShellAnimation:
 		SHTN A 0
-		SSHR AAABC 1
-        SSHR D 1 A_PlaySound("insertshell")
-        SSHR EF 1 A_WeaponReady(WRF_NOBOB)
-        SSHR A 0 A_JumpIfInventory("Reloading", 1, "Pump2")
+		SSHR ABC 1
+		SSHR A 0 A_PlaySound("insertshell")
+		SSHR DEFH 1
+		SSHR A 4 A_WeaponReady(WRF_NOBOB)
         SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKickReloading")
 		SHTN A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		SHTN A 0 A_JumpIfInventory("ShotgunAmmo",9,"FinishedInsertingShells")//If there are 8+1 shells, stop it immediately
@@ -426,7 +426,7 @@ ACTOR Shot_Gun : BrutalWeapon
 	FinishedInsertingShells:
 		SHTN A 0 A_Takeinventory("Reloading",1)
 		SHTN A 0 A_JumpIfInventory("ShotgunWasEmpty", 1, "Pump2")
-		SHTN FEDCBA 1 A_WeaponReady
+		SHTN EDCBA 1 A_WeaponReady
 		TNT1 A 0 A_TakeInventory("ShotgunChangeAmmo",1)
 		SHTN A 1 A_Takeinventory("Reloading",1)
 		Goto Ready
@@ -490,16 +490,15 @@ ACTOR Shot_Gun : BrutalWeapon
 		SHTN A 0 A_Takeinventory("ShotgunAmmo",1)
 		SHTN A 0 A_Giveinventory("AmmoShell",1)
 		SHTN G 1
-	   SHTN H 1 A_PlaySound("weapons/sgpump", 3)
-	   SHTN IJKLKJIH 1
-	   SHTN A 0 A_Giveinventory("ShotgunWasEmpty",1)
-	   SHTN GF 1
+		SHTN H 1 A_PlaySound("weapons/sgpump", 3)
+		SHTN IJKLKJIHGF 1
 		Goto RemoveBullets
 
 	FInishUnload:
 		SHTN EDCBA 1
 		SHTN A 0 A_Takeinventory("Unloading",1)
 		SHTN A 0 A_GiveInventory("HasUnloaded",1)
+		SHTN A 0 A_Giveinventory("ShotgunWasEmpty",1)
 		TNT1 A 0 A_JumpIfInventory("ShotgunChangeAmmo", 1, "ChangeAmmo")
 		Goto OkToFire
 

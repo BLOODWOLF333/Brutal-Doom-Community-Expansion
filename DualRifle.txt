@@ -295,9 +295,8 @@ ACTOR DualRifles : BrutalWeapon
         R2RL G 8 A_JumpIfInventory("Kicking",1,"DoKick")
 	PutMag:
 		R2RL G 8 A_JumpIfInventory("Kicking",1,"DoKick")
-		R2RL HIJKL 1
-		R2RL A 0 A_PlaySound("RELO2")
-		R2RL MN 1
+		R2RL HIJKLM 1
+		R2RL N 1 A_PlaySound("RELO2")
 		R2RL O 4
 		RIFG A 0 A_JumpIfInventory("HasUnloaded", 1, "PutMag2")
 
@@ -307,9 +306,8 @@ ACTOR DualRifles : BrutalWeapon
         R2RR G 8 A_JumpIfInventory("Kicking",1,"DoKick")
 	PutMag2:
 		R2RR G 8 A_JumpIfInventory("Kicking",1,"DoKick")
-		R2RR HIJKL 1
-		R2RR A 0 A_PlaySound("RELO2")
-		R2RR MN 1
+		R2RR HIJKLM 1
+		R2RR N 1 A_PlaySound("RELO2")
 		R2RR O 4
 
 		DURI A 0 A_Takeinventory("HasUnloaded",1)
@@ -381,13 +379,13 @@ ACTOR DualRifles : BrutalWeapon
         Goto UnloadLeft
 		TNT1 AAA 0
 		R2RL O 4
-		R2RL A 0 A_PlaySound("RELO1")
-		R2RL NMLKJIH 1
+		R2RL N 1 A_PlaySound("RELO1")
+		R2RL MLKJIH 1
 		R2RL G 8
 
 		R2RR O 4
-		R2RR A 0 A_PlaySound("RELO1")
-		R2RR NMLKJIH 1
+		R2RR N 1 A_PlaySound("RELO1")
+		R2RR MLKJIH 1
 		R2RR G 8
 		DURI A 0 A_GiveInventory("HasUnloaded", 1)
 		Goto RemoveBullets
@@ -398,8 +396,8 @@ ACTOR DualRifles : BrutalWeapon
         Goto Ready
 		TNT1 AAA 0
 		R2RR O 4
-		R2RR A 0 A_PlaySound("RELO1")
-		R2RR NMLKJIH 1
+		R2RR N 1 A_PlaySound("RELO1")
+		R2RR MLKJIH 1
 		R2RR G 8
 		DURI A 0 A_GiveInventory("HasUnloaded", 1)
 		Goto RemoveBullets

@@ -399,13 +399,14 @@ ACTOR Shot_Gun2 : BrutalWeapon
 		SHTN A 0 A_Takeinventory("AmmoSlug",1)
 
 	InsertShellAnimation:
-		SSHR AAAAJK 1
-        SSHR D 1 A_PlaySound("insertshell")
-        SSHR EF 1 A_WeaponReady(WRF_NOBOB)
-        SSHR A 0 A_JumpIfInventory("Reloading", 1, "SlugPump2")
-        TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKickReloading")
-		TNT1 A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
-        SHTN A 0 A_JumpIfInventory("ShotgunAmmo",9,"FinishedInsertingShells")//If there are 8+1 shells, stop it immediately
+		SHTN A 0
+		SSHR AJK 1
+		SSHR A 0 A_PlaySound("insertshell")
+		SSHR DEFH 1
+		SSHR A 4 A_WeaponReady(WRF_NOBOB)
+        SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKickReloading")
+		SHTN A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
+		SHTN A 0 A_JumpIfInventory("ShotgunAmmo",9,"FinishedInsertingShells")//If there are 8+1 shells, stop it immediately
         Goto InsertingShells
 
 	CheckIfFinishReload:
@@ -486,15 +487,14 @@ ACTOR Shot_Gun2 : BrutalWeapon
 		SHTN A 0 A_Giveinventory("AmmoSlug",1)
 		SHTN P 1
 		SHTN Q 1 A_PlaySound("weapons/sgpump", 3)
-		SHTN IJKLKJIQ 1
-		TNT1 A 0 A_Giveinventory("ShotgunWasEmpty",1)
-		SHTN PF 1
+		SHTN IJKLKJIQPF 1
 		Goto RemoveBullets
 
 	FInishUnload:
 		SHTN EDCBA 1
 		SHTN A 0 A_Takeinventory("Unloading",1)
 		SHTN A 0 A_GiveInventory("HasUnloaded",1)
+		TNT1 A 0 A_Giveinventory("ShotgunWasEmpty",1)
 		TNT1 A 0 A_JumpIfInventory("ShotgunChangeAmmo", 1, "ChangeAmmo")
 		Goto OkToFire
 
