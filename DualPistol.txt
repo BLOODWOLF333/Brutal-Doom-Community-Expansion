@@ -11,12 +11,13 @@ ACTOR DualPistols : BrutalWeapon
 	weapon.selectionorder 1900
     Inventory.PickupSound "CLIPIN"
 	Inventory.Pickupmessage "You got dual pistols! (Slot 2)"
-    +WEAPON.NOAUTOAIM
+    	+WEAPON.NOAUTOAIM
 	+WEAPON.NOALERT
 	+WEAPON.NOAUTOFIRE
 	+WEAPON.WIMPY_WEAPON
 	+WEAPON.NO_AUTO_SWITCH
-    +FORCEXYBILLBOARD
+	+WEAPON.CHEATNOTWEAPON
+    	+FORCEXYBILLBOARD
 	Scale 0.9
 	Tag "Dual Pistols"
 	Dropitem "PistolSpawner"

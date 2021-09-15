@@ -5,12 +5,13 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 	Weapon.AmmoGive1 0
 	Weapon.AmmoUse2 0
 	Weapon.AmmoGive2 0
-    Inventory.PickupSound "PLSDRAW"
+    	Inventory.PickupSound "PLSDRAW"
 	Weapon.AmmoType1 "AmmoCell"
 	Weapon.AmmoType2 "DoublePlasmaAmmo"
-    +WEAPON.NOAUTOAIM
+    	+WEAPON.NOAUTOAIM
 	+FORCEXYBILLBOARD
 	+WEAPON.NO_AUTO_SWITCH
+	+WEAPON.CHEATNOTWEAPON
 	Tag "Dual Plasma Rifles"
 	Inventory.PickupMessage "You got dual plasma rifles! (Slot 2)"
 	DropItem "PLasmagunSpawner"
