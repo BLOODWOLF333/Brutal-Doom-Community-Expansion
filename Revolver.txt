@@ -48,7 +48,7 @@ ACTOR Revolver : BrutalWeapon 5874
 		REVA A 1 A_WeaponReady(WRF_ALLOWRELOAD)
         REVO A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         REVO A 0 A_JumpIfInventory("Taunting",1,"Taunt")
-        REVO A 0 A_JumpIfInventory("Reloading",1,"AltReload")
+        REVO A 0 A_JumpIfInventory("Reloading",1,"Reload")
 		REVO A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		REVO A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		REVO A 0 A_JumpIfInventory("Unloading",1,"Unload")
@@ -277,43 +277,42 @@ ACTOR Revolver : BrutalWeapon 5874
         REVO A 0 A_ZoomFactor(1.0)
 		REVO A 0 A_JumpIfInventory("RevolverAmmo",6,"Ready3")
 
-	AltReload:
-		REVO A 0
-		REVO A 0 A_TakeInventory("Reloading", 1)
-		REVO A 0 A_JumpIfInventory("AmmoMagnum", 1, 2)
-		Goto Ready
-		REVO A 0
-	    REVO A 0 A_Takeinventory("Zoomed",1)
-        REVO A 0 A_ZoomFactor(1.0)
-		REVO A 0 A_JumpIfInventory("RevolverAmmo",6,"Ready3")
-
 	OpenCylinder:
         REVO A 0 A_JumpIfInventory("AmmoMagnum",1,1)//If there is no reserve ammo, don't reload, go back to Ready
         Goto Ready
 		REVO A 0 A_JumpIfInventory("TurboReload", 1, "TurboReload")//Check if reloads are disabled.
-		REVR ABCDEEDCBA 1
-		TNT1 A 0 A_PLaySound("RELO1", 4)
-        REVR FGHIJJJ 1
-		REVR KLM 1
-		REVR M 4
+		REVO A 0 A_JumpIfInventory("HasUnloaded",1,"OpenEmptyCylinder")
+		REVR ABCDE 1
+		REVR F 1 A_PLaySound("RELO1")
+        REVR GH 1
+		REVR I 4
 		REVO A 0 A_JumpIfInventory("RevolverChangeAmmo", 1, "InsertBulletAnimation")
 
-	 EjectBullets:
-		REVO A 0
-		SSHR A 0 A_TakeInventory("Reloading", 1)
-		TNT1 A 0 A_PlaySound("CLIPINSS")
-		REVR M 1 Offset(0, 30)
-		REVR M 1 Offset(0, 28)
-		REVR M 1 Offset(0, 30)
-		REVR M 1 Offset(0, 32)
-		REVR M 4 A_WeaponReady(WRF_NOBOB)
+		REVR JK 1
+		REVR K 8 Offset(0,64)
+		Goto Dump
+
+	OpenEmptyCylinder:
+        REVO A 0
+		REVR ABCDE 1
+		REVR P 1 A_PLaySound("RELO1")
+        REVR ON 1
+		REVR M 4
+		Goto InsertBulletAnimation
 
 	Dump:
+		REVO A 0
 		REVO A 0 A_JumpIfInventory("SpentRound",1,1)
-        Goto InsertBulletAnimation
+        Goto PutMag
 		TNT1 A 0 A_FireCustomMissile("RevolverBrass",random(-120,-150),0,0,0,2,random(-30,-60))
         REVO A 0 A_TakeInventory("SpentRound",1)
 		Loop
+
+	PutMag:
+		REVO A 0
+		REVR K 8
+		REVR LM 1
+		REVR M 8
 
 	InsertBulletAnimation:
 		REVO A 0
@@ -323,26 +322,18 @@ ACTOR Revolver : BrutalWeapon 5874
         REVO A 0 A_Giveinventory("RevolverAmmo",1)
 		REVO A 0 A_Takeinventory("AmmoMagnum",1)
         TNT1 A 0 A_PlaySound("insertshell")
-		REVR M 1 Offset(0, 30)
-		REVR M 1 Offset(0, 28)
-		REVR M 1 Offset(0, 30)
-		REVR M 1 Offset(0, 32)
-        REVR M 4 A_WeaponReady(WRF_NOBOB)
-        SSHR A 0 A_JumpIfInventory("Reloading", 1, "FinishedInsertingBullets")
-        REVO A 0 A_JumpIfInventory("Kicking",1,"DoKickReloading")
-		REVO A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
-		REVO A 0 A_JumpIfInventory("RevolverAmmo",6,"FinishedInsertingBullets")
+		REVR M 2 Offset(0, 64)
+		REVR M 2 Offset(0, 66)
         Loop
 
 	FinishedInsertingBullets:
-		REVO A 0 A_Takeinventory("Reloading",1)
-		TNT1 A 0 A_PLaySound("RELO2", 4)
-		REVR JIHGFAEDCBA 1
-		REVO K 4
-		REVO LMN 1
+		REVO A 0
+		TNT1 A 0 A_PLaySound("RELO2")
+		REVR IHGFEDCBA 1
 		TNT1 A 0 A_PlaySound("REVOHAM", 4)
 		REVO OPQR 1
 		TNT1 A 0 A_TakeInventory("RevolverChangeAmmo",1)
+		TNT1 A 0 A_TakeInventory("HasUnloaded",1)
 		Goto Ready
 
 	 TurboReload:
@@ -357,6 +348,7 @@ ACTOR Revolver : BrutalWeapon 5874
 		REVO A 0 A_Takeinventory("AmmoMagnum",1)
 		Goto TurboBullets
 	FinishTurboReload:
+		TNT1 A 0 A_TakeInventory("HasUnloaded",1)
 		REVO A 0 A_Refire
 		Goto Ready3
 
@@ -383,13 +375,12 @@ ACTOR Revolver : BrutalWeapon 5874
 		REVO A 0 A_JumpIfInventory("RevolverChangeAmmo",1,"FinishUnload")
         Goto Ready3
         TNT1 AAA 0
-		REVO A 0 A_Takeinventory("Zoomed",1)
-		REVO A 0 A_Takeinventory("Unloading",1)
-		REVR ABCDEEDCBA 1
-		TNT1 A 0 A_PLaySound("RELO1", 4)
-        REVR FGHIJJJ 1
-		REVR KLM 1
-		REVR M 4
+		REVR ABCDE 1
+		REVR F 1 A_PLaySound("RELO1")
+        REVR GH 1
+		REVR I 4
+		REVR JK 1
+		REVR K 8 Offset(0,64)
 
 	RemoveBullets:
 		TNT1 AAAA 0
@@ -398,17 +389,18 @@ ACTOR Revolver : BrutalWeapon 5874
         TNT1 AAAAAA 0
 		REVO A 0 A_Takeinventory("RevolverAmmo",1)
 		REVO A 0 A_Giveinventory("AmmoMagnum",1)
-
-		REVR M 1 Offset(0, 30)
-		REVR M 1 Offset(0, 28)
-		REVR M 1 Offset(0, 30)
-		REVR M 1 Offset(0, 32)
-		Goto RemoveBullets
+		Loop
 
 	FInishUnload:
 		TNT1 A 0
+		REVR K 8
+		REVR LM 1
+		REVR M 8
+		TNT1 A 0 A_PLaySound("RELO2")
+		REVR NOPEDCBA 1
 		REVO A 0 A_TakeInventory("SpentRound", 6)
 		REVO A 0 A_Takeinventory("Unloading",1)
+		REVO A 0 A_GiveInventory("HasUnloaded",1)
 		TNT1 A 0 A_JumpIfInventory("RevolverChangeAmmo", 1, "ChangeAmmo")
 		Goto Ready3
 
@@ -418,21 +410,6 @@ ACTOR Revolver : BrutalWeapon 5874
 		TNT1 A 0 A_GiveInventory("Reloading",1)
 		TNT1 A 0 A_SelectWeapon("Revolver2")
 		Goto Ready3
-
-	DoKickReloading:
-		NULL A 0 A_JumpIf (momZ > 0, "AirKick")
-		NULL A 0 A_JumpIf (momZ < 0, "AirKick")
-        REVO A 0 A_PlaySound("KICK")
-		REVO A 0 SetPlayerProperty(0,1,0)
-		KICK BCD 1
-		RIFF A 0 A_FireCustomMissile("KickAttack", 0, 0, 0, -7)
-        KICK H 3
-		KICK A 0 A_Takeinventory("Kicking",1)
-		KICK I 1
-		KICK GFEDCBA 1
-		RIBA A 0 A_Takeinventory("Kicking",1)
-		REVO A 0 SetPlayerProperty(0,0,0)
-		Goto InsertBulletAnimation
 
 	NoAmmo:
 		RIFG A 0

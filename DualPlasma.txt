@@ -238,7 +238,7 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 		PLSN A 0 A_JumpIfInventory("HasUnloaded",1,"PutMag")
 
 		PLSN A 0 A_PlaySound("PLREADY")
-		PLSN A 0 A_FireCustomMissile("PlasmaCaseSpawn",0,0,10,-20)
+		PLSN A 0 A_FireCustomMissile("EmptyCellSpawn",0,0,10,-20)
 		PLSR BCD 1
 		PLSR E 8
 	PutMag:
@@ -249,7 +249,7 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 		PLSN A 0 A_JumpIfInventory("HasUnloaded",1,"PutMag2")
 
 		PLSN A 0 A_PlaySound("PLREADY")
-		PLSN A 0 A_FireCustomMissile("PlasmaCaseSpawn",270,0,-20,-20)
+		PLSN A 0 A_FireCustomMissile("EmptyCellSpawn",225,0,-10,-20)
 		P2SR BCD 1
 		P2SR E 8
 	PutMag2:
