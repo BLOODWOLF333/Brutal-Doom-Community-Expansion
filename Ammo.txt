@@ -949,7 +949,7 @@ ACTOR AmmoShellBox : AmmoShell
 	}
 }
 
-ACTOR AmmoSlugBox : AmmoShell
+ACTOR AmmoSlugBox : AmmoSlug
 {
 	Game Doom
 	Inventory.PickupMessage "$GOTSLUGBOX"
@@ -1005,7 +1005,6 @@ ACTOR SlugBoxSpawner: CustomInventory
  radius 24
  height 24
  +FORCEXYBILLBOARD
- +INVENTORY.ALWAYSPICKUP
  Inventory.PickupMessage "$GOTSLUGBOX"
  Inventory.PickupSound "SHELPK2"
  Mass 1
