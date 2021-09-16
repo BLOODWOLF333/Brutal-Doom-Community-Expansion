@@ -243,7 +243,7 @@ ACTOR DualSMG : BrutalWeapon
         Goto Ready
         TNT1 AAA 0
 		SM2G A 0 A_JumpIfInventory("TurboReload",1,"TurboReload")
-		SMGG A 0 A_JumpIfInventory("HasUnloaded", 1, "PutMag")
+		SMGG A 0 A_JumpIfInventory("SMGUnloaded", 1, "PutMag")
         SMGR TSRQP 1
 		SMGR O 1 A_PlaySound("RELO1")
 		SMGR NML 1
@@ -253,7 +253,7 @@ ACTOR DualSMG : BrutalWeapon
         SMGR JIHG 1
 		SMGR F 1 A_PlaySound("RELO2")
 		SMGR EDCBA 1
-		SMGG A 0 A_JumpIfInventory("HasUnloaded", 1, "PutMag2")
+		SMGG A 0 A_JumpIfInventory("SMGUnloaded", 1, "PutMag2")
 
         SM2R TSRQP 1
 		SM2R O 1 A_PlaySound("RELO1")
@@ -264,12 +264,12 @@ ACTOR DualSMG : BrutalWeapon
         SM2R JIHG 1
 		SM2R F 1 A_PlaySound("RELO2")
 		SM2R EDCBA 1
-		SM2G A 0 A_Takeinventory("HasUnloaded",1)
+		SM2G A 0 A_Takeinventory("SMGUnloaded",1)
 		SM2G A 0 A_JumpIfInventory("BDDualSMGAmmo",1,"InsertBullets2")//80+1 effect
 		Goto InsertBullets
 
 	TurboReload:
-		SM2G A 0 A_Takeinventory("HasUnloaded",1)
+		SM2G A 0 A_Takeinventory("SMGUnloaded",1)
         SM2S BA 0
         Goto InsertBullets2
 
@@ -326,7 +326,7 @@ ACTOR DualSMG : BrutalWeapon
 
 		SM2G A 0 A_Takeinventory("Zoomed",1)
 		SM2G A 0 A_Takeinventory("Reloading",1)
-		SM2G A 0 A_Giveinventory("HasUnloaded",1)
+		SM2G A 0 A_Giveinventory("SMGUnloaded",1)
 		SMGR TSRQP 1
 		SMGR O 1 A_PlaySound("RELO1")
 		SMGR NML 1
@@ -345,7 +345,7 @@ ACTOR DualSMG : BrutalWeapon
         TNT1 AAA 0
 		SM2G A 0 A_Takeinventory("Zoomed",1)
 		SM2G A 0 A_Takeinventory("Reloading",1)
-		SM2G A 0 A_Giveinventory("HasUnloaded",1)
+		SM2G A 0 A_Giveinventory("SMGUnloaded",1)
 		SM2R TSRQP 1
 		SM2R O 1 A_PlaySound("RELO1")
 		SM2R NML 1

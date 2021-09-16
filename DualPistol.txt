@@ -420,7 +420,7 @@ ACTOR DualPistols : BrutalWeapon
         Goto Ready
         TNT1 AAA 0
 		PI2G A 0 A_JumpIfInventory("TurboReload",1,"TurboReload")
-		PI2G A 0 A_JumpIfInventory("HasUnloaded", 1, "PutMag")
+		PI2G A 0 A_JumpIfInventory("PistolUnloaded", 1, "PutMag")
 
 		PIST F 0 A_PlaySound("RELO1")
         PISR ABCDE 1
@@ -431,7 +431,7 @@ ACTOR DualPistols : BrutalWeapon
 		PISR A 0 A_PlaySound("prel")
 		PISR IJKLMN 2
 		PISR OPQR 1
-		PI2G A 0 A_JumpIfInventory("HasUnloaded", 1, "PutMag2")
+		PI2G A 0 A_JumpIfInventory("PistolUnloaded", 1, "PutMag2")
 
 		PIST F 0 A_PlaySound("RELO1")
         PI2R ABCDE 1
@@ -442,12 +442,12 @@ ACTOR DualPistols : BrutalWeapon
 		PI2R A 0 A_PlaySound("prel")
 		PI2R IJKLMN 2
 		PI2R OPQR 1
-		PIST F 0 A_Takeinventory("HasUnloaded",1)
+		PIST F 0 A_Takeinventory("PistolUnloaded",1)
 		PI2G A 0 A_JumpIfInventory("BDDualPistolAmmo",1,"InsertBullets2")//15+1 effect
 		Goto InsertBullets
 
 	TurboReload:
-		PI2G A 0 A_Takeinventory("HasUnloaded",1)
+		PI2G A 0 A_Takeinventory("PistolUnloaded",1)
         PIS2 BA 0
         Goto InsertBullets2
 
@@ -516,7 +516,7 @@ ACTOR DualPistols : BrutalWeapon
 		PI2R NMLKJI 2
 		PI2R GH 1
 		PI2R F 4
-		PI2G A 0 A_Giveinventory("HasUnloaded",1)
+		PI2G A 0 A_Giveinventory("PistolUnloaded",1)
 		Goto RemoveBullets
 
 	UnloadLeft:
@@ -533,7 +533,7 @@ ACTOR DualPistols : BrutalWeapon
 		PI2R NMLKJI 2
 		PI2R GH 1
 		PI2R F 4
-		PI2G A 0 A_Giveinventory("HasUnloaded",1)
+		PI2G A 0 A_Giveinventory("PistolUnloaded",1)
 		Goto RemoveBullets
 
 	RemoveBullets:

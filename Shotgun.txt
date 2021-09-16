@@ -386,7 +386,7 @@ ACTOR Shot_Gun : BrutalWeapon
 	ReloadNormally:
         SHTN A 0 A_JumpIfInventory("AmmoShell",1,1)//If there is no reserve ammo, don't reload, go back to Ready
         Goto Ready
-		SHTN A 0 A_Takeinventory("HasUnloaded",1)
+		SHTN A 0 A_Takeinventory("ShotgunUnloaded",1)
 		SHTN A 0 A_JumpIfInventory("TurboReload", 1, "TurboReload")//Check if reloads are disabled.
 		SHTN B 1 A_GiveInventory ("Pumping", 1)
 		SHTN CDE 1
@@ -497,7 +497,7 @@ ACTOR Shot_Gun : BrutalWeapon
 	FInishUnload:
 		SHTN EDCBA 1
 		SHTN A 0 A_Takeinventory("Unloading",1)
-		SHTN A 0 A_GiveInventory("HasUnloaded",1)
+		SHTN A 0 A_GiveInventory("ShotgunUnloaded",1)
 		SHTN A 0 A_Giveinventory("ShotgunWasEmpty",1)
 		TNT1 A 0 A_JumpIfInventory("ShotgunChangeAmmo", 1, "ChangeAmmo")
 		Goto OkToFire

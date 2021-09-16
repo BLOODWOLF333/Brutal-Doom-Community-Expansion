@@ -301,7 +301,7 @@ ACTOR MP40 : BrutalWeapon
         TNT1 AAA 0
 
 		MP40 A 0 A_JumpIfInventory("TurboReload",1,"TurboReload")
-		MP40 A 0 A_JumpIfInventory("HasUnloaded", 1, "PutMag")
+		MP40 A 0 A_JumpIfInventory("MP40Unloaded", 1, "PutMag")
 		MP40 A 0 A_PlaySound("RELO1")
 		MP4R ABCDE 2
         MP4R F 8 A_FireCustomMissile("EmptyPistolClipSpawn",0,0,0,-20)
@@ -311,7 +311,7 @@ ACTOR MP40 : BrutalWeapon
 		MP4R C 2 A_PlaySound("RELO2")
 		MP4R BA 2
 		MP40 A 0 A_Takeinventory("Reloading",1)
-		MP40 A 0 A_Takeinventory("HasUnloaded",1)
+		MP40 A 0 A_Takeinventory("MP40Unloaded",1)
 
 	InsertBullets:
 		TNT1 AAAA 0
@@ -334,7 +334,7 @@ ACTOR MP40 : BrutalWeapon
 	TurboReload:
 		TNT1 A 0
 		MP40 A 0 A_Takeinventory("Reloading",1)
-		MP40 A 0 A_Takeinventory("HasUnloaded",1)
+		MP40 A 0 A_Takeinventory("MP40Unloaded",1)
 		Goto InsertBullets
 
 	Unload:
@@ -364,7 +364,7 @@ ACTOR MP40 : BrutalWeapon
 
 	FInishUnload:
 		MP4U ABC 1
-		MP40 A 0 A_GiveInventory("HasUnloaded", 1)
+		MP40 A 0 A_GiveInventory("MP40Unloaded", 1)
 		MP40 A 0 A_Takeinventory("Unloading",1)
 		Goto Ready+6
 

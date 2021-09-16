@@ -281,7 +281,7 @@ ACTOR Revolver : BrutalWeapon 5874
         REVO A 0 A_JumpIfInventory("AmmoMagnum",1,1)//If there is no reserve ammo, don't reload, go back to Ready
         Goto Ready
 		REVO A 0 A_JumpIfInventory("TurboReload", 1, "TurboReload")//Check if reloads are disabled.
-		REVO A 0 A_JumpIfInventory("HasUnloaded",1,"OpenEmptyCylinder")
+		REVO A 0 A_JumpIfInventory("RevolverUnloaded",1,"OpenEmptyCylinder")
 		REVR ABCDE 1
 		REVR F 1 A_PLaySound("RELO1")
         REVR GH 1
@@ -333,7 +333,7 @@ ACTOR Revolver : BrutalWeapon 5874
 		TNT1 A 0 A_PlaySound("REVOHAM", 4)
 		REVO OPQR 1
 		TNT1 A 0 A_TakeInventory("RevolverChangeAmmo",1)
-		TNT1 A 0 A_TakeInventory("HasUnloaded",1)
+		TNT1 A 0 A_TakeInventory("RevolverUnloaded",1)
 		Goto Ready
 
 	 TurboReload:
@@ -348,7 +348,7 @@ ACTOR Revolver : BrutalWeapon 5874
 		REVO A 0 A_Takeinventory("AmmoMagnum",1)
 		Goto TurboBullets
 	FinishTurboReload:
-		TNT1 A 0 A_TakeInventory("HasUnloaded",1)
+		TNT1 A 0 A_TakeInventory("RevolverUnloaded",1)
 		REVO A 0 A_Refire
 		Goto Ready3
 
@@ -400,7 +400,7 @@ ACTOR Revolver : BrutalWeapon 5874
 		REVR NOPEDCBA 1
 		REVO A 0 A_TakeInventory("SpentRound", 6)
 		REVO A 0 A_Takeinventory("Unloading",1)
-		REVO A 0 A_GiveInventory("HasUnloaded",1)
+		REVO A 0 A_GiveInventory("RevolverUnloaded",1)
 		TNT1 A 0 A_JumpIfInventory("RevolverChangeAmmo", 1, "ChangeAmmo")
 		Goto Ready3
 
