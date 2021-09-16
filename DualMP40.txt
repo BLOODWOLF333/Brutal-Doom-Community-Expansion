@@ -237,23 +237,23 @@ ACTOR DualMP40 : BrutalWeapon
 		MP42 A 0 A_JumpIfInventory("TurboReload",1,"TurboReload")
 		MP42 A 0 A_JumpIfInventory("HasUnloaded", 1, "PutMag")
 		MP40 A 0 A_PlaySound("RELO1")
-		MP4R ABCDE 1
+		MP4R ABCDE 2
         MP4R F 8 A_FireCustomMissile("EmptyPistolClipSpawn",0,0,0,-20)
 	PutMag:
 		MP4R F 8
-		MP4R ED 1
-		MP4R C 1 A_PlaySound("RELO2")
-		MP4R BA 1
+		MP4R ED 2
+		MP4R C 2 A_PlaySound("RELO2")
+		MP4R BA 2
 		MP42 A 0 A_JumpIfInventory("HasUnloaded", 1, "PutMag2")
 
 		MP40 A 0 A_PlaySound("RELO1")
-		MP2R ABCDE 1
+		MP2R ABCDE 2
         MP2R F 8 A_FireCustomMissile("EmptyPistolClipSpawn",225,0,-10,-20)
 	PutMag2:
 		MP2R F 8
-		MP2R ED 1
-		MP2R C 1 A_PlaySound("RELO2")
-		MP2R BA 1
+		MP2R ED 2
+		MP2R C 2 A_PlaySound("RELO2")
+		MP2R BA 2
 		MP40 A 0 A_Takeinventory("Reloading",1)
 		MP40 A 0 A_Takeinventory("HasUnloaded",1)
 		Goto InsertBullets
@@ -300,10 +300,10 @@ ACTOR DualMP40 : BrutalWeapon
 		MP42 A 0 A_Takeinventory("Reloading",1)
 		MP42 A 0 A_Giveinventory("HasUnloaded",1)
         MP40 A 0 A_PlaySound("RELO1")
-		MP4R ABCDE 1
+		MP4R ABCDE 2
         MP4R F 8
 		MP40 A 0 A_PlaySound("RELO1")
-		MP2R ABCDE 1
+		MP2R ABCDE 2
         MP2R F 8
 		Goto RemoveBullets
 
@@ -318,7 +318,7 @@ ACTOR DualMP40 : BrutalWeapon
 		MP42 A 0 A_Takeinventory("Reloading",1)
 		MP42 A 0 A_Giveinventory("HasUnloaded",1)
 		MP40 A 0 A_PlaySound("RELO1")
-		MP2R ABCDE 1
+		MP2R ABCDE 2
         MP2R F 8
 		Goto RemoveBullets
 
