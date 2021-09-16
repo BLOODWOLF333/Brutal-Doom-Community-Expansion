@@ -74,7 +74,7 @@ ACTOR HellKnight2 : HellKnight Replaces HellKnight
 		BOB2 A 0 A_ChangeFlag("NOPAIN", 1)
 		BOB2 ABC 4
 		BOB2 D 1
-		TNT1 A 0 A_PlaySound("baron/sight")
+		TNT1 A 0 A_PlaySound("knight/sight")
 		TNT1 A 0 A_SpawnItem("BaronHoldingBarrel", 0, 67,0)
 		WaitingToThrow:
 		BOB2 D 8
@@ -180,7 +180,6 @@ ACTOR HellKnight2 : HellKnight Replaces HellKnight
 		BTS2 DEDF 2
 		BTS2 DEDF 2
 		BTS2 CBA 1 A_FaceTarget
-		TNT1 A 0 HealThing(200)
 		TNT1 A 0 A_Jump(96, "MissileInRage")
 		Goto See2
 
