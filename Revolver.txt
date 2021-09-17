@@ -304,7 +304,7 @@ ACTOR Revolver : BrutalWeapon 5874
 		REVO A 0
 		REVO A 0 A_JumpIfInventory("SpentRound",1,1)
         Goto PutMag
-		TNT1 A 0 A_FireCustomMissile("MagnumCaseSpawn",random(-120,-150),0,0,0,2,random(-30,-60))
+		TNT1 A 0 A_FireCustomMissile("MagnumCasing",random(-90,-120),0,0,-16)
         REVO A 0 A_TakeInventory("SpentRound",1)
 		Loop
 
