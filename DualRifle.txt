@@ -217,7 +217,7 @@ ACTOR DualRifles : BrutalWeapon
         DURI A 0 A_SetPitch(-0.4 + pitch)
 		DURI A 0 A_Takeinventory("RifleAmmo",1)
 		DURI A 0 A_Takeinventory("DoubleRifleAmmo",1)
-		DURI C 1 A_FireCustomMissile("RifleCaseSpawn",5,0,24,-12)
+		DURI C 1 A_FireCustomMissile("RifleCaseSpawn",5,0,24,-8)
 		TNT1 A 0 A_ZoomFactor(1.0)
 
 		DURI A 0 A_JumpIfInventory("DoubleRifleAmmo",1,1)
@@ -230,7 +230,7 @@ ACTOR DualRifles : BrutalWeapon
         TNT1 A 0 A_FireCustomMissile("DecorativeTracer",random(-1,1),0,-5,0,0,random(-1,1))
         DURI A 0 A_SetPitch(-0.4 + pitch)
 		DURI A 0 A_Takeinventory("DoubleRifleAmmo",1)
-		DURI E 1 A_FireCustomMissile("RifleCaseSpawn",5,0,-16,-12)
+		DURI E 1 A_FireCustomMissile("RifleCaseSpawn",5,0,-12,-8)
 		TNT1 A 0 A_ZoomFactor(1.0)
 		DURI A 1
 		DURI A 1 A_Refire("Fire")
@@ -247,7 +247,7 @@ ACTOR DualRifles : BrutalWeapon
         TNT1 A 0 A_FireCustomMissile("DecorativeTracer",random(-1,1),0,-5,0,0,random(-1,1))
         DURI A 0 A_SetPitch(-0.4 + pitch)
 		DURI A 0 A_Takeinventory("DoubleRifleAmmo",1)
-		DURI E 1 A_FireCustomMissile("RifleCaseSpawn",5,0,-16,-12)
+		DURI E 1 A_FireCustomMissile("RifleCaseSpawn",5,0,-12,-8)
 		TNT1 A 0 A_ZoomFactor(1.0)
 		DURI A 3
 		DURI A 1 A_Refire("Fire")
