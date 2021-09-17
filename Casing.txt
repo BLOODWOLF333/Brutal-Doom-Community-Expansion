@@ -27,6 +27,16 @@ ACTOR PistolCaseSpawn : RifleCaseSpawn
 	}
 }
 
+ACTOR MagnumCaseSpawn : RifleCaseSpawn
+{
+	States
+	{
+	Spawn:
+        TNT1 A 0
+		TNT1 A 1 A_CustomMissile("MagnumCasing",0,0,random(-80,-100),2,random(40,60))
+		Stop
+	}
+}
 
 ACTOR ShotCaseSpawn : RifleCaseSpawn
 {
@@ -429,22 +439,20 @@ Actor EnemyMinigunBrass: EmptyBrass
 
 ACTOR PistolCasing: EMptyBrass
 {
-
    Scale 0.1
    States
    {
    Spawn:
-	  TNT1 A 0
-
-      C4S1 FFGGHHAABBCCDDEEFFGGHHAABBCCDDEEFFGGHH 1
-      STOP
+	C4S1 FFGGHHAABBCCDDEEFFGGHHAABBCCDDEEFFGGHH 1
+	C4S1 FFGGHHAABBCCDDEEFFGGHHAABBCCDDEEFFGGHH 1
+	Loop
 
    Death:
-       C4S1 I 0
-	   TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor")//Check Effects
-	   TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor2")//Check Effects
-      LCPJ A 0 A_Jump(256,"Rest1","Rest2","Rest3","Rest4","Rest5")
-      Goto Rest1
+	TNT1 I 0
+	TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor")//Check Effects
+	TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor2")//Check Effects
+	TNT1 A 0 A_Jump(256,"Rest1","Rest2","Rest3","Rest4","Rest5")
+	Goto Rest1
     Rest1:
       C4S1 I 200
 	  TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
@@ -477,9 +485,53 @@ ACTOR PistolCasing: EMptyBrass
    }
 }
 
+ACTOR MagnumCasing : EMptyBrass
+{
+	Scale 0.3
+   States
+   {
+   Spawn:
+	C4S1 FFGGHHAABBCCDDEEFFGGHHAABBCCDDEEFFGGHH 1
+	C4S1 FFGGHHAABBCCDDEEFFGGHHAABBCCDDEEFFGGHH 1
+	Loop
 
+   Death:
+	TNT1 I 0
+	TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor")//Check Effects
+	TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor2")//Check Effects
+	TNT1 A 0 A_Jump(256,"Rest1","Rest2","Rest3","Rest4","Rest5")
+	Goto Rest1
+    Rest1:
+      C4S1 I 200
+	  TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+      Loop
+    Rest2:
+      C4S1 J 200
+	  TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+      Loop
+    Rest3:
+      C4S1 K 200
+	  TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+      Loop
+    Rest4:
+      C4S1 L 200
+	  TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+      Loop
+    Rest5:
+      C4S1 M 200
+	  TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+      Loop
 
+	Splash:
+	TNT1 A 0
+	TNT1 A 0 A_SpawnItem("UnderwaterEmptyBrass")
+	Stop
 
+	Stoping:
+	TNT1 A 0
+	Stop
+   }
+}
 
 ACTOR MGLinks: EMptyBrass
 {

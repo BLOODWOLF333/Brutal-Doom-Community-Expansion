@@ -446,7 +446,8 @@ ACTOR SSG : BrutalWeapon
 		SHTZ O 1 Offset(30,56)
 		SHTZ O 1 Offset(40,66)
 		SHTZ N 1 Offset(50,76)
-		SHTZ M 1
+		SHTZ M 1 Offset(40,66)
+		SHTZ L 8 Offset(30,56)
 
 	RemoveBullets:
 		TNT1 AAAA 0
@@ -459,7 +460,6 @@ ACTOR SSG : BrutalWeapon
 
 	FInishUnload:
 		SHTZ A 0
-		SHTZ L 1 Offset(30,56)
 		SHTZ I 1 Offset(20,46)
 		SHTZ A 0 A_PlaySound("weapons/sshotc")
 		SHTZ WXYZ 1
