@@ -304,10 +304,10 @@ ACTOR AssaultShotgun2 : BrutalWeapon
 		A12G A 0 A_GiveInventory("ASGUnloaded",1)
 		A12G A 0 A_FireCustomMissile("EmptyDrumSpawn",0,0,0,-20)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		A12R Q 8 BRIGHT A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		A12R Q 16 BRIGHT A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 
 	PutMag:
-		A12R Q 10 BRIGHT A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0
 		A12G A 0 A_Takeinventory("Reloading",1)
 		A12G A 0 A_Takeinventory("ADSmode",1)
 		A12G A 0 A_Takeinventory("Zoomed",1)
@@ -372,7 +372,7 @@ ACTOR AssaultShotgun2 : BrutalWeapon
 		A12R MNOPQ 1 BRIGHT A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		A12G A 0 A_GiveInventory("ASGUnloaded",1)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		A12R Q 8 BRIGHT A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		A12R Q 16 BRIGHT A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 
 	RemoveBullets:
 		TNT1 AAAA 0
