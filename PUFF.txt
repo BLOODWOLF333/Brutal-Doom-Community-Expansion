@@ -275,7 +275,8 @@ ACTOR RicoChet
 	TNT1 AAAAA 0 A_CustomMissile ("TarParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160))
 	TNT1 AAAAA 0 A_CustomMissile ("TarParticleXFAster", 24, 0, random (0, 360), 2, random (30, 160))
 	TNT1 A 0 A_SpawnItem("TarSplashWaves")
-	TNT1 AAA 0 A_CustomMissile ("TarRicochet", random (0, 2), 0, random (0, 360), 2, random (30, 90))
+	TNT1 A 0 A_SetScale(0.5, 0.5)
+	SPHT ABCDE 3
 	Stop
 
 	SpawnNukage:
@@ -299,6 +300,7 @@ ACTOR RicoChet
 	TNT1 AAAAA 0 A_CustomMissile ("BloodParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160))
 	TNT1 AAAAA 0 A_CustomMissile ("BloodParticleXFAster", 24, 0, random (0, 360), 2, random (30, 160))
 	TNT1 A 0 A_SpawnItem("BloodSplashWaves")
+	TNT1 AAA 0 A_CustomMissile ("BloodRicochet", random (0, 2), 0, random (0, 360), 2, random (30, 90))
 	Stop
 
 	SpawnLava:
@@ -530,37 +532,6 @@ ACTOR NukageRicochet: WaterRicochet
 	TNT1 A 0
 	TNT1 A 0 A_SetScale(-0.7, 0.7)
 	SPHG ABCDEFF 1 A_FadeOut(0.1)
-	Stop
-  }
-}
-
-ACTOR TarRicochet: WaterRicochet
-{
-  renderstyle Add
-  states
-  {
-  Spawn:
-	TNT1 A 0
-	TNT1 A 0 A_Jump(255, "spawn1", "Spawn2", "Spawn3", "Spawn4")
-  Spawn1:
-	TNT1 A 0
-	TNT1 A 0 A_SetScale(0.7, 0.7)
-	SPHT ABCDEFF 1 A_FadeOut(0.1)
-	Stop
- Spawn2:
-	TNT1 A 0
-	TNT1 A 0 A_SetScale(0.8, 0.8)
-	SPHT ABCDEFF 1 A_FadeOut(0.1)
-	Stop
-  Spawn3:
-	TNT1 A 0
-	TNT1 A 0 A_SetScale(-0.6, 0.6)
-	SPHT ABCDEFF 1 A_FadeOut(0.1)
-	Stop
-  Spawn4:
-	TNT1 A 0
-	TNT1 A 0 A_SetScale(-0.7, 0.7)
-	SPHT ABCDEFF 1 A_FadeOut(0.1)
 	Stop
   }
 }
