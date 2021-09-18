@@ -236,7 +236,7 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 		DUPL AAA 0
 		DUPL A 0 A_JumpIfInventory("DoublePlasmaAmmo",100,"Ready")
 		DUPL A 0 A_JumpIfInventory("TurboReload",1,"TurboReload")
-		PLSN A 0 A_JumpIfInventory("HasUnloaded",1,"PutMag")
+		PLSN A 0 A_JumpIfInventory("PlasmaUnloaded",1,"PutMag")
 
 		PLSN A 0 A_PlaySound("PLREADY")
 		PLSN A 0 A_FireCustomMissile("EmptyCellSpawn",0,0,10,-20)
@@ -247,7 +247,7 @@ ACTOR DualPlasmaRifles : BrutalWeapon
         PLSR FGHI 1
 		PLSR J 4 A_PlaySound("PLSDRAW")
 		PLSR KL 1
-		PLSN A 0 A_JumpIfInventory("HasUnloaded",1,"PutMag2")
+		PLSN A 0 A_JumpIfInventory("PlasmaUnloaded",1,"PutMag2")
 
 		PLSN A 0 A_PlaySound("PLREADY")
 		PLSN A 0 A_FireCustomMissile("EmptyCellSpawn",225,0,-10,-20)
@@ -258,7 +258,7 @@ ACTOR DualPlasmaRifles : BrutalWeapon
         P2SR FGHI 1
 		P2SR J 4 A_PlaySound("PLSDRAW")
 		P2SR KL 1
-		PLSR A 0 A_TakeInventory("HasUnloaded",1)
+		PLSR A 0 A_TakeInventory("PlasmaUnloaded",1)
 
 		ReloadingSequence:
 		TNT1 AAAAAAAAAA 0
@@ -294,7 +294,7 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 		P2SN A 0 A_PlaySound("RELO1")
 		P2SR JIHGF 1
 		P2SR E 8
-		PLSN A 0 A_GiveInventory("HasUnloaded",1)
+		PLSN A 0 A_GiveInventory("PlasmaUnloaded",1)
 		Goto RemoveBullets
 
 	UnloadLeft:
@@ -305,7 +305,7 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 		P2SN A 0 A_PlaySound("RELO1")
 		P2SR JIHGF 1
 		P2SR E 8
-		PLSN A 0 A_GiveInventory("HasUnloaded",1)
+		PLSN A 0 A_GiveInventory("PlasmaUnloaded",1)
 		Goto RemoveBullets
 
 	RemoveBullets:
