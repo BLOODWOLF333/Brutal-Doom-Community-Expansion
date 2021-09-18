@@ -78,6 +78,7 @@ ACTOR AssaultShotgun : BrutalWeapon
 		A12G A 0 A_JumpIfInventory("Salute2", 1, "Salute")
         A12G A 0 A_JumpIfInventory("Reloading",1,"Reload")
 		A12G A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		A12G A 0 A_JumpIfInventory("StartDualWield",1,"ChangeShell")
 		A12G A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		A12G A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		Loop
@@ -274,7 +275,6 @@ ACTOR AssaultShotgun : BrutalWeapon
 
     Reload:
 		SHTZ A 0
-		//A12G A 1 BRIGHT A_WeaponReady
 		A12G A 0 A_ZoomFactor(1.0)
 		A12G A 0 A_Takeinventory("Reloading",1)
 		A12G A 0 A_Takeinventory("ADSmode",1)
@@ -288,37 +288,38 @@ ACTOR AssaultShotgun : BrutalWeapon
 		A12G A 0 A_JumpIfInventory("ASGUnloaded", 1, "PutMag")
 		A12G A 0 A_JumpIfInventory("TurboReload", 1, "InsertBullets")
 		A12G A 0
-        A12R A 1 BRIGHT Offset(-32, 42)
-		A12R A 1 BRIGHT Offset(-24, 38)
-		A12R A 1 BRIGHT Offset(-12, 34)
-		A12R A 1 BRIGHT Offset(0, 32)
-		A12R BCDEEE 1 BRIGHT A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		A12R ABCD 1 BRIGHT A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		A12G A 0 A_PlaySound("AACL", 1)
-		A12R FG 1 BRIGHT A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
-		A12R G 1 BRIGHT Offset(3, 36)
-		A12R GG 1 BRIGHT Offset(7, 38)
-		A12R G 1 BRIGHT Offset(3, 36)
-		A12R GGGG 1 BRIGHT Offset(0, 32)
+		A12G A 0 A_PlaySound("AACL")
+		A12R EFG 1 BRIGHT A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		A12R HIJKLLLLL 1 BRIGHT
-		A12G A 0 A_PlaySound("Reload", 1)
-		A12R MNOP 1 BRIGHT
+		A12R G 4 BRIGHT A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		A12R HIJKL 1 BRIGHT A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		A12R L 4 BRIGHT A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		A12G A 0 A_PlaySound("RELO1")
+		A12R MNOPQ 1 BRIGHT A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		A12G A 0 A_GiveInventory("ASGUnloaded",1)
 		A12G A 0 A_FireCustomMissile("EmptyDrumSpawn",0,0,0,-20)
+		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		A12R Q 8 BRIGHT A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 
 	PutMag:
 		TNT1 A 0
-		A12R Q 10 BRIGHT A_JumpIfInventory("Kicking",1,"DoKick")
 		A12G A 0 A_Takeinventory("Reloading",1)
 		A12G A 0 A_Takeinventory("ADSmode",1)
 		A12G A 0 A_Takeinventory("Zoomed",1)
 		A12G A 0 A_Takeinventory("ASGUnloaded",1)
 		A12R RSTU 1 BRIGHT
-		A12R LUUUU 1 BRIGHT
-		A12R KJIHGGGG 1 BRIGHT
-		A12G A 0 A_PlaySound("AACL", 4)
-		A12R FEEEEEEEEDCBA 1 BRIGHT
+		A12G A 0 A_PlaySound("RELO2")
+		A12R L 4 BRIGHT
+		A12R LKJIHG 1 BRIGHT
+		A12G A 0 A_PlaySound("AACL")
+		A12R FE 1 BRIGHT
+		A12R E 4 BRIGHT
+		A12R DCBA 1 BRIGHT
 		Goto InsertBullets
 
 	InsertBullets:
@@ -356,23 +357,22 @@ ACTOR AssaultShotgun : BrutalWeapon
 		TNT1 A 0 A_JumpIfInventory("ShotgunChangeAmmo", 1, "FinishUnload")
         Goto ReadyNoFuckingAmmo
         TNT1 AAA 0
-		A12G A 0 A_GiveInventory ("Pumping", 1)
-		A12G A 0
-        A12R A 1 BRIGHT Offset(-32, 42)
-		A12R A 1 BRIGHT Offset(-24, 38)
-		A12R A 1 BRIGHT Offset(-12, 34)
-		A12R A 1 BRIGHT Offset(0, 32)
-		A12R BCDEEE 1 BRIGHT A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
-		A12G A 0 A_PlaySound("AACL", 1)
-		A12R FG 1 BRIGHT A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
-		A12R G 1 BRIGHT Offset(3, 36)
-		A12R GG 1 BRIGHT Offset(7, 38)
-		A12R G 1 BRIGHT Offset(3, 36)
-		A12R GGGG 1 BRIGHT Offset(0, 32)
-		A12R HIJKLLLLL 1 BRIGHT
-		A12G A 0 A_PlaySound("Reload", 1)
-		A12R MNOPQ 1 BRIGHT
-		A12G A 0 A_TakeInventory ("Pumping", 1)
+		A12R ABCD 1 BRIGHT A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		A12G A 0 A_PlaySound("AACL")
+		A12R EFG 1 BRIGHT A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		A12R G 4 BRIGHT A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		A12R HIJKL 1 BRIGHT A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		A12R L 4 BRIGHT A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		A12G A 0 A_PlaySound("RELO1")
+		A12R MNOPQ 1 BRIGHT A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		A12G A 0 A_GiveInventory("ASGUnloaded",1)
+		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		A12R Q 8 BRIGHT A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 
 	RemoveBullets:
 		TNT1 AAAA 0
@@ -392,6 +392,7 @@ ACTOR AssaultShotgun : BrutalWeapon
 
 	UnloadCancel:
 		A12R Q 1 A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("ShotgunChangeAmmo", 1, "FinishUnload")
 		A12G A 0 A_Takeinventory("Unloading",1)
 		A12G A 0 A_Takeinventory("ADSmode",1)
 		A12G A 0 A_Takeinventory("Zoomed",1)
