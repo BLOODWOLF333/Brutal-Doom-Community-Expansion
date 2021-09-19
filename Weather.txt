@@ -18,7 +18,7 @@ Actor LargeRainSpawner 15868//Plutonia
 
 		Spawn2:
 		TNT1 A 0
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("SimpleRainDrop", Random(-300, 300), Random(-200, 200), 8)
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("SimpleRainDrop", Random(-300, 300), Random(-200, 200),8)
 		TNT1 A 1
 		TNT1 A -1
 		Loop
@@ -40,7 +40,7 @@ Actor SimpleRainDrop
 	States
 	{
 		Spawn:
-		TNT1 A 0
+		TNT1 A 4
 		TNT1 A 0 A_CheckFloor("Nope")
 		TNT1 A 0 A_CheckCeiling("Nope")
 
@@ -75,7 +75,7 @@ Actor BloodRainSpawner 15869//EDay
 
 		Spawn2:
 		TNT1 A 0
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("SimpleBloodDrop", Random(-300, 300), Random(-200, 200), -8)
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("SimpleBloodDrop", Random(-300, 300), Random(-200, 200),8)
 		TNT1 A 1
 		TNT1 A -1
 		Loop
@@ -97,7 +97,7 @@ Actor SimpleBloodDrop
 	States
 	{
 		Spawn:
-		TNT1 A 0
+		TNT1 A 4
 		TNT1 A 0 A_CheckFloor("Nope")
 		TNT1 A 0 A_CheckCeiling("Nope")
 
