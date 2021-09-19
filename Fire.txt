@@ -1425,9 +1425,6 @@ ACTOR FlamethrowerMissile
 	-BLOODSPLATTER
 	+NODAMAGETHRUST
 	-NOGRAVITY
-	+BOUNCEONWALLS
-	+BOUNCEONFLOORS
-	+BOUNCEONCEILINGS
 	//+THRUACTORS
 	RenderStyle Add
     DamageType Fire
@@ -1435,8 +1432,6 @@ ACTOR FlamethrowerMissile
     Scale 0.3
 	Alpha 1.0
 	Gravity 1.0
-	BounceCount 2
-	WallBounceFactor 0.25
 	States
 	{
     Spawn:
@@ -1486,9 +1481,6 @@ ACTOR MarineFlameThrower : FlamethrowerMissile
 
 ACTOR FlamethrowerMissileNoLight: FlamethrowerMissile
 {
-	-BOUNCEONWALLS
-	-BOUNCEONFLOORS
-	-BOUNCEONCEILINGS
 	Speed 35
 	Decal "None"
 		States
@@ -1513,9 +1505,6 @@ ACTOR MarineFlameThrowerNoLight : FlamethrowerMissileNoLight
 
 ACTOR FlamethrowerMissileProper: FlamethrowerMissile
 {
-	-BOUNCEONWALLS
-	-BOUNCEONFLOORS
-	-BOUNCEONCEILINGS
 	Speed 40
 }
 

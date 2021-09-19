@@ -53,12 +53,8 @@ Actor SSGCaseSpawner : ShotcaseSpawn
 		{
 		Spawn:
 			TNT1 A 0
-			TNT1 A 0 Thing_ChangeTID(0,390)
-				TNT1 A 1
-				Goto Death
-		Death:
-				TNT1 A 0 A_CustomMissile("ShotgunCasing",0,0,random(120,140),2,random(40,60))
-				Stop
+			TNT1 A 0 A_CustomMissile("ShotgunCasing",0,0,random(120,140),2,random(40,60))
+			Stop
 		}
 }
 
@@ -271,7 +267,7 @@ ACTOR EmptyPistolClip
    }
 }
 
-ACTOR 50CaseSpawn
+ACTOR 50CaseSpawn//left side eject
 {
 	Speed 20
 	PROJECTILE
@@ -288,14 +284,14 @@ ACTOR 50CaseSpawn
 	}
 }
 
-ACTOR 50CaseSpawn2: 50CaseSpawn
+ACTOR 50CaseSpawn2: 50CaseSpawn//right side eject
 {
 	States
 	{
 	Spawn:
         TNT1 A 0
 		TNT1 A 1 A_CustomMissile("EmptyBrass",0,0,random(-120,-140),2,random(40,60))
-		TNT1 A 1 A_CustomMissile("MGLinks",4,4,random(-120,-140),2,random(40,60))
+		TNT1 A 1 A_CustomMissile("MGLinks",-4,4,random(-120,-140),2,random(40,60))
 		Stop
 	}
 }
@@ -351,6 +347,7 @@ ACTOR EmptyBrass
    +GHOST
    +FLOORCLIP
    +THRUACTORS
+   +RANDOMIZE
    Mass 0
    BounceFactor 0.3
    DeathSound "weapons/casing"

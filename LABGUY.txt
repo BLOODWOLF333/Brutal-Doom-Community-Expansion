@@ -823,6 +823,7 @@ ACTOR Labguy: RifleZombie
 		Goto Death
 
 		Death.ExplosiveImpact:
+		Death.Explosive:
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_ChangeFlag("NOBLOCKMONST", 1)
 		TNT1 A 0 A_Jump(130,"Death.LandMine")
@@ -1335,6 +1336,7 @@ ACTOR VeryFuckedUpBrutalizedFormerScientistLeg: DeadFormerScientist
 		Stop
 
 		Death.ExplosiveImpact:
+		Death.Explosive:
 		TNT1 A 0 ThrustThingZ(0,30,0,1)
 		ID13 ABCDEF 5
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 16, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)

@@ -497,6 +497,7 @@ ACTOR Revenant1: Revenant Replaces Revenant
 	Goto Death
 
 	Death.ExplosiveImpact:
+	Death.Explosive:
 	TNT1 A 0
 	TNT1 A 0 A_JumpIfHealthLower(-40, "XDeath")
 	Goto SpecialDeath
@@ -704,6 +705,7 @@ ACTOR revenantseekermissiles Replaces RevenantTracer
 	+THRUGHOST
 	+SEEKERMISSILE
 	Scale 0.5
+	Decal "Scorch"
     damagetype ExplosiveImpact
 	SeeSound "skeleton/attack"
 	DeathSound "skeleton/tracex"
