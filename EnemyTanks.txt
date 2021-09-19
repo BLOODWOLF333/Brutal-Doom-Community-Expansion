@@ -1,7 +1,10 @@
 
 ACTOR ZombieMainBattleTank 9951//Tank treads & body
 {
-	//$category "BD Enemy Vehicles"
+	//$Category BD Enemy Vehicles
+	//$Icon "monster"
+	//$Colour rgb(200, 0, 0)
+	//$Sprite TNK1B1
     XScale 1.94
 	YScale 1.47
 	Height 100
@@ -241,7 +244,10 @@ ACTOR TankCheckRight: TankCheckLeft
 
 Actor ZombieMainBattleTankTurret 9952
 {
-	//$category "BD Enemy Vehicles"
+	//$Category BD Enemy Vehicles
+	//$Icon "monster"
+	//$Colour rgb(200, 0, 0)
+	//$Sprite TNKZT1
 	MONSTER
 	+FORCEXYBILLBOARD
 	+DONTSPLASH
@@ -523,12 +529,17 @@ Actor ZombieMainBattleTankTurret 9952
 
 ACTOR ZombieArtilleryTank : ZombieMainBattleTank 9950
 {
-	//$category "BD Enemy Vehicles"
+	//$Category BD Enemy Vehicles
+	//$Icon "monster"
+	//$Colour rgb(200, 0, 0)
+	//$Sprite TNK1B1
     Radius 64
 	Height 88
 	health 2000
 	Mass 36300//40 tons
 	Speed 16
+	XScale 1.94
+	YScale 1.47
 	States
 	{
 	Spawn:
@@ -540,7 +551,10 @@ ACTOR ZombieArtilleryTank : ZombieMainBattleTank 9950
 
 Actor ZombieArtilleryTankTurret: ZombieMainBattleTankTurret 9949
 {
-	//$category "BD Enemy Vehicles"
+	//$Category BD Enemy Vehicles
+	//$Icon "monster"
+	//$Colour rgb(200, 0, 0)
+	//$Sprite TN2ZT1
 	States
 	{
 	Spawn:
@@ -737,7 +751,10 @@ Actor ZombieArtilleryTankTurret: ZombieMainBattleTankTurret 9949
 
 ACTOR ZombieHelicopter 9953
 {
-	//$category "BD Enemy Vehicles"
+	//$Category BD Enemy Vehicles
+	//$Icon "monster"
+	//$Colour rgb(200, 0, 0)
+	//$Sprite HELZA1
 	Game Doom
 	Health 500
 	Scale 1.0
@@ -1049,7 +1066,10 @@ ACTOR ZombieHelicopter 9953
 
 ACTOR ZombieMech 9954
 {
-	//$category "BD Enemy Vehicles"
+	//$Category BD Enemy Vehicles
+	//$Icon "monster"
+	//$Colour rgb(200, 0, 0)
+	//$Sprite MEKEA1
 	Game Doom
 	Health 1000
 	Scale 1.0

@@ -66,7 +66,7 @@ States
 		}
 }
 
-ACTOR EvilMarineRifle
+ACTOR EvilMarineRifle 94
 {
 	Game Doom
 	Health 50
@@ -98,13 +98,16 @@ ACTOR EvilMarineRifle
 	+DROPOFF
 	Species "EvilMarines"
 	SeeSound "zombiemarine/sight"
-	//AttackSound "grunt/attack"
 	PainSound "zombiemarine/pain"
 	DeathSound "zombiemarine/death"
 	ActiveSound "zombiemarine/active"
 	Obituary "%o was eliminated by an evil marine."
 	DropItem "RifleDrop"
 	Translation "48:76=128:143", "112:127=152:159"
+	//$Category BD Monsters
+	//$Icon "monster"
+	//$Colour rgb(200, 0, 0)
+	//$Sprite PLAYE1
 	States
 	{
 	Idle:
@@ -715,9 +718,13 @@ ACTOR EvilMarineRifle
 	}
 }
 
-Actor EvilMarinePlasma: EvilMarineRifle
+Actor EvilMarinePlasma: EvilMarineRifle 104
 {
 	DropItem "PLasmagunSpawner"
+	//$Category BD Monsters
+	//$Icon "monster"
+	//$Colour rgb(200, 0, 0)
+	//$Sprite MAR6D1
 	States
 	{
 	Idle:

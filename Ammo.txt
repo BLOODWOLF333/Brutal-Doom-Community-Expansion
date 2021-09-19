@@ -86,7 +86,7 @@ ACTOR FakeClip2Sprite: BasicAmmoPickup
     }
 }
 
-ACTOR Clip2Spawner: CustomInventory
+ACTOR Clip2Spawner: CustomInventory 2027
 {
  radius 24
  height 24
@@ -94,6 +94,11 @@ ACTOR Clip2Spawner: CustomInventory
  Inventory.PickupMessage "Picked up a Rifle Magazine."
  Inventory.PickupSound "CLIPICK2"
  Mass 1
+ //$Category BD Ammo Spawners
+ //$Icon "ammo"
+ //$Colour rgb(180, 150, 50)
+ //$Sprite CLIPA0
+ //$NotAngled
     States
     {
 	Spawn:
@@ -113,7 +118,7 @@ ACTOR Clip2Spawner: CustomInventory
     }
 }
 
-	ACTOR Clip1 : Ammo
+ACTOR Clip1 : Ammo
 {
 	Game Doom
 	Inventory.PickupMessage "Picked up a Pistol Magazine."
@@ -132,7 +137,7 @@ ACTOR Clip2Spawner: CustomInventory
 	}
 }
 
-ACTOR Clip1Spawner: CustomInventory
+ACTOR Clip1Spawner: CustomInventory 2037
 {
  radius 24
  height 24
@@ -140,6 +145,11 @@ ACTOR Clip1Spawner: CustomInventory
  Inventory.PickupMessage "Picked up a Pistol Magazine."
  Inventory.PickupSound "CLIPICK"
  Mass 1
+ //$Category BD Ammo Spawners
+ //$Icon "ammo"
+ //$Colour rgb(180, 150, 50)
+ //$Sprite CLIPC0
+ //$NotAngled
     States
     {
 	Spawn:
@@ -163,7 +173,7 @@ ACTOR Clip1Spawner: CustomInventory
     }
 }
 
-ACTOR Mauser9mm : Ammo
+ACTOR Mauser9mm : Ammo 2057
 {
 	Game Doom
 	Inventory.PickupMessage "Picked up a Mauser 9mm Magazine for the MP40."
@@ -174,6 +184,11 @@ ACTOR Mauser9mm : Ammo
 	Inventory.Icon "CLIPB0"
 	Inventory.PickupSound "CLIPICK"
 	Scale 0.6
+	//$Category BD Ammo Spawners
+	//$Icon "ammo"
+	//$Colour rgb(180, 150, 50)
+	//$Sprite CLIPB0
+	//$NotAngled
 	States
 	{
 	Spawn:
@@ -248,7 +263,7 @@ ACTOR Clip1Drop: CustomInventory
     }
 }
 
-ACTOR ClipBox2 : Clip2
+ACTOR ClipBox2 : Clip2 2088
 {
 	Game Doom
 	SpawnID 139
@@ -256,6 +271,11 @@ ACTOR ClipBox2 : Clip2
 	Inventory.PickupSound "CBOXPICK"
 	Inventory.Amount 50
 	Scale 0.9
+	//$Category BD Ammo Spawners
+	//$Icon "ammo"
+	//$Colour rgb(180, 150, 50)
+	//$Sprite AMMOA0
+	//$NotAngled
 	States
 	{
 	Spawn:
@@ -317,7 +337,7 @@ ACTOR FakePABSprite: BasicAmmoPickup
     }
 }
 
-ACTOR PistolAmmoBoxSpawner: CustomInventory
+ACTOR PistolAmmoBoxSpawner: CustomInventory 2098
 {
  radius 24
  height 24
@@ -325,6 +345,11 @@ ACTOR PistolAmmoBoxSpawner: CustomInventory
  Inventory.PickupMessage "Picked up a box of pistol ammunition!"
  Inventory.PickupSound "CBOXPICK"
  Mass 1
+ //$Category BD Ammo Spawners
+ //$Icon "ammo"
+ //$Colour rgb(180, 150, 50)
+ //$Sprite 4M0KA0
+ //$NotAngled
     States
     {
 	Spawn:
@@ -348,7 +373,7 @@ ACTOR PistolAmmoBoxSpawner: CustomInventory
     }
 }
 
-ACTOR BuzzSawAmmo : Ammo
+ACTOR BuzzSawAmmo : Ammo 2108
 {
 	Game Doom
 	Inventory.PickupMessage "Picked up a belt of MG42 ammo."
@@ -359,6 +384,11 @@ ACTOR BuzzSawAmmo : Ammo
 	Ammo.BackpackMaxAmount 600
 	Inventory.Icon "HBUSE0"
 	Scale 0.6
+	//$Category BD Ammo Spawners
+	//$Icon "ammo"
+	//$Colour rgb(180, 150, 50)
+	//$Sprite HBUSE0
+	//$NotAngled
 	States
 	{
 	Spawn:
@@ -403,7 +433,7 @@ Actor ClipBoxReplacer : BasicAmmoPickup Replaces ClipBox
     }
 }
 
-ACTOR AmmoRocket : Ammo
+ACTOR AmmoRocket : Ammo 2020
 {
 	Game Doom
 	SpawnID 140
@@ -431,6 +461,11 @@ ACTOR AmmoRocket : Ammo
 	damagefactor "HelperMarineFatallity", 0.0	damagefactor "Leg", 0.0
 	DamageFactor "KillMeBot", 0.0
 	Health 20
+	//$Category BD Ammo Spawners
+	//$Icon "ammo"
+	//$Colour rgb(180, 150, 50)
+	//$Sprite ROCKA0
+	//$NotAngled
 	States
 	{
 	Spawn:
@@ -616,13 +651,18 @@ ACTOR FakeCellSprite: BasicAmmoPickup
 
 // Cell pack ---------------------------------------------------------------
 
-ACTOR AmmoCellPack : AmmoCell
+ACTOR AmmoCellPack : AmmoCell 97
 {
 	Game Doom
 	SpawnID 142
 	Inventory.PickupMessage "$GOTCELLBOX"
 	Inventory.Amount 100
 	Scale 0.9
+	//$Category BD Ammo Spawners
+	//$Icon "ammo"
+	//$Colour rgb(180, 150, 50)
+	//$Sprite CELPA0
+	//$NotAngled
 	States
 	{
 	Spawn:
@@ -686,7 +726,7 @@ ACTOR FakeGasSprite: BasicAmmoPickup
     }
 }
 
-ACTOR GasSpawner: CustomInventory
+ACTOR GasSpawner: CustomInventory 107
 {
  radius 24
  height 24
@@ -694,6 +734,11 @@ ACTOR GasSpawner: CustomInventory
  Inventory.PickupMessage "Picked up a jug of Gasoline."
  Inventory.PickupSound "BFGREADY"
  Mass 1
+ //$Category BD Ammo Spawners
+ //$Icon "ammo"
+ //$Colour rgb(180, 150, 50)
+ //$Sprite GSLNA0
+ //$NotAngled
     States
     {
 	Spawn:
@@ -756,7 +801,7 @@ ACTOR FakeNukeSprite: BasicAmmoPickup
     }
 }
 
-ACTOR NukeSpawner: CustomInventory
+ACTOR NukeSpawner: CustomInventory 117
 {
  radius 24
  height 24
@@ -764,6 +809,11 @@ ACTOR NukeSpawner: CustomInventory
  Inventory.PickupMessage "Picked up a nuclear missile."
  Inventory.PickupSound "RCKCLIP2"
  Mass 1
+ //$Category BD Ammo Spawners
+ //$Icon "ammo"
+ //$Colour rgb(180, 150, 50)
+ //$Sprite BNUKA0
+ //$NotAngled
     States
     {
 	Spawn:
@@ -825,7 +875,7 @@ ACTOR AmmoCellPackReplacer : BasicAmmoPickup Replaces CellPack
 
 // Shells ------------------------------------------------------------------
 
-ACTOR AmmoShell : Ammo
+ACTOR AmmoShell : Ammo 2038
 {
 	Game Doom
 	SpawnID 12
@@ -837,6 +887,11 @@ ACTOR AmmoShell : Ammo
 	Inventory.Icon "SHELA0"
 	Inventory.Pickupsound "SHELPK1"
 	Scale 0.9
+	//$Category BD Ammo Spawners
+	//$Icon "ammo"
+	//$Colour rgb(180, 150, 50)
+	//$Sprite SHELA0
+	//$NotAngled
 	States
 	{
 	Spawn:
@@ -900,7 +955,7 @@ ACTOR FakeAmmoSlugSprite: BasicAmmoPickup
     }
 }
 
-ACTOR AmmoSlugSpawner: CustomInventory
+ACTOR AmmoSlugSpawner: CustomInventory 2058
 {
  radius 24
  height 24
@@ -908,6 +963,11 @@ ACTOR AmmoSlugSpawner: CustomInventory
  Inventory.PickupMessage "$GOTSLUGS"
  Inventory.PickupSound "SHELPK1"
  Mass 1
+ //$Category BD Ammo Spawners
+ //$Icon "ammo"
+ //$Colour rgb(180, 150, 50)
+ //$Sprite SHELB0
+ //$NotAngled
     States
     {
 	Spawn:
@@ -933,7 +993,7 @@ ACTOR AmmoSlugSpawner: CustomInventory
 
 // Shell box ---------------------------------------------------------------
 
-ACTOR AmmoShellBox : AmmoShell
+ACTOR AmmoShellBox : AmmoShell 2059
 {
 	Game Doom
 	SpawnID 143
@@ -941,6 +1001,11 @@ ACTOR AmmoShellBox : AmmoShell
 	Inventory.Amount 20
 	Inventory.Pickupsound "SHELPK2"
 	Scale 0.9
+	//$Category BD Ammo Spawners
+	//$Icon "ammo"
+	//$Colour rgb(180, 150, 50)
+	//$Sprite SBOXA0
+	//$NotAngled
 	States
 	{
 	Spawn:
@@ -1000,7 +1065,7 @@ ACTOR FakeSlugBoxSprite: BasicAmmoPickup
     }
 }
 
-ACTOR SlugBoxSpawner: CustomInventory
+ACTOR SlugBoxSpawner: CustomInventory 2069
 {
  radius 24
  height 24
@@ -1008,6 +1073,11 @@ ACTOR SlugBoxSpawner: CustomInventory
  Inventory.PickupMessage "$GOTSLUGBOX"
  Inventory.PickupSound "SHELPK2"
  Mass 1
+ //$Category BD Ammo Spawners
+ //$Icon "ammo"
+ //$Colour rgb(180, 150, 50)
+ //$Sprite SLSUA0
+ //$NotAngled
     States
     {
 	Spawn:
@@ -1070,7 +1140,7 @@ ACTOR FakeAmmoMagnumSprite: BasicAmmoPickup
     }
 }
 
-ACTOR AmmoMagnumSpawner: CustomInventory
+ACTOR AmmoMagnumSpawner: CustomInventory 2068
 {
  radius 24
  height 24
@@ -1078,6 +1148,11 @@ ACTOR AmmoMagnumSpawner: CustomInventory
  Inventory.PickupMessage "Picked up some magnum rounds."
  Inventory.PickupSound "CBOXPICK"
  Mass 1
+ //$Category BD Ammo Spawners
+ //$Icon "ammo"
+ //$Colour rgb(180, 150, 50)
+ //$Sprite MAGAA0
+ //$NotAngled
     States
     {
 	Spawn:
@@ -1134,7 +1209,7 @@ ACTOR FakeMagnumBoxSprite: BasicAmmoPickup
     }
 }
 
-ACTOR MagnumBoxSpawner: CustomInventory
+ACTOR MagnumBoxSpawner: CustomInventory 2089
 {
  radius 24
  height 24
@@ -1142,6 +1217,11 @@ ACTOR MagnumBoxSpawner: CustomInventory
  Inventory.PickupMessage "Picked up a box of magnum rounds."
  Inventory.PickupSound "CBOXPICK"
  Mass 1
+ //$Category BD Ammo Spawners
+ //$Icon "ammo"
+ //$Colour rgb(180, 150, 50)
+ //$Sprite MBOXA0
+ //$NotAngled
     States
     {
 	Spawn:
@@ -1237,7 +1317,7 @@ ACTOR AmmoShellBoxReplacer : BasicAmmoPickup Replaces ShellBox
 	}
 }
 
-ACTOR GrenadeAmmo : Ammo
+ACTOR GrenadeAmmo : Ammo 2030
 {
 	Game Doom
 	Inventory.PickupMessage "Picked up a Grenade."
@@ -1247,6 +1327,11 @@ ACTOR GrenadeAmmo : Ammo
 	Ammo.BackpackMaxAmount 6
 	Inventory.Icon "GRNDA"
 	Scale 0.3
+	//$Category BD Ammo Spawners
+	//$Icon "ammo"
+	//$Colour rgb(180, 150, 50)
+	//$Sprite GRNDH0
+	//$NotAngled
 	States
 	{
 	Spawn:

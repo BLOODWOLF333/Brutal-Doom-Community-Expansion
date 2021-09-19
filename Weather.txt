@@ -1,11 +1,14 @@
 Actor LargeRainSpawner 15868//Plutonia
 {
-	Radius 1
+	Radius 125
 	Height 1
 	+NoClip
 	+ClientSideOnly
 	+SpawnCeiling
 	+NoGravity
+	//$Category BD Weather Spawners
+	//$Colour rgb(127,127,127)
+	//$NotAngled
 	States
 	{
 		Spawn:
@@ -15,7 +18,7 @@ Actor LargeRainSpawner 15868//Plutonia
 
 		Spawn2:
 		TNT1 A 0
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("SimpleRainDrop", Random(-300, 300), Random(-200, 200), 8)
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("SimpleRainDrop", Random(-300, 300), Random(-200, 200), 8)
 		TNT1 A 1
 		TNT1 A -1
 		Loop
@@ -54,12 +57,15 @@ Actor SimpleRainDrop
 
 Actor BloodRainSpawner 15869//EDay
 {
-	Radius 1
+	Radius 125
 	Height 1
 	+NoClip
 	+ClientSideOnly
 	+SpawnCeiling
 	+NoGravity
+	//$Category BD Weather Spawners
+	//$Colour rgb(255,127,127)
+	//$NotAngled
 	States
 	{
 		Spawn:
@@ -69,7 +75,7 @@ Actor BloodRainSpawner 15869//EDay
 
 		Spawn2:
 		TNT1 A 0
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("SimpleBloodDrop", Random(-300, 300), Random(-200, 200), -8)
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("SimpleBloodDrop", Random(-300, 300), Random(-200, 200), -8)
 		TNT1 A 1
 		TNT1 A -1
 		Loop

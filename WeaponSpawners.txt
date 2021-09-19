@@ -11,13 +11,18 @@ ACTOR BasicWeaponPickup : Health
  +Quiet
 }
 
-ACTOR RifleSpawner : CustomInventory Replaces Pistol
+ACTOR RifleSpawner : CustomInventory Replaces Pistol 5010
 {
  radius 24
  height 24
  +FORCEXYBILLBOARD
  Inventory.PickupMessage "$GOTRIFLE"
  Inventory.PickupSound "CLIPIN"
+ //$Category BD Weapon Spawners
+ //$Icon "weapon"
+ //$Colour rgb(220,180,100)
+ //$Sprite RIFLA0
+ //$NotAngled
  Mass 1
     States
     {
@@ -72,7 +77,7 @@ ACTOR FakeRifleSprite: BasicWeaponPickup
     }
 }
 
-ACTOR PistolSpawner: CustomInventory
+ACTOR PistolSpawner: CustomInventory 5040
 {
  scale 0.9
  radius 24
@@ -81,6 +86,11 @@ ACTOR PistolSpawner: CustomInventory
  Inventory.PickupMessage "$GOTPISTOL"
  Inventory.PickupSound "CLIPIN"
  Mass 1
+ //$Category BD Weapon Spawners
+ //$Icon "weapon"
+ //$Colour rgb(220,180,100)
+ //$Sprite PISTG0
+ //$NotAngled
     States
     {
 
@@ -117,7 +127,7 @@ ACTOR PistolSpawner: CustomInventory
     }
 }
 
-ACTOR MP40Spawner: CustomInventory
+ACTOR MP40Spawner: CustomInventory 5070
 {
  radius 24
  height 24
@@ -125,6 +135,11 @@ ACTOR MP40Spawner: CustomInventory
  Inventory.PickupMessage "$GOTMP40"
  Inventory.PickupSound "CLIPIN"
  Mass 1
+ //$Category BD Weapon Spawners
+ //$Icon "weapon"
+ //$Colour rgb(220,180,100)
+ //$Sprite MP40I0
+ //$NotAngled
     States
     {
 	 Spawn:
@@ -156,7 +171,7 @@ ACTOR MP40Spawner: CustomInventory
     }
 }
 
-ACTOR ShotgunSpawner: CustomInventory
+ACTOR ShotgunSpawner: CustomInventory 2021
 {
  radius 24
  height 24
@@ -164,6 +179,11 @@ ACTOR ShotgunSpawner: CustomInventory
  Inventory.PickupMessage "$GOTSHOTGUN"
  Inventory.PickupSound "weapons/sgpump"
  Mass 1
+ //$Category BD Weapon Spawners
+ //$Icon "weapon"
+ //$Colour rgb(220,180,100)
+ //$Sprite SHTCA0
+ //$NotAngled
     States
     {
 	Spawn:
@@ -224,7 +244,7 @@ ACTOR ShotgunSpawnerDroped: ShotgunSpawner
     }
 }
 
-ACTOR RevolverSpawner: CustomInventory
+ACTOR RevolverSpawner: CustomInventory 5874
 {
  radius 24
  height 24
@@ -232,6 +252,11 @@ ACTOR RevolverSpawner: CustomInventory
  Inventory.PickupMessage "$GOTREVOLVER"
  Inventory.PickupSound "REVOHAM"
  Mass 1
+ //$Category BD Weapon Spawners
+ //$Icon "weapon"
+ //$Colour rgb(220,180,100)
+ //$Sprite REVPA0
+ //$NotAngled
     States
     {
 	Spawn:
@@ -337,7 +362,7 @@ VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, Arc
     }
 }
 
-ACTOR SSGSpawner: CustomInventory
+ACTOR SSGSpawner: CustomInventory 92
 {
  YScale 0.8
  XScale 1.0
@@ -347,6 +372,11 @@ ACTOR SSGSpawner: CustomInventory
  Inventory.PickupSound "CLIPINSS"
  Inventory.PickupMessage "$GOTSHOTGUN2"
  Mass 1
+ //$Category BD Weapon Spawners
+ //$Icon "weapon"
+ //$Colour rgb(220,180,100)
+ //$Sprite SGN2A0
+ //$NotAngled
     States
     {
 
@@ -404,7 +434,7 @@ VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, Arc
     }
 }
 
-ACTOR AssaultShotgunSpawner: CustomInventory
+ACTOR AssaultShotgunSpawner: CustomInventory 102
 {
  radius 24
  height 24
@@ -412,6 +442,11 @@ ACTOR AssaultShotgunSpawner: CustomInventory
  Inventory.PickupSound "CLIPIN"
  Inventory.PickupMessage "$GOTASG"
  Mass 1
+ //$Category BD Weapon Spawners
+ //$Icon "weapon"
+ //$Colour rgb(220,180,100)
+ //$Sprite A12PA0
+ //$NotAngled
     States
     {
 	Spawn:
@@ -470,7 +505,7 @@ actor SSGSpawnerReplacer: BasicWeaponPickup Replaces  SuperShotgun
 	}
 }
 
-ACTOR ChaingunSpawner: CustomInventory
+ACTOR ChaingunSpawner: CustomInventory 2032
 {
  radius 24
  height 24
@@ -478,6 +513,11 @@ ACTOR ChaingunSpawner: CustomInventory
  Inventory.PickupSound "CBOXPKUP"
  Inventory.PickupMessage "$GOTCHAINGUN"
  Mass 1
+ //$Category BD Weapon Spawners
+ //$Icon "weapon"
+ //$Colour rgb(220,180,100)
+ //$Sprite MGUNA0
+ //$NotAngled
     States
     {
 
@@ -506,7 +546,7 @@ ACTOR ChaingunSpawner: CustomInventory
     }
 }
 
-ACTOR SMGSpawner: CustomInventory
+ACTOR SMGSpawner: CustomInventory 5060
 {
  scale 0.8
  radius 24
@@ -515,6 +555,11 @@ ACTOR SMGSpawner: CustomInventory
  Inventory.PickupSound "CLIPIN"
  Inventory.Pickupmessage "$GOTSMG"
  Mass 1
+ //$Category BD Weapon Spawners
+ //$Icon "weapon"
+ //$Colour rgb(220,180,100)
+ //$Sprite SMGZA0
+ //$NotAngled
     States
     {
 	 Spawn:
@@ -563,7 +608,7 @@ ACTOR FakeSMGSprite: BasicWeaponPickup
     }
 }
 
-ACTOR MachinegunSpawner: CustomInventory
+ACTOR MachinegunSpawner: CustomInventory 2042
 {
 	radius 24
 	height 24
@@ -571,6 +616,11 @@ ACTOR MachinegunSpawner: CustomInventory
 	Inventory.PickupSound "CBOXPKUP"
 	Inventory.PickupMessage "$GOTMG"
 	Mass 1
+	//$Category BD Weapon Spawners
+	//$Icon "weapon"
+	//$Colour rgb(220,180,100)
+	//$Sprite MGN1Z0
+	//$NotAngled
     States
     {
 
@@ -719,7 +769,7 @@ ACTOR DropedChaingunSpawner: ChaingunSpawner
     }
 }
 
-ACTOR RocketLauncherSpawner : CustomInventory
+ACTOR RocketLauncherSpawner : CustomInventory 2033
 {
  radius 24
  height 24
@@ -727,6 +777,11 @@ ACTOR RocketLauncherSpawner : CustomInventory
  Inventory.PickupMessage "$GOTLAUNCHER"
  Inventory.PickupSound "ROCKPKUP"
  Mass 1
+ //$Category BD Weapon Spawners
+ //$Icon "weapon"
+ //$Colour rgb(220,180,100)
+ //$Sprite RLAUA0
+ //$NotAngled
     States
     {
 
@@ -754,15 +809,19 @@ ACTOR RocketLauncherSpawner : CustomInventory
     }
 }
 
-ACTOR GrenadeLauncherSpawner: CustomInventory 2551
+ACTOR GrenadeLauncherSpawner: CustomInventory 2043
 {
  radius 24
  height 24
  +FORCEXYBILLBOARD
  Inventory.PickupMessage "$GOTGL"
  Inventory.PickupSound "ROCKPKUP"
- //$category Weapons
  Mass 1
+ //$Category BD Weapon Spawners
+ //$Icon "weapon"
+ //$Colour rgb(220,180,100)
+ //$Sprite GLAPA0
+ //$NotAngled
     States
     {
 
@@ -866,7 +925,7 @@ ACTOR FakeGLSprite: BasicWeaponPickup
     }
 }
 
-ACTOR PLasmagunSpawner: CustomInventory
+ACTOR PLasmagunSpawner: CustomInventory 2034
 {
  scale 0.9
  radius 24
@@ -875,6 +934,11 @@ ACTOR PLasmagunSpawner: CustomInventory
  Inventory.PickupSound "PLSDRAW"
  Inventory.PickupMessage "$GOTPLASMA"
  Mass 1
+ //$Category BD Weapon Spawners
+ //$Icon "weapon"
+ //$Colour rgb(220,180,100)
+ //$Sprite PLASA0
+ //$NotAngled
     States
     {
 
@@ -936,15 +1000,19 @@ actor PlasmagunReplacer : BasicWeaponPickup Replaces PLasmaRifle
 		Stop
 }}
 
-ACTOR RailgunSpawner: CustomInventory  2552
+ACTOR RailgunSpawner: CustomInventory 2044
 {
  radius 24
  height 24
- //$category "Weapons"
  +FORCEXYBILLBOARD
  Inventory.PickupSound "misc/w_pkup"
  Inventory.Pickupmessage "$GOTRG"
  Mass 1
+ //$Category BD Weapon Spawners
+ //$Icon "weapon"
+ //$Colour rgb(220,180,100)
+ //$Sprite SRCGA0
+ //$NotAngled
     States
     {
 	Spawn:
@@ -1084,7 +1152,7 @@ actor BFGReplacer : BasicWeaponPickup Replaces BFG9000
 	}
 }
 
-ACTOR BFG9000Spawner: CustomInventory
+ACTOR BFG9000Spawner: CustomInventory 2036
 {
  radius 24
  height 24
@@ -1092,6 +1160,11 @@ ACTOR BFG9000Spawner: CustomInventory
  Inventory.PickupSound "BFGREADY"
  Inventory.PickupMessage "$GOTBFG9000"
  Mass 1
+ //$Category BD Weapon Spawners
+ //$Icon "weapon"
+ //$Colour rgb(220,180,100)
+ //$Sprite BFUGA0
+ //$NotAngled
     States
     {
 	Spawn:
@@ -1116,7 +1189,7 @@ ACTOR BFG9000Spawner: CustomInventory
     }
 }
 
-ACTOR BuzzsawSpawner: CustomInventory
+ACTOR BuzzsawSpawner: CustomInventory 2052
 {
  radius 24
  height 24
@@ -1124,6 +1197,11 @@ ACTOR BuzzsawSpawner: CustomInventory
  Inventory.PickupSound "CBOXPKUP"
  Inventory.PickupMessage "$GOTMG42"
  Mass 1
+ //$Category BD Weapon Spawners
+ //$Icon "weapon"
+ //$Colour rgb(220,180,100)
+ //$Sprite HBUSD0
+ //$NotAngled
     States
     {
 	Spawn:
@@ -1143,7 +1221,7 @@ ACTOR BuzzsawSpawner: CustomInventory
     }
 }
 
-ACTOR NukeLauncherSpawner: CustomInventory
+ACTOR NukeLauncherSpawner: CustomInventory 2096
 {
  radius 24
  height 24
@@ -1151,6 +1229,11 @@ ACTOR NukeLauncherSpawner: CustomInventory
  Inventory.PickupSound "BFGREADY"
  Inventory.PickupMessage "You got the Nuclear Missile Launcher (Slot 7)"
  Mass 1
+ //$Category BD Weapon Spawners
+ //$Icon "weapon"
+ //$Colour rgb(220,180,100)
+ //$Sprite NKLGD0
+ //$NotAngled
     States
     {
 	Spawn:
@@ -1174,15 +1257,19 @@ ACTOR NukeLauncherSpawner: CustomInventory
     }
 }
 
-ACTOR BFG10KSpawner: CustomInventory 2553
+ACTOR BFG10KSpawner: CustomInventory 2056
 {
  radius 24
  height 24
- //$category "Weapons"
  +FORCEXYBILLBOARD
  Inventory.Pickupmessage "$GOTBFG10K"
  Inventory.PickupSound "BFGREADY"
  Mass 1
+ //$Category BD Weapon Spawners
+ //$Icon "weapon"
+ //$Colour rgb(220,180,100)
+ //$Sprite BFG2A0
+ //$NotAngled
     States
     {
 	Spawn:
@@ -1209,14 +1296,17 @@ ACTOR BFG10KSpawner: CustomInventory 2553
 
 ACTOR UnmakerSpawner: CustomInventory 8845
 {
- //$category "Weapons"
  radius 24
  height 24
  +FORCEXYBILLBOARD
  Inventory.PickupSound "BFGREADY"
  Inventory.PickupMessage "$GOTUNMAKER"
  Mass 1
-
+ //$Category BD Weapon Spawners
+ //$Icon "weapon"
+ //$Colour rgb(220,180,100)
+ //$Sprite UNHWA0
+ //$NotAngled
     States
     {
 	Spawn:
@@ -1240,7 +1330,7 @@ ACTOR UnmakerSpawner: CustomInventory 8845
     }
 }
 
-ACTOR FlameThrowerSpawner: CustomInventory
+ACTOR FlameThrowerSpawner: CustomInventory 2086
 {
  radius 24
  height 24
@@ -1248,6 +1338,11 @@ ACTOR FlameThrowerSpawner: CustomInventory
  Inventory.PickupSound "BFGREADY"
  Inventory.PickupMessage "You got the Flamethrower (Slot 9)"
  Mass 1
+ //$Category BD Weapon Spawners
+ //$Icon "weapon"
+ //$Colour rgb(220,180,100)
+ //$Sprite FLMTF0
+ //$NotAngled
     States
     {
 	Spawn:
@@ -1397,7 +1492,7 @@ ACTOR FakeSawSprite: BasicWeaponPickup
     }
 }
 
-ACTOR ChainsawSpawner: CustomInventory
+ACTOR ChainsawSpawner: CustomInventory 2055
 {
  scale 0.8
  radius 24
@@ -1406,6 +1501,11 @@ ACTOR ChainsawSpawner: CustomInventory
  inventory.pickupsound "weapons/chainsaw/draw"
  Inventory.PickupMessage "$GOTCHAINSAW"
  Mass 1
+ //$Category BD Weapon Spawners
+ //$Icon "weapon"
+ //$Colour rgb(220,180,100)
+ //$Sprite CSAWA0
+ //$NotAngled
     States
     {
 	Spawn:
@@ -1425,7 +1525,7 @@ ACTOR ChainsawSpawner: CustomInventory
     }
 }
 
-ACTOR AxeSpawner: CustomInventory
+ACTOR AxeSpawner: CustomInventory 2065
 {
  radius 24
  height 24
@@ -1433,6 +1533,11 @@ ACTOR AxeSpawner: CustomInventory
  inventory.pickupsound "AXEDRAW"
  Inventory.PickupMessage "$GOTAXE"
  Mass 1
+ //$Category BD Weapon Spawners
+ //$Icon "weapon"
+ //$Colour rgb(220,180,100)
+ //$Sprite AXE1A0
+ //$NotAngled
     States
     {
 	Spawn:

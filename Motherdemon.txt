@@ -1,6 +1,9 @@
 actor Motherdemon 2548
 {
-	//$category "BD Bosses"
+	//$Category BD Bosses
+	//$Icon "monster"
+	//$Colour rgb(200, 0, 0)
+	//$Sprite MOTHA1
 	game Doom
 	obituary "%o was obliterated by the mother of all demons."
 	health 10000
@@ -52,15 +55,15 @@ actor Motherdemon 2548
   states
   {
   Spawn:
-	TNT1 A 0 A_GiveInventory("TargetIsAMastermind")
+	MOTH A 0 A_GiveInventory("TargetIsAMastermind")
   Idle:
     MOTH ABCD 8 A_Look
 	MOTH A 0 HealThing(1)
     loop
 
   See:
-	TNT1 A 0
-	TNT1 A 0 ACS_NamedExecuteAlways("BDBossHealth", 0, 0, 0, 0)//Health Bar
+	MOTH A 0
+	MOTH A 0 ACS_NamedExecuteAlways("BDBossHealth", 0, 0, 0, 0)//Health Bar
 
   SeeContinue:
     MOTH AABBCCDD 4 A_VileChase
