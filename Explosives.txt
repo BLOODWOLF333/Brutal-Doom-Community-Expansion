@@ -16,9 +16,9 @@ ACTOR Rocket2 Replaces Rocket
     +NOGRAVITY
     +EXTREMEDEATH
 	+BLOODSPLATTER
-	+SPECTRAL
 	+THRUSPECIES
 	+MTHRUSPECIES
+	+SPECTRAL
 	SeeSound "weapons/RLL"
 	DeathSound "Explosion"
 	Obituary "$OB_MPROCKET"
@@ -235,6 +235,9 @@ actor RocketExplosion
 	States
 	{
 		Spawn:
+		Goto Death
+
+		Death:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("WhiteShockwave")
 		TNT1 A 3
