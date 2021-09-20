@@ -1767,7 +1767,6 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		Stop
 
 	XDeath:
-    Death.Explosive:
 	Death.Explosive:
         NULL A 0 A_Takeinventory("Kicking",1)
 		MARN A 0 A_GiveInventory("PlayerIsDead", 1)
@@ -1830,7 +1829,6 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		Stop
 
 	Death.SuperPunch:
-    Death.Blast:
 	Death.SSG:
         NULL A 0 A_Takeinventory("Kicking",1)
 		MARN A 0 A_GiveInventory("PlayerIsDead", 1)
