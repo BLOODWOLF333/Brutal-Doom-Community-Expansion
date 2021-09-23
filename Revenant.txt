@@ -497,6 +497,7 @@ ACTOR Revenant1: Revenant Replaces Revenant
 	Goto Death
 
 	Death.ExplosiveImpact:
+	Death.Explosive:
 	TNT1 A 0
 	TNT1 A 0 A_JumpIfHealthLower(-40, "XDeath")
 	Goto SpecialDeath
@@ -533,19 +534,6 @@ ACTOR Revenant1: Revenant Replaces Revenant
 	    REDX ABCDEFGHIJK 3
 		TNT1 A 0 A_SpawnItem("GrowingBloodPool")
 		REDX K -1
-        Stop
-
-	Death.Blast:
-	    TNT1 AAA 0 A_CustomMissile ("XDeath1", 30, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AAA 0 A_CustomMissile ("RevenantDust", 30, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AAAA 0 A_CustomMissile ("RevenantDust2", 30, 0, random (0, 360), 2, random (0, 360))
-        TNT1 AA 0 A_CustomMissile ("XDeath2b", 16, 0, random (0, 360), 2, random (30, 150))
-		TNT1 AAAA 0 A_CustomMissile ("RevenantPiece", 37, 0, random (0, 360), 2, random (30, 150))
-		TNT1 A 0 A_CustomMissile ("MuchBlood2", 60, 0, random (0, 360), 2, random (0, 160))
-	    SKL4 A 6
-		SKL4 BBBBBBBBBBBB 2 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, random (0, 360), 2, random (30, 110))
-		SKL4 CD 4 A_CustomMissile ("Brutal_LiquidBlood", 10, 0, random (0, 360), 2, random (30, 110))
-        TNT1 A 0 A_SpawnItem ("BlastedDeadSkeleton", 1)
         Stop
 
     Death.SuperPlasma:
@@ -704,6 +692,7 @@ ACTOR revenantseekermissiles Replaces RevenantTracer
 	+THRUGHOST
 	+SEEKERMISSILE
 	Scale 0.5
+	Decal "Scorch"
     damagetype ExplosiveImpact
 	SeeSound "skeleton/attack"
 	DeathSound "skeleton/tracex"
@@ -789,7 +778,7 @@ States
 	    SKEL Q -1
         Stop
 
-		Death.Minigun: Death.Cut: Death: Death.Saw: Death.Shotgun: Death.SSG: Death.Blast:
+		Death.Minigun: Death.Cut: Death: Death.Saw: Death.Shotgun: Death.SSG: death.explosive:
   	    TNT1 A 0 A_NoBlocking
 		TNT1 AAAA 0 A_CustomMissile ("RevenantBones", 5, 0, random (0, 360), 2, random (30, 150))
 		TNT1 AAA 0 A_CustomMissile ("RevenantPiece", 5, 0, random (0, 360), 2, random (30, 150))
@@ -854,7 +843,7 @@ Actor XDeadSkeleton: DeadSkeleton
 {Health 200 States{Spawn:
 		DKEL I -1
         Stop
-       Death.Minigun: Death.Cut: Death: Death.Saw: Death.Shotgun: Death.SSG: Death.Blast:
+       Death.Minigun: Death.Cut: Death: Death.Saw: Death.Shotgun: Death.SSG: death.explosive:
   	    TNT1 A 0 A_NoBlocking
 		TNT1 AAAA 0 A_CustomMissile ("RevenantBones", 5, 0, random (0, 360), 2, random (30, 150))
 		TNT1 AAA 0 A_CustomMissile ("RevenantPiece", 5, 0, random (0, 360), 2, random (30, 150))
@@ -1265,7 +1254,7 @@ ACTOR DyingRevenant
 		Stop
 
 	XDeath:
-	Death.Minigun: Death.Cut: Death.Saw: Death.Shotgun: Death.SSG: Death.Blast:
+	Death.Minigun: Death.Cut: Death.Saw: Death.Shotgun: Death.SSG: death.explosive:
   	    TNT1 A 0 A_NoBlocking
 		TNT1 AAAA 0 A_CustomMissile ("RevenantBones", 5, 0, random (0, 360), 2, random (30, 150))
 		TNT1 AAA 0 A_CustomMissile ("RevenantPiece", 5, 0, random (0, 360), 2, random (30, 150))

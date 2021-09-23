@@ -577,6 +577,7 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 		Goto Death
 
 	Death.ExplosiveImpact:
+	Death.Explosive:
 	Death.Landmine:
 	Death.LandMine2:
 	TNT1 A 0
@@ -786,7 +787,6 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 		 TNT1 A 0 A_CustomMissile ("ExtremePunchedChaingunguy", 8, 0, random (175, 185), 2, random (10, 20))
 		 Stop
 
-	Death.Blast:
 	Death.SSG:
 	Death.Railgun:
 	    MPSD A 1 A_Pain
@@ -966,7 +966,7 @@ States{Spawn:
 	TNT1 A 0 A_SpawnItem("DeadChaingunguy1")
 	Stop
 	XDeath:
-	Death.Explosives:
+	Death.Explosive:
 	Death.ExplosiveImpact:
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("ChainXDeath")
@@ -1020,7 +1020,7 @@ States{Spawn:
 		BR95 B 100
         Loop
 	XDeath:
-	Death.Explosives:
+	death.explosive:
 	Death.ExplosiveImpact:
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("ChainXDeath")

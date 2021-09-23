@@ -52,7 +52,7 @@ Actor MonsterTracer: Tracer//Pistol
 	speed 50
 	FastSpeed 80
 	damage (random(12,12))
-	Decal "BulletDecalNew1"
+	Decal "Bulletchip"
 	DamageType MonsterBullet
 	States
 	{
@@ -77,7 +77,7 @@ Actor ShotgunguyTracer: Tracer//Shotgun
 	+MISSILE
 	+THRUGHOST
 	damage (random(8,8))
-	Decal "BulletDecalNew1"
+	Decal "Bulletchip"
 	DamageType MonsterShotgunBullet
 }
 
@@ -95,7 +95,7 @@ Actor MonsterMinigunTracer: MonsterTracer//Minigun
 	damage (random(10,10))
 	seesound "DSMINIGUN"
 	damagetype MonsterMinigun
-	Decal "BulletDecalNew1"
+	Decal "Bulletchip"
 }
 
 Actor MeatShieldTracer: Tracer
@@ -106,7 +106,7 @@ Actor MeatShieldTracer: Tracer
 speed 200
 Species "Marines"
 damage (random(14,14))
-Decal "BulletDecalNew1"
+Decal "Bulletchip"
 DamageType FriendBullet
 States
 {
@@ -431,7 +431,7 @@ radius 2
 height 2
 speed 50
 renderstyle ADD
-Decal "BulletDecalNew1"
+Decal "Bulletchip"
 alpha 0.9
 scale .3
 states
@@ -484,7 +484,7 @@ Stop
 Actor Penetrator: MarineTracer
 {
 damage (random(8,10))
-//Decal "BulletDecalNew1"
+//Decal "Bulletchip"
 Decal "none"
 DamageType FriendBullet
 -SKYEXPLODE
@@ -518,7 +518,7 @@ Stop
 Actor RocketPenetrator: MarineTracer
 {
 damage (random(2,4))
-Decal "BulletDecalNew1"
+Decal "Bulletchip"
 DamageType FriendBullet
 -SKYEXPLODE
 +RIPPER
@@ -553,7 +553,7 @@ Stop
 Actor MonsterPenetrator: MarineTracer
 {
 damage (random(2,3))
-Decal "BulletDecalNew1"
+Decal "Bulletchip"
 DamageType MonsterBullet
 -SKYEXPLODE
 States

@@ -125,7 +125,7 @@ ACTOR HitPuff Replaces BulletPuff
 	-EXPLODEONWATER
 	Gravity 0.01
 	DamageType Bullet
-	Decal "BulletDecalNew1"
+	Decal "BulletChip"
   states
   {
   Spawn:
@@ -146,6 +146,7 @@ ACTOR HitPuffTracer : HitPuff
 actor shotpuff : HitPuff
 {
 DamageType SSG
+Decal "None"
 }
 
 actor revopuff : HitPuff
@@ -776,7 +777,7 @@ DamageType Minigun
 Actor ATBulletPuff: HitPuff
 {
 Scale 0.4
-DamageType Blast
+DamageType Explosive
 States
 {
  Spawn:

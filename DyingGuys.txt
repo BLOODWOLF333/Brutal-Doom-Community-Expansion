@@ -1039,7 +1039,7 @@ ACTOR DyingSergeant
 
     Xdeath:
     Death.SuperPunch:
-	Death.Blast:
+	Death.Explosive:
 	Death.SSG:
 	Death.Shotgun:
 		TNT1 A 0 A_StopSound(4)
@@ -1114,7 +1114,7 @@ ACTOR DeadShotgunguyNoHeadContinue: DyingSergeant
 
     Xdeath:
     Death.SuperPunch:
-	Death.Blast:
+	Death.Explosive:
 	Death.SSG:
 	Death.Cut:
 	Death.Shotgun:
@@ -1356,7 +1356,7 @@ ACTOR DyingSergeantLegBlewedOff: DyingSergeantNoLeg
 
 		Xdeath:
 		Death.SuperPunch:
-		Death.Blast:
+		Death.Explosive:
 		Death.SSG:
 		TNT1 A 0 A_StopSound(4)
 		TNT1 AAAA 0 A_CustomMissile ("XDeath1", 32, 0, random (170, 190), 2, random (0, 40))
@@ -1784,7 +1784,7 @@ ACTOR DyingZombiemanNoArm: DyingSergeant
 
 		Xdeath:
 		Death.SuperPunch:
-		Death.Blast:
+		Death.Explosive:
 		Death.SSG:
 		Death.Shotgun:
 		TNT1 A 0 A_StopSound(4)
@@ -2654,7 +2654,7 @@ ACTOR DyingImp
         Stop
 
 	Death.Shotgun:
-	Death.Blast:
+	Death.Explosive:
 	Death.Railgun:
 	    TNT1 A 0 A_XScream
 		TNT1 AAA 0 A_CustomMissile ("Guts", 32, 0, random (150, 210), 2, random (0, 40))
@@ -2707,7 +2707,7 @@ Damagefactor "Head", 0.0
 
 	Death.SSG:
 	Death.Shotgun:
-	Death.Blast:
+	Death.Explosive:
 	Death.Railgun:
         //TNT1 A 0 A_CustomMissile ("MeatDeath", 0, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 14, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
@@ -2880,7 +2880,7 @@ ACTOR DyingImpNoHeadNoArmContinue: DyingImp
 		Death.cut:
 		Death.SSG:
 		Death.Shotgun:
-		Death.Blast:
+		Death.Explosive:
 		Death.Railgun:
 		Death.Minigun:
 		Death:
@@ -3248,7 +3248,7 @@ ACTOR DyingImpNoArm
 		Stop
 
        XDeath:
-	   Death.Explosives:
+	   death.Explosive:
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_FaceTarget
@@ -3262,7 +3262,7 @@ ACTOR DyingImpNoArm
 
 	Death.SSG:
 	Death.Shotgun:
-	Death.Blast:
+	Death.Explosive:
 	Death.Railgun:
 	    TNT1 A 0 A_XScream
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 16, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
