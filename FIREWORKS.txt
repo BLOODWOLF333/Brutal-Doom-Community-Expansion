@@ -116,7 +116,7 @@ ACTOR ExplosiveBarrel1 Replaces ExplosiveBarrel
         Goto Stay
 
 	Death:
-        BEXP A 4 BRIGHT //A_CheckSight("Death.OutofFOV")
+        BEXP A 4 BRIGHT A_CheckSight("Death.OutofFOV")
 		BEXP B 4 BRIGHT A_Scream
 		BEXP C 4 BRIGHT
 		BEXP D 1 BRIGHT A_Explode(200,200)
