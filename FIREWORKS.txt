@@ -116,60 +116,38 @@ ACTOR ExplosiveBarrel1 Replaces ExplosiveBarrel
         Goto Stay
 
 	Death:
-        BEXP A 4 BRIGHT
-		BEXP C 4 BRIGHT A_Scream
-		BEXP D 4 BRIGHT
-		BEXP E 4 BRIGHT A_Explode(200,200)
-		TNT1 A 1 A_CheckRange(1024,"Death.Far")
+        BEXP A 4 BRIGHT //A_CheckSight("Death.OutofFOV")
+		BEXP B 4 BRIGHT A_Scream
+		BEXP C 4 BRIGHT
+		BEXP D 1 BRIGHT A_Explode(200,200)
 		TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)//floor decal
 	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)//ceil decal
 		TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)//lense flares
         TNT1 A 0 A_SpawnItem("WhiteShockwaveBig")//white ring effect
 		TNT1 A 0 A_SpawnItemEx ("BarrelKaboom",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 1 Radius_Quake (2, 24, 0, 15, 0)
+		BEXP D 1 BRIGHT Radius_Quake (2, 24, 0, 15, 0)
 		TNT1 A 0 A_CustomMissile ("HighExplosiveFlames", random (10, 20), 0, random (0, 360), 2, random (10, 90))
 		TNT1 A 0 A_CustomMissile ("BDExplosionparticles3", 64, 0, random (0, 360), 2, random (40, 90))
 		TNT1 A 0 A_CustomMissile ("BDExplosionparticles4", 64, 0, random (0, 360), 2, random (40, 90))
-		TNT1 A 1 A_PlaySound("FAREXPL", 3)
+		BEXP D 1 BRIGHT A_PlaySound("FAREXPL", 3)
 		TNT1 A 0 A_CustomMissile ("BarrelShrapnel1", 20, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("BarrelShrapnel2", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("BarrelShrapnel3", 10, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("BarrelShrapnel4", 5, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 1 A_SpawnItemEx ("ExplosionSplashSpawner", 0, 0, 0)
+		BEXP D 1 BRIGHT A_SpawnItemEx ("ExplosionSplashSpawner", 0, 0, 0)
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece", 0,0,5,random (-15, 15), random (-15, 15), random (-15, 15))
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece2", 0,0,10,random (-15, 15), random (-15, 15), random (-15, 15))
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", 0,0,15,random (-15, 15), random (-15, 15), random (-15, 15))
-		TNT1 A 840 BRIGHT A_BarrelDestroy
-		TNT1 A 4 A_Respawn
-		Stop
-
-	Death.Far:
-		TNT1 A 0
-		TNT1 A 1 A_CheckSight("Death.OutofFOV")
-		TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)//floor decal
-	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)//ceil decal
-		TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)//lense flares
-        TNT1 A 0 A_SpawnItem("WhiteShockwaveBig")//white ring effect
-		TNT1 A 0 A_SpawnItemEx ("BarrelKaboom",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 1 Radius_Quake (2, 24, 0, 15, 0)
-		TNT1 A 0 A_CustomMissile ("HighExplosiveFlames", random (10, 20), 0, random (0, 360), 2, random (10, 90))
-		TNT1 A 0 A_CustomMissile ("BDExplosionparticles3", 64, 0, random (0, 360), 2, random (40, 90))
-		TNT1 A 0 A_CustomMissile ("BDExplosionparticles4", 64, 0, random (0, 360), 2, random (40, 90))
-		TNT1 A 1 A_PlaySound("FAREXPL", 3)
-		TNT1 A 0 A_CustomMissile ("BarrelShrapnel1", 20, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("BarrelShrapnel2", 15, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("BarrelShrapnel3", 10, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("BarrelShrapnel4", 5, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 1 A_SpawnItemEx ("ExplosionSplashSpawner", 0, 0, 0)
-		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece", 0,0,5,random (-15, 15), random (-15, 15), random (-15, 15))
-		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece2", 0,0,10,random (-15, 15), random (-15, 15), random (-15, 15))
-		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", 0,0,15,random (-15, 15), random (-15, 15), random (-15, 15))
+		BEXP E 4 BRIGHT
 		TNT1 A 840 BRIGHT A_BarrelDestroy
 		TNT1 A 4 A_Respawn
 		Stop
 
 	Death.OutofFOV:
-		TNT1 A 0
+		BEXP B 4 BRIGHT A_Scream
+		BEXP C 4 BRIGHT
+		BEXP D 4 BRIGHT A_Explode(200,200)
+		BEXP E 4 BRIGHT
 		TNT1 A 840 BRIGHT A_BarrelDestroy
 		TNT1 A 4 A_Respawn
 		Stop
