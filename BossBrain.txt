@@ -7,7 +7,6 @@ ACTOR BossBrainReplacer Replaces BossBrain
   +SHOOTABLE
   +NOICEDEATH
   +OLDRADIUSDMG
-  MONSTER
   PainSound "brain/pain"
   DeathSound "brain/death"
   damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0    damagefactor "Avoid", 0.0
@@ -17,10 +16,8 @@ ACTOR BossBrainReplacer Replaces BossBrain
   States
   {
 
-
   Spawn:
 	TNT1 A 0
-
 	TNT1 A 0 A_JumpIf(x == 2880, "ReplaceDoom2Check")
 	TNT1 A 0 A_JumpIf(x == -64, "ReplaceDoom2Reloaded")//D2Reloaded
 	TNT1 A 0 A_JumpIf(x == 3072, "EvidenceTNTMap30")
@@ -32,13 +29,45 @@ ACTOR BossBrainReplacer Replaces BossBrain
 	TNT1 A 0 A_JumpIf(x == 4608, "EvidencePLCRMap30")
 	MARN A 0 ACS_NamedExecuteAlways("MapEnhancementNaziVerification", 0, 0, 0, 0)//Check if you are playing on an Wolfenstein level
 	TNT1 A 0 Thing_ChangeTID(0,748)
-	BBRN A 1
+	BBRN A 3
+	TNT1 A 0 A_JumpIfInventory("AltEasyMarineVerification", 1, "IsPlayingAlt")
 
   Spawn2:
-    BBRN A 3
-	TNT1 A 0 A_JumpIfInventory("AltEasyMarineVerification", 1, "IsPlayingAlt")
-	BBRN A 100
-    Loop
+	BBRN A -1
+    Stop
+
+	BrainExplode:
+    MISL BC 10 Bright
+    MISL D 10 A_BrainExplode
+    Stop
+
+  Pain:
+    BBRN B 36 A_BrainPain
+    Goto Spawn2
+
+  Death:
+	TNT1 AAAAAAAAAAAAAA 0 A_CustomMissile ("BloodMistExtraBig", 50, 0, random (0, 360), 2, random (20, 90))
+	TNT1 AAAAAAAAAAAA 0 A_CustomMissile ("SuperGoreMist", 54, 0, random (0, 360), 2, random (30, 90))
+	TNT1 AAAAAAAA 0 A_CustomMissile ("SuperGoreSpawner2", 64, 0, random (0, 360), 2, random (20, 40))
+	TNT1 AA 0 A_CustomMissile ("XDeath1", 52, 0, random (0, 360), 2, random (10, 90))
+	TNT1 A 0 A_CustomMissile ("XDeath2", 52, 0, random (0, 360), 2, random (10, 90))
+	TNT1 A 0 A_CustomMissile ("XDeath3", 52, 0, random (0, 360), 2, random (10, 90))
+	TNT1 A 0 A_CustomMissile ("XDeath4", 52, 0, random (0, 360), 2, random (10, 90))
+	TNT1 AA 0 A_CustomMissile ("XDeathSkinPiece2", 65, 0, random (0, 360), 2, random (10, 90))
+	TNT1 AA 0 A_CustomMissile ("XDeathSkinPiece1", 65, 0, random (0, 360), 2, random (10, 90))
+	TNT1 A 0 A_CustomMissile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (10, 90))
+	TNT1 A 0 A_CustomMissile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (10, 90))
+	TNT1 A 0 A_SpawnItem ("BigBloodSpot")
+	TNT1 A 100 A_BrainScream
+	TNT1 AA 10
+	TNT1 A -1 A_BrainDie
+    Stop
+
+	Death.Crush:
+    BBRN A 100 A_BrainScream
+    BBRN AA 10
+    BBRN A -1 A_BrainDie
+    Stop
 
 	EvidenceTNTMap30:
 			TNT1 A 1
@@ -50,7 +79,6 @@ ACTOR BossBrainReplacer Replaces BossBrain
 			TNT1 A 0 A_JumpIf(z == 224, "IsTNTMap30")
 			Stop
 
-
 		IsTNTMAP30:
 			TNT1 A 0
 			TNT1 A 0 A_SetAngle(90)
@@ -59,7 +87,6 @@ ACTOR BossBrainReplacer Replaces BossBrain
 			TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
 			TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
 			GOTO sPAWN2
-
 
 		EvidencePlutoniaMap30:
 			TNT1 A 1
@@ -71,14 +98,12 @@ ACTOR BossBrainReplacer Replaces BossBrain
 			TNT1 A 0 A_JumpIf(z == 14, "IsPlutoniaMap30")
 			Stop
 
-
 		IsPlutoniaMap30:
 			TNT1 A 0
 			TNT1 A 0 A_SpawnItemEx ("GateKeeper",320,0,-9999,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
 			TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
 			TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
 			GOTO sPAWN2
-
 
 		EvidenceAVMap30:
 			TNT1 A 1
@@ -91,13 +116,10 @@ ACTOR BossBrainReplacer Replaces BossBrain
 			TNT1 A 0 A_JumpIf(z == 14, "IsAVMap30")
 			Stop
 
-
 		IsAVMap30:
 			TNT1 A 0
 			TNT1 A 0 A_SetANgle(0)
 			Goto ReplaceDoom2
-
-
 
 		EvidenceEPICMap30:
 			TNT1 A 1
@@ -109,7 +131,6 @@ ACTOR BossBrainReplacer Replaces BossBrain
 			TNT1 A 0 A_JumpIf(z == 208, "IsEPICMap30")
 			Stop
 
-
 		IsEPICMap30:
 			TNT1 A 0
 			TNT1 A 0 A_SpawnItemEx ("GateKeeper",224,64,-9999,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
@@ -117,9 +138,7 @@ ACTOR BossBrainReplacer Replaces BossBrain
 			TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
 			GOTO sPAWN2
 
-
 		//////////////
-
 
 		EvidencePL2Map30:
 			TNT1 A 1
@@ -131,14 +150,12 @@ ACTOR BossBrainReplacer Replaces BossBrain
 			TNT1 A 0 A_JumpIf(z == 128, "IsPL2Map30")
 			Stop
 
-
 		IsPL2Map30:
 			TNT1 A 0
 			TNT1 A 0 A_SpawnItemEx ("GateKeeper",328,0,-9999,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
 			TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
 			TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
 			GOTO sPAWN2
-
 
 		EvidencePLCRMap30:
 			TNT1 A 1
@@ -149,7 +166,6 @@ ACTOR BossBrainReplacer Replaces BossBrain
 			TNT1 A 1
 			TNT1 A 0 A_JumpIf(z == 64, "IsPLCRMap30")
 			Stop
-
 
 		IsPLCRMap30:
 			TNT1 A 0
@@ -179,13 +195,10 @@ ACTOR BossBrainReplacer Replaces BossBrain
 		BBRN A -1
 		Loop
 
-
-
   ReplaceDoom2Reloaded:
 		TNT1 A 0
 		TNT1 A 0 A_SetAngle(0)
 		Goto ReplaceDoom2
-
 
   ReplaceDoom2Check:
 		TNT1 A 0
@@ -193,7 +206,6 @@ ACTOR BossBrainReplacer Replaces BossBrain
 		BBRN A 1
 		BBRN A -1
 		Loop
-
 
 	EvidenceWOSMap30:
 			TNT1 A 1
@@ -205,45 +217,12 @@ ACTOR BossBrainReplacer Replaces BossBrain
 			TNT1 A 0 A_JumpIf(z == -128, "IsWOSMap30")
 			Stop
 
-
 		IsWOSMap30:
 			TNT1 A 0
 			TNT1 A 0 ThrustThingZ(0, 99999, 0, 1)
 			TNT1 A 5
 			TNT1 A 0 A_SetANgle(0)
 			Goto ReplaceDoom2
-
-  BrainExplode:
-    MISL BBBBBBBC 1 Bright
-    MISL D 1 A_BrainExplode
-    Stop
-
-  Pain:
-    BBRN B 36 A_BrainPain
-    Goto Spawn2
-  Death:
-	TNT1 AAAAAAAAAAAAAA 0 A_CustomMissile ("BloodMistExtraBig", 50, 0, random (0, 360), 2, random (20, 90))
-	TNT1 AAAAAAAAAAAA 0 A_CustomMissile ("SuperGoreMist", 54, 0, random (0, 360), 2, random (30, 90))
-	TNT1 AAAAAAAA 0 A_CustomMissile ("SuperGoreSpawner2", 64, 0, random (0, 360), 2, random (20, 40))
-	TNT1 AA 0 A_CustomMissile ("XDeath1", 52, 0, random (0, 360), 2, random (10, 90))
-	TNT1 A 0 A_CustomMissile ("XDeath2", 52, 0, random (0, 360), 2, random (10, 90))
-	TNT1 A 0 A_CustomMissile ("XDeath3", 52, 0, random (0, 360), 2, random (10, 90))
-	TNT1 A 0 A_CustomMissile ("XDeath4", 52, 0, random (0, 360), 2, random (10, 90))
-	TNT1 AA 0 A_CustomMissile ("XDeathSkinPiece2", 65, 0, random (0, 360), 2, random (10, 90))
-	TNT1 AA 0 A_CustomMissile ("XDeathSkinPiece1", 65, 0, random (0, 360), 2, random (10, 90))
-	TNT1 A 0 A_CustomMissile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (10, 90))
-	TNT1 A 0 A_CustomMissile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (10, 90))
-	TNT1 A 0 A_SpawnItem ("BigBloodSpot")
-	TNT1 A 175 A_BrainScream
-	TNT1 A -1 A_BrainDie
-    Stop
-
-	Death.Crush:
-    BBRN A 1 A_BrainScream
-    BBRN AA 1
-    BBRN A -1 A_BrainDie
-    Stop
-
 
 	IsPlayingAlt:
 		TNT1 A 0
@@ -255,10 +234,6 @@ ACTOR BossBrainReplacer Replaces BossBrain
 		Stop
   }
 }
-
-
-
-
 
 ACTOR AltMap01Airplane
 {
