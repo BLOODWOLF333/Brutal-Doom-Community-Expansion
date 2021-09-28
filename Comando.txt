@@ -65,7 +65,7 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 	Idle:
 	SearchForPlayer:
 		TNT1 A 0 A_ClearTarget
-	    TNT1 A 0 A_TakeInventory("EnemyMemory", 30)
+	    TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
 		TNT1 A 0 A_GiveInventory("SKChaingunguy", 1)
 
 		MPOS A 0 A_SpawnItem("HeadshotTarget10", 0, 41,0)
@@ -122,19 +122,13 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 	See:
 	TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 	TNT1 A 0 A_TakeInventory("SKChaingunGuy", 1)
-	TNT1 A 0 A_TakeInventory("EnemyMemory", 15)
+	TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
 	TNT1 A 0 A_CheckSight("SeeNeverSeen")
 	Goto SeeContinue
 
 	SeeContinue:
-	    TNT1 A 0 A_CheckSight("SeeNeverSeen")
-
-	SeeContinuePart2:
-		TNT1 A 0 A_GiveInventory("EverSeenTheplayer", 1)
-        //TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 30, 0, 0)
-		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 12, "SearchForPlayer")
-
-	SeeContinuePart36:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 25, "SearchForPlayer")
 		TNT1 A 0 A_GiveInventory("EnemyMemory", 1)
 		TNT1 A 0 A_TakeInventory("IsFiring", 1)
 
@@ -151,11 +145,7 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 		Loop
 
 	SeeNeverSeen:
-
 		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("EverSeenThePlayer", 1, "SeeContinuePart2")
-        //TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 30, 0, 0)
-
 		MPOS A 0 A_SpawnItem("HeadshotTarget6", 0, 41,0)
 		MPOS AAA 2 A_Chase
 		MPOS A 0 A_SpawnItem("HeadshotTarget6", 0, 41,0)
@@ -169,7 +159,7 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 		Goto SeeContinue
 
 	Missile:
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 15)
+		TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
 		TNT1 A 0 A_TakeInventory("SKChaingunGuy", 1)
 		TNT1 A 0 A_PlaySound("CHAINSTA",5)
 		TNT1 A 0 A_GiveInventory("IsFiring", 1)

@@ -44,7 +44,7 @@ ACTOR Labguy: RifleZombie
 		SearchForPlayer:
 		Idle:
 		TNT1 A 0 A_ClearTarget
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 30)
+		TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
 		TNT1 A 0 A_GiveInventory("SKLabGuy", 1)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
 		TNT1 A 0 A_SpawnItem ("LegTargetBase")
@@ -102,13 +102,13 @@ ACTOR Labguy: RifleZombie
 
 		See:
 		TNT1 A 0 A_TakeInventory("SKLabGuy", 1)
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 15)
+		TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
 		TNT1 A 0 A_CheckSight("SeeNeverSeen")
 		Goto SeeContinue
 
 		SeeContinue:
 		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 15, "SearchForPlayer")
+		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 25, "SearchForPlayer")
 		TNT1 A 0 A_GiveInventory("EnemyMemory", 1)
 
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)

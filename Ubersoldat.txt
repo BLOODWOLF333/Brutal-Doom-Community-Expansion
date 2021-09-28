@@ -60,7 +60,7 @@ ACTOR Ubersoldat
 	Idle:
 	SearchForPlayer:
 		TNT1 A 0 A_ClearTarget
-	    TNT1 A 0 A_TakeInventory("EnemyMemory", 30)
+	    TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
 		TNT1 A 0 A_GiveInventory("SKUbersoldat", 1)
 
 		CPOS A 0 A_SpawnItem("HeadshotTarget10", 0, 47)
@@ -118,7 +118,7 @@ ACTOR Ubersoldat
 	See:
 	TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 	TNT1 A 0 A_TakeInventory("SKUbersoldat", 1)
-	TNT1 A 0 A_TakeInventory("EnemyMemory", 15)
+	TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
 	TNT1 A 0 A_CheckSight("SeeNeverSeen")
 	Goto SeeContinue
 
@@ -128,7 +128,7 @@ ACTOR Ubersoldat
 	SeeContinuePart2:
 		TNT1 A 0 A_GiveInventory("EverSeenTheplayer", 1)
         //TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 30, 0, 0)
-		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 12, "SearchForPlayer")
+		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 25, "SearchForPlayer")
 
 	SeeContinuePart36:
 		TNT1 A 0 A_GiveInventory("EnemyMemory", 1)
@@ -166,7 +166,7 @@ ACTOR Ubersoldat
 
 	Missile:
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 47)
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 15)
+		TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
 
 		//TNT1 A 0 A_TakeInventory("CantFire", 1)
 		//TNT1 A 0 A_CustomMissile("MonsterTargetCheck", 34, 0, 0, 0)

@@ -139,12 +139,11 @@ ACTOR Imp Replaces DoomImp
 	ForgetTarget:
 	TNT1 A 0 A_ClearTarget
 	TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
-	TNT1 A 0 A_GiveInventory("LookingForPlayer", 1)
 	Goto LookingForPlayer
 
 	See:
 	TROS A 1
-	TNT1 A 0 A_TakeInventory("EnemyMemory", 15)
+	TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
 	TNT1 A 0 A_Jump(128, "SeeContinue")
 	TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 35)
 	TROT A 2 A_faceTarget
@@ -155,15 +154,12 @@ ACTOR Imp Replaces DoomImp
 	SeeContinue:
 		TNT1 A 0
         TNT1 A 0 A_JumpIfInventory("Fatality_Marine", 1, "FatalityMarine")
-		//TNT1 A 0 A_JumpIf(MomZ < 0, "FallingAfterImpact")// funny thing I tried, better not implement
 		TNT1 A 0 A_JumpIf(waterlevel == 2, "Swim")
 		TNT1 A 0 A_JumpIf(waterlevel == 3, "Swim")
 
 	Advancing:
-		TNT1 A 0 A_TAkeInventory("CantFire", 1)
-        //TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 10, 0, 0)
-
-		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 20, "ForgetTarget")
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 25, "ForgetTarget")
 		TNT1 A 0 A_GiveInventory("EnemyMemory", 1)
 
 		TNT1 A 0 A_TakeInventory("SKImp", 1)
@@ -188,9 +184,8 @@ ACTOR Imp Replaces DoomImp
 	LeapAttack:
 		TROO E 1 A_FaceTarget
 		TNT1 A 0 A_SpawnItem ("LegTarget12")
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 100)
+		TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
         TNT1 A 0 A_JumpIfInTargetInventory("IsInATank", 1, "LeapBack")
-		TNT1 A 0 A_JumpIfCloser(80, "Melee")
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 35)
 		TROT CD 3
 		TNT1 A 0 A_TakeInventory("SKImp", 1)
@@ -232,7 +227,7 @@ ACTOR Imp Replaces DoomImp
 		TNT1 A 0 A_JumpIfHealthLower(1, "Death")
 		TNT1 A 0 A_JumpIfInTargetInventory("IsInATank", 1, "LeapBack")
         TNT1 A 0 A_JumpIfCloser(150, "LeapAttack")
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 100)
+		TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
 		TNT1 A 0 A_TakeInventory("SKImp", 1)
 
 		//TNT1 A 0 A_CustomMissile("MonsterTargetCheck", 34, 0, 0, 0)

@@ -63,7 +63,7 @@ ACTOR Mancubus : Fatso Replaces Fatso
 
 	LookingForPlayer:
 		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 10, "ForgetTarget")
+		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 25, "ForgetTarget")
 		TNT1 A 0 A_GiveInventory("EnemyMemory", 1)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 54)
 		FATT AA 4 A_Wander

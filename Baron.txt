@@ -135,7 +135,7 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 	See4:
 		TNT1 A 0
 		TNT1 A 0 A_GiveInventory("EnemyMemory", 1)
-		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 20, "ForgetTarget")
+		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 25, "ForgetTarget")
 		BARO A 0 A_CheckSight("SEE3")
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
 		BARO AAA 2 A_Chase
@@ -293,7 +293,6 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 	ForgetTarget:
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
-		TNT1 A 0 A_GiveInventory("LookingForPlayer", 1)
 		Goto LookingForPlayer
 
 	RAGE:
@@ -1418,7 +1417,7 @@ Spawn:
 	See4:
 		TNT1 A 0
 		TNT1 A 0 A_GiveInventory("EnemyMemory", 1)
-		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 20, "ForgetTarget")
+		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 25, "ForgetTarget")
 		BARO A 0 A_CheckSight("SEE3")
 
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
@@ -1577,7 +1576,6 @@ Spawn:
 	ForgetTarget:
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
-		TNT1 A 0 A_GiveInventory("LookingForPlayer", 1)
 		Goto LookingForPlayer
 
 	RAGE:
