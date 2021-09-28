@@ -83,8 +83,28 @@ ACTOR Mancubus : Fatso Replaces Fatso
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 54)
         FATT FF 4 A_Wander
 		FATT F 4 A_Look
-		TNT1 A 0 A_CheckSight("LookingForPlayer")
-		Goto See
+
+		TNT1 A 0 A_Jump(128,"LookingForPlayer")
+
+		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 54)
+		FATT AA 4 A_Wander
+		FATT A 4 A_Look
+		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 54)
+        FATT BB 4 A_Wander
+		FATT B 4 A_Look
+		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 54)
+        FATT CC 4 A_Wander
+		FATT C 4 A_Look
+		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 54)
+        FATT DD 4 A_Wander
+		FATT D 4 A_Look
+		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 54)
+        FATT EE 4 A_Wander
+		FATT E 4 A_Look
+		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 54)
+        FATT FF 4 A_Wander
+		FATT F 4 A_Look
+		Goto Stand
 
 	ForgetTarget:
 		TNT1 A 0

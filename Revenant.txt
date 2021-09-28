@@ -73,38 +73,54 @@ ACTOR Revenant1: Revenant Replaces Revenant
         TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 58)
 		SKEL B 10 A_Look
 
-		SKEL AAA 2 A_Wander
+		SKEL AA 2 A_Wander
 		SKEL A 4 A_Look
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 58)
 
-		SKEL BBB 2 A_Wander
+		SKEL BB 2 A_Wander
 		SKEL B 4 A_Look
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 58)
 
-		SKEL CCC 2 A_Wander
+		SKEL CC 2 A_Wander
 		SKEL C 4 A_Look
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 58)
 
-		SKEL DDD 2 A_Wander
+		SKEL DD 2 A_Wander
 		SKEL D 4 A_Look
+		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 58)
+
+		SKEL EE 2 A_Wander
+		SKEL E 4 A_Look
+		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 58)
+
+		SKEL FF 2 A_Wander
+		SKEL F 4 A_Look
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 58)
 
 		TNT1 A 0 A_jump(128, "Idle")
 
-		SKEL AAA 2 A_Wander
+		SKEL AA 2 A_Wander
 		SKEL A 4 A_Look
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 58)
 
-		SKEL BBB 2 A_Wander
+		SKEL BB 2 A_Wander
 		SKEL B 4 A_Look
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 58)
 
-		SKEL CCC 2 A_Wander
+		SKEL CC 2 A_Wander
 		SKEL C 4 A_Look
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 58)
 
-		SKEL DDD 2 A_Wander
+		SKEL DD 2 A_Wander
 		SKEL D 4 A_Look
+		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 58)
+
+		SKEL EE 2 A_Wander
+		SKEL E 4 A_Look
+		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 58)
+
+		SKEL FF 2 A_Wander
+		SKEL F 4 A_Look
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 58)
 		Goto Spawn2
 
@@ -132,14 +148,13 @@ ACTOR Revenant1: Revenant Replaces Revenant
 	    TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "FatalityMarine")
 		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 25, "ForgetTarget")
 		TNT1 A 0 A_GiveInventory("EnemyMemory", 1)
-        //TNT1 A 0 A_SpawnItemEx("FootSep", 0, 0, 20, 0, 0)
+
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 58)
 		SKEL AA 2 A_Chase
 
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 58)
 		SKEL BB 2 A_Chase
 
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 58)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 58)
 		SKEL CC 2 A_Chase
 
@@ -150,12 +165,11 @@ ACTOR Revenant1: Revenant Replaces Revenant
 		SKEL EE 2 A_Chase
 
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 58)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 58)
 		SKEL FF 2 A_Chase
 
 		TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "ForgetTarget")
 
-		TNT1 A 0 A_CheckSight("LookingForPlayer")
+		TNT1 A 0 A_CheckSight("Idle")
 		Goto See
 
 	Melee:

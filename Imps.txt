@@ -107,32 +107,33 @@ ACTOR Imp Replaces DoomImp
 		TROS B 10 A_Look
 
 	LookingForPlayer2:
-		TROO DD 0 A_Wander
-		TROO A 3 A_Look
-		TROO DD 0 A_Wander
+		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 35)
+		TROO AAA 2 A_Wander
 		TROO A 3 A_Look
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 35)
-
-		TROO DD 0 A_Wander
-		TROO B 3 A_Look
-		TROO DD 0 A_Wander
+		TROO BBB 2 A_Wander
 		TROO B 3 A_Look
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 35)
-
-		TROO CC 0 A_Wander
-		TROO C 3 A_Look
-		TROO CC 0 A_Wander
+		TROO CCC 2 A_Wander
 		TROO C 3 A_Look
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 35)
+		TROO DDD 2 A_Wander
+		TROO D 3 A_Look
 
-		TROO DD 0 A_Wander
-		TROO D 3 A_Look
-		TROO DD 0 A_Wander
-		TROO D 3 A_Look
+		TNT1 A 0 A_jump(128, "LookingForPlayer2")
+
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 35)
-
-		TNT1 A 0 A_jump(196, "LookingForPlayer2")
-
+		TROO AAA 2 A_Wander
+		TROO A 3 A_Look
+		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 35)
+		TROO BBB 2 A_Wander
+		TROO B 3 A_Look
+		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 35)
+		TROO CCC 2 A_Wander
+		TROO C 3 A_Look
+		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 35)
+		TROO DDD 2 A_Wander
+		TROO D 3 A_Look
 		Goto LookingForPlayer
 
 	ForgetTarget:
