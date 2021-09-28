@@ -163,7 +163,7 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 31)
 		SPOS DDD 2 A_Wander
 		SPOS D 4 A_Look
-		Loop
+		Goto Stand
 
 	See:
 	TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
@@ -1848,8 +1848,7 @@ Obituary "%o got punctured by a SMG Zombie."
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 31)
 		PSS3 DDD 2 A_Wander
 		PSS3 D 4 A_Look
-
-		Loop
+		Goto Stand
 
 	See:
 	TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
