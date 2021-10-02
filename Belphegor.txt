@@ -10,6 +10,10 @@ ACTOR Belphegor2 : BaronofHell 2544
 	+NOICEDEATH
     Health 2500
 	Mass 2000
+	SeeSound "belphegor/sight"
+	PainSound "PSXDP2"
+	ActiveSound "belphegor/active"
+	DeathSound "belphegor/death"
 	Obituary "%o was no match for the Belphegor."
 	BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
 	BloodColor "DarkGreen"
@@ -64,7 +68,7 @@ ACTOR Belphegor2 : BaronofHell 2544
 		TNT1 A 0 A_CHangeFlag("NOPAIN", 1)
 		TNT1 A 0 A_GiveInventory("Token1", 1)
 		B0S3 IJKL 3
-		TNT1 A 0 A_PlaySound("baron/see")
+		TNT1 A 0 A_PlaySound("belphegor/sight")
 		B0S3 MNONMNOMN 3
 		B0S3 LKJ 3
 		Goto See2
