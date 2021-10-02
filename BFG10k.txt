@@ -75,7 +75,8 @@ Actor BFG10k : BrutalWeapon
 		TNT1 A 0 A_TakeInventory("Unloading", 1)
 		TNT1 A 0 A_TakeInventory("Reloading", 1)
 		TNT1 A 0 A_TakeInventory("StartDualWield",1)
-		BG2G EEEEEEE 1 BRIGHT A_Lower
+		TNT1 AAAAAAAAAAAA 0 A_Lower
+		BG2G EEEE 1 BRIGHT A_Lower
 		Loop
 
   Select:
@@ -95,12 +96,10 @@ Actor BFG10k : BrutalWeapon
 	TNT1 A 0 A_TakeInventory("FlameCannonSelected", 1)
 	TNT1 A 0 A_TakeInventory("SawSelected", 1)
 	BG2G A 0 A_Takeinventory("HasBarrel",1)
-
- SelectAnimation:
-    BG2G EEEEEE 1 BRIGHT A_Raise
 	BG2G A 0 A_GunFlash
+    BG2G EEEE 1 BRIGHT A_Raise
 	BG2G A 0 A_PlaySound("BFGREADY", 3)
-	BG2G E 1 BRIGHT
+	TNT1 AAAAAAAAAAAA 0 A_Raise
     Goto Ready
 
   Fire:
