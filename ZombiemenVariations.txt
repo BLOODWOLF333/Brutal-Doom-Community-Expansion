@@ -23,7 +23,7 @@ Tag "Pistol Zombie"
 	SearchForPlayer:
 	Idle:
 	    TNT1 A 0 A_ClearTarget
-	    TNT1 A 0 A_TakeInventory("EnemyMemory", 30)
+	    TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
 		TNT1 A 0 A_GiveInventory("SKZombieMan", 1)
         TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 36,0)
 		TNT1 A 0 A_SpawnItem ("LegTargetBase")
@@ -48,34 +48,40 @@ Tag "Pistol Zombie"
 		PSPO A 10 A_Look
 
 	StartSearching:
+		TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 36,0)
+		PSPO AAA 2 A_Wander
 		PSPO A 4 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 36,0)
-		TNT1 A 0 A_Wander
+
+		TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 36,0)
+		PSPO BBB 2 A_Wander
+		PSPO B 4 A_Look
+
+		TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 36,0)
+		PSPO CCC 2 A_Wander
+		PSPO C 4 A_Look
+
+		TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 36,0)
+		PSPO DDD 2 A_Wander
+		PSPO D 4 A_Look
+
+		TNT1 A 0 A_Jump(128, "StartSearching")
+
+		TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 36,0)
+		PSPO AAA 2 A_Wander
 		PSPO A 4 A_Look
-		TNT1 A 0 A_Wander
 
+		TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 36,0)
+		PSPO BBB 2 A_Wander
 		PSPO B 4 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 36,0)
-		TNT1 A 0 A_Wander
-		PSPO B 4 A_Look
-		TNT1 A 0 A_Wander
 
-
+		TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 36,0)
+		PSPO CCC 2 A_Wander
 		PSPO C 4 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 36,0)
-		TNT1 A 0 A_Wander
-		PSPO C 4 A_Look
-		TNT1 A 0 A_Wander
 
+		TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 36,0)
+		PSPO DDD 2 A_Wander
 		PSPO D 4 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 36,0)
-		TNT1 A 0 A_Wander
-		PSPO D 4 A_Look
-		TNT1 A 0 A_Wander
-
-
-		TNT1 A 0 A_Jump(64, "Idle")
-		Goto StartSearching
+		Goto Stand
 
 
 	FallBack:
@@ -104,7 +110,7 @@ Tag "Pistol Zombie"
 	See:
 		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 		TNT1 A 0 A_TakeInventory("SKZombieman", 1)
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 15)
+		TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
 		TNT1 A 0 A_CheckSight("SeeNeverSeen")
 		TNT1 A 0 A_TakeInventory("SKZombieman", 1)
 		Goto SeeContinue
@@ -114,7 +120,7 @@ Tag "Pistol Zombie"
 		Advance:
 		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
         //TNT1 A 0 A_SpawnItemEx("FootSep", 0, 0, 10, 0, 0)
-		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 15, "SearchForPlayer")
+		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 25, "SearchForPlayer")
 		TNT1 A 0 A_GiveInventory("EnemyMemory", 1)
 
 
@@ -191,7 +197,7 @@ Tag "Pistol Zombie"
 		TNT1 A 0 A_ChangeFlag("GHOST", 0)
 		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 		TNT1 A 0 A_TakeInventory("SKZombieman", 1)
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 10)
+		TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
 
         //TNT1 A 0 A_Jump(8, "Grenade")
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget20", 0, 36,0)

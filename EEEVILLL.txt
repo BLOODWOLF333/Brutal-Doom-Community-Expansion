@@ -73,7 +73,7 @@ ACTOR EvilMarineRifle 94
 	Radius 16
 	Height 56
 	Speed 6
-	FastSpeed 12
+	FastSpeed 9
 	MaxTargetRange 4096
 	Monster
 	Damagefactor "Avoid", 1.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
@@ -124,16 +124,16 @@ ACTOR EvilMarineRifle 94
 		PLAY EE 5 A_Look
 
 		PLAY AAA 1 A_Wander
-		TNT1 A 0 A_Look
+		PLAY A 5 A_Look
 
 		PLAY BBB 1 A_Wander
-		TNT1 A 0 A_Look
+		PLAY B 5 A_Look
 
 		PLAY CCC 1 A_Wander
-		TNT1 A 0 A_Look
+		PLAY C 5 A_Look
 
 		PLAY DDD 1 A_Wander
-		TNT1 A 0 A_Look
+		PLAY D 5 A_Look
 		Loop
 
 	Spawn:
@@ -740,16 +740,16 @@ Actor EvilMarinePlasma: EvilMarineRifle 104
 		MAR6 DD 5 A_Look
 
 		MAR6 AAA 1 A_Wander
-		TNT1 A 0 A_Look
+		MAR6 A 5 A_Look
 
 		MAR6 BBB 1 A_Wander
-		TNT1 A 0 A_Look
+		MAR6 B 5 A_Look
 
 		MAR6 CCC 1 A_Wander
-		TNT1 A 0 A_Look
+		MAR6 C 5 A_Look
 
 		MAR6 DDD 1 A_Wander
-		TNT1 A 0 A_Look
+		MAR6 D 5 A_Look
 		Loop
 
 	Spawn:
