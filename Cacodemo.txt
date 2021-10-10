@@ -452,8 +452,8 @@ ACTOR CacodemonBall_ Replaces CacodemonBall
 	SpawnID 126
 	Radius 6
 	Height 6
-	Speed 14
-	FastSpeed 18
+	Speed 20
+	FastSpeed 25
 	Damage (random(30,30))
 	Projectile
 	+RANDOMIZE
@@ -959,7 +959,7 @@ ACTOR CacodemonBite: ImpAttack
 {
     +THRUGHOST
 	DamageType HKFT
-    Damage 5
+    Damage (random(40,40))
 }
 
 ACTOR BrutalizedCacodemon1: DeadCacodemon1
