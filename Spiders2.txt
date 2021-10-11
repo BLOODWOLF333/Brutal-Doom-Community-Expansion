@@ -21,7 +21,6 @@ ACTOR Arachnotron2: Arachnotron1 2542
 	ActiveSound "baby2/active"
 	Obituary "%o was killed by an Ancient Arachnotron."
 	Tag "Ancient Arachnotron"
-	Species "Spider"
 	DropItem "64UnmakerUpgradeSpawner", 4
 	States
 	{
@@ -516,7 +515,10 @@ ACTOR PurplePlasmaBall: FastProjectile
   RenderStyle Add
   SeeSound "PAILGF3"
   DeathSound "PAILGD3"
+  Species "Arachnotron"
   Projectile
+  +MTHRUSPECIES
+  +THRUSPECIES
   states
   {
   Spawn:
