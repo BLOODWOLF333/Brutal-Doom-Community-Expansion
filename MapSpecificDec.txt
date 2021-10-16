@@ -2193,6 +2193,49 @@ states
 	}
 }
 
+Actor BDECUACSHIPDAMAGED: BDdecorationBase2 13846
+{
+Height 0
+Radius 0
+Scale 1.7
+states
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 ACS_NamedExecuteAlways("CheckVoxels")
+		TNT1 A 3
+		GVTO A 1
+		TNT1 A 0 A_SpawnItemEx("BDECLargeFireFocus", 39, 200, 52)
+		TNT1 A 0 A_SpawnItemEx("BDECShipColision1", 0, 0, 28)
+		TNT1 A 0 A_SpawnItemEx("BDECShipColision2", 72, 42, 0)
+		TNT1 A 0 A_SpawnItemEx("BDECShipColision2", 72, -42, 0)
+		TNT1 A 0 A_SpawnItemEx("BDECShipColision2", -28, 42, 0)
+		TNT1 A 0 A_SpawnItemEx("BDECShipColision2", -28, -42, 0)
+		TNT1 A 0 A_SpawnItemEx("BDECShipColision3", -64, 0, 42)
+		TNT1 A 0 A_SpawnItemEx("BDECShipColision4", 146, 0, 48)
+		TNT1 A 0 A_SpawnItemEx("BDECShipColision4", 110, 0, 32)
+		TNT1 A 0 A_SpawnItemEx("BDECShipColision4", -100, 0, 48)
+		TNT1 A 0 A_SpawnItemEx("BDECShipColision5", 64, -42, 96)
+		TNT1 A 0 A_SpawnItemEx("BDECShipColision5", 64, 42, 96)
+		TNT1 A 0 A_SpawnItemEx("BDECShipColision5", 64, -112, 96)
+		TNT1 A 0 A_SpawnItemEx("BDECShipColision5", 64, 112, 96)
+		TNT1 A 0 A_SpawnItemEx("BDECShipColision5", -172, -92, 96)
+		TNT1 A 0 A_SpawnItemEx("BDECShipColision5", -172, 92, 96)
+		TNT1 A 0 A_SpawnItemEx("BDECShipColision5", -192, 0, 96)
+		TNT1 A 0 A_SpawnItemEx("BDECShipColision6", 39, 200, 52)
+		TNT1 A 0 A_SpawnItemEx("BDECShipColision6", 39, -200, 52)
+	    GVTO A -1
+		Stop
+	Disappear:
+		TNT1 A 0
+		Stop
+	Death:
+		GVTO A 1
+		GVTO A -1
+		Stop
+	}
+}
+
 ACTOR BDECShipColision1
 {
  +SOLID
