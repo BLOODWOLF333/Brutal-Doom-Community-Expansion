@@ -452,8 +452,8 @@ ACTOR CacodemonBall_ Replaces CacodemonBall
 	SpawnID 126
 	Radius 6
 	Height 6
-	Speed 14
-	FastSpeed 18
+	Speed 15
+	FastSpeed 20
 	Damage (random(30,30))
 	Projectile
 	+RANDOMIZE
@@ -469,7 +469,7 @@ ACTOR CacodemonBall_ Replaces CacodemonBall
 	States
 	{
 	Spawn:
-		PBAL DE 2 BRIGHT
+		PBAL DE 1 BRIGHT
 		Loop
 	Death:
         TNT1 A 0 A_CustomMissile ("ShoqueAzul", 3, 0, random (0, 360), 2, random (0, 360))
@@ -959,7 +959,7 @@ ACTOR CacodemonBite: ImpAttack
 {
     +THRUGHOST
 	DamageType HKFT
-    Damage 5
+    Damage (random(40,40))
 }
 
 ACTOR BrutalizedCacodemon1: DeadCacodemon1

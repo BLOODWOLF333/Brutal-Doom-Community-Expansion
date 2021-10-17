@@ -339,7 +339,7 @@ Actor Footstep5: FootStep//In Fatalities
 
 Actor Footstep6: FootStep //ACTUAL FOOTSTEP
 {
-    Damage (random (5, 5))
+    Damage 1
     -CLIENTSIDEONLY
 	-DONTSPLASH
 	-EXPLODEONWATER
@@ -461,7 +461,7 @@ Actor Footstep6: FootStep //ACTUAL FOOTSTEP
 
 Actor Footstep91: FootStep//Splashes
 {
-    Damage (random (1, 1))
+    Damage 1
 	Radius 2
 	Height 2
 	Mass 9999
@@ -471,7 +471,7 @@ Actor Footstep91: FootStep//Splashes
 
 Actor FootstepStrong: Footstep6 //Large footstep when you land from a jump.
 {
-    Damage (random (100, 100))
+    Damage 4
 	-BLOODSPLATTER
 	+BLOODLESSIMPACT
 	Damagetype "Trample"
@@ -598,7 +598,7 @@ Actor FootstepStrong: Footstep6 //Large footstep when you land from a jump.
 
 Actor PlayerBaronTrample: FootStep6
 {
-    Damage (random(60,60))
+    Damage 8
     -CLIENTSIDEONLY
 	-DONTSPLASH
 	DamageType "Stomp"
@@ -607,7 +607,7 @@ Actor PlayerBaronTrample: FootStep6
 
 Actor HeavyFootSteps: FootStepStrong
 {
-    Damage (random(250,250))
+    Damage 20
     -CLIENTSIDEONLY
 	DamageType "Stomp"
 	Obituary "%o was trampled by a Cyberdemon."
@@ -615,7 +615,7 @@ Actor HeavyFootSteps: FootStepStrong
 
 Actor HeavyFootSteps2: FootStepStrong
 {
-    Damage (random(200,200))
+    Damage 16
     -CLIENTSIDEONLY
 	DamageType "Stomp"
 	Obituary "%o has been stepped on by a SpiderMastermind."
@@ -642,7 +642,7 @@ ACTOR Bad : PowerupGiver 2305
 
 Actor TnkStep: FootStepStrong
 {
-    Damage (random (5, 5))
+    Damage 12
     -CLIENTSIDEONLY
 	-DONTSPLASH
 	-EXPLODEONWATER

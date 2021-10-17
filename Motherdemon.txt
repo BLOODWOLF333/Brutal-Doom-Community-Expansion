@@ -136,10 +136,12 @@ actor Motherdemon 2548
 
 actor MotherBall : GreenPlasmaBall
 {
-	Damage (random(5,40))
+	Damage (random(40,40))
 	+THRUGHOST
 	+SEEKERMISSILE
 	Scale 0.375
+	Speed 15
+	FastSpeed 20
 	States
 	{
 	Spawn:
@@ -185,6 +187,9 @@ actor MotherBall : GreenPlasmaBall
 Actor MotherBallDumb : MotherBall
 {
 	-SEEKERMISSILE
+	Speed 20
+	FastSpeed 25
+	Damage (random(45,45))
 }
 
 actor MotherFire
@@ -192,7 +197,7 @@ actor MotherFire
   game Doom
   height 32
   radius 16
-  damage 6
+  damage 4
   speed 40
   renderstyle Translucent
   alpha 0.5
@@ -265,7 +270,6 @@ actor MotherFireTrail
 
 ACTOR SuperMotherBall : BelphegorGreenPlasmaBall
 {
-	Damage (random(10,80))
 	Scale 2.0
 	States
 	{

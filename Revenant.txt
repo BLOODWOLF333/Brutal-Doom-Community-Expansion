@@ -673,8 +673,8 @@ ACTOR revenantseekermissiles Replaces RevenantTracer
 	Radius 10
 	Height 4
 	Speed 15
-	FastSpeed 25
-	Damage (random(40,40))
+	FastSpeed 20
+	Damage (random(48,48))
 	PROJECTILE
 	+THRUGHOST
 	+SEEKERMISSILE
@@ -690,7 +690,7 @@ ACTOR revenantseekermissiles Replaces RevenantTracer
 	    FATB AA 1 BRIGHT A_SpawnItemEx("YellowFlareSmall",-10,0)
 		TNT1 A 0 A_SpawnItemEx("OldschoolRocketSmokeTrail2", 0, 0, 0, 0, 0, 0, 0, 0, 128)
 		TNT1 A 0 A_CustomMissile ("OldschoolRocketSmokeTrail2", 2, 0, random (160, 210), 2, random (-30, 30))
-		TNT1 A 0 A_SeekerMissile (3,6, SMF_LOOK)
+		TNT1 A 0 A_SeekerMissile (2,4, SMF_LOOK)
 		Loop
 
 	SpawnUnderwater:
@@ -704,9 +704,7 @@ ACTOR revenantseekermissiles Replaces RevenantTracer
 	Xdeath:
 	Death:
 		TNT1 A 0
-		BFE1 A 0 Bright A_Explode(7, 120, 1)
-		Goto Explodez
-	Explodez:
+		BFE1 A 0 Bright A_Explode(8, 8, 1)
 	    EXPL A 0 Radius_Quake (6, 54, 0, 15, 0)
 		TNT1 A 0 A_SpawnItem("WhiteShockwaveSmall")
 		EXPL A 0 A_CustomMissile ("ExplosionSmoke", 0, 0, random (0, 360), 2, random (0, 360))
@@ -728,7 +726,8 @@ ACTOR revenantseekermissiles Replaces RevenantTracer
 ACTOR RevenantMissile: revenantseekermissiles
 {
 	Speed 20
-	FastSpeed 30
+	FastSpeed 25
+	Damage (random(55,55))
 	States
 	{
 	Spawn:
@@ -850,7 +849,7 @@ Actor BlastedDeadSkeleton: XDeadSkeleton
         Stop
       }}
 
-ACTOR REvenantAttack: BaronBall
+ACTOR RevenantAttack: BaronBall
 {
 	Radius 8
 	Height 16
@@ -861,7 +860,7 @@ ACTOR REvenantAttack: BaronBall
     +THRUGHOST
 	RenderStyle Add
 	Alpha 0.6
-    Damage (random(30,30))
+    Damage (random(40,40))
     Speed 28
 	SeeSound "none"
 	DeathSound "none"

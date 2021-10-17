@@ -248,13 +248,13 @@ ACTOR BelphegorGreenPlasmaBall: BaronBall
 {
 	Radius 10
 	Height 16
-	Speed 30
-	FastSpeed 30
+	Speed 20
+	FastSpeed 25
 	Projectile
 	+RANDOMIZE
 	+FORCEXYBILLBOARD
     +THRUGHOST
-    Damage (random(60,60))
+    Damage (random(48,48))
 	RenderStyle Add
 	Alpha 0.9
 	Scale 1.6
@@ -272,7 +272,7 @@ ACTOR BelphegorGreenPlasmaBall: BaronBall
 	Death:
 		BFE1 A 0 Bright
 		EXPL A 0 Radius_Quake (2, 54, 0, 15, 0)
-		BFE1 A 0 Bright A_Explode(32, 96, 1)
+		BFE1 A 0 Bright A_Explode(16,16,1)
         TNT1 AAAA 0 A_CustomMissile ("GreenExplosionFire", 2, 0, random (0, 360), 2, random (0, 360))
         EXPL A 0 A_CustomMissile ("BigNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360))
 		FRPG BCDEF 2 Bright

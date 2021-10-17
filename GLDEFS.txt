@@ -773,7 +773,7 @@ object FireBall_
 // Cacodemon fireball
 flickerlight CACOBALL
 {
-    color 0.1 0.1 1.0
+    color 1.0 0.1 0.5
     size 56
     secondarySize 64
     chance 0.5
@@ -781,7 +781,7 @@ flickerlight CACOBALL
 
 flickerlight CACOBALL_X1
 {
-    color 0.1 0.4 0.9
+    color 0.1 0.1 1.0
     size 72
     secondarySize 80
     chance 0.25
@@ -789,7 +789,7 @@ flickerlight CACOBALL_X1
 
 flickerlight CACOBALL_X2
 {
-    color 0.0 0.1 0.6
+    color 0.1 0.1 1.0
     size 88
     secondarySize 96
     chance 0.25
@@ -797,7 +797,7 @@ flickerlight CACOBALL_X2
 
 flickerlight CACOBALL_X3
 {
-    color 0.0 0.0 0.3
+    color 0.1 0.1 1.0
     size 104
     secondarySize 112
     chance 0.25
@@ -805,13 +805,18 @@ flickerlight CACOBALL_X3
 
 object CacodemonBall_
 {
-    frame BAL2A { light CACOBALL }
-    frame BAL2B { light CACOBALL }
+    frame PBAL { light CACOBALL }
+}
 
-    frame BAL2C { light CACOBALL_X1 }
-    frame BAL2D { light CACOBALL_X2 }
-	frame BAL2E { light CACOBALL_X2 }
-    frame BAL2F { light CACOBALL_X3 }
+object ShoqueAzul
+{
+    frame SH1KA { light CACOBALL_X1 }
+	frame SH1KB { light CACOBALL_X1 }
+	frame SH1KC { light CACOBALL_X1 }
+	frame SH1KD { light CACOBALL_X2 }
+	frame SH1KE { light CACOBALL_X2 }
+	frame SH1KF { light CACOBALL_X3 }
+	frame SH1KG { light CACOBALL_X3 }
 }
 
 // Baron / Hell Knight fireball
@@ -1274,8 +1279,6 @@ Glow
 		BLOOD1
 		BLOOD2
 		BLOOD3
-		ceil3_3
-		ceil3_4
 		FLAT17
 		FLAT2 FULLBRIGHT
 		FLAT22
@@ -1949,30 +1952,6 @@ object MotherFireTrail
 {
 	frame F1RE { light ZOMBIEATK }
 	frame F2RE { light ZOMBIEATK }
-}
-
-object CacodemonBall_
-{
-    frame PBAL { light CACOBALL }
-}
-
-object ShoqueAzul
-{
-    frame SH1K { light CACOBALL_X1 }
-	frame SH1K { light CACOBALL_X1 }
-	frame SH1K { light CACOBALL_X1 }
-	frame SH1K { light CACOBALL_X2 }
-	frame SH1K { light CACOBALL_X2 }
-	frame SH1K { light CACOBALL_X3 }
-	frame SH1K { light CACOBALL_X3 }
-}
-
-flickerlight CACOBALL
-{
-    color 1.0 0.1 0.5
-    size 56
-    secondarySize 64
-    chance 0.5
 }
 
 object GreenPlasmaBall
