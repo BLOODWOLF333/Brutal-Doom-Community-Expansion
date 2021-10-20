@@ -199,22 +199,14 @@ ACTOR HellishMissileLauncher : BrutalWeapon
 
 ACTOR revenantseekermissiles2: revenantseekermissiles
 {
-	Damage (random(50, 50))
-	Speed 30
+	Damage (random(48, 48))
+	Speed 25
 	Radius 2
 	Height 2
 	+SCREENSEEKER
 	-GHOST
 	-THRUGHOST
 	Damagetype Explosive
-	States
-	{
-	Xdeath:
-	Death:
-		RVCG A 0
-		BFE1 A 0 Bright A_Explode(20, 120, 1)
-		Goto Explodez
-	}
 }
 
 ACTOR MarineSeekerMissile : revenantseekermissiles2
@@ -228,6 +220,7 @@ ACTOR MarineSeekerMissile : revenantseekermissiles2
 
 ACTOR revenantseekermissiles3: revenantseekermissiles2
 {
+	Speed 50
 	-SCREENSEEKER
 	-SEEKERMISSILE
 	Damagetype Explosive

@@ -1481,15 +1481,12 @@ ACTOR MarineFlameThrower : FlamethrowerMissile
 
 ACTOR FlamethrowerMissileNoLight: FlamethrowerMissile
 {
-	Speed 35
-	Decal "None"
 		States
 			{
 				Death:
 				TNT1 A 0
 				TNT1 A 0 A_ChangeFlag("FORCERADIUSDMG", 1)
 				TNT1 A 0 A_Explode(32, 128, 1, 0, 1)
-				//TNT1 A 0 A_CustomMissile("FlamethrowerBurningStuff", random (-32, 0), random (-32, 32), random (-32, 32), 2, random (-32, 32))
 				EXPL A 0 A_CustomMissile ("FlamethrowerFireParticles", 6, 0, random (0, 360), 2, random (10, 90))
 				Stop
 	}
