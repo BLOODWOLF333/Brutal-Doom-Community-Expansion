@@ -535,7 +535,7 @@ ACTOR BrutalWeapon : DoomWeapon
 		TNT1 A 0
 		TNT1 A 0 A_ChangeFLag("NOPAIN", 1)
 		TNT1 A 0 A_ChangeFLag("PUSHABLE", 0)
-		TNT1 A 0 Thing_Stop(0)
+		TNT1 A 0 A_Stop
 		TNT1 A 0 SetPlayerProperty(0,1,4)
 		TNT1 A 0 A_JumpIfInventory("IsFloating", 1, "ExecuteAirStomp")
 		TNT1 A 0 A_JumpIfInventory("ExecuteBashWall", 1, "BashWall")//Imp-Only Execution
@@ -594,8 +594,8 @@ ACTOR BrutalWeapon : DoomWeapon
 		TNT1 A 0
 		TNT1 A 0 A_GiveInventory("IsExecutingOnAir", 1)
 		TNT1 A 0 ThrustThingZ(0, 10, 0, 1)
-		STOM ABCCCCC 1 A_SetPitch(70)
-		STOM CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC 1 A_CheckFloor("DoAirStomp")
+		STOM A 5 A_SetPitch(70)
+		STOM BCCCC 1 A_CheckFloor("DoAirStomp")
 	DoAirStomp:
 		RIFF A 0 A_FireCustomMissile("ExecutionAttackKick", 0, 0, 0, 0)
 		TNT1 A 0 A_GiveInventory("Kicking",1)

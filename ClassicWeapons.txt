@@ -459,7 +459,6 @@ ACTOR ClassicWeapon : DoomWeapon
 		TNT1 A 0 A_ChangeFLag("PUSHABLE", 0)
 		TNT1 A 0 A_Stop
 		TNT1 A 0 SetPlayerProperty(0,1,4)
-		KICK A 0 A_Takeinventory("ExecuteDownedEnemy",1)
 		TNT1 A 0 A_JumpIfInventory("IsFloating", 1, "ExecuteAirStomp")
 		TNT1 A 5 A_SetPitch(70)//up(-) | down(+)
 		Goto Execution1
@@ -469,14 +468,14 @@ ACTOR ClassicWeapon : DoomWeapon
 		TNT1 A 0 A_Stop
 		TNT1 A 0 A_GiveInventory("IsExecutingOnAir", 1)
 		TNT1 A 0 ThrustThingZ(0, 10, 0, 1)
-		STOM ABCCCCC 1 A_SetPitch(70)
-		STOM CCCCCCCCCCC 1 A_CheckFloor("DoAirStomp")
+		STOM A 5 A_SetPitch(70)
+		STOM BCCCC 1 A_CheckFloor("DoAirStomp")
 	DoAirStomp:
-		RIFF AAA 0 A_FireCustomMissile("ExecutionAttackKick", 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("ExecutionAttackKick", 0, 0, 0, 0)
+		TNT1 A 0 A_GiveInventory("Kicking",1)
         STOM D 5
 		TNT1 A 0 ThrustThingZ(0, 20, 1, 1)
 		TNT1 A 0 A_TakeInventory("IsExecutingOnAir", 1)
-		KICK A 0 A_Takeinventory("ExecuteBashWall",1)
 		Goto FinishExecution
 
 	Execution1:
