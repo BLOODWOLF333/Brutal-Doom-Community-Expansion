@@ -313,27 +313,26 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMastermind", 1, "CheckRetreat")
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 A_CustomMissile("BaronAttackOnBarrel",16,0,0,0)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		BARO E 1
 		TNT1 A 0 A_JumpIfInventory("HasExplosiveBarrel", 1, "MissileBarrel")
-
+		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
         BARO E 6
         TNT1 A 0 A_PlaySound("weapons/gswing")
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
 		BARO F 6 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
 		BARO G 6 A_CustomMissile("BaronAttack",32,0,0,0)
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
 		Goto See2
 
 	Melee2:
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
-
+		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
 		BARO E 6 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
 		BARO F 6 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
 		BARO G 6 A_CustomMissile("BaronAttack",32,0,0,0)
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
@@ -354,7 +353,7 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
 		TNT1 A 0 A_JumpIfInTargetInventory ("TypeZombieman", 1, "See2")
 		TNT1 A 0 A_JumpIfInTargetInventory ("TypeSergeant", 1, "See2")
-
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		BARO E 3 A_FaceTarget
 
 		TNT1 A 0 A_Jump (64, "SpecialAttack")
@@ -362,17 +361,21 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		BARO E 2 A_FaceTarget
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		BARO E 2 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		BARO E 2 A_FaceTarget
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		BARO E 2 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		BARO E 2 A_FaceTarget
 
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
@@ -385,40 +388,44 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		Goto See2
 
     SpecialAttack:
-	    TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
+	    TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 
 		BARO R 3 A_FaceTarget
-	    TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
+	    TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
 		BARO Q 6 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 
 		BARO P 2 A_FaceTarget
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160))
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, -40, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, -40, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		BARO P 2 A_FaceTarget
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160))
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, -40, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, -40, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		BARO P 2 A_FaceTarget
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160))
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, -40, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, -40, random (0, 140), 2, random (0, 160))
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		BARO P 2 A_FaceTarget
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160))
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, -40, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, -40, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		BARO P 2 A_FaceTarget
 
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		BARO Q 4 A_FaceTarget
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 58, 30, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 58, -30, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		BARO Q 4 A_FaceTarget
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 48, 30, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 48, -30, random (0, 360), 2, random (70, 110))
@@ -1582,41 +1589,39 @@ Spawn:
         TNT1 A 0
 		TNT1 A 0 A_CheckSight("See")
         BTS3 ABC 2  A_SpawnItem("HeadshotTarget4b", 0, 72)
-		BTS3 DEDF 3  A_SpawnItem("HeadshotTarget8b", 0, 72)
-		BTS3 DEDF 3  A_SpawnItem("HeadshotTarget8b", 0, 72)
-		BTS3 CBA 2  A_SpawnItem("HeadshotTarget8b", 0, 72)
+		BTS3 DEDF 3  A_SpawnItem("HeadshotTarget4b", 0, 72)
+		BTS3 DEDF 3  A_SpawnItem("HeadshotTarget4b", 0, 72)
+		BTS3 CBA 2  A_SpawnItem("HeadshotTarget4b", 0, 72)
 		TNT1 A 0 HealThing(200)
 		TNT1 A 0 A_Jump(96, "SpecialAttack")
 		Goto See2
 
 	Melee:
 	    TNT1 A 0
-
 	    TNT1 A 0 A_JumpIfInTargetInventory("TargetIsACyberdemon", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMastermind", 1, "CheckRetreat")
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 A_CustomMissile("BaronAttackOnBarrel",16,0,0,0)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 72)
 		BARO E 1
 		TNT1 A 0 A_JumpIfInventory("HasExplosiveBarrel", 1, "MissileBarrel")
-
+		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
         BARO E 6
         TNT1 A 0 A_PlaySound("weapons/gswing")
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
 		BARO F 6 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
 		BARO G 6 A_CustomMissile("BaronAttack",32,0,0,0)
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
 		Goto See2
 
 	Melee2:
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
-
+		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
 		BARO E 6 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
 		BARO F 6 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
 		BARO G 6 A_CustomMissile("BaronAttack",32,0,0,0)
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
@@ -1637,28 +1642,32 @@ Spawn:
 		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
 		TNT1 A 0 A_JumpIfInTargetInventory ("TypeZombieman", 1, "See2")
 		TNT1 A 0 A_JumpIfInTargetInventory ("TypeSergeant", 1, "See2")
-
-		BARO e 3 A_FaceTarget
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 72)
+		BARO E 3 A_FaceTarget
 
 		TNT1 A 0 A_Jump (64, "SpecialAttack")
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 72)
 		BARO E 2 A_FaceTarget
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160))
-		BARO E 2 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
-		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110))
-		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160))
-		BARO E 2 A_FaceTarget
-		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110))
-		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 72)
 		BARO E 2 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 72)
+		BARO E 2 A_FaceTarget
+		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 72)
+		BARO E 2 A_FaceTarget
+		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
+		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 72)
 		BARO E 2 A_FaceTarget
 
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 72)
 		BARO F 3 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
 		BARO G 8 A_CustomMissile("GreenPlasmaBall", 36, 0, 0, 1)
@@ -1668,40 +1677,43 @@ Spawn:
 		Goto See2
 
     SpecialAttack:
-	    TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
-
+	    TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 72)
 		BARO R 3 A_FaceTarget
-	    TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
+	    TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
 		BARO Q 6 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 72)
 
 		BARO P 2 A_FaceTarget
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160))
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, -40, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, -40, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 72)
 		BARO P 2 A_FaceTarget
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160))
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, -40, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, -40, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 72)
 		BARO P 2 A_FaceTarget
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160))
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, -40, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, -40, random (0, 140), 2, random (0, 160))
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 72)
 		BARO P 2 A_FaceTarget
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160))
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 78, -40, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, -40, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 72)
 		BARO P 2 A_FaceTarget
 
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 72)
 		BARO Q 4 A_FaceTarget
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 58, 30, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 58, -30, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 72)
 		BARO Q 4 A_FaceTarget
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 48, 30, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 48, -30, random (0, 360), 2, random (70, 110))
