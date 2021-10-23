@@ -322,7 +322,7 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
 		BARO F 6 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
-		BARO G 6 A_CustomMissile("BaronAttack",16,0,0,0)
+		BARO G 6 A_CustomMissile("BaronAttack",32,0,0,0)
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
 		Goto See2
@@ -334,7 +334,7 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
 		BARO F 6 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
-		BARO G 6 A_CustomMissile("BaronAttack",16,0,0,0)
+		BARO G 6 A_CustomMissile("BaronAttack",32,0,0,0)
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
 		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")
@@ -1299,7 +1299,7 @@ ACTOR BaronAttack: BaronBall
     +THRUGHOST
 	RenderStyle Add
 	Alpha 0.6
-    Damage 10
+    Damage (random(40,40))
     Speed 28
 	SeeSound "none"
 	DeathSound "none"
@@ -1605,7 +1605,7 @@ Spawn:
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
 		BARO F 6 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
-		BARO G 6 A_CustomMissile("BaronAttack",16,0,0,0)
+		BARO G 6 A_CustomMissile("BaronAttack",32,0,0,0)
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
 		Goto See2
@@ -1617,7 +1617,7 @@ Spawn:
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
 		BARO F 6 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)
-		BARO G 6 A_CustomMissile("BaronAttack",16,0,0,0)
+		BARO G 6 A_CustomMissile("BaronAttack",32,0,0,0)
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
 		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")
@@ -1638,12 +1638,7 @@ Spawn:
 		TNT1 A 0 A_JumpIfInTargetInventory ("TypeZombieman", 1, "See2")
 		TNT1 A 0 A_JumpIfInTargetInventory ("TypeSergeant", 1, "See2")
 
-		//TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 0, 5)
-		//TNT1 A 0 A_TakeInventory("CantFire", 1)
-		//TNT1 A 0 A_CustomMissile("MonsterTargetCheck", 34, 0, 0, 0)
-		//TNT1 A 0 A_CustomMissile("MonsterTargetCheckFaster", 34, 0, 0, 0)
 		BARO e 3 A_FaceTarget
-		//TNT1 A 0 A_JumpIfInventory("CantFire",1, "See4")
 
 		TNT1 A 0 A_Jump (64, "SpecialAttack")
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 72)

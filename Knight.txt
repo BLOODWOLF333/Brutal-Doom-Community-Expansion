@@ -58,7 +58,7 @@ ACTOR HellKnight2 : HellKnight Replaces HellKnight
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 52)
 		BOS2 F 6 A_FaceTarget
 		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 52)
-		BOS2 G 6 A_CustomMissile("KnightAttack",16,0,0,0)
+		BOS2 G 6 A_CustomMissile("KnightAttack",32,0,0,0)
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 		Goto See2
 
@@ -252,7 +252,7 @@ ACTOR HellKnight2 : HellKnight Replaces HellKnight
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 
 		BOS2 EF 8 A_FaceTarget
-		BOS2 G 8 A_CustomMissile("KnightAttack",16,0,0,0)
+		BOS2 G 8 A_CustomMissile("KnightAttack",32,0,0,0)
 		Goto See2
     Missile:
 		TNT1 A 0
@@ -754,7 +754,7 @@ ACTOR KnightAttack: BaronBall
     +THRUGHOST
 	RenderStyle Add
 	Alpha 0.6
-    Damage (random(55,55))
+    Damage (random(40,40))
     Speed 42
 	SeeSound "none"
 	DeathSound "none"
