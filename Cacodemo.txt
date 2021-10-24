@@ -149,7 +149,6 @@ ACTOR Cacodemon_ : Cacodemon Replaces Cacodemon
 		HEAD B 4 A_Facetarget
 		HEAD C 4 A_Recoil(-5)
 		TNT1 A 0 A_CustomMissile("CacodemonBite", 34, 0, 0, 0)
-		//TNT1 A 0 A_JumpIfInventory("Fatality_Marine", 1, "FatalityMarine")
 		HEAD D 4
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "FatalityMarine")
 	Goto See
@@ -959,7 +958,7 @@ ACTOR CacodemonBite: ImpAttack
 {
     +THRUGHOST
 	DamageType HKFT
-    Damage (random(40,40))
+    Damage (random(30,30))
 }
 
 ACTOR BrutalizedCacodemon1: DeadCacodemon1
