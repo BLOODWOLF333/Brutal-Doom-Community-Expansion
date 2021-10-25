@@ -350,30 +350,6 @@ ACTOR TheArchvile: Archvile Replaces Archvile
 	}
 }
 
-ACTOR ArchvileFire2 Replaces ArchvileFire
-{
-	Game Doom
-    Scale 1.0
-	+NOBLOCKMAP +NOGRAVITY
-	RenderStyle Add
-
-	Alpha 0.8
-	States
-	{
-	Spawn:
-		TNT1 A 1 bright A_StartFire
-		INFE ABCDEF 1 bright A_Fire
-		INFE G 1 bright A_FireCrackle
-		INFE HIJKLM 1 bright A_Fire
-		INFE N 1 bright A_FireCrackle
-		INFE OPQRS 1 bright A_Fire
-		INFE T 1 bright A_FireCrackle
-		TNT1 A 2
-		Stop
-
-	}
-}
-
 actor DeadArchvile: CurbstompedMarine
 {
     States
