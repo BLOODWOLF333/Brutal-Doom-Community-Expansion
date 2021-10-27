@@ -460,6 +460,10 @@ ACTOR Marine_Shotgun: Marine_Rifle
 		MAR3 E 3 A_Pain
 		Goto FollowPlayer
 
+	Pain.Kick:
+		MAR3 E 3 A_Pain
+		Goto See
+
 	Pain.Avoid:
 		TNT1 A 0
 		TNT1 A 0 A_Jump(192, "RollLeft", "RollRight")

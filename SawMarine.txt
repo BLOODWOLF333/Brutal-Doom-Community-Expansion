@@ -460,6 +460,10 @@ ACTOR Marine_Saw: Marine_Rifle
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
 		Goto FollowPlayer
 
+	Pain.Kick:
+		MAR1 E 3 A_Pain
+		Goto See
+
 	Pain.Avoid:
 		TNT1 A 0
 		TNT1 A 0 A_Jump(192, "RollLeft", "RollRight")
