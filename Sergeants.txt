@@ -1477,12 +1477,15 @@ Actor DeadShotgunguy_Slumped: ZombiemanTorso
 	States
 	{
 		Spawn:
+			TNT1 A 0
+			TNT1 A 0 A_Recoil(6)
 			BR93 A 4
-			TNT1 A 0 A_Recoil(1)
+			TNT1 A 0 A_JumpIf(velx < 0, "LayDown")
+			TNT1 A 0 A_JumpIf(velx > 0, "LayDown")
+			TNT1 A 0 A_JumpIf(vely > 0, "LayDown")
+			TNT1 A 0 A_JumpIf(vely < 0, "LayDown")
 			TNT1 A 0 A_SpawnItemEx("HeadshotTargetSlumped", 3, 0, 22)
 			BR93 A 16
-			TNT1 A 0 A_JumpIf(velx < 0, "LayDown")
-			TNT1 A 0 A_JumpIf(vely > 0, "LayDown")
 			Loop
 
 		LayDown:

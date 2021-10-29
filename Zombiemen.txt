@@ -1954,12 +1954,15 @@ Height 22
 Radius 6
 +NOBLOCKMONST
 States{Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Recoil(6)
 		BR92 A 4
-		TNT1 A 0 A_Recoil(1)
+		TNT1 A 0 A_JumpIf(velx < 0, "LayDown")
+		TNT1 A 0 A_JumpIf(velx > 0, "LayDown")
+		TNT1 A 0 A_JumpIf(vely > 0, "LayDown")
+		TNT1 A 0 A_JumpIf(vely < 0, "LayDown")
 		TNT1 A 0 A_SpawnItemEx("HeadshotTargetSlumped", 3, 0, 22)
 		BR92 A 16
-		TNT1 A 0 A_JumpIf(velx < 0, "LayDown")
-		TNT1 A 0 A_JumpIf(vely > 0, "LayDown")
         Loop
 	LayDown:
 	TNT1 A 0 A_NoBlocking

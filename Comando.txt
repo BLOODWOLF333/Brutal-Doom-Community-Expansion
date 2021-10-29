@@ -934,12 +934,15 @@ Height 22
 Radius 6
 Scale 0.9
 States{Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Recoil(6)
 		BR95 A 4
-		TNT1 A 0 A_Recoil(1)
+		TNT1 A 0 A_JumpIf(velx < 0, "LayDown")
+		TNT1 A 0 A_JumpIf(velx > 0, "LayDown")
+		TNT1 A 0 A_JumpIf(vely > 0, "LayDown")
+		TNT1 A 0 A_JumpIf(vely < 0, "LayDown")
 		TNT1 A 0 A_SpawnItemEx("HeadshotTargetSlumped", 3, 0, 22)
 		BR95 A 16
-		TNT1 A 0 A_JumpIf(velx < 0, "LayDown")
-		TNT1 A 0 A_JumpIf(vely > 0, "LayDown")
         Loop
 	LayDown:
 	TNT1 A 0 A_NoBlocking
