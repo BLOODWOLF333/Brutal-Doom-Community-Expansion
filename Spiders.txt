@@ -566,8 +566,8 @@ ACTOR CrawlingDyingSpider
         NAHC A 0 A_Pain
 		TNT1 A 0 A_SpawnItemEx("Brutal_FlyingBlood", 0, 0, 10, 0, 0)
 
-		TNT1 A 0 A_GiveInventory("DeathTimer1", 1)
-		TNT1 A 0 A_JumpIfInventory("DeathTimer1", 12, "GotoDeath")
+		TNT1 A 0 A_GiveInventory("DeathTimer", 1)
+		TNT1 A 0 A_JumpIfInventory("DeathTimer", 12, "GotoDeath")
 		Loop
 
 	GotoDeath:
