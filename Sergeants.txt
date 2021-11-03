@@ -1760,7 +1760,7 @@ Obituary "%o got punctured by a SMG Zombie."
 		TNT1 A 0 A_SpawnItemEx ("VanillaShotgunguy",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
 		Stop
     Spawn:
-		SMID A 1
+		PSS3 A 1
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCHeckClassicMonsters", 0, 0, 0, 0)//Check if Vanilla Mode is activated
 		  TNT1 A 0
 		  TNT1 A 0 A_GiveInventory("SKShotgunGuy", 1)
@@ -1772,7 +1772,7 @@ Obituary "%o got punctured by a SMG Zombie."
 	Stand:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 31)
-		SMID A 10 A_Look
+		PSS3 A 10 A_Look
 		Loop
 
 	FallBack:
@@ -1808,19 +1808,19 @@ Obituary "%o got punctured by a SMG Zombie."
 		TNT1 A 0 A_GiveInventory("SKShotgunGUy", 1)
         TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 31)
 		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SMID A 10 A_Look
+		PSS3 A 10 A_Look
         TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 31)
 		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SMID C 10 A_Look
+		PSS3 C 10 A_Look
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 31)
 		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SMID A 10 A_Look
+		PSS3 A 10 A_Look
         TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 31)
 		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SMID D 10 A_Look
+		PSS3 D 10 A_Look
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 31)
 		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SMID A 10 A_Look
+		PSS3 A 10 A_Look
 
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 31)
 		PSS3 AAA 2 A_Wander
@@ -1861,11 +1861,9 @@ Obituary "%o got punctured by a SMG Zombie."
 	SeeContinue:
 	    TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 	    TNT1 A 0 A_JumpIfCloser(200, "FallBack")
-		//Advance:
 		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 25, "SearchForPlayer")
 		TNT1 A 0 A_GiveInventory("EnemyMemory", 1)
-        //TNT1 A 0 A_SpawnItemEx("FootSep", 0, 0, 20, 0, 0)
 		TNT1 A 0 A_TakeInventory("SKShotgunGuy", 1)
 
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 31)
@@ -1891,7 +1889,6 @@ Obituary "%o got punctured by a SMG Zombie."
 		TNT1 A 0 A_JumpIfCloser(200, "FallBack")
 		Advance:
 		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
-        //TNT1 A 0 A_SpawnItemEx("FootSep", 0, 0, 10, 0, 0)
 
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 31)
 		TNT1 A 0 A_SpawnItem ("LegTargetBase")
@@ -1914,12 +1911,7 @@ Obituary "%o got punctured by a SMG Zombie."
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 31)
 		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 		TNT1 A 0 A_TakeInventory("SKShotgunGuy", 1)
-
-		//TNT1 A 0 A_TakeInventory("CantFire", 1)
-		//TNT1 A 0 A_CustomMissile("MonsterTargetCheck", 34, 0, 0, 0)
-		//TNT1 A 0 A_CustomMissile("MonsterTargetCheckFaster", 34, 0, 0, 0)
 		PSS3 D 3 A_FaceTarget
-		//TNT1 A 0 A_JumpIfInventory("CantFire",1, "Advance")
 
 		TNT1 A 0 A_SpawnItem ("LegTargetBase")
 		TNT1 A 0 A_GiveInventory("SergeantAmmo", 1)
@@ -1972,53 +1964,6 @@ Obituary "%o got punctured by a SMG Zombie."
 		PSS3 E 10 A_FaceTarget
 		TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "SearchForPlayer")
 		Goto SeeContinue
-
-  //Reload:
-        TNT1 A 0
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget20", 0, 31)
-		TNT1 A 0 A_SpawnItem ("LegTarget20")
-        SPSR A 15
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget20", 0, 31)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget20", 0, 31)
-		TNT1 A 0 A_SpawnItem ("LegTarget20")
-        ID12 EFG 5
-        TNT1 A 0 A_PlaySound("insertshell")
-		TNT1 A 0 A_TakeInventory("SergeantAmmo", 1)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget20", 0, 31)
-        ID12 EFG 5
-        TNT1 A 0 A_PlaySound("insertshell")
-		TNT1 A 0 A_TakeInventory("SergeantAmmo", 1)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget20", 0, 31)
-		TNT1 A 0 A_SpawnItem ("LegTarget20")
-        ID12 EFG 5
-        TNT1 A 0 A_PlaySound("insertshell")
-		TNT1 A 0 A_TakeInventory("SergeantAmmo", 1)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget20", 0, 31)
-		TNT1 A 0 A_SpawnItem ("LegTarget20")
-        ID12 EFG 5
-        TNT1 A 0 A_PlaySound("insertshell")
-		TNT1 A 0 A_TakeInventory("SergeantAmmo", 1)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget20", 0, 31)
-		TNT1 A 0 A_SpawnItem ("LegTarget20")
-		ID12 EFG 5
-        TNT1 A 0 A_PlaySound("insertshell")
-		TNT1 A 0 A_TakeInventory("SergeantAmmo", 1)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget20", 0, 31)
-		TNT1 A 0 A_SpawnItem ("LegTarget20")
-		ID12 EFG 5
-        TNT1 A 0 A_PlaySound("insertshell")
-		TNT1 A 0 A_TakeInventory("SergeantAmmo", 1)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget20", 0, 31)
-		TNT1 A 0 A_SpawnItem ("LegTarget20")
-		SPSR A 10
-        TNT1 A 0 A_PlaySound("weapons/sgpump")
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 31)
-		TNT1 A 0 A_SpawnItem ("LegTarget20")
-		SPSR B 10
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 31)
-		SPSR A 10
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 31)
-        Goto SeeContinue
 
 	Pain.Cut:
 	Pain.Saw:
