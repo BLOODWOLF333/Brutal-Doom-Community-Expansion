@@ -346,13 +346,12 @@ delay(15);
 SetCVAR("chase", 0);
 }
 
-#define SKILL_REALISM        32
 #define SKILL_BLACKMETAL     31
 
 script "BDBlackMetal" (void)
 {
     if (GameSkill () == SKILL_BLACKMETAL)
-        SetActorProperty (0, APROP_Speed, 1.4);
+        SetActorProperty (0, APROP_Speed, 1.25);
 
 	 if (GameSkill () == SKILL_BLACKMETAL)
 		GiveInventory("TurboReload", 1);
