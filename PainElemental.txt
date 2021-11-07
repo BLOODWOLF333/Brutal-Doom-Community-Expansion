@@ -124,7 +124,8 @@ SearchPlayer:
 		Goto Death+5
 	Death:
 		PAIN H 8 BRIGHT
-		PAIN I 8 BRIGHT A_Scream
+		PAIN I 8 BRIGHT
+		PAIN J 8 BRIGHT A_Scream
 		TNT1 A 0 A_Explode (50,220)
 		TNT1 AAAAAA 0 A_CustomMissile ("FireworkSFXType1", 0, 0, random (0, 360), 2, random (10, 80))
 		TNT1 AAAAAA 0 bright A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))

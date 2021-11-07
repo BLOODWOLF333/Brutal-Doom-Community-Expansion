@@ -268,28 +268,28 @@ ACTOR HellKnight2 : HellKnight Replaces HellKnight
 		BOS2 E 3 A_FaceTarget
 		TNT1 A 0 A_SpawnItemEx("HeadshotTarget4b", 0, 52,5)
 		BOS2 E 2 A_FaceTarget
-		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 64, 30, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 64, 30, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 64, 30, random (0, 140), 2, random (0, 160))
 		TNT1 A 0 A_SpawnItemEx("HeadshotTarget4b", 0, 52,5)
 		BOS2 E 2 A_FaceTarget
-		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 64, 30, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 64, 30, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 64, 30, random (0, 140), 2, random (0, 160))
 		TNT1 A 0 A_SpawnItemEx("HeadshotTarget4b", 0, 52,5)
 		BOS2 E 2 A_FaceTarget
-		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 64, 30, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 64, 30, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 64, 30, random (0, 140), 2, random (0, 160))
 		TNT1 A 0 A_SpawnItemEx("HeadshotTarget4b", 0, 52,5)
 		BOS2 E 2 A_FaceTarget
 		TNT1 A 0 A_SpawnItemEx("HeadshotTarget8b", 0, 52,5)
-		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 64, 30, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 64, 30, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 64, 30, random (0, 140), 2, random (0, 160))
 		TNT1 A 0 A_SpawnItemEx("HeadshotTarget4b", 0, 52,5)
 		BOS2 E 2 A_FaceTarget
-		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 64, 30, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 64, 30, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 64, 30, random (0, 140), 2, random (0, 160))
 		TNT1 A 0 A_SpawnItemEx("HeadshotTarget4b", 0, 52,5)
 		BOS2 E 2 A_FaceTarget
-		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 64, 30, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 64, 30, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 64, 30, random (0, 140), 2, random (0, 160))
 		TNT1 A 0 A_SpawnItemEx("HeadshotTarget4b", 0, 52,5)
 		BOS2 E 2
@@ -546,7 +546,7 @@ ACTOR HellKnight2 : HellKnight Replaces HellKnight
 	    TNT1 AA 0 A_CustomMissile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, random (0, 160))
 
 		EXPL AAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("GreenFlameTrails", 50, 0, random (0, 360), 2, random (0, 360))
-		XBRN AAAA 2 BRIGHT A_SpawnItem("GreenFlare",0,43)
+		XBRN AAAA 2 A_SpawnItem("GreenFlare",0,43)
         Stop
 
 Death.ExplosiveImpact:
@@ -668,10 +668,10 @@ Death.Explosive:
 		TNT1 A 0 A_NoBlocking
 		BOS2 JKL 2
 	    TNT1 AA 0 A_SpawnItem("MeatDeathSmall")
-		TNT1 AAA 0 bright A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
-		TNT1 AAAA 0 bright A_CustomMissile ("XDeath1Green", 5, 0, random (0, 360), 2, random (30, 180))
-		TNT1 AA 0 bright A_CustomMissile ("XDeath2bGreen", 55, 0, random (0, 360), 2, random (30, 180))
-		TNT1 AA 0 bright A_CustomMissile ("XDeath3bGreen", 55, 0, random (0, 360), 2, random (30, 180))
+		TNT1 AAA 0 A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
+		TNT1 AAAA 0 A_CustomMissile ("XDeath1Green", 5, 0, random (0, 360), 2, random (30, 180))
+		TNT1 AA 0 A_CustomMissile ("XDeath2bGreen", 55, 0, random (0, 360), 2, random (30, 180))
+		TNT1 AA 0 A_CustomMissile ("XDeath3bGreen", 55, 0, random (0, 360), 2, random (30, 180))
 		TNT1 A 0 A_SpawnItem ("GreenGrowingBloodPool")
 		TNT1 A 0 A_SpawnItem ("CrushedRemains")
 		TNT1 A 1
@@ -839,16 +839,16 @@ States
 
 	Death.CrushedBodies:
 		 TNT1 A 0 A_SetAngle(0)
-		 TNT1 A 0 bright A_CustomMissile ("GreenSuperGoreSpawner", 1, -40, random (0, 360), 2, random (25, 45))
-		 TNT1 A 0 bright A_CustomMissile ("GreenSuperGoreSpawner", 1, 40, random (0, 360), 2, random (25, 45))
+		 TNT1 A 0 A_CustomMissile ("GreenSuperGoreSpawner", 1, -40, random (0, 360), 2, random (25, 45))
+		 TNT1 A 0 A_CustomMissile ("GreenSuperGoreSpawner", 1, 40, random (0, 360), 2, random (25, 45))
 		 TNT1 A 0 A_CustomMissile ("XDeath1Green", 1, random (-30, 30), random (0, 360), 2, random (0, 160))
 		 TNT1 A 0 A_CustomMissile ("XDeath2bGreen", 1, random (-30, 30), random (0, 360), 2, random (0, 160))
 		 TNT1 A 0 A_CustomMissile ("XDeath3bGreen", 1, random (-30, 30), random (0, 360), 2, random (0, 160))
 		 TNT1 AA 0 A_CustomMissile ("GreenBloodMistBig", 1, -40, random (0, 360), 2, random (30, 90))
 		 TNT1 AA 0 A_CustomMissile ("GreenBloodMistBig", 1, 40, random (0, 360), 2, random (30, 90))
 		 TNT1 A 0 A_SetAngle(90)
-		 TNT1 A 0 bright A_CustomMissile ("GreenSuperGoreSpawner", 1, -40, random (0, 360), 2, random (25, 45))
-		 TNT1 A 0 bright A_CustomMissile ("GreenSuperGoreSpawner", 1, 40, random (0, 360), 2, random (25, 45))
+		 TNT1 A 0 A_CustomMissile ("GreenSuperGoreSpawner", 1, -40, random (0, 360), 2, random (25, 45))
+		 TNT1 A 0 A_CustomMissile ("GreenSuperGoreSpawner", 1, 40, random (0, 360), 2, random (25, 45))
 		 TNT1 A 0 A_CustomMissile ("XDeath1Green", 1, random (-30, 30), random (0, 360), 2, random (0, 160))
 		 TNT1 A 0 A_CustomMissile ("XDeath2bGreen", 1, random (-30, 30), random (0, 360), 2, random (0, 160))
 		 TNT1 A 0 A_CustomMissile ("XDeath3bGreen", 1, random (-30, 30), random (0, 360), 2, random (0, 160))
@@ -1024,14 +1024,8 @@ ACTOR XDeathHalfHK
         Goto Death
     Death:
         BTO1 AABBCC 4 A_CustomMissile("Green_Blood",0,0,180,2)
-        //TNT1 A 0 A_Jump(128, "Crawl")
 		HPLA A 0 A_SpawnItem("DeadKnightHalfUp",0,0,0,1)
         Stop
-	Crawl:
-	    TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItem("CrawlingHellKnight")
-		TNT1 A 0
-		Stop
     }
 }
 
@@ -1284,106 +1278,6 @@ ACTOR DyingHellKnightNoHeadNoArm: DyingHellKnight1
 		TNT1 A 0 A_SpawnItem ("GreenGrowingBloodPool")
         TNT1 A 0 A_SpawnItem ("DeadKnightHalfDown", 1)
 		TNT1 DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 1 A_CustomMissile ("Green_LiquidBlood", 10, 0, random (0, 360), 2, random (30, 110))
-		TNT1 A -1
-		Stop
-	}
-}
-
-ACTOR CrawlingHellKnight
-{
-    Radius 12
-    Height 30
-    Speed 9
-	Health 20
-	PainSound "PSXDPN"
-	DeathSound "grunt/death"
-	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
-	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
-	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0	Damagefactor "HangingHook", 0.0
-	Damagefactor "Head", 2.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
-	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
-	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "Extremepunches", 0.5
-	Damagefactor "Fatality", 0.5	Damagefactor "HeadKick", 0.5	Damagefactor "HelperMarineFatallity", 0.5
-	Damagefactor "Kick", 0.5	Damagefactor "Leg", 0.5	Damagefactor "Slide", 0.5
-	Damagefactor "Melee", 0.5	Damagefactor "MonsterKnocked", 0.5	Damagefactor "Stomp", 0.5
-	Damagefactor "Trample", 0.5
-	Damagefactor "Burn", 0.5	Damagefactor "Fire", 0.5	Damagefactor "Flames", 0.5
-	Damagefactor "GreenFire", 0.5	Damagefactor "HumanBBQ", 0.5
-
-	PainChance "Head", 255	PainChance "Taunt", 255	PainChance "Extremepunches", 16
-	PainChance "Fatality", 16	PainChance "HelperMarineFatallity", 16	PainChance "Kick", 255
-	PainChance "LowKick", 16	PainChance "Melee", 16	PainChance "MonsterKnocked", 16
-	PainChance "Slide", 16	PainChance "Trample", 16
-	PainChance "Burn", 16	PainChance "Fire", 16	PainChance "Flames", 16
-	PainChance "GreenFire", 16	PainChance "HumanBBQ", 16
-	PainChance "Kick", 255
-	+SHOOTABLE
-    +FLOORCLIP
-	+FRIGHTENED
-	+FLOORCLIP
-	-SOLID
-	+THRUACTORS
-    States
-    {
-		Pain.Kick:
-		TNT1 A 0 A_CustomMissile ("Teeth", 30, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("Green_Blood", 30, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("TeethNoBounce", 30, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_Pain
-		TNT1 A 0 A_FaceTarget
-		BTCK ABA 3
-		BTC1 B 20
-		Goto See
-
-		Death.Kick:
-		Death.Fatality:
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus", 0, 0, 15, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
-		TNT1 A 0 A_GiveToTarget("HKFatality2", 1)
-		Stop
-
-		Spawn:
-		BTC1 A 1 A_Look
-		Loop
-		See:
-		BTC1 ABC 10 A_Chase
-		TNT1 A 0 A_SpawnItemEx("Green_FlyingBlood", 0, 0, 10, 0, 0)
-		BTC1 D 10 A_Pain
-		TNT1 A 0 A_SpawnItemEx("Green_FlyingBlood", 0, 0, 10, 0, 0)
-
-		BTC1 ABC 10 A_Chase
-		TNT1 A 0 A_SpawnItemEx("Green_FlyingBlood", 0, 0, 10, 0, 0)
-		BTC1 D 10 A_Pain
-		TNT1 A 0 A_SpawnItemEx("GreenGuts", 0, 0, 5, 0, 0)
-
-		TNT1 A 0 A_GiveInventory("DeathTimer", 1)
-		TNT1 A 0 A_JumpIfInventory("DeathTimer", 8, "GotoDeath")
-		Loop
-
-		GotoDeath:
-		TNT1 A 0
-		TNT1 A 0 A_NoBlocking
-		Goto Death
-		Death:
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus", 0, 0, 15, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
-		TNT1 A 0 A_Pain
-		TNT1 A 0 A_SpawnItem ("DeadKnightHalfUp")
-		Stop
-
-		Death.Stomp:
-		Death.SSG:
-		XDeath:
-		TNT1 AAAAAA 0 bright A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
-		TNT1 AAAAAA 0 bright A_CustomMissile ("XDeath1Green", 5, 0, random (0, 360), 2, random (30, 180))
-		TNT1 AA 0 bright A_CustomMissile ("XDeath2Green", 55, 0, random (0, 360), 2, random (30, 180))
-		TNT1 AA 0 bright A_CustomMissile ("XDeath3Green", 55, 0, random (0, 360), 2, random (30, 180))
-		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus", 0, 0, 15, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
-		TNT1 A 0 A_SpawnItem ("CrushedRemains")
-		TNT1 A 1
-		TNT1 A 1 A_XScream
-		TNT1 A 1 A_NoBlocking
 		TNT1 A -1
 		Stop
 	}
