@@ -559,6 +559,11 @@ ACTOR Marine_BFG10K: Marine_Rifle
 		M10K E 3 A_Pain
 		Goto FollowPlayer
 
+	Pain.Kick:
+	Pain.ExtremePunches:
+		M10K E 3 A_Pain
+		Goto See
+
 	Pain.Avoid:
 		TNT1 A 0
 		TNT1 A 0 A_Jump(192, "RollLeft", "RollRight")

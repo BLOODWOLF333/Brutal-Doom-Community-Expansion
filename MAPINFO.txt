@@ -214,66 +214,78 @@ skill Hard
    mustconfirm = "If this is a custom level and/or it's your first time playing it, you should definitely choose an easier difficulty. Press Enter to Confirm"
 }
 
-skill HyperHard
+skill Nightmare
 {
-   AmmoFactor = 1
+   AmmoFactor = 2
    FastMonsters
    DisableCheats
    RespawnTime = 20
    SpawnFilter = Nightmare
    name = "Nightmare!"
-   mustconfirm = "Enemies are much more aggressive, and respawn after 20 seconds. Press Enter to Confirm"
-}
-
-//6
-skill BlackMetal
-{
-   AmmoFactor = 1
-   DamageFactor = 1.5
-   MonsterHealth = 0.80
-   FastMonsters
-   //ACSReturn = 31
-   SpawnFilter = Nightmare
-   name = "Black Metal"
-   TextColor = "Black"
-   mustconfirm = "You take 50% more damage. Enemies are much more aggressive but have 20% less hit points. You move 25% faster. Press Enter to Confirm"
+   mustconfirm = "Fastmonsters, 20 second respawn, double ammo. Press Enter to Confirm"
 }
 
 skill easy2
 {
    AmmoFactor = 1
-   DamageFactor = 0.66
+   DamageFactor = 0.67
    SpawnFilter = easy
    name = "(easier) I'm Too Young To Die"
-   mustconfirm = "Just regular ITYD, but with 33% monster damage reduction for people that didn't enjoy the new damage rebalancing and makes the difficulty similar to v20b"
+   TextColor = "Green"
+   mustconfirm = "Just regular ITYTD, but with 33% monster damage reduction for people that didn't enjoy the new damage rebalancing and makes the difficulty similar to v20b"
 }
 
 skill normal2
 {
    AmmoFactor = 1
-   DamageFactor = 0.66
+   DamageFactor = 0.67
    SpawnFilter = normal
    name = "(easier) Hurt Me Plenty!"
-   mustconfirm = "Just regular HTMP, but with 33% monster damage reduction for people that didn't enjoy the new damage rebalancing and makes the difficulty similar to v20b"
+   TextColor = "Green"
+   mustconfirm = "Just regular HMP, but with 33% monster damage reduction for people that didn't enjoy the new damage rebalancing and makes the difficulty similar to v20b"
 }
 
 skill Hard2
 {
    AmmoFactor = 1
-   DamageFactor = 0.66
+   DamageFactor = 0.67
    SpawnFilter = Hard
    name = "(easier) Ultra Violence"
+   TextColor = "Green"
    mustconfirm = "Just regular UV, but with 33% monster damage reduction for people that didn't enjoy the new damage rebalancing and makes the difficulty similar to v20b"
+}
+
+skill Nightmare2
+{
+   AmmoFactor = 2
+   DamageFactor = 0.67
+   FastMonsters
+   DisableCheats
+   RespawnTime = 20
+   SpawnFilter = Nightmare
+   name = "(easier) Nightmare!"
+   TextColor = "Green"
+   mustconfirm = "Just regular Nightmare, but with 33% monster damage reduction for people that didn't enjoy the new damage rebalancing and makes the difficulty similar to v20b"
+}
+
+skill BlackMetal
+{
+   AmmoFactor = 1
+   DamageFactor = 1.5
+   MonsterHealth = 0.67
+   FastMonsters
+   ACSReturn = 31
+   SpawnFilter = Hard
+   name = "Black Metal"
+   TextColor = "Black"
+   mustconfirm = "Damage taken increased 50%, Fastmonsters, UV monster population, 67% monster health, and you move 25% faster. Press Enter to Confirm"
 }
 
 skill Realism1
 {
-   DamageFactor = 7.0
+   DamageFactor = 2.0
    MonsterHealth = 0.5
-   FriendlyHealth = 0.5
-   ACSReturn = 32
-   //FastMonsters
-   //DisableCheats
+   ACSReturn = 31
    SpawnFilter = easy
    name = "Easy Realism Mode"
    ReplaceActor = "ClipBox", "Clip"
@@ -296,17 +308,14 @@ skill Realism1
    ReplaceActor = "AttackHelicopter", "AttackHelicopterRealism"
    ReplaceActor = "Mech", "MechRealism"
    TextColor = "Gray"
-   mustconfirm = "You take 700% more damage and enemies have 50% hit points. Press Enter to Confirm"
+   mustconfirm = "Damage taken increased 100%, ITYTD monster population, 50% monster health, and you move 25% faster. Press Enter to Confirm"
 }
 
 skill Realism2
 {
-   DamageFactor = 7.0
+   DamageFactor = 2.0
    MonsterHealth = 0.5
-   FriendlyHealth = 0.5
-   ACSReturn = 32
-   //FastMonsters
-   //DisableCheats
+   ACSReturn = 31
    SpawnFilter = normal
    name = "Normal Realism Mode"
    ReplaceActor = "ClipBox", "Clip"
@@ -329,17 +338,14 @@ skill Realism2
    ReplaceActor = "AttackHelicopter", "AttackHelicopterRealism"
    ReplaceActor = "Mech", "MechRealism"
    TextColor = "Gray"
-   mustconfirm = "You take 700% more damage and enemies have half hit points. Press Enter to Confirm"
+   mustconfirm = "Damage taken increased 100%, HMP monster population, 50% monster health and you move 25% faster. Press Enter to Confirm"
 }
 
 skill Realism3
 {
-   DamageFactor = 7.0
+   DamageFactor = 2.0
    MonsterHealth = 0.5
-   FriendlyHealth = 0.5
-   ACSReturn = 32
-   //FastMonsters
-   //DisableCheats
+   ACSReturn = 31
    SpawnFilter = hard
    name = "Hard Realism Mode"
    ReplaceActor = "ClipBox", "Clip"
@@ -362,16 +368,17 @@ skill Realism3
    ReplaceActor = "AttackHelicopter", "AttackHelicopterRealism"
    ReplaceActor = "Mech", "MechRealism"
    TextColor = "Gray"
-   mustconfirm = "You take 700% more damage and enemies have half hit points. UV enemy count. Press Enter to Confirm"
+   mustconfirm = "Damage taken increased 100%, UV monster population, 50% monster health and you move 25% faster. Press Enter to Confirm"
 }
 
 skill Realism4
 {
-   DamageFactor = 7.0
-   MonsterHealth = 0.5
-   FriendlyHealth = 0.5
-   ACSReturn = 32
-   SpawnFilter = hard
+   AmmoFactor = 2
+   DamageFactor = 2.0
+    MonsterHealth = 0.5
+   ACSReturn = 31
+   SpawnFilter = nightmare
+   FastMonsters
    RespawnTime = 60
    name = "Hardcore Realism Mode"
    ReplaceActor = "ClipBox", "Clip"
@@ -394,18 +401,15 @@ skill Realism4
    ReplaceActor = "AttackHelicopter", "AttackHelicopterRealism"
    ReplaceActor = "Mech", "MechRealism"
    TextColor = "Gray"
-   mustconfirm = "You take 700% more damage and enemies have half hit points. UV enemy count. And enemies respawn after 60 seconds. Press Enter to Confirm"
+   mustconfirm = "Damage taken increased 100%, Double ammo, Fastmonsters, Nightmare monster population, 50% monster health, 60 second respawn, and you move 25% faster. Press Enter to Confirm"
 }
 
 skill Realism5
 {
-   DamageFactor = 7.0
-   MonsterHealth = 0.5
-   FriendlyHealth = 0.5
-   ACSReturn = 32
+   DamageFactor = 3.0
+   MonsterHealth = 1.0
+   ACSReturn = 31
    SpawnFilter = hard
-   FastMonsters
-   RespawnTime = 60
    name = "Brutal Realism Mode"
    ReplaceActor = "ClipBox", "Clip"
    ReplaceActor = "RocketBox", "RocketAmmo"
@@ -427,7 +431,7 @@ skill Realism5
    ReplaceActor = "AttackHelicopter", "AttackHelicopterRealism"
    ReplaceActor = "Mech", "MechRealism"
    TextColor = "Gray"
-   mustconfirm = "Only the most elite of the players can deal with this. 700% monster damage, 50% monster health, faster projectiles, less ammo, enemies respawn in 60 sec. Run it with Tactical mode and you got an arcadey Hideous Destructor. Press Enter to Confirm"
+   mustconfirm = "Damage taken increased 200%, UV monster population, 100% monster health, and you move 25% faster. Press Enter to Confirm"
 }
 
 map MAP13B lookup "HUSTR_13"
