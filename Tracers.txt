@@ -100,14 +100,13 @@ Actor MonsterMinigunTracer: MonsterTracer//Minigun
 
 Actor MeatShieldTracer: Tracer
 {
-+BLOODSPLATTER
 -DONTSPLASH
 +MTHRUSPECIES
 speed 120
 Species "Marines"
 damage (random(14,14))
 Decal "Bulletchip"
-DamageType FriendBullet
+DamageType Minor
 States
 {
 Death:
@@ -120,28 +119,28 @@ Spawn:
 }
 }
 
-Actor MarineTracer: ZombiemanTracer
+Actor MarineTracer: Tracer
 {
 	damage (random(16,16))
 	DamageType FriendBullet
 	Species "Marines"
 }
 
-Actor MarineWeakTracer: MonsterTracer
+Actor MarineWeakTracer: Tracer
 {
 	damage (random(14,14))
 	DamageType FriendBullet
 	Species "Marines"
 }
 
-Actor MarineShotgunTracer: ShotgunGuyTracer
+Actor MarineShotgunTracer: Tracer
 {
 	damage (random(10,10))
 	damagetype FriendBullet
 	Species "Marines"
 }
 
-Actor MarineMinigunTracer: MonsterMinigunTracer
+Actor MarineMinigunTracer: Tracer
 {
 	damage (random(12,12))
 	DamageType FriendBullet

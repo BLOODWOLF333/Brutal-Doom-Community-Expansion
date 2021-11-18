@@ -210,9 +210,7 @@ Actor UnmakerLaserPuff : HitPuff
 	states
 	{
 	Spawn:
-	XDeath:
-	Crash:
-	Death:
+	Melee:
 		L2NR A 1 BRIGHT
 		TNT1 A 0 A_Explode(20, 32, 1, 0, 1)
 		EXPL A 0 A_CustomMissile ("FlamethrowerFireParticles", 6, 0, random (0, 360), 2, random (10, 90))
@@ -230,9 +228,7 @@ Actor UnmakerLaserPuff2: HitPuff
 	states
 	{
 	Spawn:
-	Death:
-	Crash:
-	XDeath:
+	Melee:
 		L2NR A 1 BRIGHT
 		TNT1 A 0 A_Explode(20, 32, 1, 0, 1)
 		EXPL A 0 A_CustomMissile ("FlamethrowerFireParticles", 6, 0, random (0, 360), 2, random (10, 90))
