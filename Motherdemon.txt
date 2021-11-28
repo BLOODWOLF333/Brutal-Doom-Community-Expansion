@@ -74,7 +74,7 @@ actor Motherdemon 2548
 	TNT1 A 0 A_Stop
     MOTH E 4 A_FaceTarget
 	TNT1 A 0 A_Jump(96, "SuperAttack")
-	MOTH I 4 BRIGHT
+	MOTH I 4
 	MOTH J 0 A_CustomMissile ("MotherFire",4,0,0)
     MOTH J 0 A_CustomMissile ("MotherFire",4,0,30)
     MOTH J 0 A_CustomMissile ("MotherFire",4,0,-30)
@@ -84,21 +84,21 @@ actor Motherdemon 2548
     MOTH J 0 A_CustomMissile ("MotherBall",120,51,-15)
     MOTH J 0 A_CustomMissile ("MotherBall",84,-67,15)
     MOTH J 0 A_CustomMissile ("MotherBall",120,-51,15)
-	MOTH J 32 BRIGHT A_FaceTarget
-    MOTH I 4 BRIGHT
+	MOTH J 32 A_FaceTarget
+    MOTH I 4
     goto SeeContinue
 
  SuperAttack:
 	TNT1 A 0
-	MOTH F 4 BRIGHT A_FaceTarget
+	MOTH F 4 A_FaceTarget
 	MOTH G 0 A_CustomMissile ("SuperMotherBall",68)
 	TNT1 A 0 A_CustomMissile("Alerter",68)
-	MOTH G 16 BRIGHT A_FaceTarget
-	MOTH F 4 BRIGHT
+	MOTH G 16 A_FaceTarget
+	MOTH F 4
 	goto SeeContinue
 
   Heal:
-	MOTH H 10 BRIGHT
+	MOTH H 10
 	Goto SeeContinue
 
   Pain:

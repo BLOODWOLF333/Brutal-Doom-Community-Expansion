@@ -8,9 +8,9 @@ Actor CapturedMarine Replaces Blursphere
     States
 		{
 			Spawn:
-			CAPT A 0
+			CAPM A 0
 			TNT1 A 0 ACS_NamedExecuteAlways("BDDisableFriendlyMarines")
-			CAPT A 2
+			CAPM A 2
 			TNT1 A 0 A_SpawnItemEx("EvidenceCheckerInvisibility", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
 			TNT1 A 0 A_JumPIfInventory("Clip2", 1, "Invisibility")
 			TNT1 A 0 A_Jump(1, "FlameMarine")
@@ -107,8 +107,12 @@ Actor CapturedMarine Replaces Blursphere
 		}
 }
 
-ACTOR CapturedMarineBase
+ACTOR CapturedMarineBase 9112
 {
+	//$Category BD Friendly Marines
+	//$Icon "marine"
+	//$Colour rgb(0,255,0)
+	//$Sprite CAPMA0
     Radius 24
     Height 48
     Speed 0
@@ -155,26 +159,26 @@ ACTOR CapturedMarineBase
 
 	Spawn1:
         TNT1 A 0 A_CheckSight("Spawn2")
-		CAPT A 1 A_Stop
-        CAPT ABCB 15 A_Stop
+		CAPM A 1 A_Stop
+        CAPM ABCB 15 A_Stop
 		TNT1 A 0 A_CustomMissile ("OrderTitle3", 50, 0, 0, 2, 90)
         TNT1 A 0 A_SpawnItem ("KillMe")
         Loop
 
     Spawn2:
-        CAPT A 5
+        CAPM A 5
         Goto Spawn1
 
 	Death.Use:
 		TNT1 A 0 A_Playsound ("MRNAW")
-        CAPT F 12
+        CAPM F 12
         TNT1 A 0 A_NoBlocking
 		TNT1 A 0 ACS_NamedExecute("AddMarine")
 		TNT1 A 0 A_SpawnItemEx ("Marine_Rifle",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        CAPT N 1
+        CAPM N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPT N 0
+        CAPM N 0
         Stop
 
 	Conversion:
@@ -183,7 +187,7 @@ ACTOR CapturedMarineBase
 		TNT1 A 0 A_SpawnItem("teleportfog")
         TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPT N 0
+        CAPM N 0
         Stop
 
 Pain:
@@ -194,16 +198,16 @@ Pain.SSG:
 Pain.Minigun:
 Pain.ImpFatalityMarine:
 Pain.Rip:
-        CAPT P 1
+        CAPM P 1
 		TNT1 A 0 A_Stop
-        CAPT P 5 A_Pain
+        CAPM P 5 A_Pain
 		TNT1 A 0 A_JumpIfInTargetInventory("EnemyIsArchvile", 1, "Conversion")
 		TNT1 A 0 A_Stop
         Goto AfterPain
 
 		AfterPain:
-		CAPT A 1 A_Stop
-        CAPT ABCB 15 A_Stop
+		CAPM A 1 A_Stop
+        CAPM ABCB 15 A_Stop
 		TNT1 A 0 A_CustomMissile ("OrderTitle3", 50, 0, 0, 2, 90)
         TNT1 A 0 A_SpawnItem ("KillMe")
         Loop
@@ -532,8 +536,12 @@ Pain.Rip:
     }
 }
 
-ACTOR CapturedMarineFist: CapturedMarineBase
+ACTOR CapturedMarineFist: CapturedMarineBase 9113
 {
+	//$Category BD Friendly Marines
+	//$Icon "marine"
+	//$Colour rgb(0,255,0)
+	//$Sprite CAPMA0
 	Health 200
 	Translation  "112:127=[0,255,0]:[0,0,0]"
 	States
@@ -541,20 +549,24 @@ ACTOR CapturedMarineFist: CapturedMarineBase
 	Death.Use:
 		TNT1 A 0 A_Playsound ("MRNAW")
 		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
-        CAPT F 12
+        CAPM F 12
         TNT1 A 0 A_NoBlocking
 		TNT1 A 0 ACS_NamedExecute("AddMarineFist")
 		TNT1 A 0 A_SpawnItemEx ("Marine_Fist",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        CAPT N 1
+        CAPM N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPT N 0
+        CAPM N 0
         Stop
     }
 }
 
-ACTOR CapturedMarineSaw: CapturedMarineBase
+ACTOR CapturedMarineSaw: CapturedMarineBase 9114
 {
+	//$Category BD Friendly Marines
+	//$Icon "marine"
+	//$Colour rgb(0,255,0)
+	//$Sprite CAPMA0
 	Health 200
 	Translation "112:127=[0,255,0]:[0,0,0]", "48:76=[205,133,63]:[0,0,0]"
 	States
@@ -562,20 +574,24 @@ ACTOR CapturedMarineSaw: CapturedMarineBase
 	Death.Use:
 		TNT1 A 0 A_Playsound ("MRNAW")
 		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
-        CAPT F 12
+        CAPM F 12
         TNT1 A 0 A_NoBlocking
 		TNT1 A 0 ACS_NamedExecute("AddMarineSaw")
 		TNT1 A 0 A_SpawnItemEx ("Marine_Saw",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        CAPT N 1
+        CAPM N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPT N 0
+        CAPM N 0
         Stop
     }
 }
 
-ACTOR CapturedMarineSMG: CapturedMarineBase
+ACTOR CapturedMarineSMG: CapturedMarineBase 9115
 {
+	//$Category BD Friendly Marines
+	//$Icon "marine"
+	//$Colour rgb(0,255,0)
+	//$Sprite CAPMA0
 	Health 185
 	Translation "112:127=[255,224,0]:[0,24,0]"
 	States
@@ -583,20 +599,24 @@ ACTOR CapturedMarineSMG: CapturedMarineBase
 	Death.Use:
 		TNT1 A 0 A_Playsound ("MRNAW")
 		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
-        CAPT F 12
+        CAPM F 12
         TNT1 A 0 A_NoBlocking
 		TNT1 A 0 ACS_NamedExecute("AddMarineSMG")
 		TNT1 A 0 A_SpawnItemEx ("Marine_SMG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        CAPT N 1
+        CAPM N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPT N 0
+        CAPM N 0
         Stop
     }
 }
 
-ACTOR CapturedMarineShotgun: CapturedMarineBase
+ACTOR CapturedMarineShotgun: CapturedMarineBase 9116
 {
+	//$Category BD Friendly Marines
+	//$Icon "marine"
+	//$Colour rgb(0,255,0)
+	//$Sprite CAPMA0
 	Health 175
 	Translation "112:127=[170,170,170]:[0,0,0]"
 	States
@@ -604,20 +624,24 @@ ACTOR CapturedMarineShotgun: CapturedMarineBase
 	Death.Use:
 		TNT1 A 0 A_Playsound ("MRNAW")
 		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
-        CAPT F 12
+        CAPM F 12
         TNT1 A 0 A_NoBlocking
 		TNT1 A 0 ACS_NamedExecute("AddMarineShotgun")
 		TNT1 A 0 A_SpawnItemEx ("Marine_Shotgun",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        CAPT N 1
+        CAPM N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPT N 0
+        CAPM N 0
         Stop
     }
 }
 
-ACTOR CapturedMarineSSG: CapturedMarineBase
+ACTOR CapturedMarineSSG: CapturedMarineBase 9117
 {
+	//$Category BD Friendly Marines
+	//$Icon "marine"
+	//$Colour rgb(0,255,0)
+	//$Sprite CAPMA0
 	Health 175
 	Translation "112:127=[170,170,170]:[0,0,0]", "48:76=[205,133,63]:[0,0,0]"
 	States
@@ -625,20 +649,24 @@ ACTOR CapturedMarineSSG: CapturedMarineBase
 	Death.Use:
 		TNT1 A 0 A_Playsound ("MRNAW")
 		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
-        CAPT F 12
+        CAPM F 12
         TNT1 A 0 A_NoBlocking
 		TNT1 A 0 ACS_NamedExecute("AddMarineSSG")
 		TNT1 A 0 A_SpawnItemEx ("Marine_SSG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        CAPT N 1
+        CAPM N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPT N 0
+        CAPM N 0
         Stop
     }
 }
 
-ACTOR CapturedMarineMinigun: CapturedMarineBase
+ACTOR CapturedMarineMinigun: CapturedMarineBase 9118
 {
+	//$Category BD Friendly Marines
+	//$Icon "marine"
+	//$Colour rgb(0,255,0)
+	//$Sprite CAPMA0
 	Health 160
 	Translation "112:127=[220,0,0]:[0,0,0]", "48:76=[205,133,63]:[0,0,0]"
 	States
@@ -646,20 +674,24 @@ ACTOR CapturedMarineMinigun: CapturedMarineBase
 	Death.Use:
 		TNT1 A 0 A_Playsound ("MRNAW")
 		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
-        CAPT F 12
+        CAPM F 12
         TNT1 A 0 A_NoBlocking
 		TNT1 A 0 ACS_NamedExecute("AddMarineMinigun")
 		TNT1 A 0 A_SpawnItemEx ("Marine_Minigun",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        CAPT N 1
+        CAPM N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPT N 0
+        CAPM N 0
         Stop
     }
 }
 
-ACTOR CapturedMarineGrenade: CapturedMarineBase
+ACTOR CapturedMarineGrenade: CapturedMarineBase 9119
 {
+	//$Category BD Friendly Marines
+	//$Icon "marine"
+	//$Colour rgb(0,255,0)
+	//$Sprite CAPMA0
 	Health 150
 	Translation "112:127=[205,133,63]:[0,0,0]", "48:76=[205,133,63]:[0,0,0]"
 	States
@@ -667,41 +699,24 @@ ACTOR CapturedMarineGrenade: CapturedMarineBase
 	Death.Use:
 		TNT1 A 0 A_Playsound ("MRNAW")
 		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
-        CAPT F 12
+        CAPM F 12
         TNT1 A 0 A_NoBlocking
 		TNT1 A 0 ACS_NamedExecute("AddMarineGrenade")
 		TNT1 A 0 A_SpawnItemEx ("Marine_Grenade",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        CAPT N 1
+        CAPM N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPT N 0
+        CAPM N 0
         Stop
     }
 }
 
-ACTOR CapturedMarineHML: CapturedMarineBase
+ACTOR CapturedMarineRocket: CapturedMarineBase 9120
 {
-	Health 110
-	Translation "112:127=[60,60,60]:[0,0,0]"
-	States
-	{
-	Death.Use:
-		TNT1 A 0 A_Playsound ("MRNAW")
-		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
-        CAPT F 12
-        TNT1 A 0 A_NoBlocking
-		TNT1 A 0 ACS_NamedExecute("AddMarineHML")
-		TNT1 A 0 A_SpawnItemEx ("Marine_HML",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        CAPT N 1
-		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
-		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPT N 0
-        Stop
-    }
-}
-
-ACTOR CapturedMarineRocket: CapturedMarineBase
-{
+	//$Category BD Friendly Marines
+	//$Icon "marine"
+	//$Colour rgb(0,255,0)
+	//$Sprite CAPMA0
 	Health 150
 	Translation "112:127=[205,133,63]:[0,0,0]"
 	States
@@ -709,20 +724,24 @@ ACTOR CapturedMarineRocket: CapturedMarineBase
 	Death.Use:
 		TNT1 A 0 A_Playsound ("MRNAW")
 		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
-        CAPT F 12
+        CAPM F 12
         TNT1 A 0 A_NoBlocking
 		TNT1 A 0 ACS_NamedExecute("AddMarineRocket")
 		TNT1 A 0 A_SpawnItemEx ("Marine_Rocket",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        CAPT N 1
+        CAPM N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPT N 0
+        CAPM N 0
         Stop
     }
 }
 
-ACTOR CapturedMarinePlasmagun: CapturedMarineBase
+ACTOR CapturedMarinePlasmagun: CapturedMarineBase 9121
 {
+	//$Category BD Friendly Marines
+	//$Icon "marine"
+	//$Colour rgb(0,255,0)
+	//$Sprite CAPMA0
 	Health 135
 	translation "112:127=[0,128,192]:[0,0,0]"
 	States
@@ -730,20 +749,24 @@ ACTOR CapturedMarinePlasmagun: CapturedMarineBase
 	Death.Use:
 		TNT1 A 0 A_Playsound ("MRNAW")
 		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
-        CAPT F 12
+        CAPM F 12
         TNT1 A 0 A_NoBlocking
 		TNT1 A 0 ACS_NamedExecute("AddMarinePlasmagun")
 		TNT1 A 0 A_SpawnItemEx ("Marine_Plasmagun",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        CAPT N 1
+        CAPM N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPT N 0
+        CAPM N 0
         Stop
     }
 }
 
-ACTOR CapturedMarineRailgun: CapturedMarineBase
+ACTOR CapturedMarineRailgun: CapturedMarineBase 9122
 {
+	//$Category BD Friendly Marines
+	//$Icon "marine"
+	//$Colour rgb(0,255,0)
+	//$Sprite CAPMA0
 	Health 135
 	translation "112:127=[0,128,192]:[0,0,0]", "48:76=[205,133,63]:[0,0,0]"
 	States
@@ -751,20 +774,24 @@ ACTOR CapturedMarineRailgun: CapturedMarineBase
 	Death.Use:
 		TNT1 A 0 A_Playsound ("MRNAW")
 		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
-        CAPT F 12
+        CAPM F 12
         TNT1 A 0 A_NoBlocking
 		TNT1 A 0 ACS_NamedExecute("AddMarineRailgun")
 		TNT1 A 0 A_SpawnItemEx ("Marine_Railgun",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        CAPT N 1
+        CAPM N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPT N 0
+        CAPM N 0
         Stop
     }
 }
 
-ACTOR CapturedMarineBFG: CapturedMarineBase
+ACTOR CapturedMarineBFG: CapturedMarineBase 9123
 {
+	//$Category BD Friendly Marines
+	//$Icon "marine"
+	//$Colour rgb(0,255,0)
+	//$Sprite CAPMA0
 	Health 125
 	translation "112:127=[0,140,0]:[0,0,0]", "48:76=[205,133,63]:[0,0,0]"
 	States
@@ -772,20 +799,24 @@ ACTOR CapturedMarineBFG: CapturedMarineBase
 	Death.Use:
 		TNT1 A 0 A_Playsound ("MRNAW")
 		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
-        CAPT F 12
+        CAPM F 12
         TNT1 A 0 A_NoBlocking
 		TNT1 A 0 ACS_NamedExecute("AddMarineBFG")
 		TNT1 A 0 A_SpawnItemEx ("Marine_BFG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        CAPT N 1
+        CAPM N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPT N 0
+        CAPM N 0
         Stop
     }
 }
 
-ACTOR CapturedMarineBFG10K: CapturedMarineBase
+ACTOR CapturedMarineBFG10K: CapturedMarineBase 9124
 {
+	//$Category BD Friendly Marines
+	//$Icon "marine"
+	//$Colour rgb(0,255,0)
+	//$Sprite CAPMA0
 	Health 125
 	translation "112:127=[0,140,0]:[0,0,0]"
 	States
@@ -793,20 +824,49 @@ ACTOR CapturedMarineBFG10K: CapturedMarineBase
 	Death.Use:
 		TNT1 A 0 A_Playsound ("MRNAW")
 		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
-        CAPT F 12
+        CAPM F 12
         TNT1 A 0 A_NoBlocking
 		TNT1 A 0 ACS_NamedExecute("AddMarineBFG10K")
 		TNT1 A 0 A_SpawnItemEx ("Marine_BFG10K",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        CAPT N 1
+        CAPM N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPT N 0
+        CAPM N 0
         Stop
     }
 }
 
-ACTOR CapturedMarineFlame: CapturedMarineBase
+ACTOR CapturedMarineHML: CapturedMarineBase 9125
 {
+	//$Category BD Friendly Marines
+	//$Icon "marine"
+	//$Colour rgb(0,255,0)
+	//$Sprite CAPMA0
+	Health 110
+	Translation "112:127=[60,60,60]:[0,0,0]"
+	States
+	{
+	Death.Use:
+		TNT1 A 0 A_Playsound ("MRNAW")
+		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
+        CAPM F 12
+        TNT1 A 0 A_NoBlocking
+		TNT1 A 0 ACS_NamedExecute("AddMarineHML")
+		TNT1 A 0 A_SpawnItemEx ("Marine_HML",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        CAPM N 1
+		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
+        CAPM N 0
+        Stop
+    }
+}
+
+ACTOR CapturedMarineFlame: CapturedMarineBase 9126
+{
+	//$Category BD Friendly Marines
+	//$Icon "marine"
+	//$Colour rgb(0,255,0)
+	//$Sprite CAPMA0
 	Health 100
 	Translation "112:127=[255,168,0]:[64,12,0]", "48:76=[205,133,63]:[0,0,0]"
 	States
@@ -814,14 +874,14 @@ ACTOR CapturedMarineFlame: CapturedMarineBase
 	Death.Use:
 		TNT1 A 0 A_Playsound ("MRNAW")
 		TNT1 A 0 A_ChangeFLag ("NOPAIN", 1)
-        CAPT F 12
+        CAPM F 12
         TNT1 A 0 A_NoBlocking
 		TNT1 A 0 ACS_NamedExecute("AddMarineFlame")
 		TNT1 A 0 A_SpawnItemEx ("Marine_Flame",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        CAPT N 1
+        CAPM N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPT N 0
+        CAPM N 0
         Stop
     }
 }
@@ -1068,8 +1128,8 @@ Mass 99999999
 States
 {
 Spawn:
-        CAPT N 1 A_Stop
-        CAPT N -1
+        CAPM N 1 A_Stop
+        CAPM N -1
         Stop
 }}
 
