@@ -247,6 +247,7 @@ ACTOR Marine_Saw: Marine_Rifle
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
 		MAR1 D 6 A_Look
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
+		TNT1 A 0 A_JumpIfHealthLower(200,"Heal")
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 0)
 		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 0)
@@ -254,7 +255,6 @@ ACTOR Marine_Saw: Marine_Rifle
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
 		MAR1 D 6 A_LookEx(0,0,0,0,360,"FollowPlayer")
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
-		TNT1 A 0 HealThing(1)
 		Goto FindPlayer
 
 	Waits2:
@@ -271,6 +271,7 @@ ACTOR Marine_Saw: Marine_Rifle
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
 		MAR1 D 6 A_Look
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
+		TNT1 A 0 A_JumpIfHealthLower(200,"Heal")
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 0)
 		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 0)
@@ -278,7 +279,19 @@ ACTOR Marine_Saw: Marine_Rifle
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
 		MAR1 D 6 A_LookEx(0,0,0,0,360,"FollowPlayer")
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
+		Goto FindPlayer
+
+	Heal:
+		TNT1 A 0
 		TNT1 A 0 HealThing(1)
+		TNT1 A 0 A_CustomMissile ("OrderTitle4", 50, 0, 0, 2, 90)
+		TNT1 A 0 A_ClearTarget
+		TNT1 A 0 A_ChangeFLag("FRIENDLY", 0)
+		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 0)
+		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
+		MAR1 D 6 A_LookEx(0,0,0,0,360,"FollowPlayer")
+		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
 		Goto FindPlayer
 
 	Missile:
@@ -826,7 +839,22 @@ ACTOR SawMarineGuarding: Marine_Saw
 		TNT1 A 0 A_GiveInventory("TargetIsAMarine")
 		MAR1 A 6 A_Look
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
+		MAR1 A 6 A_Look
+		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
+		MAR1 A 6 A_Look
+		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
+		MAR1 A 6 A_Look
+		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
+		MAR1 A 6 A_Look
+		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
+		TNT1 A 0 A_JumpIfHealthLower(200,"Heal")
 		Loop
+
+	Heal:
+		TNT1 A 0
+		TNT1 A 0 HealThing(1)
+		TNT1 A 0 A_CustomMissile ("OrderTitle4", 50, 0, 0, 2, 90)
+		Goto Spawn
 
 	FollowPlayer:
 	See:

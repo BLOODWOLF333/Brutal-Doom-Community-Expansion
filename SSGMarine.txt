@@ -53,7 +53,7 @@ ACTOR Marine_SSG: Marine_Rifle
 		TNT1 A 0 A_ChangeFlag("NOBLOCKMAP",1)
 		TNT1 A 0 A_CustomMissile ("OrderTitle2", 50, 0, 0, 2, 90)
 		TNT1 A 0 A_PlaySound("MarineGuard", 2)
-		PLA9 A 30
+		MSSG A 30
 		TNT1 A 0 A_SpawnItemEx ("SSGMarineGuarding",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		Stop
 
@@ -64,7 +64,7 @@ ACTOR Marine_SSG: Marine_Rifle
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
 		TNT1 A 0 A_GiveInventory("TargetIsAMarine")
-		PLA9 A 4 A_Look
+		MSSG A 4 A_Look
 		Goto FindPlayer
 
 	ForgetTarget:
@@ -223,13 +223,13 @@ ACTOR Marine_SSG: Marine_Rifle
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
 		MSSG D 8 A_Look
+		TNT1 A 0 A_JumpIfHealthLower(175,"Heal")
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 0)
 		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
 		MSSG D 8 A_LookEx(0,0,0,0,360,"FollowPlayer")
-		TNT1 A 0 HealThing(1)
 		Goto FindPlayer
 
 	Waits2:
@@ -244,13 +244,13 @@ ACTOR Marine_SSG: Marine_Rifle
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
 		MSSG D 8 A_Look
+		TNT1 A 0 A_JumpIfHealthLower(175,"Heal")
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 0)
 		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
 		MSSG D 8 A_LookEx(0,0,0,0,360,"FollowPlayer")
-		TNT1 A 0 HealThing(1)
 		Goto FindPlayer
 
 	Waits3:
@@ -267,13 +267,25 @@ ACTOR Marine_SSG: Marine_Rifle
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
 		MSSG D 8 A_Look
+		TNT1 A 0 A_JumpIfHealthLower(175,"Heal")
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 0)
 		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
 		MSSG D 8 A_LookEx(0,0,0,0,360,"FollowPlayer")
+		Goto FindPlayer
+
+	Heal:
+		TNT1 A 0
 		TNT1 A 0 HealThing(1)
+		TNT1 A 0 A_CustomMissile ("OrderTitle4", 50, 0, 0, 2, 90)
+		TNT1 A 0 A_ClearTarget
+		TNT1 A 0 A_ChangeFLag("FRIENDLY", 0)
+		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 0)
+		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
+		MSSG D 8 A_LookEx(0,0,0,0,360,"FollowPlayer")
 		Goto FindPlayer
 
 	GiveAmmo:
@@ -827,7 +839,7 @@ ACTOR SSGMarineGuarding: Marine_SSG
 		TNT1 A 0 A_ChangeFlag("NOBLOCKMAP",1)
 		TNT1 A 0 A_CustomMissile ("OrderTitle1", 50, 0, 0, 2, 90)
 		TNT1 A 0 A_PlaySound("MarineGuard", 2)
-		PLA9 A 30
+		MSSG D 30
 		TNT1 A 0 A_SpawnItemEx ("Marine_SSG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		Stop
 
@@ -839,14 +851,21 @@ ACTOR SSGMarineGuarding: Marine_SSG
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
 		TNT1 A 0 A_GiveInventory("TargetIsAMarine")
-		PLA9 A 4 A_Look
+		MSSG DDDDDDDD 4 A_Look
+		TNT1 A 0 A_JumpIfHealthLower(175,"Heal")
 		Loop
+
+	Heal:
+		TNT1 A 0
+		TNT1 A 0 HealThing(1)
+		TNT1 A 0 A_CustomMissile ("OrderTitle4", 50, 0, 0, 2, 90)
+		Goto Spawn
 
 	FollowPlayer:
 	See:
 		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 1)
 		TNT1 A 0 A_ChangeFlag("SOLID", 0)
-		MSSG AAAAAAAAAADDDDDDDDDD 1 A_Chase
+		MSSG DDDDDDDDDDDD 1 A_Chase
 		TNT1 A 0 A_ClearTarget
 		Goto Spawn
 
