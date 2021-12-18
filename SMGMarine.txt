@@ -223,13 +223,13 @@ ACTOR Marine_SMG: Marine_Rifle
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
 		MRMP D 8 A_Look
+		TNT1 A 0 A_JumpIfHealthLower(185,"Heal")
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 0)
 		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
 		MRMP D 8 A_LookEx(0,0,0,0,360,"FollowPlayer")
-		TNT1 A 0 HealThing(1)
 		Goto FindPlayer
 
 	Waits2:
@@ -244,13 +244,13 @@ ACTOR Marine_SMG: Marine_Rifle
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
 		MRMP D 8 A_Look
+		TNT1 A 0 A_JumpIfHealthLower(185,"Heal")
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 0)
 		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
 		MRMP D 8 A_LookEx(0,0,0,0,360,"FollowPlayer")
-		TNT1 A 0 HealThing(1)
 		Goto FindPlayer
 
 	Waits3:
@@ -267,13 +267,25 @@ ACTOR Marine_SMG: Marine_Rifle
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
 		MRMP D 8 A_Look
+		TNT1 A 0 A_JumpIfHealthLower(185,"Heal")
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 0)
 		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
 		MRMP D 8 A_LookEx(0,0,0,0,360,"FollowPlayer")
+		Goto FindPlayer
+
+	Heal:
+		TNT1 A 0
 		TNT1 A 0 HealThing(1)
+		TNT1 A 0 A_CustomMissile ("OrderTitle4", 50, 0, 0, 2, 90)
+		TNT1 A 0 A_ClearTarget
+		TNT1 A 0 A_ChangeFLag("FRIENDLY", 0)
+		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 0)
+		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
+		MRMP D 8 A_LookEx(0,0,0,0,360,"FollowPlayer")
 		Goto FindPlayer
 
 	GiveAmmo:
@@ -848,14 +860,21 @@ ACTOR SMGMarineGuarding: Marine_SMG
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
 		TNT1 A 0 A_GiveInventory("TargetIsAMarine")
-		MRMP A 4 A_Look
+		MRMP AAAAAAAA 4 A_Look
+		TNT1 A 0 A_JumpIfHealthLower(185,"Heal")
 		Loop
+
+	Heal:
+		TNT1 A 0
+		TNT1 A 0 HealThing(1)
+		TNT1 A 0 A_CustomMissile ("OrderTitle4", 50, 0, 0, 2, 90)
+		Goto Spawn
 
 	FollowPlayer:
 	See:
 		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 1)
 		TNT1 A 0 A_ChangeFlag("SOLID", 0)
-		MRMP AAAAAAAAAADDDDDDDDDD 1 A_Chase
+		MRMP AAAAAADDDDDD 1 A_Chase
 		TNT1 A 0 A_ClearTarget
 		Goto Spawn
 

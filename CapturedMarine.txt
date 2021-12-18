@@ -1158,7 +1158,7 @@ Stop
  }
 }
 
-Actor OrderTitle1
+Actor OrderTitle1//Following
 {
   Height 1
   Radius 1
@@ -1179,29 +1179,41 @@ Actor OrderTitle1
   {
   Spawn:
     CMMN A 2 BRIGHT
-	CMMN AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 Bright A_FadeOut(0.04)
+	CMMN AAAAAAAAAAAAAAAAAAAAAAAAA 1 Bright A_FadeOut(0.04)
     Stop
   }
 }
 
-Actor OrderTitle2: OrderTitle1
+Actor OrderTitle2: OrderTitle1//Holding Position
 {
   States
   {
   Spawn:
     CMMN B 2 BRIGHT
-	CMMN BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 1 Bright A_FadeOut(0.04)
+	CMMN BBBBBBBBBBBBBBBBBBBBBBBBB 1 Bright A_FadeOut(0.04)
     Stop
   }
 }
 
-Actor OrderTitle3: OrderTitle1
+Actor OrderTitle3: OrderTitle1//Release
 {
   States
   {
   Spawn:
     CMMN C 2 BRIGHT
-	CMMN CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC 1 Bright A_FadeOut(0.04)
+	CMMN CCCCCCCCCCCCCCCCCCCCCCCCC 1 Bright A_FadeOut(0.04)
+    Stop
+  }
+}
+
+Actor OrderTitle4: OrderTitle1//Healing
+{
+  Scale 1.0
+  States
+  {
+  Spawn:
+    CMMN D 2 BRIGHT
+	CMMN DDDDDDDDDDDDDDDDDDDDDDDDD 1 Bright A_FadeOut(0.04)
     Stop
   }
 }

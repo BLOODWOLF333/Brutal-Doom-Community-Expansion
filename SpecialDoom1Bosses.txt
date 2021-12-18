@@ -46,20 +46,18 @@ ACTOR CyberdemonBoss: TheCyberdemon 2546
 		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 91)
 		CYBR A 2 A_Hoof
 		CYBR AAA 2 A_Chase
-		TNT1 A 0 A_SpawnItem("HeavyFootSteps")
+		TNT1 A 0 A_SpawnItemEx("HeavyFootSteps",0,40)
 		TNT1 A 0 A_JumpIfCloser(128, "Stomp")
 		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 91)
 		CYBR BBBB 2 A_Chase
-		TNT1 A 0 A_SpawnItem("HeavyFootSteps")
 		TNT1 A 0 A_JumpIfCloser(128, "Stomp")
 		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 91)
         CYBR C 2 A_Metal
 		CYBR CCC 2 A_Chase
-		TNT1 A 0 A_SpawnItem("HeavyFootSteps")
+		TNT1 A 0 A_SpawnItemEx("HeavyFootSteps",0,-40)
 		TNT1 A 0 A_JumpIfCloser(128, "Stomp")
 		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 91)
 		CYBR DDDD 2 A_Chase
-		TNT1 A 0 A_SpawnItem("HeavyFootSteps")
 		Loop
 
 	Missile:
@@ -295,35 +293,23 @@ ACTOR SuperMastermind: TheSpiderMastermind 2547
 	Chasing:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("SuperMasterMindHitBox", 0, 144,0)
-		SPID A 2 A_Chase
+		SPID AA 2 A_Chase
 		TNT1 A 0 A_SpawnItem("SuperMasterMindHitBox", 0, 144,0)
-		SPID A 2 A_Chase
+		SPID BB 2 A_Chase
 		TNT1 A 0 A_SpawnItem("SuperMasterMindHitBox", 0, 144,0)
-		TNT1 A 0 A_SpawnItem("HeavyFootSteps2")
-		SPID B 2 A_Chase
-		TNT1 A 0 A_SpawnItem("SuperMasterMindHitBox", 0, 144,0)
-		SPID B 2 A_Chase
-		TNT1 A 0 A_SpawnItem("SuperMasterMindHitBox", 0, 144,0)
-		TNT1 A 0 A_SpawnItem("HeavyFootSteps2")
 		SPID C 2 A_Chase
 		TNT1 A 0 A_SpawnItem("SuperMasterMindHitBox", 0, 144,0)
 		SPID C 2 A_Metal
+		TNT1 A 0 A_SpawnItemEx("HeavyFootSteps2",0,150)
 		TNT1 A 0 A_SpawnItem("SuperMasterMindHitBox", 0, 144,0)
-		TNT1 A 0 A_SpawnItem("HeavyFootSteps2")
-		SPID D 2 A_Chase
+		SPID DD 2 A_Chase
 		TNT1 A 0 A_SpawnItem("SuperMasterMindHitBox", 0, 144,0)
-		SPID D 2 A_Chase
+		SPID EE 2 A_Chase
 		TNT1 A 0 A_SpawnItem("SuperMasterMindHitBox", 0, 144,0)
-		TNT1 A 0 A_SpawnItem("HeavyFootSteps2")
-		SPID E 2 A_Chase
-		TNT1 A 0 A_SpawnItem("SuperMasterMindHitBox", 0, 144,0)
-		SPID E 2 A_Chase
-		TNT1 A 0 A_SpawnItem("SuperMasterMindHitBox", 0, 144,0)
-		TNT1 A 0 A_SpawnItem("HeavyFootSteps2")
 		SPID F 2 A_Chase
 		TNT1 A 0 A_SpawnItem("SuperMasterMindHitBox", 0, 144,0)
 		SPID F 2 A_Metal
-		TNT1 A 0 A_SpawnItem("HeavyFootSteps2")
+		TNT1 A 0 A_SpawnItemEx("HeavyFootSteps2",0,-150)
 		Loop
 
 	Missile:
