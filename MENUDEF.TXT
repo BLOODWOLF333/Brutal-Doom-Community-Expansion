@@ -82,7 +82,7 @@ OptionMenu "BrutalMenu"
 	Submenu "BD Doom Gameplay Options",			"BrutalDoomOptionsGame"
 	Submenu "BD Player Options",			"BrutalDoomOptionsPlayer"
 	StaticText " "
-	Command "Go to Weapons Testing Map",			"map test"
+	Submenu "Go to Weapons Testing Map",			"BrutalDoomTestingMaps"
 }
 
 OptionMenu "BrutalCreditsMenu"
@@ -240,6 +240,16 @@ OptionMenu "BrutalDoomOptionsPlayer"
    StaticText "with HUD scaling on GZDoom."
    StaticText "(does nothing on Zandronum)"
 }
+
+OptionMenu "BrutalDoomTestingMaps"
+{
+  Title "Go to Weapons Testing Map"
+  StaticText "Select your testing maps"
+  StaticText " "
+  Command "Currect version",		"map test"
+  Command "Old version",		"map test_old"
+  StaticText " "
+}  
 
 OptionValue "BrutalBlood"
 {
