@@ -119,11 +119,6 @@ Actor Volcabus : Mancubus 2543
 		FAT2 F 4 A_Look
 		Goto Stand
 
-	ForgetTarget:
-		TNT1 A 0 A_ClearTarget
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
-		Goto LookingForPlayer
-
    See:
 		FAT2 A 0 A_SpawnItem("HeadshotTarget4", 0, 77)
 		FAT2 A 4 A_Chase

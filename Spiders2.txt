@@ -32,7 +32,7 @@ ACTOR Arachnotron2: Arachnotron1 2542
 
 	Idle:
 	Stand:
-		ARAC AB 10 A_Look
+		ARAC A 10 A_Look
 		Loop
 
 	Vanish:
@@ -50,13 +50,8 @@ ACTOR Arachnotron2: Arachnotron1 2542
 		ARAC A 20 A_FaceTarget
 		TNT1 A 0 A_PlaySound("baby2/walk", 1)
 		ARAC AAABBBCCCDDDEEEFFF 1 A_Chase
-		TNT1 A 0 A_GiveInventory("EnemyMemory", 1)
-		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 25, "ForgetTarget")
 		Goto See+1
 
-	ForgetTarget:
-	TNT1 A 0 A_ClearTarget
-	TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
 	SearchPlayer:
 	Idle:
 		ARAC AA 10 A_Look
@@ -103,7 +98,6 @@ ACTOR Arachnotron2: Arachnotron1 2542
 
 	Missile:
 		ARAC A 20 A_FaceTarget
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
 		ARAC G 6
 		TNT1 A 0 A_PlaySound("PAILGF2")
 		ARAC H 2 A_CustomMissile("PurplePlasmaBall",25,0,0,0)
