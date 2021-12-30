@@ -11,215 +11,68 @@ str arrayBase[8];
 int vehicleprevioushealth;
 int playReload;
 
-//FORWARD
-script "BDForwardInput" ENTER
+script "BDInputs" ENTER
 {
- int buttons;
+	int buttons;
 
- while (TRUE)
- {
-   buttons = GetPlayerInput(-1, INPUT_BUTTONS);
+	while (TRUE)
+	{
+		buttons = GetPlayerInput(-1, INPUT_BUTTONS);
 
+		if (buttons & BT_FORWARD)
+		{
+			GiveInventory("Accelerate", 1);
+		}
+		if (buttons & BT_BACK)
+		{
+			GiveInventory("BackPedal", 1);
+		}
+		if (buttons & BT_MOVELEFT)
+		{
+			GiveInventory("TurnLeft", 1);
+		}
+		if (buttons & BT_MOVERIGHT)
+		{
+			GiveInventory("TurnRight", 1);
+		}
+		if (buttons & BT_USE)
+		{
+			GiveInventory("PressedUse", 1);
+		}
+		if (buttons & BT_JUMP)
+		{
+			GiveInventory("PressedJump", 1);
+		}
+		if (buttons & BT_SPEED)
+		{
+			GiveInventory("IsRunning", 1);
+		}
+		if (buttons & BT_ALTATTACK)
+		{
+		   GiveInventory("FiredSecondary", 1);
+		}
+		if (buttons & BT_ATTACK)
+		{
+		   GiveInventory("FiredPrimary", 1);
+		}
+		if (buttons & BT_CROUCH)
+		{
+		   GiveInventory("IsCrouching", 1);
+		}
 
-if (buttons & BT_FORWARD)
-{
-   GiveInventory("Accelerate", 1);
-   //giveinventory("HealthBonus", GetActorProperty(0, APROP_HEALTH));
-
-   delay(1);
-}
-   delay(1);
-   TakeInventory("Accelerate", 1);
- }
-}
-
-
-//BACKPEDAL
-script "BDBackInput" ENTER
-{
- int buttons;
-
- while (TRUE)
- {
-   buttons = GetPlayerInput(-1, INPUT_BUTTONS);
-
-if (buttons & BT_BACK)
-{
-    GiveInventory("BackPedal", 1);
-	delay(2);
-}
-
-   delay(2);
-   TakeInventory("BackPedal", 1);
- }
-}
-
-
-//LEFT
-script "BDLeftInput" ENTER
-{
- int buttons;
-
- while (TRUE)
- {
-   buttons = GetPlayerInput(-1, INPUT_BUTTONS);
-
-if (buttons & BT_MOVELEFT)
-{
-    GiveInventory("TurnLeft", 1);
-	//if (checkinventory("IsRunning2") == 1) { GiveInventory("RollLeft", 1); }
-	//if (checkinventory("IsRunning2") == 1) { GiveInventory("GoSpecial", 1); }
-}
-   delay(1);
-   TakeInventory("TurnLeft", 1);
- }
-}
-
-
-
-//RIGHT
-script "BDRightInput" ENTER
-{
- int buttons;
-
- while (TRUE)
- {
-   buttons = GetPlayerInput(-1, INPUT_BUTTONS);
-
-
-if (buttons & BT_MOVERIGHT)
-{
-    GiveInventory("TurnRight", 1);
-
-	//if (checkinventory("IsRunning2") == 1) { GiveInventory("RollRight", 1); }
-	//if (checkinventory("IsRunning2") == 1) { GiveInventory("GoSpecial", 1); }
-}
-
-   delay(1);
-
-   TakeInventory("TurnRight", 1);
- }
-}
-
-//USE
-script "BDUseInput" ENTER
-{
- int buttons;
-
- while (TRUE)
- {
-   buttons = GetPlayerInput(-1, INPUT_BUTTONS);
-
-if (buttons & BT_USE)
-{
-    GiveInventory("PressedUse", 1);
-}
-
-   delay(1);
-   TakeInventory("PressedUse", 1);
- }
-}
-
-//JUMP
-script "BDJumpInput" ENTER
-{
- int buttons;
-
- while (TRUE)
- {
-   buttons = GetPlayerInput(-1, INPUT_BUTTONS);
-
-if (buttons & BT_JUMP)
-{
-    GiveInventory("PressedJump", 1);
-}
-
-   delay(1);
-   TakeInventory("PressedJump", 1);
- }
-}
-
-//==================================================================================================
-//SPRINTING
-script "CheckSprint" ENTER
-{
-
- int buttonSpeed;
-
- while (TRUE)
- {
-   buttonSpeed = GetPlayerInput(-1, INPUT_BUTTONS);
-
-if (buttonSpeed & BT_SPEED)
-{
-   if (checkinventory("istacticalclass") == 1) { GiveInventory("IsRunning", 1); }
-   GiveInventory("IsRunning2", 1);
-   delay(1);
-   restart;
-}
-   TakeInventory("IsRunning", 1);
-   TakeInventory("IsRunning2", 1);
-   delay(4);
- }
-
-}
-
-script "CheckPrimary" ENTER
-{
- int buttons;
-
- while (TRUE)
- {
-   buttons = GetPlayerInput(-1, INPUT_BUTTONS);
-
-if (buttons & BT_ALTATTACK)
-{
-   GiveInventory("FiredSecondary", 1);
-   delay(1);
-   restart;
-}
-   TakeInventory("FiredSecondary", 1);
-   delay(4);
- }
-
-}
-
-script "CheckSecondary" ENTER
-{
- int buttons2;
-
- while (TRUE)
- {
-   buttons2 = GetPlayerInput(-1, INPUT_BUTTONS);
-
-if (buttons2 & BT_ATTACK)
-{
-   GiveInventory("FiredPrimary", 1);
-   delay(1);
-   restart;
-}
-   TakeInventory("FiredPrimary", 1);
-   delay(4);
- }
-}
-
-script "CheckCrouch" ENTER
-{
- int buttons2;
-
- while (TRUE)
- {
-   buttons2 = GetPlayerInput(-1, INPUT_BUTTONS);
-
-if (buttons2 & BT_CROUCH)
-{
-   GiveInventory("IsCrouching", 1);
-   delay(1);
-   restart;
-}
-   TakeInventory("IsCrouching", 1);
-   delay(4);
- }
+		delay(2);
+		TakeInventory("Accelerate", 1);
+		TakeInventory("BackPedal", 1);
+		TakeInventory("TurnLeft", 1);
+		TakeInventory("TurnRight", 1);
+		TakeInventory("PressedUse", 1);
+		TakeInventory("PressedJump", 1);
+		TakeInventory("IsRunning", 1);
+		TakeInventory("IsRunning2", 1);
+		TakeInventory("FiredSecondary", 1);
+		TakeInventory("FiredPrimary", 1);
+		TakeInventory("IsCrouching", 1);
+	}
 }
 
 Script "HeliRollRight" (VOID)
@@ -254,9 +107,6 @@ ChangeActorRoll (0, -0.085, 1); delay (1);
 ChangeActorRoll (0, -0.09, 1); delay (1);
 }
 
-
-
-
 Script "HeliStopRight" (VOID)
 {
 ChangeActorRoll (0, 0.09, 1); delay (1);
@@ -288,10 +138,6 @@ ChangeActorRoll (0, -0.015, 1); delay (1);
 ChangeActorRoll (0, -0.007, 1); delay (1);
 ChangeActorRoll (0, 0, 1); delay (1);
 }
-
-
-//Bike
-
 
 Script "BikeRollRight" (VOID)
 {
@@ -331,15 +177,11 @@ ChangeActorRoll (0, -0.015, 1); delay (1);
 ChangeActorRoll (0, 0, 1); delay (1);
 }
 
-
-
-
 Script "BDFiredTankMainGun" (VOID) NET
 {
  delay (90);
  TakeInventory("FiredTankMainGun", 1);
 }
-
 
 Script "BDUnMorph" (VOID) NET
 {
@@ -369,7 +211,6 @@ script "GetPlayerValues" (VOID) NET
 	//Log(s:"ArmorClass= ", s: arrayArmorClass[PlayerNumber()]);
 	delay(1);
 }
-
 
 //Entering Heavy Machinegun
 script "BDEnterHMG" (VOID) NET
@@ -407,8 +248,6 @@ script "BDEnterHMG" (VOID) NET
 	//Log(s:"Enter ArmorPoints= ", i:CheckInventory("BasicArmor"));
 	delay(2);
 }
-
-
 
 //leaving Heavy Machinegun
 script "BDLeaveHMG" (VOID) NET
@@ -450,7 +289,6 @@ script "BDLeaveHMG" (VOID) NET
 	//Log(s:"Post Health= ", i: GetActorProperty(0, APROP_HEALTH));
 	GiveActorInventory(261, "HeavyMachinegunAmmo", thisgunmachinegunammo);
 }
-
 
 //Entering Tank
 script "BDEnterTank" (VOID) NET
@@ -537,7 +375,6 @@ script "BDForceUnmorph" (VOID) NET
  Delay(1);
 }
 
-
 //Set Tank's new base angle after you leave it.
 script "BDSetBaseAngle" (VOID) NET
 {
@@ -545,7 +382,6 @@ script "BDSetBaseAngle" (VOID) NET
  SpawnSpot("TankBaseStationed", 0, 0, thisvehiclecurrentbaseangle*256/360);
  delay (1);
 }
-
 
 //Set the current direction of a newly spawned tank.
 script "BDSetNewTankDirection" (VOID) NET
