@@ -862,7 +862,7 @@ var int user_tankbasedirection;
 		TNT1 A 0
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
 		TNT1 A 0 ThrustTHingZ(0, 100, -1, 1)
-
+		TNT1 A 0 ACS_NamedExecuteAlways("BDVehicleInputs", 0, 0, 0, 0)//Button-checker for vehicle actions
 		TNK1 T 1
 	Spawn2:
 	    TNT1 A 0 A_GiveInventory("IsInATank", 1)

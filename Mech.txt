@@ -258,6 +258,7 @@ ACTOR PlayerMech : PlayerTank
 	Spawn:
 	Spawn2:
 		MECH A 1
+		TNT1 A 0 ACS_NamedExecuteAlways("BDVehicleInputs", 0, 0, 0, 0)//Button-checker for vehicle actions
 		TNT1 A 0 A_PlaySound("REPAIR")
 	    TNT1 A 0 A_TakeInventory("PressedUse", 1)
 		TNT1 A 0 A_TakeInventory("PressedJump", 1)

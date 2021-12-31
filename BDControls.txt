@@ -19,29 +19,9 @@ script "BDInputs" ENTER
 	{
 		buttons = GetPlayerInput(-1, INPUT_BUTTONS);
 
-		if (buttons & BT_FORWARD)
-		{
-			GiveInventory("Accelerate", 1);
-		}
-		if (buttons & BT_BACK)
-		{
-			GiveInventory("BackPedal", 1);
-		}
-		if (buttons & BT_MOVELEFT)
-		{
-			GiveInventory("TurnLeft", 1);
-		}
-		if (buttons & BT_MOVERIGHT)
-		{
-			GiveInventory("TurnRight", 1);
-		}
 		if (buttons & BT_USE)
 		{
 			GiveInventory("PressedUse", 1);
-		}
-		if (buttons & BT_JUMP)
-		{
-			GiveInventory("PressedJump", 1);
 		}
 		if (buttons & BT_SPEED)
 		{
@@ -61,17 +41,67 @@ script "BDInputs" ENTER
 		}
 
 		delay(2);
+		TakeInventory("PressedUse", 1);
+		TakeInventory("IsRunning", 1);
+		TakeInventory("FiredSecondary", 1);
+		TakeInventory("FiredPrimary", 1);
+		TakeInventory("IsCrouching", 1);
+	}
+}
+
+script "BDVehicleInputs" (VOID) NET
+{
+	int buttons;
+
+	while (TRUE)
+	{
+		buttons = GetPlayerInput(-1, INPUT_BUTTONS);
+
+		if (buttons & BT_FORWARD)
+		{
+			GiveInventory("Accelerate", 1);
+		}
+		if (buttons & BT_BACK)
+		{
+			GiveInventory("BackPedal", 1);
+		}
+		if (buttons & BT_MOVELEFT)
+		{
+			GiveInventory("TurnLeft", 1);
+		}
+		if (buttons & BT_MOVERIGHT)
+		{
+			GiveInventory("TurnRight", 1);
+		}
+		if (buttons & BT_USE)
+		{
+			GiveInventory("PressedUse", 1);
+			delay(2);
+			TakeInventory("PressedUse", 1);
+			terminate;
+		}
+		if (buttons & BT_JUMP)
+		{
+			GiveInventory("PressedJump", 1);
+		}
+		if (buttons & BT_ALTATTACK)
+		{
+		   GiveInventory("FiredSecondary", 1);
+		}
+		if (buttons & BT_ATTACK)
+		{
+		   GiveInventory("FiredPrimary", 1);
+		}
+
+		delay(2);
 		TakeInventory("Accelerate", 1);
 		TakeInventory("BackPedal", 1);
 		TakeInventory("TurnLeft", 1);
 		TakeInventory("TurnRight", 1);
 		TakeInventory("PressedUse", 1);
 		TakeInventory("PressedJump", 1);
-		TakeInventory("IsRunning", 1);
-		TakeInventory("IsRunning2", 1);
 		TakeInventory("FiredSecondary", 1);
 		TakeInventory("FiredPrimary", 1);
-		TakeInventory("IsCrouching", 1);
 	}
 }
 
@@ -189,7 +219,7 @@ Script "BDUnMorph" (VOID) NET
  UnMorphActor(0, 0);
 }
 
-Script "BDCHeckOnline" (VOID)//Check if player is online.
+Script "BDCHeckOnline" (VOID) NET//Check if player is online.
 {
 if	(GameType () > 0)
 	SetActorState(0,"IsOnline");
@@ -393,7 +423,7 @@ script "BDSetNewTankDirection" (VOID) NET
  delay (1);
 }
 
-Script "BDEnterTankInfo"(VOID)
+Script "BDEnterTankInfo"(VOID) NET
 {
 setfont("TNHSA0");
 	hudmessage(s:"A";
@@ -401,7 +431,7 @@ setfont("TNHSA0");
 	delay(40 * 6);
 }
 
-Script "BDTankOrientation" (VOID)
+Script "BDTankOrientation" (VOID) NET
 {
 	str Turret;
 	int healthMax;
@@ -510,7 +540,7 @@ Script "BDTankOrientation" (VOID)
 	Delay(4);
 }
 
-Script "BDTankHUD" (VOID)
+Script "BDTankHUD" (VOID) NET
 {
 	ACS_NamedExecuteAlways("BDTankOrientation",0,0,0,0);
 	int ammoTank = CheckInventory("TankAmmo");
@@ -562,7 +592,7 @@ Script "BDTankHUD" (VOID)
 	delay(1);
 }
 
-Script "BDATHUD" (VOID)
+Script "BDATHUD" (VOID) NET
 {
 	ACS_NamedExecuteAlways("BDTankOrientation",0,0,0,0);
 	int ammo20Auto = CheckInventory("HeavyMachinegunAmmo");
@@ -599,7 +629,7 @@ Script "BDATHUD" (VOID)
 	delay(1);
 }
 
-Script "BDHelicopterHUD"(VOID)
+Script "BDHelicopterHUD"(VOID) NET
 {
 	int fireMode = CheckInventory("MechFireMode");
 	int ammo20Auto = CheckInventory("AutocannonAmmo");
@@ -687,7 +717,7 @@ Script "BDHelicopterHUD"(VOID)
 	delay(1);
 }
 
-Script "BDMechHUD"(VOID)
+Script "BDMechHUD"(VOID) NET
 {
 	setfont("CONFONT");
 	//Zoom indicator
