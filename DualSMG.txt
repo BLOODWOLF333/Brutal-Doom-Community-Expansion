@@ -30,9 +30,9 @@ ACTOR DualSMG : BrutalWeapon
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		SM2G A 0 A_JumpIfInventory("Unloading",1,"Unload")
 		SM2G A 1 A_WeaponReady(WRF_ALLOWRELOAD)
-		SM2G A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		SM2G A 0 A_JumpIfInventory("Reloading",1,"Reload")
 		SM2G A 0 A_JumpIfInventory("StartDualWield",1,"DualWield")
+		SM2G A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		Loop
 
 	DualWield:

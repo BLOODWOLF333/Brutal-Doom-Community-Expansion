@@ -40,7 +40,6 @@ ACTOR Revolver2 : BrutalWeapon
 		REVO A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		REVO A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
-		REVO A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
         Loop
 
 	Ready2://Fan The Hammer Ready State
@@ -56,7 +55,6 @@ ACTOR Revolver2 : BrutalWeapon
 		REVO A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		REVO A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint2")
-		REVO A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
         Loop
 
 	Deselect:

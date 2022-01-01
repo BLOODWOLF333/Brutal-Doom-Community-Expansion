@@ -36,8 +36,8 @@ ACTOR BrutalPistol : BrutalWeapon
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		PIST F 0 A_JumpIfInventory("Unloading",1,"Unload")
 		PIST F 0 A_Takeinventory("PistolFireAnimation1",1)
-		PIST F 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		PIST F 0 A_JumpIfInventory("StartDualWield",1,"DualWield")
+		PIST F 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		Loop
 
 	CheckSprint:
