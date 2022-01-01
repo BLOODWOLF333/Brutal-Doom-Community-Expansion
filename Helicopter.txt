@@ -284,6 +284,10 @@ ACTOR Playerattackhelicopter : PlayerTank
 		Goto Stay
 
 	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("HelicopterIsFlying", 1, "Stay")
+		Goto Spawn2
+
 	Spawn2: //Taking Off
 		HELA A 1
 		TNT1 A 0 ACS_NamedExecuteAlways("BDVehicleInputs", 0, 0, 0, 0)//Button-checker for vehicle actions
@@ -315,7 +319,7 @@ ACTOR Playerattackhelicopter : PlayerTank
 		TNT1 A 0 A_GiveInventory("HelicopterIsFlying", 1)
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
 		TNT1 A 0 SetPlayerProperty(0,0,4)
-	Goto Stay
+		Goto Stay
 
 	See:
 	Stay:

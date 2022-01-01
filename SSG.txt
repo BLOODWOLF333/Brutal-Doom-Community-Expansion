@@ -186,7 +186,6 @@ ACTOR SSG : BrutalWeapon
 		SHTZ A 0 A_PlaySound("weapons/sshotc")
 		SHTZ A 0 A_TakeInventory("AmmoShell", 2)
 		SHTZ A 0 A_GiveInventory("SSGAmmo", 2)
-		SHTZ A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 
 		SHTZ WXYZ 1
 		SHTZ A 0 A_TakeInventory ("Pumping", 1)
@@ -214,7 +213,6 @@ ACTOR SSG : BrutalWeapon
 	    SHTZ A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		SHTZ A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		SHTZ A 0 A_JumpIfInventory("Salute2", 1, "Salute")
-		SHTZ A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		SHTZ A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		SHTZ A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		SHTZ A 5 A_WeaponReady(WRF_ALLOWRELOAD | WRF_NOFIRE)
@@ -263,7 +261,6 @@ ACTOR SSG : BrutalWeapon
 		SHTZ A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		SHTZ A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		SHTZ A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-		SHTZ A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		SHTZ A 1 A_WeaponReady(WRF_NOFIRE | WRF_NOBOB)
 		TNT1 A 0 A_JumpIfInventory("NoAutoReload", 1, 2)//Don't go to NoAmmo unless they try to fire again
 		Goto NoAmmo2
@@ -313,7 +310,6 @@ ACTOR SSG : BrutalWeapon
 		SHTZ A 0 A_PlaySound("weapons/sshotc")
 		SHTZ A 0 A_TakeInventory("AmmoShell", 2)
 		SHTZ A 0 A_GiveInventory("SSGAmmo", 2)
-		SHTZ A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 
 		SHTZ WXYZ 1
 		SHTZ A 0 A_TakeInventory ("Pumping", 1)
@@ -416,7 +412,6 @@ ACTOR SSG : BrutalWeapon
         SHTZ A 0 A_PlaySound("weapons/sshotc")
 		SHTZ A 0 A_TakeInventory("AmmoShell", 1)
 		SHTZ A 0 A_GiveInventory("SSGAmmo", 1)
-		SHTZ A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 
         SHTZ WXYZ 1
 		SHTZ A 0 A_GiveInventory ("Pumping", 1)

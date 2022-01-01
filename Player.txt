@@ -87,7 +87,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 
 	StandStill:
 	    MARN D 0
-		TNT1 A 0 A_Changeflag("NOPAIN", 0)
+		MARN A 0 A_GiveInventory("IsStandingStill", 1)
 		MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MARN A 0 A_JumpIfInventory("FistsSelected", 1, "FistStandStill")
@@ -117,8 +117,6 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		MARN D 0 A_TakeInventory("UsedStamina", 1)
 		MARN DD 2 A_JumpIf (velz !=0, "IsJumpin")
         MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
-
-		TNT1 A 0 A_Changeflag("THRUSPECIES", 0)
 		Loop
 
 	See:
@@ -159,9 +157,6 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		MARN B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		MARN A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
 		MARN A 0 A_JumpIfInventory("BootsSmearedWithGreenBlood", 1, "SeeSmearedWithGreenBlood")
-
-		MARN A 0 A_GiveInventory("IsStandingStill", 1)
-
 		Goto StandStill
 
    IsJumpin:
