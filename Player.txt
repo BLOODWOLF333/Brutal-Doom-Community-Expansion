@@ -58,7 +58,6 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
     Spawn:
 		MARN A 0
 		MARN A 0 A_TakeInventory("PlayerIsDead", 1)
-		MARN A 0 A_TakeInventory("IsInvisible", 1)
 		NULL A 0 SetPlayerProperty(0,1,0)
 		TNT1 A 0 A_Changeflag("NOPAIN", 1)
 		MARN A 0 A_TakeInventory("ChainguyguyContinue", 1)

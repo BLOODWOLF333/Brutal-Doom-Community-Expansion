@@ -196,8 +196,6 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 31)
 		TNT1 A 0 A_SpawnItem ("LegTargetBase")
 		SPOS DDD 2 A_Chase
-
-		TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "Idle")
 		Loop
 
 	SeeNeverSeen:
@@ -269,7 +267,6 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 		TNT1 A 0 A_SpawnItem ("LegTargetBase")
 		SPSR A 7
         TNT1 A 0 A_JumpIfInventory("SergeantAmmo", 6, "Reload")
-		TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "SearchForPlayer")
 		Goto SeeContinue
 
   Reload:
@@ -1881,8 +1878,6 @@ Obituary "%o got punctured by a SMG Zombie."
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 31)
 		TNT1 A 0 A_SpawnItem ("LegTargetBase")
 		PSS3 DDD 2 A_Chase
-
-		TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "Idle")
 		Loop
 
 	SeeNeverSeen:
@@ -1968,7 +1963,6 @@ Obituary "%o got punctured by a SMG Zombie."
 		TNT1 A 0 A_SpawnItem ("LegTargetBase")
 		PSS3 E 10 A_FaceTarget
 		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 40, "Reload")
-		TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "SearchForPlayer")
 		Goto SeeContinue
 
 	Reload:

@@ -107,7 +107,6 @@ ACTOR BullDemon: Demon Replaces Demon
 		SARG BB 2 A_Chase
 		SARG CC 2 A_Chase
 		SARG DD 2 A_Chase
-		TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "Forget")
 		Loop
 
 	SeeNoSee:
@@ -138,7 +137,6 @@ ACTOR BullDemon: Demon Replaces Demon
 		SARG D 1 A_Chase("Melee", "")
 		SARG D 2 A_Chase("Melee", "")
 		TNT1 A 0 A_FaceTarget
-		TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "Forget")
 		Loop
 
 	Melee:

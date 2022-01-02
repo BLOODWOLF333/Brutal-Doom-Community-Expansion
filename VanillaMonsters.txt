@@ -212,7 +212,6 @@ ACTOR VanillaBaronOfHell: BaronofHell2
 			TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 58)
 			BARO G 8 A_CustomMissile("GreenPlasmaBall", 36, 0, 0, 1)
 			TNT1 A 0 A_TakeInventory("ComingToGetTheBarrel", 1)
-			TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "ForgetTarget")
 			Goto See2
 
 		Pain.Kick:

@@ -129,7 +129,6 @@ ACTOR Cacodemon_ : Cacodemon Replaces Cacodemon
 		HEAD AAAAAA 2 A_Chase
 		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 25, "SearchPlayer")
 		TNT1 A 0 A_GiveInventory("EnemyMemory", 1)
-		TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "SearchPlayer")
 		Goto See
 
 	Missile:

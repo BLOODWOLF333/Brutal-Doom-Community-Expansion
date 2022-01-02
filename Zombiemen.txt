@@ -220,8 +220,6 @@ ACTOR RifleZombie Replaces ZombieMan
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 36,0)
 		TNT1 A 0 A_SpawnItem ("LegTargetBase")
 		POSR DDD 2 A_Chase
-
-		TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "Idle")
 		Loop
 
 	SeeNeverSeen:
@@ -314,7 +312,6 @@ ACTOR RifleZombie Replaces ZombieMan
 
 		POSR E 6 A_FaceTarget
         TNT1 A 0 A_JumpIfInventory("ZombieManAmmo", 20, "Reload")
-		TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "SearchForPlayer")
         Goto SeeContinue
 
   Reload:

@@ -148,8 +148,6 @@ ACTOR HellKnight2 : HellKnight Replaces HellKnight
 
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 52)
 		BOS2 DDD 2 A_Chase
-
-		TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "ForgetTarget")
 		Loop
 
 	SeeNeverSeen:
@@ -172,7 +170,6 @@ ACTOR HellKnight2 : HellKnight Replaces HellKnight
 		BOS2 DD 2 A_Chase
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 52)
 		BOS2 DD 2 A_Chase
-		TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "ForgetTarget")
 		Loop
    RAGE:
         TNT1 A 0
