@@ -1,23 +1,7 @@
-Actor TechPillar1 : TechPillar replaces TechPillar
-{
-+SHOOTABLE
-+INVULNERABLE
-+NOBLOOD
-+FORCEYBILLBOARD
-+notarget
-Mass 900000
-}
-
 ACTOR ImpaledSkulls: HeadsOnAStick Replaces HeadsOnAStick
 {
 	Radius 16
 	Height 9
-	//Monster
-    //+FRIENDLY
-    //-SHOOTABLE
-	+NOTAUTOAIMED
-	+NOTARGET
-    Mass 999999
 	States
 	{
 	Vanilla:
@@ -119,7 +103,7 @@ ACTOR ImpaledHead: HeadOnAStick Replaces HeadOnAStick
 	Spawn:
 		POL4 B 0
 		MARN A 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
-		TNT1 A 1
+		TNT1 A 2
 
 	Spawn32:
         TNT1 A 0
