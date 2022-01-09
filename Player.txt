@@ -58,13 +58,12 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
     Spawn:
 		MARN A 0
 		MARN A 0 A_TakeInventory("PlayerIsDead", 1)
-		NULL A 0 SetPlayerProperty(0,1,0)
-		TNT1 A 0 A_Changeflag("NOPAIN", 1)
+		NULL A 0 SetPlayerProperty(0,0,0)
+		TNT1 A 0 A_Changeflag("NOPAIN", 0)
 		MARN A 0 A_TakeInventory("ChainguyguyContinue", 1)
 		MARN A 0 A_TakeInventory("HasInfrared", 1)
 		MARN A 0 A_TakeInventory("PlayerIsDead", 1)
 		TNT1 A 0 A_CustomMissile("Headkicking", 0, 0, 0, 2)
-		//TNT1 A 0 A_SpawnItemEx ("Headkicking", 0, 0, 0, velx, vely, velz, angle, SXF_SETMASTER | SXF_ABSOLUTEANGLE)
 		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player faster if tactical class.
 		MARN A 0 ACS_NamedExecuteAlways("BDBlackMetal", 0, 0, 0, 0)//Check if playing in realism mode.
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Disable Camera.
@@ -76,10 +75,10 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 AAA 0
 		MARN D 2
 		MARN A 0 A_JumpIfInventory("DMgame", 1, "DM")
+		Goto StandStill
 
 	DM:
-		MARN D 1
-		NULL A 0 SetPlayerProperty(0,0,0)
+		MARN D 2
 		TNT1 A 0 A_ChangeFlag("THRUSPECIES", 0)
 		TNT1 A 0 A_ChangeFlag("MTHRUSPECIES", 0)
 		Goto StandStill
