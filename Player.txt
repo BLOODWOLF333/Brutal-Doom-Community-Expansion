@@ -13,9 +13,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 	player.attackzoffset 21
     GibHealth 20
 	PainChance 255
-	+SOLID
-	+MTHRUSPECIES
-	+DONTHURTSPECIES
+	+DONTHARMSPECIES
 	+THRUGHOST
 	+THRUSPECIES
 	-NOSKIN
@@ -54,7 +52,6 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 	Player.DamageScreenColor "Red", 2.0
 	States
 	{
-
     Spawn:
 		MARN A 0
 		MARN A 0 A_TakeInventory("PlayerIsDead", 1)
@@ -63,7 +60,6 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		MARN A 0 A_TakeInventory("ChainguyguyContinue", 1)
 		MARN A 0 A_TakeInventory("HasInfrared", 1)
 		MARN A 0 A_TakeInventory("PlayerIsDead", 1)
-		TNT1 A 0 A_CustomMissile("Headkicking", 0, 0, 0, 2)
 		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player faster if tactical class.
 		MARN A 0 ACS_NamedExecuteAlways("BDBlackMetal", 0, 0, 0, 0)//Check if playing in realism mode.
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Disable Camera.
@@ -80,7 +76,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 	DM:
 		MARN D 2
 		TNT1 A 0 A_ChangeFlag("THRUSPECIES", 0)
-		TNT1 A 0 A_ChangeFlag("MTHRUSPECIES", 0)
+		TNT1 A 0 A_ChangeFlag("DONTHARMSPECIES", 0)
 		Goto StandStill
 
 	StandStill:
