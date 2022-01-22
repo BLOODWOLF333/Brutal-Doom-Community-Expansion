@@ -233,7 +233,7 @@ ACTOR Rifle : BrutalWeapon
 		RIFF A 1 BRIGHT
 		RIFG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		RIFF B 1 A_FireBullets (0.6, 0.7, -1, 18, "HitPuff", FBF_NORANDOM)
-		TNT1 A 0 A_ZoomFactor(0.99)
+		TNT1 A 0 A_ZoomFactor(0.98)
         TNT1 A 0 A_FireCustomMissile("DecorativeTracer",random(-1,1),0,0,0,0,random(-1,1))
 		RIFG A 0 A_Takeinventory("RifleAmmo",1)
 		RIFF C 1 A_FireCustomMissile("RifleCaseSpawn",5,0,5,-8)
@@ -251,7 +251,7 @@ ACTOR Rifle : BrutalWeapon
 		RI2F A 1 BRIGHT
 		RI2G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		RI2F B 1 BRIGHT A_FireBullets (0.1, 0.2, 1, 18, "HitPuff", FBF_NORANDOM)
-		TNT1 A 0 A_ZoomFactor(3.9)
+		TNT1 A 0 A_ZoomFactor(3.99)
         TNT1 A 0 A_FireCustomMissile("DecorativeTracer")
 		RI2G A 0 A_Takeinventory("RifleAmmo",1)
 		RI2F C 1 BRIGHT A_FireCustomMissile("RifleCaseSpawn",5,0,5,0)
