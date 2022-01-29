@@ -42,18 +42,21 @@ ACTOR ExplosiveBarrel1 Replaces ExplosiveBarrel
 	States
 	{
 	Vanilla:
+		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("VanillaExplosiveBarrel")
 		Stop
 
 	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_RadiusGive("BarrelCounter",20,RGF_GIVESELF | RGF_MONSTERS | RGF_CORPSES | RGF_CUBE | RGF_NOSIGHT,1)
 		BARI A 2
+		TNT1 A 0 A_JumpIfInventory("BarrelCounter",9,"Vanilla")
 		MARN A 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
 		BARI A 2
 		TNT1 A 0 A_GiveInventory("TargetIsANExplosiveBarrel", 1)
 
 	Stay:
-		TNT1 A 0
 	    BARI ABCDCB 6 A_Look
 		Loop
 
@@ -198,7 +201,6 @@ ACTOR BarrelShrapnel1
     }
 }
 
-
 ACTOR BarrelShrapnel2: BarrelShrapnel1
 {
  Scale 1.7
@@ -214,11 +216,6 @@ ACTOR BarrelShrapnel4: BarrelShrapnel1
  Scale 1.2
 }
 
-
-
-
-
-
 actor GreatKaboom: DeadMarine
 {
 	Game Doom
@@ -233,7 +230,6 @@ Stop
 	}
 }
 
-
 actor UltraKaboom: DeadMarine
 {
 	Game Doom
@@ -247,7 +243,6 @@ TNT1 AAAA 0 A_CustomMissile ("LongExplosionSpawner", 20, 0, random (0, 360), 2, 
 Stop
 	}
 }
-
 
 actor BarrelKaboom: DeadMarine
 {
@@ -348,7 +343,6 @@ states
 	}
 }
 
-
 Actor LongExplosionSpawner: ExplosionSpawner
 {
 speed 66
@@ -363,8 +357,6 @@ states
 		Stop
 	}
 }
-
-
 
 Actor hUGEExplosionSpawner: ExplosionSpawner
 {
@@ -397,8 +389,6 @@ states
 		Stop
 	}
 }
-
-
 
 Actor RidiculousExplosionSpawner: ExplosionSpawner
 {
@@ -491,7 +481,6 @@ tnt1 a 0 a_eXPLODE(200, 400)
 	}
 }
 
-
 Actor SpawnedExplosionLarge2
 {
 +NOCLIP
@@ -506,7 +495,6 @@ tnt1 a 0 a_eXPLODE(200, 400)
 		Stop
 	}
 }
-
 
 Actor SpawnedExplosionGiant
 {
@@ -537,9 +525,6 @@ TNT1 AAAA 0 A_CustomMissile ("ExplosionFlames", 0, 0, random (0, 360), 2, random
 		Stop
 	}
 }
-
-
-
 
 Actor SpawnedExplosionSmall
 {
@@ -626,6 +611,14 @@ states
 
 ACTOR VanillaExplosiveBarrel: ExplosiveBarrel1
 {
+	-ISMONSTER
+	-COUNTKILL
+	-FRIENDLY
+    -PUSHABLE
+	-SLIDESONWALLS
+    -WINDTHRUST
+	-MISSILEMORE
+	-MISSILEEVENMORE
 	States
 	{
 	Spawn:
