@@ -87,18 +87,16 @@ world/sludgegloop		dsploosh
 world/lavasizzle		dslvsiz
 world/drip			dsdrip2
 
-world/hotsiz			dshtsiz
-weapons/rifle			DSRIFLE
-weapons/sg			sgfire
-$limit weapons/sg 35
+world/hotsiz dshtsiz
+weapons/rifle DSRIFLE
+weapons/sg sgfire
 weapons/sgpump STGNPUMP
 weapons/empty DRYFIRE
 DRYFIRE DRYFIRE
 CLIPIN CLIPIN
 CLIPINSS CLIPINSS
 MP40 MP40
-$limit MP40 35
-insertshell        SHELL_IN
+insertshell SHELL_IN
 DSRLAUN DSRLAUN
 DSF2OOF DSF2OOF
 // Pump Shotgun
@@ -177,7 +175,6 @@ $playersound	player	male	SALUTE		DSSALUTE
 $playersound	player	female	SALUTE		DSFTAUN2
 
 $limit FUCK 1
-$limit weapons/rifle 35
 
 $rolloff weapons/rifle 100 2200
 $rolloff weapons/pistol 100 2200
@@ -233,7 +230,6 @@ $volume weapons/sshotc	1.5
 $volume weapons/sshotl  1.5
 
 weapons/plasmarifle PLASMA
-$limit weapons/plasmarifle 35
 $volume weapons/plasmarifle 0.9
 
 Rocket/Launch DSRLAUN
@@ -241,6 +237,7 @@ RKTSML RKTSML
 $rolloff world/RKTSML 1200 2000
 
 SSHFIRE SSHFIRE
+$Limit SSHFIRE 350
 weapons/ssg/open	SSGOPEN
 weapons/ssg/close	SSGCLOSE
 weapons/ssg/in		SSGIN
@@ -314,7 +311,6 @@ BIGEXPL2 BIGEXPL2
 $random Explosion {Explode1 Explode2}
 Explode1 Explode1
 Explode2 Explode2
-$limit Explosion 4
 $rolloff  Explosion 900 1400
 
 // This is the second sound, it's muffled and can be heard one city block away.
@@ -326,12 +322,11 @@ dsbarex4 dsbarex4
 dsbarex5 dsbarex5
 dsbarex6 dsbarex6
 dsbarex7 dsbarex7
-$limit FAREXPL 4
+$limit FAREXPL 350
 $rolloff FAREXPL 1000 7500
 
 // This is the third sound, it's extremely muffled and can be heard anywhere in the map, sounds like distant thunder.
 distantexp distantexp
-$limit distantexp 4
 $rolloff distantexp 1000 9000
 
 //=============================================================================================
@@ -342,53 +337,53 @@ $rolloff distantexp 1000 9000
 
 //Assault Rifle
 FARRIF FARRIF
-$limit FARRIF 35
+$limit FARRIF 350
 $rolloff  FARRIF 3000 6000
 
 //Heavy Machinegun
 FARHMG FARHMG
-$limit FARHMG 35
+$limit FARHMG 350
 $rolloff  FARHMG 3000 6000
 
 //Shotgun
 FARSHT FARSHT
-$limit FARSHT 35
+$limit FARSHT 350
 $rolloff  FARSHT 3000 6000
 
 //Pistol
 FARSMG FARSMG
-$limit FARSMG 35
+$limit FARSMG 350
 $rolloff  FARSMG 3000 6000
 
 //Light Machinegun
 FARMGN FARMGN
-$limit FARMGN 35
+$limit FARMGN 350
 $rolloff  FARMGN 3000 6000
 
 //Autocannon
 FARCAN1 FARCAN1
 $volume FARCAN1 0.5
-$limit FARCAN1 35
+$limit FARCAN1 350
 $rolloff  FARCAN1 3000 6000
 
 //SuperShotgun or Sniper Rifle
 FARSSG FARSSG
-$limit FARSSG 35
+$limit FARSSG 350
 $rolloff  FARSSG 3000 6000
 
 //Rocket
 FARMISL FARMISL
-$limit FARMISL 35
+$limit FARMISL 350
 $rolloff  FARMISL 3000 6000
 
 //Tank Missile
 DSMISFIR DSMISFIR
-$limit DSMISFIR 35
+$limit DSMISFIR 350
 $rolloff  DSMISFIR 3000 6000
 
 //Tank Cannon
 FARTANK FARTANK
-$limit FARTANK 35
+$limit FARTANK 350
 $rolloff  FARTANK 3000 6000
 //=============================================================================================
 
@@ -437,7 +432,6 @@ puff/ric5 			dsrich5
 puff/ric6 			dsrich6
 puff/ric7 			dsrich7
 
-$limit weapons/chaingun/fire 35
 weapons/chaingun/fire	CHGNSHOT
 weapons/chaingun/spin	CHGNSPIN
 weapons/chaingun/stop	CHGNSTOP
@@ -496,7 +490,7 @@ fstatk2 fstatk2
 fstatk3 fstatk3
 
 $random weapons/casing  { weapons/casing2 weapons/casing3 }
-$limit weapons/casing  5
+$limit weapons/casing  35
 weapons/casing2	dscasin1
 weapons/casing2	dscasin2
 weapons/casing3	dscasin3
@@ -874,7 +868,7 @@ ICEBRK1 ICEBRK1
 ICEBRK2 ICEBRK2
 
 CHGNSHOT CHGNSHOT
-$limit CHGNSHOT 35
+$Limit CHGNSHOT 350
 
 bigspl1 bigspl1
 
@@ -1043,7 +1037,6 @@ MINIGN1 MINIGN1
 MINIGEN MINIGEN
 MINIGN3 MINIGN3
 MINIGN4 MINIGN4
-$limit MINIGN4 35
 
 A12FIR A12FIR
 AACL AACL

@@ -90,7 +90,6 @@ ACTOR Juggernaut : TheSpiderMastermind 2545
 	Missile:
 		TNT1 A 0 A_JumpIfCloser(256, "FireMachinegun")
 		TNT1 A 0 A_Jump(64, "FireRockets")
-		TNT1 A 0 A_PlaySound("CHAINSTA")
 		TNT1 A 0 A_PlaySound("juggernaut/engine")
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
 		BS1B A 2 A_FaceTarget
