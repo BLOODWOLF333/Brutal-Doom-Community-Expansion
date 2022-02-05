@@ -623,7 +623,7 @@ Actor NoGutsFatso: CurbstompedMarine
     Radius 40
 	Height 19
     Mass 10000
-    Health 500
+    Health 300
     Scale 1.1
 	States
     {
@@ -676,7 +676,7 @@ Actor NoGutsFatso: CurbstompedMarine
 }
 
 Actor NoGutsFatso2: NoGutsFatso
-{Health 500 States{Spawn:
+{Health 300 States{Spawn:
 		XFAT I -1
         Stop
 		}}
@@ -687,7 +687,7 @@ Actor DeadFat: NoGutsFatso
     Height 23
     Scale 1.1
     Mass 10000
-    Health 500
+    Health 300
 States
     {
     Spawn:
@@ -741,7 +741,7 @@ States
     }}
 
 Actor DeadFatNoHead: DeadFat
-{Health 500 States{Spawn:
+{Health 300 States{Spawn:
 		FATT T -1
         Stop
        Death:
@@ -762,13 +762,13 @@ Actor DeadFatNoHead: DeadFat
 		}}
 
 Actor DeadFatNoHead_RemovedWeapon: DeadFatNoHead
-{Health 500 States{Spawn:
+{Health 300 States{Spawn:
 		FAT2 R -1
         Stop
 		}}
 
 Actor XDeadFat: DeadFat
-{Health 500 States{Spawn:
+{Health 300 States{Spawn:
 		XFBT F -1
         Stop
 
@@ -788,7 +788,7 @@ Actor XDeadFat: DeadFat
 		Stop}}
 
 Actor FuckedFatso1: DeadFat
-{Health 500 States{Spawn:
+{Health 300 States{Spawn:
 		XFT2 D -1
         Stop
 
@@ -807,7 +807,7 @@ Actor FuckedFatso1: DeadFat
 		Stop}}
 
 Actor FuckedFatso2: DeadFat
-{Health 500 States{Spawn:
+{Health 300 States{Spawn:
 		XFT3 D -1
         Stop
 
@@ -826,7 +826,7 @@ Actor FuckedFatso2: DeadFat
 		Stop}}
 
 Actor DeadFatLegStumps: DeadFat
-{Health 200 States{Spawn:
+{Health 300 States{Spawn:
 		XFT4 C -1
         Stop
 
@@ -842,7 +842,7 @@ Actor DeadFatLegStumps: DeadFat
 		Stop}}
 
 Actor DeadFatsoNoArm: DeadFat
-{Health 500 States{Spawn:
+{Health 300 States{Spawn:
 		XFT1 D -1
         Stop
 
@@ -864,7 +864,7 @@ Actor DeadFatsoNoArm: DeadFat
 Actor FatalizedFatso: NoGutsFatso
 {
 	Scale 1.1
-	Health 500
+	Health 300
 	+NOPAIN
 	Radius 40
 	Height 33

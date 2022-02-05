@@ -341,16 +341,6 @@ Death.SuperPlasma:
 	}
 }
 
-Actor NoLegsSpider2: DeadSpider
-{
-+NOBLOOD
-Health 999999999999
-States{
-Spawn:
-  ARA2 A -1
-  Stop
-}}
-
 Actor DeadSpiderDark: CurbstompedMarine
 {
     Radius 20
@@ -364,7 +354,7 @@ Actor DeadSpiderDark: CurbstompedMarine
 	+THRUACTORS
 	damagefactor "Crusher", 50.0
     Mass 1000
-    Health 250
+    Health 550
     damagefactor "Blood", 0.0
     damagefactor "Trample", 0.0
 States
@@ -395,6 +385,16 @@ States
 		 TNT1 AAA 0 A_CustomMissile ("XDeath3", 5, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 AAA 0 A_CustomMissile ("XDeath4", 5, 0, random (0, 360), 2, random (0, 160))
          Stop
+}}
+
+Actor NoLegsSpider2: DeadSpiderDark
+{
++NOBLOOD
+Health 550
+States{
+Spawn:
+  ARA2 A -1
+  Stop
 }}
 
 Actor DeadSpiderDark2: DeadSpiderDark
@@ -438,7 +438,7 @@ ACTOR ArachnoTurretFrame2
 {
 	Radius 32
 	Height 60
-	Health 20
+	Health 550
 	Scale 1.4
 	DamageFactor "Fatality", 2.0
 	+SHOOTABLE
@@ -488,11 +488,11 @@ ACTOR ArachnoTurretFrame2
 	}
 }
 
-Actor RapedArachnotron2: DeadSpider
+Actor RapedArachnotron2: DeadSpiderDark
 
 {
 Scale 1.0 //sprite already scaled
-Health 200 States{Spawn:
+Health 550 States{Spawn:
         ARF5 N -1
         Stop }}
 
