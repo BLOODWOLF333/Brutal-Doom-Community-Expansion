@@ -135,8 +135,7 @@ ACTOR PlayerBike : PlayerPawn
 		Goto Stay
 
 	Spawn:
-	StartBike:
-	    TNT1 A 0
+		TNT1 A 0
 		TNT1 A 0 A_GiveInventory("IsAVehicle", 1)
 	    TNT1 A 0 A_TakeInventory("PressedUse", 1)
 		TNT1 A 0 A_TakeInventory("PressedJump", 1)
@@ -145,20 +144,17 @@ ACTOR PlayerBike : PlayerPawn
 		TNT1 A 0 A_TakeInventory("Accelerate", 1)
 		TNT1 A 0 A_TakeInventory("BackPedal", 1)
 		BIKE A 1
+
+	StartBike:
+		BIKE A 4
 		TNT1 A 0 ACS_NamedExecuteAlways("BDVehicleInputs", 0, 0, 0, 0)//Button-checker for vehicle actions
-		TNT1 A 0 A_AlertMonsters
-		TNT1 A 0 A_TakeInventory("Speed", 200)
-		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_TakeInventory("Crashed", 1)
 		TNT1 A 0 SetPlayerProperty(0,1,4)
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
 		TNT1 A 0 A_PlaySound("BIKESTRT")
+		TNT1 A 0 A_AlertMonsters
 		BIKE A 20
-		TNT1 A 0 A_TakeInventory("Speed", 200)
-		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_TakeInventory("Crashed", 1)
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
-	Goto Stay
+		Goto Stay
 
 	Stay:
 	    BIKE A 0
@@ -171,7 +167,6 @@ ACTOR PlayerBike : PlayerPawn
 		BIKE A 0 A_JumpIfInventory("TurnRight", 1, "TurnRight")
 		BIKE A 0 A_TakeInventory("Accelerate", 1)
 		BIKE A 2
-		//TNT1 A 0 A_GiveInventory("BikeHUD", 1)
 		BIKE A 0 A_TakeInventory("TurnCounter", 3)
 		BIKE A 0 A_JumpIfInventory("BackPedal", 1, "BackPedal")
 		BIKE A 0 A_JumpIfInventory("Accelerate", 1, "Accelerate")
