@@ -144,8 +144,8 @@ ACTOR PlayerBike : PlayerPawn
 		TNT1 A 0 A_TakeInventory("TurnLeft", 1)
 		TNT1 A 0 A_TakeInventory("Accelerate", 1)
 		TNT1 A 0 A_TakeInventory("BackPedal", 1)
-		TNT1 A 0 ACS_NamedExecuteAlways("BDVehicleInputs", 0, 0, 0, 0)//Button-checker for vehicle actions
 		BIKE A 1
+		TNT1 A 0 ACS_NamedExecuteAlways("BDVehicleInputs", 0, 0, 0, 0)//Button-checker for vehicle actions
 		TNT1 A 0 A_AlertMonsters
 		TNT1 A 0 A_TakeInventory("Speed", 200)
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
