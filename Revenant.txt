@@ -750,7 +750,7 @@ Actor DeadSkeleton: CurbstompedMarine
 	+NORADIUSDMG
 	damagefactor "Crusher", 50.0
     Mass 1000
-    Health 150
+    Health 100
     damagefactor "Blood", 0.0
     damagefactor "Trample", 0.0
 	damagefactor "Saw", 0.3
@@ -796,7 +796,7 @@ States
 	}}
 
 Actor NotDeadSkeleton: DeadSkeleton
-{Health 150
+{Health 100
 damagefactor "Kick", 50.0
 -THRUACTORS
 -CORPSE
@@ -813,7 +813,7 @@ States{Spawn:
 		}}
 
 Actor DeadSkeletonNoHead: DeadSkeleton
-{Health 150
+{Health 100
 +SHOOTABLE
 Radius 18
 Height 16
@@ -824,7 +824,7 @@ Spawn:
         Stop }}
 
 Actor XDeadSkeleton: DeadSkeleton
-{Health 150 States{Spawn:
+{Health 100 States{Spawn:
 		DKEL I -1
         Stop
        Death.Minigun: Death.Cut: Death: Death.Saw: Death.Shotgun: Death.SSG: death.explosive:
@@ -835,14 +835,14 @@ Actor XDeadSkeleton: DeadSkeleton
 		Stop}}
 
 Actor XDeadSkeleton22: XDeadSkeleton
-{Health 150 States{Spawn:
+{Health 100 States{Spawn:
 		DKEL ABCDEFGH 6
 		DKEL I -1
         Stop
       }}
 
 Actor BlastedDeadSkeleton: XDeadSkeleton
-{Health 150 States{Spawn:
+{Health 100 States{Spawn:
 		SKL4 E -1
         Stop
       }}
@@ -1069,9 +1069,8 @@ ACTOR RevenantTorso5: RevenantPiece
 ACTOR RevenantU
 {
 	GibHealth 45
-	Health 150
+	Health 100
 	Monster
-	MeleeThreshold 120
 	+FLOORCLIP
 	+MISSILEMORE
 	Speed 6

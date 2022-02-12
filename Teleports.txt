@@ -10,27 +10,22 @@ ACTOR TeleportationFog Replaces TeleportFog
 	+NOGRAVITY
 	Renderstyle Add
 	DamageFactor "CancelTeleportFog", 9999.0
-		States
-		{
-		Spawn:
-		//TNT1 AAAAAAAAAAAAAAA 0 A_SpawnItemEx("BFGDeathParticle", 0, 40, 0, (0.1)*Random(20, 45), 0, (0.1)*Random(-40, 40), Random(0, 360), 128)
-			TNT1 A 0
-			TNT1 A 2
-			TNT1 A 0 A_PlaySound("DSTELEPT")
-			TFOG A 3 BRIGHT
-			TNT1 A 0 A_SpawnItem("PentagramSpawner")
-			//TNT1 A 0 A_spawnItem("TeleportSecurity")
-			TFOG BCDE 3 BRIGHT A_SpawnItem("YellowFlare",0,40)
-			TFOG FGHGFEDCBA 3 Bright A_SpawnItem("YellowFlare",0,40)
-			TNT1 A 0 A_NoBlocking
-			Stop
-		Death:
-			TNT1 A 0
-			Stop
-		}
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 2
+		TNT1 A 0 A_PlaySound("misc/teleport")
+		TFOG A 3 BRIGHT
+		TNT1 A 0 A_SpawnItem("PentagramSpawner")
+		TFOG BCDEFGHGFEDCBA 3 BRIGHT A_SpawnItem("RedFlare",0,40)
+		TNT1 A 0 A_NoBlocking
+		Stop
+	Death:
+		TNT1 A 0
+		Stop
+	}
 }
-
-
 
 ACTOR BrutalTeleportDest: TeleportDest Replaces TeleportDest
 {
@@ -43,7 +38,7 @@ ACTOR BrutalTeleportDest: TeleportDest Replaces TeleportDest
 	+PAINLESS
 	+NODAMAGETHRUST
 	-BLOODSPLATTER
-	+BLOODLESSIMPACT 
+	+BLOODLESSIMPACT
 	+FORCERADIUSDMG
 	Damagetype "TeleportRemover"
 	States
@@ -52,7 +47,7 @@ ACTOR BrutalTeleportDest: TeleportDest Replaces TeleportDest
 		Spawn:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("TeleportRemovalThing")
-		
+
 		Live:
 		TNT1 A 40
 		TNT1 A 0 A_Explode(4, 32, 0)
@@ -67,7 +62,7 @@ ACTOR TeleportRemovalThing
 	+PAINLESS
 	+NODAMAGETHRUST
 	-BLOODSPLATTER
-	+BLOODLESSIMPACT 
+	+BLOODLESSIMPACT
 	+FORCERADIUSDMG
 	+FLOORCLIP
 	+DONTSPLASH
@@ -87,14 +82,13 @@ ACTOR TeleportRemovalThing
 	}
 }
 
-
 ACTOR BOdyRemovalThing
 {
 	+THRUACTORS
 	+PAINLESS
 	+NODAMAGETHRUST
 	-BLOODSPLATTER
-	+BLOODLESSIMPACT 
+	+BLOODLESSIMPACT
 	+FORCERADIUSDMG
 	+FLOORCLIP
 	+DONTSPLASH
@@ -128,17 +122,14 @@ ACTOR FriendlymarineTFog
 	+NOGRAVITY
 	Renderstyle Add
 	Alpha 0.5
-		States
-		{
-		Spawn:
+	States
+	{
+	Spawn:
+		TFOG ABCDEFGHGFEDCBA 1 BRIGHT A_SpawnItem("RedFlare",0,40)
+		TNT1 A 0 A_NoBlocking
+		Stop
+	Death:
 		TNT1 A 0
-			//TNT1 A 0 A_spawnItem("TeleportSecurity")
-			TFOG ABCDE 1 BRIGHT A_SpawnItem("YellowFlare",0,40)
-			TFOG FGHGFEDCBA 1 Bright
-			TNT1 A 0 A_NoBlocking
-			Stop
-		Death:
-			TNT1 A 0
-			Stop
-		}
+		Stop
+	}
 }

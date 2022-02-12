@@ -130,7 +130,7 @@ actor CurbstompedMarine
 	+CORPSE
 	damagefactor "Crusher", 50.0
     Mass 1000
-    Health 50
+    Health 100
 	PainChance 255
 	damagefactor "TeleportRemover", 1000.0
 	damagefactor "GibRemoving", 0.5
@@ -352,7 +352,7 @@ actor VeryDeadCivilian: CurbstompedMarine
 
 actor MarineGotOwnedByImp: CurbstompedMarine
 {
-	Health 50
+	Health 100
     States
     {
 		Spawn:
@@ -510,7 +510,7 @@ actor GibDec
 // Dead on a stick ---------------
 ACTOR DeadDeadStick: DeadStick Replaces DeadStick
 {
-	Health 50
+	Health 100
 	Mass 99999999
 	Radius 16
 	Height 64
@@ -552,7 +552,7 @@ ACTOR DeadDeadStick: DeadStick Replaces DeadStick
 // Still alive on a stick --------------------------------------------------
 ACTOR DeadLiveStick: LiveStick Replaces LiveStick
 {
-	Health 50
+	Health 100
 	Mass 99999999
 	Radius 16
 	Height 64
@@ -656,7 +656,7 @@ ACTOR DeadLiveStick: LiveStick Replaces LiveStick
 
 ACTOR ImpaledMarineAlive1: DeadLiveStick
 {
-	Health 50
+	Health 100
 	Painchance 255
 	damagefactor "Fire", 2.0
 	height 60
@@ -842,7 +842,7 @@ ACTOR DeadBloodyTwitch: BloodyTwitch Replaces BloodyTwitch
 {
 	Radius 16
 	Height 67
-	Health 50
+	Health 100
 	Mass 99999999
 	-SOLID
 	+NOGRAVITY
@@ -912,7 +912,7 @@ ACTOR DeadBloodyTwitchB: DeadBloodyTwitch
 	DropItem "ArmorShardNoCount" 0
 	damagefactor "Fire", 0.0
 	DropItem "CLIP1Drop" 128
-    Health 50
+    Health 100
 	damagefactor "HumanBBQ", 500.0
     States
 	{
@@ -961,7 +961,7 @@ ACTOR HangingBody: Meat2 Replaces Meat2
 {
 	Radius 16
 	Height 83
-	Health 50
+	Health 100
 	Mass 99999999
 	+SOLID
 	+NOGRAVITY
@@ -1012,7 +1012,7 @@ ACTOR HangingPairOfLegs: DeadBloodyTwitchB Replaces Meat4
 {
 	Radius 16
 	Height 83
-    Health 50
+    Health 100
 	damagefactor "Fire", 0.0
 	damagefactor "HumanBBQ", 500.0
     States
@@ -1074,7 +1074,7 @@ ACTOR HangingDeadGuyNoLeg: Meat3 Replaces Meat3
 {
 	Radius 16
 	Height 83
-	Health 50
+	Health 100
 	Mass 99999999
 	+SOLID
 	+NOGRAVITY
@@ -1123,7 +1123,7 @@ ACTOR HangingLeg: DeadBloodyTwitchB Replaces Meat5
 {
 	Radius 16
 	Height 83
-	Health 50
+	Health 100
 	damagefactor "Fire", 0.0
 	damagefactor "HumanBBQ", 500.0
     States
@@ -1191,7 +1191,7 @@ ACTOR DeadHangNoGuts: HangNoGuts Replaces HangNoGuts
 {
 	Radius 20
 	Height 90
-	Health 50
+	Health 100
 	Mass 999999
 	+SOLID
 	+NOGRAVITY
@@ -1675,7 +1675,7 @@ ACTOR HumanBBQ1
 {
 	Radius 16
 	Height 84
-	Health 50
+	Health 100
 	Mass 99999999
 	+SOLID
 	+NOGRAVITY
