@@ -325,7 +325,7 @@ ACTOR Marine_HML: Marine_Rifle
 		TNT1 A 0 A_JumpIfCloser(256,"MissileClose")
 		TNT1 A 0 A_JumpIfCloser(1024,"MissileMid")
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_CustomMissile("Alerter",32)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
 		TNT1 A 0 A_PlaySound("RLANSHOT", 1)
 		TNT1 A 0 A_CustomMissile("MarineMuzzle1", 48, 16)
 		MHML D 3 BRIGHT A_FaceTarget
@@ -336,7 +336,7 @@ ACTOR Marine_HML: Marine_Rifle
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_CustomMissile("Alerter",32)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
 		TNT1 A 0 A_PlaySound("RLANSHOT", 1)
 		TNT1 A 0 A_CustomMissile("MarineMuzzle1", 48, -16)
 		MHML D 3 BRIGHT A_FaceTarget
@@ -349,7 +349,7 @@ ACTOR Marine_HML: Marine_Rifle
 
 	MissileMid:
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_CustomMissile("Alerter",32)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
 		TNT1 A 0 A_PlaySound("RLANSHOT", 1)
 		TNT1 A 0 A_CustomMissile("MarineMuzzle1", 48, 16)
 		MHML D 2 BRIGHT A_FaceTarget
@@ -360,7 +360,7 @@ ACTOR Marine_HML: Marine_Rifle
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_CustomMissile("Alerter",32)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
 		TNT1 A 0 A_PlaySound("RLANSHOT", 1)
 		TNT1 A 0 A_CustomMissile("MarineMuzzle1", 48, -16)
 		MHML D 2 BRIGHT A_FaceTarget
@@ -384,7 +384,7 @@ ACTOR Marine_HML: Marine_Rifle
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
-		TNT1 A 0 A_CustomMissile("MarineMinigunTracer", 32, 0, random(-2,2), CMF_OFFSETPITCH, random(-2,2))
+		TNT1 A 0 A_CustomMissile("MarineMinigunTracer", 48, 0, random(-2,2), CMF_OFFSETPITCH, random(-2,2))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		TNT1 A 0 A_MonsterRefire(0,"ForgetActiveTarget")
@@ -396,7 +396,7 @@ ACTOR Marine_HML: Marine_Rifle
 		TNT1 A 0 A_JumpIfCloser(256,"MissileCloseLeft")
 		TNT1 A 0 A_JumpIfCloser(1024,"MissileMidLeft")
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_CustomMissile("Alerter",32)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
 		TNT1 A 0 A_PlaySound("RLANSHOT", 1)
 		TNT1 A 0 A_CustomMissile("MarineMuzzle1", 48, 16)
 		MHML D 3 BRIGHT A_FaceTarget
@@ -408,7 +408,7 @@ ACTOR Marine_HML: Marine_Rifle
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_CustomMissile("Alerter",32)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
 		TNT1 A 0 A_PlaySound("RLANSHOT", 1)
 		TNT1 A 0 A_CustomMissile("MarineMuzzle1", 48, -16)
 		MHML D 3 BRIGHT A_FaceTarget
@@ -422,7 +422,7 @@ ACTOR Marine_HML: Marine_Rifle
 
 	MissileMidLeft:
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_CustomMissile("Alerter",32)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
 		TNT1 A 0 A_PlaySound("RLANSHOT", 1)
 		TNT1 A 0 A_CustomMissile("MarineMuzzle1", 48, 16)
 		MHML D 2 BRIGHT A_FaceTarget
@@ -434,7 +434,7 @@ ACTOR Marine_HML: Marine_Rifle
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_CustomMissile("Alerter",32)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
 		TNT1 A 0 A_PlaySound("RLANSHOT", 1)
 		TNT1 A 0 A_CustomMissile("MarineMuzzle1", 48, -16)
 		MHML D 2 BRIGHT A_FaceTarget
@@ -453,7 +453,7 @@ ACTOR Marine_HML: Marine_Rifle
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
-		TNT1 A 0 A_CustomMissile("MarineMinigunTracer", 32, 0, random(-2,2), CMF_OFFSETPITCH, random(-2,2))
+		TNT1 A 0 A_CustomMissile("MarineMinigunTracer", 48, 0, random(-2,2), CMF_OFFSETPITCH, random(-2,2))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		TNT1 A 0 A_MonsterRefire(0,"ForgetActiveTarget")
@@ -465,7 +465,7 @@ ACTOR Marine_HML: Marine_Rifle
 		TNT1 A 0 A_JumpIfCloser(256,"MissileCloseRight")
 		TNT1 A 0 A_JumpIfCloser(1024,"MissileMidRight")
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_CustomMissile("Alerter",32)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
 		TNT1 A 0 A_PlaySound("RLANSHOT", 1)
 		TNT1 A 0 A_CustomMissile("MarineMuzzle1", 48, 16)
 		MHML D 3 BRIGHT A_FaceTarget
@@ -477,7 +477,7 @@ ACTOR Marine_HML: Marine_Rifle
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_CustomMissile("Alerter",32)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
 		TNT1 A 0 A_PlaySound("RLANSHOT", 1)
 		TNT1 A 0 A_CustomMissile("MarineMuzzle1", 48, -16)
 		MHML D 3 BRIGHT A_FaceTarget
@@ -491,7 +491,7 @@ ACTOR Marine_HML: Marine_Rifle
 
 	MissileMidRight:
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_CustomMissile("Alerter",32)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
 		TNT1 A 0 A_PlaySound("RLANSHOT", 1)
 		TNT1 A 0 A_CustomMissile("MarineMuzzle1", 48, 16)
 		MHML D 2 BRIGHT A_FaceTarget
@@ -503,7 +503,7 @@ ACTOR Marine_HML: Marine_Rifle
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_CustomMissile("Alerter",32)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
 		TNT1 A 0 A_PlaySound("RLANSHOT", 1)
 		TNT1 A 0 A_CustomMissile("MarineMuzzle1", 48, -16)
 		MHML D 2 BRIGHT A_FaceTarget
@@ -522,7 +522,7 @@ ACTOR Marine_HML: Marine_Rifle
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
-		TNT1 A 0 A_CustomMissile("MarineMinigunTracer", 32, 0, random(-2,2), CMF_OFFSETPITCH, random(-2,2))
+		TNT1 A 0 A_CustomMissile("MarineMinigunTracer", 48, 0, random(-2,2), CMF_OFFSETPITCH, random(-2,2))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		TNT1 A 0 A_MonsterRefire(0,"ForgetActiveTarget")
@@ -532,7 +532,7 @@ ACTOR Marine_HML: Marine_Rifle
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfCloser(256,"RetreatClose")
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_CustomMissile("Alerter",32)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
 		TNT1 A 0 A_PlaySound("RLANSHOT", 1)
 		TNT1 A 0 A_CustomMissile("MarineMuzzle1", 48, 16)
 		MHML D 2 BRIGHT A_FaceTarget
@@ -544,7 +544,7 @@ ACTOR Marine_HML: Marine_Rifle
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_CustomMissile("Alerter",32)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
 		TNT1 A 0 A_PlaySound("RLANSHOT", 1)
 		TNT1 A 0 A_CustomMissile("MarineMuzzle1", 48, -16)
 		MHML D 2 BRIGHT A_FaceTarget
@@ -560,10 +560,10 @@ ACTOR Marine_HML: Marine_Rifle
 		TNT1 A 0 A_Recoil(5)
 		PL42 H 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_CustomMissile("Alerter",32)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
-		TNT1 A 0 A_CustomMissile("MarineMinigunTracer", 32, 0, random(-2,2), CMF_OFFSETPITCH, random(-2,2))
+		TNT1 A 0 A_CustomMissile("MarineMinigunTracer", 48, 0, random(-2,2), CMF_OFFSETPITCH, random(-2,2))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		PL42 E 3 A_FaceTarget
@@ -572,7 +572,7 @@ ACTOR Marine_HML: Marine_Rifle
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
-		TNT1 A 0 A_CustomMissile("MarineMinigunTracer", 32, 0, random(-2,2), CMF_OFFSETPITCH, random(-2,2))
+		TNT1 A 0 A_CustomMissile("MarineMinigunTracer", 48, 0, random(-2,2), CMF_OFFSETPITCH, random(-2,2))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		PL42 E 2 A_FaceTarget
@@ -581,7 +581,7 @@ ACTOR Marine_HML: Marine_Rifle
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
-		TNT1 A 0 A_CustomMissile("MarineMinigunTracer", 32, 0, random(-2,2), CMF_OFFSETPITCH, random(-2,2))
+		TNT1 A 0 A_CustomMissile("MarineMinigunTracer", 48, 0, random(-2,2), CMF_OFFSETPITCH, random(-2,2))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		PL42 E 1 A_FaceTarget
@@ -590,7 +590,7 @@ ACTOR Marine_HML: Marine_Rifle
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
-		TNT1 A 0 A_CustomMissile("MarineMinigunTracer", 32, 0, random(-2,2), CMF_OFFSETPITCH, random(-2,2))
+		TNT1 A 0 A_CustomMissile("MarineMinigunTracer", 48, 0, random(-2,2), CMF_OFFSETPITCH, random(-2,2))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		Goto Pain.Avoid
@@ -1055,7 +1055,7 @@ ACTOR HMLMarineGuarding: Marine_HML
 		TNT1 A 0 A_JumpIfCloser(256,"MissileClose")
 		TNT1 A 0 A_JumpIfCloser(1024,"MissileMid")
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_CustomMissile("Alerter",32)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
 		TNT1 A 0 A_PlaySound("RLANSHOT", 1)
 		TNT1 A 0 A_CustomMissile("MarineMuzzle1", 48, 16)
 		MHML D 3 BRIGHT A_FaceTarget
@@ -1066,7 +1066,7 @@ ACTOR HMLMarineGuarding: Marine_HML
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_CustomMissile("Alerter",32)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
 		TNT1 A 0 A_PlaySound("RLANSHOT", 1)
 		TNT1 A 0 A_CustomMissile("MarineMuzzle1", 48, -16)
 		MHML D 3 BRIGHT A_FaceTarget
@@ -1079,7 +1079,7 @@ ACTOR HMLMarineGuarding: Marine_HML
 
 	MissileMid:
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_CustomMissile("Alerter",32)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
 		TNT1 A 0 A_PlaySound("RLANSHOT", 1)
 		TNT1 A 0 A_CustomMissile("MarineMuzzle1", 48, 16)
 		MHML D 2 BRIGHT A_FaceTarget
@@ -1090,7 +1090,7 @@ ACTOR HMLMarineGuarding: Marine_HML
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_CustomMissile("Alerter",32)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
 		TNT1 A 0 A_PlaySound("RLANSHOT", 1)
 		TNT1 A 0 A_CustomMissile("MarineMuzzle1", 48, -16)
 		MHML D 2 BRIGHT A_FaceTarget
@@ -1112,7 +1112,7 @@ ACTOR HMLMarineGuarding: Marine_HML
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
-		TNT1 A 0 A_CustomMissile("MarineMinigunTracer", 32, 0, random(-2,2), CMF_OFFSETPITCH, random(-2,2))
+		TNT1 A 0 A_CustomMissile("MarineMinigunTracer", 48, 0, random(-2,2), CMF_OFFSETPITCH, random(-2,2))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		TNT1 A 0 A_MonsterRefire(0,"ForgetActiveTarget")
@@ -1122,7 +1122,7 @@ ACTOR HMLMarineGuarding: Marine_HML
 		TNT1 A 0 A_JumpIfCloser(256,"MissileCloseLeft")
 		TNT1 A 0 A_JumpIfCloser(1024,"MissileMidLeft")
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_CustomMissile("Alerter",32)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
 		TNT1 A 0 A_PlaySound("RLANSHOT", 1)
 		TNT1 A 0 A_CustomMissile("MarineMuzzle1", 48, 16)
 		MHML D 3 BRIGHT A_FaceTarget
@@ -1134,7 +1134,7 @@ ACTOR HMLMarineGuarding: Marine_HML
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_CustomMissile("Alerter",32)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
 		TNT1 A 0 A_PlaySound("RLANSHOT", 1)
 		TNT1 A 0 A_CustomMissile("MarineMuzzle1", 48, -16)
 		MHML D 3 BRIGHT A_FaceTarget
@@ -1148,7 +1148,7 @@ ACTOR HMLMarineGuarding: Marine_HML
 
 	MissileMidLeft:
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_CustomMissile("Alerter",32)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
 		TNT1 A 0 A_PlaySound("RLANSHOT", 1)
 		TNT1 A 0 A_CustomMissile("MarineMuzzle1", 48, 16)
 		MHML D 2 BRIGHT A_FaceTarget
@@ -1160,7 +1160,7 @@ ACTOR HMLMarineGuarding: Marine_HML
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_CustomMissile("Alerter",32)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
 		TNT1 A 0 A_PlaySound("RLANSHOT", 1)
 		TNT1 A 0 A_CustomMissile("MarineMuzzle1", 48, -16)
 		MHML D 2 BRIGHT A_FaceTarget
@@ -1179,7 +1179,7 @@ ACTOR HMLMarineGuarding: Marine_HML
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
-		TNT1 A 0 A_CustomMissile("MarineMinigunTracer", 32, 0, random(-2,2), CMF_OFFSETPITCH, random(-2,2))
+		TNT1 A 0 A_CustomMissile("MarineMinigunTracer", 48, 0, random(-2,2), CMF_OFFSETPITCH, random(-2,2))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		TNT1 A 0 A_MonsterRefire(0,"ForgetActiveTarget")
@@ -1189,7 +1189,7 @@ ACTOR HMLMarineGuarding: Marine_HML
 		TNT1 A 0 A_JumpIfCloser(256,"MissileCloseRight")
 		TNT1 A 0 A_JumpIfCloser(1024,"MissileMidRight")
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_CustomMissile("Alerter",32)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
 		TNT1 A 0 A_PlaySound("RLANSHOT", 1)
 		TNT1 A 0 A_CustomMissile("MarineMuzzle1", 48, 16)
 		MHML D 3 BRIGHT A_FaceTarget
@@ -1201,7 +1201,7 @@ ACTOR HMLMarineGuarding: Marine_HML
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_CustomMissile("Alerter",32)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
 		TNT1 A 0 A_PlaySound("RLANSHOT", 1)
 		TNT1 A 0 A_CustomMissile("MarineMuzzle1", 48, -16)
 		MHML D 3 BRIGHT A_FaceTarget
@@ -1215,7 +1215,7 @@ ACTOR HMLMarineGuarding: Marine_HML
 
 	MissileMidRight:
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_CustomMissile("Alerter",32)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
 		TNT1 A 0 A_PlaySound("RLANSHOT", 1)
 		TNT1 A 0 A_CustomMissile("MarineMuzzle1", 48, 16)
 		MHML D 2 BRIGHT A_FaceTarget
@@ -1227,7 +1227,7 @@ ACTOR HMLMarineGuarding: Marine_HML
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_CustomMissile("Alerter",32)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
 		TNT1 A 0 A_PlaySound("RLANSHOT", 1)
 		TNT1 A 0 A_CustomMissile("MarineMuzzle1", 48, -16)
 		MHML D 2 BRIGHT A_FaceTarget
@@ -1246,7 +1246,7 @@ ACTOR HMLMarineGuarding: Marine_HML
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
-		TNT1 A 0 A_CustomMissile("MarineMinigunTracer", 32, 0, random(-2,2), CMF_OFFSETPITCH, random(-2,2))
+		TNT1 A 0 A_CustomMissile("MarineMinigunTracer", 48, 0, random(-2,2), CMF_OFFSETPITCH, random(-2,2))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 
 		TNT1 A 0 A_MonsterRefire(0,"ForgetActiveTarget")
