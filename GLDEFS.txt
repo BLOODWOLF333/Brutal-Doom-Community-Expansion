@@ -94,35 +94,6 @@ interval 3
 // -- Doom Weapons --
 // ------------------
 
-// Bullet puff
-flickerlight BPUFF1
-{
-    color 0.5 0.5 0.0
-    size 6
-    secondarySize 8
-    chance 0.8
-}
-
-flickerlight BPUFF2
-{
-    color 0.5 0.5 0.0
-    size 3
-    secondarySize 4
-    chance 0.8
-}
-
-object HitPuff
-{
-    frame PUFFA { light BPUFF1 }
-    frame PUFFB { light BPUFF2 }
-}
-
-object MachinegunBulletPuff
-{
-    frame PUFFA { light BPUFF1 }
-    frame PUFFB { light BPUFF2 }
-}
-
 // Rocket
 pointlight ROCKET
 {
@@ -180,23 +151,11 @@ object PlasmaPuff
 
 object ExplosiveBarrel1
 {
-    frame BAR1  { light GREENGOOZ    }
-    frame BARB  { light GREENGOOZ    }
+    frame BARI  { light GREENGOOZ }
 
     frame BEXPC { light ROCKET_X1 }
-    frame BEXPD { light ROCKET_X1 }
-    frame BEXPE { light ROCKET_X1 }
-    frame BEXPF { light ROCKET_X1 }
-    frame BEXPG { light ROCKET_X2 }
-    frame BEXPH { light ROCKET_X2 }
-    frame BEXPI { light ROCKET_X2 }
-    frame BEXPJ { light ROCKET_X2 }
-    frame BEXPK { light ROCKET_X2 }
-    frame BEXPL { light ROCKET_X3 }
-    frame BEXPM { light ROCKET_X3 }
-    frame BEXPN { light ROCKET_X3 }
-    frame BEXPO { light ROCKET_X3 }
-    frame BEXPP { light ROCKET_X3 }
+    frame BEXPD { light ROCKET_X2 }
+    frame BEXPE { light ROCKET_X3 }
 }
 
 pointlight BDECCEILLAMP
@@ -516,20 +475,22 @@ object HeadCandles
 pulselight SmallShotLight
 {
     color 0.5 0.4 0
-    size 48
-	secondarySize 24
+    size 24
+	secondarySize 12
+	Interval 1.0
 }
 
 pulselight BigShotLight
 {
     color 0.5 0.4 0
-    size 62
+    size 48
 	secondarySize 36
+	Interval 1.0
 }
 
-object RicoChet
+object YellowFlareSmall
 {
-    frame IPF2 { light SmallShotLight }
+    frame LENY { light SmallShotLight }
 }
 
 object YellowFlareSmallB
@@ -1332,7 +1293,7 @@ pointlight SpecialLightz
 
 pulselight GREENGOOZ
 {
-    color 0.3 1.0 0.0
+    color 0.1 1.0 0.1
     size 22
     secondarySize 24
     interval 0.1
