@@ -96,7 +96,6 @@ ACTOR ImpShield : Rifle
 
 ACTOR ThrowedImp: ThrowedZman
 {
-	Damage 10
 	States
 	{
 	Spawn:
@@ -155,8 +154,6 @@ ACTOR ThrowedImp: ThrowedZman
 	}
 }
 
-
-
 ACTOR ThrowedImpRicochet: ThrowedImp
 {
     +BOUNCEONWALLS
@@ -187,7 +184,8 @@ ACTOR ThrowedImpRicochet: ThrowedImp
 ACTOR ThrowedImp2: ThrowedImp
 {
     +NOGRAVITY
-	Damage 8
+	-THRUSPECIES
+	Species "none"
 }
 
 
