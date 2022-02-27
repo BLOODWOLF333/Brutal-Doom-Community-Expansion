@@ -138,9 +138,16 @@ pointlight PLASMABALLSMALL
     size 64
 }
 
-object PlasmaPuff
+pointlight IONBALL
 {
-    frame PLSE { light PLASMABALL }
+    color 1.0 0.0 1.0
+    size 128
+}
+
+pointlight IONBALLSMALL
+{
+    color 1.0 0.0 1.0
+    size 64
 }
 
 // ----------------------
@@ -355,18 +362,6 @@ pulselight BIGBLUETORCH
 object TallTorch_Blue
 {
     frame TTRB { light BIGBLUETORCH }
-}
-
-object Plasma_Ball
-{
-    frame TNT1 { light PLASMABALL }
-    frame PBAL { light PLASMABALLSMALL }
-}
-
-object EnemyPlasmaBall
-{
-    frame TNT1 { light PLASMABALL }
-    frame PBAL { light PLASMABALLSMALL }
 }
 
 // Small red torch
@@ -1870,6 +1865,12 @@ object Plasma_Ball
 	frame PLSE { light PLASMABALL }
 }
 
+object EnemyPlasmaBall
+{
+    frame PLSS { light PLASMABALLSMALL }
+	frame PLSE { light PLASMABALL }
+}
+
 object ClassicPlasmaBall
 {
     frame PLSS { light PLASMABALLSMALL }
@@ -1900,10 +1901,19 @@ object PlasmaBallDM
 	frame PLSE { light PLASMABALL }
 }
 
-object EnemyPlasmaBall
+object PurplePlasmaBall
 {
-    frame PLSS { light PLASMABALLSMALL }
-	frame PLSE { light PLASMABALL }
+    frame PBAL { light IONBALLSMALL }
+}
+
+object MarinePurplePlasmaBall
+{
+    frame PBAL { light IONBALLSMALL }
+}
+
+object IonPuff
+{
+	frame FIR5 { light IONBALL }
 }
 
 object BFG10K_Ball

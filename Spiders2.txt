@@ -498,32 +498,31 @@ Health 100 States{Spawn:
 
 ACTOR PurplePlasmaBall: FastProjectile
 {
-  Radius 6
-  Height 6
-  Speed 20
-  FastSpeed 25
-  Scale 0.55
-  DamageType Plasma
-  Damage (random(32,32))
-  Decal StunnerScorch
-  RenderStyle Add
-  SeeSound "PAILGF3"
-  DeathSound "PAILGD3"
-  Species "Arachnotron"
-  Projectile
-  +MTHRUSPECIES
-  +THRUSPECIES
-  states
-  {
+	Radius 6
+	Height 6
+	Speed 20
+	FastSpeed 25
+	Scale 0.55
+	DamageType Plasma
+	Damage (random(32,32))
+	Decal StunnerScorch
+	RenderStyle Add
+	SeeSound "PAILGF3"
+	DeathSound "PAILGD3"
+	Species "Arachnotron"
+	Projectile
+	+MTHRUSPECIES
+	+THRUSPECIES
+	states
+	{
 	Spawn:
-	PBAL H 1 BRIGHT A_SpawnItem("PinkIonFlare",0,0)
-	Loop
-  Death:
-    TNT1 A 0 A_SpawnItem ("IonPuff", 0)
-    TNT1 A 0 A_Explode(8,8,1)
-    TNT1 AAAAA 19 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
-    Stop
-  }
+		PBAL H 1 BRIGHT A_SpawnItem("PinkIonFlare",0,0)
+		Loop
+	Death:
+		TNT1 A 0 A_SpawnItem ("IonPuff", 0)
+		TNT2 AAA 9 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+		Stop
+	}
 }
 
 ACTOR MarinePurplePlasmaBall: PurplePlasmaBall
