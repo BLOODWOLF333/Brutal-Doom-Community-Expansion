@@ -836,19 +836,6 @@ flickerlight BARONBALL_X3
     chance 0.25
 }
 
-object GreenPlasmaBall
-{
-    frame FRPGJ { light BARONBALL    }
-    frame FRPGK { light BARONBALL    }
-
-    frame FRPGC { light BARONBALL_X1 }
-    frame FRPGD { light BARONBALL_X1 }
-    frame FRPGE { light BARONBALL_X2 }
-    frame FRPGF { light BARONBALL_X2 }
-    frame FRPGG { light BARONBALL_X3 }
-    frame FRPGH { light BARONBALL_X3 }
-}
-
 // Lost Soul
 flickerlight LOSTSOUL
 {
@@ -1866,6 +1853,12 @@ object Plasma_Ball
 }
 
 object EnemyPlasmaBall
+{
+    frame PLSS { light PLASMABALLSMALL }
+	frame PLSE { light PLASMABALL }
+}
+
+object EvilPlasmaBall
 {
     frame PLSS { light PLASMABALLSMALL }
 	frame PLSE { light PLASMABALL }
