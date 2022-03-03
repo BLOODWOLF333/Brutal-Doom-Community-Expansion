@@ -29,7 +29,7 @@ Script "BDBigLightSeed" (VOID)
 Script "BDScythe2Desert" (VOID)//Scythe 2 Desert Maps
 {
 	ReplaceTextures("CEIL4_1", "SANDS1");
-	ReplaceTextures("SLIME01", "BDFWATER");
+	ReplaceTextures("SLIME01", "FWATER1");
 }
 
 //DOOM E1M1 - Hangar
@@ -320,8 +320,8 @@ ReplaceTextures("SKSPINE1", "STARGR1");
 ReplaceTextures("DEM1_5", "LITGEN8", not_FLOOR);
 ReplaceTextures("CEIL3_4", "LITGEN9", not_FLOOR);
 ReplaceTextures("FLAT1_2", "METAL54");
-ReplaceTextures("NUKAGE3", "BDBLOOD1");
-ReplaceTextures("NUKAGE1", "BDBLOOD1");
+ReplaceTextures("NUKAGE3", "BLOOD1");
+ReplaceTextures("NUKAGE1", "BLOOD1");
 ReplaceTextures("PIPE6", "PIPE1");
 ReplaceTextures("FLAT5_4", "LITGEN8", not_FLOOR);
 ReplaceTextures("MFLR8_1", "LITGEN8", not_FLOOR);
@@ -373,7 +373,7 @@ ReplaceTextures("MIDVINE2", "BDHAU4");
 ReplaceTextures("BROVINE2", "BDHAU1");
 ReplaceTextures("BROVINE", "BDHAU2");
 ReplaceTextures("SP_HOT1", "BDHAU2");
-ReplaceTextures("NUKAGE3", "BDBLOOD1");
+ReplaceTextures("NUKAGE3", "BLOOD1");
 ReplaceTextures("CEIL4_1", "F_SKY1");
 ReplaceTextures("FWATER4", "MFLR8_2");
 ReplaceTextures("CEIL3_5", "LITGEN8");
@@ -578,7 +578,7 @@ ReplaceTextures ("BIGBRIK1", "INDUS3");
 ReplaceTextures ("BIGBRIK2", "INDUS4");
 ReplaceTextures ("SPACEW3", "SPACM0");
 ReplaceTextures ("MIDGRATE", "GRATX");
-ReplaceTextures ("PIPEWAL1", "BDWFALL1", NOT_MIDDLE | NOT_TOP);
+ReplaceTextures ("PIPEWAL1", "WFALL1", NOT_MIDDLE | NOT_TOP);
 ReplaceTextures ("", "BRONZE1", NOT_MIDDLE | NOT_TOP);
 
 ReplaceTextures("STONE2", "BUNKER05");
@@ -678,7 +678,7 @@ ChangeSky ("SKYEAR5", "SKYEAR5");
 
 ReplaceTextures ("FLOOR4_1", "FLAT10");
 ReplaceTextures ("FLOOR4_1", "FLAT10");
-ReplaceTextures ("SLIME04", "BDNUKE1");
+ReplaceTextures ("SLIME04", "NUKAGE1");
 ReplaceTextures ("BIGBRIK1", "INDUS3");
 ReplaceTextures ("BIGBRIK2", "INDUS4");
 ReplaceTextures ("MODWALL1", "TANROCK5");
@@ -720,7 +720,7 @@ Script "MapEnhancementD2Map15" (VOID)
 {
 ReplaceTextures("GRASS1", "JUNKY15");
 ReplaceTextures("GRASS2", "JUNKY15");
-ReplaceTextures("SLIME12", "BDNUKE1");
+ReplaceTextures("SLIME12", "NUKAGE1");
 ReplaceTextures("WOOD5", "BRONZE1");
 ReplaceTextures("WOOD12", "INDUS3");
 ReplaceTextures("BIGBRIK2", "INDUS4");
@@ -751,7 +751,7 @@ ChangeSky ("SKYCIT1", "SKYCIT2");
 Script "MapEnhancementD2Map18" (VOID)
 {
 ReplaceTextures("RROCK20", "GRASS3");
-ReplaceTextures("NUKAGE3", "BDBLOOD1");
+ReplaceTextures("NUKAGE3", "BLOOD1");
 ReplaceTextures("TANROCK5", "STONE7");
 ReplaceTextures("NUKEPOIS", "STONE5");
 ReplaceTextures("NUKEDGE1", "BROWN144");
@@ -841,8 +841,8 @@ ReplaceTextures("PIPE4", "SKSNAKE2");
 ReplaceTextures("PIPE2", "SKSNAKE2");
 ReplaceTextures("BLOOD3", "SFLR6_4");
 ReplaceTextures("RROCK08", "F_SKY1");
-ReplaceTextures("SLIME08", "BDBLOOD1");
-ReplaceTextures("SFALL4", "BDBFALL1");
+ReplaceTextures("SLIME08", "BLOOD1");
+ReplaceTextures("SFALL4", "BFALL1");
 ChangeSky ("SKYHELF", "SKYHELF");
 Floor_LowerToLowest(9, 32);
 
@@ -889,7 +889,7 @@ ReplaceTextures("TEKGREN4", "GREIND4");
 ReplaceTextures("TEKGREN5", "GREIND5");
 ReplaceTextures("METAL2", "METALIND");
 ReplaceTextures("METAL6", "METALIND");
-ReplaceTextures("SLIME05", "BDNUKE1");
+ReplaceTextures("SLIME05", "NUKAGE1");
 ReplaceTextures("GSTONE1", "BUNKER01");
 ReplaceTextures("GSTONE1", "BUNKER01");
 ReplaceTextures("GRASS1", "DESERT01");
@@ -1325,7 +1325,7 @@ delay(1);
 Script "MapEnhancementPlutoniaMap01" (VOID)
 {
 ChangeSky ("SKYEAR4", "SKYEAR4");
-ReplaceTextures("SLIME05", "BDFWATER");
+ReplaceTextures("SLIME05", "FWATER1");
 ReplaceTextures("A-BROWN4", "NEWDOR1");
 }
 
@@ -1339,7 +1339,7 @@ ReplaceTextures("GATE2", "BLACK");
 ReplaceTextures("RROCK09", "RROCK18");
 ReplaceTextures("A-VINE1", "AVINE1B");
 delay(35);
-ChangeFloor (3, "BDFWATER");
+ChangeFloor (3, "FWATER1");
 Floor_LowerToNearest(3, 255);
 }
 
@@ -1347,7 +1347,7 @@ Floor_LowerToNearest(3, 255);
 Script "MapEnhancementPlutoniaMap03" (VOID)
 {
 ChangeSky ("SKYEAR4", "SKYEAR4");
-ReplaceTextures("SLIME05", "BDSLIME1");
+ReplaceTextures("SLIME05", "SLIME01");
 }
 
 //PLUTONIA MAP04 - Caged
