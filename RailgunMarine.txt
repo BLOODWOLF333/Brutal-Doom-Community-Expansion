@@ -8,7 +8,9 @@ ACTOR PrePlacedMarineRailgun Replaces MarineRailgun
     States
 	{
 	Spawn:
-	TNT1 A 0
+	MRRG A 1
+	TNT1 A 0 A_NoBlocking
+	MRRG A 1
 	TNT1 A 0 A_SpawnItemEx ("Marine_RailgunSpawn",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	Stop
     }

@@ -8,7 +8,9 @@ ACTOR PrePlacedMarineSMG Replaces MarinePistol
     States
 	{
 	Spawn:
-	TNT1 A 0
+	MRMP A 1
+	TNT1 A 0 A_NoBlocking
+	MRMP A 1
 	TNT1 A 0 A_SpawnItemEx ("Marine_SMGSpawn",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	Stop
     }

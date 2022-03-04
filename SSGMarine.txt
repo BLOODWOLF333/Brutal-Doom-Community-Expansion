@@ -8,7 +8,9 @@ ACTOR PrePlacedMarineSSG Replaces MarineSSG
     States
 	{
 	Spawn:
-	TNT1 A 0
+	PLA9 A 1
+	TNT1 A 0 A_NoBlocking
+	PLA9 A 1
 	TNT1 A 0 A_SpawnItemEx ("Marine_SSGSpawn",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	Stop
     }

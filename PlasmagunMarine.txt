@@ -8,7 +8,9 @@ ACTOR PrePlacedMarinePlasmaGun Replaces MarinePlasma
     States
 	{
 	Spawn:
-	TNT1 A 0
+	PLA6 A 1
+	TNT1 A 0 A_NoBlocking
+	PLA6 A 1
 	TNT1 A 0 A_SpawnItemEx ("Marine_PlasmaGunSpawn",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	Stop
     }
