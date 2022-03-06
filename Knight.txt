@@ -767,18 +767,17 @@ ACTOR KnightAttack: BaronBall
 	RenderStyle Add
 	Alpha 0.6
     Damage (random(40,40))
-    Speed 42
+    Speed 44
 	SeeSound "none"
 	DeathSound "none"
 	Decal "none"
 	States
 	{
 	Spawn:
-		TNT1 A 2 BRIGHT
-        TNT1 A 2 //A_PlaySound("weapons/gswing")
-		Goto Death
+        TNT1 A 2
+		Stop
 	Death:
-		TNT1 A 0 BRIGHT
+		TNT1 A 2 A_PlaySound("imp/melee")
 		Stop
 	}
 }
