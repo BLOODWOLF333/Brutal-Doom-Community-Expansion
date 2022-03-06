@@ -827,9 +827,9 @@ ACTOR ArmlessDemon: Bulldemon
 Health 100
 +NOPAIN
 -COUNTKILL
+MeleeRange 44
 States
 	{
-
 	Pain.KillMe:
     Pain.Taunt:
         TNT1 A 0
@@ -850,13 +850,13 @@ States
 		TNT1 A 0 A_JumpIfInventory("DemonBleedingOut", 15, "Death")
 		Loop
 	See:
-		SG1A AA 2 A_Chase("Melee","")
+		SG1A AA 2 A_Chase
 		TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood3", 42, 0, random (0, 360), 2, random (0, 45))
-		SG1A BB 2 A_Chase("Melee","")
+		SG1A BB 2 A_Chase
 		TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood3", 42, 0, random (0, 360), 2, random (0, 45))
-		SG1A CC 2 A_Chase("Melee","")
+		SG1A CC 2 A_Chase
 		TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood3", 42, 0, random (0, 360), 2, random (0, 45))
-		SG1A DD 2 A_Chase("Melee","")
+		SG1A DD 2 A_Chase
 		TNT1 A 0 A_GiveInventory("DemonBleedingOut", 1)
 		TNT1 A 0 A_JumpIfInventory("DemonBleedingOut", 15, "Death")
 		TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood3", 42, 0, random (0, 360), 2, random (0, 45))
