@@ -200,7 +200,7 @@ ACTOR Imp Replaces DoomImp
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 35)
 		TROT H 4 A_JumpIfInventory("Fatality_Marine", 1, "FatalityMarine")
 		TNT1 A 0 A_TakeInventory ("IsJumping")
-		TNT1 A 0 A_JumpIfCloser(45, "Melee")
+		TNT1 A 0 A_Stop
 		Goto SeeContinue
 
 	Melee:
@@ -1291,7 +1291,7 @@ ACTOR ImpAttack: BaronBall
 	SeeSound "None"
 	DeathSound "none"
 	Decal "none"
-    Speed 44
+    Speed 20
 	States
 	{
 	Spawn:

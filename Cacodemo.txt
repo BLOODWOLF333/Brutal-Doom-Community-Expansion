@@ -116,9 +116,7 @@ ACTOR Cacodemon_ : Cacodemon Replaces Cacodemon
 
 	See:
 		TNT1 A 0 A_CheckSight("See2")
-		HEAD A 2 A_Chase
-		HEAD AA 2 A_Chase ("","")
-		TNT1 A 0 A_JumpIfCloser(99, "Melee")
+		HEAD AAA 2 A_Chase
 		TNT1 A 0 A_TakeInventory("EnemyMemory", 1)
 		Loop
 
@@ -134,7 +132,6 @@ ACTOR Cacodemon_ : Cacodemon Replaces Cacodemon
 	Missile:
 		TNT1 A 0
 	    TNT1 A 0 A_TakeInventory("EnemyMemory", 30)
-	    TNT1 A 0 A_JumpIfCloser(140, "Melee")
         TNT1 A 0 A_Jump (198, 3)
         Goto Pain.Avoid
         TNT1 AAA 0
@@ -149,6 +146,7 @@ ACTOR Cacodemon_ : Cacodemon Replaces Cacodemon
 		HEAD C 4 A_Recoil(-5)
 		TNT1 A 0 A_CustomMissile("CacodemonBite", 34, 0, 0, 0)
 		HEAD D 4
+		TNT1 A 0 A_Stop
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "FatalityMarine")
 	Goto See
 
