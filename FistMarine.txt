@@ -520,10 +520,10 @@ ACTOR Marine_Fist: Marine_Rifle
 		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)	TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
         TNT1 A 0 A_PlaySound("BIGSCREA")
 		TNT1 A 0 ACS_NamedExecute("RemoveMarineFist")
-        PMET AABBCCDDEEFFGGHHIIIII 10 A_CustomMissile ("PlasmaSmoke", 25, 0, random (0, 180), 2, random (0, 180))
-        PMET IIIIIIIIIIJJJJJJJJJJJJJJJJJJJJJJKKKKKKKKKKKKKKKKKKKKKKKKKKLLLLLLLLLLLLLLL 3 A_CustomMissile ("PlasmaSmoke", 25, 0, random (0, 180), 2, random (0, 180))
-        TNT1 A 0 A_NoBlocking
-        TNT1 A -1
+        PMET ABCDEFGHI 10 A_CustomMissile ("PlasmaSmoke", 25, 0, random (0, 180), 2, random (0, 180))
+        PMET JJJKKKLLL 3 A_CustomMissile ("PlasmaSmoke", 25, 0, random (0, 180), 2, random (0, 180))
+        NULL A 0 A_NoBlocking
+        PMET M -1
         Stop
 
     Death.Minigun:

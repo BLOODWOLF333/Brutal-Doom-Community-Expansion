@@ -1732,10 +1732,10 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		MARN A 0 A_GiveInventory("PlayerIsDead", 1)
         NULL A 0 A_Takeinventory("Kicking",1)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-        PMET AABBCCDDEEFFGGHHIIIII 10 A_CustomMissile ("PlasmaSmoke", 25, 0, random (0, 180), 2, random (0, 180))
-        PMET IIIIIIIIIIJJJJJJJJJJJJJJJJJJJJJJKKKKKKKKKKKKKKKKKKKKKKKKKKLLLLLLLLLLLLLLL 3 A_CustomMissile ("PlasmaSmoke", 25, 0, random (0, 180), 2, random (0, 180))
+        PMET ABCDEFGHI 10 A_CustomMissile ("PlasmaSmoke", 25, 0, random (0, 180), 2, random (0, 180))
+        PMET JJJKKKLLL 3 A_CustomMissile ("PlasmaSmoke", 25, 0, random (0, 180), 2, random (0, 180))
         NULL A 0 A_NoBlocking
-        NULL A -1
+        PMET M -1
         Stop
 
     Death.Minigun:
