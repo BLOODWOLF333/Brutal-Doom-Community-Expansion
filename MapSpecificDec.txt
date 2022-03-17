@@ -4285,39 +4285,128 @@ ACTOR BDSpawnImps
 	}
 }
 
-ACTOR BDECHellGrowth : BDdecorationBase2
+ACTOR BDECHellGrowth : BigTree
 {
-	Height 96
+	Game Doom
 	Radius 32
-	Health 999
-	sCALE 1.0
-	+INVULNERABLE
+	Height 84
+	ProjectilePassHeight -16
+    deathheight 42
+	burnheight 32
+	PainChance "Blood", 0
+	damagefactor "Explosive", 10.0
+	damagefactor "Avoid", 0.0    damagefactor "Kick", 0.0	damagefactor "Melee", 0.0
+    damagefactor "KillMe", 0.0 damagefactor "Trample", 0.0
+	DamageFactor "Fire", 2.0 DamageFactor "Burn", 2.0 DamageFactor "Flames", 2.0
+	DamageFactor "Plasma", 2.0 DamageFactor "PLasma2", 2.0
 	+SOLID
+    +SHOOTABLE
+    +FORCEYBILLBOARD
+	-NOPAIN
+	+NOTAUTOAIMED
+    Mass 99999
+    Health 500
+	+NOBLOODDECALS
+	+NOTARGET
+	BloodType "TreeBlood"
 	States
 	{
 	Spawn:
 		BPEC Z 1
 		BPEC Z -1
-		Loop
+		Stop
 
+	Death:
+	TRE3 B 1
+    TNT1 AAAAAA 0 A_CustomMissile ("BrownCloud", 35, 0, random (0, 360), 2, random (0, 360))
+	TNT1 AAAAA 0 A_CustomMissile ("WoodParticle", 35, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AAAAA 0 A_CustomMissile ("WoodParticleSmall", 45, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AAAAAA 0 A_CustomMissile ("WoodParticleTiny", 65, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AAAAAAA 0 A_CustomMissile ("WoodParticleBig", 85, 0, random (0, 360), 2, random (0, 160))
+	TRE3 B -1
+	Stop
+
+	Death.Burn:
+	Death.Flames:
+	Death.Plasma:
+	Death.Plasma2:
+	Death.Fire:
+		TNT1 A 1
+		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 64)
+		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Big", 0, 0, 5)
+		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
+		TNT1 A 0 A_Jump(255, "Burning")
+		Loop
+	Burning:
+		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+		TRE3 N 20 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+		Loop
+	Extinguish:
+		TNT1 A 0 A_StopSound(1)
+		TRE3 N -1
+		Stop
 	}
 }
 
-ACTOR BDECHellGrowthSmall : BDdecorationBase2
+ACTOR BDECHellGrowthSmall : TorchTree
 {
-	Height 56
+	Game Doom
 	Radius 16
-	Health 999
-	sCALE 1.0
-	+INVULNERABLE
+	Height 56
+    deathheight 32
+	damagefactor "Avoid", 0.0    damagefactor "Kick", 0.0	damagefactor "Melee", 0.0
+    damagefactor "KillMe", 0.0 damagefactor "Trample", 0.0
+	damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
+	damagefactor "Plasma", 2.0 damagefactor "Burn", 2.0 damagefactor "Flames", 2.0
+	damagefactor "Fire", 2.0
 	+SOLID
+    +SHOOTABLE
+	BloodType "TreeBlood"
+    +FORCEYBILLBOARD
+	+NOBLOODDECALS
+	+NOTAUTOAIMED
+	+NOTARGET
+    Mass 99999
+	damagefactor "Explosive", 10.0
+	burnheight 32
+    Health 200
 	States
 	{
 	Spawn:
 		BPEC Y 1
 		BPEC Y -1
+		Stop
+
+	Death:
+	TRE4 B 1
+    TNT1 AAAA 0 A_CustomMissile ("BrownCloud", 35, 0, random (0, 360), 2, random (0, 360))
+	TNT1 AAA 0 A_CustomMissile ("WoodParticle", 35, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AAA 0 A_CustomMissile ("WoodParticleSmall", 25, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AAA 0 A_CustomMissile ("WoodParticleTiny", 55, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AAA 0 A_CustomMissile ("WoodParticleBig", 65, 0, random (0, 360), 2, random (0, 160))
+	TRE4 B -1
+	Stop
+
+	Death.Burn:
+	Death.Flames:
+	Death.Plasma:
+	Death.Plasma2:
+	Death.Fire:
+		TNT1 A 0
+		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 64)
+		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1", 0, 0, 5)
+		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
+	Burning:
+		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+		TRE4 C 20 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
 		Loop
 
+	Extinguish:
+		TNT1 A 0 A_StopSound(1)
+		TRE1 D -1
+		Stop
 	}
 }
 
