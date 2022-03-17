@@ -783,40 +783,13 @@ Pain.ExplosiveImpact:
 		Stop
 
 	Deathchickenhead:
-
 		TNT1 A 0
 		TROH AAAA 2 A_CustomMissile ("Brutal_LiquidBlood2", 50, 0, random (0, 360), 2, random (60, 120))
 		TNT1 A 0 A_SpawnItem("DyingImpNoHeadLikeChicken")
 		TNT1 A 0 A_NoBlocking
 		Stop
 
-        TNT1 A 0 A_PlaySound("misc/xdeath2c")
-		TROH FFFGGGHHHIII 2 A_CustomMissile ("Brutal_LiquidBlood2", 30, 0, random (0, 360), 2, random (10, 90))
-
-		        TNT1 A 0 A_PlaySound("misc/xdeath2c")
-		TROH FFFGGGHHHIII 2 A_CustomMissile ("Brutal_LiquidBlood2", 30, 0, random (0, 360), 2, random (10, 90))
-
-		        TNT1 A 0 A_PlaySound("misc/xdeath2c")
-		TROH FFFGGGHHHIII 2 A_CustomMissile ("Brutal_LiquidBlood2", 30, 0, random (0, 360), 2, random (10, 90))
-
-		        TNT1 A 0 A_PlaySound("misc/xdeath2c")
-		TROH FFFGGGHHHIII 2 A_CustomMissile ("Brutal_LiquidBlood2", 30, 0, random (0, 360), 2, random (10, 90))
-
-				        TNT1 A 0 A_PlaySound("misc/xdeath2c")
-		TROH FFFGGGHHHIII 2 A_CustomMissile ("Brutal_LiquidBlood2", 30, 0, random (0, 360), 2, random (10, 90))
-
-				        TNT1 A 0 A_PlaySound("misc/xdeath2c")
-		TROH FFFGGGHHHIII 2 A_CustomMissile ("Brutal_LiquidBlood2", 30, 0, random (0, 360), 2, random (10, 90))
-
-		TROH CCCCCCCC 2 A_CustomMissile ("Brutal_LiquidBlood2", 30, 0, random (0, 360), 2, random (60, 120))
-		TROH DDD 2 A_CustomMissile ("Brutal_LiquidBlood2", 20, 0, random (0, 360), 2, random (60, 120))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
-		TROH EEEEEEEEEEEEEEEEEEEEEEEEEEEEE 2 A_CustomMissile ("Brutal_LiquidBlood2", 15, 0, random (0, 360), 2, random (15, 40))
-        TNT1 A 0 A_SpawnItem("DeadImp_NoHead")
-		TNT1 A -1
-		Stop
-
-		DeathMirror:
+	DeathMirror:
         TROO V 9
 		TROO W 9 A_Scream
 		TROO X 8 A_NoBlocking
@@ -837,20 +810,13 @@ Pain.ExplosiveImpact:
 		TNT1 A -1
 		Stop
 
-	    Death.Minigun:
-        TNT1 A 0
-       TNT1 A 0 A_JumpIfInventory ("IsDown", 1, "Death.Down")
-	   TNT1 A 0 A_Jump(32,"DeathNoGuts")
-		TNT1 A 0 A_Jump(96, "Death")
-        Goto Death.Minigun
-
-	        Death.Minigun:
-        TNT1 A 0
-		TNT1 A 0 A_FaceTarget
-		TNT1 A 0 A_Scream
-		TNT1 O 0 A_NoBlocking
-        TNT1 A 0 A_SpawnItem ("BrutalizedImp1", 1)
-		Stop
+	Death.Minigun:
+	TNT1 A 0
+	TNT1 A 0 A_FaceTarget
+	TNT1 A 0 A_Scream
+	TNT1 O 0 A_NoBlocking
+	TNT1 A 0 A_SpawnItem ("BrutalizedImp1", 1)
+	Stop
 
 		Death.LegMassacre:
 		TNT1 A 0 A_CustomMissile ("XDeathImpLeg", 35, 0, random (0, 360), 2, random (0, 160))
