@@ -643,12 +643,6 @@ object ShortTorch_Red
     frame STRB { light SMALLREDTORCH }
 }
 
-object SmallFireFocus24
-{
-    frame FLME { light SMALLREDTORCH }
-	frame F1RE { light SMALLREDTORCH }
-}
-
 object SmallRedLightBtmm
 {
     frame XXX1 { light BDECAdditiveRedSmall }
@@ -698,75 +692,96 @@ object VanillaExplosiveBarrel
 // -- Doom Items --
 // ----------------
 
-// Soul Sphere
-pulselight SOULSPHERE
+pulselight BLUEARMOR
 {
-    color 0.0 0.0 1.0
+    color 0.0 0.0 0.6
+    size 32
+    secondarySize 48
+    interval 0.2
+}
+
+pulselight GREENARMOR
+{
+    color 0.0 0.6 0.0
+    size 32
+    secondarySize 48
+    interval 0.2
+}
+
+pulselight RUNE
+{
+    color 1.0 0.0 0.0
     size 40
     secondarySize 42
     interval 2.0
     offset 0 16 0
 }
 
-object LifeSphere
+pulselight UNMAKERARTIFACT1
 {
-    frame SOUL { light SOULSPHERE }
-}
-
-pulselight HEALTHPOTION
-{
-    color 0.0 0.0 0.6
-    size 16
-    secondarySize 18
+    color 1.0 0.5 0.0
+    size 40
+    secondarySize 42
     interval 2.0
+    offset 0 16 0
 }
 
-object HealthBonus
+pulselight UNMAKERARTIFACT2
 {
-    frame BON1 { light BLUEITEM }
-}
-
-object HealthPlus
-{
-    frame BON1 { light BLUEITEM  }
-}
-
-// Armour Helmet
-pulselight ARMORBONUS
-{
-    color 0.0 0.6 0.0
-    size 14
-    secondarySize 16
-    interval 1.0
-	dontlightself 1
-}
-
-// Yellow Keys
-pulselight YELLOWKEY
-{
-    color 0.6 0.6 0.0
-    size 16
-    secondarySize 18
+    color 0.5 0.0 1.0
+    size 40
+    secondarySize 42
     interval 2.0
+    offset 0 16 0
 }
 
-object BDYellowCard
+pulselight UNMAKERARTIFACT3
 {
-    frame YKEY { light YELLOWKEY }
-}
-
-object BDYellowSkull
-{
-    frame YSKU { light YELLOWKEY }
-}
-
-// Red Keys
-pulselight REDKEY
-{
-    color 0.6 0.0 0.0
-    size 16
-    secondarySize 18
+    color 0.0 1.0 1.0
+    size 40
+    secondarySize 42
     interval 2.0
+    offset 0 16 0
+}
+
+object 64UNMAKERUPGRADE1
+{
+    frame ART1 { light UNMAKERARTIFACT1 }
+}
+
+object 64UNMAKERUPGRADE2
+{
+    frame ART2 { light UNMAKERARTIFACT2 }
+}
+
+object 64UNMAKERUPGRADE3
+{
+    frame ART3 { light UNMAKERARTIFACT3 }
+}
+
+object ArmorCrueltyBonus
+{
+    frame BON2 { light REDKEY  }
+}
+
+object ArmorCrueltyBonus2
+{
+    frame BON2 { light REDKEY  }
+}
+
+object ArmorShard
+{
+    frame BON2 { light ARMORBONUS  }
+}
+
+object BDBlueCard
+{
+    frame BKEY { light HEALTHPOTION }
+}
+
+object BDBlueSkull
+{
+    frame BSKU { light HEALTHPOTION }
 }
 
 object BDRedCard
@@ -779,56 +794,83 @@ object BDRedSkull
     frame RSKU { light REDKEY }
 }
 
-// Blue Keys
-pulselight BLUEKEY
+object BDYellowCard
 {
-    color 0.0 0.0 0.6
-    size 16
-    secondarySize 18
-    interval 2.0
+    frame YKEY { light YELLOWKEY }
 }
 
-object BDBlueCard
+object BDYellowSkull
 {
-    frame BKEY { light BLUEKEY }
+    frame YSKU { light YELLOWKEY }
 }
 
-object BDBlueSkull
+object DemonRuneMix
 {
-    frame BSKU { light BLUEKEY }
+    frame DMRU { light RUNE }
 }
 
-// Green armour
-pointlight GREENARMOR1
+object DemonStrengthRune
 {
-    color 0.0 0.6 0.0
-    size 48
+    frame DPRF { light RUNE }
 }
 
-pointlight GREENARMOR2
+object ENERGYSPHERE
 {
-    color 0.0 0.6 0.0
-    size 32
+    frame MEGAA { light MEGASPHERE1 }
+    frame MEGAB { light MEGASPHERE2 }
+    frame MEGAC { light MEGASPHERE3 }
+    frame MEGAD { light MEGASPHERE4 }
 }
 
-// Blue armour
-pointlight BLUEARMOR1
+object HealthCrueltyBonus
 {
-    color 0.0 0.0 0.6
-    size 48
+    frame BON1 { light REDKEY  }
 }
 
-pointlight BLUEARMOR2
+object HealthCrueltyBonus2
 {
-    color 0.0 0.0 0.6
-    size 32
+    frame BON1 { light REDKEY  }
+}
+
+object HealthPlus
+{
+    frame BON1 { light HEALTHPOTION  }
+}
+
+object HeavyArmor
+{
+    frame ARM2A { light BLUEARMOR }
+}
+
+object InvulnerabilitySphere_
+{
+    frame PINV { light INVULN }
+}
+
+object LifeSphere
+{
+    frame SOUL { light SOULSPHERE }
+}
+
+object LightArmor
+{
+    frame ARM1A { light GREENARMOR }
+}
+
+object SuperBlurSphere
+{
+    frame PINS { light BLURSPHERE1 }
+
+    frame PINSA { light BLURSPHERE2 }
+    frame PINSB { light BLURSPHERE3 }
+    frame PINSC { light BLURSPHERE4 }
+    frame PINSD { light BLURSPHERE5 }
 }
 
 // ------------------
 // -- Doom Weapons --
 // ------------------
 
-//BFG
 pointlight BFGBALL
 {
     color 0.5 1.0 0.3
@@ -1168,66 +1210,6 @@ pointlight SpecialLightz
 	dontlightself 1
 }
 
-//object Doomer
-//{
- //   frame MARN { light SpecialLightz }
-//}
-
-pulselight GREENITEM
-{
-    color 0.3 1.0 0.0
-    size 14
-    secondarySize 16
-    interval 0.1
-    offset 0 5 0
-}
-
-pulselight GREENITEM2
-{
-    color 0.3 1.0 0.0
-    size 14
-    secondarySize 16
-    interval 0.1
-    offset 0 5 0
-	dontlightself 1
-}
-
-pulselight BLUEITEM
-{
-    color 0.1 0.1 1.0
-    size 14
-    secondarySize 16
-    interval 0.1
-    offset 0 5 0
-}
-
-object FlyingBurningFuel
-{
-    frame F1RE{ light SMALLREDTORCH }
-	 frame F2RE{ light SMALLREDTORCH }
-}
-
-flickerlight2 BIGREDTORCH128
-{
-    color 1.0 0.3 0.0
-    size 80
-    secondarySize 128
-    interval 0.1
-    offset 0 0 0
-}
-
-object FlamethrowerMissile
-{
-    frame FIR3 { light BIGREDTORCH128 }
-	frame TNT1 { light BIGREDTORCH }
-	frame EXPL { light BIGREDTORCH }
-}
-
-object BurnParticles
-{
-frame TNT1 { light BIGREDTORCH }
-}
-
 object FlashlightProjectile
 {
 frame TNT2 { light Flashlight1 }
@@ -1262,141 +1244,6 @@ pointlight Flashlight3
     color 1.0 1.0 1.0
     size 16
     offset 0 0 0
-}
-
-//Was missing a frame
-object ArmorShard
-{
-    frame BON2 { light GREENITEM2  }
-}
-
-//Cruelty Pickups
-object ArmorCrueltyBonus
-{
-    frame BON2 { light REDITEM  }
-}
-
-object ArmorCrueltyBonus2
-{
-    frame BON2 { light REDITEM  }
-}
-
-object HealthCrueltyBonus
-{
-    frame BON1 { light REDITEM  }
-}
-
-object HealthCrueltyBonus2
-{
-    frame BON1 { light REDITEM  }
-}
-
-pulselight REDITEM
-{
-    color 1.0 0.1 0.1
-    size 14
-    secondarySize 16
-    interval 0.1
-    offset 0 5 0
-}
-
-pulselight GREENITEM
-{
-    color 0.1 1.0 0.1
-    size 14
-    secondarySize 16
-    interval 0.1
-    offset 0 5 0
-}
-
-pulselight GREENITEM2
-{
-    color 0.1 1.0 0.1
-    size 14
-    secondarySize 16
-    interval 0.1
-    offset 0 5 0
-}
-
-pulselight MEGASPHERE
-{
-    color 0.9 0.9 0.9
-    size 40
-    secondarySize 42
-    interval 2.0
-    offset 0 16 0
-}
-
-object ENERGYSPHERE
-{
-    frame MEGA { light MEGASPHERE }
-}
-
-pulselight INVULNERABILITY
-{
-    color 0.1 1.0 0.1
-    size 40
-    secondarySize 42
-    interval 2.0
-    offset 0 16 0
-}
-
-object InvulnerabilitySphere_
-{
-    frame PINV { light INVULNERABILITY }
-}
-
-pulselight DEMONRUNE
-{
-    color 1.0 0.1 0.1
-    size 40
-    secondarySize 42
-    interval 2.0
-    offset 0 16 0
-}
-
-object DemonRuneMix
-{
-    frame DMRU { light DEMONRUNE }
-}
-
-pulselight DEMONSTRENGTH
-{
-    color 1.0 0.1 0.1
-    size 16
-    secondarySize 18
-    interval 2.0
-}
-
-object DemonStrengthRune
-{
-    frame DPRF { light DEMONSTRENGTH }
-}
-
-pulselight BERSERK
-{
-    color 1.0 0.1 0.1
-    size 16
-    secondarySize 18
-    interval 2.0
-}
-
-object BerserkPack
-{
-    frame MEDKC { light BERSERK }
-}
-
-pulselight INFRARED
-{
-    color 0.9 0.9 0.9
-    size 16
-    secondarySize 18
-    interval 2.0
-}
-
-object NightVision
-{
-    frame SVIS { light INFRARED }
 }
 
 object PlasmaFlare
@@ -1566,45 +1413,6 @@ object MotherFire
 	frame FIR3 {light BIGREDTORCH }
 }
 
-object 64UNMAKERUPGRADE1
-{
-    frame ART1 { light UNMAKERARTIFACT1 }
-}
-
-pulselight UNMAKERARTIFACT1
-{
-    color 1.0 0.5 0.1
-    size 16
-    secondarySize 18
-    interval 2.0
-}
-
-object 64UNMAKERUPGRADE2
-{
-    frame ART2 { light UNMAKERARTIFACT2 }
-}
-
-pulselight UNMAKERARTIFACT2
-{
-    color 1.0 0.1 1.0
-    size 16
-    secondarySize 18
-    interval 2.0
-}
-
-object 64UNMAKERUPGRADE3
-{
-    frame ART3 { light UNMAKERARTIFACT3 }
-}
-
-pulselight UNMAKERARTIFACT3
-{
-    color 0.1 1.0 1.0
-    size 16
-    secondarySize 18
-    interval 2.0
-}
-
 pointlight GreenShotLight
 {
     color 0.1 1.0 0.1
@@ -1633,26 +1441,6 @@ object RedFlareSmall2
     frame LENR { light RedShotLight }
 }
 
-object TinyBurningPiece
-{
-    frame CFCF { light SMALLREDTORCH }
-}
-
-object TinyBurningPiece2
-{
-    frame CFCF { light SMALLREDTORCH }
-}
-
-object TinyBurningPiece3
-{
-    frame CFCF { light SMALLREDTORCH }
-}
-
-object TinyBurningPieceTemp
-{
-    frame CFCF { light SMALLREDTORCH }
-}
-
 object TeleportationFog
 {
     frame TFOG { light RedShotLight }
@@ -1666,6 +1454,15 @@ object FriendlymarineTFog
 // ------------------
 // -- Explosions & Fire --
 // ------------------
+
+flickerlight2 BIGREDTORCH128
+{
+    color 1.0 0.3 0.0
+    size 80
+    secondarySize 128
+    interval 0.1
+    offset 0 0 0
+}
 
 pointlight CannonFireLight
 {
@@ -1688,6 +1485,11 @@ object AutocannonMuzzle2
 	frame PLMZ { light CannonFireLight }
 }
 
+object BurnParticles
+{
+	frame TNT1 { light BIGREDTORCH }
+}
+
 object ExplosionFlareSpawner
 {
     frame L2NR { light EXPLOSIONFLASH }
@@ -1696,6 +1498,19 @@ object ExplosionFlareSpawner
 object FlamethrowerBurningStuff
 {
     frame NF4R { light BIGREDTORCHNOSELF }
+}
+
+object FlamethrowerMissile
+{
+    frame FIR3 { light BIGREDTORCH128 }
+	frame TNT1 { light BIGREDTORCH }
+	frame EXPL { light BIGREDTORCH }
+}
+
+object FlyingBurningFuel
+{
+	frame F1RE{ light SMALLREDTORCH }
+	frame F2RE{ light SMALLREDTORCH }
 }
 
 object HDFlamesGFX1
@@ -1708,7 +1523,33 @@ object HDFlamesGFX1Slim
     frame NF4R { light BIGREDTORCHNOSELF }
 }
 
+object SmallFireFocus24
+{
+    frame FLME { light SMALLREDTORCH }
+	frame F1RE { light SMALLREDTORCH }
+}
+
 object TempHDFlamesGFX1
 {
     frame NF4R { light BIGREDTORCHNOSELF }
+}
+
+object TinyBurningPiece
+{
+    frame CFCF { light SMALLREDTORCH }
+}
+
+object TinyBurningPiece2
+{
+    frame CFCF { light SMALLREDTORCH }
+}
+
+object TinyBurningPiece3
+{
+    frame CFCF { light SMALLREDTORCH }
+}
+
+object TinyBurningPieceTemp
+{
+    frame CFCF { light SMALLREDTORCH }
 }
