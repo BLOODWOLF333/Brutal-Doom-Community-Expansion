@@ -1,1159 +1,3 @@
-//Explosion
-pulselight EXPLOSIONFLASH
-{
-    color 1.0 0.3 0.0
-    size 100
-    secondarySize 120
-    interval 0.1
-    offset 0 60 0
-}
-
-object SuperBFGBall
-{
-    frame BFS1 { light BFGBALL }
-    frame BFGB { light BFGEXPLO }
-}
-
-object BFGBallDM
-{
-    frame BFS1 { light BFGBALL }
-    frame BFGB { light BFGEXPLO }
-}
-
-object FriendlyBFGBAll
-{
-    frame BFS1 { light BFGBALL }
-    frame BFGB { light BFGEXPLO }
-}
-
-object ClassicBFGBall
-{
-    frame BFS1 { light BFGBALL }
-    frame BFGB { light BFGEXPLO }
-}
-
-object ClassicBFGBallDM
-{
-    frame BFS1 { light BFGBALL }
-    frame BFGB { light BFGEXPLO }
-}
-
-flickerlight BFGEXPLO
-{
-    color 0.1 1.0 0.0
-    size 200
-	secondarySize 240
-	chance 0.99
-}
-
-object Candelabra1
-{
-    frame CBRA { light BIGREDTORCHNOSELF }
-}
-
-object BDECGasPipe
-{
-    frame TNT1{ light BIGREDTORCHNOSELF }
-}
-
-object BDECTorch
-{
-    frame TORC { light BIGREDTORCH }
-}
-
-object BurningZombie
-{
-    frame BDT1 { light BIGREDTORCH }
-	frame BDT2 { light BIGREDTORCH }
-	frame BDT3 { light BIGREDTORCH }
-}
-
-object Candlestick1
-{
-frame CAND { light CandleStickLight }
-}
-
-pulselight CandleStickLight
-{
-    color 1.0 0.3 0.0
-    size 55
-    secondarySize 50
-    interval 0.1
-    offset 0 10 0
-}
-
-pulselight FSKULL
-{
-color 1.0 1.0 0.0
-size 32
-secondarysize 25
-interval 3
-}
-
-// ------------------
-// -- Doom Weapons --
-// ------------------
-
-// Rocket
-pointlight ROCKET
-{
-    color 1.0 0.7 0.0
-    size 56
-}
-
-flickerlight ROCKET_X1
-{
-    color 1.0 0.7 0.0
-    size 64
-    secondarySize 72
-    chance 0.3
-}
-
-flickerlight ROCKET_X2
-{
-    color 0.5 0.1 0.0
-    size 80
-    secondarySize 88
-    chance 0.3
-}
-
-flickerlight ROCKET_X3
-{
-    color 0.3 0.0 0.0
-    size 96
-    secondarySize 104
-    chance 0.3
-}
-
-// Plasma
-pointlight PLASMABALL
-{
-    color 0.0 0.0 1.0
-    size 128
-}
-
-pointlight PLASMABALLSMALL
-{
-    color 0.0 0.0 1.0
-    size 64
-}
-
-pointlight IONBALL
-{
-    color 1.0 0.0 1.0
-    size 128
-}
-
-pointlight IONBALLSMALL
-{
-    color 1.0 0.0 1.0
-    size 64
-}
-
-// ----------------------
-// -- Doom Decorations --
-// ----------------------
-
-// Barrel
-
-object ExplosiveBarrel1
-{
-    frame BARI  { light GREENGOOZ }
-
-    frame BEXPC { light ROCKET_X1 }
-    frame BEXPD { light ROCKET_X2 }
-    frame BEXPE { light ROCKET_X3 }
-}
-
-pointlight BDECCEILLAMP
-{
-    color 0.9 0.9 1.0
-    size 64
-    offset 0 -32 0
-}
-
-pointlight BDECCEILLAMPLong
-{
-    color 0.9 0.9 1.0
-    size 80
-    offset 0 -70 0
-}
-
-pointlight BDECCEILLAMPLong2
-{
-    color 0.9 0.9 1.0
-    size 140
-    offset 0 -120 0
-}
-
-object BDECCAgedLight
-{
-    frame CAGEA  { light BDECCEILLAMP    }
-}
-
-object BDECIndustrialLamp
-{
-    frame CAGEC  { light BDECCEILLAMPlong    }
-}
-
-object BDECIndustrialLamp2
-{
-    frame CAGEC  { light BDECCEILLAMPlong2    }
-}
-
-pointlight BDECComputerLight1
-{
-    color 0.0 1.0 0.0
-    size 48
-    offset 0 64 0
-}
-
-pointlight BDECComputerLight2
-{
-    color 0.0 1.0 0.0
-    size 32
-    offset 0 32 0
-}
-
-pulselight BDECComputerLight3
-{
-    color 1.0 1.0 1.0
-    size 32
-    secondarySize 34
-    interval 0.1
-	offset 0 64 0
-}
-
-object BDECComputerLight1
-{
-    frame TNT1  { light BDECComputerLight1    }
-}
-
-object BDECComputerLight2
-{
-    frame TNT1  { light BDECComputerLight2    }
-}
-
-object BDECComputerLight3
-{
-    frame TNT1  { light BDECComputerLight3    }
-}
-
-// Floor lamp
-pointlight LAMP
-{
-    color 1.0 1.0 1.0
-    size 56
-    offset 0 44 0
-}
-
-pointlight YELLOWLAMP
-{
-    color 1.0 1.0 0.0
-    size 56
-    offset 0 44 0
-}
-
-object Column1
-{
-    frame COLUA { light YELLOWLAMP }
-}
-
-// Short tech lamp
-pulselight SMALLLAMP
-{
-    color 0.8 0.8 1.0
-    size 56
-    secondarySize 58
-    interval 0.4
-    offset 0 44 0
-}
-
-object TechLamp21
-{
-    frame TLP2A { light SMALLLAMP }
-    frame TLP2B { light SMALLLAMP }
-    frame TLP2C { light SMALLLAMP }
-    frame TLP2D { light SMALLLAMP }
-}
-
-object BDECLightPost
-{
-    frame SPDC { light SMALLLAMP }
-}
-
-// Tall tech lamp
-pulselight BIGLAMP
-{
-    color 0.8 0.8 1.0
-    size 64
-    secondarySize 66
-    interval 0.4
-    offset 0 72 0
-}
-
-object TechLamp1
-{
-    frame TLMPA { light BIGLAMP }
-    frame TLMPB { light BIGLAMP }
-    frame TLMPC { light BIGLAMP }
-    frame TLMPD { light BIGLAMP }
-}
-
-// Tall red torch
-pulselight BIGREDTORCH
-{
-    color 1.0 0.3 0.0
-    size 58
-    secondarySize 64
-    interval 0.1
-    offset 0 60 0
-}
-
-pulselight BIGREDTORCHNOSELF
-{
-    color 1.0 0.6 0.0
-    size 58
-    secondarySize 64
-    interval 0.1
-    offset 0 60 0
-	dontlightself 1
-}
-
-pulselight BIGREDTORCH128
-{
-    color 1.0 0.3 0.0
-    size 80
-    secondarySize 128
-    interval 0.1
-    offset 0 0 0
-}
-
-object TallTorch_Red
-{
-    frame TTRB { light BIGREDTORCH }
-}
-
-// Tall green torch
-pulselight BIGGREENTORCH
-{
-    color 0.0 1.0 0.0
-    size 58
-    secondarySize 64
-    interval 0.1
-    offset 0 60 0
-}
-
-object TallTorch_Green
-{
-    frame TTRB { light BIGGREENTORCH }
-}
-
-// Tall blue torch
-pulselight BIGBLUETORCH
-{
-    color 0.0 0.0 1.0
-    size 58
-    secondarySize 64
-    interval 0.1
-    offset 0 60 0
-}
-
-object TallTorch_Blue
-{
-    frame TTRB { light BIGBLUETORCH }
-}
-
-// Small red torch
-pulselight SMALLREDTORCH
-{
-    color 1.0 0.3 0.0
-    size 48
-    secondarySize 54
-    interval 0.1
-    offset 0 35 0
-}
-
-object ShortTorch_Red
-{
-    frame STRB { light SMALLREDTORCH }
-}
-
-object SmallFireFocus24
-{
-    frame FLME { light SMALLREDTORCH }
-	frame F1RE { light SMALLREDTORCH }
-}
-
-// Small green torch
-pulselight SMALLGREENTORCH
-{
-    color 0.0 1.0 0.0
-    size 48
-    secondarySize 54
-    interval 0.1
-    offset 0 35 0
-}
-
-object ShortTorch_Green
-{
-    frame STRB { light SMALLGREENTORCH }
-}
-
-// Small blue torch
-pulselight SMALLBLUETORCH
-{
-    color 0.0 0.0 1.0
-    size 48
-    secondarySize 54
-    interval 0.1
-    offset 0 35 0
-}
-
-object ShortTorch_Blue
-{
-    frame STRB { light SMALLBLUETORCH }
-}
-
-// Burning barrel
-pulselight FIREBARREL
-{
-    color 1.0 0.4 0.0
-    size 58
-    secondarySize 64
-    interval 0.1
-    offset 0 32 0
-	dontlightself 1
-
-}
-
-object BurningBarrel1
-{
-    frame BURB { light FIREBARREL }
-}
-
-object BDECBurningPillar
-{
-    frame COL4 { light FIREBARREL }
-}
-
-object BDECburningtires
-{
-    frame SPDC { light FIREBARREL }
-}
-
-//object BigTreeInFlames
-//{
-//    frame TRE2 { light FIREBARREL }
-//}
-
-//object TorchTreeInFlames
-//{
-//    frame TRE1 { light FIREBARREL }
-//}
-
-// Skulls w/candles
-pulselight SKULLCANDLES
-{
-    color 1.0 1.0 0.0
-    size 32
-    secondarySize 44
-    interval 0.1
-    offset 0 24 0
-}
-
-object HeadCandles
-{
-    frame POL3 { light SKULLCANDLES }
-}
-
-pulselight SmallShotLight
-{
-    color 0.5 0.4 0
-    size 24
-	secondarySize 12
-	Interval 1.0
-}
-
-pulselight BigShotLight
-{
-    color 0.5 0.4 0
-    size 48
-	secondarySize 36
-	Interval 1.0
-}
-
-object YellowFlareSmall
-{
-    frame LENY { light SmallShotLight }
-}
-
-object YellowFlareSmallB
-{
-    frame LENY { light SmallShotLight }
-}
-
-object PlayerMuzzle1
-{
-    frame PLMZ { light SmallShotLight }
-}
-
-object PlayerMuzzle2
-{
-    frame PLMZ { light BigShotLight }
-}
-
-object MarineMuzzle1
-{
-    frame PLMZ { light SmallShotLight }
-}
-
-object MarineMuzzle2
-{
-    frame PLMZ { light BigShotLight }
-}
-
-object OrangeLensFlareAlt
-{
-    frame LEYS { light SmallShotLight }
-}
-
-object MastermindTracer
-{
-    frame XPAC { light BigShotLight }
-}
-
-object SuperMastermindTracer
-{
-    frame XPAC { light BigShotLight }
-}
-
-object AutoCannonProjectile
-{
-    frame XPAC { light BigShotLight }
-}
-
-object AutoCannonProjectile2
-{
-    frame XPAC { light BigShotLight }
-}
-
-object AutoCannonProjectileEnemy
-{
-    frame XPAC { light BigShotLight }
-}
-
-// ----------------
-// -- Doom Items --
-// ----------------
-
-// Soul Sphere
-pulselight SOULSPHERE
-{
-    color 0.0 0.0 1.0
-    size 40
-    secondarySize 42
-    interval 2.0
-    offset 0 16 0
-}
-
-object LifeSphere
-{
-    frame SOUL { light SOULSPHERE }
-}
-
-pulselight HEALTHPOTION
-{
-    color 0.0 0.0 0.6
-    size 16
-    secondarySize 18
-    interval 2.0
-}
-
-object HealthBonus
-{
-    frame BON1 { light BLUEITEM }
-}
-
-// Armour Helmet
-pulselight ARMORBONUS
-{
-    color 0.0 0.6 0.0
-    size 14
-    secondarySize 16
-    interval 1.0
-	dontlightself 1
-}
-
-// Yellow Keys
-pulselight YELLOWKEY
-{
-    color 0.6 0.6 0.0
-    size 16
-    secondarySize 18
-    interval 2.0
-}
-
-object BDYellowCard
-{
-    frame YKEY { light YELLOWKEY }
-}
-
-object BDYellowSkull
-{
-    frame YSKU { light YELLOWKEY }
-}
-
-// Red Keys
-pulselight REDKEY
-{
-    color 0.6 0.0 0.0
-    size 16
-    secondarySize 18
-    interval 2.0
-}
-
-object BDRedCard
-{
-    frame RKEY { light REDKEY }
-}
-
-object BDRedSkull
-{
-    frame RSKU { light REDKEY }
-}
-
-// Blue Keys
-pulselight BLUEKEY
-{
-    color 0.0 0.0 0.6
-    size 16
-    secondarySize 18
-    interval 2.0
-}
-
-object BDBlueCard
-{
-    frame BKEY { light BLUEKEY }
-}
-
-object BDBlueSkull
-{
-    frame BSKU { light BLUEKEY }
-}
-
-// Green armour
-pointlight GREENARMOR1
-{
-    color 0.0 0.6 0.0
-    size 48
-}
-
-pointlight GREENARMOR2
-{
-    color 0.0 0.6 0.0
-    size 32
-}
-
-// Blue armour
-pointlight BLUEARMOR1
-{
-    color 0.0 0.0 0.6
-    size 48
-}
-
-pointlight BLUEARMOR2
-{
-    color 0.0 0.0 0.6
-    size 32
-}
-
-// ------------------
-// -- Doom Enemies --
-// ------------------
-
-// Zombies
-flickerlight2 ZOMBIEATK
-{
-    color 1.0 0.8 0.2
-    size 48
-    secondarySize 56
-    interval 1
-	dontlightself 1
-    offset 0 40 0
-}
-
-object RifleZombie
-{
-    frame POSRF { light ZOMBIEATK }
-}
-
-object PistolZombie
-{
-    frame PSPOF { light ZOMBIEATK }
-}
-
-object ShotgunGuy1
-{
-    frame SPOSF { light ZOMBIEATK }
-}
-
-object TheArchvile
-{
-	frame DIABJ { light ZOMBIEATK }
-	frame DIABK { light ZOMBIEATK }
-	frame DIABL { light ZOMBIEATK }
-	frame DIABM { light ZOMBIEATK }
-	frame DIABN { light ZOMBIEATK }
-	frame DIABO { light ZOMBIEATK }
-	frame DIABP { light ZOMBIEATK }
-}
-
-// Doom Imp Fireball
-pointlight IMPBALL
-{
-    color 1.0 0.5 0.0
-    size 64
-}
-
-// Doom imp fireball explosion
-flickerlight IMPBALL_X1
-{
-    color 0.7 0.2 0.0
-    size 80
-    secondarySize 88
-    chance 0.25
-}
-
-flickerlight IMPBALL_X2
-{
-    color 0.4 0.0 0.0
-    size 96
-    secondarySize 104
-    chance 0.25
-}
-
-flickerlight IMPBALL_X3
-{
-    color 0.2 0.0 0.0
-    size 112
-    secondarySize 120
-    chance 0.25
-}
-
-object FireBall_
-{
-    frame BLHD { light IMPBALL    }
-    frame FRFXA { light IMPBALL    }
-    frame FRFXB { light IMPBALL    }
-    frame FRFXC { light IMPBALL    }
-    frame FRFXD { light IMPBALL    }
-    frame FRFXE { light IMPBALL_X2    }
-    frame FRFXF { light IMPBALL_X2    }
-    frame FRFXG { light IMPBALL_X2    }
-    frame FRFXH { light IMPBALL_X3    }
-    frame FRFXI { light IMPBALL_X3    }
-
-}
-
-// Cacodemon fireball
-flickerlight CACOBALL
-{
-    color 1.0 0.1 0.5
-    size 56
-    secondarySize 64
-    chance 0.5
-}
-
-flickerlight CACOBALL_X1
-{
-    color 0.1 0.1 1.0
-    size 72
-    secondarySize 80
-    chance 0.25
-}
-
-flickerlight CACOBALL_X2
-{
-    color 0.1 0.1 1.0
-    size 88
-    secondarySize 96
-    chance 0.25
-}
-
-flickerlight CACOBALL_X3
-{
-    color 0.1 0.1 1.0
-    size 104
-    secondarySize 112
-    chance 0.25
-}
-
-object CacodemonBall_
-{
-    frame PBAL { light CACOBALL }
-}
-
-object ShoqueAzul
-{
-    frame SH1KA { light CACOBALL_X1 }
-	frame SH1KB { light CACOBALL_X1 }
-	frame SH1KC { light CACOBALL_X1 }
-	frame SH1KD { light CACOBALL_X2 }
-	frame SH1KE { light CACOBALL_X2 }
-	frame SH1KF { light CACOBALL_X3 }
-	frame SH1KG { light CACOBALL_X3 }
-}
-
-// Baron / Hell Knight fireball
-pointlight BARONBALL
-{
-    color 0.0 1.0 0.0
-    size 64
-}
-
-flickerlight BARONBALL_X1
-{
-    color 0.0 0.7 0.0
-    size 80
-    secondarySize 88
-    chance 0.25
-}
-
-flickerlight BARONBALL_X2
-{
-    color 0.0 0.4 0.0
-    size 96
-    secondarySize 104
-    chance 0.25
-}
-
-flickerlight BARONBALL_X3
-{
-    color 0.0 0.2 0.0
-    size 112
-    secondarySize 120
-    chance 0.25
-}
-
-// Lost Soul
-flickerlight LOSTSOUL
-{
-    color 1.0 0.3 0.0
-    size 56
-    secondarysize 64
-    chance 0.5
-}
-
-flickerlight LOSTSOUL_X1
-{
-    color 0.8 0.3 0.0
-    size 32
-    secondarySize 46
-    chance 0.25
-}
-
-flickerlight LOSTSOUL_X2
-{
-    color 0.6 0.2 0.0
-    size 88
-    secondarySize 96
-    chance 0.25
-}
-
-flickerlight LOSTSOUL_X3
-{
-    color 0.4 0.1 0.0
-    size 104
-    secondarySize 112
-    chance 0.25
-}
-
-flickerlight LOSTSOUL_X4
-{
-    color 0.2 0.0 0.0
-    size 112
-    secondarySize 120
-    chance 0.25
-}
-
-object TehLostSoul
-{
-    frame LSOL { light LOSTSOUL_X1 }
-}
-
-// Mancubus Fireball
-object BigFireBall
-{
-    frame BLHD { light IMPBALL   }
-	frame FLME { light IMPBALL   }
-	frame F1RE { light IMPBALL   }
-	frame F2RE { light IMPBALL   }
-	frame FRFX { light ROCKETLIGHT }
-
-    frame MISLB { light ROCKET_X1 }
-    frame MISLC { light ROCKET_X2 }
-    frame MISLD { light ROCKET_X3 }
-}
-
-//Volcabus Fireball
-object VolcabusBall
-{
-	frame S4BA { light RedShotLight }
-}
-
-// Arachnotron Fireball
-pointlight ARACHPLAS
-{
-    color 0.6 1.0 0.0
-    size 56
-}
-
-flickerlight ARACHPLAS_X1
-{
-    color 0.4 0.8 0.0
-    size 72
-    secondarySize 80
-    chance 0.3
-}
-
-flickerlight ARACHPLAS_X2
-{
-    color 0.6 0.6 0.0
-    size 88
-    secondarySize 96
-    chance 0.3
-}
-
-flickerlight ARACHPLAS_X3
-{
-    color 0.4 0.4 0.0
-    size 48
-    secondarySize 32
-    chance 0.3
-}
-
-flickerlight ARACHPLAS_X4
-{
-    color 0.2 0.2 0.0
-    size 24
-    secondarySize 16
-    chance 0.3
-}
-
-// Revenant tracer
-pointlight TRACER
-{
-    color 1.0 0.3 0.0
-    size 48
-}
-
-flickerlight TRACER_X1
-{
-    color 1.0 0.2 0.0
-    size 64
-    secondarySize 72
-    chance 0.25
-}
-
-flickerlight TRACER_X2
-{
-    color 0.6 0.0 0.0
-    size 80
-    secondarySize 88
-    chance 0.25
-}
-
-flickerlight TRACER_X3
-{
-    color 0.3 0.0 0.0
-    size 96
-    secondarySize 104
-    chance 0.25
-}
-
-// Shadows
-
-pointlight GUNSHADOW
-{
-    color 0.2 0.2 0.2
-    size 10
-    subtractive 1
-    dontlightself 1
-
-}
-
-pointlight 2SHADOW
-{
-    color 0.4 0.4 0.4
-    size 6
-    subtractive 1
-    dontlightself 1
-
-}
-
-pointlight 1SHADOW
-{
-    color 0.5 0.5 0.5
-    size 6
-    subtractive 1
-    dontlightself 1
-
-}
-
-pointlight 24SHADOW
-{
-    color 0.3 0.3 0.3
-    size 14
-    subtractive 1
-    dontlightself 1
-
-}
-
-pointlight 32SHADOW
-{
-    color 0.3 0.3 0.3
-    size 20
-    subtractive 1
-    dontlightself 1
-
-}
-
-pointlight 64SHADOW
-{
-    color 0.3 0.3 0.3
-    size 35
-    subtractive 1
-    dontlightself 1
-
-}
-
-pointlight FATSHADOW
-{
-    color 0.3 0.3 0.3
-    size 45
-    subtractive 1
-    dontlightself 1
-
-}
-
-pointlight CYBERSHADOW
-{
-    color 0.3 0.3 0.3
-    size 50
-    subtractive 1
-    dontlightself 1
-
-}
-
-pointlight SPIDERSHADOW
-{
-    color 1.3 1.3 1.3
-    size 120
-    subtractive 1
-    dontlightself 1
-
-}
-
-object Chaingunguy1
-{
-	frame CPOSF { light ZOMBIEATK }
-	frame CPDRB { light ZOMBIEATK }
-	frame CPDRD { light ZOMBIEATK }
-	frame CPDRF { light ZOMBIEATK }
-	frame CPDRH { light ZOMBIEATK }
-	frame CPDRJ { light ZOMBIEATK }
-	frame CPDRL { light ZOMBIEATK }
-	frame CPDRN { light ZOMBIEATK }
-}
-
-object HealthPlus
-{
-    frame BON1 { light BLUEITEM  }
-}
-
-object BurningImp
-{
- frame IZD4 { light BIGREDTORCH }
-}
-
-object GenericBurningGuy
-{
- frame BUR2 { light BIGREDTORCH }
- frame BURNF0 { light BIGREDTORCH }
- frame BURNG0 { light BIGREDTORCH }
- frame BURNH0 { light BIGREDTORCH }
- frame BURNI0 { light BIGREDTORCH }
- frame BURNJ0 { light BIGREDTORCH }
- frame BURNK0 { light BIGREDTORCH }
- frame BURNL0 { light BIGREDTORCH }
- frame BURNM0 { light BIGREDTORCH }
- frame BURNN0 { light BIGREDTORCH }
- frame BURNO0 { light BIGREDTORCH }
- frame BURNP0 { light BIGREDTORCH }
- frame BURNQ0 { light BIGREDTORCH }
- frame BURNR0 { light BIGREDTORCH }
- frame BURNS0 { light BIGREDTORCH }
- frame BURNT0 { light SMALLREDTORCH }
- frame BURNU0 { light SMALLREDTORCH }
-}
-
-pulselight ROCKETLIGHT
-{
-    color 1.0 0.3 0.0
-    size 48
-    secondarySize 54
-    interval 0.1
-    offset 0 0 0
-}
-
-object ExplosionFlareSpawner
-{
-    frame L2NR { light EXPLOSIONFLASH }
-}
-
-object ROCKET2
-{
-    frame MISL { light ROCKETLIGHT }
-}
-
-object ClassicRocket
-{
-    frame MISL { light ROCKETLIGHT }
-}
-
-object ClassicRocketDM
-{
-    frame MISL { light ROCKETLIGHT }
-}
-
-object CyberBalls
-{
-    frame WIVB { light ROCKETLIGHT }
-}
-
-object BigFireBallWithGravity
-{
-    frame MANFA { light IMPBALL   }
-    frame MANFB { light IMPBALL   }
-	frame FLME { light IMPBALL   }
-	frame F1RE { light IMPBALL   }
-	frame F2RE { light IMPBALL   }
-	frame FRFX { light ROCKETLIGHT }
-}
-object revenantseekermissiles
-{
-    frame FATB { light ROCKETLIGHT }
-}
-object revenantseekermissiles2
-{
-    frame FATB { light ROCKETLIGHT }
-}
-object revenantseekermissiles3
-{
-    frame FATB { light ROCKETLIGHT }
-}
-
 Glow
 {
 	Walls//Textures
@@ -1285,6 +129,1037 @@ Glow
 		}
 }
 
+// ------------------
+// -- Doom Decorations --
+// ------------------
+
+pointlight ALARMORANGELAMP
+{
+    color 1.0 0.5 0.0
+    size 64
+    offset 0 0 90
+}
+
+pointlight BDECAdditiveBlueLight
+{
+    color 0.0 0.0 1.0
+    size 80
+    offset 0 0 0
+	subtractive 1
+}
+
+pointlight BDECAdditiveBlueLightLarge
+{
+    color 0.0 0.0 2.0
+    size 160
+    offset 0 0 0
+	subtractive 1
+}
+
+pointlight BDECAdditiveRedLight
+{
+    color 1.0 0.0 0.0
+    size 64
+    offset 0 0 0
+	subtractive 1
+}
+
+pointlight BDECAdditiveRedLightLarge
+{
+    color 1.0 0.0 0.0
+    size 160
+    offset 0 0 0
+	subtractive 1
+}
+
+pointlight BDECAdditiveRedSmall
+{
+    color 1.0 0.0 0.0
+    size 16
+    offset 0 0 0
+	subtractive 1
+}
+
+pointlight BDECBlueLightBig
+{
+    color 0.0 0.0 1.0
+    size 64
+    offset 0 0 0
+}
+
+pointlight BDECBlueLightWall1L
+{
+    color 0.0 0.0 1.0
+    size 16
+    offset 0 0 0
+}
+
+pointlight BDECBottomlessPit
+{
+    color 1.0 1.0 1.0
+    size 900
+    offset 0 0 0
+	subtractive 1
+}
+
+pointlight BDECCEILLAMP
+{
+    color 0.8 0.8 0.8
+    size 64
+    offset 0 -32 0
+}
+
+pointlight BDECCEILLAMPLong
+{
+    color 0.8 0.8 0.8
+    size 80
+    offset 0 -70 0
+}
+
+pointlight BDECCEILLAMPLong2
+{
+    color 0.8 0.8 0.8
+    size 140
+    offset 0 -120 0
+}
+
+pointlight BDECComputerLight1
+{
+    color 0.0 1.0 0.0
+    size 48
+    offset 0 64 0
+}
+
+pointlight BDECComputerLight2
+{
+    color 0.0 1.0 0.0
+    size 32
+    offset 0 32 0
+}
+
+pulselight BDECComputerLight3
+{
+    color 1.0 1.0 1.0
+    size 32
+    secondarySize 34
+    interval 0.1
+	offset 0 64 0
+}
+
+pointlight BDECRedLightBig
+{
+    color 1.0 0.0 0.0
+    size 64
+    offset 0 0 0
+}
+
+pointlight BDECRedLightWall1L
+{
+    color 1.0 0.0 0.0
+    size 16
+    offset 0 0 0
+}
+
+pointlight BDECYellowLightBig
+{
+    color 1.0 1.0 0.0
+    size 64
+    offset 0 0 0
+}
+
+pointlight BDECYellowLightWall1L
+{
+    color 1.0 1.0 0.0
+    size 16
+    offset 0 0 0
+}
+
+pointlight BDECWhiteLightWall1L
+{
+    color 1.0 1.0 1.0
+    size 16
+    offset 0 0 0
+}
+
+pointlight BDECOrangeLightShaft
+{
+    color 0.3 0.1 0.0
+    size 32
+	offset 0 0 -64
+}
+
+pulselight BIGBLUETORCH
+{
+    color 0.0 0.0 1.0
+    size 64
+    secondarySize 72
+    interval 0.1
+    offset 0 60 0
+}
+
+pulselight BIGGREENTORCH
+{
+    color 0.0 1.0 0.0
+    size 64
+    secondarySize 72
+    interval 0.1
+    offset 0 60 0
+}
+
+pointlight BIGORANGELAMP
+{
+    color 1.0 0.5 0.0
+    size 96
+    offset 0 -40 0
+}
+
+pulselight BIGREDTORCH
+{
+    color 1.0 0.3 0.0
+    size 64
+    secondarySize 72
+    interval 0.1
+    offset 0 60 0
+}
+
+pulselight BIGREDTORCHNOSELF
+{
+    color 1.0 0.3 0.0
+    size 64
+    secondarySize 72
+    interval 0.1
+    offset 0 60 0
+	dontlightself 1
+}
+
+pointlight BIGWHITELAMP
+{
+    color 0.9 0.9 1.0
+    size 60
+    offset 0 -40 0
+}
+
+pointlight BIGWHITELAMP2
+{
+    color 0.9 0.9 1.0
+    size 50
+    offset 0 -100 0
+}
+
+pointlight BIGWHITELAMP3
+{
+    color 0.9 0.9 1.0
+    size 90
+    offset 0 -120 0
+}
+
+pulselight CandleStickLight
+{
+    color 1.0 0.3 0.0
+    size 16
+    secondarySize 18
+    interval 0.1
+    offset 0 16 0
+}
+
+pulselight FIREBARREL
+{
+    color 1.0 0.5 0.0
+    size 48
+    secondarySize 54
+    interval 0.1
+    offset 0 32 0
+	dontlightself 1
+}
+
+pulselight SKULLCANDLES
+{
+    color 1.0 1.0 0.0
+    size 32
+    secondarySize 34
+    interval 0.1
+    offset 0 24 0
+}
+
+pulselight SMALLBLUETORCH
+{
+    color 0.0 0.0 1.0
+    size 48
+    secondarySize 54
+    interval 0.1
+    offset 0 35 0
+}
+
+pulselight SMALLGREENTORCH
+{
+    color 0.0 1.0 0.0
+    size 48
+    secondarySize 54
+    interval 0.1
+    offset 0 35 0
+}
+
+pulselight SMALLREDTORCH
+{
+    color 1.0 0.3 0.0
+    size 48
+    secondarySize 54
+    interval 0.1
+    offset 0 35 0
+}
+
+object BDECAlarm
+{
+    frame SPDE { light ALARMORANGELAMP }
+}
+
+object BDECAddBlueLight
+{
+    frame TNT1 { light BDECAdditiveBlueLight }
+}
+
+object BDECAddBlueLightLarge
+{
+    frame TNT1 { light BDECAdditiveBlueLightLarge }
+}
+
+object BDECAddRedLight
+{
+    frame TNT1 { light BDECAdditiveRedLight }
+}
+
+object BDECAddRedLightLArge
+{
+    frame TNT1 { light BDECAdditiveRedLightLarge }
+}
+
+object BDECBlueLight
+{
+    frame TNT1 { light BDECBlueLightBig }
+}
+
+object BDECBlueLightWall1
+{
+    frame LIBD { light BDECBlueLightWall1L }
+}
+
+object BDECBurningPillar
+{
+    frame COL4 { light FIREBARREL }
+}
+
+object BDECburningtires
+{
+    frame SPDC { light FIREBARREL }
+}
+
+object BDECCagedLight
+{
+    frame CAGEA  { light BDECCEILLAMP    }
+	frame SPDEF { light BIGORANGELAMP }
+}
+
+object BDECcagedlight2
+{
+frame SPDEF { light BIGORANGELAMP }
+}
+
+object BDECCeilLamp
+{
+frame SPDEG { light BIGWHITELAMP2 }
+}
+
+object BDECCeilLampLong
+{
+frame SPDEH { light BIGWHITELAMP2 }
+}
+
+object BDECCeilLampLong2
+{
+frame SPDEH { light BIGWHITELAMP3 }
+}
+
+object BDECComputerLight1
+{
+    frame TNT1  { light BDECComputerLight1    }
+}
+
+object BDECComputerLight2
+{
+    frame TNT1  { light BDECComputerLight2    }
+}
+
+object BDECComputerLight3
+{
+    frame TNT1  { light BDECComputerLight3    }
+}
+
+object BDECIndustrialLamp
+{
+    frame CAGEC  { light BDECCEILLAMPlong    }
+}
+
+object BDECIndustrialLamp2
+{
+    frame CAGEC  { light BDECCEILLAMPlong2    }
+}
+
+object BDECLightPost
+{
+    frame SPDC { light BIGLAMP }
+}
+
+object BDECRedLight
+{
+    frame TNT1 { light BDECRedLightBig }
+}
+
+object BDECRedLightWall1
+{
+    frame LIBD { light BDECRedLightWall1L }
+}
+
+object BDECTorch
+{
+    frame TORC { light BIGREDTORCH }
+}
+
+object BDECYellowLight
+{
+    frame TNT1 { light BDECYellowLightBig }
+}
+
+object BDECYellowLightWall1
+{
+    frame LIBD { light BDECYellowLightWall1L }
+}
+
+object BDECWhiteLightWall1
+{
+    frame LIBD { light BDECWhiteLightWall1L }
+}
+
+object BigShaftOrange1
+{
+	frame XXX1 { light BDECOrangeLightShaft }
+}
+
+object BlueTorchVanilla
+{
+    frame TBLU { light BIGBLUETORCH }
+}
+
+object BurningBarrel1
+{
+    frame BURB { light FIREBARREL }
+}
+
+object BurningBarrelVanilla
+{
+    frame FCAN { light BIGREDTORCH }
+}
+
+object Candelabra1
+{
+    frame CBRA { light Candelabra }
+}
+
+object Candlestick1
+{
+	frame CAND { light CandleStickLight }
+}
+
+object CandelabraVanilla
+{
+    frame CBRA { light Candelabra }
+}
+
+object CandleVanilla
+{
+	frame CAND { light CandleStickLight }
+}
+
+object Column1
+{
+    frame COLUA { light LAMP }
+}
+
+object ExplosiveBarrel1
+{
+    frame BARI  { light BARREL }
+
+    frame BEXPC { light ROCKET_X1 }
+    frame BEXPD { light ROCKET_X2 }
+    frame BEXPE { light ROCKET_X3 }
+}
+
+object GreenTorchVanilla
+{
+    frame TGRN { light BIGGREENTORCH }
+}
+
+object HeadCandles
+{
+    frame POL3 { light SKULLCANDLES }
+}
+
+object PlutoniaBottomlessPit
+{
+	frame TNT1 { light BDECBottomlessPit }
+}
+
+object RedTorchVanilla
+{
+    frame TRED { light BIGREDTORCH }
+}
+
+object ShortBlueTorchVanilla
+{
+    frame SMBT { light SMALLBLUETORCH }
+}
+
+object ShortGreenTorchVanilla
+{
+    frame SMGT { light SMALLGREENTORCH }
+}
+
+object ShortRedTorchVanilla
+{
+    frame SMRT { light SMALLREDTORCH }
+}
+
+object ShortTorch_Blue
+{
+    frame STRB { light SMALLBLUETORCH }
+}
+
+object ShortTorch_Green
+{
+    frame STRB { light SMALLGREENTORCH }
+}
+
+object ShortTorch_Red
+{
+    frame STRB { light SMALLREDTORCH }
+}
+
+object SmallFireFocus24
+{
+    frame FLME { light SMALLREDTORCH }
+	frame F1RE { light SMALLREDTORCH }
+}
+
+object SmallRedLightBtmm
+{
+    frame XXX1 { light BDECAdditiveRedSmall }
+}
+
+object TallTorch_Blue
+{
+    frame TTRB { light BIGBLUETORCH }
+}
+
+object TallTorch_Green
+{
+    frame TTRB { light BIGGREENTORCH }
+}
+
+object TallTorch_Red
+{
+    frame TTRB { light BIGREDTORCH }
+}
+
+object TechLamp1
+{
+    frame TLMPA { light BIGLAMP }
+    frame TLMPB { light BIGLAMP }
+    frame TLMPC { light BIGLAMP }
+    frame TLMPD { light BIGLAMP }
+}
+
+object TechLamp21
+{
+    frame TLP2A { light SMALLLAMP }
+    frame TLP2B { light SMALLLAMP }
+    frame TLP2C { light SMALLLAMP }
+    frame TLP2D { light SMALLLAMP }
+}
+
+object VanillaExplosiveBarrel
+{
+    frame BARI  { light BARREL }
+
+    frame BEXPC { light ROCKET_X1 }
+    frame BEXPD { light ROCKET_X2 }
+    frame BEXPE { light ROCKET_X3 }
+}
+
+// ----------------
+// -- Doom Items --
+// ----------------
+
+// Soul Sphere
+pulselight SOULSPHERE
+{
+    color 0.0 0.0 1.0
+    size 40
+    secondarySize 42
+    interval 2.0
+    offset 0 16 0
+}
+
+object LifeSphere
+{
+    frame SOUL { light SOULSPHERE }
+}
+
+pulselight HEALTHPOTION
+{
+    color 0.0 0.0 0.6
+    size 16
+    secondarySize 18
+    interval 2.0
+}
+
+object HealthBonus
+{
+    frame BON1 { light BLUEITEM }
+}
+
+object HealthPlus
+{
+    frame BON1 { light BLUEITEM  }
+}
+
+// Armour Helmet
+pulselight ARMORBONUS
+{
+    color 0.0 0.6 0.0
+    size 14
+    secondarySize 16
+    interval 1.0
+	dontlightself 1
+}
+
+// Yellow Keys
+pulselight YELLOWKEY
+{
+    color 0.6 0.6 0.0
+    size 16
+    secondarySize 18
+    interval 2.0
+}
+
+object BDYellowCard
+{
+    frame YKEY { light YELLOWKEY }
+}
+
+object BDYellowSkull
+{
+    frame YSKU { light YELLOWKEY }
+}
+
+// Red Keys
+pulselight REDKEY
+{
+    color 0.6 0.0 0.0
+    size 16
+    secondarySize 18
+    interval 2.0
+}
+
+object BDRedCard
+{
+    frame RKEY { light REDKEY }
+}
+
+object BDRedSkull
+{
+    frame RSKU { light REDKEY }
+}
+
+// Blue Keys
+pulselight BLUEKEY
+{
+    color 0.0 0.0 0.6
+    size 16
+    secondarySize 18
+    interval 2.0
+}
+
+object BDBlueCard
+{
+    frame BKEY { light BLUEKEY }
+}
+
+object BDBlueSkull
+{
+    frame BSKU { light BLUEKEY }
+}
+
+// Green armour
+pointlight GREENARMOR1
+{
+    color 0.0 0.6 0.0
+    size 48
+}
+
+pointlight GREENARMOR2
+{
+    color 0.0 0.6 0.0
+    size 32
+}
+
+// Blue armour
+pointlight BLUEARMOR1
+{
+    color 0.0 0.0 0.6
+    size 48
+}
+
+pointlight BLUEARMOR2
+{
+    color 0.0 0.0 0.6
+    size 32
+}
+
+// ------------------
+// -- Doom Weapons --
+// ------------------
+
+//BFG
+pointlight BFGBALL
+{
+    color 0.5 1.0 0.3
+    size 80
+}
+
+flickerlight BFGEXPLO
+{
+    color 0.5 1.0 0.3
+    size 200
+	secondarySize 240
+	chance 0.99
+}
+
+object SuperBFGBall
+{
+    frame BFS1 { light BFGBALL }
+    frame BFGB { light BFGEXPLO }
+}
+
+object BFGBallDM
+{
+    frame BFS1 { light BFGBALL }
+    frame BFGB { light BFGEXPLO }
+}
+
+object FriendlyBFGBAll
+{
+    frame BFS1 { light BFGBALL }
+    frame BFGB { light BFGEXPLO }
+}
+
+object ClassicBFGBall
+{
+    frame BFS1 { light BFGBALL }
+    frame BFGB { light BFGEXPLO }
+}
+
+object ClassicBFGBallDM
+{
+    frame BFS1 { light BFGBALL }
+    frame BFGB { light BFGEXPLO }
+}
+//Rocket
+pulselight ROCKETLIGHT
+{
+    color 1.0 0.3 0.0
+    size 48
+    secondarySize 54
+    interval 0.1
+    offset 0 0 0
+}
+
+object ROCKET2
+{
+    frame MISL { light ROCKETLIGHT }
+}
+
+object ClassicRocket
+{
+    frame MISL { light ROCKETLIGHT }
+}
+
+object ClassicRocketDM
+{
+    frame MISL { light ROCKETLIGHT }
+}
+
+object CyberBalls
+{
+    frame WYVB { light ROCKETLIGHT }
+}
+
+object BigFireBallWithGravity
+{
+    frame MANFA { light IMPBALL   }
+    frame MANFB { light IMPBALL   }
+	frame FLME { light IMPBALL   }
+	frame F1RE { light IMPBALL   }
+	frame F2RE { light IMPBALL   }
+	frame FRFX { light ROCKETLIGHT }
+}
+
+object revenantseekermissiles
+{
+    frame FATB { light ROCKETLIGHT }
+}
+
+object revenantseekermissiles2
+{
+    frame FATB { light ROCKETLIGHT }
+}
+
+object revenantseekermissiles3
+{
+    frame FATB { light ROCKETLIGHT }
+}
+
+// Plasma
+pointlight PLASMABALL
+{
+    color 0.0 0.0 1.0
+    size 128
+}
+
+pointlight PLASMABALLSMALL
+{
+    color 0.0 0.0 1.0
+    size 64
+}
+
+//Purple Plasma
+pointlight IONBALL
+{
+    color 1.0 0.0 1.0
+    size 128
+}
+
+pointlight IONBALLSMALL
+{
+    color 1.0 0.0 1.0
+    size 64
+}
+
+//Flares
+pulselight BigShotLight
+{
+    color 0.5 0.5 0.0
+    size 48
+	secondarySize 36
+	Interval 1.0
+}
+
+pulselight SmallShotLight
+{
+    color 0.5 0.5 0.0
+    size 24
+	secondarySize 12
+	Interval 1.0
+}
+
+object YellowFlareSmall
+{
+    frame LENY { light SmallShotLight }
+}
+
+object YellowFlareSmallB
+{
+    frame LENY { light SmallShotLight }
+}
+
+object PlayerMuzzle1
+{
+    frame PLMZ { light SmallShotLight }
+}
+
+object PlayerMuzzle2
+{
+    frame PLMZ { light BigShotLight }
+}
+
+object MarineMuzzle1
+{
+    frame PLMZ { light SmallShotLight }
+}
+
+object MarineMuzzle2
+{
+    frame PLMZ { light BigShotLight }
+}
+
+object OrangeLensFlareAlt
+{
+    frame LEYS { light SmallShotLight }
+}
+
+object MastermindTracer
+{
+    frame XPAC { light BigShotLight }
+}
+
+object SuperMastermindTracer
+{
+    frame XPAC { light BigShotLight }
+}
+
+object AutoCannonProjectile
+{
+    frame XPAC { light BigShotLight }
+}
+
+object AutoCannonProjectile2
+{
+    frame XPAC { light BigShotLight }
+}
+
+object AutoCannonProjectileEnemy
+{
+    frame XPAC { light BigShotLight }
+}
+
+// ------------------
+// -- Doom Monsters --
+// ------------------
+
+object BurningImp
+{
+	frame IZD4 { light BIGREDTORCH }
+}
+
+object BurningZombie
+{
+    frame BDT1 { light BIGREDTORCH }
+	frame BDT2 { light BIGREDTORCH }
+	frame BDT3 { light BIGREDTORCH }
+}
+
+object GenericBurningGuy
+{
+	frame BUR2 { light BIGREDTORCH }
+	frame BURNF0 { light BIGREDTORCH }
+	frame BURNG0 { light BIGREDTORCH }
+	frame BURNH0 { light BIGREDTORCH }
+	frame BURNI0 { light BIGREDTORCH }
+	frame BURNJ0 { light BIGREDTORCH }
+	frame BURNK0 { light BIGREDTORCH }
+	frame BURNL0 { light BIGREDTORCH }
+	frame BURNM0 { light BIGREDTORCH }
+	frame BURNN0 { light BIGREDTORCH }
+	frame BURNO0 { light BIGREDTORCH }
+	frame BURNP0 { light BIGREDTORCH }
+	frame BURNQ0 { light BIGREDTORCH }
+	frame BURNR0 { light BIGREDTORCH }
+	frame BURNS0 { light BIGREDTORCH }
+	frame BURNT0 { light SMALLREDTORCH }
+	frame BURNU0 { light SMALLREDTORCH }
+}
+
+object TehLostSoul
+{
+    frame LSOL { light LOSTSOUL }
+}
+
+object CacodemonBall_
+{
+    frame PBAL { light CACOBALL }
+}
+
+object ShoqueAzul
+{
+    frame SH1KA { light CACOBALL_X1 }
+	frame SH1KB { light CACOBALL_X1 }
+	frame SH1KC { light CACOBALL_X1 }
+	frame SH1KD { light CACOBALL_X2 }
+	frame SH1KE { light CACOBALL_X2 }
+	frame SH1KF { light CACOBALL_X3 }
+	frame SH1KG { light CACOBALL_X3 }
+}
+
+// Mancubus Fireball
+object BigFireBall
+{
+    frame BLHD { light IMPBALL   }
+	frame FLME { light IMPBALL   }
+	frame F1RE { light IMPBALL   }
+	frame F2RE { light IMPBALL   }
+	frame FRFX { light ROCKETLIGHT }
+
+    frame MISLB { light ROCKET_X1 }
+    frame MISLC { light ROCKET_X2 }
+    frame MISLD { light ROCKET_X3 }
+}
+
+//Volcabus Fireball
+object VolcabusBall
+{
+	frame S4BA { light RedShotLight }
+}
+
+object FireBall_
+{
+    frame BLHD { light IMPBALL    }
+    frame FRFXA { light IMPBALL_X1    }
+    frame FRFXB { light IMPBALL_X1    }
+    frame FRFXC { light IMPBALL_X1    }
+    frame FRFXD { light IMPBALL_X1    }
+    frame FRFXE { light IMPBALL_X2    }
+    frame FRFXF { light IMPBALL_X2    }
+    frame FRFXG { light IMPBALL_X2    }
+    frame FRFXH { light IMPBALL_X3    }
+    frame FRFXI { light IMPBALL_X3    }
+}
+
+object RifleZombie
+{
+    frame POSRF { light ZOMBIEATK }
+}
+
+object PistolZombie
+{
+    frame PSPOF { light ZOMBIEATK }
+}
+
+object ShotgunGuy1
+{
+    frame SPOSF { light ZOMBIEATK }
+}
+
+object TheArchvile
+{
+	frame DIABJ { light ZOMBIEATK }
+	frame DIABK { light ZOMBIEATK }
+	frame DIABL { light ZOMBIEATK }
+	frame DIABM { light ZOMBIEATK }
+	frame DIABN { light ZOMBIEATK }
+	frame DIABO { light ZOMBIEATK }
+	frame DIABP { light ZOMBIEATK }
+}
+
+object Chaingunguy1
+{
+	frame CPOSF { light ZOMBIEATK }
+	frame CPDRB { light ZOMBIEATK }
+	frame CPDRD { light ZOMBIEATK }
+	frame CPDRF { light ZOMBIEATK }
+	frame CPDRH { light ZOMBIEATK }
+	frame CPDRJ { light ZOMBIEATK }
+	frame CPDRL { light ZOMBIEATK }
+	frame CPDRN { light ZOMBIEATK }
+}
+
 pointlight SpecialLightz
 {
     color 0.6 0.6 0.6
@@ -1297,16 +1172,6 @@ pointlight SpecialLightz
 //{
  //   frame MARN { light SpecialLightz }
 //}
-
-pulselight GREENGOOZ
-{
-    color 0.1 1.0 0.1
-    size 22
-    secondarySize 24
-    interval 0.1
-    offset 0 40 0
-	dontlightself 1
-}
 
 pulselight GREENITEM
 {
@@ -1340,6 +1205,15 @@ object FlyingBurningFuel
 {
     frame F1RE{ light SMALLREDTORCH }
 	 frame F2RE{ light SMALLREDTORCH }
+}
+
+flickerlight2 BIGREDTORCH128
+{
+    color 1.0 0.3 0.0
+    size 80
+    secondarySize 128
+    interval 0.1
+    offset 0 0 0
 }
 
 object FlamethrowerMissile
@@ -1388,322 +1262,6 @@ pointlight Flashlight3
     color 1.0 1.0 1.0
     size 16
     offset 0 0 0
-}
-
-object RedTorchVanilla
-{
-    frame TRED { light BIGREDTORCH }
-}
-
-object BlueTorchVanilla
-{
-    frame TBLU { light BIGBLUETORCH }
-}
-
-object GreenTorchVanilla
-{
-    frame TGRN { light BIGGREENTORCH }
-}
-
-object ShortRedTorchVanilla
-{
-    frame SMRT { light BIGREDTORCH }
-}
-
-object ShortBlueTorchVanilla
-{
-    frame SMBT { light BIGBLUETORCH }
-}
-
-object ShortGreenTorchVanilla
-{
-    frame SMGT { light BIGGREENTORCH }
-}
-
-object CandelabraVanilla
-{
-    frame CBRA { light BIGREDTORCH }
-}
-
-object BurningBarrelVanilla
-{
-    frame FCAN { light BIGREDTORCH }
-}
-
-object CandleVanilla
-{
-frame CAND { light SMALLREDTORCH }
-}
-
-pOINTlight BIGORANGELAMP
-{
-    color 1.0 0.5 0.0
-    size 96
-    offset 0 -40 0
-}
-
-pOINTlight BIGWHITELAMP
-{
-    color 0.9 0.9 1.0
-    size 60
-    offset 0 -40 0
-}
-
-pOINTlight BIGWHITELAMP2
-{
-    color 0.9 0.9 1.0
-    size 50
-    offset 0 -100 0
-}
-
-pOINTlight BIGWHITELAMP3
-{
-    color 0.9 0.9 1.0
-    size 90
-    offset 0 -120 0
-}
-
-object BDECcagedlight2
-{
-frame SPDEF { light BIGORANGELAMP }
-}
-
-object BDECcagedlight
-{
-frame SPDEF { light BIGORANGELAMP }
-}
-
-object BDECCeilLampLong
-{
-frame SPDEH { light BIGWHITELAMP2 }
-}
-
-object BDECCeilLampLong2
-{
-frame SPDEH { light BIGWHITELAMP3 }
-}
-
-object BDECCeilLamp
-{
-frame SPDEG { light BIGWHITELAMP2 }
-}
-
-pointlight ALARMORANGELAMP
-{
-    color 1.0 0.5 0.0
-    size 64
-    offset 0 0 90
-}
-
-object BDECAlarm
-{
-    frame SPDE { light ALARMORANGELAMP }
-}
-
-pointlight BDECRedLightWall1L
-{
-    color 1.0 0.0 0.0
-    size 16
-    offset 0 0 0
-}
-
-object BDECRedLightWall1
-{
-    frame LIBD { light BDECRedLightWall1L }
-}
-
-pointlight BDECBlueLightWall1L
-{
-    color 0.0 0.0 1.0
-    size 16
-    offset 0 0 0
-}
-
-object BDECBlueLightWall1
-{
-    frame LIBD { light BDECBlueLightWall1L }
-}
-
-pointlight BDECBlueLightBig
-{
-    color 0.0 0.0 1.0
-    size 64
-    offset 0 0 0
-}
-
-object BDECBlueLight
-{
-    frame TNT1 { light BDECBlueLightBig }
-}
-
-pointlight BDECRedLightBig
-{
-    color 1.0 0.0 0.0
-    size 64
-    offset 0 0 0
-}
-
-object BDECRedLight
-{
-    frame TNT1 { light BDECRedLightBig }
-}
-
-pointlight BDECYellowLightBig
-{
-    color 1.0 1.0 0.0
-    size 64
-    offset 0 0 0
-}
-
-object BDECYellowLight
-{
-    frame TNT1 { light BDECYellowLightBig }
-}
-
-pointlight BDECYellowLightWall1L
-{
-    color 1.0 1.0 0.0
-    size 16
-    offset 0 0 0
-}
-
-object BDECYellowLightWall1
-{
-    frame LIBD { light BDECYellowLightWall1L }
-}
-
-pointlight BDECWhiteLightWall1L
-{
-    color 1.0 1.0 1.0
-    size 16
-    offset 0 0 0
-}
-
-object BDECWhiteLightWall1
-{
-    frame LIBD { light BDECWhiteLightWall1L }
-}
-
-pointlight BDECAdditiveRedLight
-{
-    color 1.0 0.0 0.0
-    size 64
-    offset 0 0 0
-	subtractive 1
-}
-
-pointlight BDECAdditiveRedSmall
-{
-    color 1.0 0.0 0.0
-    size 16
-    offset 0 0 0
-	subtractive 1
-}
-
-pointlight BDECAdditiveRedLightLarge
-{
-    color 1.0 0.0 0.0
-    size 160
-    offset 0 0 0
-	subtractive 1
-}
-
-object BDECAddRedLight
-{
-    frame TNT1 { light BDECAdditiveRedLight }
-}
-
-object SmallRedLightBtmm
-{
-    frame XXX1 { light BDECAdditiveRedSmall }
-}
-
-object BDECAddRedLightLArge
-{
-    frame TNT1 { light BDECAdditiveRedLightLarge }
-}
-
-pointlight BDECAdditiveBlueLight
-{
-    color 0.0 0.0 1.0
-    size 80
-    offset 0 0 0
-	subtractive 1
-}
-
-object BDECAddBlueLight
-{
-    frame TNT1 { light BDECAdditiveBlueLight }
-}
-
-pointlight BDECAdditiveBlueLightLarge
-{
-    color 0.0 0.0 2.0
-    size 160
-    offset 0 0 0
-	subtractive 1
-}
-
-object BDECAddBlueLightLarge
-{
-    frame TNT1 { light BDECAdditiveBlueLightLarge }
-}
-
-object BigShaftOrange1
-{
-	frame XXX1 { light BDECOrangeLightShaft }
-}
-
-pointlight BDECOrangeLightShaft
-{
-    color 0.3 0.1 0.0
-    size 32
-	offset 0 0 -64
-}
-
-pointlight CannonFireLight
-{
-    color 1.0 0.8 0.2
-    size 160
-	offset 0 0 0
-}
-
-object AutocannonMuzzle2
-{
-	frame PLMZ { light CannonFireLight }
-}
-
-pointlight BDECBottomlessPit
-{
-    color 1.0 1.0 1.0
-    size 900
-    offset 0 0 0
-	subtractive 1
-}
-
-object PlutoniaBottomlessPit
-{
-	frame TNT1 { light BDECBottomlessPit }
-}
-
-object HDFlamesGFX1
-{
-    frame NF4R { light BIGREDTORCHNOSELF }
-}
-
-object HDFlamesGFX1Slim
-{
-    frame NF4R { light BIGREDTORCHNOSELF }
-}
-
-object TempHDFlamesGFX1
-{
-    frame NF4R { light BIGREDTORCHNOSELF }
-}
-
-object FlamethrowerBurningStuff
-{
-    frame NF4R { light BIGREDTORCHNOSELF }
 }
 
 //Was missing a frame
@@ -2103,4 +1661,54 @@ object TeleportationFog
 object FriendlymarineTFog
 {
     frame TFOG { light RedShotLight }
+}
+
+// ------------------
+// -- Explosions & Fire --
+// ------------------
+
+pointlight CannonFireLight
+{
+    color 1.0 0.8 0.2
+    size 160
+	offset 0 0 0
+}
+
+pulselight EXPLOSIONFLASH
+{
+    color 1.0 0.3 0.0
+    size 100
+    secondarySize 120
+    interval 0.1
+    offset 0 60 0
+}
+
+object AutocannonMuzzle2
+{
+	frame PLMZ { light CannonFireLight }
+}
+
+object ExplosionFlareSpawner
+{
+    frame L2NR { light EXPLOSIONFLASH }
+}
+
+object FlamethrowerBurningStuff
+{
+    frame NF4R { light BIGREDTORCHNOSELF }
+}
+
+object HDFlamesGFX1
+{
+    frame NF4R { light BIGREDTORCHNOSELF }
+}
+
+object HDFlamesGFX1Slim
+{
+    frame NF4R { light BIGREDTORCHNOSELF }
+}
+
+object TempHDFlamesGFX1
+{
+    frame NF4R { light BIGREDTORCHNOSELF }
 }
