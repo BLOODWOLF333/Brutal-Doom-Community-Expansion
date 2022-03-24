@@ -881,118 +881,345 @@ object SuperBlurSphere
 // -- Doom Weapons --
 // ------------------
 
-pointlight BFGBALL
+pointlight Flashlight1
 {
-    color 0.5 1.0 0.3
-    size 80
+    color 0.3 0.3 0.3
+    size 64
+    offset 0 0 0
 }
 
-flickerlight BFGEXPLO
+pointlight Flashlight2
 {
-    color 0.5 1.0 0.3
-    size 200
-	secondarySize 240
-	chance 0.99
+    color 0.7 0.7 0.7
+    size 32
+    offset 0 0 0
 }
 
-object SuperBFGBall
+pointlight Flashlight3
 {
-    frame BFS1 { light BFGBALL }
-    frame BFGB { light BFGEXPLO }
+    color 1.0 1.0 1.0
+    size 16
+    offset 0 0 0
+}
+
+object AutoCannonProjectile
+{
+    frame XPAC { light ROCKET }
+}
+
+object AutoCannonProjectile2
+{
+    frame XPAC { light ROCKET }
+}
+
+object AutoCannonProjectileEnemy
+{
+    frame XPAC { light ROCKET }
+}
+
+object BFG10K_Ball
+{
+    frame BFS1A { light BFGBALL }
+    frame BFS1B { light BFGBALL }
+
+    frame BFE1A { light BFGBALL_X1 }
+    frame BFE1B { light BFGBALL_X2 }
+    frame BFE1C { light BFGBALL_X3 }
+    frame BFE1D { light BFGBALL_X1 }
+    frame BFE1E { light BFGBALL_X4 }
+    frame BFE1F { light BFGBALL_X5 }
+}
+
+object BFG10K_BallDM
+{
+    frame BFS1A { light BFGBALL }
+    frame BFS1B { light BFGBALL }
+
+    frame BFE1A { light BFGBALL_X1 }
+    frame BFE1B { light BFGBALL_X2 }
+    frame BFE1C { light BFGBALL_X3 }
+    frame BFE1D { light BFGBALL_X1 }
+    frame BFE1E { light BFGBALL_X4 }
+    frame BFE1F { light BFGBALL_X5 }
 }
 
 object BFGBallDM
 {
     frame BFS1 { light BFGBALL }
-    frame BFGB { light BFGEXPLO }
-}
 
-object FriendlyBFGBAll
-{
-    frame BFS1 { light BFGBALL }
-    frame BFGB { light BFGEXPLO }
+    frame BFGBA { light BFGBALL_X1 }
+    frame BFGBB { light BFGBALL_X2 }
+    frame BFGBC { light BFGBALL_X2 }
+    frame BFGBD { light BFGBALL_X3 }
+    frame BFGBE { light BFGBALL_X1 }
+    frame BFGBF { light BFGBALL_X4 }
+	frame BFGBG { light BFGBALL_X5 }
 }
 
 object ClassicBFGBall
 {
     frame BFS1 { light BFGBALL }
-    frame BFGB { light BFGEXPLO }
+
+    frame BFGBA { light BFGBALL_X1 }
+    frame BFGBB { light BFGBALL_X2 }
+    frame BFGBC { light BFGBALL_X2 }
+    frame BFGBD { light BFGBALL_X3 }
+    frame BFGBE { light BFGBALL_X1 }
+    frame BFGBF { light BFGBALL_X4 }
+	frame BFGBG { light BFGBALL_X5 }
 }
 
 object ClassicBFGBallDM
 {
     frame BFS1 { light BFGBALL }
-    frame BFGB { light BFGEXPLO }
-}
-//Rocket
-pulselight ROCKETLIGHT
-{
-    color 1.0 0.3 0.0
-    size 48
-    secondarySize 54
-    interval 0.1
-    offset 0 0 0
+
+    frame BFGBA { light BFGBALL_X1 }
+    frame BFGBB { light BFGBALL_X2 }
+    frame BFGBC { light BFGBALL_X2 }
+    frame BFGBD { light BFGBALL_X3 }
+    frame BFGBE { light BFGBALL_X1 }
+    frame BFGBF { light BFGBALL_X4 }
+	frame BFGBG { light BFGBALL_X5 }
 }
 
-object ROCKET2
+object ClassicPlasmaBall
 {
-    frame MISL { light ROCKETLIGHT }
+    frame PLSSA { light PLASMABALL }
+    frame PLSSB { light PLASMABALL }
+
+    frame PLSEA { light PLASMA_X1 }
+    frame PLSEB { light PLASMA_X2 }
+    frame PLSEC { light PLASMA_X2 }
+    frame PLSED { light PLASMA_X3 }
+    frame PLSEE { light PLASMA_X4 }
+}
+
+object ClassicPlasmaBallDM
+{
+    frame PLSSA { light PLASMABALL }
+    frame PLSSB { light PLASMABALL }
+
+    frame PLSEA { light PLASMA_X1 }
+    frame PLSEB { light PLASMA_X2 }
+    frame PLSEC { light PLASMA_X2 }
+    frame PLSED { light PLASMA_X3 }
+    frame PLSEE { light PLASMA_X4 }
 }
 
 object ClassicRocket
 {
-    frame MISL { light ROCKETLIGHT }
+    frame MISL { light ROCKET }
 }
 
 object ClassicRocketDM
 {
-    frame MISL { light ROCKETLIGHT }
+    frame MISL { light ROCKET }
 }
 
 object CyberBalls
 {
-    frame WYVB { light ROCKETLIGHT }
+    frame WYVB { light ROCKET }
 }
 
-object BigFireBallWithGravity
+object EnemyPlasmaBall
 {
-    frame MANFA { light IMPBALL   }
-    frame MANFB { light IMPBALL   }
-	frame FLME { light IMPBALL   }
-	frame F1RE { light IMPBALL   }
-	frame F2RE { light IMPBALL   }
-	frame FRFX { light ROCKETLIGHT }
+    frame PLSSA { light PLASMABALL }
+    frame PLSSB { light PLASMABALL }
+
+    frame PLSEA { light PLASMA_X1 }
+    frame PLSEB { light PLASMA_X2 }
+    frame PLSEC { light PLASMA_X2 }
+    frame PLSED { light PLASMA_X3 }
+    frame PLSEE { light PLASMA_X4 }
 }
 
-object revenantseekermissiles
+object EvilPlasmaBall
 {
-    frame FATB { light ROCKETLIGHT }
+    frame PLSSA { light PLASMABALL }
+    frame PLSSB { light PLASMABALL }
+
+    frame PLSEA { light PLASMA_X1 }
+    frame PLSEB { light PLASMA_X2 }
+    frame PLSEC { light PLASMA_X2 }
+    frame PLSED { light PLASMA_X3 }
+    frame PLSEE { light PLASMA_X4 }
 }
 
-object revenantseekermissiles2
+object FastCyberBalls
 {
-    frame FATB { light ROCKETLIGHT }
+    frame WYVB { light ROCKET }
 }
 
-object revenantseekermissiles3
+object FlashlightProjectile
 {
-    frame FATB { light ROCKETLIGHT }
+	frame TNT2 { light Flashlight1 }
 }
 
-// Plasma
-pointlight PLASMABALL
+object FlashlightProjectile2
 {
-    color 0.0 0.0 1.0
-    size 128
+	frame TNT2 { light Flashlight2 }
 }
 
-pointlight PLASMABALLSMALL
+object FlashlightProjectile3
 {
-    color 0.0 0.0 1.0
-    size 64
+	frame TNT2 { light Flashlight3 }
 }
 
-//Purple Plasma
+object FriendlyBFGBAll
+{
+    frame BFS1 { light BFGBALL }
+
+    frame BFGBA { light BFGBALL_X1 }
+    frame BFGBB { light BFGBALL_X2 }
+    frame BFGBC { light BFGBALL_X2 }
+    frame BFGBD { light BFGBALL_X3 }
+    frame BFGBE { light BFGBALL_X1 }
+    frame BFGBF { light BFGBALL_X4 }
+	frame BFGBG { light BFGBALL_X5 }
+}
+
+object MarineBFG10K_Ball
+{
+	frame BFS1A { light BFGBALL }
+    frame BFS1B { light BFGBALL }
+
+    frame BFE1A { light BFGBALL_X1 }
+    frame BFE1B { light BFGBALL_X2 }
+    frame BFE1C { light BFGBALL_X3 }
+    frame BFE1D { light BFGBALL_X1 }
+    frame BFE1E { light BFGBALL_X4 }
+    frame BFE1F { light BFGBALL_X5 }
+}
+
+object MarineBFGExtra
+{
+    frame BFGBA { light BFGBALL_X1 }
+    frame BFGBB { light BFGBALL_X2 }
+    frame BFGBC { light BFGBALL_X2 }
+    frame BFGBD { light BFGBALL_X3 }
+    frame BFGBE { light BFGBALL_X1 }
+    frame BFGBF { light BFGBALL_X4 }
+	frame BFGBG { light BFGBALL_X5 }
+}
+
+object MarineBFGExtraGiant
+{
+    frame BFGBA { light BFGBALL_X1 }
+    frame BFGBB { light BFGBALL_X2 }
+    frame BFGBC { light BFGBALL_X2 }
+    frame BFGBD { light BFGBALL_X3 }
+    frame BFGBE { light BFGBALL_X1 }
+    frame BFGBF { light BFGBALL_X4 }
+	frame BFGBG { light BFGBALL_X5 }
+}
+
+object MarineRocket2
+{
+    frame MISL { light SMALLREDTORCH }
+}
+
+object NuclearRocket
+{
+    frame MISL { light ROCKET }
+}
+
+object Plasma_Ball
+{
+    frame PLSSA { light PLASMABALL }
+    frame PLSSB { light PLASMABALL }
+
+    frame PLSEA { light PLASMA_X1 }
+    frame PLSEB { light PLASMA_X2 }
+    frame PLSEC { light PLASMA_X2 }
+    frame PLSED { light PLASMA_X3 }
+    frame PLSEE { light PLASMA_X4 }
+}
+
+object PlasmaBall75
+{
+    frame PLSSA { light PLASMABALL }
+    frame PLSSB { light PLASMABALL }
+
+    frame PLSEA { light PLASMA_X1 }
+    frame PLSEB { light PLASMA_X2 }
+    frame PLSEC { light PLASMA_X2 }
+    frame PLSED { light PLASMA_X3 }
+    frame PLSEE { light PLASMA_X4 }
+}
+
+object PlasmaBall99
+{
+    frame PLSSA { light PLASMABALL }
+    frame PLSSB { light PLASMABALL }
+
+    frame PLSEA { light PLASMA_X1 }
+    frame PLSEB { light PLASMA_X2 }
+    frame PLSEC { light PLASMA_X2 }
+    frame PLSED { light PLASMA_X3 }
+    frame PLSEE { light PLASMA_X4 }
+}
+
+object PlasmaBallDM
+{
+    frame PLSSA { light PLASMABALL }
+    frame PLSSB { light PLASMABALL }
+
+    frame PLSEA { light PLASMA_X1 }
+    frame PLSEB { light PLASMA_X2 }
+    frame PLSEC { light PLASMA_X2 }
+    frame PLSED { light PLASMA_X3 }
+    frame PLSEE { light PLASMA_X4 }
+}
+
+object ROCKET2
+{
+    frame MISL { light SMALLREDTORCH }
+}
+
+object ROCKETDM
+{
+    frame MISL { light SMALLREDTORCH }
+}
+
+object SuperBFGBall
+{
+    frame BFS1 { light BFGBALL }
+
+    frame BFGBA { light BFGBALL_X1 }
+    frame BFGBB { light BFGBALL_X2 }
+    frame BFGBC { light BFGBALL_X2 }
+    frame BFGBD { light BFGBALL_X3 }
+    frame BFGBE { light BFGBALL_X1 }
+    frame BFGBF { light BFGBALL_X4 }
+	frame BFGBG { light BFGBALL_X5 }
+}
+
+object SuperBFGExtra
+{
+    frame BFGBA { light BFGBALL_X1 }
+    frame BFGBB { light BFGBALL_X2 }
+    frame BFGBC { light BFGBALL_X2 }
+    frame BFGBD { light BFGBALL_X3 }
+    frame BFGBE { light BFGBALL_X1 }
+    frame BFGBF { light BFGBALL_X4 }
+	frame BFGBG { light BFGBALL_X5 }
+}
+
+object SuperBFGExtraGiant
+{
+    frame BFGBA { light BFGBALL_X1 }
+    frame BFGBB { light BFGBALL_X2 }
+    frame BFGBC { light BFGBALL_X2 }
+    frame BFGBD { light BFGBALL_X3 }
+    frame BFGBE { light BFGBALL_X1 }
+    frame BFGBF { light BFGBALL_X4 }
+	frame BFGBG { light BFGBALL_X5 }
+}
+
+// ------------------
+// -- Doom Monsters --
+// ------------------
+
 pointlight IONBALL
 {
     color 1.0 0.0 1.0
@@ -1005,86 +1232,50 @@ pointlight IONBALLSMALL
     size 64
 }
 
-//Flares
-pulselight BigShotLight
+object IonPuff
 {
-    color 0.5 0.5 0.0
-    size 48
-	secondarySize 36
-	Interval 1.0
+	frame FIR5 { light IONBALL }
 }
 
-pulselight SmallShotLight
+object PurplePlasmaBall
 {
-    color 0.5 0.5 0.0
-    size 24
-	secondarySize 12
-	Interval 1.0
+    frame PBAL { light IONBALLSMALL }
 }
 
-object YellowFlareSmall
+object BigFireBallWithGravity
 {
-    frame LENY { light SmallShotLight }
-}
-
-object YellowFlareSmallB
-{
-    frame LENY { light SmallShotLight }
-}
-
-object PlayerMuzzle1
-{
-    frame PLMZ { light SmallShotLight }
-}
-
-object PlayerMuzzle2
-{
-    frame PLMZ { light BigShotLight }
-}
-
-object MarineMuzzle1
-{
-    frame PLMZ { light SmallShotLight }
-}
-
-object MarineMuzzle2
-{
-    frame PLMZ { light BigShotLight }
-}
-
-object OrangeLensFlareAlt
-{
-    frame LEYS { light SmallShotLight }
+    frame MANFA { light IMPBALL   }
+    frame MANFB { light IMPBALL   }
+	frame FLME { light IMPBALL   }
+	frame F1RE { light IMPBALL   }
+	frame F2RE { light IMPBALL   }
+	frame FRFX { light SMALLREDTORCH }
 }
 
 object MastermindTracer
 {
-    frame XPAC { light BigShotLight }
+    frame XPAC { light ROCKET }
 }
 
 object SuperMastermindTracer
 {
-    frame XPAC { light BigShotLight }
+    frame XPAC { light ROCKET }
 }
 
-object AutoCannonProjectile
+object revenantseekermissiles
 {
-    frame XPAC { light BigShotLight }
+    frame FATB { light ROCKET }
 }
 
-object AutoCannonProjectile2
+object revenantseekermissiles2
 {
-    frame XPAC { light BigShotLight }
+    frame FATB { light ROCKET }
 }
 
-object AutoCannonProjectileEnemy
+object revenantseekermissiles3
 {
-    frame XPAC { light BigShotLight }
+    frame FATB { light ROCKET }
 }
-
-// ------------------
-// -- Doom Monsters --
-// ------------------
 
 object BurningImp
 {
@@ -1147,7 +1338,7 @@ object BigFireBall
 	frame FLME { light IMPBALL   }
 	frame F1RE { light IMPBALL   }
 	frame F2RE { light IMPBALL   }
-	frame FRFX { light ROCKETLIGHT }
+	frame FRFX { light SMALLREDTORCH }
 
     frame MISLB { light ROCKET_X1 }
     frame MISLC { light ROCKET_X2 }
@@ -1218,122 +1409,6 @@ pointlight SpecialLightz
     size 24
 	offset 0 32 0
 	dontlightself 1
-}
-
-object FlashlightProjectile
-{
-frame TNT2 { light Flashlight1 }
-}
-
-object FlashlightProjectile2
-{
-frame TNT2 { light Flashlight2 }
-}
-
-object FlashlightProjectile3
-{
-frame TNT2 { light Flashlight3 }
-}
-
-pointlight Flashlight1
-{
-    color 0.3 0.3 0.3
-    size 64
-    offset 0 0 0
-}
-
-pointlight Flashlight2
-{
-    color 0.7 0.7 0.7
-    size 32
-    offset 0 0 0
-}
-
-pointlight Flashlight3
-{
-    color 1.0 1.0 1.0
-    size 16
-    offset 0 0 0
-}
-
-object PlasmaFlare
-{
-    frame L2NB { light PLASMABALLSMALL }
-}
-
-object Plasma_Ball
-{
-    frame PLSS { light PLASMABALLSMALL }
-	frame PLSE { light PLASMABALL }
-}
-
-object EnemyPlasmaBall
-{
-    frame PLSS { light PLASMABALLSMALL }
-	frame PLSE { light PLASMABALL }
-}
-
-object EvilPlasmaBall
-{
-    frame PLSS { light PLASMABALLSMALL }
-	frame PLSE { light PLASMABALL }
-}
-
-object ClassicPlasmaBall
-{
-    frame PLSS { light PLASMABALLSMALL }
-	frame PLSE { light PLASMABALL }
-}
-
-object ClassicPlasmaBallDM
-{
-    frame PLSS { light PLASMABALLSMALL }
-	frame PLSE { light PLASMABALL }
-}
-
-object PlasmaBall75
-{
-    frame PLSS { light PLASMABALLSMALL }
-	frame PLSE { light PLASMABALL }
-}
-
-object PlasmaBall99
-{
-    frame PLSS { light PLASMABALLSMALL }
-	frame PLSE { light PLASMABALL }
-}
-
-object PlasmaBallDM
-{
-    frame PLSS { light PLASMABALLSMALL }
-	frame PLSE { light PLASMABALL }
-}
-
-object PurplePlasmaBall
-{
-    frame PBAL { light IONBALLSMALL }
-}
-
-object MarinePurplePlasmaBall
-{
-    frame PBAL { light IONBALLSMALL }
-}
-
-object IonPuff
-{
-	frame FIR5 { light IONBALL }
-}
-
-object BFG10K_Ball
-{
-    frame BFS1 { light BFGBALL }
-    frame BFE1 { light BFGEXPLO }
-}
-
-object BFG10K_BallDM
-{
-    frame BFS1 { light BFGBALL }
-    frame BFE1 { light BFGEXPLO }
 }
 
 object BigFireBall
@@ -1462,7 +1537,7 @@ object FriendlymarineTFog
 }
 
 // ------------------
-// -- Explosions & Fire --
+// -- Explosions, Fire, & Flares --
 // ------------------
 
 flickerlight2 BIGREDTORCH128
@@ -1474,13 +1549,6 @@ flickerlight2 BIGREDTORCH128
     offset 0 0 0
 }
 
-pointlight CannonFireLight
-{
-    color 1.0 0.8 0.2
-    size 160
-	offset 0 0 0
-}
-
 pulselight EXPLOSIONFLASH
 {
     color 1.0 0.3 0.0
@@ -1490,9 +1558,12 @@ pulselight EXPLOSIONFLASH
     offset 0 60 0
 }
 
-object AutocannonMuzzle2
+pulselight SmallShotLight
 {
-	frame PLMZ { light CannonFireLight }
+    color 0.5 0.5 0.0
+    size 24
+	secondarySize 12
+	Interval 1.0
 }
 
 object BurnParticles
@@ -1562,4 +1633,44 @@ object TinyBurningPiece3
 object TinyBurningPieceTemp
 {
     frame CFCF { light SMALLREDTORCH }
+}
+
+object MarineMuzzle1
+{
+    frame PLMZ { light SmallShotLight }
+}
+
+object MarineMuzzle2
+{
+    frame PLMZ { light ROCKET }
+}
+
+object PlayerMuzzle1
+{
+    frame PLMZ { light SmallShotLight }
+}
+
+object PlayerMuzzle2
+{
+    frame PLMZ { light ROCKET }
+}
+
+object YellowFlareSmall
+{
+    frame LENY { light SmallShotLight }
+}
+
+object YellowFlareSmallB
+{
+    frame LENY { light SmallShotLight }
+}
+
+object OrangeLensFlareAlt
+{
+    frame LEYS { light SmallShotLight }
+}
+
+object PlasmaFlare
+{
+    frame L2NB { light PLASMABALL }
 }

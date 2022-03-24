@@ -678,29 +678,6 @@ ACTOR PlayerMuzzle3: PlayerMuzzle2
 	}
 }
 
-
-ACTOR AutocannonMuzzle2
-{
-	Speed 0
-	PROJECTILE
-	+NOCLIP
-	+NOGRAVITY
-	+CLIENTSIDEONLY
-	+NONETID
-	+NOINTERACTION
-	Scale 4.0
-	Renderstyle Add
-	States
-	{
-	Spawn:
-		TNT1 A 0
-		TNT1 A 0 Radius_Quake(4, 2, 0, 6, 0)
-		PLMZ AA 1 BRIGHT A_SpawnItem("RedFlare")
-		TNT1 A 1
-		Stop
-	}
-}
-
 ACTOR MarineMuzzle1
 {
 	Speed 0
