@@ -235,9 +235,8 @@ ACTOR RadSuits : CustomInventory Replaces Radsuit
   States
   {
   Spawn:
-    SUIT A 10
-	SUIT A 10 BRIGHT
-	Loop
+	SUIT A -1 BRIGHT
+	Stop
   Pickup:
 		TNT1 A 0
 		TNT1 A 0 A_GiveInventory("Radsuit3", 1)
@@ -258,9 +257,8 @@ ACTOR RadSuit2 : PowerupGiver
   States
   {
   Spawn:
-    SUIT A 10
-	SUIT A 10 BRIGHT
-	Loop
+    SUIT A -1 BRIGHT
+	Stop
   }
 }
 
@@ -270,15 +268,14 @@ ACTOR RadSuit3 : PowerupGiver
   +INVENTORY.AUTOACTIVATE
   +INVENTORY.ALWAYSPICKUP
   Inventory.MaxAmount 0
-
   Inventory.PickupMessage "$GOTSUIT" // "Radiation Shielding Suit"
   Powerup.Type "IronFeet"
+  Powerup.Duration -60
   States
   {
   Spawn:
-    SUIT A 10
-	SUIT A 10 BRIGHT
-	Loop
+    SUIT A -1 BRIGHT
+	Stop
   }
 }
 
@@ -317,6 +314,80 @@ ACTOR DemonRuneMix: CustomInventory 2063
 	Pickup2:
 		TNT1 A 1
 	    TNT1 A 0 ACS_NamedExecute("RevenantMorph")
+		Stop
+	Cancels:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItem("DemonStrengthRune")
+		Stop
+    }
+}
+
+ACTOR BaronRune: CustomInventory
+{
+	Game Doom
+	scale 1.0
+	radius 16
+	height 16
+	+INVENTORY.BIGPOWERUP
+	damage 0
+	Mass 1
+	Inventory.PickupMessage "You got the Baron Rune"
+	Inventory.PickupSound "misc/p_pkup"
+	//$Category BD Power-Ups
+	//$Icon "powerup"
+	//$Colour rgb(220, 100, 220)
+	//$Sprite DMRUA0
+	//$NotAngled
+    States
+    {
+	 Spawn:
+		TNT1 A 0
+		TNT1 A 0 ACS_NamedExecuteAlways("DemonRuneCheck")
+		TNT1 A 6
+	Live:
+		DMRU ABCD 6 BRIGHT
+		Loop
+	Pickup:
+	    TNT1 A 1
+		TNT1 A 0 A_TakeInventory("PowerInvulnerable", 1)
+		TNT1 A 0 ACS_NamedExecute("BaronMorph")
+		Stop
+	Cancels:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItem("DemonStrengthRune")
+		Stop
+    }
+}
+
+ACTOR RevenantRune: CustomInventory
+{
+	Game Doom
+	scale 1.0
+	radius 16
+	height 16
+	+INVENTORY.BIGPOWERUP
+	damage 0
+	Mass 1
+	Inventory.PickupMessage "You got the Revenant Rune"
+	Inventory.PickupSound "misc/p_pkup"
+	//$Category BD Power-Ups
+	//$Icon "powerup"
+	//$Colour rgb(220, 100, 220)
+	//$Sprite DMRUA0
+	//$NotAngled
+    States
+    {
+	 Spawn:
+		TNT1 A 0
+		TNT1 A 0 ACS_NamedExecuteAlways("DemonRuneCheck")
+		TNT1 A 6
+	Live:
+		DMRU ABCD 6 BRIGHT
+		Loop
+	Pickup:
+	    TNT1 A 1
+		TNT1 A 0 A_TakeInventory("PowerInvulnerable", 1)
+		TNT1 A 0 ACS_NamedExecute("RevenantMorph")
 		Stop
 	Cancels:
 		TNT1 A 1
