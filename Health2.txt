@@ -17,13 +17,7 @@ Actor ArmorShard : ArmorBonus Replaces ArmorBonus
 	States
 	{
 	Spawn:
-		BON2 A 0
-		BON2 A 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
-	Spawn2:
-		BON2 ABCD 4 BRIGHT
-		Loop
-	Vanilla:
-		BON2 ABCD 4 BRIGHT
+		BON2 ABCD 6 BRIGHT
 		Loop
 	}
 }
@@ -49,7 +43,7 @@ Actor ArmorShardDroped : ArmorShard
 	States
 	{
 	Spawn:
-		BON2 ABCD 4 BRIGHT
+		BON2 ABCD 6 BRIGHT
 		Loop
 	}
 }
@@ -69,7 +63,7 @@ Actor GiveArmor : BasicArmorBonus
 	States
 	{
 	Spawn:
-		BON2 ABCD 4 BRIGHT
+		BON2 ABCD 6 BRIGHT
 		loop
 	}
 }
@@ -92,8 +86,8 @@ Actor LightArmor : BasicArmorPickup Replaces GreenArmor
 	States
 	{
 	Spawn:
-		ARM1 A 16 bright
-		loop
+		ARM1 A -1 bright
+		Stop
 	}
 }
 
@@ -115,8 +109,8 @@ Actor HeavyArmor : BasicArmorPickup Replaces BlueArmor
 	States
 	{
 	Spawn:
-		ARM2 A 16 bright
-		loop
+		ARM2 A -1 bright
+		Stop
 	}
 }
 
@@ -133,7 +127,7 @@ ACTOR GiveHealth : Health
 	States
 	{
 	Spawn:
-		BON1 ABCD 4 BRIGHT
+		BON1 ABCD 6 BRIGHT
 		Loop
 	}
 }
@@ -152,13 +146,7 @@ ACTOR HealthPlus : Health Replaces HealthBonus
 	States
 	{
 	Spawn:
-		BON1 A 0
-		BON1 A 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
-	Spawn2:
-		BON1 ABCD 4 BRIGHT
-		Loop
-	Vanilla:
-		BON1 ABCD 4 BRIGHT
+		BON1 ABCD 6 BRIGHT
 		Loop
 	}
 }
@@ -188,7 +176,6 @@ ACTOR Medikit2 : Health Replaces Medikit
 	States
 	{
 	Spawn:
-        MEDK A 1
 		MEDK A -1
 		Stop
 	}
@@ -204,7 +191,6 @@ ACTOR Stimpack2 : Health Replaces Stimpack
 	States
 	{
 	Spawn:
-		MEDK B 2
 		MEDK B -1
 		Stop
 	}
@@ -221,13 +207,7 @@ Actor ArmorCrueltyBonus : ArmorBonus
 	States
 	{
 	Spawn:
-		BON2 E 0
-		BON2 E 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
-	Spawn2:
-		BON2 EFGH 4 BRIGHT
-		Loop
-	Vanilla:
-		BON2 EFGH 4 BRIGHT
+		BON2 EFGH 6 BRIGHT
 		Loop
 	}
 }
@@ -248,13 +228,7 @@ Actor HealthCrueltyBonus : Health
 	States
 	{
 	Spawn:
-		BON1 E 0
-		BON1 E 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
-	Spawn2:
-		BON1 EFGH 4 BRIGHT
-		Loop
-	Vanilla:
-		BON1 EFGH 4 BRIGHT
+		BON1 EFGH 6 BRIGHT
 		Loop
 	}
 }
