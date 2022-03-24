@@ -19,7 +19,7 @@ ACTOR InvulnerabilitySphere_  : PowerupGiver Replaces InvulnerabilitySphere
 	{
 	Spawn:
 		TNT1 A 0 A_SpawnItem("GreenFlareMediumItem",0,20)
-		PINV ABCD 4 Bright
+		PINV ABCD 6 Bright
 		Loop
 	}
 }
@@ -38,7 +38,7 @@ ACTOR LifeSphere : CustomInventory Replaces SoulSphere
 	{
 	Spawn:
 		TNT1 A 0 A_SpawnItem("BlueFlareMediumItem",0,20)
-		SOUL ABCD 4 Bright
+		SOUL ABCDCB 6 Bright
 		Loop
 	Pickup:
         TNT1 AAAA 0 A_CustomMissile ("ShinnySmoke", 0, 0, random (0, 360), 2, random (0, 360))
@@ -66,7 +66,7 @@ ACTOR EnergySphere : CustomInventory Replaces Megasphere
 	{
 	Spawn:
 		TNT1 A 0 A_SpawnItem("WhiteFlareMediumItem",0,20)
-		MEGA ABCD 4 BRIGHT
+		MEGA ABCD 6 BRIGHT
 		Loop
 	Pickup:
         TNT1 AAAA 0 A_CustomMissile ("ShinnySmoke", 0, 0, random (0, 360), 2, random (0, 360))
@@ -89,7 +89,8 @@ ACTOR NightVision : CustomInventory Replaces InfraRed
 	States
 	{
 	Spawn:
-		SVIS ABCDE 3 BRIGHT
+		SVIS ABC 3 BRIGHT
+		SVIS DE 3
 		Loop
 
 	Pickup:
@@ -116,7 +117,8 @@ ACTOR NightVisionGiver : PowerupGiver
 	States
 	{
 	Spawn:
-		SVIS ABCDE 3 BRIGHT
+		SVIS ABC 3 BRIGHT
+		SVIS DE 3
 		Loop
 	}
 }
@@ -135,7 +137,8 @@ ACTOR VehicleInfraredGiver : PowerupGiver
 	States
 	{
 	Spawn:
-		SVIS ABCDE 3 BRIGHT
+		SVIS ABC 3 BRIGHT
+		SVIS DE 3
 		Loop
 	}
 }
@@ -156,10 +159,10 @@ ACTOR BerserkPack : CustomInventory Replaces Berserk
 	{
 	Spawn:
 		MEDK C 0
-		MEDK C 0 A_SpawnItemEx("EvidenceCheckerbERSERk", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+		MEDK C 0 A_SpawnItemEx("EvidenceCheckerBerserk", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
 	Spawn1:
-		MEDK C 16 BRIGHT
-		Loop
+		MEDK C -1 BRIGHT
+		Stop
 	Pickup:
 		TNT1 A 0 A_GiveInventory("PowerStrength")
 		TNT1 A 0 HealThing(100, 0)
@@ -187,7 +190,7 @@ ACTOR SuperBlurSphere : CustomInventory 2054
 	{
 	Spawn:
 		TNT1 A 0 A_SpawnItem("RedFlareMediumItem", 0, 20)
-		PINS ABCD 4 Bright
+		PINS ABCD 6 Bright
 		Loop
 	Pickup:
 		TNT1 A 1
@@ -214,7 +217,7 @@ ACTOR DemonStrengthRune : BerserkPack 2053
 	States
 	{
 	Spawn:
-		DPRF ABCB 4 BRIGHT
+		DPRF ABCB 6 BRIGHT
 		Loop
 	Pickup:
 		TNT1 A 0 A_GiveInventory("PowerStrength", 1)
@@ -305,10 +308,10 @@ ACTOR DemonRuneMix: CustomInventory 2063
 	 Spawn:
 		TNT1 A 0
 		TNT1 A 0 ACS_NamedExecuteAlways("DemonRuneCheck")
-		TNT1 A 4
+		TNT1 A 6
 	Live:
 		TNT1 A 0 A_SpawnItem("RedFlareMediumItem",0,20)
-		DMRU ABCD 4 BRIGHT
+		DMRU ABCD 6 BRIGHT
 		Loop
 	Pickup:
 	    TNT1 A 1
@@ -387,7 +390,7 @@ ACTOR 64UnmakerUpgrade1 : CustomInventory 1042
 	States
 	{
 		Spawn:
-			ART1 ABCDEDCB 2 BRIGHT
+			ART1 ABCDEDCB 6 BRIGHT
 			Loop
 		Pickup:
 			TNT1 A 0
@@ -433,7 +436,7 @@ ACTOR 64UnmakerUpgrade2 : CustomInventory 1043
 	States
 	{
 		Spawn:
-			ART2 ABCDEDCB 2 BRIGHT
+			ART2 ABCDEDCB 6 BRIGHT
 			Loop
 		Pickup:
 			TNT1 A 0
@@ -479,7 +482,7 @@ ACTOR 64UnmakerUpgrade3 : CustomInventory 1044
 	States
 	{
 		Spawn:
-			ART3 ABCDEDCB 2 BRIGHT
+			ART3 ABCDEDCB 6 BRIGHT
 			Loop
 		Pickup:
 			TNT1 A 0

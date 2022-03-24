@@ -353,16 +353,7 @@ pointlight BIGWHITELAMP3
     offset 0 -120 0
 }
 
-pulselight CandleStickLight
-{
-    color 1.0 0.3 0.0
-    size 16
-    secondarySize 18
-    interval 0.1
-    offset 0 16 0
-}
-
-pulselight FIREBARREL
+pulselight BurningBarrelLight
 {
     color 1.0 0.5 0.0
     size 48
@@ -370,6 +361,15 @@ pulselight FIREBARREL
     interval 0.1
     offset 0 32 0
 	dontlightself 1
+}
+
+pulselight CandleStickLight
+{
+    color 1.0 0.3 0.0
+    size 16
+    secondarySize 18
+    interval 0.1
+    offset 0 16 0
 }
 
 pulselight SKULLCANDLES
@@ -445,12 +445,12 @@ object BDECBlueLightWall1
 
 object BDECBurningPillar
 {
-    frame COL4 { light FIREBARREL }
+    frame COL4 { light BurningBarrelLight }
 }
 
 object BDECburningtires
 {
-    frame SPDC { light FIREBARREL }
+    frame SPDC { light BurningBarrelLight }
 }
 
 object BDECCagedLight
@@ -551,12 +551,12 @@ object BlueTorchVanilla
 
 object BurningBarrel1
 {
-    frame BURB { light FIREBARREL }
+    frame BURB { light BurningBarrelLight }
 }
 
 object BurningBarrelVanilla
 {
-    frame FCAN { light BIGREDTORCH }
+    frame FCAN { light FIREBARREL }
 }
 
 object Candelabra1
@@ -576,7 +576,7 @@ object CandelabraVanilla
 
 object CandleVanilla
 {
-	frame CAND { light CandleStickLight }
+	frame CAND { light CANDLE }
 }
 
 object Column1
