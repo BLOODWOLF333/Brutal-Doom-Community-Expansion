@@ -150,7 +150,7 @@ ACTOR NukeLauncher : BrutalWeapon
 		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		NKLG B 1 BRIGHT
 		TNT1 A 0 A_ZoomFactor(0.97)
-		NKLG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
+		NKLG A 0 A_SpawnItemEx("PlayerMuzzle2",32,0,28)
 		NKLG A 0 A_FireCustomMissile("NuclearRocket", 0, 1, 0, 0)
 		RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
 		RIFG A 0 A_SetPitch(-5.0 + pitch)

@@ -1222,97 +1222,78 @@ object SuperBFGExtraGiant
 
 pointlight IONBALL
 {
-    color 1.0 0.0 1.0
-    size 128
+    color 1.0 0.1 1.0
+    size 56
 }
 
-pointlight IONBALLSMALL
+flickerlight IONBALL_X1
 {
-    color 1.0 0.0 1.0
+    color 1.0 0.2 1.0
+    size 64
+    secondarySize 72
+    chance 0.4
+}
+
+flickerlight IONBALL_X2
+{
+    color 0.8 0.2 0.8
+    size 80
+    secondarySize 88
+    chance 0.4
+}
+
+flickerlight IONBALL_X3
+{
+    color 0.5 0.1 0.5
+    size 64
+    secondarySize 72
+    chance 0.4
+}
+
+flickerlight IONBALL_X4
+{
+    color 0.2 0.0 0.2
+    size 8
+    secondarySize 16
+    chance 0.4
+}
+
+pointlight RedShotLight
+{
+    color 1.0 0.0 0.0
     size 64
 }
 
-object IonPuff
+pointlight RedShotLightBig
 {
-	frame FIR5 { light IONBALL }
+    color 1.0 0.0 0.0
+    size 128
 }
 
-object PurplePlasmaBall
+object ArchvileFire
 {
-    frame PBAL { light IONBALLSMALL }
+    frame FIRE { light BurningBarrelLight }
+}
+
+object BelphegorGreenPlasmaBall
+{
+	frame FRPGK {light BARONBALL }
+
+	frame FRPGB {light BARONBALL_X1 }
+	frame FRPGC {light BARONBALL_X1 }
+	frame FRPGD {light BARONBALL_X2 }
+	frame FRPGE {light BARONBALL_X2 }
+	frame FRPGF {light BARONBALL_X3 }
+}
+
+object BigFireBall
+{
+    frame BLHD { light IMPBALL   }
 }
 
 object BigFireBallWithGravity
 {
-    frame MANFA { light IMPBALL   }
-    frame MANFB { light IMPBALL   }
-	frame FLME { light IMPBALL   }
-	frame F1RE { light IMPBALL   }
-	frame F2RE { light IMPBALL   }
-	frame FRFX { light SMALLREDTORCH }
-}
-
-object MastermindTracer
-{
-    frame XPAC { light ROCKET }
-}
-
-object SuperMastermindTracer
-{
-    frame XPAC { light ROCKET }
-}
-
-object revenantseekermissiles
-{
-    frame FATB { light ROCKET }
-}
-
-object revenantseekermissiles2
-{
-    frame FATB { light ROCKET }
-}
-
-object revenantseekermissiles3
-{
-    frame FATB { light ROCKET }
-}
-
-object BurningImp
-{
-	frame IZD4 { light BIGREDTORCH }
-}
-
-object BurningZombie
-{
-    frame BDT1 { light BIGREDTORCH }
-	frame BDT2 { light BIGREDTORCH }
-	frame BDT3 { light BIGREDTORCH }
-}
-
-object GenericBurningGuy
-{
-	frame BUR2 { light BIGREDTORCH }
-	frame BURNF0 { light BIGREDTORCH }
-	frame BURNG0 { light BIGREDTORCH }
-	frame BURNH0 { light BIGREDTORCH }
-	frame BURNI0 { light BIGREDTORCH }
-	frame BURNJ0 { light BIGREDTORCH }
-	frame BURNK0 { light BIGREDTORCH }
-	frame BURNL0 { light BIGREDTORCH }
-	frame BURNM0 { light BIGREDTORCH }
-	frame BURNN0 { light BIGREDTORCH }
-	frame BURNO0 { light BIGREDTORCH }
-	frame BURNP0 { light BIGREDTORCH }
-	frame BURNQ0 { light BIGREDTORCH }
-	frame BURNR0 { light BIGREDTORCH }
-	frame BURNS0 { light BIGREDTORCH }
-	frame BURNT0 { light SMALLREDTORCH }
-	frame BURNU0 { light SMALLREDTORCH }
-}
-
-object TehLostSoul
-{
-    frame LSOL { light LOSTSOUL }
+	frame BLHD { light IMPBALL   }
 }
 
 object CacodemonBall_
@@ -1320,80 +1301,11 @@ object CacodemonBall_
     frame PBAL { light CACOBALL }
 }
 
-object ShoqueAzul
-{
-    frame SH1KA { light CACOBALL_X1 }
-	frame SH1KB { light CACOBALL_X1 }
-	frame SH1KC { light CACOBALL_X1 }
-	frame SH1KD { light CACOBALL_X2 }
-	frame SH1KE { light CACOBALL_X2 }
-	frame SH1KF { light CACOBALL_X3 }
-	frame SH1KG { light CACOBALL_X3 }
-}
-
-// Mancubus Fireball
-object BigFireBall
-{
-    frame BLHD { light IMPBALL   }
-	frame FLME { light IMPBALL   }
-	frame F1RE { light IMPBALL   }
-	frame F2RE { light IMPBALL   }
-	frame FRFX { light SMALLREDTORCH }
-
-    frame MISLB { light ROCKET_X1 }
-    frame MISLC { light ROCKET_X2 }
-    frame MISLD { light ROCKET_X3 }
-}
-
-//Volcabus Fireball
-object VolcabusBall
-{
-	frame S4BA { light RedShotLight }
-}
-
-object FireBall_
-{
-    frame BLHD { light IMPBALL    }
-    frame FRFXA { light IMPBALL_X1    }
-    frame FRFXB { light IMPBALL_X1    }
-    frame FRFXC { light IMPBALL_X1    }
-    frame FRFXD { light IMPBALL_X1    }
-    frame FRFXE { light IMPBALL_X2    }
-    frame FRFXF { light IMPBALL_X2    }
-    frame FRFXG { light IMPBALL_X2    }
-    frame FRFXH { light IMPBALL_X3    }
-    frame FRFXI { light IMPBALL_X3    }
-}
-
-object RifleZombie
-{
-    frame POSRF { light ZOMBIEATK }
-}
-
-object PistolZombie
-{
-    frame PSPOF { light ZOMBIEATK }
-}
-
-object ShotgunGuy1
-{
-    frame SPOSF { light ZOMBIEATK }
-}
-
-object TheArchvile
-{
-	frame DIABJ { light ZOMBIEATK }
-	frame DIABK { light ZOMBIEATK }
-	frame DIABL { light ZOMBIEATK }
-	frame DIABM { light ZOMBIEATK }
-	frame DIABN { light ZOMBIEATK }
-	frame DIABO { light ZOMBIEATK }
-	frame DIABP { light ZOMBIEATK }
-}
-
 object Chaingunguy1
 {
-	frame CPOSF { light ZOMBIEATK }
+	frame MPOSF { light ZOMBIEATK }
+	frame MPOSH { light ZOMBIEATK }
+
 	frame CPDRB { light ZOMBIEATK }
 	frame CPDRD { light ZOMBIEATK }
 	frame CPDRF { light ZOMBIEATK }
@@ -1403,44 +1315,19 @@ object Chaingunguy1
 	frame CPDRN { light ZOMBIEATK }
 }
 
-pointlight SpecialLightz
+object EvilMarinePlasma
 {
-    color 0.6 0.6 0.6
-    size 24
-	offset 0 32 0
-	dontlightself 1
+	frame PLA6F { light PLASMABALL }
 }
 
-object BigFireBall
+object EvilMarineRifle
 {
-    frame BLHD { light IMPBALL   }
+	frame PLAYF { light ZOMBIEATK }
 }
 
-object BigFireBallWithGravity
+object FireBall_
 {
-    frame BLHD { light IMPBALL   }
-}
-
-object ArchvileFire
-{
-	frame FIRE { light ZOMBIEATK }
-}
-
-object SpawnFire
-{
-	frame FIRE { light ZOMBIEATK }
-}
-
-object MotherFire
-{
-	frame F1RE { light ZOMBIEATK }
-	frame F2RE { light ZOMBIEATK }
-}
-
-object MotherFireTrail
-{
-	frame F1RE { light ZOMBIEATK }
-	frame F2RE { light ZOMBIEATK }
+    frame BLHD { light IMPBALL    }
 }
 
 object GreenPlasmaBall
@@ -1471,21 +1358,124 @@ object GreenPlasmaBallPlayerTransformed
 	frame FRPGH { light BARONBALL_X3 }
 }
 
-object BelphegorGreenPlasmaBall
+object IonPuff
 {
-	frame FRPG {light GreenShotLight }
+	frame FIR5A { light IONBALL_X1 }
+	frame FIR5B { light IONBALL_X1 }
+	frame FIR5C { light IONBALL_X1 }
+	frame FIR5D { light IONBALL_X1 }
+	frame FIR5E { light IONBALL_X2 }
+	frame FIR5F { light IONBALL_X2 }
+	frame FIR5G { light IONBALL_X2 }
+	frame FIR5H { light IONBALL_X2 }
+	frame FIR5I { light IONBALL_X3 }
+	frame FIR5J { light IONBALL_X3 }
+	frame FIR5K { light IONBALL_X3 }
+	frame FIR5L { light IONBALL_X3 }
+	frame FIR5M { light IONBALL_X4 }
+	frame FIR5N { light IONBALL_X4 }
+	frame FIR5O { light IONBALL_X4 }
+	frame FIR5P { light IONBALL_X4 }
+}
+
+object JuggernautRocket
+{
+    frame MISL { light SMALLREDTORCH }
+}
+
+object MastermindTracer
+{
+    frame XPAC { light ROCKET }
 }
 
 object MotherBall
 {
-	frame SPKO {light RedShotLight }
-	frame FRPR {light RedShotLight }
+	frame SPKO {light IMPBALL }
+	frame FRPR {light IMPBALL }
 }
 
 object MotherBallDumb
 {
-	frame SPKO {light RedShotLight }
-	frame FRPR {light RedShotLight }
+	frame SPKO {light IMPBALL }
+	frame FRPR {light IMPBALL }
+}
+
+object MotherFire
+{
+	frame F1RE { light BurningBarrelLight }
+	frame F2RE { light BurningBarrelLight }
+}
+
+object MotherFireTrail
+{
+	frame F1RE { light BurningBarrelLight }
+	frame F2RE { light BurningBarrelLight }
+}
+
+object Nazi
+{
+	frame NAZIF { light ZOMBIEATK }
+	frame NAZWE { light ZOMBIEATK }
+	frame NAZWF { light ZOMBIEATK }
+}
+
+object PistolZombie
+{
+    frame PSPOF { light ZOMBIEATK }
+}
+
+object PurplePlasmaBall
+{
+    frame PBAL { light IONBALL }
+}
+
+object revenantseekermissiles
+{
+    frame FATB { light ROCKET }
+}
+
+object revenantseekermissiles2
+{
+    frame FATB { light ROCKET }
+}
+
+object revenantseekermissiles3
+{
+    frame FATB { light ROCKET }
+}
+
+object RifleZombie
+{
+	frame 12DGB { light ZOMBIEATK }
+	frame 12DGE { light ZOMBIEATK }
+
+    frame POSRF { light ZOMBIEATK }
+}
+
+object ShoqueAzul
+{
+    frame SH1KA { light CACOBALL_X1 }
+	frame SH1KB { light CACOBALL_X1 }
+	frame SH1KC { light CACOBALL_X1 }
+	frame SH1KD { light CACOBALL_X2 }
+	frame SH1KE { light CACOBALL_X2 }
+	frame SH1KF { light CACOBALL_X3 }
+	frame SH1KG { light CACOBALL_X3 }
+}
+
+object ShotgunGuy1
+{
+    frame SPOSF { light ZOMBIEATK }
+}
+
+object SMGGuy
+{
+    frame PSS3F { light ZOMBIEATK }
+}
+
+object SuperMastermindTracer
+{
+    frame XPAC { light ROCKET }
 }
 
 object SuperMotherBall
@@ -1493,48 +1483,30 @@ object SuperMotherBall
 	frame FRFX {light RedShotLightBig }
 }
 
-object MotherFire
+object TheLostSoul
 {
-	frame FIR3 {light BIGREDTORCH }
+    frame LSOL { light LOSTSOUL }
 }
 
-pointlight GreenShotLight
+object TheArchvile
 {
-    color 0.1 1.0 0.1
-    size 64
+	frame DIABE { light BIGREDTORCH }
+	frame DIABF { light BIGREDTORCH }
+	frame DIABJ { light BIGREDTORCH }
+	frame DIABK { light BIGREDTORCH }
+	frame DIABL { light BIGREDTORCH }
+	frame DIABM { light BIGREDTORCH }
+	frame DIABN { light BIGREDTORCH }
+	frame DIABO { light BIGREDTORCH }
+	frame DIABP { light BIGREDTORCH }
+	frame DIBRX { light BIGREDTORCH }
 }
 
-object GreenFlareSmall
+object VolcabusBall
 {
-    frame LENG { light GreenShotLight }
+	frame S4BA { light RedShotLight }
 }
-
-pointlight RedShotLight
-{
-    color 1.0 0.1 0.1
-    size 64
-}
-
-pointlight RedShotLightBig
-{
-    color 1.0 0.1 0.1
-    size 128
-}
-
-object RedFlareSmall2
-{
-    frame LENR { light RedShotLight }
-}
-
-object TeleportationFog
-{
-    frame TFOG { light RedShotLight }
-}
-
-object FriendlymarineTFog
-{
-    frame TFOG { light RedShotLight }
-}
+//--------------***Add vehicles***
 
 // ------------------
 // -- Explosions, Fire, & Flares --
@@ -1564,6 +1536,26 @@ pulselight SmallShotLight
     size 24
 	secondarySize 12
 	Interval 1.0
+}
+
+object TeleportationFog
+{
+    frame TFOG { light RedShotLight }
+}
+
+object FriendlymarineTFog
+{
+    frame TFOG { light RedShotLight }
+}
+
+object GreenFlareSmall
+{
+    frame LENG { light BARONBALL }
+}
+
+object RedFlareSmall2
+{
+    frame LENR { light RedShotLight }
 }
 
 object BurnParticles
@@ -1642,7 +1634,7 @@ object MarineMuzzle1
 
 object MarineMuzzle2
 {
-    frame PLMZ { light ROCKET }
+    frame PLMZ { light RedShotLight }
 }
 
 object PlayerMuzzle1
@@ -1652,7 +1644,7 @@ object PlayerMuzzle1
 
 object PlayerMuzzle2
 {
-    frame PLMZ { light ROCKET }
+    frame PLMZ { light RedShotLight }
 }
 
 object YellowFlareSmall
@@ -1673,4 +1665,9 @@ object OrangeLensFlareAlt
 object PlasmaFlare
 {
     frame L2NB { light PLASMABALL }
+}
+
+object SpawnFire
+{
+	frame FIRE { light BurningBarrelLight }
 }

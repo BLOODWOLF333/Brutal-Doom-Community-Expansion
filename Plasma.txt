@@ -499,7 +499,6 @@ AltHold:
 		PLSN A 0 A_Giveinventory("AmmoCell",1)
 		Goto UnloadingSequence
 
-
 	DualWield:
 		PLSN A 0
 		PLSN A 1 BRIGHT A_Takeinventory("StartDualWield",1)
@@ -576,7 +575,6 @@ ACTOR Plasma_Ball: FastProjectile
 		PLSE DE 2 Bright A_SpawnItem("BlueFlareSmall")
 		TNT2 AAA 9 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
 		Stop
-
 
 	XDeath:
 	    PLSN A 0

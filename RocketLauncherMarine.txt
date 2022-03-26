@@ -316,7 +316,7 @@ ACTOR Marine_Rocket: Marine_Rifle
 		TNT1 A 0 A_Jump(128, "MissileLeft", "MissileRight")
 		TNT1 A 0 A_JumpIfCloser(256,"MissileClose")
 		MAR5 A 1 A_FaceTarget
-		MAR5 D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
+		MAR5 D 1 BRIGHT A_CustomMissile("MarineMuzzle2", 48)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("DSRFIRE", 1)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundRocket", 48, 0, 0, 1, 0)
@@ -351,7 +351,7 @@ ACTOR Marine_Rocket: Marine_Rifle
 		TNT1 A 0 A_JumpIfCloser(256,"MissileCloseLeft")
 		MAR5 A 1 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
-		MAR5 D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
+		MAR5 D 1 BRIGHT A_CustomMissile("MarineMuzzle2", 48)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("DSRFIRE", 1)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundRocket", 48, 0, 0, 1, 0)
@@ -390,7 +390,7 @@ ACTOR Marine_Rocket: Marine_Rifle
 		TNT1 A 0 A_JumpIfCloser(256,"MissileCloseRight")
 		MAR5 A 1 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
-		MAR5 D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
+		MAR5 D 1 BRIGHT A_CustomMissile("MarineMuzzle2", 48)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("DSRFIRE", 1)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundRocket", 48, 0, 0, 1, 0)
@@ -437,7 +437,7 @@ ACTOR Marine_Rocket: Marine_Rifle
 		TNT1 A 0 A_JumpIfCloser(256,"RetreatClose")
 		MAR5 A 1 A_FaceTarget
 		TNT1 A 0 A_Recoil(5)
-		MAR5 D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
+		MAR5 D 1 BRIGHT A_CustomMissile("MarineMuzzle2", 48)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("DSRFIRE", 1)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundRocket", 48, 0, 0, 1, 0)
@@ -2349,7 +2349,7 @@ ACTOR RocketMarineGuarding: Marine_Rocket
 		TNT1 A 0 A_Jump(128, "MissileLeft", "MissileRight")
 		TNT1 A 0 A_JumpIfCloser(256,"MissileClose")
 		MAR5 A 1 A_FaceTarget
-		MAR5 D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
+		MAR5 D 1 BRIGHT A_CustomMissile("MarineMuzzle2", 48)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("DSRFIRE", 1)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundRocket", 48, 0, 0, 1, 0)
@@ -2373,7 +2373,7 @@ ACTOR RocketMarineGuarding: Marine_Rocket
 		TNT1 A 0 A_JumpIfCloser(256,"MissileCloseLeft")
 		MAR5 A 1 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
-		MAR5 D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
+		MAR5 D 1 BRIGHT A_CustomMissile("MarineMuzzle2", 48)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("DSRFIRE", 1)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundRocket", 48, 0, 0, 1, 0)
@@ -2404,7 +2404,7 @@ ACTOR RocketMarineGuarding: Marine_Rocket
 		TNT1 A 0 A_JumpIfCloser(256,"MissileCloseRight")
 		MAR5 A 1 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
-		MAR5 D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
+		MAR5 D 1 BRIGHT A_CustomMissile("MarineMuzzle2", 48)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("DSRFIRE", 1)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundRocket", 48, 0, 0, 1, 0)

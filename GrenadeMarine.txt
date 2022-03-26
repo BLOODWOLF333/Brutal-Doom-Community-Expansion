@@ -317,7 +317,7 @@ ACTOR Marine_Grenade: Marine_Rifle
 		TNT1 A 0 A_JumpIfCloser(384,"MissileClose")
 		TNT1 A 0 A_JumpIfCloser(768,"MissileMid")
 		MRGL A 3 A_FaceTarget
-		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
+		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle2", 32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
 		TNT1 A 0 A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 8)
@@ -336,7 +336,7 @@ ACTOR Marine_Grenade: Marine_Rifle
 	MissileMid:
 		TNT1 A 0
 		MRGL A 3 A_FaceTarget
-		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
+		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle2", 32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
 		TNT1 A 0 A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 4)
@@ -378,7 +378,7 @@ ACTOR Marine_Grenade: Marine_Rifle
 		TNT1 A 0 A_JumpIfCloser(768,"MissileMidLeft")
 		MRGL A 3 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
-		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
+		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle2", 32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
 		TNT1 A 0 A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 8)
@@ -398,7 +398,7 @@ ACTOR Marine_Grenade: Marine_Rifle
 		TNT1 A 0
 		MRGL A 3 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
-		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
+		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle2", 32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
 		TNT1 A 0 A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 4)
@@ -444,7 +444,7 @@ ACTOR Marine_Grenade: Marine_Rifle
 		TNT1 A 0 A_JumpIfCloser(768,"MissileMidRight")
 		MRGL A 3 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
-		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
+		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle2", 32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
 		TNT1 A 0 A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 8)
@@ -464,7 +464,7 @@ ACTOR Marine_Grenade: Marine_Rifle
 		TNT1 A 0
 		MRGL A 3 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
-		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
+		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle2", 32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
 		TNT1 A 0 A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 4)
@@ -507,7 +507,7 @@ ACTOR Marine_Grenade: Marine_Rifle
 		TNT1 A 0 A_JumpIfCloser(384,"RetreatClose")
 		MRGL A 3 A_FaceTarget
 		TNT1 A 0 A_Recoil(5)
-		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
+		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle2", 32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
 		TNT1 A 0 A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 4)
@@ -1009,7 +1009,7 @@ ACTOR GrenadeMarineGuarding: Marine_Grenade
 		TNT1 A 0 A_JumpIfCloser(384,"MissileClose")
 		TNT1 A 0 A_JumpIfCloser(768,"MissileMid")
 		MRGL A 3 A_FaceTarget
-		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
+		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle2", 32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
 		TNT1 A 0 A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 8)
@@ -1028,7 +1028,7 @@ ACTOR GrenadeMarineGuarding: Marine_Grenade
 	MissileMid:
 		TNT1 A 0
 		MRGL A 3 A_FaceTarget
-		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
+		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle2", 32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
 		TNT1 A 0 A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 4)
@@ -1060,7 +1060,7 @@ ACTOR GrenadeMarineGuarding: Marine_Grenade
 		TNT1 A 0 A_JumpIfCloser(768,"MissileMidLeft")
 		MRGL A 3 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
-		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
+		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle2", 32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
 		TNT1 A 0 A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 8)
@@ -1080,7 +1080,7 @@ ACTOR GrenadeMarineGuarding: Marine_Grenade
 		TNT1 A 0
 		MRGL A 3 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
-		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
+		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle2", 32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
 		TNT1 A 0 A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 4)
@@ -1118,7 +1118,7 @@ ACTOR GrenadeMarineGuarding: Marine_Grenade
 		TNT1 A 0 A_JumpIfCloser(768,"MissileMidRight")
 		MRGL A 3 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
-		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
+		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle2", 32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
 		TNT1 A 0 A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 8)
@@ -1138,7 +1138,7 @@ ACTOR GrenadeMarineGuarding: Marine_Grenade
 		TNT1 A 0
 		MRGL A 3 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
-		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
+		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle2", 32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
 		TNT1 A 0 A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 4)
