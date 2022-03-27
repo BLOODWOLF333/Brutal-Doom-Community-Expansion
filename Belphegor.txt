@@ -265,7 +265,7 @@ ACTOR BelphegorGreenPlasmaBall: BaronBall
 	States
 	{
 	Spawn:
-	    TNT1 A 0 A_SpawnItem("GreenFlare22",0,0)
+	    TNT1 A 0 A_SpawnItem("GreenFlare2",0,0)
 		FRPG K 1 BRIGHT A_SpawnItemEx("GreenExplosionFlameTrail", 0, 0, 0, 0, 0, 0, 0, 128)
 		Loop
 
@@ -275,7 +275,7 @@ ACTOR BelphegorGreenPlasmaBall: BaronBall
 		BFE1 A 0 Bright A_Explode(16,16,1)
         TNT1 AAAA 0 A_CustomMissile ("GreenExplosionFire", 2, 0, random (0, 360), 2, random (0, 360))
         EXPL A 0 A_CustomMissile ("BigNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360))
-		FRPG BCDEF 2 Bright
+		FRPG BCDEF 2 Bright A_SpawnItem("GreenFlare",0,0)
 		TNT1 AAAA 2 A_CustomMissile ("BigNeoSmoke", 2, 0, random (0, 360), 2, random (0, 360))
 		Stop
 	}

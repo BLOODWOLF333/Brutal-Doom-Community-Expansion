@@ -278,29 +278,29 @@ ACTOR HellKnight2 : HellKnight Replaces HellKnight
 		BOS2 E 3 A_FaceTarget
 		TNT1 A 0 A_SpawnItemEx("HeadshotTarget4b", 0, 54)
 		BOS2 E 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 64, 30, random (0, 360), 2, random (70, 110))
-		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 64, 30, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 61, 30, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 60, 30, random (0, 140), 2, random (0, 160))
 		TNT1 A 0 A_SpawnItemEx("HeadshotTarget4b", 0, 54)
 		BOS2 E 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 64, 30, random (0, 360), 2, random (70, 110))
-		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 64, 30, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 61, 30, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 60, 30, random (0, 140), 2, random (0, 160))
 		TNT1 A 0 A_SpawnItemEx("HeadshotTarget4b", 0, 54)
 		BOS2 E 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 64, 30, random (0, 360), 2, random (70, 110))
-		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 64, 30, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 61, 30, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 60, 30, random (0, 140), 2, random (0, 160))
 		TNT1 A 0 A_SpawnItemEx("HeadshotTarget4b", 0, 54)
 		BOS2 E 2 A_FaceTarget
 		TNT1 A 0 A_SpawnItemEx("HeadshotTarget8b", 0, 54)
-		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 64, 30, random (0, 360), 2, random (70, 110))
-		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 64, 30, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 61, 30, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 60, 30, random (0, 140), 2, random (0, 160))
 		TNT1 A 0 A_SpawnItemEx("HeadshotTarget4b", 0, 54)
 		BOS2 E 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 64, 30, random (0, 360), 2, random (70, 110))
-		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 64, 30, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 61, 30, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 60, 30, random (0, 140), 2, random (0, 160))
 		TNT1 A 0 A_SpawnItemEx("HeadshotTarget4b", 0, 54)
 		BOS2 E 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 64, 30, random (0, 360), 2, random (70, 110))
-		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 64, 30, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 61, 30, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 60, 30, random (0, 140), 2, random (0, 160))
 		TNT1 A 0 A_SpawnItemEx("HeadshotTarget4b", 0, 54)
 		BOS2 E 2
 
@@ -722,31 +722,31 @@ ACTOR GreenPlasmaBall: BaronBall Replaces BaronBall
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)//Check Effects
 
 	Spawn1:
-		PBAL C 1 BRIGHT A_SpawnItemEx("SmallGreenFlameTrails", 0, 0, 0, 0, 0, 0, 0, 128)
+		PBAL C 1 BRIGHT A_SpawnItem("GreenFlareMedium")
+		TNT1 A 0 A_SpawnItemEx("SmallGreenFlameTrails", 0, 0, 0, 0, 0, 0, 0, 128)
 		TNT1 A 0 A_CustomMissile ("OldschoolRocketSmokeTrailDarker", 2, 0, random (160, 210), 2, random (-30, 30))
 		Loop
 
 	SpawnCheap:
-	    PBAL C 1 BRIGHT A_SpawnItemEx("SmallGreenFlameTrails", 0, 0, 0, 0, 0, 0, 0, 128)
+	    PBAL C 1 BRIGHT A_SpawnItem("GreenFlareMedium")
+		TNT1 A 0 A_SpawnItemEx("SmallGreenFlameTrails", 0, 0, 0, 0, 0, 0, 0, 128)
 		Loop
 
 	Death:
 		TNT1 A 0 A_SpawnItemEx("PlasmaParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
 	    TNT1 A 0 A_SpawnItemEx ("DetectFloorCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 AA 0 A_SpawnItem("GreenFlare",0,0)
 		TNT1 A 0 A_SetScale(0.7)
 		TNT1 A 0 A_FadeOut(0.2)
-		FRPG ABCDEFGH 2 BRIGHT
+		FRPG ABCDEFGH 2 BRIGHT A_SpawnItem("GreenFlare",0,0)
 		Stop
 	XDeath:
 		//TNT1 AAA 0 A_SpawnItemEx("PlasmaParticle", 0, 0, 14, (0.1)*Random(10, 40), 0, (0.1)*Random(-40, 40), Random(0, 360), 128)
         TNT1 A 0 A_JumpIfCloser(220, "StopInAir")
 		TNT1 A 0 A_SpawnItemEx("PlasmaParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
-		TNT1 AA 0 A_SpawnItem("GreenFlare",0,0)
 	    TNT1 A 0 A_SetScale(0.7)
 		TNT1 A 0 A_FadeOut(0.2)
-		FRPG ABCDEFGH 2 BRIGHT
+		FRPG ABCDEFGH 2 BRIGHT A_SpawnItem("GreenFlare",0,0)
 		Stop
 
 	StopInAir:

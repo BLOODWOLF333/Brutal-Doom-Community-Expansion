@@ -579,13 +579,13 @@ ACTOR BigFireBall Replaces Fatshot
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "SpawnCheap")
 		TNT1 A 0
 		BLHD AB 1 BRIGHT A_SpawnItem ("FireballExplosionFlamesSmall")
-		TNT1 A 0 A_SpawnItem("RedFlare22")
+		TNT1 A 0 A_SpawnItem("RedFlare2")
 		TNT1 A 0 A_CustomMissile ("RocketSmokeTrail52", 2, 0, random (70, 110), 2, random (0, 360))
 		Loop
 
 	SpawnCheap:
 		TNT1 A 0 A_SpawnItem ("FireballExplosionFlamesSmall")
-		BLHD AB 1 BRIGHT A_SpawnItem("RedFlare22")
+		BLHD AB 1 BRIGHT A_SpawnItem("RedFlare2")
 		Loop
 
 	Death:
