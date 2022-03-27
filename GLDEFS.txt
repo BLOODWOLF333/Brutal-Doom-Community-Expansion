@@ -408,6 +408,13 @@ pulselight SMALLREDTORCH
     offset 0 35 0
 }
 
+pointlight YELLOWLAMP
+{
+    color 1.0 1.0 0.0
+    size 56
+    offset 0 44 0
+}
+
 object BDECAlarm
 {
     frame SPDE { light ALARMORANGELAMP }
@@ -581,7 +588,7 @@ object CandleVanilla
 
 object Column1
 {
-    frame COLUA { light LAMP }
+    frame COLUA { light YELLOWLAMP }
 }
 
 object ExplosiveBarrel1
@@ -1270,9 +1277,28 @@ pointlight RedShotLightBig
     size 128
 }
 
+pointlight ShotLight
+{
+    color 0.5 0.5 0.0
+    size 64
+}
+
+pointlight ShotLightBig
+{
+    color 0.5 0.5 0.0
+    size 128
+}
+
 object ArchvileFire
 {
-    frame FIRE { light BurningBarrelLight }
+    frame FIREA { light BurningBarrelLight }
+    frame FIREB { light BurningBarrelLight }
+    frame FIREC { light BurningBarrelLight }
+    frame FIRED { light BurningBarrelLight }
+    frame FIREE { light BurningBarrelLight }
+    frame FIREF { light BurningBarrelLight }
+    frame FIREG { light BurningBarrelLight }
+    frame FIREH { light BurningBarrelLight }
 }
 
 object BelphegorGreenPlasmaBall
@@ -1502,70 +1528,63 @@ object TheArchvile
 	frame DIBRX { light BIGREDTORCH }
 }
 
+object VanillaArchvile
+{
+	frame DIABE { light BIGREDTORCH }
+	frame DIABF { light BIGREDTORCH }
+	frame DIABJ { light BIGREDTORCH }
+	frame DIABK { light BIGREDTORCH }
+	frame DIABL { light BIGREDTORCH }
+	frame DIABM { light BIGREDTORCH }
+	frame DIABN { light BIGREDTORCH }
+	frame DIABO { light BIGREDTORCH }
+	frame DIABP { light BIGREDTORCH }
+	frame DIBRX { light BIGREDTORCH }
+}
+
+object VanillaChaingunguy
+{
+	frame MPOSF { light ZOMBIEATK }
+	frame MPOSH { light ZOMBIEATK }
+
+	frame CPDRB { light ZOMBIEATK }
+	frame CPDRD { light ZOMBIEATK }
+	frame CPDRF { light ZOMBIEATK }
+	frame CPDRH { light ZOMBIEATK }
+	frame CPDRJ { light ZOMBIEATK }
+	frame CPDRL { light ZOMBIEATK }
+	frame CPDRN { light ZOMBIEATK }
+}
+
+object VanillaShotgunguy
+{
+    frame SPOSF { light ZOMBIEATK }
+}
+
+object VanillaZombieMan
+{
+    frame 12DGB { light ZOMBIEATK }
+	frame 12DGE { light ZOMBIEATK }
+
+    frame POSRF { light ZOMBIEATK }
+}
+
 object VolcabusBall
 {
 	frame S4BA { light RedShotLight }
 }
-//--------------***Add vehicles***
 
 // ------------------
-// -- Explosions, Fire, & Flares --
+// -- Explosions
 // ------------------
 
-flickerlight2 BIGREDTORCH128
-{
-    color 1.0 0.3 0.0
-    size 80
-    secondarySize 128
-    interval 0.1
-    offset 0 0 0
-}
-
-pulselight EXPLOSIONFLASH
-{
-    color 1.0 0.3 0.0
-    size 100
-    secondarySize 120
-    interval 0.1
-    offset 0 60 0
-}
-
-pulselight SmallShotLight
-{
-    color 0.5 0.5 0.0
-    size 24
-	secondarySize 12
-	Interval 1.0
-}
-
-object TeleportationFog
-{
-    frame TFOG { light RedShotLight }
-}
-
-object FriendlymarineTFog
-{
-    frame TFOG { light RedShotLight }
-}
-
-object GreenFlareSmall
-{
-    frame LENG { light BARONBALL }
-}
-
-object RedFlareSmall2
-{
-    frame LENR { light RedShotLight }
-}
+// ------------------
+// -- Fire
+// ------------------
 
 object BurnParticles
 {
 	frame TNT1 { light BIGREDTORCH }
-}
-
-object ExplosionFlareSpawner
-{
-    frame L2NR { light EXPLOSIONFLASH }
 }
 
 object FlamethrowerBurningStuff
@@ -1575,7 +1594,7 @@ object FlamethrowerBurningStuff
 
 object FlamethrowerMissile
 {
-    frame FIR3 { light BIGREDTORCH128 }
+    frame FIR3 { light RedShotLightBig }
 	frame TNT1 { light BIGREDTORCH }
 	frame EXPL { light BIGREDTORCH }
 }
@@ -1600,6 +1619,11 @@ object SmallFireFocus24
 {
     frame FLME { light SMALLREDTORCH }
 	frame F1RE { light SMALLREDTORCH }
+}
+
+object SpawnFire
+{
+	frame FIRE { light BurningBarrelLight }
 }
 
 object TempHDFlamesGFX1
@@ -1627,9 +1651,166 @@ object TinyBurningPieceTemp
     frame CFCF { light SMALLREDTORCH }
 }
 
+// ------------------
+// -- Flares
+// ------------------
+
+pointlight BLUEMEDIUM
+{
+    color 0.0 0.0 1.0
+    size 48
+}
+
+pointlight BLUELARGE
+{
+    color 0.0 0.0 1.0
+    size 64
+}
+
+pointlight BLUESMALL
+{
+    color 0.0 0.0 1.0
+    size 32
+}
+
+pointlight GREENMEDIUM
+{
+	color 0.0 1.0 0.0
+	size 48
+}
+
+pointlight GREENLARGE
+{
+    color 0.0 1.0 0.0
+    size 64
+}
+
+pointlight GREENSMALL
+{
+    color 0.0 1.0 0.0
+    size 32
+}
+
+pointlight REDMEDIUM
+{
+	color 1.0 0.3 0.0
+	size 48
+}
+
+pointlight REDLARGE
+{
+    color 1.0 0.3 0.0
+    size 64
+}
+
+pointlight REDSMALL
+{
+    color 1.0 0.3 0.0
+    size 32
+}
+
+pointlight VIOLETMEDIUM
+{
+	color 1.0 0.0 1.0
+	size 48
+}
+
+pointlight VIOLETLARGE
+{
+    color 1.0 0.0 1.0
+    size 64
+}
+
+pointlight VIOLETSMALL
+{
+    color 1.0 0.0 1.0
+    size 32
+}
+
+pointlight WHITEMEDIUM
+{
+	color 0.8 0.8 1.0
+	size 48
+}
+
+pointlight WHITELARGE
+{
+    color 0.8 0.8 1.0
+    size 64
+}
+
+pointlight WHITESMALL
+{
+    color 0.8 0.8 1.0
+    size 32
+}
+
+pointlight YELLOWMEDIUM
+{
+	color 1.0 1.0 0.0
+	size 48
+}
+
+pointlight YELLOWLARGE
+{
+    color 1.0 1.0 0.0
+    size 64
+}
+
+pointlight YELLOWSMALL
+{
+    color 1.0 1.0 0.0
+    size 32
+}
+
+object BlueFlare
+{
+	frame LENB { light BLUELARGE }
+}
+
+object BlueFlareMedium
+{
+	frame LENB { light BLUEMEDIUM }
+}
+
+object BlueFlareSmall
+{
+	frame LENB { light BLUESMALL }
+}
+
+object ExplosionFlareEffect
+{
+    frame FLARB { light REDLARGE }
+}
+
+object FireballFlare
+{
+    frame LENY { light YELLOWMEDIUM }
+}
+
+object GreenFlare
+{
+    frame LENG { light GREENLARGE }
+}
+
+object GreenFlare22
+{
+    frame L2NG { light GREENLARGE }
+}
+
+object GreenFlareMedium
+{
+    frame LENG { light GREENMEDIUM }
+}
+
+object GreenFlareSmall
+{
+    frame LENG { light GREENSMALL }
+}
+
 object MarineMuzzle1
 {
-    frame PLMZ { light SmallShotLight }
+    frame PLMZ { light ShotLight }
 }
 
 object MarineMuzzle2
@@ -1637,29 +1818,24 @@ object MarineMuzzle2
     frame PLMZ { light RedShotLight }
 }
 
-object PlayerMuzzle1
+object NukeFlare
 {
-    frame PLMZ { light SmallShotLight }
-}
-
-object PlayerMuzzle2
-{
-    frame PLMZ { light RedShotLight }
-}
-
-object YellowFlareSmall
-{
-    frame LENY { light SmallShotLight }
-}
-
-object YellowFlareSmallB
-{
-    frame LENY { light SmallShotLight }
+    frame LEYSO { light ROCKET }
 }
 
 object OrangeLensFlareAlt
 {
-    frame LEYS { light SmallShotLight }
+    frame LEYSO { light ZOMBIEATK }
+}
+
+object PinkFlare
+{
+    frame LENP { light VIOLETLARGE }
+}
+
+object PinkIonFlare
+{
+    frame LENP { light VIOLETSMALL }
 }
 
 object PlasmaFlare
@@ -1667,7 +1843,163 @@ object PlasmaFlare
     frame L2NB { light PLASMABALL }
 }
 
-object SpawnFire
+object PlayerMuzzle1
 {
-	frame FIRE { light BurningBarrelLight }
+    frame PLMZ { light ShotLight }
+}
+
+object PlayerMuzzle2
+{
+    frame PLMZ { light RedShotLight }
+}
+
+object RedFlare
+{
+    frame LENR { light REDLARGE }
+}
+
+object RedFlare22
+{
+    frame L2NR { light REDLARGE }
+}
+
+object RedFlare3Flat
+{
+    frame LENR { light REDMEDIUM }
+}
+
+object RedFlareMedium
+{
+    frame LENR { light REDMEDIUM }
+}
+
+object RedFlareSmall
+{
+    frame LENR { light REDSMALL }
+}
+
+object RedFlareSmall2
+{
+    frame LENR { light REDSMALL }
+}
+
+object RedFlareSmall22
+{
+    frame LENR { light REDSMALL }
+}
+
+object RocketFlare
+{
+    frame LEYSO { light ROCKET }
+}
+
+object VioletFlare
+{
+    frame LENV { light VIOLETLARGE }
+}
+
+object VioletFlareSmall
+{
+    frame LENV { light VIOLETSMALL }
+}
+
+object YellowFlare
+{
+    frame LENY { light YELLOWLARGE }
+}
+
+object YellowFlareSmall
+{
+    frame LENY { light YELLOWSMALL }
+}
+
+object YellowFlareSmallB
+{
+    frame LENY { light YELLOWSMALL }
+}
+
+// ------------------
+// -- Misc & Puffs
+// ------------------
+
+object AltAxeAttack
+{
+    frame FX57 { light BPUFF2 }
+	frame FX58 { light BPUFF2 }
+}
+
+object AltAxeAttackStrong
+{
+    frame FX57 { light BPUFF2 }
+	frame FX58 { light BPUFF2 }
+}
+
+object AxeAttack
+{
+    frame FX57 { light BPUFF2 }
+	frame FX58 { light BPUFF2 }
+}
+
+object AxeAttackStrong
+{
+    frame FX57 { light BPUFF2 }
+	frame FX58 { light BPUFF2 }
+}
+
+object FriendlymarineTFog
+{
+    frame TFOG { light RedShotLight }
+}
+
+object RicoChet
+{
+    frame FX57 { light BPUFF1 }
+	frame FX58 { light BPUFF1 }
+}
+
+object SawDamageHorizontal
+{
+    frame BPUFC { light BPUFF1 }
+    frame BPUFD { light BPUFF2 }
+}
+
+object SawDamageHorizontal2
+{
+    frame BPUFC { light BPUFF1 }
+    frame BPUFD { light BPUFF2 }
+}
+
+object SawDamageVertical
+{
+    frame BPUFC { light BPUFF1 }
+    frame BPUFD { light BPUFF2 }
+}
+
+object SawDamageVertical2
+{
+    frame BPUFC { light BPUFF1 }
+    frame BPUFD { light BPUFF2 }
+}
+
+object Sparks
+{
+    frame FX57 { light BPUFF2 }
+	frame FX58 { light BPUFF2 }
+}
+
+object SSawPuff
+{
+    frame BPUFC { light BPUFF1 }
+    frame BPUFD { light BPUFF2 }
+}
+
+object SSawPuff2
+{
+    frame BPUFC { light BPUFF1 }
+    frame BPUFD { light BPUFF2 }
+}
+
+object TeleportationFog
+{
+    frame TFOG { light RedShotLight }
 }

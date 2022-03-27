@@ -738,8 +738,8 @@ Actor EvilMarinePlasma: EvilMarineRifle 104
 
 	MissileLeft:
 		TNT1 A 0
-		MAR6 D 6 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 9, 0, 0)
+		MAR6 AB 3 A_FaceTarget
 		PLA6 F 3 BRIGHT A_CustomMissile("EvilPlasmaBall",32)
 		TNT1 A 0 A_GiveInventory("PlasmaAmmo",1)
 
@@ -749,7 +749,7 @@ Actor EvilMarinePlasma: EvilMarineRifle 104
 
 	MissileRight:
 		TNT1 A 0
-		MAR6 D 6 A_FaceTarget
+		MAR6 AB 3 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 9, 0, 0)
 		PLA6 F 3 BRIGHT A_CustomMissile("EvilPlasmaBall",32)
 		TNT1 A 0 A_GiveInventory("PlasmaAmmo",1)

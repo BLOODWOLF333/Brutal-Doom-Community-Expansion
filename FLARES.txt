@@ -1,69 +1,30 @@
-
 Actor Flare_General
 {
-+NOINTERACTION
-+NOGRAVITY
-+NONETID
-+CLIENTSIDEONLY
-+NOTONAUTOMAP
-renderstyle Add
-radius 1
-height 1
-alpha 0.4
-scale 0.4
+	+NOINTERACTION
+	+NOGRAVITY
+	+NONETID
+	+CLIENTSIDEONLY
+	+NOTONAUTOMAP
+	renderstyle Add
+	radius 1
+	height 1
+	alpha 0.4
+	scale 0.4
 }
 
-Actor ExplosionFlareEffect : Flare_General
+Actor BFGBigFlare : Flare_General
 {
-XScale 2.0
-YScale 1.5
-Alpha 0.4
+alpha 0.1
+yscale 1.6
+xscale 1.6
 states
 	{
 	Spawn:
-		TNT1 A 0
-		FLAR B 2 bright
-		FLAR BBBBBBBBBBBBBB 1 BRIGHT A_FadeOut(0.11)
-		stop
+		LEYS GGGGGGGGGGGGGGGGGG 1 BRIGHT a_fADEIn(0.02)
+	    LEYS G 5 BRIGHT
+		LEYS GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 BRIGHT a_fADEouT(0.04)
+		Stop
 	}
-}
-
-
-Actor RedFlare : Flare_General
-{
-states
-	{
-	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_Jump(128,2)
-		LENR A 2 bright
-		stop
-		TNT1 A 0
-		LENR B 2 bright
-		stop
-	}
-}
-
-Actor RedFlare3 : Flare_General
-{
-states
-	{
-	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_Jump(128,4)
-		LENR AAB 1 bright
-		stop
-		TNT1 A 0
-		LENR BAB 1 bright
-		stop
-	}
-}
-
-
-Actor RedFlare3Flat : RedFlare3
-{
-XScale 0.5
-YScale 0.3
 }
 
 Actor BlueFlare : Flare_General
@@ -81,262 +42,10 @@ states
 	}
 }
 
-
-Actor BlueFlare3 : Flare_General
-{
-states
-	{
-	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_Jump(128,4)
-		LENB AAB 1 bright
-		stop
-		TNT1 A 0
-		LENB BAB 1 bright
-		stop
-	}
-}
-
-Actor GreenFlare : Flare_General
-{
-states
-	{
-	Spawn:
-        TNT1 A 0
-	    TNT1 A 0 A_Jump(128,2)
-		LENG A 2 bright
-		stop
-		TNT1 A 0
-		LENG B 2 bright
-		stop
-	}
-}
-
-Actor GreenFlare3 : Flare_General
-{
-states
-	{
-	Spawn:
-        TNT1 A 0
-	    TNT1 A 0 A_Jump(128,4)
-		LENG AAB 1 bright
-		stop
-		TNT1 A 0
-		LENG BAB 1 bright
-		stop
-	}
-}
-
-Actor YellowFlare : Flare_General
-{
-states
-	{
-	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_Jump(128,2)
-		LENY A 2 bright
-		stop
-		TNT1 A 0
-		LENY B 2 bright
-		stop
-	}
-}
-
-Actor VioletFlare : Flare_General
-{
-states
-	{
-	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_Jump(128,2)
-		LENV A 2 bright
-		stop
-		TNT1 A 0
-		LENV B 2 bright
-		stop
-	}
-}
-
-Actor VioletFlareMedium : VioletFlare
-{
-alpha 0.3
-scale 0.25
-}
-
-Actor VioletFlareMediumItem : VioletFlare
-{
-alpha 0.3
-scale 0.25
-states
-	{
-	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_Jump(128,2)
-		LENV A 16 bright
-		stop
-		TNT1 A 0
-		LENV B 16 bright
-		stop
-	}
-}
-
-Actor VioletFlareSmall : VioletFlare
-{
-scale 0.15
-}
-
-Actor YellowFlareSmall : YellowFlare
-{
-scale 0.15
-}
-
-Actor YellowFlareMedium : YellowFlare
-{
-scale 0.20
-}
-
-Actor YellowFlareMediumItem : YellowFlare
-{
-states
-	{
-	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_Jump(128,2)
-		LENY A 16 bright
-		stop
-		TNT1 A 0
-		LENY B 16 bright
-		stop
-	}
-}
-
-Actor YellowFlareLarge1X : YellowFlare
-{
-scale 1.0
-}
-
-Actor RedFlareMedium : RedFlare
-{
-scale 0.25
-}
-
-Actor RedFlareMediumItem : RedFlare
-{
-scale 0.25
-states
-	{
-	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_Jump(128,2)
-		LENR A 16 bright
-		stop
-		TNT1 A 0
-		LENR B 16 bright
-		stop
-	}
-}
-
-Actor RedFlareBig : RedFlare
-{
-scale 0.9
-}
-
-Actor RedFlareLarge1X : RedFlare
-{
-scale 1.0
-}
-
-Actor RedFlareSmall : RedFlare
-{
-scale 0.15
-}
-
-Actor RedFlareSmallItem : RedFlare
-{
-alpha 0.5
-Xscale 0.18
-YScale 0.065
-+FORCEXYBILLBOARD
-states
-	{
-	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_Jump(128,2)
-		LENR A 16 bright
-		stop
-		TNT1 A 0
-		LENR B 16 bright
-		stop
-	}
-}
-
-Actor RedFlareSmall2 : RedFlare
-{
-scale 0.10
-}
-
-Actor GreenFlareSmall : GreenFlare
-{
-alpha 0.4
-scale 0.2
-}
-
-Actor GreenFlareMedium : GreenFlare
-{
-alpha 0.3
-scale 0.25
-}
-
-Actor GreenFlareMediumItem : GreenFlare
-{
-alpha 0.3
-scale 0.25
-states
-	{
-	Spawn:
-        TNT1 A 0
-	    TNT1 A 0 A_Jump(128,2)
-		LENG A 16 bright
-		stop
-		TNT1 A 0
-		LENG B 16 bright
-		stop
-	}
-}
-
 Actor BlueFlareMedium : BlueFlare
 {
 alpha 0.3
 scale 0.15
-}
-
-Actor BlueFlareMedium2 : BlueFlare
-{
-alpha 0.3
-scale 0.25
-}
-
-Actor BlueFlareMediumItem : BlueFlare
-{
-alpha 0.3
-scale 0.25
-states
-	{
-	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_Jump(128,2)
-		LENB A 16 bright
-		stop
-		TNT1 A 0
-		LENB B 16 bright
-		stop
-	}
-}
-
-Actor BlueFlareMedium3 : BlueFlare
-{
-alpha 0.3
-scale 0.35
 }
 
 Actor BlueFlareSmall : BlueFlare
@@ -345,38 +54,32 @@ alpha 0.3
 scale 0.15
 }
 
-Actor BlueFlareSmallItem : BlueFlare
+Actor ExplosionFlareEffect : Flare_General
 {
-alpha 0.5
-Xscale 0.18
-YScale 0.065
-+FORCEXYBILLBOARD
+XScale 2.0
+YScale 1.5
+Alpha 0.4
 states
 	{
 	Spawn:
 		TNT1 A 0
-		TNT1 A 0 A_Jump(128,2)
-		LENB A 16 bright
-		stop
-		TNT1 A 0
-		LENB B 16 bright
+		FLAR B 2 bright
+		FLAR BBBBBBBBBBBBBB 1 BRIGHT A_FadeOut(0.11)
 		stop
 	}
 }
 
-Actor PlasmaFlare : Flare_General
+Actor ExplosionFlareSpawner : Flare_General
 {
-alpha 0.4
-scale 0.15
 states
 	{
 	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_Jump(128,2)
-		L2NB A 1 bright
-		stop
-		TNT1 A 0
-		L2NB B 1 bright
+	    TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx("ExplosionFlareEffect")
+	    TNT1 A 0 A_SpawnItemEx("ExplosionFlareEffect", 36, 36)
+		TNT1 A 0 A_SpawnItemEx("ExplosionFlareEffect", 36, -36)
+		TNT1 A 0 A_SpawnItemEx("ExplosionFlareEffect", -36, 36)
+		TNT1 A 0 A_SpawnItemEx("ExplosionFlareEffect", -36, -36)
 		stop
 	}
 }
@@ -398,15 +101,103 @@ states
 	}
 }
 
-Actor RocketFlare : Flare_General
+Actor GreenFlare : Flare_General
 {
-alpha 1.0
-yscale 0.6
-xscale 0.6
 states
 	{
 	Spawn:
-	    LEYS O 2 BRIGHT
+        TNT1 A 0
+	    TNT1 A 0 A_Jump(128,2)
+		LENG A 2 bright
+		stop
+		TNT1 A 0
+		LENG B 2 bright
+		stop
+	}
+}
+
+Actor GreenFlare22 : Flare_General
+{
+states
+	{
+	Spawn:
+        TNT1 A 0
+	    TNT1 A 0 A_Jump(128,2)
+		L2NG A 2 bright
+		stop
+		TNT1 A 0
+		L2NG B 2 bright
+		stop
+	}
+}
+
+Actor GreenFlareMedium : GreenFlare
+{
+alpha 0.3
+scale 0.25
+}
+
+Actor GreenFlareSmall : GreenFlare
+{
+alpha 0.4
+scale 0.2
+}
+
+ACTOR GreenFlareSpawn
+{
+	Speed 20
+	PROJECTILE
+	+NOCLIP
+	+CLIENTSIDEONLY
+	+NONETID
+	+NOINTERACTION
+	States
+	{
+	Spawn:
+		TNT1 AA 1 A_CustomMissile("GreenFlareSmall",-5,0,-85,0,random(-10,10))
+		Stop
+	}
+}
+
+Actor LensFlareAlt : Flare_General
+{
+alpha 0.5
+xscale 0.6
+yscale 0.3
+states
+	{
+	Spawn:
+		LENS A 5 bright
+		stop
+	}
+}
+
+ACTOR MarineMuzzle1
+{
+	Speed 0
+	PROJECTILE
+	+NOCLIP
+	+NOGRAVITY
+	+CLIENTSIDEONLY
+	+NONETID
+	+NOINTERACTION
+	Speed 5
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		PLMZ A 1 BRIGHT
+		Stop
+	}
+}
+
+ACTOR MarineMuzzle2
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		PLMZ A 1 BRIGHT
 		Stop
 	}
 }
@@ -425,173 +216,75 @@ states
 	}
 }
 
-
-
-Actor BFGBigFlare : Flare_General
+Actor OrangeLensFlareAlt : Flare_General
 {
-alpha 0.1
-yscale 1.6
-xscale 1.6
++MISSILE
+Speed 20
+alpha 0.6
+xscale 0.5
+yscale 0.2
 states
 	{
 	Spawn:
-		LEYS GGGGGGGGGGGGGGGGGG 1 BRIGHT a_fADEIn(0.02)
-	    LEYS G 5 BRIGHT
-		LEYS GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 BRIGHT a_fADEouT(0.04)
-		Stop
-	}
-}
-
-Actor GreenFlareSmall2 : GreenFlare
-{
-alpha 0.5
-Xscale 0.18
-YScale 0.065
-+FORCEXYBILLBOARD
-}
-
-Actor GreenFlareSmallItem : GreenFlare
-{
-alpha 0.5
-Xscale 0.18
-YScale 0.065
-+FORCEXYBILLBOARD
-states
-	{
-	Spawn:
-        TNT1 A 0
-	    TNT1 A 0 A_Jump(128,2)
-		LENG A 16 bright
-		stop
-		TNT1 A 0
-		LENG B 16 bright
+	    TNT1 A 1
+		TNT1 A 0 A_PlaySOund("DISTFRRIFLE")
+	    TNT1 A 0 A_Stop
+		LEYS O 3 bright
+		TNT1 A 60
 		stop
 	}
 }
 
-Actor LensFlare : Flare_General
+Actor PinkFlare : Flare_General
 {
-alpha 0.45
-scale 0.5
-states
-	{
-	Spawn:
-		LENS A 5 bright
-		stop
-	}
-}
-
-
-Actor WhiteFlareSmall : Flare_General
-{
-alpha 0.05
-scale 0.15
-states
-	{
-	Spawn:
-		LENW A 5 bright
-		stop
-	}
-}
-
-Actor WhiteFlareSmallItem : Flare_General
-{
-alpha 0.05
-scale 0.15
-states
-	{
-	Spawn:
-		LENW A 17 bright
-		stop
-	}
-}
-
-Actor WhiteFlareMedium2 : Flare_General
-{
-alpha 0.05
-scale 0.25
-states
-	{
-	Spawn:
-		LENW A 5 bright
-		stop
-	}
-}
-
-Actor WhiteFlareMediumItem : Flare_General
-{
-alpha 0.05
-scale 0.25
-states
-	{
-	Spawn:
-		LENW A 17 bright
-		stop
-	}
-}
-
-Actor FireFightFlare : Flare_General
-{
-+FORCEXYBILLBOARD
-scale 0.20
 states
 	{
 	Spawn:
 		TNT1 A 0
 		TNT1 A 0 A_Jump(128,2)
-		L2NY A 4 bright
+		LENP A 2 bright
 		stop
 		TNT1 A 0
-		L2NY B 4 bright
+		LENP B 2 bright
 		stop
 	}
 }
 
-Actor YellowFlareSmallB : YellowFlare
+Actor PinkIonFlare : Flare_General
 {
-+FORCEXYBILLBOARD
+alpha 0.4
 scale 0.15
-Alpha 0.3
 states
 	{
 	Spawn:
 		TNT1 A 0
 		TNT1 A 0 A_Jump(128,2)
-		LENY A 1 bright
+		LENP A 1 bright
 		stop
 		TNT1 A 0
-		LENY B 1 bright
+		LENP B 1 bright
 		stop
 	}
 }
 
-
-
-
-
-
-
-
-
-ACTOR RedFlareSpawn
+Actor PlasmaFlare : Flare_General
 {
-	Speed 20
-	PROJECTILE
-	+CLIENTSIDEONLY
-	+NONETID
-	+NOINTERACTION
-	+NOCLIP
-	States
+alpha 0.4
+scale 0.15
+states
 	{
 	Spawn:
-		TNT1 AA 1 A_CustomMissile("RedFlareSmall2",-5,0,-85,0,random(-10,10))
-		Stop
+		TNT1 A 0
+		TNT1 A 0 A_Jump(128,2)
+		L2NB A 1 bright
+		stop
+		TNT1 A 0
+		L2NB B 1 bright
+		stop
 	}
 }
 
-
-
-ACTOR PLasmaFlareSpawn
+ACTOR PlasmaFlareSpawn
 {
 	Speed 20
 	PROJECTILE
@@ -604,25 +297,6 @@ ACTOR PLasmaFlareSpawn
 	Spawn:
 	    TNT1 A 0
 		TNT1 A 1 A_CustomMissile("PlasmaFlare",-5,0,-85,0,random(-10,10))
-		Stop
-	}
-}
-
-
-ACTOR YellowFlareSpawn
-{
-	Speed 20
-	PROJECTILE
-	+CLIENTSIDEONLY
-	+NONETID
-	+NOINTERACTION
-	+NOCLIP
-	+NOGRAVITY
-	States
-	{
-	Spawn:
-		TNT1 AA 1 A_CustomMissile("YellowFlareSmallB",-5,0,-85,0,random(-10,10))
-		//TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt",2,0,0,0,0)
 		Stop
 	}
 }
@@ -645,17 +319,8 @@ ACTOR PlayerMuzzle1
 	}
 }
 
-
-ACTOR PlayerMuzzle2
+ACTOR PlayerMuzzle2 : PlayerMuzzle1
 {
-	Speed 0
-	PROJECTILE
-	+NOCLIP
-	+NOGRAVITY
-	+CLIENTSIDEONLY
-	+NONETID
-	+NOINTERACTION
-	Scale 1.4
 	States
 	{
 	Spawn:
@@ -665,112 +330,20 @@ ACTOR PlayerMuzzle2
 	}
 }
 
-
-ACTOR PlayerMuzzle3: PlayerMuzzle2
+Actor RedFlare : Flare_General
 {
-	Scale 2.0
-	States
+states
 	{
 	Spawn:
 		TNT1 A 0
-		PLMZ A 1 BRIGHT
-		Stop
-	}
-}
-
-ACTOR MarineMuzzle1
-{
-	Speed 0
-	PROJECTILE
-	+NOCLIP
-	+NOGRAVITY
-	+CLIENTSIDEONLY
-	+NONETID
-	+NOINTERACTION
-	Speed 5
-	States
-	{
-	Spawn:
+		TNT1 A 0 A_Jump(128,2)
+		LENR A 2 bright
+		stop
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("DistantRifleFireSound")
-	    TNT1 A 4
-		TNT1 A 0 A_Stop
-		PLMZ A 2 BRIGHT
-		Stop
+		LENR B 2 bright
+		stop
 	}
 }
-
-ACTOR MarineMuzzle2
-{
-	Speed 0
-	PROJECTILE
-	+NOCLIP
-	+NOGRAVITY
-	+CLIENTSIDEONLY
-	+NONETID
-	+NOINTERACTION
-	Speed 5
-	Scale 1.8
-	States
-	{
-	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("DistantMinigunFireSound")
-	    TNT1 A 4
-		TNT1 A 0 A_Stop
-		PLMZ A 2 BRIGHT
-		Stop
-	}
-}
-
-ACTOR BlueFlareSpawn
-{
-	Speed 20
-	PROJECTILE
-	+NOCLIP
-	+CLIENTSIDEONLY
-	+NONETID
-	+NOINTERACTION
-	States
-	{
-	Spawn:
-		TNT1 AA 1 A_CustomMissile("BlueFlareSmall",-5,0,-85,0,random(-10,10))
-		Stop
-	}
-}
-
-ACTOR GreenFlareSpawn
-{
-	Speed 20
-	PROJECTILE
-	+NOCLIP
-	+CLIENTSIDEONLY
-	+NONETID
-	+NOINTERACTION
-	States
-	{
-	Spawn:
-		TNT1 AA 1 A_CustomMissile("GreenFlareSmall",-5,0,-85,0,random(-10,10))
-		Stop
-	}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 Actor RedFlare22 : Flare_General
 {
@@ -787,301 +360,145 @@ states
 	}
 }
 
+Actor RedFlare3Flat : RedFlare
+{
+XScale 0.5
+YScale 0.3
+}
+
+Actor RedFlareMedium : RedFlare
+{
+scale 0.25
+}
+
+Actor RedFlareSmall : RedFlare
+{
+scale 0.15
+}
+
+Actor RedFlareSmall2 : RedFlare
+{
+scale 0.10
+}
+
 Actor RedFlareSmall22 : RedFlare22
 {
 scale 0.15
 }
 
-Actor BlueFlare22 : Flare_General
+ACTOR RedFlareSpawn
+{
+	Speed 20
+	PROJECTILE
+	+CLIENTSIDEONLY
+	+NONETID
+	+NOINTERACTION
+	+NOCLIP
+	States
+	{
+	Spawn:
+		TNT1 AA 1 A_CustomMissile("RedFlareSmall2",-5,0,-85,0,random(-10,10))
+		Stop
+	}
+}
+
+Actor RocketFlare : Flare_General
+{
+alpha 1.0
+yscale 0.6
+xscale 0.6
+states
+	{
+	Spawn:
+	    LEYS O 2 BRIGHT
+		Stop
+	}
+}
+
+Actor VioletFlare : Flare_General
 {
 states
 	{
 	Spawn:
 		TNT1 A 0
 		TNT1 A 0 A_Jump(128,2)
-		L2NB A 2 bright
+		LENV A 2 bright
 		stop
 		TNT1 A 0
-		L2NB B 2 bright
+		LENV B 2 bright
 		stop
 	}
 }
 
-Actor GreenFlare22 : Flare_General
-{
-states
-	{
-	Spawn:
-        TNT1 A 0
-	    TNT1 A 0 A_Jump(128,2)
-		L2NG A 2 bright
-		stop
-		TNT1 A 0
-		L2NG B 2 bright
-		stop
-	}
-}
-
-Actor GreenFlareSmall22 : GreenFlare22
-{
-scale 0.22
-}
-
-Actor YellowFlare22 : Flare_General
-{
-states
-	{
-	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_Jump(128,2)
-		L2NY A 2 bright
-		stop
-		TNT1 A 0
-		L2NY B 2 bright
-		stop
-	}
-}
-
-Actor YellowFlareSmall22 : YellowFlare22
+Actor VioletFlareSmall : VioletFlare
 {
 scale 0.15
 }
 
-Actor YellowFlareSmall22Long : YellowFlare22
+Actor YellowFlare : Flare_General
 {
-scale 0.15
 states
 	{
 	Spawn:
 		TNT1 A 0
 		TNT1 A 0 A_Jump(128,2)
-		L2NY AABAB 1 bright
+		LENY A 2 bright
 		stop
 		TNT1 A 0
-		L2NY BABAB 1 bright
+		LENY B 2 bright
 		stop
 	}
 }
 
-
-
-Actor ExplosionFlareSpawner : Flare_General
+Actor YellowFlareSmall : YellowFlare
 {
+scale 0.15
+}
+
+Actor YellowFlareSmallB : YellowFlare
+{
++FORCEXYBILLBOARD
+scale 0.15
+Alpha 0.3
 states
 	{
 	Spawn:
-	    TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx("ExplosionFlareEffect")
-	    TNT1 A 0 A_SpawnItemEx("ExplosionFlareEffect", 36, 36)
-		TNT1 A 0 A_SpawnItemEx("ExplosionFlareEffect", 36, -36)
-		TNT1 A 0 A_SpawnItemEx("ExplosionFlareEffect", -36, 36)
-		TNT1 A 0 A_SpawnItemEx("ExplosionFlareEffect", -36, -36)
+		TNT1 A 0
+		TNT1 A 0 A_Jump(128,2)
+		LENY A 1 bright
+		stop
+		TNT1 A 0
+		LENY B 1 bright
 		stop
 	}
 }
 
-
-Actor LensFlareAlt : Flare_General
+ACTOR YellowFlareSpawn
 {
-alpha 0.5
+	Speed 20
+	PROJECTILE
+	+CLIENTSIDEONLY
+	+NONETID
+	+NOINTERACTION
+	+NOCLIP
+	+NOGRAVITY
+	States
+	{
+	Spawn:
+		TNT1 AA 1 A_CustomMissile("YellowFlareSmallB",-5,0,-85,0,random(-10,10))
+		Stop
+	}
+}
+
+Actor YellowLensFlareAltLong : Flare_General
+{
+alpha 0.25
 xscale 0.6
 yscale 0.3
 states
 	{
 	Spawn:
-		LENS A 5 bright
-		stop
-	}
-}
-
-Actor LensFlareAltLong : LensFlareAlt
-{
-states
-	{
-	Spawn:
-		LENS A 10 bright
-		stop
-	}
-}
-
-
-Actor LensFlareAltLonger : LensFlareAlt
-{
-states
-	{
-	Spawn:
-		TNT1 A 0
-		LENS A 20 bright
-		stop
-	}
-}
-
-
-Actor YellowLensFlareAlt : Flare_General
-{
-alpha 0.5
-xscale 0.6
-yscale 0.2
-states
-	{
-	Spawn:
 		LEYS A 5 bright
-		stop
-	}
-}
-
-Actor YellowLensFlareAltLong : YellowLensFlareAlt
-{
-states
-	{
-	Spawn:
-		LEYS A 5 bright
-		stop
-	}
-}
-
-Actor GreenLensFlareAltSmall : Flare_General
-{
-+FORCEYBILLBOARD
-alpha 0.3
-xscale 0.4
-yscale 0.1
-states
-	{
-	Spawn:
-		LEYS G 8 bright
-		stop
-	}
-}
-
-
-Actor OrangeLensFlareAlt : Flare_General
-{
-+MISSILE
-Speed 20
-alpha 0.6
-xscale 0.5
-yscale 0.2
-states
-	{
-	Spawn:
-	    TNT1 A 1
-		TNT1 A 0 A_PlaySOund("DISTFRRIFLE")
-	    TNT1 A 0 A_Stop
-		LEYS O 3 bright
-		TNT1 A 60
-		stop
-	}
-}
-
-Actor OrangeLensFlareAltFast : OrangeLensFlareAlt
-{
-states
-	{
-	Spawn:
-		LEYS O 2 bright
-		TNT1 A 0 A_PlaySOund("DISTFMG")
-	    TNT1 A 0 A_Stop
-		LEYS O 2 bright
-		TNT1 A 60
-		stop
-	}
-}
-
-Actor DistantRifleFireSound : OrangeLensFlareAlt
-{
-states
-	{
-	Spawn:
-		LEYS O 0 bright
-		TNT1 A 0 A_PlaySOund("DISTFRRIFLE")
-	    TNT1 A 0 A_Stop
-		LEYS O 0 bright
-		TNT1 A 60
-		stop
-	}
-}
-
-Actor DistantMinigunFireSound : OrangeLensFlareAlt
-{
-states
-	{
-	Spawn:
-		LEYS O 0 bright
-		TNT1 A 0 A_PlaySOund("DISTFMG")
-	    TNT1 A 0 A_Stop
-		LEYS O 0 bright
-		TNT1 A 60
-		stop
-	}
-}
-
-
-Actor GreenLensFlareAltSmallZZ : Flare_General
-{
-+FORCEYBILLBOARD
-alpha 0.4
-xscale 0.2
-yscale 0.2
-states
-	{
-	Spawn:
-		LEYS G 3 bright
-		stop
-	}
-}
-
-Actor BlueLensFlareAltSmallZZ : Flare_General
-{
-+FORCEYBILLBOARD
-alpha 0.4
-xscale 0.2
-yscale 0.2
-states
-	{
-	Spawn:
-		LEYS B 3 bright
-		stop
-	}
-}
-
-
-
-
-Actor ItemFlareYellow : Flare_General
-{
-+FORCEXYBILLBOARD
--FORCEYBILLBOARD
-alpha 0.7
-xscale 0.2
-yscale 0.1
-states
-	{
-	Spawn:
-		LEYS A 1 bright
-		LEYS A 4 bright
-		stop
-	}
-}
-
-Actor ItemFlareBlue : ItemFlareYellow
-{
-states
-	{
-	Spawn:
-		LEYS B 1 bright
-		LEYS B 4 bright
-		stop
-	}
-}
-
-Actor ItemFlareRed : ItemFlareYellow
-{
-states
-	{
-	Spawn:
-		LEYS R 1 bright
-		LEYS R 4 bright
 		stop
 	}
 }
