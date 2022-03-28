@@ -1314,42 +1314,6 @@ Speed 50
 Scale 1.0
 Damage (random (300, 300))
 SeeSound "MISLFIRE"
-States
-	{
-	Spawn:
-
-		MISL A 0
-		TNT1 A 0 BRIGHT A_CustomMissile("RocketBackblast", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
-		TNT1 A 0 BRIGHT A_CustomMissile("RocketBackblast2", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
-		TNT1 A 0 BRIGHT A_CustomMissile("RocketBackblast3", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
-		TNT1 A 0 BRIGHT A_CustomMissile("BackblastFlames1", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
-		TNT1 A 0 BRIGHT A_CustomMissile("BackblastFlames2", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
-		TNT1 A 0 BRIGHT A_CustomMissile("BackblastFlames3", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
-		TNT1 A 0 BRIGHT A_CustomMissile("BackblastFlames4", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
-		MISL AAAA 1 BRIGHT A_CustomMissile("BackblastFlames4", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
-	 Live:
-		MISL A 1 BRIGHT A_SpawnItem("PlasmaSmoke")
-		TNT1 A 0 A_CustomMissile("PlasmaSmoke", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
-		Loop
-	Death:
-        EXPL A 0 Radius_Quake (3, 8, 0, 15, 0)//(intensity, duration, damrad, tremrad, tid)
-		TNT1 A 0 A_CustomMissile("ExplosionSplashSpawner")
-        TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-	    TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        TNT1 AAAAAA 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
-		TNT1 AAAA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (0, 90))
-		TNT1 AAAA 0 A_CustomMissile ("ExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AA 0 A_SpawnItemEx ("GrenadeExplosion",0,0,13,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 0
-		TNT1 A 2
-		TNT1 A 0 A_SpawnItemEx ("LiquidExplosionEffectSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 0 A_PlaySound("FAREXPL", 3)
-		TNT1 A 15
-		TNT1 A 0 A_PlaySound("distantexp", 5)
-		Stop
-	}
 }
 
 Actor AssaultHelicopterRocketDM: AssaultHelicopterRocket
@@ -1366,24 +1330,6 @@ Scale 1.0
 Species "EnemyTank"
 DamageType ExplosiveImpact
 Damage (random(120,120))
-States
-	{
-	Spawn:
-
-		MISL A 0
-		TNT1 A 0 BRIGHT A_CustomMissile("RocketBackblast", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
-		TNT1 A 0 BRIGHT A_CustomMissile("RocketBackblast2", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
-		TNT1 A 0 BRIGHT A_CustomMissile("RocketBackblast3", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
-		TNT1 A 0 BRIGHT A_CustomMissile("BackblastFlames1", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
-		TNT1 A 0 BRIGHT A_CustomMissile("BackblastFlames2", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
-		TNT1 A 0 BRIGHT A_CustomMissile("BackblastFlames3", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
-		TNT1 A 0 BRIGHT A_CustomMissile("BackblastFlames4", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
-		MISL AAAA 1 BRIGHT A_CustomMissile("BackblastFlames4", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
-	 Live:
-		MISL A 1 BRIGHT A_SpawnItem("PlasmaSmoke")
-		TNT1 A 0 A_CustomMissile("PlasmaSmoke", 0, 0, angle-180, CMF_ABSOLUTEANGLE)
-		Loop
-	}
 }
 
 Actor HeliRestart : Inventory
