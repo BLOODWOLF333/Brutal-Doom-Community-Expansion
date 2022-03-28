@@ -322,16 +322,6 @@ pulselight BIGREDTORCH
     offset 0 60 0
 }
 
-pulselight BIGREDTORCHNOSELF
-{
-    color 1.0 0.3 0.0
-    size 64
-    secondarySize 72
-    interval 0.1
-    offset 0 60 0
-	dontlightself 1
-}
-
 pointlight BIGWHITELAMP
 {
     color 0.9 0.9 1.0
@@ -1339,6 +1329,11 @@ object BurnParticles
 	frame TNT1 { light BIGREDTORCH }
 }
 
+object BurningPentagram
+{
+	frame PNTG { light FIREBARREL }
+}
+
 object CoolandNewFlameTrails
 {
 	frame FIR3 { light SMALLREDTORCH }
@@ -1471,32 +1466,67 @@ object FlyingBurningFuel3
 
 object GreenExplosionFlameTrail
 {
-	frame EXPG { light GREENMEDIUM }
+	frame EXPG { light BIGGREENTORCH }
 }
 
 object GreenFlameTrails
 {
-	frame FRPG { light GREENSMALL }
+	frame FRPG { light SMALLGREENTORCH }
 }
 
 object GreenFlameTrailsbIG
 {
-	frame FIR6 { light GREENLARGE }
-}
-//-----------------------bookmark
-object HDFlamesGFX1
-{
-    frame NF4R { light BIGREDTORCHNOSELF }
+	frame FIR6 { light BIGGREENTORCH }
 }
 
-object HDFlamesGFX1Slim
+object HighExplosiveFlames
 {
-    frame NF4R { light BIGREDTORCHNOSELF }
+	frame X003 { light BIGREDTORCH }
 }
 
-object ImpBallGettingReady
+object HighExplosiveFlames2
 {
-	frame BLHD { light IMPBALL }
+	frame X003 { light BIGREDTORCH }
+}
+
+object HighExplosiveFlamesBig
+{
+	frame X003 { light BIGREDTORCH }
+}
+
+object HighExplosiveFlamesHuge
+{
+	frame X003 { light BIGREDTORCH }
+}
+
+object HighExplosiveFlamesSmall
+{
+	frame X003 { light BIGREDTORCH }
+}
+
+object HugeBackblastFlames1
+{
+	frame X003 { light BIGREDTORCH }
+}
+
+object HugeBackblastFlames2
+{
+	frame X003 { light BIGREDTORCH }
+}
+
+object HugeBackblastFlames3
+{
+	frame X003 { light BIGREDTORCH }
+}
+
+object HugeBackblastFlames4
+{
+	frame X003 { light BIGREDTORCH }
+}
+
+object MarineFlameThrower
+{
+	frame FIR3 { light IMPBALL }
 }
 
 object MediumExplosionFlames
@@ -1519,6 +1549,26 @@ object NuclearFlamesImpact
 	frame EXPL { light BIGREDTORCH }
 }
 
+object RailgunFlameTrails
+{
+	frame FIR3 { light SMALLREDTORCH }
+}
+
+object RailgunFlameTrailsBlue
+{
+	frame FIR5 { light SMALLBLUETORCH }
+}
+
+object RealFlameTrailsMedium
+{
+	frame FIR1 { light SMALLREDTORCH }
+}
+
+object RealFlameTrailsSmall
+{
+	frame FIR1 { light SMALLREDTORCH }
+}
+
 object SmallExplosionFlames
 {
 	frame EXPL { light SMALLREDTORCH }
@@ -1527,7 +1577,16 @@ object SmallExplosionFlames
 object SmallFireFocus24
 {
     frame FLME { light SMALLREDTORCH }
-	frame F1RE { light SMALLREDTORCH }
+}
+
+object SmallFireTrail
+{
+	frame FIR3 { light SMALLREDTORCH }
+}
+
+object SmallFireTrail324
+{
+	frame FIR3 { light SMALLREDTORCH }
 }
 
 object SmallFlameTrails
@@ -1552,7 +1611,17 @@ object TankExplosionFlames
 
 object TempHDFlamesGFX1
 {
-    frame NF4R { light BIGREDTORCHNOSELF }
+    frame NF4R { light BIGREDTORCH }
+}
+
+object TempHDFlamesGFX1Big
+{
+    frame NF4R { light BIGREDTORCH }
+}
+
+object TempHDFlamesGFX1Slim
+{
+    frame NF4R { light BIGREDTORCH }
 }
 
 object TinyBurningPiece
@@ -1560,12 +1629,47 @@ object TinyBurningPiece
     frame CFCF { light SMALLREDTORCH }
 }
 
+object TinyBurningPieceM
+{
+    frame CFCF { light VIOLETSMALL }
+}
+
+object TinyBurningPieceY
+{
+    frame CFCF { light YELLOWSMALL }
+}
+
 object TinyBurningPiece2
 {
     frame CFCF { light SMALLREDTORCH }
 }
 
+object TinyBurningPiece2M
+{
+    frame CFCF { light VIOLETSMALL }
+}
+
+object TinyBurningPiece2Y
+{
+    frame CFCF { light YELLOWSMALL }
+}
+
 object TinyBurningPiece3
+{
+    frame CFCF { light SMALLREDTORCH }
+}
+
+object TinyBurningPiece3M
+{
+    frame CFCF { light VIOLETSMALL }
+}
+
+object TinyBurningPiece3Y
+{
+    frame CFCF { light YELLOWSMALL }
+}
+
+object TinyBurningPieceInfinite
 {
     frame CFCF { light SMALLREDTORCH }
 }
