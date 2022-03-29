@@ -155,8 +155,8 @@ ACTOR BIG_FUCKING_GUN : BrutalWeapon
 		BFGN A 0
 		BFGN A 0 A_TakeInventory("AmmoCell", 50)
         BFGN A 0 A_PlaySound("BFGCHARGE")
-		BFGC ABCDABCDABCDABCDABCDABCDABCD 1 BRIGHT A_SpawnItemEx("GreenFlareSpawn",32,0,28)
-        BFGA A 2 BRIGHT A_SpawnItemEx("GreenFlareSpawn",32,0,28)
+		BFGC ABCDABCDABCDABCDABCDABCDABCD 1 BRIGHT A_FireCustomMissile("GreenFlareSpawn", 0, 0, 0, 0)
+        BFGA A 2 BRIGHT A_FireCustomMissile("GreenFlareSpawn", 0, 0, 0, 0)
         BFGN A 0 A_PlaySound("BFGFIRE")
 		BFGA B 0 A_ZoomFactor(0.95)
         BFGN A 0 A_Recoil(8)
