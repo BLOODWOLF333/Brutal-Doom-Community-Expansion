@@ -5042,17 +5042,18 @@ MONSTER
 -GHOST
 +THRUACTORS
 +FRIENDLY
-    States
-
-    {
-    Spawn:
-NULL A 0
-NULL A 0 A_CHangeFlag("THRUACTORS", 0)
-NULL A 0 A_GiveInventory("ComeEatMeDemon")
-NULL A 0 A_SpawnItem ("GrowingBloodPool")
-XPL1 EEE 6 A_SpawnItem("KillMe")
-XPL1 E -1
-       Loop    }}
+States
+	{
+		Spawn:
+		NULL A 0
+		NULL A 0 A_GiveInventory("ComeEatMeDemon")
+		NULL A 0 A_SpawnItem ("GrowingBloodPool")
+		Stay:
+		XPL1 EEE 6 A_SpawnItem("KillMe")
+		XPL1 E -1
+		Loop
+	}
+}
 
 ACTOR PROLSpriteA
 {
