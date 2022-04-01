@@ -314,6 +314,7 @@ Actor DeadBelphegor: CurbstompedMarine
 	Raise:
 	TNT1 A 0 A_SpawnItem("PentagramSpawnerBig")
 		BOS3 LKJI 8
+		TNT1 A 0 A_NoBlocking
         TNT1 A 0 A_SpawnItemEx("Belphegor",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
 		Stop
     Death:
@@ -381,6 +382,7 @@ Actor DeadBelphegorXDeath: DeadBelphegor
 	Raise:
 	TNT1 A 0 A_SpawnItem("PentagramSpawnerBig")
 		BOS3 LKJI 8
+		TNT1 A 0 A_NoBlocking
         TNT1 A 0 A_SpawnItemEx("Belphegor",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
 		Stop
     Death:
