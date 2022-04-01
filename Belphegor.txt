@@ -1,4 +1,4 @@
-ACTOR Belphegor2 : BaronofHell 2544
+ACTOR Belphegor : BaronofHell 2544
 {
 	//$Category BD Monsters
 	//$Icon "monster"
@@ -176,9 +176,8 @@ ACTOR Belphegor2 : BaronofHell 2544
 	    Stop
 
 	Raise:
-	TNT1 A 0 A_SpawnItem("PentagramSpawner")
-		BOS3 O 8
-		BOS3 NMLKJI  8
+	TNT1 A 0 A_SpawnItem("PentagramSpawnerBig")
+		BOS3 LKJI 8
 		Goto See
     Crush:
 		TNT1 A 0
@@ -313,10 +312,9 @@ Actor DeadBelphegor: CurbstompedMarine
 		Goto Death
 
 	Raise:
-	TNT1 A 0 A_SpawnItem("PentagramSpawner")
-		BOS3 O 8
-		BOS3 NMLKJI  8
-        TNT1 A 0 A_SpawnItem ("Belphegor2", 3)
+	TNT1 A 0 A_SpawnItem("PentagramSpawnerBig")
+		BOS3 LKJI 8
+        TNT1 A 0 A_SpawnItemEx("Belphegor",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
 		Stop
     Death:
 		 TNT1 A 0
@@ -381,10 +379,9 @@ Actor DeadBelphegorXDeath: DeadBelphegor
 		BO3G E -1
         Stop
 	Raise:
-	TNT1 A 0 A_SpawnItem("PentagramSpawner")
-		BOS3 O 8
-		BOS3 NMLKJI 8
-        TNT1 A 0 A_SpawnItem ("Belphegor2", 3)
+	TNT1 A 0 A_SpawnItem("PentagramSpawnerBig")
+		BOS3 LKJI 8
+        TNT1 A 0 A_SpawnItemEx("Belphegor",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
 		Stop
     Death:
 		 TNT1 A 0

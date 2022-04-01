@@ -331,9 +331,8 @@ Death.SuperPlasma:
        Goto XBurns
 
     Raise:
-	TNT1 A 0 A_SpawnItem("PentagramSpawner")
-		ARAC P 5
-		ARAC ONMLKJ 5
+	TNT1 A 0 A_SpawnItem("PentagramSpawnerBig")
+		ARAC PONMLKJ 5
 		Goto See+1
 	}
 }
@@ -360,9 +359,10 @@ States
 		ARAC P -1
         Stop
 	Raise:
-		TNT1 A 0 A_SpawnItem("PentagramSpawner")
+		TNT1 A 0 A_SpawnItem("PentagramSpawnerBig")
+		ARAC PONMLKJ 5
 		TNT1 A 0 A_NoBlocking
-        TNT1 A 0 A_SpawnItem ("Arachnotron2")
+        TNT1 A 0 A_SpawnItemEx("Arachnotron2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
 		Stop
 	Death.Cut:
 	Death.Cutless:
