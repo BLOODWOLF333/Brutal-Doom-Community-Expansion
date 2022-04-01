@@ -176,6 +176,7 @@ ACTOR Belphegor2 : BaronofHell 2544
 	    Stop
 
 	Raise:
+	TNT1 A 0 A_SpawnItem("PentagramSpawner")
 		BOS3 O 8
 		BOS3 NMLKJI  8
 		Goto See
@@ -312,6 +313,7 @@ Actor DeadBelphegor: CurbstompedMarine
 		Goto Death
 
 	Raise:
+	TNT1 A 0 A_SpawnItem("PentagramSpawner")
 		BOS3 O 8
 		BOS3 NMLKJI  8
         TNT1 A 0 A_SpawnItem ("Belphegor2", 3)
@@ -379,6 +381,7 @@ Actor DeadBelphegorXDeath: DeadBelphegor
 		BO3G E -1
         Stop
 	Raise:
+	TNT1 A 0 A_SpawnItem("PentagramSpawner")
 		BOS3 O 8
 		BOS3 NMLKJI 8
         TNT1 A 0 A_SpawnItem ("Belphegor2", 3)

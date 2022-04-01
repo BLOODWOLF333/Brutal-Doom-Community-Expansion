@@ -1419,8 +1419,7 @@ ACTOR PentagramSpawner
     +NOCLIP
 	-NOGRAVITY
 	RenderStyle Add
-    XScale 0.25
-	YScale 0.025
+    Scale 0.5
 	Alpha 1
 	Gravity 1
 	Radius 1
@@ -1430,7 +1429,7 @@ ACTOR PentagramSpawner
     Spawn:
         TNT1 A 1
 		TNT1 A 2 A_SpawnItem("BurningPentagram")
-		TNT1 A 20
+		TNT1 A 50
 		TNT1 A 1 A_SpawnItem("PentagramOff")
 		TNT1 A 1
         Stop
@@ -1439,25 +1438,24 @@ ACTOR PentagramSpawner
 
 ACTOR BurningPentagram: PentagramSpawner
 {
-    Alpha 0
+	Alpha 0.0
 	States
 	{
     Spawn:
-        TNT1 A 0
-		PNTG AAAAAAAAAAAAAAAAAAAAAAA 1 A_FadeIn(0.02)
-		PNTG AAAAAAAAAAAAAAAAAAAAAAA 1 A_FadeOut(0.02)
+		PNTG AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_FadeIn(0.02)
+		PNTG AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_FadeOut(0.02)
         Stop
 	}
 }
 
 ACTOR PentagramOff: PentagramSpawner
 {
-    Renderstyle Normal
+	RenderStyle Normal
 	States
 	{
     Spawn:
-        PNTG B 300
-		PNTG BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 1 A_FadeOut(0.02)
+        PNTG B 50
+		PNTG BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 1 A_FadeOut(0.02)
         Stop
 	}
 }
