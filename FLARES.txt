@@ -235,6 +235,19 @@ states
 	}
 }
 
+Actor PentagramFlare : Flare_General
+{
+	Alpha 0.0
+	Scale 0.5
+	States
+	{
+		Spawn:
+			PNTG DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 1 BRIGHT A_FadeIn(0.02)
+			PNTG DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 1 BRIGHT A_FadeOut(0.02)
+			Stop
+	}
+}
+
 Actor PinkFlare : Flare_General
 {
 states
