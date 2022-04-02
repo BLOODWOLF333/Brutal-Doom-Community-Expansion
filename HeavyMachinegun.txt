@@ -382,6 +382,9 @@ ACTOR HeavyMachinegunProjectile: FastProjectile
 	+RANDOMIZE
 	+MISSILE
 	+NOEXTREMEDEATH
+	+THRUSPECIES
+	+MTHRUSPECIES
+	Species "Marines"
 	RenderStyle Add
 	damagetype "Minigun"
 	Decal "BulletChip"
@@ -407,8 +410,6 @@ ACTOR HeavyMachinegunProjectileEnemy: HeavyMachinegunProjectile
 {
 	Speed 180
 	damage (random(16, 16))
-	+THRUSPECIES
-	+MTHRUSPECIES
 	Species "EnemyTank"
 	Scale 0.25
 	States
