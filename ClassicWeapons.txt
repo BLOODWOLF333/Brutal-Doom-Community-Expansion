@@ -148,6 +148,8 @@ ACTOR ClassicWeapon : DoomWeapon
 		KICK A 0 A_Takeinventory("Kicking",1)
 		KICK I 1
 		KICK GFEDCBA 1
+		TNT1 A 0 A_JumpIfInventory("IsCurbstompingZombieman", 1, "Steady")
+	    TNT1 A 0 A_JumpIfInventory("IsCurbstompingSergeant", 1, "Steady")
 		TNT1 A 0 SetPlayerProperty(0,0,0)
 		RIBA A 0 A_Takeinventory("Kicking",1)
 		Goto GoingToReady
@@ -162,6 +164,8 @@ ACTOR ClassicWeapon : DoomWeapon
 		KICK A 0 A_Takeinventory("Kicking",1)
 		KICK I 1
 		KICK GFEDCBA 1
+		TNT1 A 0 A_JumpIfInventory("IsCurbstompingZombieman", 1, "Steady")
+	    TNT1 A 0 A_JumpIfInventory("IsCurbstompingSergeant", 1, "Steady")
 		TNT1 A 0 SetPlayerProperty(0,0,0)
 		RIBA A 0 A_Takeinventory("Kicking",1)
 		Goto GoingToReady
