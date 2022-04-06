@@ -1480,7 +1480,7 @@ Actor DeadImp_NoHeadNoLeg: DeadImp
         Stop
       Death:
 		TNT1 A 0 A_CustomMissile ("XDeathImpLeg", 5, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_SpawnItem ("RipImp", 5)
+		TNT1 A 0 A_SpawnItem ("RipImpNoHead", 5)
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("MeatDeathSmall", 0, 10)
 		Stop
