@@ -1474,6 +1474,18 @@ Actor DeadImp_NoLeg: DeadImp
 		Stop
 		}}
 
+Actor DeadImp_NoHeadNoLeg: DeadImp
+{Health 200 States{Spawn:
+        TR09 J -1
+        Stop
+      Death:
+		TNT1 A 0 A_CustomMissile ("XDeathImpLeg", 5, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItem ("RipImp", 5)
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_SpawnItem("MeatDeathSmall", 0, 10)
+		Stop
+		}}
+
 Actor DeadImp_NoHead: DeadImp
 {Health 200 States{Spawn:
         TROH E -1
@@ -1741,6 +1753,19 @@ Actor DeadImpID17G: DeadImp
 		TNT1 A 0 A_NoBlocking
 		Stop}}
 
+Actor DeadImpIZD3C: DeadImp
+{States{Spawn:
+	    IZD3 C -1
+        Stop
+
+		Death:
+		TNT1 A 0 A_CustomMissile ("XDeathHalfImpUpperPart32", 32, 0, random (0, 360), 2, random (10, 60))
+		TNT1 A 0 A_SpawnItem("MeatDeathSmall", 0, 10)
+		TNT1 AA 0 A_CustomMissile ("XDeathImpLeg", 5, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItem("RipGuts", 0, 10)
+		TNT1 A 0 A_NoBlocking
+		Stop}}
+
 Actor DeadImpIZD3D: DeadImp
 {States{Spawn:
 	    IZD3 D -1
@@ -1754,3 +1779,15 @@ Actor DeadImpIZD3D: DeadImp
 		TNT1 A 0 A_NoBlocking
 		Stop}}
 
+Actor DeadImpIZD4B: DeadImp
+{States{Spawn:
+	    IZD4 B -1
+        Stop
+
+		Death:
+		TNT1 A 0 A_CustomMissile ("XDeathHalfImpUpperPart32", 32, 0, random (0, 360), 2, random (10, 60))
+		TNT1 A 0 A_SpawnItem("MeatDeathSmall", 0, 10)
+		TNT1 AA 0 A_CustomMissile ("XDeathImpLeg", 5, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItem("RipGuts", 0, 10)
+		TNT1 A 0 A_NoBlocking
+		Stop}}

@@ -1435,6 +1435,22 @@ ACTOR XDeathHalfImp
     }
 }
 
+ACTOR XDeathHalfImpNoHead : XDeathHalfImp
+{
+    States
+    {
+    Spawn:
+        TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
+        TROG M 12 A_CustomMissile("Brutal_FlyingBloodTrail",0,0,180,2)
+        Loop
+    Death:
+        TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
+        TROG M 0 A_SpawnItem("HalfImpGibNoHead",0,0,0,1)
+        Stop
+    }
+}
+
 actor HalfImpGib: BigGibBase
 {
     States
@@ -1449,6 +1465,25 @@ actor HalfImpGib: BigGibBase
 
 	Death:
 	   TNT1 A 0 A_CustomMissile ("XDeathImpHead", 12, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("XDeathImpArm", 12, 0, random (0, 360), 2, random (0, 160))
+		 TNT1 A 0 A_CustomMissile ("XDeathHalfImpUpperPart32", 12, 0, random (0, 360), 2, random (10, 60))
+		 TNT1 A 0 A_SpawnItem("MeatDeathSmall", 0, 10)
+		 Stop
+	   }}
+
+actor HalfImpGibNohead: BigGibBase
+{
+    States
+    {
+    Spawn:
+	   TROG M 1
+	   TNT1 A 0 A_QueueCorpse
+	   TROG M 1 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
+	   TNT1 A 0 A_CustomMissile ("ArterialBloodSPray", 6, -10, 45, 2, random (0, 60))
+	   TROG N -1
+       Stop
+
+	Death:
 		TNT1 A 0 A_CustomMissile ("XDeathImpArm", 12, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 A 0 A_CustomMissile ("XDeathHalfImpUpperPart32", 12, 0, random (0, 360), 2, random (10, 60))
 		 TNT1 A 0 A_SpawnItem("MeatDeathSmall", 0, 10)
@@ -1815,6 +1850,22 @@ ACTOR XDeathHalfSkeleton
     }
 }
 
+ACTOR XDeathHalfSkeletonNoHead : XDeathHalfSkeleton
+{
+    States
+    {
+    Spawn:
+        TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
+        SKEX G 12 A_CustomMissile("Brutal_FlyingBloodTrail",0,0,180,2)
+        Loop
+    Death:
+        TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
+        SKEX G 0 A_SpawnItem("GibHalfSkeletonNoHead",0,0,0,1)
+        Stop
+    }
+}
+
 actor GibHalfSkeleton: BigGibBase
 {
 Radius 8
@@ -1836,6 +1887,38 @@ Radius 8
 			TNT1 AAA 0 A_CustomMissile ("RevenantDust", 5, 0, random (0, 360), 2, random (0, 360))
 			TNT1 AAAA 0 A_CustomMissile ("RevenantDust2", 5, 0, random (0, 360), 2, random (0, 360))
 			TNT1 A 0 A_CustomMissile ("XDeathRevenantHead", 5, 0, random (0, 360), 2, random (0, 160))
+			TNT1 AA 0 A_CustomMissile ("XDeath1", 5, 0, random (0, 360), 2, random (30, 150))
+			TNT1 A 0 A_CustomMissile ("RevenantBonesFast", 5, 0, random (0, 360), 2, random (30, 150))
+			TNT1 AA 0 A_CustomMissile ("RevenantArm", 5, 0, random (0, 360), 2, random (30, 150))
+			TNT1 AA 0 A_CustomMissile ("MetalShard1", 5, 0, random (0, 360), 2, random (30, 160))
+			TNT1 AA 0 A_CustomMissile ("MetalShard2", 5, 0, random (0, 360), 2, random (30, 160))
+			TNT1 AA 0 A_CustomMissile ("MetalShard3", 5, 0, random (0, 360), 2, random (30, 160))
+			TNT1 AAA 0 A_CustomMissile ("RevenantBones", 5, 0, random (0, 360), 2, random (30, 150))
+			TNT1 AAA 0 A_CustomMissile ("RevenantPiece", 5, 0, random (0, 360), 2, random (30, 150))
+			TNT1 A 0 A_SpawnItem("HMLSpawner")
+		Stop
+		}}
+
+actor GibHalfSkeletonNoHead: BigGibBase
+{
+Radius 8
+	damagefactor "Kick", 12.0
+	damagefactor "ExtremePunches", 12.0
+	damagefactor "Melee", 12.0
+	damagefactor "Fatality", 12.0
+    States
+    {
+    Spawn:
+		TNT1 A 0
+		SKEX G 1 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
+		TNT1 A 0 A_QueueCorpse
+		SKEX G -1
+		   Stop
+	   Death.Trample:
+	       Death:
+		   TNT1 A 0 A_NoBlocking
+			TNT1 AAA 0 A_CustomMissile ("RevenantDust", 5, 0, random (0, 360), 2, random (0, 360))
+			TNT1 AAAA 0 A_CustomMissile ("RevenantDust2", 5, 0, random (0, 360), 2, random (0, 360))
 			TNT1 AA 0 A_CustomMissile ("XDeath1", 5, 0, random (0, 360), 2, random (30, 150))
 			TNT1 A 0 A_CustomMissile ("RevenantBonesFast", 5, 0, random (0, 360), 2, random (30, 150))
 			TNT1 AA 0 A_CustomMissile ("RevenantArm", 5, 0, random (0, 360), 2, random (30, 150))

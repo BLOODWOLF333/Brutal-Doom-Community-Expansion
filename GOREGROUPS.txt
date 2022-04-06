@@ -988,6 +988,23 @@ ACTOR RipImp
     }
 }
 
+ACTOR RipImpNoHead : RipImp
+{
+    States
+    {
+    Spawn:
+        TNT1 AAAAA 0 A_CustomMissile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (10, 90))
+		 TNT1 AAA 0 A_CustomMissile ("Guts2", 32, 0, random (0, 360), 2, random (60, 90))
+		 TNT1 A 0 A_CustomMissile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (10, 90))
+		 TNT1 A 0 A_CustomMissile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (10, 90))
+		 TNT1 A 0 A_CustomMissile ("XDeathHalfImpNoHead", 40, 0, random (0, 360), 2, random (60, 70))
+		 TNT1 AAAAA 0 A_CustomMissile ("BloodMistBig", 24, 0, random (0, 360), 2, random (30, 90))
+	Death:
+	    TNT1 A 0
+        Stop
+    }
+}
+
 ACTOR CacoXDeath
 {
     Radius 1
