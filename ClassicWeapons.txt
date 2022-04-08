@@ -1224,7 +1224,7 @@ ACTOR ClassicRocketLauncher : ClassicWeapon
 	}
 }
 
-ACTOR ClassicRocket Replaces Rocket
+ACTOR ClassicRocket
 {
 	Game Doom
 	SpawnID 127
@@ -1272,7 +1272,7 @@ ACTOR ClassicRocket Replaces Rocket
 	}
 }
 
-ACTOR ClassicRocketDM : ClassicRocket
+ACTOR ClassicRocketDM : ClassicRocket Replaces Rocket
 {
 	-THRUSPECIES
 	-MTHRUSPECIES
@@ -1345,7 +1345,7 @@ ACTOR ClassicPlasmaRifle : ClassicWeapon
 	}
 }
 
-ACTOR ClassicPlasmaBall Replaces Plasmaball
+ACTOR ClassicPlasmaBall
 {
 	Game Doom
 	SpawnID 51
@@ -1391,7 +1391,7 @@ ACTOR ClassicPlasmaBall Replaces Plasmaball
 	}
 }
 
-ACTOR ClassicPlasmaBallDM : ClassicPlasmaBall
+ACTOR ClassicPlasmaBallDM : ClassicPlasmaBall Replaces Plasmaball
 {
 	-THRUSPECIES
 	-MTHRUSPECIES
