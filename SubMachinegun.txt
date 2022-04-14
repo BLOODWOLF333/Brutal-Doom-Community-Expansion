@@ -212,7 +212,7 @@ ACTOR BrutalSMG : BrutalWeapon
 		TNT1 A 0 A_TakeInventory("SawSelected", 1)
 		SMGG A 0 A_Takeinventory("HasBarrel",1)
 		SMGG A 0 A_TakeInventory("DualSMG",1)
-		TNT1 A 1
+        SMGG A 0 A_GunFlash
 		TNT1 A 1 A_Raise
 		TNT1 AAAAAAAAAA 0 A_Raise
 		Goto SelectAnimation
@@ -224,7 +224,6 @@ ACTOR BrutalSMG : BrutalWeapon
         SMGG A 0 A_PlaySound("CLIPIN")
         SMGS ABC 1
 		SMGG A 0 A_Takeinventory("StartDualWield",1)
-        SMGG A 0 A_GunFlash
 		Goto Ready
 
 

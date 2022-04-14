@@ -59,7 +59,7 @@ ACTOR HandGrenades : BrutalWeapon
 		Goto Deselect
 
 	Select:
-		GRWG A 1 A_Raise
+		TNT1 A 0
 		TNT1 A 0 A_Giveinventory("GoSpecial",1)
 		TNT1 A 0 A_Giveinventory("SwitchtoFist",1)
 		TNT1 A 0 A_GiveInventory("FistsSelected", 1)
@@ -80,6 +80,8 @@ ACTOR HandGrenades : BrutalWeapon
 		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
 		TNT1 A 0 A_TakeInventory("StartDualWield", 1)
 		TNT1 A 0 A_SetCrosshair(41)
+		GRWG A 0 A_GunFlash
+		GRWG A 1 A_Raise
 		Goto Ready
 
 	Fire:

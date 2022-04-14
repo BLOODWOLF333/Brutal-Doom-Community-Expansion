@@ -158,9 +158,9 @@ ACTOR RailGun : BrutalWeapon
 		TNT1 A 0 A_TakeInventory("FlameCannonSelected", 1)
 		TNT1 A 0 A_TakeInventory("SawSelected", 1)
 		RAIL A 0 A_Takeinventory("HasBarrel",1)
+		RAIL A 0 A_GunFlash
 	    TNT1 A 1 A_Raise
 		TNT1 AAAAAAAAAAA 0 A_Raise
-		RAIL A 0 A_GunFlash
 		Goto SelectAnimation
 
 	Fire:

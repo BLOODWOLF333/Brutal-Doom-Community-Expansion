@@ -48,7 +48,6 @@ ACTOR MP40 : BrutalWeapon
         MP40 A 0
         MP40 A 0 A_PlaySound("CLIPIN")
         MP4S AB 1
-		MP40 A 0 A_GunFLash
         TNT1 AAAAAAAA 0
 	Ready:
 	Ready3:
@@ -196,6 +195,7 @@ ACTOR MP40 : BrutalWeapon
 		MP40 A 0 A_Takeinventory("HasBarrel",1)
 		MP40 A 0 A_TakeInventory("TossGrenade", 1)
 		MP40 A 0 A_TakeInventory("DualMP40",1)
+		MP40 A 0 A_GunFLash
 		TNT1 A 1 A_Raise
 		TNT1 AAAAA 0 A_Raise
 		Goto SelectAnimation
