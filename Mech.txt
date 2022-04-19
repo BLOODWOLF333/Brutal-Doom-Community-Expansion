@@ -257,7 +257,7 @@ ACTOR PlayerMech : PlayerTank
 
 	Spawn:
 	Spawn2:
-		MECH A 1
+		MECH A 4
 		TNT1 A 0 ACS_NamedExecuteAlways("BDVehicleInputs", 0, 0, 0, 0)//Button-checker for vehicle actions
 		TNT1 A 0 A_PlaySound("REPAIR")
 	    TNT1 A 0 A_TakeInventory("PressedUse", 1)
@@ -826,6 +826,23 @@ ACTOR MechGun : DoomWeapon
 
 	LightEnd:
 		TNT1 A 0
+		TNT1 A 0 ACS_NamedExecuteAlways("BDMechHUD", 0, 0, 0, 0)//SHOWHUD
+		TNT1 A 1
+		NULL A 0 A_JumpIf (pitch < -57, "TooHighCheckGZD")
+		NULL A 0 A_JumpIf (pitch > 220, "TooHighCheck")
+		NULL A 0 A_JumpIf (pitch > 33, "TooLowCheck")
+		TNT1 A 0 ACS_NamedExecuteAlways("BDMechHUD", 0, 0, 0, 0)//SHOWHUD
+		TNT1 A 1
+		NULL A 0 A_JumpIf (pitch < -57, "TooHighCheckGZD")
+		NULL A 0 A_JumpIf (pitch > 220, "TooHighCheck")
+		NULL A 0 A_JumpIf (pitch > 33, "TooLowCheck")
+		TNT1 A 0 ACS_NamedExecuteAlways("BDMechHUD", 0, 0, 0, 0)//SHOWHUD
+		TNT1 A 1
+		NULL A 0 A_JumpIf (pitch < -57, "TooHighCheckGZD")
+		NULL A 0 A_JumpIf (pitch > 220, "TooHighCheck")
+		NULL A 0 A_JumpIf (pitch > 33, "TooLowCheck")
+		TNT1 A 0 A_JumpIfInventory("CanLeaveVehicle",1,1)
+		Goto Flash
 		TNT1 A 0 A_TakeInventory("TankZoom", 1)
 		TNT1 A 0 A_TakeInventory("MechFireMode", 3)
 		TNT1 A 0 A_ZoomFactor(1.0)

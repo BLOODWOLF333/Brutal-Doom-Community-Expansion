@@ -73,24 +73,15 @@ script "BDVehicleInputs" (VOID) NET
 		{
 			GiveInventory("TurnRight", 1);
 		}
-		if (buttons & BT_USE)
-		{
-			GiveInventory("PressedUse", 1);
-			delay(2);
-			TakeInventory("PressedUse", 1);
-			terminate;
-		}
 		if (buttons & BT_JUMP)
 		{
 			GiveInventory("PressedJump", 1);
 		}
-		if (buttons & BT_ALTATTACK)
+		if ((buttons & BT_USE) && (CheckInventory("CanLeaveVehicle")>0))
 		{
-		   GiveInventory("FiredSecondary", 1);
-		}
-		if (buttons & BT_ATTACK)
-		{
-		   GiveInventory("FiredPrimary", 1);
+			delay(3);
+			TakeInventory("PressedUse", 1);
+			terminate;
 		}
 
 		delay(2);
@@ -98,10 +89,7 @@ script "BDVehicleInputs" (VOID) NET
 		TakeInventory("BackPedal", 1);
 		TakeInventory("TurnLeft", 1);
 		TakeInventory("TurnRight", 1);
-		TakeInventory("PressedUse", 1);
 		TakeInventory("PressedJump", 1);
-		TakeInventory("FiredSecondary", 1);
-		TakeInventory("FiredPrimary", 1);
 	}
 }
 
