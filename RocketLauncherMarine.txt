@@ -488,7 +488,7 @@ ACTOR Marine_Rocket: Marine_Rifle
         NULL A 0 A_JumpIfInventory("RevenantFatality", 1, "FatalityRevenant")
 	    NULL A 0 A_JumpIfInventory("ArachnotronFatality", 1, "FatalityArachnotron")
 	    NULL A 0 A_JumpIfInventory("ArchVileFatality", 1, "FatalityArchVile")
-		TNT1 A 0 A_JumpIfInventory("Arachnotron2FatalityA", 1, "FatalityArachnotron2")
+		TNT1 A 0 A_JumpIfInventory("Arachnotron2FatalityA", 1, "FatalityArachnotron2AB")
 	    NULL A 0 A_JumpIfInventory("PEFatality", 1, "FatalityPE")
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Melee
@@ -1915,7 +1915,7 @@ ACTOR Marine_Rocket: Marine_Rifle
 	TNT1 A 0 A_ChangeFlag (Invulnerable, 0)
 	Goto FollowPlayer
 
-	FatalityArachnotron2:
+	FatalityArachnotron2AB:
 		TNT1 A 0
 		TNT1 A 0 A_Jump(255,"FatalityArachnotron2B","FatalityArachnotron2A")
 
