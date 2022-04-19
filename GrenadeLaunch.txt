@@ -191,7 +191,6 @@ ACTOR GrenadeLauncher : BrutalWeapon
 	    RIFG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		RIFG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		RIFG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
-		RIFG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		RIFG A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		RIFG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		GLAN A 5 A_WeaponReady(WRF_ALLOWRELOAD | WRF_NOFIRE)
@@ -199,6 +198,7 @@ ACTOR GrenadeLauncher : BrutalWeapon
 		TNT1 A 0 A_JumpIfInventory("NoAutoReload", 1, "NoAmmo2")
 		RIFG A 0 A_JumpIfInventory("AmmoRocket",1,"Reload")
 		RIFG A 0 A_JumpIfInventory("FiredPrimary",1,"NoAmmo2")
+		RIFG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		Goto Ready3
 
 	CheckSprint:
