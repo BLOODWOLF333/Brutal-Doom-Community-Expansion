@@ -37,7 +37,6 @@ Actor BFG10k : BrutalWeapon
 		BG2G A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		BG2G A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
-		BG2G A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 
 		BG2G B 3 BRIGHT A_WeaponReady
 		BG2G A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
@@ -47,7 +46,6 @@ Actor BFG10k : BrutalWeapon
 		BG2G A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		BG2G A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
-		BG2G A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 
 		BG2G C 3 BRIGHT A_WeaponReady
 		BG2G A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
@@ -57,7 +55,6 @@ Actor BFG10k : BrutalWeapon
 		BG2G A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		BG2G A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
-		BG2G A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 
 		BG2G D 3 BRIGHT A_WeaponReady
 		BG2G A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
@@ -143,7 +140,8 @@ DMHold:
     Goto Ready
 
  CheckSprint:
-		BG2G BCD 3 BRIGHT A_WeaponReady(WRF_NOFIRE)
+		BG2G A 0 A_PlaySound ("10KIDLE", 1)
+		BG2G ABCD 3 BRIGHT A_WeaponReady(WRF_NOFIRE)
 		BG2G A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		BG2G A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
 		Goto Ready3
@@ -154,38 +152,33 @@ DMHold:
 		BG2G A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
 
 	Sprinting:
-		BG2G A 0
 		BG2G A 0 A_PlaySound ("10KIDLE", 1)
 		BG2G A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
 		BG2G A 0 A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
 		PLAY A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
-		BG2G A 1 offset(-9,34) A_SetPitch(pitch -0.5)
-		BG2G A 1 offset(-6,36) A_SetPitch(pitch -0.5)
+		BG2G A 1 offset(-9,32) A_SetPitch(pitch -0.5)//offset(-/+ left/right, (32)+/- down/up)
+		BG2G A 1 offset(-6,34) A_SetPitch(pitch -0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
-		BG2G A 1 offset(-3,38) A_SetPitch(pitch -0.5)
-		BG2G A 1 offset(0,38) A_SetPitch(pitch -0.5)
+		BG2G A 1 offset(-3,36) A_SetPitch(pitch -0.5)
+		BG2G B 1 offset(0,38) A_SetPitch(pitch -0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		BG2G B 1 offset(3,36) A_SetPitch(pitch -0.5)
 		BG2G B 1 offset(6,34) A_SetPitch(pitch -0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
-		BG2G B 1 offset(9,32) A_SetPitch(pitch -0.5)
-		BG2G B 1 offset(9,32) A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_WeaponReady(WRF_NOBOB)
 		BG2G A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         BG2G A 0 A_JumpIfInventory("Taunting",1,"Taunt")
-		BG2G C 1 offset(9,33) A_SpawnItemEx("FootStep", 0, 0, 2, 0, 0, -4)
-		BG2G C 1 offset(9,34) A_SetPitch(pitch +0.5)
+		BG2G C 1 offset(9,32) A_SetPitch(pitch +0.5)
+		BG2G C 1 offset(6,34) A_SetPitch(pitch +0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
-		BG2G C 1 offset(6,36) A_SetPitch(pitch +0.5)
-		BG2G C 1 offset(3,38) A_SetPitch(pitch +0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
+		BG2G C 1 offset(3,36) A_SetPitch(pitch +0.5)
 		BG2G D 1 offset(0,38) A_SetPitch(pitch +0.5)
+		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		BG2G D 1 offset(-3,36) A_SetPitch(pitch +0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		BG2G D 1 offset(-6,34) A_SetPitch(pitch +0.5)
-		BG2G D 1 offset(-9,32) A_SetPitch(pitch +0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
-		BG2G A 0 A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_WeaponReady(WRF_NOBOB)
 		BG2G A 0 A_JumpIfInventory("IsRunning", 1, "Sprinting")
 		Goto StopSprint
 

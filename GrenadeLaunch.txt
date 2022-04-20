@@ -19,6 +19,8 @@ ACTOR GrenadeLauncher : BrutalWeapon
 	Ready:
 	Ready3:
 		GLAN A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+		GLAN A 0 A_JumpIfInventory("Unloading", 1, "Unload")
+		GLAN A 0 A_JumpIfInventory("Reloading", 1, "Reload")
         GLAN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		GLAN A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		GLAN A 0 A_JumpIfInventory("Salute2", 1, "Salute")
@@ -26,8 +28,6 @@ ACTOR GrenadeLauncher : BrutalWeapon
 		GLAN A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		GLAN A 0 A_JumpIfInventory("IsRunning", 1, "CheckSprint")
-		GLAN A 0 A_JumpIfInventory("Unloading", 1, "Unload")
-		GLAN A 0 A_JumpIfInventory("Reloading", 1, "Reload")
         Goto Ready
 
 	Deselect:
@@ -195,9 +195,8 @@ ACTOR GrenadeLauncher : BrutalWeapon
 		RIFG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		GLAN A 5 A_WeaponReady(WRF_ALLOWRELOAD | WRF_NOFIRE)
 		RIFG A 0 A_JumpIfInventory("Reloading",1,"Reload")
-		TNT1 A 0 A_JumpIfInventory("NoAutoReload", 1, "NoAmmo2")
+		TNT1 A 0 A_JumpIfInventory("NoAutoReload", 1, 2)
 		RIFG A 0 A_JumpIfInventory("AmmoRocket",1,"Reload")
-		RIFG A 0 A_JumpIfInventory("FiredPrimary",1,"NoAmmo2")
 		RIFG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		Goto Ready3
 
