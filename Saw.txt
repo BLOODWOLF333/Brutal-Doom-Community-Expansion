@@ -120,9 +120,9 @@ states
 		SAWG A 0 A_TakeInventory("PowerGreenBloodOnVisor", 1)
 		SAWG A 0 A_StopSound(4)
 		SAWG A 0 A_StopSound(1)
+		SAWG A 0 A_playsoundex("weapons/chainsaw/idle", 6)
 		SAW2 ABAB 2 A_weaponready
 		SAWG A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
-		SAWG A 0 A_playsoundex("weapons/chainsaw/idle", 6)
 		SAWG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         SAWG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		SAWG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
@@ -130,8 +130,8 @@ states
 		SAWG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		SAWG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint.Blood")
-		SSW2 CDEF 2 A_weaponready
 		SAWG A 0 A_playsoundex("weapons/chainsaw/idle", 6)
+		SSW2 CDEF 2 A_weaponready
 		SAWG A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
 		SAWG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         SAWG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
@@ -140,9 +140,9 @@ states
 		SAWG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		SAWG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint.Blood")
+		SAWG A 0 A_playsoundex("weapons/chainsaw/idle", 6)
 		SSW2 GHIJ 2 A_weaponready
 		SAWG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint.Blood")
-		SAWG A 0 A_playsoundex("weapons/chainsaw/idle", 6)
 		Goto ReadyToFire
 
 	Ready.BlueBlood:
@@ -151,19 +151,18 @@ states
 		SAWG A 0 A_TakeInventory("PowerGreenBloodOnVisor", 1)
 		SAWG A 0 A_StopSound(4)
 		SAWG A 0 A_StopSound(1)
+		SAWG A 0 A_playsoundex("weapons/chainsaw/idle", 6)
 		SAW4 ABAB 2 A_weaponready
-		SAWG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint.BlueBlood")
 		SAWG A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
-		SAWG A 0 A_playsoundex("weapons/chainsaw/idle", 6)
 		SAWG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         SAWG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		SAWG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		SAWG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		SAWG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
+		SAWG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint.BlueBlood")
+		SAWG A 0 A_playsoundex("weapons/chainsaw/idle", 6)
 		SSW4 CDEF 2 A_weaponready
-		SAWG A 0 A_playsoundex("weapons/chainsaw/idle", 6)
-		SAWG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint.BlueBlood")
 		SAWG A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
 		SAWG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         SAWG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
@@ -171,9 +170,10 @@ states
 		SAWG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		SAWG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
+		SAWG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint.BlueBlood")
+		SAWG A 0 A_playsoundex("weapons/chainsaw/idle", 6)
 		SSW4 GHIJ 2 A_weaponready
 		SAWG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint.BlueBlood")
-		SAWG A 0 A_playsoundex("weapons/chainsaw/idle", 6)
 		Goto ReadyToFire
 
 	Ready.GreenBlood:
@@ -182,19 +182,18 @@ states
 		SAWG A 0 A_TakeInventory("PowerBloodOnVisor", 1)
 		SAWG A 0 A_StopSound(4)
 		SAWG A 0 A_StopSound(1)
-		SAWG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint.GreenBlood")
+		SAWG A 0 A_playsoundex("weapons/chainsaw/idle", 6)
 		SAW3 ABAB 2 A_weaponready
 		SAWG A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
-		SAWG A 0 A_playsoundex("weapons/chainsaw/idle", 6)
 		SAWG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         SAWG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		SAWG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		SAWG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		SAWG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
-		SSW3 CDEF 2 A_weaponready
-		SAWG A 0 A_playsoundex("weapons/chainsaw/idle", 6)
 		SAWG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint.GreenBlood")
+		SAWG A 0 A_playsoundex("weapons/chainsaw/idle", 6)
+		SSW3 CDEF 2 A_weaponready
 		SAWG A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
 		SAWG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         SAWG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
@@ -202,8 +201,9 @@ states
 		SAWG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		SAWG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
-		SSW3 GHIJ 2 A_weaponready
+		SAWG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint.GreenBlood")
 		SAWG A 0 A_playsoundex("weapons/chainsaw/idle", 6)
+		SSW3 GHIJ 2 A_weaponready
 		SAWG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint.GreenBlood")
 		Goto ReadyToFire
 
@@ -698,19 +698,19 @@ states
 		Goto Ready3
 
 	CheckSprint.Blood:
-		CSR2 Q 1 A_WeaponReady(WRF_NOFIRE)
+		SAW2 A 1 A_WeaponReady(WRF_NOFIRE)
 		CSR2 Q 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		CSR2 Q 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint.Blood")
 		Goto Ready3
 
 	CheckSprint.BlueBlood:
-		CSB2 Q 1 A_WeaponReady(WRF_NOFIRE)
+		SAW4 A 1 A_WeaponReady(WRF_NOFIRE)
 		CSB2 Q 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		CSB2 Q 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint.BlueBlood")
 		Goto Ready3
 
 	CheckSprint.GreenBlood:
-		CSG2 Q 1 A_WeaponReady(WRF_NOFIRE)
+		SAW3 A 1 A_WeaponReady(WRF_NOFIRE)
 		CSG2 Q 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		CSG2 Q 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint.GreenBlood")
 		Goto Ready3
