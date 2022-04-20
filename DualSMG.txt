@@ -21,11 +21,11 @@ ACTOR DualSMG : BrutalWeapon
 	{
 	Ready3:
 	Ready:
-        SM2G A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-        SM2G A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		SM2G A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		SM2G A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		SM2G A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		SM2G A 0 A_JumpIfInventory("Salute2", 1, "Salute")
-        SM2G A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		SM2G A 0 A_JumpIfInventory("Reloading",1,"Reload")
 		SM2G A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		SM2G A 0 A_JumpIfInventory("Unloading",1,"Unload")
@@ -219,15 +219,14 @@ ACTOR DualSMG : BrutalWeapon
 	    RIFG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		RIFG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		RIFG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
-		RIFG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		RIFG A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		RIFG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		SM2G A 5 A_WeaponReady(WRF_ALLOWRELOAD | WRF_NOFIRE)
 		RIFG A 0 A_JumpIfInventory("Reloading",1,"Reload")
 		RIFG A 0 A_JumpIfInventory("TurboReload",1,"TurboReload")
-		TNT1 A 0 A_JumpIfInventory("NoAutoReload", 1, "NoAmmo2")
+		TNT1 A 0 A_JumpIfInventory("NoAutoReload", 1, 2)
 		RIFG A 0 A_JumpIfInventory("Clip1",1,"Reload")
-		RIFG A 0 A_JumpIfInventory("FiredPrimary",1,"NoAmmo2")
+		RIFG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		Goto Ready3
 
     Reload:
