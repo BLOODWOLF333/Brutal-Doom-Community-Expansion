@@ -1172,9 +1172,7 @@ ACTOR Marine_BFGPathfinder
 	Radius 16
 	Height 56
 	Speed 50
-	Health 4000
 	PainChance 255
-	MaxTargetRange 32768
 	Monster
 	damagefactor "SpawnMarine", 8000.0
 	-COUNTKILL
@@ -1182,13 +1180,13 @@ ACTOR Marine_BFGPathfinder
 	+THRUACTORS
 	+MISSILEMORE
 	+MISSILEEVENMORE
-	+FASTER
     +DONTSPLASH
 	-SHOOTABLE
 	-FRIENDLY
 	+NOCLIP
 	+LOOKALLAROUND
 	+NOINFIGHTING
+	+FIXMAPTHINGPOS
 	States
 	{
 	Spawn:
@@ -1198,15 +1196,15 @@ ACTOR Marine_BFGPathfinder
 
     See:
 		TNT1 A 0 A_ChangeFlag("NOCLIP", 1)
-		TNT1 AAAA 1 A_Chase
-		Loop
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_Chase
+		Goto Spawn
 
 	Melee:
 	Missile:
-		TNT1 A 4 A_FaceTarget
+		TNT1 A 1 A_FaceTarget
 		TNT1 A 0 A_ChangeFlag("NOCLIP", 0)
 		TNT1 A 0 A_Recoil(4)
-		TNT1 A 1 A_FaceTarget
+		TNT1 A 4 A_FaceTarget
 		TNT1 A 0 A_JumpIf(((VelY == 0)&&(VelX == 0)), "CheckAgain")
 	SpawnMarine:
 		TNT1 A 0
