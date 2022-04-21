@@ -14,7 +14,6 @@ ACTOR DualRifles : BrutalWeapon
     Inventory.PickupSound "CLIPIN"
 	Inventory.Pickupmessage "You got dual rifles! (Slot 2)"
     +WEAPON.NOAUTOAIM
-	+FORCEXYBILLBOARD
 	+WEAPON.NO_AUTO_SWITCH
 	Tag "Dual Rifles"
 	DropItem "RifleSpawner"
@@ -128,16 +127,16 @@ ACTOR DualRifles : BrutalWeapon
 	Ready:
 	Ready3:
 		DURI A 0
-		DURI A 1 A_WeaponReady(WRF_ALLOWRELOAD)
 		DURI A 0 A_JumpIfInventory("JustStartedGame",1,"WarmUp")
 		RIFG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
-	    RIFG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
-        RIFG A 0 A_JumpIfInventory("Reloading",1,"Reload")
-		RIFG A 0 A_JumpIfInventory("Unloading",1,"Unload")
 		RIFG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		RIFG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		RIFG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
+	    RIFG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		DURI A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+        RIFG A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		RIFG A 0 A_JumpIfInventory("Unloading",1,"Unload")
 		RIFG A 0 A_JumpIfInventory("StartDualWield",1,"DualWield")
 		RIFG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		Loop
@@ -262,15 +261,14 @@ ACTOR DualRifles : BrutalWeapon
 	    RIFG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		RIFG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		RIFG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
-		RIFG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		RIFG A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		RIFG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		DURI A 4 A_WeaponReady(WRF_ALLOWRELOAD | WRF_NOFIRE)
 		RIFG A 0 A_JumpIfInventory("Reloading",1,"Reload")
 		RIFG A 0 A_JumpIfInventory("TurboReload",1,"TurboReload")
-		TNT1 A 0 A_JumpIfInventory("NoAutoReload", 1, "NoAmmo2")
+		TNT1 A 0 A_JumpIfInventory("NoAutoReload", 1, 2)
 		RIFG A 0 A_JumpIfInventory("Clip2",1,"Reload")
-		RIFG A 0 A_JumpIfInventory("FiredPrimary",1,"NoAmmo2")
+		RIFG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		Goto Ready
 
     Reload:
