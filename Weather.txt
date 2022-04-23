@@ -1,8 +1,8 @@
 Actor LargeRainSpawner 15868//Plutonia
 {
 	Radius 256
-	Height 2
-	+NoClip
+	Height 68
+	-SOLID
 	+SpawnCeiling
 	+NoGravity
 	//$Category BD Weather Spawners
@@ -12,7 +12,7 @@ Actor LargeRainSpawner 15868//Plutonia
 	{
 		Spawn:
 		TNT1 A 3
-		TNT1 A 1 A_SpawnItemEx("SimpleRainDrop", Random(-256, 256), 0, -2, 0, 0, 0, Random(0, 360), 128, 1)
+		TNT1 A 1 A_SpawnItemEx("SimpleRainDrop", Random(-256, 256), Random(-256, 256), -2, 0, 0, 0, Random(0, 360), 128, 1)
 		Loop
 	}
 }
@@ -55,8 +55,8 @@ Actor SimpleRainDrop
 Actor BloodRainSpawner 15869//EDay
 {
 	Radius 256
-	Height 2
-	+NoClip
+	Height 68
+	-SOLID
 	+SpawnCeiling
 	+NoGravity
 	//$Category BD Weather Spawners
@@ -66,7 +66,7 @@ Actor BloodRainSpawner 15869//EDay
 	{
 		Spawn:
 		TNT1 A 3
-		TNT1 A 1 A_SpawnItemEx("SimpleBloodDrop", Random(-256, 256), 0, -2, 0, 0, 0, Random(0, 360), 128, 1)
+		TNT1 A 1 A_SpawnItemEx("SimpleBloodDrop", Random(-256, 256), Random(-256, 256), -2, 0, 0, 0, Random(0, 360), 128, 1)
 		Loop
 	}
 }
