@@ -1413,9 +1413,6 @@ delay(1);
 //NAZIS
 script "MapEnhancementNaziVerification" (void)
 {
-if (CheckActorCeilingTexture(0, "F_SKY1"))
-    GiveActorInventory(728, "TVRRainVerification", 1);
-
 Thing_ChangeTID(0,736);
 
 if (CheckActorFloorTexture(736, "FL0"))

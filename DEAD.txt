@@ -861,11 +861,7 @@ ACTOR DeadBloodyTwitch: BloodyTwitch Replaces BloodyTwitch
 	States
 	{
     Spawn:
-		GOR1 A 1
-		TNT1 A 0 Thing_ChangeTID(0,728)
-		MARN A 0 ACS_NamedExecuteAlways("MapEnhancementNaziVerification", 0, 0, 0, 0)//Check if you are playing on an TVR!
 		GOR1 A 4
-		TNT1 A 0 A_JumpIfInventory("TVRRainVerification", 10, "Replacerain")
 		TNT1 A 0 A_SpawnItem("GoreFliesWsound", 0, random(0, 45))
 		TNT1 AAA 0 A_SpawnItem("GoreFlies", 0, random(0, 45))
         Goto Stand
@@ -889,11 +885,6 @@ ACTOR DeadBloodyTwitch: BloodyTwitch Replaces BloodyTwitch
         TNT1 A 0 A_Scream
         TNT1 A 0 A_SpawnItem ("DeadBloodyTwitchB")
 		TNT1 A 0 A_CustomMissile ("MeatDeath", 0, 0, random (0, 360), 2, random (0, 160))
-		Stop
-
-	ReplaceRain:
-		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
-		TNT1 A 0 A_SpawnItem("TVRRainSpawner")
 		Stop
 
 	Death.Humanbbq:

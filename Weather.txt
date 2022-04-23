@@ -106,57 +106,6 @@ Actor SimpleBloodDrop
 	}
 }
 
-Actor TVRRainSpawner
-{
-	Radius 48
-	Height 2
-	+NoClip
-	+SpawnCeiling
-	+NoGravity
-	States
-	{
-		Spawn:
-		TNT1 A 3
-		TNT1 A 1 A_SpawnItemEx("SimpleRainDrop", Random(-48, 48), 0, -2, 0, 0, 0, Random(0, 360), 128, 1)
-		Loop
-	}
-}
-
-Actor TVRRainDrop
-{
-	+MISSILE
-	+NOBLOCKMAP
-	-NOGRAVITY
-	+ClientSideOnly
-	+FORCEYBILLBOARD
-	+NONETID
-	+DONTSPLASH
-	Speed 0
-	Damage 0
-	Height 2
-	Radius 2
-	Renderstyle Add
-	Alpha 0.7
-	Scale 1.2
-	Mass 0
-	Gravity 1.0
-	States
-	{
-		Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_PlaySound("AMBRAIN",7)
-		RNDA ABCDEFGHIJKLMNOPQRSTUVWXYZ 1
-
-		Live:
-		RNDA ZZZZ 1
-		Loop
-
-		Death:
-		RNDR BCDEFGH 1
-		Stop
-	}
-}
-
 Actor AltMap01CloudSpawner
 {
   Radius 1
