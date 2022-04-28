@@ -1,7 +1,7 @@
 ACTOR BasicAmmoPickup : Ammo
 {
  scale 1.0
- radius 8
+ radius 20
  height 16
  +FORCEXYBILLBOARD
  -COUNTITEM
@@ -54,8 +54,8 @@ ACTOR FakeClip1Sprite: BasicAmmoPickup
 {
  Scale 0.9
  VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  +NOGRAVITY
  +FLOAT +NOCLIP +NOINTERACTION
@@ -72,8 +72,8 @@ ACTOR FakeClip2Sprite: BasicAmmoPickup
 {
  Scale 0.9
  VisibleToPlayerClass Purist
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  +NOGRAVITY
  +FLOAT +NOCLIP +NOINTERACTION
@@ -88,8 +88,8 @@ ACTOR FakeClip2Sprite: BasicAmmoPickup
 
 ACTOR Clip2Spawner: CustomInventory 2027
 {
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  Inventory.PickupMessage "Picked up a Rifle Magazine."
  Inventory.PickupSound "CLIPICK2"
@@ -139,8 +139,8 @@ ACTOR Clip1 : Ammo
 
 ACTOR Clip1Spawner: CustomInventory 2037
 {
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  Inventory.PickupMessage "Picked up a Pistol Magazine."
  Inventory.PickupSound "CLIPICK"
@@ -234,8 +234,8 @@ Actor ClipReplacer : BasicAmmoPickup Replaces Clip
 
 ACTOR Clip1Drop: CustomInventory
 {
- radius 24
- height 24
+ radius 20
+ height 16
  +THRUACTORS +FORCEXYBILLBOARD
  Inventory.PickupMessage "Picked up a Pistol Magazine"
  Inventory.PickupSound "CLIPIN"
@@ -288,8 +288,8 @@ ACTOR FakeClipBoxSprite: BasicAmmoPickup
 {
  Scale 0.9
  VisibleToPlayerClass Purist
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  +NOGRAVITY
  +FLOAT +NOCLIP +NOINTERACTION
@@ -322,8 +322,8 @@ ACTOR FakePABSprite: BasicAmmoPickup
 {
  Scale 0.9
  VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  +NOGRAVITY
  +FLOAT +NOCLIP +NOINTERACTION
@@ -339,8 +339,8 @@ ACTOR FakePABSprite: BasicAmmoPickup
 
 ACTOR PistolAmmoBoxSpawner: CustomInventory 2098
 {
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  Inventory.PickupMessage "Picked up a box of pistol ammunition!"
  Inventory.PickupSound "CBOXPICK"
@@ -514,8 +514,8 @@ ACTOR FakeRocketSprite: BasicAmmoPickup
 {
 	Scale 0.9
 	VisibleToPlayerClass Purist
-	radius 24
-	height 24
+	radius 20
+	height 16
 	+FORCEXYBILLBOARD
 	+NOGRAVITY
 	+FLOAT +NOCLIP +NOINTERACTION
@@ -635,8 +635,8 @@ ACTOR FakeCellSprite: BasicAmmoPickup
 {
 	Scale 0.9
 	VisibleToPlayerClass Purist
-	radius 24
-	height 24
+	radius 20
+	height 16
 	+FORCEXYBILLBOARD
 	+NOGRAVITY
 	+FLOAT +NOCLIP +NOINTERACTION
@@ -675,8 +675,8 @@ ACTOR FakeCellPackSprite: BasicAmmoPickup
 {
 	Scale 0.9
 	VisibleToPlayerClass Purist
-	radius 24
-	height 24
+	radius 20
+	height 16
 	+FORCEXYBILLBOARD
 	+NOGRAVITY
 	+FLOAT +NOCLIP +NOINTERACTION
@@ -712,8 +712,8 @@ ACTOR FakeGasSprite: BasicAmmoPickup
 {
 	Scale 0.9
 	VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
-	radius 24
-	height 24
+	radius 20
+	height 16
 	+FORCEXYBILLBOARD
 	+NOGRAVITY
 	+FLOAT +NOCLIP +NOINTERACTION
@@ -728,8 +728,8 @@ ACTOR FakeGasSprite: BasicAmmoPickup
 
 ACTOR GasSpawner: CustomInventory 107
 {
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  Inventory.PickupMessage "Picked up a jug of Gasoline."
  Inventory.PickupSound "BFGREADY"
@@ -787,8 +787,8 @@ ACTOR FakeNukeSprite: BasicAmmoPickup
 {
 	Scale 0.9
 	VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
-	radius 24
-	height 24
+	radius 20
+	height 16
 	+FORCEXYBILLBOARD
 	+NOGRAVITY
 	+FLOAT +NOCLIP +NOINTERACTION
@@ -803,8 +803,8 @@ ACTOR FakeNukeSprite: BasicAmmoPickup
 
 ACTOR NukeSpawner: CustomInventory 117
 {
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  Inventory.PickupMessage "Picked up a nuclear missile."
  Inventory.PickupSound "RCKCLIP2"
@@ -923,8 +923,8 @@ ACTOR FakeAmmoShellSprite: BasicAmmoPickup
 {
  Scale 0.9
  VisibleToPlayerClass Purist
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  +NOGRAVITY
  +FLOAT +NOCLIP +NOINTERACTION
@@ -941,8 +941,8 @@ ACTOR FakeAmmoSlugSprite: BasicAmmoPickup
 {
  Scale 0.9
  VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  +NOGRAVITY
  +FLOAT +NOCLIP +NOINTERACTION
@@ -957,8 +957,8 @@ ACTOR FakeAmmoSlugSprite: BasicAmmoPickup
 
 ACTOR AmmoSlugSpawner: CustomInventory 2058
 {
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  Inventory.PickupMessage "$GOTSLUGS"
  Inventory.PickupSound "SHELPK1"
@@ -1033,8 +1033,8 @@ ACTOR FakeShellBoxSprite: BasicAmmoPickup
 {
  Scale 0.9
  VisibleToPlayerClass Purist
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  +NOGRAVITY
  +FLOAT +NOCLIP +NOINTERACTION
@@ -1051,8 +1051,8 @@ ACTOR FakeSlugBoxSprite: BasicAmmoPickup
 {
  Scale 0.9
  VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  +NOGRAVITY
  +FLOAT +NOCLIP +NOINTERACTION
@@ -1067,8 +1067,8 @@ ACTOR FakeSlugBoxSprite: BasicAmmoPickup
 
 ACTOR SlugBoxSpawner: CustomInventory 2069
 {
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  Inventory.PickupMessage "$GOTSLUGBOX"
  Inventory.PickupSound "SHELPK2"
@@ -1126,8 +1126,8 @@ ACTOR FakeAmmoMagnumSprite: BasicAmmoPickup
 {
  Scale 0.6
  VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  +NOGRAVITY
  +FLOAT +NOCLIP +NOINTERACTION
@@ -1142,8 +1142,8 @@ ACTOR FakeAmmoMagnumSprite: BasicAmmoPickup
 
 ACTOR AmmoMagnumSpawner: CustomInventory 2068
 {
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  Inventory.PickupMessage "Picked up some magnum rounds."
  Inventory.PickupSound "CBOXPICK"
@@ -1195,8 +1195,8 @@ ACTOR FakeMagnumBoxSprite: BasicAmmoPickup
 {
  Scale 0.9
  VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  +NOGRAVITY
  +FLOAT +NOCLIP +NOINTERACTION
@@ -1211,8 +1211,8 @@ ACTOR FakeMagnumBoxSprite: BasicAmmoPickup
 
 ACTOR MagnumBoxSpawner: CustomInventory 2089
 {
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  Inventory.PickupMessage "Picked up a box of magnum rounds."
  Inventory.PickupSound "CBOXPICK"

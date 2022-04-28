@@ -1,8 +1,8 @@
 ACTOR BasicWeaponPickup : Health
 {
  scale 0.8
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  -COUNTITEM
  -INVENTORY.ALWAYSPICKUP
@@ -13,8 +13,8 @@ ACTOR BasicWeaponPickup : Health
 
 ACTOR RifleSpawner : CustomInventory Replaces Pistol 5010
 {
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  Inventory.PickupMessage "$GOTRIFLE"
  Inventory.PickupSound "CLIPIN"
@@ -80,8 +80,8 @@ ACTOR FakeRifleSprite: BasicWeaponPickup
 ACTOR PistolSpawner: CustomInventory 5040
 {
  scale 0.9
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  Inventory.PickupMessage "$GOTPISTOL"
  Inventory.PickupSound "CLIPIN"
@@ -129,8 +129,8 @@ ACTOR PistolSpawner: CustomInventory 5040
 
 ACTOR MP40Spawner: CustomInventory 5070
 {
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  Inventory.PickupMessage "$GOTMP40"
  Inventory.PickupSound "CLIPIN"
@@ -173,8 +173,8 @@ ACTOR MP40Spawner: CustomInventory 5070
 
 ACTOR ShotgunSpawner: CustomInventory 2021
 {
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  Inventory.PickupMessage "$GOTSHOTGUN"
  Inventory.PickupSound "weapons/sgpump"
@@ -246,8 +246,8 @@ ACTOR ShotgunSpawnerDroped: ShotgunSpawner
 
 ACTOR RevolverSpawner: CustomInventory 5874
 {
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  Inventory.PickupMessage "$GOTREVOLVER"
  Inventory.PickupSound "REVOHAM"
@@ -366,8 +366,8 @@ ACTOR SSGSpawner: CustomInventory 92
 {
  YScale 0.8
  XScale 1.0
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  Inventory.PickupSound "CLIPINSS"
  Inventory.PickupMessage "$GOTSHOTGUN2"
@@ -436,8 +436,8 @@ VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, Arc
 
 ACTOR AssaultShotgunSpawner: CustomInventory 102
 {
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  Inventory.PickupSound "CLIPIN"
  Inventory.PickupMessage "$GOTASG"
@@ -507,8 +507,8 @@ actor SSGSpawnerReplacer: BasicWeaponPickup Replaces  SuperShotgun
 
 ACTOR ChaingunSpawner: CustomInventory 2032
 {
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  Inventory.PickupSound "CBOXPKUP"
  Inventory.PickupMessage "$GOTCHAINGUN"
@@ -549,8 +549,8 @@ ACTOR ChaingunSpawner: CustomInventory 2032
 ACTOR SMGSpawner: CustomInventory 5060
 {
  scale 0.8
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  Inventory.PickupSound "CLIPIN"
  Inventory.Pickupmessage "$GOTSMG"
@@ -610,8 +610,8 @@ ACTOR FakeSMGSprite: BasicWeaponPickup
 
 ACTOR MachinegunSpawner: CustomInventory 2042
 {
-	radius 24
-	height 24
+	radius 20
+	height 16
 	+FORCEXYBILLBOARD
 	Inventory.PickupSound "CBOXPKUP"
 	Inventory.PickupMessage "$GOTMG"
@@ -771,8 +771,8 @@ ACTOR DropedChaingunSpawner: ChaingunSpawner
 
 ACTOR RocketLauncherSpawner : CustomInventory 2033
 {
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  Inventory.PickupMessage "$GOTLAUNCHER"
  Inventory.PickupSound "ROCKPKUP"
@@ -811,8 +811,8 @@ ACTOR RocketLauncherSpawner : CustomInventory 2033
 
 ACTOR GrenadeLauncherSpawner: CustomInventory 2043
 {
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  Inventory.PickupMessage "$GOTGL"
  Inventory.PickupSound "ROCKPKUP"
@@ -928,8 +928,8 @@ ACTOR FakeGLSprite: BasicWeaponPickup
 ACTOR PLasmagunSpawner: CustomInventory 2034
 {
  scale 0.9
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  Inventory.PickupSound "PLSDRAW"
  Inventory.PickupMessage "$GOTPLASMA"
@@ -1002,8 +1002,8 @@ actor PlasmagunReplacer : BasicWeaponPickup Replaces PLasmaRifle
 
 ACTOR RailgunSpawner: CustomInventory 2044
 {
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  Inventory.PickupSound "misc/w_pkup"
  Inventory.Pickupmessage "$GOTRG"
@@ -1154,8 +1154,8 @@ actor BFGReplacer : BasicWeaponPickup Replaces BFG9000
 
 ACTOR BFG9000Spawner: CustomInventory 2036
 {
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  Inventory.PickupSound "BFGREADY"
  Inventory.PickupMessage "$GOTBFG9000"
@@ -1191,8 +1191,8 @@ ACTOR BFG9000Spawner: CustomInventory 2036
 
 ACTOR BuzzsawSpawner: CustomInventory 2052
 {
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  Inventory.PickupSound "CBOXPKUP"
  Inventory.PickupMessage "$GOTMG42"
@@ -1223,8 +1223,8 @@ ACTOR BuzzsawSpawner: CustomInventory 2052
 
 ACTOR NukeLauncherSpawner: CustomInventory 2096
 {
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  Inventory.PickupSound "BFGREADY"
  Inventory.PickupMessage "You got the Nuclear Missile Launcher (Slot 7)"
@@ -1259,8 +1259,8 @@ ACTOR NukeLauncherSpawner: CustomInventory 2096
 
 ACTOR BFG10KSpawner: CustomInventory 2056
 {
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  Inventory.Pickupmessage "$GOTBFG10K"
  Inventory.PickupSound "BFGREADY"
@@ -1296,8 +1296,8 @@ ACTOR BFG10KSpawner: CustomInventory 2056
 
 ACTOR UnmakerSpawner: CustomInventory 8845
 {
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  Inventory.PickupSound "BFGREADY"
  Inventory.PickupMessage "$GOTUNMAKER"
@@ -1332,8 +1332,8 @@ ACTOR UnmakerSpawner: CustomInventory 8845
 
 ACTOR FlameThrowerSpawner: CustomInventory 2086
 {
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  Inventory.PickupSound "BFGREADY"
  Inventory.PickupMessage "You got the Flamethrower (Slot 9)"
@@ -1495,8 +1495,8 @@ ACTOR FakeSawSprite: BasicWeaponPickup
 ACTOR ChainsawSpawner: CustomInventory 2055
 {
  scale 0.8
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  inventory.pickupsound "weapons/chainsaw/draw"
  Inventory.PickupMessage "$GOTCHAINSAW"
@@ -1527,8 +1527,8 @@ ACTOR ChainsawSpawner: CustomInventory 2055
 
 ACTOR AxeSpawner: CustomInventory 2065
 {
- radius 24
- height 24
+ radius 20
+ height 16
  +FORCEXYBILLBOARD
  inventory.pickupsound "AXEDRAW"
  Inventory.PickupMessage "$GOTAXE"
