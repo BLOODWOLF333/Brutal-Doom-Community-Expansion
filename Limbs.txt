@@ -4173,31 +4173,32 @@ actor CyberdemonGun: LimbBase
 
 ACTOR XDeathArachnotronHead: XDeath1
 {
-    Speed 12
+	Speed 12
 	Gravity 0.9
 	+DONTSPLASH
-    DeathSound "none"
+	DeathSound "none"
 	SeeSound "none"
 	+SKYEXPLODE
 	Decal none
-    Scale 1.0
-    States
-    {
-    Spawn:
-	    NAHA ABCDEFGH 4
-        Loop
-    Death:
+	Scale 1.0
+	States
+	{
+	Spawn:
+	NAHA ABCDEFGH 4
+	Loop
+
+	Death:
 	TNT1 A 0
 	//TNT1 A 0 A_Jump(128, "CleanDeath")
 	TNT1 A 0 A_SpawnItem("CrawlingDyingSpider")
 	Stop
+
 	CleanDeath:
 	TNT1 AAAAAAAAAAAA 0 A_CustomMissile ("SmallBrainPiece", 10, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAAA 0 A_CustomMissile ("XDeath1", 10, 0, random (0, 360), 2, random (0, 160))
-		NAHC IJKLMN 5
-		NAHC N -5
+	TNT1 AAAA 0 A_CustomMissile ("XDeath1", 10, 0, random (0, 360), 2, random (0, 160))
+	NAHC IJKLMN 5
+	NAHC N -5
 	Stop
-		Stop
     }
 }
 
