@@ -139,7 +139,6 @@ ACTOR CapturedMarineBase 9112
 	DeathSound "*death"
 	PainSound "*pain50"
     BloodType "Brutal_Blood"
-	DropItem "PoleWithNothing" 255
 	Mass 999999
     States
     {
@@ -177,7 +176,7 @@ ACTOR CapturedMarineBase 9112
         CAPM N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPM N 0
+        CAPM N 0 A_SpawnItem("PoleWithNothing")
         Stop
 
 	Conversion:
@@ -217,8 +216,8 @@ Pain.Rip:
 		TNT1 A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
 		PLAY H 10 A_PlayerScream
-
 		PLAY I 10 A_NoBlocking
+		CAPM N 0 A_SpawnItem("PoleWithNothing")
 		PLAY J 10
 		PLAY KLM 10
 		TNT1 A 0 A_SpawnItem ("MediumBloodSpot")
@@ -234,6 +233,7 @@ Pain.Rip:
 		TNT1 A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL1 A 10 A_XScream
         XPL1 B 20 A_NoBlocking
+		CAPM N 0 A_SpawnItem("PoleWithNothing")
         XPL1 CDE 10
 		TNT1 A 0 A_SpawnItem ("MediumBloodSpot")
         XPL1 E -1
@@ -254,7 +254,7 @@ Pain.Rip:
         XPL2 A 10 A_XScream
         TNT1 AA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL2 B 20 A_NoBlocking
-		TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		CAPM N 0 A_SpawnItem("PoleWithNothing")
         TNT1 AA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL2 C 10 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         TNT1 AA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
@@ -268,10 +268,10 @@ Pain.Rip:
 		TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
 		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
         TNT1 A 0 A_PlaySound("BIGSCREA")
-		TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         PMET AABBCCDDEEFFGGHHIIIII 10 A_CustomMissile ("PlasmaSmoke", 25, 0, random (0, 180), 2, random (0, 180))
         PMET IIIIIIIIIIJJJJJJJJJJJJJJJJJJJJJJKKKKKKKKKKKKKKKKKKKKKKKKKKLLLLLLLLLLLLLLL 3 A_CustomMissile ("PlasmaSmoke", 25, 0, random (0, 180), 2, random (0, 180))
         TNT1 A 0 A_NoBlocking
+		CAPM N 0 A_SpawnItem("PoleWithNothing")
         TNT1 A -1
         Stop
 
@@ -290,9 +290,9 @@ Pain.Rip:
         TNT1 A 0 A_CustomMissile ("XDeathHalfMarine", 50, 0, random (0, 360), 2, random (0, 160))
         TNT1 AA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL2 A 10 A_XScream
-		TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         TNT1 AA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL2 B 20 A_NoBlocking
+		CAPM N 0 A_SpawnItem("PoleWithNothing")
         TNT1 AA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL2 C 10 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         TNT1 AA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
@@ -309,7 +309,7 @@ Pain.Rip:
         XPL3 A 10 A_XScream
         TNT1 AAAAA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL3 B 20 A_NoBlocking
-		TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		CAPM N 0 A_SpawnItem("PoleWithNothing")
         TNT1 A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL3 C 10 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         TNT1 A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
@@ -336,7 +336,7 @@ Pain.Rip:
 		PPOD A 0 A_SpawnItemEx("BasicMarineGib4", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
         MHEA A 7 A_XScream
         MHEA B 7 A_NoBlocking
-		TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		CAPM N 0 A_SpawnItem("PoleWithNothing")
         MHEA CD 7
         MHEA E -1
 		Stop
@@ -353,10 +353,10 @@ Pain.Rip:
 		TNT1 AA 0 bright A_CustomMissile ("XDeath3", 55, 0, random (0, 360), 2, random (30, 180))
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		TNT1 A 0 A_SpawnItem ("CrushedRemains")
-		TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 1
 		TNT1 A 1 A_XScream
 		TNT1 A 1 A_NoBlocking
+		CAPM N 0 A_SpawnItem("PoleWithNothing")
 		Stop
 
 	Death.SuperPunch:
@@ -376,7 +376,7 @@ Pain.Rip:
 		TNT1 A 0 A_CustomMissile ("XDeathArm1", 32, 0, random (170, 190), 2, random (0, 40))
         TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		CAPM N 0 A_SpawnItem("PoleWithNothing")
         PLAY OPQRSTUV 8
 		TNT1 A 0 A_SpawnItem ("MediumBloodSpot")
         PLAY W -1
@@ -394,7 +394,7 @@ Pain.Rip:
 		 TNT1 A 0 A_CustomMissile ("XDeath4", 1, 0, random (0, 360), 2, random (0, 160))
         TNT1 AAAA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL4 B 20 A_NoBlocking
-		TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		CAPM N 0 A_SpawnItem("PoleWithNothing")
         TNT1 AAA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
         XPL4 C 20
         TNT1 AAA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
@@ -414,6 +414,7 @@ Pain.Rip:
 		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
         TNT1 A 0 A_XScream
         TNT1 A 0 A_NoBlocking
+		CAPM N 0 A_SpawnItem("PoleWithNothing")
         TNT1 AAA 0 A_CustomMissile ("Brutal_FlyingBlood", 50, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160))
@@ -423,7 +424,6 @@ Pain.Rip:
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, random (0, 160))
 		EXPL AAAAAA 0 A_CustomMissile ("ExplosionSmoke", 32, 0, random (0, 360), 2, random (0, 360))
         TNT1 A 1
-		TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         TNT1 A -1
         Stop
 
@@ -433,6 +433,7 @@ Pain.Rip:
 		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
         TNT1 A 0 A_XScream
         TNT1 A 0 A_NoBlocking
+		CAPM N 0 A_SpawnItem("PoleWithNothing")
         TNT1 AAAA 0 A_CustomMissile ("Brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160))
 
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
@@ -444,7 +445,6 @@ Pain.Rip:
 
 		EXPL AAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("GreenFlameTrails", 50, 0, random (0, 360), 2, random (0, 360))
 		XBRN AAAA 2 BRIGHT A_SpawnItem("GreenFlare",0,43)
-		TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         Stop
 
     Death.burn:
@@ -455,7 +455,7 @@ Pain.Rip:
 	 PBUR A 1
       PBUR A 1 A_Scream
       PBUR A 1 A_NoBlocking
-	  TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	  CAPM N 0 A_SpawnItem("PoleWithNothing")
        PBUR AAAABBBBCCCC 2 A_CustomMissile ("SmallFlameTrails", 32, 0, random (0, 180), 2, random (0, 180))
 	    PBUR DDDDEEEE 2 A_CustomMissile ("SmallFlameTrails", 16, 0, random (0, 180), 2, random (0, 180))
         PBUR EEEEE 4 A_CustomMissile ("SmallFlameTrails", 8, 0, random (0, 180), 2, random (0, 180))
@@ -475,7 +475,7 @@ Pain.Rip:
 		TNT1 A 0 A_JumpIfInTargetInventory("EnemyIsArchvile", 1, "Conversion")
       BURN W 6 A_Scream
       BURN X 6 A_NoBlocking
-	  TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	  CAPM N 0 A_SpawnItem("PoleWithNothing")
        BUR2 ABCD 6 BRIGHT A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
        BURN FGHIJKL 6 BRIGHT A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
        BURN MNOPQRSTUV 6 BRIGHT A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
@@ -504,8 +504,8 @@ Pain.Rip:
 		NULL A 0 A_XScream
         XPL6 A 5
 		NULL A 0 A_NoBlocking
+		CAPM N 0 A_SpawnItem("PoleWithNothing")
         XPL6 BCDE 5
-		TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         XPL6 F -1
         Stop
 
@@ -515,11 +515,11 @@ Pain.Rip:
 		TNT1 A 1 A_Scream
 		TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
 		TNT1 A 1 A_NoBlocking
+		CAPM N 0 A_SpawnItem("PoleWithNothing")
         TNT1 A 0 A_GiveToTarget("Curbstomp_Marine",1)
 		TNT1 A 0
 		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
 		TNT1 A 5
-		TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A -1
         Stop
 
@@ -528,7 +528,7 @@ Pain.Rip:
 		TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
 		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
 		TNT1 A 1 A_NoBlocking
-		TNT1 A 0 //A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		CAPM N 0 A_SpawnItem("PoleWithNothing")
         TNT1 A 0 A_GiveToTarget("Fatality_Marine",1)
 		TNT1 A -1
         Stop
@@ -555,7 +555,7 @@ ACTOR CapturedMarineFist: CapturedMarineBase 9113
         CAPM N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPM N 0
+        CAPM N 0 A_SpawnItem("PoleWithNothing")
         Stop
     }
 }
@@ -580,7 +580,7 @@ ACTOR CapturedMarineSaw: CapturedMarineBase 9114
         CAPM N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPM N 0
+        CAPM N 0 A_SpawnItem("PoleWithNothing")
         Stop
     }
 }
@@ -605,7 +605,7 @@ ACTOR CapturedMarineSMG: CapturedMarineBase 9115
         CAPM N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPM N 0
+        CAPM N 0 A_SpawnItem("PoleWithNothing")
         Stop
     }
 }
@@ -630,7 +630,7 @@ ACTOR CapturedMarineShotgun: CapturedMarineBase 9116
         CAPM N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPM N 0
+        CAPM N 0 A_SpawnItem("PoleWithNothing")
         Stop
     }
 }
@@ -655,7 +655,7 @@ ACTOR CapturedMarineSSG: CapturedMarineBase 9117
         CAPM N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPM N 0
+        CAPM N 0 A_SpawnItem("PoleWithNothing")
         Stop
     }
 }
@@ -680,7 +680,7 @@ ACTOR CapturedMarineMinigun: CapturedMarineBase 9118
         CAPM N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPM N 0
+        CAPM N 0 A_SpawnItem("PoleWithNothing")
         Stop
     }
 }
@@ -705,7 +705,7 @@ ACTOR CapturedMarineGrenade: CapturedMarineBase 9119
         CAPM N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPM N 0
+        CAPM N 0 A_SpawnItem("PoleWithNothing")
         Stop
     }
 }
@@ -730,7 +730,7 @@ ACTOR CapturedMarineRocket: CapturedMarineBase 9120
         CAPM N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPM N 0
+        CAPM N 0 A_SpawnItem("PoleWithNothing")
         Stop
     }
 }
@@ -755,7 +755,7 @@ ACTOR CapturedMarinePlasmagun: CapturedMarineBase 9121
         CAPM N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPM N 0
+        CAPM N 0 A_SpawnItem("PoleWithNothing")
         Stop
     }
 }
@@ -780,7 +780,7 @@ ACTOR CapturedMarineRailgun: CapturedMarineBase 9122
         CAPM N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPM N 0
+        CAPM N 0 A_SpawnItem("PoleWithNothing")
         Stop
     }
 }
@@ -805,7 +805,7 @@ ACTOR CapturedMarineBFG: CapturedMarineBase 9123
         CAPM N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPM N 0
+        CAPM N 0 A_SpawnItem("PoleWithNothing")
         Stop
     }
 }
@@ -830,7 +830,7 @@ ACTOR CapturedMarineBFG10K: CapturedMarineBase 9124
         CAPM N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPM N 0
+        CAPM N 0 A_SpawnItem("PoleWithNothing")
         Stop
     }
 }
@@ -855,7 +855,7 @@ ACTOR CapturedMarineHML: CapturedMarineBase 9125
         CAPM N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPM N 0
+        CAPM N 0 A_SpawnItem("PoleWithNothing")
         Stop
     }
 }
@@ -880,7 +880,7 @@ ACTOR CapturedMarineFlame: CapturedMarineBase 9126
         CAPM N 1
 		TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPM N 0
+        CAPM N 0 A_SpawnItem("PoleWithNothing")
         Stop
     }
 }
@@ -1108,29 +1108,17 @@ ACTOR BlurSphere2: BlurSphere //Replaces BlurSphere
 	}
 }
 
-Actor PoleWithNothing
+Actor PoleWithNothing : HeadOnAStick
 {
-+NOBLOCKMAP
-Mass 99999999
-States
-{
-Spawn:
-        TNT1 A 0 A_Stop
-		TNT1 A 0 A_SpawnItem("PoleWithNothing2", 0, -40)
-        Stop
-}}
-
-Actor PoleWithNothing2
-{
-+NOBLOCKMAP
-Mass 99999999
-States
-{
-Spawn:
-        CAPM N 1 A_Stop
-        CAPM N -1
-        Stop
-}}
+	-SOLID
+	States
+	{
+		Spawn:
+		CAPM N 1 A_Stop
+		CAPM N -1
+		Stop
+	}
+}
 
 actor MonsterSightAlert
 {
