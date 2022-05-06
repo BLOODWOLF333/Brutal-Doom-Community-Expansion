@@ -541,38 +541,3 @@ ACTOR RocketRounds : Ammo
    Ammo.BackpackMaxAmount 6
    Inventory.Icon "RLAUA0"
 }
-
-
-
-
-
-
-
-
-
-
-
-
-Actor TimeFreezer2 : PowerupGiver
-{
-  Inventory.Pickupmessage "Time Freezer!"
-  Inventory.Icon "MEGAA0"
-  Inventory.MaxAmount 0
-  Inventory.UseSound "pickups/slowmo"
-  Powerup.Type "TimeFreezer"
-  Powerup.Duration 50
-  Translation "128:143=48:63"
-  +AUTOACTIVATE
-  +INVENTORY.FANCYPICKUPSOUND
-  States
-  {
-  Spawn:
-    MEGA ABCD 4 bright
-    Loop
-  }
-}
-
-ACTOR PowerTimeFreezer2 : PowerTimeFreezer
-{
-  Powerup.Duration 2
-}
