@@ -183,14 +183,12 @@ ACTOR TheArchvile: Archvile Replaces Archvile
 
 	Death.Shotgun:
 	Death.SSG:
-	TNT1 A 0
-
-	TNT1 A 0 A_Jump(96, "Death.ARm")
-	TNT1 A 0 A_Jump(96, "Death.Cut")
-	TNT1 A 0 A_JumpIfInTargetInventory("SSGSelected", 1, "BrutalDeath")
-	TNT1 A 0 A_Jump(96, "BrutalDeath")
-	TNT1 A 0
-	Goto Death
+		TNT1 A 0
+		TNT1 A 0 A_Jump(96, "Death.ARm")
+		TNT1 A 0 A_Jump(96, "Death.Cut")
+		TNT1 A 0 A_JumpIfInTargetInventory("SSGSelected", 1, "BrutalDeath")
+		TNT1 A 0 A_Jump(96, "BrutalDeath")
+		Goto Death
 
 	Death.Desintegrate:
 		TNT1 A 0
@@ -215,31 +213,31 @@ ACTOR TheArchvile: Archvile Replaces Archvile
 
 	BrutalDeath:
 	Death.Saw:
-	TNT1 A 0
-	TNT1 A 0 A_SpawnItem("SplatteredLarge")
-	TNT1 A 0 A_Scream
-	TNT1 AA 0 A_CustomMissile ("XDeathArchvileArm", 52, 0, random (0, 360), 2, random (60, 120))
-	TNT1 A 0 A_CustomMissile ("XDeathArchvileHead", 52, 0, random (0, 360), 2, random (60, 120))
-	RippedOpen:
-	TNT1 AAAA 0 A_CustomMissile ("XDeath1", 32, 0, random (0, 360), 2, random (0, 160))
-	TNT1 AA 0 A_CustomMissile ("XDeath2b", 52, 0, random (0, 360), 2, random (60, 120))
-	TNT1 AA 0 A_CustomMissile ("XDeath3b", 52, 0, random (0, 360), 2, random (60, 120))
-	TNT1 A 0 A_CustomMissile ("XDeath2", 52, 0, random (0, 360), 2, random (30, 120))
-	TNT1 A 0 A_CustomMissile ("XDeath3", 52, 0, random (0, 360), 2, random (30, 120))
-	TNT1 A 0 A_CustomMissile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160))
-    TNT1 A 0 A_CustomMissile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("SplatteredLarge")
+		TNT1 A 0 A_Scream
+		TNT1 AA 0 A_CustomMissile ("XDeathArchvileArm", 52, 0, random (0, 360), 2, random (60, 120))
+		TNT1 A 0 A_CustomMissile ("XDeathArchvileHead", 52, 0, random (0, 360), 2, random (60, 120))
+		RippedOpen:
+		TNT1 AAAA 0 A_CustomMissile ("XDeath1", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_CustomMissile ("XDeath2b", 52, 0, random (0, 360), 2, random (60, 120))
+		TNT1 AA 0 A_CustomMissile ("XDeath3b", 52, 0, random (0, 360), 2, random (60, 120))
+		TNT1 A 0 A_CustomMissile ("XDeath2", 52, 0, random (0, 360), 2, random (30, 120))
+		TNT1 A 0 A_CustomMissile ("XDeath3", 52, 0, random (0, 360), 2, random (30, 120))
+		TNT1 A 0 A_CustomMissile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (0, 160))
 
-    TNT1 A 0 A_SpawnItem("MuchBlood2", 0, 40)
-	TNT1 AAAA 0 A_CustomMissile ("SuperWallRedBlood", 32, 0, random (170, 190), 2, random (0, 40))
-	TNT1 AAAA 0 A_CustomMissile ("BloodMistBig", 40, 0, random (0, 360), 2, random (30, 90))
-	TNT1 AAA 0 A_CustomMissile ("Guts", 32, 0, random (0, 360), 2, random (60, 120))
-	TNT1 A 0 A_NoBlocking
-	VID3 A 3
-	VID3 AAAAAAAAAAAAAAAAAAAAA 2 A_CustomMissile ("Brutal_LiquidBlood", 46, 0, random (0, 360), 2, random (0, 45))
-	VID3 BCDEFGHIJK 3
-	TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
-	TNT1 A 0 A_SpawnItem("DeadArchvileVID3L")
-	Stop
+		TNT1 A 0 A_SpawnItem("MuchBlood2", 0, 40)
+		TNT1 AAAA 0 A_CustomMissile ("SuperWallRedBlood", 32, 0, random (170, 190), 2, random (0, 40))
+		TNT1 AAAA 0 A_CustomMissile ("BloodMistBig", 40, 0, random (0, 360), 2, random (30, 90))
+		TNT1 AAA 0 A_CustomMissile ("Guts", 32, 0, random (0, 360), 2, random (60, 120))
+		TNT1 A 0 A_NoBlocking
+		VID3 A 3
+		VID3 AAAAAAAAAAAAAAAAAAAAA 2 A_CustomMissile ("Brutal_LiquidBlood", 46, 0, random (0, 360), 2, random (0, 45))
+		VID3 BCDEFGHIJK 3
+		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItem("DeadArchvileVID3L")
+		Stop
 
 	XDeath:
     Death.ExplosiveImpact:
@@ -290,7 +288,7 @@ ACTOR TheArchvile: Archvile Replaces Archvile
 		XVIP Q -1
 		Stop
 
-	    Death.Fire:
+	Death.Fire:
         TNT1 A 0
         TNT1 A 0 A_Scream
         TNT1 A 0 A_NoBlocking
