@@ -1371,7 +1371,7 @@ Speed 4
 ACTOR NuclearFlames: ExplosionFlames
 {
 Scale 5.2
-Speed 5
+Speed 6
 	States
 	{
     Spawn:
@@ -1395,15 +1395,15 @@ Speed 3
 ACTOR NuclearFlamesImpact: ExplosionFlames
 {
 Scale 12.2
-Speed 96
+Speed 60
 -CLIENTSIDEONLY
 +FORCERADIUSDMG
 Damagetype "Extreme"
 	States
 	{
     Spawn:
-        EXPL ABCDFGH 2 BRIGHT A_Explode(64, 500)
-		EXPL IIIIIIIIIIIIIIII 1 BRIGHT A_FAdeout(0.2)
+        EXPL ABCDFGH 4 BRIGHT A_Explode
+		EXPL IIIIIIIIII 1 BRIGHT A_FAdeout(0.1)
         Stop
 	}
 }

@@ -799,48 +799,33 @@ Species "None"
 
 	Death:
         TNT1 A 0
-		TNT1 A 0 A_Explode(10000, 256, 1, 1, 128)
-		EXPL A 0 Radius_Quake (9, 70, 0, 256, 0)
-		TNT1 A 0 A_PlaySound("NUKEEXP", 1)
-		TNT1 A 1 A_CustomMissile ("NuclearFlamesImpact", 5, 0, random (0, 360), 2, random (0, 10))//flames & A_Explode(64,500)
-		TNT1 AAAA 0 A_CustomMissile ("SpawnedExplosionNuke2", 30, 0, random (0, 360), 2, random(80, 90))//flames & smoke
-		TNT1 A 1 A_CustomMissile ("NuclearFlamesImpact", 5, 0, random (0, 360), 2, random (0, 10))//flames & A_Explode(64,500)
-		TNT1 AAAA 0 A_SpawnItemEx("SpawnedExplosionNuke", random (-400, 400), random (-400, 400), random (0, 100))
-		TNT1 A 0 A_Explode(5000, 512, 1, 1, 256)
-		EXPL A 0 Radius_Quake (6, 70, 0, 512, 0)
-
-		TNT1 A 1 A_CustomMissile ("NuclearFlamesImpact", 5, 0, random (0, 360), 2, random (0, 10))//flames & A_Explode(64,500)
-		TNT1 AAAA 0 A_SpawnItemEx("SpawnedExplosionNuke", random (-600, 600), random (-600, 600), random (0, 50))//A_Explode(64,800) and flames + smoke
-		TNT1 A 1 A_CustomMissile ("NuclearFlamesImpact", 5, 0, random (0, 360), 2, random (0, 10))//flames & A_Explode(64,500)
-		TNT1 AAAA 0 A_SpawnItemEx("SpawnedExplosionNuke", random (-600, 600), random (-600, 600), random (0, 50))//A_Explode(64,800) and flames + smoke
-		TNT1 A 1 A_CustomMissile ("NuclearFlamesImpact", 5, 0, random (0, 360), 2, random (0, 10))//flames & A_Explode(64,500)
-		TNT1 AAAA 0 A_SpawnItemEx("SpawnedExplosionNuke", random (-600, 600), random (-600, 600), random (0, 50))//A_Explode(64,800) and flames + smoke
-		TNT1 A 1 A_CustomMissile ("NuclearFlamesImpact", 5, 0, random (0, 360), 2, random (0, 10))//flames & A_Explode(64,500)
-		TNT1 AAAA 0 A_SpawnItemEx("SpawnedExplosionNuke", random (-600, 600), random (-600, 600), random (0, 50))//A_Explode(64,800) and flames + smoke
-		TNT1 A 0 A_Explode(2500, 1024, 1, 1, 512)
-		EXPL A 0 Radius_Quake (3, 70, 0, 1024, 0)
-
+		TNT1 A 0 A_CustomMissile ("SpawnedExplosionNuke2", 30, 0, random (0, 360), 2, random(80, 90))//rising explosion
 		TNT1 A 4 A_SpawnItemEx("NukeFlare", 0, 0, 150)
-		TNT1 A 0 A_CustomMissile ("NukeSmoke", 150, 0, random (0, 360), 2, random(80, 90))
+		TNT1 A 0 A_PlaySound("NUKEEXP", 1)
+		TNT1 A 0 A_Explode(5120, 1024, 1, 1)
+		TNT1 AAAA 0 A_SpawnItemEx("SpawnedExplosionNuke", random (-128, 128), random (-128, 128), random (0, 64))//base explosions
+		EXPL A 0 Radius_Quake (9, 70, 0, 32, 0)
 		TNT1 A 4 A_SpawnItemEx("NukeFlare", 0, 0, 300)
-		TNT1 A 0 A_CustomMissile ("NukeSmoke", 300, 0, random (0, 360), 2, random(80, 90))
+		TNT1 A 0 A_Explode(2560, 2048, 1, 1)
+		TNT1 AAAA 0 A_SpawnItemEx("SpawnedExplosionNuke", random (-256, 256), random (-256, 256), random (0, 64))//base explosions
+		EXPL A 0 Radius_Quake (6, 70, 0, 64, 0)
 		TNT1 A 4 A_SpawnItemEx("NukeFlare", 0, 0, 450)
-		TNT1 A 0 A_CustomMissile ("NukeSmoke", 450, 0, random (0, 360), 2, random(80, 90))
+		TNT1 A 0 A_Explode(1280, 4096, 1, 1)
+		TNT1 AAAA 0 A_SpawnItemEx("SpawnedExplosionNuke", random (-384, 384), random (-384, 384), random (0, 64))//base explosions
+		EXPL A 0 Radius_Quake (3, 70, 0, 128, 0)
 		TNT1 A 4 A_SpawnItemEx("NukeFlare", 0, 0, 600)
-		TNT1 A 0 A_CustomMissile ("NukeSmoke", 600, 0, random (0, 360), 2, random(80, 90))
+		TNT1 AAAA 0 A_SpawnItemEx("SpawnedExplosionNuke", random (-512, 512), random (-512, 512), random (0, 64))//base explosions
 		TNT1 A 4 A_SpawnItemEx("NukeFlare", 0, 0, 750)
-		TNT1 A 0 A_CustomMissile ("NukeSmoke", 750, 0, random (0, 360), 2, random(80, 90))
+		TNT1 AAAA 0 A_SpawnItemEx("SpawnedExplosionNuke", random (-640, 640), random (-640, 640), random (0, 64))//base explosions
 		TNT1 A 4 A_SpawnItemEx("NukeFlare", 0, 0, 900)
-		TNT1 A 0 A_CustomMissile ("NukeSmoke", 900, 0, random (0, 360), 2, random(80, 90))
+		TNT1 AAAA 0 A_SpawnItemEx("SpawnedExplosionNuke", random (-768, 768), random (-768, 768), random (0, 64))//base explosions
 		TNT1 A 4 A_SpawnItemEx("NukeFlare", 0, 0, 1050)
-		TNT1 A 0 A_CustomMissile ("NukeSmoke", 1050, 0, random (0, 360), 2, random(80, 90))
-
+		TNT1 AAAA 0 A_SpawnItemEx("SpawnedExplosionNuke", random (-896, 896), random (-896, 896), random (0, 64))//base explosions
 		TNT1 A 4 A_SpawnItemEx("NukeFlare", 0, 0, 1200)
-		TNT1 A 0  A_CustomMissile ("NukeSmokeBig", 1200, 0, random (0, 360), 2, random(80, 90))
+		TNT1 AAAA 0 A_SpawnItemEx("SpawnedExplosionNuke", random (-1024, 1024), random (-1024, 1024), random (0, 64))//base explosions
 		TNT1 A 4 A_SpawnItemEx("NukeFlare", 0, 0, 1350)
-		TNT1 A 0  A_CustomMissile ("NukeSmokeBig", 1350, 0, random (0, 360), 2, random(80, 90))
 		TNT1 A 4 A_SpawnItemEx("NukeFlare", 0, 0, 1500)
-		TNT1 A 0  A_CustomMissile ("NukeSmokeBig", 1500, 0, random (0, 360), 2, random(80, 90))
+		TNT1 A 4 A_SpawnItemEx("NukeFlare", 0, 0, 1650)
 		TNT1 A 70
 		Stop
 	}

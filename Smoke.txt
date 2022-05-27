@@ -33,7 +33,7 @@ ACTOR ExplosionSmoke
 	Death:
 		TNT1 A 0
 		Stop
-	Stap:		
+	Stap:
 		TNT1 A 0
 		Stop
     }
@@ -61,7 +61,7 @@ Speed 1
 	Death:
 	    TNT1 A 0
 		Stop
-	Stap:		
+	Stap:
 		TNT1 A 0
 		Stop
     }
@@ -82,7 +82,7 @@ ACTOR BigSmokes: ExplosionSmoke
 	Death:
 		SMK3 B 100
 		SMK3 CDEFGHIJKLM 1
-		
+
 Stop
     }
 }
@@ -99,11 +99,11 @@ States
     Spawn:
         TNT1 A 2
         Goto Death
-	Death:                                                          
+	Death:
         PUF2 EEFGHIJK 2 A_FadeOut(0.010)
         TNT1 A 0 A_SpawnItem ("PlasmaSmoke")
         PUF2 LMNOPQRSTUVWXYZ 2 A_FadeOut(0.010)
-		
+
 Stop
 }
 }
@@ -126,7 +126,7 @@ Actor BigNeoSmoke: HeavyExplosionSmoke
 	Death:
 	    TNT1 A 0
     Stop
-	Stap:		
+	Stap:
 	TNT1 A 0
 	Stop
 }
@@ -197,9 +197,9 @@ States
     Spawn:
         PUF2 A 1
         Goto Death
-	Death:                                                          
+	Death:
         PUF2 ABCDEFGHIJKLMNOPQRSTUVWXYZ 2 A_FadeOut(0.010)
-		
+
 Stop
     }
 }
@@ -229,7 +229,7 @@ Renderstyle Translucent
 Alpha 0.4
 States
     {
-    Spawn:  
+    Spawn:
 	    TNT1 A 0
 		TNT1 A 0 A_Jump(128, 2)
 		TNT1 A 0 A_SetScale(-1.2, 1.2)
@@ -265,12 +265,12 @@ Speed 1
 Scale 0.2
 States
     {
-    Spawn:  
+    Spawn:
 	    TNT1 A 2
         SMK3 BCDEFGHIJKKLLMMNN 2
 		SMK3 NN 1 A_FadeOut(0.05)
 		Stop
-		
+
 Stop
 }
 }
@@ -284,12 +284,12 @@ Speed 1
 Scale 0.4
 States
     {
-    Spawn:  
+    Spawn:
 	    TNT1 A 0
         SMK3 BBBBBBCDEFGHIJKKLLMMN 2
 		SMK3 NNNN 1 A_FadeOut(0.05)
 		Stop
-		
+
 Stop
 }
 }
@@ -302,12 +302,12 @@ Speed 1
 Scale 0.2
 States
     {
-    Spawn:  
+    Spawn:
 	    TNT1 A 2
         SMK6 BCDEFGHIJKKLLMMNNNNNN 1
 		SMK6 NNNN 1 A_FadeOut(0.1)
 		Stop
-		
+
 Stop
 }
 }
@@ -329,15 +329,15 @@ Renderstyle Translucent
 Alpha 0.4
 States
     {
-    Spawn:  
+    Spawn:
 	    TNT1 A 0
 		TNT1 A 0 A_Jump(128, 2)
 		TNT1 A 0 A_SetScale(-0.7, -0.7)
 		TNT1 A 0
         SMOK ABCDEFGHIJKLMNOPQ 1
 		Stop
-		
-		
+
+
 Stop
 }
 }
@@ -350,15 +350,15 @@ Scale 3.0
 Speed 1
 States
     {
-    Spawn:  
+    Spawn:
 	    TNT1 A 0
 		TNT1 A 0 A_Jump(128, 2)
 		TNT1 A 0 A_SetScale(-3.5, -3.0)
 		TNT1 A 0
         SMOK ABCDEFGHIJKLMNOPQ 3
 		Stop
-		
-		
+
+
 Stop
 }
 }
@@ -370,35 +370,35 @@ Scale 5.0
 Speed 1
 States
     {
-    Spawn:  
+    Spawn:
 	    TNT1 A 0
 		TNT1 A 0 A_Jump(128, 2)
 		TNT1 A 0 A_SetScale(-6.0, -5.0)
 		TNT1 A 0
         SMOK ABCDEFGHIJKLMNOPQ 5
 		Stop
-		
+
 }
 }
 
 
 Actor NukeSmoke: HitpuffSmoke
 {
-Scale 6.0
-Speed 1
-Alpha 0.1
-+SKYEXPLODE
-+FORCEXYBILLBOARD
-States
+	XScale 9.0
+	YScale 6.0
+	Speed 1
+	Alpha 0.1
+	+SKYEXPLODE
+	+FORCEXYBILLBOARD
+	States
     {
-    Spawn:  
-	    SMk2 AAAAAAAAAAAA 2 A_FadeIn(0.05)
+    Spawn:
+	    SMk2 AAAAAAAAAA 2 A_FadeIn(0.05)
 		SMk2 A 600
-	Death:	
-		SMk2 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 20 A_FadeOut(0.02)
+	Death:
+		SMk2 AAAAAAAAAAAAAAAAAAAAAAAAA 20 A_FadeOut(0.02)
 		Stop
-		
-}
+	}
 }
 
 
@@ -607,14 +607,14 @@ ACTOR BarrelExplosionSmokeColumn
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Stap")
 		SB17 ABCDEFG 3
 		SB17 ABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFG 3
-		
+
 		SB17 ABCDEFG 3 A_SetScale(1.6, 0.8)
 		SB17 ABCDEFG 3 A_SetScale(1.1, 0.7)
 		SB17 ABCDEFG 3 A_SetScale(1.0, 0.6)
 		SB17 ABCDEFG 3 A_SetScale(0.6, 0.4)
 		SB17 ABCDEFG 3 A_SetScale(0.4, 0.2)
 		Stop
-Stap:		
+Stap:
 TNT1 A 0
 Stop
     }
@@ -660,11 +660,11 @@ ACTOR MicroSmokeColumn: BarrelExplosionSmokeColumn
     Spawn:
 		SB17 ABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFG 3
 		TNT1 A 0 A_SetScale(0.16, 0.16)
-		SB17 ABCDEFG 3 
+		SB17 ABCDEFG 3
 		TNT1 A 0 A_SetScale(0.13, 0.13)
-		SB17 ABCDEFG 3 
+		SB17 ABCDEFG 3
 		TNT1 A 0 A_SetScale(0.10, 0.10)
-		SB17 ABCDEFG 3 
+		SB17 ABCDEFG 3
 		TNT1 A 0 A_SetScale(0.06, 0.06)
 		SB17 ABCDEFG 3
 		Stop
@@ -675,9 +675,9 @@ ACTOR ExplosionSimpleSmokeColumn2: ExplosionSimpleSmokeColumn
 {
    +NOGRAVITY
 }
-	
-	
-	
+
+
+
 ACTOR BigBlackSmoke
 {
     +NOBLOCKMAP
@@ -714,7 +714,7 @@ ACTOR BigBlackSmoke
 	Death:
 	    TNT1 A 0
     Stop
-Stap:		
+Stap:
 TNT1 A 0
 Stop
     }
@@ -739,7 +739,7 @@ ACTOR BigBlackSmokeLarger: BigBlackSmoke
 	Death:
 	    TNT1 A 0
     Stop
-Stap:		
+Stap:
 TNT1 A 0
 Stop
 }
@@ -760,7 +760,7 @@ ACTOR BigBlackSmokePillar: BigBlackSmoke
 		SMK5 BCDEFGHIJ 4
 	    TNT1 A 0
     Stop
-	Stap:		
+	Stap:
 	TNT1 A 0
 	Stop
     }
@@ -792,7 +792,7 @@ Scale 0.3
 	Death:
 	    TNT1 A 0
     Stop
-Stap:		
+Stap:
 TNT1 A 0
 Stop
     }
@@ -807,7 +807,7 @@ Scale 0.3
 
 ACTOR GunBarrelSmoke: ExplosionSmoke
 {
- 
+
 	Alpha 0.01
 	RenderStyle Add
 	XScale 0.12
@@ -825,7 +825,7 @@ ACTOR GunBarrelSmoke: ExplosionSmoke
 	Death:
 		TNT1 A 0
 		Stop
-	Stap:		
+	Stap:
 		TNT1 A 0
 		Stop
     }
