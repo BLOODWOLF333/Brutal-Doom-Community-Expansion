@@ -1652,7 +1652,7 @@ ACTOR RealisticFireSparksTemp: RealisticFireSparks1
 		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
         Loop
 	Extinguish:
-	TNT1 A 0
+	TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 30, 0, random (0, 360), 2, random (70, 110))
 	Stop
 	}
 }
@@ -1970,11 +1970,11 @@ ACTOR TinyBurningPieceTemp: TinyBurningPiece
 	Spawn:
 	TNT1 A 0 A_JumpIfInventory("BrutalCounter",22,"Extinguish")
 	TNT1 A 0 A_Explode(4, 60)
-	CFCF ABCDEFGHIJKLABCDEFGHIJKLABCDEFGHIJKLABCDEFGHIJKL 2 BRIGHT
+	CFCF ABCDEFGHIJKLABCDEFGHIJKL 2 BRIGHT
 	TNT1 A 0 A_GiveInventory("BrutalCounter",1)
 	Loop
 	Extinguish:
-	TNT1 A 0
+	TNT1 A 0 A_SpawnItem("BarrelExplosionSmokeColumn")
 	Stop
     }
 }
