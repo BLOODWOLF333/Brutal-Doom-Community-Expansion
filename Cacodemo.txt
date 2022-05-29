@@ -483,7 +483,7 @@ ACTOR Shoque
 	Game Doom
 	Radius 1
 	Height 1
-	Speed 2
+	Speed 3
 	Damage 0
     +NOBLOCKMAP
     +NOTELEPORT
@@ -491,15 +491,15 @@ ACTOR Shoque
 	+MISSILE
 	+FORCEXYBILLBOARD
     +CLIENTSIDEONLY
+	+NOGRAVITY
 	RenderStyle Add
-    Scale 0.7
-	Gravity 0
+    Scale 1.0
 	Alpha 0.5
 	States
 	{
     Spawn:
         TNT1 A 1
-        SHOQ ABCDEFG 1 BRIGHT
+        SHOQ ABCDEFG 2 BRIGHT
         Stop
 	}
 }
@@ -517,9 +517,10 @@ ACTOR ShoqueAzul
 	+MISSILE
 	+FORCEXYBILLBOARD
     +CLIENTSIDEONLY
+	+NOGRAVITY
 	RenderStyle Add
     Scale 1.0
-	Gravity 0
+	Alpha 0.5
 	States
 	{
     Spawn:
