@@ -1180,7 +1180,6 @@ ACTOR DyingSergeantNoLeg
 		Loop
 
 		See:
-		TNT1 A 0 A_PlaySound ("BURNZOM",4)
 		SMAM ABAB 10 A_Wander
 		SMAM A 9 A_Pain
 		TNT1 A 0 A_SpawnItemEx("Brutal_FlyingBlood", 0, 0, 10, 0, 0)
@@ -3893,43 +3892,25 @@ ACTOR DyingComando
 	States
 	{
 	Spawn:
-		CFTB AB 10
+		CFTB AB 16
 		Goto Suffer
 
 	Suffer:
         TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
         TNT1 A 0 A_Pain
-	    CFTB AB 12
+	    CFTB AB 16
         TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
         TNT1 A 0 A_Pain
-	    CFTB AB 12
+	    CFTB AB 16
         TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
         TNT1 A 0 A_Pain
-	    CFTB AB 12
+	    CFTB AB 16
         TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
         TNT1 A 0 A_Pain
-	    CFTB AB 12
+	    CFTB AB 16
         TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
         TNT1 A 0 A_Pain
-	    CFTB AB 12
-        TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
-        TNT1 A 0 A_Pain
-	    CFTB AB 11
-        TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
-        TNT1 A 0 A_Pain
-	    CFTB AB 11
-        TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
-        TNT1 A 0 A_Pain
-	    CFTB AB 11
-        TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
-        TNT1 A 0 A_Pain
-	    CFTB AB 11
-        TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
-        TNT1 A 0 A_Pain
-	    CFTB AB 11
-        TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
-        TNT1 A 0 A_Pain
-	    CFTB AB 11
+	    CFTB AB 16
 		Goto Dead
 
 	Dead:
