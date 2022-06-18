@@ -1977,8 +1977,6 @@ ACTOR ZombiemanGotHisLegBlowed: DyingZombiemanNoArm
 
 		LEaveCrawling:
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_StopSound(4)
-		TNT1 A 0 A_PlaySound ("grunt/death")
 		TNT1 A 0 A_SpawnItem ("DyingZombieMan")
 		Stop
 
@@ -2302,7 +2300,6 @@ ACTOR SergeantGotHisLegBlowed: DyingZombiemanNoArm
 
 	LEaveCrawling:
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_StopSound(4)
 		TNT1 A 0 A_SpawnItem ("DyingSergeantNoLeg")
 		Stop
 
@@ -3892,30 +3889,32 @@ ACTOR DyingComando
 	States
 	{
 	Spawn:
-		CFTB AB 16
+		CFTB AB 10
 		Goto Suffer
 
 	Suffer:
         TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
-        TNT1 A 0 A_Pain
-	    CFTB AB 16
+		TNT1 A 0 A_Pain
+	    CFTB AB 10
         TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
-        TNT1 A 0 A_Pain
-	    CFTB AB 16
+		TNT1 A 0 A_Pain
+	    CFTB AB 10
         TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
-        TNT1 A 0 A_Pain
-	    CFTB AB 16
+		TNT1 A 0 A_Pain
+	    CFTB AB 10
         TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
-        TNT1 A 0 A_Pain
-	    CFTB AB 16
+		TNT1 A 0 A_Pain
+	    CFTB AB 10
         TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
-        TNT1 A 0 A_Pain
-	    CFTB AB 16
+		TNT1 A 0 A_Pain
+	    CFTB AB 10
+		TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_Playsound("grunt/death")
 		Goto Dead
 
 	Dead:
-		CFTB C 1
-		TNT1 A 1 A_SpawnItem ("BrutalizedDeadChaingunGuy", 3)
+		CFTB C 1 A_NoBlocking
+		TNT1 A 0 A_SpawnItem ("BrutalizedDeadChaingunGuy", 3)
 		Stop
 
 	Death:
@@ -3923,13 +3922,6 @@ ACTOR DyingComando
 		TNT1 AAAAAAAAAA 0 A_CustomMissile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_CustomMissile ("Xdeath1", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 1 A_SpawnItem ("SuperBrutalizedDeadChaingunGuy", 3)
-		Stop
-
-	XDeath:
-		//TNT1 A 0 A_SpawnItemEx ("XDeathChainHead", 50, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("ChainXDeath", 0, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAAA 0 A_CustomMissile ("MuchBlood2", 50, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
 		Stop
 	}
 }
