@@ -527,14 +527,23 @@ ACTOR Brutal_BloodSpot
 		 TNT1 A 0
 		 TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		 TNT1 A 1
-
 		 TNT1 A 0 A_CheckFloor("SpawnNormally")
 		 Goto Splash
 
 	  SpawnNormally:
-			TNT1 A 0
-			TNT1 A 0 A_QueueCorpse
-			TNT1 A 0 A_Jump(255, "SpawnBFrameOnly", "SpawnCFrameOnly", "SpawnDFrameOnly")
+		TNT1 A 0
+		TNT1 A 0 A_QueueCorpse
+		TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckIfOverLiquid")
+		TNT1 A 4
+		TNT1 A 0 A_JumpIfInventory("IsOverBlood", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverTar", 1, "IsOverLiquid")
+        TNT1 A 4
+		TNT1 A 0 A_SpawnItemEx ("BootSmearerRed",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_Jump(255, "SpawnBFrameOnly", "SpawnCFrameOnly", "SpawnDFrameOnly")
 		SpawnAFrameOnly:
 			BPDL A 800
 			TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
@@ -621,10 +630,12 @@ ACTOR WaterBloodCHecker
         TNT1 A 0
 		TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckIfOverLiquid")
 		TNT1 A 5
+		TNT1 A 0 A_JumpIfInventory("IsOverBlood", 1, "IsOverLiquid")
 		TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "IsOverLiquid")
 		TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "IsOverLiquid")
 		TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "IsOverLiquid")
 		TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverTar", 1, "IsOverLiquid")
         TNT1 A 10
         Stop
 
@@ -670,21 +681,18 @@ actor GiantBloodSpot: Brutal_BloodSpot
  {
 	Spawn:
 		TNT1 A 0
-		TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckIfOverLiquid")//Check Floortype
-		TNT1 A 3
-		TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "Disappear")
-		TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "Disappear")
-		TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "Disappear")
-		TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "Disappear")
-		TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "Disappear")
-		TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "Disappear")
-		TNT1 A 0 A_SpawnItemEx ("BootSmearerRed",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 0 A_QueueCorpse
+		TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckIfOverLiquid")
+		TNT1 A 4
+		TNT1 A 0 A_JumpIfInventory("IsOverBlood", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverTar", 1, "IsOverLiquid")
+        TNT1 A 4
+		TNT1 A 0 A_SpawnItemEx ("BootSmearerRed",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		Goto SpawnAFrameOnly
-
-	Disappear:
-		TNT1 A 0
-		Stop
 	}
 }
 
@@ -1105,21 +1113,41 @@ ACTOR BloodDripingFromCeiling: Brutal_FlyingBlood
 	Gravity 1.0
 	Radius 2
 	Height 1
-     States
-		{
-		 Spawn:
-		   TNT1 A 0
-		   TNT1 A 0 A_Jump(230, "NoSpawn")
-		   TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-		   BLUD Z 500
-		   loop
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(230, "NoSpawn")
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+		BLUD Z 500
+		loop
 
-		  Death:
-			 TNT1 A 0
-			 TNT1 A 0 A_PlaySound("blooddrop2")
-			 XDT1 EFGHIJKL 2
-			 stop
-		}
+	Death:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("blooddrop2")
+		XDT1 EFGHIJKL 2
+		TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckIfOverLiquid")
+		TNT1 A 4
+		TNT1 A 0 A_JumpIfInventory("IsOverBlood", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverTar", 1, "IsOverLiquid")
+        TNT1 A 4
+        Stop
+
+	IsOverLiquid:
+		TNT1 A 0
+		TNT1 A 0 A_CheckFloor("SpawnOnWater")
+		TNT1 A 4
+		Stop
+
+	SpawnOnWater:
+		TNT1 A 0
+		TNT1 A 4 A_SpawnItem ("WaterBloodSpot", 5)
+		Stop
+	}
 }
 
 Actor DripingBlood: BloodDripingFromCeiling {Alpha 0.9 Scale 1.0}
@@ -1132,17 +1160,37 @@ ACTOR BloodDripingFromCeilingBig: BloodDripingFromCeiling
 	Gravity 0.8
     States
     {
-     Spawn:
-       TNT1 A 0
-	   TNT1 A 0 A_Jump(160, "NoSpawn")
-       TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-       BLUD Z 500
-       loop
-	 Death:
-		 TNT1 A 0
-		 TNT1 A 0 A_PlaySound("blooddrop2")
-		 XDT1 EFGHIJKL 2
-		 stop
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(160, "NoSpawn")
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+		BLUD Z 500
+	loop
+	Death:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("blooddrop2")
+		XDT1 EFGHIJKL 2
+		TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckIfOverLiquid")
+		TNT1 A 4
+		TNT1 A 0 A_JumpIfInventory("IsOverBlood", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverTar", 1, "IsOverLiquid")
+        TNT1 A 4
+        Stop
+
+	IsOverLiquid:
+		TNT1 A 0
+		TNT1 A 0 A_CheckFloor("SpawnOnWater")
+		TNT1 A 4
+		Stop
+
+	SpawnOnWater:
+		TNT1 A 0
+		TNT1 A 4 A_SpawnItem ("WaterBloodSpot", 5)
+		Stop
     }
 }
 
@@ -1155,7 +1203,7 @@ ACTOR DripingBloodLeavesPool: BloodDripingFromCeiling
     States
     {
      Spawn:
-       TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
         BLUD Z 4
         loop
 	Splash:
@@ -1163,10 +1211,30 @@ ACTOR DripingBloodLeavesPool: BloodDripingFromCeiling
         stop
      Death:
 	    TNT1 A 0
-		TNT1 A 0 A_SpawnItem("MediumBloodSpot")
 		TNT1 A 0 A_PlaySound("blooddrop2")
-        XDT1 EFGHIJKL 2
-        stop
+		XDT1 EFGHIJKL 2
+        TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckIfOverLiquid")
+		TNT1 A 4
+		TNT1 A 0 A_JumpIfInventory("IsOverBlood", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverTar", 1, "IsOverLiquid")
+        TNT1 A 4
+        Stop
+
+	IsOverLiquid:
+		TNT1 A 0
+		TNT1 A 0 A_CheckFloor("SpawnOnWater")
+		TNT1 A 4
+		TNT1 A 0 A_SpawnItem("MediumBloodSpot")
+		Stop
+
+	SpawnOnWater:
+		TNT1 A 0
+		TNT1 A 4 A_SpawnItem ("WaterBloodSpot", 5)
+		Stop
     }
 }
 
@@ -1179,10 +1247,30 @@ States
 {
      Death:
 	    TNT1 A 0
-		TNT1 A 0 A_SpawnItem("MinuscleBloodSpot")
 		TNT1 A 0 A_PlaySound("blooddrop2")
         XDT1 EFGHIJKL 2
-        stop
+        TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckIfOverLiquid")
+		TNT1 A 4
+		TNT1 A 0 A_JumpIfInventory("IsOverBlood", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverTar", 1, "IsOverLiquid")
+        TNT1 A 4
+        Stop
+
+	IsOverLiquid:
+		TNT1 A 0
+		TNT1 A 0 A_CheckFloor("SpawnOnWater")
+		TNT1 A 4
+		TNT1 A 0 A_SpawnItem("MinuscleBloodSpot")
+		Stop
+
+	SpawnOnWater:
+		TNT1 A 0
+		TNT1 A 4 A_SpawnItem ("WaterBloodSpot", 5)
+		Stop
     }
 }
 
