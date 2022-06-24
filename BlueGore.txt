@@ -814,13 +814,13 @@ Decal BlueBloodSplat
 		TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "IsOverLiquid")
 		TNT1 A 0 A_JumpIfInventory("IsOverTar", 1, "IsOverLiquid")
         TNT1 A 4
+		TNT1 A 0 A_SpawnItem("BlueMediumBloodSpot")
         Stop
 
 	IsOverLiquid:
 		TNT1 A 0
 		TNT1 A 0 A_CheckFloor("SpawnOnWater")
 		TNT1 A 4
-		TNT1 A 0 A_SpawnItem("BlueMediumBloodSpot")
 		Stop
 
 	SpawnOnWater:
@@ -850,13 +850,13 @@ States
 		TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "IsOverLiquid")
 		TNT1 A 0 A_JumpIfInventory("IsOverTar", 1, "IsOverLiquid")
         TNT1 A 4
+		TNT1 A 0 A_SpawnItem("BlueMinuscleBloodSpot")
         Stop
 
 	IsOverLiquid:
 		TNT1 A 0
 		TNT1 A 0 A_CheckFloor("SpawnOnWater")
 		TNT1 A 4
-		TNT1 A 0 A_SpawnItem("BlueMinuscleBloodSpot")
 		Stop
 
 	SpawnOnWater:
