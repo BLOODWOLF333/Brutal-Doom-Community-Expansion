@@ -247,25 +247,28 @@ ACTOR Blue_BloodSpot: Brutal_Bloodspot
 		TNT1 A 0 A_QueueCorpse
 		TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckIfOverLiquid")
 		TNT1 A 4
-		TNT1 A 0 A_JumpIfInventory("IsOverBlood", 1, "IsOverLiquid")
-		TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "IsOverLiquid")
-		TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "IsOverLiquid")
-		TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "IsOverLiquid")
-		TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "IsOverLiquid")
-		TNT1 A 0 A_JumpIfInventory("IsOverTar", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverBlood", 1, "Death")
+		TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "Death")
+		TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "Death")
+		TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "Death")
+		TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "Death")
+		TNT1 A 0 A_JumpIfInventory("IsOverTar", 1, "Death")
+		TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "Death")
+		TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "Death")
+		TNT1 A 0 A_JumpIfInventory("IsOverYava", 1, "Death")
         TNT1 A 4
 		TNT1 A 0 A_SpawnItemEx ("BootSmearerBlue",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 0 A_Jump(255, "SpawnBFrameOnly", "SpawnCFrameOnly", "SpawnDFrameOnly")
 		SpawnAFrameOnly:
 			BPDL A 800
 			TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
-			TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
+			TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Death")
 			Loop
 
 		  SpawnBFrameOnly:
 			BPDL B 800
 			TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
-			TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
+			TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Death")
 			Loop
 
 		  FadeA:
@@ -279,13 +282,13 @@ ACTOR Blue_BloodSpot: Brutal_Bloodspot
 		  SpawnCFrameOnly:
 			BPDL C 800
 			TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
-			TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
+			TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Death")
 			Loop
 
 		  SpawnDFrameOnly:
 			BPDL D 800
 			TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
-			TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
+			TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Death")
 			Loop
 
 		  FadeC:
@@ -304,17 +307,6 @@ ACTOR Blue_BloodSpot: Brutal_Bloodspot
 			TNT1 A 0
 			TNT1 A 0 A_NoBlocking
 			Stop
-
-		IsOverLiquid:
-			BPDL E 1 A_FadeOut(0.9)
-			BPDL EEEEEEEEEEEEEEEEEEEE 4 A_FadeIn(0.05)
-			BPDL E 400
-			BPDL EEEEEEEEEEEEEEEEEEEE 4 A_FadeOut(0.05)
-			Stop
-
-	DoNothing:
-		TNT1 A 0
-		Stop
 	}
 }
 
@@ -384,12 +376,15 @@ States
 		TNT1 A 0 A_QueueCorpse
 		TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckIfOverLiquid")
 		TNT1 A 4
-		TNT1 A 0 A_JumpIfInventory("IsOverBlood", 1, "IsOverLiquid")
-		TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "IsOverLiquid")
-		TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "IsOverLiquid")
-		TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "IsOverLiquid")
-		TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "IsOverLiquid")
-		TNT1 A 0 A_JumpIfInventory("IsOverTar", 1, "IsOverLiquid")
+		TNT1 A 0 A_JumpIfInventory("IsOverBlood", 1, "Death")
+		TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "Death")
+		TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "Death")
+		TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "Death")
+		TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "Death")
+		TNT1 A 0 A_JumpIfInventory("IsOverTar", 1, "Death")
+		TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "Death")
+		TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "Death")
+		TNT1 A 0 A_JumpIfInventory("IsOverYava", 1, "Death")
         TNT1 A 4
 		TNT1 A 0 A_SpawnItemEx ("BootSmearerBlue",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		Goto SpawnAFrameOnly
@@ -425,16 +420,21 @@ Decal BlueBloodSplat
     TNT1 A 0
     TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckIfOverLiquid")//Check if is under a liquid
 	TNT1 A 4
-    TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "BlueWaterBloodSpot")
-	TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "BlueWaterBloodSpot")
-	TNT1 A 0 A_JumpIfInventory("IsOverlava", 1, "BlueWaterBloodSpot")
-	TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "BlueWaterBloodSpot")
+    TNT1 A 0 A_JumpIfInventory("IsOverBlood", 1, "BlueWaterBloodSpot")
+		TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "BlueWaterBloodSpot")
+		TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "BlueWaterBloodSpot")
+		TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "BlueWaterBloodSpot")
+		TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "BlueWaterBloodSpot")
+		TNT1 A 0 A_JumpIfInventory("IsOverTar", 1, "BlueWaterBloodSpot")
+		TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "Death")
+		TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "Death")
+		TNT1 A 0 A_JumpIfInventory("IsOverYava", 1, "Death")
 	TNT1 A 0 A_SpawnItemEx ("BootSmearerGreen",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	TNT1 A 0 A_QueueCorpse
   Rest:
 	BPDL A 800
 	TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
-	TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
+	TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Death")
 	Loop
 
  BlueWaterBloodSpot:
