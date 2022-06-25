@@ -609,7 +609,7 @@ ACTOR BrutalWeapon : DoomWeapon
 	Execution1:
 		KICK BCD 1
 		TNT1 A 0 A_GiveInventory("Kicking",1)
-		RIFF A 0 A_FireCustomMissile("ExecutionAttackKick", 0, 0, 0, -17)
+		RIFF A 0 A_FireCustomMissile("ExecutionAttackKick", 0, 0, 0, -7)
         KICK H 5
 		KICK I 1
 		KICK GFEDCBA 1
@@ -618,46 +618,46 @@ ACTOR BrutalWeapon : DoomWeapon
 
 	Execution2:
 		TNT1 A 0
-		PONG B 1 Thing_Stop(0)
+		PONG B 1 A_Stop
         PONG C 1 A_PlaySound("skeleton/swing")
 		TNT1 A 0 A_GiveInventory("Punching",1)
 		PONG D 1 A_FireCustomMissile("ExecutionAttackMelee", 0, 0, 0, 0)
-		PONG E 3 Thing_Stop(0)
-		PONG DCB 2 Thing_Stop(0)
-		PUN3 A 1 Thing_Stop(0)
+		PONG E 3 A_Stop
+		PONG DCB 2 A_Stop
+		PUN3 A 1 A_Stop
         PUN3 B 1 A_PlaySound("skeleton/swing")
 		TNT1 A 0 A_GiveInventory("Punching",1)
 		PUN3 C 1 A_FireCustomMissile("ExecutionAttackMelee", 0, 0, 0, 0)
-		PUN3 E 3 Thing_Stop(0)
-		PUN3 CBA 2 Thing_Stop(0)
+		PUN3 E 3 A_Stop
+		PUN3 CBA 2 A_Stop
 
-		PONG B 1 Thing_Stop(0)
+		PONG B 1 A_Stop
         PONG C 1 A_PlaySound("skeleton/swing")
 		TNT1 A 0 A_GiveInventory("Punching",1)
 		PONG D 1 A_FireCustomMissile("ExecutionAttackMelee", 0, 0, 0, 0)
-		PONG E 3 Thing_Stop(0)
-		PONG DCB 2 Thing_Stop(0)
-		PUN3 A 1 Thing_Stop(0)
+		PONG E 3 A_Stop
+		PONG DCB 2 A_Stop
+		PUN3 A 1 A_Stop
         PUN3 B 1 A_PlaySound("skeleton/swing")
 		TNT1 A 0 A_GiveInventory("Punching",1)
 		PUN3 C 1 A_FireCustomMissile("ExecutionAttackMelee", 0, 0, 0, 0)
-		PUN3 E 3 Thing_Stop(0)
-		PUN3 CBA 2 Thing_Stop(0)
+		PUN3 E 3 A_Stop
+		PUN3 CBA 2 A_Stop
 
-		PONG B 1 Thing_Stop(0)
+		PONG B 1 A_Stop
         PONG C 1 A_PlaySound("skeleton/swing")
 		TNT1 A 0 A_GiveInventory("Punching",1)
 		PONG D 1 A_FireCustomMissile("ExecutionAttackMelee", 0, 0, 0, 0)
-		PONG E 3 Thing_Stop(0)
-		PONG DCB 2 Thing_Stop(0)
-		PUN3 A 1 Thing_Stop(0)
+		PONG E 3 A_Stop
+		PONG DCB 2 A_Stop
+		PUN3 A 1 A_Stop
         PUN3 B 1 A_PlaySound("skeleton/swing")
 		TNT1 A 0 A_GiveInventory("Punching",1)
 		PUN3 C 1 A_FireCustomMissile("ExecutionAttackMelee", 0, 0, 0, 0)
-		PUN3 E 3 Thing_Stop(0)
-		PUN3 CBA 2 Thing_Stop(0)
+		PUN3 E 3 A_Stop
+		PUN3 CBA 2 A_Stop
 
-		TNT1 A 5 Thing_Stop(0)
+		TNT1 A 5 A_Stop
 		Goto FinishExecution
 
 	FinishExecution:
