@@ -1357,15 +1357,15 @@ ACTOR PoorLostSoul
 {
 	Radius 16
 	Height 8
-	Speed 22
-    Fastspeed 26
+	Speed 20
+    Fastspeed 25
 	Damage 15
 	Projectile
     Scale 1.0
 	+FORCEXYBILLBOARD
     DamageType Fire
-ExplosionRadius 70
-ExplosionDamage 50
+	ExplosionRadius 70
+	ExplosionDamage 50
 	Alpha 1
 	SeeSound "skull/melee"
 	DeathSound "fatso/shotx"
@@ -1376,19 +1376,18 @@ ExplosionDamage 50
         LSOL B 2 BRIGHT A_SpawnItem("RedFlare",0,0)
 		Loop
 	Death:
-
-		LSOL F 2 BRIGHT
-		LSOL G 2 BRIGHT
-		TNT1 A 0 A_Explode
+	LSOL F 2 BRIGHT
+	LSOL G 2 BRIGHT
+	TNT1 A 0 A_Explode
 	EXPL AAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("FlameTrails", 6, 0, random (0, 360), 2, random (0, 360))
-		EXPL A 0 A_SpawnItemEx("ExplosionParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 0)
-    TNT1 AAA 0 A_CustomMissile ("LSpart1", 42, 0, random (0, 360), 2, random (0, 160))
-    TNT1 A 0 A_CustomMissile ("LSpart3", 42, 0, random (0, 360), 2, random (0, 160))
-    TNT1 AAAA 0 A_CustomMissile ("LSpart2", 42, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0
-        LSOL HI 6
-		Stop
-		Stop
+	EXPL A 0 A_SpawnItemEx("ExplosionParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 0)
+	TNT1 AAA 0 A_CustomMissile ("LSpart1", 42, 0, random (0, 360), 2, random (0, 160))
+	TNT1 A 0 A_CustomMissile ("LSpart3", 42, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AAAA 0 A_CustomMissile ("LSpart2", 42, 0, random (0, 360), 2, random (0, 160))
+	TNT1 A 0
+	LSOL HI 6
+	Stop
+	Stop
 	}
 }
 
@@ -1396,8 +1395,8 @@ ACTOR ThrowedBarrel
 {
 	Radius 6
 	Height 8
-	Speed 32
-    Fastspeed 32
+	Speed 20
+    Fastspeed 25
 	Damage 55
 	+MISSILE
 	Gravity 0.6
@@ -1413,19 +1412,26 @@ ACTOR ThrowedBarrel
 		Loop
 
     Death:
-        TNT1 A 0 A_AlertMonsters
-        TNT1 A 0 A_SpawnItemEx ("BarrelExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_Scream
+		TNT1 A 1 BRIGHT A_Explode(200,200)
+		TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)//floor decal
+	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)//ceil decal
+		TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)//lense flares
+        TNT1 A 0 A_SpawnItem("WhiteShockwaveBig")//white ring effect
 		TNT1 A 0 A_SpawnItemEx ("BarrelKaboom",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 AAAAAAA 0 A_CustomMissile ("ExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
-        TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
-        TNT1 AAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 180), 2, random (0, 180))
-	    EXPL A 0 Radius_Quake (2, 24, 0, 15, 0)
-		BEXP B 0 BRIGHT A_Scream
-
-		//TNT1 AAAAAAA 0 A_CustomMissile ("BarrelParticle", 35, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_PlaySound("FAREXPL", 3)
-
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 4 A_CustomMissile ("ExplosionSmoke", 1, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 1 BRIGHT Radius_Quake (2, 24, 0, 15, 0)
+		TNT1 A 0 A_CustomMissile ("HighExplosiveFlames", random (10, 20), 0, random (0, 360), 2, random (10, 90))
+		TNT1 A 0 A_CustomMissile ("BDExplosionparticles3", 64, 0, random (0, 360), 2, random (40, 90))
+		TNT1 A 0 A_CustomMissile ("BDExplosionparticles4", 64, 0, random (0, 360), 2, random (40, 90))
+		TNT1 A 1 BRIGHT A_PlaySound("FAREXPL", 3)
+		TNT1 A 0 A_CustomMissile ("BarrelShrapnel1", 20, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("BarrelShrapnel2", 15, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("BarrelShrapnel3", 10, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("BarrelShrapnel4", 5, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 1 BRIGHT A_SpawnItemEx ("ExplosionSplashSpawner", 0, 0, 0)
+		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece", 0,0,5,random (-15, 15), random (-15, 15), random (-15, 15))
+		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece2", 0,0,10,random (-15, 15), random (-15, 15), random (-15, 15))
+		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", 0,0,15,random (-15, 15), random (-15, 15), random (-15, 15))
 		Stop
 	}
 }
@@ -1520,11 +1526,11 @@ ACTOR MeleeStrike1: KickAttack//Jab
 {
 DamageType Melee
 Damage (random(10,10))
-Speed 32
+Speed 20
 States
 {
 	Spawn:
-		TNT1 A 1 BRIGHT
+		TNT1 AA 1 BRIGHT
 		Stop
 	Death:
 	    TNT1 A 0
@@ -1580,7 +1586,7 @@ ACTOR BerserkGrabAttack: KickAttack
 	+NOPAIN
 	+THRUGHOST
 	+GHOST
-	Speed 24
+	Speed 20
 	Radius 16
 	Height 16
 	States
@@ -1602,7 +1608,7 @@ DamageType Use
 +GHOST
 -ACTIVATEIMPACT
 +BLOODLESSIMPACT
-Speed 16
+Speed 20
 States
 {
 Death:
@@ -1619,10 +1625,11 @@ ACTOR ExecutionAttackKick: KickAttack
 	-ACTIVATEPCROSS
 	-ACTIVATEMCROSS
 	-CANUSEWALLS
-	Speed 60
+	Speed 24
 	States
 	{
 	Death:
+	XDeath:
 		    PUFF A 0 A_PlaySound("player/cyborg/fist")
 			TNT1 A 0 A_Explode(10, 10, 0)
 			EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
@@ -1634,7 +1641,7 @@ ACTOR ExecutionAttackKick: KickAttack
 ACTOR StealthAttack: KickAttack
 {
     Damage (random(2,2))
-	speed 16
+	speed 20
 	DamageType Stealth
 	-ACTIVATEIMPACT
 	-ACTIVATEPCROSS
@@ -1681,7 +1688,7 @@ ACTOR ExecutionFrontWallDetect: ExecutionAttackKick
 	+THRUACTORS
 	Radius 2
 	Height 2
-	Speed 24
+	Speed 20
 	States
 	{
 		Death:
@@ -1702,7 +1709,7 @@ ACTOR ExecutionLeftWallDetect: ExecutionAttackKick
 	+THRUACTORS
 	Radius 2
 	Height 2
-	Speed 24
+	Speed 20
 	States
 	{
 		Death:
