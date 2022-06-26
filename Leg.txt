@@ -10,7 +10,6 @@ Damagefactor "KillMe", 0.0	DamageFactor "SSG", 5.0	DamageFactor "Head", 0.0
 Damagefactor "Leg", 0.0	Damagefactor "Extremepunches", 2.0	Damagefactor "Fatality", 5.0
 Damagefactor "HelperMarineFatality", 5.0
 Health 1280
-GibHealth 640
 Radius 20
 Height 24
 DamageType leg
@@ -30,19 +29,19 @@ Pain:
 TNT1 A 0
 TNT1 A 0 A_ChangeFlag("NOPAIN",1)
 TNT1 A 3
-TNT1 A 0 A_JumpIfHealthLower(280, "Pain1000")
-TNT1 A 0 A_JumpIfHealthLower(780, "Pain500")
-TNT1 A 0 A_JumpIfHealthLower(1030, "Pain250")
-TNT1 A 0 A_JumpIfHealthLower(1080, "Pain200")
-TNT1 A 0 A_JumpIfHealthLower(1130, "Pain150")
-TNT1 A 0 A_JumpIfHealthLower(1180, "Pain100")
-TNT1 A 0 A_JumpIfHealthLower(1200, "Pain80")
-TNT1 A 0 A_JumpIfHealthLower(1220, "Pain60")
-TNT1 A 0 A_JumpIfHealthLower(1240, "Pain40")
-TNT1 A 0 A_JumpIfHealthLower(1260, "Pain20")
-TNT1 A 0 A_JumpIfHealthLower(1270, "Pain10")
+TNT1 A 0 A_JumpIfHealthLower(281, "Pain1000")
+TNT1 A 0 A_JumpIfHealthLower(781, "Pain500")
+TNT1 A 0 A_JumpIfHealthLower(1031, "Pain250")
+TNT1 A 0 A_JumpIfHealthLower(1081, "Pain200")
+TNT1 A 0 A_JumpIfHealthLower(1131, "Pain150")
+TNT1 A 0 A_JumpIfHealthLower(1181, "Pain100")
+TNT1 A 0 A_JumpIfHealthLower(1201, "Pain80")
+TNT1 A 0 A_JumpIfHealthLower(1221, "Pain60")
+TNT1 A 0 A_JumpIfHealthLower(1241, "Pain40")
+TNT1 A 0 A_JumpIfHealthLower(1261, "Pain20")
+TNT1 A 0 A_JumpIfHealthLower(1271, "Pain10")
 XDT3 A 0 A_Explode(5,15,0,0,15)//hs
-PLAY A 0 A_NoBlocking
+TNT1 A 1 A_NoBlocking
 Stop
 
 Pain10:
