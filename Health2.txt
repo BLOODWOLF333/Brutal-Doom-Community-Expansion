@@ -14,6 +14,7 @@ Actor ArmorShard : ArmorBonus Replaces ArmorBonus
 	+COUNTITEM
 	+INVENTORY.NEVERRESPAWN
 	+INVENTORY.ALWAYSPICKUP
+	+INVENTORY.NOSCREENFLASH
 	States
 	{
 	Spawn:
@@ -83,6 +84,7 @@ Actor LightArmor : BasicArmorPickup Replaces GreenArmor
 	Armor.SavePercent 50.1
 	Armor.SaveAmount 100
     Inventory.PickupSound "ARMOR"
+	+INVENTORY.NOSCREENFLASH
 	States
 	{
 	Spawn:
@@ -106,6 +108,7 @@ Actor HeavyArmor : BasicArmorPickup Replaces BlueArmor
 	Armor.Savepercent 80.1
 	Armor.Saveamount 200
     Inventory.PickupSound "ARMOR"
+	+INVENTORY.NOSCREENFLASH
 	States
 	{
 	Spawn:
@@ -139,6 +142,7 @@ ACTOR HealthPlus : Health Replaces HealthBonus
 	+COUNTITEM
 	+INVENTORY.ALWAYSPICKUP
 	+INVENTORY.NEVERRESPAWN
+	+INVENTORY.NOSCREENFLASH
 	Inventory.Amount 2
 	Inventory.MaxAmount 300
 	Tag "Health Bonus"
@@ -173,6 +177,7 @@ ACTOR Medikit2 : Health Replaces Medikit
 	Inventory.PickupMessage "$GOTMEDIKIT"
 	Health.LowMessage 25, "$GOTMEDINEED"
 	Inventory.PickupSound "GOTHPB"
+	+INVENTORY.NOSCREENFLASH
 	States
 	{
 	Spawn:
@@ -188,6 +193,7 @@ ACTOR Stimpack2 : Health Replaces Stimpack
 	Inventory.Amount 10
 	Inventory.PickupMessage "$GOTSTIM"
 	Inventory.PickupSound "GOTHPS"
+	+INVENTORY.NOSCREENFLASH
 	States
 	{
 	Spawn:
@@ -204,6 +210,7 @@ Actor ArmorCrueltyBonus : ArmorBonus
 	Armor.Maxsaveamount 300
 	Inventory.PickupMessage "*** Cruelty Bonus! +5 Armor ***"
 	-COUNTITEM
+	+INVENTORY.NOSCREENFLASH
 	States
 	{
 	Spawn:
@@ -225,6 +232,7 @@ Actor HealthCrueltyBonus : Health
 	Inventory.MaxAmount 300
 	Inventory.PickupMessage "*** Cruelty Bonus! +5 Health ***"
 	-COUNTITEM
+	+INVENTORY.NOSCREENFLASH
 	States
 	{
 	Spawn:

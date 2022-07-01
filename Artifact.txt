@@ -8,6 +8,7 @@ ACTOR InvulnerabilitySphere_  : PowerupGiver Replaces InvulnerabilitySphere
 	+INVENTORY.AUTOACTIVATE
 	+INVENTORY.ALWAYSPICKUP
 	+INVENTORY.BIGPOWERUP
+	+INVENTORY.NOSCREENFLASH
 	Inventory.MaxAmount 0
 	Powerup.Type Invulnerable
 	//Powerup.Color White //InverseMap
@@ -30,6 +31,7 @@ ACTOR LifeSphere : CustomInventory Replaces SoulSphere
 	SpawnID 25
 	+COUNTITEM
 	+INVENTORY.ALWAYSPICKUP
+	+INVENTORY.NOSCREENFLASH
 	Inventory.PickupMessage "Soulsphere"
 	Inventory.PickupSound "misc/p_pkup"
 	Tag "Soulsphere"
@@ -50,6 +52,7 @@ ACTOR SoulSphereHealth : Health
 	Inventory.Amount 100
 	Inventory.MaxAmount 200
 	+INVENTORY.ALWAYSPICKUP
+	+INVENTORY.NOSCREENFLASH
 }
 
 ACTOR EnergySphere : CustomInventory Replaces Megasphere
@@ -57,6 +60,7 @@ ACTOR EnergySphere : CustomInventory Replaces Megasphere
 	SpawnID 132
 	+COUNTITEM
 	+INVENTORY.ALWAYSPICKUP
+	+INVENTORY.NOSCREENFLASH
 	Inventory.PickupMessage "Megasphere"
 	Inventory.PickupSound "misc/p_pkup"
 	Tag "Megasphere"
@@ -81,6 +85,7 @@ ACTOR NightVision : CustomInventory Replaces InfraRed
 	SpawnID 138
 	+COUNTITEM
 	+INVENTORY.ALWAYSPICKUP
+	+INVENTORY.NOSCREENFLASH
 	Inventory.PickupMessage "You got the Infrared Googles."
 	Inventory.PickupSound "misc/p_pkup"
 	States
@@ -106,6 +111,7 @@ ACTOR NightVisionGiver : PowerupGiver
 	+COUNTITEM
 	+INVENTORY.AUTOACTIVATE
 	+INVENTORY.ALWAYSPICKUP
+	+INVENTORY.NOSCREENFLASH
 	Inventory.MaxAmount 0
 	Powerup.Type Torch
 	Powerup.Color 99 99 99
@@ -126,6 +132,7 @@ ACTOR VehicleInfraredGiver : PowerupGiver
 	+COUNTITEM
 	+INVENTORY.AUTOACTIVATE
 	+INVENTORY.ALWAYSPICKUP
+	+INVENTORY.NOSCREENFLASH
 	Inventory.MaxAmount 0
 	Powerup.Type PowerLightAmp
 	Powerup.Color 99 99 99
@@ -149,6 +156,7 @@ ACTOR BerserkPack : CustomInventory Replaces Berserk
 	SpawnID 134
 	+COUNTITEM
 	+INVENTORY.ALWAYSPICKUP
+	+INVENTORY.NOSCREENFLASH
 	Inventory.PickupMessage "$GOTBERSERK"
     Inventory.PickupSound "BERSPKUP"
 	Tag "Berserk Pack"
@@ -176,6 +184,7 @@ ACTOR SuperBlurSphere : CustomInventory 2054
 	+INVENTORY.AUTOACTIVATE
 	+INVENTORY.ALWAYSPICKUP
 	+INVENTORY.BIGPOWERUP
+	+INVENTORY.NOSCREENFLASH
 	RenderStyle Translucent
 	Inventory.PickupMessage "$GOTINVIS" // "Partial Invisibility"
 	//$Category BD Power-Ups
@@ -202,6 +211,7 @@ ACTOR DemonStrengthRune : BerserkPack 2053
     Scale 0.6
 	+COUNTITEM
 	+INVENTORY.ALWAYSPICKUP
+	+INVENTORY.NOSCREENFLASH
 	+FLOATBOB
 	Inventory.PickupMessage "You got the Demon Strength Rune. RIP AND TEAR!"
 	Inventory.PickupSound "misc/p_pkup"
@@ -230,6 +240,7 @@ ACTOR RadSuits : CustomInventory Replaces Radsuit
   SpawnID 136
   +INVENTORY.AUTOACTIVATE
   +INVENTORY.ALWAYSPICKUP
+  +INVENTORY.NOSCREENFLASH
   Inventory.MaxAmount 0
   Inventory.PickupMessage "$GOTSUIT" // "Radiation Shielding Suit"
   States
@@ -250,6 +261,7 @@ ACTOR RadSuit2 : PowerupGiver
   Height 46
   +INVENTORY.AUTOACTIVATE
   +INVENTORY.ALWAYSPICKUP
+  +INVENTORY.NOSCREENFLASH
   Inventory.MaxAmount 0
   Inventory.PickupMessage "$GOTSUIT" // "Radiation Shielding Suit"
   Powerup.Type "Mask"
@@ -267,6 +279,7 @@ ACTOR RadSuit3 : PowerupGiver
   Height 46
   +INVENTORY.AUTOACTIVATE
   +INVENTORY.ALWAYSPICKUP
+  +INVENTORY.NOSCREENFLASH
   Inventory.MaxAmount 0
   Inventory.PickupMessage "$GOTSUIT" // "Radiation Shielding Suit"
   Powerup.Type "IronFeet"
@@ -287,6 +300,7 @@ ACTOR DemonRuneMix: CustomInventory 2063
 	radius 20
 	height 16
 	+INVENTORY.BIGPOWERUP
+	+INVENTORY.NOSCREENFLASH
 	damage 0
 	Mass 1
 	Inventory.PickupMessage "You got the Demon Sphere"
@@ -329,6 +343,7 @@ ACTOR BaronRune: CustomInventory
 	radius 20
 	height 16
 	+INVENTORY.BIGPOWERUP
+	+INVENTORY.NOSCREENFLASH
 	damage 0
 	Mass 1
 	Inventory.PickupMessage "You got the Baron Rune"
@@ -366,6 +381,7 @@ ACTOR RevenantRune: CustomInventory
 	radius 20
 	height 16
 	+INVENTORY.BIGPOWERUP
+	+INVENTORY.NOSCREENFLASH
 	damage 0
 	Mass 1
 	Inventory.PickupMessage "You got the Revenant Rune"
@@ -449,6 +465,7 @@ ACTOR 64UnmakerUpgrade1 : CustomInventory 1042
 	Inventory.Icon "ART1A0"
 	Inventory.PickupMessage "$GOTARTIFACT1"
 	Inventory.PickupSound "misc/p_pkup"
+	+INVENTORY.NOSCREENFLASH
 	+DONTGIB
 	+COUNTITEM
 	-INTERHUBSTRIP
@@ -495,6 +512,7 @@ ACTOR 64UnmakerUpgrade2 : CustomInventory 1043
 	Inventory.Icon "ART2A0"
 	Inventory.PickupMessage "$GOTARTIFACT2"
 	Inventory.PickupSound "misc/p_pkup"
+	+INVENTORY.NOSCREENFLASH
 	+DONTGIB
 	+COUNTITEM
 	-INTERHUBSTRIP
@@ -541,6 +559,7 @@ ACTOR 64UnmakerUpgrade3 : CustomInventory 1044
 	Inventory.Icon "ART3A0"
 	Inventory.PickupMessage "$GOTARTIFACT3"
 	Inventory.PickupSound "misc/p_pkup"
+	+INVENTORY.NOSCREENFLASH
 	+DONTGIB
 	+COUNTITEM
 	-INTERHUBSTRIP

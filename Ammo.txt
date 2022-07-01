@@ -20,6 +20,7 @@ ACTOR AmmoSupply : BackpackItem Replaces Backpack
 	Height 26
 	Inventory.PickupMessage "$GOTBACKPACK"
 	Inventory.PickupSound "BACKPACK"
+	+INVENTORY.NOSCREENFLASH
 	-INVENTORY.ALWAYSPICKUP
 	States
 	{
@@ -41,6 +42,7 @@ ACTOR Clip2 : Ammo
 	Ammo.BackpackMaxAmount 600
 	Inventory.Icon "CLIPA0"
 	Inventory.PickupSound "CLIPICK2"
+	+INVENTORY.NOSCREENFLASH
 	Scale 0.9
 	States
 	{
@@ -93,6 +95,7 @@ ACTOR Clip2Spawner: CustomInventory 2027
  +FORCEXYBILLBOARD
  Inventory.PickupMessage "Picked up a Rifle Magazine."
  Inventory.PickupSound "CLIPICK2"
+ +INVENTORY.NOSCREENFLASH
  Mass 1
  //$Category BD Ammo Spawners
  //$Icon "ammo"
@@ -144,6 +147,7 @@ ACTOR Clip1Spawner: CustomInventory 2037
  +FORCEXYBILLBOARD
  Inventory.PickupMessage "Picked up a Pistol Magazine."
  Inventory.PickupSound "CLIPICK"
+ +INVENTORY.NOSCREENFLASH
  Mass 1
  //$Category BD Ammo Spawners
  //$Icon "ammo"
@@ -239,6 +243,7 @@ ACTOR Clip1Drop: CustomInventory
  +THRUACTORS +FORCEXYBILLBOARD
  Inventory.PickupMessage "Picked up a Pistol Magazine"
  Inventory.PickupSound "CLIPIN"
+ +INVENTORY.NOSCREENFLASH
  Mass 1
     States
     {
@@ -295,7 +300,6 @@ ACTOR FakeClipBoxSprite: BasicAmmoPickup
  +FLOAT +NOCLIP +NOINTERACTION
  States
     {
-
 	 Spawn:
 		AMMO A 0
 		AMMO A 18
@@ -309,6 +313,7 @@ ACTOR PistolAmmoBox: Clip1
  Scale 0.9
  Inventory.PickupMessage "Picked up a box of pistol ammunition!"
  Inventory.PickupSound "CBOXPICK"
+ +INVENTORY.NOSCREENFLASH
  Inventory.Amount 50
  States
  {
@@ -344,6 +349,7 @@ ACTOR PistolAmmoBoxSpawner: CustomInventory 2098
  +FORCEXYBILLBOARD
  Inventory.PickupMessage "Picked up a box of pistol ammunition!"
  Inventory.PickupSound "CBOXPICK"
+ +INVENTORY.NOSCREENFLASH
  Mass 1
  //$Category BD Ammo Spawners
  //$Icon "ammo"
@@ -378,6 +384,7 @@ ACTOR BuzzSawAmmo : Ammo 2108
 	Game Doom
 	Inventory.PickupMessage "Picked up a belt of MG42 ammo."
 	Inventory.PickupSound "CBOXPICK"
+	+INVENTORY.NOSCREENFLASH
 	Inventory.Amount 50
 	Inventory.MaxAmount 300
 	Ammo.BackpackAmount 50
@@ -444,6 +451,7 @@ ACTOR AmmoRocket : Ammo 2020
 	Ammo.BackpackMaxAmount 100
 	Inventory.Icon "ROCKA0"
 	Inventory.Pickupsound "RCKCLIP"
+	+INVENTORY.NOSCREENFLASH
 	Scale 0.9
 	+NOTAUTOAIMED
 	+SHOOTABLE
@@ -538,6 +546,7 @@ ACTOR AmmoRocketBox : AmmoRocket Replaces RocketBox
 	Inventory.Amount 3
 	Scale 0.9
 	Inventory.Pickupsound "RCKCLIP2"
+	+INVENTORY.NOSCREENFLASH
 	States
 	{
 	Spawn:
@@ -617,6 +626,7 @@ ACTOR AmmoCell : Ammo Replaces Cell
 	Game Doom
 	SpawnID 75
 	Inventory.PickupMessage "$GOTCELL"
+	+INVENTORY.NOSCREENFLASH
 	Inventory.Amount 20
 	Inventory.MaxAmount 300
 	Ammo.BackpackAmount 20
@@ -656,6 +666,7 @@ ACTOR AmmoCellPack : AmmoCell 97
 	Game Doom
 	SpawnID 142
 	Inventory.PickupMessage "$GOTCELLBOX"
+	+INVENTORY.NOSCREENFLASH
 	Inventory.Amount 100
 	Scale 0.9
 	//$Category BD Ammo Spawners
@@ -699,6 +710,7 @@ ACTOR Gas : Ammo
    Inventory.Icon "GSLNA0"
    Inventory.PickupMessage "Picked up a jug of Gasoline."
    Inventory.PickupSound "BFGREADY"
+   +INVENTORY.NOSCREENFLASH
    Scale 0.9
    States
    {
@@ -733,6 +745,7 @@ ACTOR GasSpawner: CustomInventory 107
  +FORCEXYBILLBOARD
  Inventory.PickupMessage "Picked up a jug of Gasoline."
  Inventory.PickupSound "BFGREADY"
+ +INVENTORY.NOSCREENFLASH
  Mass 1
  //$Category BD Ammo Spawners
  //$Icon "ammo"
@@ -774,6 +787,7 @@ ACTOR Nuke : Ammo
 	Ammo.BackpackMaxAmount 2
 	Inventory.Icon "NKLAA0"
 	Inventory.PickupSound "BFGREADY"
+	+INVENTORY.NOSCREENFLASH
 	Scale 0.6
 	States
 	{
@@ -808,6 +822,7 @@ ACTOR NukeSpawner: CustomInventory 117
  +FORCEXYBILLBOARD
  Inventory.PickupMessage "Picked up a nuclear missile."
  Inventory.PickupSound "RCKCLIP2"
+ +INVENTORY.NOSCREENFLASH
  Mass 1
  //$Category BD Ammo Spawners
  //$Icon "ammo"
@@ -886,6 +901,7 @@ ACTOR AmmoShell : Ammo 2038
 	Ammo.BackpackMaxAmount 100
 	Inventory.Icon "SHELA0"
 	Inventory.Pickupsound "SHELPK1"
+	+INVENTORY.NOSCREENFLASH
 	Scale 0.9
 	//$Category BD Ammo Spawners
 	//$Icon "ammo"
@@ -910,6 +926,7 @@ ACTOR AmmoSlug : Ammo
 	Ammo.BackpackMaxAmount 100
 	Inventory.Icon "SHELB0"
 	Inventory.Pickupsound "SHELPK1"
+	+INVENTORY.NOSCREENFLASH
 	Scale 0.9
 	States
 	{
@@ -962,6 +979,7 @@ ACTOR AmmoSlugSpawner: CustomInventory 2058
  +FORCEXYBILLBOARD
  Inventory.PickupMessage "$GOTSLUGS"
  Inventory.PickupSound "SHELPK1"
+ +INVENTORY.NOSCREENFLASH
  Mass 1
  //$Category BD Ammo Spawners
  //$Icon "ammo"
@@ -1000,6 +1018,7 @@ ACTOR AmmoShellBox : AmmoShell 2059
 	Inventory.PickupMessage "$GOTSHELLBOX"
 	Inventory.Amount 20
 	Inventory.Pickupsound "SHELPK2"
+	+INVENTORY.NOSCREENFLASH
 	Scale 0.9
 	//$Category BD Ammo Spawners
 	//$Icon "ammo"
@@ -1020,6 +1039,7 @@ ACTOR AmmoSlugBox : AmmoSlug
 	Inventory.PickupMessage "$GOTSLUGBOX"
 	Inventory.Amount 20
 	Inventory.Pickupsound "SHELPK2"
+	+INVENTORY.NOSCREENFLASH
 	Scale 0.9
 	States
 	{
@@ -1072,6 +1092,7 @@ ACTOR SlugBoxSpawner: CustomInventory 2069
  +FORCEXYBILLBOARD
  Inventory.PickupMessage "$GOTSLUGBOX"
  Inventory.PickupSound "SHELPK2"
+ +INVENTORY.NOSCREENFLASH
  Mass 1
  //$Category BD Ammo Spawners
  //$Icon "ammo"
@@ -1113,6 +1134,7 @@ ACTOR AmmoMagnum : Ammo
 	Ammo.BackpackAmount 6
 	Ammo.BackpackMaxAmount 60
 	Inventory.Icon "MAGAA0"
+	+INVENTORY.NOSCREENFLASH
 	Scale 0.6
 	States
 	{
@@ -1147,6 +1169,7 @@ ACTOR AmmoMagnumSpawner: CustomInventory 2068
  +FORCEXYBILLBOARD
  Inventory.PickupMessage "Picked up some magnum rounds."
  Inventory.PickupSound "CBOXPICK"
+ +INVENTORY.NOSCREENFLASH
  Mass 1
  //$Category BD Ammo Spawners
  //$Icon "ammo"
@@ -1182,6 +1205,7 @@ ACTOR AmmoMagnumBox : AmmoMagnum
 	Inventory.PickupMessage "Picked up a box of magnum rounds."
 	Inventory.Amount 20
 	Inventory.Pickupsound "CBOXPICK"
+	+INVENTORY.NOSCREENFLASH
 	Scale 0.9
 	States
 	{
@@ -1216,6 +1240,7 @@ ACTOR MagnumBoxSpawner: CustomInventory 2089
  +FORCEXYBILLBOARD
  Inventory.PickupMessage "Picked up a box of magnum rounds."
  Inventory.PickupSound "CBOXPICK"
+ +INVENTORY.NOSCREENFLASH
  Mass 1
  //$Category BD Ammo Spawners
  //$Icon "ammo"
@@ -1326,6 +1351,7 @@ ACTOR GrenadeAmmo : Ammo 2030
 	Ammo.BackpackAmount 1
 	Ammo.BackpackMaxAmount 6
 	Inventory.Icon "GRNDA"
+	+INVENTORY.NOSCREENFLASH
 	Scale 0.3
 	//$Category BD Ammo Spawners
 	//$Icon "ammo"
@@ -1344,6 +1370,7 @@ ACTOR GrenadeBox : GrenadeAmmo
 {
 	Game Doom
 	Inventory.PickupMessage "Picked up a box of grenades."
+	+INVENTORY.NOSCREENFLASH
 	Inventory.Amount 3
 	States
 	{

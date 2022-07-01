@@ -273,6 +273,7 @@ ACTOR HMLSpawner: CustomInventory
  radius 24
  height 24
  +FORCEXYBILLBOARD
+ +INVENTORY.NOSCREENFLASH
  Inventory.PickupMessage "You got the Revenant's Hellish Missile Launcher (Slot 8)"
  Inventory.PickupSound "BFGREADY"
  //$category Weapons
@@ -311,6 +312,7 @@ ACTOR MiniHellRocketAmmo : Ammo
    Inventory.Icon "HMLRA0"
    Inventory.Pickupsound "RCKCLIP"
    Inventory.PickupMessage "Picked up a Hellish Missile Launcher rocket."
+   +INVENTORY.NOSCREENFLASH
    Scale 0.4
 	States
 	{
