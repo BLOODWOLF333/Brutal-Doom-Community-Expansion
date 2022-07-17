@@ -2057,7 +2057,7 @@ Death.Plasma: Death.Plasma2:
     FatalityZMan:
         NULL A 0 SetPlayerProperty(0,1,0)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
-		FTYZ A 2 A_ChangeFlag("GHOST", 1)
+		FTYZ A 2 A_ChangeFlag("NOPAIN", 1)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
 
         //////////////////////////////////////////////////////
@@ -2097,7 +2097,7 @@ Death.Plasma: Death.Plasma2:
         //NULL A 0 A_TakeInventory("ZombieManFatality",1)
 		 NULL A 0 A_TakeInventory("ZombieManFatality",1)
 		 NULL A 0 A_TakeInventory("GoFatality", 1)
-		 TNT1 A 0 A_ChangeFlag("GHOST", 0)
+		 TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
 		 MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
          NULL A 0 SetPlayerProperty(0,0,0)
          Goto StandStill
@@ -2105,7 +2105,7 @@ Death.Plasma: Death.Plasma2:
     FatalityZMan2://Gut pull
         NULL A 0 SetPlayerProperty(0,1,0)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
-		FPZ2 A 2 A_ChangeFlag("GHOST", 1)
+		FPZ2 A 2 A_ChangeFlag("NOPAIN", 1)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
 
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
@@ -2131,7 +2131,7 @@ Death.Plasma: Death.Plasma2:
         //////////////////////////////////////////////////////
         NULL A 0 A_TakeInventory("ZombieManFatality2",1)
 		NULL A 0 A_TakeInventory("GoFatality", 1)
-		TNT1 A 0 A_ChangeFlag("GHOST", 0)
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
         //NULL A 0 A_SpawnItem ("DeadZombieManFacingFront")
 		NULL A 0 A_SpawnItem ("ZombieManDyingAfterFatality")
 		NULL A 0 A_CustomMissile ("Guts", 30, 0, 0, 2, 0)
@@ -2142,6 +2142,7 @@ Death.Plasma: Death.Plasma2:
 	FatalityZMan3://Platoon sytle rifle bashing
         NULL A 0 SetPlayerProperty(0,1,0)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
         //////////////////////////////////////////////////////
         FPZ3 A 5
@@ -2202,7 +2203,7 @@ Death.Plasma: Death.Plasma2:
         //////////////////////////////////////////////////////
         NULL A 0 A_TakeInventory("GoFatality", 1)
 		NULL A 0 A_TakeInventory("ZombieManFatality3",1)
-		TNT1 A 0 A_ChangeFlag("GHOST", 0)
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 A_SpawnItem ("DeadZombieManFatality3")
 		//NULL A 0 A_SpawnItem ("ZombieManDyingAfterFatality")
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
@@ -2212,7 +2213,7 @@ Death.Plasma: Death.Plasma2:
 FatalityZMan4://Pounding to floor
         NULL A 0 SetPlayerProperty(0,1,0)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
-		FPZ4 A 2 A_ChangeFlag("GHOST", 1)
+		FPZ4 A 2 A_ChangeFlag("NOPAIN", 1)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
         //////////////////////////////////////////////////////
         FPZ4 AB 2
@@ -2277,7 +2278,7 @@ FatalityZMan4://Pounding to floor
         //////////////////////////////////////////////////////
         NULL A 0 A_TakeInventory("GoFatality", 1)
 		NULL A 0 A_TakeInventory("ZombieManFatality4",1)
-		TNT1 A 0 A_ChangeFlag("GHOST", 0)
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 A_SpawnItem ("DeadZombieManFatality3")
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
         NULL A 0 SetPlayerProperty(0,0,0)
@@ -2286,7 +2287,7 @@ FatalityZMan4://Pounding to floor
 	 FatalityZMan5: //Face Rip
 	   NULL A 0 SetPlayerProperty(0,1,0)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
-		FRAA A 2 A_ChangeFlag("GHOST", 1)
+		FRAA A 2 A_ChangeFlag("NOPAIN", 1)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
 	   //////////////////////////////////////////////////////
 	   TNT1 A 0 A_PlaySound("player/cyborg/fist", 4)
@@ -2306,14 +2307,14 @@ FatalityZMan4://Pounding to floor
 	    TNT1 A 0 A_TakeInventory("GoFatality", 1)
 		TNT1 A 0 A_TakeInventory("ZombieManFatality5",1)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
-		TNT1 A 0 A_ChangeFlag("GHOST", 0)
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
         TNT1 A 0 SetPlayerProperty(0,0,0)
 	   Goto StandStill
 
     FatalityImp://Stomp
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
         FTYI AB 4
@@ -2337,13 +2338,14 @@ FatalityZMan4://Pounding to floor
 		TNT1 A 0 A_GiveInventory("BootsSmearedWithRedBlood", 6)
 		NULL A 0 A_CustomMissile ("StompedImp", 1, 0, random (0, 360), 2, random (0, 160))
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
     FatalityImp2://Spine Pull
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
 		NULL A 0 A_CustomMissile ("CameraShakeMinor", 1, 0, random (0, 360), 2, random (0, 160))
@@ -2375,13 +2377,14 @@ FatalityZMan4://Pounding to floor
 		NULL A 0 A_TakeInventory("ImpFatality2",1)
         NULL A 0 A_SpawnItem ("ImpMessyCorpse")
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
       FatalityImp3://impse without se
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
         FTCI AB 2
@@ -2457,13 +2460,14 @@ FatalityZMan4://Pounding to floor
         NULL A 0 A_SpawnItem ("impfacesorapedomgthisiscruel")
 		//NULL A 0 A_SpawnItem ("ZombieManDyingAfterFatality")
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
 	FatalityImp4://punches standing still
 	   TNT1 A 0 SetPlayerProperty(0,1,0)
        TNT1 A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)
-
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 	   TNT1 A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
 	   //////////////////////////////////////////////////////
 	   FTYI AB 4
@@ -2526,7 +2530,7 @@ FatalityZMan4://Pounding to floor
 	   TNT1 A 0 A_TakeInventory("GoFatality", 1)
 		TNT1 A 0 A_TakeInventory("ImpFatality4",1)
 		TNT1 A 0 A_GiveInventory("HasImpFatality",10)
-        TNT1 A 0 A_ChangeFlag("GHOST", 0)
+        TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
 		 MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
          NULL A 0 SetPlayerProperty(0,0,0)
          Goto StandStill
@@ -2534,7 +2538,7 @@ FatalityZMan4://Pounding to floor
     FatalitySergeant://To be or not to be... thats a brutal question
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
         FTYS A 6 A_PlaySound("grunt/pain", 3)
@@ -2563,13 +2567,14 @@ FatalityZMan4://Pounding to floor
 		NULL A 0 A_TakeInventory("SergeantFatality",1)
 		NULL A 0 A_CustomMissile ("BeheadedSergeantZombie", 1, 0, random (0, 360), 2, random (0, 160))
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
 		Goto StandStill
 
     FatalitySergeant2://Split personality
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
         FTYS J 3
@@ -2594,13 +2599,14 @@ FatalityZMan4://Pounding to floor
 		NULL A 0 A_SpawnItem ("GrowingBloodPool")
         NULL A 0 A_SpawnItem ("DeadShotgunguy_Half", 1)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
 	FatalitySergeant3://Shotgun Impale
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
         FSP3 A 4
@@ -2640,13 +2646,14 @@ FatalityZMan4://Pounding to floor
         NULL A 0 A_TakeInventory("GoFatality", 1)
 		NULL A 0 A_TakeInventory("SergeantFatality3",1)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
       FatalitySergeant4:
 			NULL A 0 SetPlayerProperty(0,1,0)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
-		SGF8 A 2 A_ChangeFlag("GHOST", 1)
+		SGF8 A 2 A_ChangeFlag("NOPAIN", 1)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
 			 //////////////////////////////////////////////////////
 			SGF8 A 5
@@ -2709,7 +2716,7 @@ FatalityZMan4://Pounding to floor
 			TNT1 A 0 A_TakeInventory("SergeantFatality4",1)
 			TNT1 A 0 A_TakeInventory("GoFatality", 1)
 			TNT1 A 0 A_SpawnItem("FatalizedSGGuy4", 1)
-			TNT1 A 0 A_ChangeFlag("GHOST", 0)
+			TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
 			MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
 			NULL A 0 SetPlayerProperty(0,0,0)
 			Goto StandStill
@@ -2717,7 +2724,7 @@ FatalityZMan4://Pounding to floor
     FatalityComando:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
         CFTA AAABCDE 2
@@ -2754,13 +2761,14 @@ FatalityZMan4://Pounding to floor
 		NULL A 0 A_CustomMissile ("XDeathChainArm", 40, -15, 0, 2, 0)
 		NULL A 0 A_CustomMissile ("XDeathChainArm", 40, 15, 0, 2, 0)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
 	   FatalityComando2:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
         CFTC A 1
@@ -2787,13 +2795,14 @@ FatalityZMan4://Pounding to floor
 		NULL A 0 A_TakeInventory("GoFatality", 1)
         NULL A 0 A_SpawnItemEx("DeadChaingunGuy_Half", 0, 0, 40, 0, 0)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
     FatalityDemon:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
         FDEM A 4
@@ -2816,6 +2825,7 @@ FatalityZMan4://Pounding to floor
         NULL A 0 A_TakeInventory("DemonFatality",1)
 		NULL A 0 A_TakeInventory("GoFatality", 1)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
         NULL A 0 A_SpawnItemEx("DyingDemon", 0, 1, 1, 1, 1)
         Goto StandStill
@@ -2823,7 +2833,7 @@ FatalityZMan4://Pounding to floor
 		FatalityDemon2:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
 		FDEM J 2
@@ -2847,13 +2857,14 @@ FatalityZMan4://Pounding to floor
 		NULL A 0 A_TakeInventory("GoFatality", 1)
         NULL A 0 A_SpawnItemEx("DeadDemonHalf", 0, 1, 1, 1, 1)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
 	FatalityDemon3:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
 		FD2M A 2
@@ -2883,13 +2894,14 @@ FatalityZMan4://Pounding to floor
 		NULL A 0 A_TakeInventory("GoFatality", 1)
         NULL A 0 A_SpawnItemEx("DeadDemonStomped", 0, 1, 1, 1, 1)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
     FatalityCacoDemon:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
         CACF ABC 4
@@ -2908,13 +2920,14 @@ FatalityZMan4://Pounding to floor
 		NULL A 0 A_GiveInventory("HasCacoEye",1)
         NULL A 0 A_SpawnItemEx("DeadCacoDemon", 0, 1, 1, 1, 1)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
 		FatalityCacoDemon2:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
         CA2F AB 4
@@ -2938,13 +2951,14 @@ FatalityZMan4://Pounding to floor
 		NULL A 0 A_TakeInventory("CacoDemonFatality2",1)
         NULL A 0 A_SpawnItem ("DeadHalfCacoDemon", 1)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
     FatalityRevenant:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
 		NULL A 0  A_PlaySound("BONECR1", 1)
@@ -2975,13 +2989,14 @@ FatalityZMan4://Pounding to floor
 		NULL A 0 A_TakeInventory("RevenantFatality",1)
         NULL A 0 A_SpawnItemEx("DyingRevenant", 35, 35, 0, 1, 1)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
     FatalityRevenant2:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
         FRE2 A 5
@@ -2999,13 +3014,14 @@ FatalityZMan4://Pounding to floor
         NULL A 0 A_SpawnItem("VeryFuckedUpRevenant")
 		NULL A 0 A_SpawnItem("HMLSpawner")
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
     FatalityFatso:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
         FATF A 6
@@ -3037,13 +3053,14 @@ FatalityZMan4://Pounding to floor
 		NULL A 0 A_TakeInventory("FatsoFatality",1)
         NULL A 0 A_SpawnItemEx("FatalizedFatso", 0, 1, 1, 1, 1)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
     FatalityBaron:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
         BHF1 AAABCDEF 2
@@ -3080,13 +3097,14 @@ FatalityZMan4://Pounding to floor
 		NULL AAAA 0 A_GiveInventory("Medikit",1)
         NULL A 0 A_SpawnItemEx("DeadBaronNoHead", 0, 1, 1, 1, 1)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
     FatalityHK:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
         HKF1 A 1
@@ -3115,13 +3133,14 @@ FatalityZMan4://Pounding to floor
 		NULL A 0 A_TakeInventory("HKFatality",1)
         NULL A 0 A_SpawnItemEx("RapedHK", 0, 1, 1, 1, 1)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
 	FatalityHK3:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
         NULL A 0 A_PlaySound("weapons/gswing", 1)
@@ -3155,13 +3174,14 @@ FatalityZMan4://Pounding to floor
 		NULL A 0 A_TakeInventory("GoFatality", 1)
         NULL A 0 A_SpawnItemEx("NoArmNoHeadFatalizedHK", 0, 1, 1, 1, 1)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
 FatalityHK2:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
@@ -3192,13 +3212,14 @@ FatalityHK2:
 		NULL A 0 A_TakeInventory("GoFatality", 1)
         NULL A 0 A_SpawnItemEx("OmgSoDeadHK", 0, 1, 1, 1, 1)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
     FatalityArachnotron:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
 		NULL A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
@@ -3225,13 +3246,14 @@ FatalityHK2:
         NULL A 0 A_SpawnItemEx("RapedArachnotron", 0, 1, 1, 1, 1)
 		//NULL A 0 A_CustomMissile ("SpiderLeg", 30, 0, 0, 2, 0)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
 	FatalityArachnotron2:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
 		NULL A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
@@ -3259,13 +3281,14 @@ FatalityHK2:
         NULL A 0 A_SpawnItemEx("RapedArachnotron", 0, 1, 1, 1, 1)
 		//NULL A 0 A_CustomMissile ("SpiderLeg", 30, 0, 0, 2, 0)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
 	FatalityArachnotron3:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
 		ARF2 A 6
@@ -3291,13 +3314,14 @@ FatalityHK2:
         NULL A 0 A_SpawnItemEx("NoLegsSpider", 0, 1, 1, 1, 1)
 		//NULL A 0 A_CustomMissile ("SpiderLeg", 30, 0, 0, 2, 0)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
 		FatalityArchVile:
         NULL A 0 SetPlayerProperty(0,1,0)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
-		AVF1 A 2 A_ChangeFlag("GHOST", 1)
+		AVF1 A 2 A_ChangeFlag("NOPAIN", 1)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
 
         //////////////////////////////////////////////////////
@@ -3341,7 +3365,7 @@ FatalityHK2:
         NULL A 0 A_TakeInventory("ArchVileFatality",1)
 		NULL A 0 A_TakeInventory("GoFatality", 1)
         NULL A 0 A_SpawnItem("FatalizedArchvile1")
-		TNT1 A 0 A_ChangeFlag("GHOST", 0)
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
@@ -3349,7 +3373,7 @@ FatalityHK2:
 	FatalityArchVile2:
 		NULL A 0 SetPlayerProperty(0,1,0)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
-		AVF2 A 2 A_ChangeFlag("GHOST", 1)
+		AVF2 A 2 A_ChangeFlag("NOPAIN", 1)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
 
 		//////////////////////////////////////////////////////
@@ -3462,7 +3486,7 @@ FatalityHK2:
 		TNT1 A 0 A_TakeInventory("ArchVileFatality2",1)
 		TNT1 A 0 A_TakeInventory("GoFatality", 1)
         TNT1 A 0 A_SpawnItemEx("ArchvileStabbedTheFuckOut", 5, 2, 1, 0, 0)
-		TNT1 A 0 A_ChangeFlag("GHOST", 0)
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
@@ -3470,7 +3494,7 @@ FatalityHK2:
 	FatalityBelphegor:
 	   TNT1 A 0 SetPlayerProperty(0,1,0)
        TNT1 A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)
-
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 	   TNT1 A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
 	   //////////////////////////////////////////////////////
 	   TNT1 A 0 A_PlaySound("weapons/fistwhoosh",7)
@@ -3513,13 +3537,15 @@ FatalityHK2:
 		TNT1 A 0 A_TakeInventory("BelphegorFatality",1)
 		TNT1 A 0 A_SpawnItem ("FatalizedBelphegor", 20)
 		TNT1 A 0 A_CustomMissile ("XDeathHellKnightTorso", 32, 0, random (0, 135), 2, random (0, 65))
+		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         TNT1 A 0 SetPlayerProperty(0,0,0)
 	   Goto StandStill
 
 		FatalityVolcabus:
 		TNT1 A 0 SetPlayerProperty(0,1,0)
 		TNT1 A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)
-
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		TNT1 A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
 		//////////////////////////////////////////////////////
 		FA2F AA 6
@@ -3611,13 +3637,15 @@ FatalityHK2:
 		TNT1 A 0 A_TakeInventory("VolcabusFatality",1)
 		TNT1 A 0 A_SpawnItem ("FatalizedVolcabus", 45)
 		 MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		 NULL A 0 A_ChangeFlag("NOPAIN", 0)
 			NULL A 0 SetPlayerProperty(0,0,0)
 		Goto StandStill
 
 FatalityVolcabus2:
 		TNT1 A 0 SetPlayerProperty(0,1,0)
 		TNT1 A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)
-		TNT1 A 0 A_SetInvulnerable
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
+		TNT1 A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
 		//////////////////////////////////////////////////////
 		FA3F A 4
 		TNT1 A 0 A_PlaySound("player/cyborg/fist", 4)
@@ -3661,14 +3689,14 @@ FatalityVolcabus2:
 		TNT1 A 0 A_TakeInventory("GoFatality", 1)
 		TNT1 A 0 A_SpawnItem ("FatalizedVolcabus2", 45)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
-			NULL A 0 SetPlayerProperty(0,0,0)
-		TNT1 A 0 A_UnSetInvulnerable
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
+		NULL A 0 SetPlayerProperty(0,0,0)
 		Goto StandStill
 
 	FatalityArachnotron2B:
 		NULL A 0 SetPlayerProperty(0,1,0)
 		NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
 		//////////////////////////////////////////////////////
 		ARF6 A 6
@@ -3695,13 +3723,14 @@ FatalityVolcabus2:
 		TNT1 A 0 A_SpawnItem("ArachnoTurretFrame2", 45)
 		//NULL A 0 A_CustomMissile ("SpiderLeg", 30, 0, 0, 2, 0)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
 			NULL A 0 SetPlayerProperty(0,0,0)
 		Goto StandStill
 
 	FatalityArachnotron2A:
 		NULL A 0 SetPlayerProperty(0,1,0)
 		NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
 		//////////////////////////////////////////////////////
 		NULL A 0 A_CustomMissile ("CameraShake", 1, 0, random (0, 360), 2, random (0, 160))
@@ -3733,13 +3762,14 @@ FatalityVolcabus2:
 		NULL A 0 A_SpawnItemEx("RapedArachnotron2", 0, 1, 1, 1, 1)
 		//NULL A 0 A_CustomMissile ("SpiderLeg", 30, 0, 0, 2, 0)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
 			NULL A 0 SetPlayerProperty(0,0,0)
 		Goto StandStill
 
 FatalityPE:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
-
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
         PA1F A 3
@@ -3823,13 +3853,14 @@ FatalityPE:
         NULL A 0 A_TakeInventory("GoFatality", 1)
 		NULL A 0 A_SpawnItemEX("FatalizedPE",32)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
-        MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+        NULL A 0 A_ChangeFlag("NOPAIN", 0)
 			NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
 FatalityLabGuy1: //Face kicker
 		TNT1 A 0 SetPlayerProperty(0,1,0)
         TNT1 A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		TNT1 A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
 		FSF1 A 6
@@ -3923,12 +3954,14 @@ FatalityLabGuy1: //Face kicker
 		TNT1 A 0 A_TakeInventory("LabGuyToken1",1)
         TNT1 A 0 A_CustomMissile ("LabguyBeatenDown", 1, 0, random (0, 360), 2, random (130, 180)) //refers to Labguy decorate corpse item!
         MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
 			NULL A 0 SetPlayerProperty(0,0,0)
 		Goto StandStill
 
 FatalityLabGuy2: // axe mutilator
        	TNT1 A 0 SetPlayerProperty(0,1,0)
         TNT1 A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		TNT1 A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
         FSF2 ABC 4
@@ -4037,12 +4070,14 @@ FatalityLabGuy2: // axe mutilator
 		TNT1 A 0 A_TakeInventory("LabGuyToken2",1)
         TNT1 A 0 A_SpawnItem ("AxeSplitLabguy") //refers to Labguy decorate corpse item!
         MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
 			NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
 FatalityLabGuy3: //axe - face
 		TNT1 A 0 SetPlayerProperty(0,1,0)
         TNT1 A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		 TNT1 A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
 		FSF3 AB 4
@@ -4062,12 +4097,14 @@ FatalityLabGuy3: //axe - face
 		TNT1 A 0 A_TakeInventory("LabGuyToken3",1)
         TNT1 A 0 A_SpawnItem ("FacelessLabguy") //refers to Labguy decorate corpse item!
         MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
 			NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
     CurbstompZombieman:
 		TNT1 A 0 SetPlayerProperty(0,1,0)
         TNT1 A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		TNT1 A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
 		//////////////////////////////////////////////////////
 		01CB A 3
@@ -4089,12 +4126,14 @@ FatalityLabGuy3: //axe - face
 		TNT1 A 0 A_GiveInventory("BootsSmearedWithRedBlood", 6)
 		NULL A 0 A_CustomMissile ("StompedZombieman", 1, 0, random (0, 360), 2, random (0, 160))
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
 		NULL A 0 SetPlayerProperty(0,0,0)
 		Goto StandStill
 
 	CurbstompSergeant:
 		TNT1 A 0 SetPlayerProperty(0,1,0)
         TNT1 A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		TNT1 A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
 		//////////////////////////////////////////////////////
 		02CB A 3
@@ -4116,12 +4155,14 @@ FatalityLabGuy3: //axe - face
 		TNT1 A 0 A_GiveInventory("BootsSmearedWithRedBlood", 6)
 		NULL A 0 A_CustomMissile ("StompedSergeant", 1, 0, random (0, 360), 2, random (0, 160))
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
 		NULL A 0 SetPlayerProperty(0,0,0)
 		Goto StandStill
 
 	FatalityMastermind:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDActivateCameraBig", 0, 0, 0, 0)//Start Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
 		FTSM ABCD 3
@@ -4221,12 +4262,14 @@ FatalityLabGuy3: //axe - face
 
         NULL A 0 A_TakeInventory("GoFatality", 1)
 		MARN A 0 ACS_NamedExecuteAlways("BDDisableCameraBig", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
 		NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
 FatalityCyberdemon:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDActivateCameraBig", 0, 0, 0, 0)//Start Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
 		NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
 		FTCY AB 3
@@ -4276,6 +4319,7 @@ FatalityCyberdemon:
 
         NULL A 0 A_TakeInventory("GoFatality", 1)
 		MARN A 0 ACS_NamedExecuteAlways("BDDisableCameraBig", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
 		NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
@@ -4304,6 +4348,7 @@ FatalityCyberdemon:
 	FatalityPVP1:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
         NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
         PVPF ABB 6
@@ -4319,12 +4364,14 @@ FatalityCyberdemon:
         NULL A 0 A_TakeInventory("PVPFatality",1)
 		NULL A 0 A_TakeInventory("GoFatality", 1)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
 	FatalityPVP2:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
         NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
         PVP1 A 5
@@ -4337,12 +4384,14 @@ FatalityCyberdemon:
         NULL A 0 A_TakeInventory("PVPFatality",1)
 		NULL A 0 A_TakeInventory("GoFatality", 1)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
 	FatalityPVP3:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
         NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
 		NULL AA 0 A_CustomMissile ("MuchBlood", 30, 0, random (0, 360), 2, random (0, 160))
@@ -4366,6 +4415,7 @@ FatalityCyberdemon:
         NULL A 0 A_TakeInventory("PVPFatality",1)
 		NULL A 0 A_TakeInventory("GoFatality", 1)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
@@ -4374,6 +4424,7 @@ FatalityCyberdemon:
     StealthKillZombieman:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
         NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
 		SFZM A 4
@@ -4387,12 +4438,14 @@ FatalityCyberdemon:
 		NULL A 0 A_TakeInventory("GoFatality", 1)
         NULL A 0 A_SpawnItemEx("DeadZombieMan", 35, 0, 40, 0, 0)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
 StealthKillLabguy:
         TNT1 A 0 SetPlayerProperty(0,1,0)
         TNT1 A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
         TNT1 A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
 		SFZL A 4
@@ -4406,12 +4459,14 @@ StealthKillLabguy:
 		TNT1 A 0 A_TakeInventory("GoFatality", 1)
         TNT1 A 0 A_SpawnItemEx("DeadFormerScientist", 0, 0, 40, 0, 0)
        MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+	   NULL A 0 A_ChangeFlag("NOPAIN", 0)
 			NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
     StealthKillShotgunGuy:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
         NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
 		SFSZ A 4
@@ -4425,12 +4480,14 @@ StealthKillLabguy:
 		NULL A 0 A_TakeInventory("GoFatality", 1)
         NULL A 0 A_SpawnItemEx("DeadShotgunGuy", 35, 0, 40, 0, 0)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
     StealthKillChaingunGuy:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
         NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
 		SFCG A 4
@@ -4443,12 +4500,14 @@ StealthKillLabguy:
 		NULL A 0 A_TakeInventory("GoFatality", 1)
         NULL A 0 A_SpawnItemEx("DeadChaingunGuy_KilledByMinorHead", 35, 0, 40, 0, 0)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
     StealthKillImp:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
         NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
 		SFIM A 4
@@ -4462,24 +4521,27 @@ StealthKillLabguy:
 		NULL A 0 A_TakeInventory("GoFatality", 1)
         NULL A 0 A_SpawnItemEx("DeadImp", 35, 0, 40, 0, 0)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
     StealthKillNazi:
         NULL A 0 SetPlayerProperty(0,1,0)
         NULL A 0 ACS_NamedExecuteAlways("BDStartCamera", 0, 0, 0, 0)//Start Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 1)
         NULL A 0 ACS_NamedExecute("BDSetInvulnerable", 0)
         //////////////////////////////////////////////////////
-SFNZ A 4
-SFNZ B 4
-NULL A 0 A_CustomMissile ("GoreSound", 22, 0, random (0, 360), 2, random (0, 160))
-SFNZ C 8
+		SFNZ A 4
+		SFNZ B 4
+		NULL A 0 A_CustomMissile ("GoreSound", 22, 0, random (0, 360), 2, random (0, 160))
+		SFNZ C 8
 
         //////////////////////////////////////////////////////
         NULL A 0 A_TakeInventory("SKNAzi",1)
 		NULL A 0 A_TakeInventory("GoFatality", 1)
         NULL A 0 A_SpawnItemEx("DeadNazi", 35, 0, 40, 0, 0)
 		MARN A 0 ACS_NamedExecuteAlways("BDStopCamera", 0, 0, 0, 0)//Stop Camera
+		NULL A 0 A_ChangeFlag("NOPAIN", 0)
         NULL A 0 SetPlayerProperty(0,0,0)
         Goto StandStill
 
