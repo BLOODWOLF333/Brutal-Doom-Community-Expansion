@@ -272,7 +272,7 @@ ACTOR BelphegorGreenPlasmaBall: BaronBall
 	Death:
 		BFE1 A 0 Bright
 		EXPL A 0 Radius_Quake (2, 54, 0, 15, 0)
-		BFE1 A 0 Bright A_Explode(16,16,1)
+		BFE1 A 0 Bright A_Explode(6,6,1)
         TNT1 AAAA 0 A_CustomMissile ("GreenExplosionFire", 2, 0, random (0, 360), 2, random (0, 360))
         EXPL A 0 A_CustomMissile ("BigNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360))
 		FRPG BCDEF 2 Bright A_SpawnItem("GreenFlare",0,0)

@@ -136,7 +136,7 @@ actor Motherdemon 2548
 
 actor MotherBall : GreenPlasmaBall
 {
-	Damage (random(40,40))
+	Damage (random(16,16))
 	+THRUGHOST
 	+SEEKERMISSILE
 	Scale 0.375
@@ -186,7 +186,7 @@ actor MotherBall : GreenPlasmaBall
 
 actor MotherBallDumb : MotherBall
 {
-	Damage (random(45,45))
+	Damage (random(16,16))
 	+THRUGHOST
 	-SEEKERMISSILE
 	Scale 0.375
@@ -214,7 +214,7 @@ actor MotherFire
   game Doom
   height 32
   radius 16
-  damage 4
+  damage (random(8,8))
   speed 30
   renderstyle Add
   alpha 0.5

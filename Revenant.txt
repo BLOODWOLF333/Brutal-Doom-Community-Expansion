@@ -672,7 +672,7 @@ ACTOR revenantseekermissiles Replaces RevenantTracer
 	Height 4
 	Speed 15
 	FastSpeed 20
-	Damage (random(48,48))
+	Damage (random(52,52))
 	PROJECTILE
 	+THRUGHOST
 	+SEEKERMISSILE
@@ -702,7 +702,7 @@ ACTOR revenantseekermissiles Replaces RevenantTracer
 	Xdeath:
 	Death:
 		TNT1 A 0
-		BFE1 A 0 Bright A_Explode(8, 8, 1)
+		BFE1 A 0 Bright A_Explode(7, 7, 1)
 	    EXPL A 0 Radius_Quake (6, 54, 0, 15, 0)
 		TNT1 A 0 A_SpawnItem("WhiteShockwaveSmall")
 		EXPL A 0 A_CustomMissile ("ExplosionSmoke", 0, 0, random (0, 360), 2, random (0, 360))
@@ -725,7 +725,7 @@ ACTOR RevenantMissile: revenantseekermissiles
 {
 	Speed 20
 	FastSpeed 25
-	Damage (random(55,55))
+	Damage (random(52,52))
 	States
 	{
 	Spawn:
@@ -879,7 +879,7 @@ ACTOR RevenantAttack: BaronBall
     +THRUGHOST
 	RenderStyle Add
 	Alpha 0.6
-    Damage (random(30,30))
+    Damage (random(40,40))
     Speed 20
 	SeeSound "none"
 	DeathSound "none"

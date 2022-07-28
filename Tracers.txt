@@ -215,7 +215,7 @@ Actor MastermindTracer: Tracer
 +DONTHARMSPECIES
 speed 60
 Fastspeed 65
-damage (random(30,30))
+damage (random(10,10))
 scale 1.0
 RenderStyle Add
 Alpha 0.9
@@ -240,7 +240,7 @@ States
         Loop
 	XDeath:
 	Death:
-		EXPL A 0 A_Explode (6, 120, 0)
+		EXPL A 0 A_Explode (3, 3, 0)
 		TNT1 A 0 A_SpawnItem("WhiteShockwaveSmall")
 		TNT1 A 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
 		TNT1 A 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (40, 90))
@@ -255,8 +255,7 @@ Actor SuperMastermindTracer: MastermindTracer
 {
 speed 65
 Fastspeed 70
-Damage (random(30,30))
-Height 24
+Damage (random(12,12))
 }
 
 actor MastermindTracerTrail
