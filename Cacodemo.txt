@@ -75,63 +75,18 @@ ACTOR Cacodemon_ : Cacodemon Replaces Cacodemon
 		HEAD A 10 A_Look
 		Loop
 
-	SearchPlayer:
-	    TNT1 A 0 A_ClearTarget
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 40)
-		HEAD A 10 A_Look
-		TNT1 A 0 A_SetAngle(angle - 30)
-		HEAD A 10 A_Look
-		TNT1 A 0 A_SetAngle(angle + 30)
-		HEAD A 10 A_Look
-		TNT1 A 0 A_SetAngle(angle + 30)
-		HEAD A 10 A_Look
-		TNT1 A 0 A_SetAngle(angle - 30)
-
-		HEAD AAAAAA 2 A_Wander
-		HEAD A 4 A_Look
-
-		HEAD AAAAAA 2 A_Wander
-		HEAD A 4 A_Look
-
-		HEAD AAAAAA 2 A_Wander
-		HEAD A 4 A_Look
-
-		HEAD AAAAAA 2 A_Wander
-		HEAD A 4 A_Look
-
-		TNT1 A 0 A_Jump(128, "SearchPlayer")
-
-		HEAD AAAAAA 2 A_Wander
-		HEAD A 4 A_Look
-
-		HEAD AAAAAA 2 A_Wander
-		HEAD A 4 A_Look
-
-		HEAD AAAAAA 2 A_Wander
-		HEAD A 4 A_Look
-
-		HEAD AAAAAA 2 A_Wander
-		HEAD A 4 A_Look
-		Goto SearchPlayer
-
 	See:
 		TNT1 A 0 A_CheckSight("See2")
 		HEAD AAA 2 A_Chase
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 1)
 		Loop
 
 	See2:
 		HEAD AAAAAA 2 A_Chase
-		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 25, "SearchPlayer")
-		TNT1 A 0 A_GiveInventory("EnemyMemory", 1)
 		HEAD AAAAAA 2 A_Chase
-		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 25, "SearchPlayer")
-		TNT1 A 0 A_GiveInventory("EnemyMemory", 1)
 		Goto See
 
 	Missile:
 		TNT1 A 0
-	    TNT1 A 0 A_TakeInventory("EnemyMemory", 30)
 		TNT1 A 0 A_Stop
 		HEAD B 4 A_FaceTarget
 		HEAD C 4 A_FaceTarget

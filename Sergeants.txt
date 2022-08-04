@@ -83,6 +83,8 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 		TNT1 A 0 A_JumpIfInventory("nonewenemies", 1, "Stand")
 		TNT1 A 0 A_Jump(64, "ReplaceSMG")
 		Goto Stand
+
+	Idle:
 	Stand:
 		TNT1 A 0
 		TNT1 AA 0 A_SpawnItem ("HeadshotTarget20", 0, 31)
@@ -115,60 +117,9 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 	TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 	GOto Missile
 
-	SearchForPlayer:
-	Idle:
-	    TNT1 A 0 A_ClearTarget
-	    TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
-		TNT1 A 0 A_GiveInventory("SKShotgunGUy", 1)
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 31)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SHID A 10 A_Look
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 31)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SHID C 10 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 31)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SHID A 10 A_Look
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 31)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SHID D 10 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 31)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SHID A 10 A_Look
-
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 31)
-		SPOS AAA 2 A_Wander
-		SPOS A 4 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 31)
-		SPOS BBB 2 A_Wander
-		SPOS B 4 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 31)
-		SPOS CCC 2 A_Wander
-		SPOS C 4 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 31)
-		SPOS DDD 2 A_Wander
-		SPOS D 4 A_Look
-
-		TNT1 A 0 A_Jump(128, "Idle")
-
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 31)
-		SPOS AAA 2 A_Wander
-		SPOS A 4 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 31)
-		SPOS BBB 2 A_Wander
-		SPOS B 4 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 31)
-		SPOS CCC 2 A_Wander
-		SPOS C 4 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 31)
-		SPOS DDD 2 A_Wander
-		SPOS D 4 A_Look
-		Goto Stand
-
 	See:
 	TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 	TNT1 A 0 A_TakeInventory("SKShotgunGuy", 1)
-	TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
 	TNT1 A 0 A_CheckSight("SeeNeverSeen")
 	Goto SeeContinue
 
@@ -177,8 +128,6 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 	    TNT1 A 0 A_JumpIfCloser(200, "FallBack")
 		//Advance:
 		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
-		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 25, "SearchForPlayer")
-		TNT1 A 0 A_GiveInventory("EnemyMemory", 1)
 		TNT1 A 0 A_TakeInventory("SKShotgunGuy", 1)
 
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 31)
@@ -219,7 +168,6 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 
 	Missile:
 	    TNT1 A 0 A_Stop
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 31)
 		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 		TNT1 A 0 A_TakeInventory("SKShotgunGuy", 1)
@@ -1774,6 +1722,8 @@ Obituary "%o got punctured by a SMG Zombie."
 		  TNT1 A 0 A_GiveInventory("SergeantAmmo", random(0,5))
 		  PSS3 B 1
 		  Goto Stand
+
+	Idle:
 	Stand:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 31)
@@ -1806,60 +1756,9 @@ Obituary "%o got punctured by a SMG Zombie."
 	TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 	GOto Missile
 
-	SearchForPlayer:
-	Idle:
-	    TNT1 A 0 A_ClearTarget
-	    TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
-		TNT1 A 0 A_GiveInventory("SKShotgunGUy", 1)
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 31)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		PSS3 A 10 A_Look
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 31)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		PSS3 C 10 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 31)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		PSS3 A 10 A_Look
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 31)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		PSS3 D 10 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 31)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		PSS3 A 10 A_Look
-
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 31)
-		PSS3 AAA 2 A_Wander
-		PSS3 A 4 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 31)
-		PSS3 BBB 2 A_Wander
-		PSS3 B 4 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 31)
-		PSS3 CCC 2 A_Wander
-		PSS3 C 4 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 31)
-		PSS3 DDD 2 A_Wander
-		PSS3 D 4 A_Look
-
-		TNT1 A 0 A_Jump(128, "Idle")
-
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 31)
-		PSS3 AAA 2 A_Wander
-		PSS3 A 4 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 31)
-		PSS3 BBB 2 A_Wander
-		PSS3 B 4 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 31)
-		PSS3 CCC 2 A_Wander
-		PSS3 C 4 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 31)
-		PSS3 DDD 2 A_Wander
-		PSS3 D 4 A_Look
-		Goto Stand
-
 	See:
 	TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 	TNT1 A 0 A_TakeInventory("SKShotgunGuy", 1)
-	TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
 	TNT1 A 0 A_CheckSight("SeeNeverSeen")
 	Goto SeeContinue
 
@@ -1867,8 +1766,6 @@ Obituary "%o got punctured by a SMG Zombie."
 	    TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 	    TNT1 A 0 A_JumpIfCloser(200, "FallBack")
 		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
-		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 25, "SearchForPlayer")
-		TNT1 A 0 A_GiveInventory("EnemyMemory", 1)
 		TNT1 A 0 A_TakeInventory("SKShotgunGuy", 1)
 
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 31)
@@ -1910,7 +1807,6 @@ Obituary "%o got punctured by a SMG Zombie."
 	Missile:
 	    TNT1 A 0 A_Stop
 		TNT1 A 0 A_JumpIfHealthLower(1, "Death")
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 31)
 		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 		TNT1 A 0 A_TakeInventory("SKShotgunGuy", 1)

@@ -107,6 +107,7 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		TNT1 A 1 A_BossDeath
 		Stop
 
+	Idle:
 	Stand:
 		TNT1 A 0
 		BTS3 A 0 A_SpawnItem("HeadshotTarget20b", 0, 58)
@@ -136,8 +137,6 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 
 	See4:
 		TNT1 A 0
-		TNT1 A 0 A_GiveInventory("EnemyMemory", 1)
-		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 25, "ForgetTarget")
 		BARO A 0 A_CheckSight("SEE3")
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
 		BARO AAA 2 A_Chase
@@ -181,119 +180,6 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 	See3:
 		BARO AABBCCDD 2 A_Chase
 		Goto See4
-
-	Idle:
-	LookingForPlayer:
-	    TNT1 A 0 A_GiveInventory("SKImp", 1)
-	    TNT1 A 0 A_SpawnItem ("HeadshotTarget10b", 0, 58)
-		BARO B 10 A_Look
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget10b", 0, 58)
-		BARO B 10 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10b", 0, 58)
-		BARO B 10 A_Look
-		TNT1 A 0 A_SetAngle(angle - 40)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10b", 0, 58)
-		BARO B 10 A_Look
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget10b", 0, 58)
-		BARO B 10 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10b", 0, 58)
-		BARO B 10 A_Look
-		TNT1 A 0 A_SetAngle(angle + 40)
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget10b", 0, 58)
-		BARO B 10 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10b", 0, 58)
-		BARO B 10 A_Look
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget10b", 0, 58)
-		BARO B 10 A_Look
-
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO AAA 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO BBB 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO CCC 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO DDD 2 A_Wander
-		BARO A 4 A_Look
-
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO AAA 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO BBB 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO CCC 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO DDD 2 A_Wander
-		BARO A 4 A_Look
-
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO AAA 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO BBB 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO CCC 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO DDD 2 A_Wander
-		BARO A 4 A_Look
-
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO AAA 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO BBB 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO CCC 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO DDD 2 A_Wander
-		BARO A 4 A_Look
-
-		TNT1 A 0 A_jump(128, "LookingForPlayer")
-
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO AAA 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO BBB 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO CCC 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO DDD 2 A_Wander
-		BARO A 4 A_Look
-
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO AAA 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO BBB 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO CCC 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO DDD 2 A_Wander
-		BARO A 4 A_Look
-
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO AAA 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO BBB 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO CCC 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO DDD 2 A_Wander
-		BARO A 4 A_Look
-
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO AAA 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO BBB 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO CCC 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
-		BARO DDD 2 A_Wander
-		BARO A 4 A_Look
-
-		Goto Stand
-
-	ForgetTarget:
-		TNT1 A 0 A_ClearTarget
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
-		Goto LookingForPlayer
 
 	RAGE:
         TNT1 A 0
@@ -343,8 +229,6 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 
     Missile:
 		BARO A 1
-
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 30)
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsACyberdemon", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMastermind", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAnExplosiveBarrel", 1, "See2")
@@ -1391,6 +1275,7 @@ Spawn:
 			BARO A 1
 			Goto Spawn
 
+	Idle:
 	Stand:
 		TNT1 A 0
 		BTS3 A 0 A_SpawnItem("HeadshotTarget20b", 0, 72)
@@ -1420,8 +1305,6 @@ Spawn:
 
 	See4:
 		TNT1 A 0
-		TNT1 A 0 A_GiveInventory("EnemyMemory", 1)
-		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 25, "ForgetTarget")
 		BARO A 0 A_CheckSight("SEE3")
 
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
@@ -1466,119 +1349,6 @@ Spawn:
 	See3:
 		BARO AABBCCDD 2 A_Chase
 		Goto See4
-
-	Idle:
-	LookingForPlayer:
-	    TNT1 A 0 A_GiveInventory("SKImp", 1)
-	    TNT1 A 0 A_SpawnItem ("HeadshotTarget10b", 0, 72)
-		BARO B 10 A_Look
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget10b", 0, 72)
-		BARO B 10 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10b", 0, 72)
-		BARO B 10 A_Look
-		TNT1 A 0 A_SetAngle(angle - 40)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10b", 0, 72)
-		BARO B 10 A_Look
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget10b", 0, 72)
-		BARO B 10 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10b", 0, 72)
-		BARO B 10 A_Look
-		TNT1 A 0 A_SetAngle(angle + 40)
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget10b", 0, 72)
-		BARO B 10 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10b", 0, 72)
-		BARO B 10 A_Look
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget10b", 0, 72)
-		BARO B 10 A_Look
-
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO AAA 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO BBB 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO CCC 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO DDD 2 A_Wander
-		BARO A 4 A_Look
-
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO AAA 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO BBB 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO CCC 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO DDD 2 A_Wander
-		BARO A 4 A_Look
-
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO AAA 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO BBB 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO CCC 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO DDD 2 A_Wander
-		BARO A 4 A_Look
-
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO AAA 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO BBB 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO CCC 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO DDD 2 A_Wander
-		BARO A 4 A_Look
-
-		TNT1 A 0 A_jump(128, "LookingForPlayer")
-
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO AAA 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO BBB 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO CCC 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO DDD 2 A_Wander
-		BARO A 4 A_Look
-
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO AAA 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO BBB 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO CCC 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO DDD 2 A_Wander
-		BARO A 4 A_Look
-
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO AAA 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO BBB 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO CCC 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO DDD 2 A_Wander
-		BARO A 4 A_Look
-
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO AAA 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO BBB 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO CCC 2 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
-		BARO DDD 2 A_Wander
-		BARO A 4 A_Look
-
-		Goto Stand
-
-	ForgetTarget:
-		TNT1 A 0 A_ClearTarget
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
-		Goto LookingForPlayer
 
 	RAGE:
         TNT1 A 0
@@ -1627,8 +1397,6 @@ Spawn:
 
     Missile:
 		BARO A 1
-
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 30)
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsACyberdemon", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMastermind", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAnExplosiveBarrel", 1, "See2")

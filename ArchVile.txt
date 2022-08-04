@@ -58,6 +58,7 @@ ACTOR TheArchvile: Archvile Replaces Archvile
 		TNT1 A 0 A_GiveInventory("EnemyIsArchvile")
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCHeckClassicMonsters", 0, 0, 0, 0)//Check if Vanilla Mode is activated
 
+	Idle:
 	Spawn2:
 		DIAB B 20 A_Look
 		TNT1 A 0 A_SpawnItem("HeadshotTarget20", 0, 57)

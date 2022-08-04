@@ -47,49 +47,11 @@ ACTOR BullDemon: Demon Replaces Demon
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCHeckClassicMonsters", 0, 0, 0, 0)//Check if Vanilla Mode is activated
 		SARG Y 2
 
+	Idle:
 	Spawned:
 		TNT1 A 0 A_JumpIfInventory("EatMe", 1, "Eat")
 		SARG YZYZYZYZYZ 10 A_Look
 		Loop
-
-	Forget:
-	TNT1 A 0 A_ClearTarget
-	TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
-	SearchPlayer:
-	Idle:
-
-		SARG YZ 10 A_Look
-		TNT1 A 0 A_SetAngle(angle - 40)
-		SARG YZ 10 A_Look
-		TNT1 A 0 A_SetAngle(angle + 40)
-		SARG YZ 10 A_Look
-
-		SARG AA 2 A_Wander
-		SARG A 4 A_Look
-
-		SARG BB 2 A_Wander
-		SARG B 4 A_Look
-
-		SARG CC 2 A_Wander
-		SARG C 4 A_Look
-
-		SARG DD 2 A_Wander
-		SARG D 4 A_Look
-
-		TNT1 A 0 A_Jump(128, "SearchPlayer")
-
-		SARG AA 2 A_Wander
-		SARG A 4 A_Look
-
-		SARG BB 2 A_Wander
-		SARG B 4 A_Look
-
-		SARG CC 2 A_Wander
-		SARG C 4 A_Look
-
-		SARG DD 2 A_Wander
-		SARG D 4 A_Look
-		Goto Spawned
 
 	See:
 	SeeContinue:
@@ -101,7 +63,6 @@ ACTOR BullDemon: Demon Replaces Demon
 		TNT1 A 0 A_JumpIfInventory("ComeEatMeDemon", 1, "EnragedSee")
 		TNT1 A 0 A_CheckSight("SeeNoSee")
         TNT1 A 0 A_JumpIfInventory("EatMe", 1, "Eat")
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
 		SARG AA 2 A_Chase
 		SARG BB 2 A_Chase
 		SARG CC 2 A_Chase
@@ -113,8 +74,6 @@ ACTOR BullDemon: Demon Replaces Demon
 		SARG BB 2 A_Chase
 		SARG CC 2 A_Chase
 		SARG DD 2 A_Chase
-		TNT1 A 0 A_GiveInventory("EnemyMemory", 1)
-		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 25, "Forget")
 		Goto See
 
 	Pain.Taunt:
@@ -126,7 +85,6 @@ ACTOR BullDemon: Demon Replaces Demon
 
 	EnragedSee:
 		TNT1 A 0 A_JumpIfInventory("EatMe", 1, "Eat")
-        TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
 		SARG A 1 A_Chase("Melee", "")
 		SARG A 2 A_Chase("Melee", "")
 		SARG B 1 A_Chase("Melee", "")
@@ -142,7 +100,6 @@ ACTOR BullDemon: Demon Replaces Demon
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfCloser(64,"Bite")
 		TNT1 A 0 A_PlaySound("demon/melee", 4)
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
 
 		SAPC A 5 A_FaceTarget
 		SARG E 3 A_FaceTarget
@@ -165,7 +122,6 @@ ACTOR BullDemon: Demon Replaces Demon
 		SARG G 0 A_FaceTarget
 		TNT1 A 0 A_PlaySound("demon/melee", 4)
 		TNT1 A 0 A_Recoil(-10)
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
 		TNT1 A 0 A_JumpIfInTargetInventory("ComeEatMeDemon", 1, "MeleeDown")
 		SARG E 6 A_FaceTarget
 		SARG F 6 A_FaceTarget
@@ -866,7 +822,6 @@ States
 	    TNT1 A 0
 		TNT1 A 0 A_GiveInventory("DemonBleedingOut", 1)
 		TNT1 A 0 A_JumpIfInventory("DemonBleedingOut", 15, "Death")
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
 		SG1A E 3 A_FaceTarget
 		TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood3", 42, 0, random (0, 360), 2, random (0, 45))
 		SG1A E 3 A_FaceTarget

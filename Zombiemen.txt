@@ -97,74 +97,12 @@ ACTOR RifleZombie Replaces ZombieMan
 		TNT1 A 0 A_SpawnItemEx ("VanillaZombieman",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0, tid)
 		Stop
 
+	Idle:
 	Stand:
 		PSSS B 0
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget20", 0, 36,0)
 		PSSS AB 10 A_Look
 		Loop
-
-	SearchForPlayer:
-	Idle:
-	    TNT1 A 0 A_ClearTarget
-	    TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
-		TNT1 A 0 A_GiveInventory("SKZombieMan", 1)
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 36,0)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		PSSS A 10 A_Look
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 36,0)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		PSSS B 10 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 36,0)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		PSSS A 10 A_Look
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 36,0)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		PSSS C 10 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 36,0)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		PSSS A 10 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 36,0)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		PSSS D 10 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 36,0)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		PSSS A 10 A_Look
-
-	StartSearching:
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 36,0)
-		POSR AAA 2 A_Wander
-		POSR A 4 A_Look
-
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 36,0)
-		POSR BBB 2 A_Wander
-		POSR B 4 A_Look
-
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 36,0)
-		POSR CCC 2 A_Wander
-		POSR C 4 A_Look
-
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 36,0)
-		POSR DDD 2 A_Wander
-		POSR D 4 A_Look
-
-		TNT1 A 0 A_Jump(128, "StartSearching")
-
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 36,0)
-		POSR AAA 2 A_Wander
-		POSR A 4 A_Look
-
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 36,0)
-		POSR BBB 2 A_Wander
-		POSR B 4 A_Look
-
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 36,0)
-		POSR CCC 2 A_Wander
-		POSR C 4 A_Look
-
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 36,0)
-		POSR DDD 2 A_Wander
-		POSR D 4 A_Look
-		Goto Stand
 
 	FallBack:
 		TNT1 A 0 A_CheckSight("Advance")
@@ -192,7 +130,6 @@ ACTOR RifleZombie Replaces ZombieMan
 	See:
 		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 		TNT1 A 0 A_TakeInventory("SKZombieman", 1)
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
 		TNT1 A 0 A_CheckSight("SeeNeverSeen")
 		TNT1 A 0 A_TakeInventory("SKZombieman", 1)
 		Goto SeeContinue
@@ -201,9 +138,6 @@ ACTOR RifleZombie Replaces ZombieMan
 		TNT1 A 0 A_JumpIfCloser(200, "FallBack")
 		Advance:
 		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
-        //TNT1 A 0 A_SpawnItemEx("FootSep", 0, 0, 10, 0, 0)
-		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 25, "SearchForPlayer")
-		TNT1 A 0 A_GiveInventory("EnemyMemory", 1)
 
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 36,0)
 		TNT1 A 0 A_SpawnItem ("LegTargetBase")
@@ -267,7 +201,6 @@ ACTOR RifleZombie Replaces ZombieMan
 		TNT1 A 0 A_ChangeFlag("GHOST", 0)
 		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 		TNT1 A 0 A_TakeInventory("SKZombieman", 1)
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
 
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget20", 0, 36,0)
 		TNT1 A 0 A_SpawnItem ("LegTarget20")

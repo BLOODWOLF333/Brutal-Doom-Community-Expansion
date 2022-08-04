@@ -48,7 +48,6 @@ ACTOR Spectro: BullDemon Replaces Spectre
 		TNT1 A 0 A_JumpIfInventory("ComeEatMeDemon", 1, "EnragedSee")
 		TNT1 A 0 A_CheckSight("SeeNoSee")
         TNT1 A 0 A_JumpIfInventory("EatMe", 1, "Eat")
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
 		SPEC AA 2 BRIGHT A_Chase
 		TNT1 A 0 A_JumpIfInTargetInventory("HasInfrared", 1, "SeeVisible")
 		SPEC BB 2 BRIGHT A_Chase
@@ -68,8 +67,6 @@ ACTOR Spectro: BullDemon Replaces Spectre
 		TNT1 A 0 A_JumpIfInTargetInventory("HasInfrared", 1, "SeeVisible")
 		SPEC BB 2 BRIGHT A_Chase
 		TNT1 A 0 A_JumpIfInTargetInventory("HasInfrared", 1, "SeeVisible")
-		TNT1 A 0 A_GiveInventory("EnemyMemory", 1)
-		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 25, "Forget")
 		Goto See
 
 	SeeVisible:
@@ -78,7 +75,6 @@ ACTOR Spectro: BullDemon Replaces Spectre
 
 	EnragedSee:
 		TNT1 A 0 A_JumpIfInventory("EatMe", 1, "Eat")
-        TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
 		SPEC A 1 BRIGHT A_Chase
 		SPEC A 2 BRIGHT A_Chase
 		TNT1 A 0 A_JumpIfInTargetInventory("HasInfrared", 1, "SeeVisible")

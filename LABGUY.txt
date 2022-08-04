@@ -33,6 +33,7 @@ ACTOR Labguy: RifleZombie
 		SCZA B 1
 		Goto Stand
 
+		Idle:
 		Stand:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem ("LegTarget100")
@@ -41,76 +42,12 @@ ACTOR Labguy: RifleZombie
 		SCZA ABABABAB 10 A_Look
 		Loop
 
-		SearchForPlayer:
-		Idle:
-		TNT1 A 0 A_ClearTarget
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
-		TNT1 A 0 A_GiveInventory("SKLabGuy", 1)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA A 10 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA B 10 A_Look
-		TNT1 A 0 A_SetAngle(angle - 40)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA A 10 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA C 10 A_Look
-		TNT1 A 0 A_SetAngle(angle + 40)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA A 10 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		SCZA D 10 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
-		TNT1 A 0 A_SpawnItem ("LegTargetBase")
-		TNT1 A 0 A_SetAngle(angle + 40)
-		SCZA A 10 A_Look
-
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 32)
-		SCZA AAA 2 A_Wander
-		SCZA A 4 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 32)
-		SCZA BBB 2 A_Wander
-		SCZA B 4 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 32)
-		SCZA CCC 2 A_Wander
-		SCZA C 4 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 32)
-		SCZA DDD 2 A_Wander
-		SCZA D 4 A_Look
-
-		TNT1 A 0 A_Jump(128, "Idle")
-
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 32)
-		SCZA AAA 2 A_Wander
-		SCZA A 4 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 32)
-		SCZA BBB 2 A_Wander
-		SCZA B 4 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 32)
-		SCZA CCC 2 A_Wander
-		SCZA C 4 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 32)
-		SCZA DDD 2 A_Wander
-		SCZA D 4 A_Look
-		Goto Spawn
-
 		See:
 		TNT1 A 0 A_TakeInventory("SKLabGuy", 1)
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
 		TNT1 A 0 A_CheckSight("SeeNeverSeen")
 		Goto SeeContinue
 
 		SeeContinue:
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 25, "SearchForPlayer")
-		TNT1 A 0 A_GiveInventory("EnemyMemory", 1)
-
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 32)
 		TNT1 A 0 A_SpawnItem ("LegTargetBase")
 		SCZA AAA 2 A_Chase("Melee","")
