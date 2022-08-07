@@ -132,8 +132,6 @@ actor CurbstompedMarine
     Mass 1000
     Health 100
 	PainChance 255
-	damagefactor "TeleportRemover", 1000.0
-	damagefactor "GibRemoving", 0.5
 	damagefactor "Desintegrate", 990.0
 	damagefactor "BFG", 990.0
 	damagefactor "CrushedBodies", 9999.0
@@ -197,27 +195,6 @@ actor CurbstompedMarine
         TNT1 A 0
         Stop
 
-	Death.TeleportRemover:
-	Death.GibRemoving:
-	    TNT1 A 0
-		TNT1 A 0 A_Scream
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_ChangeFlag("NOCLIP", 1)
-		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
-		TNT1 A 0 A_ChangeFlag("NOBLOCKMAP", 1)
-		Stop
-//^^^those damagetypes don't exist
-		TNT1 AAAAA 0 A_CustomMissile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 30))
-		TNT1 AA 0 A_CustomMissile ("XDeath2b", 5, 0, random (0, 360), 2, random (0, 30))
-		TNT1 AAAA 0 A_CustomMissile ("BloodMist", 5, 0, random (0, 360), 2, random (0, 30))
-		TNT1 AAAAAAA 0 A_CustomMissile ("XDeathSkinPiece2", 5, 0, random (0, 360), 2, random (10, 30))
-		TNT1 AAAA 0 A_CustomMissile ("XDeathSkinPiece1", 5, 0, random (0, 360), 2, random (10, 130))
-		TNT1 AAAA 0 A_CustomMissile ("SmallSuperGore", 10, 0, random (0, 360), 2, random (10, 30))
-		TNT1 A 0 A_SpawnItem("SplatteredSmall")
-		XME2 L 1
-		XME2 L -1
-		Stop
-
 	Death.Desintegrate:
 		 TNT1 A 0
 		 TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodFake", 0, 0, random (0, 360), 2, random (0, 90))
@@ -226,7 +203,6 @@ actor CurbstompedMarine
 		 TNT1 A 0 A_SpawnItem("Gibz")
 		 TNT1 A 0 A_SpawnItem("MeatDeathSmall")
 		 Stop
-
 
 	Death.CrushedBodies:
 		TNT1 A 0 A_NoBlocking
