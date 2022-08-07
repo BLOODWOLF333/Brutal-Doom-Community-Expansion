@@ -1611,6 +1611,7 @@ script "BD_CheckIfOverLiquid" (void) //Water Small Splash
 	if (CheckActorFloorTexture(0, "FWATER3"))    GiveInventory("IsOverWater", 1);
 	if (CheckActorFloorTexture(0, "FWATER4"))    GiveInventory("IsOverWater", 1);
 	if (CheckActorFloorTexture(0, "BDFWATER"))    GiveInventory("IsOverWater", 1);
+	if (CheckActorFloorTexture(0, "FHDI01"))    GiveInventory("IsOverWater", 1);
 
 	if (CheckActorFloorTexture(0, "NUKAGE1"))    GiveInventory("IsOverNukage", 1);
 	if (CheckActorFloorTexture(0, "NUKAGE2"))    GiveInventory("IsOverNukage", 1);
@@ -1630,6 +1631,7 @@ script "BD_CheckIfOverLiquid" (void) //Water Small Splash
 	if (CheckActorFloorTexture(0, "SLIME08"))    GiveInventory("IsOverSlime", 1);
 	if (CheckActorFloorTexture(0, "BDSLIME1"))    GiveInventory("IsOverSlime", 1);
 	if (CheckActorFloorTexture(0, "BDSLIME2"))    GiveInventory("IsOverSlime", 1);
+	if (CheckActorFloorTexture(0, "GRWAT_01"))    GiveInventory("IsOverSlime", 1);
 
 	if (CheckActorFloorTexture(0, "SLIME09"))    GiveInventory("IsOverLava", 1);
 	if (CheckActorFloorTexture(0, "SLIME10"))    GiveInventory("IsOverLava", 1);
@@ -1644,11 +1646,15 @@ script "BD_CheckIfOverLiquid" (void) //Water Small Splash
 
 	if (CheckActorFloorTexture(0, "MAGEFL"))    GiveInventory("IsOverMagenta", 1);
 
+	if (CheckActorFloorTexture(0, "YAVAFL"))    GiveInventory("IsOverYava", 1);
+
 	if (CheckActorFloorTexture(0, "BLOOD1"))    GiveInventory("IsOverBlood", 1);
 	if (CheckActorFloorTexture(0, "BLOOD2"))    GiveInventory("IsOverBlood", 1);
 	if (CheckActorFloorTexture(0, "BLOOD3"))    GiveInventory("IsOverBlood", 1);
 	if (CheckActorFloorTexture(0, "BLOOD4"))    GiveInventory("IsOverBlood", 1);
 	if (CheckActorFloorTexture(0, "BDBLOOD1"))    GiveInventory("IsOverBlood", 1);
+
+	if (CheckActorFloorTexture(0, "FHDT01"))    GiveInventory("IsOverTar", 1);
 }
 
 Script "Check_DisabledReloading" Enter
