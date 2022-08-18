@@ -399,11 +399,10 @@ ACTOR Shot_Gun2 : BrutalWeapon
 
 	InsertShellAnimation:
 		SHTN A 0
-		SSHR A 4 A_WeaponReady(WRF_NOBOB)
+		SSHR AAJK 1 A_WeaponReady(WRF_NOBOB)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		SSHR JK 1
 		SSHR A 0 A_PlaySound("insertshell")
-		SSHR DEFHI 1 A_WeaponReady(WRF_NOBOB)
+		SSHR DEFH 1 A_WeaponReady(WRF_NOBOB)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		SHTN A 0 A_JumpIfInventory("ShotgunAmmo",9,"FinishedInsertingShells")//If there are 8+1 shells, stop it immediately
         Goto InsertingShells
