@@ -137,7 +137,6 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 
 	See4:
 		TNT1 A 0
-		BARO A 0 A_CheckSight("SEE3")
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 58)
 		BARO AAA 2 A_Chase
 
@@ -156,7 +155,6 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 
 	SeeNeverSeen:
 		TNT1 A 0
-		BARO A 0 A_CheckSight("SEE3")
 		BARO AA 2 A_Chase
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		BARO BB 2 A_Chase
@@ -177,13 +175,9 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsACyberdemon", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMastermind", 1, "CheckRetreat")
 		Loop
-	See3:
-		BARO AABBCCDD 2 A_Chase
-		Goto See4
 
 	RAGE:
         TNT1 A 0
-		TNT1 A 0 A_CheckSight("See")
         BTS3 ABC 2  A_SpawnItem("HeadshotTarget4b", 0, 58)
 		BTS3 DEDF 3  A_SpawnItem("HeadshotTarget4b", 0, 58)
 		BTS3 DEDF 3  A_SpawnItem("HeadshotTarget4b", 0, 58)
@@ -1256,24 +1250,12 @@ Actor BaronBoss1: BaronofHell2 3013
 	//$Colour rgb(200, 0, 0)
 	//$Sprite BAROA1
 	States
-{
-Spawn:
-		BARO A 1
-		TNT1 A 0 A_CheckSight("WAITING")
+	{
+	Spawn:
+		TNT1 A 0
 		TNT1 A 0 A_GiveInventory("TargetIsABaronOfHell")
-		TNT1 A 0 ACS_NamedExecuteAlways("BDBruiserBrothersHealth")
-		TNT1 A 0 ACS_NamedExecuteAlways("BDBruiserBrotherOne")
-		TNT1 A 0 A_changeFlag("MISSILEMORE", 1)
-		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
-		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
-		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")
-		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp")
-		TNT1 A 0 A_JumpIfInventory("DemonFatality", 1, "FatalityDemon")
-		Goto Stand
-
-	Waiting:
-			BARO A 1
-			Goto Spawn
+		BARO A 10 A_Look
+		Loop
 
 	Idle:
 	Stand:
@@ -1284,6 +1266,14 @@ Spawn:
 
 	See:
 		BARO A 0
+		TNT1 A 0 ACS_NamedExecuteAlways("BDBruiserBrothersHealth")
+		TNT1 A 0 ACS_NamedExecuteAlways("BDBruiserBrotherOne")
+		TNT1 A 0 A_changeFlag("MISSILEMORE", 1)
+		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
+		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
+		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp")
+		TNT1 A 0 A_JumpIfInventory("DemonFatality", 1, "FatalityDemon")
 		TNT1 A 0 A_JumpIfInventory("HasExplosiveBarrel", 1, "MissileBarrel")
 	    TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 72)
 		BARO A 1
@@ -1305,8 +1295,6 @@ Spawn:
 
 	See4:
 		TNT1 A 0
-		BARO A 0 A_CheckSight("SEE3")
-
 		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
 		BARO AAA 2 A_Chase
 
@@ -1325,7 +1313,6 @@ Spawn:
 
 	SeeNeverSeen:
 		TNT1 A 0
-		BARO A 0 A_CheckSight("SEE3")
 		BARO AA 2 A_Chase
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 72)
 		BARO BB 2 A_Chase
@@ -1346,13 +1333,9 @@ Spawn:
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsACyberdemon", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMastermind", 1, "CheckRetreat")
 		Loop
-	See3:
-		BARO AABBCCDD 2 A_Chase
-		Goto See4
 
 	RAGE:
         TNT1 A 0
-		TNT1 A 0 A_CheckSight("See")
         BTS3 ABC 2  A_SpawnItem("HeadshotTarget4b", 0, 72)
 		BTS3 DEDF 3  A_SpawnItem("HeadshotTarget4b", 0, 72)
 		BTS3 DEDF 3  A_SpawnItem("HeadshotTarget4b", 0, 72)
@@ -1999,19 +1982,31 @@ Actor BaronBoss2: BaronBoss1 3023
 //$Colour rgb(200, 0, 0)
 //$Sprite BAROA1
 States
-{
+	{
 	Spawn:
 		TNT1 A 0
-		BARO A 1
-		TNT1 A 0 A_CheckSight("WAITING")
 		TNT1 A 0 A_GiveInventory("TargetIsABaronOfHell")
+		BARO A 10 A_Look
+		Loop
+
+	See:
+		BARO A 0
+		TNT1 A 0 ACS_NamedExecuteAlways("BDBruiserBrothersHealth")
 		TNT1 A 0 ACS_NamedExecuteAlways("BDBruiserBrotherTwo")
 		TNT1 A 0 A_changeFlag("MISSILEMORE", 1)
-		Goto Stand
-
-	Waiting:
+		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
+		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman")
+		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp")
+		TNT1 A 0 A_JumpIfInventory("DemonFatality", 1, "FatalityDemon")
+		TNT1 A 0 A_JumpIfInventory("HasExplosiveBarrel", 1, "MissileBarrel")
+	    TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 72)
 		BARO A 1
-		Goto Spawn
-
-		}
+        BTS3 ABC 1
+		TNT1 A 0 A_FaceTarget
+		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 72)
+		BTS3 D 4
+		BTS3 CBA 1
+		Goto See2
+	}
 }

@@ -3,17 +3,22 @@
 //
 //	Authored by BLOODWOLF
 //
-//	Development v21.13.0
+//	Stable v21.13.0
 //
-//	GRAPHICS/HUDS Folder:			Fixed offsets for fullhelmet HUD
-//	Fire.txt:						Sped-up some fire animations
-//	MapSpecificDec.txt:				Corrected a few death.fire frames for vegetation
-//	Shotgun.txt:					Sped-up reloading animation slightly
-//	Shotgun2.txt:					Sped-up reloading animation slightly
+//	Baron.txt:						Optimized code and removed unnecessary A_CheckSight() calls
+//	Cacodemo.txt:					Optimized code and removed unnecessary A_CheckSight() calls
+//	Commando.txt:					Optimized code and removed unnecessary A_CheckSight() calls
+//	Dead.txt:						Optimized code and removed unnecessary A_CheckSight() calls
+//	Demons.txt:						Optimized code and removed unnecessary A_CheckSight() calls
+//	Knight.txt:						Optimized code and removed unnecessary A_CheckSight() calls
+//	Labguy.txt:						Optimized code and removed unnecessary A_CheckSight() calls
+//	PainElemental.txt:				Optimized code and removed unnecessary A_CheckSight() calls
+//	Spectre.txt:					Optimized code and removed unnecessary A_CheckSight() calls
 //
-//	Development v21.12.3
+//	Development v21.12.3+Hotfix
 //
 //	Brightmaps/Weapons folder:		Touched-up various brightmaps that were making muzzle flashes look brownish
+//	GRAPHICS/HUDS Folder:			Fixed offsets for fullhelmet HUD
 //	All Pickups:					Added +INVENTORY.NOSCREENFLASH
 //	All Monsters:					Changed the damagefactor from "head" to 1.25 for <500 hitpoint enemies and x1.0 for >=500 hitpoint enemies like v21 Gold
 //									Removed the EnemyMemory feature (breaks numerous maps in other wads)
@@ -22,16 +27,20 @@
 //	CVARS.txt:						Removed lines replacing DBRAIN with LAVAFL
 //	Doom2Remap.txt:					Removed a DeadTree spawn that was outside the map in Map15 and a BlueCar spawn that was keeping a lift from raising
 //	DyingGuys.txt:					Speed-up BrutalizedCommando spawn state animations
+//	Fire.txt:						Sped-up some fire animations
 //	Footsteps.txt:					Added +THRUACTORS to HeavyFootsteps to prevent Cyberdemons from causing in-fighting inside monster closets
 //	GreenGore.txt:					Made dripping blood spawn the waterblood actor if over a liquid and nothing over lava
 //	Head_Sys.txt:					Made the damage checks more granular and added +NOEXTREMEDEATH flag to keep from gibbing the monster
 //	Knight.txt:						Change headshot spawns in Missile state to A_SpawnItem(...,0,54) instead of A_SpawnItemEX(...)
 //	Leg.txt:						Made the damage checks more granular and added +NOEXTREMEDEATH flag to keep from gibbing the monster
+//	MapSpecificDec.txt:				Corrected a few death.fire frames for vegetation
 //	Mastermind.txt:					Set height back to the vanilla 100 so that it doesnt get stuck (Hellbound Map20)
 //									Added a height-check before spawning the Motherdemon
 //	Melee.txt:						Adjust speed of melee projectiles to fix first-person executions
 //	Player.txt:						Added A_ChangeFlag("NOPAIN",1) to the beginning and A_Changeflag("NOPAIN",0) to the end of every fatality
 //	Saw.txt:						Slowed down chainsaw fuel consumption by 50%
+//	Shotgun.txt:					Sped-up reloading animation slightly
+//	Shotgun2.txt:					Sped-up reloading animation slightly
 //	Teleports.txt:					Removed BrutalTeleportDest and TeleportRemovalThing, screws up Doom2 pistol start endings in certain megawads
 //	WeaponSpawners.txt:				Increased the probability of the brutal-doom specific weapons spawning in place of the vanilla weapons
 //	dmlevels.wad:					Adjusted the player starts and scripts for the bots

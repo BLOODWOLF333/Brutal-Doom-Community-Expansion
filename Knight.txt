@@ -125,8 +125,6 @@ ACTOR HellKnight2 : HellKnight Replaces HellKnight
 		Loop
 
 	See:
-	BOS2 B 0
-	TNT1 A 0 A_CheckSight("SeeNeverSeen")
 	Goto Rage
 
 	See2:
@@ -148,27 +146,6 @@ ACTOR HellKnight2 : HellKnight Replaces HellKnight
 		BOS2 DDD 2 A_Chase
 		Loop
 
-	SeeNeverSeen:
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 54)
-		BOS2 AA 2 A_Chase
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 54)
-		BOS2 AA 2 A_Chase
-
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 54)
-		BOS2 BB 2 A_Chase
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 54)
-		BOS2 BB 2 A_Chase
-
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 54)
-		BOS2 CC 2 A_Chase
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 54)
-		BOS2 CC 2 A_Chase
-
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 54)
-		BOS2 DD 2 A_Chase
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 54)
-		BOS2 DD 2 A_Chase
-		Loop
    RAGE:
         TNT1 A 0
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 54)
