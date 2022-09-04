@@ -29,7 +29,6 @@ ACTOR Mancubus : Fatso Replaces Fatso
     BloodType "Brutal_Blood", "SawBlood", "SawBlood"
 	DropItem "DemonStrengthRune", 16
 	Obituary "%o was incinerated by a Mancubus."
-    +DONTHARMSPECIES
 	DeathHeight 6
 	BurnHeight 0
 	Species "Fatso"
@@ -570,6 +569,7 @@ ACTOR BigFireBall Replaces Fatshot
 	Decal "Scorch"
 	SeeSound "BREATHOF"
 	DeathSound "fatso/shotx"
+	Species "Fatso"
 	States
 	{
 	Spawn:

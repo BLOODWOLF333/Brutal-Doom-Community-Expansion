@@ -1,8 +1,6 @@
 ACTOR Arachnotron1: Arachnotron replaces Arachnotron
 {
 	Monster
-	+FLOORCLIP
-	+BOSSDEATH
     GibHealth 20
 	Radius 64
 	Height 55
@@ -35,7 +33,7 @@ ACTOR Arachnotron1: Arachnotron replaces Arachnotron
 	MaxDropOffHeight 32
 	Speed 4
 	Species "Arachnotron"
-	+DONTHARMSPECIES
+	//+DONTHARMSPECIES
     Scale 1.1
 	Health 750
 	DeathHeight 4
@@ -329,6 +327,7 @@ Actor EnemyPlasmaBall : PlasmaBall75 Replaces PlasmaBall2
 	Damage (random(26,26))
 	Speed 20
 	FastSpeed 25
+	-MTHRUSPECIES
 	Species "Arachnotron"
 	States
 	{

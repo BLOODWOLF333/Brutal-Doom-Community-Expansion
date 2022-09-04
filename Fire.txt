@@ -487,7 +487,6 @@ ACTOR FlamethrowerMissile
 	-BLOODSPLATTER
 	+NODAMAGETHRUST
 	-NOGRAVITY
-	//+THRUACTORS
 	RenderStyle Add
     DamageType Fire
 	Decal "FlamethrowerScorch"
@@ -552,6 +551,7 @@ ACTOR FlamethrowerMissileFatso: FlamethrowerMissile
 	Speed 35
 	FastSpeed 40
 	Damage (random(8,8))
+	Species "Fatso"
 	States
 	{
     Spawn:
@@ -1161,6 +1161,7 @@ Scale 0.5
 
 ACTOR GreenFlameTrails: FlameTrails
 {
+	Scale 0.5
 	States
 	{
     Spawn:
@@ -1170,16 +1171,9 @@ ACTOR GreenFlameTrails: FlameTrails
 	}
 }
 
-ACTOR GreenFlameTrailsbIG: FlameTrails
+ACTOR GreenFlameTrailsBig: GreenFlameTrails
 {
-Speed 2
-	States
-	{
-    Spawn:
-	    TNT1 A 1
-        FIR6 ABCDEFGHIJKLMNOPQRST 2 BRIGHT
-        Stop
-	}
+	Scale 0.7
 }
 
 ACTOR HighExplosiveFlames: FlameTrails
