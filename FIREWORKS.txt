@@ -50,11 +50,11 @@ ACTOR ExplosiveBarrel1 Replaces ExplosiveBarrel
 	Spawn:
 		TNT1 A 0
 		TNT1 A 0 A_GiveInventory("TargetIsANExplosiveBarrel", 1)
-		TNT1 A 0 A_RadiusGive("BarrelCounter",40,RGF_GIVESELF | RGF_MONSTERS | RGF_CORPSES | RGF_CUBE | RGF_NOSIGHT,1)
-		BARI A 6
+		TNT1 A 0 A_RadiusGive("BarrelCounter",40,RGF_GIVESELF | RGF_OBJECTS | RGF_CUBE | RGF_NOSIGHT,1)
+		BARI A 2
 		TNT1 A 0 A_JumpIfInventory("BarrelCounter",9,"Vanilla")
+		BARI A 2
 		MARN A 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
-		BARI A 6
 
 	Stay:
 	    BARI ABCDCB 6 A_Look
@@ -116,6 +116,7 @@ ACTOR ExplosiveBarrel1 Replaces ExplosiveBarrel
 
 	Death:
         BEXP A 4 BRIGHT
+		TNT1 A 0 A_JumpIfInventory("BarrelCounter",9,"VanillaDeath")//In the case that the check in the spawn state fails (online latency)
 		BEXP B 4 BRIGHT A_Scream
 		BEXP C 4 BRIGHT
 		BEXP D 1 BRIGHT A_Explode(200,200)
@@ -256,6 +257,8 @@ Stop
 actor BarrelKaboom: DeadMarine
 {
 	Game Doom
+	+CLIENTSIDEONLY
+	+NONETID
 	States
 	{
 Spawn:
@@ -310,8 +313,8 @@ Actor ExplosionSpawner
 {
 +MISSILE
 +FORCEXYBILLBOARD
-//+DOOMBOUNCE
-   // +BLOODSPLATTER
++CLIENTSIDEONLY
++NONETID
 damage 0
 radius 6
 height 6
@@ -427,6 +430,8 @@ Actor SpawnedExplosion
 {
 +NOCLIP
 +NOGRAVITY
++CLIENTSIDEONLY
++NONETID
 states
 	{
 	Spawn:
