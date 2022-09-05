@@ -49,7 +49,6 @@ ACTOR Imp Replaces DoomImp
 	+MISSILEMORE
 	+SLIDESONWALLS
 	+RANDOMIZE
-	+MTHRUSPECIES
     Speed 6
 	FastSpeed 12
 	Tag "Imp"
@@ -1175,7 +1174,6 @@ ACTOR ImpAttack: BaronBall
     +BLOODSPLATTER
 	RenderStyle Add
 	Alpha 0.6
-	+DONTHURTSPECIES
 
 	SeeSound "None"
 	DeathSound "none"
@@ -1216,7 +1214,6 @@ ACTOR FireBall_ Replaces DoomImpBall
 	DeathSound "imp/shotx"
 	Decal "Scorch"
 	Species "Imps"
-	+DONTHURTSPECIES
 	Scale 0.3
 	States
 	{
