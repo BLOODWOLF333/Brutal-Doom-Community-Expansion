@@ -373,8 +373,7 @@ FatalityMarine:
 Death.Ice:
 	Death.Freeze:
 	Death.Frost:
-	TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
-	TNT1 A 0 A_ChangeFlag("SOLID", 0)
+	TNT1 A 0 A_NOBLOCKING
 	TNT1 A 0 A_SpawnItem("FrozenCacodemon")
 	Stop
 
@@ -922,8 +921,6 @@ ACTOR BrutalizedCacodemon1: DeadCacodemon1
 	Fall:
 	TNT1 AAAAA 0 A_NoBlocking
 	TNT1 A 0 A_Fall
-	TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
-	TNT1 A 0 A_ChangeFlag("SOLID", 0)
 	CCD1 ABC 6
 	TNT1 A 0 A_SpawnItem("DeadCacodemon3")
 	Stop
@@ -948,8 +945,7 @@ ACTOR BrutalizedCacodemon1: DeadCacodemon1
 	TNT1 A 0 A_CustomMissile ("CacoXDeath6", 40, 0, random (0, 360), 2, random (0, 160))
 	TNT1 AAA 0 A_CustomMissile ("CacoXDeath7", 40, 0, random (0, 360), 2, random (0, 160))
 	CCD2 B 6
-	TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
-	TNT1 A 0 A_ChangeFlag("SOLID", 0)
+	TNT1 A 0 A_NOBLOCKING
 	TNT1 A 0 A_SpawnItem("DeadCacoDemon2")
 	Stop
 }}
@@ -964,8 +960,6 @@ ACTOR BrutalizedCacodemon2: BrutalizedCacodemon1
 	TNT1 A 0 A_NoBlocking
 	TNT1 A 0 A_Fall
 	CCD2 B 6
-	TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
-	TNT1 A 0 A_ChangeFlag("SOLID", 0)
 	TNT1 A 0 A_SpawnItem("DeadCacodemon2")
 	Stop
 

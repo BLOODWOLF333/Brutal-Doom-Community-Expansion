@@ -253,7 +253,6 @@ ACTOR Revenant1: Revenant Replaces Revenant
 
 	FatalityZombieman:
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
-		//TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
 		SKF1 A 1 A_Chase("","")
 		SKF1 ABC 4 A_FaceTarget
 		TNT1 A 0 A_PlaySound("grunt/pain", 1)
@@ -271,14 +270,12 @@ ACTOR Revenant1: Revenant Replaces Revenant
 		SKF1 I 10 A_FaceTarget
 		TNT1 A 0 A_TakeInventory("ZombieManFatality",1)
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
-		//TNT1 A 0 A_ChangeFlag("SHOOTABLE", 1)
 		TNT1 A 0 A_CustomMissile("ThrowedZombieMan2", 64, 0, 0, 0)
 		SKEL HI 4
 		Goto See
 
 	FatalitySergeant:
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
-		//TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
 		SKF2 A 1 A_Chase("","")
 		SKF2 ABC 4 A_FaceTarget
 		TNT1 A 0 A_PlaySound("grunt/pain", 1)
@@ -296,14 +293,12 @@ ACTOR Revenant1: Revenant Replaces Revenant
 		SKF2 I 10 A_FaceTarget
 		TNT1 A 0 A_TakeInventory("SergeantFatality",1)
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
-		//TNT1 A 0 A_ChangeFlag("SHOOTABLE", 1)
 		TNT1 A 0 A_CustomMissile("ThrowedSergeant2", 64, 0, 0, 0)
 		SKEL HI 4
 		Goto See
 
 	FatalityImp:
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
-		//TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
 		SKF3 A 1 A_Chase("","")
 		SKF3 ABC 4 A_FaceTarget
 		TNT1 A 0 A_PlaySound("grunt/pain", 1)
@@ -321,7 +316,6 @@ ACTOR Revenant1: Revenant Replaces Revenant
 		SKF3 I 10 A_FaceTarget
 		TNT1 A 0 A_TakeInventory("ImpFatality",1)
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
-		//TNT1 A 0 A_ChangeFlag("SHOOTABLE", 1)
 		TNT1 A 0 A_CustomMissile("ThrowedImp2", 64, 0, 0, 0)
 		SKEL HI 4
 		Goto See
@@ -507,15 +501,14 @@ ACTOR Revenant1: Revenant Replaces Revenant
         Goto Missile
     Death.KillMe:
     Death.Taunt:
-	    TNT1 A 0 A_ChangeFlag("SOLID", 0)
+	    TNT1 A 0 A_NOBLOCKING
         TNT1 A 0 A_SpawnItem("Revenant")
         Stop
 
 	Death.Ice:
 	Death.Freeze:
 	Death.Frost:
-	TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
-	TNT1 A 0 A_ChangeFlag("SOLID", 0)
+	TNT1 A 0 A_NOBLOCKING
 	TNT1 A 0 A_SpawnItem("FrozenRevenant")
 	Stop
 
@@ -631,7 +624,7 @@ ACTOR revenantseekermissiles Replaces RevenantTracer
 		TNT1 AA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (0, 90))
 		EXPL A 0
         TNT1 AAAA 0 A_CustomMissile ("SmallExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		TNT1 A 0 A_NOBLOCKING
 		TNT1 A 0
 		Stop
 
@@ -1090,7 +1083,7 @@ ACTOR RevenantU
         Goto Missile
     Death.KillMe:
     Death.Taunt:
-	    TNT1 A 0 A_ChangeFlag("SOLID", 0)
+	    TNT1 A 0 A_NOBLOCKING
         TNT1 A 0 A_SpawnItem("RevenantU")
         Stop
 	}
