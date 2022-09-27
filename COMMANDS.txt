@@ -362,3 +362,14 @@ Script "GetBerserkEffect" (VOID) NET
  Delay(10);
  FadeTo (255, 0, 0, 0.0, 4.0);
 }
+
+Script "RailgunRecharge" (VOID) NET
+{
+	While(CheckWeapon("RailGun") && CheckInventory("Reloading") == 0)
+	{
+		Delay(42);
+		TakeInventory("Pumping",1);
+		Playsound(0,"BEPBEP",2);
+		Break;
+	}
+}
