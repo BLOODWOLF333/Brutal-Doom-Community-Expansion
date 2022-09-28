@@ -317,6 +317,7 @@ ACTOR DyingZombiemanInFlames
 		Crush:
 		TNT1 A 0 A_StopSound(4)
 		TNT1 A 0 A_PlaySound("misc/xdeath4")
+		TNT1 A 0 A_NoBlocking
 		CRS2 A 5
 		CRS2 A -1
 		Stop
@@ -397,6 +398,7 @@ ACTOR DyingSergeantNoLegInFlames
 		Crush:
 		TNT1 A 0 A_StopSound(4)
 		TNT1 A 0 A_PlaySound("misc/xdeath4")
+		TNT1 A 0 A_NoBlocking
 		CRS2 A 5
 		CRS2 A -1
 		Stop
@@ -522,7 +524,7 @@ ACTOR BurningZombie
 		TNT1 A 0
 		TNT1 A 0 A_StopSound(4)
 		TNT1 A 0 A_Fall
-
+		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_ChangeFlag("SOLID", 0)
 		TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
 		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
@@ -546,7 +548,7 @@ ACTOR BurningZombie
 		XDEATH:
 		DEATH.SSG:
 		TNT1 A 0 A_StopSound(4)
-
+		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_ChangeFlag("SOLID", 0)
 		TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
 		TNT1 A 0 A_PlaySound("misc/xdeath")
@@ -712,7 +714,7 @@ ACTOR BurningZombieMan
 
     Death:
 	    TNT1 A 0 A_Fall
-
+		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_ChangeFlag("SOLID", 0)
 		TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
 		TNT1 A 0 A_Jump(256, "Death1", "Death2", "Death3")
@@ -854,7 +856,7 @@ ACTOR BurningZombieMan
 	XDEATH:
 	DEATH.SSG:
 		TNT1 A 0 A_StopSound(4)
-
+		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_ChangeFlag("SOLID", 0)
 		TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
 		TNT1 A 0 A_PlaySound("misc/xdeath")
@@ -901,7 +903,7 @@ ACTOR BurningShotgunguy: BurningZombieMan
 
 	Death:
 	    TNT1 A 0 A_Fall
-
+		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_ChangeFlag("SOLID", 0)
 		TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
 		TNT1 A 0 A_Jump(256, "Death1", "Death2", "Death3")
@@ -957,6 +959,7 @@ ACTOR BurningShotgunguy: BurningZombieMan
         TNT1 A 0 A_SpawnItem("100SmallFireFocusSpawnerz")
 		BRZ3 HHHHHHHHHHHHHHHHHHHHHHHH 10 A_CustomMissile("PlasmaSmoke", 15, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_StopSound(4)
+		TNT1 A 0 A_NoBlocking
 		BRZ3 H -1
         Stop
 
@@ -1007,8 +1010,6 @@ ACTOR BurningShotgunguy: BurningZombieMan
 		BRZ3 GG 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_Wander
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
-
         BRZ3 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII 3 A_CustomMissile("BurnParticles", 5, 0, random (0, 360), 2, random (50, 130))
         TNT1 A 0 A_SpawnItem("100SmallFireFocusSpawnerz")
 		BRZ3 IIIIIIIIIIIIIIIII 10 A_CustomMissile("PlasmaSmoke", 15, 0, random (0, 360), 2, random (50, 130))
@@ -1033,8 +1034,6 @@ ACTOR BurningShotgunguy: BurningZombieMan
 		BRZ3 GG 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_SpawnItem("DyingSergeantNoLegInFlames")
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
-
         Stop
     }
 }
@@ -1073,8 +1072,6 @@ ACTOR BurningChaingunGuy: BurningZombieMan
 	Death:
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
-
 	    BRZ3 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 3 A_CustomMissile("BurnParticles", 5, 0, random (0, 360), 2, random (50, 130))
         TNT1 A 0 A_SpawnItem("100SmallFireFocusSpawnerz")
 		BRZ3 HHHHHHHHHHHHHHHHHHHHHHHH 10 A_CustomMissile("PlasmaSmoke", 15, 0, random (0, 360), 2, random (50, 130))
@@ -1117,7 +1114,7 @@ ACTOR BurningImpRunning: BurningZombieMan
 	Death:
 	Death.ExplosiveImpact:
 	    TNT1 A 0 A_Fall
-
+		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_ChangeFlag("SOLID", 0)
 		TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
         TNT1 A 0 A_SpawnItem("BurningImp")
@@ -1159,8 +1156,6 @@ ACTOR BurningDemon: BurningZombieMan
 	Death:
 		TNT1 A 0 A_SpawnItem ("BurnedDemon")
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
-
 		Stop
 
 	XDeath:
