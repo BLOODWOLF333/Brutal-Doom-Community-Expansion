@@ -149,34 +149,28 @@ Actor MarineMinigunTracer: Tracer
 
 Actor Alerter: MonsterTracer
 {
--BLOODSPLATTER
-+DONTSPLASH
-+THRUGHOST
--ACTIVATEIMPACT
--ACTIVATEMCROSS
--ACTIVATEPCROSS
-radius 12
-height 12
-damage (random(2,2))
-DamageType Avoid
-Decal "None"
-Speed 2
-States
-{
-	Spawn://Progressive so that monsters can't dodge at point-blank range
-		TNT1 A 1 BRIGHT
-		TNT1 A 1 BRIGHT ThrustThing(angle*256/360,2,1,0)//4
-		TNT1 A 1 BRIGHT ThrustThing(angle*256/360,4,1,0)//8
-		TNT1 A 1 BRIGHT ThrustThing(angle*256/360,8,1,0)//16
-		TNT1 A 1 BRIGHT ThrustThing(angle*256/360,16,1,0)//32
-		TNT1 A 1 BRIGHT ThrustThing(angle*256/360,32,1,0)//64
-	Live:
-		TNT1 A 1 BRIGHT
+	-BLOODSPLATTER
+	+DONTSPLASH
+	+THRUGHOST
+	-ACTIVATEIMPACT
+	-ACTIVATEMCROSS
+	-ACTIVATEPCROSS
+	radius 12
+	height 12
+	damage (random(2,2))
+	DamageType Avoid
+	Decal "None"
+	Speed 2
+	States
+	{
+		Spawn://Progressive so that monsters can't dodge at point-blank range
+		TNT1 A 1 BRIGHT A_ScaleVelocity(1.25)
 		Loop
-Death:
-    TNT1 A 0
-    Stop
-}
+
+		Death:
+		TNT1 A 0
+		Stop
+	}
 }
 
 Actor Taunter: MonsterTracer
