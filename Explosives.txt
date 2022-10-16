@@ -325,8 +325,8 @@ ACTOR GrenadeMissile
 	Species "Marines"
 	DamageType Kick
 	BounceType Doom
-    BounceFactor 0.7
-	WallBounceFactor 0.75
+    BounceFactor 0.5
+	WallBounceFactor 0.55
 	SeeSound "Weapons/GrenadeBounce"
 	DeathSound "none"
 	Decal "Scorch"
@@ -363,10 +363,10 @@ ACTOR GrenadeMissile
 		Loop
 
 	XDeath:
-	TNT1 A 0 A_Recoil(1)
-	TNT1 A 0 A_SetAngle(random (90,-90) + angle)
-	GBPJ C 1 ThrustThingZ(0,20,0,1)
-	Goto Spawn
+		TNT1 A 0 A_Recoil(1)
+		TNT1 A 0 A_SetAngle(random (90,-90) + angle)
+		GBPJ C 1 ThrustThingZ(0,20,0,1)
+		Goto Spawn
 
 	Explode:
 	Death.Slime:
@@ -376,22 +376,21 @@ ACTOR GrenadeMissile
 	Death.SSG:
 	Death.Cutless:
 	Death.Shrapnel:
-	    TNT1 A 0
+		TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx ("GrenadeExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 0 A_PlaySound("Explosion", 1)
 		TNT1 A 0 A_PlaySound("FAREXPL", 3)
 		TNT1 A 1
-		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
-        EXPL A 0 Radius_Quake (3, 8, 0, 15, 0)//(intensity, duration, damrad, tremrad, tid)
+		EXPL A 0 Radius_Quake (3, 8, 0, 15, 0)//(intensity, duration, damrad, tremrad, tid)
 		TNT1 A 0 A_CustomMissile("ExplosionSplashSpawner")
-        TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-	    TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 
-        TNT1 AAAAAAAAAA 0 A_CustomMissile ("BDExplosionparticlesBig", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAAAAAAAA 0 A_CustomMissile ("BDExplosionparticlesBig", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 AAAAA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (0, 90))
-		TNT1 AAAA 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))//TNT1 AAAAAAAAAAAAA 3 A_CustomMissile ("HeavyExplosionSmoke", 2, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAA 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
 		Stop
 	}
 }
@@ -405,7 +404,7 @@ ACTOR ShortGrenade: GrenadeMissile
 	Damage (random(150, 150))
 	SeeSound "None"
 	Damagetype Explosive
-
+	BounceType "None"
 	States
 	{
 	Spawn:
@@ -424,8 +423,23 @@ ACTOR ShortGrenade: GrenadeMissile
 
 	Death:
 	XDeath:
-	TNT1 A 1
-	Goto Explode
+	Explode:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx ("GrenadeExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_PlaySound("Explosion", 1)
+		TNT1 A 0 A_PlaySound("FAREXPL", 3)
+		TNT1 A 1
+		EXPL A 0 Radius_Quake (3, 8, 0, 15, 0)//(intensity, duration, damrad, tremrad, tid)
+		TNT1 A 0 A_CustomMissile("ExplosionSplashSpawner")
+		TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+
+		TNT1 AAAAAAAAAA 0 A_CustomMissile ("BDExplosionparticlesBig", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAAA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (0, 90))
+		TNT1 AAAA 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+		Stop
 	}
 }
 
@@ -455,12 +469,10 @@ ACTOR MarineShortGrenade : GrenadeMissile
 	-BOUNCEONWALLS
 	-BOUNCEONCEILINGS
 	+SLIDESONWALLS
-	+MTHRUSPECIES
-	+FRIENDLY
 	Damage (random(150, 150))
 	SeeSound "None"
-	Species "Marines"
 	Damagetype FriendBullet
+	BounceType "None"
 	States
 	{
 	Spawn:
@@ -479,26 +491,14 @@ ACTOR MarineShortGrenade : GrenadeMissile
 
 	Death:
 	XDeath:
-		TNT1 A 1
-		Goto Explode
-
 	Explode:
-	Death.Slime:
-	Death.Fire:
-	Death.Bullet:
-	Death.Shotgun:
-	Death.SSG:
-	Death.Cutless:
-	Death.Shrapnel:
 	    TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx ("FriendlyGrenadeExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 0 A_PlaySound("Explosion", 1)
 		TNT1 A 0 A_PlaySound("FAREXPL", 3)
-		TNT1 A 1 A_SpawnItemEx ("Footstep91",0,0, 40,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 1
-		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
         EXPL A 0 Radius_Quake (3, 8, 0, 15, 0)//(intensity, duration, damrad, tremrad, tid)
-		TNT1 A 0 A_SpawnItemEx ("ExplosionSplashSpawner", 0, 0, -20)
+		TNT1 A 0 A_CustomMissile("ExplosionSplashSpawner")
         TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	    TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
@@ -539,7 +539,6 @@ ACTOR MarineGrenade
 	Live:
 		GRND ABCDEFGH 2
 		Loop
-
 
 		Death:
         EXPL A 0 Radius_Quake (2, 8, 0, 15, 0)//(intensity, duration, damrad, tremrad, tid)
