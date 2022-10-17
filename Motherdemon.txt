@@ -141,7 +141,6 @@ actor MotherBall : GreenPlasmaBall
 	+SEEKERMISSILE
 	Scale 0.375
 	Speed 15
-	FastSpeed 20
 	Damagetype "Fire"
 	States
 	{
@@ -191,8 +190,8 @@ actor MotherBallDumb : MotherBall
 	+THRUGHOST
 	-SEEKERMISSILE
 	Scale 0.375
-	Speed 20
-	FastSpeed 25
+	Speed 15
+	FastSpeed 30
 	States
 	{
 	Spawn:
@@ -300,7 +299,7 @@ ACTOR SuperMotherBall : BelphegorGreenPlasmaBall
 	Death:
 		FRPV A 0
 		FRPV A 0 Radius_Quake (2, 54, 0, 15, 0)
-		FRPV A 0 A_Explode(32, 96, 1)
+		FRPV A 0 A_Explode(7, 7, 1)
         TNT1 AAAA 0 A_CustomMissile ("ExplosionFlames", 2, 0, random (0, 360), 2, random (0, 360))
         FRPV A 0 A_CustomMissile ("BigNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 A 0 A_CustomMissile("MotherBallDumb", 8, 0, 0, CMF_AIMDIRECTION, random(0,15))
