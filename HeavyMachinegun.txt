@@ -422,8 +422,8 @@ ACTOR HeavyMachinegunProjectile: FastProjectile
 
 ACTOR HeavyMachinegunProjectileEnemy: HeavyMachinegunProjectile
 {
-	Speed 180
-	damage (random(16, 16))
+	Speed 150
+	damage (random(10, 10))
 	Species "EnemyTank"
 	Scale 0.25
 	States
@@ -520,7 +520,7 @@ actor HeavyMachinegunProjectileTracerTrail18: HeavyMachinegunProjectileTracerTra
 ACTOR AutoCannonProjectile: HeavyMachinegunProjectile
 {
 	Damage (random(60, 60))
-	Speed 250
+	Speed 240
 	Scale 1.5
 	Decal "Scorch"
 	States
@@ -576,7 +576,7 @@ Actor AutoCannonProjectile2
 Damage (random(30, 30))
 +MISSILE
 -NOGRAVITY
-Speed 100
+Speed 120
 Gravity 1.0
 States
 	{
@@ -609,7 +609,7 @@ States
 
 Actor AutocannonPenetrator: AutoCannonProjectile
 {
-damage (random(50, 60))
+damage (random(30, 30))
 //Decal "BulletDecalNew1"
 Decal "Scorch"
 DamageType Explosive
