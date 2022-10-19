@@ -14,14 +14,14 @@ BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
 States
 	{
 	Spawn:
-	ZBLS A 1 A_Look
+	ZBLS A 10 A_Look
 	Goto See
 
 	See:
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 28,0)
 	ZBLS AAAAA 1 A_Chase
 	TNT1 A 0 A_GiveInventory("DeathTimer",1)
-	TNT1 A 0 A_JumpIfInventory("DeathTimer",49,"GotoDeath")
+	TNT1 A 0 A_JumpIfInventory("DeathTimer",49,"Death")
 	Loop
 
 	Missile:
@@ -112,7 +112,7 @@ States
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZBLS A 10 A_FaceTarget
 	TNT1 A 0 A_CHangeFlag("FRIENDLY", 1)
-	Goto GotoDeath
+	Goto Death
 
 	Death.MinorHead:
         TNT1 A 0 A_PlaySound("misc/xdeath4")
@@ -140,14 +140,14 @@ MONSTER
 States
 	{
 	Spawn:
-	ZBLS C 1 A_Look
+	ZBLS C 10 A_Look
 	Goto See
 
 	See:
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 28,0)
 	ZBLS CCCCC 1 A_Chase
 	TNT1 A 0 A_GiveInventory("DeathTimer",1)
-	TNT1 A 0 A_JumpIfInventory("DeathTimer",49,"GotoDeath")
+	TNT1 A 0 A_JumpIfInventory("DeathTimer",49,"Death")
 	Loop
 
 	Missile:
@@ -262,7 +262,7 @@ States
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZBLS C 10 A_FaceTarget
 	TNT1 A 0 A_CHangeFlag("FRIENDLY", 1)
-	Goto GotoDeath
+	Goto Death
 
 	Death.MinorHead:
 	    TNT1 A 0
@@ -284,14 +284,14 @@ MONSTER
 States
 	{
 	Spawn:
-	ZSLS A 1 A_Look
+	ZSLS A 10 A_Look
 	Goto See
 
 	See:
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 28,0)
 	ZSLS AAAAA 1 A_Chase
 	TNT1 A 0 A_GiveInventory("DeathTimer",1)
-	TNT1 A 0 A_JumpIfInventory("DeathTimer",49,"GotoDeath")
+	TNT1 A 0 A_JumpIfInventory("DeathTimer",49,"Death")
 	Loop
 
 	Missile:
@@ -405,7 +405,7 @@ States
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZSLS A 10 A_FaceTarget
 	TNT1 A 0 A_CHangeFlag("FRIENDLY", 1)
-	Goto GotoDeath
+	Goto Death
 
 	Death.MinorHead:
         TNT1 A 0 A_PlaySound("misc/xdeath4")
@@ -432,7 +432,7 @@ MONSTER
 States
 	{
 	Spawn:
-	ZSLS C 1 A_Look
+	ZSLS C 10 A_Look
 	Goto See
 
 	See:
@@ -440,7 +440,7 @@ States
 	ZSLS CCCCC 1 A_Chase
 	TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
 	TNT1 A 0 A_GiveInventory("DeathTimer",1)
-	TNT1 A 0 A_JumpIfInventory("DeathTimer",49,"GotoDeath")
+	TNT1 A 0 A_JumpIfInventory("DeathTimer",49,"Death")
 	Loop
 
 	Missile:
@@ -556,7 +556,7 @@ States
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZSLS C 10 A_FaceTarget
 	TNT1 A 0 A_CHangeFlag("FRIENDLY", 1)
-	Goto GotoDeath
+	Goto Death
 
 	Death.MinorHead:
 	    TNT1 A 0

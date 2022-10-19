@@ -11,7 +11,7 @@ Damagefactor "Leg", 0.0	Damagefactor "Extremepunches", 2.0	Damagefactor "Fatalit
 Damagefactor "HelperMarineFatality", 5.0
 Health 1280
 Radius 20
-Height 24
+Height 28
 DamageType leg
 BloodType "Brutal_Blood", "SawBlood", "SawBlood"
 PainChance 255
@@ -29,58 +29,45 @@ Pain:
 TNT1 A 0
 TNT1 A 0 A_ChangeFlag("NOPAIN",1)
 TNT1 A 3
-TNT1 A 0 A_JumpIfHealthLower(481, "Pain800")//800 BFG9000
-TNT1 A 0 A_JumpIfHealthLower(881, "Pain400")//400 BFG10K, Railgun
-TNT1 A 0 A_JumpIfHealthLower(981, "Pain300")//300 Rockets
-TNT1 A 0 A_JumpIfHealthLower(1081, "Pain200")//200 Slugs
-TNT1 A 0 A_JumpIfHealthLower(1131, "Pain150")//150 ShortGrenade
-TNT1 A 0 A_JumpIfHealthLower(1181, "Pain100")//100 Revolver, Flamecannon
-TNT1 A 0 A_JumpIfHealthLower(1231, "Pain50")//50 HML, Unmaker
-TNT1 A 0 A_JumpIfHealthLower(1241, "Pain40")//40 Plasmaball
-TNT1 A 0 A_JumpIfHealthLower(1257, "Pain24")//24 Buzzsaw
-TNT1 A 0 A_JumpIfHealthLower(1261, "Pain20")//20 Machinegun
-TNT1 A 0 A_JumpIfHealthLower(1263, "Pain18")//18 Rifle
-TNT1 A 0 A_JumpIfHealthLower(1265, "Pain16")//16 Minigun
-TNT1 A 0 A_JumpIfHealthLower(1267, "Pain14")//14 Shotgun Pellet
-TNT1 A 0 A_JumpIfHealthLower(1269, "Pain12")//12 SMG
-XDT3 A 0 A_Explode(6,15, 0, 0, 15)//ls
+TNT1 A 0 A_JumpIfHealthLower(881, "Pain800")//400 BFG10K, Railgun
+TNT1 A 0 A_JumpIfHealthLower(981, "Pain600")//300 Rockets
+TNT1 A 0 A_JumpIfHealthLower(1081, "Pain400")//200 Slugs
+TNT1 A 0 A_JumpIfHealthLower(1131, "Pain300")//150 ShortGrenade
+TNT1 A 0 A_JumpIfHealthLower(1181, "Pain200")//100 Revolver, Flamecannon
+TNT1 A 0 A_JumpIfHealthLower(1231, "Pain100")//50 HML, Unmaker
+TNT1 A 0 A_JumpIfHealthLower(1241, "Pain80")//40 Plasmaball
+TNT1 A 0 A_JumpIfHealthLower(1257, "Pain48")//24 Buzzsaw
+TNT1 A 0 A_JumpIfHealthLower(1261, "Pain40")//20 Machinegun
+TNT1 A 0 A_JumpIfHealthLower(1263, "Pain36")//18 Rifle
+TNT1 A 0 A_JumpIfHealthLower(1265, "Pain32")//16 Minigun
+TNT1 A 0 A_JumpIfHealthLower(1267, "Pain28")//14 Shotgun Pellet
+TNT1 A 0 A_JumpIfHealthLower(1269, "Pain24")//12 SMG
+XDT3 A 0 A_Explode(12,15, 0, 0, 15)//ls
 TNT1 A 3
 TNT1 A 0 A_NoBlocking
-Stop
-
-Pain12:
-TNT1 A 0
-XDT3 A 0 A_Explode(12,15,0,0,15)//ls
-TNT1 A 1 A_NoBlocking
-Stop
-
-Pain14:
-TNT1 A 0
-XDT3 A 0 A_Explode(14,15,0,0,15)//ls
-TNT1 A 1 A_NoBlocking
-Stop
-
-Pain16:
-TNT1 A 0
-XDT3 A 0 A_Explode(16,15,0,0,15)//ls
-TNT1 A 1 A_NoBlocking
-Stop
-
-Pain18:
-TNT1 A 0
-XDT3 A 0 A_Explode(18,15,0,0,15)//ls
-TNT1 A 1 A_NoBlocking
-Stop
-
-Pain20:
-TNT1 A 0
-XDT3 A 0 A_Explode(20,15,0,0,15)//ls
-TNT1 A 1 A_NoBlocking
 Stop
 
 Pain24:
 TNT1 A 0
 XDT3 A 0 A_Explode(24,15,0,0,15)//ls
+TNT1 A 1 A_NoBlocking
+Stop
+
+Pain28:
+TNT1 A 0
+XDT3 A 0 A_Explode(28,15,0,0,15)//ls
+TNT1 A 1 A_NoBlocking
+Stop
+
+Pain32:
+TNT1 A 0
+XDT3 A 0 A_Explode(32,15,0,0,15)//ls
+TNT1 A 1 A_NoBlocking
+Stop
+
+Pain36:
+TNT1 A 0
+XDT3 A 0 A_Explode(36,15,0,0,15)//ls
 TNT1 A 1 A_NoBlocking
 Stop
 
@@ -90,21 +77,21 @@ XDT3 A 0 A_Explode(40,15,0,0,15)//ls
 TNT1 A 1 A_NoBlocking
 Stop
 
-Pain50:
+Pain48:
 TNT1 A 0
-XDT3 A 0 A_Explode(50,15,0,0,15)//ls
+XDT3 A 0 A_Explode(48,15,0,0,15)//ls
+TNT1 A 1 A_NoBlocking
+Stop
+
+Pain80:
+TNT1 A 0
+XDT3 A 0 A_Explode(80,15,0,0,15)//ls
 TNT1 A 1 A_NoBlocking
 Stop
 
 Pain100:
 TNT1 A 0
 XDT3 A 0 A_Explode(100,15,0,0,15)//ls
-TNT1 A 1 A_NoBlocking
-Stop
-
-Pain150:
-TNT1 A 0
-XDT3 A 0 A_Explode(150,15,0,0,15)//ls
 TNT1 A 1 A_NoBlocking
 Stop
 
@@ -123,6 +110,12 @@ Stop
 Pain400:
 TNT1 A 0
 XDT3 A 0 A_Explode(400,15,0,0,15)//ls
+TNT1 A 1 A_NoBlocking
+Stop
+
+Pain600:
+TNT1 A 0
+XDT3 A 0 A_Explode(600,15,0,0,15)//ls
 TNT1 A 1 A_NoBlocking
 Stop
 
