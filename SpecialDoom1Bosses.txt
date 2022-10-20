@@ -4,7 +4,7 @@ ACTOR CyberdemonBoss: TheCyberdemon 2546
 	Health 20000
     Scale 2.4
 	Radius 65
-	Height 218
+	Height 228
 	Speed 16
 	FastSpeed 24
 	mass 17000
@@ -17,7 +17,6 @@ ACTOR CyberdemonBoss: TheCyberdemon 2546
 	DropItem "64UnmakerUpgradeSpawner", 32
 	States
 	{
-
 	Death.KillMe:
     Death.Taunt:
 	    TNT1 A 0 A_ChangeFlag("SOLID", 0)
@@ -33,9 +32,9 @@ ACTOR CyberdemonBoss: TheCyberdemon 2546
 		CYBR A 0 A_GiveInventory("TargetIsACyberdemon")
 
 	Idle:
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 218)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
         CYBR A 10 A_Look
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 218)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
         CYBR A 10 A_Look
         Loop
 
@@ -44,95 +43,101 @@ ACTOR CyberdemonBoss: TheCyberdemon 2546
 		TNT1 A 0 ACS_NamedExecuteAlways("BDBossHealth", 0, 0, 0, 0)//Health Bar
 
 	Chasing:
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 91)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
 		CYBR A 2 A_Hoof
 		CYBR AAA 2 A_Chase
 		TNT1 A 0 A_SpawnItemEx("HeavyFootSteps",0,40)
 		TNT1 A 0 A_JumpIfCloser(128, "Stomp")
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 91)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
 		CYBR BBBB 2 A_Chase
 		TNT1 A 0 A_JumpIfCloser(128, "Stomp")
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 91)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
         CYBR C 2 A_Metal
 		CYBR CCC 2 A_Chase
 		TNT1 A 0 A_SpawnItemEx("HeavyFootSteps",0,-40)
 		TNT1 A 0 A_JumpIfCloser(128, "Stomp")
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 91)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
 		CYBR DDDD 2 A_Chase
 		Loop
 
 	Missile:
 		TNT1 A 0 A_JumpIfInventory("Enraged", 1, "SpecialAttack")
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 218)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
 		CYBR E 12 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 218)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
 		CYBR F 4 A_CustomMissile("FastCyberBalls",120,-50,0,0)
 		TNT1 A 0 A_CustomMissile("Alerter",120,-50)
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 218)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
 		CYBR E 12 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 218)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
 		CYBR F 4 A_CustomMissile("FastCyberBalls",120,-50,-7,0)
 		TNT1 A 0 A_CustomMissile("Alerter",120,-50,-7)
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 218)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
 		CYBR E 12 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 218)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
 		CYBR F 4 A_CustomMissile("FastCyberBalls",120,-50,7,0)
 		TNT1 A 0 A_CustomMissile("Alerter",120,-50,7)
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 218)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
 		CYBR E 12 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 218)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
 		CYBR F 4 A_CustomMissile("FastCyberBalls",120,-50,0,0)
 		TNT1 A 0 A_CustomMissile("Alerter",120,-50)
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 218)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
 		CYBR E 12 A_FaceTarget
 		Goto Chasing
 
 	SpecialAttack:
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 218)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
 		CYBR E 8 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 218)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
 		CYBR F 4 A_CustomMissile("FastCyberBalls",120,-50,0,0)
 		TNT1 A 0 A_CustomMissile("Alerter",120,-50)
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 218)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
 		CYBR E 8 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 218)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
 		CYBR F 4 A_CustomMissile("FastCyberBalls",120,-50,-7,0)
 		TNT1 A 0 A_CustomMissile("Alerter",120,-50,-7)
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 218)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
 		CYBR E 8 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 218)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
 		CYBR F 4 A_CustomMissile("FastCyberBalls",120,-50,7,0)
 		TNT1 A 0 A_CustomMissile("Alerter",120,-50,7)
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 218)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
 		CYBR E 8 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 218)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
 		CYBR F 4 A_CustomMissile("FastCyberBalls",120,-50,0,0)
 		TNT1 A 0 A_CustomMissile("Alerter",120,-50)
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 218)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
 		CYBR E 8 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 218)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
 		CYBR F 4 A_CustomMissile("FastCyberBalls",120,-50,-7,0)
 		TNT1 A 0 A_CustomMissile("Alerter",120,-50,-7)
 		CYBR E 8 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 218)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
 		CYBR F 4 A_CustomMissile("FastCyberBalls",120,-50,7,0)
 		TNT1 A 0 A_CustomMissile("Alerter",120,-50,7)
 		Goto Chasing
 
 	Stomp:
+	Melee:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInTargetInventory("IsInATank", 1, "SpecialAttack")
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 91)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
 		CYMA A 7 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 91)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
 	    CYMA A 7 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 91)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
 		TNT1 A 0 A_CustomMissile("CyberStompBig",10,0,0,0)
 		TNT1 A 0 A_Recoil(-10)
 	    CYMA B 7
-		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 91)
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
 		CYMA B 7
 		Goto Chasing
+
+	Pain:
+		TNT1 A 0 A_SpawnItem("CybersHitBox", 0, 228)
+		CYBR G 8 A_Pain
+		Goto See
 
 	Death:
 		CYBR H 10
@@ -249,7 +254,6 @@ Actor GreatCyberdemon: CyberdemonBoss 15858
 	//$Sprite CYBRA1
 	States
 		{
-
 		CheckIfBoss:
 		CYBR P 1
 		CYBR P -1
