@@ -14,7 +14,6 @@ ACTOR DyingZombieman
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
 	BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
-	+SHOOTABLE
     +FLOORCLIP
 	+FRIGHTENED
 	-SOLID
@@ -154,7 +153,6 @@ ACTOR ZombiemanFallingBeheaded
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
 	BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
-	+SHOOTABLE
 	+FLOORCLIP
 	-SOLID
 	+DONTSPLASH
@@ -248,7 +246,6 @@ ACTOR ZombiemanFallingSplattered
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
 	BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
-	+SHOOTABLE
 	+FLOORCLIP
 	-SOLID
 	+DONTSPLASH
@@ -351,7 +348,6 @@ ACTOR ZombiemanFallingHoleOnStomach
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
 	BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
-	+SHOOTABLE
 	+FLOORCLIP
 	-SOLID
 	+DONTSPLASH
@@ -438,6 +434,7 @@ ACTOR ZombiemanFallingHoleOnStomach
 
 ACTOR BrutalizedZombieMan1
 {
+	MONSTER
 	Game Doom
 	Radius 16
 	Height 50
@@ -452,7 +449,6 @@ ACTOR BrutalizedZombieMan1
 	PainSound "grunt/pain"
 	PainChance 255
 	Mass 999999
-	+SHOOTABLE
 	+NORADIUSDMG
 	+FLOORCLIP
 	+DONTSPLASH
@@ -723,7 +719,6 @@ ACTOR SergeantFallingSplattered
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
 	BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
-	+SHOOTABLE
 	+FLOORCLIP
 	-SOLID
 	+DONTSPLASH
@@ -826,7 +821,6 @@ ACTOR SergeantFallingHoleOnStomach
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
 	BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
-	+SHOOTABLE
 	+FLOORCLIP
 	-SOLID
 	+DONTSPLASH
@@ -927,7 +921,6 @@ ACTOR DyingSergeant
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
 	Mass 500
-	+SHOOTABLE
 	+FLOORCLIP
 	+DONTSPLASH
 	-COUNTKILL
@@ -1123,13 +1116,13 @@ ACTOR DeadShotgunguyNoHeadContinue: DyingSergeant
 
 ACTOR DyingSergeantNoLeg
 {
+	MONSTER
     Radius 12
     Height 30
     Speed 9
 	Health 20
 	PainSound "grunt/pain"
 	DeathSound "grunt/death"
-	+SHOOTABLE
 	+DONTSPLASH
     +FLOORCLIP
 	+FRIGHTENED
@@ -1259,7 +1252,6 @@ ACTOR DyingSergeantLegBlewedOff: DyingSergeantNoLeg
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
 	Mass 500
 	-SOLID
-	+SHOOTABLE
 	+THRUGHOST
 	-COUNTKILL
 	States
@@ -1370,6 +1362,7 @@ ACTOR DyingSergeantLegBlewedOff: DyingSergeantNoLeg
 
 ACTOR BrutalizedSergeant1
 {
+	MONSTER
 	Game Doom
 	Radius 16
 	Height 50
@@ -1384,7 +1377,6 @@ ACTOR BrutalizedSergeant1
 	PainChance 255
 	Mass 999999
 	-SOLID
-	+SHOOTABLE
 	+FLOORCLIP
 	+DONTSPLASH
 	+THRUGHOST
@@ -2460,6 +2452,7 @@ Actor FatalizedSGGuy6: DeadShotgunGuy1
 
 ACTOR DyingImp
 {
+	MONSTER
 	Game Doom
 	Radius 16
 	Height 30
@@ -2467,7 +2460,6 @@ ACTOR DyingImp
 	PainSound "imp/pain"
 	PainChance 255
 	Mass 999999
-	+SHOOTABLE
 	-SOLID
 	+THRUACTORS
 	-COUNTKILL
@@ -2877,6 +2869,7 @@ ACTOR DyingImpNoHeadNoArmContinue: DyingImp
 
 ACTOR BrutalizedImp1
 {
+	MONSTER
 	Game Doom
 	Radius 16
 	Height 50
@@ -2891,7 +2884,6 @@ ACTOR BrutalizedImp1
 	PainChance 255
 	Mass 999999
 	-SOLID
-	+SHOOTABLE
 	+NORADIUSDMG
 	-COUNTKILL
 	Scale 1.0
@@ -3068,6 +3060,7 @@ ACTOR ThisImpGotFuckedHard: DeadImpID17G
 
 ACTOR ImpBrutalizedWithNoLeg
 {
+	MONSTER
 	Game Doom
 	Radius 16
 	Height 55
@@ -3076,7 +3069,6 @@ ACTOR ImpBrutalizedWithNoLeg
 	PainChance 255
 	Mass 999999
 	-SOLID
-	+SHOOTABLE
 	-COUNTKILL
 	Scale 1.0
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
@@ -3131,7 +3123,6 @@ ACTOR DyingImpNoArm
 	PainChance 255
 	Mass 999999
 	-SOLID
-	+SHOOTABLE
 	-COUNTKILL
 	+THRUGHOST
 	Scale 1.0
@@ -3252,6 +3243,7 @@ ACTOR DyingImpNoArm
 
 ACTOR DyingImpNoLeg
 {
+	MONSTER
 	Game Doom
 	Radius 16
 	Height 28
@@ -3261,7 +3253,6 @@ ACTOR DyingImpNoLeg
 	Mass 999999
 	-SOLID
 	-COUNTKILL
-	+SHOOTABLE
 	Scale 1.0
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
@@ -3343,12 +3334,12 @@ ACTOR DyingImpNoLeg
 
 ACTOR ImpDyingOfBloodLoss : Imp
 {
+	MONSTER
 	Radius 16
 	Height 35
 	Health 20
 	+NOPAIN
 	-COUNTKILL
-	+SHOOTABLE
 	-COUNTKILL
 	-SOLID
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
@@ -3488,7 +3479,6 @@ ACTOR PoorPinkyLostHisArm: Demon
 	Health 20
 	+NOPAIN
 	-COUNTKILL
-	+SHOOTABLE
 	Scale 1.1
 	DropItem "none"
 	States
@@ -3604,6 +3594,7 @@ Actor PoorFuzzyLostHisArm : PoorPinkyLostHisArm
 
 ACTOR BrutalizedCommando1
 {
+	MONSTER
 	Game Doom
 	Radius 16
 	Height 45
@@ -3617,7 +3608,6 @@ ACTOR BrutalizedCommando1
 	PainSound "grunt/pain"
 	Mass 999999
 	-SOLID
-	+SHOOTABLE
 	+FLOORCLIP
 	+DONTSPLASH
 	-COUNTKILL
@@ -3779,7 +3769,7 @@ ACTOR PlayerChaingunguyVictim
 	PainSound "grunt/pain"
 	PainChance 255
 	Mass 999999
-	+SHOOTABLE
+	-SOLID
 	+NORADIUSDMG
 	+FLOORCLIP
 	+DONTSPLASH
@@ -3832,6 +3822,7 @@ ACTOR PlayerChaingunguyVictim
 
 ACTOR DyingComando
 {
+	MONSTER
 	Game Doom
 	Radius 21
 	Height 15
@@ -3841,7 +3832,6 @@ ACTOR DyingComando
 	Mass 999999
 	+FORCEXYBILLBOARD
 	-SOLID
-	+SHOOTABLE
 	Scale 1.0
 	damagefactor "Blood", 0.0    damagefactor "GreenBlood", 0.0    damagefactor "BlueBlood", 0.0    damagefactor "Taunt", 0.0    damagefactor "KillMe", 0.0  damagefactor "Avoid", 0.0  damagefactor "Taunt", 0.0
 	States
