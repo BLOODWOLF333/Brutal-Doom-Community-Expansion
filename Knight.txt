@@ -372,7 +372,6 @@ ACTOR HellKnight2 : HellKnight Replaces HellKnight
         TNT1 A 0
 		TNT1 A 0 A_Jump(224, "Death.Arm")
 	Death.Cut:
-	Death.Crush:
         TNT1 A 0 A_Scream
         TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("MuchBlood2Green")
@@ -585,13 +584,6 @@ Death.Explosive:
 		TNT1 A 1
 		TNT1 A 1 A_XScream
 		Stop
-
-	Crush:
-		TNT1 A 0
-		TNT1 AAAAAA 0 A_SpawnItemEx ("BodyRemovalThing",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 1 A_XScream
-		Stop
-
 	}
 }
 

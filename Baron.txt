@@ -693,12 +693,6 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		GIBS Z -1
 		Stop
 
-	Crush:
-		TNT1 A 0
-		TNT1 AAAA 0 A_SpawnItemEx ("BodyRemovalThing",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 1 A_XScream
-		Stop
-
 	 CurbstompMarine:
         TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
 		KNTF A 8
@@ -1840,12 +1834,6 @@ Actor BaronBoss1: BaronofHell2 3013
 		TNT1 A 1 A_XScream
 		GIBS Z 1
 		GIBS Z -1
-		Stop
-
-	Crush:
-		TNT1 A 0
-		TNT1 AAAA 0 A_SpawnItemEx ("BodyRemovalThing",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 1 A_XScream
 		Stop
 
 	 CurbstompMarine:

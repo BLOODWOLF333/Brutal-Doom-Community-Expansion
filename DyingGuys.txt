@@ -53,13 +53,6 @@ ACTOR DyingZombieman
 			ZMAM A 20
 			Goto Spawn
 
-		Crush:
-			TNT1 A 0
-			TNT1 A 1
-			TNT1 A 0 A_SpawnItem("BodyRemovalThing")
-			TNT1 A 1 A_XScream
-			Stop
-
 		Death:
 			TNT1 A 0 A_NoBlocking
 			TNT1 A 0 A_Pain
@@ -1172,14 +1165,6 @@ ACTOR DyingSergeantNoLeg
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_StopSound(4)
 		TNT1 A 0 A_SpawnItem("DeadShotgunGuy_NoLeg")
-		Stop
-
-		Crush:
-		TNT1 A 0
-		TNT1 A 0 A_StopSound(4)
-		TNT1 A 1
-		TNT1 A 0 A_SpawnItem("BodyRemovalThing")
-		TNT1 A 1 A_XScream
 		Stop
 
 		Death.Plasma: Death.Plasma2:

@@ -258,13 +258,6 @@ ACTOR TheCyberdemon: Cyberdemon Replaces Cyberdemon
 		CYBR P -1 A_BossDeath
 		Stop
 
-    Crush:
-		TNT1 A 0
-		TNT1 AAAA 0 A_SpawnItemEx ("BodyRemovalThing",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 1 A_XScream
-		TNT1 A 0 A_BossDeath
-		Stop
-
 	Pain.Taunt:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("Enraged", 1, "SpecialAttack")

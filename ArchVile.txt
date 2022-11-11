@@ -321,12 +321,6 @@ ACTOR TheArchvile: Archvile Replaces Archvile
         TNT1 A 0 A_GiveToTarget("ArchvileFatality2", 1)
         Stop
 
-    Crush:
-		TNT1 A 0
-		TNT1 AAAA 0 A_SpawnItemEx ("BodyRemovalThing",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 1 A_XScream
-		Stop
-
     Pain.KillMe:
     Pain.Taunt:
         TNT1 A 0 HealThing(2)
