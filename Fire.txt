@@ -487,6 +487,7 @@ ACTOR FlamethrowerMissile
 	-BLOODSPLATTER
 	+NODAMAGETHRUST
 	-NOGRAVITY
+	+MTHRUSPECIES
 	RenderStyle Add
     DamageType Fire
 	Decal "FlamethrowerScorch"
@@ -548,6 +549,7 @@ Decal "BigScorch"
 ACTOR FlamethrowerMissileFatso: FlamethrowerMissile
 {
 	-DOOMBOUNCE
+	-MTHRUSPECIES
 	Speed 35
 	FastSpeed 40
 	Damage (random(8,8))
