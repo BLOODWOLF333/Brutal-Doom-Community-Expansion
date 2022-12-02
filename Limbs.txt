@@ -20,6 +20,7 @@ actor BigGibBase
 
 	damagefactor "Shrapnel", 100.0
     damagefactor "Plasma", 20.0
+	damagefactor "TeleportRemover", 1000.0
 	 painchance "Flames", 0
 	 painchance "Fire", 0
 	 painchance "Burn", 0
@@ -102,6 +103,11 @@ TNT1 A 1900 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
 		 XMT2 I 1
 		 XMT2 I -1
 		 Stop
+
+	Death.TeleportRemover:
+	    TNT1 A 0
+		TNT1 A 0 A_NoBlocking
+		Stop
 
 	Death.Desintegrate:
 		 TNT1 A 0
