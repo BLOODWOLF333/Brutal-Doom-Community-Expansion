@@ -51,16 +51,15 @@ ACTOR Marine_Flame: Marine_Rifle
 	{
 	Active:
 		TNT1 A 0
-		TNT1 A 0 A_ChangeFlag("NOBLOCKMAP",1)
 		TNT1 A 0 A_CustomMissile ("OrderTitle2", 50, 0, 0, 2, 90)
 		TNT1 A 0 A_PlaySound("MarineGuard", 2)
 		MMFC A 30
 		TNT1 A 0 A_SpawnItemEx ("FlameMarineGuarding",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 Thing_Remove(0)
 		Stop
 
 	Spawn:
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 1)
-		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 1)
 		TNT1 A 0 A_ChangeFLag("SOLID", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
@@ -82,7 +81,6 @@ ACTOR Marine_Flame: Marine_Rifle
 
 	See:
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 1)
-		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 1)
 		TNT1 A 0 A_ChangeFLag("SOLID", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
@@ -103,7 +101,6 @@ ACTOR Marine_Flame: Marine_Rifle
 
 		TNT1 A 0 A_CheckSight("ForgetTarget")
 		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
-		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag("SOLID", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
@@ -157,7 +154,6 @@ ACTOR Marine_Flame: Marine_Rifle
 	FindPlayer:
 		TNT1 A 0
 	    TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
-		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag("SOLID", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
@@ -227,14 +223,12 @@ ACTOR Marine_Flame: Marine_Rifle
 		MMFC D 8 A_FaceTarget
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 1)
-		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
 		MMFC D 8 A_Look
 		TNT1 A 0 A_JumpIfHealthLower(100,"Heal")
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 0)
-		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
 		MMFC D 8 A_LookEx(0,0,0,0,360,"FollowPlayer")
@@ -248,14 +242,12 @@ ACTOR Marine_Flame: Marine_Rifle
 		MMFC D 8 A_FaceTarget
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 1)
-		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
 		MMFC D 8 A_Look
 		TNT1 A 0 A_JumpIfHealthLower(100,"Heal")
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 0)
-		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
 		MMFC D 8 A_LookEx(0,0,0,0,360,"FollowPlayer")
@@ -271,14 +263,12 @@ ACTOR Marine_Flame: Marine_Rifle
 		MMFC D 8 A_FaceTarget
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 1)
-		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
 		MMFC D 8 A_Look
 		TNT1 A 0 A_JumpIfHealthLower(100,"Heal")
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 0)
-		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
 		MMFC D 8 A_LookEx(0,0,0,0,360,"FollowPlayer")
@@ -290,7 +280,6 @@ ACTOR Marine_Flame: Marine_Rifle
 		TNT1 A 0 A_CustomMissile ("OrderTitle4", 50, 0, 0, 2, 90)
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 0)
-		TNT1 A 0 A_ChangeFLag("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
 		MMFC D 8 A_LookEx(0,0,0,0,360,"FollowPlayer")
@@ -315,8 +304,6 @@ ACTOR Marine_Flame: Marine_Rifle
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMancubus", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "FollowPlayer")
 		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "FollowPlayer")
-		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 1)
-		TNT1 A 0 A_ChangeFlag("SOLID", 0)
 		TNT1 A 0 A_PlaySound("MRNAT", 2)
 
 		TNT1 A 0 A_Jump(128, "MissileLeft", "MissileRight")
@@ -486,6 +473,12 @@ ACTOR Marine_Flame: Marine_Rifle
 		MWAV I 10 A_FaceTarget
 		Goto See
 
+	CheckRetreat:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfCloser(256, "Retreat")
+		TNT1 A 0 A_Jump(255, "MissileRight", "MissileLeft")
+		Goto MissileRight
+
 	Retreat:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfCloser(256,"RetreatClose")
@@ -565,8 +558,6 @@ ACTOR Marine_Flame: Marine_Rifle
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMancubus", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "FollowPlayer")
 		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "FollowPlayer")
-		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 1)
-		TNT1 A 0 A_ChangeFlag("SOLID", 0)
 		TNT1 A 0 A_PlaySound("MRNAT", 2)
 
 		MMFC D 3 A_FaceTarget
@@ -960,7 +951,6 @@ ACTOR FlameMarineGuarding: Marine_Flame
 	Speed 0
 	FastSpeed 0
 	MaxStepHeight 0
-	+FRIENDLY
 	+MISSILEMORE
 	+NODROPOFF
 	+MISSILEEVENMORE
@@ -968,24 +958,26 @@ ACTOR FlameMarineGuarding: Marine_Flame
 	{
 	Active:
 		TNT1 A 0
-		TNT1 A 0 A_ChangeFlag("NOBLOCKMAP",1)
 		TNT1 A 0 A_CustomMissile ("OrderTitle1", 50, 0, 0, 2, 90)
 		TNT1 A 0 A_PlaySound("MarineFollow", 2)
 		MMFC A 30
 		TNT1 A 0 A_SpawnItemEx ("Marine_Flame",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 Thing_Remove(0)
 		Stop
 
 	Spawn:
 		TNT1 A 0
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 1)
-		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
 		TNT1 A 0 A_ChangeFLag("SOLID", 0)
-		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
-		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
 		TNT1 A 0 A_GiveInventory("TargetIsAMarine")
 		MMFC AAAAAAAA 4 A_Look
 		TNT1 A 0 A_JumpIfHealthLower(100,"Heal")
 		Loop
+
+	ForgetTarget:
+		TNT1 A 0
+		TNT1 A 0 A_ClearTarget
+		Goto Spawn
 
 	Heal:
 		TNT1 A 0
@@ -994,13 +986,7 @@ ACTOR FlameMarineGuarding: Marine_Flame
 		Goto Spawn
 
 	See:
-		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 1)
-		TNT1 A 0 A_ChangeFlag("SOLID", 0)
 		MMFC AAAAAADDDDDD 1 A_Chase
-		TNT1 A 0 A_ClearTarget
-		Goto Spawn
-
-	ForgetTarget:
 		TNT1 A 0 A_ClearTarget
 		Goto Spawn
 
@@ -1010,8 +996,8 @@ ACTOR FlameMarineGuarding: Marine_Flame
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMastermind", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsABaronOfHell", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMancubus", 1, "CheckRetreat")
-		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 1)
-		TNT1 A 0 A_ChangeFlag("SOLID", 0)
+		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "Spawn")
+		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "Spawn")
 		TNT1 A 0 A_PlaySound("MRNAT", 2)
 
 		TNT1 A 0 A_Jump(128, "MissileLeft", "MissileRight")
@@ -1166,13 +1152,102 @@ ACTOR FlameMarineGuarding: Marine_Flame
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Missile
 
+	Reload:
+		MWAV I 10 A_FaceTarget
+		TNT1 A 0 A_PlaySound("Reload")
+		TNT1 A 0 A_CustomMissile("EmptyClipSpawn", 30, 0, random(-11, 11), 0)
+		MWAV J 10 A_TakeInventory("RifleAmmo", 30)
+		MWAV K 10 A_FaceTarget
+		TNT1 A 0 A_PlaySound("CLIPIN")
+		MWAV J 10 A_FaceTarget
+		MWAV I 10 A_FaceTarget
+		Goto See
+
+	CheckRetreat:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfCloser(256, "Retreat")
+		TNT1 A 0 A_Jump(255, "MissileRight", "MissileLeft")
+		Goto MissileRight
+
+	Retreat:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfCloser(256,"RetreatClose")
+		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
+		TNT1 A 0 A_CustomMissile("MarineMuzzle2", 32)
+		MMFC D 1 BRIGHT A_FaceTarget
+		TNT1 A 0 A_Recoil(5)
+		TNT1 A 0 A_CustomMissile("MarineFlameThrower", 48, 0, 0, CMF_OFFSETPITCH, 5)
+		TNT1 A 0 A_PlaySound("Flamer",1)
+		MMFC D 1 BRIGHT A_FaceTarget
+
+		TNT1 A 0 A_CustomMissile("MarineMuzzle2", 32)
+		MMFC D 1 BRIGHT A_FaceTarget
+		TNT1 A 0 A_Recoil(5)
+		TNT1 A 0 A_CustomMissile("MarineFlameThrowerNoLight", 48, 0, 0, CMF_OFFSETPITCH, 5)
+		TNT1 A 0 A_PlaySound("Flamer",1)
+		MMFC D 1 BRIGHT A_FaceTarget
+		TNT1 A 0 A_PlaySound("FLAMSTOP",1)
+		MMFC A 14 A_FaceTarget
+		Goto Pain.Avoid
+
+	RetreatClose:
+		MAR2 A 3 A_FaceTarget
+		TNT1 A 0 A_Recoil(5)
+		MAR2 D 2 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
+		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
+		TNT1 A 0 A_PlaySound("weapons/rifle")
+		TNT1 A 0 A_CustomMissile("DistantFireSoundRifle", 48, 0, 0, 1, 0)
+		TNT1 A 0 A_GiveInventory("RifleAmmo",1)
+		TNT1 A 0 A_CustomMissile("MarineTracer", 48, 0, random(-1, 1), CMF_OFFSETPITCH, random(-1, 1))
+		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 48,0)
+
+		TNT1 A 0 A_JumpIfInventory("RifleAmmo", 30, "Reload")
+
+        MAR2 A 3 A_FaceTarget
+		TNT1 A 0 A_Recoil(5)
+		MAR2 D 2 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
+		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
+		TNT1 A 0 A_PlaySound("weapons/rifle")
+		TNT1 A 0 A_CustomMissile("DistantFireSoundRifle", 48, 0, 0, 1, 0)
+		TNT1 A 0 A_GiveInventory("RifleAmmo",1)
+		TNT1 A 0 A_CustomMissile("MarineTracer", 48, 0, random(-1, 1), CMF_OFFSETPITCH, random(-1, 1))
+		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 48,0)
+
+		TNT1 A 0 A_JumpIfInventory("RifleAmmo", 30, "Reload")
+
+		MAR2 A 3 A_FaceTarget
+		TNT1 A 0 A_Recoil(5)
+		MAR2 D 2 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
+		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
+		TNT1 A 0 A_PlaySound("weapons/rifle")
+		TNT1 A 0 A_CustomMissile("DistantFireSoundRifle", 48, 0, 0, 1, 0)
+		TNT1 A 0 A_GiveInventory("RifleAmmo",1)
+		TNT1 A 0 A_CustomMissile("MarineTracer", 48, 0, random(-1, 1), CMF_OFFSETPITCH, random(-1, 1))
+		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 48,0)
+
+		TNT1 A 0 A_JumpIfInventory("RifleAmmo", 30, "Reload")
+
+		MAR2 A 3 A_FaceTarget
+		TNT1 A 0 A_Recoil(5)
+		MAR2 D 2 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
+		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
+		TNT1 A 0 A_PlaySound("weapons/rifle")
+		TNT1 A 0 A_CustomMissile("DistantFireSoundRifle", 48, 0, 0, 1, 0)
+		TNT1 A 0 A_GiveInventory("RifleAmmo",1)
+		TNT1 A 0 A_CustomMissile("MarineTracer", 48, 0, random(-1, 1), CMF_OFFSETPITCH, random(-1, 1))
+		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 48,0)
+
+		TNT1 A 0 A_JumpIfInventory("RifleAmmo", 30, "Reload")
+		Goto Pain.Avoid
+
 	Melee:
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsACyberdemon", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMastermind", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsABaronOfHell", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMancubus", 1, "CheckRetreat")
-		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 1)
-		TNT1 A 0 A_ChangeFlag("SOLID", 0)
+		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "Spawn")
+		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "Spawn")
 		TNT1 A 0 A_PlaySound("MRNAT", 2)
 
 		MMFC D 3 A_FaceTarget
@@ -1181,22 +1256,6 @@ ACTOR FlameMarineGuarding: Marine_Flame
 		PKIK B 3 A_FastChase
 		MMFC D 3 A_FaceTarget
 		Goto See
-
-	Jump:
-		TNT1 A 0
-		TNT1 A 0 A_TakeInventory("evmarinecanjump", 1)
-		TNT1 A 0 ThrustThingZ(0, 32, 0, 1)
-		TNT1 A 0 A_Recoil(-6)
-		MMFC J 3
-		TNT1 A 0 A_CheckSight("WaitforLand")
-		MMFC J 1
-		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "WaitForLand")
-		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "WaitForLand")
-		TNT1 A 0 A_JumpIfTargetInLOS(1)
-		Goto See
-		TNT1 AAA 0
-		TNT1 A 0 A_JumpIfCloser(128, "JumpKick")
-		Goto Missile
 
 	WaitforLand:
 		TNT1 A 0
@@ -1219,9 +1278,22 @@ ACTOR FlameMarineGuarding: Marine_Flame
 		TNT1 A 0 A_JumpIfCloser(128, "JumpKick")
 		Goto Missile
 
+	JumpKick:
+		TNT1 A 0
+		PKIK ABC 2 A_Facetarget
+		TNT1 A 0 A_Recoil(-6)
+		AKIK A 2 A_CustomMissile("MarineAirKick",28,0,0,0)
+		PKIK CBA 2 A_Facetarget
+		Goto WaitforLand
+
 	Pain:
 	    MMFC E 3
 		TNT1 A 0 A_Jump(128,"Pain.Avoid")
+		MMFC E 3 A_Pain
+		Goto See
+
+	Pain.Kick:
+	Pain.ExtremePunches:
 		MMFC E 3 A_Pain
 		Goto See
 
