@@ -945,6 +945,13 @@ ACTOR BFG10KMarineGuarding: Marine_BFG10K
 		TNT1 A 0 A_ClearTarget
 		Goto Spawn
 
+	ForgetActiveTarget:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("10KSTOP",4)
+		M10K A 30 A_Look
+		TNT1 A 0 A_ClearTarget
+		Goto Spawn
+
 	Heal:
 		TNT1 A 0
 		TNT1 A 0 HealThing(1)
