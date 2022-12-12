@@ -60,6 +60,7 @@ ACTOR Marine_Saw: Marine_Rifle
 		Stop
 
 	Spawn:
+		TNT1 A 0
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 1)
 		TNT1 A 0 A_ChangeFLag("SOLID", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
@@ -75,7 +76,7 @@ ACTOR Marine_Saw: Marine_Rifle
 		Goto Spawn
 
 	See:
-		TNT1 A 0 A_StopSound(4)
+		TNT1 A 0
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 1)
 		TNT1 A 0 A_ChangeFLag("SOLID", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
@@ -231,7 +232,7 @@ ACTOR Marine_Saw: Marine_Rifle
 		MAR1 D 6 A_FaceTarget
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
 		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, 1)
-		Goto See
+		Goto ForgetTarget
 		TNT1 A 0 A_Jump(16, "Waits2")
 		TNT1 A 0 A_CheckSight("FollowPlayer")
 		MAR1 D 6 A_FaceTarget
