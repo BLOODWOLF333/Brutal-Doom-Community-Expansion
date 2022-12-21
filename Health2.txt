@@ -12,7 +12,6 @@ Actor ArmorShard : ArmorBonus Replaces ArmorBonus
 	Armor.Saveamount 2
 	Armor.Maxsaveamount 300
 	+COUNTITEM
-	+INVENTORY.NEVERRESPAWN
 	+INVENTORY.ALWAYSPICKUP
 	+INVENTORY.NOSCREENFLASH
 	States
@@ -26,6 +25,7 @@ Actor ArmorShard : ArmorBonus Replaces ArmorBonus
 Actor ArmorShardNoCount: ArmorShard
 {
 -COUNTITEM
++INVENTORY.NEVERRESPAWN
 }
 
 Actor ArmorShardDroped : ArmorShard
@@ -141,7 +141,6 @@ ACTOR HealthPlus : Health Replaces HealthBonus
 	SpawnID 152
 	+COUNTITEM
 	+INVENTORY.ALWAYSPICKUP
-	+INVENTORY.NEVERRESPAWN
 	+INVENTORY.NOSCREENFLASH
 	Inventory.Amount 2
 	Inventory.MaxAmount 300
@@ -159,12 +158,14 @@ ACTOR HealthPlus : Health Replaces HealthBonus
 Actor HealthPlusNoCount : HealthPlus
 {
 	-COUNTITEM
+	+INVENTORY.NEVERRESPAWN
 }
 
 ACTOR HealthPlusDropped : HealthPlus
 {
 	Inventory.Amount 5
 	-COUNTITEM
+	+INVENTORY.NEVERRESPAWN
 }
 
 // Medikit -----------------------------------------------------------------
