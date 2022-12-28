@@ -118,6 +118,7 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 	GOto Missile
 
 	See:
+	SPOS A 0
 	SHID A 0 A_ChangeFLag("NODROPOFF", 0)
 	SHID A 0 A_TakeInventory("SKShotgunGuy", 1)
 	SHID A 0 A_CheckSight("SeeNeverSeen")
@@ -1242,7 +1243,7 @@ Death.Shotgun:
 	TNT1 A 0 A_SpawnItem("PentagramSpawner")
 		SPOS L 5
 		SPOS KJIH 5
-		Goto SeeContinue
+		Goto See
 
 	StealthKill:
 	TNT1 A 0
@@ -1749,6 +1750,7 @@ Obituary "%o got punctured by a SMG Zombie."
 	GOto Missile
 
 	See:
+	PSS3 A 0
 	PSS3 A 0 A_ChangeFLag("NODROPOFF", 0)
 	PSS3 A 0 A_TakeInventory("SKShotgunGuy", 1)
 	PSS3 A 0 A_CheckSight("SeeNeverSeen")
@@ -2093,6 +2095,6 @@ Obituary "%o got punctured by a SMG Zombie."
 	TNT1 A 0 A_SpawnItem("PentagramSpawner")
 		PSS3 L 5
 		PSS3 KJIH 5
-		Goto SeeContinue
+		Goto See
 		}
 }
