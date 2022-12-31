@@ -233,6 +233,7 @@ script "GetPlayerValues" (VOID) NET
 //Entering Heavy Machinegun
 script "BDEnterHMG" (VOID) NET
 {
+	ACS_NamedExecuteAlways("BDStopCamera",0,0,0,0);
 	TakeInventory("PowerInvisibility",1);
 	SetActorAngle (0, GetActorAngle (261));
 	Thing_Move(0, 261, 1);
@@ -279,6 +280,8 @@ script "BDLeaveHMG" (VOID) NET
 	int thisgunmachinegunammo = CheckInventory("HeavyMachinegunAmmo");
 	delay (1);
 	TakeInventory("HeavyMachinegunAmmo", 9999);
+	TakeInventory("RollRight", 1);
+	TakeInventory("RollLeft", 1);
 	Thing_Move(0, 264, 1);
 	UnMorphActor(0, 0);
 	if (arrayArmorClass[PlayerNumber()] != "None")
@@ -311,6 +314,7 @@ script "BDLeaveHMG" (VOID) NET
 //Entering Tank
 script "BDEnterTank" (VOID) NET
 {
+	ACS_NamedExecuteAlways("BDStopCamera",0,0,0,0);
 	TakeInventory("PowerInvisibility",1);
 	SetActorAngle (0, GetActorAngle (261));
 	Thing_Move(0, 261, 1);
@@ -350,6 +354,8 @@ script "BDLeaveTank" (VOID) NET
 	TakeInventory("HelicopterRocketAmmo", 9999);
 	TakeInventory("MechRocketAmmo", 9999);
 	TakeInventory("IsInATank", 9);
+	TakeInventory("RollRight", 1);
+	TakeInventory("RollLeft", 1);
 	Thing_Move(0, 264, 1);
 	UnMorphActor(0, 0);
 	if (arrayArmorClass[PlayerNumber()] != "None")
