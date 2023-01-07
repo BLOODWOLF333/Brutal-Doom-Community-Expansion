@@ -164,8 +164,6 @@ ACTOR Marine_Saw: Marine_Rifle
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
 		MAR1 D 6 A_LookEx(0,0,0,0,360,"FollowPlayer")
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
-		MAR1 D 6 A_LookEx(0,0,0,0,360,"FollowPlayer")
-		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
 		MAR1 AAA 1 A_Wander
 		MAR1 BBB 1 A_Wander
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
@@ -214,7 +212,7 @@ ACTOR Marine_Saw: Marine_Rifle
 
 	CheckIfPlayerSee:
 		TNT1 A 0
-		TNT1 A 0 A_JumpIfCloser(512, 1)
+		TNT1 A 0 A_JumpIfCloser(256, 1)
 		Goto Pathfind
 		TNT1 AAA 0
 		Goto FollowPlayer
@@ -243,6 +241,10 @@ ACTOR Marine_Saw: Marine_Rifle
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
 		MAR1 D 6 A_Look
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
+		MAR1 D 6 A_Look
+		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
+		MAR1 D 6 A_Look
+		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
 		TNT1 A 0 A_JumpIfHealthLower(200,"Heal")
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 0)
@@ -263,6 +265,10 @@ ACTOR Marine_Saw: Marine_Rifle
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
+		MAR1 D 6 A_Look
+		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
+		MAR1 D 6 A_Look
+		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
 		MAR1 D 6 A_Look
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
 		TNT1 A 0 A_JumpIfHealthLower(200,"Heal")

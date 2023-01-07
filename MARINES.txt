@@ -299,7 +299,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		TNT1 A 0 A_ChangeFlag("SOLID", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
-		MARN D 12 A_LookEx(0,0,0,0,360,"FollowPlayer")
+		MARN D 10 A_LookEx(0,0,0,0,360,"FollowPlayer")
 		PLAY AAA 1 A_Wander
 		PLAY BBB 1 A_Wander
 		PLAY CCC 1 A_Wander
@@ -342,7 +342,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 
 	CheckIfPlayerSee:
 		TNT1 A 0
-		TNT1 A 0 A_JumpIfCloser(512, 1)
+		TNT1 A 0 A_JumpIfCloser(256, 1)
 		Goto Pathfind
 		TNT1 AAA 0
 		Goto FollowPlayer
@@ -362,18 +362,18 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		Goto ForgetTarget
 		TNT1 A 0 A_Jump(16, "Waits2", "Waits3")
 		TNT1 A 0 A_CheckSight("FollowPlayer")
-		MARN D 8 A_FaceTarget
+		MARN D 2 A_FaceTarget
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
-		MARN D 8 A_Look
+		MARN DD 10 A_Look
 		TNT1 A 0 A_JumpIfHealthLower(160,"Heal")
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
-		MARN D 8 A_LookEx(0,0,0,0,360,"FollowPlayer")
+		MARN D 2 A_LookEx(0,0,0,0,360,"FollowPlayer")
 		Goto FindPlayer
 
 	Waits2:
@@ -381,18 +381,18 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		TNT1 A 0 A_SetAngle(random(90, -90) + angle)
 		TNT1 A 0 A_PlaySound("MRNWT", 2)
 		TNT1 A 0 A_CheckSight("FollowPlayer")
-		MARN D 8 A_FaceTarget
+		MARN D 2 A_FaceTarget
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
-		MARN D 8 A_Look
+		MARN DD 10 A_Look
 		TNT1 A 0 A_JumpIfHealthLower(160,"Heal")
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
-		MARN D 8 A_LookEx(0,0,0,0,360,"FollowPlayer")
+		MARN D 2 A_LookEx(0,0,0,0,360,"FollowPlayer")
 		Goto FindPlayer
 
 	Waits3:
@@ -402,18 +402,18 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		TNT1 A 0 A_SetAngle(random(90, -90) + angle)
 		TNT1 A 0 A_PlaySound("MRNWC", 2)
 		TNT1 A 0 A_CheckSight("FollowPlayer")
-		MARN D 8 A_FaceTarget
+		MARN D 2 A_FaceTarget
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 1)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 1)
-		MARN D 8 A_Look
+		MARN DD 10 A_Look
 		TNT1 A 0 A_JumpIfHealthLower(160,"Heal")
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
-		MARN D 8 A_LookEx(0,0,0,0,360,"FollowPlayer")
+		MARN D 2 A_LookEx(0,0,0,0,360,"FollowPlayer")
 		Goto FindPlayer
 
 	Heal:
@@ -424,7 +424,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		TNT1 A 0 A_ChangeFLag("FRIENDLY", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEMORE", 0)
 		TNT1 A 0 A_ChangeFlag("MISSILEEVENMORE", 0)
-		MARN D 8 A_LookEx(0,0,0,0,360,"FollowPlayer")
+		MARN D 2 A_LookEx(0,0,0,0,360,"FollowPlayer")
 		Goto FindPlayer
 
 	GiveAmmo:
