@@ -211,7 +211,7 @@ ACTOR Marine_Minigun: Marine_Rifle
 	Pathfind:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIFInTargetInventory("IsPLayer", 1, 1)
-		Goto Spawn
+		Goto FindPlayer
 		TNT1 AAA 0
 		TNT1 A 0 A_SpawnItemEx ("Marine_MinigunPathfinder",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		Stop
