@@ -199,7 +199,7 @@ ACTOR RailGun : BrutalWeapon
 		RAIL A 0 A_GiveInventory("Pumping",1)
 		RAIL A 0 ACS_NamedExecuteAlways("RailgunRecharge",0,0,0,0)
 		RAIL DDDDDDDDDDDDDDDDDDDDD 2 BRIGHT A_WeaponReady(WRF_NOPRIMARY | WRF_NOBOB | WRF_ALLOWRELOAD)
-		RAIL A 0 A_Refire
+		RAIL A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
 		Goto Ready3
 
 	ZoomedRecoil:
@@ -221,7 +221,7 @@ ACTOR RailGun : BrutalWeapon
 		RAIL A 0 ACS_NamedExecuteAlways("RailgunRecharge",0,0,0,0)
 		SNIP AAAAAAAAAAAAAAAAAAAAA 2 BRIGHT A_WeaponReady(WRF_NOPRIMARY | WRF_NOBOB | WRF_ALLOWRELOAD)
 		RAIL A 0 A_JumpifInventory("FiredSecondary", 1, "HoldAim")
-		SNIP A 0 A_Refire
+		SNIP A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
 		Goto Ready2
 
     AltFire:
@@ -317,7 +317,7 @@ ACTOR RailGun : BrutalWeapon
 	DontNeedToReload:
 		TNT1 AAAA 0
 		RAIL A 1 A_Takeinventory("Reloading",1)
-        RAIL A 0 A_Refire
+        RAIL A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
 		Goto Ready
 
 	Unload:

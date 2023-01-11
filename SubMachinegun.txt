@@ -229,9 +229,9 @@ ACTOR BrutalSMG : BrutalWeapon
 
     Fire:
 		TNT1 A 0
-        SMGG A 0 A_JumpIfInventory("BDSMGAmmo",1,2)
+        SMGG A 0 A_JumpIfInventory("BDSMGAmmo",1,1)
         Goto NoAmmo
-        TNT1 AAAA 0
+        TNT1 A 0
 		SMGG A 0 A_ALertMonsters
 		SMGG A 0 A_SpawnItemEx("PlayerMuzzle1",30,5,30)
 		SMGG A 0 A_JumpIfInventory("Zoomed",1,"Fire2")
@@ -250,10 +250,11 @@ ACTOR BrutalSMG : BrutalWeapon
 		SMGF C 1
 		RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
 		RIFG A 0 A_SetPitch(pitch-0.2)
-		SMGG A 1 A_ReFire
+		SMGG A 1 A_JumpIfInventory("FiredPrimary",1,"Fire")
 		Goto Ready3
 
 	 Fire2:
+		SMGG A 0
 		TNT1 A 0 A_FireCustomMissile("DistantFireSoundPistol", random(-1,1), 0, 0, -12, 0, random(-1,1))
         SMGG A 0 A_PlaySound("SMGFIRE", 1)
 		SMGG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
@@ -270,7 +271,7 @@ ACTOR BrutalSMG : BrutalWeapon
 		RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
 		RIFG A 0 A_SetPitch(pitch-0.1)
 		SMGG A 0 A_JumpIfInventory("FiredSecondary",1,"HoldAim")//If still pressing alt fire, it means its holding aim
-		SMGA A 1 A_ReFire
+		SMGA A 1 A_JumpIfInventory("FiredPrimary",1,"Fire")
 		Goto Ready2
 
 	NoAmmo:
@@ -344,12 +345,12 @@ ACTOR BrutalSMG : BrutalWeapon
 		TNT1 AAAAAAAAAA 0
 		SMGG A 1 A_Takeinventory("Reloading",1)
 
-		SMGG A 0 A_Refire
+		SMGG A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
         Goto Ready
 		TNT1 AAAA 0
 		SMGG A 1 A_Takeinventory("Reloading",1)
 
-		SMGG A 0 A_Refire
+		SMGG A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
         Goto Ready
 
 	InsertBullets2:
@@ -365,12 +366,13 @@ ACTOR BrutalSMG : BrutalWeapon
 
 		TNT1 AAAAAAAAAA 0
 		SMGG A 1 A_Takeinventory("Reloading",1)
-		SMGG A 0 A_Refire
+
+		SMGG A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
         Goto Ready
 		TNT1 AAAA 0
 		SMGG A 1 A_Takeinventory("Reloading",1)
 
-		SMGG A 0 A_Refire
+		SMGG A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
         Goto Ready
 
 	 Unload:
@@ -407,12 +409,12 @@ ACTOR BrutalSMG : BrutalWeapon
 		TNT1 AAAAAAAAAA 0
 		SMGG A 0 A_Takeinventory("Reloading",1)
 
-		SMGG A 0 A_Refire
+		SMGG A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
         Goto Ready
 		TNT1 AAAA 0
 		SMGG A 0 A_Takeinventory("Reloading",1)
 
-		SMGG A 0 A_Refire
+		SMGG A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
         Goto Ready
 
 
