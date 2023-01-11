@@ -66,8 +66,6 @@ ACTOR FakeRifleSprite: BasicWeaponPickup
 	YScale 0.8
 	XScale 0.9
 	VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
-	+NOGRAVITY
-	+FLOAT +NOCLIP +NOINTERACTION
 	States
     {
 
@@ -323,8 +321,6 @@ actor ShotgunSpawnerReplacer: BasicWeaponPickup Replaces Shotgun
 ACTOR FakeOldSGSprite: BasicWeaponPickup
 {
  Scale 1.0
- +NOGRAVITY
- +FLOAT +NOCLIP +NOINTERACTION
  VisibleToPlayerClass Purist
  States
     {
@@ -340,8 +336,6 @@ ACTOR FakeNewSGSprite: BasicWeaponPickup
 {
  Scale 0.8
  VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
-  +NOGRAVITY
- +FLOAT +NOCLIP +NOINTERACTION
  States
     {
 
@@ -356,9 +350,7 @@ ACTOR FakeRevolverSprite: BasicWeaponPickup
 {
 Scale 0.6
 VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
-+NOGRAVITY
-+FLOAT +NOCLIP +NOINTERACTION
- States
+States
     {
 	 Spawn:
 		REVP A 0
@@ -414,9 +406,7 @@ ACTOR FakeSSGSprite: BasicWeaponPickup
 YScale 0.8
 XScale 1.0
 VisibleToPlayerClass Purist
-+NOGRAVITY
-+FLOAT +NOCLIP +NOINTERACTION
- States
+States
     {
 	 Spawn:
 		SGN2 A 0
@@ -429,9 +419,7 @@ ACTOR FakeASGSprite: BasicWeaponPickup
 {
 Scale 0.8
 VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
-+NOGRAVITY
-+FLOAT +NOCLIP +NOINTERACTION
- States
+States
     {
 	 Spawn:
 		A12P A 0
@@ -605,9 +593,7 @@ ACTOR FakeSMGSprite: BasicWeaponPickup
 {
  Scale 0.8
  VisibleToPlayerClass Purist
- +NOGRAVITY
- +FLOAT +NOCLIP +NOINTERACTION
- States
+States
     {
 
 	 Spawn:
@@ -662,8 +648,6 @@ ACTOR FakeMachinegunSprite: BasicWeaponPickup
 {
  YScale 0.8
  XScale 1.0
- +NOGRAVITY
- +FLOAT +NOCLIP +NOINTERACTION
  VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
  States
     {
@@ -723,8 +707,6 @@ actor ChaingunSpawnerReplacer : BasicWeaponPickup Replaces Chaingun
 ACTOR FakeChaingunSprite: BasicWeaponPickup
 {
  Scale 0.9
- +NOGRAVITY
- +FLOAT +NOCLIP +NOINTERACTION
  VisibleToPlayerClass Purist
  States
     {
@@ -739,8 +721,6 @@ ACTOR FakeChaingunSprite: BasicWeaponPickup
 ACTOR FakeMinigunSprite: BasicWeaponPickup
 {
  Scale 0.9
- +NOGRAVITY
- +FLOAT +NOCLIP +NOINTERACTION
  VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
  States
     {
@@ -893,8 +873,6 @@ actor RLSpawnerReplacer : BasicWeaponPickup Replaces RocketLauncher
 ACTOR FakeRocketLauncherSprite: BasicWeaponPickup
 {
  Scale 0.8
- +NOGRAVITY
- +FLOAT +NOCLIP +NOINTERACTION
  VisibleToPlayerClass Purist
  States
     {
@@ -909,8 +887,6 @@ ACTOR FakeRocketLauncherSprite: BasicWeaponPickup
 ACTOR FakeRL2Sprite: BasicWeaponPickup
 {
  Scale 0.8
- +NOGRAVITY
- +FLOAT +NOCLIP +NOINTERACTION
  VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
  States
     {
@@ -925,8 +901,6 @@ ACTOR FakeRL2Sprite: BasicWeaponPickup
 ACTOR FakeGLSprite: BasicWeaponPickup
 {
  Scale 0.8
- +NOGRAVITY
- +FLOAT +NOCLIP +NOINTERACTION
  VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
  States
     {
@@ -1054,8 +1028,6 @@ ACTOR RailgunSpawner: CustomInventory 2044
 ACTOR FakeRailgunSprite: BasicWeaponPickup
 {
  Scale 0.8
- +NOGRAVITY
- +FLOAT +NOCLIP +NOINTERACTION
  VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
  States
     {
@@ -1070,8 +1042,6 @@ ACTOR FakeRailgunSprite: BasicWeaponPickup
 ACTOR FakePlasmagunSprite: BasicWeaponPickup
 {
  Scale 0.9
- +NOGRAVITY
- +FLOAT +NOCLIP +NOINTERACTION
  VisibleToPlayerClass Purist
  States
     {
@@ -1391,8 +1361,6 @@ ACTOR FakeBFG10KSprite: BasicWeaponPickup
 {
  YScale 0.7
  XScale 0.9
- +NOGRAVITY
- +FLOAT +NOCLIP +NOINTERACTION
  VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
  States
     {
@@ -1408,8 +1376,6 @@ ACTOR FakeUnmakerSprite: BasicWeaponPickup
 {
  YScale 1.0
  XScale 1.2
- +NOGRAVITY
- +FLOAT +NOCLIP +NOINTERACTION
  VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
  States
     {
@@ -1422,8 +1388,6 @@ ACTOR FakeUnmakerSprite: BasicWeaponPickup
 
 ACTOR Fake64UnmakerSprite: BasicWeaponPickup
 {
- +NOGRAVITY
- +FLOAT +NOCLIP +NOINTERACTION
  VisibleToPlayerClass Purist
  States
     {
@@ -1437,8 +1401,6 @@ ACTOR Fake64UnmakerSprite: BasicWeaponPickup
 ACTOR FakeBFGSprite: BasicWeaponPickup
 {
  Scale 0.8
- +NOGRAVITY
- +FLOAT +NOCLIP +NOINTERACTION
  VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
  States
     {
@@ -1453,8 +1415,6 @@ ACTOR FakeBFGSprite: BasicWeaponPickup
 ACTOR FakeOLDBFGSprite: BasicWeaponPickup
 {
  Scale 0.8
- +NOGRAVITY
- +FLOAT +NOCLIP +NOINTERACTION
  VisibleToPlayerClass Purist
  States
     {
@@ -1468,8 +1428,6 @@ ACTOR FakeOLDBFGSprite: BasicWeaponPickup
 
 ACTOR FakeFlameThrowerSprite: BasicWeaponPickup
 {
- +NOGRAVITY
- +FLOAT +NOCLIP +NOINTERACTION
  VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
  States
     {
@@ -1484,8 +1442,6 @@ ACTOR FakeFlameThrowerSprite: BasicWeaponPickup
 ACTOR FakeAxeSprite: BasicWeaponPickup
 {
  Scale 0.9
- +NOGRAVITY
- +FLOAT +NOCLIP +NOINTERACTION
  VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
  States
     {
@@ -1500,8 +1456,6 @@ ACTOR FakeAxeSprite: BasicWeaponPickup
 ACTOR FakeSawSprite: BasicWeaponPickup
 {
  Scale 0.8
- +NOGRAVITY
- +FLOAT +NOCLIP +NOINTERACTION
  VisibleToPlayerClass Purist
  States
     {
