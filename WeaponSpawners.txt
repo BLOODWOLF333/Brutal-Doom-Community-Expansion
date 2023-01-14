@@ -1,15 +1,16 @@
 ACTOR BasicWeaponPickup : Health
 {
- scale 0.8
- radius 20
- height 16
- +FORCEXYBILLBOARD
- +NOCLIP
- -COUNTITEM
- -INVENTORY.ALWAYSPICKUP
- Inventory.Amount 0
- Inventory.MaxAmount 99999
- +Quiet
+	scale 0.8
+	radius 20
+	height 16
+	+FORCEXYBILLBOARD
+	+NOINTERACTION
+	+MOVEWITHSECTOR
+	-COUNTITEM
+	-INVENTORY.ALWAYSPICKUP
+	Inventory.Amount 0
+	Inventory.MaxAmount 99999
+	+Quiet
 }
 
 ACTOR RifleSpawner : CustomInventory Replaces Pistol 5010
