@@ -776,14 +776,14 @@ ACTOR Imp Replaces DoomImp
 	Death.Minigun:
 	TNT1 A 0
 	TNT1 A 0 A_NoBlocking
-	TNT1 A 0 A_SpawnItem ("BrutalizedImp1", 1)
+	TNT1 A 0 A_SpawnItem("BrutalizedImp1")
 	Stop
 
 		Death.LegMassacre:
 		TNT1 A 0 A_CustomMissile ("XDeathImpLeg", 35, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
-		TR09 A 8 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
-		TR09 B 8 A_Scream
+		TNT1 A 0 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
         TNT1 A 0 A_SpawnItem ("ImpBrutalizedWithNoLeg")
 		Stop
