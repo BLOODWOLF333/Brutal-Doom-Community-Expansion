@@ -2650,10 +2650,9 @@ Damagefactor "Head", 0.0
 		Stop
 
 	Death.SSG:
-	Death.Shotgun:
 	Death.Explosive:
 	Death.Railgun:
-        //TNT1 A 0 A_CustomMissile ("MeatDeath", 0, 0, random (0, 360), 2, random (0, 160))
+        TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 14, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
 		TNT1 AA 0 A_CustomMissile ("XDeath1", 32, 0, random (170, 190), 2, random (0, 40))
 		TNT1 A 0 A_CustomMissile ("XDeath2", 32, 0, random (170, 190), 2, random (0, 40))
@@ -2690,13 +2689,6 @@ Damagefactor "Head", 0.0
 		TRO3 B 1 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("DyingImpNoHeadNoArmContinue")
 		Stop
-
-		TRO3 BBBBBBBBBB 3 A_CustomMissile ("Brutal_LiquidBlood2", 26, 0, random (0, 360), 2, random (30, 60))
-		TRO3 CCC 3 A_CustomMissile ("Brutal_LiquidBlood2", 26, 0, random (0, 360), 2, random (10, 40))
-		TRO3 DD 3 A_CustomMissile ("Brutal_LiquidBlood2", 6, 0, random (0, 360), 2, random (30, 60))
-		TNT1 A 0 A_SpawnItem("DeadImpTRO3E")
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
-	    Stop
 	}
 }
 
@@ -2717,9 +2709,26 @@ DamageFactor "Head", 0.0
 		TNT1 A 0 A_SpawnItem("DeadImp_NoHead")
 		Stop
 
+	Death.SSG:
+	Death.Explosive:
+	Death.Railgun:
 	Death.Minigun:
-		TNT1 A 0
-		GOto Death.Shotgun
+	Death.Shotgun:
+		TNT1 A 0 A_XScream
+		TNT1 AAA 0 A_CustomMissile ("Guts", 32, 0, random (150, 210), 2, random (0, 40))
+		TNT1 AAA 0 A_CustomMissile ("XDeath1", 32, 0, random (150, 210), 2, random (0, 40))
+		TNT1 A 0 A_CustomMissile ("XDeathImpArm", 32, 0, random (150, 210), 2, random (0, 40))
+		TNT1 AAA 0 A_CustomMissile ("Xdeath3", 16, 0, random (170, 190), 2, random (0, 40))
+		TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40))
+		TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodFaster", 32, 0, random (170, 190), 2, random (0, 40))
+		TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodMuchFaster", 32, 0, random (170, 190), 2, random (0, 40))
+		TNT1 AAAA 0 A_CustomMissile ("SuperWallRedBlood", 32, 0, random (170, 190), 2, random (0, 40))
+		TNT1 AAA 0 A_CustomMissile ("BloodMistBig", 40, 0, random (0, 360), 2, random (30, 90))
+		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 14, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
+		TRO3 A 6 A_Stop
+		TRO3 B 1 A_NoBlocking
+		TNT1 A 0 A_SpawnItem("DyingImpNoHeadNoArmContinue")
+		Stop
 	}
 }
 
@@ -2758,9 +2767,27 @@ ACTOR DyingImpHalfFace: DyingImp
         TNT1 A 0 A_SpawnItem("DeadImpNoFace")
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		Stop
+
+	Death.SSG:
+	Death.Explosive:
+	Death.Railgun:
 	Death.Minigun:
-		TNT1 A 0
-		GOto Death.Shotgun
+	Death.Shotgun:
+		TNT1 A 0 A_XScream
+		TNT1 AAA 0 A_CustomMissile ("Guts", 32, 0, random (150, 210), 2, random (0, 40))
+		TNT1 AAA 0 A_CustomMissile ("XDeath1", 32, 0, random (150, 210), 2, random (0, 40))
+		TNT1 A 0 A_CustomMissile ("XDeathImpArm", 32, 0, random (150, 210), 2, random (0, 40))
+		TNT1 AAA 0 A_CustomMissile ("Xdeath3", 16, 0, random (170, 190), 2, random (0, 40))
+		TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40))
+		TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodFaster", 32, 0, random (170, 190), 2, random (0, 40))
+		TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodMuchFaster", 32, 0, random (170, 190), 2, random (0, 40))
+		TNT1 AAAA 0 A_CustomMissile ("SuperWallRedBlood", 32, 0, random (170, 190), 2, random (0, 40))
+		TNT1 AAA 0 A_CustomMissile ("BloodMistBig", 40, 0, random (0, 360), 2, random (30, 90))
+		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 14, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
+		TRO3 A 6 A_Stop
+		TRO3 B 1 A_NoBlocking
+		TNT1 A 0 A_SpawnItem("DyingImpNoHeadNoArmContinue")
+		Stop
 	}
 }
 
@@ -2795,14 +2822,26 @@ ACTOR DyingImpNoHeadLikeChicken: DyingImp
         TNT1 A 0 A_SpawnItem("DeadImp_NoHead")
 		Stop
 
-		Death:
-		Death.Minigun:
-		Death.Shotgun:
-		TROH A 1
+	Death:
+	Death.SSG:
+	Death.Shotgun:
+	Death.Explosive:
+	Death.Railgun:
+	Death.Minigun:
 		TNT1 A 0 A_XScream
-		TNT1 A 0 A_SpawnItem("RipGuts")
+		TNT1 AAA 0 A_CustomMissile ("Guts", 32, 0, random (150, 210), 2, random (0, 40))
+		TNT1 AAA 0 A_CustomMissile ("XDeath1", 32, 0, random (150, 210), 2, random (0, 40))
+		TNT1 A 0 A_CustomMissile ("XDeathImpArm", 32, 0, random (150, 210), 2, random (0, 40))
+		TNT1 AAA 0 A_CustomMissile ("Xdeath3", 16, 0, random (170, 190), 2, random (0, 40))
+		TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40))
+		TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodFaster", 32, 0, random (170, 190), 2, random (0, 40))
+		TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodMuchFaster", 32, 0, random (170, 190), 2, random (0, 40))
+		TNT1 AAAA 0 A_CustomMissile ("SuperWallRedBlood", 32, 0, random (170, 190), 2, random (0, 40))
+		TNT1 AAA 0 A_CustomMissile ("BloodMistBig", 40, 0, random (0, 360), 2, random (30, 90))
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 14, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
-		TNT1 A 0 A_SpawnItem("DyingImpNoHeadContinue")
+		TRO3 A 6 A_Stop
+		TRO3 B 1 A_NoBlocking
+		TNT1 A 0 A_SpawnItem("DyingImpNoHeadNoArmContinue")
 		Stop
 	}
 }
@@ -2820,13 +2859,13 @@ ACTOR DyingImpNoHeadNoArmContinue: DyingImp
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		Stop
 
+		Death:
 		Death.cut:
 		Death.SSG:
 		Death.Shotgun:
 		Death.Explosive:
 		Death.Railgun:
 		Death.Minigun:
-		Death:
 		Death.Fatality:
 		Death.SuperPunch:
 		Death.ExtremePunches:
