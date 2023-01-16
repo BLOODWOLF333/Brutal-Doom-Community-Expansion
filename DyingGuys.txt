@@ -1286,7 +1286,7 @@ ACTOR DyingSergeantLegBlewedOff: DyingSergeantNoLeg
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 14, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
 		TNT1 A 0 A_NoBlocking
 		SPO3 IJ 6
-		TNT1 A 0 A_SpawnItem ("DeadShotgunguy_NoLeg", 1)
+		TNT1 A 0 A_SpawnItem ("DeadShotgunGuy_NoLegNoHead", 1)
 		Stop
 
 		Death.Shotgun:
@@ -1334,13 +1334,13 @@ ACTOR DyingSergeantLegBlewedOff: DyingSergeantNoLeg
 		TNT1 AAAA 0 A_CustomMissile ("SuperWallRedBlood", 32, 0, random (170, 190), 2, random (0, 40))
 		TNT1 AAAA 0 A_CustomMissile ("SuperWallRedBlood", 46, 0, random (170, 190), 2, random (0, 40))
 		TNT1 A 0 A_CustomMissile ("XDeathArm1", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 A 0 A_CustomMissile ("XDeathZombieManHead", 32, 0, random (170, 190), 2, random (0, 40))
+		TNT1 A 0 A_CustomMissile ("XDeathSergeantHead", 32, 0, random (170, 190), 2, random (0, 40))
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 14, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		SZD1 EFGH 6
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
-		TNT1 A 0 A_SpawnItem("DeadShotgunguySZD1H")
+		TNT1 A 0 A_SpawnItem("DeadShotgunGuy_NoLegNoHead")
 		Stop
 	}
 }
@@ -2192,7 +2192,7 @@ ACTOR SergeantFatalizedByBaron: TeleportFog
 	}
 }
 
-ACTOR SergeantGotHisLegBlowed: DyingZombiemanNoArm
+ACTOR SergeantGotHisLegBlowed: DyingSergeantLegBlewedOff
 {
 	States
 	{
