@@ -1975,50 +1975,44 @@ ACTOR TinyBurningPieceTemp: TinyBurningPiece
     }
 }
 
-ACTOR TorchBall: ImpBallGettingReady
+ACTOR TorchBall
 {
-	Speed 0
-	-FORCEXYBILLBOARD
+	Game Doom
+	Radius 1
+	Height 1
+	-SOLID
+    +CLIENTSIDEONLY
+	+NONETID
+	+NOGRAVITY
+	+MOVEWITHSECTOR
+	RenderStyle Add
 	Alpha 1.0
-	Renderstyle Add
 	YScale 1.2
 	XScale 1.6
 	States
 	{
     Spawn:
-        FRFX ABABABAB 2 BRIGHT
+        FRFX ABABAB 2 BRIGHT
         Stop
 	}
 }
 
-ACTOR TorchBallBlue: ImpBallGettingReady
+ACTOR TorchBallBlue: TorchBall
 {
-Speed 0
--FORCEXYBILLBOARD
-Alpha 1.0
-Renderstyle Add
-    YScale 1.2
-	XScale 1.6
 	States
 	{
     Spawn:
-		FRPB JKJKJKJKJK 2 BRIGHT
+		FRPB JKJKJK 2 BRIGHT
         Stop
 	}
 }
 
-ACTOR TorchBallGreen: ImpBallGettingReady
+ACTOR TorchBallGreen: TorchBall
 {
-Speed 0
--FORCEXYBILLBOARD
-Alpha 1.0
-Renderstyle Add
-    YScale 1.2
-	XScale 1.6
 	States
 	{
     Spawn:
-        FRPG JKJKJKJKJK 2 BRIGHT
+        FRPG JKJKJK 2 BRIGHT
         Stop
 	}
 }
