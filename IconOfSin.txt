@@ -56,8 +56,10 @@ ACTOR IconOfSin 2550
 	{
 	Spawn:
 	    KEPR A 0
-
-		TNT1 A 0 A_JumpIfInventory("HasSpotedThePlayerAlready", 1, "LAUGH")
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckPort")//GZDoom inverts the pitch value
+	Idle:
+		KEPR A 0
+		KEPR A 0 A_JumpIfInventory("HasSpotedThePlayerAlready", 1, "LAUGH")
 		KEPR A 5 A_Look
 		Loop
 	Laugh:
@@ -127,17 +129,38 @@ ACTOR IconOfSin 2550
 
 	HellLaser:
 		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("Zandronum",1,"ZHellLaser")//GZDoom inverts the pitch value
 		TNT1 A 0 A_PlaySoundEX("UNMSTA", 4, 0, 2)
 	    KEPT ABC 5 A_FaceTarget
 		TNT1 A 0 A_PlaySoundEX("UNMLOP", 4, 0, 2)
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
-		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"UnmakerLaserPuff",-6.0,-3.0,0,1,16.0,0,"UnmakerLaserTrail",85)
-		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"UnmakerLaserPuff",-4.0,-3.0,0,1,16.0,0,"UnmakerLaserTrail",85)
-		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"UnmakerLaserPuff",-2.0,-3.0,0,1,16.0,0,"UnmakerLaserTrail",85)
-		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"UnmakerLaserPuff",0.0,-3.0,0,1,16.0,0,"UnmakerLaserTrail",85)
-		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"UnmakerLaserPuff",2.0,-3.0,0,1,16.0,0,"UnmakerLaserTrail",85)
-		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"UnmakerLaserPuff",4.0,-3.0,0,1,16.0,0,"UnmakerLaserTrail",85)
-		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"UnmakerLaserPuff",6.0,-3.0,0,1,16.0,0,"UnmakerLaserTrail",85)
+		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"UnmakerLaserPuff",-6.0,4.0,0,1,16.0,0,"UnmakerLaserTrail",96)
+		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"UnmakerLaserPuff",-4.0,4.0,0,1,16.0,0,"UnmakerLaserTrail",96)
+		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"UnmakerLaserPuff",-2.0,4.0,0,1,16.0,0,"UnmakerLaserTrail",96)
+		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"UnmakerLaserPuff",0.0,4.0,0,1,16.0,0,"UnmakerLaserTrail",96)
+		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"UnmakerLaserPuff",2.0,4.0,0,1,16.0,0,"UnmakerLaserTrail",96)
+		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"UnmakerLaserPuff",4.0,4.0,0,1,16.0,0,"UnmakerLaserTrail",96)
+		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"UnmakerLaserPuff",6.0,4.0,0,1,16.0,0,"UnmakerLaserTrail",96)
+		TNT1 A 0 A_StopSound(4)
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
+		TNT1 A 0 A_PlaySoundEX("UNMSTO", 4, 0, 2)
+		KEPT CBA 5 A_FaceTarget
+		TNT1 A 0 A_StopSound(4)
+		Goto Ready
+
+	ZHellLaser:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySoundEX("UNMSTA", 4, 0, 2)
+	    KEPT ABC 5 A_FaceTarget
+		TNT1 A 0 A_PlaySoundEX("UNMLOP", 4, 0, 2)
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
+		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"UnmakerLaserPuff",-6.0,-4.0,0,1,16.0,0,"UnmakerLaserTrail",96)
+		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"UnmakerLaserPuff",-4.0,-4.0,0,1,16.0,0,"UnmakerLaserTrail",96)
+		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"UnmakerLaserPuff",-2.0,-4.0,0,1,16.0,0,"UnmakerLaserTrail",96)
+		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"UnmakerLaserPuff",0.0,-4.0,0,1,16.0,0,"UnmakerLaserTrail",96)
+		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"UnmakerLaserPuff",2.0,-4.0,0,1,16.0,0,"UnmakerLaserTrail",96)
+		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"UnmakerLaserPuff",4.0,-4.0,0,1,16.0,0,"UnmakerLaserTrail",96)
+		KEPT C 5 BRIGHT A_CustomRailGun(10,0,"none","red",RGF_NOPIERCING | RGF_SILENT | RGF_CENTERZ | RGF_FULLBRIGHT | RGF_EXPLICITANGLE,1,0,"UnmakerLaserPuff",6.0,-4.0,0,1,16.0,0,"UnmakerLaserTrail",96)
 		TNT1 A 0 A_StopSound(4)
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
 		TNT1 A 0 A_PlaySoundEX("UNMSTO", 4, 0, 2)

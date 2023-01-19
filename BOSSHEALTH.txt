@@ -12,7 +12,6 @@ script "BDBossHealth" (void)
 	setfont("BIGFONT");
 	HudMessageBold(s:"-= BOSS =-"; HUDMSG_PLAIN, 0, CR_RED, 1.5, 0.09, 0.1, 1.0);
 
-
 	//How much health the boss currently has.
 	setfont("SMALLFONT");
 	int	bosshealth = GetActorProperty(0, APROP_Health);
@@ -21,18 +20,15 @@ script "BDBossHealth" (void)
 	//Just a divider
 	HudMessageBold(s:"/"; HUDMSG_PLAIN, 0, CR_WHITE, 1.5, 0.15, 0.05, 1.0);
 
-
 	//The boss's max health.
 	int	bossmaxhealth = GetActorProperty(0, APROP_SpawnHealth);
 	HudMessageBold(d:bossmaxhealth; HUDMSG_PLAIN, 0, CR_WHITE, 1.57, 0.15, 0.1, 1.0);
 	delay(1);
 
-
 	//Check if the boss still is alive. If yes, repeat the script, if not, it ends here.
 	if (GetActorProperty(0, APROP_Health)> 1)
 	restart;
-	else
-    ;
+	else;
 
 }
 
@@ -133,5 +129,10 @@ script "BDBruiserBrotherTwo" (void)
 
 }
 
-
-
+Script "BDCheckPort" (VOID)
+{
+	if(GetCvar("isrunningzandronum") == 1)
+	{
+		GiveInventory("Zandronum",1);
+	}
+}
