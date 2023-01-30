@@ -1558,16 +1558,8 @@ Actor DeadZombieMan_NoArm: ZombiemanTorso
 	Spawn:
         POS3 E -1
         Stop
-
-		Death:
-			TNT1 A 0 A_NoBlocking
-			TNT1 A 0 A_SpawnItem("RipGuts", 0, 10)
-			TNT1 A 0 A_CustomMissile ("XDeathZombiemanHead", 15, 0, random (0, 360), 2, random (0, 180))
-			TNT1 A 0 A_SpawnItem("MeatDeathSmall", 0, 10)
-			TNT1 AA 0 A_CustomMissile ("XDeathZombieLeg", 6, 0, random (0, 360), 2, random (0, 90))
-			TNT1 A 0 A_SpawnItem("DeadZombiemanPXSXO")
-			Stop
-		}}
+	}
+}
 
 Actor DeadZombieMan_NoLeg: DeadZombieMan_NoArm
 {Health 300 States{
@@ -1581,6 +1573,24 @@ Actor DeadZombieMan_NoLeg: DeadZombieMan_NoArm
 			TNT1 A 0 A_CustomMissile ("XDeathZombieLeg", 15, 0, random (0, 360), 2, random (0, 180))
 			Stop
     }}
+	
+Actor DeadZombieMan_NoLegNoHead: DeadZombieMan_NoArm
+{Health 300 States{
+	Spawn:
+        POS7 D -1
+		Stop
+		Death:
+			TNT1 A 0 A_NoBlocking
+			TNT1 A 0 A_SpawnItem("MuchBlood", 0, 10)
+			TNT1 A 0 A_CustomMissile ("XDeath1", 32, 0, random (0, 360), 2, random (0, 160))
+			TNT1 A 0 A_CustomMissile ("XDeath2", 32, 0, random (0, 360), 2, random (0, 160))
+			TNT1 AA 0 A_CustomMissile ("XDeathArm1", 35, 0, random (0, 360), 2, random (0, 160))
+			TNT1 AA 0 A_CustomMissile ("XDeath3", 15, 0, random (0, 360), 2, random (0, 180))
+			TNT1 AAA 0 A_CustomMissile ("Guts", 32, 0, random (150, 210), 2, random (0, 40))
+			TNT1 A 0 A_CustomMissile ("XDeathZombieLeg", 32, 0, random (0, 360), 2, random (0, 160))
+			Stop
+    }
+}
 
 Actor DeadZombieMan_NoLegBoth: DeadZombieMan_NoArm
 {Health 300 States{
@@ -1647,12 +1657,37 @@ ACTOR VeryFuckedUpBrutalizedZombiemanLeg2: VeryFuckedUpBrutalizedZombiemanLeg
 }
 
 ACTOR StompedZombieman: DeadZombieman_NoHead
-{Health 300 States{Pain:
+{Health 300 States{
+	Pain:
 		TNT1 AAAA 0 A_CustomMissile ("Brutal_LiquidBlood2", 15, 0, random (0, 360), 2, random (0, 180))
 		Goto Spawn
-		Spawn:
+	Spawn:
         01CB F -1
-        Stop}}
+        Stop
+	}
+}
+
+ACTOR StompedZombieman_NoLeg: DeadZombieman_NoHead
+{Health 300 States{
+	Pain:
+		TNT1 AAAA 0 A_CustomMissile ("Brutal_LiquidBlood2", 15, 0, random (0, 360), 2, random (0, 180))
+		Goto Spawn
+	Spawn:
+		01CB F -1
+        Stop
+	Death:
+		TNT1 A 0
+		TNT1 A 0 A_NoBlocking
+		TNT1 AAA 0 A_CustomMissile ("XDeath1", 15, 0, random (0, 360), 2, random (0, 180))
+		TNT1 AA 0 A_CustomMissile ("XDeath2", 15, 0, random (0, 360), 2, random (0, 180))
+		TNT1 AA 0 A_CustomMissile ("XDeath3", 15, 0, random (0, 360), 2, random (0, 180))
+		TNT1 AAA 0 A_CustomMissile ("Guts", 32, 0, random (150, 210), 2, random (0, 40))
+		TNT1 A 0 A_CustomMissile ("XDeathZombieLeg", 15, 0, random (0, 360), 2, random (0, 180))
+		TNT1 AA 0 A_CustomMissile ("XDeathArm1", 15, 0, random (0, 360), 2, random (0, 180))
+		TNT1 AAAA 0 A_CustomMissile ("BloodMistBig", 15, 0, random (0, 360), 2, random (0, 60))
+        Stop
+	}
+}
 
 Actor DeadZombieMan_NoArmFront: DeadZombieMan_NoArm
 {States{
