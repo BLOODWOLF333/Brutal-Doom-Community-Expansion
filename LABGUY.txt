@@ -965,7 +965,8 @@ Actor DyingFormerScientistNoLeg: DeadFormerScientist
 		FSS7 DEDEDEDEDEDE 10 A_SpawnItem("HeadshotTarget10", 5, 22,0)
 		FSS7 GH 5
 		TNT1 A 0 A_NoBlocking
-		FSS7 F -1
+		//FSS7 F -1
+		TNT1 A 0 A_SpawnItem ("Labguy_NoLeg")
 		Stop
 		Death:
 		TNT1 A 0 A_StopSound(4)
@@ -973,7 +974,8 @@ Actor DyingFormerScientistNoLeg: DeadFormerScientist
 		FSS7 GH 5
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 16, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
-		FSS7 F -1
+		//FSS7 F -1
+		TNT1 A 0 A_SpawnItem ("Labguy_NoLeg")
 		Stop
 
 		Death.Head:
