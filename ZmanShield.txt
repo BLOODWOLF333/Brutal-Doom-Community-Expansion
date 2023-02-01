@@ -73,7 +73,10 @@ ACTOR ZMANShield : Rifle
 		GRZ1 B 1 offset(-9, 33)
 		GRZ1 B 1 offset(-1, 32)
         TNT1 A 0 A_PlaySound("skeleton/swing")
+		TNT1 A 0 A_JumpIfInventory("MeatAmmo", 40, 2)
 		TNT1 A 0 A_FireCustomMissile("ThrowedZman", 0, 0, 0, 0)
+		TNT1 A 0 A_JumpIfInventory("MeatAmmo", 0, 2)
+		TNT1 A 0 A_FireCustomMissile("ThrowedZmanNoHead", 0, 0, 0, 0)
 		TNT1 A 0 A_TakeInventory("GoSpecial",1)
         TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
         TNT1 A 0 A_TakeInventory("HasZmanShield",1)
@@ -205,6 +208,111 @@ ACTOR ThrowedZombieManRicochet: ThrowedZMan
 		TNT1 A 0 A_JumpIfHealthLower(-40, "Death.Gibs")
 		TNT1 A 0 A_JumpIfHealthLower(1, "Death.Shotgun")
 	Goto Crashing
+	}
+}
+
+ACTOR ThrowedZmanNoHead
+{
+	Radius 16
+	Height 16
+	Speed 30
+	Damage 5
+	+MISSILE
+    Scale 1.0
+	+FORCEXYBILLBOARD
+	-NOGRAVITY
+	+NOEXTREMEDEATH
+	+SKYEXPLODE
+	+SHOOTABLE
+	+NOEXTREMEDEATH
+	+THRUGHOST
+	+THRUSPECIES
+	Species "Marines"
+	Health 40
+	Gravity 1.0
+	DamageType Kick
+	DamageFactor "Cut", 2.00 DamageFactor "Saw", 2.00 damagefactor "PussyGrab", 10.0
+	Decal BrutalBloodSuper
+	States
+	{
+	Spawn:
+		TNT1 A 0
+	Flying:
+        POSL G 2
+		TNT1 A 0 A_ChangeFlag("THRUGHOST", 0)
+		POSL HIJK 2
+		Loop
+
+    Death:
+	XDeath:
+		TNT1 A 0
+		TNT1 A 0 A_StopSound(1)
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_CheckCeiling("HitCeil")
+		TNT1 A 0 A_JumpIfHealthLower(-40, "Death.Gibs")
+		TNT1 A 0 A_JumpIfHealthLower(1, "Death.Shotgun")
+		POSL G 2
+		NULL AA 0 A_CustomMissile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160))
+	    TNT1 A 0 A_SpawnItem("MuchBlood2")
+		NULL A 0 A_CustomMissile ("ThrowedZombieManNoHeadRicochet", 0, 0, 0, 2, 38)
+		Stop
+
+	HitCeil:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("MuchBlood2")
+		NULL A 0 A_CustomMissile ("ThrowedZombieManNoHeadRicochet", 0, 0, 0, 2, -5)
+		Stop
+
+	Crashing:
+		TNT1 A 0 A_StopSound(1)
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_SpawnItem("MuchBlood2")
+		NULL AA 0 A_CustomMissile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItem("DeadZombiemanPOSLL")
+		TNT1 A 3
+		Stop
+
+	Death.Melee:
+	Death.Fatality:
+	Death.ExtremePunches:
+	Death.Kick:
+		TNT1 A 0 A_StopSound(1)
+		TNT1 A 0 A_NoBlocking
+		NULL A 0 A_CustomMissile ("ThrowedZombieManNoHeadRicochet", 0, 0, 180, 2, 32)
+		Stop
+
+	Death.Gibs:
+	Death.Explosive:
+	Death.Shotgun:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("ZombieXDeath")
+		Stop
+	}
+}
+ACTOR ThrowedZombieManNoHeadRicochet: ThrowedZManNoHead
+{
+    +BOUNCEONWALLS
+	+THRUGHOST
+	+BOUNCEONACTORS
+	Radius 12
+	Height 14
+	WallBounceFactor 0.6
+	Speed 10
+	States
+	{
+	Spawn:
+        POSL G 2
+		TNT1 A 0 A_ChangeFlag("THRUGHOST", 0)
+		POSL HIJK 2
+		Loop
+    Death:
+	XDeath:
+		TNT1 A 0
+		TNT1 A 0 A_StopSound(1)
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_JumpIfHealthLower(-40, "Death.Gibs")
+		TNT1 A 0 A_JumpIfHealthLower(1, "Death.Shotgun")
+		Goto Crashing
 	}
 }
 

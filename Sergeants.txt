@@ -770,7 +770,8 @@ Death.Shotgun:
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
 		SOSL GHIJK 6
 		TNT1 A 0 A_CustomMissile ("ArterialBloodSPray", 10, 10, -45, 2, random (0, 60))
-		SOSL L -1
+ 		//SOSL L -1
+		TNT1 A 0 A_SpawnItem("DeadShotgunguySOSLL")
 		Stop
 
 	Death.decaptate:
@@ -1380,7 +1381,9 @@ Actor DeadShotgunGuy_NoLegBoth: DeadShotgunGuy1
 		SPOS A 0 A_CustomMissile ("MeatDeathSmall", 5, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("XDeathArm1", 5, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_SpawnItem("RipSergeant")
-        Stop	}}
+        Stop	
+	}
+}
 
 Actor DeadShotgunGuy_NoBrain: DeadShotgunGuy1
 {Health 300 States{Spawn:
@@ -1390,7 +1393,8 @@ Actor DeadShotgunGuy_NoBrain: DeadShotgunGuy1
 		TNT1 A 0 A_SpawnItem("ShotgunguyHeadExplode")
         TNT1 A 0 A_SpawnItem("DeadShotgunguy_NoHead", 1)
 		Stop
-    }}
+    }
+}
 
 Actor DeadShotgunGuy_NoHead: DeadShotgunGuy1
 {Health 300 States{Spawn:
@@ -1399,12 +1403,30 @@ Actor DeadShotgunGuy_NoHead: DeadShotgunGuy1
 
 	Death:
 		TNT1 A 0 A_NoBlocking
-		SPOS A 0 A_CustomMissile ("MeatDeathSmall", 5, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_CustomMissile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_CustomMissile ("BloodMistBig", 5, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("MeatDeathSmall", 5, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("XDeathArm1", 5, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_SpawnItem("DeadShotgunGuy_NoHeadNoArm")
         Stop
+	}
+}
 
-	}}
+Actor DeadShotgunGuySOSLL: DeadShotgunGuy1
+{Health 300 States{Spawn:
+        SOSL L -1
+        Stop
+
+	Death:
+		TNT1 A 0 A_NoBlocking
+		TNT1 AAA 0 A_CustomMissile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_CustomMissile ("BloodMistBig", 5, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("MeatDeathSmall", 5, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("XDeathArm1", 5, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItem("DeadShotgunGuy_NoHeadNoArm")
+        Stop
+	}
+}
 
 Actor DeadShotgunGuy_NoHeadNoArm: DeadShotgunGuy1
 {Health 300 States{Spawn:
@@ -1416,7 +1438,8 @@ Actor DeadShotgunGuy_NoHeadNoArm: DeadShotgunGuy1
 		TNT1 A 0 A_CustomMissile ("XDeathArm1", 5, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_SpawnItem("DeadShotgunguySZD3C")
         Stop
-		}}
+	}
+}
 
 Actor DeadShotgunGuy_Half: DeadShotgunGuy1
 {Health 300 States{Spawn:
@@ -1428,7 +1451,9 @@ Actor DeadShotgunGuy_Half: DeadShotgunGuy1
 		SPOS A 0 A_CustomMissile ("MeatDeathSmall", 5, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("XDeathArm1", 5, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_SpawnItem("DeadShotgunguySZD1H")
-        Stop}}
+        Stop
+	}
+}
 
 ACTOR BeheadedSergeantZombie: DeadShotgunGuy_NoHead
 {

@@ -68,7 +68,10 @@ ACTOR SguyShield : Rifle
         GRZ2 B 1 offset(-9, 33)
         GRZ2 B 1 offset(-1, 32)
         TNT1 A 0 A_PlaySound("skeleton/swing")
-        TNT1 A 0 A_FireCustomMissile("ThrowedShotgunguy", 0, 0, 0, 0)
+        TNT1 A 0 A_JumpIfInventory("MeatAmmo", 40, 2)
+		TNT1 A 0 A_FireCustomMissile("ThrowedShotgunguy", 0, 0, 0, 0)
+        TNT1 A 0 A_JumpIfInventory("MeatAmmo", 0, 2)
+		TNT1 A 0 A_FireCustomMissile("ThrowedShotgunguyNoHead", 0, 0, 0, 0)
         TNT1 A 0 A_TakeInventory("GoSpecial",1)
         TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
         TNT1 A 0 A_TakeInventory("HasSguyShield",1)
@@ -169,6 +172,89 @@ ACTOR ThrowedShotgunguyRicochet: ThrowedShotgunguy
         X722 H 2
 		TNT1 A 0 A_ChangeFlag("THRUGHOST", 0)
 		X722 GFEDCBA 2
+		Loop
+    Death:
+		TNT1 A 0
+		TNT1 A 0 A_StopSound(1)
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_JumpIfHealthLower(-40, "Death.Gibs")
+		TNT1 A 0 A_JumpIfHealthLower(1, "Death.Shotgun")
+	Goto Crashing
+	}
+}
+
+ACTOR ThrowedShotgunguyNoHead: ThrowedZman
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+	Flying:
+        SOSL G 2
+		TNT1 A 0 A_ChangeFlag("THRUGHOST", 0)
+		SOSL HIJK 2
+		Loop
+
+    Death:
+		TNT1 A 0
+		TNT1 A 0 A_StopSound(1)
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_CheckCeiling("HitCeil")
+		TNT1 A 0 A_JumpIfHealthLower(-40, "Death.Gibs")
+		TNT1 A 0 A_JumpIfHealthLower(1, "Death.Shotgun")
+		SOSL G 2
+		NULL AA 0 A_CustomMissile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160))
+	    TNT1 A 0 A_SpawnItem("MuchBlood2")
+		NULL A 0 A_CustomMissile ("ThrowedShotgunguyNoHeadRicochet", 0, 0, 0, 2, 38)
+		Stop
+
+	HitCeil:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("MuchBlood2")
+		NULL A 0 A_CustomMissile ("ThrowedShotgunguyNoHeadRicochet", 0, 0, 0, 2, -5)
+		Stop
+
+	Crashing:
+		TNT1 A 0 A_StopSound(1)
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_SpawnItem("MuchBlood2")
+		NULL AA 0 A_CustomMissile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItem("DeadShotgunguySOSLL")
+		TNT1 A 3
+		Stop
+
+	Death.Melee:
+	Death.Fatality:
+	Death.ExtremePunches:
+	Death.Kick:
+		TNT1 A 0 A_StopSound(1)
+		TNT1 A 0 A_NoBlocking
+		NULL A 0 A_CustomMissile ("ThrowedShotgunguyNoHeadRicochet", 0, 0, 180, 2, 32)
+		Stop
+
+	Death.Gibs:
+	Death.Explosive:
+	Death.Shotgun:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("SargeXDeath")
+		Stop
+	}
+}
+ACTOR ThrowedShotgunguyNoHeadRicochet: ThrowedShotgunguyNoHead
+{
+    +BOUNCEONWALLS
+	+THRUGHOST
+	+BOUNCEONACTORS
+	Radius 12
+	Height 14
+	WallBounceFactor 0.6
+	Speed 10
+	States
+	{
+	Spawn:
+        SOSL G 2
+		TNT1 A 0 A_ChangeFlag("THRUGHOST", 0)
+		SOSL HIJK 2
 		Loop
     Death:
 		TNT1 A 0

@@ -69,7 +69,10 @@ ACTOR CguyShield : Rifle
 		GRZ4 B 1 offset(-9, 33)
 		GRZ4 B 1 offset(-1, 32)
         TNT1 A 0 A_PlaySound("skeleton/swing")
+		TNT1 A 0 A_JumpIfInventory("MeatAmmo", 80, 2)
 		TNT1 A 0 A_FireCustomMissile("ThrowedChaingunguy", 0, 0, 0, 0)
+		TNT1 A 0 A_JumpIfInventory("MeatAmmo", 0, 2)
+		TNT1 A 0 A_FireCustomMissile("ThrowedChaingunguyNoHead", 0, 0, 0, 0)
 		TNT1 A 0 A_TakeInventory("GoSpecial",1)
         TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
         TNT1 A 0 A_TakeInventory("HasCguyShield",1)
@@ -149,7 +152,7 @@ ACTOR ThrowedChaingunguy: ThrowedZman
 	Death.Explosive:
 	Death.Chaingun:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("SargeXDeath")
+		TNT1 A 0 A_SpawnItem("ChainXDeath")
 		Stop
 	}
 }
@@ -183,6 +186,92 @@ ACTOR ThrowedChaingunguyRicochet: ThrowedChaingunguy
 	}
 }
 
+
+
+ACTOR ThrowedChaingunguyNoHead: ThrowedChaingunguy
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+	Flying:
+        CPHD B 3
+		TNT1 A 0 A_ChangeFlag("THRUGHOST", 0)
+		CPHD BBBBBB 3
+		Loop
+
+    Death:
+	XDeath:
+		TNT1 A 0
+		TNT1 A 0 A_StopSound(1)
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_CheckCeiling("HitCeil")
+		TNT1 A 0 A_JumpIfHealthLower(-40, "Death.Gibs")
+		TNT1 A 0 A_JumpIfHealthLower(1, "Death.Chaingun")
+		CPHD A 2
+		NULL AA 0 A_CustomMissile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160))
+	    TNT1 A 0 A_SpawnItem("MuchBlood2")
+		NULL A 0 A_CustomMissile ("ThrowedChaingunguyNoHeadRicochet", 0, 0, 0, 2, 38)
+		Stop
+
+	HitCeil:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("MuchBlood2")
+		NULL A 0 A_CustomMissile ("ThrowedChaingunguyNoHeadRicochet", 0, 0, 0, 2, -5)
+		Stop
+
+	Crashing:
+		TNT1 A 0 A_StopSound(1)
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_SpawnItem("MuchBlood2")
+		NULL AA 0 A_CustomMissile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItem("DeadChaingunGuy_NoHead")
+		TNT1 A 3
+		Stop
+
+	Death.Melee:
+	Death.Fatality:
+	Death.ExtremePunches:
+	Death.Kick:
+		TNT1 A 0 A_StopSound(1)
+		TNT1 A 0 A_NoBlocking
+		NULL A 0 A_CustomMissile ("ThrowedChaingunguyNoHeadRicochet", 0, 0, 180, 2, 32)
+		Stop
+
+	Death.Gibs:
+	Death.Explosive:
+	Death.Chaingun:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("ChainXDeath")
+		Stop
+	}
+}
+ACTOR ThrowedChaingunguyNoHeadRicochet: ThrowedChaingunguyNoHead
+{
+    +BOUNCEONWALLS
+	+THRUGHOST
+	+BOUNCEONACTORS
+	Radius 12
+	Height 14
+	WallBounceFactor 0.6
+	Speed 10
+	States
+	{
+	Spawn:
+        CPHD C 2
+		TNT1 A 0 A_ChangeFlag("THRUGHOST", 0)
+		CPHD CCCCCC 2
+		Loop
+    Death:
+	XDeath:
+		TNT1 A 0
+		TNT1 A 0 A_StopSound(1)
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_JumpIfHealthLower(-40, "Death.Gibs")
+		TNT1 A 0 A_JumpIfHealthLower(1, "Death.Chaingun")
+	Goto Crashing
+	}
+}
 
 
 
