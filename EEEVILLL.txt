@@ -570,7 +570,8 @@ ACTOR EvilMarineRifle 94
 		 TNT1 A 0 A_XScream
 		 TNT1 A 0 A_NoBlocking
 		 TNT1 A 0 A_FaceTarget
-		 TNT1 A 0 A_CustomMissile ("ExtremePunchedEvilMarine", 8, 0, random (175, 185), 2, random (10, 20))
+		 //TNT1 A 0 A_CustomMissile ("ExtremePunchedEvilMarine", 8, 0, random (175, 185), 2, random (10, 20))
+		 TNT1 A 0 A_SpawnItemEx ("ExtremePunchedEvilMarine", 8, 0, 0, 32, 0, 10, random (175, 185), SXF_TRANSFERTRANSLATION)
 		 TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
 		 Stop
 
