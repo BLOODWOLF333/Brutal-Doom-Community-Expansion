@@ -559,6 +559,16 @@ ACTOR EvilMarineRifle 94
 		TNT1 A 1 A_XScream
 		TNT1 A 1 A_NoBlocking
 		Stop
+		
+	//	Now using the unused actor
+	Death.ExtremePunches:
+		 TNT1 A 0
+		 TNT1 A 0 A_XScream
+		 TNT1 A 0 A_NoBlocking
+		 TNT1 A 0 A_FaceTarget
+		 TNT1 A 0 A_CustomMissile ("ExtremePunchedEvilMarine", 8, 0, random (175, 185), 2, random (10, 20))
+		 TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
+		 Stop
 
     Death.Rape:
 		TNT1 AAAAAAAAAAAAAA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))

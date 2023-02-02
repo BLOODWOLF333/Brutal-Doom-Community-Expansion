@@ -84,7 +84,7 @@ ACTOR EvilMarineShield : Rifle
 	    TNT1 A 0
 		TNT1 A 0 A_SpawnItem("ZombiemanHeadExplode", 0, 50)
 		TNT1 A 0 A_TakeInventory("GoSpecial",1)
-		MSHG DEFGHII 5
+		//MSHG DEFGHII 5
 		TNT1 A 0 A_TakeInventory("GoSpecial",1)
 		TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
 		TNT1 A 0 A_TakeInventory("HasEvilMarineShield",1)
@@ -109,6 +109,7 @@ Species "None"
 		X725 GFEDCBA 3
 		Loop
 
+	XDeath:
     Death:
 		TNT1 A 0
 		TNT1 A 0 A_StopSound(1)

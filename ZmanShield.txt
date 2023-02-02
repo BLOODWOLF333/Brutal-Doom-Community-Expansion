@@ -75,7 +75,7 @@ ACTOR ZMANShield : Rifle
         TNT1 A 0 A_PlaySound("skeleton/swing")
 		TNT1 A 0 A_JumpIfInventory("MeatAmmo", 40, 2)
 		TNT1 A 0 A_FireCustomMissile("ThrowedZman", 0, 0, 0, 0)
-		TNT1 A 0 A_JumpIfInventory("MeatAmmo", 0, 2)
+		Goto Altfire+13
 		TNT1 A 0 A_FireCustomMissile("ThrowedZmanNoHead", 0, 0, 0, 0)
 		TNT1 A 0 A_TakeInventory("GoSpecial",1)
         TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
@@ -238,9 +238,9 @@ ACTOR ThrowedZmanNoHead
 	Spawn:
 		TNT1 A 0
 	Flying:
-        POSL G 2
+        X721 P 2
 		TNT1 A 0 A_ChangeFlag("THRUGHOST", 0)
-		POSL HIJK 2
+		X721 ONMLKJI 2
 		Loop
 
     Death:
@@ -251,7 +251,7 @@ ACTOR ThrowedZmanNoHead
 		TNT1 A 0 A_CheckCeiling("HitCeil")
 		TNT1 A 0 A_JumpIfHealthLower(-40, "Death.Gibs")
 		TNT1 A 0 A_JumpIfHealthLower(1, "Death.Shotgun")
-		POSL G 2
+		X721 P 2
 		NULL AA 0 A_CustomMissile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_SpawnItem("MuchBlood2")
 		NULL A 0 A_CustomMissile ("ThrowedZombieManNoHeadRicochet", 0, 0, 0, 2, 38)
@@ -301,9 +301,9 @@ ACTOR ThrowedZombieManNoHeadRicochet: ThrowedZManNoHead
 	States
 	{
 	Spawn:
-        POSL G 2
+		X721 P 2
 		TNT1 A 0 A_ChangeFlag("THRUGHOST", 0)
-		POSL HIJK 2
+		X721 ONMLKJI 2
 		Loop
     Death:
 	XDeath:

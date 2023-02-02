@@ -70,7 +70,7 @@ ACTOR SguyShield : Rifle
         TNT1 A 0 A_PlaySound("skeleton/swing")
         TNT1 A 0 A_JumpIfInventory("MeatAmmo", 40, 2)
 		TNT1 A 0 A_FireCustomMissile("ThrowedShotgunguy", 0, 0, 0, 0)
-        TNT1 A 0 A_JumpIfInventory("MeatAmmo", 0, 2)
+		Goto Altfire+13
 		TNT1 A 0 A_FireCustomMissile("ThrowedShotgunguyNoHead", 0, 0, 0, 0)
         TNT1 A 0 A_TakeInventory("GoSpecial",1)
         TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
@@ -86,7 +86,7 @@ ACTOR SguyShield : Rifle
 
 	Destroy:
 	    TNT1 A 0
-		TNT1 A 0 A_SpawnItem("ZombiemanHeadExplode", 0, 50)
+		TNT1 A 0 A_SpawnItem("ShotgunguyHeadExplode", 0, 50)
 		TNT1 A 0 A_TakeInventory("GoSpecial",1)
 		SSHG DEFGHII 5
 		TNT1 A 0 A_TakeInventory("GoSpecial",1)
@@ -190,9 +190,9 @@ ACTOR ThrowedShotgunguyNoHead: ThrowedZman
 	Spawn:
 		TNT1 A 0
 	Flying:
-        SOSL G 2
+        X722 P 2
 		TNT1 A 0 A_ChangeFlag("THRUGHOST", 0)
-		SOSL HIJK 2
+		X722 ONMLKJI 2
 		Loop
 
     Death:
@@ -202,7 +202,7 @@ ACTOR ThrowedShotgunguyNoHead: ThrowedZman
 		TNT1 A 0 A_CheckCeiling("HitCeil")
 		TNT1 A 0 A_JumpIfHealthLower(-40, "Death.Gibs")
 		TNT1 A 0 A_JumpIfHealthLower(1, "Death.Shotgun")
-		SOSL G 2
+		X722 P 2
 		NULL AA 0 A_CustomMissile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_SpawnItem("MuchBlood2")
 		NULL A 0 A_CustomMissile ("ThrowedShotgunguyNoHeadRicochet", 0, 0, 0, 2, 38)
@@ -252,9 +252,9 @@ ACTOR ThrowedShotgunguyNoHeadRicochet: ThrowedShotgunguyNoHead
 	States
 	{
 	Spawn:
-        SOSL G 2
+        X722 P 2
 		TNT1 A 0 A_ChangeFlag("THRUGHOST", 0)
-		SOSL HIJK 2
+		X722 ONMLKJI 2
 		Loop
     Death:
 		TNT1 A 0
