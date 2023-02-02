@@ -226,7 +226,7 @@ actor AteMarine: CurbstompedMarine
 		TNT1 A 0 A_SpawnItem("RipGuts")
 		PPOD A 0 A_SpawnItemEx("BasicMarineGib3", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
 		PPOD A 0 A_SpawnItemEx("BasicMarineGib4", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
-		TNT1 A 0 A_SpawnItem("DeadRippedOffMarine")
+		TNT1 A 0 A_SpawnItemEx("DeadRippedOffMarine", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
 		Stop
 	}
 }
@@ -247,7 +247,7 @@ actor FuckedMarine: CurbstompedMarine
 		TNT1 A 0 A_SpawnItem("RipGuts")
 		PPOD A 0 A_SpawnItemEx("BasicMarineGib3", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
 		PPOD A 0 A_SpawnItemEx("BasicMarineGib4", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
-		TNT1 A 0 A_SpawnItem("DeadRippedOffMarineRight")
+		TNT1 A 0 A_SpawnItemEx("DeadRippedOffMarineRight", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
 		Stop
 	}
 }
@@ -315,7 +315,7 @@ actor MarineGotOwnedByImp: CurbstompedMarine
 		TNT1 A 0 A_SpawnItem("MeatDeathSmall")
 		PPOD A 0 A_SpawnItemEx("BasicMarineGib3", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
 		PPOD A 0 A_SpawnItemEx("BasicMarineGib4", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
-		TNT1 A 0 A_SpawnItem("DeadRippedOffMarine")
+		TNT1 A 0 A_SpawnItemEx("DeadRippedOffMarine", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
 		Stop
 	}
 }
@@ -333,7 +333,7 @@ actor ADoomedSpaceMarine: CurbstompedMarine
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_CustomMissile ("XDeathArm1", 15, 0, random (0, 360), 2, random (0, 180))
 		TNT1 A 0 A_SpawnItem("MeatDeathSmall")
-		TNT1 A 0 A_SpawnItem("AteMarine")
+		TNT1 A 0 A_SpawnItemEx("AteMarine", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
 		Stop
 	}
 }
@@ -351,7 +351,7 @@ actor ADoomedSpaceMarine2: CurbstompedMarine
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("MeatDeathSmall")
 		TNT1 A 0 A_CustomMissile ("XDeathArm1", 15, 0, random (0, 360), 2, random (0, 180))
-		TNT1 A 0 A_SpawnItem("AteMarine")
+		TNT1 A 0 A_SpawnItemEx("AteMarine", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
 		Stop
 	}
 }

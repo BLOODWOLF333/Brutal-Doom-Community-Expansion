@@ -199,6 +199,7 @@ ACTOR ExtremePunchedEvilMarine: ThrowedEvilMarine
         PLAY HH 2 A_CustomMissile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 90))
 		TNT1 A 0 A_ChangeFlag("THRUGHOST", 0)
 		Loop
+    XDeath:
     Death:
 		TNT1 A 0
 		TNT1 A 0 A_CheckFloor("Floor")

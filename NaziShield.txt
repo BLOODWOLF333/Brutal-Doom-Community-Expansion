@@ -69,9 +69,15 @@ ACTOR NaziShield : Rifle
 		GRZ6 B 1 offset(-9, 33)
 		GRZ6 B 1 offset(-1, 32)
         TNT1 A 0 A_PlaySound("skeleton/swing")
-		TNT1 A 0 A_JumpIfInventory("MeatAmmo", 50, 3)
 		TNT1 A 0 A_FireCustomMissile("ThrowedNazi", 0, 0, 0, 0)
-		TNT1 A 0 A_Jump(256, 2)
+		TNT1 A 0 A_TakeInventory("GoSpecial",1)
+        TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
+        TNT1 A 0 A_TakeInventory("HasNaziShield",1)
+        TNT1 A 0 A_Giveinventory("Punching",1)
+        THEF BCD 4
+        TNT1 A 0 A_TakeInventory("NaziShield",1)
+        Stop
+		TNT1 A 0 A_PlaySound("skeleton/swing")
 		TNT1 A 0 A_FireCustomMissile("ThrowedNaziNoHead", 0, 0, 0, 0)
 		TNT1 A 0 A_TakeInventory("GoSpecial",1)
         TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
@@ -92,7 +98,7 @@ ACTOR NaziShield : Rifle
 		TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
 		TNT1 A 0 A_TakeInventory("HasNaziShield",1)
 		TNT1 A 0 A_Giveinventory("Punching",1)
-		Goto Altfire+9
+		Goto Altfire+19
 	}
 }
 ACTOR ThrowedNazi: ThrowedZman
