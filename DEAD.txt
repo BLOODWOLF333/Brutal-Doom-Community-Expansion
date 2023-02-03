@@ -1412,16 +1412,6 @@ ACTOR Gibs2 : RealGibs2 Replaces Gibs
    ClearFlags
 }
 
-actor VeryFuckedUpRevenant: CurbstompedMarine
-{
-    States
-    {
-		Spawn:
-		REVH L 1900
-		Loop
-	}
-}
-
 actor MarineFatalizedByRevenant: CurbstompedMarine
 {
     States
@@ -1453,26 +1443,6 @@ actor PlayerJustGotCutInHalf: CurbstompedMarine
 		Spawn:
 		XPL2 GHIJKL 5
 		XPL2 L -1 A_SpawnItem("MediumBloodSpot")
-		Stop
-	}
-}
-
-actor DeadNazi: CurbstompedMarine
-{
-	States
-	{
-		Spawn:
-		NAZI L -1
-		Stop
-	}
-}
-
-actor DeadNazi_NoHead: CurbstompedMarine
-{
-	States
-	{
-		Spawn:
-		NAZH E -1
 		Stop
 	}
 }
