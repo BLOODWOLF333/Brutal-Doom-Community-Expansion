@@ -136,6 +136,19 @@ ACTOR Spectro: BullDemon Replaces Spectre
 	}
 }
 
+Actor ArmlessFuzzy : ArmlessDemon
+{
+	+SHADOW
+	RenderStyle OptFuzzy
+	Alpha 0.5
+}
+
+Actor ArmlessSpectro : ArmlessDemon
+{
+	RenderStyle Add
+    Alpha 0.5
+}
+
 ACTOR FuzzySpectre: BullDemon
 {
 	+SHADOW
@@ -209,15 +222,57 @@ ACTOR FuzzySpectre: BullDemon
 	}
 }
 
-Actor ArmlessSpectro : ArmlessDemon
-{
-	RenderStyle Add
-    Alpha 0.5
-}
-
-Actor ArmlessFuzzy : ArmlessDemon
+Actor PoorFuzzyLostHisArm : PoorPinkyLostHisArm
 {
 	+SHADOW
 	RenderStyle OptFuzzy
 	Alpha 0.5
+	States
+	{
+	Spawn:
+	    SAAR J 1
+		TNT1 A 0 A_Pain
+		TNT1 A 0 A_Jump(32, "Colapse")
+		SAAR JJJJ 4 A_CustomMissile ("Brutal_LiquidBlood", 42, 0, random (0, 360), 2, random (0, 45))
+		TNT1 A 0 A_Jump(128, "PutAFight")
+		SAAR JJJJ 4 A_CustomMissile ("Brutal_LiquidBlood", 42, 0, random (0, 360), 2, random (0, 45))
+		TNT1 A 0 A_Pain
+		SAAR JJJJJJJJ 4 A_CustomMissile ("Brutal_LiquidBlood", 42, 0, random (0, 360), 2, random (0, 45))
+		TNT1 A 0 A_Pain
+		SAAR JJJ 4 A_CustomMissile ("Brutal_LiquidBlood", 42, 0, random (0, 360), 2, random (0, 45))
+		Goto Colapse
+
+	PutAFight:
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_SpawnItemEx ("ArmlessFuzzy",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0
+		Stop
+	}
+}
+
+Actor PoorSpectroLostHisArm : PoorPinkyLostHisArm
+{
+	RenderStyle Add
+    Alpha 0.45
+	States
+	{
+	Spawn:
+	    SAAR J 1
+		TNT1 A 0 A_Pain
+		TNT1 A 0 A_Jump(32, "Colapse")
+		SAAR JJJJ 4 A_CustomMissile ("Brutal_LiquidBlood", 42, 0, random (0, 360), 2, random (0, 45))
+		TNT1 A 0 A_Jump(128, "PutAFight")
+		SAAR JJJJ 4 A_CustomMissile ("Brutal_LiquidBlood", 42, 0, random (0, 360), 2, random (0, 45))
+		TNT1 A 0 A_Pain
+		SAAR JJJJJJJJ 4 A_CustomMissile ("Brutal_LiquidBlood", 42, 0, random (0, 360), 2, random (0, 45))
+		TNT1 A 0 A_Pain
+		SAAR JJJ 4 A_CustomMissile ("Brutal_LiquidBlood", 42, 0, random (0, 360), 2, random (0, 45))
+		Goto Colapse
+
+	PutAFight:
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_SpawnItemEx ("ArmlessSpectro",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0
+		Stop
+	}
 }

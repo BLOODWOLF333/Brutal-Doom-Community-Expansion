@@ -845,36 +845,6 @@ States
 		}
 }
 
-ACTOR DemonAttack: BaronBall
-{
-	Radius 20
-	Height 28
-	DamageType Eat
-	Projectile
-    Speed 20
-	+RANDOMIZE
-    Damage (random(26,26))
-    +RIPPER
-	+FORCEXYBILLBOARD
-	+THRUGHOST
-	RenderStyle Add
-	Alpha 0.6
-	SeeSound "none"
-	DeathSound "none"
-	Decal "none"
-	+NODAMAGETHRUST
-	States
-	{
-	Spawn:
-		TNT1 A 2
-		Stop
-
-	Death:
-		TNT1 A 10 A_PlaySOund ("misc/xdeath1")
-		Stop
-	}
-}
-
 Actor DeadDemon1: CurbstompedMarine Replaces DeadDemon
 {
     Radius 18
@@ -922,6 +892,16 @@ States
         CARB JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ 10 A_CustomMissile ("SmallSmoke", 1, 0, random (0, 360), 2, random (0, 160))
         CARB J -1
         Stop}}
+
+Actor DeadDemon1Left: DeadDemon1
+{
+States
+{
+Spawn:
+S2RG N -1
+Stop
+}
+}
 
 Actor DeadDemonHalf: DeadDemon1
 {Health 100 States{Spawn:
@@ -971,18 +951,6 @@ Actor DeadDemonNoArm: DeadDemon1
         Stop
       }}
 
-Actor DeadDemonSAARK: DeadDemon1
-{Health 100 States{Spawn:
-        SAAR K -1
-        Stop
-
-		Death:
-		TNT1 A 0 A_NoBlocking
-		TNT1 AA 0 A_CustomMissile ("XDeathBullLeg12", 35, 0, random (0, 360), 2, random (10, 40))
-		TNT1 AA 0 A_SpawnItem("MeatDeathSmall", 0, 20)
-        Stop
-      }}
-
 Actor DeadDemonNoHead: DeadDemon1
 {Health 100 States{Spawn:
 		SARH D -1
@@ -998,42 +966,36 @@ Actor DeadDemonNoHead: DeadDemon1
         Stop
       }}
 
-Actor DeadDemon1Left: DeadDemon1
+Actor DeadDemonSAARI: DeadDemon1
 {
 States
 {
 Spawn:
-S2RG N -1
-Stop
-}
-}
-
-Actor DeadDemonStomped: DeadDemonNoARm
-{
-States
-{
-Spawn:
-FD2M K -1
-Stop
-}}
-
-Actor DeadDemonSRRDJ: DeadDemon1
-{
-States
-{
-Spawn:
-SRRD J -1
+SAAR I -1
 Stop
 
 Death:
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_CustomMissile ("XDeathStomach", 60, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("XDeathDemonArm", 35, 0, random (0, 360), 2, random (10, 40))
-		TNT1 A 0 A_CustomMissile ("XDeathBullLeg12", 35, 0, random (0, 360), 2, random (10, 40))
+		TNT1 A 0 A_CustomMissile ("PinkyJaw", 22, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_SpawnItem("MeatDeathSmall", 0, 20)
+		TNT1 A 0 A_SpawnItem("DeadDemonHalf23")
         Stop
 }
 }
+
+Actor DeadDemonSAARK: DeadDemon1
+{Health 100 States{Spawn:
+        SAAR K -1
+        Stop
+
+		Death:
+		TNT1 A 0 A_NoBlocking
+		TNT1 AA 0 A_CustomMissile ("XDeathBullLeg12", 35, 0, random (0, 360), 2, random (10, 40))
+		TNT1 AA 0 A_SpawnItem("MeatDeathSmall", 0, 20)
+        Stop
+      }}
 
 Actor DeadDemonSRRDE: DeadDemon1
 {
@@ -1053,21 +1015,123 @@ Death:
 }
 }
 
-Actor DeadDemonSAARI: DeadDemon1
+Actor DeadDemonSRRDJ: DeadDemon1
 {
 States
 {
 Spawn:
-SAAR I -1
+SRRD J -1
 Stop
 
 Death:
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_CustomMissile ("XDeathStomach", 60, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("XDeathDemonArm", 35, 0, random (0, 360), 2, random (10, 40))
-		TNT1 A 0 A_CustomMissile ("PinkyJaw", 22, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("XDeathBullLeg12", 35, 0, random (0, 360), 2, random (10, 40))
 		TNT1 AA 0 A_SpawnItem("MeatDeathSmall", 0, 20)
-		TNT1 A 0 A_SpawnItem("DeadDemonHalf23")
         Stop
 }
+}
+
+Actor DeadDemonStomped: DeadDemonNoARm
+{
+States
+{
+Spawn:
+FD2M K -1
+Stop
+}}
+
+ACTOR DemonAttack: BaronBall
+{
+	Radius 20
+	Height 28
+	DamageType Eat
+	Projectile
+    Speed 20
+	+RANDOMIZE
+    Damage (random(26,26))
+    +RIPPER
+	+FORCEXYBILLBOARD
+	+THRUGHOST
+	RenderStyle Add
+	Alpha 0.6
+	SeeSound "none"
+	DeathSound "none"
+	Decal "none"
+	+NODAMAGETHRUST
+	States
+	{
+	Spawn:
+		TNT1 A 2
+		Stop
+
+	Death:
+		TNT1 A 10 A_PlaySOund ("misc/xdeath1")
+		Stop
+	}
+}
+
+ACTOR PoorPinkyLostHisArm: Demon
+{
+	Health 20
+	+NOPAIN
+	-COUNTKILL
+	+DONTSPLASH
+	Scale 1.1
+	DropItem "none"
+	States
+	{
+	PutAFight:
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_SpawnItemEx ("ArmlessDemon",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0
+		Stop
+	Spawn:
+	    SAAR J 1
+		TNT1 A 0 A_Pain
+		TNT1 A 0 A_Jump(32, "Colapse")
+		SAAR JJJJ 4 A_CustomMissile ("Brutal_LiquidBlood", 42, 0, random (0, 360), 2, random (0, 45))
+		TNT1 A 0 A_Jump(128, "PutAFight")
+		SAAR JJJJ 4 A_CustomMissile ("Brutal_LiquidBlood", 42, 0, random (0, 360), 2, random (0, 45))
+		TNT1 A 0 A_Pain
+		SAAR JJJJJJJJ 4 A_CustomMissile ("Brutal_LiquidBlood", 42, 0, random (0, 360), 2, random (0, 45))
+		TNT1 A 0 A_Pain
+		SAAR JJJ 4 A_CustomMissile ("Brutal_LiquidBlood", 42, 0, random (0, 360), 2, random (0, 45))
+		Goto Colapse
+
+	Death.Shotgun:
+	Death.Minigun:
+	Death.Saw:
+	Death.Cut:
+	Death:
+	Death.Fatality:
+		TNT1 A 0
+		TNT1 A 0 A_FaceTarget
+		TNT1 AAAA 0 A_CustomMissile ("SmallBrainPiece", 60, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_CustomMissile ("XDeath3", random (45, 55), random (5, -5), random (160, 200), 2, random (-10, 10))
+		TNT1 AA 0 A_CustomMissile ("XDeath2", random (45, 55), random (5, -5), random (160, 200), 2, random (-10, 10))
+		TNT1 A 0 A_CustomMissile ("MuchBlood", 60, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("pinkyheadpiece", 52, 0, random (0, 360), 2, random (0, 160))
+		//TNT1 A 0 A_CustomMissile ("PinkyJaw", 52, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAA 0 A_CustomMissile ("SmallBrainPieceFast", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10))
+		TNT1 AAAA 0 A_CustomMissile ("BloodMistBig", 50, 0, random (0, 360), 2, random (30, 90))
+		SAAR GGGGGGG 2 A_CustomMissile ("Brutal_LiquidBlood", 40, 0, random (0, 360), 2, random (30, 110))
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_Scream
+		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 28, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
+		SAAR HHHHHHHHH 2 A_CustomMissile ("Brutal_LiquidBlood", 30, 0, random (0, 360), 2, random (30, 110))
+		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		SAAR IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII 2 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, random (0, 360), 2, random (30, 110))
+		TNT1 A 0 A_SpawnItem("DeadDemonSAARI")
+		Stop
+
+	Colapse:
+	    TNT1 A 0 A_Scream
+		TNT1 A 0 A_NoBlocking
+	    SAAR BCDEF 5
+		TNT1 A 0 A_SpawnItem ("DeadDemonNoArm", 5)
+		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		Stop
+	}
 }
