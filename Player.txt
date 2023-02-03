@@ -4920,106 +4920,6 @@ StealthKillLabguy:
 	}
 }
 
-ACTOR PowerNearDeath : PowerUp
-{
-	Powerup.Duration -45
-	Speed 0.4
-	//Inventory.Icon "DANGER"
-	Powerup.Color 70,0,0,0.2
-}
-
-actor Player_Blood : Brutal_Blood
- {
-  Scale 0.3
-  States
-
-	{
-	Spawn:
-		BLHT A 0
-		MARN A 0 ACS_NamedExecuteAlways("CheckIfDM", 0, 0, 0, 0)//Check if Coop
-		BLHT A 2
-		TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 7, 0, random (0, 360), 2, random (30, 60))
-		TNT1 A 0 A_JumpIfInventory("DmGAme", 1, "DM")
-		BLHT BCDEFG 1
-	    BLHT HHHHHHHHHHH 1 A_FadeOut(0.1)
-	    Stop
-
-	DM:
-		TNT1 A 0
-		TNT1 A 0 A_SetScale(0.6)
-		TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 7, 0, random (0, 360), 2, random (30, 60))
-		TNT1 AAAAAAAAA 0 A_CustomMissile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 90))
-		TNT1 A 0 A_FadeIn(0.4)
-		BLHT BCDEFG 1 BRIGHT
-	    BLHT HHHHHHHHHHHHHHHHH 1 A_FadeOut(0.05)
-	    Stop
-		}
-}
-
-actor Player_BloodSaw : Brutal_Blood
- {
-  Gravity 0.5
-  Alpha 0.4
-  -NOGRAVITY
-  Scale 0.25
-  States
-
-	{
-	Spawn:
-		BLHT A 0
-		MARN A 0 ACS_NamedExecuteAlways("CheckIfDM", 0, 0, 0, 0)//Check if Coop
-		TNT1 A 0 A_Stop
-		BLHT A 2
-		TNT1 A 0 A_JumpIfInventory("DmGAme", 1, "DM")
-		BLHT BCDEFG 1
-	    BLHT GGGGGGGGGGGGGGGGGG 1 A_FadeOut(0.05)
-	    Stop
-
-	DM:
-		TNT1 A 0
-		TNT1 A 0 A_SetScale(0.6)
-		TNT1 A 0 A_RadiusGive("ChainsawHitRed", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
-		TNT1 A 0 A_RadiusGive("PowerBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
-		TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 7, 0, random (0, 360), 2, random (30, 60))
-		TNT1 AAAAA 0 A_CustomMissile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 90))
-		TNT1 A 0 A_FadeIn(0.4)
-		BLHT AAABCDEFG 1 BRIGHT
-	    BLHT GGGGGGGGGGGGGGGGGG 1 A_FadeOut(0.05)
-	    Stop
-		}
-}
-
-ACTOR PlayerFlyingBlood
-{
- game Doom
- scale 0.75
- speed 7
- health 1
- radius 8
- height 1
-	Decal BloodSuper
-   +MISSILE
-   +CLIENTSIDEONLY
-   +NOTELEPORT
-   +NOBLOCKMAP
-   +FORCEXYBILLBOARD
-        +EXPLODEONWATER
-    States
-    {
-     Spawn:
-       NULL A 0 A_JumpIf(waterlevel > 1, "Splash")
-        XDT1 ABCD 4 A_SpawnItem("Brutal_FlyingBloodTrail",0,0,0,1)
-        loop
-	Splash:
-        BLOD A 0
-        stop
-     Death:
-       NULL A 1 A_SpawnItem("Brutal_BloodSpot",0,0,0,1)
-        XDT1 EFGHIJKL 3
-        stop
-    }
-}
-
 ACTOR BloodOnVisor : PowerupGiver 2408
 {
    Inventory.Amount 1
@@ -5037,14 +4937,6 @@ ACTOR BloodOnVisor : PowerupGiver 2408
       NULL A 1
       Stop
    }
-}
-
-ACTOR PowerBloodOnVisor : PowerUp
-{
-	Powerup.Duration -90
-	Speed 0.4
-	Inventory.Icon "TNT1A0"
-	Powerup.Color 70,0,0,0.0
 }
 
 ACTOR BlueBloodOnVisor : PowerupGiver
@@ -5066,14 +4958,6 @@ ACTOR BlueBloodOnVisor : PowerupGiver
    }
 }
 
-ACTOR PowerBlueBloodOnVisor : PowerUp
-{
-	Powerup.Duration -90
-	Speed 0.4
-	Inventory.Icon "TNT1A0"
-	Powerup.Color 70,0,0,0.0
-}
-
 ACTOR GreenBloodOnVisor : PowerupGiver
 {
    Inventory.Amount 1
@@ -5093,6 +4977,22 @@ ACTOR GreenBloodOnVisor : PowerupGiver
    }
 }
 
+ACTOR PowerBloodOnVisor : PowerUp
+{
+	Powerup.Duration -90
+	Speed 0.4
+	Inventory.Icon "TNT1A0"
+	Powerup.Color 70,0,0,0.0
+}
+
+ACTOR PowerBlueBloodOnVisor : PowerUp
+{
+	Powerup.Duration -90
+	Speed 0.4
+	Inventory.Icon "TNT1A0"
+	Powerup.Color 70,0,0,0.0
+}
+
 ACTOR PowerGreenBloodOnVisor : PowerUp
 {
 	Powerup.Duration -90
@@ -5101,36 +5001,12 @@ ACTOR PowerGreenBloodOnVisor : PowerUp
 	Powerup.Color 70,0,0,0.0
 }
 
-Actor ChainguyguyContinue : Inventory
+ACTOR PowerNearDeath : PowerUp
 {
-inventory.maxamount 1
-}
-
-Actor ComeEatMeDemon : Inventory
-{
-inventory.maxamount 1
-}
-
-actor MarineEattenByDemon: CurbstompedMarine
-{
-Health 100
-Height 16
-Radius 8
-MONSTER
--GHOST
-+THRUACTORS
-+FRIENDLY
-States
-	{
-		Spawn:
-		NULL A 0
-		NULL A 0 A_GiveInventory("ComeEatMeDemon")
-		NULL A 0 A_SpawnItem ("GrowingBloodPool")
-		Stay:
-		XPL1 EEE 6 A_SpawnItem("KillMe")
-		XPL1 E -1
-		Loop
-	}
+	Powerup.Duration -45
+	Speed 0.4
+	//Inventory.Icon "DANGER"
+	Powerup.Color 70,0,0,0.2
 }
 
 ACTOR PROLSpriteA
