@@ -13,11 +13,9 @@ ACTOR CguyShield : Rifle
 	{
 	Ready:
 		CSHG A 2 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("MeatAmmo", 80, 2)
+		TNT1 A 0 A_JumpIfInventory("MeatAmmo", 80, "Destroy")
 		TNT1 A 0 A_SpawnItemEx("MeatShield", 16, -11, 0, 0)
         Loop
-		TNT1 AAA 0
-		Goto Destroy
 
 	Select:
 		TNT1 A 0 A_Giveinventory("GoSpecial",1)
@@ -77,6 +75,15 @@ ACTOR CguyShield : Rifle
         THEF BCD 4
         TNT1 A 0 A_TakeInventory("CguyShield",1)
         Stop
+
+ 	Spawn:
+		8876 A -1
+		Stop
+
+	Destroy:
+	    TNT1 A 0
+		TNT1 A 0 A_SpawnItem("ChaingunguyHeadExplode", 0, 50)
+		CSHG DEFGHII 5
 		TNT1 A 0 A_PlaySound("skeleton/swing")
 		TNT1 A 0 A_FireCustomMissile("ThrowedChaingunguyNoHead", 0, 0, 0, 0)
 		TNT1 A 0 A_TakeInventory("GoSpecial",1)
@@ -86,23 +93,9 @@ ACTOR CguyShield : Rifle
         THEF BCD 4
         TNT1 A 0 A_TakeInventory("CguyShield",1)
         Stop
-
- 	Spawn:
-		8876 A -1
-		Stop
-
-	Destroy:
-	    TNT1 A 0
-		TNT1 A 0 A_SpawnItem("ChaingunguyHeadExplode", 0, 50)
-		TNT1 A 0 A_TakeInventory("GoSpecial",1)
-		CSHG DEFGHII 5
-		TNT1 A 0 A_TakeInventory("GoSpecial",1)
-		TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
-		TNT1 A 0 A_TakeInventory("HasCguyShield",1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
-		Goto Altfire+19
 	}
 }
+
 ACTOR ThrowedChaingunguy: ThrowedZman
 {
 	States

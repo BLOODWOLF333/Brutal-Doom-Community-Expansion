@@ -897,20 +897,18 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		TNT1 A 0
 		GRZ1 C 1 offset(12, 32)
 		GRZ1 C 1 offset(6, 32)
-		GRZ1 C 1  A_WeaponReady(WRF_NOSWITCH)
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("MeatAmmo", 60, "ZombiemanDie")
-		TNT1 A 0 A_SpawnItemEx("MeatShield", 15, 0, 15, 0)
+		GRZ1 C 1 A_WeaponReady(WRF_NOSWITCH)
+	HoldZombieman:
+		TNT1 A 0 A_JumpIfInventory("MeatAmmo", 40, "ZombiemanDie")
+		TNT1 A 0 A_SpawnItemEx("MeatShield", 16, -11, 0, 0)
 		GRZ1 A 3 A_WeaponReady(WRF_NOSWITCH)
 		TNT1 A 0 A_Jump(20, 2)
-		Goto PickZombieman+5
+		Goto HoldZombieman
 		TNT1 AAAA 0
 		GRZ1 ABACACA 4 A_WeaponReady(WRF_NOSWITCH)
-		Goto PickZombieman+5
+		Goto HoldZombieman
 
 	ThrowZombieman:
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfHealthLower(1, "ZombiemanDie")
 		GRZ1 D 1 offset(-4, 32)
 		GRZ1 D 1 offset(-9, 33)
 		GRZ1 D 1 offset(-16, 34)
@@ -920,16 +918,14 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		GRZ1 B 1 offset(-16, 34)
 		GRZ1 B 1 offset(-9, 33)
 		GRZ1 B 1 offset(-1, 32)
-		TNT1 A 0 A_PlaySound("skeleton/swing")
+        TNT1 A 0 A_PlaySound("skeleton/swing")
 		TNT1 A 0 A_FireCustomMissile("ThrowedZman", 0, 0, 0, 0)
 		TNT1 A 0 A_TakeInventory("GoSpecial",1)
-		TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
-		TNT1 A 0 A_TakeInventory("HasZmanShield",1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
+        TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
+        TNT1 A 0 A_TakeInventory("HasZmanShield",1)
 		TNT1 A 0 A_TakeInventory("GrabbedAZombieman",1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
-        THEF BCDEF 1
-		TNT1 A 10
+        TNT1 A 0 A_Giveinventory("Punching",1)
+        THEF BCD 4
 		TNT1 A 0 A_GiveInventory("UsedStamina", 27)
 		TNT1 A 0 A_TakeInventory("StartDualWield", 1)
 		Goto Ready
@@ -951,13 +947,18 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 
 	ZombiemanDie:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("ZombieXDeath", 0, 40)
+		TNT1 A 0 A_SpawnItem("ZombiemanHeadExplode", 0, 50)
+		TNT1 A 12
+		TNT1 A 0 A_PlaySound("skeleton/swing")
+		TNT1 A 0 A_FireCustomMissile("ThrowedZmanNoHead", 0, 0, 0, 0)
 		TNT1 A 0 A_TakeInventory("GoSpecial",1)
-		TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
-		TNT1 A 0 A_TakeInventory("HasZmanShield",1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
+        TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
+        TNT1 A 0 A_TakeInventory("HasZmanShield",1)
 		TNT1 A 0 A_TakeInventory("GrabbedAZombieman",1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
+        TNT1 A 0 A_Giveinventory("Punching",1)
+        THEF BCD 4
+		TNT1 A 0 A_GiveInventory("UsedStamina", 27)
+		TNT1 A 0 A_TakeInventory("StartDualWield", 1)
 		Goto Ready
 
 	//---------------------------------------------------Zombieman End
@@ -967,20 +968,18 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		TNT1 A 0
 		GRZ3 C 1 offset(12, 32)
 		GRZ3 C 1 offset(6, 32)
-		GRZ3 C 1  A_WeaponReady(WRF_NOSWITCH)
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("MeatAmmo", 60, "ImpDie")
-		TNT1 A 0 A_SpawnItemEx("MeatShield", 15, 0, 15, 0)
+		GRZ3 C 1 A_WeaponReady(WRF_NOSWITCH)
+	HoldImp:
+		TNT1 A 0 A_JumpIfInventory("MeatAmmo", 80, "ImpDie")
+		TNT1 A 0 A_SpawnItemEx("MeatShield", 16, -11, 0, 0)
 		GRZ3 A 3 A_WeaponReady(WRF_NOSWITCH)
 		TNT1 A 0 A_Jump(20, 2)
-		Goto PickImp+5
+		Goto HoldImp
 		TNT1 AAAA 0
 		GRZ3 ABACACA 4 A_WeaponReady(WRF_NOSWITCH)
-		Goto PickImp+5
+		Goto HoldImp
 
 	ThrowImp:
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfHealthLower(1, "ImpDie")
 		GRZ3 D 1 offset(-4, 32)
 		GRZ3 D 1 offset(-9, 33)
 		GRZ3 D 1 offset(-16, 34)
@@ -990,16 +989,14 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		GRZ3 B 1 offset(-16, 34)
 		GRZ3 B 1 offset(-9, 33)
 		GRZ3 B 1 offset(-1, 32)
-		TNT1 A 0 A_PlaySound("skeleton/swing")
-		TNT1 A 0 A_FireCustomMissile("ThrowedImp", 0, 0, 0, 0)
+        TNT1 A 0 A_PlaySound("skeleton/swing")
+		TNT1 A 0 A_FireCustomMissile("ThrowedImp", 0, 0, 0)
 		TNT1 A 0 A_TakeInventory("GoSpecial",1)
-		TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
-		TNT1 A 0 A_TakeInventory("HasImpShield",1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
+        TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
+        TNT1 A 0 A_TakeInventory("HasImpShield",1)
 		TNT1 A 0 A_TakeInventory("GrabbedAImp",1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
-        THEF BCDEF 1
-		TNT1 A 10
+        TNT1 A 0 A_Giveinventory("Punching",1)
+        THEF BCD 4
 		TNT1 A 0 A_GiveInventory("UsedStamina", 27)
 		TNT1 A 0 A_TakeInventory("StartDualWield", 1)
 		Goto Ready
@@ -1017,14 +1014,19 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		Goto Ready
 
 	ImpDie:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("ImpXDeath", 0, 40)
+	    TNT1 A 0
+		TNT1 A 0 A_SpawnItem("ImpHeadExplode", 0, 50)
+		TNT1 A 12
+		TNT1 A 0 A_PlaySound("skeleton/swing")
+		TNT1 A 0 A_FireCustomMissile("ThrowedImpNoHead", 0, 0, 0)
 		TNT1 A 0 A_TakeInventory("GoSpecial",1)
-		TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
-		TNT1 A 0 A_TakeInventory("HasImpShield",1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
+        TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
+        TNT1 A 0 A_TakeInventory("HasImpShield",1)
 		TNT1 A 0 A_TakeInventory("GrabbedAImp",1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
+        TNT1 A 0 A_Giveinventory("Punching",1)
+        THEF BCD 4
+		TNT1 A 0 A_GiveInventory("UsedStamina", 27)
+		TNT1 A 0 A_TakeInventory("StartDualWield", 1)
 		Goto Ready
 
 	//---------------------------------------------------Imp End
@@ -1034,38 +1036,34 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		GRZ2 C 1 offset(12, 32)
 		GRZ2 C 1 offset(6, 32)
 		GRZ2 C 1  A_WeaponReady(WRF_NOSWITCH)
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("MeatAmmo", 60, "ShotgunguyDie")
-		TNT1 A 0 A_SpawnItemEx("MeatShield", 15, 0, 15, 0)
+	HoldShotgunGuy:
+		TNT1 A 0 A_JumpIfInventory("MeatAmmo", 40, "ShotgunguyDie")
+		TNT1 A 0 A_SpawnItemEx("MeatShield", 16, -11, 0, 0)
 		GRZ2 A 3 A_WeaponReady(WRF_NOSWITCH)
 		TNT1 A 0 A_Jump(20, 2)
-		Goto PickShotgunguy+5
+		Goto HoldShotgunGuy
 		TNT1 AAAA 0
 		GRZ2 ABACACA 4 A_WeaponReady(WRF_NOSWITCH)
-		Goto PickShotgunguy+5
+		Goto HoldShotgunGuy
 
 	ThrowShotgunguy:
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfHealthLower(1, "ShotgunguyDie")
 		GRZ2 D 1 offset(-4, 32)
-		GRZ2 D 1 offset(-9, 33)
-		GRZ2 D 1 offset(-16, 34)
-		GRZ2 D 2 offset(-24, 35)
-		GRZ2 D 3 offset(-36, 48)
-		GRZ2 D 1 offset(-24, 35)
-		GRZ2 B 1 offset(-16, 34)
-		GRZ2 B 1 offset(-9, 33)
-		GRZ2 B 1 offset(-1, 32)
-		TNT1 A 0 A_PlaySound("skeleton/swing")
+        GRZ2 D 1 offset(-9, 33)
+        GRZ2 D 1 offset(-16, 34)
+        GRZ2 D 2 offset(-24, 35)
+        GRZ2 D 3 offset(-36, 48)
+        GRZ2 D 1 offset(-24, 35)
+        GRZ2 B 1 offset(-16, 34)
+        GRZ2 B 1 offset(-9, 33)
+        GRZ2 B 1 offset(-1, 32)
+        TNT1 A 0 A_PlaySound("skeleton/swing")
 		TNT1 A 0 A_FireCustomMissile("ThrowedShotgunguy", 0, 0, 0, 0)
 		TNT1 A 0 A_TakeInventory("GoSpecial",1)
-		TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
-		TNT1 A 0 A_TakeInventory("HasSguyShield",1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
+        TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
+        TNT1 A 0 A_TakeInventory("HasSguyShield",1)
 		TNT1 A 0 A_TakeInventory("GrabbedAShotgunguy",1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
-        THEF BCDEF 1
-		TNT1 A 10
+        TNT1 A 0 A_Giveinventory("Punching",1)
+        THEF BCD 4
 		TNT1 A 0 A_GiveInventory("UsedStamina", 27)
 		TNT1 A 0 A_TakeInventory("StartDualWield", 1)
 		Goto Ready
@@ -1086,14 +1084,19 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		Goto Ready
 
 	ShotgunguyDie:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("SargeXDeath", 0, 40)
+	    TNT1 A 0
+		TNT1 A 0 A_SpawnItem("ShotgunguyHeadExplode", 0, 50)
+		TNT1 A 12
+		TNT1 A 0 A_PlaySound("skeleton/swing")
+		TNT1 A 0 A_FireCustomMissile("ThrowedShotgunguyNoHead", 0, 0, 0, 0)
 		TNT1 A 0 A_TakeInventory("GoSpecial",1)
-		TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
-		TNT1 A 0 A_TakeInventory("HasSguyShield",1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
+        TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
+        TNT1 A 0 A_TakeInventory("HasSguyShield",1)
 		TNT1 A 0 A_TakeInventory("GrabbedAShotgunguy",1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
+        TNT1 A 0 A_Giveinventory("Punching",1)
+        THEF BCD 4
+		TNT1 A 0 A_GiveInventory("UsedStamina", 27)
+		TNT1 A 0 A_TakeInventory("StartDualWield", 1)
 		Goto Ready
 
 	//End Shotgunguy-------------------------------------------------
@@ -1104,19 +1107,17 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		GRZ4 C 1 offset(12, 32)
 		GRZ4 C 1 offset(6, 32)
 		GRZ4 C 1  A_WeaponReady(WRF_NOSWITCH)
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("MeatAmmo", 60, "ChaingunguyDie")
-		TNT1 A 0 A_SpawnItemEx("MeatShield", 15, 0, 15, 0)
+	HoldChaingunGuy:
+		TNT1 A 0 A_JumpIfInventory("MeatAmmo", 80, "ChaingunguyDie")
+		TNT1 A 0 A_SpawnItemEx("MeatShield", 16, -11, 0, 0)
 		GRZ4 A 3 A_WeaponReady(WRF_NOSWITCH)
 		TNT1 A 0 A_Jump(20, 2)
-		Goto PickChaingunguy+5
+		Goto HoldChaingunGuy
 		TNT1 AAAA 0
 		GRZ4 ABACACA 4 A_WeaponReady(WRF_NOSWITCH)
-		Goto PickChaingunguy+5
+		Goto HoldChaingunGuy
 
 	ThrowChaingunguy:
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfHealthLower(1, "ChaingunguyDie")
 		GRZ4 D 1 offset(-4, 32)
 		GRZ4 D 1 offset(-9, 33)
 		GRZ4 D 1 offset(-16, 34)
@@ -1126,16 +1127,14 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		GRZ4 B 1 offset(-16, 34)
 		GRZ4 B 1 offset(-9, 33)
 		GRZ4 B 1 offset(-1, 32)
-		TNT1 A 0 A_PlaySound("skeleton/swing")
+        TNT1 A 0 A_PlaySound("skeleton/swing")
 		TNT1 A 0 A_FireCustomMissile("ThrowedChaingunguy", 0, 0, 0, 0)
 		TNT1 A 0 A_TakeInventory("GoSpecial",1)
-		TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
-		TNT1 A 0 A_TakeInventory("HasCguyShield",1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
+        TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
+        TNT1 A 0 A_TakeInventory("HasCguyShield",1)
 		TNT1 A 0 A_TakeInventory("GrabbedAChaingunguy",1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
-        THEF BCDEF 1
-		TNT1 A 10
+        TNT1 A 0 A_Giveinventory("Punching",1)
+        THEF BCD 4
 		TNT1 A 0 A_GiveInventory("UsedStamina", 27)
 		TNT1 A 0 A_TakeInventory("StartDualWield", 1)
 		Goto Ready
@@ -1156,14 +1155,19 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		Goto Ready
 
 	ChaingunguyDie:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("ChainXDeath", 0, 40)
+	    TNT1 A 0
+		TNT1 A 0 A_SpawnItem("ChaingunguyHeadExplode", 0, 50)
+		TNT1 A 12
+		TNT1 A 0 A_PlaySound("skeleton/swing")
+		TNT1 A 0 A_FireCustomMissile("ThrowedChaingunguyNoHead", 0, 0, 0, 0)
 		TNT1 A 0 A_TakeInventory("GoSpecial",1)
-		TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
-		TNT1 A 0 A_TakeInventory("HasCguyShield",1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
+        TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
+        TNT1 A 0 A_TakeInventory("HasCguyShield",1)
 		TNT1 A 0 A_TakeInventory("GrabbedAChaingunguy",1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
+        TNT1 A 0 A_Giveinventory("Punching",1)
+        THEF BCD 4
+		TNT1 A 0 A_GiveInventory("UsedStamina", 27)
+		TNT1 A 0 A_TakeInventory("StartDualWield", 1)
 		Goto Ready
 
 	//End Chaingunguy-------------------------------------------------
@@ -1174,19 +1178,17 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		GRZ7 C 1 offset(12, 32)
 		GRZ7 C 1 offset(6, 32)
 		GRZ7 C 1  A_WeaponReady(WRF_NOSWITCH)
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("MeatAmmo", 60, "ZombieCivilianDie")
-		TNT1 A 0 A_SpawnItemEx("MeatShield", 15, 0, 15, 0)
+	HoldLabGuy:
+		TNT1 A 0 A_JumpIfInventory("MeatAmmo", 50, "ZombieCivilianDie")
+		TNT1 A 0 A_SpawnItemEx("MeatShield", 16, -11, 0, 0)
 		GRZ7 A 3 A_WeaponReady(WRF_NOSWITCH)
 		TNT1 A 0 A_Jump(20, 2)
-		Goto PickZombieCivilian+5
+		Goto HoldLabGuy
 		TNT1 AAAA 0
 		GRZ7 ABACACA 4 A_WeaponReady(WRF_NOSWITCH)
-		Goto PickZombieCivilian+5
+		Goto HoldLabGuy
 
 	ThrowZombieCivilian:
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfHealthLower(1, "ZombieCivilianDie")
 		GRZ7 D 1 offset(-4, 32)
 		GRZ7 D 1 offset(-9, 33)
 		GRZ7 D 1 offset(-16, 34)
@@ -1196,16 +1198,14 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		GRZ7 B 1 offset(-16, 34)
 		GRZ7 B 1 offset(-9, 33)
 		GRZ7 B 1 offset(-1, 32)
-		TNT1 A 0 A_PlaySound("skeleton/swing")
+        TNT1 A 0 A_PlaySound("skeleton/swing")
 		TNT1 A 0 A_FireCustomMissile("ThrowedZombieCivilian", 0, 0, 0, 0)
 		TNT1 A 0 A_TakeInventory("GoSpecial",1)
-		TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
-		TNT1 A 0 A_TakeInventory("HasZombieCivilianShield",1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
+        TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
+        TNT1 A 0 A_TakeInventory("HasZombieCivilianShield",1)
 		TNT1 A 0 A_TakeInventory("GrabbedAZombieCivilian",1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
-        THEF BCDEF 1
-		TNT1 A 10
+        TNT1 A 0 A_Giveinventory("Punching",1)
+        THEF BCD 4
 		TNT1 A 0 A_GiveInventory("UsedStamina", 27)
 		TNT1 A 0 A_TakeInventory("StartDualWield", 1)
 		Goto Ready
@@ -1226,14 +1226,19 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		Goto Ready
 
 	ZombieCivilianDie:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("SargeXDeath", 0, 40)
+	    TNT1 A 0
+		TNT1 A 0 A_SpawnItem("ShotgunguyHeadExplode", 0, 50)
+		TNT1 A 12
+		TNT1 A 0 A_PlaySound("skeleton/swing")
+		TNT1 A 0 A_FireCustomMissile("ThrowedZombieCivilianNoHead", 0, 0, 0, 0)
 		TNT1 A 0 A_TakeInventory("GoSpecial",1)
-		TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
-		TNT1 A 0 A_TakeInventory("HasZombieCivilianShield",1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
+        TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
+        TNT1 A 0 A_TakeInventory("HasZombieCivilianShield",1)
 		TNT1 A 0 A_TakeInventory("GrabbedAZombieCivilian",1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
+        TNT1 A 0 A_Giveinventory("Punching",1)
+        THEF BCD 4
+		TNT1 A 0 A_GiveInventory("UsedStamina", 27)
+		TNT1 A 0 A_TakeInventory("StartDualWield", 1)
 		Goto Ready
 
 	//Civilian End------------------------------------------------
@@ -1244,19 +1249,17 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		GRZ5 C 1 offset(12, 32)
 		GRZ5 C 1 offset(6, 32)
 		GRZ5 C 1  A_WeaponReady(WRF_NOSWITCH)
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("MeatAmmo", 60, "EvilMarineDie")
-		TNT1 A 0 A_SpawnItemEx("MeatShield", 15, 0, 15, 0)
+	HoldEvilMarine:
+		TNT1 A 0 A_JumpIfInventory("MeatAmmo", 100, "EvilMarineDie")
+		TNT1 A 0 A_SpawnItemEx("MeatShield", 16, -11, 0, 0)
 		GRZ5 A 3 A_WeaponReady(WRF_NOSWITCH)
 		TNT1 A 0 A_Jump(20, 2)
-		Goto PickEvilMarine+5
+		Goto HoldEvilMarine
 		TNT1 AAAA 0
 		GRZ5 ABACACA 4 A_WeaponReady(WRF_NOSWITCH)
-		Goto PickEvilMarine+5
+		Goto HoldEvilMarine
 
 	ThrowEvilMarine:
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfHealthLower(1, "EvilMarineDie")
 		GRZ5 D 1 offset(-4, 32)
 		GRZ5 D 1 offset(-9, 33)
 		GRZ5 D 1 offset(-16, 34)
@@ -1266,16 +1269,14 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		GRZ5 B 1 offset(-16, 34)
 		GRZ5 B 1 offset(-9, 33)
 		GRZ5 B 1 offset(-1, 32)
-		TNT1 A 0 A_PlaySound("skeleton/swing")
+        TNT1 A 0 A_PlaySound("skeleton/swing")
 		TNT1 A 0 A_FireCustomMissile("ThrowedEvilMarine", 0, 0, 0, 0)
 		TNT1 A 0 A_TakeInventory("GoSpecial",1)
-		TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
-		TNT1 A 0 A_TakeInventory("HasEvilMarineShield",1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
+        TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
+        TNT1 A 0 A_TakeInventory("HasEvilMarineShield",1)
 		TNT1 A 0 A_TakeInventory("GrabbedAEvilMarine",1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
-        THEF BCDEF 1
-		TNT1 A 10
+        TNT1 A 0 A_Giveinventory("Punching",1)
+        THEF BCD 4
 		TNT1 A 0 A_GiveInventory("UsedStamina", 27)
 		TNT1 A 0 A_TakeInventory("StartDualWield", 1)
 		Goto Ready
@@ -1296,14 +1297,19 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		Goto Ready
 
 	EvilMarineDie:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("MarineXDeath", 0, 40)
+	    TNT1 A 0
+		TNT1 A 0 A_SpawnItem("ZombiemanHeadExplode", 0, 50)
+		TNT1 A 12
+        TNT1 A 0 A_PlaySound("skeleton/swing")
+		TNT1 A 0 A_FireCustomMissile("ThrowedEvilMarine", 0, 0, 0, 0)
 		TNT1 A 0 A_TakeInventory("GoSpecial",1)
-		TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
-		TNT1 A 0 A_TakeInventory("HasEvilMarineShield",1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
+        TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
+        TNT1 A 0 A_TakeInventory("HasEvilMarineShield",1)
 		TNT1 A 0 A_TakeInventory("GrabbedAEvilMarine",1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
+        TNT1 A 0 A_Giveinventory("Punching",1)
+        THEF BCD 4
+		TNT1 A 0 A_GiveInventory("UsedStamina", 27)
+		TNT1 A 0 A_TakeInventory("StartDualWield", 1)
 		Goto Ready
 
 	//Evil Marine End------------------------------------------------
@@ -1314,19 +1320,17 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		GRZ6 C 1 offset(12, 32)
 		GRZ6 C 1 offset(6, 32)
 		GRZ6 C 1  A_WeaponReady(WRF_NOSWITCH)
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("MeatAmmo", 60, "NaziDie")
-		TNT1 A 0 A_SpawnItemEx("MeatShield", 15, 0, 15, 0)
+	HoldNazi:
+		TNT1 A 0 A_JumpIfInventory("MeatAmmo", 50, "NaziDie")
+		TNT1 A 0 A_SpawnItemEx("MeatShield", 16, -11, 0, 0)
 		GRZ6 A 3 A_WeaponReady(WRF_NOSWITCH)
 		TNT1 A 0 A_Jump(20, 2)
-		Goto PickNazi+5
+		Goto HoldNazi
 		TNT1 AAAA 0
 		GRZ6 ABACACA 4 A_WeaponReady(WRF_NOSWITCH)
-		Goto PickNazi+5
+		Goto HoldNazi
 
 	ThrowNazi:
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfHealthLower(1, "NaziDie")
 		GRZ6 D 1 offset(-4, 32)
 		GRZ6 D 1 offset(-9, 33)
 		GRZ6 D 1 offset(-16, 34)
@@ -1336,16 +1340,14 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		GRZ6 B 1 offset(-16, 34)
 		GRZ6 B 1 offset(-9, 33)
 		GRZ6 B 1 offset(-1, 32)
-		TNT1 A 0 A_PlaySound("skeleton/swing")
+        TNT1 A 0 A_PlaySound("skeleton/swing")
 		TNT1 A 0 A_FireCustomMissile("ThrowedNazi", 0, 0, 0, 0)
 		TNT1 A 0 A_TakeInventory("GoSpecial",1)
-		TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
-		TNT1 A 0 A_TakeInventory("HasNaziShield",1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
+        TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
+        TNT1 A 0 A_TakeInventory("HasNaziShield",1)
 		TNT1 A 0 A_TakeInventory("GrabbedANazi",1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
-        THEF BCDEF 1
-		TNT1 A 10
+        TNT1 A 0 A_Giveinventory("Punching",1)
+        THEF BCD 4
 		TNT1 A 0 A_GiveInventory("UsedStamina", 27)
 		TNT1 A 0 A_TakeInventory("StartDualWield", 1)
 		Goto Ready
@@ -1366,14 +1368,19 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		Goto Ready
 
 	NaziDie:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("SargeXDeath", 0, 40)
+	    TNT1 A 0
+		TNT1 A 0 A_SpawnItem("NaziHeadExplode", 0, 50)
+		TNT1 A 12
+		TNT1 A 0 A_PlaySound("skeleton/swing")
+		TNT1 A 0 A_FireCustomMissile("ThrowedNaziNoHead", 0, 0, 0, 0)
 		TNT1 A 0 A_TakeInventory("GoSpecial",1)
-		TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
-		TNT1 A 0 A_TakeInventory("HasNaziShield",1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
+        TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
+        TNT1 A 0 A_TakeInventory("HasNaziShield",1)
 		TNT1 A 0 A_TakeInventory("GrabbedANazi",1)
-		TNT1 A 0 A_Giveinventory("Punching",1)
+        TNT1 A 0 A_Giveinventory("Punching",1)
+        THEF BCD 4
+		TNT1 A 0 A_GiveInventory("UsedStamina", 27)
+		TNT1 A 0 A_TakeInventory("StartDualWield", 1)
 		Goto Ready
 	}
 }

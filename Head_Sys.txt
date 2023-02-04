@@ -332,26 +332,29 @@ TNT1 A 0
 TNT1 A 0 A_Stop
 TNT1 A 0 A_PlaySound ("imp/pain")
 TNT1 A 0 A_AlertMonsters
-TNT1 A 0 A_JumpIfHealthLower(36, "Pain64")
-TNT1 A 0 A_JumpIfHealthLower(68, "Pain32")
-TNT1 A 0 A_JumpIfHealthLower(84, "Pain16")
-TNT1 A 0 A_JumpIfHealthLower(92, "Pain8")
-TNT1 A 0 A_JumpIfHealthLower(96, "Pain4")
-TNT1 A 0 A_RadiusGive("MeatAmmo", 128, RGF_GIVESELF | RGF_PLAYERS | RGF_OBJECTS, 2)
+TNT1 A 0 A_JumpIfHealthLower(50, "Pain50")//50 HML, Unmaker
+TNT1 A 0 A_JumpIfHealthLower(60, "Pain40")//40 Plasmaball
+TNT1 A 0 A_JumpIfHealthLower(76, "Pain24")//24 Buzzsaw
+TNT1 A 0 A_JumpIfHealthLower(80, "Pain20")//20 Machinegun
+TNT1 A 0 A_JumpIfHealthLower(82, "Pain18")//18 Rifle
+TNT1 A 0 A_JumpIfHealthLower(84, "Pain16")//16 Minigun
+TNT1 A 0 A_JumpIfHealthLower(86, "Pain14")//14 Shotgun Pellet
+TNT1 A 0 A_JumpIfHealthLower(88, "Pain12")//12 SMG
+TNT1 A 0 A_RadiusGive("MeatAmmo", 128, RGF_GIVESELF | RGF_PLAYERS | RGF_OBJECTS, 6)
 XXXX A 2
 TNT1 A 0 A_NoBlocking
 Stop
 
-Pain4:
+Pain12:
 TNT1 A 0
-TNT1 A 0 A_RadiusGive("MeatAmmo", 128, RGF_GIVESELF | RGF_PLAYERS | RGF_OBJECTS, 4)
+TNT1 A 0 A_RadiusGive("MeatAmmo", 128, RGF_GIVESELF | RGF_PLAYERS | RGF_OBJECTS, 12)
 XXXX A 2
 TNT1 A 0 A_NoBlocking
 Stop
 
-Pain8:
+Pain14:
 TNT1 A 0
-TNT1 A 0 A_RadiusGive("MeatAmmo", 128, RGF_GIVESELF | RGF_PLAYERS | RGF_OBJECTS, 8)
+TNT1 A 0 A_RadiusGive("MeatAmmo", 128, RGF_GIVESELF | RGF_PLAYERS | RGF_OBJECTS, 14)
 XXXX A 2
 TNT1 A 0 A_NoBlocking
 Stop
@@ -363,16 +366,37 @@ XXXX A 2
 TNT1 A 0 A_NoBlocking
 Stop
 
-Pain32:
+Pain18:
 TNT1 A 0
-TNT1 A 0 A_RadiusGive("MeatAmmo", 128, RGF_GIVESELF | RGF_PLAYERS | RGF_OBJECTS, 32)
+TNT1 A 0 A_RadiusGive("MeatAmmo", 128, RGF_GIVESELF | RGF_PLAYERS | RGF_OBJECTS, 18)
 XXXX A 2
 TNT1 A 0 A_NoBlocking
 Stop
 
-Pain64:
+Pain20:
 TNT1 A 0
-TNT1 A 0 A_RadiusGive("MeatAmmo", 128, RGF_GIVESELF | RGF_PLAYERS | RGF_OBJECTS, 64)
+TNT1 A 0 A_RadiusGive("MeatAmmo", 128, RGF_GIVESELF | RGF_PLAYERS | RGF_OBJECTS, 20)
+XXXX A 2
+TNT1 A 0 A_NoBlocking
+Stop
+
+Pain24:
+TNT1 A 0
+TNT1 A 0 A_RadiusGive("MeatAmmo", 128, RGF_GIVESELF | RGF_PLAYERS | RGF_OBJECTS, 24)
+XXXX A 2
+TNT1 A 0 A_NoBlocking
+Stop
+
+Pain40:
+TNT1 A 0
+TNT1 A 0 A_RadiusGive("MeatAmmo", 128, RGF_GIVESELF | RGF_PLAYERS | RGF_OBJECTS, 40)
+XXXX A 2
+TNT1 A 0 A_NoBlocking
+Stop
+
+Pain50:
+TNT1 A 0
+TNT1 A 0 A_RadiusGive("MeatAmmo", 128, RGF_GIVESELF | RGF_PLAYERS | RGF_OBJECTS, 50)
 XXXX A 2
 TNT1 A 0 A_NoBlocking
 Stop
