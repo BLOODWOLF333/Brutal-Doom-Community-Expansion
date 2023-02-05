@@ -46,6 +46,12 @@ ACTOR Arachnotron2: Arachnotron1 2542
 		TNT1 A 0 HealThing(2)
 		Goto Missile
 
+	Death.Killme:
+	Death.Taunt:
+		TNT1 A 0 A_ChangeFlag("SOLID", 0)
+        TNT1 A 0 A_SpawnItem("Arachnotron2")
+        Stop
+
 	See:
 		ARAC A 20 A_FaceTarget
 		TNT1 A 0 A_PlaySound("baby2/walk", 1)

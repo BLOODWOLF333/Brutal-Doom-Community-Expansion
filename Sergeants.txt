@@ -1,4 +1,35 @@
-ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
+ACTOR SergeantReplacer Replaces ShotgunGuy
+{
+	+NOINTERACTION
+	States{
+	ReplaceSMG:
+		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+		TNT1 A 0 A_SpawnItemEx ("SMGGuy",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS ,0, tid)
+		Stop
+	ReplaceVanilla:
+		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+		TNT1 A 0 A_SpawnItemEx ("VanillaShotgunguy",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
+		Stop
+	ReplaceShotgun:
+		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+		TNT1 A 0 A_SpawnItemEx ("ShotgunGuy1",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0, tid)
+		Stop
+    Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_GiveInventory("SKShotgunGuy", 1)
+		TNT1 A 0 A_GiveInventory("TypeSergeant", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckStuff")//Check if new monsters are disabled
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCHeckClassicMonsters", 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 0 A_JumpIfInventory("nonewenemies", 1, "Stand")
+		TNT1 A 0 A_Jump(64, "ReplaceSMG")
+		Goto ReplaceShotgun
+	}
+}
+
+ACTOR ShotgunGuy1: ShotgunGuy //Replaces ShotgunGuy
 {
 	Game Doom
 	Health 40
@@ -62,26 +93,11 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
         ZRO3 ABCDEFGH 2 A_FaceTarget
         Goto Missile
 
-	ReplaceSMG:
-		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
-		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
-		TNT1 A 0 A_SpawnItemEx ("SMGGuy",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS ,0, tid)
-		Stop
-
-	ReplaceVanilla:
-		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
-		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
-		TNT1 A 0 A_SpawnItemEx ("VanillaShotgunguy",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
-		Stop
-    Spawn:
+	Spawn:
 		SHID A 1
 		TNT1 A 0 A_GiveInventory("SKShotgunGuy", 1)
 		TNT1 A 0 A_GiveInventory("TypeSergeant", 1)
-		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckStuff")//Check if new monsters are disabled
-		TNT1 A 0 ACS_NamedExecuteAlways("BDCHeckClassicMonsters", 0, 0, 0, 0)//Check if Vanilla Mode is activated
 		SHID A 2
-		TNT1 A 0 A_JumpIfInventory("nonewenemies", 1, "Stand")
-		TNT1 A 0 A_Jump(64, "ReplaceSMG")
 		Goto Stand
 
 	Idle:
@@ -467,11 +483,11 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 	Death.Avoid:
 	Death.Stealth:
 	    TNT1 A 0 A_ChangeFlag("SOLID", 0)
-        TNT1 A 0 A_SpawnItem("ShotgunGuy")
+        TNT1 A 0 A_SpawnItemEx("ShotgunGuy1")
         Stop
 
-Death.MonsterShotgunBullet:
-Death.Shotgun:
+	Death.MonsterShotgunBullet:
+	Death.Shotgun:
 		SPOS J 1 A_FaceTarget
 
 		TNT1 A 0 A_SpawnItem("MuchBlood", 0, 40)
@@ -1642,6 +1658,14 @@ Obituary "%o got punctured by a SMG Zombie."
     Pain.KillMe:
         TNT1 A 0
         Goto Missile
+
+	Death.KillMe:
+    Death.Taunt:
+	Death.Avoid:
+	Death.Stealth:
+	    TNT1 A 0 A_ChangeFlag("SOLID", 0)
+        TNT1 A 0 A_SpawnItem("SMGGuy")
+        Stop
 
 	Death.Shotgunontheface:
 	Death.HeavyImpact:
