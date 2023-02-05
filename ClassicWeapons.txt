@@ -492,7 +492,12 @@ ACTOR ClassicWeapon : DoomWeapon
 		TNT1 A 0 A_ChangeFLag("NOPAIN", 0)
 		TNT1 A 0 A_ChangeFLag("PUSHABLE", 1)
 		TNT1 A 0 SetPlayerProperty(0,0,4)
-		KICK A 0 A_Takeinventory("ExecuteDownedEnemy",1)
+		KICK A 0 A_Takeinventory("ExecuteBashWall",1)
+                KICK A 0 A_Takeinventory("ExecuteDownedEnemy",1)
+		KICK A 0 A_Takeinventory("ExecuteDownedZombieman",1)
+		KICK A 0 A_Takeinventory("ExecuteDownedShotgunGuy",1)
+		KICK A 0 A_Takeinventory("ExecuteDownedImp",1)
+		KICK A 0 A_Takeinventory("ExecuteDownedLabguy",1)
 		TNT1 A 0 A_takeInventory("PressedUSe", 1)
 		Goto GoingToReady
 	}
