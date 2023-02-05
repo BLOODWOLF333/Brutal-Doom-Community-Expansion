@@ -153,7 +153,6 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		MARN BBB 1 A_JumpIf (velz != 0, "IsJumpin")
 		MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 
-		TNT1 A 0 A_Changeflag("THRUSPECIES", 0)
 		MARN B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		MARN A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
 		MARN A 0 A_JumpIfInventory("BootsSmearedWithGreenBlood", 1, "SeeSmearedWithGreenBlood")
