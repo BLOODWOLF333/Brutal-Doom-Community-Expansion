@@ -290,11 +290,8 @@ ACTOR RifleZombie Replaces ZombieMan
     Death.Taunt:
     Death.Avoid:
 	Death.Stealth:
-	    TNT1 A 0
-		TNT1 A 0 A_ChangeFlag("SOLID", 0)
-        TNT1 A 0 A_SpawnItem("RifleZombie")
-        Stop
-
+		Goto Death
+	
 	Pain.Cut:
 	Pain.Saw:
 		TNT1 A 0

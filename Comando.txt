@@ -692,9 +692,7 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
     Death.KillMe:
     Death.Taunt:
 	Death.Stealth:
-	    TNT1 A 0 A_NOBLOCKING
-        TNT1 A 0 A_SpawnItem("ChaingunGuy")
-        Stop
+	    Goto Death
 
 	 Death.ExtremePunches:
 		 TNT1 A 0

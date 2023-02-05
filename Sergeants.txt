@@ -469,9 +469,7 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
     Death.Taunt:
 	Death.Avoid:
 	Death.Stealth:
-	    TNT1 A 0 A_ChangeFlag("SOLID", 0)
-        TNT1 A 0 A_SpawnItem("ShotgunGuy1")
-        Stop
+	    Goto Death
 
 	Death.MonsterShotgunBullet:
 	Death.Shotgun:

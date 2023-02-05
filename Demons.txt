@@ -602,11 +602,9 @@ ACTOR BullDemon: Demon Replaces Demon
         Goto See
     Death.KillMe:
     Death.Taunt:
-	    TNT1 A 0 A_ChangeFlag("SOLID", 0)
-        TNT1 A 0 A_SpawnItem("Demon")
-        Stop
-
-     FatalityZombieman:
+		Goto Death
+		
+    FatalityZombieman:
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
         SARK DEDEDEDEDE 8 A_CustomMissile ("MuchBlood2", 45, 0, random (0, 360), 2, random (0, 160))
 

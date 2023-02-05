@@ -305,9 +305,7 @@ Actor Volcabus : Mancubus 2543
 
 	Death.KillMe:
     Death.Taunt:
-	    TNT1 A 0 A_ChangeFlag("SOLID", 0)
-        TNT1 A 0 A_SpawnItem("Volcabus")
-        Stop
+	    Goto Death
 
 	Death:
 		TNT1 A 0 A_Jump(128, "Death2", "Death3")
