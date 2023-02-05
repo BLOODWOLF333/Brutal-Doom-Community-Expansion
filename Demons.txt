@@ -69,8 +69,8 @@ ACTOR BullDemon: Demon Replaces Demon
 		Loop
 
 	Pain.Taunt:
-		SARG FGF 2 A_FaceTarget
 		TNT1 A 0 HealThing(2)
+		SARG FGF 2 A_FaceTarget
 		TNT1 A 0 A_GiveInventory("ComeEatMeDemon", 1)
 		TNT1 A 0 A_ChangeFlag("QUICKTORETALIATE", 1)
 		Goto EnragedSee
