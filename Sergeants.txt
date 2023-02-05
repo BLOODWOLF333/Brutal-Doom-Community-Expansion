@@ -1682,9 +1682,7 @@ Obituary "%o got punctured by a SMG Zombie."
     Death.Taunt:
 	Death.Avoid:
 	Death.Stealth:
-	    TNT1 A 0 A_ChangeFlag("SOLID", 0)
-        TNT1 A 0 A_SpawnItem("SMGGuy")
-        Stop
+	        Goto Death
 
 	Death.Minor:
 		TNT1 A 0
