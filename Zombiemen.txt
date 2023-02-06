@@ -18,7 +18,7 @@ ACTOR RifleZombie Replaces ZombieMan
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	DamageFactor "TankWeakSpot", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "SSG", 5.0
 	Damagefactor "ExtremePunches", 2.0	Damagefactor "Fatality", 5.0	Damagefactor "HelperMarineFatallity", 5.0
-
+	
 	PainChance "Avoid", 64	PainChance "Head", 255	PainChance "PussyGrab", 255
 	PainChance "Slide", 255	PainChance "Stealth", 255	PainChance "Taunt", 255
 
@@ -282,19 +282,16 @@ ACTOR RifleZombie Replaces ZombieMan
 
    //If the monster is hit by the "Killme" damage (which is "exploded" by the captured marine), automatically start firing at the target.
     Pain.KillMe:
-        TNT1 A 0
-		TNT1 A 0 HealThing(1)
+		TNT1 A 0
+        TNT1 A 0 HealThing(2)
         Goto Missile
 	//Emergency manuever in case the monster gets killed by an "alerter" actor
     Death.KillMe:
     Death.Taunt:
     Death.Avoid:
 	Death.Stealth:
-	    TNT1 A 0
-		TNT1 A 0 A_ChangeFlag("SOLID", 0)
-        TNT1 A 0 A_SpawnItem("ZombieMan")
-        Stop
-
+		Goto Death
+	
 	Pain.Cut:
 	Pain.Saw:
 		TNT1 A 0
@@ -338,7 +335,7 @@ ACTOR RifleZombie Replaces ZombieMan
         Stop
 
 	Pain.Stealth:
-		TNT1 A 0
+		TNT1 A 0 HealThing(2)
 		TNT1 A 0 A_JumpIfInventory ("SKZombieman", 1, "GotoStealthKill")
         TNT1 A 0 A_JumpIfInventory ("IsDown", 1, "GroundExecution")
 		Goto See
@@ -1561,7 +1558,6 @@ Tag "Pistol Zombie"
 		Goto SeeContinue
 
 	Pain.Taunt:
-		TNT1 A 0
 		TNT1 A 0 HealThing(2)
 		TNT1 A 0 A_JumpIfInventory("Enraged", 1, "Missile")
 		PSPO B 0 A_Pain
@@ -1640,8 +1636,7 @@ Tag "Pistol Zombie"
 
    //If the monster is hit by the "Killme" damage (which is "exploded" by the captured marine), automatically start firing at the target.
     Pain.KillMe:
-        TNT1 A 0
-		TNT1 A 0 HEalThing(1)
+        TNT1 A 0 HealThing(2)
         Goto Missile
 	//Emergency manuever in case the monster gets killed by an "alerter" actor
     Death.KillMe:

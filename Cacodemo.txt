@@ -331,10 +331,8 @@ ACTOR Cacodemon_ : Cacodemon Replaces Cacodemon
         Goto Missile
     Death.KillMe:
     Death.Taunt:
-	    TNT1 A 0 A_ChangeFlag("SOLID", 0)
-        TNT1 A 0 A_SpawnItem("CacoDemon")
-        Stop
-
+		Goto Death
+		
 FatalityMarine:
 	TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
 	CFPF A 8

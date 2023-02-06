@@ -503,9 +503,7 @@ ACTOR Revenant1: Revenant Replaces Revenant
         Goto Missile
     Death.KillMe:
     Death.Taunt:
-	    TNT1 A 0 A_NOBLOCKING
-        TNT1 A 0 A_SpawnItem("Revenant")
-        Stop
+	    Goto Death
 
 	Death.Ice:
 	Death.Freeze:

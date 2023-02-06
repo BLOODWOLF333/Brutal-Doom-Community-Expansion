@@ -338,9 +338,7 @@ ACTOR Imp Replaces DoomImp
     Death.Taunt:
     Death.Avoid:
 	Death.Stealth:
-	    TNT1 A 0 A_ChangeFlag("SOLID", 0)
-        TNT1 A 0 A_SpawnItem("Imp")
-        Stop
+	    Goto Death
 
     Pain.Head:
 	Pain.Shrapnel:

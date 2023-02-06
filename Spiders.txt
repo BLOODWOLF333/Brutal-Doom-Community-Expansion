@@ -43,9 +43,8 @@ ACTOR Arachnotron1: Arachnotron replaces Arachnotron
 	{
 	Death.KillMe:
 	Death.Taunt:
-	    TNT1 A 0 A_ChangeFlag("SOLID", 0)
-        TNT1 A 0 A_SpawnItem("Arachnotron1")
-        Stop
+		Goto Death
+		
 	Spawn:
 		BSPI A 0
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckStuff")//Check if new monsters are disabled

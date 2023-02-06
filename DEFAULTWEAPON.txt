@@ -667,9 +667,14 @@ ACTOR BrutalWeapon : DoomWeapon
 		TNT1 A 0 A_ChangeFLag("NOPAIN", 0)
 		TNT1 A 0 A_ChangeFLag("PUSHABLE", 1)
 		TNT1 A 1 SetPlayerProperty(0,0,4)
+		KICK A 0 A_Takeinventory("ExecuteBashWall",1)
 		KICK A 0 A_Takeinventory("ExecuteDownedEnemy",1)
 		KICK A 0 A_Takeinventory("BDWeaponAction",1)
 		TNT1 A 0 A_takeInventory("PressedUSe", 1)
+		TNT1 A 0 A_takeInventory("ExecuteDownedImp", 1)
+		TNT1 A 0 A_takeInventory("ExecuteDownedLabguy", 1)
+		TNT1 A 0 A_takeInventory("ExecuteDownedShotgunGuy", 1)
+		TNT1 A 0 A_takeInventory("ExecuteDownedZombieman", 1)
 		Goto GoingToReady
 	}
 }

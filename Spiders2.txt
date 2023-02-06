@@ -24,6 +24,10 @@ ACTOR Arachnotron2: Arachnotron1 2542
 	DropItem "64UnmakerUpgradeSpawner", 4
 	States
 	{
+	Death.KillMe:
+	Death.Taunt:
+	    Goto Death
+		
 	Spawn:
 		ARAC A 0
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckStuff")//Check if new monsters are disabled
