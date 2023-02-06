@@ -7,21 +7,28 @@
 //
 //	All Weapons:					Replaced A_Refire with A_JumpIfInventory("FiredPrimary",1,"Fire") where applicable
 //	Ammo.txt:						Removed +NOGRAVITY & added +MOVEWITHSECTOR flags to BasicAmmoPickup
+//	Archvile.txt:					PR#414 Attempting to fix some of these
+//	Baron.txt						PR#414 Attempting to fix some of these
 //	BDControls.txt:					BDCamera is disabled when entering a vehicle and RollLeft/Right tokens are removed on exit
 //	Blood.txt:						Moved in player blood actors from Player.txt
 //	BossBrain.txt:					Added a y pos check to the Doom2Reloaded spawn state (Requiem bossbrain also has a x pos of -64)
 //	BossHealth.txt:					Created a BDCheckPort script to give the inventory token "zandronum" if the player is not playing GZDoom
+//	Cacodemon.txt:					PR#414 Attempting to fix some of these
 //	CapturedMarine.txt:				Removed KillMe spawns from CapturedMarineBase (causing water to splash)
 //	CGuyShield.txt:					PR#411 added a headless variant for the thrown actor
+//	ClassicWeapons.txt:				PR#414 Attempting to fix some of these
 //	Commando.txt:					Alphabetized all actors after moving in additions from DyingGuys
+//									PR#414 Attempting to fix some of these
 //	Cyberdemon.txt:					Removed +THRUACTORS flag from CyberStomp
 //	DEAD.txt:						PR#411 Added a headless actor variant for DeadNazi
 //									Move VeryFuckedUpRevenant into Revenant.txt
 //									Move DeadNazi and DeadNazi_NoHead into Nazis.txt
 //									Moved in MarineEattenByDemon and PlayerChaingunguyVictim actors from Player.txt
 //	DECORATE.txt:					Remove #include ZombiemanVariations.txt and DyingGuys.txt
+//	DEFAULTWEAPON.txt:				PR#414 Attempting to fix some of these
 //	Demons.txt:						Alphabetized all actors after moving in additions from DyingGuys
 //									PR#413 Some more fixes and corrections
+//									PR#414 Attempting to fix some of these
 //	-DyingGuys.txt:					Add missing Death.Shotgun: states(with no head spawn) to dying imp actors with no head
 //									Removed DeadZombieman_Half spawn from ZombieManDyingAfterFatality
 //									Fix dying sergeants with one leg gore spawns and death frames
@@ -46,21 +53,28 @@
 //	IconofSin.txt:					Created a ZHellLaser attack with zandronum's inverted pitch for the customrailgun attack
 //	Imps.txt:						Fix HeadShotActor spawn heights
 //									Alphabetized all actors after moving in additions from DyingGuys
+//									PR#414 Attempting to fix some of these
 //	ImpShield.txt:					PR#411 added a headless variant for the thrown actor
+//	Knight.xt:						PR#414 Attempting to fix some of these
 //	Labguy.txt:						Fix dead actor states and spawns
 //									PR#410 Recorrected the decapitated one-leg sergeant
 //									Alphabetized all actors after moving in additions from DyingGuys
+//									PR#414 Attempting to fix some of these
 //	Limbs.txt:						Add missing pain state to Gib_ChainArm
+//	LostSoul.txt:					PR#414 Attempting to fix some of these
+//	Mancubus.txt:					PR#414 Attempting to fix some of these
 //	Marines.txt:					Added Damagefactor "Falling", 0.0 to friendly marines so they won't die from falling damage
 //	Melee.txt:						Change Steady state to Goto Ready3
 //									Updated all Pick states to the new meatshield code
 //	Minigun.txt:					Adjust minigun operation when spinning-down for tactical class
 //	Nazis.txt:						Touch-up Missile states and remove See2 and MissileWalkingFrontward(this isn't a word) state
 //									PR#411 Fixes and improvements
+//									PR#414 Attempting to fix some of these
 //	NaziShield.txt:					PR#411 added a headless variant for the thrown actor
 //									Add missing XDeath: states to throwed actors
 //	NukeLauncher.txt:				Removed +NOGRAVITY & added +MOVEWITHSECTOR flags to fake sprites
 //	Player.txt:						Move GoFatality check before BDDisableCamera in RollLeft/Right states
+//	Revenant.txt:					PR#414 Attempting to fix some of these
 //									Alphabetized actors and moved MarineEattenByDemon and PlayerChaingunguyVictim to Dead.txt
 //									Moved player blood actors to Blood.txt
 //									Moved ChainguyguyContinue and ComeEatMeDemon actors to Tokens.txt
@@ -70,11 +84,15 @@
 //									PR#410 Recorrected the decapitated one-leg sergeant
 //									PR#411 Added a gibbable headless berserk punched dead body variant
 //									Alphabetized actors after moving in additions from DyingGuys
+//									PR#414 Attempting to fix some of these
 //	SGuyShield.txt:					PR#411 added a headless variant for the thrown actor
 //									Add missing XDeath: states to throwed actors
 //	Spectre.txt:					Alphabetized all actors after moving in additions from DyingGuys
+//	Spiders.txt:					PR#414 Attempting to fix some of these
+//	Spiders2.txt:					PR#414 Attempting to fix some of these
 //	SNDINFO.BD.txt:					Notated-out dsbarex6 sound effect
 //	Tokens.txt:						Moved in ChainguyguyContinue and ComeEatMeDemon actors from Player.txt
+//	Volcabus.txt:					PR#414 Attempting to fix some of these
 //	WeaponSpawners.txt:				Removed +NOGRAVITY & added +MOVEWITHSECTOR flags to BasicWeaponPickup
 //	ZmanShield.txt:					PR#411 added a headless variant for the thrown actor
 //	ZombieCivilianShield.txt:		PR#411 added a headless variant for the thrown actor
@@ -84,6 +102,7 @@
 //									PR#411 Added a gibbable headless berserk punched dead body variant
 //									Alphabetized all actors after moving in additions from DyingGuys and ZombiemanVariations
 //									PR#413 Some more fixes and corrections
+//									PR#414 Attempting to fix some of these
 //	-ZombiemanVariations.txt:		Moved PistolZombie actor into Zombieman.txt and deleted file
 //
 //	Development v21.13.1

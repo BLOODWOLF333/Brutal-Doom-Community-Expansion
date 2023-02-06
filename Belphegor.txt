@@ -179,10 +179,8 @@ ACTOR Belphegor : BaronofHell 2544
 		BOS3 LKJI 8
 		Goto See
 
-    Pain.Killme:
-		TNT1 A 0
-		TNT1 A 0 HealThing(1)
-		Goto Missile
+	Death.Taunt:
+		Goto Death
 
     Death.Eat:
         TNT1 A 0 A_GiveToTarget("EatMe",1)
