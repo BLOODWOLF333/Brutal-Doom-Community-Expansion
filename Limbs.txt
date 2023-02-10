@@ -2654,6 +2654,7 @@ actor ZombiemanHead: LimbBase
 	Death.Melee:
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_JumpIfInTargetInventory("ShotgunguyHead", 1, "Death")
 		TNT1 A 0 A_GiveToTarget("ShotgunguyHead", 1)
 		Stop
 	Death.Headkick:
@@ -2797,6 +2798,7 @@ Spawn:
 	Death.Melee:
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_JumpIfInTargetInventory("ShotgunguyHead", 1, "Death")
 		TNT1 A 0 A_GiveToTarget("ShotgunguyHead", 1)
 		Stop
 
