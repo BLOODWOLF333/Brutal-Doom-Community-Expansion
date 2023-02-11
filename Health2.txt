@@ -154,7 +154,6 @@ ACTOR HealthPlus : Health Replaces HealthBonus
 	}
 }
 
-
 Actor HealthPlusNoCount : HealthPlus
 {
 	-COUNTITEM
@@ -166,6 +165,22 @@ ACTOR HealthPlusDropped : HealthPlus
 	Inventory.Amount 5
 	-COUNTITEM
 	+INVENTORY.NEVERRESPAWN
+}
+
+ACTOR Crayons : HealthPlus//Joke 1/255 chance of ever happening
+{
+	Inventory.Amount 1
+	-COUNTITEM
+	+INVENTORY.NEVERRESPAWN
+	Tag "Crayons"
+	Inventory.PickupMessage "Uh...wtf am I supposed to do with these Carl?"
+	Scale 0.75
+	States
+	{
+	Spawn:
+		CRAY A -1
+		Stop
+	}
 }
 
 // Medikit -----------------------------------------------------------------

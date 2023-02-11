@@ -284,11 +284,23 @@ ACTOR Marine_SMG: Marine_Rifle
 
 	GiveAmmo:
 		TNT1 A 0
+		TNT1 A 0 A_Jump(1,"GiveCrayons")
 		MRMP D 10 A_FaceTarget
 		TNT1 A 0 A_PlaySound("MRNGI1")
 		MRMP D 15 A_FaceTarget
 		PLA1 H 1 A_FaceTarget
 		PLA1 E 4 A_SpawnItemEx("Clip1Spawner",16,0,32,5)
+		PLA1 H 1 A_FaceTarget
+		MRMP D 6 A_FaceTarget
+		Goto Waits
+
+	GiveCrayons:
+		TNT1 A 0
+		MRMP D 10 A_FaceTarget
+		TNT1 A 0 A_PlaySound("MRNGI1")
+		MRMP D 15 A_FaceTarget
+		PLA1 H 1 A_FaceTarget
+		PLA1 E 4 A_SpawnItemEx("Crayons",16,0,32,5)
 		PLA1 H 1 A_FaceTarget
 		MRMP D 6 A_FaceTarget
 		Goto Waits
