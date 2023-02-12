@@ -1327,6 +1327,9 @@ ACTOR RedBloodFootPrintLeft: GrowingBloodPool
 		TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "WaterBloodSpot")
 		TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "WaterBloodSpot")
 		TNT1 A 0 A_JumpIfInventory("IsOverTar", 1, "WaterBloodSpot")
+		TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "Death")
+		TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "Death")
+		TNT1 A 0 A_JumpIfInventory("IsOverYava", 1, "Death")
 		TNT1 A 4
 		TNT1 A 0 A_CheckFloor("ShowUp")
 		Stop
@@ -1358,6 +1361,9 @@ Scale 0.09
 		TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "WaterBloodSpot")
 		TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "WaterBloodSpot")
 		TNT1 A 0 A_JumpIfInventory("IsOverTar", 1, "WaterBloodSpot")
+		TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "Death")
+		TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "Death")
+		TNT1 A 0 A_JumpIfInventory("IsOverYava", 1, "Death")
 		TNT1 A 4
 		TNT1 A 0 A_CheckFloor("ShowUp")
 		Stop
