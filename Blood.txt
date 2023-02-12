@@ -50,6 +50,7 @@ Actor BloodSplinter
 	States
 		{
 			 Spawn:
+			   TNT1 A 0
 			   TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 			   TNT1 A 0 A_CustomMissile ("GiantWallRedBlood", 40, 0, 0, 2, random (0, 35))
 			   TNT1 A 0 A_CustomMissile ("GiantWallRedBlood", 40, 0, 45, 2, random (0, 35))
@@ -671,6 +672,7 @@ Scale 0.7
  states
  {
   Spawn:
+	  TNT1 A 0
 	  TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 	   TNT1 A 0
 	  TNT1 A 0 A_Jump(128, 2)
@@ -706,6 +708,7 @@ actor Brutal_FlyingBloodTrail
 	states
 	{
 	  Spawn:
+		  TNT1 A 0
 		  TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		  TNT1 A 0
 		  TNT1 A 0 A_Jump(128, 2)
@@ -742,6 +745,7 @@ ACTOR Brutal_FlyingBloodFake: Brutal_FlyingBloodTrail
     States
     {
      Spawn:
+		TNT1 A 0
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		BLOD KKKKKKKKKKKK 1 A_FadeOut(0.05)
         Stop
@@ -866,6 +870,7 @@ ACTOR CeilBloodLauncher: Brutal_FLyingBlood
     States
 		{
 		 Spawn:
+			TNT1 A 0
 		    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 			TNT1 A 3
 			Stop
@@ -896,6 +901,7 @@ ACTOR CeilBloodLauncherLong: CeilBloodLauncher
     States
     {
 		 Spawn:
+			TNT1 A 0
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 			TNT1 A 12
 			Stop
@@ -1059,6 +1065,7 @@ ACTOR DripingBloodLeavesPool: BloodDripingFromCeiling
     States
     {
      Spawn:
+		TNT1 A 0
         TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
         BLUD Z 4
         loop
@@ -1161,8 +1168,8 @@ actor GrowingBloodPool: Brutal_BloodSpot
 		states
 		 {
 		 Spawn:
-		  TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		  TNT5 A 1
+		  TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		  TNT1 A 0 A_SpawnItemEx ("BootSmearerRed",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		  TNT5 A 2 A_QueueCorpse
 		  TNT5 A 1 A_SetScale(0.33, 0.33)
@@ -1205,7 +1212,7 @@ actor GrowingBloodPool: Brutal_BloodSpot
 		  Loop
 		Splash:
 			BLOD A 0
-			TNT1 A 0 A_CustomMissile ("Underblood2", 7, 0, random (0, 360), 2, random (30, 150))
+			TNT1 A 0 A_CustomMissile ("Underblood1", 7, 0, random (0, 360), 2, random (30, 150))
 			stop
 	 }
 }
@@ -1294,6 +1301,7 @@ ACTOR PlayerFlyingBlood
     States
     {
      Spawn:
+		TNT1 A 0
        NULL A 0 A_JumpIf(waterlevel > 1, "Splash")
         XDT1 ABCD 4 A_SpawnItem("Brutal_FlyingBloodTrail",0,0,0,1)
         loop
@@ -1318,6 +1326,7 @@ ACTOR RedBloodFootPrintLeft: GrowingBloodPool
 	 Spawn:
 	 Death:
 	 Crash:
+		TNT1 A 0
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckIfOverLiquid")
 		TNT1 A 4
@@ -1352,6 +1361,7 @@ Scale 0.09
 	 Spawn:
 	 Death:
 	 Crash:
+		TNT1 A 0
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckIfOverLiquid")
 		TNT1 A 4
@@ -1705,6 +1715,7 @@ ACTOR WallRedBlood
     States
     {
 		Spawn:
+			TNT1 A 0
 		   TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 			TNT1 ABCD 1
 			Stop
@@ -1727,6 +1738,7 @@ ACTOR GiantWallRedBlood: WallRedBlood
      States
 		{
 		 Spawn:
+			TNT1 A 0
 		   TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		   TNT1 ABCD 1
 		   Stop
@@ -1750,6 +1762,7 @@ ACTOR ShortWallRedBlood: WallRedBlood
      States
     {
      Spawn:
+		TNT1 A 0
        TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
         TNT1 A 3
         Stop
@@ -1771,6 +1784,7 @@ ACTOR SuperWallRedBlood: WallRedBlood
      States
 		{
 		 Spawn:
+			TNT1 A 0
 		   TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 			TNT1 ABCD 1
 			Stop

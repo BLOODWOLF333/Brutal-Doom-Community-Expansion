@@ -224,6 +224,7 @@ Decal BlueBloodSplat
     States
     {
      Spawn:
+		TNT1 A 0
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		BLOD KKKKKKKKKKKK 1 A_FadeOut(0.05)
         Stop
@@ -245,6 +246,7 @@ Speed 4
  states
  {
   Spawn:
+	TNT1 A 0
 	  TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 	  BLOD ABCDEFFFFFF 3
 	  stop
@@ -265,6 +267,7 @@ Decal BlueBloodSplat
 	states
 	{
 	  Spawn:
+		TNT1 A 0
 		  TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		  BLHT BCDEFG 1
 		  BLHT HHHHHHHHH 1 A_FadeOut(0.02)
@@ -518,6 +521,7 @@ Actor BlueBloodSplinter
 States
 	{
 		 Spawn:
+		TNT1 A 0
 		   TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		   TNT1 A 0 A_CustomMissile ("GiantWallBlueBlood", 40, 0, 0, 2, random (0, 35))
 		   TNT1 A 0 A_CustomMissile ("GiantWallBlueBlood", 40, 0, 45, 2, random (0, 35))
@@ -582,6 +586,7 @@ ACTOR BlueCeilBloodLauncherLong: BlueCeilBloodLauncher
 States
 	{
 	Spawn:
+		TNT1 A 0
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		TNT1 A 12
 		Stop
@@ -641,8 +646,8 @@ Decal BlueBloodSplat
 states
 		 {
 		 Spawn:
-		  TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		  TNT5 A 1
+		  TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		  TNT1 A 0 A_SpawnItemEx ("BootSmearerBlue",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		  TNT5 A 2 A_QueueCorpse
 		  TNT5 A 1 A_SetScale(0.33, 0.33)
@@ -702,6 +707,7 @@ ACTOR BlueBloodFootPrintLeft: BlueGrowingBloodPool
 	 Spawn:
 	 Death:
 	 Crash:
+		TNT1 A 0
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckIfOverLiquid")
 		TNT1 A 4
@@ -741,6 +747,7 @@ Scale 0.09
 	 Spawn:
 	 Death:
 	 Crash:
+		TNT1 A 0
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckIfOverLiquid")
 		TNT1 A 4
@@ -938,6 +945,7 @@ Decal BlueBloodSplat
     States
     {
      Spawn:
+		TNT1 A 0
         TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
         BLUD Z 4
         loop
@@ -1097,6 +1105,7 @@ Decal BlueBloodSmearer
     States
     {
 		Spawn:
+		TNT1 A 0
 		   TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 			TNT1 ABCD 4
 			loop
@@ -1127,6 +1136,7 @@ ACTOR ShortWallBlueBlood: WallBlueBlood
     States
     {
      Spawn:
+		TNT1 A 0
        TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
         TNT1 A 3
         Stop
@@ -1148,6 +1158,7 @@ Decal BlueBloodSuper
     States
     {
     Spawn:
+		TNT1 A 0
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Underwater")
 		BLOD AAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItem("Blue_LiquidBloodTrail")
         Stop
@@ -1187,6 +1198,7 @@ Decal BlueBloodSuper
     States
     {
     Spawn:
+		TNT1 A 0
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
         XMT1 ABCDEFGH 2 A_CustomMissile ("Blue_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
         Loop
@@ -1316,6 +1328,7 @@ Decal BlueBloodSplat
     Spawn:
 		XMT1 FFFGGH 2
 	Live:
+		TNT1 A 0
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		TNT1 A 0 A_CheckFloor("Death")
 		XMT1 ABCDEFGH 3 A_CustomMissile ("Blue_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
@@ -1343,6 +1356,7 @@ Decal BlueBloodSuper
     States
     {
     Spawn:
+		TNT1 A 0
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
         XMT2 ABCDEFGH 3 A_CustomMissile ("Blue_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
         Loop
@@ -1467,6 +1481,7 @@ Decal BlueBloodSuper
     States
     {
 	 Spawn:
+		TNT1 A 0
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		TNT1 A 0 A_CheckFloor("Death")
         XMT2 O 3
@@ -1494,6 +1509,7 @@ Decal BlueBloodSplat
     States
     {
     Spawn:
+		TNT1 A 0
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
         XDB6 AAAAAA 3 A_CustomMissile ("Blue_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
         Loop
@@ -1517,6 +1533,7 @@ Decal BlueBloodSplat
     States
     {
     Spawn:
+		TNT1 A 0
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
         XME5 A 3 A_CustomMissile ("Blue_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
         Loop
@@ -1547,6 +1564,7 @@ Decal BlueBloodSplat
     States
     {
     Spawn:
+		TNT1 A 0
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
         XME5 C 3 A_CustomMissile ("Blue_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
         Loop
@@ -1719,6 +1737,7 @@ actor MuchBloodBlue : Blood
  states
  {
   Spawn:
+		TNT1 A 0
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 
         TNT1 AAAAAAAAAAAA 0 A_CustomMissile ("Blue_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
@@ -1739,6 +1758,7 @@ actor MuchBlood2Blue : Blood
  states
  {
   Spawn:
+		TNT1 A 0
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		TNT1 A 0 A_PlaySound("misc/xdeath4")
 
@@ -1762,6 +1782,7 @@ actor MuchBlood3Blue : Blood
  states
  {
   Spawn:
+		TNT1 A 0
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		TNT1 A 0 A_PlaySound("misc/xdeath4")
 
