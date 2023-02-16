@@ -1,5 +1,3 @@
-
-
 ACTOR ExplosionSmoke
 {
     +NOBLOCKMAP
@@ -393,10 +391,10 @@ Actor NukeSmoke: HitpuffSmoke
 	States
     {
     Spawn:
-	    SMk2 AAAAAAAAAA 2 A_FadeIn(0.05)
-		SMk2 A 600
+	    SMk2 AAAAAAAA 4 A_FadeIn(0.05)
+		SMk2 A 350
 	Death:
-		SMk2 AAAAAAAAAAAAAAAAAAAAAAAAA 20 A_FadeOut(0.02)
+		SMk2 AAAAAAAAAA 14 A_FadeOut(0.05)
 		Stop
 	}
 }

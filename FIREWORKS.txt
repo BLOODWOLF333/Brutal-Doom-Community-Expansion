@@ -556,50 +556,84 @@ states
 	}
 }
 
-Actor SpawnedExplosionNuke
+Actor SpawnedExplosionNuke//ground explosions
 {
 	+NOCLIP
 	+NOGRAVITY
 	+MISSILE
 	+FORCERADIUSDMG
 	+NODAMAGETHRUST
-	Speed 2
+	Speed 30
 	Damagetype "Fire"
 	states
 	{
 	Spawn:
 	TNT1 A 0
-	TNT1 A 2 A_PlaySound("FAREXPL")
-	TNT1 AA 32 A_CustomMissile ("NuclearFlames", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 0 A_PlaySound("FAREXPL")
+	TNT1 A 14 A_CustomMissile ("NuclearFlames", 0, 0, random (0, 360), 2, random (0, 90))
 	TNT1 A 0 A_CustomMissile ("NukeSmokeBig", 0, 0, random (0, 360), 2, random (0, 90))
 	TNT1 A 0 A_Explode
-	TNT1 A 32 A_CustomMissile ("NuclearFlames", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 14 A_CustomMissile ("NuclearFlames", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 0 A_CustomMissile ("NukeSmokeBig", 0, 0, random (0, 360), 2, random (0, 90))
 	TNT1 A 0 A_Explode
-	TNT1 A 32 A_CustomMissile ("NuclearFlames", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 14 A_CustomMissile ("NuclearFlames", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 0 A_CustomMissile ("NukeSmokeBig", 0, 0, random (0, 360), 2, random (0, 90))
 	TNT1 A 0 A_Explode
-	TNT1 A 32 A_CustomMissile ("NuclearFlames", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 14 A_CustomMissile ("NuclearFlames", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 0 A_CustomMissile ("NukeSmokeBig", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 0 A_Explode
+	TNT1 A 14 A_CustomMissile ("NuclearFlames", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 0 A_CustomMissile ("NukeSmokeBig", 0, 0, random (0, 360), 2, random (0, 90))
 	TNT1 A 0 A_Explode
 	Stop
 	}
 }
 
-Actor SpawnedExplosionNuke2
+Actor SpawnedExplosionNuke2//Rising explosion
 {
 	+NOCLIP
 	+NOGRAVITY
 	+MISSILE
 	Speed 30
+	Damagetype "Fire"
 	states
 	{
 	Spawn:
 	TNT1 A 0
-	TNT1 A 2 A_PlaySound("FAREXPL")
-	TNT1 AAAA 6 A_CustomMissile ("NuclearFlames", 0, 0, random (0, 360), 2, random (0, 90))
-	TNT1 AAAA 6 A_CustomMissile ("NuclearFlamesBig", 0, 0, random (0, 360), 2, random (0, 90))
-	TNT1 A 0 A_Stop
-	TNT1 AAAAAAAAAAAAAAA 6 A_CustomMissile ("NuclearFlamesBig", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 0 A_PlaySound("FAREXPL")
+	TNT1 A 0 A_CustomMissile ("NukeSmoke", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 4 A_CustomMissile ("NuclearFlames", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 0 A_CustomMissile ("NukeSmoke", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 4 A_CustomMissile ("NuclearFlames", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 0 A_CustomMissile ("NukeSmoke", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 4 A_CustomMissile ("NuclearFlames", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 0 A_CustomMissile ("NukeSmoke", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 4 A_CustomMissile ("NuclearFlames", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 0 A_CustomMissile ("NukeSmoke", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 4 A_CustomMissile ("NuclearFlames", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 0 A_CustomMissile ("NukeSmoke", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 4 A_CustomMissile ("NuclearFlames", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 0 A_CustomMissile ("NukeSmoke", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 4 A_CustomMissile ("NuclearFlames", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 0 A_CustomMissile ("NukeSmoke", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 4 A_CustomMissile ("NuclearFlames", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 0 A_CustomMissile ("NukeSmoke", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 4 A_CustomMissile ("NuclearFlames", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 0 A_CustomMissile ("NukeSmoke", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 4 A_CustomMissile ("NuclearFlames", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 0 A_CustomMissile ("NukeSmoke", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 4 A_CustomMissile ("NuclearFlames", 0, 0, random (0, 360), 2, random (0, 90))
+	//Mushroom-top
 	TNT1 A 0 A_CustomMissile ("NukeSmokeBig", 0, 0, random (0, 360), 2, random (0, 90))
-	TNT1 AAA 6 A_CustomMissile ("NuclearFlamesBig", 0, 0, random (0, 360), 2, random (0, 20))
+	TNT1 A 14 A_CustomMissile ("NuclearFlamesBig", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 0 A_CustomMissile ("NukeSmokeBig", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 14 A_CustomMissile ("NuclearFlamesBig", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 0 A_CustomMissile ("NukeSmokeBig", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 14 A_CustomMissile ("NuclearFlamesBig", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 0 A_CustomMissile ("NukeSmokeBig", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 14 A_CustomMissile ("NuclearFlamesBig", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 0 A_CustomMissile ("NukeSmokeBig", 0, 0, random (0, 360), 2, random (0, 90))
+	TNT1 A 14 A_CustomMissile ("NuclearFlamesBig", 0, 0, random (0, 360), 2, random (0, 90))
 	Stop
 	}
 }
