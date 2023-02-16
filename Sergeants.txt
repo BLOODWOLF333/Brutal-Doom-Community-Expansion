@@ -1758,7 +1758,24 @@ ACTOR BrutalizedSergeant1
 	XDeath:
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
-        TNT1 A 0 A_CustomMissile ("SargeXDeath", 0, 0, random (0, 360), 2, random (0, 160))
+        //TNT1 A 0 A_CustomMissile ("SargeXDeath", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAAA 0 A_CustomMissile ("WaterBloodCHecker", 24, 0, random (0, 360), 2, random (30, 60))
+	    TNT1 AAAAA 0 A_CustomMissile ("SuperWallRedBlood", 40, 0, random (0, 360), 2, random (-15, 15))
+		TNT1 AAAAAAAAA 0 A_CustomMissile ("CeilBloodLauncherLong", 0, 0, random (0, 360), 2, random (50, 130))
+		TNT1 AA 0 A_CustomMissile ("XDeath1", 32, 0, random (0, 360), 2, random (10, 90))
+		TNT1 AAA 0 A_CustomMissile ("SuperGoreSpawner", 30, 0, random (0, 360), 2, random (30, 60))
+		TNT1 AAAA 0 A_CustomMissile ("XDeath2b", 15, 0, random (0, 360), 2, random (10, 90))
+		TNT1 AAAA 0 A_CustomMissile ("XDeath3b", 15, 0, random (0, 360), 2, random (10, 90))
+		TNT1 AA 0 A_CustomMissile ("XDeathSkinPiece2", 15, 0, random (0, 360), 2, random (10, 90))
+		TNT1 AA 0 A_CustomMissile ("XDeathSkinPiece1", 15, 0, random (0, 360), 2, random (10, 90))
+		TNT1 A 0 A_CustomMissile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (10, 90))
+		TNT1 A 0 A_CustomMissile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (10, 90))
+		TNT1 A 0 A_CustomMissile ("XDeathHalfShotgunguyNoArmNoHead", 32, 0, random (0, 360), 2, random (10, 90))
+		TNT1 AAAAAAA 0 A_CustomMissile ("Guts", 32, 0, random (0, 360), 2, random (60, 90))
+		TNT1 A 0 A_CustomMissile ("XDeathSargeLeg2", 32, 0, random (0, 360), 2, random (10, 90))
+		TNT1 A 0 A_CustomMissile ("GibSargeBoot", 32, 0, random (0, 360), 2, random (10, 90))
+		TNT1 A 0 A_CustomMissile ("XDeathSergeantHeadOnXDeath", 32, 0, random (0, 360), 2, random (10, 90))
+		TNT1 A 0 A_SpawnItem ("BigBloodSpot")
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 25, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
         Stop
 
@@ -1884,6 +1901,26 @@ ACTOR BrutalizedSergeant3: BrutalizedSergeant1
 		TNT1 A 0 A_CustomMissile ("GibSargeBoot", 32, 0, random (0, 360), 2, random (10, 90))
 		TNT1 A 0 A_SpawnItem ("BigBloodSpot")
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 25, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
+        Stop
+		
+	Death.Plasma: Death.Plasma2:
+        TNT1 A 0
+        TNT1 A 0 A_XScream
+        TNT1 A 0 A_NoBlocking
+		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
+        TNT1 AAAA 0 A_CustomMissile ("Brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160))
+	    TNT1 A 0 A_CustomMissile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160))
+	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, random (0, 160))
+	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, random (0, 160))
+	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, random (0, 160))
+		XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
+        TNT1 A 0 A_CustomMissile ("Brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 25, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
+		XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
+		TNT1 AAAAA 0 A_CustomMissile ("PlasmaParticleX", 48, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAA 0 A_CustomMissile ("BigPlasmaParticleX", 42, 0, random (0, 360), 2, random (0, 360))
+        TNT1 A 0
         Stop
 	}
 }
