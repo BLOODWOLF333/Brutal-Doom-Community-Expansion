@@ -91,9 +91,9 @@ ACTOR Blue_BloodSpot: Brutal_Bloodspot
 		TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "WaterBloodSpot")
 		TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "WaterBloodSpot")
 		TNT1 A 0 A_JumpIfInventory("IsOverTar", 1, "WaterBloodSpot")
-		TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "Death")
-		TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "Death")
-		TNT1 A 0 A_JumpIfInventory("IsOverYava", 1, "Death")
+		TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "Evap")
+		TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "Evap")
+		TNT1 A 0 A_JumpIfInventory("IsOverYava", 1, "Evap")
         TNT1 A 4
 		TNT1 A 0 A_SpawnItemEx ("BootSmearerBlue",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 0 A_Jump(255, "SpawnBFrameOnly", "SpawnCFrameOnly", "SpawnDFrameOnly")
@@ -146,6 +146,11 @@ ACTOR Blue_BloodSpot: Brutal_Bloodspot
 			BLOD A 0
 			TNT1 A 0 A_CustomMissile ("BlueUnderblood2", 7, 0, random (0, 360), 2, random (30, 150))
 			stop
+
+		Evap:
+			TNT1 A 0
+			TNT1 A 0 A_CustomMissile("HitpuffSmoke", 2, 0, random (0, 360), 2, random (80, 90))
+			Stop
 
 		Death:
 			TNT1 A 0
@@ -717,9 +722,9 @@ ACTOR BlueBloodFootPrintLeft: BlueGrowingBloodPool
 		TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "WaterBloodSpot")
 		TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "WaterBloodSpot")
 		TNT1 A 0 A_JumpIfInventory("IsOverTar", 1, "WaterBloodSpot")
-		TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "Death")
-		TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "Death")
-		TNT1 A 0 A_JumpIfInventory("IsOverYava", 1, "Death")
+		TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "Evap")
+		TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "Evap")
+		TNT1 A 0 A_JumpIfInventory("IsOverYava", 1, "Evap")
 		TNT1 A 4
 		TNT1 A 0 A_CheckFloor("ShowUp")
 		Stop
@@ -757,9 +762,9 @@ Scale 0.09
 		TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "WaterBloodSpot")
 		TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "WaterBloodSpot")
 		TNT1 A 0 A_JumpIfInventory("IsOverTar", 1, "WaterBloodSpot")
-		TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "Death")
-		TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "Death")
-		TNT1 A 0 A_JumpIfInventory("IsOverYava", 1, "Death")
+		TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "Evap")
+		TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "Evap")
+		TNT1 A 0 A_JumpIfInventory("IsOverYava", 1, "Evap")
 		TNT1 A 4
 		TNT1 A 0 A_CheckFloor("ShowUp")
 		Stop
@@ -1036,9 +1041,9 @@ Decal BlueBloodSplat
 		TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "WaterBloodSpot")
 		TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "WaterBloodSpot")
 		TNT1 A 0 A_JumpIfInventory("IsOverTar", 1, "WaterBloodSpot")
-		TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "Death")
-		TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "Death")
-		TNT1 A 0 A_JumpIfInventory("IsOverYava", 1, "Death")
+		TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "Evap")
+		TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "Evap")
+		TNT1 A 0 A_JumpIfInventory("IsOverYava", 1, "Evap")
 		TNT1 A 4
 		TNT1 A 0 A_SpawnItemEx ("BootSmearerBlue",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		BPDL A -1
@@ -1075,9 +1080,9 @@ states
 		TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "WaterBloodSpot")
 		TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "WaterBloodSpot")
 		TNT1 A 0 A_JumpIfInventory("IsOverTar", 1, "WaterBloodSpot")
-		TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "Death")
-		TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "Death")
-		TNT1 A 0 A_JumpIfInventory("IsOverYava", 1, "Death")
+		TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "Evap")
+		TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "Evap")
+		TNT1 A 0 A_JumpIfInventory("IsOverYava", 1, "Evap")
 		TNT1 A 4
 		TNT1 A 0 A_SpawnItemEx ("BootSmearerBlue",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		BPDL A -1
