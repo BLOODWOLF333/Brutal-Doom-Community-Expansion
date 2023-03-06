@@ -162,12 +162,9 @@ ACTOR BIG_FUCKING_GUN : BrutalWeapon
         BFGN A 0 A_Recoil(8)
 
         BFGN A 0 BRIGHT A_FireCustomMissile("Alerter",0,0)
-		BFGN A 0 A_JumpIfInventory("DMgame", 1, 4)
 		BFGN A 0 BRIGHT A_FireCustomMissile("SuperBFGBall")
 		BFGN A 0
 		Goto RecoilFire
-		TNT1 AAA 0
-		BFGN A 0 BRIGHT A_FireCustomMissile("BFGBallDM")
 
 	RecoilFire:
 		BFGN A 0
@@ -198,7 +195,6 @@ Actor SuperBFGBall : BFGBall replaces BFGBall
 	Species "Marines"
 	Height 1
 	+THRUSPECIES
-	+MTHRUSPECIES
   States
   {
  Spawn:
@@ -237,13 +233,6 @@ Actor SuperBFGBall : BFGBall replaces BFGBall
     TNT1 A 12
     Stop
   }
-}
-
-Actor BFGBallDM : SuperBFGBall
-{
-	Species "None"
-	-THRUSPECIES
-	-MTHRUSPECIES
 }
 
 Actor FriendlyBFGBAll : SuperBFGBall

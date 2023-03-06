@@ -405,9 +405,11 @@ if	(GetCvar("bd_disablenewguns") == 1) { SetActorState(0,"Vanilla"); }
 
 Script "CheckIfDM" (VOID)
 {
-	if	(GameType () == GAME_NET_DEATHMATCH) 	GiveInventory("DMGame", 1);
-	Delay(1);
-	if	(GameType () == GAME_NET_DEATHMATCH) 	SetActorState(0,"DM");
+	if	(GameType () == GAME_NET_DEATHMATCH)
+	{
+		GiveInventory("DMGame", 1);
+		SetActorProperty(0,APROP_SPECIES,"None");
+	}
 }
 
 Script "BDCheckStuff" (VOID)

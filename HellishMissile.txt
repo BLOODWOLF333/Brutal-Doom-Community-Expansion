@@ -206,17 +206,15 @@ ACTOR revenantseekermissiles2: revenantseekermissiles
 	+SCREENSEEKER
 	-GHOST
 	-THRUGHOST
-	+MTHRUSPECIES
+	+THRUSPECIES
+	+DONTHARMSPECIES
 	Damagetype Explosive
+	Species "Marines"
 }
 
 ACTOR MarineSeekerMissile : revenantseekermissiles2
 {
 	DamageType "FriendBullet"
-	Species "Marines"
-	+MTHRUSPECIES
-	+THRUSPECIES
-	+DONTHARMSPECIES
 }
 
 ACTOR revenantseekermissiles3: revenantseekermissiles2
@@ -238,10 +236,6 @@ ACTOR revenantseekermissiles3: revenantseekermissiles2
 ACTOR MarineSeekerMissile2 : revenantseekermissiles3
 {
 	DamageType "FriendBullet"
-	Species "Marines"
-	+MTHRUSPECIES
-	+THRUSPECIES
-	+DONTHARMSPECIES
 	-SCREENSEEKER
 	-SEEKERMISSILE
 	States

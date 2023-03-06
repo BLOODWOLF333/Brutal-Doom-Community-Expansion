@@ -323,8 +323,6 @@ ACTOR Rocket_Launcher : BrutalWeapon
 		RLNG A 0 A_ALertMonsters
 		RLNG A 0 A_JumpIfInventory("Zoomed",1,"ZoomedFire")
 		RLNG A 1
-
-		RLNG A 0 A_JumpIfInventory("DMgame",1,"DM")
 		RLNG A 0 A_SpawnItemEx("PlayerMuzzle2",32,0,28)
         RLNG A 0 A_PlaySound ("DSRFIRE")
 		RLNG A 0 BRIGHT A_FireCustomMissile("Alerter",0,0)
@@ -333,13 +331,6 @@ ACTOR Rocket_Launcher : BrutalWeapon
 		RLNG A 0 A_FireCustomMissile("Rocket2", 0, 1, 0, 0)
 		RIFF A 0 A_FireCustomMissile("DistantFireSoundRocket", random(-1,1), 0, 0, -12, 0, random(-1,1))
 		Goto RecoilAnimation
-
-	DM:
-		RLNG A 0 A_SpawnItemEx("PlayerMuzzle2",32,0,28)
-        RLNG A 0 A_PlaySound ("DSRFIRE")
-		RLNF A 1 BRIGHT A_FireCustomMissile("RocketDM", 0, 1, 0, 0)
-		RIFF A 0 A_FireCustomMissile("DistantFireSoundRocket", random(-1,1), 0, 0, -12, 0, random(-1,1))
-		TNT1 A 0 A_ZoomFactor(0.98)
 
 	RecoilAnimation:
 		RLNG A 0 A_Takeinventory("RocketRounds",1)
@@ -359,7 +350,6 @@ ACTOR Rocket_Launcher : BrutalWeapon
 
 	ZoomedFire:
 		SNIP A 1
-		RLNG A 0 A_JumpIfInventory("DMgame",1,"ZoomedFireDM")
 		RLNG A 0 A_SpawnItemEx("PlayerMuzzle2",32,0,28)
         RLNG A 0 A_PlaySound ("DSRFIRE")
 		RLNG A 0 BRIGHT A_FireCustomMissile("Alerter",0,0)
@@ -367,12 +357,6 @@ ACTOR Rocket_Launcher : BrutalWeapon
 		TNT1 A 0 A_ZoomFactor(2.99)
 		RLNG A 0 A_FireCustomMissile("Rocket2", 0, 1, 0, 0)
 		Goto ZoomedRecoil
-
-	ZoomedFireDM:
-		RLNG A 0 A_SpawnItemEx("PlayerMuzzle2",32,0,28)
-        RLNG A 0 A_PlaySound ("DSRFIRE")
-		SNIP A 1 BRIGHT A_FireCustomMissile("RocketDM", 0, 1, 0, 0)
-		TNT1 A 0 A_ZoomFactor(2.99)
 
 	ZoomedRecoil:
 		RLNG A 0 A_Takeinventory("RocketRounds",1)

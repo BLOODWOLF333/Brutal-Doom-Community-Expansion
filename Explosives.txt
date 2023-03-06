@@ -16,7 +16,6 @@ ACTOR Rocket2
     +NOGRAVITY
     +EXTREMEDEATH
 	+THRUSPECIES
-	+MTHRUSPECIES
 	+SPECTRAL
 	SeeSound "Rocket/Launch"
 	DeathSound "Explosion"
@@ -186,15 +185,6 @@ Death:
 }
 }
 
-actor RocketDM: Rocket2
-{
-speed 50
-Damage (random (250, 250))
-Species "none"
--THRUSPECIES
--MTHRUSPECIES
-}
-
 actor JuggernautRocket: Rocket2
 {
 	Speed 20
@@ -317,7 +307,6 @@ ACTOR GrenadeMissile
 	+BOUNCEONWALLS
 	+BOUNCEONCEILINGS
 	+EXPLODEONWATER
-	+MTHRUSPECIES
 	+THRUSPECIES
 	-NOTELEPORT
 	-NOGRAVITY
@@ -450,7 +439,7 @@ ACTOR FriendlyGrenadeExplosion
 	Damagetype FriendBullet
 	Obituary "%o was exploded by %k rocket."
 	Species "Marines"
-	+MTHRUSPECIES
+	+THRUSPECIES
 	States
 	{
 		Spawn:
@@ -771,7 +760,6 @@ Gravity 0.2
 Damage (random (20000, 20000))
 Scale 1.0
 Damagetype "Extreme"
-Species "None"
 	States
 	{
 	Spawn:
@@ -846,6 +834,7 @@ ACTOR TankShell
 	+DEHEXPLOSION
 	+MISSILE
 	-NOGRAVITY
+	+THRUSPECIES
 	damagetype "TankShell"
 	Gravity 0.2
 	SeeSound "weapons/rocklf"
@@ -853,6 +842,7 @@ ACTOR TankShell
 	Obituary "$OB_MPROCKET"
 	Decal "BigScorch"
 	Damagetype Explosive
+	Species "Marines"
 	States
 	{
 	Spawn:
@@ -891,7 +881,6 @@ Actor EnemyTankShell: TankShell
 {
 Speed 60
 Damage (random (500, 500))
-+MTHRUSPECIES
 Gravity 0.2
 Species "EnemyTank"
 DamageType ExplosiveImpact

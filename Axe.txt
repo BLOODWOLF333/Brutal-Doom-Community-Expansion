@@ -742,7 +742,7 @@ ACTOR AxeAttack: FastProjectile
 	+FORCERADIUSDMG
 	+BLOODSPLATTER
 	+FORCEPAIN
-	+MTHRUSPECIES
+	+THRUSPECIES
 	RenderStyle Add
 	Alpha 0.6
 	Scale 0.15
@@ -751,6 +751,7 @@ ACTOR AxeAttack: FastProjectile
 	SeeSound "none"
 	DeathSound "none"
 	decal "SawVertical"
+	Species "Marines"
 	States
 	{
 	Spawn:
@@ -945,13 +946,14 @@ ACTOR AxePuffs: HitPuff
 	+NOEXTREMEDEATH
 	+FORCEXYBILLBOARD
 	+BLOODSPLATTER
+	+MTHRUSPECIES
 	states
 	{
 		Spawn:
 		Death:
 		XDeath:
 		Melee:
-			TNT1 A 20
+			TNT1 A 1
 			Stop
 	}
 }
@@ -973,12 +975,12 @@ ACTOR ThrowedAxe
 	-NOGRAVITY
 	+NOEXTREMEDEATH
 	+SKYEXPLODE
-	+THRUSPECIES
 	+BLOODSPLATTER
-	Species "Marines"
+	+THRUSPECIES
 	damagetype Cut
 	Gravity 1.0
 	scale 0.5
+	Species "Marines"
 	States
 	{
 	Spawn:
@@ -998,27 +1000,4 @@ ACTOR ThrowedAxeStrong: ThrowedAxe
 {
 	Damage (random(200, 200))
 	Speed 48
-}
-
-ACTOR BrutalAxeOnWall: CustomInventory
-{
- scale 0.5
- +NOGRAVITY
- +FLOAT
-    States
-    {
-	 Spawn:
-		AXET A 1
-		AXET A -1
-		Stop
-	Pickup:
-	    TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
-	PickupNormal:
-		TNT1 A 0 A_GiveInventory("BrutalAxe", 1)
-		Stop
-	Purist:
-	    TNT1 A 0 A_GiveInventory("Clip2", 10)
-		Stop
-    }
 }

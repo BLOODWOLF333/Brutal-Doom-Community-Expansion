@@ -44,7 +44,7 @@ ACTOR Arachnotron1: Arachnotron replaces Arachnotron
 	Death.KillMe:
 	Death.Taunt:
 		Goto Death
-		
+
 	Spawn:
 		BSPI A 0
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckStuff")//Check if new monsters are disabled
@@ -317,7 +317,7 @@ Actor EnemyPlasmaBall : PlasmaBall75 Replaces PlasmaBall2
 {
 	Damage (random(26,26))
 	Speed 30
-	-MTHRUSPECIES
+	-THRUSPECIES
 	Species "Arachnotron"
 	States
 	{

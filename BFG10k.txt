@@ -112,21 +112,7 @@ Actor BFG10k : BrutalWeapon
     BG2G K 1 BRIGHT A_FireCustomMissile("GreenFlareSpawn", 0, 0, 0, 0)
 	BG2G A 0 A_PlaySound("10KFIRE", 1)
 	TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
-	BG2G A 0 A_JumpIfInventory("DMgame", 1, "DMHold")
     BG2G L 1 BRIGHT A_FireCustomMissile("BFG10K_Ball",frandom(-1.2,1.2),1,0,0,0,frandom(-1.4,1.4))
-	TNT1 A 0 A_Recoil(4)
-	TNT1 A 0 A_ZoomFactor(0.97)
-    BG2G M 1 BRIGHT A_FireCustomMissile("GreenFlareSpawn", 0, 0, 0, 0)
-	TNT1 A 0 A_ZoomFactor(1.0)
-	RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
-	RIFG A 0 A_SetPitch(pitch-6.0)
-	RIFG A 0 A_SetPitch(pitch-6.0)
-	BG2G FGHIJ 1 BRIGHT A_SetPitch(pitch+1.2)
-    BG2G N 0 A_ReFire
-    BG2G O 30 A_PlaySound("10KSTOP", 4)
-    Goto Ready
-DMHold:
-	BG2G L 1 BRIGHT A_FireCustomMissile("BFG10K_BallDM",frandom(-1.2,1.2),1,0,0,0,frandom(-1.4,1.4))
 	TNT1 A 0 A_Recoil(4)
 	TNT1 A 0 A_ZoomFactor(0.97)
     BG2G M 1 BRIGHT A_FireCustomMissile("GreenFlareSpawn", 0, 0, 0, 0)
@@ -223,11 +209,10 @@ ACTOR BFG10K_Ball: FastProjectile
 	Projectile
 	+RANDOMIZE
 	+SPECTRAL
-	//+SHOOTABLE
 	-NOBLOCKMAP
 	+NOBLOOD
 	+NORADIUSDMG
-	+MTHRUSPECIES
+	+THRUSPECIES
 	+FORCEXYBILLBOARD
 	Scale 1.0
 	renderstyle ADD
@@ -236,6 +221,7 @@ ACTOR BFG10K_Ball: FastProjectile
 	DeathSound "weapons/plasmax"
     SeeSound "None"
 	Obituary "$OB_MPPLASMARIFLE"
+	Species "Marines"
 	States
 	{
 
@@ -293,14 +279,6 @@ ACTOR MarineBFG10K_Ball : BFG10K_Ball
 		TNT1 AAAA 2 A_CustomMissile ("BigNeoSmoke", 2, 0, random (0, 360), 2, random (0, 360))
 		Stop
 	}
-}
-
-Actor BFG10K_BallDM : BFG10K_Ball
-{
-
-	Species "None"
-	-THRUSPECIES
-	-MTHRUSPECIES
 }
 
 ACTOR GreenExplosionFire

@@ -194,23 +194,7 @@ ACTOR Plasma_Gun : BrutalWeapon
 		PLSN A 0 A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, 0, 0)
 		PLSN A 0 A_TakeInventory("DoublePlasmaAmmo", 1)
 		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
-		PLSN A 0 A_JumpIfInventory("DMgame", 1, "FireDM")
 		PLST A 1 BRIGHT A_FireCustomMissile("Plasma_Ball", frandom(-0.6,0.6), 1, 0, 0, 0, frandom(-0.7,0.7))
-		PLSN A 0 A_Takeinventory("PlasmaAmmo",1)
-		TNT1 A 0 A_ZoomFactor(0.99)
-		RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
-		RIFG A 0 A_SetPitch(-0.2 + pitch)
-		PLST B 1 BRIGHT
-		TNT1 A 0 A_ZoomFactor(1.0)
-		PLST C 1 BRIGHT
-		TNT1 A 0 A_JumpIfInventory("IsTacticalClass", 1, 2)//Tactical mode skips a frame, fires faster
-		PLST D 1 BRIGHT
-		TNT1 A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
-		Goto Ready
-
-	FireDM:
-		PLSN A 0
-		PLST A 1 BRIGHT A_FireCustomMissile("PlasmaBallDM", frandom(-0.6,0.6), 1, 0, 0, 0, frandom(-0.7,0.7))
 		PLSN A 0 A_Takeinventory("PlasmaAmmo",1)
 		TNT1 A 0 A_ZoomFactor(0.99)
 		RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
@@ -305,7 +289,6 @@ AltHold:
 	TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 	PLST B 2 BRIGHT A_Recoil(2)
 	TNT1 A 0 A_ZoomFactor(1.0)
-	TNT1 A 0 A_JumpIfInventory("DMGame", 1, "LetFlyDM")
 	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
 	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
 	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
@@ -323,32 +306,6 @@ AltHold:
         PLSN BCD 1
 		PLSN EEEEEEEEEEEE 3 A_FireCustomMissile("SmokeSpawner",0,0,10,5)
 		PLSN DCB 1
-        PLSN A 0 A_PlaySound("BEPBEP")
-		PLSN A 0 A_PlaySound("BEPBEP", 6)
-		Goto Ready
-
-
-	LetFlyDM:
-	PLSN A 0 A_FireCustomMissile("PlasmaBallDM", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBallDM", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBallDM", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBallDM", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBallDM", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBallDM", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBallDM", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBallDM", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBallDM", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBallDM", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
-		PLSN A 0 A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, 0, 0)
-		PLSN A 0 A_Takeinventory("DoublePlasmaAmmo",10)
-        PLSN KLKJ 1 BRIGHT
-		PLSN A 0 A_SetPitch(pitch - 1.8)
-        PLSN BCD 1
-		PLSN EEEEEEEEEEEE 3 A_FireCustomMissile("SmokeSpawner",0,0,10,5)
-		PLSN DCB 1
-        PLSN A 0 A_JumpIfInventory("PlasmaAmmo",1,2)
-        Goto Reload
-        TNT1 AAAA 0
         PLSN A 0 A_PlaySound("BEPBEP")
 		PLSN A 0 A_PlaySound("BEPBEP", 6)
 		Goto Ready
@@ -554,7 +511,7 @@ ACTOR Plasma_Ball: FastProjectile
 	Decal "SmallerScorch"
 	Projectile
 	+RANDOMIZE
-	+MTHRUSPECIES
+	+THRUSPECIES
 	+FORCEXYBILLBOARD
 	Species "Marines"
 	Scale 1.0
@@ -601,14 +558,6 @@ ACTOR PlasmaBall99: Plasma_Ball
 {
 	Damage (random(60, 60))
 	SeeSound "PLSM9"
-}
-
-ACTOR PlasmaBallDM: Plasma_Ball
-{
-	Speed 50
-	-MTHRUSPECIES
-	Species "None"
-	Damage (random(40, 40))
 }
 
 ACTOR PlasmaAmmo : Ammo

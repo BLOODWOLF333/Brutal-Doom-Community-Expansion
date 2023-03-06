@@ -205,7 +205,8 @@ ACTOR PlayerFireBall: BigFireBall
 {
 Damage (random (100, 100))
 Speed 50
-+MTHRUSPECIES
++THRUSPECIES
++DONTHARMSPECIES
 Damagetype "Fire"
 Species "Marines"
 States
@@ -263,7 +264,6 @@ States
 ACTOR MarineFireBall : PlayerFireBall
 {
 	DamageType "FriendBullet"
-	+DONTHARMSPECIES
 }
 
 ACTOR FakeFlameCannonSprite: BasicWeaponPickup
