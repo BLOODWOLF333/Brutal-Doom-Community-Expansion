@@ -603,13 +603,11 @@ ACTOR RailGun : BrutalWeapon
 	}
 }
 
-
 ACTOR RailgunProjectile
 {
-
 	Radius 2
 	Height 2
-	Speed 80
+	Speed 60
 	Damage (random(400, 400))
     DamageType Railgun
 	Decal "SmallerScorch"
@@ -621,10 +619,8 @@ ACTOR RailgunProjectile
 	+BounceOnWalls
 	+BounceOnFloors
 	+BounceOnCeilings
-	+USEBOUNCESTATE
 	Species "Marines"
 	Scale 1.0
-	var int user_railangle;
 	renderstyle ADD
 	alpha 0.90
 	Scale 0.10
@@ -632,13 +628,12 @@ ACTOR RailgunProjectile
     SeeSound "None"
 	Obituary "$OB_MPPLASMARIFLE"
 	BounceFactor 1.0
-	BounceCOunt 3
+	BounceCount 2
 	States
 	{
 	Spawn:
 		RAIL A 0
 		RAIL A 0 A_FaceTarget
-		RAIL A 0 A_SetUserVar("user_railangle", angle)
 		RAIL A 0 A_SpawnItem("WhiteShockwave")
 		TNT1 C 1 BRIGHT A_SpawnItem("WhiteShockwave")
 
@@ -648,19 +643,6 @@ ACTOR RailgunProjectile
 		RAIL A 0 A_CheckFloor("Death")
 		RAIL A 0 A_CustomMissile ("OldschoolRocketSmokeTrail2", 2, 0, random (160, 210), 2, random (-30, 30))
 		Loop
-
-	Bounce.Wall:
-		RAIL A 0
-		RAIL A 0 A_SetAngle(user_railangle)
-		RAIL A 0 BRIGHT A_CustomMissile("RailgunPenetrator1", 0, 0, 180, 2, momz)
-		Goto Death
-
-	Bounce.Floor:
-	Bounce.Ceiling:
-		TNT1 A 1
-		RAIL A 0 A_SetAngle(user_railangle)
-		RAIL A 0 BRIGHT A_CustomMissile("RailgunPenetrator1b", 0, 0, 180, 2, -momz)
-		Goto Death
 
 	Death:
 	Melee:
@@ -681,37 +663,6 @@ ACTOR RailgunProjectile
 		Stop
 		Stop
 	}
-}
-
-aCTOR RailgunPenetrator1
-{
-	PROJECTILE
-	+Missile
-	+NOCLIP
-	Radius 2
-	Height 2
-	Speed 40
-	Damagetype Railgun
-	States
-	{
-		Spawn:
-			RAIL A 0
-			RAIL A 0 A_CheckFloor("XDeath")
-			RAIL A 0 A_Checkceiling("XDeath")
-			TNT1 A 0 A_Explode(100, 100)
-			TNT1 A 1
-			TNT1 A 0 A_Explode(100, 100)
-			RAIL A 0 BRIGHT A_CustomMissile("RailgunPenetrator", 0, 0, 0, 2, momz)
-			Stop
-		XDeath:
-			RAIL A 0
-			Stop
-	}
-}
-
-aCTOR rAILGUNpENETRATOR1B: rAILGUNpENETRATOR1
-{
-	Speed 40
 }
 
 actor RailgunTracerTrail
@@ -739,55 +690,54 @@ Actor RailgunPenetrationParticle
 States
 	{
 		Spawn:
-
 			TNT1 A 15
 			TNT1 AAAA 0 A_CustomMissile ("OldschoolRocketSmokeTrailDarker", 2, 0, random (160, 210), 2, random (-30, 30))
 			Stop
-}}
+	}
+}
 
 Actor RailgunTrailEffectMissile: FastProjectile
 {
-damage (random(0, 0))
-Decal "Scorch"
-DamageType Railgun
-+NODAMAGETHRUST
-Radius 1
-Height 1
-Scale 0.2
-Speed 999
--SKYEXPLODE
-+ripper
-
-MissileType "RailgunTrailEffect"
-States
-{
-	Spawn:
+	damage (random(0, 0))
+	Decal "Scorch"
+	DamageType Railgun
+	+NODAMAGETHRUST
+	Radius 1
+	Height 1
+	Scale 0.2
+	Speed 999
+	-SKYEXPLODE
+	+ripper
+	MissileType "RailgunTrailEffect"
+	States
+	{
+		Spawn:
 		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItem("RailgunTrailEffect")
 		Stop
 
-Death:
+		Death:
 		TNT1 A 1
 		RAIL A 0 A_SpawnItemEx ("ExplosionSplashSpawner", 0, 0, 0)
-        RAIL A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-	    RAIL A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		RAIL A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		RAIL A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 AA 0 A_CustomMissile ("SparkXNoModel", 2, 0, random (0, 360), 2, random (0, 360))
 		RAIL A 0 A_SpawnItem("RailgunFlameTrails")
 
 		EXPL A 0 Radius_Quake (3, 8, 0, 15, 0)
-	    RAIL A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        RAIL A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        TNT1 AAA 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
+		RAIL A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		RAIL A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 AAA 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
 		TNT1 AA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (40, 90))
 		TNT1 AA 0 A_CustomMissile ("BDExplosionparticles3", 10, 0, random (0, 360), 2, random (40, 90))
 		TNT1 AAA 0 A_CustomMissile ("ExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
-        RAIL A 0 A_SpawnItemEx ("RocketExplosion",0,0,13,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		RAIL A 0 A_SpawnItemEx ("RocketExplosion",0,0,13,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 2
 		RAIL A 0 A_SpawnItemEx ("LiquidExplosionEffectSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		RAIL A 0 A_PlaySound("FAREXPL", 3)
 		TNT1 A 15
 		RAIL A 0 A_PlaySound("distantexp", 5)
 		Stop
-}
+	}
 }
 
 Actor RailgunTrailEffect
@@ -798,66 +748,56 @@ Actor RailgunTrailEffect
 +NOGRAVITY
 States
 	{
-		Spawn:
-			//TNT1 AAAA 0 A_CustomMissile ("RailgunTrailParticle", 2, 0, random (0, 360), 2, random (0, 360))
-			RAIL A 0
-			RAIL A 0 A_SpawnItem("RailgunFlameTrailsBlue")
-			TNT1 A 12
-			TNT1 AAAA 0 A_CustomMissile ("OldschoolRocketSmokeTrailDarker", 2, 0, random (160, 210), 2, random (-30, 30))
-			Stop
-}}
+	Spawn:
+		RAIL A 0
+		RAIL A 0 A_SpawnItem("RailgunFlameTrailsBlue")
+		TNT1 A 12
+		TNT1 AAAA 0 A_CustomMissile ("OldschoolRocketSmokeTrailDarker", 2, 0, random (160, 210), 2, random (-30, 30))
+		Stop
+	}
+}
 
 Actor RailgunPenetrator: MarineTracer
 {
-damage (random(50, 60))
-//Decal "BulletDecalNew1"
-Decal "Scorch"
-DamageType Railgun
-Radius 4
-Height 4
-Scale 0.2
-+MISSILE
-+RIPPER
-Speed 80
--SKYEXPLODE
-MissileType "RailgunPenetrationParticle"
-States
-{
+	damage (random(50, 60))
+	Decal "Scorch"
+	DamageType Railgun
+	Radius 4
+	Height 4
+	Scale 0.2
+	+MISSILE
+	+RIPPER
+	Speed 80
+	-SKYEXPLODE
+	MissileType "RailgunPenetrationParticle"
+	States
+	{
 	Spawn:
 		RAIL A 0
 		RAIL A 0 A_CustomMissile("SpawnBulletDecalBackwards", 0, 0, 0)
 		TNT1 A 10
+		Stop
 
-		sTOP
-
-Death:
-	RAIL A 0
-    TNT1 A 1
-	RAIL A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-	    RAIL A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-	    RAIL A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
-        TNT1 AAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 360))
+	Death:
+	XDeath:
+		RAIL A 0
+		TNT1 A 1
+		RAIL A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		RAIL A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		RAIL A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleVeryFast", 0, 0, random (0, 360), 2, random (0, 360))
-        EXPL AAAAA 0 A_CustomMissile ("ExplosionSmokeFast22", 0, 0, random (0, 360), 2, random (0, 360))
+		EXPL AAAAA 0 A_CustomMissile ("ExplosionSmokeFast22", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 A 0 A_Explode(50, 100)
-	RAIL A 0 A_SpawnItemEx ("DetectFloorCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-	RAIL A 0 A_SpawnItemEx ("DetectCeilCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-	RAIL A 0 A_CustomMissile ("BluePlasmaFire", 0, 0, random (0, 360), 2, random (0, 360))
-	TNT1 AAAAA 0 A_CustomMissile ("BluePlasmaParticle", 0, 0, random (0, 360), 2, random (0, 360))
-	TNT1 ABCDE 2 BRIGHT A_SpawnItem("BlueFlare" ,0)
-    TNT2 AAAAAAAAA 9 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
-	Stop
-
-DeathSpecial:
-
-    Stop
-XDEath:
-RAIL A 0
-//RAIL A 0 A_Explode(2, 5)
-TNT1 A 1
-Stop
-}
+		RAIL A 0 A_SpawnItemEx ("DetectFloorCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		RAIL A 0 A_SpawnItemEx ("DetectCeilCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		RAIL A 0 A_CustomMissile ("BluePlasmaFire", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAAA 0 A_CustomMissile ("BluePlasmaParticle", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 ABCDE 2 BRIGHT A_SpawnItem("BlueFlare" ,0)
+		TNT2 AAAAAAAAA 9 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+		Stop
+	}
 }
 
 ACTOR RailgunAmmo : Ammo

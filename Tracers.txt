@@ -15,27 +15,17 @@ Actor Tracer: FastProjectile
 	alpha 0.9
 	scale .15
 	Damagetype "Weak"
-		states
-			{
+	states
+		{
 		Spawn:
 			TRAC A 1 BRIGHT
 			Loop
 		Death:
-			TNT1 A 0
-			TNT1 A 1
-			//TNT1 A 0 A_JumpIfInTargetInventory("IsTacticalClass", 1, "Tactical")
-			tnt1 a 2
-			Stop
-
 		XDeath:
 			TNT1 A 0
+			TNT1 A 1
 			Stop
-
-		Tactical:
-			TNT1 A 0
-			TNT1 A 0 A_Explode(8, 50)
-			Stop
-			}
+		}
 }
 
 Actor DecorativeTracer: Tracer
