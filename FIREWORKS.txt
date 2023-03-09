@@ -17,7 +17,6 @@ ACTOR ExplosiveBarrel1 Replaces ExplosiveBarrel
 	Radius 10
 	Height 42
     Mass 200
-	//MONSTER this breaks so many doom2 megawads that force pistol start on the next map exits with barrels inside a closet with a bossbrain
 	+SOLID
 	+SHOOTABLE
 	+NOBLOOD
@@ -658,8 +657,6 @@ states
 
 ACTOR VanillaExplosiveBarrel: ExplosiveBarrel1
 {
-	-ISMONSTER
-	-COUNTKILL
 	-FRIENDLY
     -PUSHABLE
 	-SLIDESONWALLS
