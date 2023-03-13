@@ -1235,10 +1235,38 @@ ACTOR ClassicRocketLauncher : ClassicWeapon
 	}
 }
 
-ACTOR ClassicRocket: Rocket Replaces Rocket
+ACTOR VanillaRocket Replaces Rocket//for vanilla a_cyberattack
 {
 	Game Doom
 	SpawnID 127
+	Radius 11
+	Height 8
+	Speed 20
+	Damage 20
+	DamageType Explosive
+	Projectile
+	+RANDOMIZE
+	+DEHEXPLOSION
+	+ROCKETTRAIL
+	SeeSound "weapons/rocklf"
+	DeathSound "weapons/rocklx"
+	Obituary "$OB_MPROCKET"
+	States
+	{
+	Spawn:
+		MISL E 1 Bright
+		Loop
+	Death:
+		MISL B 8 Bright A_Explode
+		MISL C 6 Bright
+		MISL D 4 Bright
+		Stop
+	}
+}
+
+ACTOR ClassicRocket: Rocket
+{
+	Game Doom
 	Radius 11
 	Height 8
 	Speed 20
@@ -1341,7 +1369,7 @@ ACTOR ClassicPlasmaRifle : ClassicWeapon
 	}
 }
 
-ACTOR ClassicPlasmaBall : Plasmaball Replaces Plasmaball
+ACTOR ClassicPlasmaBall : Plasmaball
 {
 	Game Doom
 	SpawnID 51
@@ -1443,7 +1471,7 @@ ACTOR VanillaBFG9000 : ClassicWeapon
 	}
 }
 
-ACTOR ClassicBFGBall : BFGBall Replaces BFGBall
+ACTOR ClassicBFGBall : BFGBall
 {
 	Game Doom
 	SpawnID 128
