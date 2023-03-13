@@ -1235,7 +1235,7 @@ ACTOR ClassicRocketLauncher : ClassicWeapon
 	}
 }
 
-ACTOR ClassicRocket
+ACTOR ClassicRocket: Rocket Replaces Rocket
 {
 	Game Doom
 	SpawnID 127
@@ -1248,7 +1248,6 @@ ACTOR ClassicRocket
 	Projectile
 	+RANDOMIZE
 	+DEHEXPLOSION
-	+EXPLODEONDEATH
 	+THRUSPECIES
 	SeeSound "weapons/rocklf"
 	DeathSound "Explosion"
@@ -1342,7 +1341,7 @@ ACTOR ClassicPlasmaRifle : ClassicWeapon
 	}
 }
 
-ACTOR ClassicPlasmaBall
+ACTOR ClassicPlasmaBall : Plasmaball Replaces Plasmaball
 {
 	Game Doom
 	SpawnID 51
@@ -1444,7 +1443,7 @@ ACTOR VanillaBFG9000 : ClassicWeapon
 	}
 }
 
-ACTOR ClassicBFGBall
+ACTOR ClassicBFGBall : BFGBall Replaces BFGBall
 {
 	Game Doom
 	SpawnID 128
