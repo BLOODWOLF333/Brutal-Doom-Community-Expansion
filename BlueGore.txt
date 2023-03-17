@@ -96,15 +96,9 @@ ACTOR Blue_BloodSpot: Brutal_Bloodspot
 		TNT1 A 0 A_JumpIfInventory("IsOverYava", 1, "Evap")
         TNT1 A 4
 		TNT1 A 0 A_SpawnItemEx ("BootSmearerBlue",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 0 A_Jump(255, "SpawnBFrameOnly", "SpawnCFrameOnly", "SpawnDFrameOnly")
+		TNT1 A 0 A_Jump(255, "SpawnAFrameOnly", "SpawnBFrameOnly", "SpawnCFrameOnly", "SpawnDFrameOnly")
 		SpawnAFrameOnly:
 			BPDL A 800
-			TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
-			TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Death")
-			Loop
-
-		  SpawnBFrameOnly:
-			BPDL B 800
 			TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 			TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Death")
 			Loop
@@ -112,6 +106,12 @@ ACTOR Blue_BloodSpot: Brutal_Bloodspot
 		  FadeA:
 			BPDL AAAA 1 A_FadeOut(0.05)
 			Stop
+
+		  SpawnBFrameOnly:
+			BPDL B 800
+			TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+			TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Death")
+			Loop
 
 		  FadeB:
 			BPDL BBBB 1 A_FadeOut(0.05)
@@ -123,15 +123,15 @@ ACTOR Blue_BloodSpot: Brutal_Bloodspot
 			TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Death")
 			Loop
 
+		  FadeC:
+			BPDL CCCC 1 A_FadeOut(0.05)
+			Stop
+
 		  SpawnDFrameOnly:
 			BPDL D 800
 			TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 			TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Death")
 			Loop
-
-		  FadeC:
-			BPDL CCCC 1 A_FadeOut(0.05)
-			Stop
 
 		  FadeD:
 			BPDL DDDD 1 A_FadeOut(0.05)
@@ -412,20 +412,6 @@ States
 		TNT1 A 0
 		TNT1 A 0 A_PlaySound("blooddrop2")
 		XDT1 EFGHIJKL 2
-		TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckIfOverLiquid")
-		TNT1 A 4
-		TNT1 A 0 A_JumpIfInventory("IsOverBlood", 1, "IsOverLiquid")
-		TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "IsOverLiquid")
-		TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "IsOverLiquid")
-		TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "IsOverLiquid")
-		TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "IsOverLiquid")
-		TNT1 A 0 A_JumpIfInventory("IsOverTar", 1, "IsOverLiquid")
-        TNT1 A 4
-        Stop
-
-	IsOverLiquid:
-		TNT1 A 0
-		TNT1 A 4 A_SpawnItem ("BlueWaterBloodSpot", 5)
 		Stop
 	}
 }
@@ -447,20 +433,6 @@ States
 		TNT1 A 0
 		TNT1 A 0 A_PlaySound("blooddrop2")
 		XDT1 EFGHIJKL 2
-		TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckIfOverLiquid")
-		TNT1 A 4
-		TNT1 A 0 A_JumpIfInventory("IsOverBlood", 1, "IsOverLiquid")
-		TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "IsOverLiquid")
-		TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "IsOverLiquid")
-		TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "IsOverLiquid")
-		TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "IsOverLiquid")
-		TNT1 A 0 A_JumpIfInventory("IsOverTar", 1, "IsOverLiquid")
-        TNT1 A 4
-        Stop
-
-	IsOverLiquid:
-		TNT1 A 0
-		TNT1 A 4 A_SpawnItem ("BlueWaterBloodSpot", 5)
 		Stop
     }
 }
@@ -960,23 +932,9 @@ Decal BlueBloodSplat
 			stop
      Death:
 	    TNT1 A 0
+		TNT1 A 0 A_SpawnItem("BlueMediumBloodSpot")
 		TNT1 A 0 A_PlaySound("blooddrop2")
 		XDT1 EFGHIJKL 2
-        TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckIfOverLiquid")
-		TNT1 A 4
-		TNT1 A 0 A_JumpIfInventory("IsOverBlood", 1, "IsOverLiquid")
-		TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "IsOverLiquid")
-		TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "IsOverLiquid")
-		TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "IsOverLiquid")
-		TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "IsOverLiquid")
-		TNT1 A 0 A_JumpIfInventory("IsOverTar", 1, "IsOverLiquid")
-        TNT1 A 4
-		TNT1 A 0 A_SpawnItem("BlueMediumBloodSpot")
-        Stop
-
-	IsOverLiquid:
-		TNT1 A 0
-		TNT1 A 4 A_SpawnItem ("BlueWaterBloodSpot", 5)
 		Stop
     }
 }
@@ -990,23 +948,9 @@ States
 {
      Death:
 	    TNT1 A 0
+		TNT1 A 0 A_SpawnItem("BlueMinuscleBloodSpot")
 		TNT1 A 0 A_PlaySound("blooddrop2")
         XDT1 EFGHIJKL 2
-        TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckIfOverLiquid")
-		TNT1 A 4
-		TNT1 A 0 A_JumpIfInventory("IsOverBlood", 1, "IsOverLiquid")
-		TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "IsOverLiquid")
-		TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "IsOverLiquid")
-		TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "IsOverLiquid")
-		TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "IsOverLiquid")
-		TNT1 A 0 A_JumpIfInventory("IsOverTar", 1, "IsOverLiquid")
-        TNT1 A 4
-		TNT1 A 0 A_SpawnItem("BlueMinuscleBloodSpot")
-        Stop
-
-	IsOverLiquid:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItem ("BlueWaterBloodSpot", 5)
 		Stop
     }
 }
