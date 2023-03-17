@@ -284,19 +284,22 @@ ACTOR Purist : Doomer
 
 actor ChaseCam2
 {
-  height 0
-  radius 0
-  +NOGRAVITY
-  -SOLID
-  +NOBLOCKMAP
-  +NOCLIP
-  states
-  {
-  Spawn:
-    NULL A -1
-    stop
-  }
+	+NOGRAVITY
+	-SOLID
+	+NOBLOCKMAP
+	+NOCLIP
+	+THRUACTORS
+	+FRIENDLY
+	states
+	{
+		Spawn:
+		NULL A -1
+		stop
+	}
 }
+
+actor ChaseCam3 : ChaseCam2//idk what the point of this is
+{}
 
 ACTOR FootStep
 {

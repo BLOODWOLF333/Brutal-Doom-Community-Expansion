@@ -19,7 +19,7 @@ bool camera_mode2[8];		//Variable for turning the camera on or off.
 #define VIEW_HEIGHTXMECH	200.0	//The approximate height of the player's view
 #define MAX_RXMECH		300	//Maximum radius (or distance from the player)
 
-	
+
 Script "BDStartCamera" (VOID)
 {
 	camera_mode[PlayerNumber ()] = ON;
@@ -30,9 +30,9 @@ Script "BDStartCamera" (VOID)
 Script "InitializeChasecam" (int p_num)
 {
 	int r = MAX_R;
-	
+
 	while (camera_mode[p_num] == ON)
-	{	
+	{
 		int a = GetActorAngle (0);
 		int p = GetActorPitch (0);
 		int x = GetActorX (0);
@@ -42,15 +42,15 @@ Script "InitializeChasecam" (int p_num)
 		int momy = GetActorVelY (0);
 		int z = GetActorZ (0) + VIEW_HEIGHT;
 		int xyr = r * cos (p) >> 16;
-		
+
 		if (!ThingCountName ("ChaseCam2", C_TID+p_num))
 		{
-			while (!Spawn ("ChaseCam2", x-cos(a)*xyr, y-sin(a)*xyr, z+sin(p)*r, C_TID+p_num, a >> 8) && r > 0)
+			while (!SpawnForced ("ChaseCam2", x-cos(a)*xyr, y-sin(a)*xyr, z+sin(p)*r, C_TID+p_num, a >> 8) && r > 0)
 			{
 				r -= ADJUST_R;
 				xyr = cos (p) * r >> 16;
 			}
-			
+
 			if (ThingCountName ("ChaseCam2", C_TID + p_num))
 				ChangeCamera (C_TID + p_num, 0, 0);
 			else
@@ -71,14 +71,14 @@ Script "InitializeChasecam" (int p_num)
 				r -= ADJUST_R;
 				xyr = cos (p) * r >> 16;
 			}
-			
+
 			SetActorAngle (C_TID + p_num, a);
 			SetActorPitch (C_TID + p_num, p);
-			
-			if (r < MAX_R) 
+
+			if (r < MAX_R)
                                 r += ADJUST_R;
 		}
-		
+
 		delay (1);
 	}
 }
@@ -101,36 +101,36 @@ Script "BDDisableCameraDisconnect" (int p_num) DISCONNECT
 }
 
 
-	
+
 Script "BDActivateCameraBig" (VOID)
 {
 	camera_mode2[PlayerNumber ()] = ON;
 	ACS_NamedExecuteAlways ("BDBigCamera", 0, PlayerNumber ());
-	
+
 }
 
 
 Script "BDBigCamera" (int p_num)
 {
 	int r = MAX_RX;
-	
+
 	while (camera_mode2[p_num] == ON)
-	{	
+	{
 		int a = GetActorAngle (0);
 		int p = GetActorPitch (0);
 		int x = GetActorX (0);
 		int y = GetActorY (0);
 		int z = GetActorZ (0) + VIEW_HEIGHTX;
 		int xyr = r * cos (p) >> 16;
-		
+
 		if (!ThingCountName ("chasecam3", C_TIDX+p_num))
 		{
-			while (!Spawn ("chasecam3", x-cos(a)*xyr, y-sin(a)*xyr, z+sin(p)*r, C_TIDX+p_num, a >> 8) && r > 0)
+			while (!SpawnForced ("chasecam3", x-cos(a)*xyr, y-sin(a)*xyr, z+sin(p)*r, C_TIDX+p_num, a >> 8) && r > 0)
 			{
 				r -= ADJUST_R;
 				xyr = cos (p) * r >> 16;
 			}
-			
+
 			if (ThingCountName ("chasecam3", C_TIDX + p_num))
 				ChangeCamera (C_TIDX + p_num, 0, 0);
 			else
@@ -151,14 +151,14 @@ Script "BDBigCamera" (int p_num)
 				r -= ADJUST_R;
 				xyr = cos (p) * r >> 16;
 			}
-			
+
 			SetActorAngle (C_TIDX + p_num, a);
 			SetActorPitch (C_TIDX + p_num, p);
-			
-			if (r < MAX_RX) 
+
+			if (r < MAX_RX)
                                 r += ADJUST_R;
 		}
-		
+
 		delay (1);
 	}
 }
