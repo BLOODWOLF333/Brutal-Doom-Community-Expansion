@@ -124,19 +124,19 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 	Ready3:
 		TNT1 A 0 A_SetCrosshair(41)
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("HasBarrel",1,"PickBarrel")
 		TNT1 A 0 A_JumpIfInventory("ShotgunguyHead",1,"ReadyShotgunguyHead")
 		TNT1 A 0 A_JumpIfInventory("HasCacoEye",1,"ReadyCacoEye")
 		TNT1 A 0 A_JumpIfInventory("HasImpFatality",1,"ReadyImpFatality")
 		TNT1 A 0 A_JumpIfInventory("HasHearthFatality",1,"ReadyHearthFatality")
         TNT1 A 0 A_JumpIfInventory("LostSoulFatality",1,"ReadySoul")
-		TNT1 A 0 A_JumpIfInventory("HasBarrel",1,"PickBarrel")
         TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
-		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
-		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
 		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
-		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		PONG A 1 A_WeaponReady(WRF_ALLOWRELOAD)
 		TNT1 A 0 A_JumpIfInventory("StartDualWield",1,"CheckGrab")
 		TNT1 A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
@@ -243,7 +243,6 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
         TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("ShotgunguyHead",1,"ShotgunguyHeadFire")
 		TNT1 A 0 A_JumpIfInventory("HasImpFatality",1,"ImpFatalityFire")
-		TNT1 A 0 A_JumpIfInventory("HasCacoEye",1,"CacoeyeFire")
 		TNT1 A 0 A_jumpifinventory("LostSoulFatality",1,"LSFire")
 		TNT1 A 0 A_JumpIfInventory("HasBarrel",1,"FireBarrel")
 		TNT1 A 0 A_JumpIfInventory("GrabbedAZombieman",1,"ThrowZombieman")
@@ -459,6 +458,7 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 		TNT1 A 0 A_JumpIfInventory("GrabbedAEvilMarine",1,"ShieldEvilMarine")
 		TNT1 A 0 A_JumpIfInventory("GrabbedANazi",1,"ShieldNazi")
 		TNT1 A 0 A_JumpIfInventory("GrabbedAImp",1,"ShieldImp")
+		TNT1 A 0 A_JumpIfInventory("HasCacoEye",1,"CacoeyeFire")
 		TNT1 A 0 A_jumpifinventory("LostSoulFatality",1,"LSFire")
 		TNT1 A 0 A_JumpIfInventory("HasBarrel",1,"AltFireBarrel")
 		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
@@ -737,6 +737,12 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
         TNT1 A 0 A_TakeInventory("ShotgunguyHead",1)
 		Goto Ready
 
+	DropShotgunGuyHead:
+		PTG1 CDEFG 1
+		TNT1 A 0 A_SpawnItemEX("SergeantHead")
+		TNT1 A 0 A_TakeInventory("ShotgunguyHead",1)
+		Goto PickBarrel
+
 	CacoEyeFire:
 		PTG2 BCDEFG 1
         TNT1 A 0 A_PlaySound("skeleton/swing")
@@ -745,6 +751,12 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
         PTG2 H 1 A_FireCustomMissile("ThrownCacodemonEyeBall", 0, 0, 0, 0)
         PTG2 IJLMN 1
 		Goto Ready
+
+	DropCacoEye:
+		PTG2 BCD 1
+		TNT1 A 0 A_FireCustomMissile("CacodemonEyeball")
+		TNT1 A 0 A_TakeInventory("HasCacoEye",1)
+		Goto PickBarrel
 
 	ImpFatalityFire:
 		PTG3 A 1
@@ -827,6 +839,9 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 
 	PickBarrel:
 		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("ShotgunguyHead",1,"DropShotgunGuyHead")//drop the head
+		TNT1 A 0 A_JumpIfInventory("HasCacoEye",1,"DropCacoEye")//drop the eye
+
 		MARN A 0 ACS_NamedExecuteAlways("BDSlowSpeed", 0, 0, 0, 0)//Makes player slower.
         THRG C 1 offset(-12,48)
 		THRG C 1 offset(-9,42)
