@@ -385,7 +385,7 @@ ACTOR Rocket_Launcher : BrutalWeapon
 		RIFG A 0 A_SetCrosshair(0)
         RLNG A 0 A_JumpIfInventory("RocketRounds",6,"Ready")
         RLNG A 0 A_JumpIfInventory("AmmoRocket",1,1)
-        Goto ReadyNoAmmo
+        Goto Ready
         TNT1 AAAA 0
 
 		RLNG A 0 A_JumpIfInventory("RLUnloaded",1,"PutMag")
