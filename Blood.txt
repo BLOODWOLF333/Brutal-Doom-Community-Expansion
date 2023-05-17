@@ -395,11 +395,11 @@ ACTOR BloodDripingFromCeiling: Brutal_FlyingBlood
 	{
 	Spawn:
 		TNT1 A 0
-	Live:
 		TNT1 A 0 A_Jump(230, "NoSpawn")
+	Live:
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		BLUD ZZZZZZZZZZZZZZZZZZZZZZZZZ 20 A_ChangeVelocity(0,0,-1)
-		loop
+		Stop
 	Death:
 		TNT1 A 0
 		TNT1 A 0 A_PlaySound("blooddrop2")
@@ -418,11 +418,11 @@ ACTOR BloodDripingFromCeilingBig: BloodDripingFromCeiling
     {
 	Spawn:
 		TNT1 A 0
-	Live:
 		TNT1 A 0 A_Jump(160, "NoSpawn")
+	Live:
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		BLUD ZZZZZZZZZZZZZZZZZZZZZZZZZ 20 A_ChangeVelocity(0,0,-1)
-		loop
+		Stop
 	Death:
 		TNT1 A 0
 		TNT1 A 0 A_PlaySound("blooddrop2")
