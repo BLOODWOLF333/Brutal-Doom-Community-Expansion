@@ -329,38 +329,37 @@ ACTOR Brutal_FlyingBlood
    +FORCEXYBILLBOARD
    +MOVEWITHSECTOR
    +DONTSPLASH
-    States
+	States
     {
-     Spawn:
+		Spawn:
 			TNT1 A 0
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 			TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Live")
-	 Spawn1:
+		Spawn1:
 			TNT1 A 0
 			TNT1 A 0 A_SetScale(-0.6, 0.6)
 			Goto live
 
-	Spawn2:
+		Spawn2:
 			TNT1 A 0
 			TNT1 A 0 A_SetScale(-0.7, -0.7)
 			Goto live
 
-	Spawn3:
+		Spawn3:
 			TNT1 A 0
 			TNT1 A 0 A_SetScale(0.6, -0.6)
 			Goto live
 
-	 Live:
+		Live:
 			BSPR ABCDEFGH 2
 			BSPR I 100 A_JumpIf(waterlevel > 1, "Splash")
 			Stop
 
-	Splash:
+		Splash:
 			BLOD A 0
 			TNT1 A 0 A_CustomMissile ("Underblood2", 7, 0, random (0, 360), 2, random (30, 150))
 			stop
-
-     Death:
+		Death:
 			TNT1 A 0
 			TNT1 A 0 A_PlaySound("blooddrop2")
 			TNT1 A 0 A_CheckFloor("DeathFloor")
@@ -371,7 +370,7 @@ ACTOR Brutal_FlyingBlood
 			TNT1 A 0
 			TNT1 A 0 A_SpawnItemEx ("Brutal_BloodSpot",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION |  SXF_TRANSFERTRANSLATION,0)
 			TNT1 A 0 A_PlaySound("blooddrop2")
-		    XDT1 EFGHIJKL 2
+			XDT1 EFGHIJKL 2
 			Stop
 
 		NoSpawn:
@@ -399,8 +398,7 @@ ACTOR BloodDripingFromCeiling: Brutal_FlyingBlood
 		TNT1 A 0 A_Jump(230, "NoSpawn")
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		BLUD Z 500
-		loop
-
+		Loop
 	Death:
 		TNT1 A 0
 		TNT1 A 0 A_PlaySound("blooddrop2")
@@ -422,7 +420,7 @@ ACTOR BloodDripingFromCeilingBig: BloodDripingFromCeiling
 		TNT1 A 0 A_Jump(160, "NoSpawn")
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		BLUD Z 500
-	loop
+		Loop
 	Death:
 		TNT1 A 0
 		TNT1 A 0 A_PlaySound("blooddrop2")
@@ -1036,27 +1034,26 @@ Actor DripingBlood: BloodDripingFromCeiling {Alpha 0.9 Scale 1.0}
 //This is the first drip spawned by the drip spawners, which leaves a small blood pool
 ACTOR DripingBloodLeavesPool: BloodDripingFromCeiling
 {
-+FORCEYBILLBOARD
-
- scale 0.3
-    States
-    {
-     Spawn:
-		TNT1 A 0
-        TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-        BLUD Z 4
-        loop
-	Splash:
-		BLOD A 0
-		TNT1 A 0 A_CustomMissile ("Underblood2", 7, 0, random (0, 360), 2, random (30, 150))
-		stop
-     Death:
-	    TNT1 A 0
-        TNT1 A 0 A_SpawnItem("MediumBloodSpot")
-		TNT1 A 0 A_PlaySound("blooddrop2")
-		XDT1 EFGHIJKL 2
-        Stop
-    }
+	+FORCEYBILLBOARD
+	scale 0.3
+	States
+	{
+		Spawn:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+			BLUD Z 4
+			Loop
+		Splash:
+			BLOD A 0
+			TNT1 A 0 A_CustomMissile ("Underblood2", 7, 0, random (0, 360), 2, random (30, 150))
+			stop
+		Death:
+			TNT1 A 0
+			TNT1 A 0 A_SpawnItem("MediumBloodSpot")
+			TNT1 A 0 A_PlaySound("blooddrop2")
+			XDT1 EFGHIJKL 2
+			Stop
+	}
 }
 
 //Just like above, but leaves a smaller pool
