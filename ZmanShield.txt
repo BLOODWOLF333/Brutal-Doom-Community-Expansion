@@ -101,8 +101,8 @@ ACTOR ZMANShield : Rifle
 
 ACTOR ThrowedZman
 {
-	Radius 16
-	Height 16
+	Radius 20
+	Height 48
 	Speed 30
 	Damage 5
 	+MISSILE
@@ -114,8 +114,6 @@ ACTOR ThrowedZman
 	+SHOOTABLE
 	+NOEXTREMEDEATH
 	+THRUGHOST
-	+THRUSPECIES
-	Species "Marines"
 	Health 40
 	Gravity 1.0
 	DamageType Kick
@@ -186,8 +184,8 @@ ACTOR ThrowedZombieManRicochet: ThrowedZMan
     +BOUNCEONWALLS
 	+THRUGHOST
 	+BOUNCEONACTORS
-	Radius 12
-	Height 14
+	Radius 20
+	Height 48
 	WallBounceFactor 0.6
 	Speed 10
 	States
@@ -210,8 +208,8 @@ ACTOR ThrowedZombieManRicochet: ThrowedZMan
 
 ACTOR ThrowedZmanNoHead
 {
-	Radius 16
-	Height 16
+	Radius 20
+	Height 48
 	Speed 30
 	Damage 5
 	+MISSILE
@@ -223,8 +221,6 @@ ACTOR ThrowedZmanNoHead
 	+SHOOTABLE
 	+NOEXTREMEDEATH
 	+THRUGHOST
-	+THRUSPECIES
-	Species "Marines"
 	Health 40
 	Gravity 1.0
 	DamageType Kick
@@ -291,8 +287,8 @@ ACTOR ThrowedZombieManNoHeadRicochet: ThrowedZManNoHead
     +BOUNCEONWALLS
 	+THRUGHOST
 	+BOUNCEONACTORS
-	Radius 12
-	Height 14
+	Radius 20
+	Height 48
 	WallBounceFactor 0.6
 	Speed 10
 	States
@@ -316,10 +312,7 @@ ACTOR ThrowedZombieManNoHeadRicochet: ThrowedZManNoHead
 ACTOR ThrowedZombieMan2: ThrowedZMan
 {
     +NOGRAVITY
-	-THRUSPECIES
-	Species "none"
 }
-
 
 ACTOR ThrowedSergeantPiece: ThrowedZombieMan2
 {
@@ -337,14 +330,11 @@ ACTOR ThrowedSergeantPiece: ThrowedZombieMan2
 	}
 }
 
-
-
 ACTOR ExtremePunchedZMan: ThrowedZMan
 {
-	Radius 10
-	Height 14
+	Radius 20
+	Height 48
 	Speed 30
-	+THRUGHOST
 	States
 	{
 	Spawn:

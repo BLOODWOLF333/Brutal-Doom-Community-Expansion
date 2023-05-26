@@ -99,9 +99,6 @@ ACTOR EvilMarineShield : Rifle
 ACTOR ThrowedEvilMarine: ThrowedZman
 {
 Translation "112:127=[64,64,64]:[0,0,0]"
-Species "None"
--THRUSPECIES
--MTHRUSPECIES
 	States
 	{
 	Spawn:
@@ -165,8 +162,6 @@ ACTOR ThrowedEvilMarineRicochet: ThrowedEvilMarine
     +BOUNCEONWALLS
 	+THRUGHOST
 	+BOUNCEONACTORS
-	Radius 12
-	Height 14
 	WallBounceFactor 0.6
 	Speed 10
 	States
@@ -189,8 +184,6 @@ ACTOR ThrowedEvilMarineRicochet: ThrowedEvilMarine
 
 ACTOR ExtremePunchedEvilMarine: ThrowedEvilMarine
 {
-	Radius 12
-	Height 14
 	Speed 30
 	+THRUGHOST
 	States
