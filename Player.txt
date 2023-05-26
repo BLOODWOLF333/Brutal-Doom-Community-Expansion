@@ -145,6 +145,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 
 		MARN BBB 1 A_JumpIf (velz != 0, "IsJumpin")
 		MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 
 		MARN B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		MARN A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
@@ -234,6 +235,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		PLA1 DDD 1 A_JumpIf (velz != 0, "FISTIsJumpin")
+		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		PLA1 B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 
@@ -304,6 +306,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MAR3 DDD 1 A_JumpIf (velz != 0, "ShotgunIsJumpin")
+		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MAR3 B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 
@@ -373,6 +376,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MAR4 DDD 1 A_JumpIf (velz != 0, "MinigunIsJumpin")
+		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 
@@ -442,6 +446,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MSSG DDD 1 A_JumpIf (velz != 0, "SSGIsJumpin")
+		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 
@@ -511,6 +516,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MAR5 DDD 1 A_JumpIf (velz != 0, "RocketLauncherIsJumpin")
+		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 
@@ -580,6 +586,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MAR6 DDD 1 A_JumpIf (velz != 0, "PLasmagunIsJumpin")
+		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 
@@ -649,6 +656,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MRRG DDD 1 A_JumpIf (velz != 0, "RailgunIsJumpin")
+		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 
@@ -718,6 +726,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MAR7 DDD 1 A_JumpIf (velz != 0, "BFG9kIsJumpin")
+		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 
@@ -787,6 +796,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		M10K DDD 1 A_JumpIf (velz != 0, "BFG10kIsJumpin")
+		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 
@@ -856,6 +866,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MRGL DDD 1 A_JumpIf (velz != 0, "GrenadeLauncherIsJumpin")
+		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 
@@ -925,6 +936,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MMFC DDD 1 A_JumpIf (velz != 0, "FlamerIsJumpin")
+		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 
@@ -994,6 +1006,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MHML DDD 1 A_JumpIf (velz != 0, "RevLauncherIsJumpin")
+		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 
@@ -1063,6 +1076,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MRMP DDD 1 A_JumpIf (velz != 0, "SubMGIsJumpin")
+		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 
@@ -1132,6 +1146,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MAR1 DDD 1 A_JumpIf (velz != 0, "ChainsawIsJumpin")
+		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 
@@ -1177,6 +1192,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0
 		MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		MAR2 AB 3 A_JumpIfInventory("Kicking", 1, "Kick")
+		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		MARN D 0 A_JumpIf (velz !=0, "IsJumpin")
 		MARN A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
         MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
@@ -1395,6 +1411,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
         NULL A 0 A_JumpIfInventory("Kicking", 1, "Kick")
         NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
+		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		NULL A 0 A_JumpIfInventory("HasBarrel", 1, "BarrelMove")
 		Goto See
 
