@@ -137,7 +137,6 @@ ACTOR Juggernaut : TheSpiderMastermind 2545
 		BS1B A 2 A_FaceTarget
 		TNT1 A 0 A_CustomMissile("JuggernautRocket", 121, 79, random(-2,2), CMF_OFFSETPITCH, random(-1,1))
 		TNT1 A 0 A_CustomMissile("DistantFireSoundRocket", 106, 0, 0, 1, 0)
-		TNT1 A 0 Radius_Quake(4, 3, 0, 15, 0)
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
 		BS1B A 2 A_FaceTarget
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
@@ -153,7 +152,6 @@ ACTOR Juggernaut : TheSpiderMastermind 2545
 		BS1B A 2 A_FaceTarget
 		TNT1 A 0 A_CustomMissile("JuggernautRocket", 121, -79, random(-2,2), CMF_OFFSETPITCH, random(-1,1))
 		TNT1 A 0 A_CustomMissile("DistantFireSoundRocket", 106, 0, 0, 1, 0)
-		TNT1 A 0 Radius_Quake(4, 3, 0, 15, 0)
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
 		BS1B A 2 A_FaceTarget
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
@@ -172,7 +170,6 @@ ACTOR Juggernaut : TheSpiderMastermind 2545
 		BS1B A 2 A_FaceTarget
 		TNT1 A 0 A_CustomMissile("JuggernautRocket", 106, 79, random(-2,2), CMF_OFFSETPITCH, random(-1,1))
 		TNT1 A 0 A_CustomMissile("DistantFireSoundRocket", 106, 0, 0, 1, 0)
-		TNT1 A 0 Radius_Quake(4, 3, 0, 15, 0)
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
 		BS1B A 2 A_FaceTarget
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
@@ -188,7 +185,6 @@ ACTOR Juggernaut : TheSpiderMastermind 2545
 		BS1B A 2 A_FaceTarget
 		TNT1 A 0 A_CustomMissile("JuggernautRocket", 106, -79, random(-2,2), CMF_OFFSETPITCH, random(-1,1))
 		TNT1 A 0 A_CustomMissile("DistantFireSoundRocket", 106, 0, 0, 1, 0)
-		TNT1 A 0 Radius_Quake(4, 3, 0, 15, 0)
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
 		BS1B A 2 A_FaceTarget
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
@@ -207,7 +203,6 @@ ACTOR Juggernaut : TheSpiderMastermind 2545
 		BS1B A 2 A_FaceTarget
 		TNT1 A 0 A_CustomMissile("JuggernautRocket", 91, 79, random(-2,2), CMF_OFFSETPITCH, random(-1,1))
 		TNT1 A 0 A_CustomMissile("DistantFireSoundRocket", 106, 0, 0, 1, 0)
-		TNT1 A 0 Radius_Quake(4, 3, 0, 15, 0)
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
 		BS1B A 2 A_FaceTarget
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
@@ -223,7 +218,6 @@ ACTOR Juggernaut : TheSpiderMastermind 2545
 		BS1B A 2 A_FaceTarget
 		TNT1 A 0 A_CustomMissile("JuggernautRocket", 91, -79, random(-2,2), CMF_OFFSETPITCH, random(-1,1))
 		TNT1 A 0 A_CustomMissile("DistantFireSoundRocket", 106, 0, 0, 1, 0)
-		TNT1 A 0 Radius_Quake(4, 3, 0, 15, 0)
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
 		BS1B A 2 A_FaceTarget
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
@@ -268,7 +262,7 @@ ACTOR Juggernaut : TheSpiderMastermind 2545
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_BossDeath
 		TNT1 A 0 A_SpawnItem("KillTreads")
-		EXPL A 0 Radius_Quake (6, 100, 0, 22, 0)
+		EXPL A 0 Radius_Quake (4, 35, 0, 10, 0)
         TNT1 AAAA 0 A_CustomMissile ("ExplosionSpawner", 90, 0, random (0, 360), 2, random (0, 180))
         TNT1 AAAAAA 0 A_CustomMissile ("ExplosionSpawner", 90, 0, random (0, 180), 2, random (0, 180))
         TNT1 AAAA 0 A_CustomMissile ("UltraGoreSPawner", 90, 0, random (0, 360), 2, random (0, 180))

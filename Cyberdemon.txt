@@ -197,7 +197,7 @@ ACTOR TheCyberdemon: Cyberdemon Replaces Cyberdemon
 		CYBR J 4
 		TNT1 AAAAAA 0 A_CustomMissile ("HighExplosiveFlames2", random (40, 90), 0, random (0, 360), 2, random (0, 360))
 		CYBR J 4
-		EXPL A 0 Radius_Quake (6, 50, 0, 8, 0)
+		EXPL A 0 Radius_Quake (4, 35, 0, 10, 0)
 		TNT1 A 0 A_CustomMissile("ExplosionSplashSpawner")
         TNT1 AA 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	    TNT1 A 0 A_CustomMissile ("XDeathCyberdemonHead", 91, 0, random (0, 360), 2, random (0, 180))
@@ -226,7 +226,7 @@ ACTOR TheCyberdemon: Cyberdemon Replaces Cyberdemon
 		TNT1 AA 0 A_CustomMissile ("MeatDeath", 91, 0, random (0, 360), 2, random (50, 90))
 		CYBB AAAA 6 A_SpawnItem("MuchBlood3", 0, 120)
 		CYBB ABCABCB 8 A_SpawnItem("MuchBlood", 0, 120)
-		EXPL A 0 Radius_Quake (6, 50, 0, 8, 0)
+		EXPL A 0 Radius_Quake (4, 35, 0, 10, 0)
         TNT1 AAAA 0 A_CustomMissile ("ExplosionSpawner", 64, 0, random (0, 360), 2, random (0, 180))
         TNT1 AAAAAA 0 A_CustomMissile ("ExplosionSpawner", 64, 0, random (0, 360), 2, random (0, 180))
         TNT1 AAAA 0 A_CustomMissile ("UltraGoreSPawner", 64, 0, random (0, 360), 2, random (0, 180))
@@ -245,7 +245,7 @@ ACTOR TheCyberdemon: Cyberdemon Replaces Cyberdemon
 		TNT1 AAAAAAAAA 0 A_CustomMissile ("XDeath1", 91, 0, random (0, 360), 2, random (0, 180))
 		CYBB AAAA 0 A_SpawnItem("MuchBlood3", 0, 120)
 		CYBB ABCABCB 8 A_SpawnItem("MuchBlood", 0, 120)
-		EXPL A 0 Radius_Quake (6, 50, 0, 8, 0)
+		EXPL A 0 Radius_Quake (4, 35, 0, 10, 0)
         TNT1 AAAA 0 A_CustomMissile ("ExplosionSpawner", 64, 0, random (0, 360), 2, random (0, 180))
         TNT1 AAAAAA 0 A_CustomMissile ("ExplosionSpawner", 64, 0, random (0, 360), 2, random (0, 180))
         TNT1 AAAA 0 A_CustomMissile ("UltraGoreSPawner", 64, 0, random (0, 360), 2, random (0, 180))
@@ -374,8 +374,7 @@ ACTOR CyberStomp
 		TNT1 A 0
         TNT1 A 0 A_PlaySound("CLAP", 1)
 		TNT1 A 0 A_CustomMissile("ExplosionSplashSpawner")
-		TNT1 A 0 Radius_Quake(4, 25, 0, 2, 0)
-		TNT1 A 0 Radius_Quake(2, 25, 0, 4, 0)
+		TNT1 A 0 Radius_Quake(2, 35, 0, 5, 0)
 		TNT1 A 0 A_Explode
 		TNT1 A 1
 		Stop
@@ -395,8 +394,7 @@ ACTOR CyberStompBig: Cyberstomp
 		TNT1 A 0
         TNT1 A 0 A_PlaySound("CLAP", 1)
 		TNT1 A 0 A_CustomMissile("ExplosionSplashSpawner")
-		TNT1 A 0 Radius_Quake(4, 25, 0, 4, 0)
-		TNT1 A 0 Radius_Quake(2, 25, 0, 8, 0)
+		TNT1 A 0 Radius_Quake(4, 35, 0, 10, 0)
 		TNT1 A 0 A_Explode(256,256)
 		TNT1 A 1
 		Stop

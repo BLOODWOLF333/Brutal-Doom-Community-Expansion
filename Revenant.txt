@@ -236,7 +236,7 @@ ACTOR Revenant1: Revenant Replaces Revenant
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
 		TNT1 A 0 A_PlaySound("BIGSCRE")
 		REFP A 8
-		EXPL A 0 Radius_Quake (2, 24, 0, 15, 0)
+		EXPL A 0 Radius_Quake (2, 35, 0, 5, 0)
 		TNT1 AAA 0 A_CustomMissile ("Brains1", 50, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAAAA 0 A_CustomMissile ("XDeath1", 50, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_CustomMissile ("XDeath2", 50, 0, random (0, 360), 2, random (0, 160))
@@ -608,7 +608,7 @@ ACTOR revenantseekermissiles Replaces RevenantTracer
 	Death:
 		TNT1 A 0
 		BFE1 A 0 Bright A_Explode(7, 7, 1)
-	    EXPL A 0 Radius_Quake (6, 54, 0, 15, 0)
+	    EXPL A 0 Radius_Quake (2, 7, 0, 2, 0)
 		TNT1 A 0 A_SpawnItem("WhiteShockwaveSmall")
 		EXPL A 0 A_CustomMissile ("ExplosionSmoke", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
@@ -783,7 +783,7 @@ ACTOR RevenantAttack: BaronBall
 		TNT1 A 0
 		TNT1 A 0 A_PlaySound("skeleton/melee", 6)
 		EXPL AAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 A 0 Radius_Quake (2, 6, 0, 5, 0)//(intensity, duration, damrad, tremrad, tid)
+		TNT1 A 0 Radius_Quake (1, 7, 0, 1, 0)//(intensity, duration, damrad, tremrad, tid)
 		TNT1 A 4
 		Stop
 	}
