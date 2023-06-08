@@ -162,9 +162,7 @@ ACTOR TheArchvile: Archvile Replaces Archvile
 
 	Death:
 		TNT1 A 0
-		TNT1 A 0 A_Jump(64, "Death.ARm")
-
-	Death.Simple:
+		TNT1 A 0 A_Jump(64, "Death.Arm")
 		TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
 		DIAB RSTUVWX 5 A_SpawnItem ("MuchBlood", 40)
@@ -175,18 +173,19 @@ ACTOR TheArchvile: Archvile Replaces Archvile
 	Death.Arm:
 	Death.Minigun:
 	Death.Shotgun:
+		TNT1 A 0
 		TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
 		TNT1 AA 0 A_CustomMissile ("XDeath1", 52, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("XDeathArchvileArm", 52, 0, random (0, 360), 2, random (40, 120))
-		TNT1 AAA 0 A_SpawnItem ("MuchBlood", 50)
-		VID2 HHIJ 5
+		VID2 HHIJ 5 A_SpawnItem ("MuchBlood", 50)
 		TNT1 A 0 A_SpawnItem("DyingArchvileNoArm")
 		Stop
 
 	Death.Desintegrate:
 		TNT1 A 0
 		TNT1 A 0 A_Scream
+		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("BarrelExplosionSmokeColumn")
 		TNT1 AA 0 A_SpawnItemEx("TinyBurningPiece", random (-15, 15), random (-15, 15))
 		TNT1 AAA 0 A_SpawnItemEx("TinyBurningPiece2", random (-35, 35), random (-35, 35))
@@ -195,6 +194,7 @@ ACTOR TheArchvile: Archvile Replaces Archvile
 	Death.Cut:
 		TNT1 A 0
 		TNT1 A 0 A_Scream
+		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_CustomMissile ("XDeathArchvileArm", 52, 0, random (0, 360), 2, random (60, 120))
 		TNT1 A 0 A_CustomMissile ("XDeathArchvile", 42, 0, random (0, 360), 2, random (60, 120))
 		Goto RippedOpen
