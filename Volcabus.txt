@@ -796,10 +796,15 @@ ACTOR VolcabusBall
 	Spawn:
 	    TNT1 A 0
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)//Check Effects
+		S4BA AB 4 BRIGHT
+		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "SpawnCheap")
 
 	Spawn1:
-		TNT1 A 0
-		S4BA AB 2 BRIGHT A_SpawnItem("RedFlare2")
+		S4BA AB 1 BRIGHT A_SpawnItem("RedFlareMedium")
+		Loop
+
+	SpawnCheap:
+		S4BA AB 4 BRIGHT
 		Loop
 
 	Death:

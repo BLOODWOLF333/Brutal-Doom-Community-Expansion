@@ -214,17 +214,18 @@ States
 	Spawn:
 	    TNT1 A 0
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)//Check Effects
+		BLHD AB 4 BRIGHT
+		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "SpawnCheap")
 
 	Spawn1:
-		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "SpawnCheap")
-		TNT1 A 0 A_SpawnItem ("FireballExplosionFlamesSmall")
-		BLHD AB 1 BRIGHT A_SpawnItem("RedFlare2")
+		BLHD A 4 BRIGHT A_SpawnItem ("CoolandNewFlameTrailsMedium")
+		TNT1 A 0 A_CustomMissile ("RocketSmokeTrail52", 2, 0, random (70, 110), 2, random (0, 360))
+		BLHD B 4 BRIGHT A_SpawnItem ("CoolandNewFlameTrailsMedium")
 		TNT1 A 0 A_CustomMissile ("RocketSmokeTrail52", 2, 0, random (70, 110), 2, random (0, 360))
 		Loop
 
 	SpawnCheap:
-		TNT1 A 0 A_SpawnItem ("FireballExplosionFlamesSmall")
-		BLHD AB 1 BRIGHT A_SpawnItem("RedFlare2")
+		BLHD AB 4 BRIGHT
 		Loop
 
 	Death:
@@ -247,16 +248,11 @@ States
 		DeathCheap:
 		XDeath:
 		TNT1 A 0
-		TNT1 A 0 A_JumpIfCloser(200, "StopInAir")
 		TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
 		TNT1 A 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (40, 90))
 		TNT1 A 0 A_CustomMissile ("BDExplosionparticles3", 10, 0, random (0, 360), 2, random (40, 90))
 		EXPL A 0 A_CustomMissile ("FlamethrowerFireParticles", 6, 0, random (0, 360), 2, random (0, 90))
-		Stop
-
-		StopInAIr:
-		EXPL AAA 0 A_CustomMissile ("FlamethrowerFireParticles", 6, 0, random (0, 360), 2, random (0, 90))
 		Stop
 		}
 }

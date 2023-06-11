@@ -37,6 +37,7 @@ ACTOR FlameTrails
 	+NONETID
 	+THRUACTORS
 	+DOOMBOUNCE
+	+RANDOMIZE
 	RenderStyle Add
     damagetype fire
     Scale 0.5
@@ -97,25 +98,26 @@ ACTOR BlueFlameTrails: FlameTrails
 
 ACTOR CoolandNewFlameTrails: FlameTrails
 {
-    Scale 0.3
-	Speed 1
+    Scale 0.4
+	Speed 4
 	States
 	{
     Spawn:
-	    TNT1 A 2
-        FIR3 MP 1 BRIGHT
+		TNT1 A 2
+        FIR3 LMNOP 1 BRIGHT
         Stop
 	}
 }
 
-ACTOR CoolandNewFlameTrailsLong: FlameTrails
+ACTOR CoolandNewFlameTrailsMedium: FlameTrails
 {
     Scale 0.6
-	Speed 1
+	Speed 4
 	States
 	{
     Spawn:
-        FIR3 BCDEFGHIJKLMNOP 1 BRIGHT
+		TNT1 A 2
+        FIR3 GHIJKLMNOP 1 BRIGHT
         Stop
 	}
 }
@@ -123,7 +125,7 @@ ACTOR CoolandNewFlameTrailsLong: FlameTrails
 ACTOR ExplosionFlames: FlameTrails
 {
 Scale 2.2
-Speed 2
+Speed 4
 +DOOMBOUNCE
 	States
 	{
@@ -168,7 +170,7 @@ Speed 4
 ACTOR ExplosionFlamesGiant: ExplosionFlames
 {
 Scale 9.2
-Speed 5
+Speed 4
 	States
 	{
     Spawn:
@@ -194,7 +196,7 @@ Scale 1.6
 ACTOR FireballExplosionFlames: FlameTrails
 {
     Scale 0.8
-	Speed 1
+	Speed 4
 	States
 	{
     Spawn:
@@ -206,11 +208,11 @@ ACTOR FireballExplosionFlames: FlameTrails
 ACTOR FireballExplosionFlamesBig: FlameTrails
 {
     Scale 1.6
-	Speed 2
+	Speed 4
 	States
 	{
     Spawn:
-        FIR3 CDEFGHIJKLMNOP 2 BRIGHT
+        FIR3 CDEFGHIJKLMNOP 1 BRIGHT
 		TNT1 A 0 A_CustomMissile("ExplosionSmoke", 15, 0, random (0, 360), 2, random (50, 130))
         Stop
 	}
@@ -219,11 +221,11 @@ ACTOR FireballExplosionFlamesBig: FlameTrails
 ACTOR FireballExplosionFlamesM: FlameTrails
 {
     Scale 0.8
-	Speed 1
+	Speed 4
 	States
 	{
     Spawn:
-        FIR4 CDEFGHIJKLMNOP 1 BRIGHT
+        FIR4 LMNOP 1 BRIGHT
         Stop
 	}
 }
@@ -235,7 +237,7 @@ ACTOR FireballExplosionFlamesMedium: FlameTrails
 	States
 	{
     Spawn:
-        FIR3 ABCDEFGHIJKLMNOP 1 BRIGHT
+        FIR3 GHIJKLMNOP 1 BRIGHT
         Stop
 	}
 }
@@ -243,12 +245,11 @@ ACTOR FireballExplosionFlamesMedium: FlameTrails
 ACTOR FireballExplosionFlamesSmall: FlameTrails
 {
     Scale 0.8
-	Speed 1
+	Speed 4
 	States
 	{
     Spawn:
-		TNT1 A 2
-        FIR3 NOP 1 BRIGHT
+        FIR3 LMNOP 1 BRIGHT
         Stop
 	}
 }
@@ -1163,19 +1164,19 @@ Scale 0.5
 
 ACTOR GreenFlameTrails: FlameTrails
 {
-	Scale 0.5
+	Scale 0.6
 	States
 	{
     Spawn:
-	    TNT1 A 1
-        FRPG CDEFGH 1 BRIGHT
+	    TNT1 A 2
+        FRPG ABCDEFGH 1 BRIGHT
         Stop
 	}
 }
 
 ACTOR GreenFlameTrailsBig: GreenFlameTrails
 {
-	Scale 0.7
+	Scale 0.8
 }
 
 ACTOR HighExplosiveFlames: FlameTrails
@@ -1741,7 +1742,7 @@ ACTOR SmallFlameTrails: FlameTrails
 
 ACTOR SmallGreenFlameTrails: GreenFlameTrails
 {
-    Scale 0.3
+    Scale 0.4
 }
 
 ACTOR TankExplosionFlames: FlameTrails

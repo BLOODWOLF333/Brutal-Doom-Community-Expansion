@@ -147,15 +147,17 @@ actor MotherBall : GreenPlasmaBall
 	Spawn:
 	    TNT1 A 0
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)//Check Effects
+		SPKO A 4 BRIGHT
+		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "SpawnCheap")
 
 	Spawn1:
-		SPKO A 1 BRIGHT A_SpawnItemEx("SmallFlameTrails", 0, 0, 0, 0, 0, 0, 0, 128)
+		SPKO A 4 BRIGHT A_SpawnItemEx("SmallFlameTrails", 0, 0, 0, 0, 0, 0, 0, 128)
 		TNT1 A 0 A_CustomMissile ("OldschoolRocketSmokeTrailDarker", 2, 0, random (160, 210), 2, random (-30, 30))
 		TNT1 A 0 A_SeekerMissile (2,4, SMF_LOOK)
 		Loop
 
 	SpawnCheap:
-	    SPKO A 1 BRIGHT A_SpawnItemEx("SmallFlameTrails", 0, 0, 0, 0, 0, 0, 0, 128)
+	    SPKO A 4 BRIGHT
 		TNT1 A 0 A_SeekerMissile (2,4, SMF_LOOK)
 		Loop
 
@@ -170,16 +172,12 @@ actor MotherBall : GreenPlasmaBall
 		Stop
 
 	XDeath:
-        TNT1 A 0 A_JumpIfCloser(220, "StopInAir")
+        TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx("SparkX", 0, 0, 0, 0, 0, 0, 0, 128)
 		TNT1 AA 0 A_SpawnItem("RedFlare",0,0)
 	    TNT1 A 0 A_SetScale(0.7)
 		TNT1 A 0 A_FadeOut(0.2)
 		FRPR ABCDEFGH 2 BRIGHT
-		Stop
-
-	StopInAir:
-		FRPR ABCDEF 1 BRIGHT
 		Stop
 	}
 }
@@ -197,14 +195,16 @@ actor MotherBallDumb : MotherBall
 	Spawn:
 	    TNT1 A 0
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)//Check Effects
+		SPDO A 4 BRIGHT
+		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "SpawnCheap")
 
 	Spawn1:
-		SPKO A 1 BRIGHT A_SpawnItemEx("SmallFlameTrails", 0, 0, 0, 0, 0, 0, 0, 128)
+		SPKO A 4 BRIGHT A_SpawnItemEx("SmallFlameTrails", 0, 0, 0, 0, 0, 0, 0, 128)
 		TNT1 A 0 A_CustomMissile ("OldschoolRocketSmokeTrailDarker", 2, 0, random (160, 210), 2, random (-30, 30))
 		Loop
 
 	SpawnCheap:
-	    SPKO A 1 BRIGHT A_SpawnItemEx("SmallFlameTrails", 0, 0, 0, 0, 0, 0, 0, 128)
+	    SPKO A 4 BRIGHT
 		Loop
 	}
 }
@@ -287,13 +287,13 @@ actor MotherFireTrail
 
 ACTOR SuperMotherBall : BelphegorGreenPlasmaBall
 {
-	Scale 2.0
+	Scale 3.0
 	Damagetype "Fire"
 	States
 	{
 	Spawn:
-	    TNT1 A 0 A_SpawnItem("RedFlare2",0,0)
-		FRFX B 1 BRIGHT A_SpawnItemEx("FlameTrails", 0, 0, 0, 0, 0, 0, 0, 128)
+		FRFX AB 1 BRIGHT A_SpawnItem("RedFlare2",0,0)
+		TNT1 A 0 A_SpawnItemEx("FlameTrails", 0, 0, 0, 0, 0, 0, 0, 128)
 		Loop
 
 	Death:

@@ -32,20 +32,18 @@ ACTOR Rocket2
 		TNT1 A 0 BRIGHT A_SpawnItemEx("BackblastFlames2", 0, 0, 0, 25, 0, 0, angle-180, SXF_ABSOLUTEANGLE | SXF_TRANSFERPITCH)
 		TNT1 A 0 BRIGHT A_SpawnItemEx("BackblastFlames3", 0, 0, 0, 30, 0, 0, angle-180, SXF_ABSOLUTEANGLE | SXF_TRANSFERPITCH)
 		TNT1 A 0 BRIGHT A_SpawnItemEx("BackblastFlames4", 0, 0, 0, 35, 0, 0, angle-180, SXF_ABSOLUTEANGLE | SXF_TRANSFERPITCH)
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 
 	Live:
-	    MISL A 1 Bright
-		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
-		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+	    MISL AA 1 Bright A_SpawnItem("RocketFlare",-20,0)
 		TNT1 A 0 A_SpawnItem ("OldschoolRocketSmokeTrail2")
 		TNT1 A 0 A_CustomMissile ("OldschoolRocketSmokeTrail2", 2, 0, random (160, 210), 2, random (-30, 30))
 		Loop
 
 	SpawnUnderwater:
-	    TNT1 A 0 A_ChangeFlag("NOGRAVITY", 0)
-		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+		MISL AA 1 Bright A_SpawnItem("RocketFlare",-20,0)
 	    TNT1 A 0 A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
-		MISL A 1 Bright
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 	    Goto Live
 
 	Death:
@@ -202,11 +200,10 @@ actor JuggernautRocket: Rocket2
 	TNT1 A 0 BRIGHT A_SpawnItemEx("BackblastFlames2", 0, 0, 0, 25, 0, 0, angle-180, SXF_ABSOLUTEANGLE | SXF_TRANSFERPITCH)
 	TNT1 A 0 BRIGHT A_SpawnItemEx("BackblastFlames3", 0, 0, 0, 30, 0, 0, angle-180, SXF_ABSOLUTEANGLE | SXF_TRANSFERPITCH)
 	TNT1 A 0 BRIGHT A_SpawnItemEx("BackblastFlames4", 0, 0, 0, 35, 0, 0, angle-180, SXF_ABSOLUTEANGLE | SXF_TRANSFERPITCH)
+	TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 
 	Live:
-	MISL A 1 Bright
-	TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
-	TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+	MISL AA 1 Bright A_SpawnItem("RocketFlare",-20,0)
 	TNT1 A 0 A_SpawnItem ("OldschoolRocketSmokeTrail2")
 	TNT1 A 0 A_CustomMissile ("OldschoolRocketSmokeTrail2", 2, 0, random (160, 210), 2, random (-30, 30))
 	Loop
@@ -586,11 +583,10 @@ ACTOR MarineRocket2: Rocket2
 		TNT1 A 0 BRIGHT A_SpawnItemEx("BackblastFlames2", 0, 0, 0, 25, 0, 0, angle-180, SXF_ABSOLUTEANGLE | SXF_TRANSFERPITCH)
 		TNT1 A 0 BRIGHT A_SpawnItemEx("BackblastFlames3", 0, 0, 0, 30, 0, 0, angle-180, SXF_ABSOLUTEANGLE | SXF_TRANSFERPITCH)
 		TNT1 A 0 BRIGHT A_SpawnItemEx("BackblastFlames4", 0, 0, 0, 35, 0, 0, angle-180, SXF_ABSOLUTEANGLE | SXF_TRANSFERPITCH)
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 
 	Live:
-	    MISL A 1 Bright
-		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
-		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+	    MISL AA 1 Bright A_SpawnItem("RocketFlare",-20,0)
 		TNT1 A 0 A_SpawnItem ("OldschoolRocketSmokeTrail2")
 		TNT1 A 0 A_CustomMissile ("OldschoolRocketSmokeTrail2", 2, 0, random (160, 210), 2, random (-30, 30))
 		Loop
@@ -656,22 +652,23 @@ ACTOR CyberBalls: Rocket2
 	Spawn:
 	    TNT1 A 0
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)//Check Effects
+		WYVB A 4 BRIGHT
+		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "SpawnCheap")
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 
 	Spawn1:
-		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
-	    WYVB A 1 Bright A_SpawnItem("RedFlareSmall2",0,0)
+	    WYVB AA 1 Bright A_SpawnItem("RedFlareSmall2",0,0)
 		TNT1 A 0 A_CustomMissile ("OldschoolRocketSmokeTrail2", 2, 0, random (160, 210), 2, random (-30, 30))
-		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "SpawnCheap")
 		Loop
 
 	SpawnCheap:
-	    TNT1 A 0
-	    WYVB A 1 Bright A_SpawnItem("RedFlareSmall2",0,0)
+	    WYVB A 4 Bright
 		Loop
 
 SpawnUnderwater:
-	    WYVB A 1 Bright A_SpawnItem("RedFlareSmall",0,0)
-        TNT1 A 0 A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
+	    WYVB AA 1 Bright A_SpawnItem("RedFlareSmall2",0,0)
+		TNT1 A 0 A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 		Goto Spawn1
 	}
 }
@@ -682,32 +679,6 @@ Speed 30
 Scale 3.4
 Radius 15
 Height 12
-}
-
-ACTOR CyberballTrail
-{
-    Radius 0
-    Height 0
-	Alpha 1.0
-	RenderStyle Add
-	Scale 0.9
-	Speed 2
-    +NOBLOCKMAP
-    +NOTELEPORT
-    +DONTSPLASH
-	+MISSILE
-	+FORCEXYBILLBOARD
-    +CLIENTSIDEONLY
-	Damage 0
-    +NOINTERACTION
-    States
-    {
-    Spawn:
-	    TNT1 A 2
-        WYVB CDE 1
-
-Stop
-    }
 }
 
 ACTOR ZombiemanGrenade: MarineGrenade
@@ -763,22 +734,21 @@ Damagetype "Extreme"
 	States
 	{
 	Spawn:
-
 		TNT1 A 0
 		TNT1 A 0 A_PlaySound("DSRLAUN")
 		TNT1 A 0 BRIGHT A_CustomMissile("RocketBackblast", 0, 0, 180, 2, 0+pitch)
-	Live:
-	    MISL A 1 Bright A_SpawnItem ("FireballExplosionFlamesSmall")
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
-		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
-		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
-		TNT1 A 0 A_SpawnItem("PlasmaSmoke")
+
+	Live:
+	    MISL AA 1 Bright A_SpawnItem("RocketFlare",-20,0)
+		TNT1 A 0 A_SpawnItem ("OldschoolRocketSmokeTrail2")
+		TNT1 A 0 A_CustomMissile ("OldschoolRocketSmokeTrail2", 2, 0, random (160, 210), 2, random (-30, 30))
 		Loop
 
 	SpawnUnderwater:
-	    TNT1 A 0 A_ChangeFlag("NOGRAVITY", 0)
-		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+	    MISL AA 1 Bright A_SpawnItem("RocketFlare",-20,0)
 	    TNT1 A 0 A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 	    Goto Live
 
 	Death:
@@ -853,6 +823,7 @@ ACTOR TankShell
         TNT1 A 0 A_SpawnItemEx("HeavyMachinegunProjectileTracerTrail5", (24 *momx)/-35.0, -(24 *momy)/-35.0, 2+(24 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
         TNT1 A 0 A_SpawnItemEx("HeavyMachinegunProjectileTracerTrail6", (30*momx)/-35.0, -(30*momy)/-35.0, 2+(30*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
 		Loop
+
 	Death:
 		MISL B 0 Bright A_Explode
 		TNT1 A 0 A_SpawnItem("TankShotExplosionImpact")
@@ -869,7 +840,6 @@ ACTOR TankShell
 		TNT1 AAA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (40, 90))
         TNT1 AAA 0 A_CustomMissile ("BDExplosionparticles3", 0, 0, random (0, 360), 2, random (40, 90))
 		TNT1 AAA 0 A_CustomMissile ("BDExplosionparticles4", 0, 0, random (0, 360), 2, random (40, 90))
-		//EXPL AAAAA 0 A_CustomMissile ("ExplosionSmoke22", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 A 6
 		TNT1 A 0 A_PlaySound("FAREXPL", 1)
 		TNT1 A 12
@@ -903,10 +873,10 @@ ACTOR TankFireEffect
 	Death:
 		TNT1 A 0
 		TNT1 A 0 Radius_Quake(2, 35, 0, 5, 0)
-		TNT1 AAAAA 0 A_SpawnItem("RedFlare")
+		TNT1 AAAAA 0 A_SpawnItem("RocketFlare")
 		TNT1 AAA 0 A_CustomMissile ("ExplosionSmokeHD", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 A 1 BRIGHT
-		TNT1 AAAAA 0 A_SpawnItem("RedFlare")
+		TNT1 AAAAA 0 A_SpawnItem("RocketFlare")
 		TNT1 A 0 A_Stop
 		TNT1 A 0 A_Recoil(-5)
 		TKFL A 5 BRIGHT

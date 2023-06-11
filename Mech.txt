@@ -245,6 +245,9 @@ ACTOR PlayerMech : PlayerTank
 	TNT1 A 2 A_TakeInventory("IsInATank", 1)
 	TNT1 A 0 A_TakeInventory("PressedUse", 1)
 	TNT1 A 0 A_TakeInventory("CanLeaveVehicle", 1)
+	TNT1 A 0 A_TakeInventory("TankZoom", 1)
+	TNT1 A 0 A_Takeinventory("FlashlightOn",1)
+	TNT1 A 0 A_TakEinventory("PowerLightAmp", 1)
 	TNT1 A 0 ACS_NamedExecuteAlways("BDLeaveTank")
 	TNT1 A 0 A_SpawnItemEx ("MechUsed", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
 	Goto FinishExit
