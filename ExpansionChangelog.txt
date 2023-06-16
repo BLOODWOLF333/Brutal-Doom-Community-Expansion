@@ -10,6 +10,8 @@
 //	SPRITES/VEHICLES folder:		Created rotations for TKFLA sprite
 //	All Files:						Adjusted Radius_Quake values to make things less ridiculous like the Mastermind
 //	All Meatshield actors:			Removed +THRUSPECIES and Species "Marines"
+//	All Monster files:				Implemented a slaughterwad detection system like Mark has planned for v22 (I asked if ok to do this beforehand)
+//	Baron.txt:						Removed the See2 state, Changed See4 to SeeContinue and moved fatality checks to end of Melee state
 //	Bike.txt:						Added +NOTELEPORT to the playerclass
 //	Cyberdemon.txt:					Added a check to forget target if cyberdemon is trying to stomp another cyberdemon
 //	EnemyTanks.txt:					Removed +NOTIMEFREEZE flag from actors
@@ -17,16 +19,24 @@
 //									Change the TankFireEffect to behave like the PlayerMuzzle flashes
 //	FlameCannon.txt:				Added +NOINTERACTION to all fake weapon sprite actors
 //	GLDEFS.txt:						Added dynamic light to TankFireEffect
+//									Added vanilla light defintions to VanillaLostSoul actor
 //	Grenades.txt:					PR#426 Create NoAmmo states for grenade weapon
 //	Imps.txt:						Raised height of the body hitbox to that of the sprite's shoulders
 //	LABGUY.txt:						PR#428 A little detail for Zombie Scientists
+//	LostSoul.txt:					Now can spawn a VanillaLostSoul if classicmonsters is enabled
 //	Machinegun.txt:					PR#427 allow executions in noammo or unloaded states
+//	Mancubus.txt:					Now can spawn a VanillaFatso if classicmonsters is enabled
 //	Minigun.txt:					PR#427 allow executions in noammo or unloaded states
 //	MP40.txt:						PR#427 allow executions in noammo or unloaded states
 //	NukeLauncher.txt:				Added +NOINTERACTION to all fake weapon sprite actors
+//	PainElemental.txt:				Now can spawn a VanillaPainElemental that spawns VanillaLostSouls if classicmonsters is enabled
 //	Player.txt:						Added a headkicker spawn to the end of each See state so that it is spawned every 6 tics
 //	Railgun.txt:					PR#427 allow executions in noammo or unloaded states
+//	Spiders.txt:					Now can spawn a VanillaArachnotron if classicmonsters is enabled
 //	Tank.txt:						Added +NOTELEPORT to the playerclass
+//	Tokens.txt:						Removed TypeSergeant and Zombieman tokens
+//									Created a "SlaughterToken" actor
+//	VanillaMonsters.txt:			Created Vanilla Arachnotron, PainElemental, and LostSoul actors
 //	WeaponSpawners.txt:				Removed +NOINTERACTION from BasicWeaponPickup
 //									Added +NOINTERACTION to all fake weapon sprite actors
 //	Zombieman.txt:					PR#429 Fixing another imperfection

@@ -536,6 +536,7 @@ ACTOR VanillaRevenant
 	MeleeThreshold 196
 	+MISSILEMORE
 	+FLOORCLIP
+	+NOBLOOD
 	SeeSound "skeleton/sight"
 	PainSound "skeleton/pain"
 	DeathSound "skeleton/death"
@@ -808,6 +809,160 @@ ACTOR VanillaCyberdemon
 		CYBR NO 10
 		CYBR P 30
 		CYBR P -1 A_BossDeath
+		Stop
+	}
+}
+
+ACTOR VanillaArachnotron
+{
+	Game Doom
+	SpawnID 6
+	Health 500
+	Radius 64
+	Height 64
+	Mass 600
+	Speed 12
+	PainChance 128
+	Monster
+	+FLOORCLIP
+	+BOSSDEATH
+	SeeSound "baby/sight"
+	PainSound "baby/pain"
+	DeathSound "baby/death"
+	ActiveSound "baby/active"
+	Obituary "$OB_BABY"
+	Tag "Arachnotron"
+	Damagefactor "TeleportRemover", 0.0
+	States
+	{
+	Spawn:
+		BSPI AB 10 A_Look
+		Loop
+	See:
+		BSPI A 20
+		BSPI A 3 A_BabyMetal
+		BSPI ABBCC 3 A_Chase
+		BSPI D 3 A_BabyMetal
+		BSPI DEEFF 3 A_Chase
+		Goto See+1
+	Missile:
+		BSPI A 20 BRIGHT A_FaceTarget
+		BSPI G 4 BRIGHT A_BspiAttack
+		BSPI H 4 BRIGHT
+		BSPI H 1 BRIGHT A_SpidRefire
+		Goto Missile+1
+	Pain:
+		BSPI I 3
+		BSPI I 3 A_Pain
+		Goto See+1
+	Death:
+		BSPI J 20 A_Scream
+		BSPI K 7 A_NoBlocking
+		BSPI LMNO 7
+		BSPI P -1 A_BossDeath
+		Stop
+    Raise:
+		BSPI P 5
+		BSPI ONMLKJ 5
+		Goto See+1
+	}
+}
+
+ACTOR VanillaPainElemental
+{
+	Game Doom
+	SpawnID 115
+	Health 400
+	Radius 31
+	Height 56
+	Mass 400
+	Speed 8
+	PainChance 128
+	Monster
+	+FLOAT
+	+NOGRAVITY
+	SeeSound "pain/sight"
+	PainSound "pain/pain"
+	DeathSound "pain/death"
+	ActiveSound "pain/active"
+	Tag "PainElemental"
+	Damagefactor "TeleportRemover", 0.0
+	States
+	{
+	Spawn:
+		PAIN A 10 A_Look
+		Loop
+	See:
+		PAIN AABBCC 3 A_Chase
+		Loop
+	Missile:
+		PAIN D 5 A_FaceTarget
+		PAIN E 5 A_FaceTarget
+		PAIN F 4 BRIGHT A_FaceTarget
+		PAIN F 1 BRIGHT A_PainAttack("VanillaLostSoul")
+		Goto See
+	Pain:
+		PAIN G 6
+		PAIN G 6 A_Pain
+		Goto See
+	Death:
+		PAIN H 8 BRIGHT
+		PAIN I 8 BRIGHT A_Scream
+		PAIN JK 8 BRIGHT
+		PAIN L 8 BRIGHT A_PainDie
+		PAIN M 8 BRIGHT
+		Stop
+	Raise:
+		PAIN MLKJIH 8
+		Goto See
+	}
+}
+
+ACTOR VanillaLostSoul
+{
+	Game Doom
+	SpawnID 110
+	Health 100
+	Radius 16
+	Height 56
+	Mass 50
+	Speed 8
+	Damage 3
+	PainChance 256
+	Monster
+	+FLOAT +NOGRAVITY +MISSILEMORE +DONTFALL +NOICEDEATH +NOBLOOD
+	AttackSound "skull/melee"
+	PainSound "skull/pain"
+	DeathSound "skull/death"
+	ActiveSound "skull/active"
+	RenderStyle SoulTrans
+	Obituary "$OB_SKULL"
+	Tag "Lost Soul"
+	Damagefactor "TeleportRemover", 0.0
+	States
+	{
+	Spawn:
+		SKUL AB 10 BRIGHT A_Look
+		Loop
+	See:
+		SKUL AB 6 BRIGHT A_Chase
+		Loop
+	Missile:
+		SKUL C 10 BRIGHT A_FaceTarget
+		SKUL D 4 BRIGHT A_SkullAttack
+		SKUL CD 4 BRIGHT
+		Goto Missile+2
+	Pain:
+		SKUL E 3 BRIGHT
+		SKUL E 3 BRIGHT A_Pain
+		Goto See
+	Death:
+		SKUL F 6 BRIGHT
+		SKUL G 6 BRIGHT A_Scream
+		SKUL H 6 BRIGHT
+		SKUL I 6 BRIGHT A_NoBlocking
+		SKUL J 6
+		SKUL K 6
 		Stop
 	}
 }
