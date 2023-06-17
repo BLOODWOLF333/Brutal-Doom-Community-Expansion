@@ -27,7 +27,7 @@ ACTOR Arachnotron2: Arachnotron1 2542
 	Death.KillMe:
 	Death.Taunt:
 	    Goto Death
-		
+
 	Spawn:
 		ARAC A 0
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckStuff")//Check if new monsters are disabled
@@ -195,7 +195,7 @@ ACTOR Arachnotron2: Arachnotron1 2542
 	TNT1 A 0 A_Jump(114,"XDeath")
 	Goto Death
 
-Death.SuperPlasma:
+	Death.SuperPlasma:
     Death.Plasma: Death.Plasma2:
         TNT1 A 0 A_BossDeath
         TNT1 A 0 A_Scream
