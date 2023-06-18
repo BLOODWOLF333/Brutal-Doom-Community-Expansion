@@ -37,13 +37,11 @@ ACTOR ExplosionSmoke
     }
 }
 
-
 ACTOR ExplosionSmokeFast22: ExplosionSmoke
 {
 	Speed 2
 	Scale 0.8
 }
-
 
 ACTOR HeavyExplosionSmoke: ExplosionSmoke
 {
@@ -66,7 +64,6 @@ Speed 1
 
 }
 
-
 ACTOR BigSmokes: ExplosionSmoke
 {
     Speed 1
@@ -84,7 +81,6 @@ ACTOR BigSmokes: ExplosionSmoke
 Stop
     }
 }
-
 
 Actor NeoSmoke: ExplosionSmoke
 {
@@ -105,7 +101,6 @@ States
 Stop
 }
 }
-
 
 Actor BigNeoSmoke: HeavyExplosionSmoke
 {
@@ -129,7 +124,6 @@ Actor BigNeoSmoke: HeavyExplosionSmoke
 	Stop
 }
 }
-
 
 Actor HugeNeoSmoke: BigNeoSmoke
 {
@@ -183,8 +177,6 @@ Stop
     }
 }
 
-
-
 ACTOR AltSmoke: ExplosionSmoke
 {
 +NOINTERACTION
@@ -207,8 +199,6 @@ ACTOR ShinnySmoke: AltSmoke
 Scale 2.0
 Renderstyle Add
 }
-
-
 
 Actor PlasmaSmoke
 {
@@ -237,7 +227,6 @@ States
 		}
 }
 
-
 ACTOR RocketSmokeTrail52: ExplosionSmoke
 {
 Speed 1
@@ -252,8 +241,6 @@ SMK3 CDEFGHIJKLM 1
 Stop
 }
 }
-
-
 
 Actor OldschoolRocketSmokeTrail2: AltSmoke
 {
@@ -272,7 +259,6 @@ States
 Stop
 }
 }
-
 
 Actor OldschoolRocketSmokeTrail2Bigger: AltSmoke
 {
@@ -310,7 +296,6 @@ Stop
 }
 }
 
-
 Actor HitpuffSmoke
 {
 PROJECTILE
@@ -335,12 +320,9 @@ States
         SMOK ABCDEFGHIJKLMNOPQ 1
 		Stop
 
-
 Stop
 }
 }
-
-
 
 Actor ExplosionSmokeHD: HitpuffSmoke
 {
@@ -356,11 +338,9 @@ States
         SMOK ABCDEFGHIJKLMNOPQ 3
 		Stop
 
-
 Stop
 }
 }
-
 
 Actor ExplosionSmokeHDLarge: HitpuffSmoke
 {
@@ -378,7 +358,6 @@ States
 
 }
 }
-
 
 Actor NukeSmoke: HitpuffSmoke
 {
@@ -399,13 +378,11 @@ Actor NukeSmoke: HitpuffSmoke
 	}
 }
 
-
 Actor NukeSmokeBig: NukeSmoke
 {
 XScale 18.0
 YScale 12.0
 }
-
 
 Actor SmallSmoke: AltSmoke
 {
@@ -413,9 +390,6 @@ Actor SmallSmoke: AltSmoke
 	Speed 1
 Scale 1.5
 }
-
-
-
 
 ACTOR MeleeSmoke: ExplosionSmoke
 {
@@ -431,8 +405,6 @@ SMK3 CDEFGHIJKLM 2
 Stop
 }
 }
-
-
 
 Actor SmokeSpawner
 {
@@ -466,8 +438,6 @@ Actor SmokeSpawner11
         Stop
     }
 }
-
-
 
 ACTOR ShotSmoke
 {
@@ -511,7 +481,6 @@ States
     }
 }
 
-
 actor CyberStep
 {
 	+NOBLOCKMAP
@@ -545,7 +514,6 @@ Actor LostSoulOnHandFireSpawner
     }
 }
 
-
 Actor LSOHK
 {
     Speed 20
@@ -567,15 +535,6 @@ Actor LSOHK
         Stop
     }
 }
-
-
-
-
-
-
-
-
-
 
 ACTOR BarrelExplosionSmokeColumn
 {
@@ -618,8 +577,6 @@ Stop
     }
 }
 
-
-
 ACTOR BarrelExplosionSmokeColumnInfinite: BarrelExplosionSmokeColumn
 {
     States
@@ -629,8 +586,6 @@ ACTOR BarrelExplosionSmokeColumnInfinite: BarrelExplosionSmokeColumn
 		Loop
     }
 }
-
-
 
 ACTOR ExplosionSimpleSmokeColumn: BarrelExplosionSmokeColumn
 {
@@ -643,7 +598,6 @@ ACTOR ExplosionSimpleSmokeColumn: BarrelExplosionSmokeColumn
 	XScale 1.5
 	YScale 0.6
 }
-
 
 ACTOR MicroSmokeColumn: BarrelExplosionSmokeColumn
 {
@@ -675,8 +629,6 @@ ACTOR ExplosionSimpleSmokeColumn2: ExplosionSimpleSmokeColumn
 {
    +NOGRAVITY
 }
-
-
 
 ACTOR BigBlackSmoke
 {
@@ -719,7 +671,6 @@ TNT1 A 0
 Stop
     }
 }
-
 
 ACTOR BigBlackSmokeLarger: BigBlackSmoke
 {
@@ -766,13 +717,11 @@ ACTOR BigBlackSmokePillar: BigBlackSmoke
     }
 }
 
-
 ACTOR BigBlackSmokePillar2: BigBlackSmokePillar
 {
 	XScale -1.8
 	YScale 1.8
 }
-
 
 ACTOR BlackSmokePillarParticle: BigBlackSmoke
 {
@@ -802,8 +751,6 @@ ACTOR MediumBlackSmoke: BigBlackSmoke
 {
 Scale 0.3
 }
-
-
 
 ACTOR GunBarrelSmoke: ExplosionSmoke
 {
