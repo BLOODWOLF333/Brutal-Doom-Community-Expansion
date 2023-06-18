@@ -56,7 +56,7 @@ ACTOR TheLostSoul : LostSoul Replaces LostSoul
 	Monster
 	RenderStyle Normal
 	+FLOAT +NOGRAVITY +DONTFALL
-	+NOICEDEATH	+NOBLOOD
+	+NOICEDEATH
 	+FORCEXYBILLBOARD +DONTHARMSPECIES +THRUSPECIES
 	AttackSound "skull/melee"
 	PainSound "skull/pain"
@@ -309,25 +309,26 @@ ACTOR SoulTrails
 
 actor LostSoulBlood : Blood
 {
-Decal None
- game Doom
-+FORCEXYBILLBOARD
-+GHOST
-+NOBLOCKMAP
-+NOGRAVITY
-+NOCLIP
--DONTSPLASH
--ALLOWPARTICLES
-Speed 0
- states
- {
-  Spawn:
-        TNT1 A 0
-		TNT1 AAAAAA 0 A_CustomMissile ("SparkXNoModel", 2, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AA 0 A_CustomMissile ("SmallLSPart1", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AA 0 A_CustomMissile ("SmallLSPart3", 0, 0, random (0, 360), 2, random (0, 360))
-        stop
- }
+	Decal None
+	game Doom
+	+FORCEXYBILLBOARD
+	+GHOST
+	+NOBLOCKMAP
+	+NOGRAVITY
+	+NOCLIP
+	-DONTSPLASH
+	-ALLOWPARTICLES
+	Speed 0
+	states
+	{
+		Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_CustomMissile ("SparkXNoModel", 2, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_CustomMissile ("SmallLSPart1", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_CustomMissile ("SparkXNoModel", 2, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_CustomMissile ("SmallLSPart3", 0, 0, random (0, 360), 2, random (0, 360))
+		stop
+	}
 }
 
 actor SmallLSPart1: LSPart1

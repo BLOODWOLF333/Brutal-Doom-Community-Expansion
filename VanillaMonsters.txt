@@ -390,6 +390,8 @@ ACTOR VanillaBaronOfHell
 	HitObituary "$OB_BARONHIT"
 	Tag "Baron of Hell"
 	Damagefactor "TeleportRemover", 0.0
+	BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
+	BloodColor "DarkGreen"
 	States
 	{
 	Spawn:
@@ -436,6 +438,8 @@ ACTOR VanillaHellKnight : VanillaBaronOfHell
 	Obituary "$OB_KNIGHT"
 	Tag "Hell Knight"
 	Damagefactor "TeleportRemover", 0.0
+	BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
+	BloodColor "DarkGreen"
 	States
 	{
 	Spawn:
@@ -488,6 +492,8 @@ ACTOR VanillaCacodemon
 	HitObituary "$OB_CACOHIT"
 	Tag "Cacodemon"
 	Damagefactor "TeleportRemover", 0.0
+	bloodtype "Blue_Blood", "BlueSawBlood", "BlueSawBlood"
+	bloodcolor "Blue"
 	States
 	{
 	Spawn:
@@ -546,6 +552,7 @@ ACTOR VanillaRevenant
 	Obituary "$OB_UNDEAD"
 	Tag "Revenant"
 	Damagefactor "TeleportRemover", 0.0
+	BloodType "RevenantBloodz", "RevenantBloodz", "RevenantBloodz"
 	States
 	{
 	Spawn:
@@ -930,7 +937,7 @@ ACTOR VanillaLostSoul
 	Damage 3
 	PainChance 256
 	Monster
-	+FLOAT +NOGRAVITY +MISSILEMORE +DONTFALL +NOICEDEATH +NOBLOOD
+	+FLOAT +NOGRAVITY +MISSILEMORE +DONTFALL +NOICEDEATH
 	AttackSound "skull/melee"
 	PainSound "skull/pain"
 	DeathSound "skull/death"
@@ -939,6 +946,7 @@ ACTOR VanillaLostSoul
 	Obituary "$OB_SKULL"
 	Tag "Lost Soul"
 	Damagefactor "TeleportRemover", 0.0
+	BloodType "LostSoulBlood"
 	States
 	{
 	Spawn:

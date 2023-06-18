@@ -1067,38 +1067,36 @@ ACTOR RevenantU
 
 actor RevenantBloodz: SawBlood
 {
-Decal None
-+MISSILE
-PROJECTILE
- states
- {
-
-  HitMetal:
-	   TNT1 A 1
-	   TNT1 A 0 A_SpawnItem("HitPuff")
-	   Stop
-  HitGuts:
-		TNT1 A 0
-		TNT1 A 0 A_CHangeFlag("FRIENDLY", 0)
+	Decal None
+	+MISSILE
+	PROJECTILE
+	states
+	{
+	Spawn:
 		TNT1 A 1
-		TNT1 A 0 A_RadiusGive("ChainsawHitRed", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
-		TNT1 A 0 A_RadiusGive("PowerBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
-		TNT1 A 0 A_SpawnItem("Blood")
-		TNT1 A 0 A_SpawnItem("RevenantHitStomach")
-		Stop
-  SPAWN:
-		tnt1 a 1
-		TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-		TNT1 A 0 A_JumpIf((z - floorz) > 48, "HitMetal")
-		TNT1 A 0 A_JumpIf((z - floorz) > 40, "HitGuts")
-		TNT1 A 0 A_RadiusGive("ChainsawHitRed", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
-		TNT1 A 0 A_RadiusGive("PowerBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
-		TNT1 AAA 0 A_CustomMissile ("RevenantDust", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AA 0 A_CustomMissile ("RevenantDust2", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_JumpIf((z - floorz) >= 40, "HitArmor")
+		TNT1 A 0 A_JumpIf((z - floorz) >= 30, "HitGuts")
+	HitBone:
+		TNT1 A 1 A_CustomMissile ("RevenantDust", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 A 0 A_CustomMissile ("RevenantPiece", 0, 0, random (0, 360), 2, random (30, 150))
+		TNT1 A 0 A_CustomMissile ("RevenantDust2", 0, 0, random (0, 360), 2, random (0, 360))
 		Stop
-
- }
+	HitArmor:
+	   TNT1 A 1 A_SpawnItem("HitPuff")
+	   Stop
+	HitGuts:
+		TNT1 A 1 A_SpawnItem("RevenantHitStomach")
+		TNT1 A 0 A_CustomMissile ("SuperGoreMistTiny", 0, 0, random (0, 360), 2, random (0, 90))
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+		TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckBloodIntensity")
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("misc/xdeath5")
+		BSPR A 2
+		TNT1 A 0 A_CustomMissile ("WaterBloodCHecker", 7, 0, random (0, 360), 2, random (30, 60))
+		TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 7, 0, random (0, 360), 2, random (30, 60))
+		TNT1 A 0 A_CustomMissile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (20, 90))
+		Goto LowBlood
+	}
 }
 
 actor RevenantHitStomach
