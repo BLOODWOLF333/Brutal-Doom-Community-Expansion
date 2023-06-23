@@ -14,7 +14,7 @@ ACTOR Spectro: BullDemon Replaces Spectre
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCHeckClassicMonsters", 0, 0, 0, 0)//Check if Vanilla Mode is activated
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckFuzzySpectre", 0, 0, 0, 0)//Check if FuzzySpectres is enabled
 		SPEC A 2 BRIGHT
-		TNT1 A 0 A_RadiusGive("SlaughterToken", 192, RGF_GIVESELF | RGF_MONSTERS |RGF_CUBE | RGF_NOSIGHT, 1)
+		TNT1 A 0 A_RadiusGive("SlaughterToken", 128, RGF_GIVESELF | RGF_MONSTERS |RGF_CUBE | RGF_NOSIGHT, 1)
 		SPEC A 2 BRIGHT
 		TNT1 A 0 A_JumpIfInventory("SlaughterToken",9,"ReplaceVanilla")
 	Idle:
