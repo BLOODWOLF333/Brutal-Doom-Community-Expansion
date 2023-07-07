@@ -692,7 +692,7 @@ ACTOR FlashlightProjectile: FastProjectile
 	-ACTIVATEPCROSS
 	+CLIENTSIDEONLY
 	+NONETID
-	+NOINTERACTION
+	+THRUGHOST
 	+MTHRUSPECIES
 	+THRUSPECIES
 	Species "Marines"
@@ -704,8 +704,7 @@ ACTOR FlashlightProjectile: FastProjectile
 
     Death:
 	XDeath:
-	    TNT2 A 3
-		TNT1 A 0 A_AlertMonsters(150)
+	    TNT2 A 3 A_AlertMonsters(150)
 		Stop
 	}
 }
