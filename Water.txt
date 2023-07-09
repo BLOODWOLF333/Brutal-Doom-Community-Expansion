@@ -97,7 +97,6 @@ states
 	}
 }
 
-
 Actor BlueLiquidParticleX: BloodLiquidParticleX
 {
   Translation "176:191=192:196"
@@ -118,7 +117,6 @@ Actor BlueLiquidParticleX: BloodLiquidParticleX
 
   }
 }
-
 
 Actor BUBULZ
 {
@@ -157,8 +155,6 @@ Actor BUBULZ
 	 Stop
   }
 }
-
-
 
 Actor EXPLOSIONBUBULZ: BUBULZ
 {
@@ -235,13 +231,6 @@ Actor EXPLOSIONBUBULZ: BUBULZ
   }
 }
 
-
-
-
-
-
-
-
 ACTOR WaterExplosionPressure
 {
     Radius 0
@@ -275,7 +264,6 @@ Stop
     }
 }
 
-
 ACTOR WaterExplosionPressure2
 {
     Radius 0
@@ -307,11 +295,6 @@ TNT1 A 0
 Stop
     }
 }
-
-
-
-
-
 
 Actor WaterParticleXTinySpawner: BlueParticleXSpawner
 {
@@ -345,8 +328,6 @@ states
 		Stop
 	}
 }
-
-
 
 Actor BlueLiquidParticleXSmall
 {
@@ -387,15 +368,6 @@ Actor BlueLiquidParticleXSmall
   }
 }
 
-
-
-
-
-
-
-
-
-
 Actor WaterParticleX
 {
   Radius 2
@@ -430,12 +402,10 @@ Actor WaterParticleX
   }
 }
 
-
 Actor WaterParticleXFAster: WaterParticleX
 {
   Speed 4
 }
-
 
 Actor WaterParticleXSuperFast: WaterParticleX
 {
@@ -481,28 +451,26 @@ Actor WaterSplashWaves
 	+DONTSPLASH
 	+CLIENTSIDEONLY
 	Mass 0
-	Scale 1.6
 	States
-		{
-			Spawn:
-				TNT1 A 0
-				TNT1 A 0 ACS_NamedExecuteAlways("BDCheckWaterRipples", 0, 0, 0, 0)
-				TNT1 A 3
-				TNT1 A 0 A_JumpIfInventory("Clip2", 1, "Vanish")
-				SLDG DE 4 A_SetScale(1.2, 1.8)
-				SLDG FHI 4
-				TNT1 A 0 A_SetScale(1.6, 1.4)
-				SLDG DEFHI 6
-				TNT1 A 0 A_SetScale(1.8, 0.8)
-				SLDG DEFHI 8
-				Stop
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckWaterRipples", 0, 0, 0, 0)
+		TNT1 A 2
+		TNT1 A 0 A_JumpIfInventory("Clip2", 1, "Vanish")
+		SLDG DE 4 A_SetScale(1.2, 1.8)
+		SLDG FHI 4
+		TNT1 A 0 A_SetScale(1.6, 1.4)
+		SLDG DEFHI 6
+		TNT1 A 0 A_SetScale(1.8, 0.8)
+		SLDG DEFHI 8
+		Stop
 
-			Vanish:
-				TNT1 A 0
-				Stop
-		}
+	Vanish:
+		TNT1 A 0
+		Stop
+	}
 }
-
 
 actor WaterSplashBaseSmall
 {
@@ -534,10 +502,6 @@ actor WaterSplashBaseSmall
 	Stop
   }
 }
-
-
-
-
 
 ACTOR ExplosionSplashSpawner
 {
