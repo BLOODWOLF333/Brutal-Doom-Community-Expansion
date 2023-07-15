@@ -78,7 +78,7 @@ Actor ZombiemanExecute1: ImpExecute1
 		13EZ A 35
 		TNT1 A 0 A_NoBlocking
 
-		NULL A 0 A_SpawnItem ("DeadZombieMan_NoHead")
+		NULL A 0 A_SpawnItem ("StompedZombieman")
 		Stop
 
 		Pain:
@@ -89,7 +89,7 @@ Actor ZombiemanExecute1: ImpExecute1
 		13EZ C 30
 		TNT1 A 0 A_NoBlocking
 
-		NULL A 0 A_SpawnItem ("DeadZombieMan_NoHead")
+		NULL A 0 A_SpawnItem ("StompedZombieman")
 		Stop
 
 		Death:
@@ -102,7 +102,7 @@ Actor ZombiemanExecute1: ImpExecute1
 		TNT1 A 0 A_GiveInventory("BootsSmearedWithRedBlood", 6)
 		13EZ B 8
 		13EZ D 15
-		NULL A 0 A_SpawnItem ("DeadZombieMan_NoHead")
+		NULL A 0 A_SpawnItem ("StompedZombieman")
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 4, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
 		Stop
 
@@ -206,7 +206,7 @@ Actor ShotgunguyExecute1: ZombiemanExecute1
 		14EZ A 35
 		TNT1 A 0 A_NoBlocking
 
-		NULL A 0 A_SpawnItem ("DeadShotgunGuy_NoHead")
+		NULL A 0 A_SpawnItem ("StompedSergeant")
 		Stop
 
 		Pain:
@@ -229,7 +229,7 @@ Actor ShotgunguyExecute1: ZombiemanExecute1
 		TNT1 A 0 A_GiveInventory("BootsSmearedWithRedBlood", 6)
 		14EZ B 8
 		14EZ D 15
-		NULL A 0 A_SpawnItem ("DeadShotgunGuy_NoHead")
+		NULL A 0 A_SpawnItem ("StompedSergeant")
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 4, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
 		Stop
 
