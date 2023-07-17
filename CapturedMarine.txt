@@ -179,15 +179,6 @@ ACTOR CapturedMarineBase 9112
         CAPM N 0 A_SpawnItem("PoleWithNothing")
         Stop
 
-	Conversion:
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx ("WolfensteinSS",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 0 A_SpawnItem("teleportfog")
-        TNT1 A 0 A_ChangeFLag ("SHOOTABLE", 0)
-		TNT1 A 0 A_ChangeFLag ("SOLID", 0)
-        CAPM N 0
-        Stop
-
 Pain:
 Pain.ExplosiveImpact:
 Pain.Explosive:
@@ -196,11 +187,8 @@ Pain.SSG:
 Pain.Minigun:
 Pain.ImpFatalityMarine:
 Pain.Rip:
-        CAPM P 1
-		TNT1 A 0 A_Stop
+        CAPM P 1 A_Stop
         CAPM P 5 A_Pain
-		TNT1 A 0 A_JumpIfInTargetInventory("EnemyIsArchvile", 1, "Conversion")
-		TNT1 A 0 A_Stop
         Goto AfterPain
 
 		AfterPain:
@@ -447,40 +435,36 @@ Pain.Rip:
         Stop
 
     Death.burn:
-	TNT1 A 0
-	TNT1 A 0 A_JumpIfInTargetInventory("EnemyIsArchvile", 1, "Conversion")
-	TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
-	TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
-	 PBUR A 1
-      PBUR A 1 A_Scream
-      PBUR A 1 A_NoBlocking
-	  CAPM N 0 A_SpawnItem("PoleWithNothing")
-       PBUR AAAABBBBCCCC 2 A_CustomMissile ("SmallFlameTrails", 32, 0, random (0, 180), 2, random (0, 180))
-	    PBUR DDDDEEEE 2 A_CustomMissile ("SmallFlameTrails", 16, 0, random (0, 180), 2, random (0, 180))
-        PBUR EEEEE 4 A_CustomMissile ("SmallFlameTrails", 8, 0, random (0, 180), 2, random (0, 180))
+		TNT1 A 0
+		TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
+		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
+		PBUR A 1
+		PBUR A 1 A_Scream
+		PBUR A 1 A_NoBlocking
+		CAPM N 0 A_SpawnItem("PoleWithNothing")
+		PBUR AAAABBBBCCCC 2 A_CustomMissile ("SmallFlameTrails", 32, 0, random (0, 180), 2, random (0, 180))
+		PBUR DDDDEEEE 2 A_CustomMissile ("SmallFlameTrails", 16, 0, random (0, 180), 2, random (0, 180))
+		PBUR EEEEE 4 A_CustomMissile ("SmallFlameTrails", 8, 0, random (0, 180), 2, random (0, 180))
 		PBUR EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 6 A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
-        PBUR E -1
-        Stop
+		PBUR E -1
+		Stop
 
     Death.Fire:
 	Death.Flames:
 	Death.Burn:
-
-	TNT1 A 0
-
+		TNT1 A 0
 		TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
 		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
-        TNT1 A 0 A_PlaySound("BIGSCREA")
-		TNT1 A 0 A_JumpIfInTargetInventory("EnemyIsArchvile", 1, "Conversion")
-      BURN W 6 A_Scream
-      BURN X 6 A_NoBlocking
-	  CAPM N 0 A_SpawnItem("PoleWithNothing")
-       BUR2 ABCD 6 BRIGHT A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
-       BURN FGHIJKL 6 BRIGHT A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
-       BURN MNOPQRSTUV 6 BRIGHT A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
-        BURN VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 6 A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
-        BURN V -1
-      Stop
+		TNT1 A 0 A_PlaySound("BIGSCREA")
+		BURN W 6 A_Scream
+		BURN X 6 A_NoBlocking
+		CAPM N 0 A_SpawnItem("PoleWithNothing")
+		BUR2 ABCD 6 BRIGHT A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
+		BURN FGHIJKL 6 BRIGHT A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
+		BURN MNOPQRSTUV 6 BRIGHT A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
+		BURN VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 6 A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
+		BURN V -1
+		Stop
 
 	  Death.ExplosiveImpact:
 		TNT1 A 0

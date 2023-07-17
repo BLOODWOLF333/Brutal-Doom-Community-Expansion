@@ -1475,8 +1475,6 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_JumpIfInventory("IsDown", 1, "PainIsDown")
         NULL A 0 A_Pain
 		NULL A 0 A_PlaySound("plpain", 2)
-        //NULL A 0 ACS_Execute(577, 0, 0, 0, 0)
-        //NULL A 0 ACS_Execute(530, 0, 0, 0, 0)
 	    NULL A 0 A_JumpIfInventory("FistsSelected", 1, "PainWfist")
 		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
 		TNT1 AA 0
@@ -1487,12 +1485,9 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("IsDown", 1, "PainIsDown")
         NULL A 0 A_Pain
-        //NULL A 0 ACS_Execute(577, 0, 0, 0, 0)
-        //NULL A 0 ACS_Execute(530, 0, 0, 0, 0)
 	    NULL A 0 A_JumpIfInventory("FistsSelected", 1, "PainWfist")
 		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
         NULL A 0 A_PlaySound("plpain", 2)
-		//TNT1 A 0 A_JumpIfInTargetInventory("EnemyIsArchvile", 1, "Pain.ArchvileAttack")
 		TNT1 AA 0
 		PLAY G 4
 		Goto SpecialChecker
@@ -1615,53 +1610,10 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL A 0 A_Pain
 		TNT1 A 0 ThrustThingZ(0, 15, 0, 1)
 		 NULL A 0 A_PlaySound("plpain", 2)
-        //NULL A 0 ACS_Execute(577, 0, 0, 0, 0)
-        //NULL A 0 ACS_Execute(530, 0, 0, 0, 0)
 	    Goto SpecialChecker
-
-	//Pain:.KillMeBot:
-		//TNT1 A 0
-		//TNT1 A 0 A_GiveInventory("Health", 1)
-		//TNT1 A 0 A_Chase
-		//TNT1 A 0 A_GiveInventory("BotAgression", 3)
-		//PLAY A 1
-		//TNT1 A 0 A_FaceTarget
-		//Goto StandStill
-
-	//Pain.Bullet:
-	//Pain.MonsterBullet:
-	//Pain.MonsterMinigunBullet:
-	//Pain.MonsterShotgunBullet:
-	//Pain.SSG:
-	//Pain.Minigun:
-	//Pain.MonsterMinigun:
-		NULL A 0 A_Jump(255,"PBUL1","PBUL2","PBUL3","PBUL4","PBUL5","PBUL6")
-        Goto Pain
-        //Scripts 611 to 616 are responsible for making the bullet damage effect on screen
-        PBUL1:
-        NULL A 0 ACS_Execute(611, 0, 0, 0, 0)
-        Goto Pain
-        PBUL2:
-        NULL A 0 ACS_Execute(612, 0, 0, 0, 0)
-        Goto Pain
-        PBUL3:
-        NULL A 0 ACS_Execute(613, 0, 0, 0, 0)
-        Goto Pain
-        PBUL4:
-        NULL A 0 ACS_Execute(614, 0, 0, 0, 0)
-        Goto Pain
-        PBUL5:
-        NULL A 0 ACS_Execute(615, 0, 0, 0, 0)
-        Goto Pain
-        PBUL6:
-        NULL A 0 ACS_Execute(616, 0, 0, 0, 0)
-        Goto Pain
 
 	Pain.ImpFatalityMarine:
 	Pain.Rip:
-        //NULL A 0 ACS_Execute(577, 0, 0, 0, 0)
-        //NULL A 0 ACS_Execute(530, 0, 0, 0, 0)
-        //NULL A 0 ACS_Execute(617, 0, 0, 0, 0)
 		NULL A 0 A_PlaySound("plpain", 2)
         Goto Pain
 
