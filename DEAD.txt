@@ -1674,9 +1674,9 @@ ACTOR PlayerChaingunguyVictim: CurbstompedMarine
 	{
 	Spawn:
 		XPL8 A 20
-		PLAY JKL 5
-		TNT1 A 0 A_ChangeFlag(NOPAIN,1)
-		PLAY L -1
+		PLAY JK
+		PLAY L 5 A_Noblocking
+		TNT1 A 0 A_SpawnItemEx("ADoomedSpaceMarine", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
 		Stop
 
 	Pain:
