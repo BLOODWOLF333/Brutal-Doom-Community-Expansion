@@ -1303,20 +1303,23 @@ ACTOR attackhelicopterGun : DoomWeapon
 
 Actor AssaultHelicopterRocket: Rocket2
 {
-Speed 50
-+FORCERADIUSDMG
-Scale 1.0
-Damage (random (300, 300))
-SeeSound "MISLFIRE"
+	Speed 50
+	Health 10
+	Radius 5
+	Height 10
+	+FORCERADIUSDMG
+	Scale 1.0
+	Damage (random (300, 300))
+	SeeSound "MISLFIRE"
 }
 
 Actor EnemyHelicopterRocket: AssaultHelicopterRocket
 {
-Speed 25
-Scale 1.0
-Species "EnemyTank"
-DamageType ExplosiveImpact
-Damage (random(150,150))
+	Speed 25
+	Scale 1.0
+	Species "EnemyTank"
+	DamageType ExplosiveImpact
+	Damage (random(150,150))
 }
 
 Actor HeliRestart : Inventory

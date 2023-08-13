@@ -576,13 +576,17 @@ ACTOR revenantseekermissiles Replaces RevenantTracer
 {
 	Game Doom
 	SpawnID 53
-	Radius 10
+	Health 10
+	Radius 2
 	Height 4
 	Speed 15
 	Damage (random(52,52))
 	PROJECTILE
 	+THRUGHOST
 	+SEEKERMISSILE
+	+SHOOTABLE
+	-NOBLOCKMAP
+	+NOBLOOD
 	Scale 0.5
 	Decal "Scorch"
     damagetype ExplosiveImpact

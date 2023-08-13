@@ -201,8 +201,6 @@ ACTOR revenantseekermissiles2: revenantseekermissiles
 {
 	Damage (random(48, 48))
 	Speed 25
-	Radius 2
-	Height 2
 	+SCREENSEEKER
 	-GHOST
 	-THRUGHOST
@@ -220,8 +218,6 @@ ACTOR MarineSeekerMissile : revenantseekermissiles2
 ACTOR revenantseekermissiles3: revenantseekermissiles2
 {
 	Speed 50
-	-SCREENSEEKER
-	-SEEKERMISSILE
 	Damagetype Explosive
 	States
 	{
@@ -236,8 +232,6 @@ ACTOR revenantseekermissiles3: revenantseekermissiles2
 ACTOR MarineSeekerMissile2 : revenantseekermissiles3
 {
 	DamageType "FriendBullet"
-	-SCREENSEEKER
-	-SEEKERMISSILE
 	States
 	{
 		Spawn:

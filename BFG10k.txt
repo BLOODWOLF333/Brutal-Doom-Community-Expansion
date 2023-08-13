@@ -200,24 +200,17 @@ Actor BFG10k : BrutalWeapon
 
 ACTOR BFG10K_Ball: FastProjectile
 {
-	Radius 10
-	Height 2
 	Speed 200
 	Damage (random(400, 400))
     DamageType Desintegrate
 	Decal "SmallerScorch"
 	Projectile
 	+RANDOMIZE
-	+SPECTRAL
-	-NOBLOCKMAP
-	+NOBLOOD
-	+NORADIUSDMG
 	+THRUSPECIES
 	+FORCEXYBILLBOARD
-	Scale 1.0
 	renderstyle ADD
-	alpha 0.99
-	Scale 0.4
+	Alpha 0.75
+	Scale 0.5
 	DeathSound "weapons/plasmax"
     SeeSound "None"
 	Obituary "$OB_MPPLASMARIFLE"

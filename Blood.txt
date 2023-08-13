@@ -218,7 +218,6 @@ ACTOR Brutal_BloodSpot
 	+DONTSPLASH
 	-SOLID
 	+THRUACTORS
-	Alpha 0.99
 	Scale 0.5
 	Decal BrutalBloodSplat
 	states
@@ -674,7 +673,6 @@ actor Brutal_FlyingBloodTrail
 {
 	scale 0.5
 	mass 1
-	renderstyle Normal
 	Decal BrutalBloodSplat
 	+MISSILE
 	+NOTELEPORT
@@ -903,7 +901,7 @@ actor CeilBloodSpot
 	Scale 0.5
 	Gravity 0.0
 	Decal BrutalBloodSplat
-	Renderstyle Normal
+	Renderstyle Add
 	Alpha 0.9
 	states
 	{
@@ -1080,7 +1078,6 @@ States
 Actor FireBlood : Brutal_Blood
 {
 	Decal "Scorch"
-	Renderstyle Normal
 	Scale 1.0
 	Alpha 1.0
 	Mass 5
@@ -1105,8 +1102,6 @@ actor GrowingBloodPool: Brutal_BloodSpot
 	height 1
 	mass 1
 	Health 600
-	RenderStyle Normal
-	Alpha 0.99
 	+MISSILE
 	+NOTELEPORT
 	+FORCEXYBILLBOARD

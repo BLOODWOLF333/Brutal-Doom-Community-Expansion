@@ -808,8 +808,6 @@ ACTOR MechGun : DoomWeapon
 
 ACTOR MechRocket: Rocket2
 {
-	Radius 11
-	Height 8
 	Speed 50
 	Damage (random (300, 300))
 	SeeSound "MISLFIRE"
@@ -817,8 +815,6 @@ ACTOR MechRocket: Rocket2
 
 ACTOR MechRocket2: MechRocket
 {
-	Radius 11
-	Height 8
 	Speed 30
 	Damage (random (120, 120))
 	Species "EnemyTank"
@@ -880,24 +876,18 @@ Stop
 
 ACTOR LaserBolt : FastProjectile
 {
-	Radius 10
-	Height 2
 	Speed 120
 	Damage (random(40, 40))
     DamageType Plasma
 	Decal "SmallerScorch"
 	Projectile
 	+RANDOMIZE
-	+SPECTRAL
-	-NOBLOCKMAP
-	+NOBLOOD
-	+NORADIUSDMG
 	+THRUSPECIES
 	+FORCEXYBILLBOARD
 	Species "Marines"
 	Scale 1.0
 	renderstyle ADD
-	alpha 0.99
+	alpha 0.75
     SeeSound "PAILGF3"
 	DeathSound "PAILGD3"
 	Obituary "$OB_MPPLASMARIFLE"
@@ -926,24 +916,18 @@ ACTOR LaserBolt : FastProjectile
 
 ACTOR LaserBolt2 : FastProjectile
 {
-	Radius 10
-	Height 2
 	Speed 60
 	Damage (random(20, 20))
     DamageType Plasma
 	Decal "SmallerScorch"
 	Projectile
 	+RANDOMIZE
-	+SPECTRAL
-	-NOBLOCKMAP
-	+NOBLOOD
-	+NORADIUSDMG
 	+THRUSPECIES
 	+FORCEXYBILLBOARD
 	Species "EnemyTank"
 	Scale 1.0
 	renderstyle ADD
-	alpha 0.99
+	alpha 0.75
     SeeSound "PAILGF3"
 	DeathSound "PAILGD3"
 	Obituary "$OB_MPPLASMARIFLE"

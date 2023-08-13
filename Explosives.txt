@@ -2,8 +2,9 @@
 
 ACTOR Rocket2
 {
-	Radius 4
-	Height 2
+	Health 10
+	Radius 2
+	Height 4
 	Projectile
 	Speed 50
     Damage (random (300, 300))
@@ -16,7 +17,9 @@ ACTOR Rocket2
     +NOGRAVITY
     +EXTREMEDEATH
 	+THRUSPECIES
-	+SPECTRAL
+	+SHOOTABLE
+	-NOBLOCKMAP
+	+NOBLOOD
 	SeeSound "Rocket/Launch"
 	DeathSound "Explosion"
 	Obituary "$OB_MPROCKET"
@@ -600,14 +603,16 @@ Height 12
 
 ACTOR NuclearRocket: Rocket2
 {
-+FORCERADIUSDMG
--NOGRAVITY
-+SKYEXPLODE
-+NODAMAGETHRUST
-Gravity 0.2
-Damage (random (20000, 20000))
-Scale 1.0
-Damagetype "Extreme"
+	Radius 5
+	Height 10
+	+FORCERADIUSDMG
+	-NOGRAVITY
+	+SKYEXPLODE
+	+NODAMAGETHRUST
+	Gravity 0.2
+	Damage (random (20000, 20000))
+	Scale 1.0
+	Damagetype "Extreme"
 	States
 	{
 	Spawn:
