@@ -1,15 +1,17 @@
 actor VeryDeadMarine: DeadMarine Replaces DeadMarine
 {
-	damagefactor "Avoid", 0.0
-	damagefactor "Blood", 0.0    damagefactor "GreenBlood", 0.0    damagefactor "BlueBlood", 0.0    damagefactor "Taunt", 0.0    damagefactor "KillMe", 0.0
-	damagefactor "Shrapnel", 100.0
-	damagefactor "GibRemoving", 990.0
-	+NOTAUTOAIMED
-	+CLIENTSIDEONLY
-	+FLOORCLIP
-	-SOLID
-	+CORPSE
 	Game Doom
+	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
+	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 100.0	Damagefactor "Glass", 0.0
+	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
+	Damagefactor "HelperMarineFatallity", 0.0	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0
+	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
+	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
+	DamageFactor "SSG", 5.0	DamageFactor "TankWeakSpot", 0.0
+	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0	Damagefactor "Use", 0.0
+	+CLIENTSIDEONLY
+	+CORPSE
 	States
 	{
     Spawn:
@@ -43,9 +45,18 @@ actor VeryDeadMarine: DeadMarine Replaces DeadMarine
 
 actor VeryVeryDeadMarine: GibbedMarine Replaces GibbedMarine
 {
-	+CLIENTSIDEONLY
-	damagefactor "Avoid", 0.0
 	Game Doom
+	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
+	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 100.0	Damagefactor "Glass", 0.0
+	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
+	Damagefactor "HelperMarineFatallity", 0.0	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0
+	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
+	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
+	DamageFactor "SSG", 5.0	DamageFactor "TankWeakSpot", 0.0
+	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0	Damagefactor "Use", 0.0
+	+CLIENTSIDEONLY
+	+CORPSE
 	States
 	{
     Spawn:
@@ -70,17 +81,25 @@ actor VeryVeryDeadMarine: GibbedMarine Replaces GibbedMarine
 	}
 }
 
-actor VeryVeryDeadMarine2 : VeryVeryDeadMarine Replaces GibbedMarineExtra
-{
-	Game Doom
-}
+actor VeryVeryDeadMarine2 : VeryVeryDeadMarine Replaces GibbedMarineExtra	{}
 
 actor CurbstompedMarine
 {
-	Radius 10
-    Height 6
+	Game Doom
+    Health 100
+	BloodType "DeadBlood", "SawBlood", "SawBlood"
+
+	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
+	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 100.0	Damagefactor "Glass", 0.0
+	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
+	Damagefactor "HelperMarineFatallity", 0.0	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0
+	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
+	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
+	DamageFactor "SSG", 5.0	DamageFactor "TankWeakSpot", 0.0
+	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0	Damagefactor "Use", 0.0
+	+CLIENTSIDEONLY
     +NOTELEPORT
-	damagefactor "Blood", 0.0    damagefactor "GreenBlood", 0.0    damagefactor "BlueBlood", 0.0    damagefactor "Taunt", 0.0    damagefactor "KillMe", 0.0
     +MOVEWITHSECTOR
 	+FLOORCLIP
 	+FORCEXYBILLBOARD
@@ -89,22 +108,6 @@ actor CurbstompedMarine
 	+GHOST
 	+NOTAUTOAIMED
 	+CORPSE
-	damagefactor "Crusher", 50.0
-    Mass 1000
-    Health 100
-	PainChance 255
-	damagefactor "TeleportRemover", 1000.0
-	damagefactor "Desintegrate", 990.0
-	damagefactor "BFG", 990.0
-	damagefactor "CrushedBodies", 9999.0
-	damagefactor "Headkick", 0.0
-	Mass 3000
-	damagefactor "Kick", 3.0
-	damagefactor "SuperKick", 3.0
-	damagefactor "ExtremePunches", 2.0
-	damagefactor "SuperPunch", 2.0
-	damagefactor "SSG", 5.0
-	BloodType "DeadBlood", "SawBlood", "SawBlood"
     States
 	{
     Spawn:
@@ -499,8 +502,17 @@ ACTOR DeadDeadStick: DeadStick Replaces DeadStick
 	DropItem "CLIP1Drop" 128
 	DropItem "Shell" 128
     bloodtype "DeadBlood"
-	damagefactor "Fire", 0.0
-    damagefactor "Blood", 0.0    damagefactor "GreenBlood", 0.0    damagefactor "BlueBlood", 0.0    damagefactor "Taunt", 0.0    damagefactor "KillMe", 0.0  damagefactor "Avoid", 0.0  damagefactor "Taunt", 0.0
+
+	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
+	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 100.0	Damagefactor "Glass", 0.0
+	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
+	Damagefactor "HelperMarineFatallity", 0.0	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0
+	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
+	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
+	DamageFactor "SSG", 5.0	DamageFactor "TankWeakSpot", 0.0
+	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0	Damagefactor "Use", 0.0
+
     GibHealth 10
 	States
 	{
@@ -541,8 +553,17 @@ ACTOR DeadLiveStick: LiveStick Replaces LiveStick
 	DropItem "Stimpack" 128
 	DropItem "Clip" 128
 	DropItem "Shell" 128
-	damagefactor "Fire", 0.0
-    damagefactor "Blood", 0.0    damagefactor "GreenBlood", 0.0    damagefactor "BlueBlood", 0.0    damagefactor "Taunt", 0.0    damagefactor "KillMe", 0.0  damagefactor "Avoid", 0.0  damagefactor "Taunt", 0.0
+
+	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
+	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 100.0	Damagefactor "Glass", 0.0
+	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
+	Damagefactor "HelperMarineFatallity", 0.0	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0
+	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
+	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
+	DamageFactor "SSG", 5.0	DamageFactor "TankWeakSpot", 0.0
+	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0	Damagefactor "Use", 0.0
+
     bloodtype "DeadBlood"
 	States
 	{
@@ -632,13 +653,21 @@ ACTOR ImpaledMarineAlive1: DeadLiveStick
 {
 	Health 100
 	Painchance 255
-	damagefactor "Fire", 2.0
 	height 60
 	MONSTER
 	+FRIENDLY
 	-COUNTKILL
-	deathheight 60 DamageFactor "Use", 0 DamageFactor "SSG", 5.0
-	Damagefactor "Melee", 0.1 DamageFactor "Kick", 0.1
+	deathheight 60
+
+	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
+	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 100.0	Damagefactor "Glass", 0.0
+	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
+	Damagefactor "HelperMarineFatallity", 0.0	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0
+	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
+	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
+	DamageFactor "SSG", 5.0	DamageFactor "TankWeakSpot", 0.0
+	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0	Damagefactor "Use", 0.0
 	States
 	{
 	Spawn:
@@ -823,15 +852,22 @@ ACTOR DeadBloodyTwitch: BloodyTwitch Replaces BloodyTwitch
 	+SPAWNCEILING
 	+SHOOTABLE
     GibHealth 10
-    damagefactor "Blood", 0.0    damagefactor "GreenBlood", 0.0    damagefactor "BlueBlood", 0.0    damagefactor "Taunt", 0.0    damagefactor "KillMe", 0.0  damagefactor "Avoid", 0.0  damagefactor "Taunt", 0.0
     bloodtype "DeadBlood"
 	DropItem "CLIP1Drop" 128
 	DropItem "HealthPlusNoCount" 128
 	DropItem "HealthPlusNoCount" 128
 	DropItem "ArmorShardNoCount" 128
 	DropItem "ArmorShardNoCount" 128
-	damagefactor "Fire", 0.0
-	damagefactor "HumanBBQ", 500.0
+
+	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
+	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 100.0	Damagefactor "Glass", 0.0
+	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
+	Damagefactor "HelperMarineFatallity", 0.0	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0
+	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
+	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
+	DamageFactor "SSG", 5.0	DamageFactor "TankWeakSpot", 0.0
+	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0	Damagefactor "Use", 0.0
 	States
 	{
     Spawn:
@@ -875,10 +911,8 @@ ACTOR DeadBloodyTwitchB: DeadBloodyTwitch
 	DropItem "HealthPlusNoCount" 0
 	DropItem "ArmorShardNoCount" 0
 	DropItem "ArmorShardNoCount" 0
-	damagefactor "Fire", 0.0
 	DropItem "CLIP1Drop" 128
     Health 100
-	damagefactor "HumanBBQ", 500.0
     States
 	{
 	Spawn:
@@ -912,7 +946,6 @@ ACTOR DeadBloodyTwitchB: DeadBloodyTwitch
 ACTOR DeadBloodyTwitchC: DeadBloodyTwitchB
 {
 	-SHOOTABLE
-	damagefactor "Fire", 0.0
     States
 	{
 	Spawn:
@@ -933,16 +966,23 @@ ACTOR HangingBody: Meat2 Replaces Meat2
 	+SPAWNCEILING
 	+SHOOTABLE
     GibHealth 10
-	damagefactor "Fire", 0.0
 	DropItem "CLIP1Drop" 128
 	DropItem "HealthPlusNoCount" 128
 	DropItem "HealthPlusNoCount" 128
 	DropItem "HealthPlusNoCount" 128
 	DropItem "ArmorShardNoCount" 128
 	DropItem "ArmorShardNoCount" 128
-    damagefactor "Blood", 0.0    damagefactor "GreenBlood", 0.0    damagefactor "BlueBlood", 0.0    damagefactor "Taunt", 0.0    damagefactor "KillMe", 0.0  damagefactor "Avoid", 0.0  damagefactor "Taunt", 0.0
     bloodtype "DeadBlood"
-	damagefactor "HumanBBQ", 500.0
+
+	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
+	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 100.0	Damagefactor "Glass", 0.0
+	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
+	Damagefactor "HelperMarineFatallity", 0.0	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0
+	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
+	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
+	DamageFactor "SSG", 5.0	DamageFactor "TankWeakSpot", 0.0
+	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0	Damagefactor "Use", 0.0
 	States
 	{
 	Spawn:
@@ -978,8 +1018,6 @@ ACTOR HangingPairOfLegs: DeadBloodyTwitchB Replaces Meat4
 	Radius 16
 	Height 83
     Health 100
-	damagefactor "Fire", 0.0
-	damagefactor "HumanBBQ", 500.0
     States
 	{
 	Spawn:
@@ -1025,7 +1063,6 @@ ACTOR Meat2C: DeadBloodyTwitchB
 	Radius 16
 	Height 83
 	-SHOOTABLE
-	damagefactor "Fire", 0.0
     States
 	{
 	Spawn:
@@ -1046,14 +1083,21 @@ ACTOR HangingDeadGuyNoLeg: Meat3 Replaces Meat3
 	+SPAWNCEILING
 	+SHOOTABLE
     GibHealth 10
-	damagefactor "Fire", 0.0
 	DropItem "HealthPlusNoCount" 128
 	DropItem "HealthPlusNoCount" 128
 	DropItem "ArmorShardNoCount" 128
 	DropItem "ArmorShardNoCount" 128
-    damagefactor "Blood", 0.0    damagefactor "GreenBlood", 0.0    damagefactor "BlueBlood", 0.0    damagefactor "Taunt", 0.0    damagefactor "KillMe", 0.0  damagefactor "Avoid", 0.0  damagefactor "Taunt", 0.0
     bloodtype "DeadBlood"
-	damagefactor "HumanBBQ", 500.0
+
+	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
+	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 100.0	Damagefactor "Glass", 0.0
+	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
+	Damagefactor "HelperMarineFatallity", 0.0	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0
+	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
+	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
+	DamageFactor "SSG", 5.0	DamageFactor "TankWeakSpot", 0.0
+	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0	Damagefactor "Use", 0.0
 	States
 	{
 	Spawn:
@@ -1089,8 +1133,6 @@ ACTOR HangingLeg: DeadBloodyTwitchB Replaces Meat5
 	Radius 16
 	Height 83
 	Health 100
-	damagefactor "Fire", 0.0
-	damagefactor "HumanBBQ", 500.0
     States
 	{
 	Spawn:
@@ -1126,7 +1168,6 @@ ACTOR Meat3C: DeadBloodyTwitchB
 	Radius 16
 	Height 83
 	-SHOOTABLE
-	damagefactor "Fire", 0.0
     States
 	{
 	Spawn:
@@ -1163,10 +1204,17 @@ ACTOR DeadHangNoGuts: HangNoGuts Replaces HangNoGuts
 	+SPAWNCEILING
 	+SHOOTABLE
     GibHealth 30
-	damagefactor "Fire", 0.0
-    damagefactor "Blood", 0.0    damagefactor "GreenBlood", 0.0    damagefactor "BlueBlood", 0.0    damagefactor "Taunt", 0.0    damagefactor "KillMe", 0.0  damagefactor "Avoid", 0.0  damagefactor "Taunt", 0.0
     bloodtype "DeadBlood"
-	damagefactor "humanbbq", 500.0
+
+	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
+	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 100.0	Damagefactor "Glass", 0.0
+	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
+	Damagefactor "HelperMarineFatallity", 0.0	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0
+	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
+	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
+	DamageFactor "SSG", 5.0	DamageFactor "TankWeakSpot", 0.0
+	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0	Damagefactor "Use", 0.0
 	States
 	{
     Spawn:
