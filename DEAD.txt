@@ -4,13 +4,13 @@ actor VeryDeadMarine: DeadMarine Replaces DeadMarine
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
 	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 100.0	Damagefactor "Glass", 0.0
-	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
+	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 1.25	Damagefactor "HeadKick", 0.0
 	Damagefactor "HelperMarineFatallity", 0.0	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0
 	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
-	DamageFactor "SSG", 5.0	DamageFactor "TankWeakSpot", 0.0
-	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0	Damagefactor "Use", 0.0
-	+CLIENTSIDEONLY
+	DamageFactor "SSG", 5.0	Damagefactor "ExtremePunches", 2.0	Damagefactor "Fatality", 5.0	Damagefactor "HelperMarineFatallity", 5.0
+	DamageFactor "TankWeakSpot", 0.0	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0
+	Damagefactor "Use", 0.0
 	+CORPSE
 	States
 	{
@@ -49,13 +49,13 @@ actor VeryVeryDeadMarine: GibbedMarine Replaces GibbedMarine
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
 	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 100.0	Damagefactor "Glass", 0.0
-	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
+	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 1.25	Damagefactor "HeadKick", 0.0
 	Damagefactor "HelperMarineFatallity", 0.0	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0
 	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
-	DamageFactor "SSG", 5.0	DamageFactor "TankWeakSpot", 0.0
-	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0	Damagefactor "Use", 0.0
-	+CLIENTSIDEONLY
+	DamageFactor "SSG", 5.0	Damagefactor "ExtremePunches", 2.0	Damagefactor "Fatality", 5.0	Damagefactor "HelperMarineFatallity", 5.0
+	DamageFactor "TankWeakSpot", 0.0	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0
+	Damagefactor "Use", 0.0
 	+CORPSE
 	States
 	{
@@ -92,13 +92,13 @@ actor CurbstompedMarine
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
 	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 100.0	Damagefactor "Glass", 0.0
-	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
+	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 1.25	Damagefactor "HeadKick", 0.0
 	Damagefactor "HelperMarineFatallity", 0.0	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0
 	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
-	DamageFactor "SSG", 5.0	DamageFactor "TankWeakSpot", 0.0
-	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0	Damagefactor "Use", 0.0
-	+CLIENTSIDEONLY
+	DamageFactor "SSG", 5.0	Damagefactor "ExtremePunches", 2.0	Damagefactor "Fatality", 5.0	Damagefactor "HelperMarineFatallity", 5.0
+	DamageFactor "TankWeakSpot", 0.0	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0
+	Damagefactor "Use", 0.0
     +NOTELEPORT
     +MOVEWITHSECTOR
 	+FLOORCLIP
@@ -506,12 +506,13 @@ ACTOR DeadDeadStick: DeadStick Replaces DeadStick
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
 	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 100.0	Damagefactor "Glass", 0.0
-	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
+	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 1.25	Damagefactor "HeadKick", 0.0
 	Damagefactor "HelperMarineFatallity", 0.0	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0
 	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
-	DamageFactor "SSG", 5.0	DamageFactor "TankWeakSpot", 0.0
-	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0	Damagefactor "Use", 0.0
+	DamageFactor "SSG", 5.0	Damagefactor "ExtremePunches", 2.0	Damagefactor "Fatality", 5.0	Damagefactor "HelperMarineFatallity", 5.0
+	DamageFactor "TankWeakSpot", 0.0	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0
+	Damagefactor "Use", 0.0
 
     GibHealth 10
 	States
@@ -557,12 +558,13 @@ ACTOR DeadLiveStick: LiveStick Replaces LiveStick
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
 	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 100.0	Damagefactor "Glass", 0.0
-	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
+	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 1.25	Damagefactor "HeadKick", 0.0
 	Damagefactor "HelperMarineFatallity", 0.0	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0
 	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
-	DamageFactor "SSG", 5.0	DamageFactor "TankWeakSpot", 0.0
-	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0	Damagefactor "Use", 0.0
+	DamageFactor "SSG", 5.0	Damagefactor "ExtremePunches", 2.0	Damagefactor "Fatality", 5.0	Damagefactor "HelperMarineFatallity", 5.0
+	DamageFactor "TankWeakSpot", 0.0	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0
+	Damagefactor "Use", 0.0
 
     bloodtype "DeadBlood"
 	States
@@ -662,12 +664,13 @@ ACTOR ImpaledMarineAlive1: DeadLiveStick
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
 	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 100.0	Damagefactor "Glass", 0.0
-	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
+	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 1.25	Damagefactor "HeadKick", 0.0
 	Damagefactor "HelperMarineFatallity", 0.0	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0
 	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
-	DamageFactor "SSG", 5.0	DamageFactor "TankWeakSpot", 0.0
-	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0	Damagefactor "Use", 0.0
+	DamageFactor "SSG", 5.0	Damagefactor "ExtremePunches", 2.0	Damagefactor "Fatality", 5.0	Damagefactor "HelperMarineFatallity", 5.0
+	DamageFactor "TankWeakSpot", 0.0	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0
+	Damagefactor "Use", 0.0
 	States
 	{
 	Spawn:
@@ -862,12 +865,13 @@ ACTOR DeadBloodyTwitch: BloodyTwitch Replaces BloodyTwitch
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
 	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 100.0	Damagefactor "Glass", 0.0
-	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
+	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 1.25	Damagefactor "HeadKick", 0.0
 	Damagefactor "HelperMarineFatallity", 0.0	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0
 	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
-	DamageFactor "SSG", 5.0	DamageFactor "TankWeakSpot", 0.0
-	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0	Damagefactor "Use", 0.0
+	DamageFactor "SSG", 5.0	Damagefactor "ExtremePunches", 2.0	Damagefactor "Fatality", 5.0	Damagefactor "HelperMarineFatallity", 5.0
+	DamageFactor "TankWeakSpot", 0.0	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0
+	Damagefactor "Use", 0.0
 	States
 	{
     Spawn:
@@ -977,12 +981,13 @@ ACTOR HangingBody: Meat2 Replaces Meat2
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
 	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 100.0	Damagefactor "Glass", 0.0
-	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
+	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 1.25	Damagefactor "HeadKick", 0.0
 	Damagefactor "HelperMarineFatallity", 0.0	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0
 	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
-	DamageFactor "SSG", 5.0	DamageFactor "TankWeakSpot", 0.0
-	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0	Damagefactor "Use", 0.0
+	DamageFactor "SSG", 5.0	Damagefactor "ExtremePunches", 2.0	Damagefactor "Fatality", 5.0	Damagefactor "HelperMarineFatallity", 5.0
+	DamageFactor "TankWeakSpot", 0.0	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0
+	Damagefactor "Use", 0.0
 	States
 	{
 	Spawn:
@@ -1092,12 +1097,13 @@ ACTOR HangingDeadGuyNoLeg: Meat3 Replaces Meat3
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
 	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 100.0	Damagefactor "Glass", 0.0
-	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
+	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 1.25	Damagefactor "HeadKick", 0.0
 	Damagefactor "HelperMarineFatallity", 0.0	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0
 	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
-	DamageFactor "SSG", 5.0	DamageFactor "TankWeakSpot", 0.0
-	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0	Damagefactor "Use", 0.0
+	DamageFactor "SSG", 5.0	Damagefactor "ExtremePunches", 2.0	Damagefactor "Fatality", 5.0	Damagefactor "HelperMarineFatallity", 5.0
+	DamageFactor "TankWeakSpot", 0.0	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0
+	Damagefactor "Use", 0.0
 	States
 	{
 	Spawn:
@@ -1209,12 +1215,13 @@ ACTOR DeadHangNoGuts: HangNoGuts Replaces HangNoGuts
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
 	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 100.0	Damagefactor "Glass", 0.0
-	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
+	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 1.25	Damagefactor "HeadKick", 0.0
 	Damagefactor "HelperMarineFatallity", 0.0	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0
 	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
-	DamageFactor "SSG", 5.0	DamageFactor "TankWeakSpot", 0.0
-	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0	Damagefactor "Use", 0.0
+	DamageFactor "SSG", 5.0	Damagefactor "ExtremePunches", 2.0	Damagefactor "Fatality", 5.0	Damagefactor "HelperMarineFatallity", 5.0
+	DamageFactor "TankWeakSpot", 0.0	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0
+	Damagefactor "Use", 0.0
 	States
 	{
     Spawn:
@@ -1518,10 +1525,10 @@ actor PlayerJustGotCutInHalf: CurbstompedMarine
 Actor GoreFlies
 {
 	+NOGRAVITY
-	+NOTONAUTOMAP
 	+SHOOTABLE
 	+NOBLOOD
 	+NOBLOCKMAP
+	+MOVEWITHSECTOR
 	Health 1
 	radius 1
 	height 1
@@ -1634,9 +1641,9 @@ Actor SpawnedMaggotDec
 	Radius 1
 	Mass 0
 	PROJECTILE
-	+Missile
-	+NoBlockMap
-	+DontSplash
+	+MISSILE
+	+NOBLOCKMAP
+	+DONTSPLASH
 	+FORCEXYBILLBOARD
 	+CLIENTSIDEONLY
 	+THRUACTORS
