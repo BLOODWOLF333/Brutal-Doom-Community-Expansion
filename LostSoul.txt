@@ -55,7 +55,7 @@ ACTOR TheLostSoul : LostSoul Replaces LostSoul
 	DropItem "HealthPlusNoCount", 16
 	Monster
 	+FLOAT +NOGRAVITY +DONTFALL
-	+NOICEDEATH
+	+NOICEDEATH +NOBLOODDECALS
 	+FORCEXYBILLBOARD +DONTHARMSPECIES +THRUSPECIES
 	AttackSound "skull/melee"
 	PainSound "skull/pain"
@@ -307,14 +307,10 @@ ACTOR SoulTrails
 
 actor LostSoulBlood : Blood
 {
-	Decal None
+	Decal "None"
 	game Doom
-	+FORCEXYBILLBOARD
-	+GHOST
 	+NOBLOCKMAP
-	+NOGRAVITY
-	+NOCLIP
-	-DONTSPLASH
+	+NOTELEPORT
 	-ALLOWPARTICLES
 	Speed 0
 	states
