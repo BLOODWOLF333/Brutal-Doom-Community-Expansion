@@ -597,7 +597,6 @@ ACTOR revenantseekermissiles Replaces RevenantTracer
 	{
 	Spawn:
 	    FATB AA 1 BRIGHT A_SpawnItemEx("RocketFlare",-20,0)
-		TNT1 A 0 A_SpawnItemEx("OldschoolRocketSmokeTrail2", 0, 0, 0, 0, 0, 0, 0, 0, 128)
 		TNT1 A 0 A_CustomMissile ("OldschoolRocketSmokeTrail2", 2, 0, random (160, 210), 2, random (-30, 30))
 		TNT1 A 0 A_SeekerMissile (2,4, SMF_LOOK)
 		Loop
@@ -631,7 +630,6 @@ ACTOR RevenantMissile: revenantseekermissiles
 	{
 	Spawn:
 		FATB AA 1 BRIGHT A_SpawnItemEx("RocketFlare",-20,0)
-		TNT1 A 0 A_SpawnItemEx("OldschoolRocketSmokeTrail2", 0, 0, 0, 0, 0, 0, 0, 0, 128)
 		TNT1 A 0 A_CustomMissile ("OldschoolRocketSmokeTrail2", 2, 0, random (160, 210), 2, random (-30, 30))
 		Loop
 	}
