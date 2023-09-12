@@ -558,23 +558,22 @@ ACTOR BurningCacodemon
     Scale 0.85
 	Health 100
 	GibHealth 25
-	+NOICEDEATH
-	damagefactor "Burn", 0.5
-	damagefactor "Fire", 0.5
-	damagefactor "Flames", 0.5
-	damagefactor "Flame", 0.5
+	damagefactor "Burn", 0.0
+	damagefactor "Fire", 0.0
+	damagefactor "Flames", 0.0
+	damagefactor "Flame", 0.0
 	damagefactor "ExplosiveImpact", 10.0
 	bloodtype "Blue_Blood"
 	bloodcolor DarkBlue
 	MONSTER
 	-COUNTKILL
-	+FLOAT
-	+NOGRAVITY
+	+NOICEDEATH
 	+FRIENDLY
     +FLOORCLIP
 	+SHOOTABLE
 	+NOBLOCKMONST
 	+DONTSPLASH
+	+NOTARGET
 	Gravity 1.0
 	bloodtype "DeadBlood"
     Obituary "%o was near someone in flames."
@@ -596,22 +595,28 @@ ACTOR BurningCacodemon
 		TNT1 A 0 A_Recoil(-1)
         BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
 		HEAD B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
-		TNT1 A 0 A_JumpIfInventory("PoorGuyBurningLife", 7, "Death")
+		TNT1 A 0 A_JumpIfInventory("PoorGuyBurningLife", 7, "Expire")
 		TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
 		Loop
 
+	Pain:
+		HEAD E 4 A_PAIN
+		Goto Suffer
+
+	Expire:
+		HEAD E 2 A_PAIN
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("FireballExplosionFlamesBig", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		HEAD E 2 A_DIE
+
     Death:
 		TNT1 A 0
-		TNT1 A 0 A_ChangeFlag("SOLID", 0)
-		TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
-		TNT1 A 0 A_ChangeFlag("NOGRAVITY", 0)
-		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
 	    TNT1 A 0 A_Fall
 		TNT1 A 0 A_NoBlocking
-		HEAD P 1 A_SpawnItem("100SmallFireFocusSpawnerz")
 		TNT1 A 0 A_Playsound("props/redfire")
 		HEAD PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP 12 A_CustomMissile("FireballExplosionFlamesBig", 15, 0, random (0, 360), 2, random (50, 130))
-		HEAD P 1 A_SpawnItem("100SmallFireFocusSpawnerz")
+		HEAD P 0 A_SpawnItem("100SmallFireFocusSpawnerz")
 		HEAD PPPPPPPPPPPPPPPPPPPPPPPP 6 A_CustomMissile("PlasmaSmoke", 15, 0, random (0, 360), 2, random (50, 130))
 		HEAD P -1
         Stop
