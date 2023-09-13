@@ -283,7 +283,7 @@ ACTOR DyingZombiemanInFlames
 
 		Suffer:
 		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("DeathTimer", 5, "Death")
+		TNT1 A 0 A_JumpIfInventory("DeathTimer", 5, "Expire")
 		ZMAB A 5 A_Chase("","")
 		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 10, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
@@ -299,6 +299,18 @@ ACTOR DyingZombiemanInFlames
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-15, 15), random (-15, 15))
 		TNT1 A 0 A_GiveInventory("DeathTimer", 1)
 		Loop
+
+		Pain:
+		ZMAB B 5 A_PAIN
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		Goto Expire
+
+		Expire:
+		ZMAB B 3 A_PAIN
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		ZMAB B 2 A_DIE
 
 		Death:
 		TNT1 A 0 A_StopSound(4)
@@ -340,6 +352,7 @@ ACTOR DyingSergeantNoLegInFlames
 	Health 20
 	PainSound "grunt/pain"
 	DeathSound "grunt/death"
+	Monster
 	+SHOOTABLE
     +FLOORCLIP
 	//+NOBLOCKMAP
@@ -368,19 +381,22 @@ ACTOR DyingSergeantNoLegInFlames
 		SMBM B 5 A_Chase("","")
 		TNT1 B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_GiveInventory("DeathTimer", 1)
-		TNT1 A 0 A_JumpIfInventory("DeathTimer", 10, "GotoDeath")
+		TNT1 A 0 A_JumpIfInventory("DeathTimer", 10, "Expire")
 		Loop
 
-		GotoDeath:
-		TNT1 A 0
-		Goto Death
+		Pain:
+		SMBM A 5 A_PAIN
+		TNT1 A 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		Goto Expire
+
+		Expire:
+		SMBM A 3 A_PAIN
+		TNT1 A 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		SMBM A 2 A_DIE
 
 		Death:
 		TNT1 A 0 A_StopSound(4)
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
-
-		TNT1 A 0 A_Scream
 		BRZ3 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 3 A_CustomMissile("BurnParticles", 5, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_SpawnItem("100SmallFireFocusSpawnerz")
 		BRZ3 HHHHHHHHHHHHHHHHHHHHHHHH 10 A_CustomMissile("PlasmaSmoke", 15, 0, random (0, 360), 2, random (50, 130))
@@ -450,7 +466,7 @@ ACTOR BurningZombie
 
 		Suffer:
 		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("PoorGuyBurningLife", 5, "Death")
+		TNT1 A 0 A_JumpIfInventory("PoorGuyBurningLife", 5, "Expire")
 		BDT1 AAA 1 Bright A_Wander
 		TNT1 A 0 A_Recoil(-2)
 		BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
@@ -470,22 +486,11 @@ ACTOR BurningZombie
 		TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
 		Loop
 
-		Falling:
-		BDT2 AA 1 Bright
-		BDT1 B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		Pain:
+		BDT1 A 3 BRIGHT A_PAIN
+		BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
 		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
-		BDT2 BB 1 Bright
-		BDT1 B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
-		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
-		BDT2 CC 1 Bright
-		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
-		BDT1 B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
-		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
-		BDT2 DD 1 Bright
-		BDT1 B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
-		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
-		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
-		Loop
+		Goto Expire
 
 		Death.ExplosiveImpact:
 		TNT1 A 0
@@ -513,10 +518,15 @@ ACTOR BurningZombie
 		TNT1 A 0 A_Explode(100, 128)
 		Goto Death
 
+		Expire:
+		BDT1 A 3 BRIGHT A_PAIN
+		BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 3 BRIGHT A_DIE
+
 		Death:
 		TNT1 A 0
 		TNT1 A 0 A_StopSound(4)
-		TNT1 A 0 A_Fall
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_Jump(128, "Death2")
 		BDT1 EEFFGGHHiijjkkLLmm 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
@@ -600,19 +610,20 @@ ACTOR BurningCacodemon
 		Loop
 
 	Pain:
-		HEAD E 4 A_PAIN
-		Goto Suffer
+		HEAD E 4 BRIGHT A_PAIN
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HEAD B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		Goto Expire
 
 	Expire:
-		HEAD E 2 A_PAIN
+		HEAD E 4 BRIGHT A_PAIN
         BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
 		BDT1 B 0 A_CustomMissile("FireballExplosionFlamesBig", 40, 0, random (0, 360), 2, random (50, 130))
 		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
-		HEAD E 2 A_DIE
+		HEAD E 4 BRIGHT A_DIE
 
     Death:
 		TNT1 A 0
-	    TNT1 A 0 A_Fall
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_Playsound("props/redfire")
 		HEAD PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP 12 A_CustomMissile("FireballExplosionFlamesBig", 15, 0, random (0, 360), 2, random (50, 130))
@@ -719,7 +730,19 @@ ACTOR BurningZombieMan
 		TNT1 A 0 A_Recoil(-1)
 		BDT1 B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
 		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
-		Goto Death
+		Goto Expire
+
+	Pain:
+		BRZ3 A 3 BRIGHT A_PAIN
+		BDT1 B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		Goto Expire
+
+	Expire:
+		BRZ3 A 3 BRIGHT A_PAIN
+		BDT1 B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		BRZ3 B 3 BRIGHT A_DIE
 
     Death:
 		TNT1 A 0 A_StopSound(4)
@@ -823,8 +846,20 @@ ACTOR BurningShotgunguy: BurningZombieMan
 		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-15, 15), random (-15, 15))
-		TNT1 A 0 A_JumpIfInventory("PoorGuyBurningLife", 4, "Death")
+		TNT1 A 0 A_JumpIfInventory("PoorGuyBurningLife", 4, "Expire")
 		Loop
+
+	Pain:
+		BRZ3 A 3 BRIGHT A_PAIN
+        BDT1 B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		Goto Expire
+
+	Expire:
+		BRZ3 A 3 BRIGHT A_PAIN
+        BDT1 B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		BRZ3 B 3 BRIGHT A_DIE
 
 	Death:
 	    TNT1 A 0
@@ -992,8 +1027,20 @@ ACTOR BurningChaingunGuy: BurningZombieMan
 		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-15, 15), random (-15, 15))
-		TNT1 A 0 A_JumpIfInventory("PoorGuyBurningLife", 5, "Death")
+		TNT1 A 0 A_JumpIfInventory("PoorGuyBurningLife", 5, "Expire")
 		Loop
+
+	Pain:
+		CPBR A 3 BRIGHT A_PAIN
+        BDT1 B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		Goto Expire
+
+	Expire:
+		CPBR A 3 BRIGHT A_PAIN
+        BDT1 B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		CPBR B 3 BRIGHT A_DIE
 
 	Death:
 		TNT1 A 0
@@ -1035,8 +1082,21 @@ ACTOR BurningImpRunning: BurningZombieMan
 		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-15, 15), random (-15, 15))
-		TNT1 A 0 A_JumpIfInventory("PoorGuyBurningLife", 4, "Death")
+		TNT1 A 0 A_JumpIfInventory("PoorGuyBurningLife", 4, "Expire")
 		Loop
+
+	Pain:
+		TRBR A 3 BRIGHT A_PAIN
+        BDT1 B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		Goto Expire
+
+	Expire:
+		TRBR A 3 BRIGHT A_PAIN
+        BDT1 B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TRBR B 3 BRIGHT A_DIE
+
 	Death:
 	Death.ExplosiveImpact:
 	    TNT1 A 0
@@ -1076,8 +1136,20 @@ ACTOR BurningDemon: BurningZombieMan
 		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-15, 15), random (-15, 15))
-		TNT1 A 0 A_JumpIfInventory("PoorGuyBurningLife", 7, "Death")
+		TNT1 A 0 A_JumpIfInventory("PoorGuyBurningLife", 7, "Expire")
 		Loop
+
+	Pain:
+		SBRG A 3 BRIGHT A_PAIN
+        BDT1 B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		Goto Expire
+
+	Expire:
+		SBRG A 3 BRIGHT A_PAIN
+        BDT1 B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		SBRG B 3 BRIGHT A_DIE
 
 	Death:
 		TNT1 A 0
@@ -1141,7 +1213,7 @@ ACTOR BurningZombieManSimple: BurningZombieMan
 		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-15, 15), random (-15, 15))
-		TNT1 A 0 A_JumpIfInventory("PoorGuyBurningLife", 4, "Death")
+		TNT1 A 0 A_JumpIfInventory("PoorGuyBurningLife", 4, "Expire")
 		Loop
 	}
 }
