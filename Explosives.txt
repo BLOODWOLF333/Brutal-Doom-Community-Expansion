@@ -3,22 +3,19 @@
 ACTOR Rocket2
 {
 	Health 10
-	Radius 2
-	Height 4
-	Projectile
+	Radius 4
+	Height 8
 	Speed 50
     Damage (random (300, 300))
 	DamageType Explosive
     MeleeDamage 0
 	Scale 0.5
     Decal "Scorch"
-	Projectile
 	+MISSILE
     +NOGRAVITY
     +EXTREMEDEATH
 	+THRUSPECIES
 	+SHOOTABLE
-	-NOBLOCKMAP
 	+NOBLOOD
 	SeeSound "Rocket/Launch"
 	DeathSound "Explosion"
@@ -59,7 +56,6 @@ ACTOR Rocket2
 		TNT1 AAAA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (0, 90))
 		TNT1 AAAA 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 A 0 A_SpawnItemEx ("RocketExplosion",0,0,13,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 0
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx ("LiquidExplosionEffectSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 0 A_PlaySound("FAREXPL", 3)
@@ -259,9 +255,8 @@ TNT1 A 0 A_SpawnItem("WhiteShockwaveBig")
 
 ACTOR GrenadeMissile
 {
-	Projectile
 	Radius 4
-	Height 4
+	Height 8
 	Speed 50
 	Damage (random(40, 40))
     +MISSILE
@@ -551,9 +546,8 @@ ACTOR MarineRocketExplosion : RocketExplosion
 
 ACTOR CyberBalls: Rocket2
 {
-	Radius 10
-	Height 8
-	Projectile
+	Radius 6
+	Height 12
 	Speed 25
     Damage (random (106, 106))
 	DamageType Extreme
@@ -594,14 +588,14 @@ Actor FastCyberballs: Cyberballs
 {
 Speed 30
 Scale 3.4
-Radius 15
-Height 12
+Radius 12
+Height 24
 }
 
 ACTOR NuclearRocket: Rocket2
 {
-	Radius 5
-	Height 10
+	Radius 4
+	Height 8
 	+FORCERADIUSDMG
 	-NOGRAVITY
 	+SKYEXPLODE
@@ -673,11 +667,10 @@ ACTOR NuclearRocket: Rocket2
 
 ACTOR TankShell
 {
-	Radius 6
-	Height 6
+	Radius 4
+	Height 8
 	Speed 120
 	Damage (random (1000, 1000))
-	Projectile
 	+RANDOMIZE
 	+DEHEXPLOSION
 	+MISSILE

@@ -359,7 +359,7 @@ Speed 4
 //A decorative kind of flying blood spawned by arterial blood
 ACTOR Green_LiquidBlood: Brutal_LiquidBlood
 {
- decal "GreenBloodSmearSmall"
+ decal GreenBloodSmearSmall
  translation "168:191=112:127", "16:47=123:127"
      States
     {
@@ -922,7 +922,7 @@ ACTOR GreenUnderblood3: GreenUnderblood1
 ACTOR GreenWaterBloodCHecker: WaterBloodCHecker
 {
 
-	Decal none
+	Decal "none"
 	States
     {
     Spawn:
@@ -951,7 +951,7 @@ ACTOR GreenWaterBloodCHecker: WaterBloodCHecker
 //muddy water bloodspot actor
 ACTOR GreenWaterBloodSpot: WaterBloodSpot
 {
-StencilColor "0 55 00"
+StencilColor "00 55 00"
 Decal GreenBloodSplat
  states
  {
@@ -1007,7 +1007,7 @@ Decal GreenBloodSplat
 ACTOR SplatteredGreenSmall: Green_BloodSpot
 {
 translation "168:191=112:127", "16:47=123:127"
-Decal GreenBloodSplatstates
+Decal GreenBloodSplat
  States
  {
  Spawn:
