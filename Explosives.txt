@@ -3,8 +3,8 @@
 ACTOR Rocket2
 {
 	Health 10
-	Radius 4
-	Height 8
+	Radius 2
+	Height 4
 	Speed 50
     Damage (random (300, 300))
 	DamageType Explosive
@@ -164,6 +164,8 @@ actor JuggernautRocket: Rocket2
 	Damage (random (52, 52))
 	Species "SpiderMastermind"
 	DamageType ExplosiveImpact
+	Radius 4
+	Height 8
 	States
 	{
 	Spawn:
@@ -255,8 +257,8 @@ TNT1 A 0 A_SpawnItem("WhiteShockwaveBig")
 
 ACTOR GrenadeMissile
 {
-	Radius 4
-	Height 8
+	Radius 2
+	Height 4
 	Speed 50
 	Damage (random(40, 40))
     +MISSILE
