@@ -1524,14 +1524,13 @@ actor PlayerJustGotCutInHalf: CurbstompedMarine
 
 Actor GoreFlies
 {
-	+NOGRAVITY
 	+SHOOTABLE
 	+NOBLOOD
 	+NOBLOCKMAP
 	+MOVEWITHSECTOR
 	Health 1
-	radius 1
-	height 1
+	radius 16
+	height 16
 	States
 	{
 	Spawn:
@@ -1639,7 +1638,7 @@ Actor SpawnedMaggotDec
 {
 	Height 1
 	Radius 1
-	Mass 0
+	Mass 100
 	PROJECTILE
 	+MISSILE
 	+NOBLOCKMAP
@@ -1648,6 +1647,7 @@ Actor SpawnedMaggotDec
 	+CLIENTSIDEONLY
 	+THRUACTORS
 	-NOGRAVITY
+	+MOVEWITHSECTOR
 	Gravity 1.0
 	Speed 0
 	States
