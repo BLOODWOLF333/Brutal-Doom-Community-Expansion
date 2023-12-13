@@ -4125,8 +4125,10 @@ States
 		Loop
 	See:
 		BPEC R 4
-		TNT1 A 0 A_JumpIfCloser(300, "Death")
+		TNT1 A 0 A_JumpIfCloser(300, "Ambush")
 		Loop
+	Ambush:
+		BPEC S 1 A_DIE
 	Death:
 		BPEC S 1 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("Experiment")
