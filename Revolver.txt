@@ -423,13 +423,14 @@ ACTOR Revolver : BrutalWeapon
 		RIFG A 0 A_Takeinventory("ADSmode",1)
 		RIFG A 0 A_JumpIfInventory("TurboReload",1,"TurboReload")
 		TNT1 A 0 A_PlaySound("weapons/empty", 4)
-		NoAmmo2:
+	NoAmmo2:
 		RIFG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 	    RIFG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		RIFG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		RIFG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		RIFG A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		RIFG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		REVO A 0 A_JumpIfInventory("PistolBurstFire",1,"NoAmmo3")
 		REVO A 5 A_WeaponReady(WRF_ALLOWRELOAD)
 		RIFG A 0 A_JumpIfInventory("Reloading",1,"Reload")
 		RIFG A 0 A_JumpIfInventory("TurboReload",1,"TurboReload")
@@ -437,6 +438,14 @@ ACTOR Revolver : BrutalWeapon
 		RIFG A 0 A_JumpIfInventory("AmmoMagnum",1,"Reload")
 		RIFG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		Goto Ready3
+	NoAmmo3:
+		REVA A 5 A_WeaponReady(WRF_ALLOWRELOAD)
+		RIFG A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		RIFG A 0 A_JumpIfInventory("TurboReload",1,"TurboReload")
+		TNT1 A 0 A_JumpIfInventory("NoAutoReload", 1, 2)
+		RIFG A 0 A_JumpIfInventory("AmmoMagnum",1,"Reload")
+		RIFG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
+		Goto Ready2
 	}
 }
 
