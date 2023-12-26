@@ -579,6 +579,7 @@ ACTOR ClassicSaw : ClassicWeapon
 	Weapon.UpSound "weapons/sawup"
 	Weapon.ReadySound "none"
 	Inventory.PickupMessage "$GOTCHAINSAW"
+	inventory.pickupsound "weapons/chainsaw/draw"
 	Obituary "$OB_MPCHAINSAW"
 	Tag "$TAG_CHAINSAW"
 	+WEAPON.MELEEWEAPON
@@ -696,10 +697,11 @@ ACTOR ClassicPistol : ClassicWeapon
 	Weapon.SelectionOrder 1900
 	Weapon.AmmoUse 1
 	Weapon.AmmoGive 10
-	Weapon.AmmoType "clip2"
+	Weapon.AmmoType "ClipPurist"
 	Obituary "$OB_MPPISTOL"
 	+WEAPON.WIMPY_WEAPON
 	Inventory.Pickupmessage "$GOTPISTOL"
+    Inventory.PickupSound "CLIPIN"
 	Tag "$TAG_PISTOL"
 	Dropitem "PistolSpawner"
 	scale 0.9
@@ -762,10 +764,11 @@ ACTOR ClassicSMG : ClassicWeapon
 	Weapon.SelectionOrder 1800
 	Weapon.AmmoUse 1
 	Weapon.AmmoGive 20
-	Weapon.AmmoType "clip2"
+	Weapon.AmmoType "ClipPurist"
 	Obituary "%o was shot down by %k's SMG."
 	Tag "Sub-Machinegun"
 	Inventory.Pickupmessage "$GOTSMG"
+    Inventory.PickupSound "CLIPIN"
 	DropItem "SMGSpawner"
 	Scale 0.8
 	States
@@ -842,6 +845,7 @@ ACTOR ClassicMP40 : ClassicWeapon
 	Obituary "%o was shot down by %k's MP40."
 	Tag "MP40"
 	Inventory.Pickupmessage "$GOTMP40"
+    Inventory.PickupSound "CLIPIN"
 	DropItem "MP40Spawner"
 	Scale 0.9
 	States
@@ -898,9 +902,10 @@ ACTOR ClassicShotgun : ClassicWeapon
 	Weapon.SelectionOrder 1300
 	Weapon.AmmoUse 1
 	Weapon.AmmoGive 4
-	Weapon.AmmoType "AmmoShell"
+	Weapon.AmmoType "ShellPurist"
 	Tag "Shotgun"
 	Inventory.PickupMessage "$GOTSHOTGUN"
+	Inventory.PickupSound "weapons/sgpump"
 	Obituary "$OB_MPSHOTGUN"
 	DropItem "ShotgunSpawner"
 
@@ -963,8 +968,9 @@ ACTOR ClassicSSG : ClassicWeapon
 	Weapon.SelectionOrder 400
 	Weapon.AmmoUse 2
 	Weapon.AmmoGive 2
-	Weapon.AmmoType "AmmoShell"
+	Weapon.AmmoType "ShellPurist"
 	Inventory.PickupMessage "$GOTSHOTGUN2"
+	Inventory.PickupSound "CLIPINSS"
 	Obituary "$OB_MPSSHOTGUN"
 	Tag "Super Shotgun"
 	DropItem "SSGSpawner"
@@ -1033,8 +1039,9 @@ ACTOR ClassicChaingun : ClassicWeapon
 	Weapon.SelectionOrder 700
 	Weapon.AmmoUse 1
 	Weapon.AmmoGive 50
-	Weapon.AmmoType "clip2"
+	Weapon.AmmoType "ClipPurist"
 	Inventory.PickupMessage "$GOTCHAINGUN"
+	Inventory.PickupSound "CBOXPKUP"
 	Obituary "$OB_MPCHAINGUN"
 	Tag "Chaingun"
 	DropItem "ChaingunSpawner"
@@ -1110,6 +1117,7 @@ ACTOR ClassicBuzzsaw : ClassicWeapon
 	Weapon.AmmoGive 50
 	Weapon.AmmoType "BuzzsawAmmo"
 	Inventory.PickupMessage "$GOTMG42"
+	Inventory.PickupSound "CBOXPKUP"
 	Obituary "%o was cut in half by %k's MG42"
 	Tag "Hitler's Buzzsaw"
 	DropItem "BuzzsawSpawner"
@@ -1185,6 +1193,7 @@ ACTOR ClassicRocketLauncher : ClassicWeapon
 	+WEAPON.EXPLOSIVE
 	Tag "Rocket Launcher"
 	Inventory.PickupMessage "$GOTLAUNCHER"
+    Inventory.PickupSound "ROCKPKUP"
 	DropItem "RocketLauncherSpawner"
 	Scale 0.8
 	States
@@ -1314,9 +1323,10 @@ ACTOR ClassicPlasmaRifle : ClassicWeapon
 	Weapon.SelectionOrder 100
 	Weapon.AmmoUse 1
 	Weapon.AmmoGive 40
-	Weapon.AmmoType "AmmoCell"
+	Weapon.AmmoType "CellPurist"
 	Tag "Plasma Rifle"
 	Inventory.PickupMessage "$GOTPLASMA"
+    Inventory.PickupSound "PLSDRAW"
 	DropItem "PLasmagunSpawner"
 	scale 0.9
 	States
@@ -1409,12 +1419,13 @@ ACTOR VanillaBFG9000 : ClassicWeapon
 	Weapon.SelectionOrder 2800
 	Weapon.AmmoUse 40
 	Weapon.AmmoGive 40
-	Weapon.AmmoType "AmmoCell"
+	Weapon.AmmoType "CellPurist"
 	+WEAPON.NOAUTOFIRE
 	+WEAPON.BFG
 	+WEAPON.EXPLOSIVE
 	Tag "BFG 9000"
 	Inventory.PickupMessage "$GOTBFG9000"
+    Inventory.PickupSound "BFGREADY"
 	DropItem "BFG9000Spawner"
 	Scale 0.8
 	States
@@ -1534,8 +1545,8 @@ ACTOR ClassicUnmaker : ClassicWeapon
 	Weapon.SelectionOrder 3000
 	Weapon.SlotNumber 8
 	Weapon.AmmoUse 1
-	Weapon.AmmoGive 50
-	Weapon.AmmoType "SoulAmmo"
+	Weapon.AmmoGive 40
+	Weapon.AmmoType "CellPurist"
 	Inventory.PickupMessage "$GOTLASER"
 	Inventory.PickupSound "BFGREADY"
 	AttackSound "NULL"

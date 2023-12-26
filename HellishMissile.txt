@@ -242,55 +242,6 @@ ACTOR MarineSeekerMissile2 : revenantseekermissiles3
 	}
 }
 
-ACTOR FakeHMLSprite: BasicWeaponPickup
-{
-	Scale 0.8
-	VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
-	+NOINTERACTION
-	States
-    {
-	 Spawn:
-		FATB D 0
-		FATB D 18
-		Stop
-    }
-}
-
-ACTOR HMLSpawner: CustomInventory
-{
- radius 24
- height 24
- +FORCEXYBILLBOARD
- +INVENTORY.NOSCREENFLASH
- Inventory.PickupMessage "You got the Revenant's Hellish Missile Launcher (Slot 8)"
- Inventory.PickupSound "BFGREADY"
- //$category Weapons
- Mass 1
-    States
-    {
-
-	 Spawn:
-		TNT1 A 0
-		TNT1 A 1
-		TNT1 A 0 A_ChangeFlag("THRUACTORS", 0)
-		TNT1 A 0
-	Stay:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("FakeRocketSprite")
-		TNT1 A 0 A_SpawnItem("FakeHMLSprite")
-		TNT1 A 16
-		Loop
-	Pickup:
-	    TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
-		TNT1 A 0 A_GiveInventory("HellishMissileLauncher", 1)
-		Stop
-	Purist:
-	    TNT1 A 0 A_GiveInventory("AmmoRocket", 1)
-		Stop
-    }
-}
-
 ACTOR MiniHellRocketAmmo : Ammo
 {
    Inventory.Amount 1

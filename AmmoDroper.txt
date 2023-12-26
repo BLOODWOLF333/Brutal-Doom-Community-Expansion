@@ -145,12 +145,12 @@ ACTOR AmmoDroper : BrutalWeapon
 
 	DropPistol:
 		ADRO A 1 BRIGHT
-		ADRO A 1 BRIGHT A_JumpIFInventory("Clip1", 10, 4)
+		ADRO A 1 BRIGHT A_JumpIFInventory("Clip1", 15, 4)
 		TNT1 A 0 BRIGHT A_Print("Not enough ammo to drop", 1)
 		Goto Ready
 		TNT1 AAAA 0
-		TNT1 A 0 A_TakeInventory("Clip1", 10)
-		ADRO A 10 BRIGHT A_SpawnItemEx("CLIP1Drop", random(51, 55), random(-4, 4), 40, 2, 0, 2, angle, SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_TakeInventory("Clip1", 15)
+		ADRO A 10 BRIGHT A_SpawnItemEx("Clip1Drop", random(51, 55), random(-4, 4), 40, 2, 0, 2, angle, SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_Refire
 		Goto Ready
 
@@ -172,18 +172,18 @@ ACTOR AmmoDroper : BrutalWeapon
 		Goto Ready
 		TNT1 AAAA 0
 		TNT1 A 0 A_TakeInventory("AmmoMagnum", 6)
-		ADRO C 10 BRIGHT A_SpawnItemEx("AmmoMagnum", random(51, 55), random(-4, 4), 40, 2, 0, 2, angle, SXF_ABSOLUTEANGLE)
+		ADRO C 10 BRIGHT A_SpawnItemEx("AmmoMagnumSpawner", random(51, 55), random(-4, 4), 40, 2, 0, 2, angle, SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_Refire
 		Goto Ready
 
 	DropShell:
 		ADRO D 1 BRIGHT
-		ADRO D 1 BRIGHT A_JumpIFInventory("AmmoSHell", 4, 4)
+		ADRO D 1 BRIGHT A_JumpIFInventory("AmmoShell", 4, 4)
 		TNT1 A 0 BRIGHT A_Print("Not enough ammo to drop", 1)
 		Goto Ready
 		TNT1 AAAA 0
-		TNT1 A 0 A_TakeInventory("AmmoSHell", 4)
-		ADRO D 10 BRIGHT A_SpawnItemEx("AmmoSHell", random(51, 55), random(-4, 4), 40, 2, 0, 2, angle, SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_TakeInventory("AmmoShell", 4)
+		ADRO D 10 BRIGHT A_SpawnItemEx("ShellSpawner", random(51, 55), random(-4, 4), 40, 2, 0, 2, angle, SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_Refire
 		Goto Ready
 
@@ -194,7 +194,7 @@ ACTOR AmmoDroper : BrutalWeapon
 		Goto Ready
 		TNT1 AAAA 0
 		TNT1 A 0 A_TakeInventory("Clip2", 30)
-		ADRO E 10 BRIGHT A_SpawnItemEx("Clip2", random(51, 55), random(-4, 4), 40, 2, 0, 2, angle, SXF_ABSOLUTEANGLE)
+		ADRO E 10 BRIGHT A_SpawnItemEx("Clip2Spawner", random(51, 55), random(-4, 4), 40, 2, 0, 2, angle, SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_Refire
 		Goto Ready
 
@@ -227,7 +227,7 @@ ACTOR AmmoDroper : BrutalWeapon
 		Goto Ready
 		TNT1 AAAA 0
 		TNT1 A 0 A_TakeInventory("AmmoCell", 20)
-		ADRO H 10 BRIGHT A_SpawnItemEx("AmmoCell", random(51, 55), random(-4, 4), 40, 2, 0, 2, angle, SXF_ABSOLUTEANGLE)
+		ADRO H 10 BRIGHT A_SpawnItemEx("CellSpawner", random(51, 55), random(-4, 4), 40, 2, 0, 2, angle, SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_Refire
 		Goto Ready
 
@@ -238,7 +238,7 @@ ACTOR AmmoDroper : BrutalWeapon
 		Goto Ready
 		TNT1 AAAA 0
 		TNT1 A 0 A_TakeInventory("Gas", 50)
-		ADRO I 10 BRIGHT A_SpawnItemEx("Gas", random(51, 55), random(-4, 4), 40, 2, 0, 2, angle, SXF_ABSOLUTEANGLE)
+		ADRO I 10 BRIGHT A_SpawnItemEx("GasSpawner", random(51, 55), random(-4, 4), 40, 2, 0, 2, angle, SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_Refire
 		Goto Ready
 
