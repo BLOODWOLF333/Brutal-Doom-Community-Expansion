@@ -1,11 +1,12 @@
 ACTOR BrutalWeapon : DoomWeapon
 {
- Weapon.BobRangeX 0.2
- Weapon.BobRangeY 0.4
- Weapon.BobSpeed 2.9
- Weapon.BobStyle Smooth
- VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
- Inventory.ForbiddenTo Purist
+	Weapon.BobRangeX 0.2
+	Weapon.BobRangeY 0.4
+	Weapon.BobSpeed 2.9
+	Weapon.BobStyle Smooth
+	VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
+	Inventory.ForbiddenTo Purist
+	+Inventory.RestrictAbsolutely
 	States
 	{
 	GoingToReady:

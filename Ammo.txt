@@ -44,6 +44,7 @@ ACTOR Clip1 : Ammo
 	Scale 0.9
 	VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
 	Inventory.ForbiddenTo Purist
+	+INVENTORY.NOSCREENFLASH
 	States
 	{
 	Spawn:
@@ -95,6 +96,7 @@ ACTOR Mauser9mm : Ammo 2057
 	Ammo.BackpackMaxAmount 400
 	Inventory.Icon "CLIPB0"
 	Scale 0.6
+	+INVENTORY.NOSCREENFLASH
 	//$Category BD Ammo Spawners
 	//$Icon "ammo"
 	//$Colour rgb(180, 150, 50)
@@ -216,6 +218,7 @@ ACTOR ShellPurist : Ammo
 	Inventory.Icon "SHELA0"
 	VisibleToPlayerClass Purist
 	Inventory.ForbiddenTo BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
+	+INVENTORY.NOSCREENFLASH
 	States
 	{
 	Spawn:
@@ -364,7 +367,6 @@ ACTOR AmmoShellBox : AmmoShell
 	Inventory.PickupMessage "$GOTSHELLBOX"
 	Inventory.Pickupsound "SHELPK2"
 	Inventory.Amount 20
-	+INVENTORY.NOSCREENFLASH
 	Scale 0.9
 	//$Category BD Ammo Spawners
 	//$Icon "ammo"
@@ -415,7 +417,6 @@ ACTOR AmmoSlugBox : AmmoSlug
 	Inventory.PickupMessage "$GOTSLUGBOX"
 	Inventory.Pickupsound "SHELPK2"
 	Inventory.Amount 20
-	+INVENTORY.NOSCREENFLASH
 	Scale 0.9
 	States
 	{
@@ -449,7 +450,6 @@ ACTOR AmmoMagnumBox : AmmoMagnum
 	Inventory.PickupMessage "Picked up a box of magnum rounds."
 	Inventory.Pickupsound "CBOXPICK"
 	Inventory.Amount 20
-	+INVENTORY.NOSCREENFLASH
 	Scale 0.9
 	States
 	{
@@ -548,6 +548,7 @@ ACTOR ClipPurist : Ammo
 	Inventory.Icon "CLIPA0"
 	VisibleToPlayerClass Purist
 	Inventory.ForbiddenTo BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
+	+INVENTORY.NOSCREENFLASH
 	States
 	{
 	Spawn:
@@ -688,7 +689,7 @@ Actor ClipBoxReplacer : BasicAmmoPickup Replaces ClipBox
 
 // Slot5 ---------------------------------------------------------------
 
-ACTOR AmmoRocket : Ammo 2020
+ACTOR AmmoRocket : Ammo
 {
 	Game Doom
 	SpawnID 140
@@ -701,6 +702,8 @@ ACTOR AmmoRocket : Ammo 2020
 	Inventory.Pickupsound "RCKCLIP"
 	+INVENTORY.NOSCREENFLASH
 	Scale 0.9
+	VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
+	Inventory.ForbiddenTo Purist
 	+NOTAUTOAIMED
 	+SHOOTABLE
 	+NOBLOOD
@@ -716,11 +719,6 @@ ACTOR AmmoRocket : Ammo 2020
 	damagefactor "HelperMarineFatallity", 0.0	damagefactor "Leg", 0.0
 	DamageFactor "KillMeBot", 0.0
 	Health 20
-	//$Category BD Ammo Spawners
-	//$Icon "ammo"
-	//$Colour rgb(180, 150, 50)
-	//$Sprite ROCKA0
-	//$NotAngled
 	States
 	{
 	Spawn:
@@ -765,7 +763,74 @@ ACTOR AmmoRocket : Ammo 2020
 	}
 }
 
-ACTOR AmmoRocketBox : AmmoRocket Replaces RocketBox
+ACTOR RocketPurist : Ammo
+{
+	Inventory.PickupMessage "$GOTROCKET"
+	Inventory.Pickupsound "RCKCLIP"
+	Inventory.Amount 1
+	Inventory.MaxAmount 50
+	Ammo.BackpackAmount 1
+	Ammo.BackpackMaxAmount 100
+	Inventory.Icon "ROCKA0"
+	VisibleToPlayerClass Purist
+	Inventory.ForbiddenTo BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
+	+INVENTORY.NOSCREENFLASH
+	States
+	{
+	Spawn:
+		ROCK A -1
+		Stop
+	}
+}
+
+ACTOR RocketSpawner: BasicAmmoPickup 2020
+{
+	//$Category BD Ammo Spawners
+	//$Icon "ammo"
+	//$Colour rgb(180, 150, 50)
+	//$Sprite ROCKA0
+	//$NotAngled
+    States
+    {
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx("AmmoRocket",0,0,0,0,0,0,0,0,0)
+		TNT1 A 0 A_SpawnItemEx("RocketPurist",0,0,0,0,0,0,0,0,0)
+		TNT1 A 1
+		TNT1 A -1
+		Stop
+    }
+}
+
+ACTOR AmmoRocketReplacer : BasicAmmoPickup Replaces RocketAmmo
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		MARN A 0 ACS_NamedExecuteAlways("BDDisableNewGuns", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+		TNT1 A 2
+		TNT1 A 0 A_Jump(4, "Spawn2") // Grenade Ammo
+		TNT1 A 2
+
+	Vanilla:
+	Spawn1:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx ("RocketSpawner",0,0,0,0,0,0,0,0,0)
+		TNT1 A 1
+		TNT1 A -1
+		Stop
+
+	Spawn2:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx ("GrenadeAmmo",0,0,0,0,0,0,0,0,0)
+		TNT1 A 1
+		TNT1 A -1
+		Stop
+	}
+}
+
+ACTOR AmmoRocketBox : AmmoRocket
 {
 	Game Doom
 	SpawnID 141
@@ -818,32 +883,32 @@ ACTOR AmmoRocketBox : AmmoRocket Replaces RocketBox
 	}
 }
 
-ACTOR AmmoRocketReplacer : BasicAmmoPickup Replaces RocketAmmo
+ACTOR RocketBoxPurist : RocketPurist
 {
+	Inventory.PickupMessage "$GOTROCKBOX"
+	Inventory.Pickupsound "RCKCLIP2"
+	Inventory.Amount 5
+	+INVENTORY.NOSCREENFLASH
 	States
 	{
 	Spawn:
-		TNT1 A 0
-		MARN A 0 ACS_NamedExecuteAlways("BDDisableNewGuns", 0, 0, 0, 0)//Check if advanced decorations are disabled.
-		TNT1 A 2
-		TNT1 A 0 A_Jump(4, "Spawn2") // Grenade Ammo
-		TNT1 A 2
-
-	Vanilla:
-	Spawn1:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx ("AmmoRocket",0,0,0,0,0,0,0,0,0)
-		TNT1 A 1
-		TNT1 A -1
-		Stop
-
-	Spawn2:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx ("GrenadeAmmo",0,0,0,0,0,0,0,0,0)
-		TNT1 A 1
-		TNT1 A -1
+		BROK A -1
 		Stop
 	}
+}
+
+ACTOR RocketBoxReplacer : BasicAmmoPickup Replaces RocketBox
+{
+    States
+    {
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx("AmmoRocketBox",0,0,0,0,0,0,0,0,0)
+		TNT1 A 0 A_SpawnItemEx("RocketBoxPurist",0,0,0,0,0,0,0,0,0)
+		TNT1 A 1
+		TNT1 A -1
+		Stop
+    }
 }
 
 // Slot6 ---------------------------------------------------------------
@@ -878,6 +943,7 @@ ACTOR CellPurist : Ammo
 	Inventory.Icon "CELLA0"
 	VisibleToPlayerClass Purist
 	Inventory.ForbiddenTo BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
+	+INVENTORY.NOSCREENFLASH
 	States
 	{
 	Spawn:
@@ -903,7 +969,6 @@ ACTOR CellSpawner: BasicAmmoPickup Replaces Cell
 ACTOR AmmoCellPack : AmmoCell
 {
 	Inventory.PickupMessage "$GOTCELLBOX"
-	+INVENTORY.NOSCREENFLASH
 	Inventory.Amount 100
 	Scale 0.9
 	//$Category BD Ammo Spawners

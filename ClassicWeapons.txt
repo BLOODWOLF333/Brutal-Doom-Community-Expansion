@@ -1,7 +1,8 @@
 ACTOR ClassicWeapon : DoomWeapon
 {
- VisibleToPlayerClass Purist
- Inventory.ForbiddenTo BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
+	VisibleToPlayerClass Purist
+	Inventory.ForbiddenTo BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
+	+Inventory.RestrictAbsolutely
 	States
 	{
 	GoingToReady:
@@ -901,7 +902,7 @@ ACTOR ClassicShotgun : ClassicWeapon
 	Game Doom
 	Weapon.SelectionOrder 1300
 	Weapon.AmmoUse 1
-	Weapon.AmmoGive 4
+	Weapon.AmmoGive 8
 	Weapon.AmmoType "ShellPurist"
 	Tag "Shotgun"
 	Inventory.PickupMessage "$GOTSHOTGUN"
@@ -967,7 +968,7 @@ ACTOR ClassicSSG : ClassicWeapon
 	Game Doom
 	Weapon.SelectionOrder 400
 	Weapon.AmmoUse 2
-	Weapon.AmmoGive 2
+	Weapon.AmmoGive 8
 	Weapon.AmmoType "ShellPurist"
 	Inventory.PickupMessage "$GOTSHOTGUN2"
 	Inventory.PickupSound "CLIPINSS"
@@ -1038,7 +1039,7 @@ ACTOR ClassicChaingun : ClassicWeapon
 	Game Doom
 	Weapon.SelectionOrder 700
 	Weapon.AmmoUse 1
-	Weapon.AmmoGive 50
+	Weapon.AmmoGive 20
 	Weapon.AmmoType "ClipPurist"
 	Inventory.PickupMessage "$GOTCHAINGUN"
 	Inventory.PickupSound "CBOXPKUP"
@@ -1187,8 +1188,8 @@ ACTOR ClassicRocketLauncher : ClassicWeapon
 	Game Doom
 	Weapon.SelectionOrder 2500
 	Weapon.AmmoUse 1
-	Weapon.AmmoGive 1
-	Weapon.AmmoType "AmmoRocket"
+	Weapon.AmmoGive 2
+	Weapon.AmmoType "RocketPurist"
 	+WEAPON.NOAUTOFIRE
 	+WEAPON.EXPLOSIVE
 	Tag "Rocket Launcher"
@@ -1547,7 +1548,7 @@ ACTOR ClassicUnmaker : ClassicWeapon
 	Weapon.AmmoUse 1
 	Weapon.AmmoGive 40
 	Weapon.AmmoType "CellPurist"
-	Inventory.PickupMessage "$GOTLASER"
+	Inventory.PickupMessage "What the !@#%* is this!"
 	Inventory.PickupSound "BFGREADY"
 	AttackSound "NULL"
 	Inventory.Icon "LGUNA0"
