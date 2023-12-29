@@ -372,7 +372,8 @@ Actor WaterParticleX
 {
   Radius 2
   Height 2
-  +Missile  -NoGravity  +FORCEXYBILLBOARD
+  +Missile
+  -NoGravity  +FORCEXYBILLBOARD
   +THRUACTORS  +CLIENTSIDEONLY
   +NOTELEPORT  +DontSplash
   decal watersplash
@@ -432,8 +433,8 @@ actor WaterSplashBase2
   States
   {
   Spawn:
-	TNT1 FF 0 A_CustomMissile ("WaterParticleX", 2, random(-5,5), random (0, 360), 2, random (50, 90))
-	TNT1 FF 0 A_CustomMissile ("WaterParticleXFaster", 2, random(-5,5), random (0, 360), 2, random (50, 90))
+	TNT1 AA 0 A_CustomMissile ("WaterParticleX", 2, random(-5,5), random (0, 360), 2, random (50, 90))
+	TNT1 AA 0 A_CustomMissile ("WaterParticleXFaster", 2, random(-5,5), random (0, 360), 2, random (50, 90))
 	TNT1 A 0 A_RadiusGive("IsOverWater", 64, RGF_OBJECTS, 1)
 
 	TNT1 A 0 A_SpawnItem("WaterSplashWaves")
@@ -486,15 +487,15 @@ actor WaterSplashBaseSmall
   States
   {
   Spawn:
-    TNT1 FF 0 A_CustomMissile ("WaterParticleX", 12, 0, random (0, 360), 2, random (50, 140))
-	TNT1 FF 0 A_CustomMissile ("WaterParticleXFaster", 12, 0, random (0, 360), 2, random (50, 140))
+    TNT1 AA 0 A_CustomMissile ("WaterParticleX", 12, 0, random (0, 360), 2, random (50, 140))
+	TNT1 AA 0 A_CustomMissile ("WaterParticleXFaster", 12, 0, random (0, 360), 2, random (50, 140))
 	TNT1 A 0 A_RadiusGive("IsOverWater", 64, RGF_OBJECTS, 1)
     TNT1 A 10
 	TNT1 A 0 A_ChangeFLag("SHOOTABLE", 0)
 	TNT1 A 0 A_NoBlocking
     Stop
   Death.CauseWaterSplash:
-	tNT1 A 0 A_CustomMissile ("BlueParticleXSpawner", 0, 0, random (0, 360), 2, random (80, 110))
+	TNT1 A 0 A_CustomMissile ("BlueParticleXSpawner", 0, 0, random (0, 360), 2, random (80, 110))
 	//TNT1 A 0 A_SpawnItem("GiantWaterRicochet")
 	TNT1 A 0 A_PlaySound("bigspl1")
 	TNT1 A 0 A_NoBlocking

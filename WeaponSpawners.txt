@@ -142,6 +142,36 @@ ACTOR PistolSpawner: BasicWeaponPickup 5040
 
 // Slot 3 ----------------------------------------------------------------------
 
+ACTOR BrutalShotgunSpawner: CustomInventory
+{
+	radius 20
+	height 16
+	+FORCEXYBILLBOARD
+	+INVENTORY.NOSCREENFLASH
+	Inventory.PickupMessage "$GOTSHOTGUN"
+	Inventory.PickupSound "weapons/sgpump"
+	VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
+	Inventory.ForbiddenTo Purist
+	+Inventory.RestrictAbsolutely
+    States
+    {
+	Spawn:
+		SHTC A 1 A_ChangeFlag("THRUACTORS", 0)
+		SHTC A -1
+		Stop
+	Pickup:
+	    TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("Shot_Gun2", 1, "AmmoOnly")
+		TNT1 A 0 A_GiveInventory("Shot_Gun", 1)
+		TNT1 A 0 A_GiveInventory("AmmoShell", 4)
+		Stop
+	AmmoOnly:
+		TNT1 A 0
+		TNT1 A 0 A_GiveInventory("AmmoShell", 4)
+		Stop
+    }
+}
+
 ACTOR ShotgunSpawner: BasicWeaponPickup 2021
 {
 	//$Category BD Weapon Spawners
@@ -153,7 +183,7 @@ ACTOR ShotgunSpawner: BasicWeaponPickup 2021
     {
 	Spawn:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx("Shot_Gun",0,0,0,0,0,0,0,0,0)
+		TNT1 A 0 A_SpawnItemEx("BrutalShotgunSpawner",0,0,0,0,0,0,0,0,0)
 		TNT1 A 0 A_SpawnItemEx("ClassicShotgun",0,0,0,0,0,0,0,0,0)
 		TNT1 A 1
 		TNT1 A -1
@@ -167,10 +197,40 @@ ACTOR ShotgunSpawnerDroped: ShotgunSpawner
     {
 	Spawn:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx("Shot_Gun",0,0,0,0,0,0,0,0,0)
+		TNT1 A 0 A_SpawnItemEx("BrutalShotgunSpawner",0,0,0,0,0,0,0,0,0)
 		TNT1 A 0 A_SpawnItemEx("ClassicShotgun",0,0,0,0,0,0,0,0,0)
 		TNT1 A 1
 		TNT1 A -1
+		Stop
+    }
+}
+
+ACTOR BrutalRevolverSpawner: CustomInventory
+{
+	radius 20
+	height 16
+	+FORCEXYBILLBOARD
+	+INVENTORY.NOSCREENFLASH
+	Inventory.PickupMessage "$GOTREVOLVER"
+	Inventory.PickupSound "REVOHAM"
+	VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
+	Inventory.ForbiddenTo Purist
+	+Inventory.RestrictAbsolutely
+    States
+    {
+	Spawn:
+		REVP A 1 A_ChangeFlag("THRUACTORS", 0)
+		REVP A -1
+		Stop
+	Pickup:
+	    TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("Revolver2", 1, "AmmoOnly")
+		TNT1 A 0 A_GiveInventory("Revolver", 1)
+		TNT1 A 0 A_GiveInventory("AmmoMagnum", 6)
+		Stop
+	AmmoOnly:
+		TNT1 A 0
+		TNT1 A 0 A_GiveInventory("AmmoMagnum", 6)
 		Stop
     }
 }
@@ -186,7 +246,7 @@ ACTOR RevolverSpawner: BasicWeaponPickup 5874
     {
 	Spawn:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx("Revolver",0,0,0,0,0,0,0,0,0)
+		TNT1 A 0 A_SpawnItemEx("BrutalRevolverSpawner",0,0,0,0,0,0,0,0,0)
 		TNT1 A 0 A_SpawnItemEx("ClassicShotgun",0,0,0,0,0,0,0,0,0)
 		TNT1 A 1
 		TNT1 A -1
@@ -222,6 +282,38 @@ actor ShotgunSpawnerReplacer: BasicWeaponPickup Replaces Shotgun
 	}
 }
 
+ACTOR BrutalSSGSpawner: CustomInventory
+{
+	YScale 0.8
+	XScale 1.0
+	radius 20
+	height 16
+	+FORCEXYBILLBOARD
+	+INVENTORY.NOSCREENFLASH
+	Inventory.PickupSound "CLIPINSS"
+	Inventory.PickupMessage "$GOTSHOTGUN2"
+	VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
+	Inventory.ForbiddenTo Purist
+	+Inventory.RestrictAbsolutely
+    States
+    {
+	 Spawn:
+		SGN2 A 1 A_ChangeFlag("THRUACTORS", 0)
+		SGN2 A -1
+		Stop
+	Pickup:
+	    TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("SSG2", 1, "AmmoOnly")
+		TNT1 A 0 A_GiveInventory("SSG", 1)
+		TNT1 A 0 A_GiveInventory("AmmoShell", 2)
+		Stop
+	AmmoOnly:
+		TNT1 A 0
+		TNT1 A 0 A_GiveInventory("AmmoShell", 2)
+		Stop
+    }
+}
+
 ACTOR SSGSpawner: BasicWeaponPickup 92
 {
 	//$Category BD Weapon Spawners
@@ -233,10 +325,40 @@ ACTOR SSGSpawner: BasicWeaponPickup 92
     {
 	Spawn:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx("SSG",0,0,0,0,0,0,0,0,0)
+		TNT1 A 0 A_SpawnItemEx("BrutalSSGSpawner",0,0,0,0,0,0,0,0,0)
 		TNT1 A 0 A_SpawnItemEx("ClassicSSG",0,0,0,0,0,0,0,0,0)
 		TNT1 A 1
 		TNT1 A -1
+		Stop
+    }
+}
+
+ACTOR BrutalASGSpawner: CustomInventory
+{
+	radius 20
+	height 16
+	+FORCEXYBILLBOARD
+	+INVENTORY.NOSCREENFLASH
+	Inventory.PickupSound "CLIPIN"
+	Inventory.PickupMessage "$GOTASG"
+	VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
+	Inventory.ForbiddenTo Purist
+	+Inventory.RestrictAbsolutely
+    States
+    {
+	Spawn:
+		A12P A 1 A_ChangeFlag("THRUACTORS", 0)
+		A12P A -1
+		Stop
+	Pickup:
+	    TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("AssaultShotgun2", 1, "AmmoOnly")
+		TNT1 A 0 A_GiveInventory("AssaultShotgun", 1)
+		TNT1 A 0 A_GiveInventory("AmmoShell", 4)
+		Stop
+	AmmoOnly:
+		TNT1 A 0
+		TNT1 A 0 A_GiveInventory("AmmoShell", 4)
 		Stop
     }
 }
@@ -252,7 +374,7 @@ ACTOR AssaultShotgunSpawner: BasicWeaponPickup 102
     {
 	Spawn:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx("AssaultShotgun",0,0,0,0,0,0,0,0,0)
+		TNT1 A 0 A_SpawnItemEx("BrutalASGSpawner",0,0,0,0,0,0,0,0,0)
 		TNT1 A 0 A_SpawnItemEx("ClassicSSG",0,0,0,0,0,0,0,0,0)
 		TNT1 A 1
 		TNT1 A -1
