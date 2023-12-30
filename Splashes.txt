@@ -8,7 +8,7 @@ Actor BloodParticleX
 	-NoGravity  +FORCEXYBILLBOARD
 	+THRUACTORS  +CLIENTSIDEONLY
 	+NOTELEPORT  +DontSplash
-	decal watersplash
+	decal Bloodsplash
 	BounceFactor 0.1
 	Gravity 0.5
 	RenderStyle Add
@@ -102,7 +102,6 @@ Actor BloodLiquidParticleX
   RenderStyle Translucent
   Scale 2.0
   Alpha 0.3
-  //decal BloodWaterDecal
   Speed 7
   States
   {
@@ -216,6 +215,7 @@ Actor nukageParticleX
 	-NoGravity  +FORCEXYBILLBOARD
 	+THRUACTORS  +CLIENTSIDEONLY
 	+NOTELEPORT  +DontSplash
+	decal Nukeagesplash
 	BounceFactor 0.1
 	Gravity 0.5
 	RenderStyle Add
@@ -368,7 +368,6 @@ Actor GreenLiquidParticleX: BloodLiquidParticleX
   Translation "179:191=112:127", "45:47=112:127"
   RenderStyle Add
   Alpha 0.8
-  //decal BloodWaterDecal
   damagetype "Slime"
   States
   {
@@ -396,6 +395,7 @@ Actor PurpleParticleX
 	-NoGravity  +FORCEXYBILLBOARD
 	+THRUACTORS  +CLIENTSIDEONLY
 	+NOTELEPORT  +DontSplash
+	decal Purplesplash
 	BounceFactor 0.1
 	Gravity 0.5
 	RenderStyle Add
@@ -573,6 +573,7 @@ Actor SlimeParticleX
 	-NoGravity  +FORCEXYBILLBOARD
 	+THRUACTORS  +CLIENTSIDEONLY
 	+NOTELEPORT  +DontSplash
+	decal Slimesplash
 	BounceFactor 0.1
 	Gravity 0.5
 	RenderStyle Add
@@ -648,7 +649,6 @@ Actor BrownLiquidParticleX: BloodLiquidParticleX
 	Translation "179:191=144:151", "45:47=144:151"
 	RenderStyle Add
 	Alpha 0.8
-	//decal BloodWaterDecal
 	damagetype "Slime"
 	States
 	{
@@ -889,6 +889,7 @@ Actor TarParticleX
 	-NoGravity  +FORCEXYBILLBOARD
 	+THRUACTORS  +CLIENTSIDEONLY
 	+NOTELEPORT  +DontSplash
+	decal Watersplash
 	BounceFactor 0.1
 	Gravity 0.5
 	RenderStyle Add
@@ -977,7 +978,6 @@ Actor BlackLiquidParticleX: BloodLiquidParticleX
 	Translation "176:191=96:111","32:47=96:111"
 	RenderStyle Add
 	Alpha 0.6
-	//decal BloodWaterDecal
 	States
 	{
 		Spawn:

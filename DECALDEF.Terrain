@@ -4,7 +4,6 @@ fader LiquidFader
    DecayTime 6
 }
 
-
 fader LiquidFaderFast
 {
    DecayStart 3
@@ -19,7 +18,6 @@ slider Drops
    SlideTime 5
 }
 
-
 stretcher waterstretcher
 {
    GoalY 2.8
@@ -33,6 +31,8 @@ Combiner WaterDropEffect
    Drops
    waterstretcher
 }
+
+// Water
 
 decal WaterDrops1
 {
@@ -70,7 +70,6 @@ decalgroup waterdrops
 	waterdrops2	1
 	waterdrops3	1
 }
-
 
 decal WaterSmear1
 {
@@ -128,126 +127,387 @@ decalgroup watersplash
 	WaterSmear4	1
 }
 
+// Nukeage
 
+decal NukeageDrops1
+{
+	pic WSPL3A
+	add 0.3
+	x-scale 0.4
+	y-scale 0.4
+	randomflipx
+	animator WaterDropEffect
+}
 
+decal NukeageDrops2
+{
+	pic WSPL3B
+	add 0.3
+	x-scale 0.5
+	y-scale 0.8
+	randomflipx
+	animator WaterDropEffect
+}
 
+decal NukeageDrops3
+{
+	pic WSPL3C
+	add 0.3
+	x-scale 0.4
+	y-scale 0.5
+	randomflipx
+	animator WaterDropEffect
+}
 
+decalgroup Nukeagedrops
+{
+	NukeageDrops1	1
+	NukeageDrops2	1
+	NukeageDrops3	1
+}
 
-
-
-
-
-decal GreenWaterSmear1
+decal NukeageSmear1
 {
 	pic BSPLAT1
 	x-scale 1.0
 	y-scale 1.0
-	add 0.9
-	shade "5 99 5"
+	translucent 0.2
+	shade "0 255 0"
 	randomflipx
-	fullbright
 	animator LiquidFader
+	lowerdecal Nukeagedrops
 }
 
-decal GreenWaterSmear2
+decal NukeageSmear2
 {
 	pic BSPLAT2
 	x-scale 1.0
 	y-scale 1.0
-	add 0.9
-	shade "5 99 5"
+	translucent 0.2
+	shade "0 255 0"
 	randomflipx
-	fullbright
 	animator LiquidFader
+	lowerdecal Nukeagedrops
 }
 
-decal GreenWaterSmear3
+decal NukeageSmear3
 {
 	pic BSPLAT3
 	x-scale 1.0
 	y-scale 1.0
-	add 0.9
-	shade "5 99 5"
+	translucent 0.2
+	shade "0 255 0"
 	randomflipx
-	fullbright
 	animator LiquidFader
+	lowerdecal Nukeagedrops
 }
 
-decal GreenWaterSmear4
+decal NukeageSmear4
 {
 	pic BSPLAT4
 	x-scale 1.0
 	y-scale 1.0
-	add 0.9
-	shade "5 99 5"
+	translucent 0.2
+	shade "0 255 0"
 	randomflipx
-	fullbright
 	animator LiquidFader
+	lowerdecal Nukeagedrops
 }
 
-decalgroup slimesplash
+decalgroup Nukeagesplash
 {
-	GreenWaterSmear1	1
-	GreenWaterSmear2	1
-	GreenWaterSmear3	1
-	GreenWaterSmear4	1
+	NukeageSmear1	1
+	NukeageSmear2	1
+	NukeageSmear3	1
+	NukeageSmear4	1
 }
 
+// Blood
 
+decal BloodDrops1
+{
+	pic WSPL2A
+	add 0.3
+	x-scale 0.4
+	y-scale 0.4
+	randomflipx
+	animator WaterDropEffect
+}
 
+decal BloodDrops2
+{
+	pic WSPL2B
+	add 0.3
+	x-scale 0.5
+	y-scale 0.8
+	randomflipx
+	animator WaterDropEffect
+}
 
+decal BloodDrops3
+{
+	pic WSPL2C
+	add 0.3
+	x-scale 0.4
+	y-scale 0.5
+	randomflipx
+	animator WaterDropEffect
+}
 
-decal BloodWaterSmear1
+decalgroup BloodDrops
+{
+	BloodDrops1	1
+	BloodDrops2	1
+	BloodDrops3	1
+}
+
+decal BloodSmear1
 {
 	pic BSPLAT1
 	x-scale 1.0
 	y-scale 1.0
-	translucent 0.6
-	shade "80 10 10"
+	translucent 0.2
+	shade "255 0 0"
 	randomflipx
 	animator LiquidFader
+	lowerdecal BloodDrops
 }
 
-decal BloodWaterSmear2
+decal BloodSmear2
 {
 	pic BSPLAT2
 	x-scale 1.0
 	y-scale 1.0
-	translucent 0.6
-	shade "80 10 10"
+	translucent 0.2
+	shade "255 0 0"
 	randomflipx
 	animator LiquidFader
+	lowerdecal BloodDrops
 }
 
-decal BloodWaterSmear3
+decal BloodSmear3
 {
 	pic BSPLAT3
 	x-scale 1.0
 	y-scale 1.0
-	translucent 0.6
-	shade "80 10 10"
+	translucent 0.2
+	shade "255 0 0"
 	randomflipx
 	animator LiquidFader
+	lowerdecal BloodDrops
 }
 
-decal BloodWaterSmear4
+decal BloodSmear4
 {
 	pic BSPLAT4
 	x-scale 1.0
 	y-scale 1.0
-	translucent 0.6
-	shade "80 10 10"
+	translucent 0.2
+	shade "255 0 0"
 	randomflipx
 	animator LiquidFader
+	lowerdecal BloodDrops
 }
 
-decalgroup BloodWaterDecal
+decalgroup Bloodsplash
 {
-	BloodWaterSmear1	1
-	BloodWaterSmear2	1
-	BloodWaterSmear3	1
-	BloodWaterSmear4	1
+	BloodSmear1	1
+	BloodSmear2	1
+	BloodSmear3	1
+	BloodSmear4	1
 }
+
+// Slime
+
+decal SlimeDrops1
+{
+	pic WSPL4A
+	add 0.3
+	x-scale 0.4
+	y-scale 0.4
+	randomflipx
+	animator WaterDropEffect
+}
+
+decal SlimeDrops2
+{
+	pic WSPL4B
+	add 0.3
+	x-scale 0.5
+	y-scale 0.8
+	randomflipx
+	animator WaterDropEffect
+}
+
+decal SlimeDrops3
+{
+	pic WSPL4C
+	add 0.3
+	x-scale 0.4
+	y-scale 0.5
+	randomflipx
+	animator WaterDropEffect
+}
+
+decalgroup SlimeDrops
+{
+	SlimeDrops1	1
+	SlimeDrops2	1
+	SlimeDrops3	1
+}
+
+decal SlimeSmear1
+{
+	pic BSPLAT1
+	x-scale 1.0
+	y-scale 1.0
+	translucent 0.2
+	shade "0 0 0"
+	randomflipx
+	animator LiquidFader
+	lowerdecal SlimeDrops
+}
+
+decal SlimeSmear2
+{
+	pic BSPLAT2
+	x-scale 1.0
+	y-scale 1.0
+	translucent 0.2
+	shade "0 0 0"
+	randomflipx
+	animator LiquidFader
+	lowerdecal SlimeDrops
+}
+
+decal SlimeSmear3
+{
+	pic BSPLAT3
+	x-scale 1.0
+	y-scale 1.0
+	translucent 0.2
+	shade "0 0 0"
+	randomflipx
+	animator LiquidFader
+	lowerdecal SlimeDrops
+}
+
+decal SlimeSmear4
+{
+	pic BSPLAT4
+	x-scale 1.0
+	y-scale 1.0
+	translucent 0.2
+	shade "0 0 0"
+	randomflipx
+	animator LiquidFader
+	lowerdecal SlimeDrops
+}
+
+decalgroup Slimesplash
+{
+	SlimeSmear1	1
+	SlimeSmear2	1
+	SlimeSmear3	1
+	SlimeSmear4	1
+}
+
+// Purple
+
+decal PurpleDrops1
+{
+	pic WSPL5A
+	add 0.3
+	x-scale 0.4
+	y-scale 0.4
+	randomflipx
+	animator WaterDropEffect
+}
+
+decal PurpleDrops2
+{
+	pic WSPL5B
+	add 0.3
+	x-scale 0.5
+	y-scale 0.8
+	randomflipx
+	animator WaterDropEffect
+}
+
+decal PurpleDrops3
+{
+	pic WSPL5C
+	add 0.3
+	x-scale 0.4
+	y-scale 0.5
+	randomflipx
+	animator WaterDropEffect
+}
+
+decalgroup PurpleDrops
+{
+	PurpleDrops1	1
+	PurpleDrops2	1
+	PurpleDrops3	1
+}
+
+decal PurpleSmear1
+{
+	pic BSPLAT1
+	x-scale 1.0
+	y-scale 1.0
+	translucent 0.2
+	shade "255 0 255"
+	randomflipx
+	animator LiquidFader
+	lowerdecal PurpleDrops
+}
+
+decal PurpleSmear2
+{
+	pic BSPLAT2
+	x-scale 1.0
+	y-scale 1.0
+	translucent 0.2
+	shade "255 0 255"
+	randomflipx
+	animator LiquidFader
+	lowerdecal PurpleDrops
+}
+
+decal PurpleSmear3
+{
+	pic BSPLAT3
+	x-scale 1.0
+	y-scale 1.0
+	translucent 0.2
+	shade "255 0 255"
+	randomflipx
+	animator LiquidFader
+	lowerdecal PurpleDrops
+}
+
+decal PurpleSmear4
+{
+	pic BSPLAT4
+	x-scale 1.0
+	y-scale 1.0
+	translucent 0.2
+	shade "255 0 255"
+	randomflipx
+	animator LiquidFader
+	lowerdecal PurpleDrops
+}
+
+decalgroup Purplesplash
+{
+	PurpleSmear1	1
+	PurpleSmear2	1
+	PurpleSmear3	1
+	PurpleSmear4	1
+}
+
+// Bullet Chips
 
 decal BDBulletChip1
 {
