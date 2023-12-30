@@ -262,7 +262,7 @@ ACTOR RicoChet
 	SpawnSlime:
 	TNT1 A 0
 	TNT1 AAAAA 0 A_CustomMissile ("SLimeParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160))
-	TNT1 AAAAA 0 A_CustomMissile ("SlimeParticleXFAster", 24, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAAA 0 A_CustomMissile ("slimeParticleXSuperFast", 24, 0, random (0, 360), 2, random (30, 160))
 	TNT1 A 0 A_SpawnItem("SlimeSplashWaves")
 	TNT1 A 0 A_SetScale(0.5, 0.5)
 	SPHB ABCDE 3
@@ -271,7 +271,7 @@ ACTOR RicoChet
 	SpawnTar:
 	TNT1 A 0
 	TNT1 AAAAA 0 A_CustomMissile ("TarParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160))
-	TNT1 AAAAA 0 A_CustomMissile ("TarParticleXFAster", 24, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAAA 0 A_CustomMissile ("TarParticleXSuperFast", 24, 0, random (0, 360), 2, random (30, 160))
 	TNT1 A 0 A_SpawnItem("TarSplashWaves")
 	TNT1 A 0 A_SetScale(0.5, 0.5)
 	SPHT ABCDE 3
@@ -280,7 +280,7 @@ ACTOR RicoChet
 	SpawnNukage:
 	TNT1 A 0
 	TNT1 AAAAA 0 A_CustomMissile ("nukageParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160))
-	TNT1 AAAAA 0 A_CustomMissile ("nukageParticleXFAster", 24, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAAA 0 A_CustomMissile ("nukageParticleXSuperFast", 24, 0, random (0, 360), 2, random (30, 160))
 	TNT1 A 0 A_SpawnItem("NukageSplashWaves")
 	TNT1 AAA 0 A_CustomMissile ("NukageRicochet", random (0, 2), 0, random (0, 360), 2, random (30, 90))
 	Stop
@@ -288,7 +288,7 @@ ACTOR RicoChet
 	SpawnPurple:
 	TNT1 A 0
 	TNT1 AAAAA 0 A_CustomMissile ("PurpleParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160))
-	TNT1 AAAAA 0 A_CustomMissile ("PurpleParticleXFAster", 24, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAAA 0 A_CustomMissile ("PurpleParticleXSuperFast", 24, 0, random (0, 360), 2, random (30, 160))
 	TNT1 A 0 A_SpawnItem("PurpleSplashWaves")
 	TNT1 AAA 0 A_CustomMissile ("PurpleRicochet", random (0, 2), 0, random (0, 360), 2, random (30, 90))
 	Stop
@@ -296,7 +296,7 @@ ACTOR RicoChet
 	SpawnBlood:
 	TNT1 A 0
 	TNT1 AAAAA 0 A_CustomMissile ("BloodParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160))
-	TNT1 AAAAA 0 A_CustomMissile ("BloodParticleXFAster", 24, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAAA 0 A_CustomMissile ("BloodParticleXSuperFast", 24, 0, random (0, 360), 2, random (30, 160))
 	TNT1 A 0 A_SpawnItem("BloodSplashWaves")
 	TNT1 AAA 0 A_CustomMissile ("BloodRicochet", random (0, 2), 0, random (0, 360), 2, random (30, 90))
 	Stop
@@ -628,11 +628,13 @@ ACTOR LargeMassWaterImpact
 	TNT1 A 0 A_JumpIfInventory("GoSpecial", 1, "SpawnLava")
     TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "SpawnWater")
 	TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "SpawnSlime")
+	TNT1 A 0 A_JumpIfInventory("IsOverTar", 1, "SpawnTar")
 	TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "SpawnNukage")
 	TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "SpawnPurple")
 	TNT1 A 0 A_JumpIfInventory("IsOverBlood", 1, "SpawnBlood")
 	TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "SpawnLava")
 	TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "SpawnMagenta")
+	TNT1 A 0 A_JumpIfInventory("IsOverYava", 1, "SpawnYava")
 	TNT1 A 0 A_JumpIfInventory("IsOverSand", 1, "SpawnSand")
     Stop
 
@@ -649,9 +651,17 @@ ACTOR LargeMassWaterImpact
 	TNT1 A 0
 	TNT1 A 0 A_PlaySound("bigspl1")
 	TNT1 A 0 A_AlertMonsters(500, AMF_TARGETNONPLAYER)
-	//TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("LiquidParticleX", 0, 0, random (0, 360), 2, random (0, 360))
-	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("SlimeParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160))
-	//TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("SlimeParticleXSuperFast", 14, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("slimeParticleXSuperFast", 12, 0, random (0, 360), 2, random (30, 90))
+	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("SlimeParticleXFaster", 12, 0, random (0, 360), 2, random (30, 90))
+	TNT1 A 20
+	Stop
+
+ SpawnTar:
+	TNT1 A 0
+	TNT1 A 0 A_PlaySound("bigspl1")
+	TNT1 A 0 A_AlertMonsters(500, AMF_TARGETNONPLAYER)
+	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("TarParticleXSuperFast", 12, 0, random (0, 360), 2, random (30, 90))
+	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("TarParticleXFAster", 12, 0, random (0, 360), 2, random (30, 90))
 	TNT1 A 20
 	Stop
 
@@ -659,9 +669,8 @@ ACTOR LargeMassWaterImpact
 	TNT1 A 0
 	TNT1 A 0 A_PlaySound("bigspl1")
 	TNT1 A 0 A_AlertMonsters(500, AMF_TARGETNONPLAYER)
-	//TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("LiquidParticleX", 0, 0, random (0, 360), 2, random (0, 360))
-	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("NukageParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160))
-	//TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("NukageParticleXSuperFast", 14, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("nukageParticleXSuperFast", 12, 0, random (0, 360), 2, random (30, 90))
+	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("nukageParticleXFAster", 12, 0, random (0, 360), 2, random (30, 90))
 	TNT1 A 20
 	Stop
 
@@ -669,7 +678,8 @@ ACTOR LargeMassWaterImpact
 	TNT1 A 0
 	TNT1 A 0 A_PlaySound("bigspl1")
 	TNT1 A 0 A_AlertMonsters(500, AMF_TARGETNONPLAYER)
-	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("PurpleParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("PurpleParticleXSuperFast", 12, 0, random (0, 360), 2, random (30, 90))
+	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("PurpleParticleXFAster", 12, 0, random (0, 360), 2, random (30, 90))
 	TNT1 A 20
 	Stop
 
@@ -677,8 +687,8 @@ ACTOR LargeMassWaterImpact
 	TNT1 A 0
 	TNT1 A 0 A_PlaySound("bigspl1")
 	TNT1 A 0 A_AlertMonsters(500, AMF_TARGETNONPLAYER)
-	//TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("LiquidParticleX", 0, 0, random (0, 360), 2, random (0, 360))
-	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("BloodParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("BloodParticleXSuperFast", 12, 0, random (0, 360), 2, random (30, 90))
+	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("BloodParticleXFAster", 12, 0, random (0, 360), 2, random (30, 90))
 	TNT1 A 20
 	Stop
 
@@ -701,6 +711,17 @@ ACTOR LargeMassWaterImpact
 	TNT1 A 0 A_SpawnItemEx("TinyBurningPieceM", random (-15, 15), random (-15, 15))
 	TNT1 A 0 A_SpawnItemEx("TinyBurningPiece2M", random (-35, 35), random (-35, 35))
 	TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3M", random (-45, 45), random (-45, 35))
+	TNT1 A 20
+	Stop
+
+ SpawnYava:
+	TNT1 A 0
+	TNT1 A 0 A_CustomMissile ("FlyingYava1d", 0, 0, random (0, 360), 2, random (30, 80))
+	TNT1 AAA 0 A_CustomMissile ("FlyingYava1c", 2, 0, random (0, 360), 2, random (30, 80))
+	TNT1 AAA 0 A_CustomMissile ("FlyingYava2c", 2, 0, random (0, 360), 2, random (30, 80))
+	TNT1 A 0 A_SpawnItemEx("TinyBurningPieceY", random (-15, 15), random (-15, 15))
+	TNT1 A 0 A_SpawnItemEx("TinyBurningPiece2Y", random (-35, 35), random (-35, 35))
+	TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3Y", random (-45, 45), random (-45, 35))
 	TNT1 A 20
 	Stop
 
