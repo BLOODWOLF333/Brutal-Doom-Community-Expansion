@@ -265,12 +265,12 @@ AltHold:
 	PLSN A 0 A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, 0, 0)
 	PLSN A 0 A_JumpIfInventory("Reloading",1,"Cancel")
 	PLFA A 1 BRIGHT offset (0, 32)
-	
+
 	PLSN A 0 ACS_NamedExecuteAlways("PlasmaAltCancel",0,0,0,0)
 	PLSN A 0 A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, 0, 0)
 	PLSN A 0 A_JumpIfInventory("Reloading",1,"Cancel")
 	PLFA B 1 BRIGHT offset (0, 33)
-	
+
 	PLSN A 0 ACS_NamedExecuteAlways("PlasmaAltCancel",0,0,0,0)
 	PLSN A 0 A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, 0, 0)
 	PLSN A 0 A_JumpIfInventory("Reloading",1,"Cancel")
@@ -315,10 +315,8 @@ AltHold:
 // Cancel Charge --------------------------------------------------------------------------------------------
 
 	Cancel:
-
-			PLSN A 0 A_TakeInventory("Reloading",1)
-			PLSN A 0 A_StopSound(6)
-			PLSN A 0 A_PlaySound("decharg", 5)
+		PLSN A 0 A_TakeInventory("Reloading",1)
+		PLSN A 0 A_PlaySound("decharg", 5)
 
 		PLSA A 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, 0, 0)
 		PLSA B 1 BRIGHT A_Giveinventory("PlasmaAmmo",1)
@@ -343,6 +341,7 @@ AltHold:
 		PLSA A 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, 0, 0)
 		PLSA B 1 BRIGHT A_Giveinventory("PlasmaAmmo",1)
 		PLSA C 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, 0, 0)
+		PLSN A 0 A_StopSound(6)
 		PLSA D 1 BRIGHT A_PlaySound("plscool", 7)
 		PLSA A 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, 0, 0)
 		PLSA B 1 BRIGHT A_Giveinventory("PlasmaAmmo",1)
