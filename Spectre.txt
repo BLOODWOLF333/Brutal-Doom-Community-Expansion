@@ -144,12 +144,28 @@ Actor ArmlessFuzzy : ArmlessDemon
 	+SHADOW
 	RenderStyle OptFuzzy
 	Alpha 0.5
+	States
+	{
+	Death.KillMe:
+	Death.Taunt:
+		TNT1 A 0 A_ChangeFlag("SOLID", 0)
+		TNT1 A 0 A_SpawnItem("ArmlessFuzzy")
+		Stop
+	}
 }
 
 Actor ArmlessSpectro : ArmlessDemon
 {
 	RenderStyle Add
     Alpha 0.5
+	States
+	{
+	Death.KillMe:
+	Death.Taunt:
+		TNT1 A 0 A_ChangeFlag("SOLID", 0)
+		TNT1 A 0 A_SpawnItem("ArmlessSpectro")
+		Stop
+	}
 }
 
 ACTOR FuzzySpectre: BullDemon
