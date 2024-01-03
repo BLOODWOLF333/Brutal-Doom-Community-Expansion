@@ -277,10 +277,12 @@ ACTOR Labguy: RifleZombie
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
 		Stop
 
-		Death.Blast:
+	Death.Blast:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(12, "Death.Arm")
+	Death.Eat:
 		TNT1 A 0
 		TNT1 A 0 A_FaceTarget
-		TNT1 A 0 A_Jump(12, "Death.Arm")
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_XScream
 		TNT1 AAA 0 A_CustomMissile ("Guts", 32, 0, random (150, 210), 2, random (0, 40))
