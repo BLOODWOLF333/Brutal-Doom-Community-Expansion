@@ -25,6 +25,7 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXEG A 0 A_FireCustomMissile("ThrowedAxe", 0, 0, 0, 0)
 		GRTH JKLM 1
 		TNT1 A 0 A_GiveInventory("UsedStamina", 11)
+		TNT1 A 0 A_TakeInventory("HasCutingWeapon", 1)
 		TNT1 A 0 A_TakeInventory("BrutalAxe", 1)
 		Goto Ready
 
@@ -33,6 +34,7 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXEG A 0 A_FireCustomMissile("ThrowedAxeStrong", 0, 0, 0, 0)
 		GRTH JKLM 1
 		TNT1 A 0 A_GiveInventory("UsedStamina", 11)
+		TNT1 A 0 A_TakeInventory("HasCutingWeapon", 1)
 		TNT1 A 0 A_TakeInventory("BrutalAxe", 1)
 		Goto Ready
 
