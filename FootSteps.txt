@@ -488,7 +488,6 @@ Actor FootstepStrong: Footstep6 //Large footstep when you land from a jump.
 			TNT1 A 0 ACS_NamedExecuteAlways("BDFootsteps")//Check Footsteps
 			TNT1 A 2
 			TNT1 A 0 A_JumpIfInventory("FootStepDisabled", 1, "XDeath")
-			TNT1 A 0 A_SpawnItem("LargeMassWaterImpact")
 			NULL A 0 A_Explode(5, 10, 0, 0, 10)
 			TNT1 A 0 ACS_NamedExecuteAlways("BDCheckFloorType2")
 
@@ -498,6 +497,7 @@ Actor FootstepStrong: Footstep6 //Large footstep when you land from a jump.
 			TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "XDeath")
 			TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "XDeath")
 			TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "XDeath")
+			TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "XDeath")
 
 			TNT1 A 0 A_JumpIfInventory("IsOverDirt", 1, "Dirt")
 			TNT1 A 0 A_JumpIfInventory("IsOverGravel", 1, "Gravel")
@@ -508,7 +508,6 @@ Actor FootstepStrong: Footstep6 //Large footstep when you land from a jump.
 			TNT1 A 0 A_JumpIfInventory("IsOverSnow", 1, "Snow")
 			TNT1 A 0 A_JumpIfInventory("IsOverTile", 1, "Tile")
 			TNT1 A 0 A_JumpIfInventory("IsOverTile2", 1, "Tile2")
-			TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "Slimy")
 			TNT1 A 0 A_AlertMonsters(200, AMF_TARGETNONPLAYER)
 			TNT1 A 0 A_playsound("LANDS1", 8)
 			NULL A 6
