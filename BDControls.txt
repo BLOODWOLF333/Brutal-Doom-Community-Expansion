@@ -35,6 +35,10 @@ script "BDInputs" ENTER
 		{
 		   GiveInventory("FiredPrimary", 1);
 		}
+		if (buttons & BT_RELOAD)
+		{
+			GiveInventory("Reloading",1);
+		}
 		if (buttons & BT_CROUCH)
 		{
 		   GiveInventory("IsCrouching", 1);
@@ -45,6 +49,7 @@ script "BDInputs" ENTER
 		TakeInventory("IsRunning", 1);
 		TakeInventory("FiredSecondary", 1);
 		TakeInventory("FiredPrimary", 1);
+		TakeInventory("Reloading",1);
 		TakeInventory("IsCrouching", 1);
 	}
 }

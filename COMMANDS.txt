@@ -80,31 +80,6 @@ Script "BDGrenade" (VOID) NET
  GiveInventory("GoSpecial", 1);
 }
 
-script "PlasmaAltCancel" (void)
-{
-	int buttons;
-	int oldbuttons;
-	str weapon = GetWeapon();
-	while (TRUE)
-	{
-	buttons = GetPlayerInput(-1, INPUT_BUTTONS);
-	oldbuttons = GetPlayerInput(-1, INPUT_OLDBUTTONS);
-
-	if(StrIcmp(weapon, "Plasma_Gun") == 0 )
-	{
-		if(buttons & BT_RELOAD && !(oldbuttons & (BT_RELOAD)))
-		{
-			ACS_NamedExecute("BDReload",0,0,0,0);
-			delay(1);
-			terminate;
-		}
-	}
-	delay(1);
-	terminate;
-	}
-}
-
-
 //TAUNTING
 
 Script "BDSaluteOne" (VOID) NET
