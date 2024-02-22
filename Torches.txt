@@ -171,16 +171,7 @@ states
 
 Actor ShortTorch_Blue : ShortBlueTorch replaces ShortBlueTorch
 {
--SHOOTABLE
-+INVULNERABLE
-+NOBLOOD
-+GHOST
-+RANDOMIZE
-+MOVEWITHSECTOR
-Mass 900000
-height 80
-radius 8
-scale .4
+scale 0.4
 states
 	{
 	Vanilla:
@@ -352,14 +343,6 @@ states
 
 Actor Candelabra1 : Candelabra replaces Candelabra
 {
-+INVULNERABLE
-+NOBLOOD
-+FORCEYBILLBOARD
-+GHOST
-+RANDOMIZE
-+NOTARGET
-+SHOOTABLE
-Mass 900000
 scale 0.7
 states
 	{
@@ -386,8 +369,7 @@ states
 
 Actor Candlestick1 : Candlestick replaces Candlestick
 {
-+RANDOMIZE
-scale .7
+scale 0.7
 states
 	{
 	Vanilla:
@@ -547,41 +529,41 @@ states
 actor BurningBarrelDamage
 {
 	+NOTARGET
-Radius 0
-Height 0
-DamageType Fire
-+NOGRAVITY
-+NOTELEPORT
-+NODAMAGETHRUST
-+THRUGHOST
-+NORADIUSDMG
-+NOEXTREMEDEATH
-+FORCERADIUSDMG
--BLOODSPLATTER
-+BLOODLESSIMPACT
-PROJECTILE
+	Radius 0
+	Height 0
+	DamageType Fire
+	+NOGRAVITY
+	+NOTELEPORT
+	+NODAMAGETHRUST
+	+THRUGHOST
+	+NORADIUSDMG
+	+NOEXTREMEDEATH
+	+FORCERADIUSDMG
+	-BLOODSPLATTER
+	+BLOODLESSIMPACT
+	PROJECTILE
 	+DEHEXPLOSION
 	+ACTIVATEMCROSS
 	+NOTARGET
-States
-{
-Spawn:
-TNT1 A 0
-        TNT1 AA 5 A_Explode(10,5)
-Stop
- }
+	States
+	{
+		Spawn:
+		TNT1 A 0
+		TNT1 AA 5 A_Explode(10,5)
+		Stop
+	}
 }
 
 Actor TorchFlare
 {
-+NOINTERACTION
-+NOGRAVITY
-+CLIENTSIDEONLY
-+FORCEXYBILLBOARD
-renderstyle Add
-radius 1
-height 1
-alpha 0.4
+	+NOINTERACTION
+	+NOGRAVITY
+	+CLIENTSIDEONLY
+	+FORCEXYBILLBOARD
+	renderstyle Add
+	radius 1
+	height 1
+	alpha 0.4
 }
 
 Actor RedTF : TorchFlare
@@ -597,7 +579,6 @@ states
 		TNT1 A 0
 		FLAR B 2 bright
 		stop
-    Stop
 	}
 }
 
@@ -739,22 +720,22 @@ ACTOR BurningBarrelVanilla
 actor HumanBBQ
 {
 	+NOTARGET
-Radius 10
-Height 10
-DamageType HumanBBQ
-+NOGRAVITY +NOTELEPORT +NODAMAGETHRUST
-+THRUGHOST +NORADIUSDMG +NOEXTREMEDEATH
--BLOODSPLATTER +BLOODLESSIMPACT
-PROJECTILE	+DEHEXPLOSION	+ACTIVATEMCROSS
-+NOPAIN
-States
-{
-Spawn:
-TNT1 A 0
-        TNT1 A 0 A_Explode(3,5)
+	Radius 10
+	Height 10
+	DamageType HumanBBQPROJECTILE
+	+NOGRAVITY +NOTELEPORT +NODAMAGETHRUST
+	+THRUGHOST +NORADIUSDMG +NOEXTREMEDEATH
+	-BLOODSPLATTER +BLOODLESSIMPACT
+	+DEHEXPLOSION +ACTIVATEMCROSS
+	+NOPAIN
+	States
+	{
+		Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Explode(3,5)
 		TNT1 A 0 A_NoBLocking
-Stop
- }
+		Stop
+	}
 }
 
 Actor BDECBurningPillar
