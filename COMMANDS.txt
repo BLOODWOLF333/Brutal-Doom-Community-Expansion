@@ -373,3 +373,29 @@ Script "RailgunRecharge" (VOID) NET
 		Break;
 	}
 }
+
+Script "Map07CheckFatso" (VOID)
+{
+	//Log(s:"VanillaFatso ", i:ThingCountName("VanillaFatso",0));
+	//Log(s:"Volcabus ", i:ThingCountName("Volcabus",0));
+	While(ThingCountName("VanillaFatso",0) || ThingCountName("Volcabus",0))
+	{
+		//Log(s:"True");
+		Delay(35);
+	}
+	//Log(s:"False");
+	SetActorState(0, "Special666", TRUE);
+}
+
+Script "Map07CheckArachnotron" (VOID)
+{
+	//Log(s:"VanillaArachnotron ", i:ThingCountName("VanillaArachnotron",0));
+	//Log(s:"Arachnotron2 ", i:ThingCountName("Arachnotron2",0));
+	While(ThingCountName("VanillaArachnotron",0) || ThingCountName("Arachnotron2",0))
+	{
+		//Log(s:"True");
+		Delay(35);
+	}
+	//Log(s:"False");
+	SetActorState(0, "Special667", TRUE);
+}

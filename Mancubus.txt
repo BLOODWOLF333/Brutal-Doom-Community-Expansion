@@ -33,14 +33,52 @@ ACTOR Mancubus : Fatso Replaces Fatso
 	BurnHeight 0
 	Species "Fatso"
 	Tag "Mancubus"
-
 	States
     {
+    Spawn:
+		FATT B 0
+		TNT1 A 0 A_GiveInventory("TargetIsAMancubus")
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckStuff")//Check if new monsters are disabled
+		FATT B 2
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCHeckClassicMonsters", 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		FATT B 2
+		TNT1 A 0 A_RadiusGive("SlaughterToken", 128, RGF_GIVESELF | RGF_MONSTERS |RGF_CUBE | RGF_NOSIGHT, 1)
+		FATT B 2
+		TNT1 A 0 A_JumpIfInventory("nonewenemies", 1, "Stand")
+		TNT1 A 0 A_JumpIfInventory("SlaughterToken",15,"ReplaceVanilla")
+		TNT1 A 0 A_Jump(4, "ReplaceVolcabus")
+		Goto Stand
+
 	ReplaceVanilla:
-		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
-		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
-		TNT1 A 0 A_SpawnItemEx ("VanillaFatso",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
+		TNT1 A 0
+		TNT1 A 2 A_NoBlocking
+		TNT1 A 0 A_SpawnItemEx("VanillaFatso",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG,0, tid)
+		TNT1 A 2 ACS_NamedExecuteAlways("Map07CheckFatso", 0, 0, 0, 0)
+		TNT1 A -1
 		Stop
+
+	ReplaceVolcabus:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIf((CeilingZ - FloorZ) < 99,"Stand")
+		TNT1 A 2 A_NoBlocking
+		TNT1 A 0 A_SpawnItemEx("Volcabus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG,0, tid)
+		TNT1 A 2 ACS_NamedExecuteAlways("Map07CheckFatso", 0, 0, 0, 0)
+		TNT1 A -1
+		Stop
+
+	Special666:
+		TNT1 A 0
+		TNT1 A 2 A_Die("Vanish")
+	Death.Vanish:
+		TNT1 A 2
+		TNT1 A -1 A_BossDeath
+		Stop
+
+    Stand:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("HeadshotTarget20", 0, 54)
+		FATT BB 10 A_Look
+		Loop
 
 	See:
 		FATT A 0
@@ -125,35 +163,6 @@ ACTOR Mancubus : Fatso Replaces Fatso
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 54)
 		FATT F 4 A_Look
 		Goto Stand
-
-    Spawn:
-		FATT B 0
-		TNT1 A 0 A_GiveInventory("TargetIsAMancubus")
-		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckStuff")//Check if new monsters are disabled
-		TNT1 A 0 ACS_NamedExecuteAlways("BDCHeckClassicMonsters", 0, 0, 0, 0)//Check if Vanilla Mode is activated
-		FATT B 2
-		TNT1 A 0 A_RadiusGive("SlaughterToken", 128, RGF_GIVESELF | RGF_MONSTERS |RGF_CUBE | RGF_NOSIGHT, 1)
-		FATT B 2
-		TNT1 A 0 A_JumpIfInventory("nonewenemies", 1, "Stand")
-		TNT1 A 0 A_JumpIfInventory("SlaughterToken",15,"ReplaceVanilla")
-		TNT1 A 0 A_Jump(4, "ReplaceVolcabus")
-		Goto Stand
-
-	ReplaceVolcabus:
-		TNT1 A 0 A_JumpIf((CeilingZ - FloorZ) < 99,"Stand")
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
-		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
-		TNT1 A 0 A_SpawnItemEx ("Volcabus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | SXF_TRANSFERSPECIAL,0, tid)
-		TNT1 A 10
-		TNT1 A 1 A_BossDeath
-		Stop
-
-    Stand:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("HeadshotTarget20", 0, 54)
-		FATT BB 10 A_Look
-		Loop
 
     Death.minorhead:
     Death.head:
