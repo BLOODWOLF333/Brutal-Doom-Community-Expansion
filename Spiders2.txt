@@ -516,6 +516,7 @@ ACTOR PurplePlasmaBall : EnemyPlasmaBall
 		PBAL HIHI 1 BRIGHT A_SpawnItem("PinkIonFlare")
 		Loop
 	Death:
+	XDeath:
 		TNT1 A 0 A_SpawnItem ("IonPuff", 0)
 		TNT2 AAA 9 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
 		Stop
@@ -525,17 +526,16 @@ ACTOR PurplePlasmaBall : EnemyPlasmaBall
 ACTOR IonPuff: BulletPuff
 {
   RenderStyle Add
-  Alpha 0.95
+  Alpha 0.9
   +NOBLOCKMAP
   +NOGRAVITY
   +CLIENTSIDEONLY
-  Scale 1.1
-  Translation "192:207=250:254"
+  Scale 0.7
   states
   {
   Spawn:
-	FIR5 ABCDE 1 Bright A_SpawnItem("PinkFlare" ,0)
-	FIR5 FGHIJKLMNOP 1 Bright A_FadeOut(0.04)
+	FIR4 ABCDE 1 Bright A_SpawnItem("PinkFlare" ,0)
+	FIR4 FGHIJKLMNOP 1 Bright A_FadeOut(0.04)
     stop
   }
 }
