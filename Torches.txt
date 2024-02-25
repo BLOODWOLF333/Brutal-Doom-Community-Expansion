@@ -15,11 +15,11 @@ states
 		TNT1 A 2
 		TNT1 A 0 A_SPawnItem("TallTOrch_RedFlames")
 		TNT1 A 0 A_SpawnItem("TallTOrch_RedCore")
+		TNT1 A 2 A_SpawnItem("TorchBall")
 		Goto Stay
 
 	Stay:
-		TTRB AAA 10 A_SpawnItem("TorchBall",0,59)
-		TTRB A 0 A_CustomMissile("RealisticFireSparks1", 59, 0, random (0, 140), 2, random (0, 160))
+		TTRB A 30 A_CustomMissile("RealisticFireSparks1", 59, 0, random (0, 140), 2, random (0, 160))
 		Loop
 	}
 }
@@ -38,7 +38,6 @@ states
 	Spawn:
 		TRKR ABCDEFGHIJKL 1 BRIGHT
 		Loop
-
 	}
 }
 
@@ -51,7 +50,28 @@ states
 	Spawn:
 		TRKR MN 1 BRIGHT
 		Loop
+	}
+}
 
+ACTOR TorchBall
+{
+	Game Doom
+	Radius 1
+	Height 1
+	-SOLID
+    +CLIENTSIDEONLY
+	+NONETID
+	+NOGRAVITY
+	+MOVEWITHSECTOR
+	RenderStyle Add
+	Alpha 1.0
+	YScale 1.2
+	XScale 1.6
+	States
+	{
+    Spawn:
+        TRKR OP 2 BRIGHT
+        Loop
 	}
 }
 
@@ -72,11 +92,11 @@ states
 		TNT1 A 2
 		TNT1 A 0 A_SPawnItem("TallTOrch_BlueFlames")
 		TNT1 A 0 A_SpawnItem("TallTOrch_BlueCore")
+		TNT1 A 2 A_SpawnItem("TorchBallBlue")
 		Goto Stay
 
 	Stay:
-		TTRB AAA 10 A_SpawnItem("TorchBallBlue",0,59)
-		TTRB A 0 A_CustomMissile("RealisticFireSparks1Blue", 59, 0, random (0, 140), 2, random (0, 160))
+		TTRB A 30 A_CustomMissile("RealisticFireSparks1Blue", 59, 0, random (0, 140), 2, random (0, 160))
 		Loop
 	}
 }
@@ -95,7 +115,6 @@ states
 	Spawn:
 		TRKB ABCDEFGHIJKL 1 BRIGHT
 		Loop
-
 	}
 }
 
@@ -108,7 +127,16 @@ states
 	Spawn:
 		TRKB MN 1 BRIGHT
 		Loop
+	}
+}
 
+ACTOR TorchBallBlue: TorchBall
+{
+	States
+	{
+    Spawn:
+		TRKB OP 2 BRIGHT
+        Loop
 	}
 }
 
@@ -129,11 +157,11 @@ states
 		TNT1 A 2
 		TNT1 A 0 A_SPawnItem("TallTOrch_GreenFlames")
 		TNT1 A 0 A_SpawnItem("TallTOrch_GreenCore")
+		TNT1 A 2 A_SpawnItem("TorchBallGreen")
 		Goto Stay
 
 	Stay:
-		TTRB AAA 10 A_SpawnItem("TorchBallGreen",0,59)
-		TTRB A 0 A_CustomMissile("RealisticFireSparks1Green", 59, 0, random (0, 140), 2, random (0, 160))
+		TTRB A 30 A_CustomMissile("RealisticFireSparks1Green", 59, 0, random (0, 140), 2, random (0, 160))
 		Loop
 	}
 }
@@ -152,7 +180,6 @@ states
 	Spawn:
 		TRKG ABCDEFGHIJKL 1 BRIGHT
 		Loop
-
 	}
 }
 
@@ -165,7 +192,16 @@ states
 	Spawn:
 		TRKG MN 1 BRIGHT
 		Loop
+	}
+}
 
+ACTOR TorchBallGreen: TorchBall
+{
+	States
+	{
+    Spawn:
+        TRKG OP 2 BRIGHT
+        Loop
 	}
 }
 
@@ -186,11 +222,11 @@ states
 		TNT1 A 2
 		TNT1 A 0 A_SPawnItem("ShortTOrch_BlueFlames")
 		TNT1 A 0 A_SpawnItem("ShortTOrch_BlueCore")
+		TNT1 A 2 A_SpawnItem("ShortTorchBallblue")
 		Goto Stay
 
 	Stay:
-		STRB AAA 10 A_SpawnItem("TorchBallblue",0,25)
-		STRB A 0 A_CustomMissile("RealisticFireSparks1Blue", 25, 0, random (0, 140), 2, random (0, 160))
+		STRB A 30 A_CustomMissile("RealisticFireSparks1Blue", 25, 0, random (0, 140), 2, random (0, 160))
 		Loop
 	}
 }
@@ -209,7 +245,6 @@ states
 	Spawn:
 		SRKB ABCDEFGHIJKL 1 BRIGHT
 		Loop
-
 	}
 }
 
@@ -222,7 +257,16 @@ states
 	Spawn:
 		SRKB MN 1 BRIGHT
 		Loop
+	}
+}
 
+ACTOR ShortTorchBallBlue: TorchBall
+{
+	States
+	{
+    Spawn:
+		SRKB OP 2 BRIGHT
+        Loop
 	}
 }
 
@@ -244,11 +288,11 @@ states
 		TNT1 A 2
 		TNT1 A 0 A_SPawnItem("ShortTOrch_RedFlames")
 		TNT1 A 0 A_SpawnItem("ShortTOrch_RedCore")
+		TNT1 A 2 A_SpawnItem("ShortTorchBall")
 		Goto Stay
 
 	Stay:
-		STRB AAA 10 A_SpawnItem("TorchBall",0,25)
-		STRB A 0 A_CustomMissile("RealisticFireSparks1", 25, 0, random (0, 140), 2, random (0, 160))
+		STRB A 30 A_CustomMissile("RealisticFireSparks1", 25, 0, random (0, 140), 2, random (0, 160))
 		Loop
 	}
 }
@@ -267,7 +311,6 @@ states
 	Spawn:
 		SRKR ABCDEFGHIJKL 1 BRIGHT
 		Loop
-
 	}
 }
 
@@ -280,7 +323,16 @@ states
 	Spawn:
 		SRKR MN 1 BRIGHT
 		Loop
+	}
+}
 
+ACTOR ShortTorchBall: TorchBall
+{
+	States
+	{
+    Spawn:
+		SRKR OP 2 BRIGHT
+        Loop
 	}
 }
 
@@ -301,11 +353,11 @@ states
 		TNT1 A 2
 		TNT1 A 0 A_SPawnItem("ShortTOrch_GreenFlames")
 		TNT1 A 0 A_SpawnItem("ShortTOrch_GreenCore")
+		TNT1 A 2 A_SpawnItem("ShortTorchBallGreen")
 		Goto Stay
 
 	Stay:
-		STRB AAA 10 A_SpawnItem("TorchBallGreen",0,25)
-		STRB A 0 A_CustomMissile("RealisticFireSparks1Green", 25, 0, random (0, 140), 2, random (0, 160))
+		STRB A 30 A_CustomMissile("RealisticFireSparks1Green", 25, 0, random (0, 140), 2, random (0, 160))
 		Loop
 	}
 }
@@ -324,7 +376,6 @@ states
 	Spawn:
 		SRKG ABCDEFGHIJKL 1 BRIGHT
 		Loop
-
 	}
 }
 
@@ -337,7 +388,16 @@ states
 	Spawn:
 		SRKG MN 1 BRIGHT
 		Loop
+	}
+}
 
+ACTOR ShortTorchBallGreen: TorchBall
+{
+	States
+	{
+    Spawn:
+		SRKG OP 2 BRIGHT
+        Loop
 	}
 }
 
