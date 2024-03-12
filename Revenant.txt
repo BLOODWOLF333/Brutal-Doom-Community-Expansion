@@ -759,8 +759,6 @@ ACTOR RevenantAttack: BaronBall
 	Height 16
 	DamageType RVFT
 	Projectile
-	+RANDOMIZE
-	+FORCEXYBILLBOARD
     +THRUGHOST
 	RenderStyle Add
 	Alpha 0.6
@@ -772,7 +770,7 @@ ACTOR RevenantAttack: BaronBall
 	States
 	{
 	Spawn:
-		TNT1 A 2
+		TNT1 A 6
 		Stop
 	Death:
 		TNT1 A 0

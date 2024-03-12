@@ -92,7 +92,7 @@ ACTOR BullDemon: Demon Replaces Demon
 
 	Melee:
 		TNT1 A 0
-		TNT1 A 0 A_JumpIfCloser(64,"Bite")
+		TNT1 A 0 A_JumpIfCloser(96,"Bite")
 		TNT1 A 0 A_PlaySound("demon/melee", 4)
 
 		SAPC A 4 A_FaceTarget
@@ -1253,13 +1253,15 @@ Stop
 
 ACTOR DemonAttack: BaronBall
 {
-	Radius 20
-	Height 28
+	Radius 30
+	Height 30
 	DamageType Eat
 	Projectile
     Speed 20
     Damage (random(26,26))
-	+THRUGHOST
+    +THRUGHOST
+    +BLOODSPLATTER
+	+NODAMAGETHRUST
 	RenderStyle Add
 	SeeSound "none"
 	DeathSound "none"
@@ -1271,7 +1273,7 @@ ACTOR DemonAttack: BaronBall
 		Stop
 
 	Death:
-		TNT1 A 10 A_PlaySOund ("misc/xdeath1")
+		TNT1 A 4 A_PlaySOund ("misc/xdeath1")
 		Stop
 	}
 }

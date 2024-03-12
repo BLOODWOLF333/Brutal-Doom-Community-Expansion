@@ -2526,14 +2526,11 @@ ACTOR FireBallWeapon: FireBall_
 
 ACTOR ImpAttack: BaronBall
 {
-	Radius 10
-	Height 18
+	Radius 20
+	Height 20
 	DamageType Rip
 	Projectile
-	Radius 4
-	+RANDOMIZE
     Damage (random(16,16))
-	+FORCEXYBILLBOARD
     +THRUGHOST
     +BLOODSPLATTER
 	RenderStyle Add
@@ -2546,10 +2543,10 @@ ACTOR ImpAttack: BaronBall
 	States
 	{
 	Spawn:
-		TNT1 A 2
+		TNT1 A 4
 		Stop
 	Death:
-		TNT1 A 2 A_PlaySound("imp/melee")
+		TNT1 A 4 A_PlaySound("imp/melee")
 		Stop
 	}
 }

@@ -1133,35 +1133,34 @@ ACTOR DyingBaron1
 ACTOR BaronAttack: BaronBall
 {
 	Radius 24
-	Height 16
+	Height 24
 	DamageType BHFT
 	Projectile
-	+RANDOMIZE
-	+FORCEXYBILLBOARD
     +THRUGHOST
+    +BLOODSPLATTER
 	RenderStyle Add
 	Alpha 0.6
-    Damage (random(40,40))
-    Speed 28
+    Damage (random(53,53))
+    Speed 20
 	SeeSound "none"
 	DeathSound "none"
 	Decal "none"
 	States
 	{
 	Spawn:
-		TNT1 A 2
-        TNT1 A 2 //A_PlaySound("weapons/gswing")
-		Goto Death
+		TNT1 A 6
+		Stop
 	Death:
-		TNT1 A 0
+		TNT1 A 4 A_PlaySOund ("misc/xdeath1")
 		Stop
 	}
 }
 
 ACTOR BaronAttackOnbarrel: BaronAttack
 {
+	-BLOODSPLATTER
 	DamageType BHFTOnBarrel
-    Damage 1
+    Damage 10
 }
 
 ACTOR CallingTheBaronAFaggot: BaronBall

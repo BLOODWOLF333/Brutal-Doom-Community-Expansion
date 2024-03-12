@@ -891,9 +891,19 @@ Actor DeadCacoDemon3: DeadCacoDemon1
 
 ACTOR CacodemonBite: ImpAttack
 {
-    +THRUGHOST
+	Radius 31
+	Height 31
 	DamageType HKFT
     Damage (random(40,40))
+	States
+	{
+	Spawn:
+		TNT1 A 4
+		Stop
+	Death:
+		TNT1 A 4 A_PlaySOund ("misc/xdeath1")
+		Stop
+	}
 }
 
 ACTOR BrutalizedCacodemon1: DeadCacodemon1

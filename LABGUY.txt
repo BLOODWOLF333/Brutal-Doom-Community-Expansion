@@ -1674,31 +1674,26 @@ ACTOR XDeathHalfLabguy
 
 ACTOR ZombieAxeAttack
 {
-	Radius 10
+	Radius 18
 	Height 18
 	Projectile
-	+RANDOMIZE
 	DamageType Rip
     Damage (random(16,16))
-	+FORCEXYBILLBOARD
     +THRUGHOST
     +BLOODSPLATTER
 	RenderStyle Add
 	Alpha 0.6
-	-DONTHARMSPECIES
-
 	SeeSound "None"
 	DeathSound "none"
 	Decal "none"
-    Speed 22
+    Speed 20
 	States
 	{
 	Spawn:
-		TNT1 A 2 BRIGHT
+		TNT1 A 6 BRIGHT
 		Stop
 	Death:
-        TNT1 A 0 A_PlaySound("AxeHit")
-		TNT1 A 0 BRIGHT
+        TNT1 A 4 A_PlaySound("AxeHit")
 		Stop
 	}
 }

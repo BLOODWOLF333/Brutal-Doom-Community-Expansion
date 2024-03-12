@@ -635,15 +635,14 @@ ACTOR GreenPlasmaBall: BaronBall Replaces BaronBall
 ACTOR KnightAttack: BaronBall
 {
 	Radius 24
-	Height 16
+	Height 24
 	DamageType HKFT
 	Projectile
-	+RANDOMIZE
-	+FORCEXYBILLBOARD
     +THRUGHOST
+    +BLOODSPLATTER
 	RenderStyle Add
 	Alpha 0.6
-    Damage (random(54,54))
+    Damage (random(53,53))
     Speed 20
 	SeeSound "none"
 	DeathSound "none"
@@ -651,10 +650,10 @@ ACTOR KnightAttack: BaronBall
 	States
 	{
 	Spawn:
-        TNT1 A 2
+        TNT1 A 6
 		Stop
 	Death:
-		TNT1 A 2 A_PlaySound("imp/melee")
+		TNT1 A 4 A_PlaySOund ("misc/xdeath1")
 		Stop
 	}
 }
