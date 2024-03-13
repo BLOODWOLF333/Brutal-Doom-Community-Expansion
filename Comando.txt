@@ -42,11 +42,6 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 	Tag "Minigun Zombie"
 	States
 	{
-	ReplaceVanilla:
-		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
-		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
-		TNT1 A 0 A_SpawnItemEx ("VanillaChaingunguy",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
-		Stop
     Spawn:
 		MPOS A 0
 		MPOS A 0 ACS_NamedExecuteAlways("BDCHeckClassicMonsters", 0, 0, 0, 0)//Check if Vanilla Mode is activated
@@ -57,6 +52,13 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 		MPOS A 0 A_GiveInventory("SKChaingunGuy", 1)
 		MPOS A 0 A_JumpIfInTargetInventory("ChainguyguyContinue", 1, "MissileContinue")
 		Goto Stand
+
+	ReplaceVanilla:
+		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
+		TNT1 A 0 A_SpawnItemEx ("VanillaChaingunguy",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
+		TNT1 A 2 Thing_Remove(0)
+		Stop
 
 	Idle:
 	STAND:

@@ -76,9 +76,8 @@ ACTOR TheSpiderMastermind Replaces SpiderMastermind
 		Goto Stand
 
 	ReplaceVanilla:
-		TNT1 A 0
-		TNT1 A 2 A_NoBlocking
-		TNT1 A 0 A_ChangeFlag("NOINTERACTION", 1)
+		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItemEx ("VanillaSpiderMastermind",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG,0,tid)
 		TNT1 A 2 ACS_NamedExecuteAlways("Tag666VMastermind", 0, 0, 0, 0)//E4M8
 		TNT1 A -1
@@ -89,8 +88,8 @@ ACTOR TheSpiderMastermind Replaces SpiderMastermind
 		TNT1 A 0 A_JumpIf(y == -768, 1)
 		Goto Stand
 		TNT1 A 0 ACS_NamedExecuteAlways("MapEnhancementE3M8")
-		TNT1 A 2 A_NoBlocking
-		TNT1 A 0 A_ChangeFlag("NOINTERACTION", 1)
+		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItemEx ("SuperMastermind",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG,0,tid)
 		TNT1 A 2 ACS_NamedExecuteAlways("Tag666BMastermind", 0, 0, 0, 0)//E4M8
 		TNT1 A -1
@@ -100,8 +99,8 @@ ACTOR TheSpiderMastermind Replaces SpiderMastermind
 		TNT1 A 0
 		TNT1 A 0 A_JumpIf(y == 32, 1)
 		Goto Stand
-		TNT1 A 2 A_NoBlocking
-		TNT1 A 0 A_ChangeFlag("NOINTERACTION", 1)
+		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItemEx ("MotherDemon",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG,0,tid)
 		TNT1 A 2 ACS_NamedExecuteAlways("Tag666MotherDemon", 0, 0, 0, 0)//E4M8
 		TNT1 A -1
@@ -110,8 +109,8 @@ ACTOR TheSpiderMastermind Replaces SpiderMastermind
 	ReplaceMotherdemon:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIf((CeilingZ - FloorZ) < 114,"Stand")
-		TNT1 A 2 A_NoBlocking
-		TNT1 A 0 A_ChangeFlag("NOINTERACTION", 1)
+		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItemEx ("Motherdemon",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG,0,tid)
 		TNT1 A 2 ACS_NamedExecuteAlways("Tag666MotherDemon", 0, 0, 0, 0)//E4M8
 		TNT1 A -1
@@ -120,8 +119,8 @@ ACTOR TheSpiderMastermind Replaces SpiderMastermind
 	ReplaceJuggernaut:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIf((CeilingZ - FloorZ) < 138,"Stand")
-		TNT1 A 2 A_NoBlocking
-		TNT1 A 0 A_ChangeFlag("NOINTERACTION", 1)
+		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItemEx ("Juggernaut",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG,0,tid)
 		TNT1 A 2 ACS_NamedExecuteAlways("Tag666Juggernaut", 0, 0, 0, 0)//E4M8
 		TNT1 A -1

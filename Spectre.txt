@@ -17,6 +17,22 @@ ACTOR Spectro: BullDemon Replaces Spectre
 		TNT1 A 0 A_RadiusGive("SlaughterToken", 128, RGF_GIVESELF | RGF_MONSTERS |RGF_CUBE | RGF_NOSIGHT, 1)
 		SPEC A 2 BRIGHT
 		TNT1 A 0 A_JumpIfInventory("SlaughterToken",15,"ReplaceVanilla")
+		Goto Spawned
+
+	ReplaceVanilla:
+		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
+		TNT1 A 0 A_SpawnItemEx ("VanillaSpectre",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
+		TNT1 A 2 Thing_Remove(0)
+		Stop
+
+	ReplaceFuzzy:
+		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
+		TNT1 A 0 A_SpawnItemEx ("FuzzySpectre",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
+		TNT1 A 2 Thing_Remove(0)
+		Stop
+
 	Idle:
 	Spawned:
 		TNT1 A 0
@@ -28,18 +44,6 @@ ACTOR Spectro: BullDemon Replaces Spectre
 	SpawnVisible:
 		SARG AAAAAAAAAA 10 A_Look
 		Goto Spawned
-
-	ReplaceVanilla:
-		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
-		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
-		TNT1 A 0 A_SpawnItemEx ("VanillaSpectre",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
-		Stop
-
-	ReplaceFuzzy:
-		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
-		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
-		TNT1 A 0 A_SpawnItemEx ("FuzzySpectre",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
-		Stop
 
 	See:
 	SeeContinue:

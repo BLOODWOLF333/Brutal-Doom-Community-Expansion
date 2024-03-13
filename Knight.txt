@@ -107,12 +107,6 @@ ACTOR HellKnight2 : HellKnight Replaces HellKnight
 		TNT1 A 0 A_TakeInventory("HasExplosiveBarrel", 1)
 		BOBA A 0 A_ChangeFlag("NOPAIN", 0)
 		Goto SeeContinue
-
-	ReplaceVanilla:
-		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
-		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
-		TNT1 A 0 A_SpawnItemEx ("VanillaHellKnight",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
-		Stop
     Spawn:
 		BOS2 B 0
 		TNT1 A 0 A_GiveInventory("TargetIsABaronOfHell")
@@ -122,6 +116,14 @@ ACTOR HellKnight2 : HellKnight Replaces HellKnight
 		BOS2 B 2
 		TNT1 A 0 A_JumpIfInventory("SlaughterToken",15,"ReplaceVanilla")
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
+		Goto Stand
+
+	ReplaceVanilla:
+		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
+		TNT1 A 0 A_SpawnItemEx ("VanillaHellKnight",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
+		TNT1 A 2 Thing_Remove(0)
+		Stop
 
 	Idle:
 	Stand:

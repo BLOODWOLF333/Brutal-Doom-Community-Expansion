@@ -96,9 +96,10 @@ ACTOR TheLostSoul : LostSoul Replaces LostSoul
 		Goto Stand
 
 	ReplaceVanilla:
-		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
 		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItemEx("VanillaLostSoul",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
+		TNT1 A 2 Thing_Remove(0)
 		Stop
 
 	Idle:

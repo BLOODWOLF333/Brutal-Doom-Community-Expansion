@@ -43,12 +43,6 @@ ACTOR Revenant1: Revenant Replaces Revenant
 	Tag "Revenant"
 	States
 	{
-	ReplaceVanilla:
-		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
-		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
-		TNT1 A 0 A_SpawnItemEx ("VanillaRevenant",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
-		Stop
-
     Spawn:
 		SKEL B 0
 		TNT1 A 0 A_GiveInventory("IsARevenant", 1)
@@ -58,6 +52,14 @@ ACTOR Revenant1: Revenant Replaces Revenant
 		SKEL B 2
 		TNT1 A 0 A_JumpIfInventory("SlaughterToken",15,"ReplaceVanilla")
 	    TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "FatalityMarine")
+		Goto Spawn2
+
+	ReplaceVanilla:
+		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
+		TNT1 A 0 A_SpawnItemEx ("VanillaRevenant",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
+		TNT1 A 2 Thing_Remove(0)
+		Stop
 
 	Idle:
 	Spawn2:

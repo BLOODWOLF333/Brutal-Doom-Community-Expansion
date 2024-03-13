@@ -50,9 +50,8 @@ ACTOR Mancubus : Fatso Replaces Fatso
 		Goto Stand
 
 	ReplaceVanilla:
-		TNT1 A 0
-		TNT1 A 2 A_NoBlocking
-		TNT1 A 0 A_ChangeFlag("NOINTERACTION", 1)
+		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItemEx("VanillaFatso",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG,0, tid)
 		TNT1 A 2 ACS_NamedExecuteAlways("Tag666VFatso", 0, 0, 0, 0)
 		TNT1 A -1
@@ -61,8 +60,8 @@ ACTOR Mancubus : Fatso Replaces Fatso
 	ReplaceVolcabus:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIf((CeilingZ - FloorZ) < 99,"Stand")
-		TNT1 A 2 A_NoBlocking
-		TNT1 A 0 A_ChangeFlag("NOINTERACTION", 1)
+		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItemEx("Volcabus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG,0, tid)
 		TNT1 A 2 ACS_NamedExecuteAlways("Tag666Volcabus", 0, 0, 0, 0)
 		TNT1 A -1
@@ -72,7 +71,7 @@ ACTOR Mancubus : Fatso Replaces Fatso
 		TNT1 A 0
 		TNT1 A 2 A_Die("Vanish")
 	Death.Vanish:
-		TNT1 A 70
+		TNT1 A 35
 		TNT1 A -1 A_BossDeath
 		Stop
 

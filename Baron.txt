@@ -60,9 +60,8 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		Goto Stand
 
 	ReplaceVanilla:
-		TNT1 A 0
-		TNT1 A 2 A_NoBlocking
-		TNT1 A 0 A_ChangeFlag("NOINTERACTION", 1)
+		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItemEx ("VanillaBaronOfHell",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG,0,tid)
 		TNT1 A 2 ACS_NamedExecuteAlways("Tag666VBaron", 0, 0, 0, 0)
 		TNT1 A -1
@@ -72,8 +71,8 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		TNT1 A 0
 		TNT1 A 0 A_JumpIf(y == 2864, 1)
 		Goto Stand
-		TNT1 A 2 A_NoBlocking
-		TNT1 A 0 A_ChangeFlag("NOINTERACTION", 1)
+		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItemEx ("BaronBoss1",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG,0,tid)//Has script to lower tag666 in the monster
 		Goto Special666
 
@@ -81,15 +80,15 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		TNT1 A 0
 		TNT1 A 0 A_JumpIf(y == 2864, 1)
 		Goto Stand
-		TNT1 A 2 A_NoBlocking
-		TNT1 A 0 A_ChangeFlag("NOINTERACTION", 1)
+		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItemEx ("BaronBoss2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG,0,tid)//Has script to lower tag666 in the monster
 		Goto Special666
 
 	ReplaceBelphegor:
 		TNT1 A 0 A_JumpIf((CeilingZ - FloorZ) < 93,"Stand")
-		TNT1 A 2 A_NoBlocking
-		TNT1 A 0 A_ChangeFlag("NOINTERACTION", 1)
+		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItemEx ("Belphegor",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG,0,tid)
 		TNT1 A 2 ACS_NamedExecuteAlways("Tag666Belphegor", 0, 0, 0, 0)
 		TNT1 A -1
