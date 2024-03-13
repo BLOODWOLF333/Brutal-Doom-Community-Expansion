@@ -345,9 +345,9 @@ ACTOR SuperMastermind: TheSpiderMastermind 2547
 		Goto MissileContinue
 
 	StopFiring:
-	TNT1 A 0 A_SpawnItem("SuperMasterMindHitBox", 0, 144,0)
-	SPID A 6 A_FaceTarget
-	Goto Chasing
+		TNT1 A 0 A_SpawnItem("SuperMasterMindHitBox", 0, 144,0)
+		SPID A 6 A_FaceTarget
+		Goto Chasing
 
 		Avoid:
          NULL A 0 A_FaceTarget
@@ -370,7 +370,6 @@ ACTOR SuperMastermind: TheSpiderMastermind 2547
         Goto Chasing
 
 	Death:
-
 		SPID J 20 A_Scream
 		tnt1 a 0 A_FaceTarget
 		EXPL A 0 Radius_Quake (8, 35, 0, 20, 0)
@@ -399,7 +398,7 @@ ACTOR SuperMastermind: TheSpiderMastermind 2547
     Crush:
         TNT1 A 0 A_PlaySound("misc/xdeath4")
         CRS3 A 5
-        CRS3 A -1
+        CRS3 A -1 A_BossDeath
         Stop
 
 Death.Cut:
