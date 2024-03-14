@@ -50,54 +50,56 @@ ACTOR TorchTree2: TorchTree Replaces TorchTree
 	States
 	{
 	Vanilla:
-		TNT1 A 0 A_NoBlocking
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItem("VanillaSmallTree")
+		TNT1 A 2 Thing_Remove(0)
 		Stop
 
 	Spawn:
 		TRE1 A 0
 		TRE1 O 0 Thing_ChangeTID(0,748)
-		TRE1 A 3
+		TRE1 A 2
 		MARN A 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckFloorType3", 0, 0, 0, 0)//Check floor texture type
+		TRE1 A 2
 		Goto Spawn2
 
 	Spawn2:
-	TRE1 A 1
+	TRE1 A 2
 	TNT1 A 0 A_JUmpIfInventory("IsOverSand", 1, "SpawnPalm")
 	TNT1 A 0 A_JUmpIfInventory("IsOverGrass", 1, "ForestSpawn")
 	TNT1 A 0 A_JUmpIfInventory("IsOverFlesh", 1, "FleshSpawn")
-	TRE1 A -1
-	Stop
-
-	Spawn3:
-	TRE1 A 1
+	TRE1 A 2
 	TRE1 A -1
 	Stop
 
 	FleshSpawn:
-		TNT1 A 0 A_NoBlocking
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItem("BDECHellGrowthSmall")
+		TNT1 A 2 Thing_Remove(0)
 		Stop
 
 	SpawnPalm:
-		TNT1 A 0 A_NoBlocking
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItem("BDPalmTree")
+		TNT1 A 2 Thing_Remove(0)
 		Stop
 
 	ForestSpawn:
-		TNT1 A 0 A_NoBlocking
+		TNT1 A 0
 		TNT1 AAAAAA 0 A_SpawnItemEx("BDECGrassSpecial", random(-180, 180), random(-180, 180))
 		TNT1 A 0 A_Jump(255, "SpawnForest1", "SpawnForest2")
 
 	SpawnFOrest1:
-		TNT1 A 0
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItem("BDECGreenTree2")
+		TNT1 A 2 Thing_Remove(0)
 		Stop
 
 	SpawnFOrest2:
-		TNT1 A 0
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItem("BDECOldTree2")
+		TNT1 A 2 Thing_Remove(0)
 		Stop
 
     Death:
@@ -162,31 +164,34 @@ ACTOR Big_Tree: BigTree Replaces BigTree
 	{
 
 	Vanilla:
-		TNT1 A 0 A_NoBlocking
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItem("VanillaBigTree")
+		TNT1 A 2 Thing_Remove(0)
 		Stop
+
 	Spawn:
 		TRE2 O 0
 		TRE2 A 0 Thing_ChangeTID(0,748)
-
-		TRE2 A 3
+		TRE2 A 2
 		MARN A 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckFloorType3", 0, 0, 0, 0)//Check floor texture type
+		TRE2 A 2
 		Goto Spawn2
 
 	Spawn2:
-		TRE2 A 1
+		TRE2 A 2
 		TNT1 A 0 A_JUmpIfInventory("IsOverGrass", 1, "ForestSPawn")
 		TNT1 A 0 A_JUmpIfInventory("IsOverDirt", 1, "DirtSpawn")
 		TNT1 A 0 A_JUmpIfInventory("IsOverSand", 1, "DesertSpawn")
 		TNT1 A 0 A_JUmpIfInventory("IsOverFlesh", 1, "FleshSpawn")
+		TRE2 A 2
 		TRE2 A -1
 		Stop
 
 	DesertSpawn:
-		TNT1 A 0
-		TNT1 A 0 A_NoBlocking
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItem("BDecJunglePlant2")
+		TNT1 A 2 Thing_Remove(0)
 		Stop
 
 	DirtSpawn:
@@ -196,43 +201,50 @@ ACTOR Big_Tree: BigTree Replaces BigTree
 		Stop
 
 	DirtSpawn2:
-		TNT1 A 0
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItem("BDECDeadTree1")
+		TNT1 A 2 Thing_Remove(0)
 		Stop
 
 	DirtSpawn3:
-		TNT1 A 0
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItem("BDECDeadTree2")
+		TNT1 A 2 Thing_Remove(0)
 		Stop
 
 	ForestSpawn:
-		TNT1 A 0 A_NoBlocking
+		TNT1 A 0
 		TNT1 AAAAAAAA 0 A_SpawnItemEx("BDECGrassSpecial", random(-180, 180), random(-180, 180))
 		TNT1 A 0 A_Jump(255, "SpawnForest1", "SpawnForest2", "SpawnForest3", "SpawnForest4")
 
 	SpawnFOrest1:
-		TNT1 A 0
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItem("BDECGreenTree1")
+		TNT1 A 2 Thing_Remove(0)
 		Stop
 
 	SpawnFOrest2:
-		TNT1 A 0
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItem("BDECOldTree1")
+		TNT1 A 2 Thing_Remove(0)
 		Stop
 
 	SpawnFOrest3:
-		TNT1 A 0
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItem("BDECGreenTree3")
+		TNT1 A 2 Thing_Remove(0)
 		Stop
 
 	SpawnFOrest4:
-		TNT1 A 0
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItem("BDECOldTree1")
+		TNT1 A 2 Thing_Remove(0)
 		Stop
 
     FleshSpawn:
-		TNT1 A 0 A_NoBlocking
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItem("BDECHellGrowth")
+		TNT1 A 2 Thing_Remove(0)
 		Stop
 
 	Pain.Blood:
@@ -344,22 +356,24 @@ ACTOR StalagtiteReplacer Replaces Stalagtite
 	States
 	{
 	Spawn:
-
+		SMIT A 2
 		SMIT A 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckFloorType3", 0, 0, 0, 0)//Check floor texture type
+		SMIT A 2
 		Goto Spawn2
 
 	Spawn2:
 		SMIT A 2
 		TNT1 A 0 A_JUmpIfInventory("IsOverGrass", 1, "ForestSpawn")
+		SMIT A 2
 		SMIT A -1
 		Stop
 
 	ForestSpawn:
-		TNT1 A 0
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 AAAAAA 0 A_SpawnItemEx("BDECGrassSpecial", random(-180, 180), random(-180, 180))
 		TNT1 A 0 A_SpawnItem("BDECBush")
-		TNT1 A 0 A_NoBlocking
+		TNT1 A 2 Thing_Remove(0)
 		Stop
 	}
 }

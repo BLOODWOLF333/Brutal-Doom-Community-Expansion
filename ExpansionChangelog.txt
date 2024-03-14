@@ -5,7 +5,7 @@
 //
 //	Development v21.14.3
 //
-//	All Monster Files:				Remove COUNTKILL and then Thing_Remove monsters when they are replaced so map killcounters are correct
+//	All Monster Files:				Add -COUNTKILL and Thing_Remove to monsters when they are replaced to not effect the killcount
 //	Ammo.txt:						Removed all fake sprite actors and made each spawner drop a brutal and purist version of each pickup
 //	AssaultShotgun2.txt:			Reduce ShotPuff range from 300 to 128
 //	Axe.txt:						PR#447 Cutting Weapon token
@@ -16,15 +16,20 @@
 //	COMMANDS.txt:					PR#444 Plasma Rifle cancel now works with the GZDoom Reload key
 //									PR#449 Eliminated separate Plasma decharge ACS script, merged with BDControls ACS script
 //									Created Map07CheckFatso and Map07CheckArachnotron scripts
+//	Dead.txt:						Add Thing_Remove when actors are replaced and reenabled deadlivestick marines
 //	DEFAULTWEAPON.txt:				Restricted all brutal weapons to only be visible to and picked up by brutal playerclasses
 //	Demons.txt:						Adjusted attack states and projectile lifetime making demons better in combat
 //	EvilMarineShield.txt:			PR#448 Meat shield stuff
+//	Fireworks.txt:					Added -COUNTKILL and Thing_Remove when the barrel is replaced
 //	FootSteps.txt:					Remove LargeMassWaterImpact from FootStepStrong actor
+//	Furniture.txt:					Add Thing_Remove when actors are replaced
 //	ImpShield.txt:					PR#448 Meat shield stuff
+//	Lamps.txt:						Add Thing_Remove when actors are replaced
 //	Mancubus.txt:					Fixed ReplaceVanilla and ReplaceVolcabus states to correct Map07 breaking
 //	MapSpecificDec.txt:				Adjust burn: and extinguish: states of vegetation actors
 //	Melee.txt:						PR#448 Meat shield stuff
 //	Natural.txt:					Adjust burn: and extinguish: states of vegetation actors
+//									Add Thing_Remove when actors are replaced
 //	NaziShield.txt:					PR#448 Meat shield stuff
 //	SGuyShield.txt:					PR#448 Meat shield stuff
 //	Plasma.txt:						PR#444 Plasma Rifle cancel now works with the GZDoom Reload key
@@ -39,6 +44,7 @@
 //	SSG2.txt:						Reduce ShotPuff range from 300 to 128
 //	Tokens.txt:						Change +NONETID to +CLIENTSIDEONLY for all tokens
 //	Torches.txt:					Optimized the torch spawns so that only the fire sparks will be spawning every 30 tics
+//									Add Thing_Remove when actors are replaced
 //	WeaponSpawners.txt:				Removed all fake sprite actors and made each spawner drop a brutal and purist version of each pickup
 //	Weather.txt:					Changed the rain and blood drop Live: states to checkfloor and then goto "Death"
 //									Add +RANDOMIZE flag

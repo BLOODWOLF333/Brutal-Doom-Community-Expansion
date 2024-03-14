@@ -20,25 +20,34 @@ actor VeryDeadMarine: DeadMarine Replaces DeadMarine
 		TNT1 AAAAAA 0 A_SpawnItemEx("Brutal_OldBloodSpot",random(64, -64),random(64, -64))
 		TNT1 A 0 A_SpawnItem("MediumOldBloodSpot")
 		TNT1 A 0
-		TNT1 A 0 A_Jump(160,2)
+		TNT1 A 0 A_Jump(160,4)
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 1 A_SpawnItem("CurbstompedMarine")
-		Goto Death
-		TNT1 A 0 A_Jump(160,2)
-		TNT1 A 1 A_SpawnItem("AteMarine")
-		Goto Death
-		TNT1 A 0 A_Jump(160,2)
-		TNT1 A 1 A_SpawnItem("DeadRippedOffMarine")
-		Goto Death
-		TNT1 A 0 A_Jump(160,2)
-		TNT1 A 1 A_SpawnItem("FuckedMarine")
-		Goto Death
-		TNT1 A 0 A_Jump(160,2)
-		TNT1 A 1 A_SpawnItem("ADoomedSpaceMarine2")
-		Goto Death
-		TNT1 A 1 A_SpawnItem("ADoomedSpaceMarine")
+		TNT1 A 2 Thing_Remove(0)
 		Stop
-	Death:
-		TNT1 A 0
+		TNT1 A 0 A_Jump(160,4)
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
+		TNT1 A 1 A_SpawnItem("AteMarine")
+		TNT1 A 2 Thing_Remove(0)
+		Stop
+		TNT1 A 0 A_Jump(160,4)
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
+		TNT1 A 1 A_SpawnItem("DeadRippedOffMarine")
+		TNT1 A 2 Thing_Remove(0)
+		Stop
+		TNT1 A 0 A_Jump(160,4)
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
+		TNT1 A 1 A_SpawnItem("FuckedMarine")
+		TNT1 A 2 Thing_Remove(0)
+		Stop
+		TNT1 A 0 A_Jump(160,4)
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
+		TNT1 A 1 A_SpawnItem("ADoomedSpaceMarine2")
+		TNT1 A 2 Thing_Remove(0)
+		Stop
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
+		TNT1 A 1 A_SpawnItem("ADoomedSpaceMarine")
+		TNT1 A 2 Thing_Remove(0)
 		Stop
 	}
 }
@@ -64,19 +73,24 @@ actor VeryVeryDeadMarine: GibbedMarine Replaces GibbedMarine
 		TNT1 AAAAA 0 A_CustomMissile ("SuperWallOldBlood", 10, 0, random (0, 360), 2, random (5, 40))
 		TNT1 AAAAAAA 0 A_SpawnItemEx("Brutal_OldBloodSpot",random(64, -64),random(64, -64))
 		TNT1 A 0 A_SpawnItem("MediumOldBloodSpot")
-		TNT1 A 0 A_Jump(160,2)
+		TNT1 A 0 A_Jump(160,4)
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 1 A_SpawnItem("GibDec")
-		Goto Death
-		TNT1 A 0 A_Jump(160,2)
-		TNT1 A 1 A_SpawnItem("GibDec")
-		Goto Death
-		TNT1 A 0 A_Jump(160,2)
-		TNT1 A 1 A_SpawnItem("VeryDeadCivilian")
-		Goto Death
-		TNT1 A 1 A_SpawnItem("GutsPile")
+		TNT1 A 2 Thing_Remove(0)
 		Stop
-	Death:
-		TNT1 A 0
+		TNT1 A 0 A_Jump(160,4)
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
+		TNT1 A 1 A_SpawnItem("GibDec")
+		TNT1 A 2 Thing_Remove(0)
+		Stop
+		TNT1 A 0 A_Jump(160,4)
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
+		TNT1 A 1 A_SpawnItem("VeryDeadCivilian")
+		TNT1 A 2 Thing_Remove(0)
+		Stop
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
+		TNT1 A 1 A_SpawnItem("GutsPile")
+		TNT1 A 2 Thing_Remove(0)
 		Stop
 	}
 }
@@ -493,14 +507,6 @@ ACTOR DeadDeadStick: DeadStick Replaces DeadStick
 	Height 64
 	+SOLID
 	+SHOOTABLE
-	DropItem "HealthPlusNoCount" 128
-	DropItem "HealthPlusNoCount" 128
-	DropItem "ArmorShardNoCount" 128
-	DropItem "ArmorShardNoCount" 128
-	DropItem "Stimpack" 128
-	DropItem "Clip" 128
-	DropItem "CLIP1Drop" 128
-	DropItem "Shell" 128
     bloodtype "DeadBlood"
 
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
@@ -546,14 +552,6 @@ ACTOR DeadLiveStick: LiveStick Replaces LiveStick
     GibHealth 10
 	+SOLID
 	+SHOOTABLE
-	DropItem "CLIP1Drop" 128
-	DropItem "HealthPlusNoCount" 128
-	DropItem "HealthPlusNoCount" 128
-	DropItem "ArmorShardNoCount" 128
-	DropItem "ArmorShardNoCount" 128
-	DropItem "Stimpack" 128
-	DropItem "Clip" 128
-	DropItem "Shell" 128
 
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
@@ -571,64 +569,68 @@ ACTOR DeadLiveStick: LiveStick Replaces LiveStick
 	{
 	Spawn:
 		TNT1 A 0
-		Goto Stand
-		TNT1 A 0 A_CHangeFlag("THRUACTORS", 1)
-		TNT1 A 0 A_ChangeFlag("NOBLOCKMAP", 1)
 		TNT1 A 0 A_Jump(255, "Spawn1", "Spawn1", "Spawn2", "Spawn2", "Spawn3", "Spawn3", "Spawn4", "Spawn4", "Spawn5", "Spawn6", "Spawn7", "Spawn8", "Spawn9", "Spawn10")
 		Goto Spawn1
 
 	Spawn1:
-		TNT1 A 0
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItem("ImpaledMarineAlive1",0,0)
+		TNT1 A 2 Thing_Remove(0)
 		Stop
 
 	Spawn2:
-		TNT1 A 0
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItem("ImpaledMarineAlive2",0,0)
+		TNT1 A 2 Thing_Remove(0)
 		Stop
 
 	Spawn3:
-		TNT1 A 0
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItem("ImpaledMarineAlive1a",0,0)
+		TNT1 A 2 Thing_Remove(0)
 		Stop
 
 	Spawn4:
-		TNT1 A 0
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItem("ImpaledMarineAlive2a",0,0)
+		TNT1 A 2 Thing_Remove(0)
 		Stop
 
 	Spawn5:
-		TNT1 A 0
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItem("ImpaledMarineAlive1b",0,0)
+		TNT1 A 2 Thing_Remove(0)
 		Stop
 
 	Spawn6:
-		TNT1 A 0
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItem("ImpaledMarineAlive1c",0,0)
+		TNT1 A 2 Thing_Remove(0)
 		Stop
 
 	Spawn7:
-		TNT1 A 0
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItem("ImpaledMarineAlive1d",0,0)
+		TNT1 A 2 Thing_Remove(0)
 		Stop
 
 	Spawn8:
-		TNT1 A 0
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItem("ImpaledMarineAlive2b",0,0)
+		TNT1 A 2 Thing_Remove(0)
 		Stop
 
 	Spawn9:
-		TNT1 A 0
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItem("ImpaledMarineAlive2c",0,0)
+		TNT1 A 2 Thing_Remove(0)
 		Stop
 
 	Spawn10:
-		TNT1 A 0
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItem("ImpaledMarineAlive2d",0,0)
+		TNT1 A 2 Thing_Remove(0)
 		Stop
-
-	    TNT1 A 0 A_SpawnItem("MediumOldBloodSpot",0,0)
-		Goto Stand
 
 	Stand:
 		POL6 A 6
@@ -1378,14 +1380,15 @@ ACTOR ColonGibs2 Replaces ColonGibs
 	States
 	{
 	Vanilla:
-		TNT1 A 0 A_NoBlocking
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItem("VanillaColonGibs")
+		TNT1 A 2 Thing_Remove(0)
 		Stop
 
 	Spawn:
-		POB1 A 0
+		POB1 A 2
 		POB1 A 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
-		POB1 A 1
+		POB1 A 2
 
 	Stay:
 	    POB1 A 8
@@ -1406,14 +1409,15 @@ ACTOR SmallBloodPool2 Replaces SmallBloodPool
 	States
 	{
 	Vanilla:
-		POB2 A 0 A_NoBlocking
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		POB2 A 0 A_SpawnItem("VanillaSmallBloodPool")
+		TNT1 A 2 Thing_Remove(0)
 		Stop
 
 	Spawn:
-		POB2 A 0
+		POB2 A 2
 		POB2 A 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
-		POB2 A 1
+		POB2 A 2
 
 	Stay:
 	    POB2 A 6
@@ -1583,13 +1587,8 @@ Actor GoreFlies
 		GRFL ABCDEFGHIJKLMNOPQRSTUWVXYZ 1
 		Loop
 
-	Live2:
-		GRFL ABCDEFGHIJKLMNOPQRSTUWVXYZ 1
-		Loop
-
 	Death:
-		TNT1 A 0
-		TNT1 A 0 A_NoBlocking
+		TNT1 A -1 A_NoBlocking
 		Stop
 	}
 }
@@ -1609,9 +1608,8 @@ Actor GoreFliesWSound: GoreFlies
 		Goto Live
 
 	Death:
-		TNT1 A 0
 		TNT1 A 0 A_StopSound(1)
-		TNT1 A 0 A_NoBlocking
+		TNT1 A -1 A_NoBlocking
 		Stop
 	}
 }
@@ -1732,8 +1730,9 @@ ACTOR PlayerChaingunguyVictim: CurbstompedMarine
 	Spawn:
 		XPL8 A 20
 		PLAY JK 5
-		PLAY L 5 A_Noblocking
+		PLAY L 5 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItemEx("ADoomedSpaceMarine", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
+		TNT1 A 2 Thing_Remove(0)
 		Stop
 
 	Pain:
