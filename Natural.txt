@@ -162,7 +162,6 @@ ACTOR Big_Tree: BigTree Replaces BigTree
 	BloodType "TreeBlood"
 	States
 	{
-
 	Vanilla:
 		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItem("VanillaBigTree")
@@ -271,8 +270,6 @@ ACTOR Big_Tree: BigTree Replaces BigTree
 		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 64)
 		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Big", 0, 0, 5)
 		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
-		TNT1 A 0 A_Jump(255, "Burning")
-		Loop
 	Burning:
 		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
 		TRE2 N 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
