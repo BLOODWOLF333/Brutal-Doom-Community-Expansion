@@ -223,6 +223,8 @@ ACTOR RicoChet
 	TNT1 A 2
 	TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "SpawnWater")
 	TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "SpawnNukage")
+	TNT1 A 0 A_JumpIfInventory("IsOverOrange", 1, "SpawnOrange")
+	TNT1 A 0 A_JumpIfInventory("IsOverPinaColada", 1, "SpawnPinaColada")
 	TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "SpawnPurple")
 	TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "SpawnSlime")
 	TNT1 A 0 A_JumpIfInventory("IsOverTar", 1, "SpawnTar")
@@ -283,6 +285,22 @@ ACTOR RicoChet
 	TNT1 AAAAA 0 A_CustomMissile ("nukageParticleXSuperFast", 24, 0, random (0, 360), 2, random (30, 160))
 	TNT1 A 0 A_SpawnItem("NukageSplashWaves")
 	TNT1 AAA 0 A_CustomMissile ("NukageRicochet", random (0, 2), 0, random (0, 360), 2, random (30, 90))
+	Stop
+
+	SpawnOrange:
+	TNT1 A 0
+	TNT1 AAAAA 0 A_CustomMissile ("OrangeParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAAA 0 A_CustomMissile ("OrangeParticleXSuperFast", 24, 0, random (0, 360), 2, random (30, 160))
+	TNT1 A 0 A_SpawnItem("OrangeSplashWaves")
+	TNT1 AAA 0 A_CustomMissile ("OrangeRicochet", random (0, 2), 0, random (0, 360), 2, random (30, 90))
+	Stop
+
+	SpawnPinaColada:
+	TNT1 A 0
+	TNT1 AAAAA 0 A_CustomMissile ("PinaColadaParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAAA 0 A_CustomMissile ("PinaColadaParticleXSuperFast", 24, 0, random (0, 360), 2, random (30, 160))
+	TNT1 A 0 A_SpawnItem("PinaColadaSplashWaves")
+	TNT1 AAA 0 A_CustomMissile ("PinaColadaRicochet", random (0, 2), 0, random (0, 360), 2, random (30, 90))
 	Stop
 
 	SpawnPurple:
@@ -534,6 +552,68 @@ ACTOR NukageRicochet: WaterRicochet
   }
 }
 
+ACTOR OrangeRicochet: WaterRicochet
+{
+  renderstyle Add
+  states
+  {
+  Spawn:
+	TNT1 A 0
+	TNT1 A 0 A_Jump(255, "spawn1", "Spawn2", "Spawn3", "Spawn4")
+  Spawn1:
+	TNT1 A 0
+	TNT1 A 0 A_SetScale(0.7, 0.7)
+	SPHO ABCDEFF 1 A_FadeOut(0.1)
+	Stop
+ Spawn2:
+	TNT1 A 0
+	TNT1 A 0 A_SetScale(0.8, 0.8)
+	SPHO ABCDEFF 1 A_FadeOut(0.1)
+	Stop
+  Spawn3:
+	TNT1 A 0
+	TNT1 A 0 A_SetScale(-0.6, 0.6)
+	SPHO ABCDEFF 1 A_FadeOut(0.1)
+	Stop
+  Spawn4:
+	TNT1 A 0
+	TNT1 A 0 A_SetScale(-0.7, 0.7)
+	SPHO ABCDEFF 1 A_FadeOut(0.1)
+	Stop
+  }
+}
+
+ACTOR PinaColadaRicochet: WaterRicochet
+{
+  renderstyle Add
+  states
+  {
+  Spawn:
+	TNT1 A 0
+	TNT1 A 0 A_Jump(255, "spawn1", "Spawn2", "Spawn3", "Spawn4")
+  Spawn1:
+	TNT1 A 0
+	TNT1 A 0 A_SetScale(0.7, 0.7)
+	SPHQ ABCDEFF 1 A_FadeOut(0.1)
+	Stop
+ Spawn2:
+	TNT1 A 0
+	TNT1 A 0 A_SetScale(0.8, 0.8)
+	SPHQ ABCDEFF 1 A_FadeOut(0.1)
+	Stop
+  Spawn3:
+	TNT1 A 0
+	TNT1 A 0 A_SetScale(-0.6, 0.6)
+	SPHQ ABCDEFF 1 A_FadeOut(0.1)
+	Stop
+  Spawn4:
+	TNT1 A 0
+	TNT1 A 0 A_SetScale(-0.7, 0.7)
+	SPHQ ABCDEFF 1 A_FadeOut(0.1)
+	Stop
+  }
+}
+
 ACTOR PurpleRicochet: WaterRicochet
 {
   renderstyle Add
@@ -630,6 +710,8 @@ ACTOR LargeMassWaterImpact
 	TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "SpawnSlime")
 	TNT1 A 0 A_JumpIfInventory("IsOverTar", 1, "SpawnTar")
 	TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "SpawnNukage")
+	TNT1 A 0 A_JumpIfInventory("IsOverOrange", 1, "SpawnOrange")
+	TNT1 A 0 A_JumpIfInventory("IsOverPinaColada", 1, "SpawnPinaColada")
 	TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "SpawnPurple")
 	TNT1 A 0 A_JumpIfInventory("IsOverBlood", 1, "SpawnBlood")
 	TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "SpawnLava")
@@ -671,6 +753,24 @@ ACTOR LargeMassWaterImpact
 	TNT1 A 0 A_AlertMonsters(500, AMF_TARGETNONPLAYER)
 	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("nukageParticleXSuperFast", 12, 0, random (0, 360), 2, random (30, 90))
 	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("nukageParticleXFAster", 12, 0, random (0, 360), 2, random (30, 90))
+	TNT1 A 20
+	Stop
+
+ SpawnOrange:
+	TNT1 A 0
+	TNT1 A 0 A_PlaySound("bigspl1")
+	TNT1 A 0 A_AlertMonsters(500, AMF_TARGETNONPLAYER)
+	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("OrangeParticleXSuperFast", 12, 0, random (0, 360), 2, random (30, 90))
+	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("OrangeParticleXFAster", 12, 0, random (0, 360), 2, random (30, 90))
+	TNT1 A 20
+	Stop
+
+ SpawnPinaColada:
+	TNT1 A 0
+	TNT1 A 0 A_PlaySound("bigspl1")
+	TNT1 A 0 A_AlertMonsters(500, AMF_TARGETNONPLAYER)
+	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("PinaColadaParticleXSuperFast", 12, 0, random (0, 360), 2, random (30, 90))
+	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("PinaColadaParticleXFAster", 12, 0, random (0, 360), 2, random (30, 90))
 	TNT1 A 20
 	Stop
 
