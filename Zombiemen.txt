@@ -3429,23 +3429,24 @@ Actor DeadZombieman_Slumped: ZombiemanTorso
 Health 200
 DamageFactor "Head", 15.0
 Height 22
-Radius 6
+Radius 10
 +NOBLOCKMONST
-States{Spawn:
+States
+{
+	Spawn:
 		TNT1 A 0
-		TNT1 A 0 A_Recoil(3)
-		BR92 A 16
-		TNT1 A 0 A_JumpIf(velx < 0, "LayDown")
-		TNT1 A 0 A_JumpIf(velx > 0, "LayDown")
-		TNT1 A 0 A_JumpIf(vely > 0, "LayDown")
-		TNT1 A 0 A_JumpIf(vely < 0, "LayDown")
+		TNT1 A 0 A_Recoil(2)
+		BR92 A 12
+		TNT1 A 0 A_JumpIf(velx > 0 || velx < 0, "LayDown")
+		TNT1 A 0 A_JumpIf(vely > 0 || vely < 0, "LayDown")
 		TNT1 A 0 A_SpawnItemEx("HeadshotTargetSlumped", 3, 0, 22)
-		BR92 A 6
+		BR92 A 4
         Loop
 	LayDown:
-	TNT1 A 0 A_NoBlocking
-	TNT1 A 0 A_SpawnItem("DeadZombieman1")
-	Stop
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_SpawnItem("DeadZombieman1")
+		TNT1 A 0 Thing_Remove(0)
+		Stop
 	XDeath:
 	Death.Explosive:
 	Death.ExplosiveImpact:
@@ -3479,10 +3480,21 @@ Actor DeadZombieman_Slumped_NoHead: ZombiemanTorso
 {
 +NOBLOCKMONST
 Height 22
-States{Spawn:
+States
+{
+	Spawn:
 		TNT1 A 0
-		BR92 B 100
+		TNT1 A 0 A_Recoil(2)
+		BR92 B 12
+		TNT1 A 0 A_JumpIf(velx > 0 || velx < 0, "LayDown")
+		TNT1 A 0 A_JumpIf(vely > 0 || vely < 0, "LayDown")
+		BR92 B 4
         Loop
+	LayDown:
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_SpawnItem("DeadZombieman_NoHead")
+		TNT1 A 0 Thing_Remove(0)
+		Stop
 	XDeath:
 	Death.Explosive:
 	Death.ExplosiveImpact:
