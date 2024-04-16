@@ -29,9 +29,7 @@ ACTOR BrutalTeleportDest: TeleportDest Replaces TeleportDest
 	+NOSECTOR
 	+DONTSPLASH
 	+MISSILE
-	+NOBLOCKMAP
 	+THRUACTORS
-	+PAINLESS
 	+NODAMAGETHRUST
 	-BLOODSPLATTER
 	+BLOODLESSIMPACT
@@ -41,7 +39,7 @@ ACTOR BrutalTeleportDest: TeleportDest Replaces TeleportDest
 	{
 		Spawn:
 		TNT1 A 35
-		TNT1 A 0 A_Explode(8, 32, 0)
+		TNT1 A 0 A_Explode(8, 64, 0)
 		Loop
 	}
 }

@@ -231,7 +231,7 @@ ACTOR Arachnotron2: Arachnotron1 2542
 		Loop
 	Smokes:
 	    TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("BrutalCounter", 70, "Rest")
+		TNT1 A 0 A_JumpIfInventory("BrutalCounter", 135, "Rest")
 	    CARB Q 4 A_CustomMissile ("PlasmaSmoke", 30, 0, random (0, 360), 2, random (70, 110))
 		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
 	    CARB Q 4 A_CustomMissile ("PlasmaSmoke", 30, 0, random (0, 360), 2, random (70, 110))
