@@ -12,6 +12,7 @@ actor VeryDeadMarine: DeadMarine Replaces DeadMarine
 	DamageFactor "TankWeakSpot", 0.0	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0
 	Damagefactor "Use", 0.0
 	+CORPSE
+	+ALWAYSTELEFRAG
 	States
 	{
     Spawn:
@@ -66,6 +67,7 @@ actor VeryVeryDeadMarine: GibbedMarine Replaces GibbedMarine
 	DamageFactor "TankWeakSpot", 0.0	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0
 	Damagefactor "Use", 0.0
 	+CORPSE
+	+ALWAYSTELEFRAG
 	States
 	{
     Spawn:
@@ -122,6 +124,7 @@ actor CurbstompedMarine
 	+GHOST
 	+NOTAUTOAIMED
 	+CORPSE
+	+ALWAYSTELEFRAG
     States
 	{
     Spawn:
@@ -508,7 +511,6 @@ ACTOR DeadDeadStick: DeadStick Replaces DeadStick
 	+SOLID
 	+SHOOTABLE
     bloodtype "DeadBlood"
-
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
 	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 100.0	Damagefactor "Glass", 0.0
@@ -552,7 +554,6 @@ ACTOR DeadLiveStick: LiveStick Replaces LiveStick
     GibHealth 10
 	+SOLID
 	+SHOOTABLE
-
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
 	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 100.0	Damagefactor "Glass", 0.0
@@ -663,7 +664,6 @@ ACTOR ImpaledMarineAlive1: DeadLiveStick
 	+FRIENDLY
 	-COUNTKILL
 	deathheight 60
-
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
 	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 100.0	Damagefactor "Glass", 0.0
