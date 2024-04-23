@@ -159,7 +159,7 @@ ACTOR BIG_FUCKING_GUN : BrutalWeapon
         BFGA A 2 BRIGHT A_FireCustomMissile("GreenFlareSpawn", 0, 0, 0, 0)
         BFGN A 0 A_PlaySound("BFGFIRE")
 		BFGA B 0 A_ZoomFactor(0.95)
-        BFGN A 0 A_Recoil(8)
+        BFGN A 0 A_Recoil(4)
 
         BFGN A 0 BRIGHT A_FireCustomMissile("Alerter",0,0)
 		BFGN A 0 BRIGHT A_FireCustomMissile("SuperBFGBall")
@@ -171,9 +171,9 @@ ACTOR BIG_FUCKING_GUN : BrutalWeapon
 		BFGA B 2 BRIGHT
 		TNT1 A 0 A_ZoomFactor(1.0)
 		RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
-		RIFG A 0 A_SetPitch(-10 + pitch)
-		RIFG A 0 A_SetPitch(-10 + pitch)
-		BFGA CDCBA 2 BRIGHT A_SetPitch(pitch+2.0)
+		RIFG A 0 A_SetPitch(-4 + pitch)
+		RIFG A 0 A_SetPitch(-4 + pitch)
+		BFGA CDCBA 2 BRIGHT A_SetPitch(pitch+0.8)
 		BFGN A 8
         BFGN A 0 A_Refire
 		Goto Ready3
