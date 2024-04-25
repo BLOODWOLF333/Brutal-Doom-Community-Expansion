@@ -63,12 +63,12 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXEG A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"BlueBloodCheckSprint")
         AXEG A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"GreenBloodCheckSprint")
 		AXEG A 1 A_WeaponReady(WRF_NOFIRE)
-		AXEG A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		AXEG A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
 		Goto Ready
 
 	StartSprint:
-		AXEG A 1 A_WeaponReady(WRF_NOFIRE)
+		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
+		AXEG A 7 A_WeaponReady(WRF_NOFIRE)
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
 		AXEG A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
 
@@ -249,12 +249,12 @@ ACTOR BrutalAxe : BrutalWeapon
 
 	RedBloodCheckSprint:
 		AXRG A 1 A_WeaponReady(WRF_NOFIRE)
-		AXEG A 0 A_JumpIfInventory("IsStandingStill", 1, "RedBloodReady3")
 		AXEG A 0 A_JumpIfInventory("IsTacticalClass", 1, "RedBloodStartSprint")
 		Goto Ready
 
 	RedBloodStartSprint:
-		AXRG A 1 A_WeaponReady(WRF_NOFIRE)
+		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
+		AXRG A 7 A_WeaponReady(WRF_NOFIRE)
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
 		AXEG A 0 A_JumpIfInventory("UsedStamina", 90, "RedBloodStopSprintTired")
 
@@ -369,12 +369,12 @@ ACTOR BrutalAxe : BrutalWeapon
 
 	BlueBloodCheckSprint:
 		AXBG A 1 A_WeaponReady(WRF_NOFIRE)
-		AXEG A 0 A_JumpIfInventory("IsStandingStill", 1, "BlueBloodReady3")
 		AXEG A 0 A_JumpIfInventory("IsTacticalClass", 1, "BlueBloodStartSprint")
 		Goto Ready
 
 	BlueBloodStartSprint:
-		AXBG A 1 A_WeaponReady(WRF_NOFIRE)
+		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
+		AXBG A 7 A_WeaponReady(WRF_NOFIRE)
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
 		AXEG A 0 A_JumpIfInventory("UsedStamina", 90, "BlueBloodStopSprintTired")
 
@@ -488,12 +488,12 @@ ACTOR BrutalAxe : BrutalWeapon
 
 	GreenBloodCheckSprint:
 		AXGG A 1 A_WeaponReady(WRF_NOFIRE)
-		AXEG A 0 A_JumpIfInventory("IsStandingStill", 1, "GreenBloodReady3")
 		AXEG A 0 A_JumpIfInventory("IsTacticalClass", 1, "GreenBloodStartSprint")
 		Goto Ready
 
 	GreenBloodStartSprint:
-		AXGG A 1 A_WeaponReady(WRF_NOFIRE)
+		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
+		AXGG A 7 A_WeaponReady(WRF_NOFIRE)
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
 		AXEG A 0 A_JumpIfInventory("UsedStamina", 90, "GreenBloodStopSprintTired")
 

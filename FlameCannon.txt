@@ -30,12 +30,12 @@ ACTOR FlameCannon : BrutalWeapon
 
 	CheckSprint:
 		FLMG A 1 A_WeaponReady(WRF_NOFIRE)
-		FLMG A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		FLMG A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
 		Goto Ready3
 
 	StartSprint:
-		FLMG A 1 A_WeaponReady(WRF_NOFIRE)
+		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
+		FLMG A 7 A_WeaponReady(WRF_NOFIRE)
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
 		FLMG A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
 

@@ -42,21 +42,21 @@ ACTOR DualMP40 : BrutalWeapon
 
 	CheckSprint:
 		MP42 A 1 A_WeaponReady(WRF_NOFIRE)
-		MP42 A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		MP42 A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
 		Goto Ready
 
 	StartSprint:
-		MP42 A 1 A_WeaponReady(WRF_NOFIRE)
-		MP42 A 0 A_JumpIfInventory("UsedStamina", 40, "StopSprintTired")
+		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
+		MP42 A 7 A_WeaponReady(WRF_NOFIRE)
+		MP42 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		MP42 A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
 
 	Sprinting:
-		Sprinting:
 		MP42 A 0 offset(-9,32)
 		MP42 A 0 offset(-9,32) A_JumpIfInventory("IsStandingStill", 1, "Ready3")
+		MP42 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
 		MP42 A 0 offset(-9,32) A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
 		PLAY A 0 offset(-9,32) ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
-		MP42 A 0 offset(-9,32) A_JumpIfInventory("PowerStrength", 1, 2)
 		MP42 A 0 offset(-9,32) A_GiveInventory("UsedStamina", 6)
 		MP42 A 0 offset(-9,32)
 		MP42 A 1 offset(-9,34) A_SetPitch(pitch -0.5)
@@ -81,8 +81,8 @@ ACTOR DualMP40 : BrutalWeapon
 		MP42 A 1 offset(-9,32) A_SetPitch(pitch +0.5)
 		MP42 A 0 offset(-9,32) A_WeaponReady(WRF_NOBOB)
 		MP42 A 0 offset(-9,32) A_JumpIfInventory("IsRunning", 1, "Sprinting")
-
 		Goto StopSprint
+
 	StopSprintTired:
 		MP42 A 1
 		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
@@ -98,9 +98,11 @@ ACTOR DualMP40 : BrutalWeapon
 		MP42 A 0 A_TakeInventory("UsedStamina", 2)
 		MP42 A 5 A_WeaponReady
 		Goto Ready
+
 	StopSprint:
 		MP42 A 1
-		MP42 A 0 A_JumpIfInventory("UsedStamina", 60, "StopSprintTired")
+		MP42 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		MP42 A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
 		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		Goto Ready
 

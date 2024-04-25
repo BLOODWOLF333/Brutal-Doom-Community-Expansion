@@ -41,12 +41,12 @@ ACTOR BIG_FUCKING_GUN : BrutalWeapon
 
 	CheckSprint:
 		BFGN A 1 A_WeaponReady(WRF_NOFIRE)
-		BFGN A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		BFGN A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
 		Goto Ready3
 
 	StartSprint:
-		BFGN A 1 A_WeaponReady(WRF_NOFIRE)
+		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
+		BFGN A 7 A_WeaponReady(WRF_NOFIRE)
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
 		BFGN A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
 

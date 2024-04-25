@@ -202,17 +202,16 @@ ACTOR GrenadeLauncher : BrutalWeapon
 
 	CheckSprint:
 		GLAN A 1 A_WeaponReady(WRF_NOFIRE)
-		GLAN A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		GLAN A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
 		Goto Ready3
 
 	StartSprint:
-		GLAN A 1 A_WeaponReady(WRF_NOFIRE)
+		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
+		GLAN A 7 A_WeaponReady(WRF_NOFIRE)
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
 		GLAN A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
 
 	Sprinting:
-		GLAN S 1
 		GLAN S 0 offset(-9,32)
 		GLAN A 0 offset(-9,32) A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)

@@ -196,18 +196,24 @@ ACTOR Revolver2 : BrutalWeapon
 
 	CheckSprint:
 		REVO A 1 A_WeaponReady(WRF_NOFIRE)
-		REVO A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		REVO A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
 		Goto Ready3
 
 	CheckSprint2:
 		REVA A 1 A_WeaponReady(WRF_NOFIRE)
-		REVO A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready2")
-		REVO A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
+		REVO A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint2")
 		Goto Ready2
 
 	StartSprint:
-		REVP B 1 A_WeaponReady(WRF_NOFIRE)
+		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
+		REVO A 7 A_WeaponReady(WRF_NOFIRE)
+		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		REVO A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
+		Goto Sprinting
+
+	StartSprint2:
+		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
+		REVA A 7 A_WeaponReady(WRF_NOFIRE)
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
 		REVO A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
 

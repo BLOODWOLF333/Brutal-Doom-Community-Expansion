@@ -683,31 +683,36 @@ Actor Chain_saw : BrutalWeapon
 		SAWG A 0 A_JumpIfInventory("PowerBloodOnVisor", 1, "CheckSprint.Blood")
 		SAWG A 0 A_JumpIfInventory("PowerBlueBloodOnVisor", 1, "CheckSprint.BlueBlood")
 		SAWG A 0 A_JumpIfInventory("PowerGreenBloodOnVisor", 1, "CheckSprint.GreenBlood")
-		SAWG A 1 A_WeaponReady(WRF_NOFIRE)
-		SAWG A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
+		SAWG A 0 A_playsoundex("weapons/chainsaw/idle", 6)
+		SAWG A 2 A_WeaponReady(WRF_NOFIRE)
 		SAWG A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
+		SAWG BAB 2 A_WeaponReady(WRF_NOFIRE)
 		Goto Ready3
 
 	CheckSprint.Blood:
-		SAW2 A 1 A_WeaponReady(WRF_NOFIRE)
-		CSR2 Q 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
+		SAWG A 0 A_playsoundex("weapons/chainsaw/idle", 6)
+		SAW2 A 2 A_WeaponReady(WRF_NOFIRE)
 		CSR2 Q 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint.Blood")
+		SAWG BAB 2 A_WeaponReady(WRF_NOFIRE)
 		Goto Ready3
 
 	CheckSprint.BlueBlood:
-		SAW4 A 1 A_WeaponReady(WRF_NOFIRE)
-		CSB2 Q 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
+		SAWG A 0 A_playsoundex("weapons/chainsaw/idle", 6)
+		SAW4 A 2 A_WeaponReady(WRF_NOFIRE)
 		CSB2 Q 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint.BlueBlood")
+		SAWG BAB 2 A_WeaponReady(WRF_NOFIRE)
 		Goto Ready3
 
 	CheckSprint.GreenBlood:
-		SAW3 A 1 A_WeaponReady(WRF_NOFIRE)
-		CSG2 Q 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
+		SAWG A 0 A_playsoundex("weapons/chainsaw/idle", 6)
+		SAW3 A 2 A_WeaponReady(WRF_NOFIRE)
 		CSG2 Q 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint.GreenBlood")
+		SAWG BAB 2 A_WeaponReady(WRF_NOFIRE)
 		Goto Ready3
 
 	StartSprint:
-		SAWG A 1 A_WeaponReady(WRF_NOFIRE)
+		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
+		SAWG BAB 2 A_WeaponReady(WRF_NOFIRE)
 		SAWG A 0 A_Takeinventory("Zoomed",1)
 		SAWG A 0 A_Takeinventory("ADSmode",1)
 		SAWG A 0 A_ZoomFactor(1.0)
@@ -716,10 +721,10 @@ Actor Chain_saw : BrutalWeapon
 
 	Sprinting:
 		SAWG A 0 offset(-9,32)
-		SAWG A 0 A_playsoundex("weapons/chainsaw/idle", 6)
 		SAWG A 0 offset(-9,32) A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
 		SAWG A 0 offset(-9,32) A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
+		SAWG A 0 A_playsoundex("weapons/chainsaw/idle", 6)
 		PLAY A 0 offset(-9,32) ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
 		SAWG A 1 offset(-9,34) A_SetPitch(pitch -0.5)
 		SAWG A 1 offset(-6,36) A_SetPitch(pitch -0.5)
@@ -754,7 +759,8 @@ Actor Chain_saw : BrutalWeapon
 		Goto StopSprint
 
 	StartSprint.Blood:
-		CSR2 Q 1 A_WeaponReady(WRF_NOFIRE)
+		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
+		SAW2 BAB 2 A_WeaponReady(WRF_NOFIRE)
 		CSR2 Q 0 A_Takeinventory("Zoomed",1)
 		CSR2 Q 0 A_Takeinventory("ADSmode",1)
 		CSR2 Q 0 A_ZoomFactor(1.0)
@@ -763,10 +769,10 @@ Actor Chain_saw : BrutalWeapon
 
 	Sprinting.Blood:
 		CSR2 Q 0 offset(-9,32)
-		CSR2 Q 0 A_playsoundex("weapons/chainsaw/idle", 6)
 		CSR2 Q 0 offset(-9,32) A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
 		CSR2 Q 0 offset(-9,32) A_JumpIfInventory("UsedStamina", 100, "StopSprintTired.Blood")
+		CSR2 Q 0 A_playsoundex("weapons/chainsaw/idle", 6)
 		PLAY A 0 offset(-9,32) ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
 		CSR2 Q 1 offset(-9,34) A_SetPitch(pitch -0.5)
 		CSR2 Q 1 offset(-6,36) A_SetPitch(pitch -0.5)
@@ -801,7 +807,8 @@ Actor Chain_saw : BrutalWeapon
 		Goto StopSprint.Blood
 
 	StartSprint.GreenBlood:
-		CSG2 Q 1 A_WeaponReady(WRF_NOFIRE)
+		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
+		SAW3 BAB 2 A_WeaponReady(WRF_NOFIRE)
 		CSG2 Q 0 A_Takeinventory("Zoomed",1)
 		CSG2 Q 0 A_Takeinventory("ADSmode",1)
 		CSG2 Q 0 A_ZoomFactor(1.0)
@@ -810,10 +817,10 @@ Actor Chain_saw : BrutalWeapon
 
 	Sprinting.GreenBlood:
 		CSG2 Q 0 offset(-9,32)
-		CSG2 Q 0 A_playsoundex("weapons/chainsaw/idle", 6)
 		CSG2 Q 0 offset(-9,32) A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
 		CSG2 Q 0 offset(-9,32) A_JumpIfInventory("UsedStamina", 100, "StopSprintTired.GreenBlood")
+		CSG2 Q 0 A_playsoundex("weapons/chainsaw/idle", 6)
 		PLAY A 0 offset(-9,32) ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
 		CSG2 Q 1 offset(-9,34) A_SetPitch(pitch -0.5)
 		CSG2 Q 1 offset(-6,36) A_SetPitch(pitch -0.5)
@@ -848,7 +855,8 @@ Actor Chain_saw : BrutalWeapon
 		Goto StopSprint.GreenBlood
 
 	StartSprint.BlueBlood:
-		CSB2 Q 1 A_WeaponReady(WRF_NOFIRE)
+		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
+		SAW4 BAB 2 A_WeaponReady(WRF_NOFIRE)
 		CSB2 Q 0 A_Takeinventory("Zoomed",1)
 		CSB2 Q 0 A_Takeinventory("ADSmode",1)
 		CSB2 Q 0 A_ZoomFactor(1.0)
@@ -857,10 +865,10 @@ Actor Chain_saw : BrutalWeapon
 
 	Sprinting.BlueBlood:
 		CSB2 Q 0 offset(-9,32)
-		CSB2 Q 0 A_playsoundex("weapons/chainsaw/idle", 6)
 		CSB2 Q 0 offset(-9,32) A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
 		CSB2 Q 0 offset(-9,32) A_JumpIfInventory("UsedStamina", 100, "StopSprintTired.BlueBlood")
+		CSB2 Q 0 A_playsoundex("weapons/chainsaw/idle", 6)
 		PLAY A 0 offset(-9,32) ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
 		CSB2 Q 1 offset(-9,34) A_SetPitch(pitch -0.5)
 		CSB2 Q 1 offset(-6,36) A_SetPitch(pitch -0.5)

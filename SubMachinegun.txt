@@ -99,18 +99,17 @@ ACTOR BrutalSMG : BrutalWeapon
 
 	CheckSprint:
 		SMGG A 1 A_WeaponReady(WRF_NOFIRE)
-		SMGG A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		SMGG A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
 		Goto Ready3
 
 	CheckSprint2:
 		SMGA A 1 A_WeaponReady(WRF_NOFIRE)
-		SMGG A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready2")
 		SMGG A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
 		Goto Ready2
 
 	StartSprint:
-		SMGG A 1 A_WeaponReady(WRF_NOFIRE)
+		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
+		SMGG A 7 A_WeaponReady(WRF_NOFIRE)
 		SHTN A 0 A_Takeinventory("Zoomed",1)
         SHTN A 0 A_ZoomFactor(1.0)
 		SHTN A 0 A_Takeinventory("ADSmode",1)

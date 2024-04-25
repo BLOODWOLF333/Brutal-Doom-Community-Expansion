@@ -54,12 +54,12 @@ ACTOR SSG : BrutalWeapon
 
 	CheckSprint:
 		SHTZ A 1 A_WeaponReady(WRF_NOFIRE)
-		SHTZ A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		SHTZ A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
 		Goto Ready3
 
 	StartSprint:
-		SHTZ A 1 A_WeaponReady(WRF_NOFIRE)
+		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
+		SHTZ A 7 A_WeaponReady(WRF_NOFIRE)
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
 		SHTZ A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
 

@@ -82,18 +82,17 @@ ACTOR MP40 : BrutalWeapon
 
 	CheckSprint:
 		MP40 A 1 A_WeaponReady(WRF_NOFIRE)
-		MP40 A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		MP40 A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
 		Goto Ready
 
 	CheckSprint2:
 		MP41 A 1 A_WeaponReady(WRF_NOFIRE)
-		MP40 A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready2")
 		MP40 A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
 		Goto Ready2
 
 	StartSprint:
-		MP40 A 1 A_WeaponReady(WRF_NOFIRE)
+		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
+		MP40 A 7 A_WeaponReady(WRF_NOFIRE)
 		SHTN A 0 A_Takeinventory("Zoomed",1)
         SHTN A 0 A_ZoomFactor(1.0)
 		SHTN A 0 A_Takeinventory("ADSmode",1)
@@ -462,12 +461,12 @@ ACTOR HitlersBuzzsaw : BrutalWeapon
 
 	CheckSprint:
 		HBUS A 1 A_WeaponReady(WRF_NOFIRE)
-		HBUS A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		HBUS A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
 		Goto Ready3
 
 	StartSprint:
-		HBUS A 1 A_WeaponReady(WRF_NOFIRE)
+		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
+		HBUS A 7 A_WeaponReady(WRF_NOFIRE)
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
 		HBUS A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
 
@@ -533,12 +532,12 @@ ACTOR HitlersBuzzsaw : BrutalWeapon
 
 	CheckSprintNoAmmo:
 		HBUS F 1 A_WeaponReady(WRF_NOFIRE)
-		HBUS F 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		HBUS F 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprintNoAmmo")
 		Goto Ready3
 
 	StartSprintNoAmmo:
-		HBUS F 1 A_WeaponReady(WRF_NOFIRE)
+		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
+		HBUS F 7 A_WeaponReady(WRF_NOFIRE)
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
 		HBUS F 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTiredNoAmmo")
 
