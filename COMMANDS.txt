@@ -132,26 +132,27 @@ Script "BDDualWield" (VOID) NET
 //Faster
 script "BDSprint" (void)
 {
-		if (checkinventory("istacticalclass") == 1)
+		if ((checkinventory("istacticalclass") == 1) && (checkinventory("UsedStamina") < 90))
 		{
 			//Log(s:"true, fast");
 			SetActorProperty(0, APROP_Speed, 2.2);
 		}
 		delay(14);
-		if (checkinventory("isRunning") == 1)
+		if ((checkinventory("isRunning") == 1) && (checkinventory("UsedStamina") < 100))
 		{
 			//Log(s:"true, keep running");
 			Restart;
 		}
 		//Log(s:"false, slow");
 		SetActorProperty(0, APROP_Speed, 1.1);
+		delay(35);
 }
 
 //Slower
 script "BDTacticalSpeed" (void)
 {
 	if (checkinventory("istacticalclass") == 1) { SetActorProperty (0, APROP_Speed, 1.1); }
-	delay (1);
+	delay (35);
 }
 
 Script "BDMinusFiveHealth" (VOID) NET
