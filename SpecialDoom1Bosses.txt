@@ -434,3 +434,16 @@ Death.decaptate:
 		Stop
 	}
 }
+
+ACTOR SigilMastermind : TheSpiderMastermind
+{
+	Health 9000
+	States
+	{
+	Idle:
+    Spawn:
+		SPID A 10 A_Look
+		TNT1 A 0 A_GiveInventory("TargetIsAMastermind")
+		Loop
+	}
+}

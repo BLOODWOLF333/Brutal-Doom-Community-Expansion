@@ -1511,6 +1511,19 @@ Script "Tag666BMastermind" (VOID)
 	SetActorState(0, "Special666", TRUE);
 }
 
+Script "Tag666SMastermind" (VOID)
+{
+	//Log(s:"TheSpiderMastermind ", i:ThingCountName("TheSpiderMastermind",0));
+	//Log(s:"SuperMastermind ", i:ThingCountName("SuperMastermind",0));
+	While(ThingCountName("SigilMastermind",0))
+	{
+		//Log(s:"True");
+		Delay(35);
+	}
+	//Log(s:"False");
+	SetActorState(0, "Special666", TRUE);
+}
+
 Script "Tag666MotherDemon" (VOID)
 {
 	//Log(s:"TheSpiderMastermind ", i:ThingCountName("TheSpiderMastermind",0));
