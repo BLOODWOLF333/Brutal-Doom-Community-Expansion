@@ -757,6 +757,9 @@ ACTOR BrutalPlasmagunSpawner: CustomInventory
 	+INVENTORY.NOSCREENFLASH
 	Inventory.PickupSound "PLSDRAW"
 	Inventory.PickupMessage "$GOTPLASMA"
+	VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
+	Inventory.ForbiddenTo Purist
+	+Inventory.RestrictAbsolutely
     States
     {
 	 Spawn:
@@ -849,7 +852,7 @@ actor PlasmagunReplacer : BasicWeaponPickup Replaces PlasmaRifle
 	Vanilla:
 	Spawn1:
 		PLAS A 0
-		TNT1 A 0 A_SpawnItemEx ("BrutalPlasmagunSpawner",0,0,0,0,0,0,0,0,0)
+		TNT1 A 0 A_SpawnItemEx ("PlasmagunSpawner",0,0,0,0,0,0,0,0,0)
 		TNT1 A 1
 		TNT1 A -1
 		Stop
