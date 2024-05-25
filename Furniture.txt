@@ -143,7 +143,7 @@ ACTOR BDTallGreenColumn Replaces TallGreenColumn
 	States
 	{
 	Spawn:
-		COL1 AA 4
+		COL1 AA 14
 		TNT1 A 0 A_JumpIfInventory("MarkForDeletion", 1, "Disappear")
 		COL1 A -1
 		Stop
@@ -171,7 +171,7 @@ ACTOR BDShortGreenColumn Replaces ShortGreenColumn
 	States
 	{
 	Spawn:
-		COL2 AA 4
+		COL2 AA 14
 		TNT1 A 0 A_JumpIfInventory("MarkForDeletion", 1, "Disappear")
 		COL2 A -1
 		Stop
@@ -199,7 +199,7 @@ ACTOR BDTallRedColumn Replaces TallRedColumn
 	States
 	{
 	Spawn:
-		COL3 AA 4
+		COL3 AA 14
 		TNT1 A 0 A_JumpIfInventory("MarkForDeletion", 1, "Disappear")
 		COL3 A -1
 		Stop
@@ -227,9 +227,9 @@ ACTOR BDShortRedColumn replaces ShortRedColumn
 	States
 	{
 	Spawn:
-		COL4 A 4
+		COL4 A 7
 		TNT1 A 0 A_SpawnItemEx("EvidenceCheckerRedPillar", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
-		COL4 AA 4
+		COL4 AA 14
 		TNT1 A 0 A_JumpIfInventory("MarkForDeletion", 1, "Disappear")
 		COL4 A -1
 		Stop
@@ -257,7 +257,7 @@ ACTOR BDSkullColumn Replaces SkullColumn
 	States
 	{
 	Spawn:
-		COL6 AA 4
+		COL6 AA 14
 		TNT1 A 0 A_JumpIfInventory("MarkForDeletion", 1, "Disappear")
 		COL6 A -1
 		Stop
