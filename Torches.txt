@@ -419,11 +419,21 @@ ACTOR ShortTorchBallGreen: TorchBall
 	}
 }
 
-Actor Candelabra1 : Candelabra replaces Candelabra
+Actor Candelabra1 Replaces Candelabra
 {
-scale 0.7
-+SHOOTABLE
-states
+	Game Doom
+	Radius 16
+	Height 60
+	ProjectilePassHeight -16
+	+SOLID
+	+USESPECIAL
+	+SHOOTABLE
+	+NOBLOOD
+	+NOTARGET
+	+INVULNERABLE
+	Scale 0.7
+	Mass 65535
+	states
 	{
 	Vanilla:
 		CBRA AA 14
