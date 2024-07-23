@@ -208,6 +208,10 @@ ACTOR revenantseekermissiles2: revenantseekermissiles
 	-THRUGHOST
 	+THRUSPECIES
 	+DONTHARMSPECIES
+	-NOBLOCKMAP
+	+SHOOTABLE
+	+NOBLOOD
+	+NOTELEPORT
 	Damagetype Explosive
 	Species "Marines"
 }
@@ -221,6 +225,8 @@ ACTOR revenantseekermissiles3: revenantseekermissiles2
 {
 	Speed 50
 	Damagetype Explosive
+	+NOBLOCKMAP
+	-SHOOTABLE
 	States
 	{
 		Spawn:
@@ -233,6 +239,8 @@ ACTOR revenantseekermissiles3: revenantseekermissiles2
 ACTOR MarineSeekerMissile2 : revenantseekermissiles3
 {
 	DamageType "FriendBullet"
+	+NOBLOCKMAP
+	-SHOOTABLE
 	States
 	{
 		Spawn:

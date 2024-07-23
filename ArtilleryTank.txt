@@ -960,6 +960,9 @@ ACTOR TankMissile: Rocket2
 	+SEEKERMISSILE
 	+SCREENSEEKER
 	-NOGRAVITY
+	+SHOOTABLE
+	+NOBLOOD
+	+NOTELEPORT
 	Gravity 0.2
 	SeeSound "DSMISFIR"
 	States
@@ -1032,6 +1035,7 @@ ACTOR TankMissile2: TankMissile
 	Scale 1.0
 	Species "EnemyTank"
 	-NOGRAVITY
+	-SHOOTABLE
 	Gravity 0.1
 	States
 	{

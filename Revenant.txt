@@ -583,12 +583,13 @@ ACTOR revenantseekermissiles Replaces RevenantTracer
 	Height 8
 	Speed 15
 	Damage (random(52,52))
-	PROJECTILE
+	Projectile
 	+THRUGHOST
 	+SEEKERMISSILE
-	+SHOOTABLE
 	-NOBLOCKMAP
+	+SHOOTABLE
 	+NOBLOOD
+	+NOTELEPORT
 	Scale 0.5
 	Decal "Scorch"
     damagetype ExplosiveImpact
@@ -628,6 +629,8 @@ ACTOR RevenantMissile: revenantseekermissiles
 {
 	Speed 20
 	Damage (random(52,52))
+	+NOBLOCKMAP
+	-SHOOTABLE
 	States
 	{
 	Spawn:
