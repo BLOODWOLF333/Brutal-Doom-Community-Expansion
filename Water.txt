@@ -548,6 +548,7 @@ ACTOR ExplosionSplashSpawner
 	TNT1 AAAAAAAAA 0 A_CustomMissile ("WaterParticleXSuperFast", random (50, 60), 0, random (0, 360), 2, random (10, 90))
 	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("BlueLiquidParticleX", random (0, 60), 0, random (0, 360), 2, random (30, 90))
 	TNT1 A 20
+	TNT1 A 0 A_RadiusGive("WaterOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 	Stop
 
  SpawnSlime:
@@ -556,6 +557,7 @@ ACTOR ExplosionSplashSpawner
 	TNT1 AAAAAAAAA 0 A_CustomMissile ("SlimeParticleXSuperFast", random (50, 60), 0, random (0, 360), 2, random (10, 90))
 	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("BrownLiquidParticleX", random (0, 60), 0, random (0, 360), 2, random (30, 90))
 	TNT1 A 20
+	TNT1 A 0 A_RadiusGive("SlimeOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 	Stop
 
  SpawnTar:
@@ -564,6 +566,7 @@ ACTOR ExplosionSplashSpawner
 	TNT1 AAAAAAAAA 0 A_CustomMissile ("TarParticleXSuperFast", random (50, 60), 0, random (0, 360), 2, random (10, 90))
 	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("BlackLiquidParticleX", random (0, 60), 0, random (0, 360), 2, random (30, 90))
 	TNT1 A 20
+	TNT1 A 0 A_RadiusGive("WaterOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 	Stop
 
  SpawnNukage:
@@ -572,6 +575,7 @@ ACTOR ExplosionSplashSpawner
 	TNT1 AAAAAAAAA 0 A_CustomMissile ("nukageParticleXSuperFast", random (50, 60), 0, random (0, 360), 2, random (10, 90))
 	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("GreenLiquidParticleX", random (0, 60), 0, random (0, 360), 2, random (30, 90))
 	TNT1 A 20
+	TNT1 A 0 A_RadiusGive("NukeOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 	Stop
 
  SpawnOrange:
@@ -580,6 +584,7 @@ ACTOR ExplosionSplashSpawner
 	TNT1 AAAAAAAAA 0 A_CustomMissile ("OrangeParticleXSuperFast", random (50, 60), 0, random (0, 360), 2, random (10, 90))
 	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("OrangeLiquidParticleX", random (0, 60), 0, random (0, 360), 2, random (30, 90))
 	TNT1 A 20
+	TNT1 A 0 A_RadiusGive("OrangeOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 	Stop
 
  SpawnPinaColada:
@@ -588,6 +593,7 @@ ACTOR ExplosionSplashSpawner
 	TNT1 AAAAAAAAA 0 A_CustomMissile ("PinaColadaParticleXSuperFast", random (50, 60), 0, random (0, 360), 2, random (10, 90))
 	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("PinaColadaLiquidParticleX", random (0, 60), 0, random (0, 360), 2, random (30, 90))
 	TNT1 A 20
+	TNT1 A 0 A_RadiusGive("WaterOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 	Stop
 
  SpawnPurple:
@@ -596,6 +602,7 @@ ACTOR ExplosionSplashSpawner
 	TNT1 AAAAAAAAA 0 A_CustomMissile ("PurpleParticleXSuperFast", random (50, 60), 0, random (0, 360), 2, random (10, 90))
 	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("PurpleLiquidParticleX", random (0, 60), 0, random (0, 360), 2, random (30, 90))
 	TNT1 A 20
+	TNT1 A 0 A_RadiusGive("PurpleOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 	Stop
 
   SpawnBlood:
@@ -604,6 +611,7 @@ ACTOR ExplosionSplashSpawner
 	TNT1 AAAAAAAAA 0 A_CustomMissile ("BloodParticleXSuperFast", random (50, 60), 0, random (0, 360), 2, random (10, 90))
 	TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("BloodLiquidParticleX", random (0, 60), 0, random (0, 360), 2, random (30, 90))
 	TNT1 A 20
+	TNT1 A 0 A_RadiusGive("BloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 	Stop
 
  SpawnLava:
@@ -690,4 +698,64 @@ ACTOR ExplosionSplashSpawner
 	TNT1 A 0 A_PlaySound("BHITDIR5", 5)
 	Stop
   }
+}
+
+ACTOR WaterOnVisor : CustomInventory
+{
+	+INVENTORY.AUTOACTIVATE
+	+CLIENTSIDEONLY
+	States
+	{
+	Use:
+		NULL A 4 ACS_NamedExecute("BDWaterHUD", 0, 0, 0, 0)
+		Stop
+	}
+}
+
+ACTOR SlimeOnVisor : CustomInventory
+{
+	+INVENTORY.AUTOACTIVATE
+	+CLIENTSIDEONLY
+	States
+	{
+	Use:
+		NULL A 4 ACS_NamedExecute("BDSlimeHUD", 0, 0, 0, 0)
+		Stop
+	}
+}
+
+ACTOR NukeOnVisor : CustomInventory
+{
+	+INVENTORY.AUTOACTIVATE
+	+CLIENTSIDEONLY
+	States
+	{
+	Use:
+		NULL A 4 ACS_NamedExecute("BDNukeHUD", 0, 0, 0, 0)
+		Stop
+	}
+}
+
+ACTOR OrangeOnVisor : CustomInventory
+{
+	+INVENTORY.AUTOACTIVATE
+	+CLIENTSIDEONLY
+	States
+	{
+	Use:
+		NULL A 4 ACS_NamedExecute("BDOrangeHUD", 0, 0, 0, 0)
+		Stop
+	}
+}
+
+ACTOR PurpleOnVisor : CustomInventory
+{
+	+INVENTORY.AUTOACTIVATE
+	+CLIENTSIDEONLY
+	States
+	{
+	Use:
+		NULL A 4 ACS_NamedExecute("BDPurpleHUD", 0, 0, 0, 0)
+		Stop
+	}
 }
