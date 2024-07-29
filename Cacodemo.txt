@@ -132,7 +132,6 @@ ACTOR Cacodemon_ : Cacodemon Replaces Cacodemon
 	Death:
 		HEAD G 3 A_Scream
 		HEAD H 3 A_NoBlocking
-		//TNT1 A 0 A_CustomMissile("CacodemonEyeBall", 50, 0, 0)
         TNT1 AAAA 0 A_CustomMissile ("Blue_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
         HEAD IJK 4
 		TNT1 A 0 A_SpawnItem ("BlueGrowingBloodPool", 1)
@@ -224,7 +223,7 @@ ACTOR Cacodemon_ : Cacodemon Replaces Cacodemon
 
 	Death.Brutal:
 	Death.Railgun:
-	TNT1 A 0 A_SetFloorClip
+	TNT1 A 0
     TNT1 A 0 A_SetFloorClip
 	TNT1 A 0 A_Scream
 	TNT1 O 0 A_NoBlocking
@@ -470,24 +469,25 @@ ACTOR ShoqueAzul
 
 ACTOR CacoXdeath1
 {
-translation "168:191=192:207"
-    Radius 8
-    Height 8
-    Speed 9
-    Scale 1.1
+	translation "168:191=192:207"
+	Radius 8
+	Height 8
+	Speed 9
+	Scale 1.1
 	Mass 1
-    +NOBLOCKMAP
+	+NOBLOCKMAP
 	+MISSILE
-    +NOTELEPORT
-    +MOVEWITHSECTOR
-    +CLIENTSIDEONLY
-    +RIPPER
-    +BLOODLESSIMPACT
-Decal BlueBloodSplat
-damagetype Blood
-    SeeSound "misc/xdeath4"
-    DeathSound "misc/xdeath1"
+	+NOTELEPORT
+	+MOVEWITHSECTOR
+	+CLIENTSIDEONLY
+	+RIPPER
+	+BLOODLESSIMPACT
 	Decal BlueBloodSplat
+	damagetype Blood
+	SeeSound "misc/xdeath4"
+	DeathSound "misc/xdeath1"
+	Decal BlueBloodSplat
+	bloodtype "Blue_Blood", "BlueSawBlood", "BlueSawBlood"
     States
     {
     Spawn:
@@ -663,8 +663,8 @@ ACTOR CacoXdeath7: CacoXDeath1
     SeeSound "misc/xdeath4"
     DeathSound "misc/xdeath1"
 	Decal BlueBloodSplat
-Scale 0.9
-Speed 16
+	Scale 0.9
+	Speed 16
     States
     {
     Spawn:
@@ -725,6 +725,7 @@ ACTOR HalfCacodemon
 	Decal BlueBloodSplat
 	BounceFactor 0.5
 	Scale 0.9
+	bloodtype "Blue_Blood", "BlueSawBlood", "BlueSawBlood"
     States
     {
     Spawn:

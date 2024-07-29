@@ -4867,85 +4867,40 @@ StealthKillLabguy:
 	}
 }
 
-ACTOR BloodOnVisor : PowerupGiver 2408
+ACTOR BloodOnVisor : CustomInventory
 {
-   Inventory.Amount 1
-   Scale 0.5
-   Inventory.MaxAmount 10
-   Powerup.Type BloodOnVisor
-   Powerup.Duration 400
-   Inventory.Icon TNT1A0
 	+INVENTORY.AUTOACTIVATE
-	+INVENTORY.ALWAYSPICKUP
-	Inventory.MaxAmount 0
-   States
-   {
-   Spawn:
-      NULL A 1
-      Stop
-   }
+	+CLIENTSIDEONLY
+	States
+	{
+	Use:
+		NULL A 4 ACS_NamedExecute("BDRedBloodHUD", 0, 0, 0, 0)
+		Stop
+	}
 }
 
-ACTOR BlueBloodOnVisor : PowerupGiver
+ACTOR BlueBloodOnVisor : CustomInventory
 {
-   Inventory.Amount 1
-   Scale 0.5
-   Inventory.MaxAmount 10
-   Powerup.Type BlueBloodOnVisor
-   Powerup.Duration 400
-   Inventory.Icon TNT1A0
 	+INVENTORY.AUTOACTIVATE
-	+INVENTORY.ALWAYSPICKUP
-	Inventory.MaxAmount 0
-   States
-   {
-   Spawn:
-      NULL A 1
-      Stop
-   }
+	+CLIENTSIDEONLY
+	States
+	{
+	Use:
+		NULL A 4 ACS_NamedExecute("BDBlueBloodHUD", 0, 0, 0, 0)
+		Stop
+	}
 }
 
-ACTOR GreenBloodOnVisor : PowerupGiver
+ACTOR GreenBloodOnVisor : CustomInventory
 {
-   Inventory.Amount 1
-   Scale 0.5
-   Inventory.MaxAmount 10
-   Powerup.Type GreenBloodOnVisor
-   Powerup.Duration 400
-   Inventory.Icon TNT1A0
 	+INVENTORY.AUTOACTIVATE
-	+INVENTORY.ALWAYSPICKUP
-	Inventory.MaxAmount 0
-   States
-   {
-   Spawn:
-      NULL A 1
-      Stop
-   }
-}
-
-ACTOR PowerBloodOnVisor : PowerUp
-{
-	Powerup.Duration -90
-	Speed 0.4
-	Inventory.Icon "TNT1A0"
-	Powerup.Color 70,0,0,0.0
-}
-
-ACTOR PowerBlueBloodOnVisor : PowerUp
-{
-	Powerup.Duration -90
-	Speed 0.4
-	Inventory.Icon "TNT1A0"
-	Powerup.Color 70,0,0,0.0
-}
-
-ACTOR PowerGreenBloodOnVisor : PowerUp
-{
-	Powerup.Duration -90
-	Speed 0.4
-	Inventory.Icon "TNT1A0"
-	Powerup.Color 70,0,0,0.0
+	+CLIENTSIDEONLY
+	States
+	{
+	Use:
+		NULL A 4 ACS_NamedExecute("BDGreenBloodHUD", 0, 0, 0, 0)
+		Stop
+	}
 }
 
 ACTOR PowerNearDeath : PowerUp

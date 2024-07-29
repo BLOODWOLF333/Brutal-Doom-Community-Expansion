@@ -130,6 +130,7 @@ actor Brutal_Blood Replaces Blood
 			Goto LowBlood
 		Splash:
 			BLOD A 0
+			TNT1 A 0 A_RadiusGive("BloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 			TNT1 A 0 A_CustomMissile ("Underblood2", 7, 0, random (0, 360), 2, random (30, 150))
 			stop
 		LotsOfBlood:
@@ -164,6 +165,7 @@ actor Brutal_Blood Replaces Blood
 			TNT1 A 0
 			TNT1 A 0 A_Jump(128, 2)
 			TNT1 A 0 A_SetScale(-0.7, 0.8)
+			TNT1 A 0 A_RadiusGive("BloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 			BSPR BCDEFGHIJJ 1
 			Stop
 
@@ -174,6 +176,7 @@ actor Brutal_Blood Replaces Blood
 			TNT1 A 0 A_CustomMissile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (20, 90))
 			TNT1 A 0 A_Jump(128, 2)
 			TNT1 A 0 A_SetScale(-0.7, 0.8)
+			TNT1 A 0 A_RadiusGive("BloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 			BSPR BCDEFGHIJJ 1 BRIGHT
 			Stop
 	 }
@@ -358,6 +361,7 @@ ACTOR Brutal_FlyingBlood
 
 		Live:
 			BSPR ABCDEFGH 2
+			TNT1 A 0 A_RadiusGive("BloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 			BSPR I 100 A_JumpIf(waterlevel > 1, "Splash")
 			Stop
 
@@ -369,6 +373,7 @@ ACTOR Brutal_FlyingBlood
 			TNT1 A 0
 			TNT1 A 0 A_PlaySound("blooddrop2")
 			TNT1 A 0 A_CheckFloor("DeathFloor")
+			TNT1 A 0 A_RadiusGive("BloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 			TNT1 A 1
 			Stop
 
@@ -376,6 +381,7 @@ ACTOR Brutal_FlyingBlood
 			TNT1 A 0
 			TNT1 A 0 A_SpawnItemEx ("Brutal_BloodSpot",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION |  SXF_TRANSFERTRANSLATION,0)
 			TNT1 A 0 A_PlaySound("blooddrop2")
+			TNT1 A 0 A_RadiusGive("BloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 			XDT1 EFGHIJKL 2
 			Stop
 
@@ -687,22 +693,24 @@ actor Brutal_FlyingBloodTrail
 	Speed 2
 	states
 	{
-	  Spawn:
-		  TNT1 A 0
-		  TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-		  TNT1 A 0
-		  TNT1 A 0 A_Jump(128, 2)
-		  TNT1 A 0 A_SetScale (-0.5, 0.6)
-		  BL8A ABCDE 1
-		  BL8A F 60
-		  stop
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+		TNT1 A 0
+		TNT1 A 0 A_Jump(128, 2)
+		TNT1 A 0 A_SetScale (-0.5, 0.6)
+		BL8A ABCDE 1
+		TNT1 A 0 A_RadiusGive("BloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
+		BL8A F 60
+		stop
 
 	Death:
-		TNT1 A 0
+		TNT1 A 0 A_RadiusGive("BloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 		Stop
 
 	Splash:
 		BLOD A 0
+		TNT1 A 0 A_RadiusGive("BloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 		TNT1 A 0 A_CustomMissile ("Underblood2", 7, 0, random (0, 360), 2, random (30, 150))
 		stop
 	}
@@ -1194,9 +1202,9 @@ actor Player_Blood : Brutal_Blood
 
 	DM:
 		TNT1 A 0
-		TNT1 A 0 A_RadiusGive("PowerBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 		TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 7, 0, random (0, 360), 2, random (30, 60))
 		BLHT BCDEFG 1
+		TNT1 A 0 A_RadiusGive("BloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 	    BLHT HHHHHHHHHHH 1 A_FadeOut(0.1)
 	    Stop
 		}
@@ -1223,8 +1231,8 @@ actor Player_BloodSaw : Brutal_Blood
 	DM:
 		TNT1 A 0
 		TNT1 A 0 A_RadiusGive("ChainsawHitRed", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
-		TNT1 A 0 A_RadiusGive("PowerBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 		BLHT BCDEFG 1
+		TNT1 A 0 A_RadiusGive("BloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 	    BLHT GGGGGGGGGGGGGGGGGG 1 A_FadeOut(0.05)
 	    Stop
 		}
@@ -1232,35 +1240,35 @@ actor Player_BloodSaw : Brutal_Blood
 
 ACTOR PlayerFlyingBlood
 {
- game Doom
- scale 0.75
- speed 7
- health 1
- radius 8
- height 1
+	game Doom
+	scale 0.75
+	speed 7
+	health 1
+	radius 8
+	height 1
 	Decal BloodSuper
-   +MISSILE
-   +CLIENTSIDEONLY
-   +NOTELEPORT
-   +NOBLOCKMAP
-   +FORCEXYBILLBOARD
-        +EXPLODEONWATER
-    States
-    {
-     Spawn:
-		TNT1 A 0
-       NULL A 0 A_JumpIf(waterlevel > 1, "Splash")
-        XDT1 ABCD 4 A_SpawnItem("Brutal_FlyingBloodTrail",0,0,0,1)
-        loop
-	Splash:
+	+MISSILE
+	+CLIENTSIDEONLY
+	+NOTELEPORT
+	+NOBLOCKMAP
+	+FORCEXYBILLBOARD
+	+EXPLODEONWATER
+	States
+	{
+		Spawn:
+			TNT1 A 0
+			NULL A 0 A_JumpIf(waterlevel > 1, "Splash")
+			XDT1 ABCD 4 A_SpawnItem("Brutal_FlyingBloodTrail",0,0,0,1)
+			loop
+		Splash:
 			BLOD A 0
 			TNT1 A 0 A_CustomMissile ("Underblood2", 7, 0, random (0, 360), 2, random (30, 150))
 			stop
-     Death:
-       NULL A 1 A_SpawnItem("Brutal_BloodSpot",0,0,0,1)
-        XDT1 EFGHIJKL 3
-        stop
-    }
+		Death:
+			NULL A 1 A_SpawnItem("Brutal_BloodSpot",0,0,0,1)
+			XDT1 EFGHIJKL 3
+			stop
+	}
 }
 
 ACTOR RedBloodFootPrintLeft: GrowingBloodPool
@@ -1341,11 +1349,11 @@ Scale 0.09
 //Dummy actor just to replace the bloodpuff made by Hexen axe
 actor SawBlood : Brutal_Blood Replaces AxeBlood
 {
--ALLOWPARTICLES
-Speed 1
- states
- {
- Spawn:
+	-ALLOWPARTICLES
+	Speed 1
+	states
+	{
+	Spawn:
 		TNT1 A 1
 		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "HitSaw", AAPTR_TARGET)
 		BSPR A 0
@@ -1364,13 +1372,13 @@ Speed 1
 	HitSaw:
 		TNT1 A 1
 		TNT1 A 0 A_RadiusGive("ChainsawHitRed", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
-		TNT1 A 0 A_RadiusGive("PowerBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
+		TNT1 A 0 A_RadiusGive("BloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 		TNT1 A 0 A_CustomMissile ("BloodmistChainsaw", -10, 0, random (0, 360), 2, random (60, 90))
 		TNT1 A 0 A_CustomMissile ("XDeath1", 0, 0, random (0, 360), 2, random (40, 80))
 		TNT1 A 0 A_CustomMissile ("ChainsawWallRedBlood", 0, 0, random (0, 360), 2, random (-10, 80))
 		TNT1 A 0 A_PlaySound("CSAWFLESH")
 		Stop
- }
+	}
 }
 
 //Big version spawned by XDeath animations of bigger enemies
@@ -1471,15 +1479,14 @@ actor SuperGore
 	Gravity 0.2
 	Scale 1.0
 	Speed 1
-	 states
-	 {
-	  Spawn:
-		TNT1 A 0
-		//BLOR HHHHHHHHHHHHHHHHHHHHHHHHIJKKKK 1 A_FadeOut(0.01)
+	states
+	{
+		Spawn:
 		BLOR L 15
+		TNT1 A 0 A_RadiusGive("BloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 		BLOR LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL 1 A_FadeOut(0.015)
 		Stop
-	 }
+	}
 }
 
 actor BigSuperGore: SuperGore

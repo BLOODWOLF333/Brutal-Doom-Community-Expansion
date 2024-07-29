@@ -101,6 +101,7 @@ Decal GreenBloodSplat
 			Goto LowBlood
 		Splash:
 			BLOD A 0
+			TNT1 A 0 A_RadiusGive("GreenBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 			TNT1 A 0 A_CustomMissile ("GreenUnderblood2", 7, 0, random (0, 360), 2, random (30, 150))
 			stop
 		LotsOfBlood:
@@ -133,6 +134,7 @@ Decal GreenBloodSplat
 		   Goto LowBlood
 		 LowBlood:
 			TNT1 A 0
+			TNT1 A 0 A_RadiusGive("GreenBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 			BSPR BCDEFGHIJJJ 1
 			Stop
 	 }
@@ -262,6 +264,7 @@ Decal GreenBloodSplat
 	 Live:
 			BLHT BCDEFG 1
 			TNT1 A 0
+			TNT1 A 0 A_RadiusGive("GreenBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 			BLHT HHHHH 100 A_JumpIf(waterlevel > 1, "Splash")
 			Stop
 
@@ -274,6 +277,7 @@ Decal GreenBloodSplat
 			TNT1 A 0
 			TNT1 A 0 A_PlaySound("blooddrop2")
 			TNT1 A 0 A_CheckFloor("DeathFloor")
+			TNT1 A 0 A_RadiusGive("GreenBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 			TNT1 A 1
 			Stop
 
@@ -281,6 +285,7 @@ Decal GreenBloodSplat
 			TNT1 A 0
 			TNT1 A 0 A_SpawnItemEx ("Green_BloodSpot",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION |  SXF_TRANSFERTRANSLATION,0)
 			TNT1 A 0 A_PlaySound("blooddrop2")
+			TNT1 A 0 A_RadiusGive("GreenBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 		    XDT1 EFGHIJKL 2
 			Stop
 
@@ -322,27 +327,28 @@ ACTOR Green_FlyingBloodMuchFaster: Green_FlyingBlood
 
 actor Green_FlyingBloodTrail: Brutal_FlyingBloodTrail
 {
-translation "168:191=112:127", "16:47=123:127"
-Decal GreenBloodSplat
+	translation "168:191=112:127", "16:47=123:127"
+	Decal GreenBloodSplat
 	states
 	{
-	  Spawn:
+		Spawn:
 		TNT1 A 0
-		  TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-		  BLHT BCDEFG 1
-		  BLHT HHHHHHHHH 1 A_FadeOut(0.02)
-		  stop
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+		BLHT BCDEFG 1
+		TNT1 A 0 A_RadiusGive("GreenBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
+		BLHT HHHHHHHHH 1 A_FadeOut(0.02)
+		stop
 
-	Death:
-		TNT1 A 0
+		Death:
+		TNT1 A 0 A_RadiusGive("GreenBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 		Stop
 
-	Splash:
-			BLOD A 0
-			TNT1 A 0 A_CustomMissile ("GreenUnderblood2", 7, 0, random (0, 360), 2, random (30, 150))
-			stop
-
- }
+		Splash:
+		BLOD A 0
+		TNT1 A 0 A_RadiusGive("GreenBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
+		TNT1 A 0 A_CustomMissile ("GreenUnderblood2", 7, 0, random (0, 360), 2, random (30, 150))
+		stop
+	}
 }
 
 actor Green_FlyingBloodFaster: Green_FlyingBloodTrail
@@ -832,33 +838,39 @@ actor GreenMinuscleBloodSpot: Green_BloodSpot {Scale 0.25}
 
 actor GreenSawBlood : SawBlood
 {
- states
- {
-  Spawn:
-			TNT1 A 0
-			TNT1 A 1
-			TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "HitSaw", AAPTR_TARGET)
-			TNT1 A 0 A_CustomMissile ("GreenSuperGoreMistTiny", 0, 0, random (0, 360), 2, random (0, 90))
-			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-			TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckBloodIntensity")
-			TNT1 A 0
-			TNT1 A 0 A_PlaySound("misc/xdeath5")
-			BSPR A 2
-			TNT1 A 0 A_CustomMissile ("GreenWaterBloodCHecker", 7, 0, random (0, 360), 2, random (30, 60))
-		Spawn2:
-			TNT1 A 0 A_CustomMissile ("Green_FlyingBlood", 7, 0, random (0, 360), 2, random (30, 60))
-			TNT1 A 0 A_CustomMissile ("Green_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (20, 90))
-			Goto LowBlood
+	states
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1
+		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "HitSaw", AAPTR_TARGET)
+		TNT1 A 0 A_CustomMissile ("GreenSuperGoreMistTiny", 0, 0, random (0, 360), 2, random (0, 90))
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+		TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckBloodIntensity")
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("misc/xdeath5")
+		BSPR A 2
+		TNT1 A 0 A_CustomMissile ("GreenWaterBloodCHecker", 7, 0, random (0, 360), 2, random (30, 60))
+	Spawn2:
+		TNT1 A 0 A_CustomMissile ("Green_FlyingBlood", 7, 0, random (0, 360), 2, random (30, 60))
+		TNT1 A 0 A_CustomMissile ("Green_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (20, 90))
+		Goto LowBlood
 
 	HitSaw:
 		TNT1 A 0 A_RadiusGive("ChainsawHitGreen", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
-		TNT1 A 0 A_RadiusGive("PowerGreenBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
+		TNT1 A 0 A_RadiusGive("GreenBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
 		TNT1 A 0 A_CustomMissile ("GreenBloodmistChainsaw", -10, 0, random (0, 360), 2, random (60, 90))
 		TNT1 A 0 A_CustomMissile ("XDeath1Green", 0, 0, random (0, 360), 2, random (40, 80))
 		TNT1 A 0 A_CustomMissile ("WallGreenBlood", 0, 0, random (0, 360), 2, random (-10, 80))
 		TNT1 A 0 A_PlaySound("CSAWFLESH")
 		Stop
- }
+
+	LowBlood:
+		TNT1 A 0
+		TNT1 A 0 A_RadiusGive("GreenBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
+		BSPR BCDEFGHIJJJ 1
+		Stop
+	}
 }
 
 //Big blood mists
@@ -866,6 +878,14 @@ actor GreenSuperGore: SuperGore
 {
 	translation "168:191=112:127", "16:47=123:127"
 	Decal GreenBloodSplat
+	states
+	{
+		Spawn:
+		BLOR L 15
+		TNT1 A 0 A_RadiusGive("GreenBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
+		BLOR LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL 1 A_FadeOut(0.015)
+		Stop
+	}
 }
 
 Actor GreenSuperGoreMist: SuperGoreMist

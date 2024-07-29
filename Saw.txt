@@ -44,9 +44,9 @@ Actor Chain_saw : BrutalWeapon
 		AXEG A 0 A_TakeInventory("HasPlasmaWeapon",1)
 		AXEG A 0 A_Giveinventory("HasCutingWeapon",1)
 		SAWG A 0 A_Takeinventory("HasBarrel",1)
-		KICK A 0 A_Takeinventory("PowerBloodOnVisor",1)
-		KICK A 0 A_Takeinventory("PowerBlueBloodOnVisor",1)
-		KICK A 0 A_Takeinventory("PowerGreenBloodOnVisor",1)
+		KICK A 0 A_Takeinventory("BloodOnVisor",1)
+		KICK A 0 A_Takeinventory("BlueBloodOnVisor",1)
+		KICK A 0 A_Takeinventory("GreenBloodOnVisor",1)
 		TNT1 A 0 A_SetCrosshair(41)
 		SAWG A 0 A_GunFlash
 		TNT1 AAAAAA 1 A_RAise
@@ -64,9 +64,9 @@ Actor Chain_saw : BrutalWeapon
 	Deselect:
 	    SAWY EDCBA 1
 		SAWG A 0 A_StopSound(6)
-		AXEG A 0 A_Takeinventory("PowerBloodOnVisor",1)
-		AXEG A 0 A_Takeinventory("PowerBlueBloodOnVisor",1)
-		AXEG A 0 A_Takeinventory("PowerGreenBloodOnVisor",1)
+		AXEG A 0 A_Takeinventory("BloodOnVisor",1)
+		AXEG A 0 A_Takeinventory("BlueBloodOnVisor",1)
+		AXEG A 0 A_Takeinventory("GreenBloodOnVisor",1)
 		SAWG A 0 A_Takeinventory("HasCutingWeapon",1)
 		TNT1 A 0 A_TakeInventory("Unloading", 1)
 		TNT1 A 0 A_TakeInventory("Reloading", 1)
@@ -96,9 +96,9 @@ Actor Chain_saw : BrutalWeapon
 		SAWG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		SAWG A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
-        SAWG A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"Ready.Blood")
-        SAWG A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"Ready.BlueBlood")
-        SAWG A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"Ready.GreenBlood")
+        SAWG A 0 A_JumpIfInventory("BloodOnVisor",1,"Ready.Blood")
+        SAWG A 0 A_JumpIfInventory("BlueBloodOnVisor",1,"Ready.BlueBlood")
+        SAWG A 0 A_JumpIfInventory("GreenBloodOnVisor",1,"Ready.GreenBlood")
 		SAWG A 0 A_playsoundex("weapons/chainsaw/idle", 6)
 		SAWG ABAB 2 A_weaponready
 		SAWG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
@@ -106,8 +106,8 @@ Actor Chain_saw : BrutalWeapon
 
 	Ready.Blood:
 		SAWG A 0
-		SAWG A 0 A_TakeInventory("PowerBlueBloodOnVisor", 1)
-		SAWG A 0 A_TakeInventory("PowerGreenBloodOnVisor", 1)
+		SAWG A 0 A_TakeInventory("BlueBloodOnVisor", 1)
+		SAWG A 0 A_TakeInventory("GreenBloodOnVisor", 1)
 		SAWG A 0 A_StopSound(4)
 		SAWG A 0 A_StopSound(1)
 		SAWG A 0 A_playsoundex("weapons/chainsaw/idle", 6)
@@ -137,8 +137,8 @@ Actor Chain_saw : BrutalWeapon
 
 	Ready.BlueBlood:
 		SAWG A 0
-		SAWG A 0 A_TakeInventory("PowerBloodOnVisor", 1)
-		SAWG A 0 A_TakeInventory("PowerGreenBloodOnVisor", 1)
+		SAWG A 0 A_TakeInventory("BloodOnVisor", 1)
+		SAWG A 0 A_TakeInventory("GreenBloodOnVisor", 1)
 		SAWG A 0 A_StopSound(4)
 		SAWG A 0 A_StopSound(1)
 		SAWG A 0 A_playsoundex("weapons/chainsaw/idle", 6)
@@ -168,8 +168,8 @@ Actor Chain_saw : BrutalWeapon
 
 	Ready.GreenBlood:
 		SAWG A 0
-		SAWG A 0 A_TakeInventory("PowerBlueBloodOnVisor", 1)
-		SAWG A 0 A_TakeInventory("PowerBloodOnVisor", 1)
+		SAWG A 0 A_TakeInventory("BlueBloodOnVisor", 1)
+		SAWG A 0 A_TakeInventory("BloodOnVisor", 1)
 		SAWG A 0 A_StopSound(4)
 		SAWG A 0 A_StopSound(1)
 		SAWG A 0 A_playsoundex("weapons/chainsaw/idle", 6)
@@ -205,9 +205,9 @@ Actor Chain_saw : BrutalWeapon
 		SAWG A 0 A_TakeInventory("ChainsawHitBlue", 1)
 		SAWG A 0 A_TakeInventory("ChainsawHitGreen", 1)
 		SAWG A 0 A_CheckReload
-		SAWG A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"FireRed")
-		SAWG A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"FireGreen")
-		SAWG A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"FireBlue")
+		SAWG A 0 A_JumpIfInventory("BloodOnVisor",1,"FireRed")
+		SAWG A 0 A_JumpIfInventory("GreenBloodOnVisor",1,"FireGreen")
+		SAWG A 0 A_JumpIfInventory("BlueBloodOnVisor",1,"FireBlue")
 		SAWG A 0 A_PlaySoundEx("weapons/chainsaw/loop","Weapon",0)
 
 		CSA1 ABCD 1
@@ -246,9 +246,9 @@ Actor Chain_saw : BrutalWeapon
 		SAWG A 0 A_TakeInventory("ChainsawHitBlue", 1)
 		SAWG A 0 A_TakeInventory("ChainsawHitGreen", 1)
 		SAWG A 0 A_CheckReload
-		SAWG A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"AltFire2Red")
-		SAWG A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"AltFire2Green")
-		SAWG A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"AltFire2Blue")
+		SAWG A 0 A_JumpIfInventory("BloodOnVisor",1,"AltFire2Red")
+		SAWG A 0 A_JumpIfInventory("GreenBloodOnVisor",1,"AltFire2Green")
+		SAWG A 0 A_JumpIfInventory("BlueBloodOnVisor",1,"AltFire2Blue")
 		SAWG A 0 A_PlaySoundEx("weapons/chainsaw/loop","Weapon",0)
 		CSA2 ABCDDEEEF 1
 		SAWG A 0 A_PlaySound("weapons/chainsaw/draw", 4)
@@ -673,9 +673,9 @@ Actor Chain_saw : BrutalWeapon
 		goto Ready.GreenBlood
 
 	CheckSprint:
-		SAWG A 0 A_JumpIfInventory("PowerBloodOnVisor", 1, "CheckSprint.Blood")
-		SAWG A 0 A_JumpIfInventory("PowerBlueBloodOnVisor", 1, "CheckSprint.BlueBlood")
-		SAWG A 0 A_JumpIfInventory("PowerGreenBloodOnVisor", 1, "CheckSprint.GreenBlood")
+		SAWG A 0 A_JumpIfInventory("BloodOnVisor", 1, "CheckSprint.Blood")
+		SAWG A 0 A_JumpIfInventory("BlueBloodOnVisor", 1, "CheckSprint.BlueBlood")
+		SAWG A 0 A_JumpIfInventory("GreenBloodOnVisor", 1, "CheckSprint.GreenBlood")
 		SAWG A 0 A_playsoundex("weapons/chainsaw/idle", 6)
 		SAWG A 2 A_WeaponReady(WRF_NOFIRE)
 		SAWG A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
