@@ -50,18 +50,18 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXEG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		RIFG A 0 A_JumpIfInventory("StartDualWield",1,"DualWield")
-		AXEG A 0 A_JumpIfInventory("BloodOnVisor",1,"RedBloodReady")
-        AXEG A 0 A_JumpIfInventory("BlueBloodOnVisor",1,"BlueBloodReady")
-        AXEG A 0 A_JumpIfInventory("GreenBloodOnVisor",1,"GreenBloodReady")
+		AXEG A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"RedBloodReady")
+        AXEG A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"BlueBloodReady")
+        AXEG A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"GreenBloodReady")
 		AXEG A 1 A_WeaponReady
 		AXEG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		Loop
 
 	CheckSprint:
 		AXEG A 0
-		AXEG A 0 A_JumpIfInventory("BloodOnVisor",1,"RedBloodCheckSprint")
-		AXEG A 0 A_JumpIfInventory("BlueBloodOnVisor",1,"BlueBloodCheckSprint")
-        AXEG A 0 A_JumpIfInventory("GreenBloodOnVisor",1,"GreenBloodCheckSprint")
+		AXEG A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"RedBloodCheckSprint")
+		AXEG A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"BlueBloodCheckSprint")
+        AXEG A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"GreenBloodCheckSprint")
 		AXEG A 1 A_WeaponReady(WRF_NOFIRE)
 		AXEG A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
 		Goto Ready
@@ -135,9 +135,9 @@ ACTOR BrutalAxe : BrutalWeapon
 
 	Deselect:
         AXES CBA 1
-		AXEG A 0 A_Takeinventory("BloodOnVisor",1)
-		AXEG A 0 A_Takeinventory("BlueBloodOnVisor",1)
-		AXEG A 0 A_Takeinventory("GreenBloodOnVisor",1)
+		AXEG A 0 A_Takeinventory("PowerBloodOnVisor",1)
+		AXEG A 0 A_Takeinventory("PowerBlueBloodOnVisor",1)
+		AXEG A 0 A_Takeinventory("PowerGreenBloodOnVisor",1)
 		AXEG A 0 A_Takeinventory("HasCutingWeapon",1)
 		AXEG A 0 A_TakeInventory("TossGrenade", 1)
 		TNT1 A 0 A_TakeInventory("Unloading", 1)
@@ -182,17 +182,17 @@ ACTOR BrutalAxe : BrutalWeapon
     Fire:
 		AXEG A 0
 		AXEG A 0 A_TakeInventory("AxeHit", 1)
-		AXEG A 0 A_JumpIfInventory("BloodOnVisor",1,"RedBloodFire")
-		AXEG A 0 A_JumpIfInventory("BlueBloodOnVisor",1,"BlueBloodFire")
-        AXEG A 0 A_JumpIfInventory("GreenBloodOnVisor",1,"GreenBloodFire")
+		AXEG A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"RedBloodFire")
+		AXEG A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"BlueBloodFire")
+        AXEG A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"GreenBloodFire")
         AXEG ABCDE 1
 
 	Hold:
 		AXEG A 0
 		AXEG A 0 A_TakeInventory("AxeHit", 1)
-		AXEG A 0 A_JumpIfInventory("BloodOnVisor",1,"Hold.RedBlood")
-		AXEG A 0 A_JumpIfInventory("BlueBloodOnVisor",1,"Hold.BlueBlood")
-		AXEG A 0 A_JumpIfInventory("GreenBloodOnVisor",1,"Hold.GreenBlood")
+		AXEG A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"Hold.RedBlood")
+		AXEG A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"Hold.BlueBlood")
+		AXEG A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"Hold.GreenBlood")
 		AXEG E 1
 		AXEG A 0 A_Refire
 		AXEG D 1
@@ -214,9 +214,9 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXES A 1
 		TNT1 A 0 A_GiveInventory("UsedStamina", 13)
 		AXES BCD 1 A_WeaponReady(WRF_NOBOB)
-		AXEG A 0 A_JumpIfInventory("BloodOnVisor",1,"RedBloodReady")
-        AXEG A 0 A_JumpIfInventory("BlueBloodOnVisor",1,"BlueBloodReady")
-        AXEG A 0 A_JumpIfInventory("GreenBloodOnVisor",1,"GreenBloodReady")
+		AXEG A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"RedBloodReady")
+        AXEG A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"BlueBloodReady")
+        AXEG A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"GreenBloodReady")
 		Goto Ready
 
 	StrongAttack:
@@ -241,8 +241,8 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXEG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		AXEG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
-		AXEG A 0 A_TakeInventory("GreenBloodOnVisor", 1)
-		AXEG A 0 A_TakeInventory("BlueBloodOnVisor", 1)
+		AXEG A 0 A_TakeInventory("PowerGreenBloodOnVisor", 1)
+		AXEG A 0 A_TakeInventory("PowerBlueBloodOnVisor", 1)
 		AXRG A 1 A_WeaponReady
 		AXEG A 0 A_JumpIfInventory("IsRunning",1,"RedBloodCheckSprint")
 		Loop
@@ -342,8 +342,8 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXRS A 1
 		TNT1 A 0 A_GiveInventory("UsedStamina", 13)
 		AXRS BCD 1 A_WeaponReady(WRF_NOBOB)
-		AXEG A 0 A_JumpIfInventory("BlueBloodOnVisor",1,"BlueBloodReady")
-        AXEG A 0 A_JumpIfInventory("GreenBloodOnVisor",1,"GreenBloodReady")
+		AXEG A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"BlueBloodReady")
+        AXEG A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"GreenBloodReady")
 		Goto RedBloodReady
 
 	RedBloodStrongAttack:
@@ -361,8 +361,8 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXEG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		AXEG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
-		AXEG A 0 A_TakeInventory("GreenBloodOnVisor", 1)
-		AXEG A 0 A_TakeInventory("BloodOnVisor", 1)
+		AXEG A 0 A_TakeInventory("PowerGreenBloodOnVisor", 1)
+		AXEG A 0 A_TakeInventory("PowerBloodOnVisor", 1)
 		AXBG A 1 A_WeaponReady
 		AXEG A 0 A_JumpIfInventory("IsRunning",1,"BlueBloodCheckSprint")
 		Loop
@@ -461,8 +461,8 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXBS A 1
 		TNT1 A 0 A_GiveInventory("UsedStamina", 13)
 		AXBS BCD 1 A_WeaponReady(WRF_NOBOB)
-		AXEG A 0 A_JumpIfInventory("BloodOnVisor",1,"RedBloodReady")
-        AXEG A 0 A_JumpIfInventory("GreenBloodOnVisor",1,"GreenBloodReady")
+		AXEG A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"RedBloodReady")
+        AXEG A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"GreenBloodReady")
 		Goto BlueBloodReady
 
 	BlueBloodStrongAttack:
@@ -480,8 +480,8 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXEG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		AXEG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
-		AXEG A 0 A_TakeInventory("BlueBloodOnVisor", 1)
-		AXEG A 0 A_TakeInventory("BloodOnVisor", 1)
+		AXEG A 0 A_TakeInventory("PowerBlueBloodOnVisor", 1)
+		AXEG A 0 A_TakeInventory("PowerBloodOnVisor", 1)
 		AXGG A 1 A_WeaponReady
 		AXEG A 0 A_JumpIfInventory("IsRunning",1,"GreenBloodCheckSprint")
 		Loop
@@ -579,8 +579,8 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXGS A 1
 		TNT1 A 0 A_GiveInventory("UsedStamina", 13)
 		AXGS BCD 1 A_WeaponReady(WRF_NOBOB)
-		AXEG A 0 A_JumpIfInventory("BloodOnVisor",1,"RedBloodReady")
-        AXEG A 0 A_JumpIfInventory("BlueBloodOnVisor",1,"BlueBloodReady")
+		AXEG A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"RedBloodReady")
+        AXEG A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"BlueBloodReady")
 		Goto GreenBloodReady
 
 	GreenBloodStrongAttack:
@@ -593,16 +593,16 @@ ACTOR BrutalAxe : BrutalWeapon
     AltFire:
 		AXEG A 0
 		AXEG A 0 A_TakeInventory("AxeHit", 1)
-		AXEG A 0 A_JumpIfInventory("BloodOnVisor",1,"AltRedBloodFire")
-		AXEG A 0 A_JumpIfInventory("BlueBloodOnVisor",1,"AltBlueBloodFire")
-        AXEG A 0 A_JumpIfInventory("GreenBloodOnVisor",1,"AltGreenBloodFire")
+		AXEG A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"AltRedBloodFire")
+		AXEG A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"AltBlueBloodFire")
+        AXEG A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"AltGreenBloodFire")
         AXEG ABCDE 1
 	AltHold:
 		AXEG A 0
 		AXEG A 0 A_TakeInventory("AxeHit", 1)
-		AXEG A 0 A_JumpIfInventory("BloodOnVisor",1,"Hold.AltRedBlood")
-		AXEG A 0 A_JumpIfInventory("BlueBloodOnVisor",1,"Hold.AltBlueBlood")
-		AXEG A 0 A_JumpIfInventory("GreenBloodOnVisor",1,"Hold.AltGreenBlood")
+		AXEG A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"Hold.AltRedBlood")
+		AXEG A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"Hold.AltBlueBlood")
+		AXEG A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"Hold.AltGreenBlood")
 		AXEG E 1
 		AXEG A 0 A_Refire
 		AXEG DC 1
@@ -623,9 +623,9 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXES A 1
 		TNT1 A 0 A_GiveInventory("UsedStamina", 21)
 		AXES BCD 1 A_WeaponReady(WRF_NOBOB)
-		AXEG A 0 A_JumpIfInventory("BloodOnVisor",1,"RedBloodReady")
-        AXEG A 0 A_JumpIfInventory("BlueBloodOnVisor",1,"BlueBloodReady")
-        AXEG A 0 A_JumpIfInventory("GreenBloodOnVisor",1,"GreenBloodReady")
+		AXEG A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"RedBloodReady")
+        AXEG A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"BlueBloodReady")
+        AXEG A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"GreenBloodReady")
 		Goto Ready
 
 	AltStrongAttack:
@@ -657,8 +657,8 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXRS A 1
 		TNT1 A 0 A_GiveInventory("UsedStamina", 21)
 		AXRS BCD 1 A_WeaponReady(WRF_NOBOB)
-		AXEG A 0 A_JumpIfInventory("BlueBloodOnVisor",1,"BlueBloodReady")
-        AXEG A 0 A_JumpIfInventory("GreenBloodOnVisor",1,"GreenBloodReady")
+		AXEG A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"BlueBloodReady")
+        AXEG A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"GreenBloodReady")
 		Goto RedBloodReady
 
 	AltRedBloodStrongAttack:
@@ -690,8 +690,8 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXBS A 1
 		TNT1 A 0 A_GiveInventory("UsedStamina", 21)
 		AXBS BCD 1 A_WeaponReady(WRF_NOBOB)
-		AXEG A 0 A_JumpIfInventory("BloodOnVisor",1,"RedBloodReady")
-        AXEG A 0 A_JumpIfInventory("GreenBloodOnVisor",1,"GreenBloodReady")
+		AXEG A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"RedBloodReady")
+        AXEG A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"GreenBloodReady")
 		Goto BlueBloodReady
 
 	AltBlueBloodStrongAttack:
@@ -722,8 +722,8 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXGS A 1
 		TNT1 A 0 A_GiveInventory("UsedStamina", 21)
 		AXGS BCD 1 A_WeaponReady(WRF_NOBOB)
-		AXEG A 0 A_JumpIfInventory("BloodOnVisor",1,"RedBloodReady")
-        AXEG A 0 A_JumpIfInventory("BlueBloodOnVisor",1,"BlueBloodReady")
+		AXEG A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"RedBloodReady")
+        AXEG A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"BlueBloodReady")
 		Goto GreenBloodReady
 
 	AltGreenBloodStrongAttack:

@@ -601,9 +601,9 @@ ACTOR ClassicSaw : ClassicWeapon
 		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
-		TNT1 A 0 A_JumpIfInventory("BloodOnVisor",1,"Ready.Blood")
-        TNT1 A 0 A_JumpIfInventory("BlueBloodOnVisor",1,"Ready.BlueBlood")
-        TNT1 A 0 A_JumpIfInventory("GreenBloodOnVisor",1,"Ready.GreenBlood")
+		TNT1 A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"Ready.Blood")
+        TNT1 A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"Ready.BlueBlood")
+        TNT1 A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"Ready.GreenBlood")
 		VSAW AB 4 A_WeaponReady
 		Loop
 
@@ -622,15 +622,15 @@ ACTOR ClassicSaw : ClassicWeapon
 	Deselect:
 		VSAW A 1 A_Lower
 		AXEG A 0 A_TakeInventory("HasCutingWeapon",1)
-		KICK A 0 A_Takeinventory("BloodOnVisor",1)
-		KICK A 0 A_Takeinventory("BlueBloodOnVisor",1)
-		KICK A 0 A_Takeinventory("GreenBloodOnVisor",1)
+		KICK A 0 A_Takeinventory("PowerBloodOnVisor",1)
+		KICK A 0 A_Takeinventory("PowerBlueBloodOnVisor",1)
+		KICK A 0 A_Takeinventory("PowerGreenBloodOnVisor",1)
 		Loop
 	Select:
 		TNT1 A 0
-		KICK A 0 A_Takeinventory("BloodOnVisor",1)
-		KICK A 0 A_Takeinventory("BlueBloodOnVisor",1)
-		KICK A 0 A_Takeinventory("GreenBloodOnVisor",1)
+		KICK A 0 A_Takeinventory("PowerBloodOnVisor",1)
+		KICK A 0 A_Takeinventory("PowerBlueBloodOnVisor",1)
+		KICK A 0 A_Takeinventory("PowerGreenBloodOnVisor",1)
 		TNT1 A 0 A_TakeInventory("FistsSelected", 1)
 		TNT1 A 0 A_TakeInventory("ShotgunSelected", 1)
 		TNT1 A 0 A_TakeInventory("MinigunSelected", 1)
@@ -652,37 +652,37 @@ ACTOR ClassicSaw : ClassicWeapon
 	Fire:
 		TNT1 A 0
 		TNT1 A 0 A_Giveinventory("HasCutingWeapon",1)
-		TNT1 A 0 A_JumpIfInventory("BloodOnVisor",1,"Fire.Blood")
-        TNT1 A 0 A_JumpIfInventory("BlueBloodOnVisor",1,"Fire.BlueBlood")
-        TNT1 A 0 A_JumpIfInventory("GreenBloodOnVisor",1,"Fire.GreenBlood")
+		TNT1 A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"Fire.Blood")
+        TNT1 A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"Fire.BlueBlood")
+        TNT1 A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"Fire.GreenBlood")
 		VSAW CD 4 A_Saw("DSSAWHIT","CSAWCUT",20,"SSawPuff2",SF_NORANDOM)
 		SAWG B 0 A_ReFire
 		Goto Ready
 
 	Fire.Blood:
-		TNT1 A 0 A_TakeInventory("BlueBloodOnVisor", 1)
-		TNT1 A 0 A_TakeInventory("GreenBloodOnVisor", 1)
+		TNT1 A 0 A_TakeInventory("PowerBlueBloodOnVisor", 1)
+		TNT1 A 0 A_TakeInventory("PowerGreenBloodOnVisor", 1)
 		VSRW CD 4 A_Saw("DSSAWHIT","CSAWCUT",20,"SSawPuff2",SF_NORANDOM)
-		TNT1 A 0 A_JumpIfInventory("BlueBloodOnVisor",1,"Fire.BlueBlood")
-        TNT1 A 0 A_JumpIfInventory("GreenBloodOnVisor",1,"Fire.GreenBlood")
+		TNT1 A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"Fire.BlueBlood")
+        TNT1 A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"Fire.GreenBlood")
 		SAWG B 0 A_ReFire
 		Goto Ready
 
 	Fire.BlueBlood:
-		TNT1 A 0 A_TakeInventory("BloodOnVisor", 1)
-		TNT1 A 0 A_TakeInventory("GreenBloodOnVisor", 1)
+		TNT1 A 0 A_TakeInventory("PowerBloodOnVisor", 1)
+		TNT1 A 0 A_TakeInventory("PowerGreenBloodOnVisor", 1)
 		VSBW CD 4 A_Saw("DSSAWHIT","CSAWCUT",20,"SSawPuff2",SF_NORANDOM)
-		TNT1 A 0 A_JumpIfInventory("BloodOnVisor",1,"Fire.Blood")
-        TNT1 A 0 A_JumpIfInventory("GreenBloodOnVisor",1,"Fire.GreenBlood")
+		TNT1 A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"Fire.Blood")
+        TNT1 A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"Fire.GreenBlood")
 		SAWG B 0 A_ReFire
 		Goto Ready
 
 	Fire.GreenBlood:
-		TNT1 A 0 A_TakeInventory("BlueBloodOnVisor", 1)
-		TNT1 A 0 A_TakeInventory("BloodOnVisor", 1)
+		TNT1 A 0 A_TakeInventory("PowerBlueBloodOnVisor", 1)
+		TNT1 A 0 A_TakeInventory("PowerBloodOnVisor", 1)
 		VSGW CD 4 A_Saw("DSSAWHIT","CSAWCUT",20,"SSawPuff2",SF_NORANDOM)
-		TNT1 A 0 A_JumpIfInventory("BloodOnVisor",1,"Fire.Blood")
-        TNT1 A 0 A_JumpIfInventory("BlueBloodOnVisor",1,"Fire.BlueBlood")
+		TNT1 A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"Fire.Blood")
+        TNT1 A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"Fire.BlueBlood")
 		SAWG B 0 A_ReFire
 		Goto Ready
 

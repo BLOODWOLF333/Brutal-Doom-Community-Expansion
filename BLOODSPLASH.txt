@@ -3,252 +3,240 @@
 
 #library "bloodsplash"
 #include "zcommon.acs"
+world int 19: arrayHUDFX[];
 
-
-script "BDRedBloodHUD" (void)
+script "BDRedBloodHUD" (VOID)
 {
-	SetHudSize(300,200,1);
-
-	delay(1);
-	setfont("RBLD1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 100.0, 0.14, 0.14);
-	delay(5);
-	setfont("RBLD1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 108.0, 0.14, 0.14);
-	delay(5);
-	setfont("RBLD1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 116.0, 0.14, 0.14);
-	delay(5);
-	setfont("RBLD1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 124.0, 0.14, 0.14);
-	delay(5);
-	setfont("RBLD1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 132.0, 0.14, 0.14);
-	delay(5);
-	setfont("RBLD1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 140.0, 0.14, 0.14);
-	delay(5);
-	setfont("RBLD1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 148.0, 0.14, 0.14);
+	if(arrayHUDFX[PlayerNumber()] > 0)
+	{
+		terminate;
+	}
+	else
+	{
+		arrayHUDFX[PlayerNumber()]++;
+		delay(1);
+		SetHudSize(300,200,1);
+		for(int i = 0; i <= 6; i++)
+		{
+			setfont("RBLD1");
+			hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, (150 + random(-4,4))* 1.0,  (100 + (8 * i)) * 1.0, 0.14, 0.14);
+			delay(5);
+		}
+		arrayHUDFX[PlayerNumber()]--;
+	}
 }
 
-script "BDMoreRedBloodHUD" (void)//is this ever called?
+script "BDMoreRedBloodHUD" (VOID) NET
 {
-	SetHudSize(300,200,1);
-
-	delay(1);
-	setfont("RBLD1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 100.0, 0.14, 0.14);
-	delay(5);
-	setfont("RBLD1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 108.0, 0.14, 0.14);
-	delay(5);
-	setfont("RBLD1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 116.0, 0.14, 0.14);
-	delay(5);
-	setfont("RBLD1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 124.0, 0.14, 0.14);
-	delay(5);
-	setfont("RBLD1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 132.0, 0.14, 0.14);
-	delay(5);
-	setfont("RBLD1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 140.0, 0.14, 0.14);
-	delay(5);
-	setfont("RBLD1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 148.0, 0.14, 0.14);
+	if(arrayHUDFX[PlayerNumber()] > 0)
+	{
+		terminate;
+	}
+	else
+	{
+		arrayHUDFX[PlayerNumber()]++;
+		delay(1);
+		SetHudSize(300,200,1);
+		for(int i = 0; i <= 6; i++)
+		{
+			setfont("RBLD2");
+			hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, (150 + random(-4,4))* 1.0,  (100 + (8 * i)) * 1.0, 0.14, 0.14);
+			delay(5);
+		}
+		arrayHUDFX[PlayerNumber()]--;
+	}
 }
 
-script "BDBlueBloodHUD" (void)
+script "BDBlueBloodHUD" (VOID) NET
 {
-	SetHudSize(300,200,1);
-
-	delay(1);
-	setfont("BBLD1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 100.0, 0.14, 0.14);
-	delay(5);
-	setfont("BBLD1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 108.0, 0.14, 0.14);
-	delay(5);
-	setfont("BBLD1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 116.0, 0.14, 0.14);
-	delay(5);
-	setfont("BBLD1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 124.0, 0.14, 0.14);
-	delay(5);
-	setfont("BBLD1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 132.0, 0.14, 0.14);
-	delay(5);
-	setfont("BBLD1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 140.0, 0.14, 0.14);
-	delay(5);
-	setfont("BBLD1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 148.0, 0.14, 0.14);
+	if(arrayHUDFX[PlayerNumber()] > 0)
+	{
+		terminate;
+	}
+	else
+	{
+		arrayHUDFX[PlayerNumber()]++;
+		delay(1);
+		SetHudSize(300,200,1);
+		for(int i = 0; i <= 6; i++)
+		{
+			setfont("BBLD1");
+			hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, (150 + random(-4,4))* 1.0,  (100 + (8 * i)) * 1.0, 0.14, 0.14);
+			delay(5);
+		}
+		arrayHUDFX[PlayerNumber()]--;
+	}
 }
 
-script "BDGreenBloodHUD" (void)
+script "BDMoreBlueBloodHUD" (VOID) NET
 {
-	SetHudSize(300,200,1);
+	if(arrayHUDFX[PlayerNumber()] > 0)
+	{
+		terminate;
+	}
+	else
+	{
+		arrayHUDFX[PlayerNumber()]++;
+		delay(1);
+		SetHudSize(300,200,1);
+		for(int i = 0; i <= 6; i++)
+		{
+			setfont("BBLD2");
+			hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, (150 + random(-4,4))* 1.0,  (100 + (8 * i)) * 1.0, 0.14, 0.14);
+			delay(5);
+		}
+		arrayHUDFX[PlayerNumber()]--;
+	}
+}
 
-	delay(1);
-	setfont("GBLD1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 100.0, 0.14, 0.14);
-	delay(5);
-	setfont("GBLD1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 108.0, 0.14, 0.14);
-	delay(5);
-	setfont("GBLD1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 116.0, 0.14, 0.14);
-	delay(5);
-	setfont("GBLD1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 124.0, 0.14, 0.14);
-	delay(5);
-	setfont("GBLD1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 132.0, 0.14, 0.14);
-	delay(5);
-	setfont("GBLD1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 140.0, 0.14, 0.14);
-	delay(5);
-	setfont("GBLD1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 148.0, 0.14, 0.14);
+script "BDGreenBloodHUD" (VOID) NET
+{
+	if(arrayHUDFX[PlayerNumber()] > 0)
+	{
+		terminate;
+	}
+	else
+	{
+		arrayHUDFX[PlayerNumber()]++;
+		delay(1);
+		SetHudSize(300,200,1);
+		for(int i = 0; i <= 6; i++)
+		{
+			setfont("GBLD1");
+			hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, (150 + random(-4,4))* 1.0,  (100 + (8 * i)) * 1.0, 0.14, 0.14);
+			delay(5);
+		}
+		arrayHUDFX[PlayerNumber()]--;
+	}
+}
+
+script "BDMoreGreenBloodHUD" (VOID) NET
+{
+	if(arrayHUDFX[PlayerNumber()] > 0)
+	{
+		terminate;
+	}
+	else
+	{
+		arrayHUDFX[PlayerNumber()]++;
+		delay(1);
+		SetHudSize(300,200,1);
+		for(int i = 0; i <= 6; i++)
+		{
+			setfont("GBLD2");
+			hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, (150 + random(-4,4))* 1.0,  (100 + (8 * i)) * 1.0, 0.14, 0.14);
+			delay(5);
+		}
+		arrayHUDFX[PlayerNumber()]--;
+	}
 }
 
 //WATER
-script "BDWaterHUD" (void)
+script "BDWaterHUD" (VOID) NET
 {
-	SetHudSize(300,200,1);
-
-	delay(1);
-	setfont("WTSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 100.0, 0.14, 0.14);
-	delay(5);
-	setfont("WTSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 108.0, 0.14, 0.14);
-	delay(5);
-	setfont("WTSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 116.0, 0.14, 0.14);
-	delay(5);
-	setfont("WTSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 124.0, 0.14, 0.14);
-	delay(5);
-	setfont("WTSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 132.0, 0.14, 0.14);
-	delay(5);
-	setfont("WTSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 140.0, 0.14, 0.14);
-	delay(5);
-	setfont("WTSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 148.0, 0.14, 0.14);
+	if(arrayHUDFX[PlayerNumber()] > 0)
+	{
+		terminate;
+	}
+	else
+	{
+		arrayHUDFX[PlayerNumber()]++;
+		delay(1);
+		SetHudSize(300,200,1);
+		for(int i = 0; i <= 6; i++)
+		{
+			setfont("WTSP");
+			hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, (150 + random(-4,4))* 1.0,  (100 + (8 * i)) * 1.0, 0.14, 0.14);
+			delay(5);
+		}
+		arrayHUDFX[PlayerNumber()]--;
+	}
 }
 
 //SLIME
-script "BDSlimeHUD" (void)
+script "BDSlimeHUD" (VOID) NET
 {
-	SetHudSize(300,200,1);
-
-	delay(1);
-	setfont("SLSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 100.0, 0.14, 0.14);
-	delay(5);
-	setfont("SLSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 108.0, 0.14, 0.14);
-	delay(5);
-	setfont("SLSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 116.0, 0.14, 0.14);
-	delay(5);
-	setfont("SLSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 124.0, 0.14, 0.14);
-	delay(5);
-	setfont("SLSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 132.0, 0.14, 0.14);
-	delay(5);
-	setfont("SLSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 140.0, 0.14, 0.14);
-	delay(5);
-	setfont("SLSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 148.0, 0.14, 0.14);
+	if(arrayHUDFX[PlayerNumber()] > 0)
+	{
+		terminate;
+	}
+	else
+	{
+		arrayHUDFX[PlayerNumber()]++;
+		delay(1);
+		SetHudSize(300,200,1);
+		for(int i = 0; i <= 6; i++)
+		{
+			setfont("SLSP");
+			hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, (150 + random(-4,4))* 1.0,  (100 + (8 * i)) * 1.0, 0.14, 0.14);
+			delay(5);
+		}
+		arrayHUDFX[PlayerNumber()]--;
+	}
 }
 
 //NUKAGE
-script "BDNukeHUD" (void)
+script "BDNukeHUD" (VOID) NET
 {
-	SetHudSize(300,200,1);
-
-	delay(1);
-	setfont("NKSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 100.0, 0.14, 0.14);
-	delay(5);
-	setfont("NKSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 108.0, 0.14, 0.14);
-	delay(5);
-	setfont("NKSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 116.0, 0.14, 0.14);
-	delay(5);
-	setfont("NKSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 124.0, 0.14, 0.14);
-	delay(5);
-	setfont("NKSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 132.0, 0.14, 0.14);
-	delay(5);
-	setfont("NKSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 140.0, 0.14, 0.14);
-	delay(5);
-	setfont("NKSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 148.0, 0.14, 0.14);
+	if(arrayHUDFX[PlayerNumber()] > 0)
+	{
+		terminate;
+	}
+	else
+	{
+		arrayHUDFX[PlayerNumber()]++;
+		delay(1);
+		SetHudSize(300,200,1);
+		for(int i = 0; i <= 6; i++)
+		{
+			setfont("NKSP");
+			hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, (150 + random(-4,4))* 1.0,  (100 + (8 * i)) * 1.0, 0.14, 0.14);
+			delay(5);
+		}
+		arrayHUDFX[PlayerNumber()]--;
+	}
 }
 
 //ORANGE
-script "BDOrangeHUD" (void)
+script "BDOrangeHUD" (VOID) NET
 {
-	SetHudSize(300,200,1);
-
-	delay(1);
-	setfont("ORSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 100.0, 0.14, 0.14);
-	delay(5);
-	setfont("ORSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 108.0, 0.14, 0.14);
-	delay(5);
-	setfont("ORSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 116.0, 0.14, 0.14);
-	delay(5);
-	setfont("ORSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 124.0, 0.14, 0.14);
-	delay(5);
-	setfont("ORSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 132.0, 0.14, 0.14);
-	delay(5);
-	setfont("ORSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 140.0, 0.14, 0.14);
-	delay(5);
-	setfont("ORSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 148.0, 0.14, 0.14);
+	if(arrayHUDFX[PlayerNumber()] > 0)
+	{
+		terminate;
+	}
+	else
+	{
+		arrayHUDFX[PlayerNumber()]++;
+		delay(1);
+		SetHudSize(300,200,1);
+		for(int i = 0; i <= 6; i++)
+		{
+			setfont("ORSP");
+			hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, (150 + random(-4,4))* 1.0,  (100 + (8 * i)) * 1.0, 0.14, 0.14);
+			delay(5);
+		}
+		arrayHUDFX[PlayerNumber()]--;
+	}
 }
 
 //PURPLE
-script "BDPurpleHUD" (void)
+script "BDPurpleHUD" (VOID) NET
 {
-	SetHudSize(300,200,1);
-
-	delay(1);
-	setfont("PRSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 100.0, 0.14, 0.14);
-	delay(5);
-	setfont("PRSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 108.0, 0.14, 0.14);
-	delay(5);
-	setfont("PRSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 116.0, 0.14, 0.14);
-	delay(5);
-	setfont("PRSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 124.0, 0.14, 0.14);
-	delay(5);
-	setfont("PRSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 132.0, 0.14, 0.14);
-	delay(5);
-	setfont("PRSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 140.0, 0.14, 0.14);
-	delay(5);
-	setfont("PRSP");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 148.0, 0.14, 0.14);
+	if(arrayHUDFX[PlayerNumber()] > 0)
+	{
+		terminate;
+	}
+	else
+	{
+		arrayHUDFX[PlayerNumber()]++;
+		delay(1);
+		SetHudSize(300,200,1);
+		for(int i = 0; i <= 6; i++)
+		{
+			setfont("PRSP");
+			hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, (150 + random(-4,4))* 1.0,  (100 + (8 * i)) * 1.0, 0.14, 0.14);
+			delay(5);
+		}
+		arrayHUDFX[PlayerNumber()]--;
+	}
 }

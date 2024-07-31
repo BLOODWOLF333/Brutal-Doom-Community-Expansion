@@ -29,7 +29,7 @@ actor Blue_Blood: Brutal_Blood
 			Goto LowBlood
 		Splash:
 			BLOD A 0
-			TNT1 A 0 A_RadiusGive("BlueBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
+			TNT1 A 0 A_RadiusGive("BlueBloodOnVisor", 128, RGF_PLAYERS, 1)
 			TNT1 A 0 A_CustomMissile ("BlueUnderblood2", 7, 0, random (0, 360), 2, random (30, 150))
 			stop
 		LotsOfBlood:
@@ -62,7 +62,7 @@ actor Blue_Blood: Brutal_Blood
 		   Goto LowBlood
 		 LowBlood:
 			TNT1 A 0
-			TNT1 A 0 A_RadiusGive("BlueBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
+			TNT1 A 0 A_RadiusGive("BlueBloodOnVisor", 128, RGF_PLAYERS, 1)
 			BSPR BCDEFGHIJJJ 1
 			Stop
 	 }
@@ -192,7 +192,7 @@ Decal BlueBloodSplat
 	 Live:
 			BLHT BCDEFG 1
 			TNT1 A 0
-			TNT1 A 0 A_RadiusGive("BlueBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
+			TNT1 A 0 A_RadiusGive("BlueBloodOnVisor", 128, RGF_PLAYERS, 1)
 			BLHT HHHHH 100 A_JumpIf(waterlevel > 1, "Splash")
 			Stop
 
@@ -205,7 +205,7 @@ Decal BlueBloodSplat
 			TNT1 A 0
 			TNT1 A 0 A_PlaySound("blooddrop2")
 			TNT1 A 0 A_CheckFloor("DeathFloor")
-			TNT1 A 0 A_RadiusGive("BlueBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
+			TNT1 A 0 A_RadiusGive("BlueBloodOnVisor", 128, RGF_PLAYERS, 1)
 			TNT1 A 1
 			Stop
 
@@ -213,7 +213,7 @@ Decal BlueBloodSplat
 			TNT1 A 0
 			TNT1 A 0 A_SpawnItemEx ("Blue_BloodSpot",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION |  SXF_TRANSFERTRANSLATION,0)
 			TNT1 A 0 A_PlaySound("blooddrop2")
-			TNT1 A 0 A_RadiusGive("BlueBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
+			TNT1 A 0 A_RadiusGive("BlueBloodOnVisor", 128, RGF_PLAYERS, 1)
 		    XDT1 EFGHIJKL 2
 			Stop
 
@@ -276,17 +276,17 @@ actor Blue_FlyingBloodTrail: Brutal_FlyingBloodTrail
 		TNT1 A 0
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		BLHT BCDEFG 1
-		TNT1 A 0 A_RadiusGive("BlueBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
+		TNT1 A 0 A_RadiusGive("BlueBloodOnVisor", 128, RGF_PLAYERS, 1)
 		BLHT HHHHHHHHH 1 A_FadeOut(0.02)
 		stop
 
 	Death:
-		TNT1 A 0 A_RadiusGive("BlueBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
+		TNT1 A 0 A_RadiusGive("BlueBloodOnVisor", 128, RGF_PLAYERS, 1)
 		Stop
 
 	Splash:
 		BLOD A 0
-		TNT1 A 0 A_RadiusGive("BlueBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
+		TNT1 A 0 A_RadiusGive("BlueBloodOnVisor", 128, RGF_PLAYERS, 1)
 		TNT1 A 0 A_CustomMissile ("BlueUnderblood2", 7, 0, random (0, 360), 2, random (30, 150))
 		stop
 	}
@@ -790,8 +790,9 @@ actor BlueSawBlood : SawBlood
 		Goto LowBlood
 
 	HitSaw:
-		TNT1 A 0 A_RadiusGive("ChainsawHitBlue", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
-		TNT1 A 0 A_RadiusGive("BlueBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
+		TNT1 A 0 A_RadiusGive("ChainsawHitBlue", 128, RGF_PLAYERS, 1)
+		TNT1 A 0 A_RadiusGive("PowerBlueBloodOnVisor", 128, RGF_PLAYERS, 1)
+		TNT1 A 0 A_RadiusGive("SawBlueBloodOnVisor", 128, RGF_PLAYERS, 1)
 		TNT1 A 0 A_CustomMissile ("BlueBloodmistChainsaw", -10, 0, random (0, 360), 2, random (60, 90))
 		TNT1 A 0 A_CustomMissile ("XDeath1Blue", 0, 0, random (0, 360), 2, random (40, 80))
 		TNT1 A 0 A_CustomMissile ("WallBlueBlood", 0, 0, random (0, 360), 2, random (-10, 80))
@@ -799,7 +800,7 @@ actor BlueSawBlood : SawBlood
 		Stop
 	 LowBlood:
 		TNT1 A 0
-		TNT1 A 0 A_RadiusGive("BlueBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
+		TNT1 A 0 A_RadiusGive("BlueBloodOnVisor", 128, RGF_PLAYERS, 1)
 		BSPR BCDEFGHIJJJ 1
 		Stop
 	}
@@ -814,7 +815,7 @@ actor BlueSuperGore: SuperGore
 	{
 		Spawn:
 		BLOR L 15
-		TNT1 A 0 A_RadiusGive("BlueBloodOnVisor", 200, RGF_PLAYERS | RGF_MONSTERS , 1)
+		TNT1 A 0 A_RadiusGive("BlueBloodOnVisor", 128, RGF_PLAYERS, 1)
 		BLOR LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL 1 A_FadeOut(0.015)
 		Stop
 	}

@@ -4580,24 +4580,16 @@ StealthKillLabguy:
 // in the BLOODSPLASH lump.
 
 	Pain.Blood:
-	    NULL A 0 A_TakeInventory("BloodSplasherz", 1)
-		NULL A 0 A_Giveinventory("GiveHealth",1)
         NULL A 0 A_Giveinventory("BloodOnVisor",1)
-		NULL A 0 A_GiveInventory("MeatAmmo", 1)
-        NULL A 0 ACS_NamedExecute("BDRedBloodHUD", 0, 0, 0, 0)
         Goto StandStill
 
 	Pain.BlueBlood:
         NULL A 0 A_Giveinventory("BlueBloodOnVisor",1)
-        NULL A 0 A_Giveinventory("GiveHealth",1)
-        NULL A 0 ACS_NamedExecute("BDBlueBloodHUD", 0, 0, 0, 0)
         Goto StandStill
 
 	Pain.GreenBlood:
-		TNT1 A 0
-        NULL A 0 A_Giveinventory("GiveHealth",1)
-        NULL A 0 ACS_NamedExecute("BDGreenBloodHUD", 0, 0, 0, 0)
-         Goto StandStill
+		NULL A 0 A_Giveinventory("GreenBloodOnVisor",1)
+        Goto StandStill
 
 	Pain.Water:
 		TNT1 A 0
@@ -4874,7 +4866,19 @@ ACTOR BloodOnVisor : CustomInventory
 	States
 	{
 	Use:
-		NULL A 4 ACS_NamedExecute("BDRedBloodHUD", 0, 0, 0, 0)
+		NULL A 4 ACS_NamedExecuteAlways("BDRedBloodHUD", 0, 0, 0, 0)
+		Stop
+	}
+}
+
+ACTOR SawBloodOnVisor : CustomInventory
+{
+	+INVENTORY.AUTOACTIVATE
+	+CLIENTSIDEONLY
+	States
+	{
+	Use:
+		NULL A 4 ACS_NamedExecuteAlways("BDMoreRedBloodHUD", 0, 0, 0, 0)
 		Stop
 	}
 }
@@ -4886,7 +4890,19 @@ ACTOR BlueBloodOnVisor : CustomInventory
 	States
 	{
 	Use:
-		NULL A 4 ACS_NamedExecute("BDBlueBloodHUD", 0, 0, 0, 0)
+		NULL A 4 ACS_NamedExecuteAlways("BDBlueBloodHUD", 0, 0, 0, 0)
+		Stop
+	}
+}
+
+ACTOR SawBlueBloodOnVisor : CustomInventory
+{
+	+INVENTORY.AUTOACTIVATE
+	+CLIENTSIDEONLY
+	States
+	{
+	Use:
+		NULL A 4 ACS_NamedExecuteAlways("BDMoreBlueBloodHUD", 0, 0, 0, 0)
 		Stop
 	}
 }
@@ -4898,9 +4914,36 @@ ACTOR GreenBloodOnVisor : CustomInventory
 	States
 	{
 	Use:
-		NULL A 4 ACS_NamedExecute("BDGreenBloodHUD", 0, 0, 0, 0)
+		NULL A 4 ACS_NamedExecuteAlways("BDGreenBloodHUD", 0, 0, 0, 0)
 		Stop
 	}
+}
+
+ACTOR SawGreenBloodOnVisor : CustomInventory
+{
+	+INVENTORY.AUTOACTIVATE
+	+CLIENTSIDEONLY
+	States
+	{
+	Use:
+		NULL A 4 ACS_NamedExecuteAlways("BDMoreGreenBloodHUD", 0, 0, 0, 0)
+		Stop
+	}
+}
+
+ACTOR PowerBloodOnVisor : PowerUp
+{
+	Powerup.Duration -90
+}
+
+ACTOR PowerBlueBloodOnVisor : PowerUp
+{
+	Powerup.Duration -90
+}
+
+ACTOR PowerGreenBloodOnVisor : PowerUp
+{
+	Powerup.Duration -90
 }
 
 ACTOR PowerNearDeath : PowerUp
