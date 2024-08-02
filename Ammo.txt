@@ -219,6 +219,7 @@ ACTOR ShellPurist : Ammo
 	VisibleToPlayerClass Purist
 	Inventory.ForbiddenTo BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
 	+INVENTORY.NOSCREENFLASH
+	Scale 0.9
 	States
 	{
 	Spawn:
@@ -385,6 +386,7 @@ ACTOR ShellBoxPurist : ShellPurist
 {
 	Inventory.PickupMessage "$GOTSHELLBOX"
 	Inventory.Amount 20
+	Scale 0.9
 	States
 	{
 	Spawn:
@@ -549,6 +551,7 @@ ACTOR ClipPurist : Ammo
 	VisibleToPlayerClass Purist
 	Inventory.ForbiddenTo BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
 	+INVENTORY.NOSCREENFLASH
+	Scale 0.9
 	States
 	{
 	Spawn:
@@ -600,6 +603,7 @@ ACTOR ClipBoxPurist : ClipPurist
 	Inventory.PickupMessage "$GOTCLIPBOX"
 	Inventory.PickupSound "CBOXPICK"
 	Inventory.Amount 50
+	Scale 0.9
 	States
 	{
 	Spawn:
@@ -775,6 +779,7 @@ ACTOR RocketPurist : Ammo
 	VisibleToPlayerClass Purist
 	Inventory.ForbiddenTo BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
 	+INVENTORY.NOSCREENFLASH
+	Scale 0.9
 	States
 	{
 	Spawn:
@@ -889,6 +894,7 @@ ACTOR RocketBoxPurist : RocketPurist
 	Inventory.Pickupsound "RCKCLIP2"
 	Inventory.Amount 5
 	+INVENTORY.NOSCREENFLASH
+	Scale 0.9
 	States
 	{
 	Spawn:
@@ -944,6 +950,7 @@ ACTOR CellPurist : Ammo
 	VisibleToPlayerClass Purist
 	Inventory.ForbiddenTo BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
 	+INVENTORY.NOSCREENFLASH
+	Scale 0.9
 	States
 	{
 	Spawn:
@@ -988,6 +995,7 @@ ACTOR CellPackPurist : CellPurist
 {
 	Inventory.PickupMessage "$GOTCELLBOX"
 	Inventory.Amount 100
+	Scale 0.9
 	States
 	{
 	Spawn:
@@ -1063,7 +1071,7 @@ ACTOR Nuke : Ammo
 	Inventory.Icon "NKLAA0"
 	Inventory.PickupSound "BFGREADY"
 	+INVENTORY.NOSCREENFLASH
-	Scale 0.6
+	Scale 0.9
 	VisibleToPlayerClass BDoomer, Doomer2, Doomer3, ArcadeDoomer, ArcadeDoomer2, ArcadeDoomer3, TacticalDoomer
 	Inventory.ForbiddenTo Purist
 	States
