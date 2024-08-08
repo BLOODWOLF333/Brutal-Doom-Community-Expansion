@@ -130,7 +130,7 @@ actor Brutal_Blood Replaces Blood
 			Goto LowBlood
 		Splash:
 			BLOD A 0
-			TNT1 A 0 A_RadiusGive("BloodOnVisor", 128, RGF_PLAYERS, 1)
+			TNT1 A 0 A_RadiusGive("BloodOnVisor", 64, RGF_PLAYERS, 1)
 			TNT1 A 0 A_CustomMissile ("Underblood2", 7, 0, random (0, 360), 2, random (30, 150))
 			stop
 		LotsOfBlood:
@@ -165,7 +165,7 @@ actor Brutal_Blood Replaces Blood
 			TNT1 A 0
 			TNT1 A 0 A_Jump(128, 2)
 			TNT1 A 0 A_SetScale(-0.7, 0.8)
-			TNT1 A 0 A_RadiusGive("BloodOnVisor", 128, RGF_PLAYERS, 1)
+			TNT1 A 0 A_RadiusGive("BloodOnVisor", 64, RGF_PLAYERS, 1)
 			BSPR BCDEFGHIJJ 1
 			Stop
 
@@ -176,7 +176,7 @@ actor Brutal_Blood Replaces Blood
 			TNT1 A 0 A_CustomMissile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (20, 90))
 			TNT1 A 0 A_Jump(128, 2)
 			TNT1 A 0 A_SetScale(-0.7, 0.8)
-			TNT1 A 0 A_RadiusGive("BloodOnVisor", 128, RGF_PLAYERS, 1)
+			TNT1 A 0 A_RadiusGive("BloodOnVisor", 64, RGF_PLAYERS, 1)
 			BSPR BCDEFGHIJJ 1 BRIGHT
 			Stop
 	 }
@@ -361,7 +361,7 @@ ACTOR Brutal_FlyingBlood
 
 		Live:
 			BSPR ABCDEFGH 2
-			TNT1 A 0 A_RadiusGive("BloodOnVisor", 128, RGF_PLAYERS, 1)
+			TNT1 A 0 A_RadiusGive("BloodOnVisor", 64, RGF_PLAYERS, 1)
 			BSPR I 100 A_JumpIf(waterlevel > 1, "Splash")
 			Stop
 
@@ -373,7 +373,7 @@ ACTOR Brutal_FlyingBlood
 			TNT1 A 0
 			TNT1 A 0 A_PlaySound("blooddrop2")
 			TNT1 A 0 A_CheckFloor("DeathFloor")
-			TNT1 A 0 A_RadiusGive("BloodOnVisor", 128, RGF_PLAYERS, 1)
+			TNT1 A 0 A_RadiusGive("BloodOnVisor", 64, RGF_PLAYERS, 1)
 			TNT1 A 1
 			Stop
 
@@ -381,7 +381,7 @@ ACTOR Brutal_FlyingBlood
 			TNT1 A 0
 			TNT1 A 0 A_SpawnItemEx ("Brutal_BloodSpot",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION |  SXF_TRANSFERTRANSLATION,0)
 			TNT1 A 0 A_PlaySound("blooddrop2")
-			TNT1 A 0 A_RadiusGive("BloodOnVisor", 128, RGF_PLAYERS, 1)
+			TNT1 A 0 A_RadiusGive("BloodOnVisor", 64, RGF_PLAYERS, 1)
 			XDT1 EFGHIJKL 2
 			Stop
 
@@ -700,17 +700,17 @@ actor Brutal_FlyingBloodTrail
 		TNT1 A 0 A_Jump(128, 2)
 		TNT1 A 0 A_SetScale (-0.5, 0.6)
 		BL8A ABCDE 1
-		TNT1 A 0 A_RadiusGive("BloodOnVisor", 128, RGF_PLAYERS, 1)
+		TNT1 A 0 A_RadiusGive("BloodOnVisor", 64, RGF_PLAYERS, 1)
 		BL8A F 60
 		stop
 
 	Death:
-		TNT1 A 0 A_RadiusGive("BloodOnVisor", 128, RGF_PLAYERS, 1)
+		TNT1 A 0 A_RadiusGive("BloodOnVisor", 64, RGF_PLAYERS, 1)
 		Stop
 
 	Splash:
 		BLOD A 0
-		TNT1 A 0 A_RadiusGive("BloodOnVisor", 128, RGF_PLAYERS, 1)
+		TNT1 A 0 A_RadiusGive("BloodOnVisor", 64, RGF_PLAYERS, 1)
 		TNT1 A 0 A_CustomMissile ("Underblood2", 7, 0, random (0, 360), 2, random (30, 150))
 		stop
 	}
@@ -1204,7 +1204,7 @@ actor Player_Blood : Brutal_Blood
 		TNT1 A 0
 		TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 7, 0, random (0, 360), 2, random (30, 60))
 		BLHT BCDEFG 1
-		TNT1 A 0 A_RadiusGive("BloodOnVisor", 128, RGF_PLAYERS, 1)
+		TNT1 A 0 A_RadiusGive("BloodOnVisor", 64, RGF_PLAYERS, 1)
 	    BLHT HHHHHHHHHHH 1 A_FadeOut(0.1)
 	    Stop
 		}
@@ -1484,7 +1484,7 @@ actor SuperGore
 	{
 		Spawn:
 		BLOR L 15
-		TNT1 A 0 A_RadiusGive("BloodOnVisor", 128, RGF_PLAYERS, 1)
+		TNT1 A 0 A_RadiusGive("BloodOnVisor", 64, RGF_PLAYERS, 1)
 		BLOR LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL 1 A_FadeOut(0.015)
 		Stop
 	}
