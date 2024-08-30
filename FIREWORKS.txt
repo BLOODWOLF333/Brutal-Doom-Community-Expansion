@@ -81,7 +81,7 @@ ACTOR ExplosiveBarrel1 Replaces ExplosiveBarrel
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 A_CustomMissile("CallingTheBaronAFaggot", 32, 0, 0, 1)
 		TNT1 A 0 A_GiveToTarget("ComingTOGetTheBarrel", 1)
-		DoingNothing:
+	DoingNothing:
 		BARI ABCDCB 6
 		TNT1 A 0 A_ClearTarget
 		Goto Stay
@@ -158,17 +158,17 @@ ACTOR ExplosiveBarrel1 Replaces ExplosiveBarrel
 	Death.Fatality:
 	Death.PussyGrab:
 		TNT1 A 0
-        TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_GiveToTarget("GoSpecial", 1)
         TNT1 A 0 A_GiveToTarget("HasBarrel", 1)
+        TNT1 A 0 A_NoBlocking
         Stop
 
 	Death.BHFT:
 	Death.BHFTOnBarrel:
-	TNT1 A 0
-	TNT1 A 0 A_NoBlocking
-	TNT1 A 0 A_GiveToTarget("HasExplosiveBarrel", 1)
-	Stop
+		TNT1 A 0
+		TNT1 A 0 A_GiveToTarget("HasExplosiveBarrel", 1)
+		TNT1 A 0 A_NoBlocking
+		Stop
 	}
 }
 
