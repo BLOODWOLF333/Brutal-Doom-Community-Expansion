@@ -23,7 +23,6 @@ ACTOR Rocket_Launcher : BrutalWeapon
 	Dropitem "RocketLauncherSpawner"
 	States
 	{
-
 	Ready3:
 	Ready:
 		RLNG A 0 A_JumpIfInventory("RLUnloaded", 1, "ReadyNoAmmo")
@@ -108,37 +107,33 @@ ACTOR Rocket_Launcher : BrutalWeapon
 		Goto ReadyNoAmmo
 
 	CheckSprint:
-		RLNG A 1 A_WeaponReady(WRF_NOFIRE)
+		RLNG A 1 A_WeaponReady(WRF_ALLOWRELOAD)
 		RLNG A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
 		Goto Ready3
 
 	CheckSprint2:
-		SNIP A 1 A_WeaponReady(WRF_NOFIRE)
+		SNIP A 1 A_WeaponReady(WRF_ALLOWRELOAD)
 		RLNG A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
 		Goto Ready2
 
 	CheckSprintNoAmmo:
-		MISR J 1 A_WeaponReady(WRF_NOFIRE)
+		MISR J 1 A_WeaponReady(WRF_ALLOWRELOAD)
 		RLNG A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprintNoAmmo")
 		Goto ReadyNoAmmo
 
 	StartSprint:
-		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
-		RLNG A 7 A_WeaponReady(WRF_NOFIRE)
-		RLNG A 0 A_Takeinventory("Zoomed",1)
-		RLNG A 0 A_Takeinventory("ADSmode",1)
-		RLNG A 0 A_Takeinventory("PowerLightAmp", 1)
-		RLNG A 0 A_ZoomFactor(1.0)
+		RLNG A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+		SHTN A 0 A_Takeinventory("Zoomed",1)
+		RAIL A 0 A_Takeinventory("PowerLightAmp", 1)
+        SHTN A 0 A_ZoomFactor(1.0)
+		SHTN A 0 A_Takeinventory("ADSmode",1)
 		RIFG A 0 A_SetCrosshair(0)
+		SHTN A 0 A_Giveinventory("GoSpecial",1)
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		RLNG A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
+		SMGG A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
+		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
 
 	Sprinting:
-		MISP A 0 offset(-9,32)
-		RLNG A 0 offset(-9,32) A_JumpIfInventory("IsStandingStill", 1, "Ready3")
-		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		RLNG A 0 offset(-9,32) A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
-		PLAY A 0 offset(-9,32) ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
 		MISP A 1 offset(-9,34) A_SetPitch(pitch -0.5)
 		MISP A 1 offset(-6,36) A_SetPitch(pitch -0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
@@ -149,12 +144,13 @@ ACTOR Rocket_Launcher : BrutalWeapon
 		MISP A 1 offset(6,34) A_SetPitch(pitch -0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		MISP A 1 offset(9,32) A_SetPitch(pitch -0.5)
-		RLNG A 0 offset(9,32) A_WeaponReady(WRF_NOBOB)
-		RLNG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-        RLNG A 0 A_JumpIfInventory("Taunting",1,"GoTaunt")
-        RLNG A 0 A_JumpIfInventory("Reloading",1,"Reload")
-		RLNG A 0 offset(-9,32)
-		RLNG A 0 offset(9,33) A_SpawnItemEx("FootStep", 0, 0, 2, 0, 0, -4)
+		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		TNT1 A 0 A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
+		SMGG A 0 A_WeaponReady(WRF_NOBOB)
+		SMGG A 0 A_JumpIfInventory("IsStandingStill", 1, "StopSprint")
+		SMGG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        SMGG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+        SMGG A 0 A_JumpIfInventory("Reloading",1,"Reload")
 		MISP A 1 offset(9,34) A_SetPitch(pitch +0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		MISP A 1 offset(6,36) A_SetPitch(pitch +0.5)
@@ -166,8 +162,16 @@ ACTOR Rocket_Launcher : BrutalWeapon
 		MISP A 1 offset(-6,34) A_SetPitch(pitch +0.5)
 		MISP A 1 offset(-9,32) A_SetPitch(pitch +0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
-		RLNG A 0 offset(-9,32) A_WeaponReady(WRF_NOBOB)
-		RLNG A 0 offset(-9,32) A_JumpIfInventory("IsRunning", 1, "Sprinting")
+		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		TNT1 A 0 A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
+		SMGG A 0 A_WeaponReady(WRF_NOBOB)
+		SMGG A 0 A_JumpIfInventory("IsStandingStill", 1, "StopSprint")
+		SMGG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        SMGG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+        SMGG A 0 A_JumpIfInventory("Reloading",1,"Reload")
+
+		PLAY A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
+		SMGG A 0 A_JumpIfInventory("IsRunning", 1, "Sprinting")
 		Goto StopSprint
 	StopSprintTired:
 		RLNG A 0
@@ -187,29 +191,24 @@ ACTOR Rocket_Launcher : BrutalWeapon
 		RLNG A 0 A_TakeInventory("UsedStamina", 1)
 		Goto Ready
 	StopSprint:
-		MISP A 1
-		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		MISP A 1 A_JumpIfInventory("PowerStrength", 1, 2)
 		RLNG A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
 		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		Goto Ready
 
 	StartSprintNoAmmo:
-		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
-		MISR J 7 A_WeaponReady(WRF_NOFIRE)
-		RLNG A 0 A_Takeinventory("Zoomed",1)
-		RLNG A 0 A_Takeinventory("ADSmode",1)
-		RLNG A 0 A_Takeinventory("PowerLightAmp", 1)
-		RLNG A 0 A_ZoomFactor(1.0)
+		MISR J 1 A_WeaponReady(WRF_ALLOWRELOAD)
+		SHTN A 0 A_Takeinventory("Zoomed",1)
+		RAIL A 0 A_Takeinventory("PowerLightAmp", 1)
+        SHTN A 0 A_ZoomFactor(1.0)
+		SHTN A 0 A_Takeinventory("ADSmode",1)
 		RIFG A 0 A_SetCrosshair(0)
+		SHTN A 0 A_Giveinventory("GoSpecial",1)
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		RLNG A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTiredNoAmmo")
+		SMGG A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTiredNoAmmo")
+		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
 
 	SprintingNoAmmo:
-		MISP A 0 offset(-9,32)
-		RLNG A 0 offset(-9,32) A_JumpIfInventory("IsStandingStill", 1, "ReadyNoAmmo")
-		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		RLNG A 0 offset(-9,32) A_JumpIfInventory("UsedStamina", 100, "StopSprintTiredNoAmmo")
-		PLAY A 0 offset(-9,32) ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
 		MISR J 1 offset(-9,34) A_SetPitch(pitch -0.5)
 		MISR J 1 offset(-6,36) A_SetPitch(pitch -0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
@@ -220,12 +219,13 @@ ACTOR Rocket_Launcher : BrutalWeapon
 		MISR J 1 offset(6,34) A_SetPitch(pitch -0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		MISR J 1 offset(9,32) A_SetPitch(pitch -0.5)
-		RLNG A 0 offset(9,32) A_WeaponReady(WRF_NOBOB)
-		RLNG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-        RLNG A 0 A_JumpIfInventory("Taunting",1,"GoTaunt")
-        RLNG A 0 A_JumpIfInventory("Reloading",1,"Reload")
-		RLNG A 0 offset(-9,32)
-		RLNG A 0 offset(9,33) A_SpawnItemEx("FootStep", 0, 0, 2, 0, 0, -4)
+		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		TNT1 A 0 A_JumpIfInventory("UsedStamina", 100, "StopSprintTiredNoAmmo")
+		SMGG A 0 A_WeaponReady(WRF_NOBOB)
+		SMGG A 0 A_JumpIfInventory("IsStandingStill", 1, "StopSprintNoAmmo")
+		SMGG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        SMGG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+        SMGG A 0 A_JumpIfInventory("Reloading",1,"Reload")
 		MISR J 1 offset(9,34) A_SetPitch(pitch +0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		MISR J 1 offset(6,36) A_SetPitch(pitch +0.5)
@@ -237,8 +237,16 @@ ACTOR Rocket_Launcher : BrutalWeapon
 		MISR J 1 offset(-6,34) A_SetPitch(pitch +0.5)
 		MISR J 1 offset(-9,32) A_SetPitch(pitch +0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
-		RLNG A 0 offset(-9,32) A_WeaponReady(WRF_NOBOB)
-		RLNG A 0 offset(-9,32) A_JumpIfInventory("IsRunning", 1, "SprintingNoAmmo")
+		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		TNT1 A 0 A_JumpIfInventory("UsedStamina", 100, "StopSprintTiredNoAmmo")
+		SMGG A 0 A_WeaponReady(WRF_NOBOB)
+		SMGG A 0 A_JumpIfInventory("IsStandingStill", 1, "StopSprintNoAmmo")
+		SMGG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        SMGG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+        SMGG A 0 A_JumpIfInventory("Reloading",1,"Reload")
+
+		PLAY A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
+		SMGG A 0 A_JumpIfInventory("IsRunning", 1, "SprintingNoAmmo")
 		Goto StopSprintNoAmmo
 	StopSprintTiredNoAmmo:
 		RLNG A 0
@@ -258,8 +266,7 @@ ACTOR Rocket_Launcher : BrutalWeapon
 		RLNG A 0 A_TakeInventory("UsedStamina", 1)
 		Goto ReadyNoAmmo
 	StopSprintNoAmmo:
-		MISR J 1
-		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		MISR J 1 A_JumpIfInventory("PowerStrength", 1, 2)
 		RLNG A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTiredNoAmmo")
 		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		Goto ReadyNoAmmo

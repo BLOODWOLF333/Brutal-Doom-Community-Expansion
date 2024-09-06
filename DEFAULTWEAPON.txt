@@ -11,27 +11,27 @@ ACTOR BrutalWeapon : DoomWeapon
 	States
 	{
 	GoingToReady:
-		  TNT1 A 0 A_TakeInventory("BDWEaponACtion", 1)
-		  TNT1 A 0 A_TakeInventory("ExecuteDownedEnemy", 1)
-		  TNT1 A 0 A_TakeInventory("GoFatality", 1)
-		  TNT1 A 0 A_TakeInventory("Kicking",1)
-		  TNT1 A 0 A_TakeInventory("Salute1", 1)
-		  TNT1 A 0 A_TakeInventory("Salute2", 1)
-		  TNT1 A 0 A_TakeInventory("Taunting",1)
-		  TNT1 A 0 A_TakeInventory("TossGrenade",1)
-		  TNT1 A 0 A_TakeInventory("IsRunning",1)
-		  TNT1 A 0 A_TakeInventory("Reloading",1)
-		  TNT1 A 1 A_Raise
-		  Goto Ready3
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("BDWEaponACtion", 1)
+		TNT1 A 0 A_TakeInventory("ExecuteDownedEnemy", 1)
+		TNT1 A 0 A_TakeInventory("GoFatality", 1)
+		TNT1 A 0 A_TakeInventory("Kicking",1)
+		TNT1 A 0 A_TakeInventory("Salute1", 1)
+		TNT1 A 0 A_TakeInventory("Salute2", 1)
+		TNT1 A 0 A_TakeInventory("Taunting",1)
+		TNT1 A 0 A_TakeInventory("TossGrenade",1)
+		TNT1 A 0 A_TakeInventory("IsRunning",1)
+		TNT1 A 0 A_TakeInventory("Reloading",1)
+		TNT1 A 1 A_Raise
+		Goto Ready3
 
 	Steady:
-		TNT1 A 0
 		TNT1 A 2
 		Goto GoingToReady
 
 	Ready3:
-		TNT1 A 0
 		TNT1 A 2 A_WeaponReady
+		TNT1 A 0 A_JUMP(256,"READY3")//only way to force a weapon to jump out of this inherited state
 		Loop
 
 	WEaponActions:

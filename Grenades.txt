@@ -132,22 +132,22 @@ ACTOR HandGrenades : BrutalWeapon
 		Stop
 
 	CheckSprint:
-		GRHO C 1 A_WeaponReady(WRF_NOFIRE)
+		GRHO C 1 A_WeaponReady
 		GRND F 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
 		Goto Steady
 
 	StartSprint:
-		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
-		GRHO C 7 A_WeaponReady(WRF_NOFIRE)
+		GRHO C 1 A_WeaponReady
+		SHTN A 0 A_Takeinventory("Zoomed",1)
+        SHTN A 0 A_ZoomFactor(1.0)
+		SHTN A 0 A_Takeinventory("ADSmode",1)
+		RIFG A 0 A_SetCrosshair(0)
+		SHTN A 0 A_Giveinventory("GoSpecial",1)
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		GRND F 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
+		SMGG A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
+		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
 
 	Sprinting:
-		PISP A 0 offset(-9,32)
-		GRND F 0 offset(-9,32) A_JumpIfInventory("IsStandingStill", 1, "Steady")
-		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		GRND F 0 offset(-9,32) A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
-		PLAY A 0 offset(-9,32) ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
 		GRHO A 1 offset(-9,34) A_SetPitch(pitch -0.5)
 		GRHO A 1 offset(-6,36) A_SetPitch(pitch -0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
@@ -158,11 +158,12 @@ ACTOR HandGrenades : BrutalWeapon
 		GRHO A 1 offset(6,34) A_SetPitch(pitch -0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		GRHO A 1 offset(9,32) A_SetPitch(pitch -0.5)
-		GRND F 0 offset(9,32) A_WeaponReady(WRF_NOBOB)
-		GRND F 0 A_JumpIfInventory("Kicking",1,"DoKick")
-        GRND F 0 A_JumpIfInventory("Taunting",1,"Taunt")
-		GRND F 0 offset(-9,32)
-		GRND F 0 offset(9,33) A_SpawnItemEx("FootStep", 0, 0, 2, 0, 0, -4)
+		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		TNT1 A 0 A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
+		SMGG A 0 A_WeaponReady(WRF_NOBOB)
+		SMGG A 0 A_JumpIfInventory("IsStandingStill", 1, "StopSprint")
+		SMGG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        SMGG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		GRHO A 1 offset(9,34) A_SetPitch(pitch +0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		GRHO A 1 offset(6,36) A_SetPitch(pitch +0.5)
@@ -174,8 +175,15 @@ ACTOR HandGrenades : BrutalWeapon
 		GRHO A 1 offset(-6,34) A_SetPitch(pitch +0.5)
 		GRHO A 1 offset(-9,32) A_SetPitch(pitch +0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
-		GRND F 0 offset(-9,32) A_WeaponReady(WRF_NOBOB)
-		GRND F 0 offset(-9,32) A_JumpIfInventory("IsRunning", 1, "Sprinting")
+		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		TNT1 A 0 A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
+		SMGG A 0 A_WeaponReady(WRF_NOBOB)
+		SMGG A 0 A_JumpIfInventory("IsStandingStill", 1, "StopSprint")
+		SMGG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        SMGG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+
+		PLAY A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
+		SMGG A 0 A_JumpIfInventory("IsRunning", 1, "Sprinting")
 		Goto StopSprint
 
 	StopSprintTired:
@@ -196,29 +204,28 @@ ACTOR HandGrenades : BrutalWeapon
 		GRND F 0 A_TakeInventory("UsedStamina", 1)
 		Goto Ready
 	StopSprint:
-		GRHO A 1
-		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		GRHO A 1 A_JumpIfInventory("PowerStrength", 1, 2)
 		GRND F 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
 		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		Goto Ready
 
 	CheckSprintNoAmmo:
-		TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+		TNT1 A 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprintNoAmmo")
 		Goto Ready
 
 	StartSprintNoAmmo:
-		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
-		TNT1 A 7 A_WeaponReady(WRF_NOFIRE)
+		TNT1 A 1 A_WeaponReady
+		SHTN A 0 A_Takeinventory("Zoomed",1)
+        SHTN A 0 A_ZoomFactor(1.0)
+		SHTN A 0 A_Takeinventory("ADSmode",1)
+		RIFG A 0 A_SetCrosshair(0)
+		SHTN A 0 A_Giveinventory("GoSpecial",1)
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		TNT1 A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTiredNoAmmo")
+		SMGG A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTiredNoAmmo")
+		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
 
 	SprintingNoAmmo:
-		TNT1 A 0 offset(-9,32)
-		TNT1 A 0 offset(-9,32) A_JumpIfInventory("IsStandingStill", 1, "Ready")
-		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		TNT1 A 0 offset(-9,32) A_JumpIfInventory("UsedStamina", 100, "StopSprintTiredNoAmmo")
-		TNT1 A 0 offset(-9,32) ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
 		TNT1 A 1 offset(-9,34) A_SetPitch(pitch -0.5)
 		TNT1 A 1 offset(-6,36) A_SetPitch(pitch -0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
@@ -229,11 +236,12 @@ ACTOR HandGrenades : BrutalWeapon
 		TNT1 A 1 offset(6,34) A_SetPitch(pitch -0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		TNT1 A 1 offset(9,32) A_SetPitch(pitch -0.5)
-		TNT1 A 0 offset(9,32) A_WeaponReady(WRF_NOBOB)
-		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
-		TNT1 A 0 offset(-9,32)
-		TNT1 A 0 offset(9,33) A_SpawnItemEx("FootStep", 0, 0, 2, 0, 0, -4)
+		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		TNT1 A 0 A_JumpIfInventory("UsedStamina", 100, "StopSprintTiredNoAmmo")
+		SMGG A 0 A_WeaponReady(WRF_NOBOB)
+		SMGG A 0 A_JumpIfInventory("IsStandingStill", 1, "StopSprintNoAmmo")
+		SMGG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        SMGG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		TNT1 A 1 offset(9,34) A_SetPitch(pitch +0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		TNT1 A 1 offset(6,36) A_SetPitch(pitch +0.5)
@@ -245,8 +253,15 @@ ACTOR HandGrenades : BrutalWeapon
 		TNT1 A 1 offset(-6,34) A_SetPitch(pitch +0.5)
 		TNT1 A 1 offset(-9,32) A_SetPitch(pitch +0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
-		TNT1 A 0 offset(-9,32) A_WeaponReady(WRF_NOBOB)
-		TNT1 A 0 offset(-9,32) A_JumpIfInventory("IsRunning", 1, "SprintingNoAmmo")
+		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		TNT1 A 0 A_JumpIfInventory("UsedStamina", 100, "StopSprintTiredNoAmmo")
+		SMGG A 0 A_WeaponReady(WRF_NOBOB)
+		SMGG A 0 A_JumpIfInventory("IsStandingStill", 1, "StopSprintNoAmmo")
+		SMGG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        SMGG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+
+		PLAY A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
+		SMGG A 0 A_JumpIfInventory("IsRunning", 1, "SprintingNoAmmo")
 		Goto StopSprintNoAmmo
 
 	StopSprintTiredNoAmmo:
@@ -267,8 +282,7 @@ ACTOR HandGrenades : BrutalWeapon
 		TNT1 A 0 A_TakeInventory("UsedStamina", 1)
 		Goto Ready
 	StopSprintNoAmmo:
-		TNT1 A 1
-		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		TNT1 A 1 A_JumpIfInventory("PowerStrength", 1, 2)
 		TNT1 A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTiredNoAmmo")
 		TNT1 A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		Goto Ready

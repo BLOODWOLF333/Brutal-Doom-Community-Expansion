@@ -55,23 +55,24 @@ ACTOR Machinegun : BrutalWeapon
 		Loop
 
 	CheckSprint:
-		MGN1 A 1 A_WeaponReady(WRF_NOFIRE)
+		MGN1 A 1 A_WeaponReady(WRF_ALLOWRELOAD)
 		MGN1 A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
 		Goto Ready3
 
 	StartSprint:
-		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
-		MGN1 A 7 A_WeaponReady(WRF_NOFIRE)
-		TNT1 A 0 ACS_NamedExecuteAlways("MGGrenadeCheck")
+		MGN1 A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+		SHTN A 0 A_Takeinventory("Zoomed",1)
+        SHTN A 0 A_ZoomFactor(1.0)
+		SHTN A 0 A_Takeinventory("ADSmode",1)
+		RIFG A 0 A_SetCrosshair(0)
+		SHTN A 0 A_Giveinventory("GoSpecial",1)
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		MGN1 A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
+		SMGG A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
+		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
 
 	Sprinting:
-		MGN1 S 0 offset(-9,32)
-		MGN1 A 0 offset(-9,32) A_JumpIfInventory("IsStandingStill", 1, "Ready3")
-		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		MGN1 A 0 offset(-9,32) A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
-		PLAY A 0 offset(-9,32) ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
+		MGN1 A 0
+		TNT1 A 0 ACS_NamedExecuteAlways("MGGrenadeCheck")
 		MGN1 S 1 offset(-9,34) A_SetPitch(pitch -0.5)
 		MGN1 S 1 offset(-6,36) A_SetPitch(pitch -0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
@@ -82,12 +83,13 @@ ACTOR Machinegun : BrutalWeapon
 		MGN1 S 1 offset(6,34) A_SetPitch(pitch -0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		MGN1 S 1 offset(9,32) A_SetPitch(pitch -0.5)
-		MGN1 A 0 offset(9,32) A_WeaponReady(WRF_NOBOB)
-		MGN1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-        MGN1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
-        MGN1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
-		MGN1 A 0 offset(-9,32)
-		MGN1 A 0 offset(9,33) A_SpawnItemEx("FootStep", 0, 0, 2, 0, 0, -4)
+		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		TNT1 A 0 A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
+		SMGG A 0 A_WeaponReady(WRF_NOBOB)
+		SMGG A 0 A_JumpIfInventory("IsStandingStill", 1, "StopSprint")
+		SMGG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        SMGG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+        SMGG A 0 A_JumpIfInventory("Reloading",1,"Reload")
 		MGN1 S 1 offset(9,34) A_SetPitch(pitch +0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		MGN1 S 1 offset(6,36) A_SetPitch(pitch +0.5)
@@ -99,13 +101,21 @@ ACTOR Machinegun : BrutalWeapon
 		MGN1 S 1 offset(-6,34) A_SetPitch(pitch +0.5)
 		MGN1 S 1 offset(-9,32) A_SetPitch(pitch +0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
-		TNT1 A 0 ACS_NamedExecuteAlways("MGGrenadeCheck")
-		MGN1 A 0 offset(-9,32) A_WeaponReady(WRF_NOBOB)
-		MGN1 A 0 offset(-9,32) A_JumpIfInventory("IsRunning", 1, "Sprinting")
+		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		TNT1 A 0 A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
+		SMGG A 0 A_WeaponReady(WRF_NOBOB)
+		SMGG A 0 A_JumpIfInventory("IsStandingStill", 1, "StopSprint")
+		SMGG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        SMGG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+        SMGG A 0 A_JumpIfInventory("Reloading",1,"Reload")
+
+		PLAY A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
+		SMGG A 0 A_JumpIfInventory("IsRunning", 1, "Sprinting")
 		Goto StopSprint
 
 	StopSprintTired:
 		MGN1 A 0
+		TNT1 A 0 ACS_NamedExecuteAlways("MGGrenadeCheck")
 		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		MGN1 A 0 A_PlaySound("Tired", 2)
 		MGN1 S 4 A_WeaponReady
@@ -122,30 +132,30 @@ ACTOR Machinegun : BrutalWeapon
 		MGN1 A 0 A_TakeInventory("UsedStamina", 1)
 		Goto Ready
 	StopSprint:
-		MGN1 S 1
-		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		MGN1 S 1 A_JumpIfInventory("PowerStrength", 1, 2)
 		MGN1 A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
 		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		Goto Ready
 
 	CheckSprintNoAmmo:
-		MGN1 F 1 A_WeaponReady(WRF_NOFIRE)
-		MGN1 A 0 A_JumpIfInventory("IsStandingStill", 1, "IdleNoAmmo")
+		MGN1 F 1 A_WeaponReady(WRF_ALLOWRELOAD)
 		MGN1 A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprintNoAmmo")
 		Goto IdleNoAmmo
 
 	StartSprintNoAmmo:
-		MGN1 F 1 A_WeaponReady(WRF_NOFIRE)
-		TNT1 A 0 ACS_NamedExecuteAlways("MGGrenadeCheck")
+		MGN1 F 1 A_WeaponReady(WRF_ALLOWRELOAD)
+		SHTN A 0 A_Takeinventory("Zoomed",1)
+        SHTN A 0 A_ZoomFactor(1.0)
+		SHTN A 0 A_Takeinventory("ADSmode",1)
+		RIFG A 0 A_SetCrosshair(0)
+		SHTN A 0 A_Giveinventory("GoSpecial",1)
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		MGN1 A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTiredNoAmmo")
+		SMGG A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTiredNoAmmo")
+		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
 
 	SprintingNoAmmo:
-		MGN1 S 0 offset(-9,32)
-		MGN1 A 0 offset(-9,32) A_JumpIfInventory("IsStandingStill", 1, "IdleNoAmmo")
-		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		MGN1 A 0 offset(-9,32) A_JumpIfInventory("UsedStamina", 100, "StopSprintTiredNoAmmo")
-		PLAY A 0 offset(-9,32) ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
+		MGN1 A 0
+		TNT1 A 0 ACS_NamedExecuteAlways("MGGrenadeCheck")
 		MGN1 F 1 offset(-9,34) A_SetPitch(pitch -0.5)
 		MGN1 F 1 offset(-6,36) A_SetPitch(pitch -0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
@@ -156,12 +166,13 @@ ACTOR Machinegun : BrutalWeapon
 		MGN1 F 1 offset(6,34) A_SetPitch(pitch -0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		MGN1 F 1 offset(9,32) A_SetPitch(pitch -0.5)
-		MGN1 A 0 offset(9,32) A_WeaponReady(WRF_NOBOB)
-		MGN1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-        MGN1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
-        MGN1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
-		MGN1 A 0 offset(-9,32)
-		MGN1 A 0 offset(9,33) A_SpawnItemEx("FootStep", 0, 0, 2, 0, 0, -4)
+		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		TNT1 A 0 A_JumpIfInventory("UsedStamina", 100, "StopSprintTiredNoAmmo")
+		SMGG A 0 A_WeaponReady(WRF_NOBOB)
+		SMGG A 0 A_JumpIfInventory("IsStandingStill", 1, "StopSprintNoAmmo")
+		SMGG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        SMGG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+        SMGG A 0 A_JumpIfInventory("Reloading",1,"Reload")
 		MGN1 F 1 offset(9,34) A_SetPitch(pitch +0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		MGN1 F 1 offset(6,36) A_SetPitch(pitch +0.5)
@@ -173,13 +184,21 @@ ACTOR Machinegun : BrutalWeapon
 		MGN1 F 1 offset(-6,34) A_SetPitch(pitch +0.5)
 		MGN1 F 1 offset(-9,32) A_SetPitch(pitch +0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
-		TNT1 A 0 ACS_NamedExecuteAlways("MGGrenadeCheck")
-		MGN1 A 0 offset(-9,32) A_WeaponReady(WRF_NOBOB)
-		MGN1 A 0 offset(-9,32) A_JumpIfInventory("IsRunning", 1, "SprintingNoAmmo")
+		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		TNT1 A 0 A_JumpIfInventory("UsedStamina", 100, "StopSprintTiredNoAmmo")
+		SMGG A 0 A_WeaponReady(WRF_NOBOB)
+		SMGG A 0 A_JumpIfInventory("IsStandingStill", 1, "StopSprintNoAmmo")
+		SMGG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        SMGG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+        SMGG A 0 A_JumpIfInventory("Reloading",1,"Reload")
+
+		PLAY A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
+		SMGG A 0 A_JumpIfInventory("IsRunning", 1, "SprintingNoAmmo")
 		Goto StopSprintNoAmmo
 
 	StopSprintTiredNoAmmo:
 		MGN1 A 0
+		TNT1 A 0 ACS_NamedExecuteAlways("MGGrenadeCheck")
 		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		MGN1 A 0 A_PlaySound("Tired", 2)
 		MGN1 F 4 A_WeaponReady
@@ -196,8 +215,7 @@ ACTOR Machinegun : BrutalWeapon
 		MGN1 A 0 A_TakeInventory("UsedStamina", 1)
 		Goto IdleNoAmmo
 	StopSprintNoAmmo:
-		MGN1 F 1
-		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		MGN1 F 1 A_JumpIfInventory("PowerStrength", 1, 2)
 		MGN1 A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTiredNoAmmo")
 		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		Goto IdleNoAmmo
