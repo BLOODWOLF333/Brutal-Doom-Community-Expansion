@@ -95,6 +95,7 @@ ACTOR MP40 : BrutalWeapon
 		SHTN A 0 A_Takeinventory("ADSmode",1)
 		RIFG A 0 A_SetCrosshair(0)
 		SHTN A 0 A_Giveinventory("GoSpecial",1)
+		TNT1 A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready")
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
 		SMGG A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
 		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
@@ -471,6 +472,7 @@ ACTOR HitlersBuzzsaw : BrutalWeapon
 		SHTN A 0 A_Takeinventory("ADSmode",1)
 		RIFG A 0 A_SetCrosshair(0)
 		SHTN A 0 A_Giveinventory("GoSpecial",1)
+		TNT1 A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
 		SMGG A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
 		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
@@ -549,6 +551,7 @@ ACTOR HitlersBuzzsaw : BrutalWeapon
 		SHTN A 0 A_Takeinventory("ADSmode",1)
 		RIFG A 0 A_SetCrosshair(0)
 		SHTN A 0 A_Giveinventory("GoSpecial",1)
+		TNT1 A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
 		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
 		SMGG A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTiredNoAmmo")
 		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
