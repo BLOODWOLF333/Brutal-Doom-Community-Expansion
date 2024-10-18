@@ -161,13 +161,15 @@ actor GreenLimbBase: LimbBase
 	BloodColor "DarkGreen"
 	States
 	{
-		Death:
+	Death:
 		TNT1 AAAAAAA 0 A_CustomMissile ("Green_FlyingBloodTrail", 0, 0, random (0, 180), 2, random (0, 180))
 		TNT1 A 1 A_CustomMissile ("XDeath1Green", 5, 5, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_CustomMissile ("XDeath2bGreen", 5, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_SpawnItem ("Green_BloodSpot", 0, 1)
 		XDT3 BCDEFGH 3
-	Death.Crush:	Death.Stomp:	Death.SuperPunch:	Death.ExtremePunches:  Death.Trample:
+    Death.Trample:
+		TNT1 A 0 A_GiveToTarget("BootsSmearedWithGreenBlood", 6)
+	Death.Crush:	Death.Stomp:	Death.SuperPunch:	Death.ExtremePunches:  Death.Desintegrate:
 		TNT1 A 1 A_CustomMissile ("XDeath1Green", 5, 5, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_CustomMissile ("XDeath2bGreen", 5, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_CustomMissile ("XDeath3bGreen", 5, -5, random (0, 360), 2, random (0, 160))
