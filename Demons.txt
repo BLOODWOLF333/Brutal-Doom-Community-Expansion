@@ -1302,13 +1302,10 @@ ACTOR PoorPinkyLostHisArm: Demon
 	States
 	{
 	PutAFight:
-		TNT1 A 0
-		TNT1 A 0 A_ChangeFlag("NOINTERACTION", 1)
+		TNT1 A 0 A_Die("PutAFight")
+	Death.PutAFight:
+		TNT1 A 0 A_NoBlocking
 		TNT1 A 2 A_SpawnItemEx("ArmlessDemon",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 0 A_Die("Vanish")
-		Stop
-	Death.Vanish:
-		TNT1 A -1 A_NoBlocking
 		Stop
 
 	Spawn:
@@ -1378,9 +1375,10 @@ ACTOR PoorPinkyLostHisArm: Demon
 		Stop
 
 	Collapse:
-	    TNT1 A 0 A_Scream
-		TNT1 A 0 A_NoBlocking
 	    SAAR BCDEF 5
+		TNT1 A 0 A_Die("Collapse")
+	Death.Collapse:
+		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem ("DeadDemonNoArm", 5)
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		Stop

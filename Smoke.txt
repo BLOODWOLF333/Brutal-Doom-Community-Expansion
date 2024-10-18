@@ -27,9 +27,6 @@ ACTOR ExplosionSmoke
 		smk2 AAAAAA 2 A_FadeIn(0.05)
 		smk2 AAAAAAAAAA 2
 		smk2 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 2 A_FadeOut(0.01)
-		Goto Death
-	Death:
-		TNT1 A 0
 		Stop
 	Stap:
 		TNT1 A 0
@@ -54,8 +51,6 @@ Speed 1
 		smk2 AAAAAAAA 2 A_FadeIn(0.05)
 		smk2 AAAAAAAAAAAAAAAAA 2
 		smk2 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 2 A_FadeOut(0.01)
-	Death:
-	    TNT1 A 0
 		Stop
 	Stap:
 		TNT1 A 0
@@ -72,34 +67,27 @@ ACTOR BigSmokes: ExplosionSmoke
     States
     {
     Spawn:
-        SMOK A 0
-        Goto Death
-	Death:
 		SMK3 B 100
 		SMK3 CDEFGHIJKLM 1
-
-Stop
+		Stop
     }
 }
 
 Actor NeoSmoke: ExplosionSmoke
 {
 	Alpha 0.1
-Speed 1
-+CLIENTSIDEONLY
-Scale 1.5
-States
-    {
-    Spawn:
-        TNT1 A 2
-        Goto Death
-	Death:
-        PUF2 EEFGHIJK 2 A_FadeOut(0.010)
-        TNT1 A 0 A_SpawnItem ("PlasmaSmoke")
-        PUF2 LMNOPQRSTUVWXYZ 2 A_FadeOut(0.010)
-
-Stop
-}
+	Speed 1
+	+CLIENTSIDEONLY
+	Scale 1.5
+	States
+	{
+	Spawn:
+	TNT1 A 2
+	PUF2 EEFGHIJK 2 A_FadeOut(0.010)
+	TNT1 A 0 A_SpawnItem ("PlasmaSmoke")
+	PUF2 LMNOPQRSTUVWXYZ 2 A_FadeOut(0.010)
+	Stop
+	}
 }
 
 Actor BigNeoSmoke: HeavyExplosionSmoke
@@ -115,14 +103,11 @@ Actor BigNeoSmoke: HeavyExplosionSmoke
 	smk2 A 40
 	TNT1 A 0 A_JumpIf(waterlevel > 1, "Stap")
 	smk2 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 2 A_FadeOut(0.002)
-	Goto Death
-	Death:
-	    TNT1 A 0
     Stop
 	Stap:
 	TNT1 A 0
 	Stop
-}
+	}
 }
 
 Actor HugeNeoSmoke: BigNeoSmoke
@@ -138,7 +123,7 @@ States
 	smk2 A 40
 	TNT1 A 0 A_JumpIf(waterlevel > 1, "Stap")
 	smk2 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 2 A_FadeOut(0.003)
-	Goto Death
+	Stop
 	}
 }
 
@@ -155,7 +140,7 @@ States
 	smk2 A 40
 	TNT1 A 0 A_JumpIf(waterlevel > 1, "Stap")
 	smk2 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 2 A_FadeOut(0.003)
-	Goto Death
+	Stop
 	}
 }
 
@@ -169,11 +154,9 @@ ACTOR GunFireSmoke
     States
     {
     Spawn:
-        SMOK A 0
-	Live:
 		TNT1 A 2
 		SM6K ABCDEFG 1
-Stop
+		Stop
     }
 }
 
@@ -186,11 +169,8 @@ States
     {
     Spawn:
         PUF2 A 1
-        Goto Death
-	Death:
         PUF2 ABCDEFGHIJKLMNOPQRSTUVWXYZ 2 A_FadeOut(0.010)
-
-Stop
+		Stop
     }
 }
 
@@ -224,7 +204,7 @@ States
 		TNT1 A 0
         SMOK ABCDEFGHIJKLMNOPQR 2
 		Stop
-		}
+	}
 }
 
 ACTOR RocketSmokeTrail52: ExplosionSmoke
@@ -244,54 +224,48 @@ Stop
 
 Actor OldschoolRocketSmokeTrail2: AltSmoke
 {
-	Alpha 0.7
+Alpha 0.7
 Speed 1
 +CLIENTSIDEONLY
 Scale 0.2
 States
-    {
-    Spawn:
-	    TNT1 A 2
-        SMK3 BCDEFGHIJKKLLMMNN 2
-		SMK3 NN 1 A_FadeOut(0.05)
-		Stop
-
+{
+Spawn:
+TNT1 A 2
+SMK3 BCDEFGHIJKKLLMMNN 2
+SMK3 NN 1 A_FadeOut(0.05)
 Stop
 }
 }
 
 Actor OldschoolRocketSmokeTrail2Bigger: AltSmoke
 {
-	Alpha 0.7
+Alpha 0.7
 Speed 1
 +CLIENTSIDEONLY
 Scale 0.4
 States
-    {
-    Spawn:
-	    TNT1 A 0
-        SMK3 BBBBBBCDEFGHIJKKLLMMN 2
-		SMK3 NNNN 1 A_FadeOut(0.05)
-		Stop
-
+{
+Spawn:
+TNT1 A 0
+SMK3 BBBBBBCDEFGHIJKKLLMMN 2
+SMK3 NNNN 1 A_FadeOut(0.05)
 Stop
 }
 }
 
 Actor OldschoolRocketSmokeTrailDarker: AltSmoke
 {
-	Alpha 0.6
+Alpha 0.6
 Speed 1
 +CLIENTSIDEONLY
 Scale 0.2
 States
-    {
-    Spawn:
-	    TNT1 A 2
-        SMK6 BCDEFGHIJKKLLMMNNNNNN 1
-		SMK6 NNNN 1 A_FadeOut(0.1)
-		Stop
-
+{
+Spawn:
+TNT1 A 2
+SMK6 BCDEFGHIJKKLLMMNNNNNN 1
+SMK6 NNNN 1 A_FadeOut(0.1)
 Stop
 }
 }
@@ -319,8 +293,6 @@ States
 		TNT1 A 0
         SMOK ABCDEFGHIJKLMNOPQ 1
 		Stop
-
-Stop
 }
 }
 
@@ -337,8 +309,6 @@ States
 		TNT1 A 0
         SMOK ABCDEFGHIJKLMNOPQ 3
 		Stop
-
-Stop
 }
 }
 
@@ -355,7 +325,6 @@ States
 		TNT1 A 0
         SMOK ABCDEFGHIJKLMNOPQ 5
 		Stop
-
 }
 }
 
@@ -372,7 +341,6 @@ Actor NukeSmoke: HitpuffSmoke
     Spawn:
 	    SMk2 AAAAAAAA 4 A_FadeIn(0.05)
 		SMk2 A 350
-	Death:
 		SMk2 AAAAAAAAAA 14 A_FadeOut(0.05)
 		Stop
 	}
@@ -399,7 +367,6 @@ Scale 0.2
 States
 {
 Spawn:
-//SMK1 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII 1 A_FadeOut(0.005)
 SMK3 B 4
 SMK3 CDEFGHIJKLM 2
 Stop
@@ -416,10 +383,10 @@ Actor SmokeSpawner
     States
     {
     Spawn:
-      TNT1 A 0
-      TNT1 A 0 Thing_ChangeTID(0,390)
- NULL AA 0 A_CustomMissile ("ShotSmoke", 0, 0, random (0, 360), 2, random (0, 180))
-        Stop
+	TNT1 A 0
+	TNT1 A 0 Thing_ChangeTID(0,390)
+	NULL AA 0 A_CustomMissile ("ShotSmoke", 0, 0, random (0, 360), 2, random (0, 180))
+	Stop
     }
 }
 
@@ -456,7 +423,6 @@ Alpha		0.06
 Radius		0
 Height		0
 Scale		0.6
-
 States
  {
     Spawn:
@@ -473,12 +439,12 @@ RenderStyle Add
 Alpha		0.4
 Scale		0.07
 States
- {
-    Spawn:
-         NULL A 1
-         SMOK ABCDEFGHIJK 1 A_FadeOut(0.01)
-        Stop
-    }
+{
+Spawn:
+ NULL A 1
+ SMOK ABCDEFGHIJK 1 A_FadeOut(0.01)
+Stop
+}
 }
 
 actor CyberStep
@@ -488,51 +454,51 @@ actor CyberStep
 	+NOTELEPORT
 	renderstyle translucent
 	alpha 0.75
-    Scale 0.5
+	Scale 0.5
 	states
 	{
-		Spawn:
-			MNSM ABCDEFGHIJKLMNOPQ 1 bright
-			stop
+	Spawn:
+	MNSM ABCDEFGHIJKLMNOPQ 1 bright
+	stop
 	}
 }
 
 Actor LostSoulOnHandFireSpawner
 {
-    Speed 20
-    +NOCLIP
+	Speed 20
+	+NOCLIP
 	+CLIENTSIDEONLY
 	+NONETID
 	+NOINTERACTION
-    States
-    {
-    Spawn:
-      TNT1 A 1
-      TNT1 A 0 Thing_ChangeTID(0,390)
- NULL AAA 0 A_CustomMissile ("SoulTrails", 0, 0, random (0, 360), 2, random (0, 180))
-        Stop
-    }
+	States
+	{
+	Spawn:
+	TNT1 A 1
+	TNT1 A 0 Thing_ChangeTID(0,390)
+	NULL AAA 0 A_CustomMissile ("SoulTrails", 0, 0, random (0, 360), 2, random (0, 180))
+	Stop
+	}
 }
 
 Actor LSOHK
 {
-    Speed 20
-    +NOCLIP
+	Speed 20
+	+NOCLIP
 	+CLIENTSIDEONLY
 	+NONETID
 	+NOINTERACTION
-    States
-    {
-    Spawn:
-      TNT1 A 1
-      TNT1 A 0 A_PlaySound ("Skull/Death")
- 	EXPL AAAAAAAAAAAAAAAA 0 A_CustomMissile ("FlameTrails", 6, 0, random (0, 360), 2, random (0, 360))
-		EXPL A 0 A_SpawnItemEx("ExplosionParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 0)
-    TNT1 AAA 0 A_CustomMissile ("LSpart1", 42, 0, random (0, 360), 2, random (0, 160))
-    TNT1 A 0 A_CustomMissile ("LSpart3", 42, 0, random (0, 360), 2, random (0, 160))
-    TNT1 AAAA 0 A_CustomMissile ("LSpart2", 42, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0
-        Stop
+	States
+	{
+	Spawn:
+	TNT1 A 1
+	TNT1 A 0 A_PlaySound ("Skull/Death")
+	EXPL AAAAAAAAAAAAAAAA 0 A_CustomMissile ("FlameTrails", 6, 0, random (0, 360), 2, random (0, 360))
+	EXPL A 0 A_SpawnItemEx("ExplosionParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 0)
+	TNT1 AAA 0 A_CustomMissile ("LSpart1", 42, 0, random (0, 360), 2, random (0, 160))
+	TNT1 A 0 A_CustomMissile ("LSpart3", 42, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AAAA 0 A_CustomMissile ("LSpart2", 42, 0, random (0, 360), 2, random (0, 160))
+	TNT1 A 0
+	Stop
     }
 }
 
@@ -556,24 +522,24 @@ ACTOR BarrelExplosionSmokeColumn
     States
     {
     Spawn:
-	    SB17 A 3 A_SetScale(0.8, 0.4)
-		SB17 B 3 A_SetScale(0.9, 0.5)
-		SB17 C 3 A_SetScale(1.0, 0.6)
-		SB17 D 3 A_SetScale(1.1, 0.7)
-		SB17 E 3 A_SetScale(1.6, 0.8)
-	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Stap")
-		SB17 ABCDEFG 3
-		SB17 ABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFG 3
+	SB17 A 3 A_SetScale(0.8, 0.4)
+	SB17 B 3 A_SetScale(0.9, 0.5)
+	SB17 C 3 A_SetScale(1.0, 0.6)
+	SB17 D 3 A_SetScale(1.1, 0.7)
+	SB17 E 3 A_SetScale(1.6, 0.8)
+	TNT1 A 0 A_JumpIf(waterlevel > 1, "Stap")
+	SB17 ABCDEFG 3
+	SB17 ABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFG 3
 
-		SB17 ABCDEFG 3 A_SetScale(1.6, 0.8)
-		SB17 ABCDEFG 3 A_SetScale(1.1, 0.7)
-		SB17 ABCDEFG 3 A_SetScale(1.0, 0.6)
-		SB17 ABCDEFG 3 A_SetScale(0.6, 0.4)
-		SB17 ABCDEFG 3 A_SetScale(0.4, 0.2)
-		Stop
-Stap:
-TNT1 A 0
-Stop
+	SB17 ABCDEFG 3 A_SetScale(1.6, 0.8)
+	SB17 ABCDEFG 3 A_SetScale(1.1, 0.7)
+	SB17 ABCDEFG 3 A_SetScale(1.0, 0.6)
+	SB17 ABCDEFG 3 A_SetScale(0.6, 0.4)
+	SB17 ABCDEFG 3 A_SetScale(0.4, 0.2)
+	Stop
+	Stap:
+	TNT1 A 0
+	Stop
     }
 }
 
@@ -662,9 +628,6 @@ ACTOR BigBlackSmoke
 	SMK1 K 35
 	TNT1 A 0 A_JumpIf(waterlevel > 1, "Stap")
 	SMK1 KKKKKKKKK 2 A_FadeOut(0.05)
-	Goto Death
-	Death:
-	    TNT1 A 0
     Stop
 Stap:
 TNT1 A 0
@@ -686,9 +649,6 @@ ACTOR BigBlackSmokeLarger: BigBlackSmoke
 	SMK1 K 125
 	TNT1 A 0 A_JumpIf(waterlevel > 1, "Stap")
 	SMK1 KKKKKKKKK 2 A_FadeOut(0.05)
-	Goto Death
-	Death:
-	    TNT1 A 0
     Stop
 Stap:
 TNT1 A 0
@@ -706,10 +666,7 @@ ACTOR BigBlackSmokePillar: BigBlackSmoke
     Spawn:
 	SMK5 JIHGFEDCB 2
 	SMK5 A 50
-	Goto Death
-	Death:
-		SMK5 BCDEFGHIJ 4
-	    TNT1 A 0
+	SMK5 BCDEFGHIJ 4
     Stop
 	Stap:
 	TNT1 A 0
@@ -737,9 +694,6 @@ Scale 0.3
 	SMK1 K 50
 	TNT1 A 0 A_JumpIf(waterlevel > 1, "Stap")
 	SMK1 KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK 2 A_FadeOut(0.01)
-	Goto Death
-	Death:
-	    TNT1 A 0
     Stop
 Stap:
 TNT1 A 0
@@ -768,9 +722,6 @@ ACTOR GunBarrelSmoke: ExplosionSmoke
 		smk2 aaaaa 1 A_FadeIn(0.1)
 		smk2 A 2
 		smk2 AAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_FadeOut(0.04)
-		Goto Death
-	Death:
-		TNT1 A 0
 		Stop
 	Stap:
 		TNT1 A 0

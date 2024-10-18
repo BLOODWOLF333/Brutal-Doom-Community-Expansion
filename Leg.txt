@@ -22,7 +22,7 @@ States
 {
 Spawn:
 XXXX A 3
-XXXX A 1 A_NoBlocking
+XXXX A 1 A_Die
 Stop
 
 Pain:
@@ -44,88 +44,92 @@ TNT1 A 0 A_JumpIfHealthLower(1267, "Pain28")//14 Shotgun Pellet
 TNT1 A 0 A_JumpIfHealthLower(1269, "Pain24")//12 SMG
 XDT3 A 0 A_Explode(12,15, 0, 0, 15)//ls
 TNT1 A 3
-TNT1 A 0 A_NoBlocking
+TNT1 A 0 A_Die
 Stop
 
 Pain24:
 TNT1 A 0
 XDT3 A 0 A_Explode(24,15,0,0,15)//ls
-TNT1 A 1 A_NoBlocking
+TNT1 A 1 A_Die
 Stop
 
 Pain28:
 TNT1 A 0
 XDT3 A 0 A_Explode(28,15,0,0,15)//ls
-TNT1 A 1 A_NoBlocking
+TNT1 A 1 A_Die
 Stop
 
 Pain32:
 TNT1 A 0
 XDT3 A 0 A_Explode(32,15,0,0,15)//ls
-TNT1 A 1 A_NoBlocking
+TNT1 A 1 A_Die
 Stop
 
 Pain36:
 TNT1 A 0
 XDT3 A 0 A_Explode(36,15,0,0,15)//ls
-TNT1 A 1 A_NoBlocking
+TNT1 A 1 A_Die
 Stop
 
 Pain40:
 TNT1 A 0
 XDT3 A 0 A_Explode(40,15,0,0,15)//ls
-TNT1 A 1 A_NoBlocking
+TNT1 A 1 A_Die
 Stop
 
 Pain48:
 TNT1 A 0
 XDT3 A 0 A_Explode(48,15,0,0,15)//ls
-TNT1 A 1 A_NoBlocking
+TNT1 A 1 A_Die
 Stop
 
 Pain80:
 TNT1 A 0
 XDT3 A 0 A_Explode(80,15,0,0,15)//ls
-TNT1 A 1 A_NoBlocking
+TNT1 A 1 A_Die
 Stop
 
 Pain100:
 TNT1 A 0
 XDT3 A 0 A_Explode(100,15,0,0,15)//ls
-TNT1 A 1 A_NoBlocking
+TNT1 A 1 A_Die
 Stop
 
 Pain200:
 TNT1 A 0
 XDT3 A 0 A_Explode(200,15,0,0,15)//ls
-TNT1 A 1 A_NoBlocking
+TNT1 A 1 A_Die
 Stop
 
 Pain300:
 TNT1 A 0
 XDT3 A 0 A_Explode(300,15,0,0,15)//ls
-TNT1 A 1 A_NoBlocking
+TNT1 A 1 A_Die
 Stop
 
 Pain400:
 TNT1 A 0
 XDT3 A 0 A_Explode(400,15,0,0,15)//ls
-TNT1 A 1 A_NoBlocking
+TNT1 A 1 A_Die
 Stop
 
 Pain600:
 TNT1 A 0
 XDT3 A 0 A_Explode(600,15,0,0,15)//ls
-TNT1 A 1 A_NoBlocking
+TNT1 A 1 A_Die
 Stop
 
 Pain800:
 TNT1 A 0
 XDT3 A 0 A_Explode(800,15,0,0,15)//ls
-TNT1 A 1 A_NoBlocking
+TNT1 A 1 A_Die
 Stop
 
 Death:
+TNT1 A 0
+TNT1 A 0 A_NoBlocking
+Stop
+
 XDeath:
 TNT1 A 0
 XDT3 A 0 A_Explode(1280,15,0,0,15)//ls
@@ -140,7 +144,7 @@ States
  {
 Spawn:
 XXXX A 4
-XXXX A 1 A_NoBlocking
+XXXX A 1 A_Die
 Stop
  }
 }
@@ -151,7 +155,7 @@ States
  {
 Spawn:
 XXXX A 6
-XXXX A 1 A_NoBlocking
+XXXX A 1 A_Die
 Stop
  }
 }
@@ -162,7 +166,7 @@ States
  {
 Spawn:
 XXXX A 8
-XXXX A 1 A_NoBlocking
+XXXX A 1 A_Die
 Stop
  }
 }
@@ -173,7 +177,7 @@ States
  {
 Spawn:
 XXXX A 10
-XXXX A 1 A_NoBlocking
+XXXX A 1 A_Die
 Stop
  }
 }
@@ -184,7 +188,7 @@ States
  {
 Spawn:
 XXXX A 20
-XXXX A 1 A_NoBlocking
+XXXX A 1 A_Die
 Stop
  }
 }
@@ -195,7 +199,7 @@ States
  {
 Spawn:
 XXXX A 30
-XXXX A 1 A_NoBlocking
+XXXX A 1 A_Die
 Stop
  }
 }
@@ -206,7 +210,7 @@ States
  {
 Spawn:
 XXXX A 60
-XXXX A 1 A_NoBlocking
+XXXX A 1 A_Die
 Stop
  }
 }
@@ -217,7 +221,7 @@ States
  {
 Spawn:
 XXXX A 100
-XXXX A 1 A_NoBlocking
+XXXX A 1 A_Die
 Stop
  }
 }
@@ -228,7 +232,7 @@ States
  {
 Spawn:
 XXXX A 12
-XXXX A 1 A_NoBlocking
+XXXX A 1 A_Die
 Stop
  }
 }
@@ -282,7 +286,7 @@ Spawn:
 TNT1 A 0
 XDT3 A 0 A_Explode(60,10)
 TNT1 ABC 3
-TNT1 A 0  A_NoBlocking
+TNT1 A 0 A_NoBlocking
 Stop
  }
 }
@@ -309,7 +313,7 @@ Spawn:
 TNT1 A 0
 XDT3 A 0 A_Explode(5,10)
 TNT1 ABC 3
-TNT1 A 0  A_NoBlocking
+TNT1 A 0 A_NoBlocking
 Stop
  }
 }

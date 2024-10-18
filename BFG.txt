@@ -410,7 +410,6 @@ Actor BFGExtraParticle
   }
 }
 
-
 ACTOR GreenShockWave
 {
    Speed 0
@@ -427,14 +426,10 @@ ACTOR GreenShockWave
    States
    {
    Spawn:
-      SHOK A 1 BRIGHT
-      Goto Death
-   Death:
-      SHOK BCDEFGHIJKLMNOPQR 1 BRIGHT A_FadeOut(0.05)
+      SHOK ABCDEFGHIJKLMNOPQR 1 BRIGHT A_FadeOut(0.05)
       Stop
    }
 }
-
 
 ACTOR WhiteShockWave: GreenShockwave
 {

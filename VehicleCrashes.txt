@@ -393,12 +393,9 @@ ACTOR TireSmoke
     States
     {
     Spawn:
-        SMOK A 0
-        Goto Death
-	Death:
 	    PUF2 ABCDEFGHIJKLMNOPQRSTUVWXYZ 3
 		PUF3 ABC 3
-Stop
+		Stop
     }
 }
 
@@ -444,9 +441,6 @@ ACTOR CrashPlayerStrong
     {
     Spawn:
         TNT1 A 0
-        Goto Death
-    Death:
-        TNT1 A 0
         TNT1 A 0 A_Explode(20, 80, 1)
 		TNT1 A 1
         Stop
@@ -464,9 +458,6 @@ ACTOR CrashPlayerDevastative
     States
     {
     Spawn:
-        TNT1 A 0
-        Goto Death
-    Death:
         TNT1 A 0
         TNT1 A 0 A_Explode(35, 80, 1)
 		TNT1 A 1
@@ -486,9 +477,6 @@ ACTOR CrashPlayerSuicidal
     {
     Spawn:
         TNT1 A 0
-        Goto Death
-    Death:
-        TNT1 A 0
         TNT1 A 0 A_Explode(1000, 80, 1)
 		TNT1 A 1
         Stop
@@ -506,9 +494,6 @@ ACTOR CrashPlayerDelayed
     States
     {
     Spawn:
-        TNT1 A 1
-        Goto Death
-    Death:
         TNT1 A 3
         TNT1 A 0 A_Explode(19, 80, 1)
 		TNT1 A 1
@@ -524,12 +509,9 @@ ACTOR CrashPlayerDelayedStrong: CrashPlayerDelayed
 ACTOR CrashPlayerDelayedFatal: CrashPlayerDelayed
 {
 +EXTREMEDEATH
-	    States
+States
     {
     Spawn:
-        TNT1 A 1
-        Goto Death
-    Death:
         TNT1 A 3
         TNT1 A 0 A_Explode(202, 80, 1)
 		TNT1 A 1
@@ -568,9 +550,6 @@ ACTOR QuakeCamera
     {
     Spawn:
         TNT1 A 1
-        Goto Death
-    Death:
-        TNT1 A 1
 	    EXPL A 0 Radius_Quake (8, 35, 0, 20, 0)// (intensity, duration, damrad, tremrad, tid)
         TNT1 A 0 A_Explode(1500, 256, 0)
 		TNT1 A 32
@@ -584,9 +563,6 @@ ACTOR QuakeCameraWeak: QuakeCamera
     {
 	Spawn:
         TNT1 A 1
-        Goto Death
-    Death:
-        TNT1 A 1
 	    EXPL A 0 Radius_Quake (4, 35, 0, 10, 0)// (intensity, duration, damrad, tremrad, tid)
         TNT1 A 8
         Stop
@@ -599,9 +575,6 @@ ACTOR BikeBounceSound: QuakeCamera
     {
 	Spawn:
         TNT1 A 1
-        Goto Death
-    Death:
-        TNT1 A 1
 	    TNT1 A 0 A_PlaySound("EBIKEBNC")
         TNT1 A 20
         Stop
@@ -613,9 +586,6 @@ ACTOR BikeBounceSound2: QuakeCamera
     States
     {
 	Spawn:
-        TNT1 A 1
-        Goto Death
-    Death:
         TNT1 A 1
 	    TNT1 A 0 A_PlaySound("EBIKECLS")
         TNT1 A 20
@@ -717,9 +687,6 @@ ACTOR CrashTankIntotheGround1
     {
     Spawn:
         TNT1 A 0
-        Goto Death
-    Death:
-        TNT1 A 0
         TNT1 A 0 A_Explode(5000, 130, 0)
 		TNT1 A 1
         Stop
@@ -737,9 +704,6 @@ ACTOR CrashTankIntotheGround2
     States
     {
     Spawn:
-        TNT1 A 0
-        Goto Death
-    Death:
         TNT1 A 0
         TNT1 A 0 A_Explode(30, 220, 0)
 		TNT1 A 1
@@ -790,6 +754,7 @@ ACTOR HelicopterHitDetection: HitDetectionBase
 	TNT1 A 3
 	TNT1 A 0 A_CustomMissile("HelicopterCrashPuff")
 	Stop
+
 	XDeath:
 	TNT1 A 3
 	TNT1 A 0 A_CustomMissile("HelicopterCrashPuff")
@@ -812,6 +777,7 @@ ACTOR HelicopterHitDetectionGround: HitDetectionBase
 	TNT1 A 3
 	TNT1 A 0 A_CustomMissile("HelicopterCrashPuffGround")
 	Stop
+
 	XDeath:
 	TNT1 A 3
 	TNT1 A 0 A_CustomMissile("HelicopterCrashPuffGround")
@@ -821,32 +787,31 @@ ACTOR HelicopterHitDetectionGround: HitDetectionBase
 
 ACTOR HelicopterCrashPuff: BulletPuff
 {
-  renderstyle Translucent
-scale 0.15
-alpha 0.7
-  +NOBLOCKMAP
-  +NOGRAVITY
-  +NOEXTREMEDEATH
-  +FORCEXYBILLBOARD
-  +FORCERADIUSDMG
-  MISSILE
-  PROJECTILE
-  DamageType "AssaultHelicopterhealth"
-  states
-  {
-Spawn:
-Death:
-XDeath:
-Melee:
+	renderstyle Translucent
+	scale 0.15
+	alpha 0.7
+	+NOBLOCKMAP
+	+NOGRAVITY
+	+NOEXTREMEDEATH
+	+FORCEXYBILLBOARD
+	+FORCERADIUSDMG
+	MISSILE
+	PROJECTILE
+	DamageType "AssaultHelicopterhealth"
+	states
+	{
+		Spawn:
+		Death:
+		XDeath:
+		Melee:
 		TNT1 A 0
-
 		TNT1 A 0 A_Explode(3, 80, 1)
-        TNT1 AAAAAA 0 A_CustomMissile ("CrashSparks", 2, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAAAA 0 A_CustomMissile ("CrashSparks", 2, 0, random (0, 360), 2, random (0, 360))
 		TNT1 A 0 A_CustomMissile ("CrashMetalShards", 2, 0, random (0, 360), 2, random (10, 50))
 		TNT1 A 0 A_PlaySound("BIKECLW", 1)
 		BPUF CD 1 bright
-Stop
-  }
+		Stop
+	}
 }
 
 ACTOR HelicopterCrashPuffGround: HelicopterCrashPuff

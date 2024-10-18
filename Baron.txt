@@ -845,6 +845,7 @@ States
 		 TNT1 A 0 A_CustomMissile ("XDeathOrgan2Green", 15, 0, random (0, 360), 2, random (0, 160))
 		 Stop
 
+	Death.Desintegrate:
 	Death.CrushedBodies:
 		 TNT1 A 0 A_SetAngle(0)
 		 TNT1 A 0 A_CustomMissile ("GreenSuperGoreSpawner", 1, -40, random (0, 360), 2, random (25, 45))
@@ -1072,13 +1073,11 @@ ACTOR DyingBaron1
 		TNT1 A 0 A_CustomMissile ("Green_LiquidBlood", 35, 0, random (0, 360), 2, random (30, 110))
 		KSA8 BC 6 A_SpawnItem("HeadshotTarget4b", 0, 58)
 		TNT1 A 0 A_CustomMissile ("Green_LiquidBlood", 35, 0, random (0, 360), 2, random (30, 110))
-		Goto Death
+		TNT1 A 0 A_DIE
 
 	Death:
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_Fall
 		TNT1 A 0 A_PlaySound("baron/death")
-		KSA8 DEFG 6
+		KSA8 DEFG 6 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("DeadBaronClassic")
 		TNT1 A 0 A_SpawnItem ("GreenGrowingBloodPool")
 		Stop

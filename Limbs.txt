@@ -243,9 +243,6 @@ ACTOR CameraShake: XDeath2
     States
     {
     Spawn:
-        TNT1 A 0
-        Goto Death
-    Death:
         TNT1 A 1
 	    EXPL A 0 Radius_Quake (2, 35, 0, 5, 0)
         TNT1 A 15
@@ -258,9 +255,6 @@ ACTOR CameraShakeMinor: CameraShake
     States
     {
     Spawn:
-        TNT1 A 0
-        Goto Death
-    Death:
         TNT1 A 1
 	    EXPL A 0 Radius_Quake (1, 7, 0, 1, 0)
         TNT1 A 3
@@ -4333,29 +4327,28 @@ ACTOR XDeathHalfDemon
 
 actor Gib_HalfDemon: BigGibBase
 {
-    States
-    {
-    Spawn:
+	States
+	{
+	Spawn:
 	TNT1 A 0
 	TNT1 A 0 A_QueueCorpse
-		SARC F 1 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
-		SARC F -1
-       Stop
+	SARC F 1 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
+	SARC F -1
+	Stop
 
-
-	   Death: Death.Trample:
-  	     TNT1 AAA 0 A_CustomMissile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AAA 0 A_CustomMissile ("XDeathSkinPiece2", 5, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AA 0 A_CustomMissile ("XDeathSkinPiece1", 5, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AaaA 0 A_CustomMissile ("BloodMistBig", 10, 0, random (0, 360), 2, random (30, 90))
-		TNT1 AA 0 A_CustomMissile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAA 0 A_CustomMissile ("XDeath3b", 10, 0, random (0, 360), 2, random (50, 90))
-		TNT1 AAA 0 A_CustomMissile ("XDeath2b", 10, 0, random (0, 360), 2, random (50, 90))
-		TNT1 AA 0 A_CustomMissile ("XDeathDemonArm", 2, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 A 0 A_CustomMissile ("XDeathPinkyDemonHead", 2, 0, random (0, 360), 2, random (0, 160))
-		Stop
-	   }}
-
+	Death: Death.Trample:
+	TNT1 AAA 0 A_CustomMissile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AAA 0 A_CustomMissile ("XDeathSkinPiece2", 5, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AA 0 A_CustomMissile ("XDeathSkinPiece1", 5, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AaaA 0 A_CustomMissile ("BloodMistBig", 10, 0, random (0, 360), 2, random (30, 90))
+	TNT1 AA 0 A_CustomMissile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AAA 0 A_CustomMissile ("XDeath3b", 10, 0, random (0, 360), 2, random (50, 90))
+	TNT1 AAA 0 A_CustomMissile ("XDeath2b", 10, 0, random (0, 360), 2, random (50, 90))
+	TNT1 AA 0 A_CustomMissile ("XDeathDemonArm", 2, 0, random (0, 360), 2, random (0, 160))
+	TNT1 A 0 A_CustomMissile ("XDeathPinkyDemonHead", 2, 0, random (0, 360), 2, random (0, 160))
+	Stop
+	}
+}
 
 ACTOR XDeathSkinPiece1: Xdeath1
 {
@@ -4369,22 +4362,25 @@ ACTOR XDeathSkinPiece1: Xdeath1
 	Mass 1
     States
     {
-    Spawn:
-	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Underwater")
-        XSKI A 4
-        Loop
-    Death:
-        XSKI B 1
-		TNT1 A 0 A_QueueCorpse
-		Goto Rest
+	Spawn:
+	TNT1 A 0 A_JumpIf(waterlevel > 1, "Underwater")
+	XSKI A 4
+	Loop
+
+	Death:
+	XSKI B 1
+	TNT1 A 0 A_QueueCorpse
+	Goto Rest
+
 	Underwater:
 	Splash:
-	    Goto Death
-	 Rest:
-		XSKI B 800
-TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
-		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
-		Loop
+	Goto Death
+
+	Rest:
+	XSKI B 800
+	TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+	TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
+	Loop
     }
 }
 
@@ -4405,7 +4401,7 @@ ACTOR XDeathSkinPiece2: XDeathSkinPiece1
 	    Goto Death
 	Rest:
 		XSKI D 800
-TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 		Loop
     }

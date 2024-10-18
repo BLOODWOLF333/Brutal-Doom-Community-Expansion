@@ -339,6 +339,7 @@ Actor DeadBelphegor: CurbstompedMarine
         BOSB E -1
         Stop
 
+	Death.Desintegrate:
 	Death.CrushedBodies:
 		 TNT1 A 0 A_SetAngle(0)
 		 TNT1 A 0 bright A_CustomMissile ("GreenSuperGoreSpawner", 1, -40, random (0, 360), 2, random (25, 45))
@@ -360,8 +361,8 @@ Actor DeadBelphegor: CurbstompedMarine
 		 GIBS Y 1
 		 GIBS Y -1
 		Stop
-
-		}}
+	}
+}
 
 Actor DeadBelphegorXDeath: DeadBelphegor
 {
@@ -390,7 +391,7 @@ Actor DeadBelphegorXDeath: DeadBelphegor
 		 TNT1 AAA 0 A_SpawnItem("MuchBlood2Green", 0, 25)
 		 TNT1 A 0 A_SpawnItem("MuchBlood3Green", 0, 25)
 		 Stop
-		 }
+	}
 }
 
 Actor FatalizedBelphegor: DeadBelphegor
@@ -403,4 +404,5 @@ States
 		TNT1 AAAAAAAAAA 0 A_CustomMissile ("MuchBloodGreen", 50, 0, random (0, 360), 2, random (0, 160))
 		BS4F L -1
         Stop
-    }}
+    }
+}

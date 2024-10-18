@@ -865,10 +865,10 @@ ACTOR BrutalizedFormerScientist1
 			TNT1 AAAA 0 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
 		Pain:
 			FSD1 A 15
-			Goto DieNow
+			TNT1 A 0 A_DIE("Fall")
 
-		DieNow:
-			TNT1 A 0
+		Death.Fall:
+			TNT1 A 0 A_NoBlocking
 			TNT1 A 0 A_SpawnItem("BrutalizedFormerScientistStop")
 			Stop
 
@@ -907,10 +907,10 @@ ACTOR BrutalizedFormerScientist2: BrutalizedFormerScientist1
 		Spawn:
 		Pain:
 			FSD1 B 15
-			Goto DieNow
+			TNT1 A 0 A_DIE("Fall")
 
-		DieNow:
-			TNT1 A 0
+		Death.Fall:
+			TNT1 A 0 A_NoBlocking
 			TNT1 A 0 A_SpawnItem("BrutalizedFormerScientistStop2")
 			Stop
 
@@ -964,10 +964,10 @@ ACTOR BrutalizedFormerScientist3: BrutalizedFormerScientist1
 		Spawn:
 		Pain:
 			FSD1 C 15
-			Goto DieNow
+			TNT1 A 0 A_DIE("Fall")
 
-		DieNow:
-			TNT1 A 0
+		Death.Fall:
+			TNT1 A 0 A_NoBlocking
 			TNT1 A 0 A_SpawnItem("BrutalizedFormerScientistStop3")
 			Stop
 
@@ -1020,13 +1020,14 @@ ACTOR BrutalizedFormerScientistLeg: BrutalizedFormerScientist1
 	{
 		Spawn:
 		Pain:
-		FSS7 A 15
-		Goto DieNow
+			FSS7 A 15
+			TNT1 A 0 A_DIE("Fall")
 
-		DieNow:
-		FSS7 BCD 5
-		FSS7 F -1
-		Stop
+		Death.Fall:
+			TNT1 A 0 A_NoBlocking
+			FSS7 BCD 5
+			FSS7 F -1
+			Stop
 
 		Death:
 		TNT1 A 0
@@ -1371,7 +1372,6 @@ Actor DyingFormerScientistNoArm: DeadFormerScientist
     {
 		Spawn:
 			TNT1 A 0
-
 			TNT1 A 0 A_PlaySound("BURNZOM",4)
 			TNT1 A 0 A_SpawnItem("HeadshotTarget4", 5, 32,0)
 			FSD2 BEBEBEBEBEBE 10 A_SpawnItem("HeadshotTarget10", 5, 32,0)
@@ -1432,23 +1432,24 @@ Actor DyingFormerScientistNoLeg: DeadFormerScientist
     {
 		Spawn:
 		TNT1 A 0
-
 		TNT1 A 0 A_PlaySound("BURNZOM",4)
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 5, 22,0)
 		FSS7 ABC 5
 		FSS7 DEDEDEDEDEDE 10 A_SpawnItem("HeadshotTarget10", 5, 22,0)
 		FSS7 GH 5
+		TNT1 A 0 A_DIE("Fall")
+
+		Death.Fall:
 		TNT1 A 0 A_NoBlocking
-		//FSS7 F -1
 		TNT1 A 0 A_SpawnItem ("Labguy_NoLeg")
 		Stop
+
 		Death:
 		TNT1 A 0 A_StopSound(4)
 		TNT1 A 0 A_PlaySound("grunt/death")
 		FSS7 GH 5
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 16, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
-		//FSS7 F -1
 		TNT1 A 0 A_SpawnItem ("Labguy_NoLeg")
 		Stop
 
@@ -1747,7 +1748,7 @@ ACTOR ZombieScientistDyingGuts: DyingZombiemanNoArm
 		FSD5 FFFFF 2 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, random(0, 360), 2, random (0, 45))
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 22,0)
 		FSD5 EEEEE 2 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, random(0, 360), 2, random (0, 45))
-		Goto Death
+		TNT1 A 0 A_DIE
 
 		Death.Saw:
 		Death.Cutless:

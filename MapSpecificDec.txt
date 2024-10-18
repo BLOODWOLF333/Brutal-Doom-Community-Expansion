@@ -3447,10 +3447,6 @@ Damagetype "Glass"
 States
 {
 	Spawn:
-	TNT1 A 0
-	Goto Death
-
-	Death:
 	TNT1 A 1
 	TNT1 A 0 A_Explode(32,2)
 	Stop
@@ -3462,10 +3458,6 @@ Actor GlassBreakDamageMedium: GlassBreakDamage
 States
 {
 	Spawn:
-	TNT1 A 0
-	Goto Death
-
-	Death:
 	TNT1 A 1
 	TNT1 A 0 A_Explode(32,16)
 	Stop
@@ -3477,10 +3469,6 @@ Actor GlassBreakDamageBig: GlassBreakDamage
 States
 {
 	Spawn:
-	TNT1 A 0
-	Goto Death
-
-	Death:
 	TNT1 A 1
 	TNT1 A 0 A_Explode(32,42)
 	Stop
@@ -4091,9 +4079,9 @@ States
 		BPEC R -1
 		Stop
 	Death:
-		BPEC S 1 A_ChangeFlag("NOINTERACTION", 1)
+		BPEC S 1 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("BDECSpecimenTankDestroyed")
-		TNT1 A -1 A_NoBlocking
+		TNT1 A -1 Thing_Remove(0)
 		Stop
 	}
 }
@@ -4117,10 +4105,10 @@ States
 	Ambush:
 		BPEC S 1 A_DIE
 	Death:
-		BPEC S 1 A_ChangeFlag("NOINTERACTION", 1)
+		BPEC S 1 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("Experiment")
 		TNT1 A 0 A_SpawnItem("BDECSpecimenTankDestroyed")
-		TNT1 A -1 A_NoBlocking
+		TNT1 A -1 Thing_Remove(0)
 		Stop
 	}
 }

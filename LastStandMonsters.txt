@@ -1,14 +1,13 @@
 ACTOR ZombiemanLastStand1: ZombiemanGotHisLegBlowed
 {
 Speed 0
-MONSTER
-+MISSILEMORE
-+MISSILEEVENMORE
-+GHOST
-+THRUGHOST
++FLOORCLIP
++FRIGHTENED
 -SOLID
++SHOOTABLE
++DONTSPLASH
 -COUNTKILL
--FRIENDLY
++THRUGHOST
 Tag "Zombie"
 BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
 States
@@ -21,7 +20,7 @@ States
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 28,0)
 	ZBLS AAAAA 1 A_Chase
 	TNT1 A 0 A_GiveInventory("DeathTimer",1)
-	TNT1 A 0 A_JumpIfInventory("DeathTimer",49,"Death")
+	TNT1 A 0 A_JumpIfInventory("DeathTimer",49,"Fall")
 	Loop
 
 	Missile:
@@ -39,8 +38,8 @@ States
 	TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 32, 6, 0, 0)
     TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
     TNT1 A 0 A_PlaySound("PFIRE")
-	TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 20,0)
-	ZBLS B 6 BRIGHT A_CustomMissile("MonsterTracer", 28, 0, random(-12, 12), 0)
+	ZBLS B 6 BRIGHT A_CustomMissile("MonsterTracer", 24, 6, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+	TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 32, 0)
 
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZBLS A 10 A_FaceTarget
@@ -52,8 +51,8 @@ States
 	TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 32, 6, 0, 0)
     TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
     TNT1 A 0 A_PlaySound("PFIRE")
-	TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 20,0)
-	ZBLS B 6 BRIGHT A_CustomMissile("MonsterTracer", 28, 0, random(-12, 12), 0)
+	ZBLS B 6 BRIGHT A_CustomMissile("MonsterTracer", 24, 6, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+	TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 32, 0)
 
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZBLS A 10 A_FaceTarget
@@ -65,8 +64,8 @@ States
 	TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 32, 6, 0, 0)
     TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
     TNT1 A 0 A_PlaySound("PFIRE")
-	TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 20,0)
-	ZBLS B 6 BRIGHT A_CustomMissile("MonsterTracer", 28, 0, random(-12, 12), 0)
+	ZBLS B 6 BRIGHT A_CustomMissile("MonsterTracer", 24, 6, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+	TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 32, 0)
 
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZBLS A 10 A_FaceTarget
@@ -76,8 +75,8 @@ States
 	TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 32, 6, 0, 0)
     TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
     TNT1 A 0 A_PlaySound("PFIRE")
-	TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 20,0)
-	ZBLS B 6 BRIGHT A_CustomMissile("MonsterTracer", 28, 0, random(-12, 12), 0)
+	ZBLS B 6 BRIGHT A_CustomMissile("MonsterTracer", 24, 6, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+	TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 32, 0)
 
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZBLS A 10 A_FaceTarget
@@ -93,8 +92,8 @@ States
 	TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 32, 6, 0, 0)
     TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
     TNT1 A 0 A_PlaySound("PFIRE")
-	TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 20,0)
-	ZBLS B 6 BRIGHT A_CustomMissile("MonsterTracer", 28, 0, random(-12, 12), 0)
+	ZBLS B 6 BRIGHT A_CustomMissile("MonsterTracer", 24, 6, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+	TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 32, 0)
 
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZBLS A 10 A_FaceTarget
@@ -104,10 +103,10 @@ States
 	ZBLS A 10 A_FaceTarget
     TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 32, 6, 0, 0)
-   TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
+	TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
     TNT1 A 0 A_PlaySound("PFIRE")
-	TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 20,0)
-	ZBLS B 6 BRIGHT A_CustomMissile("MonsterTracer", 28, 0, random(-12, 12), 0)
+	ZBLS B 6 BRIGHT A_CustomMissile("MonsterTracer", 24, 6, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+	TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 32, 0)
 
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZBLS A 10 A_FaceTarget
@@ -118,7 +117,8 @@ States
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZBLS A 10 A_FaceTarget
 	TNT1 A 0 A_CHangeFlag("FRIENDLY", 1)
-	Goto Death
+	TNT1 A 0 A_Die
+	stop
 
 	Death.MinorHead:
         TNT1 A 0 A_PlaySound("misc/xdeath4")
@@ -135,14 +135,13 @@ States
 ACTOR ZombiemanLastStand2: DyingZombiemanNoArm
 {
 Speed 0
-MONSTER
-+MISSILEMORE
-+MISSILEEVENMORE
-+GHOST
-+THRUGHOST
++FLOORCLIP
++FRIGHTENED
 -SOLID
++SHOOTABLE
++DONTSPLASH
 -COUNTKILL
--FRIENDLY
++THRUGHOST
 States
 	{
 	Spawn:
@@ -153,7 +152,7 @@ States
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 28,0)
 	ZBLS CCCCC 1 A_Chase
 	TNT1 A 0 A_GiveInventory("DeathTimer",1)
-	TNT1 A 0 A_JumpIfInventory("DeathTimer",49,"Death")
+	TNT1 A 0 A_JumpIfInventory("DeathTimer",49,"Fall")
 	Loop
 
 	Missile:
@@ -175,9 +174,9 @@ States
 	TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 32, 6, 0, 0)
     TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
     TNT1 A 0 A_PlaySound("PFIRE")
-	TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 20,0)
-	ZBLS D 6 BRIGHT A_CustomMissile("MonsterTracer", 28, 0, random(-12, 12), 0)
-    	TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
+	ZBLS D 6 BRIGHT A_CustomMissile("MonsterTracer", 24, 6, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+	TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 32, 0)
+    TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
 
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZBLS C 10 A_FaceTarget
@@ -192,8 +191,8 @@ States
 	TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 32, 6, 0, 0)
     TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
     TNT1 A 0 A_PlaySound("PFIRE")
-	TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 20,0)
-	ZBLS D 6 BRIGHT A_CustomMissile("MonsterTracer", 28, 0, random(-12, 12), 0)
+	ZBLS D 6 BRIGHT A_CustomMissile("MonsterTracer", 24, 6, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+	TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 32, 0)
 
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZBLS C 10 A_FaceTarget
@@ -207,8 +206,8 @@ States
 	TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 32, 6, 0, 0)
     TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
     TNT1 A 0 A_PlaySound("PFIRE")
-	TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 20,0)
-	ZBLS D 6 BRIGHT A_CustomMissile("MonsterTracer", 28, 0, random(-12, 12), 0)
+	ZBLS D 6 BRIGHT A_CustomMissile("MonsterTracer", 24, 6, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+	TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 32, 0)
 
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZBLS C 10 A_FaceTarget
@@ -220,8 +219,8 @@ States
 	TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 32, 6, 0, 0)
     TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
     TNT1 A 0 A_PlaySound("PFIRE")
-	TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 20,0)
-	ZBLS D 6 BRIGHT A_CustomMissile("MonsterTracer", 28, 0, random(-12, 12), 0)
+	ZBLS D 6 BRIGHT A_CustomMissile("MonsterTracer", 24, 6, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+	TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 32, 0)
 
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZBLS C 10 A_FaceTarget
@@ -242,8 +241,8 @@ States
 	TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 32, 6, 0, 0)
     TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
     TNT1 A 0 A_PlaySound("PFIRE")
-	TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 20,0)
-	ZBLS D 6 BRIGHT A_CustomMissile("MonsterTracer", 28, 0, random(-12, 12), 0)
+	ZBLS D 6 BRIGHT A_CustomMissile("MonsterTracer", 24, 6, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+	TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 32, 0)
 
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZBLS C 10 A_FaceTarget
@@ -259,8 +258,8 @@ States
 	TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 32, 6, 0, 0)
     TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
     TNT1 A 0 A_PlaySound("PFIRE")
-	TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 20,0)
-	ZBLS D 6 BRIGHT A_CustomMissile("MonsterTracer", 28, 0, random(-12, 12), 0)
+	ZBLS D 6 BRIGHT A_CustomMissile("MonsterTracer", 24, 6, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+	TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 32, 0)
 
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZBLS C 10 A_FaceTarget
@@ -274,7 +273,8 @@ States
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZBLS C 10 A_FaceTarget
 	TNT1 A 0 A_CHangeFlag("FRIENDLY", 1)
-	Goto Death
+	TNT1 A 0 A_Die
+	Stop
 
 	Death.MinorHead:
 	    TNT1 A 0
@@ -286,13 +286,13 @@ ACTOR SergeantLastStand1: DyingSergeantNoLeg
 {
 Speed 0
 MONSTER
-+MISSILEMORE
-+MISSILEEVENMORE
-+GHOST
-+THRUGHOST
++FLOORCLIP
++FRIGHTENED
 -SOLID
++SHOOTABLE
++DONTSPLASH
 -COUNTKILL
--FRIENDLY
++THRUGHOST
 States
 	{
 	Spawn:
@@ -303,7 +303,7 @@ States
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget6", 0, 28,0)
 	ZSLS AAAAA 1 A_Chase
 	TNT1 A 0 A_GiveInventory("DeathTimer",1)
-	TNT1 A 0 A_JumpIfInventory("DeathTimer",49,"Death")
+	TNT1 A 0 A_JumpIfInventory("DeathTimer",49,"Fall")
 	Loop
 
 	Missile:
@@ -325,8 +325,8 @@ States
 	TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 32, 6, 0, 0)
     TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
     TNT1 A 0 A_PlaySound("PFIRE")
-	TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 20,0)
-	ZSLS B 6 BRIGHT A_CustomMissile("MonsterTracer", 28, 0, random(-12, 12), 0)
+	TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 32, 0)
+	ZSLS B 6 BRIGHT A_CustomMissile("MonsterTracer", 24, 6, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
 
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZSLS A 10 A_FaceTarget
@@ -341,8 +341,8 @@ States
 	TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 32, 6, 0, 0)
     TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
     TNT1 A 0 A_PlaySound("PFIRE")
-	TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 20,0)
-	ZSLS B 6 BRIGHT A_CustomMissile("MonsterTracer", 28, 0, random(-12, 12), 0)
+	TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 32, 0)
+	ZSLS B 6 BRIGHT A_CustomMissile("MonsterTracer", 24, 6, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
 
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZSLS A 10 A_FaceTarget
@@ -357,8 +357,8 @@ States
 	TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 32, 6, 0, 0)
     TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
     TNT1 A 0 A_PlaySound("PFIRE")
-	TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 20,0)
-	ZSLS B 6 BRIGHT A_CustomMissile("MonsterTracer", 28, 0, random(-12, 12), 0)
+	TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 32, 0)
+	ZSLS B 6 BRIGHT A_CustomMissile("MonsterTracer", 24, 6, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
 
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZSLS A 10 A_FaceTarget
@@ -370,8 +370,8 @@ States
 	TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 32, 6, 0, 0)
     TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
     TNT1 A 0 A_PlaySound("PFIRE")
-	TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 20,0)
-	ZSLS B 6 BRIGHT A_CustomMissile("MonsterTracer", 28, 0, random(-12, 12), 0)
+	TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 32, 0)
+	ZSLS B 6 BRIGHT A_CustomMissile("MonsterTracer", 24, 6, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
 
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZSLS A 10 A_FaceTarget
@@ -379,22 +379,6 @@ States
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZSLS A 10 A_FaceTarget
 	TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood", 6, 0, random(0, 180), 2, random (0, 35))
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
-	ZSLS A 10 A_FaceTarget
-	TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood", 6, 0, random(0, 180), 2, random (0, 35))
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
-	ZSLS A 10 A_FaceTarget
-	TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood", 6, 0, random(0, 180), 2, random (0, 35))
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
-	ZSLS A 10 A_FaceTarget
-	TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood", 6, 0, random(0, 180), 2, random (0, 35))
-    TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
-	TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 32, 6, 0, 0)
-    TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
-    TNT1 A 0 A_PlaySound("PFIRE")
-	TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 20,0)
-	ZSLS B 6 BRIGHT A_CustomMissile("MonsterTracer", 28, 0, random(-12, 12), 0)
-
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZSLS A 10 A_FaceTarget
 	TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood", 6, 0, random(0, 180), 2, random (0, 35))
@@ -408,8 +392,24 @@ States
 	TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 32, 6, 0, 0)
     TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
     TNT1 A 0 A_PlaySound("PFIRE")
-	TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 20,0)
-	ZSLS B 6 BRIGHT A_CustomMissile("MonsterTracer", 28, 0, random(-12, 12), 0)
+	TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 32, 0)
+	ZSLS B 6 BRIGHT A_CustomMissile("MonsterTracer", 24, 6, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+
+	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	ZSLS A 10 A_FaceTarget
+	TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood", 6, 0, random(0, 180), 2, random (0, 35))
+	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	ZSLS A 10 A_FaceTarget
+	TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood", 6, 0, random(0, 180), 2, random (0, 35))
+	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	ZSLS A 10 A_FaceTarget
+	TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood", 6, 0, random(0, 180), 2, random (0, 35))
+    TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 32, 6, 0, 0)
+    TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
+    TNT1 A 0 A_PlaySound("PFIRE")
+	TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 32, 0)
+	ZSLS B 6 BRIGHT A_CustomMissile("MonsterTracer", 24, 6, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
 
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZSLS A 10 A_FaceTarget
@@ -423,7 +423,8 @@ States
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZSLS A 10 A_FaceTarget
 	TNT1 A 0 A_CHangeFlag("FRIENDLY", 1)
-	Goto Death
+	TNT1 A 0 A_Die
+	Stop
 
 	Death.MinorHead:
         TNT1 A 0 A_PlaySound("misc/xdeath4")
@@ -441,12 +442,13 @@ ACTOR SergeantLastStand2: DyingSergeant
 {
 Speed 0
 MONSTER
-+MISSILEMORE
-+MISSILEEVENMORE
-+GHOST
-+THRUGHOST
++FLOORCLIP
++FRIGHTENED
+-SOLID
++SHOOTABLE
++DONTSPLASH
 -COUNTKILL
--FRIENDLY
++THRUGHOST
 States
 	{
 	Spawn:
@@ -458,7 +460,7 @@ States
 	ZSLS CCCCC 1 A_Chase
 	TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
 	TNT1 A 0 A_GiveInventory("DeathTimer",1)
-	TNT1 A 0 A_JumpIfInventory("DeathTimer",49,"Death")
+	TNT1 A 0 A_JumpIfInventory("DeathTimer",49,"Fall")
 	Loop
 
 	Missile:
@@ -480,8 +482,8 @@ States
 	TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 32, 6, 0, 0)
     TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
     TNT1 A 0 A_PlaySound("PFIRE")
-	TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 20,0)
-	ZSLS D 6 BRIGHT A_CustomMissile("MonsterTracer", 28, 0, random(-12, 12), 0)
+	TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 32, 0)
+	ZSLS D 6 BRIGHT A_CustomMissile("MonsterTracer", 24, 6, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
 
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZSLS C 10 A_FaceTarget
@@ -496,8 +498,8 @@ States
 	TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 32, 6, 0, 0)
     TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
     TNT1 A 0 A_PlaySound("PFIRE")
-	TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 20,0)
-	ZSLS D 6 BRIGHT A_CustomMissile("MonsterTracer", 28, 0, random(-12, 12), 0)
+	TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 32, 0)
+	ZSLS D 6 BRIGHT A_CustomMissile("MonsterTracer", 24, 6, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
 	TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
 
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
@@ -513,8 +515,8 @@ States
 	TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 32, 6, 0, 0)
     TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
     TNT1 A 0 A_PlaySound("PFIRE")
-	TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 20,0)
-	ZSLS D 6 BRIGHT A_CustomMissile("MonsterTracer", 28, 0, random(-12, 12), 0)
+	TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 32, 0)
+	ZSLS D 6 BRIGHT A_CustomMissile("MonsterTracer", 24, 6, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
 	TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
 
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
@@ -527,8 +529,8 @@ States
 	TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 32, 6, 0, 0)
     TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
     TNT1 A 0 A_PlaySound("PFIRE")
-	TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 20,0)
-	ZSLS D 6 BRIGHT A_CustomMissile("MonsterTracer", 28, 0, random(-12, 12), 0)
+	TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 32, 0)
+	ZSLS D 6 BRIGHT A_CustomMissile("MonsterTracer", 24, 6, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
 
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZSLS C 10 A_FaceTarget
@@ -536,22 +538,6 @@ States
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZSLS C 10 A_FaceTarget
 	TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
-	ZSLS C 10 A_FaceTarget
-	TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
-	ZSLS C 10 A_FaceTarget
-	TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
-	ZSLS C 10 A_FaceTarget
-	TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-    TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
-	TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 32, 6, 0, 0)
-    TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
-    TNT1 A 0 A_PlaySound("PFIRE")
-	TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 20,0)
-	ZSLS D 6 BRIGHT A_CustomMissile("MonsterTracer", 28, 0, random(-12, 12), 0)
-
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZSLS C 10 A_FaceTarget
 	TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
@@ -565,8 +551,24 @@ States
 	TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 32, 6, 0, 0)
     TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
     TNT1 A 0 A_PlaySound("PFIRE")
-	TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 20,0)
-	ZSLS D 6 BRIGHT A_CustomMissile("MonsterTracer", 28, 0, random(-12, 12), 0)
+	TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 32, 0)
+	ZSLS D 6 BRIGHT A_CustomMissile("MonsterTracer", 24, 6, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+
+	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	ZSLS C 10 A_FaceTarget
+	TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
+	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	ZSLS C 10 A_FaceTarget
+	TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
+	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	ZSLS C 10 A_FaceTarget
+	TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
+    TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 32, 6, 0, 0)
+    TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
+    TNT1 A 0 A_PlaySound("PFIRE")
+	TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 32, 0)
+	ZSLS D 6 BRIGHT A_CustomMissile("MonsterTracer", 24, 6, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
 
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZSLS C 10 A_FaceTarget
@@ -580,7 +582,8 @@ States
 	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
 	ZSLS C 10 A_FaceTarget
 	TNT1 A 0 A_CHangeFlag("FRIENDLY", 1)
-	Goto Death
+	TNT1 A 0 A_Die
+	Stop
 
 	Death.MinorHead:
 	    TNT1 A 0

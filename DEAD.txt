@@ -143,14 +143,14 @@ actor CurbstompedMarine
 		TNT1 A 0
 		TNT1 A 0 ThrustThingZ(0,25,0,1)
 		TNT1 A 0 A_Jump(256, "Spawn")
-		Goto Death
+		TNT1 A 0 A_Die
 
 	Pain.Trample:
 		TNT1 A 0
 		TNT1 A 0 A_PlaySound("floorslimy")
 		TNT1 A 0 ThrustThingZ(0,25,1,1)
 		TNT1 A 0 A_Jump(256, "Spawn")
-		Goto Death
+		TNT1 A 0 A_Die
 
     Death:
   	     TNT1 A 0 A_SpawnItem("Gibz")
@@ -435,13 +435,9 @@ actor SuperDestroyedBody
     States
     {
 		Spawn:
-		TNT1 A 0
-		Goto Death
-
-		Death:
 		GUTS P 32
 		GUTS P -1
-		Loop
+		Stop
 	}
 }
 
@@ -454,14 +450,11 @@ actor GoryAshes
     States
     {
 		Spawn:
-		Goto Death
-
-		Death:
 		TNT1 A 0
 		GIBD SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS 6 A_CustomMissile ("BurnParticles", 8, 0, random (0, 180), 2, random (0, 180))
 		GIBD SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS 8 A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
 		GIBD S -1
-		Loop
+		Stop
 	}
 }
 

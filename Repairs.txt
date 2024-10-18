@@ -99,19 +99,17 @@ ACTOR RepairToolRicochet: BulletPuff
 
 Actor StationedVehicleCheckRepairs
 {
-+MISSILE
-Damagetype "CheckRepair"
-Speed 0
-States
-{
-Spawn:
-TNT1 A 1
-Goto Death
-Death:
-TNT1 A 0
-TNT1 A 0 A_Explode(3, 50)
-Stop
-}}
+	+MISSILE
+	Damagetype "CheckRepair"
+	Speed 0
+	States
+	{
+	Spawn:
+	TNT1 A 1
+	TNT1 A 0 A_Explode(3, 50)
+	Stop
+	}
+}
 
 Actor RepairVehicleMissile
 {
