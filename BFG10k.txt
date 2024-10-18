@@ -213,6 +213,8 @@ Actor BFG10k : BrutalWeapon
 
 ACTOR BFG10K_Ball: FastProjectile
 {
+	Height 10
+	Radius 10
 	Speed 200
 	Damage (random(400, 400))
     DamageType Desintegrate
@@ -230,7 +232,6 @@ ACTOR BFG10K_Ball: FastProjectile
 	Species "Marines"
 	States
 	{
-
 	Spawn:
         BFS1 AB 1 BRIGHT A_CustomMissile ("BFGDeathParticleFast", 0, 0, random (0, 360), 2, random (0, 360))
 		Loop
@@ -261,7 +262,6 @@ ACTOR MarineBFG10K_Ball : BFG10K_Ball
 	DamageType "Friendbullet"
 	States
 	{
-
 	Spawn:
         BFS1 AB 1 BRIGHT A_CustomMissile ("BFGDeathParticleFast", 0, 0, random (0, 360), 2, random (0, 360))
 		Loop
