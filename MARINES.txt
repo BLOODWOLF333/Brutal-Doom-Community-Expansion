@@ -1,21 +1,3 @@
-ACTOR PrePlacedMarine Replaces ScriptedMarine
-{
-MONSTER
-Height 56
-Radius 16
-Translation  "112:127=[220,0,0]:[0,0,0]"
--COUNTKILL
-    States
-	{
-	Spawn:
-	PLAY A 1
-	TNT1 A 0 A_NoBlocking
-	PLAY A 1
-	TNT1 A 0 A_SpawnItemEx ("Marine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-	Stop
-    }
-}
-
 ACTOR Marine
 {
     Radius 16
