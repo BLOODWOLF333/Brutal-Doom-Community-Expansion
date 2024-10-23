@@ -164,6 +164,7 @@ ACTOR BullDemon: Demon Replaces Demon
 		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "EndFatalitySergeant")
 		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "EndFatalityImp")
 		TNT1 A 0 A_JumpIfInventory("ComandoFatality", 1, "EndFatalityComando")
+		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 A_Recoil (2)
 		SARG H 4 A_Pain
         Goto SeeContinue
@@ -177,6 +178,7 @@ ACTOR BullDemon: Demon Replaces Demon
 		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "EndFatalitySergeant")
 		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "EndFatalityImp")
 		TNT1 A 0 A_JumpIfInventory("ComandoFatality", 1, "EndFatalityComando")
+		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 A_Recoil(15)
 		SARG H 8 A_Pain
 		Goto SeeContinue

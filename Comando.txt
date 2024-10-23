@@ -1061,7 +1061,7 @@ Scale 1.0
 States
 {
 	Spawn:
-		TNT1 A 0
+		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 A_Recoil(2)
 		BR95 A 12
 		TNT1 A 0 A_JumpIf(velx > 0 || velx < 0, "LayDown")
@@ -1111,7 +1111,7 @@ Scale 1.0
 States
 {
 	Spawn:
-		BR95 B 0
+		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 A_Recoil(2)
 		BR95 B 12
 		TNT1 A 0 A_JumpIf(velx > 0 || velx < 0, "LayDown")
