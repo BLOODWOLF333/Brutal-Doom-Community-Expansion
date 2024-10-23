@@ -7,7 +7,6 @@ ACTOR ExplosionSmoke
 	+FORCEXYBILLBOARD
     +CLIENTSIDEONLY
 	+NONETID
-    +NOINTERACTION
 	+NOGRAVITY
 	+DOOMBOUNCE
 	+THRUACTORS
@@ -78,6 +77,7 @@ Actor NeoSmoke: ExplosionSmoke
 	Alpha 0.1
 	Speed 1
 	+CLIENTSIDEONLY
+	+NONETID
 	Scale 1.5
 	States
 	{
@@ -162,7 +162,6 @@ ACTOR GunFireSmoke
 
 ACTOR AltSmoke: ExplosionSmoke
 {
-+NOINTERACTION
 +NOCLIP
 Scale 0.8
 States
@@ -185,7 +184,6 @@ Actor PlasmaSmoke
 PROJECTILE
 +CLIENTSIDEONLY
 +NONETID
-+NOINTERACTION
 +MISSILE
 +THRUACTORS
 +DOOMBOUNCE
@@ -227,6 +225,7 @@ Actor OldschoolRocketSmokeTrail2: AltSmoke
 Alpha 0.7
 Speed 1
 +CLIENTSIDEONLY
++NONETID
 Scale 0.2
 States
 {
@@ -243,6 +242,7 @@ Actor OldschoolRocketSmokeTrail2Bigger: AltSmoke
 Alpha 0.7
 Speed 1
 +CLIENTSIDEONLY
++NONETID
 Scale 0.4
 States
 {
@@ -259,6 +259,7 @@ Actor OldschoolRocketSmokeTrailDarker: AltSmoke
 Alpha 0.6
 Speed 1
 +CLIENTSIDEONLY
++NONETID
 Scale 0.2
 States
 {
@@ -355,7 +356,8 @@ YScale 12.0
 Actor SmallSmoke: AltSmoke
 {
 +CLIENTSIDEONLY
-	Speed 1
++NONETID
+Speed 1
 Scale 1.5
 }
 
@@ -379,7 +381,6 @@ Actor SmokeSpawner
     +NOCLIP
 	+CLIENTSIDEONLY
 	+NONETID
-	+NOINTERACTION
     States
     {
     Spawn:
@@ -396,7 +397,6 @@ Actor SmokeSpawner11
     +NOCLIP
 	+CLIENTSIDEONLY
 	+NONETID
-	+NOINTERACTION
     States
     {
     Spawn:
@@ -412,17 +412,16 @@ ACTOR ShotSmoke
 +NOBLOCKMAP
 +FLOORCLIP
 +FORCEXYBILLBOARD
-+NOINTERACTION
 +FORCEXYBILLBOARD
 +MISSILE
 Speed 1
 RenderStyle Add
-Alpha		0.06
+Alpha 0.06
 +CLIENTSIDEONLY
 +NONETID
-Radius		0
-Height		0
-Scale		0.6
+Radius 0
+Height 0
+Scale 0.6
 States
  {
     Spawn:
@@ -436,8 +435,8 @@ ACTOR CasingSmoke: Shotsmoke
 {
 Speed 1
 RenderStyle Add
-Alpha		0.4
-Scale		0.07
+Alpha 0.4
+Scale 0.07
 States
 {
 Spawn:
@@ -469,7 +468,6 @@ Actor LostSoulOnHandFireSpawner
 	+NOCLIP
 	+CLIENTSIDEONLY
 	+NONETID
-	+NOINTERACTION
 	States
 	{
 	Spawn:
@@ -486,7 +484,6 @@ Actor LSOHK
 	+NOCLIP
 	+CLIENTSIDEONLY
 	+NONETID
-	+NOINTERACTION
 	States
 	{
 	Spawn:
@@ -508,16 +505,13 @@ ACTOR BarrelExplosionSmokeColumn
     Height 0
 	Alpha 0.7
 	RenderStyle Translucent
-	//Scale 0.4
-	//Scale 0.8
 	XScale 1.6
 	YScale 0.8
-    +NOBLOCKMAP
+    -SOLID
     +NOTELEPORT
     +DONTSPLASH
 	+CLIENTSIDEONLY
 	+NONETID
-	+NOINTERACTION
 	Damage 0
     States
     {
@@ -559,8 +553,6 @@ ACTOR ExplosionSimpleSmokeColumn: BarrelExplosionSmokeColumn
     Height 0
 	Alpha 0.4
 	RenderStyle Translucent
-	//Scale 0.4
-	//Scale 0.8
 	XScale 1.5
 	YScale 0.6
 }
@@ -605,7 +597,6 @@ ACTOR BigBlackSmoke
 	+FORCEXYBILLBOARD
     +CLIENTSIDEONLY
 	+NONETID
-	+NOINTERACTION
 	+NOGRAVITY
 	+DOOMBOUNCE
 	+THRUACTORS

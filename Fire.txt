@@ -1576,6 +1576,7 @@ Renderstyle Add
 	States
 	{
     Spawn:
+		SPFN A 1 BRIGHT NODELAY A_Jump(128, 1,2,3)//Randomize
         SPFN ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 BRIGHT
 		SPFM ABCDEFG 1 BRIGHT
         Stop
@@ -1586,6 +1587,8 @@ ACTOR RealisticFireSparks1Blue: ImpBallGettingReady
 {
 Speed 0
 -FORCEXYBILLBOARD
++NOINTERACTION
++NOCLIP
 Alpha 1.0
 Renderstyle Add
 Translation "112:127=[0,72,145]:[66,160,255]"
@@ -1594,7 +1597,8 @@ Translation "112:127=[0,72,145]:[66,160,255]"
 	States
 	{
     Spawn:
-        SPGN ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 BRIGHT
+		SPGN A 1 BRIGHT NODELAY A_Jump(128, 1,2,3)//Randomize
+        SPGN BCDEFGHIJKLMNOPQRSTUVWXYZ 1 BRIGHT
 		SPGM ABCDEFG 1 BRIGHT
         Stop
 	}
@@ -1604,6 +1608,8 @@ ACTOR RealisticFireSparks1Green: ImpBallGettingReady
 {
 Speed 0
 -FORCEXYBILLBOARD
++NOINTERACTION
++NOCLIP
 Alpha 1.0
 Renderstyle Add
     YScale 1.0
@@ -1611,7 +1617,8 @@ Renderstyle Add
 	States
 	{
     Spawn:
-        SPGN ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 BRIGHT
+		SPGN A 1 BRIGHT NODELAY A_Jump(128, 1,2,3)//Randomize
+        SPGN BCDEFGHIJKLMNOPQRSTUVWXYZ 1 BRIGHT
 		SPGM ABCDEFG 1 BRIGHT
         Stop
 	}
