@@ -823,6 +823,16 @@ actor HumanBBQ
 	}
 }
 
+Actor BurningPillarTopFIre : BurningBarrelTopFIre
+{
+	states
+	{
+	Spawn:
+		COLF ABCDEFGHIJKLMNOPQABCDEFGHIJKLMNOPQ 1 BRIGHT
+		Stop
+	}
+}
+
 Actor BDECBurningPillar
 {
 +NOBLOOD
@@ -837,11 +847,11 @@ states
 	{
 	Spawn:
 		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
-		COL4 A 4
+		COL4 A 4 BRIGHT
 	Stay:
-		COL4 A 15
-		TTRB A 0 A_CustomMissile ("RealisticFireSparks1", 64, 0, random (0, 140), 2, random (0, 160))
-		TNT1 A 0 bright A_CustomMissile ("BurningBarrelTopFIre", 42, 0, random (40, 180), 2, random (50, 130))
+		TNT1 A 0 A_SpawnItem("BurningPillarTopFIre")
+		COL4 A 1 BRIGHT A_CustomMissile("RealisticFireSparks1", 64, 0, random (0, 140), 2, random (0, 160))
+		COL4 A 31 BRIGHT
 		Loop
 	}
 }
