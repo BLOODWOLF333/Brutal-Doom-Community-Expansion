@@ -290,12 +290,6 @@ ACTOR TheCyberdemon: Cyberdemon Replaces Cyberdemon
 	Pain.Killme:
 		Goto Missile
 
-	Death.Deletus:
-		TNT1 A 0
-		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
-		TNT1 A 0 A_NoBlocking
-		Stop
-
 	Death.Fatality:
 	    TNT1 A 0
 		TNT1 A 0 A_Pain
@@ -309,7 +303,7 @@ ACTOR TheCyberdemon: Cyberdemon Replaces Cyberdemon
 		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
 		TNT1 A 0 A_GiveToTarget("CyberdemonFatality", 1)
 		TNT1 A 105
-		TNT1 A 0 A_BossDeath
+		TNT1 A -1 A_BossDeath
         Stop
 	}
 }

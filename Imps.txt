@@ -149,7 +149,6 @@ ACTOR Imp Replaces DoomImp
 
 	Missile:
 		TNT1 A 0
-		TNT1 A 0 A_JumpIfHealthLower(1, "Death")
 		TNT1 A 0 A_JumpIfInTargetInventory("IsInATank", 1, "LeapBack")
         TNT1 A 0 A_JumpIfCloser(150, "LeapAttack")
 		TNT1 A 0 A_TakeInventory("SKImp", 1)
@@ -235,10 +234,9 @@ ACTOR Imp Replaces DoomImp
 
 	Death.Eat:
 	    TNT1 A 0
-		TNT1 A 0 A_NoBlocking
 	    TNT1 A 0 A_Scream
         TNT1 A 0 A_GiveToTarget("ImpFatality",1)
-		TNT1 A 0
+		TNT1 A -1 A_NoBlocking
         Stop
 
 	Death.HelperMarineFatallity:
@@ -247,36 +245,39 @@ ACTOR Imp Replaces DoomImp
 		TNT1 A 0
 	    TNT1 A 1 A_Pain
 		TNT1 A 0 A_Scream
-		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_GiveToTarget("ImpFatality", 1)
+		TNT1 A -1 A_NoBlocking
         Stop
 
 	Death.PussyGrab:
 	    TNT1 A 0
 		TNT1 A 0 A_Pain
-		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_GiveToTarget("GrabbedAImp", 1)
+		TNT1 A -1 A_NoBlocking
         Stop
 
 	Death.Fatality:
 		TNT1 A 0 A_Pain
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 24, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
-        TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
 		TNT1 A 0 A_Jump(256, "Death.Fatality1", "Death.Fatality4", "Death.Fatality2", "Death.Fatality3")
 		Goto Death.Fatality1
 
         Death.Fatality1:
         TNT1 A 0 A_GiveToTarget("ImpFatality", 1)
+		TNT1 A -1 A_NoBlocking
         Stop
 		Death.Fatality2:
         TNT1 A 0 A_GiveToTarget("ImpFatality2", 1)
+		TNT1 A -1 A_NoBlocking
 		Stop
 		Death.Fatality3:
         TNT1 A 0 A_GiveToTarget("ImpFatality3", 1)
+		TNT1 A -1 A_NoBlocking
 		Stop
 		Death.Fatality4:
         TNT1 A 0 A_GiveToTarget("ImpFatality4", 1)
+		TNT1 A -1 A_NoBlocking
 		Stop
 
 	Pain.Melee:
@@ -306,8 +307,7 @@ ACTOR Imp Replaces DoomImp
 		Stop
 
 	Death.Vanish:
-		TNT1 A 0
-		TNT1 A 0 A_NoBlocking
+		TNT1 A -1 A_NoBlocking
 		Stop
 
 	Pain.Cut:
@@ -446,28 +446,10 @@ ACTOR Imp Replaces DoomImp
 		Goto Getup+17
 
 	Death.Fall:
-		TROO M 1
-		TNT1 A 0 A_Scream
-		TNT1 A 0 A_NoBLocking
+		TROO M 1 A_Scream
 		TNT1 AAAA 0 A_CustomMissile ("XDeath1", 32, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
-		TROO M -1
-		Stop
-
-	Active:
-		TNT1 A 0
-
-		TNT1 A 0 A_GiveToTarget("ExecuteDownedImp", 1)
-		TNT1 A 0 A_GiveToTarget("GoSpecial", 1)
-		IZD4 M 0
-		IZD4 MMMMMM 2 A_JumpIfInTargetInventory("IsExecutingOnAir", 1, "FinishActive")
-		TNT1 A 0 A_JumpIfInTargetInventory("ExecuteBashWall", 1, "FinishActive")
-		IZD4 M 2
-		TNT1 A 0 A_JumpIfInTargetInventory("ExecuteStompWall", 1, "GetUp")
-	  FinishActive:
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
-		TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
+		TROO M -1 A_NoBlocking
 		Stop
 
 	PainHurt:
@@ -482,7 +464,6 @@ ACTOR Imp Replaces DoomImp
 	Death.Shotgun:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("MuchBlood", 0, 40)
-
 		TNT1 A 0 A_CustomMissile ("SuperWallRedBlood", 42, 0, random (170, 190), 2, random (0, 20))
 	    TNT1 A 0 A_ChangeFlag("SLIDESONWALLS", 0)
 		TNT1 A 0 A_Jump(42, "Death.Shotgunontheface")
@@ -491,8 +472,7 @@ ACTOR Imp Replaces DoomImp
 		Goto Death
 
 	Death.Shotgunontheface:
-	    TNT1 A 0 A_Stop
-		TNT1 A 0 A_NoBlocking
+	    TNT1 A 0
 		TNT1 AA 0 A_CustomMissile ("BloodMist", 40, 0, random (0, 360), 2, random (30, 90))
 		TNT1 A 0 A_Jump(128, "DeathJump")
 		TNT1 A 0 A_ChangeFlag("NOBLOCKMONST", 1)
@@ -516,7 +496,7 @@ ACTOR Imp Replaces DoomImp
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		TNT1 A 0 A_CustomMissile ("SuperWallRedBlood", 2, 0, random (170, 190), 2, random (0, 0))
 		TNT1 A 0 A_SpawnItem("DeadImpTR06K")
-		TNT1 A -1
+		TNT1 A -1 A_NoBlocking
 		Stop
 
 	DeathShotgunontheface2:
@@ -525,7 +505,6 @@ ACTOR Imp Replaces DoomImp
 		TNT1 A 0 A_Pain
 		TROO H 1 A_FaceTarget
 		TNT1 A 0 A_Scream
-		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_Recoil(13)
 		TNT1 A 0 ThrustThingZ(0,20,0,1)
 		TNT1 AA 0 A_CustomMissile ("BloodMist", 40, 0, random (0, 360), 2, random (30, 90))
@@ -539,7 +518,7 @@ ACTOR Imp Replaces DoomImp
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		TNT1 A 0 A_CustomMissile ("SuperWallRedBlood", 2, 0, random (170, 190), 2, random (0, 0))
 		TNT1 A 0 A_SpawnItem("DeadImpTR06V")
-		TNT1 A -1
+		TNT1 A -1 A_NoBlocking
 		Stop
 
 	Death:
@@ -553,47 +532,46 @@ ACTOR Imp Replaces DoomImp
 		TR97 A 8
 		TR97 B 8 A_Scream
 		TR97 C 6
-		TR97 D 6 A_NoBlocking
+		TR97 D 6
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
         TNT1 A 0 A_SpawnItem("DeadImp")
-		TNT1 A -1
+		TNT1 A -1 A_NoBlocking
 		Stop
 
 	Death.Down:
 	Death.Trample:
 	    TNT1 A 0 A_Scream
-		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_Stop
 		TNT1 AAA 0 A_CustomMissile ("XDeath1", 2, 0, random (0, 360), 2, random (0, 40))
 		ID11 DC 6
 		TNT1 A 0 A_SpawnItem("DeadImp")
-		TNT1 A -1
+		TNT1 A -1 A_NoBlocking
 		Stop
 
 		Death.Fire:
 		Death.FallInLava:
         TNT1 A 0
 		TNT1 A 0 A_Scream
-        TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("BurningImpRunning", 0, 10)
+		TNT1 A -1 A_NoBlocking
         Stop
 
 		Death20alt:
         TNT1 A 0
 		TNT1 A 0 A_Scream
 		TROD ABCD 6
-        TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		TNT1 A 0 A_SpawnItemEx ("ImpDyingOfBloodLoss", 0,0,7,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A -1 A_NoBlocking
         Stop
 
      Death.Arm:
 		TNT1 A 0 A_CustomMissile ("XDeathImpArm", 35, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_Scream
-		TNT1 A 0 A_NoBlocking
 		TNT1 AA 0 A_CustomMissile ("BloodMist", 40, 0, random (0, 360), 2, random (30, 90))
 		TR08 A 4 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_SpawnItemEx ("DyingImpNoArm",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A -1 A_NoBlocking
 		Stop
 
       Death.Leg:
@@ -605,17 +583,19 @@ ACTOR Imp Replaces DoomImp
 		TR09 A 4
 		TR09 A 3 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
 		TR09 B 3 A_Scream
-		TR09 C 3 A_NoBlocking
+		TR09 C 3
         TNT1 A 0 A_SpawnItemEx ("DyingImpNoLeg",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A -1 A_NoBlocking
 		Stop
 
 	DeathLeg2:
-	TNT1 A 0 A_NoBlocking
-	TNT1 A 0 A_Fall
-	TNT1 A 0 A_CustomMissile ("XDeathImpLeg", 35, 0, random (0, 360), 2, random (0, 160))
-    TNT1 A 0 A_CustomMissile ("BloodMistBig", 10, 0, random (0, 360), 2, random (30, 90))
-	TNT1 AA 0 A_CustomMissile ("BloodMist", 10, 0, random (0, 360), 2, random (30, 90))
-	TNT1 A 0 A_SpawnItem("ImpSaciLol")
+		TNT1 A 0
+		TNT1 A 0 A_Fall
+		TNT1 A 0 A_CustomMissile ("XDeathImpLeg", 35, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("BloodMistBig", 10, 0, random (0, 360), 2, random (30, 90))
+		TNT1 AA 0 A_CustomMissile ("BloodMist", 10, 0, random (0, 360), 2, random (30, 90))
+		TNT1 A 0 A_SpawnItem("ImpSaciLol")
+		TNT1 A -1 A_NoBlocking
 	Stop
 
     DeathJump:
@@ -634,31 +614,29 @@ ACTOR Imp Replaces DoomImp
 		ID11 B 4 A_CustomMissile ("Brutal_LiquidBlood3", 15, 0, random (0, 360), 2, random (0, 40))
 		TNT1 A 0 A_JumpIf(((VelY == 0)&&(VelX == 0)), "TakeASit")
 		ID11 CD 4 A_Stop
-		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		TNT1 A 0 A_SpawnItem("DeadImp")
-		TNT1 A -1
+		TNT1 A -1 A_NoBlocking
 		Stop
 
 	TakeASit:
 	    TNT1 A 0 A_CustomMissile ("SuperWallRedBlood", 6, 0, random (170, 190), 2, random (0, 40))
 	    BR94 A 4 A_Stop
-		TNT1 A 0 A_NoBlocking
 	    TNT1 A 0 A_SpawnItem("GrowingBloodPool")
 		TNT1 A 0 A_SpawnItemEx("DeadImp_Slumped")
+		TNT1 A -1 A_NoBlocking
 		Stop
 
-    Death.Melee:
-			TNT1 A 0 A_JumpIfInventory ("SKImp", 1, "StealthKill")
-      Death.Kick:
-		 TNT1 A 0 A_Scream
-         TNT1 A 0 A_NoBlocking
-        TNT1 A 0 ThrustThingZ(0,30,0,1)
-        TNT1 A 0 A_Recoil (8)
-         ID11 ABCD 8
-         TNT1 A 0 A_SpawnItem("DeadImp")
-		 TNT1 A -1
-         Stop
+	Death.Melee:
+		TNT1 A 0 A_JumpIfInventory ("SKImp", 1, "StealthKill")
+	Death.Kick:
+		TNT1 A 0 A_Scream
+		TNT1 A 0 ThrustThingZ(0,30,0,1)
+		TNT1 A 0 A_Recoil (8)
+		ID11 ABCD 8
+		TNT1 A 0 A_SpawnItem("DeadImp")
+		TNT1 A -1 A_NoBlocking
+		Stop
 
 	Death.head:
 		TNT1 A 0
@@ -681,13 +659,13 @@ ACTOR Imp Replaces DoomImp
 		TNT1 AA 0 A_CustomMissile ("SmallBrainPiece", 50, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("SuperWallRedBlood", 46, 0, random (170, 190), 2, random (0, 40))
 
-		TROH K 5 A_NoBlocking
+		TROH K 5
 		TROH L 5 A_Scream
 		TROH M 5
 		TROH N 5
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
         TNT1 A 0 A_SpawnItem("DeadImp_MinorHeadDeadFront")
-		TNT1 A -1
+		TNT1 A -1 A_NoBlocking
 		Stop
 
 	DeathHeadminor2:
@@ -703,8 +681,8 @@ ACTOR Imp Replaces DoomImp
 		TNT1 AAA 0 A_CustomMissile ("Teeth", 50, 0, random (0, 360), 2, random (0, 160))
 
 		TNT1 A 0 A_Scream
-		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("DyingImpHalfFace")
+		TNT1 A -1 A_NoBlocking
 		Stop
 
 	Death.HeadExplode:
@@ -714,34 +692,34 @@ ACTOR Imp Replaces DoomImp
 		TROH BBBB 2 A_CustomMissile ("Brutal_LiquidBlood2", 40, 0, random (0, 360), 2, random (60, 120))
 		TNT1 A 0 A_Jump(32, "Deathchickenhead")
 		TNT1 A 0 A_XScream
-		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("DyingImpNoHeadClean")
+		TNT1 A -1 A_NoBlocking
 		Stop
 
 	Death.StompWall:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("ImpHeadExplode", 0, 30)
 		TNT1 A 0 A_XScream
-		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		TNT1 A 0 A_SpawnItem("DeadImp_Slumped_NoHead")
+		TNT1 A -1 A_NoBlocking
 		Stop
 
 	Deathchickenhead:
 		TNT1 A 0
 		TROH AAAA 2 A_CustomMissile ("Brutal_LiquidBlood2", 50, 0, random (0, 360), 2, random (60, 120))
-		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("DyingImpNoHeadLikeChicken")
+		TNT1 A -1 A_NoBlocking
 		Stop
 
 	DeathMirror:
         TROO V 9
 		TROO W 9 A_Scream
-		TROO X 8 A_NoBlocking
+		TROO X 8
 		TROO Y 8
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
         TNT1 A 0 A_SpawnItem("DeadImpMinorHeadShot")
-		TNT1 A -1
+		TNT1 A -1 A_NoBlocking
 		Stop
 
 	Death.decaptate:
@@ -750,52 +728,49 @@ ACTOR Imp Replaces DoomImp
 		TNT1 A 0 A_PlaySound("misc/xdeath4")
 		TNT1 A 0 A_CustomMissile ("XDeathImpHeadBeheaded", 50, 0, random (0, 360), 2, random (40, 90))
 		TNT1 A 0 A_Jump(32, "Deathchickenhead")
-		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("DyingImpNoHeadClean")
+		TNT1 A -1 A_NoBlocking
 		Stop
 
 	Death.Minigun:
-	TNT1 A 0
-	TNT1 A 0 A_NoBlocking
-	TNT1 A 0 A_SpawnItem("BrutalizedImp1")
-	Stop
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("BrutalizedImp1")
+		TNT1 A -1 A_NoBlocking
+		Stop
 
-		Death.LegMassacre:
+	Death.LegMassacre:
 		TNT1 A 0 A_CustomMissile ("XDeathImpLeg", 35, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_Scream
-		TNT1 A 0 A_NoBlocking
         TNT1 A 0 A_SpawnItem ("ImpBrutalizedWithNoLeg")
+		TNT1 A -1 A_NoBlocking
 		Stop
 
 	Death.Desintegrate:
 		TNT1 A 0
         TNT1 A 0 A_XScream
-        TNT1 A 0 A_NoBlocking
         TNT1 A 0 A_SpawnItem("DesintegratedHuman")
 		TNT1 A 0 A_Stop
 		TGIB ABCDEFGHIJKLMNOPQ 3
-		TGIB Q -1
+		TGIB Q -1 A_NoBlocking
 		Stop
 
 	Death.cut:
-
 		TNT1 A 0 A_XScream
-		TNT1 O 0 A_NoBlocking
         TNT1 A 0 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
 		TROG A 2 A_CustomMissile ("RipImp", 0, 0, random (0, 360), 2, random (0, 160))
         TROG AAA 4 A_SpawnItem ("MuchBlood", 0, 30)
 	    TROG BCDEFGH 8
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
         TNT1 A 0 A_SpawnItem ("DeadImp_Half", 5)
+		TNT1 A -1 A_NoBlocking
 		Stop
 
 	Death.HKFT:
 	Death.Saw:
 	    TNT1 A 0
 		TNT1 A 0 A_Jump(32, "Death.Arm")
-		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_XScream
 		TNT1 AA 0 A_CustomMissile ("Guts", 32, 0, random (0, -210), 2, random (0, 40))
 		TNT1 AAA 0 A_CustomMissile ("XDeath1", 32, 0, random (0, -210), 2, random (0, 40))
@@ -814,7 +789,7 @@ ACTOR Imp Replaces DoomImp
 		TRO3 CCC 3 A_CustomMissile ("Brutal_LiquidBlood2", 26, 0, random (0, 360), 2, random (10, 40))
 		TRO3 DD 3 A_CustomMissile ("Brutal_LiquidBlood2", 6, 0, random (0, 360), 2, random (30, 60))
 		TNT1 A 0 A_SpawnItem("DeadImpTRO3E")
-		TNT1 A -1
+		TNT1 A -1 A_NoBlocking
 	    Stop
 
 DeathNoGuts:
@@ -824,9 +799,10 @@ DeathNoGuts:
 		TNT1 AA 0 A_CustomMissile ("BloodMist", 40, 0, random (0, 360), 2, random (30, 90))
 		TNT1 AA 0 A_CustomMissile ("XDeath1", 30, 0, random (0, 360), 2, random (0, 160))
 		IMPC A 6 A_Scream
-        IMPC B 1 A_NoBlocking
+        IMPC B 1
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
         TNT1 A 0 A_SpawnItem ("DyingImp", 2)
+		TNT1 A -1 A_NoBlocking
 		Stop
 
     Death.Plasma: Death.Plasma2:
@@ -837,7 +813,7 @@ DeathNoGuts:
 		TNT1 AAA 0 A_CustomMissile ("Blood", 32, 0, random (0, 360), 2, random (0, 180))
 		TNT1 AAA 0 A_CustomMissile ("BloodMistSmall", 32, 0, random (0, 360), 2, random (0, 180))
 		TNT1 AAA 0 A_CustomMissile ("Brutal_FlyingBlood", 32, 0, random (0, 360), 2, random (0, 180))
-		PBR1 B 6 A_NoBlocking
+		PBR1 B 6
 		TNT1 A 0 A_SpawnItemEx ("DetectFloorCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 0 A_SpawnItem("BarrelExplosionSmokeColumn")
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece", random (-15, 15), random (-15, 15))
@@ -846,13 +822,12 @@ DeathNoGuts:
 		PBR1 CCDD 3 A_CustomMissile ("BluePlasmaFireNonStatic", 32, 0, random (0, 360), 2, random (0, 180))
 		PBR1 EEFF 3 A_CustomMissile ("BluePlasmaFireNonStatic", 24, 0, random (0, 360), 2, random (0, 180))
 		PBR1 GG 3 A_CustomMissile ("BluePlasmaFireNonStatic", 22, 0, random (0, 360), 2, random (0, 180))
-		PBR1 H -1
+		PBR1 H -1 A_NoBlocking
 		Stop
 
 	Death.SuperPlasma:
         TNT1 A 0
         TNT1 A 0 A_XScream
-        TNT1 A 0 A_NoBlocking
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
         TNT1 AAAA 0 A_CustomMissile ("Brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160))
 
@@ -865,15 +840,14 @@ DeathNoGuts:
 		XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
         TNT1 A 0 A_CustomMissile ("Brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160))
 		XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-				TNT1 AAAAA 0 A_CustomMissile ("PlasmaParticleX", 48, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAAA 0 A_CustomMissile ("PlasmaParticleX", 48, 0, random (0, 360), 2, random (0, 360))
 		TNT1 AAA 0 A_CustomMissile ("BigPlasmaParticleX", 42, 0, random (0, 360), 2, random (0, 360))
-        TNT1 A 0
+		TNT1 A -1 A_NoBlocking
         Stop
 
-			Death.GreenFire:
+	Death.GreenFire:
         TNT1 A 0
         TNT1 A 0 A_XScream
-        TNT1 A 0 A_NoBlocking
         TNT1 AAAA 0 A_CustomMissile ("Brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160))
 
 	    TNT1 A 0 A_CustomMissile ("XDeathBurnedImpLeg", 32, 0, random (0, 360), 2, random (0, 160))
@@ -883,12 +857,12 @@ DeathNoGuts:
 
 		EXPL AAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("GreenFlameTrails", 50, 0, random (0, 360), 2, random (0, 360))
 		XBRN AAAA 2 BRIGHT A_SpawnItem("GreenFlare",0,43)
+		TNT1 A -1 A_NoBlocking
         Stop
 
     Death.Blast:
 	    TNT1 A 0
 		TNT1 A 0 A_Jump(12, "Death.Arm")
-		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_Jump(128, "Death.Blast2")
 		TNT1 A 0 A_XScream
 		TNT1 AAA 0 A_CustomMissile ("Guts", 32, 0, random (150, 210), 2, random (0, 40))
@@ -907,12 +881,11 @@ DeathNoGuts:
 		TRO3 CCC 3 A_CustomMissile ("Brutal_LiquidBlood2", 26, 0, random (0, 360), 2, random (10, 40))
 		TRO3 DD 3 A_CustomMissile ("Brutal_LiquidBlood2", 6, 0, random (0, 360), 2, random (30, 60))
 		TNT1 A 0 A_SpawnItem("DeadImpTRO3E")
-		TNT1 A -1
+		TNT1 A -1 A_NoBlocking
 	    Stop
 
 	Death.Blast2:
 		TNT1 A 0 A_XScream
-		TNT1 A 0 A_NoBlocking
 		TNT1 AAA 0 A_CustomMissile ("Guts", 32, 0, random (150, 210), 2, random (0, 40))
 		TNT1 AAA 0 A_CustomMissile ("XDeath1", 32, 0, random (150, 210), 2, random (0, 40))
 		TNT1 A 0 A_CustomMissile ("XDeathImpArm", 32, 0, random (150, 210), 2, random (0, 40))
@@ -929,7 +902,7 @@ DeathNoGuts:
 		TRO4 CCC 3 A_CustomMissile ("Brutal_LiquidBlood2", 26, 0, random (0, 360), 2, random (10, 40))
 		TRO4 DD 3 A_CustomMissile ("Brutal_LiquidBlood2", 6, 0, random (0, 360), 2, random (30, 60))
 		TNT1 A 0 A_SpawnItem("DeadImpTRO4E")
-		TNT1 A -1
+		TNT1 A -1 A_NoBlocking
 	    Stop
 
 	Death.SSG:
@@ -948,30 +921,29 @@ DeathNoGuts:
 		TNT1 AA 0 A_CustomMissile ("XDeathImpArm", 32, 0, random (170, 190), 2, random (0, 40))
 		TNT1 A 0 A_CustomMissile ("XDeathImpHead", 32, 0, random (170, 190), 2, random (0, 40))
         TNT1 A 0 A_XScream
-		TNT1 A 0 A_NoBlocking
 		IZD1 EEFFG 6
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		TNT1 A 0 A_SpawnItem("DeadImpIZD1H")
-		TNT1 A -1
+		TNT1 A -1 A_NoBlocking
         Stop
 
 	XDeath:
 		TNT1 A 0
 		TNT1 A 0 A_XScream
-		TNT1 A 0 A_NoBlocking
 		TNT1 AAA 0 A_CustomMissile ("XDeath1", 42, 0, random (0, 190), 2, random (10, 60))
 		TNT1 AAA 0 A_CustomMissile ("XDeath3", 42, 0, random (0, 190), 2, random (10, 60))
 		TNT1 A 0 A_CustomMissile ("XDeath2", 42, 0, random (0, 190), 2, random (10, 60))
 		TNT1 A 0 A_CustomMissile ("XDeath4", 42, 0, random (0, 190), 2, random (10, 60))
   	    TNT1 A 1 A_CustomMissile ("ImpXDeath", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A -1 A_NoBlocking
 		Stop
 
 	 Death.ExtremePunches:
-		 TNT1 A 0
-		 TNT1 A 0 A_XScream
-		 TNT1 A 0 A_NoBlocking
-		 TNT1 A 0 A_CustomMissile ("ExtremePunchedImp", 8, 0, random (175, 185), 2, random (10, 20))
-		 Stop
+		TNT1 A 0
+		TNT1 A 0 A_XScream
+		TNT1 A 0 A_CustomMissile ("ExtremePunchedImp", 8, 0, random (175, 185), 2, random (10, 20))
+		TNT1 A -1 A_NoBlocking
+		Stop
 	Death.Shrapnel:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfHealthLower(-50, 4)
@@ -986,7 +958,6 @@ DeathNoGuts:
 	Death.ExplosiveImpact:
 	Death.Explosive:
 		TNT1 A 0
-		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_SpawnItemEx("MuchBlood2", 0, 0, 40)
 		TNT1 A 0 A_ChangeFlag("NOBLOCKMONST", 1)
@@ -1009,7 +980,7 @@ DeathNoGuts:
 	    ID17 CDEF 5 A_CheckFloor ("Dead.ExplosiveImpact")
 		ID17 EEEEEEEEEE 5 A_CheckFloor ("Dead.ExplosiveImpact")
 		TNT1 A 0 A_SpawnItem("DeadImpID17G")
-		TNT1 A -1
+		TNT1 A -1 A_NoBlocking
 		Stop
 
 		Dead.ExplosiveImpact:
@@ -1018,7 +989,7 @@ DeathNoGuts:
 		TNT1 A 0 A_SpawnItem ("ThisImpGotFuckedHard")
 		TNT1 A 0 A_SpawnItem ("Ploft")
 		TNT1 AAAA 0 A_SpawnItem ("Blood")
-		TNT1 A -1
+		TNT1 A -1 A_NoBlocking
 		Stop
 
 		Death.Landmine:
@@ -1035,7 +1006,7 @@ DeathNoGuts:
 		ID17 JKLMN 4 A_CheckFloor ("Dead.Landmine")
 		ID17 NNNNNNNN 4 A_CheckFloor ("Dead.Landmine")
 		TNT1 A 0 A_SpawnItem("DeadImp_NoLeg")
-		TNT1 A -1
+		TNT1 A -1 A_NoBlocking
 		Stop
 
 	Dead.Landmine:
@@ -1044,12 +1015,11 @@ DeathNoGuts:
 		TNT1 A 0 A_SpawnItem ("Ploft")
 		TNT1 AAAA 0 A_SpawnItem ("Blood")
 		TNT1 A 0 A_SpawnItem("DeadImp_NoLeg")
-		TNT1 A -1
+		TNT1 A -1 A_NoBlocking
 		Stop
 
 	 Death.Stomp:
 		TNT1 A 0 A_Scream
-		TNT1 A 0 A_NoBlocking
 		TROO KL 2
 	    TNT1 AA 0 A_SpawnItem("MeatDeathSmall")
 		TNT1 AAA 0 bright A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
@@ -1058,8 +1028,7 @@ DeathNoGuts:
 		TNT1 AA 0 bright A_CustomMissile ("XDeath3b", 55, 0, random (0, 360), 2, random (30, 180))
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		TNT1 A 0 A_SpawnItem ("CrushedRemains")
-		TNT1 A 1
-		TNT1 A 1 A_XScream
+		TNT1 A -1 A_NoBlocking
 		Stop
 
    FatalityMarine:
@@ -1120,34 +1089,32 @@ DeathNoGuts:
 	Goto See
 
 	GotoStealthKill:
-		TNT1 A 1
-		TNT1 A 0 A_Explode(100, 1, 1)
-		TNT1 A 1
+		TNT1 A 2 A_Explode(100, 1, 1)
 		Goto See
 
 	StealthKill:
-	TNT1 A 0
-	TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, 1)
-	Goto Death
-	TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-	TNT1 A 0 A_GiveToTarget("GoSpecial", 1)
-	TNT1 A 0 A_GiveToTarget("SKImp", 1)
-	TNT1 A 0 A_NoBlocking
-	TNT1 A 0 A_Fall
-	TNT1 A 1
-	TNT1 A 0 A_Die("Stealthy")
-	TNT1 A 1
-	Stop
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, 1)
+		Goto Death
+		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
+		TNT1 A 0 A_GiveToTarget("GoSpecial", 1)
+		TNT1 A 0 A_GiveToTarget("SKImp", 1)
+		TNT1 A 0 A_Fall
+		TNT1 A 1
+		TNT1 A 0 A_Die("Stealthy")
+		TNT1 A -1 A_NoBlocking
+		Stop
 	Death.Stealthy:
-	TNT1 A 0
-	Stop
+		TNT1 A -1 A_NoBlocking
+		Stop
 
 	Death.Ice:
 	Death.Freeze:
 	Death.Frost:
-	TNT1 A 0 A_NOBLOCKING
-	TNT1 A 0 A_SpawnItem("FrozenImp")
-	Stop
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("FrozenImp")
+		TNT1 A -1 A_NoBlocking
+		Stop
 
 	Death.Massacre:
 	Goto Death

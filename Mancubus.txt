@@ -173,47 +173,45 @@ ACTOR Mancubus : Fatso Replaces Fatso
 		FATT KKK 2 A_CustomMissile ("Brutal_LiquidBlood2", 50, 0, random (0, 360), 2, random (30, 50))
 		FATT LLL 2 A_CustomMissile ("Brutal_LiquidBlood2", 40, 0, random (0, 360), 2, random (30, 50))
 		TNT1 A 0 A_Scream
-		TNT1 A 0 A_BossDeath
 		FATT MMM 2 A_CustomMissile ("Brutal_LiquidBlood2", 30, 0, random (0, 360), 2, random (20, 50))
 		TNT1 A 0 A_NoBlocking
 		FATT NNOOPPQQRRSS 2 A_CustomMissile ("Brutal_LiquidBlood2", 20, 0, random (0, 360), 2, random (20, 50))
 		FATT TTTTTTTTTTTTTTTTTTTTTTT 2 A_CustomMissile ("Brutal_LiquidBlood2", 20, 0, random (0, 360), 2, random (20, 50))
 		TNT1 A 0 A_SpawnItem ("DeadFatNoHead", 1)
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
-		TNT1 A -1
+		TNT1 A -1 A_BossDeath
         Stop
 
 	Death.decaptate:
 		TNT1 AAAAAA 0 A_CustomMissile ("Xdeath1", 62, 0, random (50, 130), 2, random (50, 130))
 		TNT1 A 0 A_CustomMissile ("XdeathMancubusHead", 62, 0, random (50, 130), 2, random (50, 130))
 		FATT O 6 A_Scream
-		FATT P 6 A_NoBlocking
+		FATT P 6
 		FATT QRS 6
-		FATT T 1 A_BossDeath
+		FATT T 1 A_NoBlocking
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 	    TNT1 A 0 A_SpawnItem ("DeadFatNoHead", 1)
-		TNT1 A -1
+		TNT1 A -1 A_BossDeath
         Stop
 
     Death:
-	FAT3 A 1 A_Jump(64, "Death2")
-	FAT3 B 6 A_Scream
-	FAT3 C 6 A_NoBlocking
-	FAT3 DEF 6
-	FAT3  F 1 A_BossDeath
-
-	TNT1 A 0 A_SpawnItem ("DeadFAT3F", 1)
-	TNT1 A -1
-	Stop
+		FAT3 A 1 A_Jump(64, "Death2")
+		FAT3 B 6 A_Scream
+		FAT3 C 6
+		FAT3 DEF 6
+		FAT3  F 1 A_NoBlocking
+		TNT1 A 0 A_SpawnItem ("DeadFAT3F", 1)
+		TNT1 A -1 A_BossDeath
+		Stop
 
     Death2:
 		FATK A 6
 		FATK B 6 A_Scream
-		FATK C 6 A_NoBlocking
+		FATK C 6
 		FATK DEF 6
-		FATK F 1 A_BossDeath
+		FATK F 1 A_NoBlocking
 	    TNT1 A 0 A_SpawnItem ("DeadFat", 1)
-		TNT1 A -1
+		TNT1 A -1 A_BossDeath
         Stop
 
 	Missile:
@@ -330,8 +328,7 @@ ACTOR Mancubus : Fatso Replaces Fatso
 	    TNT1 A 0 A_GiveToTarget("GoFatality", 1)
         TNT1 A 0 A_GiveToTarget("FatsoFatality", 1)
 		TNT1 A 0 A_NoBlocking
-        TNT1 A 1 A_BossDeath
-        TNT1 A 0
+		TNT1 A -1 A_BossDeath
 		Stop
 	Death.Shotgun:
 		TNT1 A 0
@@ -344,7 +341,6 @@ ACTOR Mancubus : Fatso Replaces Fatso
 		TNT1 A 0 A_Stop
 		TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_BossDeath
 		TNT1 A 0 A_Jump(255, "DeathSSG1", "DEathSSG2", "Death.Cut")
 	DeathSSG1:
 		TNT1 A 0
@@ -352,11 +348,10 @@ ACTOR Mancubus : Fatso Replaces Fatso
 		TNT1 AA 0 A_CustomMissile ("MuchBlood", 55, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_CustomMissile ("XDeathMancubusArm", 30, 0, random (0, 360), 2, random (50, 130))
 		XFT2 AAAAAAAAAAAA 2 A_CustomMissile ("Brutal_LiquidBlood2", 50, 0, random (0, 360), 2, random (30, 50))
-
 		XFT2 BC 5
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 	    TNT1 A 0 A_SpawnItem ("FUckedFatso1", 1)
-		TNT1 A -1
+		TNT1 A -1 A_BossDeath
         Stop
 
 	DeathSSG2:
@@ -369,20 +364,19 @@ ACTOR Mancubus : Fatso Replaces Fatso
 		XFT3 BC 5
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 	    TNT1 A 0 A_SpawnItem ("FUckedFatso2", 1)
-		TNT1 A -1
+		TNT1 A -1 A_BossDeath
         Stop
 
 	Death.Arm:
 	Death.Minigun:
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_BossDeath
 		TNT1 A 0 A_CustomMissile ("XDeathMancubusArm", 30, 0, random (0, 360), 2, random (50, 130))
 		TNT1 AA 0 A_CustomMissile ("MuchBlood", 55, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAAAA 0 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
 		XFT1 AAAAAAAA 1 A_CustomMissile ("Brutal_LiquidBlood2", 50, 0, random (0, 360), 2, random (30, 50))
 		TNT1 A 0 A_SpawnItem("DyingFatso01")
-		TNT1 A -1
+		TNT1 A -1 A_BossDeath
         Stop
 
 	Death.Saw:
@@ -394,32 +388,28 @@ ACTOR Mancubus : Fatso Replaces Fatso
         FAT2 KL 5 A_CustomMissile ("MuchBlood", 75, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAAA 0 A_CustomMissile ("RipGuts", 40, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_BossDeath
 		FAT2 MNOP 5 A_CustomMissile ("MuchBlood", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 	    TNT1 A 0 A_SpawnItem ("NoGutsFatso", 1)
-		TNT1 A -1
+		TNT1 A -1 A_BossDeath
         Stop
 
 	Death.Cut:
 	Death.Railgun:
-		TNT1 A 0
-		TNT1 A 0 A_Stop
-        XFAT AB 4
+        XFAT AB 4 A_Stop
 		TNT1 A 0 A_Scream
-		TNT1 O 0 A_NoBlocking
 		TNT1 AA 0 A_CustomMissile ("MuchBlood", 35, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAAA 0 A_CustomMissile ("RipGuts", 40, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_CustomMissile ("XDeath2b", 40, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_CustomMissile ("XDeath3b", 40, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_BossDeath
+	    TNT1 A 0 A_NoBlocking
 		XFAT CDEF 5
 		XFAT GH 5
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 	    TNT1 A 0 A_SpawnItem ("NoGutsFatso2", 1)
 		TNT1 AAAAAAAAAAAAAAAAAA 4 A_CustomMissile ("Brutal_LiquidBlood2", 40, 0, random (0, 360), 2, random (30, 50))
-		TNT1 A -1
+		TNT1 A -1 A_BossDeath
         Stop
 
 	Death.Fire: Death.Burn: Death.Flames:
@@ -450,7 +440,6 @@ ACTOR Mancubus : Fatso Replaces Fatso
 		BF4T BBB 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
 		TNT1 A 0 A_SpawnItemEx ("DetectFloorCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_BossDeath
 		TNT1 A 0 A_SpawnItem("BarrelExplosionSmokeColumn")
 		TNT1 AA 0 A_SpawnItemEx("TinyBurningPiece", random (-15, 15), random (-15, 15))
 		TNT1 AAA 0 A_SpawnItemEx("TinyBurningPiece2", random (-35, 35), random (-35, 35))
@@ -462,7 +451,6 @@ ACTOR Mancubus : Fatso Replaces Fatso
 
 	Death.SuperPlasma:
     Death.Plasma: Death.Plasma2:
-        TNT1 A 0 A_BossDeath
         TNT1 A 0 A_Scream
         TNT1 A 0 A_NoBlocking
 		CRB7 GGG 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
@@ -481,7 +469,7 @@ ACTOR Mancubus : Fatso Replaces Fatso
 		TNT1 AAA 0 A_SpawnItemEx("TinyBurningPiece2", random (-35, 35), random (-35, 35))
 		TNT1 AAA 0 A_SpawnItemEx("TinyBurningPiece3", random (-45, 45), random (-45, 35))
 		CARB LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL 10 A_CustomMissile ("BurnParticles", 12, 0, random (0, 180), 2, random (50, 90))
-        CARB L -1
+        CARB L -1 A_BossDeath
         Stop
 
     Death.Explosive:
@@ -503,14 +491,13 @@ ACTOR Mancubus : Fatso Replaces Fatso
 		 TNT1 A 0 A_CustomMissile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (10, 90))
 		 TNT1 A 0 A_CustomMissile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (10, 90))
         XFBT A 4 A_Scream
-        XFBT B 4 A_NoBlocking
+        XFBT B 4
 		TNT1 A 0 A_SpawnItem ("SplatteredLarge")
 		TNT1 A 0 A_Stop
         XFBT CDEF 4
-        XFBT F 1 A_BossDeath
-
+        XFBT F 1 A_NoBlocking
 	    TNT1 A 0 A_SpawnItem ("XDeadFat", 1)
-		TNT1 A -1
+		TNT1 A -1 A_BossDeath
         Stop
 
 Pain.KillMe:
@@ -537,11 +524,13 @@ Pain.Taunt:
     Death.KillMe:
     Death.Taunt:
 	    Goto Death
+
 	Death.Ice:
 	Death.Freeze:
 	Death.Frost:
-	TNT1 A 0 A_NOBLOCKING
+	TNT1 A 0
 	TNT1 A 0 A_SpawnItem("FrozenMancubus")
+	TNT1 A -1 A_BossDeath
 	Stop
 
 	Death.Massacre:

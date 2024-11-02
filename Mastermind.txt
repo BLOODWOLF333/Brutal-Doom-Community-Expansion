@@ -240,8 +240,7 @@ ACTOR TheSpiderMastermind Replaces SpiderMastermind
 		TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
 		SPID NOPQR 5
         SPID S 105
-		SPID S 1 A_BossDeath
-		SPID S -1
+		SPID S -1 A_BossDeath
 		Stop
 
 	Death.Stomp:
@@ -260,7 +259,7 @@ ACTOR TheSpiderMastermind Replaces SpiderMastermind
 		TNT1 A 0 A_SpawnItem ("GiantBloodSpot")
 		TNT1 A 0 A_SpawnItem ("StompedMastermind")
 		TNT1 A 105
-		SPID S 0 A_BossDeath
+		TNT1 A -1 A_BossDeath
 		Stop
 
 Death.Cut:
@@ -292,7 +291,7 @@ Death.decaptate:
 		//TNT1 AAAAAAAAAAAA 0 A_CustomMissile ("PEPart2SuperFast", 32, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("GiantBloodSpot")
         TNT1 A 105
-		TNT1 A 0 A_BossDeath
+		TNT1 A -1 A_BossDeath
 		Stop
 
 	Death.Fatality:
@@ -307,7 +306,7 @@ Death.decaptate:
 		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
 		TNT1 A 0 A_GiveToTarget("MastermindFatality", 1)
 		TNT1 A 105
-		TNT1 A 0 A_BossDeath
+		TNT1 A -1 A_BossDeath
         Stop
 	}
 }

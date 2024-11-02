@@ -95,20 +95,12 @@ ACTOR Spectro: BullDemon Replaces Spectre
 		SARG I 8
 		SARG J 8 A_Scream
 		SARG K 4
-		SARG L 4 A_NoBlocking
+		SARG L 4
 		SARG M 4
         TNT1 A 0 A_SpawnItem ("DeadDemon1", 1)
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+	    TNT1 A -1 A_NoBlocking
 		Stop
-
-        TNT1 AAAAAAAAA 0
-        TNT1 A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("XDeathDemonArm", 35, 0, random (0, 360), 2, random (0, 160))
-		SAAR A 8 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
-		SAAR B 8 A_Scream
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx ("PoorSpectroLostHisArm",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        Stop
 
 	Death.Eat:
         TNT1 A 0 A_GiveToTarget("EatMe",1)
@@ -148,28 +140,12 @@ Actor ArmlessFuzzy : ArmlessDemon
 	+SHADOW
 	RenderStyle OptFuzzy
 	Alpha 0.5
-	States
-	{
-	Death.KillMe:
-	Death.Taunt:
-		TNT1 A 0 A_ChangeFlag("SOLID", 0)
-		TNT1 A 0 A_SpawnItem("ArmlessFuzzy")
-		Stop
-	}
 }
 
 Actor ArmlessSpectro : ArmlessDemon
 {
 	RenderStyle Add
     Alpha 0.5
-	States
-	{
-	Death.KillMe:
-	Death.Taunt:
-		TNT1 A 0 A_ChangeFlag("SOLID", 0)
-		TNT1 A 0 A_SpawnItem("ArmlessSpectro")
-		Stop
-	}
 }
 
 ACTOR FuzzySpectre: BullDemon
@@ -208,8 +184,8 @@ ACTOR FuzzySpectre: BullDemon
 		TNT1 A 0 A_CustomMissile ("XDeathDemonArm", 35, 0, random (0, 360), 2, random (0, 160))
 		SAAR A 8 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
 		SAAR B 8 A_Scream
-		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItemEx ("PoorFuzzyLostHisArm",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A -1 A_NoBlocking
         Stop
 
 	Death.Eat:
@@ -269,8 +245,9 @@ Actor PoorFuzzyLostHisArm : PoorPinkyLostHisArm
 	PutAFight:
 		TNT1 A 0 A_Die("PutAFight")
 	Death.PutAFight:
-		TNT1 A 0 A_NoBlocking
+		TNT1 A 0
 		TNT1 A 2 A_SpawnItemEx("ArmlessFuzzy",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A -1 A_NoBlocking
 		Stop
 	}
 }
@@ -298,8 +275,9 @@ Actor PoorSpectroLostHisArm : PoorPinkyLostHisArm
 	PutAFight:
 		TNT1 A 0 A_Die("PutAFight")
 	Death.PutAFight:
-		TNT1 A 0 A_NoBlocking
+		TNT1 A 0
 		TNT1 A 2 A_SpawnItemEx("ArmlessSpectro",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A -1 A_NoBlocking
 		Stop
 	}
 }

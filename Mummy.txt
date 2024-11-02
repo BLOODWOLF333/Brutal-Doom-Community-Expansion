@@ -89,8 +89,7 @@ ACTOR Experiment
 		TNT1 A 0 A_SpawnItem("MuchBlood2", 0, 50)
 		TNT1 AAAAA 0 A_CustomMissile ("RevenantBonesFast", 57, 0, random (0, 360), 2, random (30, 150))
 		TNT1 AAAAA 0 A_CustomMissile ("RevenantPiece", 57, 0, random (0, 360), 2, random (30, 150))
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_Scream
+		TNT1 A -1 A_NoBlocking
         Stop
 	}
 }

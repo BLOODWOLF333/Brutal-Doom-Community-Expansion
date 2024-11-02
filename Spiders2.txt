@@ -119,17 +119,18 @@ ACTOR Arachnotron2: Arachnotron1 2542
 		TNT1 A 0 A_Jump(101, "RareDeath")
 		TNT1 A 0 A_Jump(128, "Death2")
 		ARAC J 8 A_Scream
-         TNT1 AAAAAAAAA 0 A_CustomMissile ("CeilBloodLauncherLong", 0, 0, random (0, 360), 2, random (50, 130))
-		 TNT1 AAAA 0 A_CustomMissile ("Guts", 32, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AAAAA 0 A_CustomMissile ("SmallBrainPiece", 32, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AAAAAAAAAA 0 A_CustomMissile ("BloodMist", 50, 0, random (0, 360), 2, random (60, 90))
+		TNT1 AAAAAAAAA 0 A_CustomMissile ("CeilBloodLauncherLong", 0, 0, random (0, 360), 2, random (50, 130))
+		TNT1 AAAA 0 A_CustomMissile ("Guts", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAA 0 A_CustomMissile ("SmallBrainPiece", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAAAAAAA 0 A_CustomMissile ("BloodMist", 50, 0, random (0, 360), 2, random (60, 90))
         TNT1 AAA 0 A_CustomMissile ("XDeathSpiderNew1", 42, 0, random (0, 360), 2, random (60, 90))
         TNT1 AA 0 A_CustomMissile ("XDeathSpiderNew2", 42, 0, random (0, 360), 2, random (60, 90))
-		ARAC K 6 A_NoBlocking
+		ARAC K 6
 		ARAC LMNO 8
-		ARAC P 1 A_BossDeath
+		ARAC P 1 A_NoBlocking
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
         TNT1 A 0 A_SpawnItem ("DeadSpiderDark", 1)
+		TNT1 A -1 A_BossDeath
         Stop
 
 	Death2:
@@ -140,11 +141,12 @@ ACTOR Arachnotron2: Arachnotron1 2542
 		 TNT1 AAAAAAAAAA 0 A_CustomMissile ("BloodMist", 50, 0, random (0, 360), 2, random (60, 90))
         TNT1 AAA 0 A_CustomMissile ("XDeathSpiderNew1", 42, 0, random (0, 360), 2, random (60, 90))
         TNT1 AA 0 A_CustomMissile ("XDeathSpiderNew2", 42, 0, random (0, 360), 2, random (60, 90))
-		AR4C K 6 A_NoBlocking
+		AR4C K 6
 		AR4C LMNO 8
-		AR4C P 1 A_BossDeath
+		AR4C P 1 A_NoBlocking
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
         TNT1 A 0 A_SpawnItem ("DeadSpiderDark3", 1)
+		TNT1 A -1 A_BossDeath
         Stop
 
 	RareDeath:
@@ -162,11 +164,12 @@ ACTOR Arachnotron2: Arachnotron1 2542
         TNT1 AA 0 A_CustomMissile ("SpiderPart2", 32, 0, random (0, 360), 2, random (0, 160))
         TNT1 AAA 0 A_CustomMissile ("PEPart2", 32, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 AAAAAAAA 0 A_CustomMissile ("Brutal_FlyingBlood", 32, 0, random (0, 360), 2, random (0, 160))
-		ARAC R 6 A_NoBlocking
+		ARAC R 6
 		ARAC STUV 6
-		ARAC W 2 A_BossDeath
+		ARAC W 2 A_NoBlocking
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
         TNT1 A 0 A_SpawnItem ("DeadSpiderDark2", 1)
+		TNT1 A -1 A_BossDeath
         Goto XBurns
 
 	RareDeath2:
@@ -183,11 +186,12 @@ ACTOR Arachnotron2: Arachnotron1 2542
         TNT1 AA 0 A_CustomMissile ("SpiderPart2", 32, 0, random (0, 360), 2, random (0, 160))
         TNT1 AAA 0 A_CustomMissile ("PEPart2", 32, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 AAAAAAAA 0 A_CustomMissile ("Brutal_FlyingBlood", 32, 0, random (0, 360), 2, random (0, 160))
-		AR4C R 6 A_NoBlocking
+		AR4C R 6
 		AR4C STUV 6
-		AR4C W 2 A_BossDeath
+		AR4C W 2 A_NoBlocking
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
         TNT1 A 0 A_SpawnItem ("DeadSpiderDark4", 1)
+		TNT1 A -1 A_BossDeath
         Goto XBurns
 
 	Death.Cutless:
@@ -197,19 +201,18 @@ ACTOR Arachnotron2: Arachnotron1 2542
 
 	Death.SuperPlasma:
     Death.Plasma: Death.Plasma2:
-        TNT1 A 0 A_BossDeath
+        TNT1 A 0
         TNT1 A 0 A_Scream
         TNT1 A 0 A_NoBlocking
         TNT1 AAA 0 A_CustomMissile ("Brutal_FlyingBlood", 50, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 AA 0 A_CustomMissile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, random (0, 160))
 		EXPL AAAAAA 0 A_CustomMissile ("ExplosionSmoke", 32, 0, random (0, 360), 2, random (0, 360))
         CARB QQQQQQQQQQ 10 A_CustomMissile ("PlasmaSmoke", 15, 0, random (0, 360), 2, random (70, 110))
-        CARB Q -1
+        CARB Q -1 A_BossDeath
         Stop
 
 		Death.Fire:
         TNT1 A 0
-		TNT1 A 0 A_BossDeath
 		TNT1 A 0 A_Scream
         TNT1 A 0 A_NoBlocking
 		TNT1 AAA 0 A_CustomMissile ("PEPart2", 32, 0, random (0, 360), 2, random (0, 160))
@@ -220,13 +223,12 @@ ACTOR Arachnotron2: Arachnotron1 2542
         TNT1 A 0 A_Playsound("props/redfire")
 	    CARB QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ 2 A_CustomMissile ("FlameTrails", 20, 0, random (0, 360), 2, random (70, 110))
 	    CARB QQQQQQQQQQ 10 A_CustomMissile ("PlasmaSmoke", 30, 0, random (0, 360), 2, random (70, 110))
-		CARB Q -1
+		CARB Q -1 A_BossDeath
         Stop
 
     Death.Fatality:
 	    TNT1 A 0
 		TNT1 A 0 A_Pain
-		TNT1 A 0
 		TNT1 A 0 A_FaceTarget
 		TNT1 AAA 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 32, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
 		TNT1 AAA 0 A_SpawnItemEx("ArmorCrueltyBonus2", 0, 0, 32, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
@@ -234,23 +236,21 @@ ACTOR Arachnotron2: Arachnotron1 2542
 	    TNT1 A 0 A_GiveToTarget("GoFatality", 1)
 	Death.HelperMarineFatallity:
         TNT1 A 0 A_GiveToTarget("Arachnotron2FatalityA", 1)
-        TNT1 A 1 A_BossDeath
-        TNT1 A 0
+        TNT1 A -1 A_BossDeath
 		Stop
 	Death.Fatality2:
 	TNT1 A 0 A_GiveToTarget("GoFatality", 1)
         TNT1 A 0 A_GiveToTarget("Arachnotron2FatalityB", 1)
-        TNT1 A 1 A_BossDeath
-        TNT1 A 0
+        TNT1 A -1 A_BossDeath
 		Stop
 
     Death.Saw:
 	Death.Tear:
-	TNT1 AAAAA 0 A_CustomMissile ("Guts2", 14, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AAAAAA 0 A_CustomMissile ("CeilBloodLauncher", 40, 0, random (0, 360), 2, random (50, 130))
-         TNT1 AAAAA 0 A_CustomMissile ("XDeath1", 10, 0, random (0, 360), 2, random (0, 160))
-         TNT1 AAAAA 0 A_CustomMissile ("XDeath2", 10, 0, random (0, 360), 2, random (0, 160))
-         TNT1 AAAAAAAAAAAAA 0 A_CustomMissile ("PlayerFlyingBlood", 50, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAA 0 A_CustomMissile ("Guts2", 14, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAAA 0 A_CustomMissile ("CeilBloodLauncher", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 AAAAA 0 A_CustomMissile ("XDeath1", 10, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAA 0 A_CustomMissile ("XDeath2", 10, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAAAAAAAAAA 0 A_CustomMissile ("PlayerFlyingBlood", 50, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("XDeathArachnotronHead2", 50, 0, random (0, 360), 2, random (40, 130))
 		TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
@@ -258,9 +258,11 @@ ACTOR Arachnotron2: Arachnotron1 2542
 		ARAC YZ 8
 		TNT1 A 0 A_Jump(64, 3)
 		TNT1 A 0 A_SpawnItemEx("NoLegsSpider2", 0, 1, 1, 1, 1)
+        TNT1 A -1 A_BossDeath
 		Stop
 		TNT1 AAA 0
 		TNT1 A 0 A_SpawnItemEx("ArachnoTurretFrame2", 0, 1, 1, 1, 1)
+        TNT1 A -1 A_BossDeath
 		Stop
     Death.Crush:
 	Death.BlackHole:
@@ -281,29 +283,30 @@ ACTOR Arachnotron2: Arachnotron1 2542
         TNT1 AA 0 A_CustomMissile ("SpiderPart2", 32, 0, random (0, 360), 2, random (0, 160))
         TNT1 AAA 0 A_CustomMissile ("PEPart2", 32, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 AAAAAAAA 0 A_CustomMissile ("Brutal_FlyingBlood", 32, 0, random (0, 360), 2, random (0, 160))
-		ARAC Q 6 A_NoBlocking
+		ARAC Q 6
 		ARAC RSTUV 6
-		ARAC W 1 A_BossDeath
+		ARAC W 1 A_NoBlocking
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
         TNT1 A 0 A_SpawnItem ("XDeadSpider2", 1)
 	    TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 2 A_CustomMissile ("FlameTrails", 20, 0, random (0, 360), 2, random (70, 110))
 	    TNT1 AAAAAAAAAA 10 A_CustomMissile ("PlasmaSmoke", 40, 0, random (0, 360), 2, random (70, 110))
-		TNT1 A -1
+        TNT1 A -1 A_BossDeath
         Stop
 
 	XDeathRare:
 		TNT1 A 0 A_CustomMissile ("XDeathArachnotronHead2", 50, 0, random (0, 360), 2, random (40, 130))
          TNT1 AA 0 A_CustomMissile ("SpiderLeg2", 32, 0, random (0, 360), 2, random (0, 160))
          TNT1 AAAAAAAAA 0 A_CustomMissile ("CeilBloodLauncherLong", 0, 0, random (0, 360), 2, random (50, 130))
-		 ARAC Q 6 A_NoBlocking
+		 ARAC Q 6
 		ARAC RSTUV 6
-		ARAC W 1 A_BossDeath
+		ARAC W 1 A_NoBlocking
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
         TNT1 A 0 A_SpawnItem ("XDeadSpider2", 1)
+        TNT1 A -1 A_BossDeath
        Goto XBurns
 
     Raise:
-	TNT1 A 0 A_SpawnItem("PentagramSpawnerBig")
+		TNT1 A 0 A_SpawnItem("PentagramSpawnerBig")
 		ARAC PONMLKJ 5
 		Goto See
 	}

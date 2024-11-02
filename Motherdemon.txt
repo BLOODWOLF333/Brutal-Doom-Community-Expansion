@@ -122,14 +122,13 @@ actor Motherdemon 2548
 
     MOTH PQRST 8
     MOTH T 105
-    TNT1 A 0 A_BossDeath
-	MOTH T -1
+	MOTH T -1 A_BossDeath
     stop
 
   Crush:
     POL5 A 0
     POL5 A 0 A_PlaySound ("Misc/Gibbed")
-    POL5 A -1
+    POL5 A -1 A_BossDeath
     Stop
   }
 }
