@@ -780,7 +780,7 @@ States
 		SG1A A 4 A_Look
 		TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood3", 42, 0, random (0, 360), 2, random (0, 45))
 		TNT1 A 0 A_GiveInventory("DemonBleedingOut", 1)
-		TNT1 A 0 A_JumpIfInventory("DemonBleedingOut", 15, "Death")
+		TNT1 A 0 A_JumpIfInventory("DemonBleedingOut", 15, "Fall")
 		Loop
 	See:
 		TNT1 A 0 A_JumpIfInventory("ZombieManFatality", 1, "FatalityZombieman")
@@ -795,12 +795,12 @@ States
 		TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood3", 42, 0, random (0, 360), 2, random (0, 45))
 		SG1A DD 2 A_Chase
 		TNT1 A 0 A_GiveInventory("DemonBleedingOut", 1)
-		TNT1 A 0 A_JumpIfInventory("DemonBleedingOut", 15, "Death")
+		TNT1 A 0 A_JumpIfInventory("DemonBleedingOut", 15, "Fall")
 		TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood3", 42, 0, random (0, 360), 2, random (0, 45))
 		Loop
 	Melee:
 	    TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("DemonBleedingOut", 35, "Death")
+		TNT1 A 0 A_JumpIfInventory("DemonBleedingOut", 35, "Fall")
 		SG1A E 3 A_FaceTarget
 		TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood3", 42, 0, random (0, 360), 2, random (0, 45))
 		SG1A E 3 A_FaceTarget
@@ -921,7 +921,6 @@ States
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece", random (-15, 15), random (-15, 15))
 		TNT1 AA 0 A_SpawnItemEx("TinyBurningPiece2", random (-35, 35), random (-35, 35))
 		TNT1 AA 0 A_SpawnItemEx("TinyBurningPiece3", random (-45, 45), random (-45, 35))
-        //SPRG ABCDEF 6
         TNT1 A 0 A_SpawnItem("BurnedDemon")
         Stop
 
@@ -1009,9 +1008,7 @@ States
 
 	Death.KillMe:
     Death.Taunt:
-		TNT1 A 0 A_ChangeFlag("SOLID", 0)
-		TNT1 A 0 A_SpawnItem("ArmlessDemon")
-		Stop
+		Goto Death
 
 	Death.Strong:
 	Death.Strong2:
@@ -1032,6 +1029,9 @@ States
 		SAAR I 0 A_SpawnItem("DeadDemonSAARI")
 		TNT1 A -1
         Stop
+
+	Fall:
+		TNT1 A 0 A_Die
 
 	Death.Melee:
 	Death.Minor:
