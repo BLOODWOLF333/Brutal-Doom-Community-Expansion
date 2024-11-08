@@ -169,8 +169,10 @@ ACTOR Arachnotron2: Arachnotron1 2542
 		ARAC W 2 A_NoBlocking
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
         TNT1 A 0 A_SpawnItem ("DeadSpiderDark2", 1)
-		TNT1 A -1 A_BossDeath
-        Goto XBurns
+	    TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 2 A_CustomMissile ("FlameTrails", 20, 0, random (0, 360), 2, random (70, 110))
+	    TNT1 AAAAAAAAAA 10 A_CustomMissile ("PlasmaSmoke", 40, 0, random (0, 360), 2, random (70, 110))
+        TNT1 A -1 A_BossDeath
+        Stop
 
 	RareDeath2:
 		AR4C Q 5
@@ -191,8 +193,10 @@ ACTOR Arachnotron2: Arachnotron1 2542
 		AR4C W 2 A_NoBlocking
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
         TNT1 A 0 A_SpawnItem ("DeadSpiderDark4", 1)
-		TNT1 A -1 A_BossDeath
-        Goto XBurns
+	    TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 2 A_CustomMissile ("FlameTrails", 20, 0, random (0, 360), 2, random (70, 110))
+	    TNT1 AAAAAAAAAA 10 A_CustomMissile ("PlasmaSmoke", 40, 0, random (0, 360), 2, random (70, 110))
+        TNT1 A -1 A_BossDeath
+        Stop
 
 	Death.Cutless:
 	TNT1 A 0
@@ -211,7 +215,7 @@ ACTOR Arachnotron2: Arachnotron1 2542
         CARB Q -1 A_BossDeath
         Stop
 
-		Death.Fire:
+	Death.Fire:
         TNT1 A 0
 		TNT1 A 0 A_Scream
         TNT1 A 0 A_NoBlocking
@@ -302,8 +306,10 @@ ACTOR Arachnotron2: Arachnotron1 2542
 		ARAC W 1 A_NoBlocking
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
         TNT1 A 0 A_SpawnItem ("XDeadSpider2", 1)
+	    TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 2 A_CustomMissile ("FlameTrails", 20, 0, random (0, 360), 2, random (70, 110))
+	    TNT1 AAAAAAAAAA 10 A_CustomMissile ("PlasmaSmoke", 40, 0, random (0, 360), 2, random (70, 110))
         TNT1 A -1 A_BossDeath
-       Goto XBurns
+        Stop
 
     Raise:
 		TNT1 A 0 A_SpawnItem("PentagramSpawnerBig")
