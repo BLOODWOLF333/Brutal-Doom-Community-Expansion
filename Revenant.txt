@@ -199,35 +199,27 @@ ACTOR Revenant1: Revenant Replaces Revenant
 		SKEL K 10
 		Goto see
 	Pain:
-	    TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "FatalityMarine")
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 58)
-		TNT1 A 0 A_JumpIfInventory("DamagePoint1", 5, "ExplodeInHalf")
-		SKEL L 5
+	Pain.SHotgun:
+	Pain.SSG:
+	Pain.Cut:
+		SKEL L 5 A_JumpIfInventory("Curbstomp_Marine", 1, "FatalityMarine")
+		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 58)
 		SKEL L 5 A_Pain
 		Goto See
 
 	Pain.Head:
-	    TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "FatalityMarine")
+		SKEL L 2 A_JumpIfInventory("Curbstomp_Marine", 1, "FatalityMarine")
 		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 58)
-		SKEL L 2
 		SKEL L 2 A_Pain
-		Goto See
-
-	Pain.SHotgun:
-	Pain.SSG:
-	Pain.Cut:
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("DamagePoint1", 1, "ExplodeInHalf")
-		SKEL L 5
-		SKEL L 5 A_Pain
 		Goto See
 
 	Pain.RevenantHitStomach:
 		SKEL L 0
 		TNT1 A 0 A_GiveInventory("DamagePoint1")
-		TNT1 A 0 A_JumpIfInventory("DamagePoint1", 5, "ExplodeInHalf")
-		SKEL L 1 A_Pain
-		Goto Pain
+		SKEL L 5 A_JumpIfInventory("DamagePoint1", 5, "ExplodeInHalf")
+		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 58)
+		SKEL L 5 A_Pain
+		Goto See
 
 	Pain.Kick:
         TNT1 A 0 A_FaceTarget
@@ -484,12 +476,13 @@ ACTOR Revenant1: Revenant Replaces Revenant
         Stop
 
 	ExplodeInHalf:
-			TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+	        TNT1 A 0
+			TNT1 A 0 A_Die("Rare")
 	Death.Rare:
 	        TNT1 A 0
 		    TNT1 A 0 A_Scream
-	        SKEX A 0 A_SpawnItemEx("RevenantU", 0, 0, 40, 0, 0, 0, 0, SXF_NOCHECKPOSITION )
-		    TNT1 A 0 A_CustomMissile ("RoamingLegs", 0, 0, random (0, 360), 2, random (0, 160))
+	        SKEX A 0 A_SpawnItemEx("RevenantU", 0, 0, 32, 0, 0, 0, 0, SXF_NOCHECKPOSITION )
+		    TNT1 A 0 A_CustomMissile("RoamingLegs", 0, 0, random (0, 360), 2, random (0, 160))
 			TNT1 A -1 A_NoBlocking
 			Stop
 	Raise:
