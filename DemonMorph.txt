@@ -42,12 +42,22 @@ Script "BaronMorph" (VOID)
 		arrayArmorClass[PlayerNumber()] = "None";
 	}
 
-	if (arrayArmor[PlayerNumber()] != 0)
+	if (CheckInventory("BasicArmor") > arrayArmor[PlayerNumber()])
 	{
-		GiveInventory("BasicArmor",arrayArmor[PlayerNumber()]);
-		//Log(s:"Returned InitialArmor#= ", i:CheckInventory("BasicArmor"));
-		arrayArmor[PlayerNumber()] = 0;
+		While(CheckInventory("BasicArmor") > arrayArmor[PlayerNumber()])
+		{
+			TakeInventory("BasicArmor",1);
+		}
 	}
+	else if (CheckInventory("BasicArmor") < arrayArmor[PlayerNumber()])
+	{
+		While (CheckInventory("BasicArmor") < arrayArmor[PlayerNumber()])
+		{
+			GiveInventory("GiveArmor",1);
+		}
+	}
+	arrayArmor[PlayerNumber()] = 0;
+	//Log(s:"Returned InitialArmor#= ", i:CheckInventory("BasicArmor"));
 	TakeInventory("MorphToken", 1);
 	TakeInventory("CeaseMorph", 1);
 	TakeInventory("PowerTorch", 1);
@@ -89,12 +99,22 @@ Script "RevenantMorph" (VOID)
 		arrayArmorClass[PlayerNumber()] = "None";
 	}
 
-	if (arrayArmor[PlayerNumber()] != 0)
+	if (CheckInventory("BasicArmor") > arrayArmor[PlayerNumber()])
 	{
-		GiveInventory("BasicArmor",arrayArmor[PlayerNumber()]);
-		//Log(s:"Returned InitialArmor#= ", i:CheckInventory("BasicArmor"));
-		arrayArmor[PlayerNumber()] = 0;
+		While(CheckInventory("BasicArmor") > arrayArmor[PlayerNumber()])
+		{
+			TakeInventory("BasicArmor",1);
+		}
 	}
+	else if (CheckInventory("BasicArmor") < arrayArmor[PlayerNumber()])
+	{
+		While (CheckInventory("BasicArmor") < arrayArmor[PlayerNumber()])
+		{
+			GiveInventory("GiveArmor",1);
+		}
+	}
+	arrayArmor[PlayerNumber()] = 0;
+	//Log(s:"Returned InitialArmor#= ", i:CheckInventory("BasicArmor"));
 	TakeInventory("MorphToken", 1);
 	TakeInventory("CeaseMorph", 1);
 	TakeInventory("PowerTorch", 1);
@@ -116,12 +136,22 @@ Script "MorphedLevelChange" Enter
 			arrayArmorClass[PlayerNumber()] = "None";
 		}
 
-		if (arrayArmor[PlayerNumber()] != 0)
+		if (CheckInventory("BasicArmor") > arrayArmor[PlayerNumber()])
 		{
-			GiveInventory("BasicArmor",arrayArmor[PlayerNumber()]);
-			//Log(s:"Returned InitialArmor#= ", i:CheckInventory("BasicArmor"));
-			arrayArmor[PlayerNumber()] = 0;
+			While(CheckInventory("BasicArmor") > arrayArmor[PlayerNumber()])
+			{
+				TakeInventory("BasicArmor",1);
+			}
 		}
+		else if (CheckInventory("BasicArmor") < arrayArmor[PlayerNumber()])
+		{
+			While (CheckInventory("BasicArmor") < arrayArmor[PlayerNumber()])
+			{
+				GiveInventory("GiveArmor",1);
+			}
+		}
+		arrayArmor[PlayerNumber()] = 0;
+		//Log(s:"Returned InitialArmor#= ", i:CheckInventory("BasicArmor"));
 		UnMorphActor(0, 0);
 		TakeInventory("MorphToken", 1);
 		TakeInventory("CeaseMorph", 1);

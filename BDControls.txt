@@ -265,12 +265,22 @@ script "BDEnterHMG" (VOID) NET
 		arrayArmorClass[PlayerNumber()] = "None";
 	}
 
-	if (arrayArmor[PlayerNumber()] != 0)
+	if (CheckInventory("BasicArmor") > arrayArmor[PlayerNumber()])
 	{
-		GiveInventory("BasicArmor",arrayArmor[PlayerNumber()]);
-		//Log(s:"Returned InitialArmor#= ", i:CheckInventory("BasicArmor"));
-		arrayArmor[PlayerNumber()] = 0;
+		While(CheckInventory("BasicArmor") > arrayArmor[PlayerNumber()])
+		{
+			TakeInventory("BasicArmor",1);
+		}
 	}
+	else if (CheckInventory("BasicArmor") < arrayArmor[PlayerNumber()])
+	{
+		While (CheckInventory("BasicArmor") < arrayArmor[PlayerNumber()])
+		{
+			GiveInventory("GiveArmor",1);
+		}
+	}
+	arrayArmor[PlayerNumber()] = 0;
+	//Log(s:"Returned InitialArmor#= ", i:CheckInventory("BasicArmor"));
 	delay(2);
 }
 
@@ -301,12 +311,22 @@ script "BDLeaveHMG" (VOID) NET
 		arrayArmorClass[PlayerNumber()] = "None";
 	}
 
-	if (arrayArmor[PlayerNumber()] != 0)
+	if (CheckInventory("BasicArmor") > arrayArmor[PlayerNumber()])
 	{
-		GiveInventory("BasicArmor",arrayArmor[PlayerNumber()]);
-		//Log(s:"Returned InitialArmor#= ", i:CheckInventory("BasicArmor"));
-		arrayArmor[PlayerNumber()] = 0;
+		While(CheckInventory("BasicArmor") > arrayArmor[PlayerNumber()])
+		{
+			TakeInventory("BasicArmor",1);
+		}
 	}
+	else if (CheckInventory("BasicArmor") < arrayArmor[PlayerNumber()])
+	{
+		While (CheckInventory("BasicArmor") < arrayArmor[PlayerNumber()])
+		{
+			GiveInventory("GiveArmor",1);
+		}
+	}
+	arrayArmor[PlayerNumber()] = 0;
+	//Log(s:"Returned InitialArmor#= ", i:CheckInventory("BasicArmor"));
 	GiveActorInventory(261, "HeavyMachinegunAmmo", thisgunmachinegunammo);
 }
 
@@ -368,12 +388,22 @@ script "BDLeaveTank" (VOID) NET
 		arrayArmorClass[PlayerNumber()] = "None";
 	}
 
-	if (arrayArmor[PlayerNumber()] != 0)
+	if (CheckInventory("BasicArmor") > arrayArmor[PlayerNumber()])
 	{
-		GiveInventory("BasicArmor",arrayArmor[PlayerNumber()]);
-		//Log(s:"Returned InitialArmor#= ", i:CheckInventory("BasicArmor"));
-		arrayArmor[PlayerNumber()] = 0;
+		While(CheckInventory("BasicArmor") > arrayArmor[PlayerNumber()])
+		{
+			TakeInventory("BasicArmor",1);
+		}
 	}
+	else if (CheckInventory("BasicArmor") < arrayArmor[PlayerNumber()])
+	{
+		While (CheckInventory("BasicArmor") < arrayArmor[PlayerNumber()])
+		{
+			GiveInventory("GiveArmor",1);
+		}
+	}
+	arrayArmor[PlayerNumber()] = 0;
+	//Log(s:"Returned InitialArmor#= ", i:CheckInventory("BasicArmor"));
 	SetActorProperty(261, APROP_Health, vehicleprevioushealth);
 	GiveActorInventory(261, "HeavyMachinegunAmmo", thisgunmachinegunammo);
 	GiveActorInventory(261, "TankAmmo", thisTankAmmo);

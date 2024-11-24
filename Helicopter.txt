@@ -204,11 +204,11 @@ ACTOR Playerattackhelicopter : PlayerTank
 	Player.MorphWeapon "attackhelicopterGun"
 	States
 	{
-
 	ExitVehicle:
 		TNT1 A 0
 		TNT1 A 0 A_ChangeFlag(NOPAIN, 1)
 		TNT1 A 0 SetPlayerProperty(0,1,4)
+		TNT1 A 0 SetPlayerProperty(0,1,0)
 		TNT1 A 0 A_StopSound(6)
 		TNT1 A 0 A_StopSound(7)
 		TNT1 A 0 A_PlaySound("HELSTOP", 4)
@@ -248,6 +248,7 @@ ACTOR Playerattackhelicopter : PlayerTank
 		TNT1 A 0 A_JumpIfInventory("CanLeaveVehicle", 1, "CanExit")
 		TNT1 A 0 A_Print("Can't leave from this direction", 1)
 		TNT1 A 0 SetPlayerProperty(0,0,4)
+		TNT1 A 0 SetPlayerProperty(0,0,0)
 		TNT1 A 0 A_ChangeFlag(NOPAIN, 0)
 		TNT1 A 0 A_GiveInventory("HeliRestart",1)
 		Goto Stay
@@ -262,6 +263,7 @@ ACTOR Playerattackhelicopter : PlayerTank
 		TNT1 A 0 A_TakEinventory("PowerLightAmp", 1)
 		TNT1 A 0 A_TakeInventory("CanLeaveVehicle", 1)
 		TNT1 A 0 SetPlayerProperty(0,0,4)
+		TNT1 A 0 SetPlayerProperty(0,0,0)
 		TNT1 A 0 A_TakeInventory("PowerFlight", 1)
 		TNT1 A 0 ACS_NamedExecuteAlways("BDLeaveTank")
 		TNT1 A 0 A_SpawnItemEx ("attackhelicopterUsed", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
@@ -293,6 +295,7 @@ ACTOR Playerattackhelicopter : PlayerTank
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
 		TNT1 A 0 A_TakeInventory("FiredTankMainGun", 1)
 		TNT1 A 0 SetPlayerProperty(0,1,4)
+		TNT1 A 0 SetPlayerProperty(0,1,0)
 		TNT1 A 0 A_PlaySound("HELSTAR", 1)
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
 		HELA ABC 6
@@ -957,6 +960,7 @@ ACTOR Playerattackhelicopter : PlayerTank
 	TNT1 A 0 A_StopSound(6)
 	TNT1 A 0 A_TakeInventory("AttackhelicopterGun", 1)
 	TNT1 A 0 SetPlayerProperty(0,0,4)
+	TNT1 A 0 SetPlayerProperty(0,0,0)
 	TNT1 A 0 A_PlaySound("HELSTOP", 6)
 	TNT1 A 0 A_ChangeFlag("NOGRAVITY", 0)
 
@@ -1067,12 +1071,10 @@ ACTOR attackhelicopterGun : DoomWeapon
 
 	Deselect:
 		TNT1 A 1 A_Lower
-		TNT1 A 0 SetPlayerProperty(0,0,4)
 		Loop
 
 	Select:
 		HELH AAAAAAAAAAAA 0 A_Raise
-		TNT1 A 0 SetPlayerProperty(0,1,4)
 		HELH AAA 1 A_Raise
 		TNT1 A 0
 		Goto Ready
