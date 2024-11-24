@@ -35,7 +35,7 @@ Script "BaronMorph" (VOID)
 	//Log(s:"Returned Health= ", i:GetActorProperty(PlayerNumber(), APROP_HEALTH));
 	arrayHealth[PlayerNumber()] = 0;
 
-	if (arrayArmorClass[PlayerNumber()] != "None")
+	if (StrICmp(arrayArmorClass[PlayerNumber()], "None") != 0)
 	{
 		GiveInventory(arrayArmorClass[PlayerNumber()], 1);
 		//Log(s:"Returned ArmorClass= ", s:GetArmorInfo(ARMORINFO_CLASSNAME));
@@ -82,7 +82,7 @@ Script "RevenantMorph" (VOID)
 	//Log(s:"Returned Health= ", i:GetActorProperty(PlayerNumber(), APROP_HEALTH));
 	arrayHealth[PlayerNumber()] = 0;
 
-	if (arrayArmorClass[PlayerNumber()] != "None")
+	if (StrICmp(arrayArmorClass[PlayerNumber()], "None") != 0)
 	{
 		GiveInventory(arrayArmorClass[PlayerNumber()], 1);
 		//Log(s:"Returned ArmorClass= ", s:GetArmorInfo(ARMORINFO_CLASSNAME));
@@ -109,7 +109,7 @@ Script "MorphedLevelChange" Enter
 		//Log(s:"Returned Health= ", i:GetActorProperty(PlayerNumber(), APROP_HEALTH));
 		arrayHealth[PlayerNumber()] = 0;
 
-		if (arrayArmorClass[PlayerNumber()] != "None")
+		if (StrICmp(arrayArmorClass[PlayerNumber()], "None") != 0)
 		{
 			GiveInventory(arrayArmorClass[PlayerNumber()], 1);
 			//Log(s:"Returned ArmorClass= ", s:GetArmorInfo(ARMORINFO_CLASSNAME));

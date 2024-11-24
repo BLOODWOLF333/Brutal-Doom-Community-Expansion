@@ -258,7 +258,7 @@ script "BDEnterHMG" (VOID) NET
 	//Log(s:"Returned Health= ", i:GetActorProperty(PlayerNumber(), APROP_HEALTH));
 	arrayHealth[PlayerNumber()] = 0;
 
-	if (arrayArmorClass[PlayerNumber()] != "None")
+	if (StrICmp(arrayArmorClass[PlayerNumber()], "None") != 0)
 	{
 		GiveInventory(arrayArmorClass[PlayerNumber()], 1);
 		//Log(s:"Returned ArmorClass= ", s:GetArmorInfo(ARMORINFO_CLASSNAME));
@@ -294,7 +294,7 @@ script "BDLeaveHMG" (VOID) NET
 	//Log(s:"Returned Health= ", i:GetActorProperty(PlayerNumber(), APROP_HEALTH));
 	arrayHealth[PlayerNumber()] = 0;
 
-	if (arrayArmorClass[PlayerNumber()] != "None")
+	if (StrICmp(arrayArmorClass[PlayerNumber()], "None") != 0)
 	{
 		GiveInventory(arrayArmorClass[PlayerNumber()], 1);
 		//Log(s:"Returned ArmorClass= ", s:GetArmorInfo(ARMORINFO_CLASSNAME));
@@ -361,7 +361,7 @@ script "BDLeaveTank" (VOID) NET
 	//Log(s:"Returned Health= ", i:GetActorProperty(PlayerNumber(), APROP_HEALTH));
 	arrayHealth[PlayerNumber()] = 0;
 
-	if (arrayArmorClass[PlayerNumber()] != "None")
+	if (StrICmp(arrayArmorClass[PlayerNumber()], "None") != 0)
 	{
 		GiveInventory(arrayArmorClass[PlayerNumber()], 1);
 		//Log(s:"Returned ArmorClass= ", s:GetArmorInfo(ARMORINFO_CLASSNAME));
