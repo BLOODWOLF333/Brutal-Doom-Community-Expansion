@@ -251,34 +251,26 @@ script "BDEnterHMG" (VOID) NET
 	TakeInventory("PowerInvisibility",1);
 	SetActorAngle (0, GetActorAngle (261));
 	Thing_Move(0, 261, 1);
-	SetActorProperty(0, APROP_HEALTH, arrayHealth[PlayerNumber()]);
-	//Log(s:"Enter Health= ", i: GetActorProperty(0, APROP_HEALTH));
 	int thisgunmachinegunammo = CheckActorInventory(261, "HeavyMachinegunAmmo");
 	delay(6);
 	GiveInventory("HeavyMachinegunAmmo", thisgunmachinegunammo);
-	//Return ArmorClass and # of Armor Points
+	SetActorProperty(PlayerNumber(), APROP_HEALTH, arrayHealth[PlayerNumber()]);
+	//Log(s:"Returned Health= ", i:GetActorProperty(PlayerNumber(), APROP_HEALTH));
+	arrayHealth[PlayerNumber()] = 0;
+
 	if (arrayArmorClass[PlayerNumber()] != "None")
 	{
 		GiveInventory(arrayArmorClass[PlayerNumber()], 1);
 		//Log(s:"Returned ArmorClass= ", s:GetArmorInfo(ARMORINFO_CLASSNAME));
-		//Log(s:"Returned InitialArmor= ", i:CheckInventory("BasicArmor"));
-
-		if (CheckInventory("BasicArmor") > arrayArmor[PlayerNumber()])
-		{
-			While(CheckInventory("BasicArmor") > arrayArmor[PlayerNumber()])
-			{
-				TakeInventory("BasicArmor",1);
-			}
-		}
-		else if (CheckInventory("BasicArmor") < arrayArmor[PlayerNumber()])
-		{
-			While (CheckInventory("BasicArmor") < arrayArmor[PlayerNumber()])
-			{
-				GiveInventory("GiveArmor",1);
-			}
-		}
+		arrayArmorClass[PlayerNumber()] = "None";
 	}
-	//Log(s:"Enter ArmorPoints= ", i:CheckInventory("BasicArmor"));
+
+	if (arrayArmor[PlayerNumber()] != 0)
+	{
+		GiveInventory("BasicArmor",arrayArmor[PlayerNumber()]);
+		//Log(s:"Returned InitialArmor#= ", i:CheckInventory("BasicArmor"));
+		arrayArmor[PlayerNumber()] = 0;
+	}
 	delay(2);
 }
 
@@ -298,30 +290,23 @@ script "BDLeaveHMG" (VOID) NET
 	TakeInventory("RollLeft", 1);
 	Thing_Move(0, 264, 1);
 	UnMorphActor(0, 0);
+	SetActorProperty(PlayerNumber(), APROP_HEALTH, arrayHealth[PlayerNumber()]);
+	//Log(s:"Returned Health= ", i:GetActorProperty(PlayerNumber(), APROP_HEALTH));
+	arrayHealth[PlayerNumber()] = 0;
+
 	if (arrayArmorClass[PlayerNumber()] != "None")
 	{
 		GiveInventory(arrayArmorClass[PlayerNumber()], 1);
 		//Log(s:"Returned ArmorClass= ", s:GetArmorInfo(ARMORINFO_CLASSNAME));
-		//Log(s:"Returned InitialArmor#= ", i:CheckInventory("BasicArmor"));
-
-		if (CheckInventory("BasicArmor") > arrayArmor[PlayerNumber()])
-		{
-			While(CheckInventory("BasicArmor") > arrayArmor[PlayerNumber()])
-			{
-				TakeInventory("BasicArmor",1);
-			}
-		}
-		else if (CheckInventory("BasicArmor") < arrayArmor[PlayerNumber()])
-		{
-			While (CheckInventory("BasicArmor") < arrayArmor[PlayerNumber()])
-			{
-				GiveInventory("GiveArmor",1);
-			}
-		}
+		arrayArmorClass[PlayerNumber()] = "None";
 	}
-	//Log(s:"Post ArmorPoints= ", i: CheckInventory("BasicArmor"));
-	SetActorProperty(0, APROP_HEALTH, arrayHealth[PlayerNumber()]);
-	//Log(s:"Post Health= ", i: GetActorProperty(0, APROP_HEALTH));
+
+	if (arrayArmor[PlayerNumber()] != 0)
+	{
+		GiveInventory("BasicArmor",arrayArmor[PlayerNumber()]);
+		//Log(s:"Returned InitialArmor#= ", i:CheckInventory("BasicArmor"));
+		arrayArmor[PlayerNumber()] = 0;
+	}
 	GiveActorInventory(261, "HeavyMachinegunAmmo", thisgunmachinegunammo);
 }
 
@@ -372,30 +357,23 @@ script "BDLeaveTank" (VOID) NET
 	TakeInventory("RollLeft", 1);
 	Thing_Move(0, 264, 1);
 	UnMorphActor(0, 0);
+	SetActorProperty(PlayerNumber(), APROP_HEALTH, arrayHealth[PlayerNumber()]);
+	//Log(s:"Returned Health= ", i:GetActorProperty(PlayerNumber(), APROP_HEALTH));
+	arrayHealth[PlayerNumber()] = 0;
+
 	if (arrayArmorClass[PlayerNumber()] != "None")
 	{
 		GiveInventory(arrayArmorClass[PlayerNumber()], 1);
 		//Log(s:"Returned ArmorClass= ", s:GetArmorInfo(ARMORINFO_CLASSNAME));
-		//Log(s:"Returned InitialArmor#= ", i:CheckInventory("BasicArmor"));
-
-		if (CheckInventory("BasicArmor") > arrayArmor[PlayerNumber()])
-		{
-			While(CheckInventory("BasicArmor") > arrayArmor[PlayerNumber()])
-			{
-				TakeInventory("BasicArmor",1);
-			}
-		}
-		else if (CheckInventory("BasicArmor") < arrayArmor[PlayerNumber()])
-		{
-			While (CheckInventory("BasicArmor") < arrayArmor[PlayerNumber()])
-			{
-				GiveInventory("GiveArmor",1);
-			}
-		}
+		arrayArmorClass[PlayerNumber()] = "None";
 	}
-	//Log(s:"Post ArmorPoints= ", i: CheckInventory("BasicArmor"));
-	SetActorProperty(0, APROP_HEALTH, arrayHealth[PlayerNumber()]);
-	//Log(s:"Post Health= ", i: GetActorProperty(0, APROP_HEALTH));
+
+	if (arrayArmor[PlayerNumber()] != 0)
+	{
+		GiveInventory("BasicArmor",arrayArmor[PlayerNumber()]);
+		//Log(s:"Returned InitialArmor#= ", i:CheckInventory("BasicArmor"));
+		arrayArmor[PlayerNumber()] = 0;
+	}
 	SetActorProperty(261, APROP_Health, vehicleprevioushealth);
 	GiveActorInventory(261, "HeavyMachinegunAmmo", thisgunmachinegunammo);
 	GiveActorInventory(261, "TankAmmo", thisTankAmmo);
