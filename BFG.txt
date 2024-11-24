@@ -19,7 +19,6 @@ ACTOR BIG_FUCKING_GUN : BrutalWeapon
 	DropItem "BFG9000Spawner"
 	States
 	{
-
 	Ready3:
 	Ready:
 	Reload:
@@ -30,17 +29,12 @@ ACTOR BIG_FUCKING_GUN : BrutalWeapon
 		BFGN A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		BFGN A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
-		BFGN A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
+		BFGN A 0 A_JumpIfInventory("IsRunning",1,"StartSprint")
 		Loop
 
 	NoAmmo:
 		BFGN A 1
 		BFGN A 2 A_PlaySound("weapons/empty", 4)
-		Goto Ready3
-
-	CheckSprint:
-		BFGN A 1 A_WeaponReady
-		BFGN A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
 		Goto Ready3
 
 	StartSprint:
@@ -50,44 +44,31 @@ ACTOR BIG_FUCKING_GUN : BrutalWeapon
 		SHTN A 0 A_Takeinventory("ADSmode",1)
 		RIFG A 0 A_SetCrosshair(0)
 		SHTN A 0 A_Giveinventory("GoSpecial",1)
-		TNT1 A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
-		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		SMGG A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
 		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
 
 	Sprinting:
 		BFSP A 1 offset(-9,34) A_SetPitch(pitch -0.5)
 		BFSP A 1 offset(-6,36) A_SetPitch(pitch -0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		BFSP A 1 offset(-3,38) A_SetPitch(pitch -0.5)
 		BFSP A 1 offset(0,38) A_SetPitch(pitch -0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		BFSP A 1 offset(3,36) A_SetPitch(pitch -0.5)
 		BFSP A 1 offset(6,34) A_SetPitch(pitch -0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		BFSP A 1 offset(9,32) A_SetPitch(pitch -0.5)
-		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		TNT1 A 0 A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
+		TNT1 A 0 A_GiveInventory("UsedStamina", 3)
 		SMGG A 0 A_WeaponReady(WRF_NOBOB)
-		SMGG A 0 A_JumpIfInventory("IsStandingStill", 1, "StopSprint")
 		SMGG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         SMGG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
         SMGG A 0 A_JumpIfInventory("Reloading",1,"Reload")
+
 		BFSP A 1 offset(9,34) A_SetPitch(pitch +0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		BFSP A 1 offset(6,36) A_SetPitch(pitch +0.5)
 		BFSP A 1 offset(3,38) A_SetPitch(pitch +0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		BFSP A 1 offset(0,38) A_SetPitch(pitch +0.5)
 		BFSP A 1 offset(-3,36) A_SetPitch(pitch +0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		BFSP A 1 offset(-6,34) A_SetPitch(pitch +0.5)
 		BFSP A 1 offset(-9,32) A_SetPitch(pitch +0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
-		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		TNT1 A 0 A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
+		TNT1 A 0 A_GiveInventory("UsedStamina", 3)
 		SMGG A 0 A_WeaponReady(WRF_NOBOB)
-		SMGG A 0 A_JumpIfInventory("IsStandingStill", 1, "StopSprint")
 		SMGG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         SMGG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
         SMGG A 0 A_JumpIfInventory("Reloading",1,"Reload")
@@ -96,27 +77,15 @@ ACTOR BIG_FUCKING_GUN : BrutalWeapon
 		SMGG A 0 A_JumpIfInventory("IsRunning", 1, "Sprinting")
 		Goto StopSprint
 
-	StopSprintTired:
-		BFGN A 0
-		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
-		BFGN A 0 A_PlaySound("Tired", 2)
-		BFSP A 4 A_WeaponReady
-		BFGN A 0 A_TakeInventory("UsedStamina", 1)
-		BFSP A 4 A_WeaponReady
-		BFGN A 0 A_TakeInventory("UsedStamina", 1)
-		BFSP A 4 A_WeaponReady
-		BFGN A 0 A_TakeInventory("UsedStamina", 1)
-		BFSP A 4 A_WeaponReady
-		BFGN A 0 A_TakeInventory("UsedStamina", 1)
-		BFSP A 4 A_WeaponReady
-		BFGN A 0 A_TakeInventory("UsedStamina", 1)
-		BFSP A 4 A_WeaponReady
-		BFGN A 0 A_TakeInventory("UsedStamina", 1)
-		Goto Ready
 	StopSprint:
-		BFSP A 1 A_JumpIfInventory("PowerStrength", 1, 2)
-		BFGN A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
-		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
+		BFSP A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		BFGN A 0 A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
+		BFSP A 1 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
+		Goto Ready
+
+	StopSprintTired:
+		BFSP A 1 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
+		BFGN A 0 A_PlaySound("Tired", 2)
 		Goto Ready
 
 	Deselect:

@@ -125,16 +125,15 @@ Script "BDDualWield" (VOID) NET
 //Faster
 script "BDSprint" (void)
 {
-	if (checkinventory("istacticalclass") == 1) { SetActorProperty (0, APROP_Speed, 2.2); }
-	delay (13);
-	if (checkinventory("istacticalclass") == 1) { SetActorProperty (0, APROP_Speed, 1.1); }
+	SetActorProperty (0, APROP_Speed, 2.2);
+	Delay(13);
+	SetActorProperty (0, APROP_Speed, 1.0);
 }
 
 //Slower
 script "BDTacticalSpeed" (void)
 {
-	if (checkinventory("istacticalclass") == 1) { SetActorProperty(0, APROP_Speed, 1.1); }
-	delay (13);
+	SetActorProperty(0, APROP_Speed, 1.0);
 }
 
 Script "BDMinusFiveHealth" (VOID) NET

@@ -46,9 +46,6 @@ statusbar fullscreen, fullscreenoffsets
 			drawimage ammoicon1, -28, -24;
 			drawnumber 4, DIGINUMBER, red, ammo1, -15, -15, 0;
 
-			//STAMINA
-			drawnumber 4, SMALLFONT, white, Ammo UsedStamina, drawshadow(1,1) | whennotzero, 8+center, -8, 0;
-
 			//RADSUIT
 			drawnumber 4, SMALLFONT, green, PowerupTime RadSuit, drawshadow(1,1) | whennotzero, 8+center, -16, 0;
 
@@ -97,9 +94,6 @@ statusbar fullscreen, fullscreenoffsets
 		//GRENADES
 		drawimage "GRNDA", -15, -4;
 		drawnumber 4, SMALLFONT, red, Ammo GrenadeAmmo, drawshadow(1,1), -15, -12, 0;
-
-		//STAMINA
-		drawnumber 4, SMALLFONT, white, Ammo UsedStamina, drawshadow(1,1) | whennotzero, 8+center, -8, 0;
 
 		//RADSUIT
 		drawnumber 4, SMALLFONT, green, PowerupTime RadSuit, drawshadow(1,1) | whennotzero, 8+center, -16, 0;
@@ -174,9 +168,6 @@ statusbar fullscreen, fullscreenoffsets
 		DrawKeyBar 1, horizontal, 9, 120+center, 28, 4;
 		DrawKeyBar 1, horizontal, 9, 128+center, 27, 5;
 
-		//STAMINA
-		drawnumber 4, SMALLFONT, white, Ammo UsedStamina, drawshadow(1,1) | whennotzero, 8+center, -8, 0;
-
 		//RADSUIT
 		drawnumber 4, SMALLFONT, green, PowerupTime RadSuit, drawshadow(1,1) | whennotzero, 8+center, -16, 0;
 
@@ -249,20 +240,17 @@ statusbar normal // Standard Doom Status bar
 		drawnumber 8, SMALLFONT, darkred, frags, drawshadow(1,1), 164, 8;
 	}
 
-	//STAMINA
-	drawnumber 4, SMALLFONT, white, Ammo UsedStamina, whennotzero | interpolate(4), 168, 160, 0;
-
 	//RADSUIT
-	drawnumber 4, SMALLFONT, green, PowerupTime RadSuit, whennotzero, 193, 160, 0;
+	drawnumber 4, SMALLFONT, green, PowerupTime RadSuit, whennotzero, 180, 160, 0;
 
 	//INVULNERABILITY
-	drawnumber 4, SMALLFONT, darkgreen, PowerupTime InvulnerabilitySphere, whennotzero, 143, 160, 0;
+	drawnumber 4, SMALLFONT, darkgreen, PowerupTime InvulnerabilitySphere, whennotzero, 160, 160, 0;
 
 	//INFRARED
-	drawnumber 4, SMALLFONT, brick, PowerupTime ArtiTorch, whennotzero, 226, 160, 0;
+	drawnumber 4, SMALLFONT, brick, PowerupTime ArtiTorch, whennotzero, 205, 160, 0;
 
 	//INVISIBILITY
-	drawnumber 4, SMALLFONT, black, PowerupTime BlurSphere, whennotzero, 118, 160, 0;
+	drawnumber 4, SMALLFONT, black, PowerupTime BlurSphere, whennotzero, 140, 160, 0;
 
 	//GRENADES
 	drawimage "GRNDA", 310, 168;

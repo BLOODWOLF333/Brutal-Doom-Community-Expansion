@@ -23,10 +23,6 @@ script "BDInputs" ENTER
 		{
 			GiveInventory("PressedUse", 1);
 		}
-		if (buttons & BT_SPEED)
-		{
-			GiveInventory("IsRunning", 1);
-		}
 		if (buttons & BT_ALTATTACK)
 		{
 		   GiveInventory("FiredSecondary", 1);
@@ -43,13 +39,27 @@ script "BDInputs" ENTER
 		{
 		   GiveInventory("IsCrouching", 1);
 		}
-		delay(2);
+		if(	(buttons & BT_SPEED) && (buttons & BT_FORWARD)
+			&& Checkinventory("istacticalclass")
+			&& !CheckInventory("IsCrouching")
+			&& (GetActorProperty(0, APROP_WATERLEVEL)<1)
+			&& ((GetActorVelZ(0) < 6) && (GetActorVelZ(0) > -6))	)
+		{
+			GiveInventory("IsRunning", 1);
+		}
+		//Log(s:"SPEED:", I:BT_SPEED);
+		//Log(s:"FWD:", I:BT_FORWARD);
+		//Log(s:"isTactical?:", I:Checkinventory("istacticalclass"));
+		//Log(s:"isCrouching?:", I:CheckInventory("IsCrouching"));
+		//Log(s:"WaterLevel:", I:GetActorProperty(0, APROP_WATERLEVEL));
+		//Log(s:"velZ:", I:GetActorVelZ(0));
+		delay(4);
 		TakeInventory("PressedUse", 1);
-		TakeInventory("IsRunning", 1);
 		TakeInventory("FiredSecondary", 1);
 		TakeInventory("FiredPrimary", 1);
 		TakeInventory("Reloading",1);
 		TakeInventory("IsCrouching", 1);
+		TakeInventory("IsRunning", 1);
 	}
 }
 

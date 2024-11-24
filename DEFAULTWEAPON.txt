@@ -20,7 +20,6 @@ ACTOR BrutalWeapon : DoomWeapon
 		TNT1 A 0 A_TakeInventory("Salute2", 1)
 		TNT1 A 0 A_TakeInventory("Taunting",1)
 		TNT1 A 0 A_TakeInventory("TossGrenade",1)
-		TNT1 A 0 A_TakeInventory("IsRunning",1)
 		TNT1 A 0 A_TakeInventory("Reloading",1)
 		TNT1 A 1 A_Raise
 		Goto Ready3
@@ -44,7 +43,6 @@ ACTOR BrutalWeapon : DoomWeapon
 		  TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		  TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		  TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-		  TNT1 A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		  TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
 		  TNT1 A 2
 		  Goto GoingToReady
@@ -63,7 +61,6 @@ ACTOR BrutalWeapon : DoomWeapon
 		TNT1 A 0
 		TNT1 A 0 A_TakeInventory("PRessedUse", 1)
 		TNT1 A 4
-		TNT1 A 0 A_TakeInventory("UsedStamina", 1)
 		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "Interrupt")
 		Goto Flash
 
@@ -89,7 +86,6 @@ ACTOR BrutalWeapon : DoomWeapon
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
 		TNT1 A 1 BRIGHT
-		TNT1 A 0 A_TakeInventory("UsedStamina", 1)
 		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "WaitFlashOn")
 		Goto Flash
 
@@ -100,7 +96,6 @@ ACTOR BrutalWeapon : DoomWeapon
 		TNT1 A 0 A_JumpIfInventory("FlashlightOn", 1, "FlashOn")
 		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "TryUse")
 		TNT1 A 4
-		TNT1 A 0 A_TakeInventory("UsedStamina", 1)
 		Goto Flash
 
 	LightEnd:
@@ -130,7 +125,6 @@ ACTOR BrutalWeapon : DoomWeapon
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
 		TNT1 A 1 BRIGHT
-		TNT1 A 0 A_TakeInventory("UsedStamina", 1)
 		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "TryUse")
 		Goto Flash
 

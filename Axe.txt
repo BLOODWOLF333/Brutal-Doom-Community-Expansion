@@ -56,61 +56,44 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXEG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		RIFG A 0 A_JumpIfInventory("StartDualWield",1,"DualWield")
-		AXEG A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
+		AXEG A 0 A_JumpIfInventory("IsRunning",1,"StartSprint")
 		Loop
 
-	CheckSprint:
-		AXEG A 1 A_WeaponReady
-		AXEG A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"RedBloodCheckSprint")
-		AXEG A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"BlueBloodCheckSprint")
-        AXEG A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"GreenBloodCheckSprint")
-		AXEG A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
-		Goto Ready
-
 	StartSprint:
+		AXEG A 0
+		AXEG A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"RedBloodStartSprint")
+		AXEG A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"BlueBloodStartSprint")
+        AXEG A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"GreenBloodStartSprint")
 		AXEG A 1 A_WeaponReady
 		SHTN A 0 A_Takeinventory("Zoomed",1)
         SHTN A 0 A_ZoomFactor(1.0)
 		SHTN A 0 A_Takeinventory("ADSmode",1)
 		RIFG A 0 A_SetCrosshair(0)
 		SHTN A 0 A_Giveinventory("GoSpecial",1)
-		TNT1 A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready")
-		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		SMGG A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
 		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
 
 	Sprinting:
 		AXEP A 1 offset(-9,66) A_SetPitch(pitch -0.5)
 		AXEP A 1 offset(-6,68) A_SetPitch(pitch -0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		AXEP A 1 offset(-3,70) A_SetPitch(pitch -0.5)
 		AXEP A 1 offset(0,70) A_SetPitch(pitch -0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		AXEP A 1 offset(3,68) A_SetPitch(pitch -0.5)
 		AXEP A 1 offset(6,66) A_SetPitch(pitch -0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		AXEP A 1 offset(9,64) A_SetPitch(pitch -0.5)
-		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		TNT1 A 0 A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		AXEG A 0 A_WeaponReady(WRF_NOBOB)
-		SMGG A 0 A_JumpIfInventory("IsStandingStill", 1, "StopSprint")
 		SMGG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         SMGG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+
 		AXEP A 1 offset(9,66) A_SetPitch(pitch +0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		AXEP A 1 offset(6,68) A_SetPitch(pitch +0.5)
 		AXEP A 1 offset(3,70) A_SetPitch(pitch +0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		AXEP A 1 offset(0,70) A_SetPitch(pitch +0.5)
 		AXEP A 1 offset(-3,68) A_SetPitch(pitch +0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		AXEP A 1 offset(-6,66) A_SetPitch(pitch +0.5)
 		AXEP A 1 offset(-9,64) A_SetPitch(pitch +0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
-		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		TNT1 A 0 A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
 		AXEG A 0 A_WeaponReady(WRF_NOBOB)
-		SMGG A 0 A_JumpIfInventory("IsStandingStill", 1, "StopSprint")
 		SMGG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         SMGG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 
@@ -118,28 +101,16 @@ ACTOR BrutalAxe : BrutalWeapon
 		SMGG A 0 A_JumpIfInventory("IsRunning", 1, "Sprinting")
 		Goto StopSprint
 
-	StopSprintTired:
-		AXEP A 0
-		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
-		AXEG A 0 A_PlaySound("Tired", 2)
-		AXEG A 4 A_WeaponReady
-		AXEG A 0 A_TakeInventory("UsedStamina", 1)
-		AXEG A 4 A_WeaponReady
-		AXEG A 0 A_TakeInventory("UsedStamina", 1)
-		AXEG A 4 A_WeaponReady
-		AXEG A 0 A_TakeInventory("UsedStamina", 1)
-		AXEG A 4 A_WeaponReady
-		AXEG A 0 A_TakeInventory("UsedStamina", 1)
-		AXEG A 4 A_WeaponReady
-		AXEG A 0 A_TakeInventory("UsedStamina", 1)
-		AXEG A 4 A_WeaponReady
-		AXEG A 0 A_TakeInventory("UsedStamina", 1)
+	StopSprint:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		SMGG A 0 A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
+		AXEG A 1 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		Goto Ready
 
-	StopSprint:
-		AXEG A 1 A_JumpIfInventory("PowerStrength", 1, 2)
-		SMGG A 0 A_JumpIfInventory("UsedStamina", 90, "StopSprintTired")
-		TNT1 A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
+	StopSprintTired:
+		AXEG A 1 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
+		AXEG A 0 A_PlaySound("Tired", 2)
 		Goto Ready
 
 	Deselect:
@@ -250,13 +221,8 @@ ACTOR BrutalAxe : BrutalWeapon
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		AXEG A 0 A_TakeInventory("PowerGreenBloodOnVisor", 1)
 		AXEG A 0 A_TakeInventory("PowerBlueBloodOnVisor", 1)
-		AXEG A 0 A_JumpIfInventory("IsRunning",1,"RedBloodCheckSprint")
+		AXEG A 0 A_JumpIfInventory("IsRunning",1,"RedBloodStartSprint")
 		Loop
-
-	RedBloodCheckSprint:
-		AXRG A 1 A_WeaponReady
-		AXEG A 0 A_JumpIfInventory("IsTacticalClass", 1, "RedBloodStartSprint")
-		Goto Ready
 
 	RedBloodStartSprint:
 		AXRG A 1 A_WeaponReady
@@ -265,43 +231,30 @@ ACTOR BrutalAxe : BrutalWeapon
 		SHTN A 0 A_Takeinventory("ADSmode",1)
 		RIFG A 0 A_SetCrosshair(0)
 		SHTN A 0 A_Giveinventory("GoSpecial",1)
-		TNT1 A 0 A_JumpIfInventory("IsStandingStill", 1, "RedBloodReady")
-		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		SMGG A 0 A_JumpIfInventory("UsedStamina", 90, "RedBloodStopSprintTired")
 		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
 
 	RedBloodSprinting:
 		AXRP A 1 offset(-9,66) A_SetPitch(pitch -0.5)
 		AXRP A 1 offset(-6,68) A_SetPitch(pitch -0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		AXRP A 1 offset(-3,70) A_SetPitch(pitch -0.5)
 		AXRP A 1 offset(0,70) A_SetPitch(pitch -0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		AXRP A 1 offset(3,68) A_SetPitch(pitch -0.5)
 		AXRP A 1 offset(6,66) A_SetPitch(pitch -0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		AXRP A 1 offset(9,64) A_SetPitch(pitch -0.5)
-		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		TNT1 A 0 A_JumpIfInventory("UsedStamina", 100, "RedBloodStopSprintTired")
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		AXRG A 0 A_WeaponReady(WRF_NOBOB)
-		SMGG A 0 A_JumpIfInventory("IsStandingStill", 1, "RedBloodStopSprint")
 		SMGG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         SMGG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+
 		AXRP A 1 offset(9,66) A_SetPitch(pitch +0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		AXRP A 1 offset(6,68) A_SetPitch(pitch +0.5)
 		AXRP A 1 offset(3,70) A_SetPitch(pitch +0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		AXRP A 1 offset(0,70) A_SetPitch(pitch +0.5)
 		AXRP A 1 offset(-3,68) A_SetPitch(pitch +0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		AXRP A 1 offset(-6,66) A_SetPitch(pitch +0.5)
 		AXRP A 1 offset(-9,64) A_SetPitch(pitch +0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
-		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		TNT1 A 0 A_JumpIfInventory("UsedStamina", 100, "RedBloodStopSprintTired")
 		AXRG A 0 A_WeaponReady(WRF_NOBOB)
-		SMGG A 0 A_JumpIfInventory("IsStandingStill", 1, "RedBloodStopSprint")
 		SMGG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         SMGG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 
@@ -309,28 +262,16 @@ ACTOR BrutalAxe : BrutalWeapon
 		SMGG A 0 A_JumpIfInventory("IsRunning", 1, "RedBloodSprinting")
 		Goto RedBloodStopSprint
 
-	RedBloodStopSprintTired:
-		AXRP A 0
-		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
-		AXEG A 0 A_PlaySound("Tired", 2)
-		AXRG A 4 A_WeaponReady
-		AXEG A 0 A_TakeInventory("UsedStamina", 1)
-		AXRG A 4 A_WeaponReady
-		AXEG A 0 A_TakeInventory("UsedStamina", 1)
-		AXRG A 4 A_WeaponReady
-		AXEG A 0 A_TakeInventory("UsedStamina", 1)
-		AXRG A 4 A_WeaponReady
-		AXEG A 0 A_TakeInventory("UsedStamina", 1)
-		AXRG A 4 A_WeaponReady
-		AXEG A 0 A_TakeInventory("UsedStamina", 1)
-		AXRG A 4 A_WeaponReady
-		AXEG A 0 A_TakeInventory("UsedStamina", 1)
+	RedBloodStopSprint:
+		AXRG A 0
+		AXRG A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		AXEG A 0 A_JumpIfInventory("UsedStamina", 100, "RedBloodStopSprintTired")
+		AXRG A 1 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		Goto RedBloodReady
 
-	RedBloodStopSprint:
-		AXRG A 1 A_JumpIfInventory("PowerStrength", 1, 2)
-		AXEG A 0 A_JumpIfInventory("UsedStamina", 90, "RedBloodStopSprintTired")
-		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
+	RedBloodStopSprintTired:
+		AXRG A 1 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
+		AXEG A 0 A_PlaySound("Tired", 2)
 		Goto RedBloodReady
 
     RedBloodFire:
@@ -378,13 +319,8 @@ ACTOR BrutalAxe : BrutalWeapon
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		AXEG A 0 A_TakeInventory("PowerGreenBloodOnVisor", 1)
 		AXEG A 0 A_TakeInventory("PowerBloodOnVisor", 1)
-		AXEG A 0 A_JumpIfInventory("IsRunning",1,"BlueBloodCheckSprint")
+		AXEG A 0 A_JumpIfInventory("IsRunning",1,"BlueBloodStartSprint")
 		Loop
-
-	BlueBloodCheckSprint:
-		AXBG A 1 A_WeaponReady
-		AXEG A 0 A_JumpIfInventory("IsTacticalClass", 1, "BlueBloodStartSprint")
-		Goto Ready
 
 	BlueBloodStartSprint:
 		AXBG A 1 A_WeaponReady
@@ -393,43 +329,30 @@ ACTOR BrutalAxe : BrutalWeapon
 		SHTN A 0 A_Takeinventory("ADSmode",1)
 		RIFG A 0 A_SetCrosshair(0)
 		SHTN A 0 A_Giveinventory("GoSpecial",1)
-		TNT1 A 0 A_JumpIfInventory("IsStandingStill", 1, "BlueBloodReady")
-		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		SMGG A 0 A_JumpIfInventory("UsedStamina", 90, "BlueBloodStopSprintTired")
 		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
 
 	BlueBloodSprinting:
 		AXBP A 1 offset(-9,66) A_SetPitch(pitch -0.5)
 		AXBP A 1 offset(-6,68) A_SetPitch(pitch -0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		AXBP A 1 offset(-3,70) A_SetPitch(pitch -0.5)
 		AXBP A 1 offset(0,70) A_SetPitch(pitch -0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		AXBP A 1 offset(3,68) A_SetPitch(pitch -0.5)
 		AXBP A 1 offset(6,66) A_SetPitch(pitch -0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		AXBP A 1 offset(9,64) A_SetPitch(pitch -0.5)
-		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		TNT1 A 0 A_JumpIfInventory("UsedStamina", 100, "BlueBloodStopSprintTired")
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		AXBG A 0 A_WeaponReady(WRF_NOBOB)
-		SMGG A 0 A_JumpIfInventory("IsStandingStill", 1, "BlueBloodStopSprint")
 		SMGG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         SMGG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+
 		AXBP A 1 offset(9,66) A_SetPitch(pitch +0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		AXBP A 1 offset(6,68) A_SetPitch(pitch +0.5)
 		AXBP A 1 offset(3,70) A_SetPitch(pitch +0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		AXBP A 1 offset(0,70) A_SetPitch(pitch +0.5)
 		AXBP A 1 offset(-3,68) A_SetPitch(pitch +0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		AXBP A 1 offset(-6,66) A_SetPitch(pitch +0.5)
 		AXBP A 1 offset(-9,64) A_SetPitch(pitch +0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
-		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		TNT1 A 0 A_JumpIfInventory("UsedStamina", 100, "BlueBloodStopSprintTired")
 		AXBG A 0 A_WeaponReady(WRF_NOBOB)
-		SMGG A 0 A_JumpIfInventory("IsStandingStill", 1, "BlueBloodStopSprint")
 		SMGG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         SMGG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 
@@ -437,27 +360,16 @@ ACTOR BrutalAxe : BrutalWeapon
 		SMGG A 0 A_JumpIfInventory("IsRunning", 1, "BlueBloodSprinting")
 		Goto BlueBloodStopSprint
 
-	BlueBloodStopSprintTired:
-		AXBP A 0
-		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
-		AXEG A 0 A_PlaySound("Tired", 2)
-		AXBG A 4 A_WeaponReady
-		AXEG A 0 A_TakeInventory("UsedStamina", 1)
-		AXBG A 4 A_WeaponReady
-		AXEG A 0 A_TakeInventory("UsedStamina", 1)
-		AXBG A 4 A_WeaponReady
-		AXEG A 0 A_TakeInventory("UsedStamina", 1)
-		AXBG A 4 A_WeaponReady
-		AXEG A 0 A_TakeInventory("UsedStamina", 1)
-		AXBG A 4 A_WeaponReady
-		AXEG A 0 A_TakeInventory("UsedStamina", 1)
-		AXBG A 4 A_WeaponReady
-		AXEG A 0 A_TakeInventory("UsedStamina", 1)
-		Goto BlueBloodReady
 	BlueBloodStopSprint:
-		AXBG A 1 A_JumpIfInventory("PowerStrength", 1, 2)
-		AXEG A 0 A_JumpIfInventory("UsedStamina", 90, "BlueBloodStopSprintTired")
-		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
+		AXBG A 0
+		AXBG A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		AXEG A 0 A_JumpIfInventory("UsedStamina", 100, "BlueBloodStopSprintTired")
+		AXBG A 1 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
+		Goto BlueBloodReady
+
+	BlueBloodStopSprintTired:
+		AXBG A 1 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
+		AXEG A 0 A_PlaySound("Tired", 2)
 		Goto BlueBloodReady
 
     BlueBloodFire:
@@ -505,13 +417,8 @@ ACTOR BrutalAxe : BrutalWeapon
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		AXEG A 0 A_TakeInventory("PowerBlueBloodOnVisor", 1)
 		AXEG A 0 A_TakeInventory("PowerBloodOnVisor", 1)
-		AXEG A 0 A_JumpIfInventory("IsRunning",1,"GreenBloodCheckSprint")
+		AXEG A 0 A_JumpIfInventory("IsRunning",1,"GreenBloodStartSprint")
 		Loop
-
-	GreenBloodCheckSprint:
-		AXGG A 1 A_WeaponReady
-		AXEG A 0 A_JumpIfInventory("IsTacticalClass", 1, "GreenBloodStartSprint")
-		Goto Ready
 
 	GreenBloodStartSprint:
 		AXGG A 1 A_WeaponReady
@@ -520,71 +427,46 @@ ACTOR BrutalAxe : BrutalWeapon
 		SHTN A 0 A_Takeinventory("ADSmode",1)
 		RIFG A 0 A_SetCrosshair(0)
 		SHTN A 0 A_Giveinventory("GoSpecial",1)
-		TNT1 A 0 A_JumpIfInventory("IsStandingStill", 1, "GreenBloodReady")
-		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		SMGG A 0 A_JumpIfInventory("UsedStamina", 90, "GreenBloodStopSprintTired")
 		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
 
 	GreenBloodSprinting:
 		AXGP A 1 offset(-9,66) A_SetPitch(pitch -0.5)
 		AXGP A 1 offset(-6,68) A_SetPitch(pitch -0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		AXGP A 1 offset(-3,70) A_SetPitch(pitch -0.5)
 		AXGP A 1 offset(0,70) A_SetPitch(pitch -0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		AXGP A 1 offset(3,68) A_SetPitch(pitch -0.5)
 		AXGP A 1 offset(6,66) A_SetPitch(pitch -0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		AXGP A 1 offset(9,64) A_SetPitch(pitch -0.5)
-		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		TNT1 A 0 A_JumpIfInventory("UsedStamina", 100, "GreenBloodStopSprintTired")
+		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		AXGG A 0 A_WeaponReady(WRF_NOBOB)
-		SMGG A 0 A_JumpIfInventory("IsStandingStill", 1, "GreenBloodStopSprint")
 		SMGG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         SMGG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+
 		AXGP A 1 offset(9,66) A_SetPitch(pitch +0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		AXGP A 1 offset(6,68) A_SetPitch(pitch +0.5)
 		AXGP A 1 offset(3,70) A_SetPitch(pitch +0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		AXGP A 1 offset(0,70) A_SetPitch(pitch +0.5)
 		AXGP A 1 offset(-3,68) A_SetPitch(pitch +0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		AXGP A 1 offset(-6,66) A_SetPitch(pitch +0.5)
 		AXGP A 1 offset(-9,64) A_SetPitch(pitch +0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
-		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		TNT1 A 0 A_JumpIfInventory("UsedStamina", 100, "GreenBloodStopSprintTired")
 		AXGG A 0 A_WeaponReady(WRF_NOBOB)
-		SMGG A 0 A_JumpIfInventory("IsStandingStill", 1, "GreenBloodStopSprint")
 		SMGG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         SMGG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 
 		PLAY A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
 		SMGG A 0 A_JumpIfInventory("IsRunning", 1, "GreenBloodSprinting")
 		Goto GreenBloodStopSprint
+	GreenBloodStopSprint:
+		AXGG A 0
+		AXGG A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		AXEG A 0 A_JumpIfInventory("UsedStamina", 100, "GreenBloodStopSprintTired")
+		AXGG A 1 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
+		Goto GreenBloodReady
 
 	GreenBloodStopSprintTired:
-		AXGP A 0
-		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
+		AXGG A 1 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		AXEG A 0 A_PlaySound("Tired", 2)
-		AXGG A 4 A_WeaponReady
-		AXEG A 0 A_TakeInventory("UsedStamina", 1)
-		AXGG A 4 A_WeaponReady
-		AXEG A 0 A_TakeInventory("UsedStamina", 1)
-		AXGG A 4 A_WeaponReady
-		AXEG A 0 A_TakeInventory("UsedStamina", 1)
-		AXGG A 4 A_WeaponReady
-		AXEG A 0 A_TakeInventory("UsedStamina", 1)
-		AXGG A 4 A_WeaponReady
-		AXEG A 0 A_TakeInventory("UsedStamina", 1)
-		AXGG A 4 A_WeaponReady
-		AXEG A 0 A_TakeInventory("UsedStamina", 1)
-		Goto GreenBloodReady
-	GreenBloodStopSprint:
-		AXGG A 1 A_JumpIfInventory("PowerStrength", 1, 2)
-		AXEG A 0 A_JumpIfInventory("UsedStamina", 90, "GreenBloodStopSprintTired")
-		PLAY A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		Goto GreenBloodReady
 
     GreenBloodFire:

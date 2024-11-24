@@ -871,7 +871,6 @@ ACTOR BikeHUD : BrutalWeapon
 		NULL A 0 A_JumpIfInventory("PitchBackToken2", 1, "PitchBackHard")
 		NULL A 0 A_JumpIfInventory("PitchBackToken", 1, "PitChBack")
 		TNT1 A 0 A_SetPitch(0)
-		TNT1 A 0 A_TakeInventory("UsedStamina", 1)
 		Goto Flash
 
 	PitChFront:
@@ -975,7 +974,6 @@ ACTOR BikeHUD : BrutalWeapon
 		NULL A 0 A_JumpIfInventory("PitchBackToken2", 1, "LampPitchBackHard")
 		NULL A 0 A_JumpIfInventory("PitchBackToken", 1, "LampPitChBack")
 		TNT1 A 0 A_SetPitch(0)
-		TNT1 A 0 A_TakeInventory("UsedStamina", 1)
 		Goto Flash
 
 	SwitchFlashlight:

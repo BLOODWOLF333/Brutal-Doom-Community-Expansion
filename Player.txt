@@ -96,6 +96,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_JumpIfInventory("SawSelected", 1, "ChainSawStandStill")
 		NULL A 0 A_JumpIfInventory("ADSMode", 1, "ADSStand")
 
+		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 		TNT1 A 0 A_TakeInventory("IsFloating", 100)
 
@@ -103,13 +104,16 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_JumpIf (vely >=6 || vely <=-6, "See")
         MARN DD 2 A_JumpIf (velz !=0, "IsJumpin")
 
+		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
+		MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 		MARN D 0 A_TakeInventory("UsedStamina", 1)
 
 		TNT1 A 0 A_JumpIf (velx >=6 || velx <=-6, "See")
 		TNT1 A 0 A_JumpIf (vely >=6 || vely <=-6, "See")
         MARN DD 2 A_JumpIf (velz !=0, "IsJumpin")
-        MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 
+		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
+        MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker")
 		MARN D 0 A_TakeInventory("UsedStamina", 1)
 		Loop
 
@@ -134,18 +138,23 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL A 0 A_JumpIfInventory("ADSMode", 1, "ADSMove")
 
 		MARN AAA 1 A_JumpIf (velz != 0, "IsJumpin")
+		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 
 		MARN BBB 1 A_JumpIf (velz != 0, "IsJumpin")
+		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		MARN B 0 A_SpawnItemEx("FootStep6", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
 		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		MARN CCC 1 A_JumpIf (velz != 0, "IsJumpin")
+		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MARN C 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 
 		MARN BBB 1 A_JumpIf (velz != 0, "IsJumpin")
+		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
+		MARN D 0 A_TakeInventory("UsedStamina", 1)
 
 		MARN B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		MARN A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
@@ -238,6 +247,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		PLA1 B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		MARN D 0 A_TakeInventory("UsedStamina", 1)
 
 		PLA1 B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		PLA1 A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
@@ -309,6 +319,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		MAR3 B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		MARN D 0 A_TakeInventory("UsedStamina", 1)
 
 		MAR3 B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		MAR3 A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
@@ -379,6 +390,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		MARN D 0 A_TakeInventory("UsedStamina", 1)
 
 		NULL B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
@@ -449,6 +461,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		MARN D 0 A_TakeInventory("UsedStamina", 1)
 
 		NULL B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
@@ -519,6 +532,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		MARN D 0 A_TakeInventory("UsedStamina", 1)
 
 		NULL B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
@@ -589,6 +603,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		MARN D 0 A_TakeInventory("UsedStamina", 1)
 
 		NULL B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
@@ -659,6 +674,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		MARN D 0 A_TakeInventory("UsedStamina", 1)
 
 		NULL B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
@@ -729,6 +745,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		MARN D 0 A_TakeInventory("UsedStamina", 1)
 
 		NULL B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
@@ -799,6 +816,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		MARN D 0 A_TakeInventory("UsedStamina", 1)
 
 		NULL B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
@@ -869,6 +887,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		MARN D 0 A_TakeInventory("UsedStamina", 1)
 
 		NULL B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
@@ -939,6 +958,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		MARN D 0 A_TakeInventory("UsedStamina", 1)
 
 		NULL B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
@@ -1009,6 +1029,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		MARN D 0 A_TakeInventory("UsedStamina", 1)
 
 		NULL B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
@@ -1079,6 +1100,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		MARN D 0 A_TakeInventory("UsedStamina", 1)
 
 		NULL B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
@@ -1149,6 +1171,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		NULL B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		MARN D 0 A_TakeInventory("UsedStamina", 1)
 
 		NULL B 0 A_JumpIfInventory("BootsSmearedWithRedBlood", 1, "SeeSmearedWithRedBlood")
 		NULL A 0 A_JumpIfInventory("BootsSmearedWithBlueBlood", 1, "SeeSmearedWithBlueBlood")
@@ -1202,6 +1225,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		MAR2 A 0 A_SpawnItemEx("FootStep6", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
 		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
 		MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		MARN D 0 A_TakeInventory("UsedStamina", 1)
 		MARN D 0 A_JumpIf (velz !=0, "IsJumpin")
 		Goto ADSStand
 
@@ -1412,16 +1436,18 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
         NULL A 0 A_JumpIfInventory("Kicking", 1, "Kick")
         NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		TNT1 A 0 A_CustomMissile("HeadKicker", 0, 0, 0, 2, 0)
+		MARN D 0 A_TakeInventory("UsedStamina", 1)
 		NULL A 0 A_JumpIfInventory("HasBarrel", 1, "BarrelMove")
 		Goto See
 
 	 BarrelStand:
 	    NULL A 0 A_TakeInventory("Punching", 1)
-		PBAR A 1
+		PBAR A 4
 		NULL A 0 A_JumpIfInventory("Kicking", 1, "Kick")
 		NULL A 0 A_JumpIfInventory("Punching", 1, "Punch")
 		PLA3 A 0 A_JumpIf ((velx >= 1 || velx <= -1), "BarrelMove")
 		PLA3 A 0 A_JumpIf ((vely >= 1 || velx <= -1), "BarrelMove")
+		MARN D 0 A_TakeInventory("UsedStamina", 1)
 		NULL A 0 A_JumpIfInventory("HasBarrel", 1, "BarrelStand")
 		Goto StandStill
 
