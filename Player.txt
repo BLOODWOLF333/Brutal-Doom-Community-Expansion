@@ -173,7 +173,15 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
 		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
         MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		MARJ A 3 A_JumpIf (velz == 0, "Land")
+		MARJ A 3 A_JumpIf(velz == 0, "Land")
+		TNT1 A 0 A_JumpIf(velZ <= -16, "Falling")
+		Loop
+
+	Falling:
+		TNT1 A 0 A_GiveInventory("IsFloating", 1)
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		MARJ A 3 A_JumpIf (velz == 0, "LandHard")
 		Loop
 
 	Land:
@@ -181,10 +189,19 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
         MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
 		TNT1 A 0 A_TakeInventory("IsFloating", 100)
-		MARN A 0 A_SpawnItemEx("FootStepStrong", 0, 0, 8, 0, 0)
+		MARN B 0 A_SpawnItemEx("FootStep6", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
 		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
 		MARN A 1 A_JumpIf (velz != 0, "InAir")
-		//TNT1 A 0 ThrustTHingZ(0, 50, 1, 1)why do this?
+		Goto StandStill
+
+	LandHard:
+        TNT1 A 0
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		TNT1 A 0 A_TakeInventory("IsFloating", 100)
+		MARN B 0 A_SpawnItemEx("FootstepStrong", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
+		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
+		MARN A 1 A_JumpIf (velz != 0, "InAir")
 		Goto StandStill
 
 	//SKIN FISTS
@@ -267,8 +284,36 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
 		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
         MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		PLA1 J 3 A_JumpIf (velz == 0, "Land")
+		PLA1 J 3 A_JumpIf (velz == 0, "FISTLand")
+		TNT1 A 0 A_JumpIf(velZ <= -16, "FISTFalling")
 		Loop
+
+	FISTFalling:
+		TNT1 A 0 A_GiveInventory("IsFloating", 1)
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		PLA1 J 3 A_JumpIf (velz == 0, "FISTLandHard")
+		Loop
+
+	FISTLand:
+        TNT1 A 0
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		TNT1 A 0 A_TakeInventory("IsFloating", 100)
+		MARN B 0 A_SpawnItemEx("FootStep6", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
+		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
+		PLA1 A 1 A_JumpIf (velz != 0, "FISTInAir")
+		Goto FISTStandStill
+
+	FISTLandHard:
+        TNT1 A 0
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		TNT1 A 0 A_TakeInventory("IsFloating", 100)
+		MARN B 0 A_SpawnItemEx("FootstepStrong", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
+		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
+		PLA1 A 1 A_JumpIf (velz != 0, "FISTInAir")
+		Goto FISTStandStill
 
 	//SKIN SHOTGUN
 
@@ -339,8 +384,36 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
 		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
         MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		MAR3 J 3 A_JumpIf (velz == 0, "Land")
+		MAR3 J 3 A_JumpIf (velz == 0, "ShotgunLand")
+		TNT1 A 0 A_JumpIf(velZ <= -16, "ShotgunFalling")
 		Loop
+
+	ShotgunFalling:
+		TNT1 A 0 A_GiveInventory("IsFloating", 1)
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		MAR3 J 3 A_JumpIf (velz == 0, "ShotgunLandHard")
+		Loop
+
+	ShotgunLand:
+        TNT1 A 0
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		TNT1 A 0 A_TakeInventory("IsFloating", 100)
+		MARN B 0 A_SpawnItemEx("FootStep6", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
+		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
+		MAR3 A 1 A_JumpIf (velz != 0, "ShotgunInAir")
+		Goto ShotgunStandStill
+
+	ShotgunLandHard:
+        TNT1 A 0
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		TNT1 A 0 A_TakeInventory("IsFloating", 100)
+		MARN B 0 A_SpawnItemEx("FootstepStrong", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
+		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
+		MAR3 A 1 A_JumpIf (velz != 0, "ShotgunInAir")
+		Goto ShotgunStandStill
 
 	//SKIN MINIGUN
 
@@ -410,8 +483,36 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
 		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
         MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		MAR4 J 3 A_JumpIf (velz == 0, "Land")
+		MAR4 J 3 A_JumpIf (velz == 0, "MinigunLand")
+		TNT1 A 0 A_JumpIf(velZ <= -16, "MinigunFalling")
 		Loop
+
+	MinigunFalling:
+		TNT1 A 0 A_GiveInventory("IsFloating", 1)
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		MAR4 J 3 A_JumpIf (velz == 0, "MinigunLandHard")
+		Loop
+
+	MinigunLand:
+        TNT1 A 0
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		TNT1 A 0 A_TakeInventory("IsFloating", 100)
+		MARN B 0 A_SpawnItemEx("FootStep6", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
+		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
+		MAR4 A 1 A_JumpIf (velz != 0, "MinigunInAir")
+		Goto MinigunStandStill
+
+	MinigunLandHard:
+        TNT1 A 0
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		TNT1 A 0 A_TakeInventory("IsFloating", 100)
+		MARN B 0 A_SpawnItemEx("FootstepStrong", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
+		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
+		MAR4 A 1 A_JumpIf (velz != 0, "MinigunInAir")
+		Goto MinigunStandStill
 
 	//SKIN SSG
 
@@ -481,8 +582,36 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
 		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
         MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		MSSG J 3 A_JumpIf (velz == 0, "Land")
+		MSSG J 3 A_JumpIf (velz == 0, "SSGLand")
+		TNT1 A 0 A_JumpIf(velZ <= -16, "SSGFalling")
 		Loop
+
+	SSGFalling:
+		TNT1 A 0 A_GiveInventory("IsFloating", 1)
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		MSSG J 3 A_JumpIf (velz == 0, "SSGLandHard")
+		Loop
+
+	SSGLand:
+        TNT1 A 0
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		TNT1 A 0 A_TakeInventory("IsFloating", 100)
+		MARN B 0 A_SpawnItemEx("FootStep6", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
+		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
+		MSSG A 1 A_JumpIf (velz != 0, "SSGInAir")
+		Goto SSGStandStill
+
+	SSGLandHard:
+        TNT1 A 0
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		TNT1 A 0 A_TakeInventory("IsFloating", 100)
+		MARN B 0 A_SpawnItemEx("FootstepStrong", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
+		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
+		MSSG A 1 A_JumpIf (velz != 0, "SSGInAir")
+		Goto SSGStandStill
 
 	//SKIN ROCKET LAUNCHER
 
@@ -552,8 +681,36 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
 		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
         MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		MAR5 J 3 A_JumpIf (velz == 0, "Land")
+		MAR5 J 3 A_JumpIf (velz == 0, "RocketLauncherLand")
+		TNT1 A 0 A_JumpIf(velZ <= -16, "RocketLauncherFalling")
 		Loop
+
+	RocketLauncherFalling:
+		TNT1 A 0 A_GiveInventory("IsFloating", 1)
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		MAR5 J 3 A_JumpIf (velz == 0, "RocketLauncherLandHard")
+		Loop
+
+	RocketLauncherLand:
+        TNT1 A 0
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		TNT1 A 0 A_TakeInventory("IsFloating", 100)
+		MARN B 0 A_SpawnItemEx("FootStep6", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
+		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
+		MAR5 A 1 A_JumpIf (velz != 0, "RocketLauncherInAir")
+		Goto RocketLauncherStandStill
+
+	RocketLauncherLandHard:
+        TNT1 A 0
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		TNT1 A 0 A_TakeInventory("IsFloating", 100)
+		MARN B 0 A_SpawnItemEx("FootstepStrong", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
+		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
+		MAR5 A 1 A_JumpIf (velz != 0, "RocketLauncherInAir")
+		Goto RocketLauncherStandStill
 
 	//SKIN PLASMAGUN
 
@@ -623,8 +780,36 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
 		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
         MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		MAR6 J 3 A_JumpIf (velz == 0, "Land")
+		MAR6 J 3 A_JumpIf (velz == 0, "PLasmagunLand")
+		TNT1 A 0 A_JumpIf(velZ <= -16, "PLasmagunFalling")
 		Loop
+
+	PLasmagunFalling:
+		TNT1 A 0 A_GiveInventory("IsFloating", 1)
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		MAR6 J 3 A_JumpIf (velz == 0, "PLasmagunLandHard")
+		Loop
+
+	PLasmagunLand:
+        TNT1 A 0
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		TNT1 A 0 A_TakeInventory("IsFloating", 100)
+		MARN B 0 A_SpawnItemEx("FootStep6", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
+		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
+		MAR6 A 1 A_JumpIf (velz != 0, "PLasmagunInAir")
+		Goto PLasmagunStandStill
+
+	PLasmagunLandHard:
+        TNT1 A 0
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		TNT1 A 0 A_TakeInventory("IsFloating", 100)
+		MARN B 0 A_SpawnItemEx("FootstepStrong", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
+		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
+		MAR6 A 1 A_JumpIf (velz != 0, "PLasmagunInAir")
+		Goto PLasmagunStandStill
 
 	//SKIN RAILGUN
 
@@ -694,8 +879,36 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
 		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
         MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		MRRG J 3 A_JumpIf (velz == 0, "Land")
+		MRRG J 3 A_JumpIf (velz == 0, "RailgunLand")
+		TNT1 A 0 A_JumpIf(velZ <= -16, "RailgunFalling")
 		Loop
+
+	RailgunFalling:
+		TNT1 A 0 A_GiveInventory("IsFloating", 1)
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		MRRG J 3 A_JumpIf (velz == 0, "RailgunLandHard")
+		Loop
+
+	RailgunLand:
+        TNT1 A 0
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		TNT1 A 0 A_TakeInventory("IsFloating", 100)
+		MARN B 0 A_SpawnItemEx("FootStep6", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
+		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
+		MRRG A 1 A_JumpIf (velz != 0, "RailgunInAir")
+		Goto RailgunStandStill
+
+	RailgunLandHard:
+        TNT1 A 0
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		TNT1 A 0 A_TakeInventory("IsFloating", 100)
+		MARN B 0 A_SpawnItemEx("FootstepStrong", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
+		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
+		MRRG A 1 A_JumpIf (velz != 0, "RailgunInAir")
+		Goto RailgunStandStill
 
 	//SKIN BFG9k
 
@@ -765,8 +978,36 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
 		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
         MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		MAR7 J 3 A_JumpIf (velz == 0, "Land")
+		MAR7 J 3 A_JumpIf (velz == 0, "BFG9kLand")
+		TNT1 A 0 A_JumpIf(velZ <= -16, "BFG9kFalling")
 		Loop
+
+	BFG9kFalling:
+		TNT1 A 0 A_GiveInventory("IsFloating", 1)
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		MAR7 J 3 A_JumpIf (velz == 0, "BFG9kLandHard")
+		Loop
+
+	BFG9kLand:
+        TNT1 A 0
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		TNT1 A 0 A_TakeInventory("IsFloating", 100)
+		MARN B 0 A_SpawnItemEx("FootStep6", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
+		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
+		MAR7 A 1 A_JumpIf (velz != 0, "BFG9kInAir")
+		Goto BFG9kStandStill
+
+	BFG9kLandHard:
+        TNT1 A 0
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		TNT1 A 0 A_TakeInventory("IsFloating", 100)
+		MARN B 0 A_SpawnItemEx("FootstepStrong", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
+		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
+		MAR7 A 1 A_JumpIf (velz != 0, "BFG9kInAir")
+		Goto BFG9kStandStill
 
 	//SKIN BFG10k
 
@@ -836,8 +1077,36 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
 		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
         MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		M10K J 3 A_JumpIf (velz == 0, "Land")
+		M10K J 3 A_JumpIf (velz == 0, "BFG10kLand")
+		TNT1 A 0 A_JumpIf(velZ <= -16, "BFG10kFalling")
 		Loop
+
+	BFG10kFalling:
+		TNT1 A 0 A_GiveInventory("IsFloating", 1)
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		M10K J 3 A_JumpIf (velz == 0, "BFG10kLandHard")
+		Loop
+
+	BFG10kLand:
+        TNT1 A 0
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		TNT1 A 0 A_TakeInventory("IsFloating", 100)
+		MARN B 0 A_SpawnItemEx("FootStep6", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
+		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
+		M10K A 1 A_JumpIf (velz != 0, "BFG10kInAir")
+		Goto BFG10kStandStill
+
+	BFG10kLandHard:
+        TNT1 A 0
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		TNT1 A 0 A_TakeInventory("IsFloating", 100)
+		MARN B 0 A_SpawnItemEx("FootstepStrong", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
+		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
+		M10K A 1 A_JumpIf (velz != 0, "BFG10kInAir")
+		Goto BFG10kStandStill
 
 	//SKIN GrenadeLauncher
 
@@ -907,8 +1176,36 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
 		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
         MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		MRGL J 3 A_JumpIf (velz == 0, "Land")
+		MRGL J 3 A_JumpIf (velz == 0, "GrenadeLauncherLand")
+		TNT1 A 0 A_JumpIf(velZ <= -16, "GrenadeLauncherFalling")
 		Loop
+
+	GrenadeLauncherFalling:
+		TNT1 A 0 A_GiveInventory("IsFloating", 1)
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		MRGL J 3 A_JumpIf (velz == 0, "GrenadeLauncherLandHard")
+		Loop
+
+	GrenadeLauncherLand:
+        TNT1 A 0
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		TNT1 A 0 A_TakeInventory("IsFloating", 100)
+		MARN B 0 A_SpawnItemEx("FootStep6", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
+		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
+		MRGL A 1 A_JumpIf (velz != 0, "GrenadeLauncherInAir")
+		Goto GrenadeLauncherStandStill
+
+	GrenadeLauncherLandHard:
+        TNT1 A 0
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		TNT1 A 0 A_TakeInventory("IsFloating", 100)
+		MARN B 0 A_SpawnItemEx("FootstepStrong", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
+		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
+		MRGL A 1 A_JumpIf (velz != 0, "GrenadeLauncherInAir")
+		Goto GrenadeLauncherStandStill
 
 	//SKIN Flamer
 
@@ -978,8 +1275,36 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
 		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
         MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		MMFC J 3 A_JumpIf (velz == 0, "Land")
+		MMFC J 3 A_JumpIf (velz == 0, "FlamerLand")
+		TNT1 A 0 A_JumpIf(velZ <= -16, "FlamerFalling")
 		Loop
+
+	FlamerFalling:
+		TNT1 A 0 A_GiveInventory("IsFloating", 1)
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		MMFC J 3 A_JumpIf (velz == 0, "FlamerLandHard")
+		Loop
+
+	FlamerLand:
+        TNT1 A 0
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		TNT1 A 0 A_TakeInventory("IsFloating", 100)
+		MARN B 0 A_SpawnItemEx("FootStep6", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
+		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
+		MMFC A 1 A_JumpIf (velz != 0, "FlamerInAir")
+		Goto FlamerStandStill
+
+	FlamerLandHard:
+        TNT1 A 0
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		TNT1 A 0 A_TakeInventory("IsFloating", 100)
+		MARN B 0 A_SpawnItemEx("FootstepStrong", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
+		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
+		MMFC A 1 A_JumpIf (velz != 0, "FlamerInAir")
+		Goto FlamerStandStill
 
 	//SKIN RevLauncher
 
@@ -1049,8 +1374,36 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
 		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
         MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		MHML J 3 A_JumpIf (velz == 0, "Land")
+		MHML J 3 A_JumpIf (velz == 0, "RevLauncherLand")
+		TNT1 A 0 A_JumpIf(velZ <= -16, "RevLauncherFalling")
 		Loop
+
+	RevLauncherFalling:
+		TNT1 A 0 A_GiveInventory("IsFloating", 1)
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		MHML J 3 A_JumpIf (velz == 0, "RevLauncherLandHard")
+		Loop
+
+	RevLauncherLand:
+        TNT1 A 0
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		TNT1 A 0 A_TakeInventory("IsFloating", 100)
+		MARN B 0 A_SpawnItemEx("FootStep6", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
+		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
+		MHML A 1 A_JumpIf (velz != 0, "RevLauncherInAir")
+		Goto RevLauncherStandStill
+
+	RevLauncherLandHard:
+        TNT1 A 0
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		TNT1 A 0 A_TakeInventory("IsFloating", 100)
+		MARN B 0 A_SpawnItemEx("FootstepStrong", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
+		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
+		MHML A 1 A_JumpIf (velz != 0, "RevLauncherInAir")
+		Goto RevLauncherStandStill
 
 		//SKIN SubMG
 
@@ -1120,10 +1473,38 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
 		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
         MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		MRMP J 3 A_JumpIf (velz == 0, "Land")
+		MRMP J 3 A_JumpIf (velz == 0, "SubMGLand")
+		TNT1 A 0 A_JumpIf(velZ <= -16, "SubMGFalling")
 		Loop
 
-		//SKIN Chainsaw
+	SubMGFalling:
+		TNT1 A 0 A_GiveInventory("IsFloating", 1)
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		MRMP J 3 A_JumpIf (velz == 0, "SubMGLandHard")
+		Loop
+
+	SubMGLand:
+        TNT1 A 0
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		TNT1 A 0 A_TakeInventory("IsFloating", 100)
+		MARN B 0 A_SpawnItemEx("FootStep6", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
+		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
+		MRMP A 1 A_JumpIf (velz != 0, "SubMGInAir")
+		Goto SubMGStandStill
+
+	SubMGLandHard:
+        TNT1 A 0
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		TNT1 A 0 A_TakeInventory("IsFloating", 100)
+		MARN B 0 A_SpawnItemEx("FootstepStrong", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
+		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
+		MRMP A 1 A_JumpIf (velz != 0, "SubMGInAir")
+		Goto SubMGStandStill
+
+	//SKIN Chainsaw
 
 	ChainsawStandStill:
 	    NULL D 0
@@ -1191,8 +1572,36 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 A 0 A_GiveInventory("IsFloating", 1)
 		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
         MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
-		MAR1 J 3 A_JumpIf (velz == 0, "Land")
+		MAR1 J 3 A_JumpIf (velz == 0, "ChainsawLand")
+		TNT1 A 0 A_JumpIf(velZ <= -16, "ChainsawFalling")
 		Loop
+
+	ChainsawFalling:
+		TNT1 A 0 A_GiveInventory("IsFloating", 1)
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		MAR1 J 3 A_JumpIf (velz == 0, "ChainsawLandHard")
+		Loop
+
+	ChainsawLand:
+        TNT1 A 0
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		TNT1 A 0 A_TakeInventory("IsFloating", 100)
+		MARN B 0 A_SpawnItemEx("FootStep6", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
+		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
+		MAR1 A 1 A_JumpIf (velz != 0, "ChainsawInAir")
+		Goto ChainsawStandStill
+
+	ChainsawLandHard:
+        TNT1 A 0
+		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker")
+        MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving")
+		TNT1 A 0 A_TakeInventory("IsFloating", 100)
+		MARN B 0 A_SpawnItemEx("FootstepStrong", 0, 0, 8, 0, 0, 0, 0, SXF_SETMASTER )
+		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1)
+		MAR1 A 1 A_JumpIf (velz != 0, "ChainsawInAir")
+		Goto ChainsawStandStill
 
 	ADSStand:
 		MAR2 AA 2
