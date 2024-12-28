@@ -7,11 +7,7 @@ world int 19: arrayHUDFX[];
 
 script "BDRedBloodHUD" (VOID)
 {
-	if(arrayHUDFX[PlayerNumber()] > 0)
-	{
-		terminate;
-	}
-	else
+	if(arrayHUDFX[PlayerNumber()] == 0)
 	{
 		arrayHUDFX[PlayerNumber()]++;
 		delay(1);
@@ -28,11 +24,7 @@ script "BDRedBloodHUD" (VOID)
 
 script "BDMoreRedBloodHUD" (VOID) NET
 {
-	if(arrayHUDFX[PlayerNumber()] > 0)
-	{
-		terminate;
-	}
-	else
+	if(arrayHUDFX[PlayerNumber()] == 0)
 	{
 		arrayHUDFX[PlayerNumber()]++;
 		delay(1);
@@ -49,11 +41,7 @@ script "BDMoreRedBloodHUD" (VOID) NET
 
 script "BDBlueBloodHUD" (VOID) NET
 {
-	if(arrayHUDFX[PlayerNumber()] > 0)
-	{
-		terminate;
-	}
-	else
+	if(arrayHUDFX[PlayerNumber()] == 0)
 	{
 		arrayHUDFX[PlayerNumber()]++;
 		delay(1);
@@ -70,11 +58,7 @@ script "BDBlueBloodHUD" (VOID) NET
 
 script "BDMoreBlueBloodHUD" (VOID) NET
 {
-	if(arrayHUDFX[PlayerNumber()] > 0)
-	{
-		terminate;
-	}
-	else
+	if(arrayHUDFX[PlayerNumber()] == 0)
 	{
 		arrayHUDFX[PlayerNumber()]++;
 		delay(1);
@@ -91,11 +75,7 @@ script "BDMoreBlueBloodHUD" (VOID) NET
 
 script "BDGreenBloodHUD" (VOID) NET
 {
-	if(arrayHUDFX[PlayerNumber()] > 0)
-	{
-		terminate;
-	}
-	else
+	if(arrayHUDFX[PlayerNumber()] == 0)
 	{
 		arrayHUDFX[PlayerNumber()]++;
 		delay(1);
@@ -112,11 +92,7 @@ script "BDGreenBloodHUD" (VOID) NET
 
 script "BDMoreGreenBloodHUD" (VOID) NET
 {
-	if(arrayHUDFX[PlayerNumber()] > 0)
-	{
-		terminate;
-	}
-	else
+	if(arrayHUDFX[PlayerNumber()] == 0)
 	{
 		arrayHUDFX[PlayerNumber()]++;
 		delay(1);
@@ -134,11 +110,7 @@ script "BDMoreGreenBloodHUD" (VOID) NET
 //WATER
 script "BDWaterHUD" (VOID) NET
 {
-	if(arrayHUDFX[PlayerNumber()] > 0)
-	{
-		terminate;
-	}
-	else
+	if(arrayHUDFX[PlayerNumber()] == 0)
 	{
 		arrayHUDFX[PlayerNumber()]++;
 		delay(1);
@@ -156,11 +128,7 @@ script "BDWaterHUD" (VOID) NET
 //SLIME
 script "BDSlimeHUD" (VOID) NET
 {
-	if(arrayHUDFX[PlayerNumber()] > 0)
-	{
-		terminate;
-	}
-	else
+	if(arrayHUDFX[PlayerNumber()] == 0)
 	{
 		arrayHUDFX[PlayerNumber()]++;
 		delay(1);
@@ -178,11 +146,7 @@ script "BDSlimeHUD" (VOID) NET
 //NUKAGE
 script "BDNukeHUD" (VOID) NET
 {
-	if(arrayHUDFX[PlayerNumber()] > 0)
-	{
-		terminate;
-	}
-	else
+	if(arrayHUDFX[PlayerNumber()] == 0)
 	{
 		arrayHUDFX[PlayerNumber()]++;
 		delay(1);
@@ -200,11 +164,7 @@ script "BDNukeHUD" (VOID) NET
 //ORANGE
 script "BDOrangeHUD" (VOID) NET
 {
-	if(arrayHUDFX[PlayerNumber()] > 0)
-	{
-		terminate;
-	}
-	else
+	if(arrayHUDFX[PlayerNumber()] == 0)
 	{
 		arrayHUDFX[PlayerNumber()]++;
 		delay(1);
@@ -222,11 +182,7 @@ script "BDOrangeHUD" (VOID) NET
 //PURPLE
 script "BDPurpleHUD" (VOID) NET
 {
-	if(arrayHUDFX[PlayerNumber()] > 0)
-	{
-		terminate;
-	}
-	else
+	if(arrayHUDFX[PlayerNumber()] == 0)
 	{
 		arrayHUDFX[PlayerNumber()]++;
 		delay(1);
