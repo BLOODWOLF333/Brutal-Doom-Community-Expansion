@@ -517,7 +517,7 @@ ACTOR ExplosionSplashSpawner
   Spawn:
   Death:
     TNT1 A 0
-	TNT1 A 0 ACS_NamedExecuteAlways("BDCheckFloorType3", 0, 0, 0, 0)//Check if is under grass/dirt
+	TNT1 A 0 ACS_NamedExecuteAlways("BDCheckFloorType", 0, 0, 0, 0)//Check if is under grass/dirt
 	TNT1 A 0 ThrustThingZ(0,-30,0,1)
 	TNT1 A 3
 	TNT1 A 0 A_CheckFloor("Spawn2")
