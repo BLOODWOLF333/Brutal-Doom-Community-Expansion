@@ -1,4 +1,4 @@
-#library "EnemyScouterThing"
+#library "Scouter"
 #include "zcommon.acs"
 
 str enemyname;
@@ -14,23 +14,28 @@ script "EnemyScouterThing" ENTER
 
 	while(TRUE)
 	{
-
 		//NOTE:	PickActor requires careful handling. See the zdoom wiki about that!
 		//		Actor's old TID needs to be saved, assigned a new TID, then restored back to old TID to keep things operational.
 		int old_tid = PickActor(0, GetActorAngle(0), GetActorPitch(0), 2048.0, 0, MF_SHOOTABLE | !MF_CORPSE, ML_BLOCKEVERYTHING | ML_BLOCKHITSCAN , PICKAF_RETURNTID);
+		//Log(s:"old_itd: ",i:old_tid);
 
 		int new_tid = UniqueTID();
+		//Log(s:"new_tid: ",i:new_tid);
 
 		if(PickActor(0, GetActorAngle(0), GetActorPitch(0), 2048.0, new_tid, MF_SHOOTABLE | !MF_CORPSE, ML_BLOCKEVERYTHING | ML_BLOCKHITSCAN , PICKAF_FORCETID))
 		{
 			//GET ACTOR INFO
 			enemyname = GetActorProperty(new_tid, APROP_NameTag);			//name
+			//Log(s:"enemyname: ",s:enemyname);
 			enemyhealthmax = GetActorProperty(new_tid, APROP_SpawnHealth);	//max hp
-			if(enemyhealthmax == 0)
+			//Log(s:"enemyhealthmax: ",i:enemyhealthmax);
+			if(enemyhealthmax <= 0)
 			{
 				enemyhealthmax = 100;
+				//Log(s:"Changed health to: ",i:enemyhealthmax);
 			}
 			enemyhealth = GetActorProperty(new_tid, APROP_HEALTH); 			//current hp
+			//Log(s:"enemyhealth: ",i:enemyhealth);
 
 			//ACTOR HEALTH DISPLAY
 			if(GetActorProperty(new_tid, APROP_Speed) > 0)
@@ -40,7 +45,8 @@ script "EnemyScouterThing" ENTER
 					//ACTOR NAME DISPLAY
 					HudMessage(s:enemyname; HUDMSG_FADEOUT, 112223, CR_DARKRED, 0.5, 0.02, 0.6, 0.2);
 
-					int pc = enemyhealth * 100 / enemyhealthmax;
+					int pc = enemyhealth * 100 / enemyhealthmax;//percentage calculation
+					//Log(s:"percentage: ",i:pc);
 
 					if(pc>=75)
 					{
@@ -84,6 +90,6 @@ script "EnemyScouterThing" ENTER
 			}//if(GetActorProperty(new_tid, APROP_Speed) > 0)
 		Thing_ChangeTID(new_tid, old_tid);
 		}//if(PickActor(0, GetActorAngle(0), GetActorPitch(0), 2048.0, new_tid, MF_SHOOTABLE | !MF_CORPSE, ML_BLOCKEVERYTHING | ML_BLOCKHITSCAN, PICKAF_FORCETID))
-		Delay(1);
+		Delay(4);
 	}//while(TRUE)
 }//script "EnemyScouterThing" ENTER
