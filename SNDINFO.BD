@@ -250,48 +250,53 @@ FireSuperShotgun    SSGFIRE1
 
 $volume FireSuperShotgun  1.3
 
-$random world/ricochet      {  ricochet/hit world/b1lank }
-$random ricochet/hit        {  world/ricochet1 world/ricochet2 world/ricochet3 world/ricochet4 world/ricochet5 world/ricochet6 world/ricochet7 }
+$random world/ricochet      {  ricochet/hit world/b1ank }
+$random ricochet/hit        {  world/ricochet1 world/ricochet2 world/ricochet3 world/ricochet4 world/ricochet7 }
 world/ricochet1     ricoche1
 world/ricochet2     ricoche2
 world/ricochet3     ricoche3
 world/ricochet4     ricoche4
-world/ricochet5     ricoche5
-world/ricochet6     ricoche6
+//world/ricochet5     ricoche5
+//world/ricochet6     ricoche6
 world/ricochet7     ricoche7
 world/blank1        blanksnd
 world/blank2        blanksnd
 
-$random bulletwhistle { WHIST1 WHIST2 WHIST3 WHIST4 WHIST5 WHIST6 WHIST7}
-WHIST1 WHIST1
-WHIST2 WHIST2
-WHIST3 WHIST3
-WHIST4 WHIST4
-WHIST5 WHIST5
-WHIST6 WHIST6
-WHIST7 WHIST7
+$random weapon/crack { BCRACK1 BCRACK2 BCRACK3 BCRACK4 BCRACK5 BCRACK6 BCRACK7 }
+BCRACK1 BCRACK1
+BCRACK2 BCRACK2
+BCRACK3 BCRACK3
+BCRACK4 BCRACK4
+BCRACK5 BCRACK5
+BCRACK6 BCRACK6
+BCRACK7 BCRACK7
 
-//$rolloff bulletwhistle 100 200
-//$volume bulletwhistle  0.7
+$rolloff BCRACK1 200 700
+$rolloff BCRACK2 200 700
+$rolloff BCRACK3 200 700
+$rolloff BCRACK4 200 700
+$rolloff BCRACK5 200 700
+$rolloff BCRACK6 200 700
+$rolloff BCRACK7 200 700
 
-$random BHITDIR {  BHITDIR1 BHITDIR2 BHITDIR3 BHITDIR4 BHITDIR5 world/b1lank}
+$random BHITDIR {  BHITDIR1 BHITDIR3 BHITDIR4 world/b1lank}
 BHITDIR1 BHITDIR1
-BHITDIR2 BHITDIR2
+//BHITDIR2 BHITDIR2
 BHITDIR3 BHITDIR3
 BHITDIR4 BHITDIR4
-BHITDIR5 BHITDIR5
+//BHITDIR5 BHITDIR5
 $limit BHITDIR1 6
-$limit BHITDIR2 6
+//$limit BHITDIR2 6
 $limit BHITDIR3 6
 $limit BHITDIR4 6
-$limit BHITDIR5 6
+//$limit BHITDIR5 6
 
 $limit world/ricochet1 1
 $limit world/ricochet2 1
 $limit world/ricochet3 1
 $limit world/ricochet4 1
-$limit world/ricochet5 1
-$limit world/ricochet6 1
+//$limit world/ricochet5 1
+//$limit world/ricochet6 1
 $limit world/blank1 1
 $limit world/blank2 1
 $limit ricochet/hit 1
@@ -301,8 +306,8 @@ $rolloff world/ricochet1 200 700
 $rolloff world/ricochet2 200 700
 $rolloff world/ricochet3 200 700
 $rolloff world/ricochet4 200 700
-$rolloff world/ricochet5 200 700
-$rolloff world/ricochet6 200 700
+//$rolloff world/ricochet5 200 700
+//$rolloff world/ricochet6 200 700
 $rolloff world/ricochet7 200 700
 $rolloff world/ricochet 200 700
 

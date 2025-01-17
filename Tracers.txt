@@ -3,7 +3,6 @@
 Actor Tracer: FastProjectile
 {
 	Projectile
-	+RANDOMIZE
 	+FORCEXYBILLBOARD
 	+DONTSPLASH
 	+NOEXTREMEDEATH
@@ -16,16 +15,19 @@ Actor Tracer: FastProjectile
 	scale .15
 	Damagetype "Weak"
 	states
-		{
-		Spawn:
-			TRAC A 1 BRIGHT
-			Loop
-		Death:
-		XDeath:
-			TNT1 A 0
-			TNT1 A 1
-			Stop
-		}
+	{
+	Spawn:
+		TRAC A 34 BRIGHT
+		TRAC A 1 BRIGHT A_Playsound("weapon/crack",4,1.0,1)
+	Live:
+		TRAC A 1 BRIGHT
+		Loop
+	Death:
+	XDeath:
+		TNT1 A 0
+		TNT1 A 1 A_StopSound(4)
+		Stop
+	}
 }
 
 Actor DecorativeTracer: Tracer
@@ -46,15 +48,20 @@ Actor MonsterTracer: Tracer//Pistol
 	States
 	{
 		Spawn:
+		TRAC A 34 BRIGHT
+		TRAC A 1 BRIGHT A_Playsound("weapon/crack",4,1.0,1)
+
+		Live:
 		TRAC A 1 BRIGHT
 		Loop
 
 		Death:
+		TNT1 A 0 A_StopSound(4)
 		TNT1 A 1 A_SpawnItem("HitPuffTracer")
 		Stop
 
 		XDeath:
-		TNT1 A 0
+		TNT1 A 0 A_StopSound(4)
 		Stop
 	}
 }
@@ -80,30 +87,25 @@ Actor MonsterMinigunTracer: MonsterTracer//Minigun
 	-DONTSPLASH
 	speed 50
 	damage (random(10,10))
-	seesound "DSMINIGUN"
 	damagetype MonsterMinigun
 	Decal "Bulletchip"
 }
 
 Actor MeatShieldTracer: Tracer
 {
--DONTSPLASH
-+MTHRUSPECIES
-speed 120
-Species "Marines"
-damage (random(14,14))
-Decal "Bulletchip"
-DamageType Minor
-States
-{
-Death:
-    TNT1 A 1 A_SpawnItem("HitPuffTracer")
-    Stop
-
-Spawn:
-	TRAC A 1 BRIGHT
-	Loop
-}
+	-DONTSPLASH
+	+MTHRUSPECIES
+	speed 120
+	Species "Marines"
+	damage (random(14,14))
+	Decal "Bulletchip"
+	DamageType Minor
+	States
+	{
+	Death:
+		TNT1 A 1 BRIGHT A_SpawnItem("HitPuffTracer")
+		Stop
+	}
 }
 
 Actor MarineTracer: Tracer
@@ -163,23 +165,22 @@ Actor Alerter: MonsterTracer
 
 Actor Taunter: MonsterTracer
 {
-
--BLOODSPLATTER
-+DONTSPLASH
-+THRUGHOST
-+MTHRUSPECIES
-radius 16
-height 16
-speed 120
-damage (random(2,2))
-DamageType Taunt
-Decal "None"
-//-ACTIVATEIMPACT
-//-ACTIVATEPCROSS
-//-ACTIVATEMCROSS
-//CANPUSHWALLS
-//CANUSEWALLS
-States
+	-BLOODSPLATTER
+	+DONTSPLASH
+	+THRUGHOST
+	+MTHRUSPECIES
+	radius 16
+	height 16
+	speed 120
+	damage (random(2,2))
+	DamageType Taunt
+	Decal "None"
+	//-ACTIVATEIMPACT
+	//-ACTIVATEPCROSS
+	//-ACTIVATEMCROSS
+	//CANPUSHWALLS
+	//CANUSEWALLS
+	States
 {
 	Spawn:
 		PUZZ Z 1 BRIGHT
@@ -192,31 +193,29 @@ Death:
     //TNT1 AAAAAA 0 A_CustomMissile ("ExplosionSpawner", 20, 0, random (0, 180), 2, random (0, 180))
 	//TNT1 AAAAA 0 A_SpawnItem("BarrelExplosion")
 	TNT1 A 100
-
 	Stop
 }
 }
 
 Actor MastermindTracer: Tracer
 {
-+BLOODSPLATTER
--DONTSPLASH
-+FORCERADIUSDMG
-+MTHRUSPECIES
-+DONTHARMSPECIES
-speed 60
-damage (random(10,10))
-scale 1.0
-RenderStyle Add
-Alpha 0.9
-seesound "SSHFIRE"
-damagetype ExplosiveImpact
-Decal "Scorch"
-Obituary "$OB_SPIDER"
-Species "SpiderMasterMind"
-States
-{
-
+	+BLOODSPLATTER
+	-DONTSPLASH
+	+FORCERADIUSDMG
+	+MTHRUSPECIES
+	+DONTHARMSPECIES
+	speed 60
+	damage (random(10,10))
+	scale 1.0
+	RenderStyle Add
+	Alpha 0.9
+	seesound "SSHFIRE"
+	damagetype ExplosiveImpact
+	Decal "Scorch"
+	Obituary "$OB_SPIDER"
+	Species "SpiderMasterMind"
+	States
+	{
 	Spawn:
 		TNT1 A 1
 		TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail2", (2 *momx)/-35.0, -(2 *momy)/-35.0, 2+(2 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
@@ -238,7 +237,7 @@ States
 		TNT1 A 0 Radius_QUake(2, 7, 0, 2, 0)
 		XPAC ABCDEFGHIJ 1 BRIGHT
 		Stop
-}
+	}
 }
 
 Actor SuperMastermindTracer: MastermindTracer
