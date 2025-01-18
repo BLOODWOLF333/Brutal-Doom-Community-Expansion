@@ -20,13 +20,13 @@ FLASHON FLASHON
 FLASHOFF FLASHOFF
 INFRARED INFRARED
 
-$rolloff ICOLAUG 4000 6400
-$rolloff ICOFIRE 4000 6400
-$rolloff ICOBREAT 4000 6400
-$rolloff ICOSCRE 4000 6400
+$rolloff ICOLAUG 1000 6000
+$rolloff ICOFIRE 1000 6000
+$rolloff ICOBREAT 1000 6000
+$rolloff ICOSCRE 1000 6000
 
 NUKEEXP NUKEEXP
-$rolloff NUKEEXP 8000 12000
+$rolloff NUKEEXP 1000 6000
 
 $random HEDBON { HEDBON1 HEDBON2 HEDBON3 }
 HEDBON1 HEDBON1
@@ -158,7 +158,6 @@ MTAUN06 MTAUN06
 $limit MTAUN 1
 
 LANDS1 LANDS1
-$limit PlayerLandSound 3
 
 $random FTAUNT { FTAUNT1 FTAUNT2 FTAUNT3 FTAUNT4}
 FTAUNT1 FTAUNT1
@@ -179,8 +178,6 @@ $playersound	player	female	SALUTE		DSFTAUN2
 $limit FUCK 1
 
 $limit weapons/rifle 0
-$rolloff weapons/rifle 100 2200
-$rolloff weapons/pistol 100 2200
 
 LAUNCH LAUNCH
 PLREADY PLREADY
@@ -188,9 +185,8 @@ BFGREADY BFGREADy
 RLREADY RLREADY
 
 BFGEXPLO BFGEXPLO
-$rolloff BFGEXPLO 1200 2000
 BFGEXPL2 BFGEXPL2
-$rolloff BFGEXPL2 4000 8000
+$rolloff BFGEXPL2 1000 6000
 
 BFGCHARGE BFGCHARG
 BFGFIRE BFGFIRE
@@ -210,11 +206,9 @@ IBRN3 IBRN3
 RELOAD RELOAD
 
 weapons/firegrenade			GLAUNCH
-weapons/reloadgrenade			GRELOAD
+weapons/reloadgrenade		GRELOAD
 GRLLO1 GRLLO1
 GRLLO2 GRLLO2
-
-$rolloff weapons/firegrenade 200 1200
 
 $limit world/watersplash 4
 $limit world/sludgegloop 2
@@ -226,8 +220,6 @@ $volume ricochet/hit 0.7
 $volume world/watersplash 0.3
 $volume weapons/casing2 0.7
 
-$rolloff world/watersplash 200 600
-
 $volume weapons/sshoto	1.5
 $volume weapons/sshotc	1.5
 $volume weapons/sshotl  1.5
@@ -238,7 +230,6 @@ $volume weapons/plasmarifle 0.9
 
 Rocket/Launch DSRLAUN
 RKTSML RKTSML
-$rolloff world/RKTSML 1200 2000
 
 SSHFIRE SSHFIRE
 $Limit SSHFIRE 0
@@ -251,14 +242,12 @@ FireSuperShotgun    SSGFIRE1
 $volume FireSuperShotgun  1.3
 
 $random world/ricochet      {  ricochet/hit world/b1ank }
-$random ricochet/hit        {  world/ricochet1 world/ricochet2 world/ricochet3 world/ricochet4 world/ricochet7 }
+$random ricochet/hit        {  world/ricochet1 world/ricochet2 world/ricochet3 world/ricochet4 world/ricochet5 }
 world/ricochet1     ricoche1
 world/ricochet2     ricoche2
 world/ricochet3     ricoche3
 world/ricochet4     ricoche4
-//world/ricochet5     ricoche5
-//world/ricochet6     ricoche6
-world/ricochet7     ricoche7
+world/ricochet5     ricoche5
 world/blank1        blanksnd
 world/blank2        blanksnd
 
@@ -271,45 +260,17 @@ BCRACK5 BCRACK5
 BCRACK6 BCRACK6
 BCRACK7 BCRACK7
 
-$rolloff BCRACK1 200 700
-$rolloff BCRACK2 200 700
-$rolloff BCRACK3 200 700
-$rolloff BCRACK4 200 700
-$rolloff BCRACK5 200 700
-$rolloff BCRACK6 200 700
-$rolloff BCRACK7 200 700
-
-$random BHITDIR {  BHITDIR1 BHITDIR3 BHITDIR4 world/b1lank}
+$random BHITDIR {  BHITDIR1 BHITDIR2 BHITDIR3 BHITDIR4 BHITDIR5 }
 BHITDIR1 BHITDIR1
-//BHITDIR2 BHITDIR2
+BHITDIR2 BHITDIR2
 BHITDIR3 BHITDIR3
 BHITDIR4 BHITDIR4
-//BHITDIR5 BHITDIR5
+BHITDIR5 BHITDIR5
 $limit BHITDIR1 6
-//$limit BHITDIR2 6
+$limit BHITDIR2 6
 $limit BHITDIR3 6
 $limit BHITDIR4 6
-//$limit BHITDIR5 6
-
-$limit world/ricochet1 1
-$limit world/ricochet2 1
-$limit world/ricochet3 1
-$limit world/ricochet4 1
-//$limit world/ricochet5 1
-//$limit world/ricochet6 1
-$limit world/blank1 1
-$limit world/blank2 1
-$limit ricochet/hit 1
-$limit world/ricochet 1
-
-$rolloff world/ricochet1 200 700
-$rolloff world/ricochet2 200 700
-$rolloff world/ricochet3 200 700
-$rolloff world/ricochet4 200 700
-//$rolloff world/ricochet5 200 700
-//$rolloff world/ricochet6 200 700
-$rolloff world/ricochet7 200 700
-$rolloff world/ricochet 200 700
+$limit BHITDIR5 6
 
 BIGEXPL2 BIGEXPL2
 
@@ -320,25 +281,20 @@ BIGEXPL2 BIGEXPL2
 $random Explosion {Explode1 Explode2}
 Explode1 Explode1
 Explode2 Explode2
-$limit Explosion 4
-$rolloff  Explosion 900 1400
 
 // This is the second sound, it's muffled and can be heard one city block away.
-$random FAREXPL  {dsbarex1 dsbarex2 dsbarex3 dsbarex4 dsbarex5 dsbarex7}
+$random FAREXPL  { dsbarex1 dsbarex2 dsbarex3 dsbarex4 dsbarex5 dsbarex6 }
 dsbarex1 dsbarex1
 dsbarex2 dsbarex2
 dsbarex3 dsbarex3
 dsbarex4 dsbarex4
 dsbarex5 dsbarex5
-//dsbarex6 dsbarex6
-dsbarex7 dsbarex7
-$limit FAREXPL 4
-$rolloff FAREXPL 1000 7500
+dsbarex6 dsbarex6
+$rolloff FAREXPL 1000 6000
 
 // This is the third sound, it's extremely muffled and can be heard anywhere in the map, sounds like distant thunder.
 distantexp distantexp
-$limit distantexp 4
-$rolloff distantexp 1000 9000
+$rolloff distantexp 1200 7200
 
 //=============================================================================================
 
@@ -349,53 +305,53 @@ $rolloff distantexp 1000 9000
 //Assault Rifle
 FARRIF FARRIF
 $limit FARRIF 70
-$rolloff  FARRIF 3000 6000
+$rolloff  FARRIF 1000 6000
 
 //Heavy Machinegun
 FARHMG FARHMG
 $limit FARHMG 70
-$rolloff  FARHMG 3000 6000
+$rolloff  FARHMG 1000 6000
 
 //Shotgun
 FARSHT FARSHT
 $limit FARSHT 70
-$rolloff  FARSHT 3000 6000
+$rolloff  FARSHT 1000 6000
 
 //Pistol
 FARSMG FARSMG
 $limit FARSMG 70
-$rolloff  FARSMG 3000 6000
+$rolloff  FARSMG 1000 6000
 
 //Light Machinegun
 FARMGN FARMGN
 $limit FARMGN 70
-$rolloff  FARMGN 3000 6000
+$rolloff  FARMGN 1000 6000
 
 //Autocannon
 FARCAN1 FARCAN1
 $volume FARCAN1 0.5
 $limit FARCAN1 70
-$rolloff  FARCAN1 3000 6000
+$rolloff  FARCAN1 1000 6000
 
 //SuperShotgun or Sniper Rifle
 FARSSG FARSSG
 $limit FARSSG 70
-$rolloff  FARSSG 3000 6000
+$rolloff  FARSSG 1000 6000
 
 //Rocket
 FARMISL FARMISL
 $limit FARMISL 70
-$rolloff  FARMISL 3000 6000
+$rolloff  FARMISL 1000 6000
 
 //Tank Missile
 DSMISFIR DSMISFIR
 $limit DSMISFIR 70
-$rolloff  DSMISFIR 3000 6000
+$rolloff  DSMISFIR 1000 6000
 
 //Tank Cannon
 FARTANK FARTANK
 $limit FARTANK 70
-$rolloff  FARTANK 3000 6000
+$rolloff  FARTANK 1000 6000
 //=============================================================================================
 
 //=============================================================================================
@@ -455,14 +411,9 @@ weapons/ssg/in		SSGIN
 weapons/ssg/fire	SSGFIRE
 FireSuperShotgun    SSGFIRE1
 
-$rolloff SSGFIRE 100 2200
-$rolloff SSGFIRE1 100 2200
-
 weapons/shotgun2                    STGNSHOT
 weapons/shotgun/pump	            STGNPUMP
 weapons/assaultrifle                G2FIRE
-
-$rolloff weapons/shotgun2 100 2200
 
 REVOFIR REVOFIR
 REVOHAM REVOHAM
@@ -471,23 +422,20 @@ RELOAD RELOAD
 RELO1 RELO1
 RELO2 RELO2
 
-insertshell        SHELL_IN
-M249        M249
-M249R1        M249R1
-M249R2        M249R2
-M249R3        M249R3
-M249R4        M249R4
-GLOCK18       GLOCK18
-
-$limit blooddrop 3
+insertshell	SHELL_IN
+M249		M249
+M249R1      M249R1
+M249R2      M249R2
+M249R3      M249R3
+M249R4     	M249R4
+GLOCK18     GLOCK18
 
 BDFirePlace dstorch
 $limit BDfireplace 2
-$rolloff BDfireplace 100 900
+$rolloff BDfireplace 200 1200
 
 BDFirePlace2 dstorch2
 $limit BDfireplace2 2
-$rolloff BDfireplace2 100 900
 
 CHAINSPI CHAINSPI
 CHAINSTO CHAINSTO
@@ -502,7 +450,6 @@ fstatk2 fstatk2
 fstatk3 fstatk3
 
 $random weapons/casing  { weapons/casing2 weapons/casing3 }
-$limit weapons/casing  5
 weapons/casing2	dscasin1
 weapons/casing2	dscasin2
 weapons/casing3	dscasin3
@@ -516,8 +463,6 @@ $random SlowBurnDeath  { DSCULTF1 DSCULTF3 }
 DSCULTF1 DSCULTF1
 DSCULTF2 DSCULTF2
 DSCULTF3 DSCULTF3
-
-$rolloff  weapons/casing 100 600
 
 weapons/chainsaw/hitwall1	DSSAWAL1
 weapons/chainsaw/hitwall2	DSSAWAL2
@@ -550,8 +495,6 @@ SHELPK1 SHELPK1
 SHELPK2 SHELPK2
 RCKCLIP RCKCLIP
 RCKCLIP2 RCKCLIP2
-
-$rolloff  RLANSHOT 1000 2000
 
 $random LSOD {LSOD1 LSOD2 LSOD3 LSOD4}
 LSOD1 LSOD1
@@ -601,7 +544,7 @@ Weapons/GrenadeLoad	DSGRLOAD
 Weapons/GrenadeClose	DSGRCLOS
 
 DSCANFIR DSCANFIR
-$rolloff DSCANFIR 600 2400
+$rolloff DSCANFIR 1000 6000
 
 //Mags
 
@@ -748,11 +691,11 @@ BTKPAIN1 BTKPAIN1
 BTKPAIN2 BTKPAIN2
 BTKPAIN3 BTKPAIN3
 
-$rolloff  juggernaut/see 500 8000
-$rolloff  juggernaut/engine 500 8000
-$rolloff  juggernaut/death 500 8000
-$rolloff  juggernaut/pain 500 8000
-$rolloff  juggernaut/roam 500 8000
+$rolloff  juggernaut/see 1000 6000
+$rolloff  juggernaut/engine 1000 6000
+$rolloff  juggernaut/death 1000 6000
+$rolloff  juggernaut/pain 1000 6000
+$rolloff  juggernaut/roam 1000 6000
 
 $random DSMADTH { DSMADTH1 DSMADTH2 DSMADTH3 DSMADTH4 DSMADTH5 DSMADTH6 DSMADTH7 DSMADTH8 }
 DSMADTH1 DSMADTH1
@@ -776,7 +719,7 @@ belphegor/active		dsdmac2
 belphegor/death			dskntdt2
 
 CYBTAT CYBTAT
-$rolloff CYBTAT 500 8000
+$rolloff CYBTAT 1000 6000
 
 baby2/sight			dsbspsi2
 baby2/active		dsbspac2
@@ -842,14 +785,6 @@ $random MarineFollow { MRNWT4 }
 
 NOTHING NOTHING
 
-$rolloff  MRNAT 50 1000
-$rolloff  MRNAW 50 1000
-$rolloff  MRNWT 50 1000
-$rolloff  MRNWC 50 1000
-$rolloff  MRNGI1 50 1000
-$rolloff  MRNGI2 50 1000
-$rolloff  MRNAG 50 1000
-
 //From PTSD Simulator 2011 AKA Red Orchestra
 
 $random TorturedMarineBD { CPTRT01 CPTRT02 CPTRT03 CPTRT04 CPTRT05 CPTRT06 CPTRT07 CPTRT08 CPTRT09 CPTRT10 }
@@ -866,9 +801,7 @@ CPTRT11 CPTRT11
 CPTRT13 CPTRT13
 CPTRT14 CPTRT14
 
-$rolloff  TorturedMarineBD 200 500
-
-$random TorturedMarineDieBD { CPTRT11 CPTRT12 CPTRT13 CPTRT14 }
+$random TorturedMarineDieBD { CPTRT11 CPTRT13 CPTRT14 }
 CPTRT11 CPTRT11
 //CPTRT12 CPTRT12 HMG sound wtf?
 CPTRT13 CPTRT13
@@ -919,21 +852,15 @@ nazipain6 nazipn6
 nazipain7 nazipn7
 nazipain8 nazipn8
 
-$rolloff nazi/sight 200 2500
-
 $random DSRIFLE { DSRIFL1 DSRIFL2 }
 DSRIFL1 DSRIFL1
 DSRIFL2 DSRIFL2
 
 AMBRAIN	AMBRAIN
-$limit AMBRAIN 1 256
 
 GRNPIN GRNPIN
 GRNBNCE GRNBNCE
 GRNTOSS GRNTOSS
-
-AMBAIRP AMBAIRP
-$rolloff AMBAIRP 50 80000
 
 $random EvilmarineSight { EVMRSIT1 EVMRSIT2 EVMRSIT3 EVMRSIT4 EVMRSIT5 EVMRSIT6}
 EVMRSIT1 EVMRSIT1
@@ -964,10 +891,6 @@ RLLOOP RLLOOP
 
 RAILF1 RAILF1
 RAILR1 RAILR1
-
-$rolloff weapons/sg 100 2200
-
-$rolloff CHGNSHOT 100 2200
 
 // Gore
 $random misc/xdeath		{ misc/xdeath1a misc/xdeath1b misc/xdeath1c misc/xdeath1d misc/xdeath1e misc/xdeath1f misc/xdeath2a misc/xdeath2b misc/xdeath2c misc/xdeath2d misc/xdeath2e misc/xdeath2f misc/xdeath3a misc/xdeath3b misc/xdeath3c misc/xdeath4a misc/xdeath4b misc/xdeath4c }
@@ -1022,11 +945,8 @@ LQDRIP13 LQDRIP13
 LQDRIP14 LQDRIP14
 
 $random blooddrop  { LQDRIP1 LQDRIP2 LQDRIP3 }
-$rolloff blooddrop 200 1000
 $random blooddrop2  { LQDRIP4 LQDRIP5 LQDRIP6 LQDRIP7 }
-$rolloff blooddrop2 200 1000
 $random blooddrop3  { LQDRIP8 LQDRIP9 LQDRIP10 LQDRIP11 LQDRIP12 LQDRIP13 LQDRIP14 LQDRIP14 }
-$rolloff blooddrop3 200 1000
 
 $random REVIDLE  { REVIDLE1 REVIDLE2 REVIDLE3 REVIDLE4 REVIDLE5 REVIDLE6 REVIDLE7 }
 REVIDLE1 REVIDLE1
@@ -1083,18 +1003,17 @@ UNMSTO UNMSTO
 weapons/unmaker DSLASER
 
 //Mother Demon
-
 mother/sight dsmthsit
 mother/pain dsmthpai
 mother/death dsmthdth
 mother/attack dsmthatk
 mother/active dsmthact
 
-$rolloff mother/sight 500 8000
-$rolloff mother/pain 500 8000
-$rolloff mother/death 500 8000
-$rolloff mother/attack 500 8000
-$rolloff mother/active 500 8000
+$rolloff mother/sight 1000 6000
+$rolloff mother/pain 1000 6000
+$rolloff mother/death 1000 6000
+$rolloff mother/attack 1000 6000
+$rolloff mother/active 1000 6000
 
 AXECLN AXECLN
 AXEHIT AXEHIT
@@ -1105,8 +1024,6 @@ $limit BDALARM 0
 
 BRKCLANG BRKCLANG
 B2KCLANG B2KCLANG
-$limit BRKCLANG 0
-$limit B2KCLANG 0
 
 //VOLCABUS
 Volcabus/Sight VOLCST
