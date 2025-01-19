@@ -66,11 +66,8 @@ Actor MonsterTracer: Tracer//Pistol
 	}
 }
 
-Actor ShotgunguyTracer: Tracer//Shotgun
+Actor ShotgunguyTracer: MonsterTracer//Shotgun
 {
-	+BLOODSPLATTER
-	-DONTSPLASH
-	+MISSILE
 	damage (random(8,8))
 	Decal "Bulletchip"
 	DamageType MonsterShotgunBullet
@@ -153,11 +150,11 @@ Actor Alerter: MonsterTracer
 	Speed 2
 	States
 	{
-		Spawn://Progressive so that monsters can't dodge at point-blank range
+	Spawn://Progressive so that monsters can't dodge at point-blank range
 		TNT1 A 1 BRIGHT A_ScaleVelocity(1.25)
 		Loop
 
-		Death:
+	Death:
 		TNT1 A 0
 		Stop
 	}
@@ -181,20 +178,16 @@ Actor Taunter: MonsterTracer
 	//CANPUSHWALLS
 	//CANUSEWALLS
 	States
-{
+	{
 	Spawn:
 		PUZZ Z 1 BRIGHT
 		Loop
-XDeath:
-Melee:
-Death:
-    TNT1 A 1
-	//TNT1 AAAA 0 A_CustomMissile ("LongExplosionSpawner", 20, 0, random (0, 360), 2, random (0, 180))
-    //TNT1 AAAAAA 0 A_CustomMissile ("ExplosionSpawner", 20, 0, random (0, 180), 2, random (0, 180))
-	//TNT1 AAAAA 0 A_SpawnItem("BarrelExplosion")
-	TNT1 A 100
-	Stop
-}
+	XDeath:
+	Melee:
+	Death:
+		TNT1 A 0
+		Stop
+	}
 }
 
 Actor MastermindTracer: Tracer
