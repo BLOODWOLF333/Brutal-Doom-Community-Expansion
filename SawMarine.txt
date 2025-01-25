@@ -471,15 +471,15 @@ ACTOR Marine_Saw: Marine_Rifle
 
 	WaitforLand:
 		TNT1 A 0
-		MAR1 JJ 3 A_CheckFloor("See")
+		MAR1 JJ 3 A_CheckFloor("ForgetTarget")
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
-		MAR1 JJ 3 A_CheckFloor("See")
+		MAR1 JJ 3 A_CheckFloor("ForgetTarget")
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
-		MAR1 JJ 3 A_CheckFloor("See")
+		MAR1 JJ 3 A_CheckFloor("ForgetTarget")
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
-		MAR1 JJ 3 A_CheckFloor("See")
+		MAR1 JJ 3 A_CheckFloor("ForgetTarget")
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
-		MAR1 JJ 3 A_Checkfloor("See")
+		MAR1 JJ 3 A_Checkfloor("ForgetTarget")
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
 		Goto FollowPlayer
 
@@ -530,7 +530,7 @@ ACTOR Marine_Saw: Marine_Rifle
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 10, 0, 0)
 		PROL EDCBA 3
-		TNT1 A 0 A_CheckSight("See")
+		TNT1 A 0 A_CheckSight("ForgetTarget")
 		Goto Missile
 
 	RollRight:
@@ -538,7 +538,7 @@ ACTOR Marine_Saw: Marine_Rifle
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 10, 0, 0)
 		PROL ABCDE 3
-		TNT1 A 0 A_CheckSight("See")
+		TNT1 A 0 A_CheckSight("ForgetTarget")
 		Goto Missile
 
 	Death:
@@ -1011,15 +1011,15 @@ ACTOR SawMarineGuarding: Marine_Saw
 
 	WaitforLand:
 		TNT1 A 0
-		MAR1 JJ 3 A_Checkfloor("See")
+		MAR1 JJ 3 A_Checkfloor("ForgetTarget")
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
-		MAR1 JJ 3 A_Checkfloor("See")
+		MAR1 JJ 3 A_Checkfloor("ForgetTarget")
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
-		MAR1 JJ 3 A_Checkfloor("See")
+		MAR1 JJ 3 A_Checkfloor("ForgetTarget")
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
-		MAR1 JJ 3 A_Checkfloor("See")
+		MAR1 JJ 3 A_Checkfloor("ForgetTarget")
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
-		MAR1 JJ 3 A_Checkfloor("See")
+		MAR1 JJ 3 A_Checkfloor("ForgetTarget")
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
 		Goto See
 
@@ -1070,7 +1070,7 @@ ACTOR SawMarineGuarding: Marine_Saw
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 10, 0, 0)
 		PROL EDCBA 3
-		TNT1 A 0 A_CheckSight("See")
+		TNT1 A 0 A_CheckSight("ForgetTarget")
 		Goto Missile
 
 	RollRight:
@@ -1078,7 +1078,7 @@ ACTOR SawMarineGuarding: Marine_Saw
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 10, 0, 0)
 		PROL ABCDE 3
-		TNT1 A 0 A_CheckSight("See")
+		TNT1 A 0 A_CheckSight("ForgetTarget")
 		Goto Missile
 	}
 }

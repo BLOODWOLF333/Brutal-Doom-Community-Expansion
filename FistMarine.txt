@@ -429,7 +429,7 @@ ACTOR Marine_Fist: Marine_Rifle
 
 	WaitforLand:
 		TNT1 A 0
-		PLA1 JJJJJJJJJJJ 3 A_Checkfloor("See")
+		PLA1 JJJJJJJJJJJ 3 A_Checkfloor("ForgetTarget")
 		Goto FollowPlayer
 
 	JumpBack:
@@ -477,7 +477,7 @@ ACTOR Marine_Fist: Marine_Rifle
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 10, 0, 0)
 		PROL EDCBA 3
-		TNT1 A 0 A_CheckSight("See")
+		TNT1 A 0 A_CheckSight("ForgetTarget")
 		Goto Missile
 
 	RollRight:
@@ -485,7 +485,7 @@ ACTOR Marine_Fist: Marine_Rifle
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 10, 0, 0)
 		PROL ABCDE 3
-		TNT1 A 0 A_CheckSight("See")
+		TNT1 A 0 A_CheckSight("ForgetTarget")
 		Goto Missile
 
 	Death:
@@ -2346,7 +2346,7 @@ ACTOR FistMarineGuarding: Marine_Fist
 
 	WaitforLand:
 		TNT1 A 0
-		PLA1 JJJJJJJJJJJ 3 A_Checkfloor("See")
+		PLA1 JJJJJJJJJJJ 3 A_Checkfloor("ForgetTarget")
 		Goto See
 
 	JumpBack:
@@ -2394,7 +2394,7 @@ ACTOR FistMarineGuarding: Marine_Fist
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 10, 0, 0)
 		PROL EDCBA 3
-		TNT1 A 0 A_CheckSight("See")
+		TNT1 A 0 A_CheckSight("ForgetTarget")
 		Goto Missile
 
 	RollRight:
@@ -2402,7 +2402,7 @@ ACTOR FistMarineGuarding: Marine_Fist
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 10, 0, 0)
 		PROL ABCDE 3
-		TNT1 A 0 A_CheckSight("See")
+		TNT1 A 0 A_CheckSight("ForgetTarget")
 		Goto Missile
 	}
 }
