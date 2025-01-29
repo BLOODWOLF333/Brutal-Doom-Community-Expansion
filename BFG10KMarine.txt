@@ -546,8 +546,8 @@ ACTOR Marine_BFG10K: Marine_Rifle
 
 	WaitforLand:
 		TNT1 A 0
-		M10K JJJJJJJJJJJ 3 A_Checkfloor("ForgetTarget")
-		Goto FollowPlayer
+		M10K JJJJJJJJJJJ 3 A_Checkfloor("See")
+		Goto See
 
 	JumpBack:
 		TNT1 A 0
@@ -560,10 +560,10 @@ ACTOR Marine_BFG10K: Marine_Rifle
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "WaitForLand")
 		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "WaitForLand")
 		TNT1 A 0 A_JumpIfTargetInLOS(1)
-		Goto FollowPlayer
+		Goto WaitForLand
 		TNT1 AAA 0
 		TNT1 A 0 A_JumpIfCloser(128, "JumpKick")
-		Goto Missile
+		Goto WaitForLand
 
 	Pain:
 	    M10K E 3
@@ -586,16 +586,14 @@ ACTOR Marine_BFG10K: Marine_Rifle
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 10, 0, 0)
 		PROL EDCBA 3
-		TNT1 A 0 A_CheckSight("ForgetTarget")
-		Goto Missile
+		Goto See
 
 	RollRight:
 		TNT1 A 0
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 10, 0, 0)
 		PROL ABCDE 3
-		TNT1 A 0 A_CheckSight("ForgetTarget")
-		Goto Missile
+		Goto See
 
 	Death:
 	Death.Bullet:
@@ -1193,7 +1191,7 @@ ACTOR BFG10KMarineGuarding: Marine_BFG10K
 
 	WaitforLand:
 		TNT1 A 0
-		M10K JJJJJJJJJJJ 3 A_Checkfloor("ForgetTarget")
+		M10K JJJJJJJJJJJ 3 A_Checkfloor("See")
 		Goto See
 
 	JumpBack:
@@ -1207,10 +1205,10 @@ ACTOR BFG10KMarineGuarding: Marine_BFG10K
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "WaitForLand")
 		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "WaitForLand")
 		TNT1 A 0 A_JumpIfTargetInLOS(1)
-		Goto See
+		Goto WaitForLand
 		TNT1 AAA 0
 		TNT1 A 0 A_JumpIfCloser(128, "JumpKick")
-		Goto Missile
+		Goto WaitForLand
 
 	JumpKick:
 		TNT1 A 0
@@ -1241,16 +1239,14 @@ ACTOR BFG10KMarineGuarding: Marine_BFG10K
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 10, 0, 0)
 		PROL EDCBA 3
-		TNT1 A 0 A_CheckSight("ForgetTarget")
-		Goto Missile
+		Goto See
 
 	RollRight:
 		TNT1 A 0
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 10, 0, 0)
 		PROL ABCDE 3
-		TNT1 A 0 A_CheckSight("ForgetTarget")
-		Goto Missile
+		Goto See
 	}
 }
 

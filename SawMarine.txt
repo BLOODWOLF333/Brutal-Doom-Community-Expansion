@@ -471,17 +471,17 @@ ACTOR Marine_Saw: Marine_Rifle
 
 	WaitforLand:
 		TNT1 A 0
-		MAR1 JJ 3 A_CheckFloor("ForgetTarget")
+		MAR1 JJ 3 A_CheckFloor("See")
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
-		MAR1 JJ 3 A_CheckFloor("ForgetTarget")
+		MAR1 JJ 3 A_CheckFloor("See")
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
-		MAR1 JJ 3 A_CheckFloor("ForgetTarget")
+		MAR1 JJ 3 A_CheckFloor("See")
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
-		MAR1 JJ 3 A_CheckFloor("ForgetTarget")
+		MAR1 JJ 3 A_CheckFloor("See")
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
-		MAR1 JJ 3 A_Checkfloor("ForgetTarget")
+		MAR1 JJ 3 A_Checkfloor("See")
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
-		Goto FollowPlayer
+		Goto See
 
 	JumpBack:
 		TNT1 A 0
@@ -495,10 +495,10 @@ ACTOR Marine_Saw: Marine_Rifle
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "WaitForLand")
 		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "WaitForLand")
 		TNT1 A 0 A_JumpIfTargetInLOS(1)
-		Goto FollowPlayer
+		Goto WaitForLand
 		TNT1 AAA 0
 		TNT1 A 0 A_JumpIfCloser(128, "JumpKick")
-		Goto Missile
+		Goto WaitForLand
 
 	JumpKick:
 		TNT1 A 0
@@ -530,16 +530,14 @@ ACTOR Marine_Saw: Marine_Rifle
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 10, 0, 0)
 		PROL EDCBA 3
-		TNT1 A 0 A_CheckSight("ForgetTarget")
-		Goto Missile
+		Goto See
 
 	RollRight:
 		TNT1 A 0
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 10, 0, 0)
 		PROL ABCDE 3
-		TNT1 A 0 A_CheckSight("ForgetTarget")
-		Goto Missile
+		Goto See
 
 	Death:
 	Death.Bullet:
@@ -1011,15 +1009,15 @@ ACTOR SawMarineGuarding: Marine_Saw
 
 	WaitforLand:
 		TNT1 A 0
-		MAR1 JJ 3 A_Checkfloor("ForgetTarget")
+		MAR1 JJ 3 A_Checkfloor("See")
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
-		MAR1 JJ 3 A_Checkfloor("ForgetTarget")
+		MAR1 JJ 3 A_Checkfloor("See")
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
-		MAR1 JJ 3 A_Checkfloor("ForgetTarget")
+		MAR1 JJ 3 A_Checkfloor("See")
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
-		MAR1 JJ 3 A_Checkfloor("ForgetTarget")
+		MAR1 JJ 3 A_Checkfloor("See")
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
-		MAR1 JJ 3 A_Checkfloor("ForgetTarget")
+		MAR1 JJ 3 A_Checkfloor("See")
 		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
 		Goto See
 
@@ -1035,10 +1033,10 @@ ACTOR SawMarineGuarding: Marine_Saw
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "WaitForLand")
 		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "WaitForLand")
 		TNT1 A 0 A_JumpIfTargetInLOS(1)
-		Goto See
+		Goto WaitforLand
 		TNT1 AAA 0
 		TNT1 A 0 A_JumpIfCloser(128, "JumpKick")
-		Goto Missile
+		Goto WaitforLand
 
 	JumpKick:
 		TNT1 A 0
@@ -1070,16 +1068,14 @@ ACTOR SawMarineGuarding: Marine_Saw
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 10, 0, 0)
 		PROL EDCBA 3
-		TNT1 A 0 A_CheckSight("ForgetTarget")
-		Goto Missile
+		Goto See
 
 	RollRight:
 		TNT1 A 0
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 10, 0, 0)
 		PROL ABCDE 3
-		TNT1 A 0 A_CheckSight("ForgetTarget")
-		Goto Missile
+		Goto See
 	}
 }
 
