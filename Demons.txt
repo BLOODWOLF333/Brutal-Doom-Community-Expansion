@@ -1039,9 +1039,8 @@ States
 	Death:
 	Death.Kick:
 	    TNT1 A 0 A_Scream
-		TNT1 A 0 A_NoBlocking
-	    SAAR BCDEF 5
-		TNT1 A 0 A_SpawnItem ("DeadDemonNoArm", 5)
+	    SAAR BCDE 5 A_NoBlocking
+		TNT1 A 0 A_SpawnItem ("DeadDemonNoArm")
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		Stop
 	}
