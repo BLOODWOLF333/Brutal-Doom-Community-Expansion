@@ -218,7 +218,7 @@ ACTOR BFG10K_Ball: FastProjectile
 		TNT1 AAAAAAA 0 A_CustomMissile ("GreenExplosionFire", 2, 0, random (0, 360), 2, random (0, 360))
 		EXPL AA 0 A_CustomMissile ("BigNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360))
 		BFE1 BCDEF 2 Bright
-		BG2G A 0 A_PlaySound("FAREXPL")
+		BG2G A 0 A_PlaySound("FAREXPL",0)
 		TNT1 AAAA 2 A_CustomMissile ("BigNeoSmoke", 2, 0, random (0, 360), 2, random (0, 360))
 		Stop
 	}
@@ -248,7 +248,7 @@ ACTOR MarineBFG10K_Ball : BFG10K_Ball
 		TNT1 AAAAAAA 0 A_CustomMissile ("GreenExplosionFire", 2, 0, random (0, 360), 2, random (0, 360))
 		EXPL AA 0 A_CustomMissile ("BigNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360))
 		BFE1 BCDEF 2 Bright
-		BG2G A 0 A_PlaySound("FAREXPL")
+		BG2G A 0 A_PlaySound("FAREXPL",0)
 		TNT1 AAAA 2 A_CustomMissile ("BigNeoSmoke", 2, 0, random (0, 360), 2, random (0, 360))
 		Stop
 	}
