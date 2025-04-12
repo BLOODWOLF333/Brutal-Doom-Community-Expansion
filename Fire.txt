@@ -1207,7 +1207,7 @@ ACTOR HighExplosiveFlames2: FlameTrails
     Spawn:
 		tnt1 A 0
 		TNT1 A 1
-		TNT1 A 0 A_PlaySound("FAREXPL")
+		TNT1 A 0 A_PlaySound("FAREXPL",0)
         X003 AABBCDEFGHIJKLMNOPQRSTUVWX 1 BRIGHT
 		EXPL A 0 A_CustomMissile ("BigBlackSmokeLarger", 0, 0, random (0, 360), 2, random (20, 90))
 		X003 YZ 1 BRIGHT

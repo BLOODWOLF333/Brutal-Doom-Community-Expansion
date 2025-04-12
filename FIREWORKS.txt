@@ -131,7 +131,7 @@ ACTOR ExplosiveBarrel1 Replaces ExplosiveBarrel
 		TNT1 A 0 A_CustomMissile ("HighExplosiveFlames", random (10, 20), 0, random (0, 360), 2, random (10, 90))
 		TNT1 A 0 A_CustomMissile ("BDExplosionparticles3", 64, 0, random (0, 360), 2, random (40, 90))
 		TNT1 A 0 A_CustomMissile ("BDExplosionparticles4", 64, 0, random (0, 360), 2, random (40, 90))
-		BEXP D 1 BRIGHT A_PlaySound("FAREXPL", 3)
+		BEXP D 1 BRIGHT A_PlaySound("FAREXPL", 0)
 		TNT1 A 0 A_CustomMissile ("BarrelShrapnel1", 20, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("BarrelShrapnel2", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("BarrelShrapnel3", 10, 0, random (0, 360), 2, random (0, 160))
@@ -305,7 +305,7 @@ actor KaboomWithSound: DeadMarine
 	TNT1 A 1
 	TNT1 AA 0 A_CustomMissile ("ExplosionSpawner", 20, 0, random (0, 360), 2, random (0, 180))
 	TNT1 AA 0 A_CustomMissile ("ExplosionSpawner", 20, 0, random (0, 360), 2, random (0, 180))
-	TNT1 A 0 A_PlaySound("FAREXPL", 3)
+	TNT1 A 0 A_PlaySound("FAREXPL", 0)
 	TNT1 A 0 A_PlaySound("Explosion", 1)
 	TNT1 A 300
 	Stop
@@ -439,7 +439,7 @@ states
 	{
 	Spawn:
  TNT1 A 0
- TNT1 A 2 A_PlaySound("FAREXPL")
+ TNT1 A 2 A_PlaySound("FAREXPL",0)
 TNT1 A 0 A_CustomMissile ("HighExplosiveFlamesSmall", 0, 0, random (0, 360), 2, random (0, 90))
 		Stop
 	}
@@ -453,7 +453,7 @@ states
 	{
 	Spawn:
  TNT1 A 2
- TNT1 A 2 A_PlaySound("FAREXPL")
+ TNT1 A 2 A_PlaySound("FAREXPL",0)
  TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 TNT1 AAAA 0 A_CustomMissile ("ExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
 TNT1 A 3
@@ -472,7 +472,7 @@ states
 	{
 	Spawn:
  TNT1 A 2
- TNT1 A 2 A_PlaySound("FAREXPL")
+ TNT1 A 2 A_PlaySound("FAREXPL",0)
  EXPL A 0 A_CustomMissile ("HugeNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360))
  EXPL A 0 A_CustomMissile ("BigNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360))
  TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
@@ -491,7 +491,7 @@ states
 	{
 	Spawn:
  TNT1 A 2
- TNT1 A 2 A_PlaySound("FAREXPL")
+ TNT1 A 2 A_PlaySound("FAREXPL",0)
 TNT1 AA 0 A_CustomMissile ("ExplosionFlamesBig2", 0, 0, random (0, 360), 2, random (0, 180))
 tnt1 a 0 a_eXPLODE(200, 400)
 		Stop
@@ -521,7 +521,7 @@ states
 	{
 	Spawn:
  TNT1 A 2
- TNT1 A 2 A_PlaySound("FAREXPL")
+ TNT1 A 2 A_PlaySound("FAREXPL",0)
  EXPL A 0 A_CustomMissile ("RidiculousNeoSmoke", 0, 0, random (0, 360), 2, random (0, 180))
  TNT1 AA 0 A_CustomMissile ("ExplosionFlamesGiant", 0, 0, random (0, 360), 2, random (0, 180))
 		Stop
@@ -572,7 +572,7 @@ Actor SpawnedExplosionNuke//ground explosions
 	{
 	Spawn:
 	TNT1 A 0
-	TNT1 A 0 A_PlaySound("FAREXPL")
+	TNT1 A 0 A_PlaySound("FAREXPL",0)
 	TNT1 A 14 A_CustomMissile ("NuclearFlames", 0, 0, random (0, 360), 2, random (0, 90))
 	TNT1 A 0 A_CustomMissile ("NukeSmokeBig", 0, 0, random (0, 360), 2, random (0, 90))
 	TNT1 A 0 A_Explode
@@ -603,7 +603,7 @@ Actor SpawnedExplosionNuke2//Rising explosion
 	{
 	Spawn:
 	TNT1 A 0
-	TNT1 A 0 A_PlaySound("FAREXPL")
+	TNT1 A 0 A_PlaySound("FAREXPL",0)
 	TNT1 A 0 A_CustomMissile ("NukeSmoke", 0, 0, random (0, 360), 2, random (0, 90))
 	TNT1 A 4 A_CustomMissile ("NuclearFlames", 0, 0, random (0, 360), 2, random (0, 90))
 	TNT1 A 0 A_CustomMissile ("NukeSmoke", 0, 0, random (0, 360), 2, random (0, 90))

@@ -1018,9 +1018,9 @@ ACTOR TankMissile: Rocket2
 		//TNT1 A 0 A_SpawnItemEx ("RocketPenetrator",cos(-pitch)*42,0,0+(sin(pitch)*42),cos(-pitch)*40,0,sin(pitch)*40,0,SXF_TRANSFERPITCH)
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx ("LiquidExplosionEffectSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 0 A_PlaySound("FAREXPL", 3)
+		TNT1 A 0 A_PlaySound("FAREXPL", 0)
 		TNT1 A 15
-		TNT1 A 0 A_PlaySound("distantexp", 5)
+		TNT1 A 0 A_PlaySound("distexpl", 5)
 		TNT1 AA 4 A_CustomMissile ("ExplosionSmoke", 2, 0, random (0, 360), 2, random (0, 360))
 		Stop
 	}
@@ -1090,9 +1090,9 @@ ACTOR TankMissile2: TankMissile
 		//TNT1 A 0 A_SpawnItemEx ("RocketPenetrator",cos(-pitch)*42,0,0+(sin(pitch)*42),cos(-pitch)*40,0,sin(pitch)*40,0,SXF_TRANSFERPITCH)
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx ("LiquidExplosionEffectSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 0 A_PlaySound("FAREXPL", 3)
+		TNT1 A 0 A_PlaySound("FAREXPL", 0)
 		TNT1 A 15
-		TNT1 A 0 A_PlaySound("distantexp", 5)
+		TNT1 A 0 A_PlaySound("distexpl", 5)
 		TNT1 AA 4 A_CustomMissile ("ExplosionSmoke", 2, 0, random (0, 360), 2, random (0, 360))
 		Stop
 	}
