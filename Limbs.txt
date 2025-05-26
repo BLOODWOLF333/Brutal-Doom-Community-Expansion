@@ -2162,6 +2162,7 @@ ACTOR GenericHKGib1: XDeathArm1
 	BounceCount 3
 	+CLIENTSIDEONLY
 	Gravity 0.8
+	Decal GreenBloodSplat
     States
     {
     Spawn:
@@ -2303,6 +2304,7 @@ ACTOR XDeathHellKnightArm: XDeathArm1
     Speed 5
 	BounceFactor 0.4
 	BounceCount 3
+	Decal GreenBloodSplat
     States
     {
     Spawn:
@@ -2364,6 +2366,7 @@ ACTOR XDeathHellKnightLeg: XDeathArm1
     Scale 1.1
     Speed 6
 	BounceFactor 0.4
+	Decal GreenBloodSplat
     States
     {
     Spawn:
@@ -2424,6 +2427,7 @@ ACTOR XDeathHellKnightTorso: XDeathArm1
     Scale 1.0
     Speed 6
 	BounceFactor 0.4
+	Decal GreenBloodSplat
     States
     {
     Spawn:
@@ -2469,6 +2473,7 @@ ACTOR XDeathBaronofHellTorso: XDeathArm1
     Scale 1.3
     Speed 6
 	BounceFactor 0.4
+	Decal GreenBloodSplat
     States
     {
     Spawn:
@@ -3193,8 +3198,9 @@ Speed 8
 
 ACTOR XDeathHellKnightHead: XDeathBullArm1
 {
--CLIENTSIDEONLY
+	-CLIENTSIDEONLY
     Scale 1.0
+	Decal GreenBloodSplat
     States
     {
 	Spawn:
@@ -3401,6 +3407,7 @@ ACTOR XDeathBaronHead5: XDeathBullArm1
 {
 -CLIENTSIDEONLY
     Scale 1.2
+	Decal GreenBloodSplat
     States
     {
 	Spawn:
@@ -5004,7 +5011,7 @@ ACTOR BaronHeadPiece
     Height 2
 	Speed 6
 	Mass 1
-    Decal BrutalBloodSplat
+	Decal GreenBloodSplat
     +CLIENTSIDEONLY
 	BounceFactor 0.4
 	+DOOMBOUNCE
@@ -5039,6 +5046,7 @@ ACTOR BaronHeadPiece
 ACTOR PinkyJaw: BaronHeadPiece
 {
 	Scale 1.2
+	Decal BrutalBloodSplat
     States
     {
     Spawn:
@@ -5060,6 +5068,7 @@ ACTOR PinkyJaw: BaronHeadPiece
 ACTOR PinkyHeadPiece: BaronHeadPiece
 {
  Translation "112:127=176:191"
+	Decal BrutalBloodSplat
  States
     {
     Spawn:
