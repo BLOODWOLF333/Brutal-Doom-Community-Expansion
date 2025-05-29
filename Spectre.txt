@@ -68,6 +68,61 @@ ACTOR Spectro: BullDemon Replaces Spectre
 		SARG AABBCCDD 2 A_Chase
 		Goto See
 
+	Pain.Taunt:
+		TNT1 A 0 HealThing(2)
+		SARG FGF 2 A_FaceTarget
+		TNT1 A 0 A_GiveInventory("ComeEatMeDemon", 1)
+		TNT1 A 0 A_ChangeFlag("QUICKTORETALIATE", 1)
+		Goto EnragedSee
+
+	Pain:
+		SPEC H 0
+		TNT1 A 0 A_JumpIfInventory("ZombieManFatality", 1, "EndFatalityZombieman")
+		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "EndFatalitySergeant")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "EndFatalityImp")
+		TNT1 A 0 A_JumpIfInventory("ComandoFatality", 1, "EndFatalityComando")
+		SPEC H 4 A_Pain
+		Goto SeeContinue
+
+	Pain.Melee:
+		SPEC H 0
+		TNT1 A 0 A_JumpIfInventory("ZombieManFatality", 1, "EndFatalityZombieman")
+		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "EndFatalitySergeant")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "EndFatalityImp")
+		TNT1 A 0 A_JumpIfInventory("ComandoFatality", 1, "EndFatalityComando")
+		SPEC H 6 A_Pain
+		Goto SeeContinue
+
+	Pain.Shotgun:
+        TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("ZombieManFatality", 1, "EndFatalityZombieman")
+		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "EndFatalitySergeant")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "EndFatalityImp")
+		TNT1 A 0 A_JumpIfInventory("ComandoFatality", 1, "EndFatalityComando")
+		TNT1 A 0 A_FaceTarget
+		TNT1 A 0 A_Recoil (2)
+		SPEC H 4 A_Pain
+        Goto SeeContinue
+
+	Pain.Kick:
+	Pain.HeavyImpact:
+	Pain.SuperPunch:
+	Pain.ExtremePunches:
+		SPEC A 0
+		TNT1 A 0 A_JumpIfInventory("ZombieManFatality", 1, "EndFatalityZombieman")
+		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "EndFatalitySergeant")
+		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "EndFatalityImp")
+		TNT1 A 0 A_JumpIfInventory("ComandoFatality", 1, "EndFatalityComando")
+		TNT1 A 0 A_FaceTarget
+		TNT1 A 0 A_Recoil(15)
+		SPEC H 8 A_Pain
+		Goto SeeContinue
+
+	Pain.KillMe:
+        TNT1 A 0
+		TNT1 A 0 HealThing(2)
+        Goto See
+
 	EnragedSee:
 		TNT1 A 0 A_JumpIfInventory("EatMe", 1, "Eat")
 		SPEC A 1 BRIGHT A_Chase
