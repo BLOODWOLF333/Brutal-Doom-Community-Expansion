@@ -19,12 +19,13 @@ PainChance 255
 -COUNTKILL +NOTARGET +NORADIUSDMG +DONTRIP
 +NOGRAVITY +SHOOTABLE +NOTELEPORT +FORCERADIUSDMG -SOLID +NODAMAGETHRUST
 +THRUGHOST +GHOST +SERVERSIDEONLY +NOTAUTOAIMED +NOEXTREMEDEATH
-Scale 0.14
+XScale 0.07
+YScale 0.07
 States
 {
 Spawn:
-XXXX A 3
-XXXX A 1 A_Die
+TNT1 A 3
+TNT1 A 1 A_Die
 Stop
 
 Pain:
@@ -45,105 +46,105 @@ TNT1 A 0 A_JumpIfHealthLower(2543, "Pain36")//18 Rifle
 TNT1 A 0 A_JumpIfHealthLower(2545, "Pain32")//16 Minigun
 TNT1 A 0 A_JumpIfHealthLower(2547, "Pain28")//14 Shotgun Pellet
 TNT1 A 0 A_JumpIfHealthLower(2549, "Pain24")//12 SMG
-XDT3 A 0 A_Explode(12,15, 0, 0, 15)//hs
+TNT1 A 0 A_Explode(12,15, 0, 0, 15)//hs
 TNT1 A 3
 TNT1 A 0 A_Die
 Stop
 
 Pain24:
 TNT1 A 0
-XDT3 A 0 A_Explode(24,15, 0, 0, 15)//hs
+TNT1 A 0 A_Explode(24,15, 0, 0, 15)//hs
 TNT1 A 3
 TNT1 A 0 A_Die
 Stop
 
 Pain28:
 TNT1 A 0
-XDT3 A 0 A_Explode(28,15, 0, 0, 15)//hs
+TNT1 A 0 A_Explode(28,15, 0, 0, 15)//hs
 TNT1 A 3
 TNT1 A 0 A_Die
 Stop
 
 Pain32:
 TNT1 A 0
-XDT3 A 0 A_Explode(32,15, 0, 0, 15)//hs
+TNT1 A 0 A_Explode(32,15, 0, 0, 15)//hs
 TNT1 A 3
 TNT1 A 0 A_Die
 Stop
 
 Pain36:
 TNT1 A 0
-XDT3 A 0 A_Explode(36,15, 0, 0, 15)//hs
+TNT1 A 0 A_Explode(36,15, 0, 0, 15)//hs
 TNT1 A 3
 TNT1 A 0 A_Die
 Stop
 
 Pain40:
 TNT1 A 0
-XDT3 A 0 A_Explode(40,15, 0, 0, 15)//hs
+TNT1 A 0 A_Explode(40,15, 0, 0, 15)//hs
 TNT1 A 3
 TNT1 A 0 A_Die
 Stop
 
 Pain48:
 TNT1 A 0
-XDT3 A 0 A_Explode(48,15, 0, 0, 15)//hs
+TNT1 A 0 A_Explode(48,15, 0, 0, 15)//hs
 TNT1 A 3
 TNT1 A 0 A_Die
 Stop
 
 Pain80:
 TNT1 A 0
-XDT3 A 0 A_Explode(80,15, 0, 0, 15)//hs
+TNT1 A 0 A_Explode(80,15, 0, 0, 15)//hs
 TNT1 A 3
 TNT1 A 0 A_Die
 Stop
 
 Pain100:
 TNT1 A 0
-XDT3 A 0 A_Explode(100,15, 0, 0, 15)//hs
+TNT1 A 0 A_Explode(100,15, 0, 0, 15)//hs
 TNT1 A 3
 TNT1 A 0 A_Die
 Stop
 
 Pain200:
 TNT1 A 0
-XDT3 A 0 A_Explode(200,15, 0, 0, 15)//hs
+TNT1 A 0 A_Explode(200,15, 0, 0, 15)//hs
 TNT1 A 3
 TNT1 A 0 A_Die
 Stop
 
 Pain300:
 TNT1 A 0
-XDT3 A 0 A_Explode(300,15, 0, 0, 15)//hs
+TNT1 A 0 A_Explode(300,15, 0, 0, 15)//hs
 TNT1 A 3
 TNT1 A 0 A_Die
 Stop
 
 Pain400:
 TNT1 A 0
-XDT3 A 0 A_Explode(400,15, 0, 0, 15)//hs
+TNT1 A 0 A_Explode(400,15, 0, 0, 15)//hs
 TNT1 A 3
 TNT1 A 0 A_Die
 Stop
 
 Pain600:
 TNT1 A 0
-XDT3 A 0 A_Explode(600,15, 0, 0, 15)//hs
+TNT1 A 0 A_Explode(600,15, 0, 0, 15)//hs
 TNT1 A 3
 TNT1 A 0 A_Die
 Stop
 
 Pain800:
 TNT1 A 0
-XDT3 A 0 A_Explode(800,15, 0, 0, 15)//hs
+TNT1 A 0 A_Explode(800,15, 0, 0, 15)//hs
 TNT1 A 3
 TNT1 A 0 A_Die
 Stop
 
 Pain1600:
 TNT1 A 0
-XDT3 A 0 A_Explode(1600,15, 0, 0, 15)//hs
+TNT1 A 0 A_Explode(1600,15, 0, 0, 15)//hs
 TNT1 A 3
 TNT1 A 0 A_Die
 Stop
@@ -155,7 +156,7 @@ Stop
 
 XDeath:
 TNT1 A 0
-XDT3 A 0 A_Explode(2560,15, 0, 0, 15)//hs
+TNT1 A 0 A_Explode(2560,15, 0, 0, 15)//hs
 TNT1 A 3
 TNT1 A 0 A_NoBlocking
 Stop
@@ -167,8 +168,8 @@ actor HeadshotTarget2: HeadshotTargetBase
 States
  {
 Spawn:
-XXXX A 2
-XXXX A 1 A_Die
+TNT1 A 2
+TNT1 A 1 A_Die
 Stop
  }
 }
@@ -178,8 +179,8 @@ actor HeadshotTarget4: HeadshotTargetBase
 States
  {
 Spawn:
-XXXX A 4
-XXXX A 1 A_Die
+TNT1 A 4
+TNT1 A 1 A_Die
 Stop
  }
 }
@@ -189,8 +190,8 @@ actor HeadshotTarget6: HeadshotTargetBase
 States
  {
 Spawn:
-XXXX A 6
-XXXX A 1 A_Die
+TNT1 A 6
+TNT1 A 1 A_Die
 Stop
  }
 }
@@ -200,8 +201,8 @@ actor HeadshotTarget8: HeadshotTargetBase
 States
  {
 Spawn:
-XXXX A 8
-XXXX A 1 A_Die
+TNT1 A 8
+TNT1 A 1 A_Die
 Stop
  }
 }
@@ -211,8 +212,8 @@ actor HeadshotTarget10: HeadshotTargetBase
 States
  {
 Spawn:
-XXXX A 10
-XXXX A 1 A_Die
+TNT1 A 10
+TNT1 A 1 A_Die
 Stop
  }
 }
@@ -222,8 +223,8 @@ actor HeadshotTarget20: HeadshotTargetBase
 States
  {
 Spawn:
-XXXX A 20
-XXXX A 1 A_Die
+TNT1 A 20
+TNT1 A 1 A_Die
 Stop
  }
 }
@@ -238,8 +239,8 @@ actor HeadshotTarget23: HeadshotTargetBase
 States
  {
 Spawn:
-XXXX A 23
-XXXX A 1 A_Die
+TNT1 A 23
+TNT1 A 1 A_Die
 Stop
  }
 }
@@ -249,8 +250,8 @@ actor HeadshotTarget30: HeadshotTargetBase
 States
  {
 Spawn:
-XXXX A 30
-XXXX A 1 A_Die
+TNT1 A 30
+TNT1 A 1 A_Die
 Stop
  }
 }
@@ -260,8 +261,8 @@ actor HeadshotTarget60: HeadshotTargetBase
 States
  {
 Spawn:
-XXXX A 60
-XXXX A 1 A_Die
+TNT1 A 60
+TNT1 A 1 A_Die
 Stop
  }
 }
@@ -271,8 +272,8 @@ actor HeadshotTarget50: HeadshotTargetBase
 States
  {
 Spawn:
-XXXX A 50
-XXXX A 1 A_Die
+TNT1 A 50
+TNT1 A 1 A_Die
 Stop
  }
 }
@@ -282,8 +283,8 @@ actor HeadshotTarget100: HeadshotTargetBase
 States
  {
 Spawn:
-XXXX A 100
-XXXX A 1 A_Die
+TNT1 A 100
+TNT1 A 1 A_Die
 Stop
  }
 }
@@ -293,8 +294,8 @@ actor HeadshotTarget200: HeadshotTargetBase
 States
  {
 Spawn:
-XXXX A 200
-XXXX A 1 A_Die
+TNT1 A 200
+TNT1 A 1 A_Die
 Stop
  }
 }
