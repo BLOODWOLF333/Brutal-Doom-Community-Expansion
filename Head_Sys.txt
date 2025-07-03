@@ -1,166 +1,159 @@
 actor HeadshotTargetBase
 {
-Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
-Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
-Damagefactor "GibRemoving", 0.0	Damagefactor "Taunt", 0.0
-Damagefactor "HangingHook", 0.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Fire", 0.0
-Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0	DamageFactor "SpawnMarine", 0.0
-Damagefactor "Stealth", 0.0	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
-Damagefactor "KillMe", 0.0	DamageFactor "SSG", 5.0	DamageFactor "Head", 0.0
-Damagefactor "ExtremePunches", 5.0	Damagefactor "Fatality", 5.0
-DamageFactor "HelperMarineFatality", 5.0
-Health 2560
-Radius 9
-Height 18
-Mass 999999
-DamageType head
-BloodType "Brutal_Blood", "SawBlood", "SawBlood"
-PainChance 255
--COUNTKILL +NOTARGET +NORADIUSDMG +DONTRIP
-+NOGRAVITY +SHOOTABLE +NOTELEPORT +FORCERADIUSDMG -SOLID +NODAMAGETHRUST
-+THRUGHOST +GHOST +SERVERSIDEONLY +NOTAUTOAIMED +NOEXTREMEDEATH
-XScale 0.07
-YScale 0.07
-States
-{
-Spawn:
-TNT1 A 3
-TNT1 A 1 A_Die
-Stop
+	Monster
+	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0 Damagefactor "Burn", 0.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
+	Damagefactor "GibRemoving", 0.0	Damagefactor "Taunt", 0.0
+	Damagefactor "HangingHook", 0.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Fire", 0.0 Damagefactor "Flames", 0.0
+	Damagefactor "GreenFire", 0.0 Damagefactor "HumanBBQ", 0.0
+	Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0	DamageFactor "SpawnMarine", 0.0
+	Damagefactor "Stealth", 0.0	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
+	Damagefactor "KillMe", 0.0	DamageFactor "SSG", 5.0	DamageFactor "Head", 0.0
+	Damagefactor "ExtremePunches", 5.0	Damagefactor "Fatality", 5.0
+	DamageFactor "HelperMarineFatality", 5.0
+	Health 1000
+	Radius 5
+	Height 10
+	Mass 999999
+	DamageType head
+	BloodType "Brutal_Blood", "SawBlood", "SawBlood"
+	PainChance 255
+	+SHOOTABLE -COUNTKILL -SOLID
+	+DONTRIP +FORCERADIUSDMG +GHOST
+	+NODAMAGETHRUST +NOEXTREMEDEATH +NOGRAVITY +NOTARGET +NOTELEPORT
+	+NOTAUTOAIMED +SERVERSIDEONLY +THRUGHOST
+	XScale 0.08
+	YScale 0.08
+	States
+	{
+		Spawn:
+		TNT1 A 0
+		LENG A 2 A_Warp(AAPTR_Master,0,0,0/*Z-axis*/,0,WARPF_NOCHECKPOSITION)
+		LOOP
 
-Pain:
-TNT1 A 0
-TNT1 A 0 A_ChangeFlag("NOPAIN",1)
-TNT1 A 3
-TNT1 A 0 A_JumpIfHealthLower(1761, "Pain1600")//800 BFG9000
-TNT1 A 0 A_JumpIfHealthLower(2161, "Pain800")//400 BFG10K, Railgun
-TNT1 A 0 A_JumpIfHealthLower(2261, "Pain600")//300 Rockets
-TNT1 A 0 A_JumpIfHealthLower(2361, "Pain400")//200 Slugs
-TNT1 A 0 A_JumpIfHealthLower(2411, "Pain300")//150 ShortGrenade
-TNT1 A 0 A_JumpIfHealthLower(2461, "Pain200")//100 Revolver, Flamecannon
-TNT1 A 0 A_JumpIfHealthLower(2511, "Pain100")//50 HML, Unmaker
-TNT1 A 0 A_JumpIfHealthLower(2521, "Pain80")//40 Plasmaball
-TNT1 A 0 A_JumpIfHealthLower(2537, "Pain48")//24 Buzzsaw
-TNT1 A 0 A_JumpIfHealthLower(2541, "Pain40")//20 Machinegun
-TNT1 A 0 A_JumpIfHealthLower(2543, "Pain36")//18 Rifle
-TNT1 A 0 A_JumpIfHealthLower(2545, "Pain32")//16 Minigun
-TNT1 A 0 A_JumpIfHealthLower(2547, "Pain28")//14 Shotgun Pellet
-TNT1 A 0 A_JumpIfHealthLower(2549, "Pain24")//12 SMG
-TNT1 A 0 A_Explode(12,15, 0, 0, 15)//hs
-TNT1 A 3
-TNT1 A 0 A_Die
-Stop
+		Pain:
+		TNT1 A 0
+		TNT1 A 0 A_DAMAGEMASTER(7,"HEAD")
+		GOTO SPAWN
 
-Pain24:
-TNT1 A 0
-TNT1 A 0 A_Explode(24,15, 0, 0, 15)//hs
-TNT1 A 3
-TNT1 A 0 A_Die
-Stop
+		Pain.Bullet:
+		Pain.FriendBullet:
+		TNT1 A 0
+		TNT1 A 0 A_DAMAGEMASTER(14,"HEAD")
+		GOTO SPAWN
 
-Pain28:
-TNT1 A 0
-TNT1 A 0 A_Explode(28,15, 0, 0, 15)//hs
-TNT1 A 3
-TNT1 A 0 A_Die
-Stop
+		Pain.Cut:
+		TNT1 A 0
+		TNT1 A 0 A_DAMAGEMASTER(100,"HEAD")
+		GOTO SPAWN
 
-Pain32:
-TNT1 A 0
-TNT1 A 0 A_Explode(32,15, 0, 0, 15)//hs
-TNT1 A 3
-TNT1 A 0 A_Die
-Stop
+		Pain.Desintegrate:
+		TNT1 A 0
+		TNT1 A 0 A_DAMAGEMASTER(120,"HEAD")
+		GOTO SPAWN
 
-Pain36:
-TNT1 A 0
-TNT1 A 0 A_Explode(36,15, 0, 0, 15)//hs
-TNT1 A 3
-TNT1 A 0 A_Die
-Stop
+		Pain.Explosive:
+		Pain.ExplosiveImpact:
+		TNT1 A 0
+		TNT1 A 0 A_DAMAGEMASTER(128,"HEAD")
+		GOTO SPAWN
 
-Pain40:
-TNT1 A 0
-TNT1 A 0 A_Explode(40,15, 0, 0, 15)//hs
-TNT1 A 3
-TNT1 A 0 A_Die
-Stop
+		Pain.Extreme://Cyberballs
+		TNT1 A 0
+		TNT1 A 0 A_DAMAGEMASTER(106,"HEAD")
+		GOTO SPAWN
 
-Pain48:
-TNT1 A 0
-TNT1 A 0 A_Explode(48,15, 0, 0, 15)//hs
-TNT1 A 3
-TNT1 A 0 A_Die
-Stop
+		Pain.ExtremePunches:
+		Pain.Fatality:
+		Pain.HelperMarineFatality://x5.0
+		TNT1 A 0
+		TNT1 A 0 A_DAMAGEMASTER(100,"HEAD")
+		GOTO SPAWN
 
-Pain80:
-TNT1 A 0
-TNT1 A 0 A_Explode(80,15, 0, 0, 15)//hs
-TNT1 A 3
-TNT1 A 0 A_Die
-Stop
+		Pain.HeavyImpact://revolver
+		TNT1 A 0
+		TNT1 A 0 A_DAMAGEMASTER(100,"HEAD")
+		GOTO SPAWN
 
-Pain100:
-TNT1 A 0
-TNT1 A 0 A_Explode(100,15, 0, 0, 15)//hs
-TNT1 A 3
-TNT1 A 0 A_Die
-Stop
+		Pain.Kick:
+		Pain.MonsterKnocked:
+		TNT1 A 0
+		TNT1 A 0 A_DAMAGEMASTER(30,"HEAD")
+		GOTO SPAWN
 
-Pain200:
-TNT1 A 0
-TNT1 A 0 A_Explode(200,15, 0, 0, 15)//hs
-TNT1 A 3
-TNT1 A 0 A_Die
-Stop
+		Pain.Melee:
+		TNT1 A 0
+		TNT1 A 0 A_DAMAGEMASTER(10,"HEAD")
+		GOTO SPAWN
 
-Pain300:
-TNT1 A 0
-TNT1 A 0 A_Explode(300,15, 0, 0, 15)//hs
-TNT1 A 3
-TNT1 A 0 A_Die
-Stop
+		Pain.Minigun:
+		TNT1 A 0
+		TNT1 A 0 A_DAMAGEMASTER(16,"HEAD")
+		GOTO SPAWN
 
-Pain400:
-TNT1 A 0
-TNT1 A 0 A_Explode(400,15, 0, 0, 15)//hs
-TNT1 A 3
-TNT1 A 0 A_Die
-Stop
+		Pain.Minor:
+		Pain.MonsterBullet:
+		TNT1 A 0
+		TNT1 A 0 A_DAMAGEMASTER(12,"HEAD")
+		GOTO SPAWN
 
-Pain600:
-TNT1 A 0
-TNT1 A 0 A_Explode(600,15, 0, 0, 15)//hs
-TNT1 A 3
-TNT1 A 0 A_Die
-Stop
+		Pain.MonsterMinigun:
+		TNT1 A 0
+		TNT1 A 0 A_DAMAGEMASTER(10,"HEAD")
+		GOTO SPAWN
 
-Pain800:
-TNT1 A 0
-TNT1 A 0 A_Explode(800,15, 0, 0, 15)//hs
-TNT1 A 3
-TNT1 A 0 A_Die
-Stop
+		Pain.MonsterShotgunBullet:
+		TNT1 A 0
+		TNT1 A 0 A_DAMAGEMASTER(8,"HEAD")
+		GOTO SPAWN
 
-Pain1600:
-TNT1 A 0
-TNT1 A 0 A_Explode(1600,15, 0, 0, 15)//hs
-TNT1 A 3
-TNT1 A 0 A_Die
-Stop
+		Pain.Plasma:
+		TNT1 A 0
+		TNT1 A 0 A_DAMAGEMASTER(40,"HEAD")
+		GOTO SPAWN
 
-Death:
-TNT1 A 0
-TNT1 A 0 A_NoBlocking
-Stop
+		Pain.Railgun:
+		TNT1 A 0
+		TNT1 A 0 A_DAMAGEMASTER(400,"HEAD")
+		GOTO SPAWN
 
-XDeath:
-TNT1 A 0
-TNT1 A 0 A_Explode(2560,15, 0, 0, 15)//hs
-TNT1 A 3
-TNT1 A 0 A_NoBlocking
-Stop
- }
+		Pain.Saw:
+		TNT1 A 0
+		TNT1 A 0 A_DAMAGEMASTER(10,"HEAD")
+		GOTO SPAWN
+
+		Pain.Shotgun:
+		Pain.Shrapnel:
+		TNT1 A 0
+		TNT1 A 0 A_DAMAGEMASTER(13,"HEAD")
+		GOTO SPAWN
+
+		Pain.Slide:
+		TNT1 A 0
+		TNT1 A 0 A_DAMAGEMASTER(20,"HEAD")
+		GOTO SPAWN
+
+		Pain.SSG://x5.0
+		TNT1 A 0
+		TNT1 A 0 A_DAMAGEMASTER(200,"HEAD")
+		GOTO SPAWN
+
+		Pain.Stomp://boss stomp attack
+		TNT1 A 0
+		TNT1 A 0 A_DAMAGEMASTER(200,"HEAD")
+		GOTO SPAWN
+
+		Pain.Trample://footstep
+		TNT1 A 0
+		TNT1 A 0 A_DAMAGEMASTER(8,"HEAD")
+		GOTO SPAWN
+
+		Death:
+		XDeath:
+		TNT1 A 0
+		TNT1 A -1 A_NOBLOCKING
+		STOP
+	}
 }
 
 actor HeadshotTarget2: HeadshotTargetBase
@@ -298,6 +291,47 @@ TNT1 A 200
 TNT1 A 1 A_Die
 Stop
  }
+}
+
+// Headshot targets with green blood
+
+actor HeadshotTarget4b: HeadshotTarget4
+{
+	BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
+	BloodColor "DarkGreen"
+}
+
+actor HeadshotTarget8b: HeadshotTarget8
+{
+BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
+BloodColor "DarkGreen"
+}
+
+actor HeadshotTarget6b: HeadshotTarget6
+{
+BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
+BloodColor "DarkGreen"
+}
+
+actor HeadshotTarget10b: HeadshotTarget10
+{
+BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
+BloodColor "DarkGreen"
+}
+
+actor HeadshotTarget20b: HeadshotTarget20
+{
+BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
+BloodColor "DarkGreen"
+}
+
+actor HellNobleCrotchHitbox: HeadshotTarget20
+{
+BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
+BloodColor "DarkGreen"
+Radius 2
+Height 2
+Damagetype "Leg"
 }
 
 actor MeatShield: HeadshotTargetBase
@@ -487,47 +521,6 @@ States
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", 0,0,15,random (-15, 15), random (-15, 15), random (-15, 15))
 		Stop
 	}
-}
-
-// Headshot targets with green blood
-
-actor HeadshotTarget4b: HeadshotTarget4
-{
-BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
-BloodColor "DarkGreen"
-}
-
-actor HeadshotTarget8b: HeadshotTarget8
-{
-BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
-BloodColor "DarkGreen"
-}
-
-actor HeadshotTarget6b: HeadshotTarget6
-{
-BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
-BloodColor "DarkGreen"
-}
-
-actor HeadshotTarget10b: HeadshotTarget10
-{
-BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
-BloodColor "DarkGreen"
-}
-
-actor HeadshotTarget20b: HeadshotTarget20
-{
-BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
-BloodColor "DarkGreen"
-}
-
-actor HellNobleCrotchHitbox: HeadshotTarget20
-{
-BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
-BloodColor "DarkGreen"
-Radius 2
-Height 2
-Damagetype "Leg"
 }
 
 actor MasterMindHitBox: HeadshotTarget8//unused
