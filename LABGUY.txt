@@ -14,7 +14,7 @@ ACTOR Labguy: RifleZombie
 	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 1.25	Damagefactor "PussyGrab", 100.0
 	Damagefactor "Repair", 0.0	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "SSG", 5.0
-	Damagefactor "ExtremePunches", 5.0	Damagefactor "Fatality", 5.0	Damagefactor "HelperMarineFatallity", 5.0
+	Damagefactor "ExtremePunches", 5.0	Damagefactor "Fatality", 5.0	Damagefactor "HelperMarineFatality", 5.0
 
 	PainChance "Head", 255	PainChance "PussyGrab", 255	PainChance "Kick", 255
 	PainChance "Slide", 255	PainChance "Stealth", 255	PainChance "Taunt", 255
@@ -469,7 +469,7 @@ ACTOR Labguy: RifleZombie
 		TNT1 A -1 A_NoBlocking
 		Stop
 
-		Death.HelperMarineFatallity:
+		Death.HelperMarineFatality:
 		TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_GiveToTarget("LabGuyToken3", 1)

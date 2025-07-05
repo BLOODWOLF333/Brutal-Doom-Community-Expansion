@@ -16,7 +16,7 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 	Damagefactor "Head", 1.25	Damagefactor "PussyGrab", 100.0	Damagefactor "Repair", 0.0
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	DamageFactor "TankWeakSpot", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "SSG", 5.0
-	Damagefactor "ExtremePunches", 5.0	Damagefactor "Fatality", 5.0	Damagefactor "HelperMarineFatallity", 5.0
+	Damagefactor "ExtremePunches", 5.0	Damagefactor "Fatality", 5.0	Damagefactor "HelperMarineFatality", 5.0
 
 	PainChance "Avoid", 64	PainChance "Head", 255	PainChance "PussyGrab", 255
 	PainChance "Slide", 255	PainChance "Stealth", 255	PainChance "Taunt", 255
@@ -1010,7 +1010,7 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 		TNT1 A -1 A_NoBLocking
         Stop
 
-	Death.HelperMarineFatallity:
+	Death.HelperMarineFatality:
 	Death.BHFT:
 	Death.RVFT:
 		TNT1 A 0
