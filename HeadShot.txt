@@ -3,12 +3,12 @@
 
 Script "BDHeadShot" (int pointer)
 {
-	//Log(i:pointer);//the master
+	//Log(s:"Pointer ",i:pointer);//the master
 	SetActivator(0, pointer);//Change activator to master (monster body)
 
 	If(ClassifyActor(0) & ACTOR_ALIVE)//Is the master (monster body) alive?
 	{
-		//Log(i:ClassifyActor(0));
+		//Log(s:"Pointer bitfield ",i:ClassifyActor(0));
 		SetResultValue(1);
 	}
 	Else
