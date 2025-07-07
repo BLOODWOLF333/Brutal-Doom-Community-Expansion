@@ -7,7 +7,7 @@ Actor Volcabus : Mancubus 2543
 	Health 1400
 	Scale 1.5
 	Radius 48
-	Height 78//SpriteH(64x150%=96)
+	Height 75//SpriteH(62x150%=93)
 	Mass 2350
 	Speed 9
 	SeeSound "Volcabus/sight"
@@ -25,15 +25,13 @@ Actor Volcabus : Mancubus 2543
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckStuff")//Check if new monsters are disabled
 		FAT2 B 2
 		TNT1 A 0 A_JumpIfInventory("nonewenemies", 1, "Vanish")
+		TNT1 A 0 A_SPAWNITEMEX("VolcabusHeadShot", 0, 0, 75, 0, 0, 0, 0, SXF_SETMASTER|SXF_NOCHECKPOSITION)
 
 	Stand:
 		TNT1 A 0
 		TNT1 A 0 A_GiveInventory("TargetIsAMancubus")
-		FAT2 A 0 A_SpawnItem("HeadshotTarget20", 0, 78)
 		FAT2 B 15 A_Look
-		TNT1 A 0 A_SpawnItem("HeadshotTarget20", 0, 78)
 		FAT2 B 15 A_Look
-		TNT1 A 0 A_SpawnItem("HeadshotTarget20", 0, 78)
 		Loop
 
 	Vanish:
@@ -44,109 +42,64 @@ Actor Volcabus : Mancubus 2543
 	Idle:
 	LookingForPlayer:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 78)
 		FAT2 B 10 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 78)
 		FAT2 B 10 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 78)
 		FAT2 B 10 A_Look
 		TNT1 A 0 A_SetAngle(angle - 40)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 78)
 		FAT2 B 10 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 78)
 		FAT2 B 10 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 78)
 		FAT2 B 10 A_Look
 		TNT1 A 0 A_SetAngle(angle + 40)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 78)
 		FAT2 B 10 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 78)
 		FAT2 B 10 A_Look
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 78)
 		FAT2 B 10 A_Look
 
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 A 4 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 A 4 A_Look
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 B 4 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 B 4 A_Look
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 C 4 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 C 4 A_Look
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 D 4 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 D 4 A_Look
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 E 4 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 E 4 A_Look
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 F 4 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 F 4 A_Look
 
 		TNT1 A 0 A_jump(128, "LookingForPlayer")
 
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 A 4 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 A 4 A_Look
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 B 4 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 B 4 A_Look
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 C 4 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 C 4 A_Look
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 D 4 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 D 4 A_Look
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 E 4 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 E 4 A_Look
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 F 4 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 F 4 A_Look
 		Goto Stand
 
    See:
-		FAT2 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 A 4 A_Chase
-		FAT2 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 A 4 A_Chase
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 B 4 A_Chase
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 B 4 A_Chase
 		TNT1 A 0 A_PlaySound("knight/step",8)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 C 4 A_Chase
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 C 4 A_Chase
 
 		TNT1 A 0 A_JumpIfCloser(200, "StompAttack")
 
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 D 4 A_Chase
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 D 4 A_Chase
 		TNT1 A 0 A_PlaySound("knight/step",8)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 E 4 A_Chase
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 E 4 A_Chase
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 F 4 A_Chase
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 F 4 A_Chase
 		TNT1 A 0 A_PlaySound("knight/step",8)
 
@@ -156,97 +109,74 @@ Actor Volcabus : Mancubus 2543
 		Missile:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfCloser(200, "StompAttack")
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 78)
 		TNT1 A 0 A_JumpIfInventory("Enraged", 1, 2)
 		FAT2 G 10 A_PlaySound("Volcabus/attack")
 
 		TNT1 A 0 A_Jump(100, "Missile2")
 
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 78)
 		FAT2 G 8 A_FaceTarget
 		TNT1 A 0 A_Playsound("Volcabus/cannon")
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 78)
 		TNT1 A 0 A_CustomMissile("VolcabusBall",30,-25,10,0)
 		TNT1 A 0 A_CustomMissile("Alerter", 30,-25)
 		TNT1 A 0 A_CustomMissile("VolcabusBall",30,25,0,0)
 		TNT1 A 0 A_CustomMissile("Alerter", 30,25)
 		FAT2 H 8 BRIGHT
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 78)
 		FAT2 IG 4 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 78)
 		TNT1 A 0 A_Playsound("Volcabus/cannon")
 		TNT1 A 0 A_CustomMissile("VolcabusBall",30,-25,0,0)
 		TNT1 A 0 A_CustomMissile("Alerter", 30,-25)
 		TNT1 A 0 A_CustomMissile("VolcabusBall",30,25,-10,0)
 		TNT1 A 0 A_CustomMissile("Alerter", 30,25)
 		FAT2 H 8 BRIGHT
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 78)
 		FAT2 IG 4 A_FaceTarget
 		TNT1 A 0 A_Playsound("Volcabus/cannon")
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 78)
 		TNT1 A 0 A_CustomMissile("VolcabusBall",30,-25,5,0)
 		TNT1 A 0 A_CustomMissile("Alerter", 30,-25)
 		TNT1 A 0 A_CustomMissile("VolcabusBall",30,25,-5,0)
 		TNT1 A 0 A_CustomMissile("Alerter", 30,25)
 		FAT2 H 10 BRIGHT
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 78)
 		FAT2 IG 4
 		Goto See
 
 		Missile2:
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 78)
 		FAT2 G 5 A_FaceTarget
 		TNT1 A 0 A_Playsound("Volcabus/cannon")
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		TNT1 A 0 A_CustomMissile("VolcabusBall",30,-25,5,0)
 		TNT1 A 0 A_CustomMissile("Alerter", 30,25)
 		FAT2 H 4 BRIGHT
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 78)
 		FAT2 IG 4 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		TNT1 A 0 A_Playsound("Volcabus/cannon")
 		TNT1 A 0 A_CustomMissile("VolcabusBall",30,25,0,0)
 		TNT1 A 0 A_CustomMissile("Alerter", 30,-25)
 		FAT2 H 4 BRIGHT
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 78)
 		FAT2 IG 4 A_FaceTarget
 		TNT1 A 0 A_Playsound("Volcabus/cannon")
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		TNT1 A 0 A_CustomMissile("VolcabusBall",30,-25,-5,0)
 		TNT1 A 0 A_CustomMissile("Alerter", 30,25)
 		FAT2 H 4 BRIGHT
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 78)
 		FAT2 IG 4 A_FaceTarget
 		TNT1 A 0 A_Playsound("Volcabus/cannon")
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		TNT1 A 0 A_CustomMissile("VolcabusBall",30,25,0,0)
 		TNT1 A 0 A_CustomMissile("Alerter", 30,-25)
 		FAT2 H 4 BRIGHT
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 78)
 		FAT2 IG 4 A_FaceTarget
 		TNT1 A 0 A_Playsound("Volcabus/cannon")
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		TNT1 A 0 A_CustomMissile("VolcabusBall",30,-25,5,0)
 		TNT1 A 0 A_CustomMissile("Alerter", 30,25)
 		FAT2 H 4 BRIGHT
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 78)
 		FAT2 IG 4 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		TNT1 A 0 A_Playsound("Volcabus/cannon")
 		TNT1 A 0 A_CustomMissile("VolcabusBall",30,25,-5,0)
 		TNT1 A 0 A_CustomMissile("Alerter", 30,-25)
 		FAT2 H 4 BRIGHT
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 78)
 		FAT2 IG 4 A_FaceTarget
 		Goto See
 
 		Melee:
 		StompAttack:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 G 4 A_PlaySound("Volcabus/attack")
 		TNT1 A 0 A_FaceTarget
-		FATO AB 4 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FATO A 2 A_FaceTarget
 		TNT1 A 0 ThrustThingZ(0,50,0,1)
 		TNT1 A 0 A_Recoil(-8)
@@ -260,7 +190,6 @@ Actor Volcabus : Mancubus 2543
 
 	DoStomp:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 78)
 		TNT1 A 0 A_CustomMissile("CyberStomp",10,0,0,0)
 		TNT1 A 0 A_Stop
 		FATO BA 4
@@ -268,9 +197,7 @@ Actor Volcabus : Mancubus 2543
 
 	Pain:
 	Pain.Kick:
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 J 3
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 78)
 		FAT2 J 3 A_Pain
 		Goto See
 
@@ -281,9 +208,7 @@ Actor Volcabus : Mancubus 2543
 	Pain.Railgun:
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 A_Recoil(2)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 78)
 		FAT2 J 8 A_Pain
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8", 0, 78)
 		FAT2 J 8
 		Goto See
 
@@ -596,9 +521,9 @@ Actor Volcabus : Mancubus 2543
 		Stop
 
    Raise:
-   TNT1 A 0 A_SpawnItem("PentagramSpawnerBig")
-      F4T2 EDCBA 5
-      Goto See
+		TNT1 A 0 A_SpawnItem("PentagramSpawnerBig")
+		F4T2 EDCBA 5
+		Goto Spawn
    }
 }
 
@@ -672,8 +597,8 @@ Spawn:
 ACTOR DyingVolcabus
 {
 	Scale 1.5
-    Radius 41
-    Height 67
+    Radius 48
+    Height 56
     Speed 0
 	Health 20
 	Mass 1400
