@@ -11,7 +11,6 @@ ACTOR TheSpiderMastermind Replaces SpiderMastermind
 	Health 4000
 	Radius 128
 	Height 100
-    Scale 1.1
 	Mass 6000
 	Speed 8
 	FastSpeed 12
@@ -50,7 +49,7 @@ ACTOR TheSpiderMastermind Replaces SpiderMastermind
 	+MISSILEEVENMORE
 	+DONTHARMCLASS
 	+DONTHARMSPECIES
-	Bloodtype "MastermindBlood"
+	Bloodtype "MastermindBlood", "Mastermind_SawBlood", "Mastermind_SawBlood"
 	DropItem "64UnmakerUpgradeSpawner", 16
 	SeeSound "spider/sight"
 	AttackSound "spider/attack"
@@ -174,9 +173,9 @@ ACTOR TheSpiderMastermind Replaces SpiderMastermind
         SPID G 4 A_FaceTarget
 
 		SPID G 3 A_FaceTarget
-		SPID H 2 A_CustomMissile("MastermindTracer", 47, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundSSG", 47, 0, 0, 1, 0)
-		TNT1 A 0 A_CustomMissile("Alerter",47)
+		SPID H 2 A_CustomMissile("MastermindTracer", 48, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundSSG", 48, 0, 0, 1, 0)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
 		TNT1 A 0 A_SpawnItem ("MasterMindCaseSpawn", 0, 60,0)
 
 		TNT1 A 0 A_GiveInventory ("BrutalCounter2", 1)

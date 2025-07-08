@@ -27,13 +27,12 @@ ACTOR Arachnotron1: Arachnotron replaces Arachnotron
 	DeathSound "baby/death"
 	ActiveSound "baby/active"
 	Obituary "$OB_BABY"
-    BloodType "ArachnotronBlood", "ArachnotronSawBlood", "ArachnotronBlood"
+    BloodType "ArachnotronBlood", "ArachnotronSawBlood", "ArachnotronSawBlood"
 	MaxStepHeight 24
 	DropItem "CellSpawner", 16
 	MaxDropOffHeight 32
 	Speed 4
 	Species "Arachnotron"
-    Scale 1.1
 	Health 750
 	DeathHeight 4
 	BurnHeight 0
@@ -67,7 +66,7 @@ ACTOR Arachnotron1: Arachnotron replaces Arachnotron
 
 	ReplaceSpiders2:
 		TNT1 A 0
-		TNT1 A 0 A_JumpIf((CeilingZ - FloorZ) < 73,"Stand")
+		TNT1 A 0 A_JumpIf((CeilingZ - FloorZ) < 74,"Stand")
 		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
 		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItemEx("Arachnotron2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG,0, tid)
@@ -149,24 +148,24 @@ ACTOR Arachnotron1: Arachnotron replaces Arachnotron
 	Missile:
 		BSPI A 20 A_FaceTarget
 		BSPI G 6
-		BSPI H 2 A_CustomMissile("EnemyPlasmaBall",25,0,0,0)
-		TNT1 A 0 A_CustomMissile("Alerter",25)
+		BSPI H 2 A_CustomMissile("EnemyPlasmaBall",20,0,0,0)
+		TNT1 A 0 A_CustomMissile("Alerter",20)
 		BSPI H 1 A_FaceTarget
 		BSPI G 6
-		BSPI H 2 A_CustomMissile("EnemyPlasmaBall",25,0,0,0)
-		TNT1 A 0 A_CustomMissile("Alerter",25)
+		BSPI H 2 A_CustomMissile("EnemyPlasmaBall",20,0,0,0)
+		TNT1 A 0 A_CustomMissile("Alerter",20)
 		BSPI H 1 A_FaceTarget
 		BSPI G 6
-		BSPI H 2 A_CustomMissile("EnemyPlasmaBall",25,0,0,0)
-		TNT1 A 0 A_CustomMissile("Alerter",25)
+		BSPI H 2 A_CustomMissile("EnemyPlasmaBall",20,0,0,0)
+		TNT1 A 0 A_CustomMissile("Alerter",20)
 		BSPI H 1 A_FaceTarget
 		BSPI G 6
-		BSPI H 2 A_CustomMissile("EnemyPlasmaBall",25,0,0,0)
-		TNT1 A 0 A_CustomMissile("Alerter",25)
+		BSPI H 2 A_CustomMissile("EnemyPlasmaBall",20,0,0,0)
+		TNT1 A 0 A_CustomMissile("Alerter",20)
 		BSPI H 1 A_FaceTarget
 		BSPI G 6
-		BSPI H 2 A_CustomMissile("EnemyPlasmaBall",25,0,0,0)
-		TNT1 A 0 A_CustomMissile("Alerter",25)
+		BSPI H 2 A_CustomMissile("EnemyPlasmaBall",20,0,0,0)
+		TNT1 A 0 A_CustomMissile("Alerter",20)
 		BSPI H 1 A_SpidRefire
 		Goto Missile+1
 
