@@ -7,7 +7,7 @@ Actor Volcabus : Mancubus 2543
 	Health 1400
 	Scale 1.5
 	Radius 48
-	Height 75//SpriteH(62x150%=93)
+	Height 72//SpriteH(66x150%=99)
 	Mass 2350
 	Speed 9
 	SeeSound "Volcabus/sight"
@@ -25,7 +25,7 @@ Actor Volcabus : Mancubus 2543
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckStuff")//Check if new monsters are disabled
 		FAT2 B 2
 		TNT1 A 0 A_JumpIfInventory("nonewenemies", 1, "Vanish")
-		TNT1 A 0 A_SPAWNITEMEX("VolcabusHeadShot", 0, 0, 75, 0, 0, 0, 0, SXF_SETMASTER|SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SPAWNITEMEX("VolcabusHeadShot", 0, 0, 72, 0, 0, 0, 0, SXF_SETMASTER|SXF_NOCHECKPOSITION)
 
 	Stand:
 		TNT1 A 0
@@ -106,7 +106,7 @@ Actor Volcabus : Mancubus 2543
 		TNT1 A 0 A_JumpIfCloser(200, "StompAttack")
 		Loop
 
-		Missile:
+	Missile:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfCloser(200, "StompAttack")
 		TNT1 A 0 A_JumpIfInventory("Enraged", 1, 2)
@@ -138,7 +138,7 @@ Actor Volcabus : Mancubus 2543
 		FAT2 IG 4
 		Goto See
 
-		Missile2:
+	Missile2:
 		FAT2 G 5 A_FaceTarget
 		TNT1 A 0 A_Playsound("Volcabus/cannon")
 		TNT1 A 0 A_CustomMissile("VolcabusBall",30,-25,5,0)
@@ -172,8 +172,8 @@ Actor Volcabus : Mancubus 2543
 		FAT2 IG 4 A_FaceTarget
 		Goto See
 
-		Melee:
-		StompAttack:
+	Melee:
+	StompAttack:
 		TNT1 A 0
 		FAT2 G 4 A_PlaySound("Volcabus/attack")
 		TNT1 A 0 A_FaceTarget
@@ -190,7 +190,7 @@ Actor Volcabus : Mancubus 2543
 
 	DoStomp:
 		TNT1 A 0
-		TNT1 A 0 A_CustomMissile("CyberStomp",10,0,0,0)
+		TNT1 A 0 A_CustomMissile("CyberStomp",0,0,0,0)
 		TNT1 A 0 A_Stop
 		FATO BA 4
 		Goto See
@@ -529,8 +529,6 @@ Actor Volcabus : Mancubus 2543
 
 Actor FatalizedVolcabus
 {
-	Radius 39
-	Height 33
 	Scale 1.5
 	-SHOOTABLE
 	-SOLID
@@ -568,8 +566,6 @@ Spawn:
 
 Actor FatalizedVolcabus2
 {
-	Radius 39
-	Height 33
 	Scale 1.5
 	-SHOOTABLE
 	-SOLID
@@ -598,7 +594,7 @@ ACTOR DyingVolcabus
 {
 	Scale 1.5
     Radius 48
-    Height 56
+    Height 67
     Speed 0
 	Health 20
 	Mass 1400
