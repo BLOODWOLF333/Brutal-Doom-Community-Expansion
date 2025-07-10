@@ -3,12 +3,11 @@ ACTOR Mancubus : Fatso Replaces Fatso
 	SpawnID 112
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
-	Damagefactor "GibRemoving", 0.0	Damagefactor "HangingHook", 0.0
+	Damagefactor "GibRemoving", 0.0	Damagefactor "HangingHook", 0.0 Damagefactor "Kick", 0.5
 	Damagefactor "Head", 1.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "ExtremePunches", 2.5
 	Damagefactor "Fatality", 2.5	Damagefactor "HeadKick", 0.5	Damagefactor "HelperMarineFatality", 2.5
-	Damagefactor "Kick", 0.5	Damagefactor "Slide", 0.5
 	Damagefactor "Melee", 0.5	Damagefactor "MonsterKnocked", 0.5	Damagefactor "Stomp", 0.5
 	Damagefactor "Trample", 0.5	Damagefactor "Slide", 0.5	Damagefactor "SSG", 2.5
 	DamageFactor "TankWeakSpot", 0.0
@@ -19,16 +18,14 @@ ACTOR Mancubus : Fatso Replaces Fatso
 	PainChance "Slide", 16	PainChance "Trample", 16
 
 	Radius 48
-	Height 56
+	Height 64
     GibHealth 30
     Health 600
 	Mass 1000
 	Speed 8
-    BloodType "Brutal_Blood", "SawBlood", "SawBlood"
+    BloodType "Fatso_Blood", "Fatso_SawBlood", "Fatso_SawBlood"
 	DropItem "DemonStrengthRune", 16
 	Obituary "%o was incinerated by a Mancubus."
-	DeathHeight 6
-	BurnHeight 0
 	Species "Fatso"
 	Tag "Mancubus"
 	States
@@ -57,7 +54,7 @@ ACTOR Mancubus : Fatso Replaces Fatso
 
 	ReplaceVolcabus:
 		TNT1 A 0
-		TNT1 A 0 A_JumpIf((CeilingZ - FloorZ) < 76,"Stand")
+		TNT1 A 0 A_JumpIf((CeilingZ - FloorZ) < 103,"Stand")//height of 99
 		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
 		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItemEx("Volcabus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG,0, tid)
@@ -75,98 +72,150 @@ ACTOR Mancubus : Fatso Replaces Fatso
 
     Stand:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("HeadshotTarget20", 0, 44)
 		FATT BB 10 A_Look
 		Loop
 
 	See:
 		FATT A 0
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
 		FATT A 4 A_Chase
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
 		FATT A 4 A_Chase
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
 		FATT B 4 A_Chase
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
 		FATT B 4 A_Chase
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
 		FATT C 4 A_Chase
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
 		FATT C 4 A_Chase
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
 		FATT D 4 A_Chase
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
 		FATT D 4 A_Chase
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
 		FATT E 4 A_Chase
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
 		FATT E 4 A_Chase
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
 		FATT F 4 A_Chase
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
 		FATT F 4 A_Chase
 		Goto See
 
 	Idle:
 	LookingForPlayer:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
 		FATT A 4 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
 		FATT A 4 A_Look
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
         FATT B 4 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
 		FATT B 4 A_Look
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
         FATT C 4 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
 		FATT C 4 A_Look
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
         FATT D 4 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
 		FATT D 4 A_Look
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
         FATT E 4 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
 		FATT E 4 A_Look
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
         FATT F 4 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
 		FATT F 4 A_Look
 
 		TNT1 A 0 A_Jump(128,"LookingForPlayer")
 
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
 		FATT A 4 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
 		FATT A 4 A_Look
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
         FATT B 4 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
 		FATT B 4 A_Look
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
         FATT C 4 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
 		FATT C 4 A_Look
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
         FATT D 4 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
 		FATT D 4 A_Look
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
         FATT E 4 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
 		FATT E 4 A_Look
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
         FATT F 4 A_Wander
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
 		FATT F 4 A_Look
 		Goto Stand
 
-    Death.minorhead:
-    Death.head:
-		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
+	Missile:
+	    TNT1 A 0 A_JumpIfCloser(128, "Melee")
 
+	Fireballz:
+		FATT G 0 A_FaceTarget
+		FATT G 4 A_FaceTarget
+		TNT1 A 0 A_JumpIfInventory("Enraged", 1, 1)
+		FATT G 6 A_FatRaise
+		FATT G 10 A_FaceTarget
+		TNT1 A 0 A_CustomMissile("BigFireBall",25,-30,10,0)
+		TNT1 A 0 A_CustomMissile("Alerter", 25,-30)
+		TNT1 A 0 A_CustomMissile("BigFireBall",25,30,0,0)
+		TNT1 A 0 A_CustomMissile("Alerter", 25,30)
+		FATT H 10 BRIGHT
+		FATT IG 5 A_FaceTarget
+		TNT1 A 0 A_CustomMissile("BigFireBall",25,-30,0,0)
+		TNT1 A 0 A_CustomMissile("Alerter", 25,-30)
+		TNT1 A 0 A_CustomMissile("BigFireBall",25,30,-10,0)
+		TNT1 A 0 A_CustomMissile("Alerter", 25,30)
+		FATT H 10 BRIGHT
+		FATT IG 5 A_FaceTarget
+		TNT1 A 0 A_CustomMissile("BigFireBall",25,-30,5,0)
+		TNT1 A 0 A_CustomMissile("Alerter", 25,-30)
+		TNT1 A 0 A_CustomMissile("BigFireBall",25,30,-5,0)
+		TNT1 A 0 A_CustomMissile("Alerter", 25,30)
+		FATT H 10 BRIGHT
+		FATT IG 5
+		Goto See
+
+	Melee:
+		TNT1 A 0 A_JumpIfInventory("Enraged", 1, 1)
+		FATT G 10 A_FatRaise
+		FATT G 10 A_FaceTarget
+		TNT1 A 0 A_PlaySound("BREATHOF")
+		FATT H 1 BRIGHT A_CustomMissile("FlamethrowerMissileFatso",25,-30,15,0)
+		TNT1 A 0 A_CustomMissile("FlamethrowerMissileFatso",25,30,-15,0)
+		FATT H 1 BRIGHT A_CustomMissile("FlamethrowerMissileFatso",25,-30,15,0)
+		TNT1 A 0 A_CustomMissile("FlamethrowerMissileFatso",25,30,-15,0)
+		FATT H 1 BRIGHT A_CustomMissile("FlamethrowerMissileFatso",25,-30,15,0)
+		TNT1 A 0 A_CustomMissile("FlamethrowerMissileFatso",25,30,-15,0)
+		FATT H 1 BRIGHT A_CustomMissile("FlamethrowerMissileFatso",25,-30,15,0)
+		TNT1 A 0 A_CustomMissile("FlamethrowerMissileFatso",25,30,-15,0)
+		FATT H 1 BRIGHT A_CustomMissile("FlamethrowerMissileFatso",25,-30,15,0)
+		TNT1 A 0 A_CustomMissile("FlamethrowerMissileFatso",25,30,-15,0)
+		FATT H 1 BRIGHT A_CustomMissile("FlamethrowerMissileFatso",25,-30,15,0)
+		TNT1 A 0 A_CustomMissile("FlamethrowerMissileFatso",25,30,-15,0)
+		FATT H 1 BRIGHT A_CustomMissile("FlamethrowerMissileFatso",25,-30,15,0)
+		TNT1 A 0 A_CustomMissile("FlamethrowerMissileFatso",25,30,-15,0)
+		FATT H 1 BRIGHT A_CustomMissile("FlamethrowerMissileFatso",25,-30,15,0)
+		TNT1 A 0 A_CustomMissile("FlamethrowerMissileFatso",25,30,-15,0)
+		FATT H 1 BRIGHT A_CustomMissile("FlamethrowerMissileFatso",25,-30,15,0)
+		TNT1 A 0 A_CustomMissile("FlamethrowerMissileFatso",25,30,-15,0)
+		FATT H 1 BRIGHT A_CustomMissile("FlamethrowerMissileFatso",25,-30,15,0)
+		TNT1 A 0 A_CustomMissile("FlamethrowerMissileFatso",25,30,-15,0)
+		FATT H 1 BRIGHT A_CustomMissile("FlamethrowerMissileFatso",25,-30,15,0)
+		TNT1 A 0 A_CustomMissile("FlamethrowerMissileFatso",25,30,-15,0)
+		FATT H 1 BRIGHT A_CustomMissile("FlamethrowerMissileFatso",25,-30,15,0)
+		TNT1 A 0 A_CustomMissile("FlamethrowerMissileFatso",25,30,-15,0)
+
+		Goto See
+	Pain:
+		FATT J 3
+		FATT J 3 A_Pain
+		Goto See
+
+	Pain.Explosive:
+	TNT1 A 0
+	TNT1 A 0 A_SpawnItemEx("MuchBlood2", 0, 0, 60)
+	Pain.SSG:
+	Pain.ExtremePunches:
+	Pain.Railgun:
+		TNT1 A 0 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
+		FAT4 A 4 ThrustThingZ(0,30,0,1)
+		FAT4 B 4 A_Pain
+		FAT4 C 4 A_Stop
+		FAT4 DDDD 4
+		FAT4 C 4 A_Stop
+		FAT4 BA 4
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
+		Goto See
+
+	Pain.Kick:
+        TNT1 A 0 A_FaceTarget
+        TNT1 A 0 A_Recoil(2)
+		FATT J 9 A_Pain
+		FATT J 8
+		Goto See
+
+    Death.head:
+    Death.minorhead:
+		"####" "#" 2
+		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
 		TNT1 A 0 A_SpawnItem("MancubusHeadExplode", 0, 50)
 		FATT KKK 2 A_CustomMissile ("Brutal_LiquidBlood2", 50, 0, random (0, 360), 2, random (30, 50))
 		FATT LLL 2 A_CustomMissile ("Brutal_LiquidBlood2", 40, 0, random (0, 360), 2, random (30, 50))
@@ -193,6 +242,8 @@ ACTOR Mancubus : Fatso Replaces Fatso
         Stop
 
     Death:
+		"####" "#" 2
+		TNT1 A 0 A_JumpIfInventory("HitHead", 1, "Death.Head")
 		FAT3 A 1 A_Jump(64, "Death2")
 		FAT3 B 6 A_Scream
 		FAT3 C 6
@@ -212,111 +263,6 @@ ACTOR Mancubus : Fatso Replaces Fatso
 		TNT1 A -1 A_BossDeath
         Stop
 
-	Missile:
-	    TNT1 A 0 A_JumpIfCloser(128, "Melee")
-
-	Fireballz:
-		FATT G 0 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 44)
-		FATT G 4 A_FaceTarget
-		TNT1 A 0 A_JumpIfInventory("Enraged", 1, 1)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 44)
-		FATT G 6 A_FatRaise
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 44)
-		FATT G 10 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 44)
-		TNT1 A 0 A_CustomMissile("BigFireBall",30,-25,10,0)
-		TNT1 A 0 A_CustomMissile("Alerter", 30,-25)
-		TNT1 A 0 A_CustomMissile("BigFireBall",30,25,0,0)
-		TNT1 A 0 A_CustomMissile("Alerter", 30,25)
-		FATT H 10 BRIGHT
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 44)
-		FATT IG 5 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 44)
-		TNT1 A 0 A_CustomMissile("BigFireBall",30,-25,0,0)
-		TNT1 A 0 A_CustomMissile("Alerter", 30,-25)
-		TNT1 A 0 A_CustomMissile("BigFireBall",30,25,-10,0)
-		TNT1 A 0 A_CustomMissile("Alerter", 30,25)
-		FATT H 10 BRIGHT
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 44)
-		FATT IG 5 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 44)
-		TNT1 A 0 A_CustomMissile("BigFireBall",30,-25,5,0)
-		TNT1 A 0 A_CustomMissile("Alerter", 30,-25)
-		TNT1 A 0 A_CustomMissile("BigFireBall",30,25,-5,0)
-		TNT1 A 0 A_CustomMissile("Alerter", 30,25)
-		FATT H 10 BRIGHT
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 44)
-		FATT IG 5
-		Goto See
-
-	Melee:
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 44)
-		TNT1 A 0 A_JumpIfInventory("Enraged", 1, 1)
-		FATT G 10 A_FatRaise
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 44)
-		FATT G 10 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 44)
-		TNT1 A 0 A_PlaySound("BREATHOF")
-		FATT H 1 BRIGHT A_CustomMissile("FlamethrowerMissileFatso",30,-25,15,0)
-		TNT1 A 0 A_CustomMissile("FlamethrowerMissileFatso",30,25,-15,0)
-		FATT H 1 BRIGHT A_CustomMissile("FlamethrowerMissileFatso",30,-25,15,0)
-		TNT1 A 0 A_CustomMissile("FlamethrowerMissileFatso",30,25,-15,0)
-		FATT H 1 BRIGHT A_CustomMissile("FlamethrowerMissileFatso",30,-25,15,0)
-		TNT1 A 0 A_CustomMissile("FlamethrowerMissileFatso",30,25,-15,0)
-		FATT H 1 BRIGHT A_CustomMissile("FlamethrowerMissileFatso",30,-25,15,0)
-		TNT1 A 0 A_CustomMissile("FlamethrowerMissileFatso",30,25,-15,0)
-		FATT H 1 BRIGHT A_CustomMissile("FlamethrowerMissileFatso",30,-25,15,0)
-		TNT1 A 0 A_CustomMissile("FlamethrowerMissileFatso",30,25,-15,0)
-		FATT H 1 BRIGHT A_CustomMissile("FlamethrowerMissileFatso",30,-25,15,0)
-		TNT1 A 0 A_CustomMissile("FlamethrowerMissileFatso",30,25,-15,0)
-		FATT H 1 BRIGHT A_CustomMissile("FlamethrowerMissileFatso",30,-25,15,0)
-		TNT1 A 0 A_CustomMissile("FlamethrowerMissileFatso",30,25,-15,0)
-		FATT H 1 BRIGHT A_CustomMissile("FlamethrowerMissileFatso",30,-25,15,0)
-		TNT1 A 0 A_CustomMissile("FlamethrowerMissileFatso",30,25,-15,0)
-		FATT H 1 BRIGHT A_CustomMissile("FlamethrowerMissileFatso",30,-25,15,0)
-		TNT1 A 0 A_CustomMissile("FlamethrowerMissileFatso",30,25,-15,0)
-		FATT H 1 BRIGHT A_CustomMissile("FlamethrowerMissileFatso",30,-25,15,0)
-		TNT1 A 0 A_CustomMissile("FlamethrowerMissileFatso",30,25,-15,0)
-		FATT H 1 BRIGHT A_CustomMissile("FlamethrowerMissileFatso",30,-25,15,0)
-		TNT1 A 0 A_CustomMissile("FlamethrowerMissileFatso",30,25,-15,0)
-		FATT H 1 BRIGHT A_CustomMissile("FlamethrowerMissileFatso",30,-25,15,0)
-		TNT1 A 0 A_CustomMissile("FlamethrowerMissileFatso",30,25,-15,0)
-
-		Goto See
-	Pain:
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 44)
-		FATT J 3
-		FATT J 3 A_Pain
-		Goto See
-
-	Pain.Explosive:
-	TNT1 A 0
-	TNT1 A 0 A_SpawnItemEx("MuchBlood2", 0, 0, 60)
-	Pain.SSG:
-	Pain.ExtremePunches:
-	Pain.Railgun:
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 44)
-		TNT1 A 0 A_FaceTarget
-		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
-		FAT4 A 4 ThrustThingZ(0,30,0,1)
-		FAT4 B 4 A_Pain
-		FAT4 C 4 A_Stop
-		FAT4 DDDD 4
-		FAT4 C 4 A_Stop
-		FAT4 BA 4
-		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
-		Goto See
-
-	Pain.Kick:
-        TNT1 A 0 A_FaceTarget
-        TNT1 A 0 A_Recoil(2)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 44)
-		FATT J 9 A_Pain
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 44)
-		FATT J 8
-		Goto See
-
     Death.Fatality:
 	    TNT1 A 0 A_Pain
 	    TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1)
@@ -328,18 +274,21 @@ ACTOR Mancubus : Fatso Replaces Fatso
 		TNT1 A 0 A_NoBlocking
 		TNT1 A -1 A_BossDeath
 		Stop
+
 	Death.Shotgun:
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfInTargetInventory("SSGSelected", 1, "Death.SSG")
+		"####" "#" 2
+		TNT1 A 0 A_JumpIfInventory("HitHead", 1, "Death.Head")
 		TNT1 A 0 A_Jump(96, "Death.Minigun")
 		Goto Death
 
 	Death.SSG:
-		TNT1 A 0
+		"####" "#" 2
+		TNT1 A 0 A_JumpIfInventory("HitHead", 1, "Death.Head")
 		TNT1 A 0 A_Stop
 		TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_Jump(255, "DeathSSG1", "DEathSSG2", "Death.Cut")
+
 	DeathSSG1:
 		TNT1 A 0
 		TNT1 AAA 0 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
@@ -367,7 +316,8 @@ ACTOR Mancubus : Fatso Replaces Fatso
 
 	Death.Arm:
 	Death.Minigun:
-		TNT1 A 0
+		"####" "#" 2
+		TNT1 A 0 A_JumpIfInventory("HitHead", 1, "Death.Head")
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_CustomMissile ("XDeathMancubusArm", 30, 0, random (0, 360), 2, random (50, 130))
 		TNT1 AA 0 A_CustomMissile ("MuchBlood", 55, 0, random (0, 360), 2, random (0, 160))
@@ -378,6 +328,8 @@ ACTOR Mancubus : Fatso Replaces Fatso
         Stop
 
 	Death.Saw:
+		"####" "#" 2
+		TNT1 A 0 A_JumpIfInventory("HitHead", 1, "Death.Head")
 		TNT1 O 0 A_Jump(195, 2)
 		Goto Death.Minigun
         TNT1 AAA 0 A_CustomMissile ("MuchBlood", 35, 0, random (0, 360), 2, random (0, 160))
@@ -394,6 +346,8 @@ ACTOR Mancubus : Fatso Replaces Fatso
 
 	Death.Cut:
 	Death.Railgun:
+		"####" "#" 2
+		TNT1 A 0 A_JumpIfInventory("HitHead", 1, "Death.Head")
         XFAT AB 4 A_Stop
 		TNT1 A 0 A_Scream
 		TNT1 AA 0 A_CustomMissile ("MuchBlood", 35, 0, random (0, 360), 2, random (0, 160))
@@ -498,8 +452,8 @@ ACTOR Mancubus : Fatso Replaces Fatso
 		TNT1 A -1 A_BossDeath
         Stop
 
-Pain.KillMe:
-Pain.Taunt:
+	Pain.KillMe:
+	Pain.Taunt:
 		TNT1 A 0
 		SPOS B 0 A_Pain
 		TNT1 A 0 HealThing(2)
@@ -675,7 +629,7 @@ Actor DeadFat: NoGutsFatso
 {
     Radius 40
     Height 23
-    Scale 1.1
+    Scale 1.0
     Mass 10000
     Health 100
 States
@@ -853,7 +807,7 @@ Actor DeadFatsoNoArm: DeadFat
 
 Actor FatalizedFatso: NoGutsFatso
 {
-	Scale 1.1
+	Scale 1.0
 	Health 100
 	+NOPAIN
 	Radius 40
@@ -882,7 +836,7 @@ Actor FatalizedFatso: NoGutsFatso
 }
 
 Actor DyingFatso01: NoGutsFatso
-{Scale 1.1
+{Scale 1.0
 Health 20
 Radius 40
 Height 77
@@ -922,7 +876,7 @@ States
 }
 
 Actor DyingFatso02: DyingFatso01
-{Scale 1.1
+{Scale 1.0
 Health 20
 States
 {
@@ -948,7 +902,7 @@ States
 }
 
 Actor DyingFatso03: DyingFatso02
-{Scale 1.1
+{Scale 1.0
 Health 20
 States
 {

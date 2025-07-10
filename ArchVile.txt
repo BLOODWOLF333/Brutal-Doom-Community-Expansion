@@ -1,5 +1,6 @@
 ACTOR TheArchvile: Archvile Replaces Archvile
 {
+	Monster
 	Game Doom
 	SpawnID 111
 	Radius 20
@@ -31,13 +32,10 @@ ACTOR TheArchvile: Archvile Replaces Archvile
 	PainChance "GreenFire", 16	PainChance "HumanBBQ", 16
 
 	BloodType "Brutal_Blood", "SawBlood", "SawBlood"
-	Monster
 	MaxTargetRange 896
 	+QUICKTORETALIATE
 	+NOTARGET
 	+FLOORCLIP
-	DeathHeight 4
-	BurnHeight 0
 	DropItem "DemonStrengthRune", 16
 	SeeSound "vile/sight"
 	PainSound "vile/pain"
@@ -218,7 +216,6 @@ ACTOR TheArchvile: Archvile Replaces Archvile
 	Death.Minigun:
 	Death.Shotgun:
 		TNT1 A 0
-		TNT1 A 0 A_Scream
 		TNT1 AA 0 A_CustomMissile ("XDeath1", 52, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("XDeathArchvileArm", 52, 0, random (0, 360), 2, random (40, 120))
 		VID2 HHIJ 5 A_SpawnItem ("MuchBlood", 50)
@@ -427,9 +424,9 @@ ACTOR DyingArchvileNoArm
 	+FLOORCLIP
 	+NOPAIN
 	+DONTSPLASH
-	DeathHeight 4
-	BurnHeight 0
 	DropItem "none"
+	PainSound "vile/pain"
+	DeathSound "vile/death"
     States
     {
 	Spawn:
@@ -438,17 +435,23 @@ ACTOR DyingArchvileNoArm
 		VID2 KKK 2 A_CustomMissile ("Brutal_LiquidBlood", 47, 20, random (0, 360), 2, random (0, 45))
 		VID2 LLL 2 A_CustomMissile ("Brutal_LiquidBlood", 47, 20, random (0, 360), 2, random (0, 45))
 		VID2 KKK 2 A_CustomMissile ("Brutal_LiquidBlood", 47, 20, random (0, 360), 2, random (0, 45))
+		TNT1 A 0 A_PAIN
 		VID2 LLL 2 A_CustomMissile ("Brutal_LiquidBlood", 47, 20, random (0, 360), 2, random (0, 45))
 		VID2 KKK 2 A_CustomMissile ("Brutal_LiquidBlood", 47, 20, random (0, 360), 2, random (0, 45))
 		VID2 LLL 2 A_CustomMissile ("Brutal_LiquidBlood", 47, 20, random (0, 360), 2, random (0, 45))
+		TNT1 A 0 A_PAIN
 		VID2 KKK 2 A_CustomMissile ("Brutal_LiquidBlood", 47, 20, random (0, 360), 2, random (0, 45))
 		VID2 LLL 2 A_CustomMissile ("Brutal_LiquidBlood", 47, 20, random (0, 360), 2, random (0, 45))
 		VID2 KKK 2 A_CustomMissile ("Brutal_LiquidBlood", 47, 20, random (0, 360), 2, random (0, 45))
+		TNT1 A 0 A_PAIN
+		VID2 KKK 2 A_CustomMissile ("Brutal_LiquidBlood", 47, 20, random (0, 360), 2, random (0, 45))
 		VID2 LLL 2 A_CustomMissile ("Brutal_LiquidBlood", 47, 20, random (0, 360), 2, random (0, 45))
+		VID2 KKK 2 A_CustomMissile ("Brutal_LiquidBlood", 47, 20, random (0, 360), 2, random (0, 45))
 		TNT1 A 0 A_DIE
 
 	Death:
-		 VID2 MN 6 A_NoBlocking
+		 VID2 M 6 A_Scream
+		 VID2 N 6 A_NoBlocking
 		 TNT1 A 0 A_SpawnItem("DeadArchvileVID2O")
 		 Stop
 

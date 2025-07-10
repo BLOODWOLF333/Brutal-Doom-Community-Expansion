@@ -7,9 +7,10 @@ Actor Volcabus : Mancubus 2543
 	Health 1400
 	Scale 1.5
 	Radius 48
-	Height 72//SpriteH(66x150%=99)
+	Height 99//SpriteH(66x150%=99)
 	Mass 2350
 	Speed 9
+    BloodType "Volcabus_Blood", "Volcabus_SawBlood", "Volcabus_SawBlood"
 	SeeSound "Volcabus/sight"
 	PainSound "Volcabus/pain"
 	DeathSound "Volcabus/death"
@@ -25,7 +26,6 @@ Actor Volcabus : Mancubus 2543
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckStuff")//Check if new monsters are disabled
 		FAT2 B 2
 		TNT1 A 0 A_JumpIfInventory("nonewenemies", 1, "Vanish")
-		TNT1 A 0 A_SPAWNITEMEX("VolcabusHeadShot", 0, 0, 72, 0, 0, 0, 0, SXF_SETMASTER|SXF_NOCHECKPOSITION)
 
 	Stand:
 		TNT1 A 0
@@ -116,24 +116,24 @@ Actor Volcabus : Mancubus 2543
 
 		FAT2 G 8 A_FaceTarget
 		TNT1 A 0 A_Playsound("Volcabus/cannon")
-		TNT1 A 0 A_CustomMissile("VolcabusBall",30,-25,10,0)
-		TNT1 A 0 A_CustomMissile("Alerter", 30,-25)
-		TNT1 A 0 A_CustomMissile("VolcabusBall",30,25,0,0)
-		TNT1 A 0 A_CustomMissile("Alerter", 30,25)
+		TNT1 A 0 A_CustomMissile("VolcabusBall",30,-45,10,0)
+		TNT1 A 0 A_CustomMissile("Alerter", 30,-45)
+		TNT1 A 0 A_CustomMissile("VolcabusBall",30,45,0,0)
+		TNT1 A 0 A_CustomMissile("Alerter", 30,45)
 		FAT2 H 8 BRIGHT
 		FAT2 IG 4 A_FaceTarget
 		TNT1 A 0 A_Playsound("Volcabus/cannon")
-		TNT1 A 0 A_CustomMissile("VolcabusBall",30,-25,0,0)
-		TNT1 A 0 A_CustomMissile("Alerter", 30,-25)
-		TNT1 A 0 A_CustomMissile("VolcabusBall",30,25,-10,0)
-		TNT1 A 0 A_CustomMissile("Alerter", 30,25)
+		TNT1 A 0 A_CustomMissile("VolcabusBall",30,-45,0,0)
+		TNT1 A 0 A_CustomMissile("Alerter", 30,-45)
+		TNT1 A 0 A_CustomMissile("VolcabusBall",30,45,-10,0)
+		TNT1 A 0 A_CustomMissile("Alerter", 30,45)
 		FAT2 H 8 BRIGHT
 		FAT2 IG 4 A_FaceTarget
 		TNT1 A 0 A_Playsound("Volcabus/cannon")
-		TNT1 A 0 A_CustomMissile("VolcabusBall",30,-25,5,0)
-		TNT1 A 0 A_CustomMissile("Alerter", 30,-25)
-		TNT1 A 0 A_CustomMissile("VolcabusBall",30,25,-5,0)
-		TNT1 A 0 A_CustomMissile("Alerter", 30,25)
+		TNT1 A 0 A_CustomMissile("VolcabusBall",30,-45,5,0)
+		TNT1 A 0 A_CustomMissile("Alerter", 30,-45)
+		TNT1 A 0 A_CustomMissile("VolcabusBall",30,45,-5,0)
+		TNT1 A 0 A_CustomMissile("Alerter", 30,45)
 		FAT2 H 10 BRIGHT
 		FAT2 IG 4
 		Goto See
@@ -141,33 +141,33 @@ Actor Volcabus : Mancubus 2543
 	Missile2:
 		FAT2 G 5 A_FaceTarget
 		TNT1 A 0 A_Playsound("Volcabus/cannon")
-		TNT1 A 0 A_CustomMissile("VolcabusBall",30,-25,5,0)
-		TNT1 A 0 A_CustomMissile("Alerter", 30,25)
+		TNT1 A 0 A_CustomMissile("VolcabusBall",30,-45,5,0)
+		TNT1 A 0 A_CustomMissile("Alerter", 30,-45)
 		FAT2 H 4 BRIGHT
 		FAT2 IG 4 A_FaceTarget
 		TNT1 A 0 A_Playsound("Volcabus/cannon")
-		TNT1 A 0 A_CustomMissile("VolcabusBall",30,25,0,0)
-		TNT1 A 0 A_CustomMissile("Alerter", 30,-25)
+		TNT1 A 0 A_CustomMissile("VolcabusBall",30,45,0,0)
+		TNT1 A 0 A_CustomMissile("Alerter", 30,45)
 		FAT2 H 4 BRIGHT
 		FAT2 IG 4 A_FaceTarget
 		TNT1 A 0 A_Playsound("Volcabus/cannon")
-		TNT1 A 0 A_CustomMissile("VolcabusBall",30,-25,-5,0)
-		TNT1 A 0 A_CustomMissile("Alerter", 30,25)
+		TNT1 A 0 A_CustomMissile("VolcabusBall",30,-45,-5,0)
+		TNT1 A 0 A_CustomMissile("Alerter", 30,-45)
 		FAT2 H 4 BRIGHT
 		FAT2 IG 4 A_FaceTarget
 		TNT1 A 0 A_Playsound("Volcabus/cannon")
-		TNT1 A 0 A_CustomMissile("VolcabusBall",30,25,0,0)
-		TNT1 A 0 A_CustomMissile("Alerter", 30,-25)
+		TNT1 A 0 A_CustomMissile("VolcabusBall",30,45,0,0)
+		TNT1 A 0 A_CustomMissile("Alerter", 30,45)
 		FAT2 H 4 BRIGHT
 		FAT2 IG 4 A_FaceTarget
 		TNT1 A 0 A_Playsound("Volcabus/cannon")
-		TNT1 A 0 A_CustomMissile("VolcabusBall",30,-25,5,0)
-		TNT1 A 0 A_CustomMissile("Alerter", 30,25)
+		TNT1 A 0 A_CustomMissile("VolcabusBall",30,-45,5,0)
+		TNT1 A 0 A_CustomMissile("Alerter", 30,-45)
 		FAT2 H 4 BRIGHT
 		FAT2 IG 4 A_FaceTarget
 		TNT1 A 0 A_Playsound("Volcabus/cannon")
-		TNT1 A 0 A_CustomMissile("VolcabusBall",30,25,-5,0)
-		TNT1 A 0 A_CustomMissile("Alerter", 30,-25)
+		TNT1 A 0 A_CustomMissile("VolcabusBall",30,45,-5,0)
+		TNT1 A 0 A_CustomMissile("Alerter", 30,45)
 		FAT2 H 4 BRIGHT
 		FAT2 IG 4 A_FaceTarget
 		Goto See
@@ -213,7 +213,7 @@ Actor Volcabus : Mancubus 2543
 		Goto See
 
 	Pain.Killme:
-   Pain.Taunt:
+	Pain.Taunt:
 		TNT1 A 0
 		SPOS B 0 A_Pain
 		TNT1 A 0 HealThing(2)
@@ -232,7 +232,10 @@ Actor Volcabus : Mancubus 2543
 	    Goto Death
 
 	Death:
+		"####" "#" 2
+		TNT1 A 0 A_JumpIfInventory("HitHead", 1, "Death.Head")
 		TNT1 A 0 A_Jump(128, "Death2", "Death3")
+
 	Death.Massacre:
 	Death1:
 		F5T2 A 7
@@ -274,13 +277,17 @@ Actor Volcabus : Mancubus 2543
 	Death.Arm:
 	Death.Shotgun:
 	Death.Minigun:
-	Death.cutless:
+		"####" "#" 2
+		TNT1 A 0 A_JumpIfInventory("HitHead", 1, "Death.Head")
 		TNT1 A 0 A_Jump(128, "Death3")
 		TNT1 A 0 A_Jump(80,"Death1", "Death2")
+
 	Death.Cut:
 	Death.Saw:
 	Death.Tear:
 	Death.Railgun:
+		"####" "#" 2
+		TNT1 A 0 A_JumpIfInventory("HitHead", 1, "Death.decaptate")
 		F6T2 K 6
 		F6T2 L 5 A_Scream
 		TNT1 A 0 A_CustomMissile ("brutal_FlyingBlood", 75, 0, random (0, 360), 2, random (0, 160))
@@ -299,6 +306,8 @@ Actor Volcabus : Mancubus 2543
 
 	//Blasted Chest Open
 	Death.SSG:
+		"####" "#" 2
+		TNT1 A 0 A_JumpIfInventory("HitHead", 1, "Death.Head")
 		TNT1 AA 0 A_CustomMissile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_CustomMissile ("xdeath2", 0, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_CustomMissile ("RipGuts", 25, 0, random (0, 360), 2, random (0, 160))
@@ -321,7 +330,6 @@ Actor Volcabus : Mancubus 2543
 	//Gibbed to pieces
 	XDeath:
 	Death.ExtremePunches:
-	Death.QuadBlast:
     Death.Explosive:
 	Death.ExplosiveImpact:
 	Death.Landmine:
@@ -356,6 +364,9 @@ Actor Volcabus : Mancubus 2543
 	//Head exploding death
 	Death.minorhead:
     Death.head:
+		"####" "#" 2
+		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate")
+		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
 		TNT1 AAAAAA 0 A_CustomMissile ("Xdeath1", 68, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAAAAA 0 A_CustomMissile ("Brains1", 68, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_CustomMissile ("Brains2", 68, 0, random (0, 360), 2, random (0, 160))
@@ -379,37 +390,37 @@ Actor Volcabus : Mancubus 2543
 		FA72 J -1 A_BossDeath
         Stop
 
-		Death.decaptate:
-		ChickenHead:
-			TNT1 A 0 A_PlaySound("misc/xdeath2c")
-			FA72 FFFFKKKK 2 A_CustomMissile ("Brutal_LiquidBlood2", 30, 0, random (0, 360), 2, random (10, 90))
+	Death.decaptate:
+	ChickenHead:
+		TNT1 A 0 A_PlaySound("misc/xdeath2c")
+		FA72 FFFFKKKK 2 A_CustomMissile ("Brutal_LiquidBlood2", 30, 0, random (0, 360), 2, random (10, 90))
 
-			TNT1 A 0 A_PlaySound("misc/xdeath2c")
-			FA72 FFFFKKKK 2 A_CustomMissile ("Brutal_LiquidBlood2", 30, 0, random (0, 360), 2, random (10, 90))
+		TNT1 A 0 A_PlaySound("misc/xdeath2c")
+		FA72 FFFFKKKK 2 A_CustomMissile ("Brutal_LiquidBlood2", 30, 0, random (0, 360), 2, random (10, 90))
 
-			TNT1 A 0 A_PlaySound("misc/xdeath2c")
-			FA72 FFFFKKKK 2 A_CustomMissile ("Brutal_LiquidBlood2", 30, 0, random (0, 360), 2, random (10, 90))
+		TNT1 A 0 A_PlaySound("misc/xdeath2c")
+		FA72 FFFFKKKK 2 A_CustomMissile ("Brutal_LiquidBlood2", 30, 0, random (0, 360), 2, random (10, 90))
 
-			TNT1 A 0 A_PlaySound("misc/xdeath2c")
-			FA72 FFFFKKKK 2 A_CustomMissile ("Brutal_LiquidBlood2", 30, 0, random (0, 360), 2, random (10, 90))
+		TNT1 A 0 A_PlaySound("misc/xdeath2c")
+		FA72 FFFFKKKK 2 A_CustomMissile ("Brutal_LiquidBlood2", 30, 0, random (0, 360), 2, random (10, 90))
 
-			TNT1 A 0 A_PlaySound("misc/xdeath2c")
-			FA72 FFFFKKKK 2 A_CustomMissile ("Brutal_LiquidBlood2", 30, 0, random (0, 360), 2, random (10, 90))
+		TNT1 A 0 A_PlaySound("misc/xdeath2c")
+		FA72 FFFFKKKK 2 A_CustomMissile ("Brutal_LiquidBlood2", 30, 0, random (0, 360), 2, random (10, 90))
 
-			TNT1 A 0 A_PlaySound("misc/xdeath2c")
-			FA72 FFFFKKKK 2 A_CustomMissile ("Brutal_LiquidBlood2", 30, 0, random (0, 360), 2, random (10, 90))
+		TNT1 A 0 A_PlaySound("misc/xdeath2c")
+		FA72 FFFFKKKK 2 A_CustomMissile ("Brutal_LiquidBlood2", 30, 0, random (0, 360), 2, random (10, 90))
 
-			FA72 GGG 2 A_CustomMissile ("Brutal_LiquidBlood2", 67, 0, random (0, 360), 2, random (0, 160))
-			FA72 HHH 2 A_CustomMissile ("brutal_FlyingBlood", 58, 0, random (0, 360), 2, random (0, 160))
-			TNT1 A 0 A_CustomMissile ("MuchBlood", 58, 0, random (0, 360), 2, random (0, 160))
-			FA72 III 2 A_CustomMissile ("brutal_FlyingBlood", 44, 0, random (0, 360), 2, random (0, 160))
-			TNT1 A 0 A_PlaySound("knight/step",8)
-			TNT1 A 0 A_NoBlocking
-			TNT1 AA 0 A_CustomMissile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160))
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
-			FA72 JJJJJJJJJJJJJJJJJJ 2 A_CustomMissile ("Brutal_LiquidBlood2", 21, 0, random (0, 360), 2, random (0, 160))
-			FA72 J -1 A_BossDeath
-			Stop
+		FA72 GGG 2 A_CustomMissile ("Brutal_LiquidBlood2", 67, 0, random (0, 360), 2, random (0, 160))
+		FA72 HHH 2 A_CustomMissile ("brutal_FlyingBlood", 58, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("MuchBlood", 58, 0, random (0, 360), 2, random (0, 160))
+		FA72 III 2 A_CustomMissile ("brutal_FlyingBlood", 44, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_PlaySound("knight/step",8)
+		TNT1 A 0 A_NoBlocking
+		TNT1 AA 0 A_CustomMissile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		FA72 JJJJJJJJJJJJJJJJJJ 2 A_CustomMissile ("Brutal_LiquidBlood2", 21, 0, random (0, 360), 2, random (0, 160))
+		FA72 J -1 A_BossDeath
+		Stop
 
 	Death.Fire: Death.Burn: Death.Flames:
 		F7T2 FFF 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))

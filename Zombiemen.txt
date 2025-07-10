@@ -1,4 +1,4 @@
-ACTOR RifleZombie Replaces ZombieMan
+ACTOR RifleZombie : Zombieman Replaces ZombieMan
 {
 	Game Doom
 	Health 40
@@ -8,8 +8,6 @@ ACTOR RifleZombie Replaces ZombieMan
 	Mass 300
 	FastSpeed 8
 	PainChance 255
-	DeathHeight 4
-	BurnHeight 4
 
 	Damagefactor "Avoid", 1.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
