@@ -2143,8 +2143,8 @@ actor MastermindBlood: Brutal_Blood
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("TankBlood")
 		TNT1 A 2
-		TNT1 A 0 A_RadiusGIve("ArachnotronChasisHits", 64, RGF_MONSTERS, 1)
-		TNT1 A 0 A_RadiusGIve("ArachnotronChasisLastHit", 64, RGF_MONSTERS, 1)
+		TNT1 A 0 A_RadiusGIve("ArachnotronChasisHits", 128, RGF_MONSTERS, 1)
+		TNT1 A 0 A_RadiusGIve("ArachnotronChasisLastHit", 128, RGF_MONSTERS, 1)
 		Stop
 	}
 }
@@ -2173,8 +2173,66 @@ actor Mastermind_SawBlood : SawBlood
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("TankBlood")
 		TNT1 A 2
-		TNT1 A 0 A_RadiusGIve("ArachnotronChasisHits", 64, RGF_MONSTERS, 1)
-		TNT1 A 0 A_RadiusGIve("ArachnotronChasisLastHit", 64, RGF_MONSTERS, 1)
+		TNT1 A 0 A_RadiusGIve("ArachnotronChasisHits", 128, RGF_MONSTERS, 1)
+		TNT1 A 0 A_RadiusGIve("ArachnotronChasisLastHit", 128, RGF_MONSTERS, 1)
+		Stop
+	}
+}
+
+actor Super_MastermindBlood: Brutal_Blood
+{
+	States
+	{
+	Spawn:
+		BSPR A 0 NODELAY A_JumpIf((z - floorz) < 128, "HitMetal")
+		TNT1 A 0 A_CustomMissile ("SuperGoreMistTiny", 0, 0, random (0, 360), 2, random (0, 90))
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+		TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckBloodIntensity")
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("misc/xdeath5")
+		BSPR A 2
+		TNT1 A 0 A_CustomMissile ("WaterBloodCHecker", 7, 0, random (0, 360), 2, random (30, 60))
+	Spawn2:
+		TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 7, 0, random (0, 360), 2, random (30, 60))
+		TNT1 A 0 A_CustomMissile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (20, 90))
+		Goto LowBlood
+
+	HitMetal:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("TankBlood")
+		TNT1 A 2
+		TNT1 A 0 A_RadiusGIve("ArachnotronChasisHits", 128, RGF_MONSTERS, 1)
+		TNT1 A 0 A_RadiusGIve("ArachnotronChasisLastHit", 128, RGF_MONSTERS, 1)
+		Stop
+	}
+}
+
+actor Super_Mastermind_SawBlood : SawBlood
+{
+	states
+	{
+	Spawn:
+		BSPR A 0 NODELAY A_JumpIf((z - floorz) < 128, "HitMetal")
+		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "HitSaw", AAPTR_TARGET)
+		BSPR A 0
+		TNT1 A 0 A_CustomMissile ("SuperGoreMistTiny", 0, 0, random (0, 360), 2, random (0, 90))
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+		TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckBloodIntensity")
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("misc/xdeath5")
+		BSPR A 2
+		TNT1 A 0 A_CustomMissile ("WaterBloodCHecker", 7, 0, random (0, 360), 2, random (30, 60))
+	Spawn2:
+		TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 7, 0, random (0, 360), 2, random (30, 60))
+		TNT1 A 0 A_CustomMissile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (20, 90))
+		Goto LowBlood
+
+	HitMetal:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("TankBlood")
+		TNT1 A 2
+		TNT1 A 0 A_RadiusGIve("ArachnotronChasisHits", 128, RGF_MONSTERS, 1)
+		TNT1 A 0 A_RadiusGIve("ArachnotronChasisLastHit", 128, RGF_MONSTERS, 1)
 		Stop
 	}
 }
