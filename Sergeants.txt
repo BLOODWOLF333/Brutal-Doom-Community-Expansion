@@ -4,7 +4,7 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 	Health 40
 	SpawnID 1
 	Radius 20
-	Height 44
+	Height 56
 	Mass 300
 	Speed 5
 	FastSpeed 8
@@ -30,10 +30,8 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 	+RANDOMIZE
 	+MISSILEMORE
 	+DOHARMSPECIES
-	DeathHeight 4
-	BurnHeight 0
 	Species "Zombies"
-    BloodType "Brutal_Blood", "SawBlood", "SawBlood"
+    BloodType "Zombie_Blood", "Zombie_SawBlood", "Zombie_SawBlood"
 	SeeSound "grunt/sight"
 	PainSound "grunt/pain"
 	DeathSound "grunt/death"
@@ -89,33 +87,21 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 
 	Idle:
 	Stand:
-		TNT1 A 0
-		TNT1 AA 0 A_SpawnItem("HeadshotTarget20", 0, 37)
 		SHID AB 11 A_Look
 		Loop
 
 	FallBack:
 	TNT1 A 0 A_CheckSight("Advance")
 	TNT1 A 0 A_ChangeFLag("NODROPOFF", 1)
-	TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 37)
-	TNT1 A 0 A_SpawnItem("LegTarget4")
 	SPOS D 2 A_FaceTarget
 	SPOS D 2 A_Recoil(2)
 	TNT1 A 0 A_jump(64, "Missile")
-	TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 37)
-	TNT1 A 0 A_SpawnItem("LegTarget4")
 	SPOS C 2 A_FaceTarget
 	SPOS C 2 A_Recoil(2)
-	TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 37)
-	TNT1 A 0 A_SpawnItem("LegTarget4")
 	SPOS B 2 A_FaceTarget
 	SPOS B 2 A_Recoil(2)
-	TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 37)
-	TNT1 A 0 A_SpawnItem("LegTarget4")
 	SPOS A 2 A_FaceTarget
 	SPOS A 2 A_Recoil(2)
-	TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 37)
-	TNT1 A 0 A_SpawnItem("LegTarget4")
 	SPOS D 2 A_FaceTarget
 	TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 	GOto Missile
@@ -134,20 +120,12 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 		TNT1 A 0 A_TakeInventory("SKShotgunGuy", 1)
 
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
 		SPOS AAA 2 A_Chase
 
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
 		SPOS BBB 2 A_Chase
 
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
 		SPOS CCC 2 A_Chase
 
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
 		SPOS DDD 2 A_Chase
 		Loop
 
@@ -156,111 +134,67 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 		Advance:
 		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
 		SPOS AAA 2 A_Chase
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
 		SPOS BBB 2 A_Chase
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
 		SPOS CCC 2 A_Chase
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
 		SPOS DDD 2 A_Chase
 		Loop
 
 	Missile:
 	    TNT1 A 0 A_Stop
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 37)
 		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 		TNT1 A 0 A_TakeInventory("SKShotgunGuy", 1)
 
 		SPOS D 3 A_FaceTarget
 
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
 		TNT1 A 0 A_GiveInventory("SergeantAmmo", 1)
 
 		SPOS D 3 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
 		SPOS E 10 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 37)
 		SPOS E 4 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 37)
 		SPOS E 4 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 37)
 		SPOS E 4 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 37)
 
-        TNT1 AAAAA 0 A_CustomMissile("ShotgunguyTracer", 30, 0, random(-7, 7), CMF_OFFSETPITCH, random(-4, 4))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundShotgun", 30, 0, 0, 1, 0)
-		TNT1 AAAAAAAA 0 A_CustomMissile("ShotgunParticles", 30, 0, random(-9, 9), CMF_OFFSETPITCH, random(-9, 9))
+        TNT1 AAAAA 0 A_CustomMissile("ShotgunguyTracer", 32, 0, random(-7, 7), CMF_OFFSETPITCH, random(-4, 4))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundShotgun", 32, 0, 0, 1, 0)
+		TNT1 AAAAAAAA 0 A_CustomMissile("ShotgunParticles", 32, 0, random(-9, 9), CMF_OFFSETPITCH, random(-9, 9))
 		TNT1 A 0 A_PlaySound("weapons/sg")
 		SPOS F 5 BRIGHT
 		TNT1 A 0 A_Recoil(1)
 		SPSR C 6
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
 		SPOS E 7 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
 		SPSR A 7
         TNT1 A 0 A_PlaySound("weapons/sgpump")
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
-		SPSR B 7 A_SpawnItem("ShotCaseSpawn", 0, 30,0)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
+		SPSR B 7 A_SpawnItem("ShotCaseSpawn", 0, 32,0)
 		SPSR A 7
         TNT1 A 0 A_JumpIfInventory("SergeantAmmo", 6, "Reload")
 		Goto SeeContinue
 
   Reload:
         TNT1 A 0
-		TNT1 A 0 A_SpawnItem("HeadshotTarget20", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTarget20")
         SPSR A 15
-		TNT1 A 0 A_SpawnItem("HeadshotTarget20", 0, 37)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget20", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTarget20")
         ID12 EFG 5
         TNT1 A 0 A_PlaySound("insertshell")
 		TNT1 A 0 A_TakeInventory("SergeantAmmo", 1)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget20", 0, 37)
         ID12 EFG 5
         TNT1 A 0 A_PlaySound("insertshell")
 		TNT1 A 0 A_TakeInventory("SergeantAmmo", 1)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget20", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTarget20")
         ID12 EFG 5
         TNT1 A 0 A_PlaySound("insertshell")
 		TNT1 A 0 A_TakeInventory("SergeantAmmo", 1)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget20", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTarget20")
         ID12 EFG 5
         TNT1 A 0 A_PlaySound("insertshell")
 		TNT1 A 0 A_TakeInventory("SergeantAmmo", 1)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget20", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTarget20")
 		ID12 EFG 5
         TNT1 A 0 A_PlaySound("insertshell")
 		TNT1 A 0 A_TakeInventory("SergeantAmmo", 1)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget20", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTarget20")
 		ID12 EFG 5
         TNT1 A 0 A_PlaySound("insertshell")
 		TNT1 A 0 A_TakeInventory("SergeantAmmo", 1)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget20", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTarget20")
 		SPSR A 10
         TNT1 A 0 A_PlaySound("weapons/sgpump")
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTarget20")
 		SPSR B 10
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 37)
 		SPSR A 10
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 37)
         Goto SeeContinue
 
 	Pain.Cut:
@@ -270,11 +204,7 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 	Pain:
         TNT1 A 0 A_JumpIfInventory ("IsDown", 1, 9)
 		TNT1 A 0 A_TakeInventory("SKShotgunGuy", 1)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
 		SPOS G 3
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
 		SPOS G 3 A_Pain
 		TNT1 A 0 A_Jump(196, "Missile")
 		Goto SeeContinue
@@ -286,22 +216,17 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 	Pain.Head:
 	Pain.Shrapnel:
 		TNT1 A 0 A_TakeInventory("SKShotgunguy", 1)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 37)
 		POSH K 5 A_Pain
 		TNT1 A 0 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget20", 0, 37)
 		POSH L 20
-		TNT1 A 0 A_SpawnItem("HeadshotTarget20", 0, 37)
 		POSH L 20
 		Goto SeeContinue
 
 	Pain.Melee:
 	    TNT1 A 0
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 37)
 		SPOS G 4
 		TNT1 A 0 A_JumpIfInventory ("SKShotgunGuy", 1, "GotoStealthKill")
         TNT1 A 0 A_JumpIfInventory ("IsDown", 1, 3)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 37)
 		SPOS G 4 A_Pain
 		Goto SeeContinue
         TNT1 AAAAA 0
@@ -345,18 +270,6 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 		TNT1 A 0 ThrustThingZ(0,40,0,1)
 		SPO4 UUVWXY 4
 		Goto FallingAfterImpact
-
-	Pain.LowKick:
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("IsDown", 1, "Death.LowKick")
-		Goto Pain
-
-	Death.LowKick:
-		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-        TNT1 A 0 A_GiveToTarget("IsCurbstompingSergeant", 1)
-		TNT1 A -1 A_NoBlocking
-        Stop
 
 	Pain.Slide:
          TNT1 A 0
@@ -457,7 +370,7 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 	Death.Fall:
 		TNT1 A 0
 		TNT1 A 0 A_Scream
-		TNT1 A 0 A_Stop
+		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
 		TNT1 AAAA 0 A_CustomMissile ("XDeath1", 32, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
 		ID11 EF 2
@@ -476,7 +389,10 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 
 	Death.MonsterShotgunBullet:
 	Death.Shotgun:
-		SPOS J 1 A_FaceTarget
+		SPOS JJ 1 A_FaceTarget
+		TNT1 A 0 A_JumpIfInventory("HitHead", 2, "Death.HeadExplode")
+		TNT1 A 0 A_JumpIfInventory("HitLeg", 2, "LegRemove")
+		TNT1 A 0 A_JumpIfInventory("HitHead", 1, "Death.Head")
 		TNT1 A 0 A_SpawnItem("MuchBlood", 0, 40)
 		TNT1 A 0 A_CustomMissile ("SuperWallRedBlood", 42, 0, random (170, 190), 2, random (0, 20))
         TNT1 A 0 A_Jump(42, "Death.Shotgunontheface")
@@ -790,6 +706,10 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 
 	Death.Saw:
     Death.Tear:
+		"####" "#" 2
+		TNT1 A 0 A_JumpIfInventory("HitHead", 2, "Death.HeadExplode")
+		TNT1 A 0 A_JumpIfInventory("HitHead", 1, "Death.Decaptate")
+		TNT1 A 0 A_JumpIfInventory("HitLeg", 1, "LegRemove")
 		TNT1 A 0
 		TNT1 A 0 A_Jump(32, "Death.ARm")
         TNT1 A 0 A_CustomMissile ("MuchBlood", 1, 0, random (0, 360), 2, random (0, 160))
@@ -809,7 +729,7 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 A_Scream
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
-        TNT1 A 0 A_SpawnItem("BrutalizedSergeant1", 1)
+		TNT1 A 0 A_SpawnItemEx("BrutalizedSergeant1",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A -1 A_NoBLocking
 		Stop
 
@@ -818,7 +738,7 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 A_Scream
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
-        TNT1 A 0 A_SpawnItem("BrutalizedSergeantLeg", 1)
+		TNT1 A 0 A_SpawnItemEx("BrutalizedSergeantLeg",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A -1 A_NoBLocking
 		Stop
 
@@ -840,7 +760,7 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 		TNT1 AA 0 A_CustomMissile ("BloodMistBig", 40, 0, random (0, 360), 2, random (30, 90))
 		TNT1 AAA 0 A_CustomMissile ("BloodMistBig", 40, 0, random (0, 360), 2, random (30, 90))
 		ZXZ7 A 6 A_Stop
-		TNT1 A 0 A_SpawnItem("SergeantFallingHoleOnStomach")
+		TNT1 A 0 A_SpawnItemEx("SergeantFallingHoleOnStomach",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A -1 A_NoBLocking
 	    Stop
 
@@ -859,17 +779,17 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 		TNT1 AAA 0 A_CustomMissile ("BloodMistBig", 40, 0, random (0, 360), 2, random (30, 90))
 		TNT1 AAA 0 A_CustomMissile ("BloodMist", 40, 0, random (0, 360), 2, random (40, 90))
 		ZXZ6 A 6 A_Stop
-		TNT1 A 0 A_SpawnItem("SergeantFallingSplattered")
+		TNT1 A 0 A_SpawnItemEx("SergeantFallingSplattered",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A -1 A_NoBLocking
 	    Stop
 
 	Death.SSG:
 	Death.Railgun:
-		TNT1 A 0
-		TNT1 A 0 A_Stop
 	    SZD1 E 1 A_Pain
-		TNT1 A 0 A_SpawnItem("Muchblood2", 0, 40)
 		SZD1 E 1 A_FaceTarget
+		TNT1 A 0 A_JumpIfInventory("HitHead", 1, "Death.HeadExplode")
+		TNT1 A 0 A_JumpIfInventory("HitLeg", 1, "LegRemove")
+		TNT1 A 0 A_SpawnItem("Muchblood2", 0, 40)
 	    TNT1 AAA 0 bright A_CustomMissile ("SuperGoreSpawner", 35, 0, random (170, 190), 2, random (0, 40))
         TNT1 A 0 A_CustomMissile ("XDeath2", 32, 0, random (170, 190), 2, random (0, 40))
 		TNT1 A 0 A_CustomMissile ("XDeath3", 32, 0, random (170, 190), 2, random (0, 40))
@@ -885,8 +805,10 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
         Stop
 
 	Death.Cut:
-		TNT1 A 0
-		TNT1 A 0 A_Stop
+		"####" "#" 2
+		TNT1 A 0 A_JumpIfInventory("HitHead", 2, "Death.HeadExplode")
+		TNT1 A 0 A_JumpIfInventory("HitHead", 1, "Death.Decaptate")
+		TNT1 A 0 A_JumpIfInventory("HitLeg", 1, "LegRemove")
 	    SZD1 E 1 A_Pain
 		TNT1 A 0 A_SpawnItem("Muchblood2", 0, 40)
 		SZD1 E 1 A_FaceTarget
@@ -900,7 +822,7 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 		TNT1 A -1 A_NoBLocking
         Stop
 
-    	Death.GreenFire:
+    Death.GreenFire:
         TNT1 A 0
         TNT1 A 0 A_XScream
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
@@ -918,7 +840,8 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 		TNT1 A -1 A_NoBLocking
         Stop
 
-    Death.Plasma: Death.Plasma2:
+    Death.Plasma:
+	Death.Plasma2:
 		PBR1 A 6 A_Stop
 		TNT1 AAAA 0 A_CustomMissile ("BluePlasmaFireNonStatic", 42, 0, random (0, 360), 2, random (0, 180))
 		TNT1 AAA 0 A_CustomMissile ("Blood", 32, 0, random (0, 360), 2, random (0, 180))
@@ -1261,40 +1184,29 @@ ACTOR SMGGuy: ShotgunGuy1
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCHeckClassicMonsters", 0, 0, 0, 0)//Check if Vanilla Mode is activated
 		  TNT1 A 0
 		  TNT1 A 0 A_GiveInventory("SKShotgunGuy", 1)
-		  TNT1 A 0 A_TakeInventory("SergeantAmmo", 6)
-		  TNT1 A 0 A_GiveInventory("SergeantAmmo", random(0,5))
+		  TNT1 A 0 A_TakeInventory("BDSMGAmmo", 40)
+		  TNT1 A 0 A_GiveInventory("BDSMGAmmo", random(0,5))
 		  PSS3 B 1
 		  Goto Stand
 
 	Idle:
 	Stand:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 37)
 		PSS3 A 10 A_Look
 		Loop
 
 	FallBack:
 	TNT1 A 0 A_CheckSight("Advance")
 	TNT1 A 0 A_ChangeFLag("NODROPOFF", 1)
-	TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 37)
-	TNT1 A 0 A_SpawnItem("LegTarget4")
 	PSS3 D 2 A_FaceTarget
 	PSS3 D 2 A_Recoil(2)
 	TNT1 A 0 A_jump(64, "Missile")
-	TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 37)
-	TNT1 A 0 A_SpawnItem("LegTarget4")
 	PSS3 C 2 A_FaceTarget
 	PSS3 C 2 A_Recoil(2)
-	TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 37)
-	TNT1 A 0 A_SpawnItem("LegTarget4")
 	PSS3 B 2 A_FaceTarget
 	PSS3 B 2 A_Recoil(2)
-	TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 37)
-	TNT1 A 0 A_SpawnItem("LegTarget4")
 	PSS3 A 2 A_FaceTarget
 	PSS3 A 2 A_Recoil(2)
-	TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 37)
-	TNT1 A 0 A_SpawnItem("LegTarget4")
 	PSS3 D 2 A_FaceTarget
 	TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 	GOto Missile
@@ -1312,20 +1224,12 @@ ACTOR SMGGuy: ShotgunGuy1
 		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 		TNT1 A 0 A_TakeInventory("SKShotgunGuy", 1)
 
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
 		PSS3 AAA 2 A_Chase
 
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
 		PSS3 BBB 2 A_Chase
 
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
 		PSS3 CCC 2 A_Chase
 
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
 		PSS3 DDD 2 A_Chase
 		Loop
 
@@ -1334,107 +1238,77 @@ ACTOR SMGGuy: ShotgunGuy1
 		Advance:
 		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
 		PSS3 AAA 2 A_Chase
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
 		PSS3 BBB 2 A_Chase
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
 		PSS3 CCC 2 A_Chase
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
 		PSS3 DDD 2 A_Chase
 		Loop
 
 	Missile:
 	    TNT1 A 0 A_Stop
 		TNT1 A 0 A_JumpIfHealthLower(1, "Death")
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 37)
 		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 		TNT1 A 0 A_TakeInventory("SKShotgunGuy", 1)
 		PSS3 D 3 A_FaceTarget
 
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
-		TNT1 A 0 A_GiveInventory("SergeantAmmo", 1)
-
 		PSS3 D 3 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
 		PSS3 E 10 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 37)
 		PSS3 E 4 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget20", 0, 37)
 
-		TNT1 A 0 A_CustomMissile("MonsterTracer", 28, 11, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 28, 0, 0, 1, 0)
-		TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 30,0)
+		TNT1 A 0 A_CustomMissile("MonsterTracer", 32, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
+		TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 32,0)
         TNT1 A 0 A_PlaySound("SMGFIRE", 1)
 		TNT1 A 0 A_GiveInventory("BDSMGAmmo",1)
 		PSS3 F 1 BRIGHT
 		PSS3 E 2 A_FaceTarget
 
-		TNT1 A 0 A_CustomMissile("MonsterTracer", 28, 11, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 28, 0, 0, 1, 0)
-		TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 30,0)
+		TNT1 A 0 A_CustomMissile("MonsterTracer", 32, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
+		TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 32,0)
         TNT1 A 0 A_PlaySound("SMGFIRE", 1)
 		TNT1 A 0 A_GiveInventory("BDSMGAmmo",1)
 		PSS3 F 1 BRIGHT
 		PSS3 E 2 A_FaceTarget
 
-		TNT1 A 0 A_CustomMissile("MonsterTracer", 28, 11, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 28, 0, 0, 1, 0)
-		TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 30,0)
+		TNT1 A 0 A_CustomMissile("MonsterTracer", 32, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
+		TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 32,0)
         TNT1 A 0 A_PlaySound("SMGFIRE", 1)
 		TNT1 A 0 A_GiveInventory("BDSMGAmmo",1)
 		PSS3 F 1 BRIGHT
 		PSS3 E 2 A_FaceTarget
 
-		TNT1 A 0 A_CustomMissile("MonsterTracer", 28, 11, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 28, 0, 0, 1, 0)
-		TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 30,0)
+		TNT1 A 0 A_CustomMissile("MonsterTracer", 32, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
+		TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 32,0)
         TNT1 A 0 A_PlaySound("SMGFIRE", 1)
 		TNT1 A 0 A_GiveInventory("BDSMGAmmo",1)
 		PSS3 F 1 BRIGHT
 		PSS3 E 2 A_FaceTarget
 
-		TNT1 A 0 A_CustomMissile("MonsterTracer", 28, 11, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 28, 0, 0, 1, 0)
-		TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 30,0)
+		TNT1 A 0 A_CustomMissile("MonsterTracer", 32, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
+		TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 32,0)
         TNT1 A 0 A_PlaySound("SMGFIRE", 1)
 		TNT1 A 0 A_GiveInventory("BDSMGAmmo",1)
 		PSS3 F 1 BRIGHT
 		PSS3 E 2 A_FaceTarget
 
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
 		PSS3 E 10 A_FaceTarget
 		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 40, "Reload")
 		Goto SeeContinue
 
 	Reload:
 		TNT1 A 0 A_TakeInventory("BDSMGAmmo", 40)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 31,0)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
         PSS3 C 3
-		PSS3 C 1 A_CustomMissile("EmptyPistolClipSpawn", 38, 0, random(-11, 11), 0)
+		PSS3 C 1 A_CustomMissile("EmptyPistolClipSpawn", 32, 0, random(-11, 11), 0)
         TNT1 A 0 A_PlaySound("Reload")
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
         ID12 H 10
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
         ID12 I 10
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
         ID12 J 10
 		TNT1 A 0 A_PlaySound("CLIPIN")
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
         ID12 K 10
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
         PSS3 C 10
         Goto SeeContinue
 
@@ -1445,11 +1319,7 @@ ACTOR SMGGuy: ShotgunGuy1
 	Pain:
         TNT1 A 0 A_JumpIfInventory ("IsDown", 1, 9)
 		TNT1 A 0 A_TakeInventory("SKShotgunGuy", 1)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
 		PSS3 G 2
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 37)
-		TNT1 A 0 A_SpawnItem("LegTargetBase")
 		PSS3 G 2 A_Pain
 		TNT1 A 0 A_Jump(196, "Missile")
 		Goto SeeContinue
@@ -1462,9 +1332,7 @@ ACTOR SMGGuy: ShotgunGuy1
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory ("SKShotgunGuy", 1, "GotoStealthKill")
         TNT1 A 0 A_JumpIfInventory ("IsDown", 1, 6)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 37)
 		PSS3 G 4
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 37)
 		PSS3 G 4 A_Pain
 		Goto SeeContinue
         TNT1 AAAAA 0
@@ -1478,27 +1346,16 @@ ACTOR SMGGuy: ShotgunGuy1
 	Pain.ExplosiveImpact:
 	Pain.ExtremePunches:
 	Pain.Explosive:
-	TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
-	TNT1 A 0 A_ChangeFlag("NOBLOCKMONST", 1)
-	         TNT1 A 0
-	         TNT1 A 0 A_Pain
-		 TNT1 A 0 A_JumpIfInventory ("IsDown", 1, "Pain")
-		 		    TNT1 A 0 A_TakeInventory("SKShotgunGuy", 1)
-         TNT1 A 0 A_GiveInventory("IsDown", 1)
-        TNT1 A 0 ThrustThingZ(0,40,0,1)
-         SPO4 UUVWXY 4
-		Goto FallingAfterImpact
-
-	Pain.LowKick:
+		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
+		TNT1 A 0 A_ChangeFlag("NOBLOCKMONST", 1)
 		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("IsDown", 1, "Death.LowKick")
-		Goto Pain
-
-	Death.LowKick:
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-        TNT1 A 0 A_GiveToTarget("IsCurbstompingSergeant", 1)
-		TNT1 A -1 A_NoBLocking
-        Stop
+		TNT1 A 0 A_Pain
+		TNT1 A 0 A_JumpIfInventory ("IsDown", 1, "Pain")
+		TNT1 A 0 A_TakeInventory("SKShotgunGuy", 1)
+		TNT1 A 0 A_GiveInventory("IsDown", 1)
+		TNT1 A 0 ThrustThingZ(0,40,0,1)
+		SPO4 UUVWXY 4
+		Goto FallingAfterImpact
 
 	Pain.Slide:
 		TNT1 A 0
@@ -1584,6 +1441,7 @@ ACTOR SMGGuy: ShotgunGuy1
 		TNT1 A 0 A_SpawnItem("DeadShotgunguy")
 		ID11 F 2
 		MARN AAA 0 A_SpawnItem("bdbodythud")
+		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
 		TNT1 A -1 A_NoBLocking
 		Stop
 
@@ -1639,7 +1497,7 @@ ACTOR SMGGuy: ShotgunGuy1
 		Stop
 
 	Raise:
-	TNT1 A 0 A_SpawnItem("PentagramSpawner")
+		TNT1 A 0 A_SpawnItem("PentagramSpawner")
 		PSS3 L 5
 		PSS3 KJIH 5
 		Goto See
@@ -1648,9 +1506,10 @@ ACTOR SMGGuy: ShotgunGuy1
 
 ACTOR BrutalizedSergeant1
 {
+	Monster
 	Game Doom
-	Radius 16
-	Height 50
+	Radius 20
+	Height 56
 	Health 20
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
@@ -1661,6 +1520,7 @@ ACTOR BrutalizedSergeant1
 	PainSound "grunt/pain"
 	PainChance 255
 	Mass 999999
+    BloodType "Zombie_Blood", "Zombie_SawBlood", "Zombie_SawBlood"
 	-SOLID
 	+SHOOTABLE
 	+FLOORCLIP
@@ -2133,8 +1993,9 @@ Actor DeadShotgunguy_Slumped: ZombiemanTorso
 	-SLIDESONWALLS
 	Health 200
 	DamageFactor "Head", 15.0
-	Height 22
+	Height 30
 	Radius 10
+	BloodType "Slumped_Blood", "Slumped_SawBlood", "Slumped_SawBlood"
 	States
 	{
 		Spawn:
@@ -2143,7 +2004,6 @@ Actor DeadShotgunguy_Slumped: ZombiemanTorso
 			BR93 A 12
 			TNT1 A 0 A_JumpIf(velx > 0 || velx < 0, "LayDown")
 			TNT1 A 0 A_JumpIf(vely > 0 || vely < 0, "LayDown")
-			TNT1 A 0 A_SpawnItemEx("HeadshotTargetSlumped", 3, 0, 22)
 			BR93 A 4
 			Loop
 
@@ -2187,7 +2047,8 @@ Actor DeadShotgunguy_Slumped_NoHead: ZombiemanTorso
 {
 +NOPAIN
 +NOBLOCKMONST
-Height 22
+Height 20
+BloodType "Slumped_Blood", "Slumped_SawBlood", "Slumped_SawBlood"
 States
 {
 	Spawn:
@@ -2371,6 +2232,7 @@ States{Spawn:
 
 ACTOR DyingSergeant
 {
+	Monster
 	Game Doom
 	Radius 16
 	Height 32
@@ -2384,6 +2246,7 @@ ACTOR DyingSergeant
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
 	Mass 500
+    BloodType "KneelZombie_Blood", "KneelZombie_SawBlood", "KneelZombie_SawBlood"
 	+FLOORCLIP
 	+DONTSPLASH
 	-COUNTKILL
@@ -2405,22 +2268,16 @@ ACTOR DyingSergeant
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		TNT1 A 0 A_PlaySound ("BURNZOM",4)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 22,0)
 		SPO5 AAAAA 2 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 22,0)
 		SPO5 BBBBB 2 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 22,0)
 		SPO5 CCCCC 2 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 22,0)
 		SPO5 BBBBB 2 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
 		Goto Suffer
 
 	Suffer:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("DeathTimer", 4, "Fall")
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 22,0)
         SPO5 CCCCC 2 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 22,0)
         SPO5 BBBBB 2 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
 		TNT1 A 0 A_Jump(4, "LastStand")
 		TNT1 A 0 A_Jump(16, 2)
@@ -2435,6 +2292,8 @@ ACTOR DyingSergeant
 	Death.Cut:
 	Death.Minigun:
 	Death:
+		"####" "#" 2
+		TNT1 A 0 A_JumpIfInventory("HitHead", 1, "Death.Head")
 	    SPO5 D 8 A_StopSound(4)
 		TNT1 A 0 A_PlaySound ("grunt/death")
 		TNT1 A 0 A_SpawnItem ("DeadShotgunGuy_NoArm")
@@ -2601,6 +2460,7 @@ ACTOR DeadShotgunguyNoHeadContinue: DyingSergeant
 
 ACTOR DyingSergeantNoLeg
 {
+	Monster
     Radius 12
     Height 30
     Speed 9
@@ -2620,6 +2480,7 @@ ACTOR DyingSergeantNoLeg
 	Damagefactor "Head", 1.25	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
+	BloodType "Slumped_Blood", "Slumped_SawBlood", "Slumped_SawBlood"
     States
     {
 		Pain.Kick:
@@ -2723,7 +2584,7 @@ ACTOR DyingSergeantLegBlewedOff: DyingSergeantNoLeg
 {
 	Game Doom
 	Radius 16
-	Height 22
+	Height 35
 	Health 20
 	PainSound "grunt/pain"
 	PainChance 255
@@ -2743,22 +2604,16 @@ ACTOR DyingSergeantLegBlewedOff: DyingSergeantNoLeg
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		TNT1 A 0 A_PlaySound ("BURNZOM",4)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 22,0)
 		SPO3 DDDDD 2 A_CustomMissile ("Brutal_LiquidBlood", 30, 0, random(0, 180), 2, random (0, 35))
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 22,0)
 		SPO3 DDDDD 2 A_CustomMissile ("Brutal_LiquidBlood", 30, 0, random(0, 180), 2, random (0, 35))
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 22,0)
 		SPO3 DDDDD 2 A_CustomMissile ("Brutal_LiquidBlood", 30, 0, random(0, 180), 2, random (0, 35))
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 22,0)
 		SPO3 DDDDD 2 A_CustomMissile ("Brutal_LiquidBlood", 30, 0, random(0, 180), 2, random (0, 35))
 		Goto Suffer
 
 		Suffer:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("DeathTimer", 4, "Fall")
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 22,0)
 		SPO3 DDDDD 2 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random(0, 180), 2, random (0, 35))
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 22,0)
 		SPO3 EEEEE 2 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random(0, 180), 2, random (0, 35))
 		TNT1 A 0 A_SpawnItem ("BloodDying", 0, 20)
 		TNT1 A 0 A_Jump(4, "LastStand")
@@ -2772,6 +2627,8 @@ ACTOR DyingSergeantLegBlewedOff: DyingSergeantNoLeg
 		TNT1 A 0 A_Die
 
 		Death:
+		"####" "#" 2
+		TNT1 A 0 A_JumpIfInventory("HitHead", 1, "Death.Head")
 		SPO3 GH 6 A_StopSound(4)
 		TNT1 A 0 A_Noblocking
 		TNT1 A 0 A_PlaySound ("grunt/death")
@@ -2794,6 +2651,8 @@ ACTOR DyingSergeantLegBlewedOff: DyingSergeantNoLeg
 		Death.Cut:
 		Death.Minigun:
 		Death.Shotgun:
+		"####" "#" 2
+		TNT1 A 0 A_JumpIfInventory("HitHead", 1, "Death.Head")
 		SPO3 GH 6 A_StopSound(4)
 		TNT1 A 0 A_CustomMissile ("MuchBlood2", 35, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 14, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
@@ -2864,6 +2723,7 @@ ACTOR DyingShotgunguyHitInEye: Shotgunguy1
 	Damagefactor "Head", 1.25	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
+	BloodType "KneelZombie_Blood", "KneelZombie_SawBlood", "KneelZombie_SawBlood"
 	DropItem "none"
     States
     {
@@ -2874,16 +2734,15 @@ ACTOR DyingShotgunguyHitInEye: Shotgunguy1
 		TNT1 A 0 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("Brains3", 50, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("Brains5", 50, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget50", 2, 22,0)
 		SPDH H 6 A_Scream
 		SPDH I 6
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget50", 2, 22,0)
 		SPDH IJIJ 18 A_Pain
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget50", 2, 22,0)
 		SPDH IJ 18 A_Pain
 		TNT1 A 0 A_Die
 
-		Death:
+	Death:
+		"####" "#" 2
+		TNT1 A 0 A_JumpIfInventory("HitHead", 1, "Death.Head")
 		SPDH KL 6
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		TNT1 A 0 A_SpawnItem("DeadShotgunguySPDHM")
@@ -3010,8 +2869,8 @@ ACTOR FlyingImpaledSergeant
 
 ACTOR SergeantFallingHoleOnStomach
 {
-    Radius 12
-    Height 50
+    Radius 16
+    Height 45
 	Health 20
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
@@ -3019,7 +2878,7 @@ ACTOR SergeantFallingHoleOnStomach
 	Damagefactor "Head", 1.25	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
-	BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
+	BloodType "KneelZombie_Blood", "KneelZombie_SawBlood", "KneelZombie_SawBlood"
 	+FLOORCLIP
 	-SOLID
 	+SHOOTABLE
@@ -3109,8 +2968,8 @@ ACTOR SergeantFallingHoleOnStomach
 
 ACTOR SergeantFallingSplattered
 {
-    Radius 12
-    Height 50
+    Radius 16
+    Height 45
 	Health 20
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
@@ -3118,7 +2977,7 @@ ACTOR SergeantFallingSplattered
 	Damagefactor "Head", 1.25	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
-	BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
+	BloodType "KneelZombie_Blood", "KneelZombie_SawBlood", "KneelZombie_SawBlood"
 	+FLOORCLIP
 	-SOLID
 	+SHOOTABLE
@@ -3231,22 +3090,16 @@ ACTOR SergeantGotHisLegBlowed: DyingSergeantLegBlewedOff
 		SPO3 D 3
 		TNT1 A 0 A_PlaySound ("BURNZOM",4)
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 22,0)
         SPO3 DDDDD 2 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 22,0)
 	    SPO3 EEEEE 2 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 22,0)
         SPO3 DDDDD 2 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 22,0)
 	    SPO3 EEEEE 2 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
 		Goto Suffer
 
 	Suffer:
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("DeathTimer", 4, "Fall")
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 22,0)
 	    SPO3 DDDDD 2 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 22,0)
         SPO3 EEEEE 2 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
 		TNT1 A 0 A_Jump(4, "LastStand")
 		TNT1 A 0 A_Jump(16, "LeaveCrawling")
@@ -3257,6 +3110,8 @@ ACTOR SergeantGotHisLegBlowed: DyingSergeantLegBlewedOff
 		TNT1 A 0 A_Die
 
 	Death:
+		"####" "#" 2
+		TNT1 A 0 A_JumpIfInventory("HitHead", 1, "Death.Head")
 		SPO3 GH 5 A_StopSound(4)
 		TNT1 A 0 A_NoBlocking
 	    TNT1 A 0 A_PlaySound ("grunt/death")
@@ -3273,6 +3128,7 @@ ACTOR SergeantGotHisLegBlowed: DyingSergeantLegBlewedOff
 
     Death.Head:
 		TNT1 A 0
+		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate")
         TNT1 A 0 A_StopSound(4)
 		TNT1 A 0 A_SpawnItem("ShotgunguyHeadExplode", 0, 30)
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 14, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
@@ -3298,6 +3154,8 @@ ACTOR SergeantGotHisLegBlowed: DyingSergeantLegBlewedOff
 	Death.Cut:
 	Death.Minigun:
 	Death.Melee:
+		"####" "#" 2
+		TNT1 A 0 A_JumpIfInventory("HitHead", 1, "Death.Head")
 		TNT1 A 0 A_CustomMissile ("MuchBlood2", 35, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2", 0, 0, 14, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
 		TNT1 A 0 A_StopSound(4)

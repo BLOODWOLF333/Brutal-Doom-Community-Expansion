@@ -2542,8 +2542,8 @@ Actor KneelZombie_Blood : Zombie_Blood
 	Spawn:
 		TNT1 A 0 NODELAY
 		TNT1 A 0 A_SpawnItem("Brutal_Blood")
-		TNT1 A 0 A_JumpIf((z - floorz) >= 34, "HeadShot")
-		TNT1 A 0 A_JumpIf((z - floorz) <= 15, "LegShot")
+		TNT1 A 0 A_JumpIf((z - floorz) > 34, "HeadShot")
+		TNT1 A 0 A_JumpIf((z - floorz) < 15, "LegShot")
 		TNT1 A 2
 		TNT1 A 0 A_TakeFromTarget("HitHead", 0x7FFFFFFF)
 		TNT1 A 0 A_TakeFromTarget("HitLeg", 0x7FFFFFFF)
@@ -2558,8 +2558,8 @@ ACTOR KneelZombie_SawBlood : Zombie_SawBlood
 	Spawn:
 		TNT1 A 0 NODELAY
 		TNT1 A 0 A_SpawnItem("Brutal_Blood")
-		TNT1 A 0 A_JumpIf((z - floorz) >= 34, "HeadShot")
-		TNT1 A 0 A_JumpIf((z - floorz) <= 15, "LegShot")
+		TNT1 A 0 A_JumpIf((z - floorz) > 34, "HeadShot")
+		TNT1 A 0 A_JumpIf((z - floorz) < 15, "LegShot")
 		TNT1 A 2
 		TNT1 A 0 A_TakeFromTarget("HitHead", 0x7FFFFFFF)
 		TNT1 A 0 A_TakeFromTarget("HitLeg", 0x7FFFFFFF)
@@ -2587,8 +2587,8 @@ Actor Slumped_Blood : Zombie_Blood
 	Spawn:
 		TNT1 A 0 NODELAY
 		TNT1 A 0 A_SpawnItem("Brutal_Blood")
-		TNT1 A 0 A_JumpIf((z - floorz) >= 22, "HeadShot")
-		TNT1 A 0 A_JumpIf((z - floorz) <= 10, "LegShot")
+		TNT1 A 0 A_JumpIf((z - floorz) > 22, "HeadShot")
+		TNT1 A 0 A_JumpIf((z - floorz) < 10, "LegShot")
 		TNT1 A 2
 		TNT1 A 0 A_TakeFromTarget("HitHead", 0x7FFFFFFF)
 		TNT1 A 0 A_TakeFromTarget("HitLeg", 0x7FFFFFFF)
@@ -2603,8 +2603,8 @@ ACTOR Slumped_SawBlood : Zombie_SawBlood
 	Spawn:
 		TNT1 A 0 NODELAY
 		TNT1 A 0 A_SpawnItem("Brutal_Blood")
-		TNT1 A 0 A_JumpIf((z - floorz) >= 22, "HeadShot")
-		TNT1 A 0 A_JumpIf((z - floorz) <= 10, "LegShot")
+		TNT1 A 0 A_JumpIf((z - floorz) > 22, "HeadShot")
+		TNT1 A 0 A_JumpIf((z - floorz) < 10, "LegShot")
 		TNT1 A 2
 		TNT1 A 0 A_TakeFromTarget("HitHead", 0x7FFFFFFF)
 		TNT1 A 0 A_TakeFromTarget("HitLeg", 0x7FFFFFFF)
