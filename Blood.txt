@@ -2447,6 +2447,111 @@ actor Super_Mastermind_SawBlood : SawBlood
 	}
 }
 
+actor RevenantBlood : Brutal_Blood//for stomach-downwards
+{
+	+PUFFGETSOWNER
+	States
+	{
+	Spawn:
+		TNT1 A 0 NODELAY
+		TNT1 A 0 A_JumpIf((z - floorz) > 42, "HitArmor")
+		TNT1 A 0 A_JumpIf((z - floorz) < 32, "LegShot")
+		TNT1 A 2
+		TNT1 A 0 A_SpawnItem("RevenantHitStomach")
+		TNT1 A 0 A_CustomMissile ("SuperGoreMistTiny", 0, 0, random (0, 360), 2, random (0, 90))
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("misc/xdeath5")
+		BSPR A 2
+		TNT1 A 0 A_CustomMissile ("WaterBloodCHecker", 7, 0, random (0, 360), 2, random (30, 60))
+		TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 7, 0, random (0, 360), 2, random (30, 60))
+		TNT1 A 0 A_CustomMissile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (20, 90))
+		Goto LowBlood
+
+	HitArmor:
+		TNT1 A 2 A_SpawnItem("HitPuff")
+		Stop
+
+	LegShot:
+		TNT1 A 2 A_CustomMissile ("RevenantDust", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_CustomMissile ("RevenantPiece", 0, 0, random (0, 360), 2, random (30, 150))
+		TNT1 A 0 A_CustomMissile ("RevenantDust2", 0, 0, random (0, 360), 2, random (0, 360))
+		Stop
+	}
+}
+
+actor RevenantBloodSaw : SawBlood
+{
+	+PUFFGETSOWNER
+	States
+	{
+	Spawn:
+		TNT1 A 0 NODELAY
+		TNT1 A 0 A_JumpIf((z - floorz) > 42, "HitArmor")
+		TNT1 A 0 A_JumpIf((z - floorz) < 32, "LegShot")
+		TNT1 A 2
+		TNT1 A 1 A_SpawnItem("RevenantHitStomach")
+		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "HitSaw", AAPTR_TARGET)
+	Continue:
+		BSPR A 0
+		TNT1 A 0 A_CustomMissile ("SuperGoreMistTiny", 0, 0, random (0, 360), 2, random (0, 90))
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+		TNT1 A 0 ACS_NamedExecuteAlways("BD_CheckBloodIntensity")
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("misc/xdeath5")
+		BSPR A 2
+		TNT1 A 0 A_CustomMissile ("WaterBloodCHecker", 7, 0, random (0, 360), 2, random (30, 60))
+	Spawn2:
+		TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 7, 0, random (0, 360), 2, random (30, 60))
+		TNT1 A 0 A_CustomMissile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (20, 90))
+		Goto LowBlood
+
+	HitSaw:
+		TNT1 A 0
+		TNT1 A 0 A_RadiusGive("ChainsawHitRed", 128, RGF_PLAYERS, 1)
+		TNT1 A 0 A_RadiusGive("PowerBloodOnVisor", 128, RGF_PLAYERS, 1)
+		TNT1 A 0 A_RadiusGive("SawBloodOnVisor", 128, RGF_PLAYERS, 1)
+		TNT1 A 0 A_CustomMissile ("BloodmistChainsaw", -10, 0, random (0, 360), 2, random (60, 90))
+		TNT1 A 0 A_CustomMissile ("XDeath1", 0, 0, random (0, 360), 2, random (40, 80))
+		TNT1 A 0 A_CustomMissile ("ChainsawWallRedBlood", 0, 0, random (0, 360), 2, random (-10, 80))
+		TNT1 A 0 A_PlaySound("CSAWFLESH")
+		Stop
+
+	HitArmor:
+		TNT1 A 2 A_SpawnItem("HitPuff")
+		Stop
+
+	LegShot:
+		TNT1 A 2 A_CustomMissile ("RevenantDust", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_CustomMissile ("RevenantPiece", 7, 0, random (0, 360), 2, random (30, 150))
+		TNT1 A 0 A_CustomMissile ("RevenantDust2", 0, 0, random (0, 360), 2, random (0, 360))
+		Stop
+	}
+}
+
+Actor RevenantUBlood : Brutal_Blood
+{
+	+PUFFGETSOWNER
+	DamageType "Head"
+	States
+	{
+	Spawn:
+		TNT1 A 0 NODELAY
+		TNT1 A 0 A_JumpIf((z - floorz) > 24, "HeadShot")
+		TNT1 A 2 A_SpawnItem("HitPuff")
+		TNT1 A 0 A_TakeFromTarget("HitHead", 0x7FFFFFFF)
+		Stop
+
+	HeadShot:
+		TNT1 A 0
+		TNT1 A 0 A_GiveToTarget("HitHead", 1)
+		TNT1 A 0 A_Explode(15,10)
+		TNT1 A 0 A_CustomMissile ("SmallLSPart1", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_CustomMissile ("SmallLSPart3", 0, 0, random (0, 360), 2, random (0, 360))
+		Stop
+	}
+}
+
 Actor Zombie_Blood : Brutal_Blood
 {
 	+PUFFGETSOWNER
