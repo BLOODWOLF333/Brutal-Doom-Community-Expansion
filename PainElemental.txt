@@ -1,15 +1,19 @@
 ACTOR PainElemental1 Replaces PainElemental
 {
+	Monster
 	Health 400
 	Radius 31
 	Height 56
 	Mass 400
-    Scale 1.0
 	Speed 9
 	PainChance 128
+	+FLOAT
+	+NOGRAVITY
+	+FORCEXYBILLBOARD
+	+DONTHARMSPECIES
 
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
-	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	DamageFactor "Crush", 4.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
 	Damagefactor "GibRemoving", 0.0	Damagefactor "HangingHook", 0.0
 	Damagefactor "Head", 0.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
@@ -22,11 +26,6 @@ ACTOR PainElemental1 Replaces PainElemental
 	PainChance "Burn", 16	PainChance "Fire", 16	PainChance "Flames", 16
 	PainChance "GreenFire", 16	PainChance "HumanBBQ", 16
 
-	Monster
-	+FLOAT
-	+NOGRAVITY
-	+FORCEXYBILLBOARD
-	+DONTHARMSPECIES
 	SeeSound "pain/sight"
 	PainSound "pain/pain"
 	DeathSound "pain/death"
@@ -34,8 +33,6 @@ ACTOR PainElemental1 Replaces PainElemental
     BloodType "Brutal_Blood", "SawBlood", "SawBlood"
 	DropItem "DemonStrengthRune" 4
     damagetype Flames
-	DeathHeight 4
-	BurnHeight 0
 	Species "LostSoul"
 	Tag "Pain Elemental"
 	States
@@ -282,9 +279,8 @@ States
 Actor FatalizedPE
 {
 	Game Doom
-    Radius 12
+    Radius 31
     Height 32
-    Scale 1.0
     -COUNTKILL
 	+SHOOTABLE
     +PUSHABLE
@@ -296,16 +292,16 @@ Actor FatalizedPE
     +MOVEWITHSECTOR
     Mass 400
     Health 100
-    Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
-	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	DamageFactor "Crush", 4.0
+	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
 	Damagefactor "GibRemoving", 0.0	Damagefactor "HangingHook", 0.0
-	Damagefactor "Head", 4.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
+	Damagefactor "Head", 0.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "Burn", 0.5
 	Damagefactor "Fire", 0.5	Damagefactor "Flames", 0.5	Damagefactor "GreenFire", 0.5
 	Damagefactor "HumanBBQ", 0.5	Damagefactor "SSG", 5.0	DamageFactor "TankWeakSpot", 0.0
 	Damagefactor "ExtremePunches", 5.0	Damagefactor "Fatality", 5.0	Damagefactor "HelperMarineFatality", 5.0
-States
+	States
     {
     Spawn:
 		PA1F U -1
@@ -330,4 +326,5 @@ States
 		PAIN N 1
 		PAIN N -1
 		Stop
-		}}
+	}
+}

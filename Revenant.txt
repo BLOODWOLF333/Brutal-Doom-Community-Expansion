@@ -441,6 +441,7 @@ ACTOR Revenant1: Revenant Replaces Revenant
 		TNT1 A 0 A_SpawnItem("PentagramSpawner")
 		SKEL Q 5
 		SKEL PONML 5
+		TNT1 A 0 A_SPAWNITEMEX("RevenantHeadShot", 0, 0, 56, 0, 0, 0, 0, SXF_SETMASTER|SXF_NOCHECKPOSITION)
 		Goto See
 
     Pain.KillMe:
@@ -600,15 +601,17 @@ Actor DeadSkeleton: CurbstompedMarine
 	-SOLID
 	+NORADIUSDMG
     damagefactor "Blood", 0.0	damagefactor "Saw", 0.3	damagefactor "Trample", 0.0
-	bloodtype "RevenantBlood", "RevenantBloodSaw", "RevenantBloodSaw"
 	States
     {
     Spawn:
-	    TNT1 A 0
 	    SKEL Q -1
         Stop
 
-		Death.Minigun: Death.Cut: Death: Death.Saw: Death.Shotgun: Death.SSG: death.explosive:
+	Death.Minigun:
+	Death:
+	Death.Shotgun:
+	Death.SSG:
+	Death.explosive:
   	    TNT1 A 0 A_NoBlocking
 		TNT1 AA 0 A_CustomMissile ("RevenantBones", 5, 0, random (0, 360), 2, random (30, 150))
 		TNT1 AAA 0 A_CustomMissile ("RevenantPiece", 5, 0, random (0, 360), 2, random (30, 150))

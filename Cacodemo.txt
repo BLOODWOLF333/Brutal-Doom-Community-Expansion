@@ -1,8 +1,7 @@
 ACTOR Cacodemon_ : Cacodemon Replaces Cacodemon
 {
+	Monster
 	Game Doom
-	bloodtype "Blue_Blood", "BlueSawBlood", "BlueSawBlood"
-	bloodcolor "Blue"
 	SpawnID 19
     GibHealth 25
 	Radius 31
@@ -11,9 +10,12 @@ ACTOR Cacodemon_ : Cacodemon Replaces Cacodemon
 	Speed 9
 	Health 400
 	PainChance 128
+	+FLOAT
+	+NOGRAVITY
+	+FORCEXYBILLBOARD
 
 	Damagefactor "Avoid", 1.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
-	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	DamageFactor "Crush", 4.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
 	Damagefactor "GibRemoving", 0.0	Damagefactor "HangingHook", 0.0
 	Damagefactor "Head", 0.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
@@ -27,9 +29,8 @@ ACTOR Cacodemon_ : Cacodemon Replaces Cacodemon
 	PainChance "Burn", 16	PainChance "Fire", 16	PainChance "Flames", 16
 	PainChance "GreenFire", 16	PainChance "HumanBBQ", 16
 
-	Monster
-	Scale 0.9
-	+FLOAT +NOGRAVITY +FORCEXYBILLBOARD
+	bloodcolor "Blue"
+	bloodtype "Blue_Blood", "BlueSawBlood", "BlueSawBlood"
 	SeeSound "caco/sight"
 	PainSound "caco/pain"
 	DeathSound "caco/death"
@@ -37,8 +38,6 @@ ACTOR Cacodemon_ : Cacodemon Replaces Cacodemon
 	Obituary "$OB_CACO"
 	HitObituary "$OB_CACOHIT"
 	DropItem "DemonStrengthRune", 4
-	DeathHeight 4
-	BurnHeight 0
 	Tag "Cacodemon"
 	States
 	{
