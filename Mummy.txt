@@ -1,14 +1,17 @@
 ACTOR Experiment
 {
+	Monster
 	Health 100
-	Height 48
-	Scale 0.7
+	Radius 20
+	Height 56
+	Scale 0.65
 	Mass 500
 	Speed 16
 	FastSpeed 18
 	PainChance 100
-	Monster
-	MeleeThreshold 196
+	MeleeThreshold 88
+	+MISSILEMORE
+	+FLOORCLIP
 
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
@@ -25,13 +28,12 @@ ACTOR Experiment
 	PainChance "Burn", 16	PainChance "Fire", 16	PainChance "Flames", 16
 	PainChance "GreenFire", 16	PainChance "HumanBBQ", 16
 
-	+MISSILEMORE
-	+FLOORCLIP
 	SeeSound "MUMYSEE"
 	PainSound "skeleton/pain"
 	DeathSound "MUMYDIE"
 	ActiveSound "MUMYACT"
 	MeleeSound "skeleton/melee"
+    BloodType "Brutal_Blood", "SawBlood", "SawBlood"
 	Tag "Experiment"
 	HitObituary "%o was clobbered by an Experiment."
 	Obituary "$OB_UNDEAD"
