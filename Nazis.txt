@@ -4,14 +4,17 @@ ACTOR Nazi: WolfensteinSS 2549
 	//$Icon "monster"
 	//$Colour rgb(200, 0, 0)
 	//$Sprite NAZIA1
+	Monster
 	Game Doom
 	Health 50
     GibHealth 35
-	Radius 13
-	Height 40
+	Radius 20
+	Height 56
 	Mass 100
 	Speed 6
 	PainChance 170
+	+FLOORCLIP
+	+MISSILEMORE
 
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
@@ -25,10 +28,7 @@ ACTOR Nazi: WolfensteinSS 2549
 	PainChance "Stealth", 255	PainChance "Taunt", 255
 
 	DamageType "Melee"
-	Monster
-	+FLOORCLIP
-	+MISSILEMORE
-    BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
+    BloodType "Zombie_Blood", "Zombie_SawBlood", "Zombie_SawBlood"
 	SeeSound "nazi/sight"
 	PainSound "nazi/pain"
 	DeathSound "nazi/death"
@@ -36,161 +36,112 @@ ACTOR Nazi: WolfensteinSS 2549
 	DropItem "GrenadeAmmo" 4
 	MaxStepHeight 24
 	MaxDropOffHeight 32
-	DeathHeight 4
-	BurnHeight 0
 	States
 	{
+	Idle:
 	Spawn:
-	    TNT1 A 0 A_GiveInventory("SKNazi", 1)
-
-	Stand:
-		TNT1 A 0 A_GiveInventory("SKNazi", 1)
-		TNT1 B 0 A_SpawnItem("HeadshotTarget100", 0, 40)
+		TNT1 A 0 NODELAY A_GiveInventory("SKNazi", 1)
 		NAZI AAAAAAAAAA 10 A_Look
 		Loop
     See:
 	    NAZI A 0 A_TakeInventory("SKNazi", 1)
-
-		TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 20, 0, 0)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 40)
 		NAZI AAA 2 A_Chase
-
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 40)
 		NAZI BBB 2 A_Chase
-
-		TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 20, 0, 0)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 40)
 		NAZI CCC 2 A_Chase
-
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 40)
 		NAZI BBB 2 A_Chase
 		Loop
 
 	Missile:
 		TNT1 A 0 A_TakeInventory("SKNazi", 1)
 		TNT1 A 0 A_Jump(64, "MissileWalkingRight", "MissileWalkingLeft")
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget8", 0, 40)
 		NAZI E 8 A_FaceTarget
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40)
-		NAZI F 2 BRIGHT A_CustomMissile("MonsterTracer", 36, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
+		NAZI F 2 BRIGHT A_CustomMissile("MonsterTracer", 40, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 40, 0, 0, 1, 0)
         TNT1 A 0 A_PlaySound("MP40")
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40)
-		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
+		TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 40, 0)
 		NAZI E 2 A_FaceTarget
 
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40)
-		NAZI F 2 BRIGHT A_CustomMissile("MonsterTracer", 36, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
+		NAZI F 2 BRIGHT A_CustomMissile("MonsterTracer", 40, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 40, 0, 0, 1, 0)
         TNT1 A 0 A_PlaySound("MP40")
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40)
-		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
+		TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 40, 0)
 		NAZI E 2 A_FaceTarget
 
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40)
-		NAZI F 2 BRIGHT A_CustomMissile("MonsterTracer", 36, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
+		NAZI F 2 BRIGHT A_CustomMissile("MonsterTracer", 40, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 40, 0, 0, 1, 0)
         TNT1 A 0 A_PlaySound("MP40")
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40)
-		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
+		TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 40, 0)
 		NAZI E 2 A_FaceTarget
 
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40)
-		NAZI F 2 BRIGHT A_CustomMissile("MonsterTracer", 36, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
+		NAZI F 2 BRIGHT A_CustomMissile("MonsterTracer", 40, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 40, 0, 0, 1, 0)
         TNT1 A 0 A_PlaySound("MP40")
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40)
-		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
+		TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 40, 0)
 		NAZI E 6 A_FaceTarget
 		Goto See
 
 	MissileWalkingLeft:
-		TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 20, 0, 0)
 		NAZI A 0 ThrustThing(angle*256/360+192, 2, 0, 0)
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 0, 40)
 		NAZI E 2 A_FaceTarget
 		TNT1 A 0 A_PlaySound("MP40")
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 0, 40)
-		NAZI F 2 BRIGHT A_CustomMissile("MonsterTracer", 36, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
-		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
+		NAZI F 2 BRIGHT A_CustomMissile("MonsterTracer", 40, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 40, 0, 0, 1, 0)
+		TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 40, 0)
 
-		TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 20, 0, 0)
 		NAZI A 0 ThrustThing(angle*256/360+192, 2, 0, 0)
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 0, 40)
 		NAZI E 2 A_FaceTarget
 		TNT1 A 0 A_PlaySound("MP40")
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 0, 40)
-		NAZI F 2 BRIGHT A_CustomMissile("MonsterTracer", 36, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
-		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
+		NAZI F 2 BRIGHT A_CustomMissile("MonsterTracer", 40, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 40, 0, 0, 1, 0)
+		TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 40, 0)
 
-		TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 20, 0, 0)
 		NAZI A 0 ThrustThing(angle*256/360+192, 2, 0, 0)
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 0, 40)
 		NAZI E 2 A_FaceTarget
 		TNT1 A 0 A_PlaySound("MP40")
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 0, 40)
-		NAZI F 2 BRIGHT A_CustomMissile("MonsterTracer", 36, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
-		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
+		NAZI F 2 BRIGHT A_CustomMissile("MonsterTracer", 40, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 40, 0, 0, 1, 0)
+		TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 40, 0)
 
-		TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 20, 0, 0)
 		NAZI A 0 ThrustThing(angle*256/360+192, 2, 0, 0)
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 0, 40)
 		NAZI E 2 A_FaceTarget
 		TNT1 A 0 A_PlaySound("MP40")
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 0, 40)
-		NAZI F 2 BRIGHT A_CustomMissile("MonsterTracer", 36, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
-		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
+		NAZI F 2 BRIGHT A_CustomMissile("MonsterTracer", 40, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 40, 0, 0, 1, 0)
+		TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 40, 0)
 		Goto See
 
 	MissileWalkingRight:
-		TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 20, 0, 0)
 		NAZI A 0 ThrustThing(angle*256/360+64, 2, 0, 0)
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 0, 40)
 		NAZI E 2 A_FaceTarget
 		TNT1 A 0 A_PlaySound("MP40")
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 0, 40)
-		NAZI F 2 BRIGHT A_CustomMissile("MonsterTracer", 36, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
-		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
+		NAZI F 2 BRIGHT A_CustomMissile("MonsterTracer", 40, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 40, 0, 0, 1, 0)
+		TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 40, 0)
 
-		TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 20, 0, 0)
 		NAZI A 0 ThrustThing(angle*256/360+64, 2, 0, 0)
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 0, 40)
 		NAZI E 2 A_FaceTarget
 		TNT1 A 0 A_PlaySound("MP40")
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 0, 40)
-		NAZI F 2 BRIGHT A_CustomMissile("MonsterTracer", 36, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
-		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
+		NAZI F 2 BRIGHT A_CustomMissile("MonsterTracer", 40, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 40, 0, 0, 1, 0)
+		TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 40, 0)
 
-		TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 20, 0, 0)
 		NAZI A 0 ThrustThing(angle*256/360+64, 2, 0, 0)
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 0, 40)
 		NAZI E 2 A_FaceTarget
 		TNT1 A 0 A_PlaySound("MP40")
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 0, 40)
-		NAZI F 2 BRIGHT A_CustomMissile("MonsterTracer", 36, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
-		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
+		NAZI F 2 BRIGHT A_CustomMissile("MonsterTracer", 40, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 40, 0, 0, 1, 0)
+		TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 40, 0)
 
-		TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 20, 0, 0)
 		NAZI A 0 ThrustThing(angle*256/360+64, 2, 0, 0)
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 0, 40)
 		NAZI E 2 A_FaceTarget
 		TNT1 A 0 A_PlaySound("MP40")
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 0, 40)
-		NAZI F 2 BRIGHT A_CustomMissile("MonsterTracer", 36, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
-		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
+		NAZI F 2 BRIGHT A_CustomMissile("MonsterTracer", 40, 0, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 40, 0, 0, 1, 0)
+		TNT1 A 0 A_SpawnItem("PistolCaseSpawn", 0, 40, 0)
 		Goto See
 
 	Pain:
-	    TNT1 A 0 A_ChangeFlag(GHOST, 0)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 40)
+	    TNT1 A 0
 		TNT1 A 0 A_TakeInventory("SKNazi", 1)
 		NAZI G 3 A_Pain
 		TNT1 A 0 A_Jump(128, "MissileWalkingRight", "MissileWalkingLeft")
@@ -212,24 +163,17 @@ ACTOR Nazi: WolfensteinSS 2549
 	Pain.Fatality:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory ("SKNazi", 1, "GotoStealthKill")
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 40)
 		NAZI G 3 A_Pain
 		Goto See
 
 	Pain.Stealth:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory ("SKNazi", 1, "GotoStealthKill")
-        TNT1 A 0 A_JumpIfInventory ("IsDown", 1, "GroundExecution")
-		TNT1 A 0 HealThing(2)
 		Goto See
 
-	GroundExecution:
-		TNT1 A 0 A_NoBlocking
-		//TNT1 A 0 A_GiveToTarget("ExecuteDownedNazi", 1)
-		TNT1 A 0 A_GiveToTarget("GoSpecial", 1)
-		Stop
-
 	Death:
+		"####" "#" 2
+		TNT1 A 0 A_JumpIfInventory("HitHead", 1, "Death.Head")
         TNT1 A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
 		NAZI H 5
 		NAZI I 5 A_Scream
@@ -276,7 +220,7 @@ ACTOR Nazi: WolfensteinSS 2549
 		TNT1 A -1 A_NoBlocking
         Stop
 
-		Death.GreenFire:
+	Death.GreenFire:
         TNT1 A 0
         TNT1 A 0 A_XScream
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
@@ -373,7 +317,8 @@ ACTOR Nazi: WolfensteinSS 2549
 		Goto Death+3
 
 	Death.ExtremePunches:
-		TNT1 A 0
+		"####" "#" 2
+		TNT1 A 0 A_JumpIfInventory("HitHead", 1, "Death.Head")
 		TNT1 A 0 A_Scream
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
 		TNT1 A 0 A_FaceTarget
@@ -383,9 +328,10 @@ ACTOR Nazi: WolfensteinSS 2549
 
 	Death.Explosive:
 	Death.SSG:
-	    SZD1 E 1 A_Pain
-		TNT1 A 0 A_SpawnItem("Muchblood2", 0, 40)
+		SZD1 E 1 A_Pain
 		SZD1 E 1 A_FaceTarget
+		TNT1 A 0 A_JumpIfInventory("HitHead", 1, "Death.Head")
+		TNT1 A 0 A_SpawnItem("Muchblood2", 0, 40)
 	    TNT1 AAA 0 bright A_CustomMissile ("SuperGoreSpawner", 35, 0, random (170, 190), 2, random (0, 40))
 		TNT1 AAAA 0 A_CustomMissile ("XDeath1", 32, 0, random (170, 190), 2, random (0, 40))
 		TNT1 A 0 A_CustomMissile ("XDeath2", 32, 0, random (170, 190), 2, random (0, 40))
