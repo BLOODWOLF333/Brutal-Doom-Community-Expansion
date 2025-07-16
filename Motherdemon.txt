@@ -4,30 +4,34 @@ actor Motherdemon 2548
 	//$Icon "monster"
 	//$Colour rgb(200, 0, 0)
 	//$Sprite MOTHA1
+	MONSTER
 	game Doom
 	obituary "%o was obliterated by the mother of all demons."
 	health 10000
-	radius 60//110px
-	height 110//100px
+	radius 64
+	height 105
 	mass 1000
-	scale 1.1
+	scale 1.0
 	painchance 20
 	speed 16
-	seesound "mother/sight"
-	attacksound "mother/attack"
-	painsound "mother/pain"
-	deathsound "mother/death"
-	activesound "mother/active"
-	DropItem "64UnmakerUpgradeSpawner", 32
+	+FLOAT
+	+NOGRAVITY
+	+BOSS
+	+FLOORCLIP
+    +DONTRIP
+	+DONTMORPH
+	+BOSSDEATH
+    +NORADIUSDMG
+	+MISSILEMORE
+	+MISSILEEVENMORE
 
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
-	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	DamageFactor "Crush", 10.0
-	Damagefactor "GibRemoving", 0.0	Damagefactor "HangingHook", 0.0
-	Damagefactor "Head", 1.5	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
+	Damagefactor "GibRemoving", 0.0	Damagefactor "HangingHook", 0.0	Damagefactor "Kick", 0.5
+	Damagefactor "Head", 0.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "ExtremePunches", 2.5
 	Damagefactor "Fatality", 2.5	Damagefactor "HeadKick", 0.5	Damagefactor "HelperMarineFatality", 2.5
-	Damagefactor "Kick", 0.5	Damagefactor "Slide", 0.5
 	Damagefactor "Melee", 0.5	Damagefactor "MonsterKnocked", 0.5	Damagefactor "Stomp", 0.5
 	Damagefactor "Trample", 0.5	Damagefactor "Slide", 0.5	DamageFactor "TankWeakSpot", 0.0
 	Damagefactor "Burn", 0.5	Damagefactor "Fire", 0.5	Damagefactor "Flames", 0.5
@@ -40,17 +44,13 @@ actor Motherdemon 2548
 	PainChance "Burn", 4	PainChance "Fire", 4	PainChance "Flames", 4
 	PainChance "GreenFire", 4	PainChance "HumanBBQ", 4
 
-	MONSTER
-	+FLOAT
-	+NOGRAVITY
-	+BOSS
-	+FLOORCLIP
-    +DONTRIP
-	+DONTMORPH
-	+BOSSDEATH
-    +NORADIUSDMG
-	+MISSILEMORE
-	+MISSILEEVENMORE
+	seesound "mother/sight"
+	attacksound "mother/attack"
+	painsound "mother/pain"
+	deathsound "mother/death"
+	activesound "mother/active"
+    BloodType "Brutal_Blood", "SawBlood", "SawBlood"
+	DropItem "64UnmakerUpgradeSpawner", 32
   states
   {
   Spawn:
@@ -74,25 +74,25 @@ actor Motherdemon 2548
 	TNT1 A 0 A_Stop
     MOTH E 4 A_FaceTarget
 	TNT1 A 0 A_Jump(96, "SuperAttack")
-	MOTH I 4
+	MOTH I 4 A_FaceTarget
 	MOTH J 0 A_CustomMissile ("MotherFire",4,0,0)
     MOTH J 0 A_CustomMissile ("MotherFire",4,0,30)
     MOTH J 0 A_CustomMissile ("MotherFire",4,0,-30)
     MOTH J 0 A_CustomMissile ("MotherFire",4,0,60)
     MOTH J 0 A_CustomMissile ("MotherFire",4,0,-60)
-    MOTH J 0 A_CustomMissile ("MotherBall",84,67,-15)
-    MOTH J 0 A_CustomMissile ("MotherBall",120,51,-15)
-    MOTH J 0 A_CustomMissile ("MotherBall",84,-67,15)
-    MOTH J 0 A_CustomMissile ("MotherBall",120,-51,15)
 	MOTH J 32 A_FaceTarget
-    MOTH I 4
+    MOTH J 0 A_CustomMissile ("MotherBall",50,37,-15)
+    MOTH J 0 A_CustomMissile ("MotherBall",83,49,-15)
+    MOTH J 0 A_CustomMissile ("MotherBall",50,-37,15)
+    MOTH J 0 A_CustomMissile ("MotherBall",83,-49,15)
+	MOTH I 4 A_FaceTarget
     goto SeeContinue
 
  SuperAttack:
 	TNT1 A 0
 	MOTH F 4 A_FaceTarget
-	MOTH G 0 A_CustomMissile ("SuperMotherBall",68)
-	TNT1 A 0 A_CustomMissile("Alerter",68)
+	MOTH G 0 A_CustomMissile ("SuperMotherBall",64)
+	TNT1 A 0 A_CustomMissile("Alerter",64)
 	MOTH G 16 A_FaceTarget
 	MOTH F 4
 	goto SeeContinue
