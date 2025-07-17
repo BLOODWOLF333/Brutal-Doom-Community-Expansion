@@ -540,15 +540,14 @@ Actor TankEngineWeakSpot : HeadshotTargetBase
 	Damagefactor "MonsterMinigun", 0.5	Damagefactor "MonsterShotgunBullet", 0.5	Damagefactor "Shotgun", 0.5
 	Damagefactor "SSG", 0.5	Damagefactor "HitGround", 0.0	damagefactor "TankWeakSpot", 0
 	Damagefactor "CheckRepair", 0.0
-	//MONSTER
-	Health 2560
+	MONSTER
+	Health 1000
 	GibHealth 256
 	Radius 24
 	Height 44
 	DamageType "TankWeakSpot"
 	BloodType "TankBlood"
 	PainChance 255
-	+NEVERTARGET
 	+CANTSEEK
 	+NOGRAVITY
 	+SHOOTABLE
@@ -560,8 +559,17 @@ Actor TankEngineWeakSpot : HeadshotTargetBase
 	-COUNTKILL
 	-CLIENTSIDEONLY
 	+DONTHARMSPECIES
-	+NORADIUSDMG
 	+THRUACTORS
 	+THRUSPECIES
 	Species "Marines"
+	XScale 0.19
+	YScale 0.17
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
+		HSHT A 2 A_Warp(AAPTR_Master,-44,0,6,0,WARPF_NOCHECKPOSITION | WARPF_INTERPOLATE)
+		LOOP
+	}
 }
