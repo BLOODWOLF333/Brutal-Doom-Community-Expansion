@@ -5,13 +5,13 @@ inventory.maxamount 1
 
 ACTOR IconOfSin 2550
 {
+	Monster
 	Health 40000
 	Radius 100
 	Height 200
 	Mass 99999
 	Speed 0
 	PainChance 20
-	Monster
 	//$Category BD Bosses
 	//$Icon "monster"
 	//$Colour rgb(200, 0, 0)
@@ -32,13 +32,12 @@ ACTOR IconOfSin 2550
 	Obituary "%o was wiped out by the Icon of Sin"
 	BLoodType "DeadBlood"
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
-	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	Damagefactor "Kick", 0.5
 	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0	Damagefactor "HangingHook", 0.0
 	Damagefactor "Head", 0.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "ExtremePunches", 2.5
 	Damagefactor "Fatality", 2.5	Damagefactor "HeadKick", 0.5	Damagefactor "HelperMarineFatality", 2.5
-	Damagefactor "Kick", 0.5	Damagefactor "Slide", 0.5
 	Damagefactor "Melee", 0.5	Damagefactor "MonsterKnocked", 0.5	Damagefactor "Stomp", 0.5
 	Damagefactor "Trample", 0.5	Damagefactor "Slide", 0.5
 	Damagefactor "Burn", 0.5	Damagefactor "Fire", 0.5	Damagefactor "Flames", 0.5
@@ -338,13 +337,13 @@ YScale 1.2
 
 ACTOR GateKeeper: IconOfSin
 {
+	Monster
 	Health 20000
 	Radius 120
 	Height 360
 	Mass 99999
 	Speed 0
 	PainChance 20
-	Monster
 	+BOSS
 	+FLOORCLIP
 	+NOBLOOD
@@ -392,17 +391,8 @@ ACTOR GateKeeper: IconOfSin
 		TNT1 A 0 ACS_NamedExecuteAlways("BDBossHealth", 0, 0, 0, 0)//Health Bar
 		TNT1 A 0 A_JumpIfInventory("HasSpotedThePlayerAlready", 1, "Ready")
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
-
-		TNT1 A 0
 		TNT1 ABCCBA 5
-
-		TNT1 A 0 //A_PLaySoundEx("brain/sight", 4, 0, 2)
-		//TNT1 A 0 ACS_Execute(56)
 		TNT1 ABCBABCBABCBABCBAABCBABCBABCBABCBAABCBABCBABCBABCBA 3
-		//TNT1 AB 4
-		//TNT1 A 0 A_PLaySoundEx("ICOSCRE", 4, 0, 2)
-		//TNT1 A 0 Radius_Quake(3, 7, 0, 999, 0)
-		//TNT1 CDDDDDDDDDDDDDDDDDDDDDCBA 5
 		TNT1 A 0 A_GiveInventory("HasSpotedThePlayerAlready", 1)
 		Goto Missile
 
@@ -470,5 +460,69 @@ ACTOR GateKeeper: IconOfSin
 		TNT1 A 0 A_BrainDie
 		TNT1 A 1
 		Stop
+	}
+}
+
+ACTOR Titan
+{
+	damagefactor "BFG", 0.2	damagefactor "Desintegrate", 0.4
+	damagefactor "HKFT", 0.05
+	damagefactor "Avoid", 1.0
+	damagefactor "GibRemoving", 0.0	damagefactor "Trample", 0.0
+	damagefactor "TeleportRemover", 0.0
+	DamageFactor "CauseSplash", 0.0 DamageFactor "CauseObjectsToSplashSlime", 0.0 DamageFactor "CauseObjectsToSplashNukage", 0.0
+	DamageFactor "CauseObjectsToSplashBlood", 0.0 DamageFactor "CauseObjectsToSplashLava", 0.0
+	Obituary "%o was destroyed by a Mastermind."
+	Painchance "Stomp", 255
+	Painchance "Explosive", 255
+	+NOICEDEATH
+	Game Doom
+	SpawnID 7
+	Health 100000
+	Radius 160
+	Height 640
+	damagefactor "Crush", 30.0
+	Scale 2.0
+	Mass 996000
+	Speed 80
+	MaxStepHeight 400
+	MaxDropOffHeight 400
+	PainChance 30
+	Painchance "Fatality", 90
+	Monster
+	//MinMissileChance 200
+	DeathHeight 0
+	BurnHeight 0
+	+BOSS
+	+FLOORCLIP
+	+DONTRIP
+	+DONTMORPH
+	+BOSSDEATH
+	+NORADIUSDMG
+	+NOBLOOD
+	+MISSILEMORE
+	+SOLID
+	+MISSILEEVENMORE
+	+SHOOTABLE
+	DropItem "DemonStrengthRune" 25
+	SeeSound "spider/sight"
+	AttackSound "spider/attack"
+	PainSound "SPIPAIN1"
+	DeathSound "spider/death"
+	ActiveSound "spider/active"
+	obituary "$OB_SPIDER"
+	damagefactor "Blood", 0.0
+	States
+	{
+	Spawn:
+		KPRM A 10 A_Look
+		Loop
+
+	See:
+		KPRM A 20 A_Explode(9999, 600)
+		KPRM BBBBB 2 A_Chase("", "")
+		KPRM C 20 A_Explode(9999, 600)
+		KPRM DDDDD 2 A_Chase("", "")
+		Loop
 	}
 }
