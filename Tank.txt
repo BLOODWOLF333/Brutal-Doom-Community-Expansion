@@ -23,48 +23,8 @@ TNT1 A 0
 TNK1 B 6
 TNT1 A 0 A_SPawnItemEx("TankEngineWeakSpot", -44, 0, 6)
 Stop
-}}
-
-Actor TankTurretNotReal: TankBaseNotReal
-{
-Scale 1.0
-States
-{
-Spawn:
-TNT1 A 0
-TNK1 T 1
-Stop
-}}
-
-Actor TankTurretNotReal2: TankTurretNotReal
-{
-States
-{
-Spawn:
-TNT1 A 0
-TNK1 T 2
-Stop
-}}
-
-Actor TankTurretNotReal4: TankTurretNotReal
-{
-States
-{
-Spawn:
-TNT1 A 0
-TNK1 T 4
-Stop
-}}
-
-Actor TankTurretNotReal8: TankTurretNotReal
-{
-States
-{
-Spawn:
-TNT1 A 0
-TNK1 T 8
-Stop
-}}
+}
+}
 
 Actor TankBaseNotRealMoving1: TankBaseNotReal
 {
@@ -351,6 +311,47 @@ TNT1 A 0
 TNT1 A 0 A_JumpIfInventory("MP40Ammo", 1, "Normal")
 TNT1 AA 0 A_SPawnItemEx("PushFront", -64, 0, -2, 0, 0, 0, 0)
 TNK3 D 3
+Stop
+}}
+
+Actor TankTurretNotReal: TankBaseNotReal
+{
+Scale 1.0
+States
+{
+Spawn:
+TNT1 A 0
+TNK1 T 1
+Stop
+}}
+
+Actor TankTurretNotReal2: TankTurretNotReal
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNK1 T 2
+Stop
+}}
+
+Actor TankTurretNotReal4: TankTurretNotReal
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNK1 T 4
+Stop
+}}
+
+Actor TankTurretNotReal8: TankTurretNotReal
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNK1 T 8
 Stop
 }}
 

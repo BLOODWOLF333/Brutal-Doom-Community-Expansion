@@ -1,19 +1,25 @@
 ACTOR HellKnight2 : HellKnight Replaces HellKnight
 {
-    Scale 1.0
+	Game Doom
+	Height 59
+	Radius 24
+    GibHealth 30
     Speed 6
     Health 500
 	PainChance 25
-	PainSound "PSXDPN"
+	-BOSSDEATH
+	MaxStepHeight 24
+	MaxDropOffHeight 32
+    MeleeDamage 5
+	DamageType HKFT
 
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
-	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0	DamageFactor "Crush", 5.0
-	Damagefactor "GibRemoving", 0.0	Damagefactor "HangingHook", 0.0
+	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
+	Damagefactor "GibRemoving", 0.0	Damagefactor "HangingHook", 0.0	Damagefactor "Kick", 0.5
 	Damagefactor "Head", 1.0	Damagefactor "PussyGrab", 0.0	Damagefactor "Repair", 0.0
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "ExtremePunches", 2.5
 	Damagefactor "Fatality", 2.5	Damagefactor "HeadKick", 0.5	Damagefactor "HelperMarineFatality", 2.5
-	Damagefactor "Kick", 0.5	Damagefactor "Slide", 0.5
 	Damagefactor "Melee", 0.5	Damagefactor "MonsterKnocked", 0.5	Damagefactor "Stomp", 0.5
 	Damagefactor "Trample", 0.5	Damagefactor "Slide", 0.5	Damagefactor "SSG", 2.5
 	Damagefactor "Burn", 0.5	Damagefactor "Fire", 0.5	Damagefactor "Flames", 0.5
@@ -27,39 +33,119 @@ ACTOR HellKnight2 : HellKnight Replaces HellKnight
 	PainChance "GreenFire", 16	PainChance "HumanBBQ", 16
 	PainChance "CallingTheBaronAFaggot", 255
 
-	Game Doom
-	DeathHeight 0
-	BurnHeight 0
-	Height 54
-	Radius 24
-    GibHealth 30
-	-BOSSDEATH
-	MaxStepHeight 24
-	MaxDropOffHeight 32
     BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
 	BloodColor "DarkGreen"
 	DropItem "DemonStrengthRune" 16
 	Obituary "%o was slain by a Hell Knight."
-	DamageType HKFT
+	PainSound "PSXDPN"
 	Tag "Hell Knight"
 	Species "Bruiser"
-    MeleeDamage 5
 	States
 	{
+    Spawn:
+		BOS2 B 0
+		TNT1 A 0 A_GiveInventory("TargetIsABaronOfHell")
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCHeckClassicMonsters", 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		BOS2 B 2
+		TNT1 A 0 A_RadiusGive("SlaughterToken", 128, RGF_GIVESELF | RGF_MONSTERS |RGF_CUBE | RGF_NOSIGHT, 1)
+		BOS2 B 2
+		TNT1 A 0 A_JumpIfInventory("SlaughterToken",15,"ReplaceVanilla")
+		TNT1 A 0 A_SPAWNITEMEX("KnightHeadShot", 0, 0, 59, 0, 0, 0, 0, SXF_SETMASTER|SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
+		Goto Stand
+
+	ReplaceVanilla:
+		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
+		TNT1 A 0 A_SpawnItemEx ("VanillaHellKnight",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
+		TNT1 A 2 Thing_Remove(0)
+		Stop
+
+	Idle:
+	Stand:
+		BOS2 BB 5 A_Look
+		Loop
+
+	See:
+	RAGE:
+        TNT1 A 0
+        BTS2 ABC 1
+		BTS2 DEDF 2
+		BTS2 DEDF 2
+		BTS2 CBA 1 A_FaceTarget
+		TNT1 A 0 A_Jump(96, "MissileInRage")
+		Goto SeeContinue
+
+	SeeContinue:
+		BOS2 AAA 2 A_Chase
+		BOS2 BBB 2 A_Chase
+		BOS2 CCC 2 A_Chase
+		BOS2 DDD 2 A_Chase
+		Loop
+
+    Missile:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
+		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsACyberdemon", 1, "CheckRetreat")
+		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMastermind", 1, "CheckRetreat")
+		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAnExplosiveBarrel", 1, "SeeContinue")
+		TNT1 A 0 A_JumpIfInventory("StopKickingMyBallsMotherFucker", 1, "MissileInRage")
+		BOS2 E 3 A_FaceTarget
+		BOS2 E 2 A_FaceTarget
+		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 61, 30, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 60, 30, random (0, 140), 2, random (0, 160))
+		BOS2 E 2 A_FaceTarget
+		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 61, 30, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 60, 30, random (0, 140), 2, random (0, 160))
+		BOS2 E 2 A_FaceTarget
+		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 61, 30, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 60, 30, random (0, 140), 2, random (0, 160))
+		BOS2 E 2 A_FaceTarget
+		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 61, 30, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 60, 30, random (0, 140), 2, random (0, 160))
+		BOS2 E 2 A_FaceTarget
+		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 61, 30, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 60, 30, random (0, 140), 2, random (0, 160))
+		BOS2 E 2 A_FaceTarget
+		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 61, 30, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 60, 30, random (0, 140), 2, random (0, 160))
+		BOS2 E 2
+
+		BOS2 F 8 A_FaceTarget
+		BOS2 G 8 A_CustomMissile("GreenPlasmaBall", 36, 0, 0, 1)
+		TNT1 A 0 A_CustomMissile("Alerter", 36)
+		Goto SeeContinue
+
+	MissileInRage:
+		TNT1 A 0
+		BOS2 E 3 A_FaceTarget
+		BOS2 E 3 A_FaceTarget
+		BOS2 F 6 A_FaceTarget
+		BOS2 G 6 A_CustomMissile("GreenPlasmaBall", 36, 0, 0, 1)
+		TNT1 A 0 A_CustomMissile("Alerter", 36)
+		TNT1 A 0 A_CheckSight("SeeContinue")
+
+		BAS2 E 6 A_FaceTarget
+		BAS2 F 6 A_FaceTarget
+		BAS2 G 6 A_CustomMissile("GreenPlasmaBall", 36, 0, 0, 1)
+		TNT1 A 0 A_CustomMissile("Alerter", 36)
+		TNT1 A 0 A_CheckSight("SeeContinue")
+
+		BOS2 E 6 A_FaceTarget
+		BOS2 F 6 A_FaceTarget
+		BOS2 G 6 A_CustomMissile("GreenPlasmaBall", 36, 0, 0, 1)
+		TNT1 A 0 A_CustomMissile("Alerter", 36)
+		Goto SeeContinue
+
 	Melee:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsACyberdemon", 1, "CheckRetreat")
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMastermind", 1, "CheckRetreat")
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 54)
-		TNT1 A 0 A_CustomMissile("BaronAttackOnBarrel")
-		BOS2 E 1
+		BOS2 E 3 A_CustomMissile("BaronAttackOnBarrel", 32)
+        BOS2 E 3 A_FaceTarget
 		TNT1 A 0 A_JumpIfInventory("HasExplosiveBarrel", 1, "MissileBarrel")
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 54)
-        BOS2 E 6 A_FaceTarget
         TNT1 A 0 A_PlaySound("weapons/gswing")
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 54)
 		BOS2 F 6 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 54)
 		BOS2 G 6 A_CustomMissile("KnightAttack",32,0,0,0)
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 		TNT1 A 0 A_JumpIfInventory("HasExplosiveBarrel", 1, "MissileBarrel")
@@ -76,163 +162,22 @@ ACTOR HellKnight2 : HellKnight Replaces HellKnight
 		BOB2 A 1 A_Chase("","")
 		BOB2 A 0 A_ChangeFlag("NOPAIN", 1)
 		BOB2 ABC 4
-		BOB2 D 1
+		BOB2 D 1 A_SPAWNITEMEX("BaronHoldingBarrel", 0, 0, 68, 0, 0, 0, 0, SXF_SETMASTER|SXF_NOCHECKPOSITION)
 	WaitingToThrow:
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 54)
-		TNT1 A 0 A_SpawnItem("BaronHoldingBarrel", 0, 65,0)
-		BOB2 D 8
-		TNT1 A 0 A_CheckSight("WaitingToThrow")
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 54)
-		TNT1 A 0 A_SpawnItem("BaronHoldingBarrel", 0, 65,0)
-		TNT1 A 0 A_PlaySound("knight/sight")
-		BOB2 E 8
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 54)
-		TNT1 A 0 A_SpawnItem("BaronHoldingBarrel", 0, 65,0)
-		BOB2 E 8
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 54)
-		TNT1 A 0 A_SpawnItem("BaronHoldingBarrel", 0, 65,0)
-		BOB2 D 8
+		BOB2 D 8 A_CheckSight("WaitingToThrow")
+		BOB2 E 8 A_PlaySound("knight/sight")
+		BOB2 ED 8
 
 	ThrowBarrel:
-	    TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 54)
 	    BOS2 E 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile("ThrowedBarrel", 74, 0, 0, CMF_OFFSETPITCH, 10)
+		TNT1 A 0 A_CustomMissile("ThrowedBarrel", 88, 0, 0, CMF_OFFSETPITCH, 10)
 		TNT1 A 0 A_CustomMissile("Alerter", 32)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 54)
 		BOS2 F 4 A_FaceTarget
 
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 54)
 		BOS2 G 8
 		TNT1 A 0 A_TakeInventory("ComingToGetTheBarrel", 1)
 		TNT1 A 0 A_TakeInventory("HasExplosiveBarrel", 1)
 		BOBA A 0 A_ChangeFlag("NOPAIN", 0)
-		Goto SeeContinue
-    Spawn:
-		BOS2 B 0
-		TNT1 A 0 A_GiveInventory("TargetIsABaronOfHell")
-		TNT1 A 0 ACS_NamedExecuteAlways("BDCHeckClassicMonsters", 0, 0, 0, 0)//Check if Vanilla Mode is activated
-		BOS2 B 2
-		TNT1 A 0 A_RadiusGive("SlaughterToken", 128, RGF_GIVESELF | RGF_MONSTERS |RGF_CUBE | RGF_NOSIGHT, 1)
-		BOS2 B 2
-		TNT1 A 0 A_JumpIfInventory("SlaughterToken",15,"ReplaceVanilla")
-		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
-		Goto Stand
-
-	ReplaceVanilla:
-		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
-		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
-		TNT1 A 0 A_SpawnItemEx ("VanillaHellKnight",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0)
-		TNT1 A 2 Thing_Remove(0)
-		Stop
-
-	Idle:
-	Stand:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("HeadshotTarget20b", 0, 54)
-		BOS2 BB 5 A_Look
-		Loop
-
-	See:
-	RAGE:
-        TNT1 A 0
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 54)
-        BTS2 ABC 1
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 54)
-		BTS2 DEDF 2
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 54)
-		BTS2 DEDF 2
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 54)
-		BTS2 CBA 1 A_FaceTarget
-		TNT1 A 0 A_Jump(96, "MissileInRage")
-		Goto SeeContinue
-
-	SeeContinue:
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 54)
-		BOS2 AAA 2 A_Chase
-
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 54)
-		BOS2 BBB 2 A_Chase
-
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 54)
-		BOS2 CCC 2 A_Chase
-
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 54)
-		BOS2 DDD 2 A_Chase
-		Loop
-
-    Missile:
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
-		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsACyberdemon", 1, "CheckRetreat")
-		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMastermind", 1, "CheckRetreat")
-		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAnExplosiveBarrel", 1, "SeeContinue")
-		TNT1 A 0 A_JumpIfInventory("StopKickingMyBallsMotherFucker", 1, "MissileInRage")
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 54)
-		BOS2 E 3 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 54)
-		BOS2 E 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 61, 30, random (0, 360), 2, random (70, 110))
-		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 60, 30, random (0, 140), 2, random (0, 160))
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 54)
-		BOS2 E 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 61, 30, random (0, 360), 2, random (70, 110))
-		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 60, 30, random (0, 140), 2, random (0, 160))
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 54)
-		BOS2 E 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 61, 30, random (0, 360), 2, random (70, 110))
-		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 60, 30, random (0, 140), 2, random (0, 160))
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 54)
-		BOS2 E 2 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 54)
-		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 61, 30, random (0, 360), 2, random (70, 110))
-		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 60, 30, random (0, 140), 2, random (0, 160))
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 54)
-		BOS2 E 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 61, 30, random (0, 360), 2, random (70, 110))
-		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 60, 30, random (0, 140), 2, random (0, 160))
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 54)
-		BOS2 E 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 61, 30, random (0, 360), 2, random (70, 110))
-		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 60, 30, random (0, 140), 2, random (0, 160))
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 54)
-		BOS2 E 2
-
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 54)
-		BOS2 F 8 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 54)
-		BOS2 G 8 A_CustomMissile("GreenPlasmaBall", 36, 0, 0, 1)
-		TNT1 A 0 A_CustomMissile("Alerter", 36)
-		Goto SeeContinue
-
-	MissileInRage:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 54)
-		BOS2 E 3 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 54)
-		BOS2 E 3 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 54)
-		BOS2 F 6 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 54)
-		BOS2 G 6 A_CustomMissile("GreenPlasmaBall", 36, 0, 0, 1)
-		TNT1 A 0 A_CustomMissile("Alerter", 36)
-		TNT1 A 0 A_CheckSight("SeeContinue")
-
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 54)
-		BAS2 E 6 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 54)
-		BAS2 F 6 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 54)
-		BAS2 G 6 A_CustomMissile("GreenPlasmaBall", 36, 0, 0, 1)
-		TNT1 A 0 A_CustomMissile("Alerter", 36)
-		TNT1 A 0 A_CheckSight("SeeContinue")
-
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 54)
-		BOS2 E 6 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 54)
-		BOS2 F 6 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget6b", 0, 54)
-		BOS2 G 6 A_CustomMissile("GreenPlasmaBall", 36, 0, 0, 1)
-		TNT1 A 0 A_CustomMissile("Alerter", 36)
 		Goto SeeContinue
 
 	CheckRetreat:
@@ -242,31 +187,21 @@ ACTOR HellKnight2 : HellKnight Replaces HellKnight
 
 	Retreat:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 54)
 		BOS2 DD 2 A_Recoil(2)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 54)
 		BOS2 DD 2 A_Recoil(2)
 
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 54)
 		BOS2 CC 2 A_Recoil(1)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 54)
 		BOS2 CC 2 A_Recoil(1)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 54)
 		BOS2 BB 2 A_Recoil(1)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 54)
 		BOS2 BB 2 A_Recoil(1)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 54)
 		BOS2 AA 2 A_Recoil(1)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget8b", 0, 54)
 		BOS2 AA 2 A_Recoil(1)
 		Goto Missile+5
 
 	Pain:
         TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 54)
 	    TNT1 A 0 A_TakeInventory("StopKickingMyBallsMotherFucker", 1)
 		BOS2 H 3
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 54)
 		BOS2 H 3 A_Pain
 		Goto SeeContinue
 
@@ -284,7 +219,6 @@ ACTOR HellKnight2 : HellKnight Replaces HellKnight
 		TNT1 A 0 ThrustThingZ(0,30,0,1)
 		TNT1 A 0 A_Recoil(8)
 		BOS2 H 3
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4b", 0, 54)
 		BOS2 H 3 A_Pain
 		TNT1 A 0 A_ChangeFLag("NOPAIN", 0)
 		Goto SeeContinue
@@ -325,7 +259,7 @@ ACTOR HellKnight2 : HellKnight Replaces HellKnight
 	Death.Arm:
 		TNT1 A 0 A_CustomMissile ("XDeathHellKnightArm", 55, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("muchblood2Green", 55, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_SpawnItem("DyingHellKnight1")
+		TNT1 A 0 A_SpawnItemEx("DyingHellKnight1", 0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A -1 A_NoBlocking
 		Stop
 
@@ -378,7 +312,7 @@ ACTOR HellKnight2 : HellKnight Replaces HellKnight
 	    TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
 		TNT1 A 0 A_JumpIfHealthLower(-80, "Death.HeadExplode")
 		TNT1 A 0 A_SpawnItem("HellKnightHeadExplodeHalf", 0, 62)
-		TNT1 A 0 A_SpawnItem("DyingHellknight2")
+		TNT1 A 0 A_SpawnItemEx("DyingHellKnight2", 0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A -1 A_NoBlocking
 	    Stop
 
@@ -407,7 +341,7 @@ ACTOR HellKnight2 : HellKnight Replaces HellKnight
 	    TNT1 A 0 A_Stop
         TNT1 A 0 A_Scream
 		TNT1 AAAA 0 A_CustomMissile ("BluePlasmaFireNonStatic", 42, 0, random (0, 360), 2, random (0, 180))
-		TNT1 AAA 0 A_CustomMissile ("Blood", 32, 0, random (0, 360), 2, random (0, 180))
+		TNT1 AAA 0 A_CustomMissile ("Green_Blood", 32, 0, random (0, 360), 2, random (0, 180))
 		TNT1 A 0 A_SpawnItemEx ("DetectFloorCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 0 A_SpawnItem("BarrelExplosionSmokeColumn")
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece", random (-15, 15), random (-15, 15))
@@ -469,6 +403,7 @@ Death.Explosive:
 		TNT1 A 0 A_SpawnItem("PentagramSpawner")
 		BOS2 O 8
 		BOS2 NMLKJI  8
+		TNT1 A 0 A_SPAWNITEMEX("KnightHeadShot", 0, 0, 64, 0, 0, 0, 0, SXF_SETMASTER|SXF_NOCHECKPOSITION)
 		Goto See
 
 	Death.Fire:
@@ -903,10 +838,17 @@ ACTOR XDeathHalfHK
 
 ACTOR DyingHellKnight1
 {
+	Monster
 	Game Doom
-	Radius 16
-	Height 50
+	Radius 24
+	Height 47
 	Health 20
+	Mass 999999
+	-SOLID
+	+FLOORCLIP
+	+NOPAIN
+	+DONTSPLASH
+	+SHOOTABLE
 
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
@@ -927,46 +869,39 @@ ACTOR DyingHellKnight1
 	PainChance "Slide", 16	PainChance "Trample", 16
 	PainChance "Burn", 16	PainChance "Fire", 16	PainChance "Flames", 16
 	PainChance "GreenFire", 16	PainChance "HumanBBQ", 16
-	BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
+    BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood"
 	BloodColor "DarkGreen"
-	Mass 999999
-	-SOLID
-	+FLOORCLIP
-	+NOPAIN
-	+DONTSPLASH
-	+SHOOTABLE
-	Scale 1.0
 	PainSound "PSXDPN"
 	States
 	{
 	Spawn:
-	TNT1 A 0
-	KSA1 ABCB 6 A_SpawnItem("HeadshotTarget4b", 0, 54)
+	KSA1 A 6 NODELAY A_SPAWNITEMEX("DyingKnightHeadShot", 0, 0, 47, 0, 0, 0, 0, SXF_SETMASTER|SXF_NOCHECKPOSITION)
+	KSA1 BCB 6 A_FaceTarget
 	TNT1 A 0 A_SpawnItem("GreenBloodDying", 0, 50)
 
 	TNT1 A 0 A_PlaySound ("PSXDPN")
-	KSA1 ABCB 6 A_SpawnItem("HeadshotTarget4b", 0, 54)
+	KSA1 ABCB 6 A_FaceTarget
 	TNT1 A 0 A_SpawnItem("GreenBloodDying", 0, 50)
 	TNT1 A 0 A_PlaySound ("PSXDPN")
-	KSA1 ABCB 6 A_SpawnItem("HeadshotTarget4b", 0, 54)
+	KSA1 ABCB 6 A_FaceTarget
 	TNT1 A 0 A_SpawnItem("GreenBloodDying", 0, 50)
 	TNT1 A 0 A_PlaySound ("PSXDPN")
-	KSA1 ABCB 6 A_SpawnItem("HeadshotTarget4b", 0, 54)
+	KSA1 ABCB 6 A_FaceTarget
 	TNT1 A 0 A_SpawnItem("GreenBloodDying", 0, 50)
 	TNT1 A 0 A_PlaySound ("PSXDPN")
-	KSA1 ABCB 6 A_SpawnItem("HeadshotTarget4b", 0, 54)
+	KSA1 ABCB 6 A_FaceTarget
 	TNT1 A 0 A_SpawnItem("GreenBloodDying", 0, 50)
 	TNT1 A 0 A_PlaySound ("PSXDPN")
-	KSA1 ABCB 6 A_SpawnItem("HeadshotTarget4b", 0, 54)
+	KSA1 ABCB 6 A_FaceTarget
 	TNT1 A 0 A_SpawnItem("GreenBloodDying", 0, 50)
 	TNT1 A 0 A_PlaySound ("PSXDPN")
-	KSA1 ABCB 6 A_SpawnItem("HeadshotTarget4b", 0, 54)
+	KSA1 ABCB 6 A_FaceTarget
 	TNT1 A 0 A_SpawnItem("GreenBloodDying", 0, 50)
 	TNT1 A 0 A_PlaySound ("PSXDPN")
-	KSA1 ABCB 6 A_SpawnItem("HeadshotTarget4b", 0, 54)
+	KSA1 ABCB 6 A_FaceTarget
 	TNT1 A 0 A_SpawnItem("GreenBloodDying", 0, 50)
 	TNT1 A 0 A_PlaySound ("PSXDPN")
-	KSA1 ABCB 6 A_SpawnItem("HeadshotTarget4b", 0, 54)
+	KSA1 ABCB 6 A_FaceTarget
 	TNT1 A 0 A_SpawnItem("GreenBloodDying", 0, 50)
 	TNT1 A 0 A_PlaySound ("PSXDPN")
 	TNT1 A 0 A_DIE("Fall")
@@ -982,7 +917,7 @@ ACTOR DyingHellKnight1
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_Fall
 		TNT1 A 0 A_SpawnItem("HellKnightHeadExplode", 0, 62)
-		TNT1 A 0 A_SpawnItem("DyingHellKnightNoHeadNoArm")
+		TNT1 A 0 A_SpawnItemEx("DyingHellKnightNoHeadNoArm", 0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		Stop
 
 	Death.SSG:
@@ -1022,23 +957,18 @@ ACTOR DyingHellKnight1
 
 ACTOR DyingHellKnight2: DyingHellKnight1
 {
-	Scale 1.0
 	States
 	{
 	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("HeadshotTarget20b", 0, 54)
-		BTN5 AABBAACC 2 A_CustomMissile ("Green_LiquidBlood", 62, 0, random (0, 360), 2, random (30, 110))
+		BTN5 A 2 NODELAY A_SPAWNITEMEX("DyingKnightHeadShot", 0, 0, 47, 0, 0, 0, 0, SXF_SETMASTER|SXF_NOCHECKPOSITION)
+		BTN5 ABBAACC 2 A_CustomMissile ("Green_LiquidBlood", 62, 0, random (0, 360), 2, random (30, 110))
 		TNT1 A 0 A_Pain
 
-		TNT1 A 0 A_SpawnItem("HeadshotTarget20b", 0, 54)
 		BTN5 AAABBBAAACCC 2 A_CustomMissile ("Green_LiquidBlood", 62, 0, random (0, 360), 2, random (30, 110))
 		TNT1 A 0 A_Pain
-		TNT1 A 0 A_SpawnItem("HeadshotTarget20b", 0, 54)
 		BTN5 AAABBBAAACCC 2 A_CustomMissile ("Green_LiquidBlood", 62, 0, random (0, 360), 2, random (30, 110))
 		TNT1 A 0 A_Pain
 
-		TNT1 A 0 A_SpawnItem("HeadshotTarget20b", 0, 54)
 		BTN5 AAABBBAAACCC 2 A_CustomMissile ("Green_LiquidBlood", 62, 0, random (0, 360), 2, random (30, 110))
 		TNT1 A 0 A_DIE
 
@@ -1059,7 +989,7 @@ ACTOR DyingHellKnight2: DyingHellKnight1
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus", 0, 0, 25, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
 	    TNT1 A 0 A_SpawnItem("HellKnightHeadExplode", 0, 62)
-		TNT1 A 0 A_SpawnItem ("DyingHellKnightNoHead")
+		TNT1 A 0 A_SpawnItemEx("DyingHellKnightNoHead", 0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	    Stop
 	}
 }
@@ -1081,14 +1011,14 @@ ACTOR DyingHellKnightNoHead: DyingHellKnight1
 		TNT1 A 0 A_SpawnItem("DeadKnightNoHead")
 	    Stop
 
-	Death.Minigun:
 	Death:
+	Death.Minigun:
 		TNT1 A 0
-		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus", 0, 0, 25, frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
 		TNT1 AAAA 0 A_CustomMissile ("GreenBloodMistBig", 42, 0, random (0, 360), 2, random (30, 90))
 	    TNT1 A 0 A_CustomMissile ("XDeathHellKnightArm", 32, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_SpawnItem ("DyingHellKnightNoHeadNoArm")
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_SpawnItemEx("DyingHellKnightNoHeadNoArm", 0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	    Stop
 
 	Death.SSG:

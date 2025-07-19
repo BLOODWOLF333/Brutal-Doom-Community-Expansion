@@ -16,3 +16,18 @@ Script "BDHeadShot" (int pointer)
 		SetResultValue(0);
 	}
 }
+
+Script "BDHoldingBarrel" (int pointer)
+{
+	//Log(s:"Pointer ",i:pointer);//the master
+	SetActivator(0, pointer);//Change activator to master (monster body)
+
+	If(CheckInventory("HasExplosiveBarrel"))//Is currently holding a barrel?
+	{
+		SetResultValue(1);
+	}
+	Else
+	{
+		SetResultValue(0);
+	}
+}

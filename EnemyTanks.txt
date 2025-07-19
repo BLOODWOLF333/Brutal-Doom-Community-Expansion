@@ -4,10 +4,10 @@ ACTOR ZombieMainBattleTank 9951//Tank treads & body
 	//$Icon "monster"
 	//$Colour rgb(200, 0, 0)
 	//$Sprite TNK1B1
-    XScale 1.94
-	YScale 1.47
-	Height 100
+    XScale 1.95
+	YScale 1.35
 	Radius 64
+	Height 64
 	Game Doom
     GibHealth 25
     Health 4000
@@ -34,10 +34,10 @@ ACTOR ZombieMainBattleTank 9951//Tank treads & body
 	Damagefactor "Cut", 0.5	Damagefactor "Extremepunches", 0.0	Damagefactor "Fatality", 0.0
 	Damagefactor "FriendBullet", 0.5	Damagefactor "GibRemoving", 0.0	Damagefactor "Glass", 0.0
 	Damagefactor "HangingHook", 0.0	Damagefactor "Head", 0.0	Damagefactor "HeadKick", 0.0
-	Damagefactor "HelperMarineFatality", 0.0	Damagefactor "KillMe", 1.0	Damagefactor "Leg", 0.0
-	Damagefactor "Slide", 0.0	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0
+	Damagefactor "HelperMarineFatality", 0.0	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0
+	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0
 	Damagefactor "Repair", 1.0	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "Saw", 0.5
-	Damagefactor "Slide", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 1.0
+	Damagefactor "Slide", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 0.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "Kick", 0.0
 	Damagefactor "Melee", 0.0	Damagefactor "Shrapnel", 0.5	Damagefactor "Slime", 0.0
 	Damagefactor "Stealth", 0.0	Damagefactor "Stomp", 0.0	Damagefactor "Trample", 0.0
@@ -55,29 +55,27 @@ ACTOR ZombieMainBattleTank 9951//Tank treads & body
 	Halt://Use a script to give RocketAmmo to a tank to stop.
 	    TNK1 B 0
 		TNT1 A 0 A_PlaySound("TANK2", 4, 1, 1)
-		TNK1 BBBBBBBBB 4 A_SpawnItemEx ("EnemyTankWeakSpot" , -44, 0, 6, 0, 0, 0, angle, SXF_ABSOLUTEANGLE | SXF_ABSOLUTEVELOCITY)
-		TNT1 A 0 A_JumpIfInventory("RocketAMmo", 1, "Halt")
+		TNK1 BBBBBBBBB 4 A_JumpIfInventory("RocketAMmo", 1, "Halt")
 		Goto Rolling
 
 	Spawn:
 		TNK1 B 0
-		TNK1 B 4 A_SpawnItemEx ("ZombieMainBattleTankTurret", 0, 0, 0, velx, vely, velz, angle, SXF_SETMASTER | SXF_ABSOLUTEANGLE | SXF_ABSOLUTEVELOCITY)
+		TNK1 B 4 A_SpawnItemEx("ZombieMainBattleTankTurret", 0, 0, 0, 0, 0, 0, angle, SXF_SETMASTER | SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SPAWNITEMEX("EnemyTankWeakSpot", -44, 0, 6, 0, 0, 0, 0, SXF_SETMASTER|SXF_NOCHECKPOSITION)
 		Goto Standby
 
 	Idle:
 	Standby:
 	    TNK1 B 0
 		TNK1 B 4 A_Look
-		TNT1 A 0 A_SpawnItemEx ("EnemyTankWeakSpot" , -44, 0, 6, 0, 0, 0, angle, SXF_ABSOLUTEANGLE | SXF_ABSOLUTEVELOCITY)
 	    Loop
 
 	See:
-		TNK1 A 2
+		TNK1 B 2
 		TNT1 A 0 A_PlaySound("juggernaut/engine", 4, 1, 1)
-		TNK1 A 2 A_Chase("","")
+		TNK1 B 2 A_Chase("","")
 		TNT1 A 0 A_SpawnItemEx ("EnemyTnkTreadsDamage" , 65, 0, 0, 0, 0, 0, angle, SXF_ABSOLUTEANGLE | SXF_ABSOLUTEVELOCITY)
 		TNT1 A 0 A_SpawnItemEx("TnkStep", 0, 0, 8, 0, 0, 0, angle, SXF_ABSOLUTEANGLE)
-		TNT1 A 0 A_SpawnItemEx ("EnemyTankWeakSpot" , -44, 0, 6, 0, 0, 0, angle, SXF_ABSOLUTEANGLE | SXF_ABSOLUTEVELOCITY)
 		TNT1 A 0 A_CheckSight("RollingCantSee")
 		Goto Rolling
 
@@ -94,7 +92,6 @@ ACTOR ZombieMainBattleTank 9951//Tank treads & body
 		TNT1 A 0 A_CustomMissile ("TankCheckRight", 32, 0, 64, 2, 0)
 
 		TNT1 A 0 A_SpawnItemEx ("EnemyTnkTreadsDamage" , 65, 0, 0, 0, 0, 0, angle, SXF_ABSOLUTEANGLE | SXF_ABSOLUTEVELOCITY)
-		TNT1 A 0 A_SpawnItemEx ("EnemyTankWeakSpot" , -44, 0, 6, 0, 0, 0, angle, SXF_ABSOLUTEANGLE | SXF_ABSOLUTEVELOCITY)
 		TNK1 E 2 A_Chase("","")
 		TNT1 A 0 A_CheckSight("RollingCantSee")
 		TNT1 A 0 A_CustomMissile ("TankCheckLeft", 32, 0, -64, 2, 0)
@@ -111,7 +108,6 @@ ACTOR ZombieMainBattleTank 9951//Tank treads & body
 		TNK1 D 1 A_SetAngle(angle+3)
 
 		TNT1 A 0 A_SpawnItemEx ("EnemyTnkTreadsDamage" , 65, 0, 0, 0, 0, 0, angle, SXF_ABSOLUTEANGLE | SXF_ABSOLUTEVELOCITY)
-		TNT1 A 0 A_SpawnItemEx ("EnemyTankWeakSpot" , -44, 0, 6, 0, 0, 0, angle, SXF_ABSOLUTEANGLE | SXF_ABSOLUTEVELOCITY)
 		TNK1 E 1 A_Recoil(-5)
 		TNK1 E 1 A_SetAngle(angle+3)
 
@@ -124,7 +120,6 @@ ACTOR ZombieMainBattleTank 9951//Tank treads & body
 		TNK1 D 1 A_SetAngle(angle+3)
 
 		TNT1 A 0 A_SpawnItemEx ("EnemyTnkTreadsDamage" , 65, 0, 0, 0, 0, 0, angle, SXF_ABSOLUTEANGLE | SXF_ABSOLUTEVELOCITY)
-		TNT1 A 0 A_SpawnItemEx ("EnemyTankWeakSpot" , -44, 0, 6, 0, 0, 0, angle, SXF_ABSOLUTEANGLE | SXF_ABSOLUTEVELOCITY)
 		TNK1 E 1 A_Recoil(-5)
 		TNK1 E 1 A_SetAngle(angle+3)
 		TNT1 A 0 A_TakeInventory("ShotgunAmmo", 10)
@@ -141,7 +136,6 @@ ACTOR ZombieMainBattleTank 9951//Tank treads & body
 		TNK1 D 1 A_SetAngle(angle-3)
 
 		TNT1 A 0 A_SpawnItemEx ("EnemyTnkTreadsDamage" , 65, 0, 0, 0, 0, 0, angle, SXF_ABSOLUTEANGLE | SXF_ABSOLUTEVELOCITY)
-		TNT1 A 0 A_SpawnItemEx ("EnemyTankWeakSpot" , -44, 0, 6, 0, 0, 0, angle, SXF_ABSOLUTEANGLE | SXF_ABSOLUTEVELOCITY)
 		TNK1 E 1 A_Recoil(-5)
 		TNK1 E 1 A_SetAngle(angle-3)
 
@@ -154,7 +148,6 @@ ACTOR ZombieMainBattleTank 9951//Tank treads & body
 		TNK1 D 1 A_SetAngle(angle-3)
 
 		TNT1 A 0 A_SpawnItemEx ("EnemyTnkTreadsDamage" , 65, 0, 0, 0, 0, 0, angle, SXF_ABSOLUTEANGLE | SXF_ABSOLUTEVELOCITY)
-		TNT1 A 0 A_SpawnItemEx ("EnemyTankWeakSpot" , -44, 0, 6, 0, 0, 0, angle, SXF_ABSOLUTEANGLE | SXF_ABSOLUTEVELOCITY)
 		TNK1 E 1 A_Recoil(-5)
 		TNK1 E 1 A_SetAngle(angle-3)
 		TNT1 A 0 A_TakeInventory("ShotgunAmmo", 10)
@@ -173,7 +166,6 @@ ACTOR ZombieMainBattleTank 9951//Tank treads & body
 		TNT1 A 0 A_CustomMissile ("TankCheckRight", 32, 0, 64, 2, 0)
 
 		TNT1 A 0 A_SpawnItemEx ("EnemyTnkTreadsDamage" , 65, 0, 0, 0, 0, 0, angle, SXF_ABSOLUTEANGLE | SXF_ABSOLUTEVELOCITY)
-		TNT1 A 0 A_SpawnItemEx ("EnemyTankWeakSpot" , -44, 0, 6, 0, 0, 0, angle, SXF_ABSOLUTEANGLE | SXF_ABSOLUTEVELOCITY)
 		TNK1 E 2 A_Chase("","")
 		TNT1 A 0 A_CheckSight("RollingCantSee")
 		Goto See
@@ -261,8 +253,8 @@ Actor ZombieMainBattleTankTurret 9952
 	+NOBLOODDECALS
 	+DONTRIP
 	damage 0
-	radius 2
-	height 2
+	radius 46
+	height 48
 	speed 0
 	Scale 1.0
 	Mass 31700//35 tons
@@ -326,8 +318,8 @@ Actor ZombieMainBattleTankTurret 9952
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundHMG", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("TANKMG", 5)
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 91, 12, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 91, 12, 0, 0)
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 72, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 72, 16, 0, 0)
 
 		TNKZ T 1 A_FaceTarget(4)
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
@@ -337,8 +329,8 @@ Actor ZombieMainBattleTankTurret 9952
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundHMG", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("TANKMG", 5)
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 91, 12, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 91, 12, 0, 0)
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 72, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 72, 16, 0, 0)
 
 		TNKZ T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
@@ -348,8 +340,8 @@ Actor ZombieMainBattleTankTurret 9952
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundHMG", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("TANKMG", 5)
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 91, 12, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 91, 12, 0, 0)
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 72, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 72, 16, 0, 0)
 
 		TNKZ T 1 A_FaceTarget(4)
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
@@ -359,8 +351,8 @@ Actor ZombieMainBattleTankTurret 9952
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundHMG", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("TANKMG", 5)
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 91, 12, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 91, 12, 0, 0)
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 72, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 72, 16, 0, 0)
 
 		TNKZ T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
@@ -370,8 +362,8 @@ Actor ZombieMainBattleTankTurret 9952
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundHMG", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("TANKMG", 5)
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 91, 12, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 91, 12, 0, 0)
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 72, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 72, 16, 0, 0)
 
 		TNKZ T 1 A_FaceTarget(4)
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
@@ -381,8 +373,8 @@ Actor ZombieMainBattleTankTurret 9952
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundHMG", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("TANKMG", 5)
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 91, 12, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 91, 12, 0, 0)
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 72, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 72, 16, 0, 0)
 
 		TNKZ T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
@@ -392,8 +384,8 @@ Actor ZombieMainBattleTankTurret 9952
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundHMG", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("TANKMG", 5)
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 91, 12, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 91, 12, 0, 0)
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 72, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 72, 16, 0, 0)
 
 		TNKZ T 1 A_FaceTarget(4)
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
@@ -403,8 +395,8 @@ Actor ZombieMainBattleTankTurret 9952
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundHMG", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("TANKMG", 5)
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 91, 12, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 91, 12, 0, 0)
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 72, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 72, 16, 0, 0)
 
 		TNKZ T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
@@ -414,8 +406,8 @@ Actor ZombieMainBattleTankTurret 9952
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundHMG", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("TANKMG", 5)
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 91, 12, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 91, 12, 0, 0)
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 72, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 72, 16, 0, 0)
 
 		TNKZ T 1 A_FaceTarget(4)
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
@@ -425,8 +417,8 @@ Actor ZombieMainBattleTankTurret 9952
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundHMG", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("TANKMG", 5)
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 91, 12, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 91, 12, 0, 0)
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 72, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 72, 16, 0, 0)
 
 		TNKZ T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
@@ -436,8 +428,8 @@ Actor ZombieMainBattleTankTurret 9952
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundHMG", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("TANKMG", 5)
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 91, 12, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 91, 12, 0, 0)
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 72, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 72, 16, 0, 0)
 
 		TNKZ T 1 A_FaceTarget(4)
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
@@ -447,8 +439,8 @@ Actor ZombieMainBattleTankTurret 9952
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundHMG", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("TANKMG", 5)
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 91, 12, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 91, 12, 0, 0)
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 72, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 72, 16, 0, 0)
 		TNT1 A 0 A_JumpIfTargetInLOS("Missile", 6)
 		Goto See
 
@@ -531,17 +523,18 @@ ACTOR ZombieArtilleryTank : ZombieMainBattleTank 9950
 	//$Colour rgb(200, 0, 0)
 	//$Sprite TNK1B1
     Radius 64
-	Height 88
+	Height 64
 	health 2000
 	Mass 36300//40 tons
 	Speed 16
-	XScale 1.94
-	YScale 1.47
+	XScale 1.95
+	YScale 1.35
 	States
 	{
 	Spawn:
 		TNK1 B 0
-		TNK1 B 4 A_SpawnItemEx ("ZombieArtilleryTankTurret", 0, 0, 0, velx, vely, velz, angle, SXF_SETMASTER | SXF_ABSOLUTEANGLE | SXF_ABSOLUTEVELOCITY)
+		TNK1 B 4 A_SpawnItemEx ("ZombieArtilleryTankTurret", 0, 0, 0, 0, 0, 0, angle, SXF_SETMASTER | SXF_ABSOLUTEANGLE | SXF_ABSOLUTEVELOCITY)
+		TNT1 A 0 A_SPAWNITEMEX("EnemyTankWeakSpot", -44, 0, 6, 0, 0, 0, 0, SXF_SETMASTER|SXF_NOCHECKPOSITION)
 		Goto Standby
 	}
 }
