@@ -22,7 +22,7 @@ Script "BDHoldingBarrel" (int pointer)
 	//Log(s:"Pointer ",i:pointer);//the master
 	SetActivator(0, pointer);//Change activator to master (monster body)
 
-	If(CheckInventory("HasExplosiveBarrel"))//Is currently holding a barrel?
+	If(CheckInventory("HasExplosiveBarrel") && (ClassifyActor(0) & ACTOR_ALIVE))//Is monster currently holding a barrel and alive?
 	{
 		SetResultValue(1);
 	}

@@ -32,7 +32,7 @@ ACTOR ExplosiveBarrel1 Replaces ExplosiveBarrel
 	+MISSILEMORE
 	+MISSILEEVENMORE
 	Speed 0
-	MaxTargetRange 256
+	MaxTargetRange 512
 	DeathSound "Explosion"
 	Obituary "$OB_BARREL"
 	Damagetype Explosive
@@ -63,27 +63,26 @@ ACTOR ExplosiveBarrel1 Replaces ExplosiveBarrel
 		Loop
 
 	See:
-		BARI ABCDCB 6 A_Chase
-		TNT1 A 0 A_ClearTarget
+		BARI ABCDC 6 A_Chase
+		BARI B 6 A_ClearTarget
 		Goto Stay
 
 	Melee:
 	Missile:
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsABaronOfHell", 1, "TauntTHeBaron")
-		BARI ABCDCB 6
-		TNT1 A 0 A_ClearTarget
+		BARI A 6 A_JumpIfInTargetInventory("TargetIsABaronOfHell", 1, "TauntTHeBaron")
+		BARI BCDC 6
+		BARI B 6 A_ClearTarget
 		Goto Stay
 
 	TauntTheBaron:
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfInTargetInventory("ComingToGetTheBarrel", 1, "DoingNothing")
-		TNT1 A 0 A_FaceTarget
-		TNT1 A 0 A_CustomMissile("CallingTheBaronAFaggot", 32, 0, 0, 1)
-		TNT1 A 0 A_GiveToTarget("ComingTOGetTheBarrel", 1)
+		BARI A 2 A_JumpIfInTargetInventory("ComingToGetTheBarrel", 1, "DoingNothing")
+		BARI A 2 A_FaceTarget
+		BARI A 2 A_CustomMissile("CallingTheBaronAFaggot", 32, 0, 0, 1)
+		Goto See
+
 	DoingNothing:
-		BARI ABCDCB 6
-		TNT1 A 0 A_ClearTarget
+		BARI ABCDC 6
+		BARI B 6 A_ClearTarget
 		Goto Stay
 
 	Pain:
