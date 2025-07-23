@@ -4,10 +4,11 @@ ACTOR Juggernaut : TheSpiderMastermind 2545
 	//$Icon "monster"
 	//$Colour rgb(200, 0, 0)
 	//$Sprite BS1WA1
-	Radius 94//112SpriteW(168%=188)
-	Height 134//80SpriteH(168%=134)
-	Scale 1.68
+	Radius 128
+	Height 120//80SpriteH(150%=120)
+	Scale 1.5
 	Speed 8
+    BloodType "Brutal_Blood", "SawBlood", "SawBlood"
 	PainSound "juggernaut/pain"
 	DeathSound "juggernaut/death"
 	ActiveSound "juggernaut/roam"
@@ -18,34 +19,28 @@ ACTOR Juggernaut : TheSpiderMastermind 2545
 	DropItem "64UnmakerUpgradeSpawner", 16
 	States
 	{
-	/////////////////////
 	Spawn:
-		BS1W A 1
-		TNT1 A 0 A_GiveInventory("TargetIsAMastermind")
-	    TNT1 A 0 A_SpawnItemEx ("KillTreads",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		BS1W A 5 A_GiveInventory("TargetIsAMastermind")
 		Goto Standby
 
 	Standby:
 	Idle:
-	    BS1W A 1
 	    BS1W AC 10 A_Look
 	    Loop
 
-	//////////////////
-
 	See:
-	    BS1W A 1 A_FaceTarget
+	    BS1W A 2 A_FaceTarget
 		Goto Rolling
 
 	Rolling:
 		TNT1 A 0
 		TNT1 A 0 A_PlaySound("juggernaut/engine")
 	    BS1W AAABBBCCCDDD 2 A_Chase
-		TNT1 A 0 A_SpawnItem("TreadsDamage", 94)
+		TNT1 A 0 A_SpawnItem("TreadsDamage", 128)
 		TNT1 A 0 A_SpawnItemEx("TnkStep", 0, 0, 8, 0, 0, 0, angle, SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_PlaySound("juggernaut/engine")
 	    BS1W AAABBBCCCDDD 2 A_Chase
-		TNT1 A 0 A_SpawnItem("TreadsDamage", 94)
+		TNT1 A 0 A_SpawnItem("TreadsDamage", 128)
 		TNT1 A 0 A_SpawnItemEx("TnkStep", 0, 0, 8, 0, 0, 0, angle, SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_Jump (128, "Rolling2")
 		TNT1 A 0 A_CheckSight("See")
@@ -66,6 +61,8 @@ ACTOR Juggernaut : TheSpiderMastermind 2545
 		BS1B A 2 A_Chase
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
 		BS1B A 2 A_Chase
+		TNT1 A 0 A_SpawnItem("TreadsDamage", 128)
+		TNT1 A 0 A_SpawnItemEx("TnkStep", 0, 0, 8, 0, 0, 0, angle, SXF_ABSOLUTEANGLE)
 
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
 		BS1B A 2 A_Chase
@@ -79,7 +76,7 @@ ACTOR Juggernaut : TheSpiderMastermind 2545
 		BS1B A 2 A_Chase
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
 		BS1B A 2 A_Chase
-		TNT1 A 0 A_SpawnItem("TreadsDamage", 94)
+		TNT1 A 0 A_SpawnItem("TreadsDamage", 128)
 		TNT1 A 0 A_SpawnItemEx("TnkStep", 0, 0, 8, 0, 0, 0, angle, SXF_ABSOLUTEANGLE)
 
 		TNT1 A 0 A_CheckSight("Rolling")
@@ -88,6 +85,7 @@ ACTOR Juggernaut : TheSpiderMastermind 2545
 	///////////////////
 
 	Missile:
+		TNT1 A 0
 		TNT1 A 0 A_JumpIfCloser(256, "FireMachinegun")
 		TNT1 A 0 A_Jump(64, "FireRockets")
 		TNT1 A 0 A_PlaySound("juggernaut/engine")
@@ -105,10 +103,10 @@ ACTOR Juggernaut : TheSpiderMastermind 2545
 		TNT1 A 0 A_CheckSight("Rolling")
 		TNT1 A 0 A_CustomMissile ("JuggernautBody2", 0)//Torso shooting
 		BS1B A 2 A_Chase//Tracks
-		TNT1 A 0 A_CustomMissile("MastermindTracer", 91, 52, random(-3, 3), CMF_OFFSETPITCH, random(-2,2))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundSSG", 91, 0, 0, 1, 0)
-		TNT1 A 0 A_CustomMissile("Alerter",91,52)
-		TNT1 A 0 A_CustomMissile("MasterMindCaseSpawn", 91, 52, angle-90, CMF_ABSOLUTEANGLE)
+		TNT1 A 0 A_CustomMissile("MastermindTracer", 70, 46, random(-3, 3), CMF_OFFSETPITCH, random(-2,2))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundSSG", 70, 0, 0, 1, 0)
+		TNT1 A 0 A_CustomMissile("Alerter",70,46)
+		TNT1 A 0 A_CustomMissile("MasterMindCaseSpawn", 70, 46, angle-270, CMF_ABSOLUTEANGLE)
 		TNT1 A 0 A_GiveInventory("JuggernautMachinegunAmmo", 1)
 		TNT1 A 0 A_JumpIfInventory("JuggernautMachinegunAmmo", 100, "StopFiring")
 
@@ -117,10 +115,10 @@ ACTOR Juggernaut : TheSpiderMastermind 2545
 
 		TNT1 A 0 A_CustomMissile ("JuggernautBody2", 0)//Torso shooting
 		BS1B A 2 A_Chase//Tracks
-		TNT1 A 0 A_CustomMissile("MastermindTracer", 91, -52, random(-3, 3), CMF_OFFSETPITCH, random(-2,2))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundSSG", 91, 0, 0, 1, 0)
-		TNT1 A 0 A_CustomMissile("Alerter",91,-52)
-		TNT1 A 0 A_CustomMissile("MasterMindCaseSpawn", 91, -52, angle-270, CMF_ABSOLUTEANGLE)
+		TNT1 A 0 A_CustomMissile("MastermindTracer", 70, -46, random(-3, 3), CMF_OFFSETPITCH, random(-2,2))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundSSG", 70, 0, 0, 1, 0)
+		TNT1 A 0 A_CustomMissile("Alerter",70,-46)
+		TNT1 A 0 A_CustomMissile("MasterMindCaseSpawn", 70, -46, angle-90, CMF_ABSOLUTEANGLE)
 		TNT1 A 0 A_GiveInventory("JuggernautMachinegunAmmo", 1)
 		TNT1 A 0 A_JumpIfInventory("JuggernautMachinegunAmmo", 100, "StopFiring")
 		Goto FireMachinegun
@@ -128,48 +126,10 @@ ACTOR Juggernaut : TheSpiderMastermind 2545
 	FireRockets:
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfCloser(256, "FireMachinegun")//avoid it's own splash damage
-
-		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
-		BS1B A 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
-		BS1B A 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
-		BS1B A 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile("JuggernautRocket", 121, 79, random(-2,2), CMF_OFFSETPITCH, random(-1,1))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundRocket", 106, 0, 0, 1, 0)
-		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
-		BS1B A 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
-		BS1B A 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
-		BS1B A 2 A_FaceTarget
-
-		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
-		BS1B A 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
-		BS1B A 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
-		BS1B A 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile("JuggernautRocket", 121, -79, random(-2,2), CMF_OFFSETPITCH, random(-1,1))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundRocket", 106, 0, 0, 1, 0)
-		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
-		BS1B A 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
-		BS1B A 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
-		BS1B A 2 A_FaceTarget
-
-		TNT1 A 0 A_CheckSight("Rolling")
 		TNT1 A 0 A_PlaySound("juggernaut/engine")
-		TNT1 A 0 A_JumpIfCloser(256, "FireMachinegun")//avoid it's own splash damage
-		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
-		BS1B A 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
-		BS1B A 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
-		BS1B A 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile("JuggernautRocket", 106, 79, random(-2,2), CMF_OFFSETPITCH, random(-1,1))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundRocket", 106, 0, 0, 1, 0)
+
+		TNT1 A 0 A_CustomMissile("JuggernautRocket", 108, 70, random(-2,2), CMF_OFFSETPITCH, random(-1,1))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundRocket", 108, 0, 0, 1, 0)
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
 		BS1B A 2 A_FaceTarget
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
@@ -177,32 +137,19 @@ ACTOR Juggernaut : TheSpiderMastermind 2545
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
 		BS1B A 2 A_FaceTarget
 
+		TNT1 A 0 A_CustomMissile("JuggernautRocket", 108, -70, random(-2,2), CMF_OFFSETPITCH, random(-1,1))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundRocket", 108, 0, 0, 1, 0)
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
 		BS1B A 2 A_FaceTarget
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
 		BS1B A 2 A_FaceTarget
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
 		BS1B A 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile("JuggernautRocket", 106, -79, random(-2,2), CMF_OFFSETPITCH, random(-1,1))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundRocket", 106, 0, 0, 1, 0)
-		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
-		BS1B A 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
-		BS1B A 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
-		BS1B A 2 A_FaceTarget
-
 		TNT1 A 0 A_CheckSight("Rolling")
-		TNT1 A 0 A_PlaySound("juggernaut/engine")
 		TNT1 A 0 A_JumpIfCloser(256, "FireMachinegun")//avoid it's own splash damage
-		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
-		BS1B A 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
-		BS1B A 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
-		BS1B A 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile("JuggernautRocket", 91, 79, random(-2,2), CMF_OFFSETPITCH, random(-1,1))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundRocket", 106, 0, 0, 1, 0)
+
+		TNT1 A 0 A_CustomMissile("JuggernautRocket", 96, 70, random(-2,2), CMF_OFFSETPITCH, random(-1,1))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundRocket", 96, 0, 0, 1, 0)
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
 		BS1B A 2 A_FaceTarget
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
@@ -210,26 +157,41 @@ ACTOR Juggernaut : TheSpiderMastermind 2545
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
 		BS1B A 2 A_FaceTarget
 
+		TNT1 A 0 A_CustomMissile("JuggernautRocket", 96, -70, random(-2,2), CMF_OFFSETPITCH, random(-1,1))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundRocket", 96, 0, 0, 1, 0)
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
 		BS1B A 2 A_FaceTarget
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
 		BS1B A 2 A_FaceTarget
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
 		BS1B A 2 A_FaceTarget
-		TNT1 A 0 A_CustomMissile("JuggernautRocket", 91, -79, random(-2,2), CMF_OFFSETPITCH, random(-1,1))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundRocket", 106, 0, 0, 1, 0)
+		TNT1 A 0 A_CheckSight("Rolling")
+		TNT1 A 0 A_JumpIfCloser(256, "FireMachinegun")//avoid it's own splash damage
+
+		TNT1 A 0 A_CustomMissile("JuggernautRocket", 84, 70, random(-2,2), CMF_OFFSETPITCH, random(-1,1))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundRocket", 84, 0, 0, 1, 0)
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
 		BS1B A 2 A_FaceTarget
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
 		BS1B A 2 A_FaceTarget
 		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
 		BS1B A 2 A_FaceTarget
+
+		TNT1 A 0 A_CustomMissile("JuggernautRocket", 84, -70, random(-2,2), CMF_OFFSETPITCH, random(-1,1))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundRocket", 84, 0, 0, 1, 0)
+		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
+		BS1B A 2 A_FaceTarget
+		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
+		BS1B A 2 A_FaceTarget
+		TNT1 A 0 A_CustomMissile ("JuggernautBody1", 0)
+		BS1B A 2 A_FaceTarget
+		TNT1 A 0 A_CheckSight("Rolling")
+		TNT1 A 0 A_JumpIfCloser(256, "FireMachinegun")//avoid it's own splash damage
 		Goto Rolling
 
 	StopFiring:
-		TNT1 A 0
 		BS1W A 1 A_FaceTarget
-		TNT1 A 0 A_TakeInventory("JuggernautMachinegunAmmo", 100)
+		BS1W A 1 A_TakeInventory("JuggernautMachinegunAmmo", 100)
 		Goto Rolling
 
 	////////////////////
@@ -260,7 +222,6 @@ ACTOR Juggernaut : TheSpiderMastermind 2545
 	    TNT1 A 0
 		TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItem("KillTreads")
 		EXPL A 0 Radius_Quake (4, 35, 0, 10, 0)
         TNT1 AAAA 0 A_CustomMissile ("ExplosionSpawner", 90, 0, random (0, 360), 2, random (0, 180))
         TNT1 AAAAAA 0 A_CustomMissile ("ExplosionSpawner", 90, 0, random (0, 180), 2, random (0, 180))
@@ -294,102 +255,22 @@ ACTOR Juggernaut : TheSpiderMastermind 2545
 	}
 }
 
-actor JuggernautBase : CurbstompedMarine
-{
-	Health 10000
-	damagefactor "Killme", 9999.0
-	Radius 64
-	Height 2
-	Scale 1.68
-	Monster
-	+NOBLOOD
-	+SOLID
-	-NOBLOCKMAP
-	-COUNTKILL
-	Mass 99999
-	States
-	{
-	Spawn:
-	BS1B A 5
-	Loop
-
-	Death:
-	TNT1 A 0
-	TNT1 A 0 A_NoBlocking
-	Stop
-	}
-}
-
-
-actor KillTreads
-{
-+NOTARGET
-Radius 1
-Height 1
-DamageType Killme
-+NOGRAVITY
-+NOTELEPORT
-+NODAMAGETHRUST
-+THRUGHOST
-+NORADIUSDMG
-+NOEXTREMEDEATH
-+FORCERADIUSDMG
-PROJECTILE
-	+DEHEXPLOSION
-	+ACTIVATEMCROSS
-States
-{
-Spawn:
-TNT1 A 0
-        TNT1 A 0 A_Explode(20,80,0)
-Stop
- }
-}
-
-
-actor TreadsDamage
-{
-+NOTARGET
-Radius 1
-Height 1
-DamageType Stomp
-+NOGRAVITY
-+NOTELEPORT
-+NODAMAGETHRUST
-+THRUGHOST
-+NORADIUSDMG
-+NOEXTREMEDEATH
-+FORCERADIUSDMG
-PROJECTILE
-	+DEHEXPLOSION
-	+ACTIVATEMCROSS
-	+EXPLODEONWATER
-States
-{
-Spawn:
-	TNT1 A 0
-	TNT1 A 0 A_Explode(200,50,0)
-	TNT1 A 1 A_Noblocking
-Stop
- }
-}
-
 Actor JuggernautBody1
 {
-+RANDOMIZE
-+FORCEXYBILLBOARD
-+DONTSPLASH
-+NOEXTREMEDEATH
-+THRUACTORS
-+NOGRAVITY
-+NOCLIP
-Projectile
-damage 0
-radius 2
-height 0
-speed 1
-Scale 1.68
-states
+	+RANDOMIZE
+	+FORCEXYBILLBOARD
+	+DONTSPLASH
+	+NOEXTREMEDEATH
+	+THRUACTORS
+	+NOGRAVITY
+	+NOCLIP
+	Projectile
+	damage 0
+	radius 2
+	height 2
+	speed 1
+	Scale 1.5
+	states
 	{
 	Spawn:
 		BS1T AAAA 1
@@ -399,10 +280,37 @@ states
 
 Actor JuggernautBody2: JuggernautBody1
 {
-states
+	states
 	{
 	Spawn:
 		BS1T BBBB 1
 	    Stop
+	}
+}
+
+actor TreadsDamage
+{
+	Radius 1
+	Height 1
+	DamageType Stomp
+	PROJECTILE
+	+NOGRAVITY
+	+NOTELEPORT
+	+NODAMAGETHRUST
+	+THRUGHOST
+	+NORADIUSDMG
+	+NOEXTREMEDEATH
+	+FORCERADIUSDMG
+	+DEHEXPLOSION
+	+ACTIVATEMCROSS
+	+EXPLODEONWATER
+	+NOTARGET
+	States
+	{
+	Spawn:
+		TNT1 A 1 A_Explode
+	Death:
+		TNT1 A -1 A_Noblocking
+		Stop
 	}
 }
