@@ -1879,6 +1879,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		NULL A 0 A_PlayerScream
 		PUFF A 0 A_PlaySound("player/cyborg/fist", 1)
 		NULL A 0 A_NoBlocking
+		MARN A 0 A_GiveInventory("PlayerIsDead", 1)
 		PNKI AABCDDDD 4
 		TNT1 A 0 A_Stop
 		TNT1 A 0 A_SpawnItem("GrowingBloodPool")
@@ -1889,6 +1890,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
         NULL A 0
 		NULL A 0 A_Scream
 		NULL A 0 A_NoBlocking
+		MARN A 0 A_GiveInventory("PlayerIsDead", 1)
 		TNT1 AAA 0 A_CustomMissile ("Xdeath1", 10, 0, random (0, 360), 2, random (0, 180))
         PNKI BC 4
 		PNKI D -1
@@ -2235,8 +2237,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 		TNT1 AAAA 0 A_CustomMissile ("FireworkSFXType2", 64, 0, random (0, 360), 2, random (30, 60))
         MHEA A 0 A_XScream
         MHEA B 0 A_NoBlocking
-        MHEA CD 0
-        //MHEA E -1
+		MARN A 0 A_GiveInventory("PlayerIsDead", 1)
 		NULL A 0 A_CustomMissile ("XDeathArm1", 32, 0, random (0, 360), 2, random (0, 90))
 		NULL A 0 A_SpawnItem ("BigBloodSpot")
 		NULL AAAAA 0 A_CustomMissile ("Guts", 32, 0, random (0, 360), 2, random (0, 160))
@@ -4727,6 +4728,7 @@ FatalityCyberdemon:
 	Death.PussyGrab:
 	    TNT1 A 0
 		TNT1 A 0 A_NoBlocking
+		MARN A 0 A_GiveInventory("PlayerIsDead", 1)
 		TNT1 A 0 A_GiveToTarget("GrabbedAEvilMarine", 1)
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
         NULL A 1
@@ -4735,6 +4737,7 @@ FatalityCyberdemon:
 
     Death.Fatality:
         NULL A 0 A_NoBlocking
+		MARN A 0 A_GiveInventory("PlayerIsDead", 1)
 		NULL A 0 A_Scream
 		NULL A 0 A_GiveToTarget("GoFatality", 1)
         NULL A 0 A_GiveToTarget("PVPFatality", 1)
@@ -4995,6 +4998,7 @@ StealthKillLabguy:
 	Death.RVFT:
 		NULL A 1 A_PlayerScream
 		NULL A 1 A_NoBlocking
+		MARN A 0 A_GiveInventory("PlayerIsDead", 1)
         NULL A 0 A_GiveToTarget("Curbstomp_Marine",1)
 		NULL A -1
         Stop
@@ -5003,6 +5007,7 @@ StealthKillLabguy:
     Death.ImpFatalityMarine:
 		NULL A 1 A_PlayerScream
 		NULL A 1 A_NoBlocking
+		MARN A 0 A_GiveInventory("PlayerIsDead", 1)
         NULL A 0 A_GiveToTarget("Fatality_Marine",1)
 		NULL A 40
 	    TNT1 A 0 A_PlaySound("BIGSCRE", 4)
