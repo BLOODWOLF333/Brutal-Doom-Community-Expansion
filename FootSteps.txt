@@ -800,104 +800,99 @@ Actor TnkStep: FootStepStrong
 	Renderstyle Translucent
 	Alpha 0.2
 	States
-		{
-		Spawn:
-			TNT1 A 0
-			TNT1 A 4
-			Stop
-        Death:
-            NULL A 0
-			TNT1 A 0 ACS_NamedExecuteAlways("BDCheckFloorType2")//Check Floortype
-			TNT1 A 2
-			TNT1 A 0 A_JumpIfInventory("IsOverSand", 1, "Sand")
-			TNT1 A 0 A_JumpIfInventory("IsOverDirt", 1, "Dirt")
-			TNT1 A 0 A_JumpIfInventory("IsOverBlood", 1, "Blood")
-			TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "Water")
-			TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "Nukage")
-			TNT1 A 0 A_JumpIfInventory("IsOverOrange", 1, "Orange")
-			TNT1 A 0 A_JumpIfInventory("IsOverPinaColada", 1, "PinaColada")
-			TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "Purple")
-			TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "XDeath")
-			TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "XDeath")
-			TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "Slime")
-			TNT1 A 1
-			TNT1 A 6
-            Stop
+	{
+	Spawn:
+		TNT1 A 4
+		Stop
+	Death:
+		TNT1 A 0
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckFloorType2")//Check Floortype
+		NULL A 2
+		TNT1 A 0 A_JumpIfInventory("IsOverSand", 1, "Sand")
+		TNT1 A 0 A_JumpIfInventory("IsOverDirt", 1, "Dirt")
+		TNT1 A 0 A_JumpIfInventory("IsOverBlood", 1, "Blood")
+		TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "Water")
+		TNT1 A 0 A_JumpIfInventory("IsOverNukage", 1, "Nukage")
+		TNT1 A 0 A_JumpIfInventory("IsOverOrange", 1, "Orange")
+		TNT1 A 0 A_JumpIfInventory("IsOverPinaColada", 1, "PinaColada")
+		TNT1 A 0 A_JumpIfInventory("IsOverPurple", 1, "Purple")
+		TNT1 A 0 A_JumpIfInventory("IsOverLava", 1, "XDeath")
+		TNT1 A 0 A_JumpIfInventory("IsOverMagenta", 1, "XDeath")
+		TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "Slime")
+		NULL A -1 A_NoBlocking
+		Stop
 
-		Sand:
-			TNT1 A 0
-			TNT1 A 0 A_CustomMissile ("SandDustSmall", 32, -32, random (0, 360), 2, random (20, 150))
-			TNT1 A 0 A_CustomMissile ("SandDustSmall", 32, 32, random (0, 360), 2, random (20, 150))
-			TNT1 A 0 A_CustomMissile ("SandCloudShort", 2, 32, random (0, 360), 2, random (10, 90))
-			TNT1 A 0 A_CustomMissile ("SandCloudShort", 2, -32, random (0, 360), 2, random (10, 90))
-			NULL A 300
-			NULL AAAA 50 A_FadeOut(0.05)
-			Stop
+	Sand:
+		TNT1 A 0
+		TNT1 A 0 A_CustomMissile ("SandDustSmall", 32, -32, random (0, 360), 2, random (20, 150))
+		TNT1 A 0 A_CustomMissile ("SandDustSmall", 32, 32, random (0, 360), 2, random (20, 150))
+		TNT1 A 0 A_CustomMissile ("SandCloudShort", 2, 32, random (0, 360), 2, random (10, 90))
+		TNT1 A 0 A_CustomMissile ("SandCloudShort", 2, -32, random (0, 360), 2, random (10, 90))
+		NULL A 300
+		NULL AAAA 50 A_FadeOut(0.05)
+		Stop
 
-		Dirt:
-			TNT1 A 0
-			TNT1 A 0 A_CustomMissile ("BrownCloudShort", 2, 32, random (0, 360), 2, random (10, 90))
-			TNT1 A 0 A_CustomMissile ("BrownCloudShort", 2, -32, random (0, 360), 2, random (10, 90))
-			NULL A 300
-			NULL AAAA 50 A_FadeOut(0.05)
-			Stop
+	Dirt:
+		TNT1 A 0
+		TNT1 A 0 A_CustomMissile ("BrownCloudShort", 2, 32, random (0, 360), 2, random (10, 90))
+		TNT1 A 0 A_CustomMissile ("BrownCloudShort", 2, -32, random (0, 360), 2, random (10, 90))
+		NULL A 300
+		NULL AAAA 50 A_FadeOut(0.05)
+		Stop
 
-		Water:
-			TNT1 A 0
-			TNT1 A 0 A_PlaySound("bigspl1")
-			TNT1 A 0 A_CustomMissile ("BlueLiquidParticleX", 32, 32, random (0, 360), 2, random (10, 90))
-			TNT1 A 0 A_CustomMissile ("BlueLiquidParticleX", 32, -32, random (0, 360), 2, random (10, 90))
-			Stop
+	Water:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("bigspl1")
+		TNT1 A 0 A_CustomMissile ("BlueLiquidParticleX", 32, 32, random (0, 360), 2, random (10, 90))
+		TNT1 A 0 A_CustomMissile ("BlueLiquidParticleX", 32, -32, random (0, 360), 2, random (10, 90))
+		Stop
 
-		Blood:
-			TNT1 A 0
-			TNT1 A 0 A_PlaySound("bigspl1")
-			TNT1 A 0 A_CustomMissile ("BloodParticleX", 32, 32, random (0, 360), 2, random (10, 90))
-			TNT1 A 0 A_CustomMissile ("BloodParticleX", 32, -32, random (0, 360), 2, random (10, 90))
-			Stop
+	Blood:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("bigspl1")
+		TNT1 A 0 A_CustomMissile ("BloodParticleX", 32, 32, random (0, 360), 2, random (10, 90))
+		TNT1 A 0 A_CustomMissile ("BloodParticleX", 32, -32, random (0, 360), 2, random (10, 90))
+		Stop
 
-		Nukage:
-			TNT1 A 0
-			TNT1 A 0 A_PlaySound("bigspl1")
-			TNT1 A 0 A_CustomMissile ("GreenLiquidParticleX", 32, 32, random (0, 360), 2, random (10, 90))
-			TNT1 A 0 A_CustomMissile ("GreenLiquidParticleX", 32, -32, random (0, 360), 2, random (10, 90))
-			Stop
+	Nukage:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("bigspl1")
+		TNT1 A 0 A_CustomMissile ("GreenLiquidParticleX", 32, 32, random (0, 360), 2, random (10, 90))
+		TNT1 A 0 A_CustomMissile ("GreenLiquidParticleX", 32, -32, random (0, 360), 2, random (10, 90))
+		Stop
 
-		Orange:
-			TNT1 A 0
-			TNT1 A 0 A_PlaySound("bigspl1")
-			TNT1 A 0 A_CustomMissile ("OrangeLiquidParticleX", 32, 32, random (0, 360), 2, random (10, 90))
-			TNT1 A 0 A_CustomMissile ("OrangeLiquidParticleX", 32, -32, random (0, 360), 2, random (10, 90))
-			Stop
+	Orange:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("bigspl1")
+		TNT1 A 0 A_CustomMissile ("OrangeLiquidParticleX", 32, 32, random (0, 360), 2, random (10, 90))
+		TNT1 A 0 A_CustomMissile ("OrangeLiquidParticleX", 32, -32, random (0, 360), 2, random (10, 90))
+		Stop
 
-		PinaColada:
-			TNT1 A 0
-			TNT1 A 0 A_PlaySound("bigspl1")
-			TNT1 A 0 A_CustomMissile ("PinaColadaLiquidParticleX", 32, 32, random (0, 360), 2, random (10, 90))
-			TNT1 A 0 A_CustomMissile ("PinaColadaLiquidParticleX", 32, -32, random (0, 360), 2, random (10, 90))
-			Stop
+	PinaColada:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("bigspl1")
+		TNT1 A 0 A_CustomMissile ("PinaColadaLiquidParticleX", 32, 32, random (0, 360), 2, random (10, 90))
+		TNT1 A 0 A_CustomMissile ("PinaColadaLiquidParticleX", 32, -32, random (0, 360), 2, random (10, 90))
+		Stop
 
-		Purple:
-			TNT1 A 0
-			TNT1 A 0 A_PlaySound("bigspl1")
-			TNT1 A 0 A_CustomMissile ("PurpleLiquidParticleX", 32, 32, random (0, 360), 2, random (10, 90))
-			TNT1 A 0 A_CustomMissile ("PurpleLiquidParticleX", 32, -32, random (0, 360), 2, random (10, 90))
-			Stop
+	Purple:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("bigspl1")
+		TNT1 A 0 A_CustomMissile ("PurpleLiquidParticleX", 32, 32, random (0, 360), 2, random (10, 90))
+		TNT1 A 0 A_CustomMissile ("PurpleLiquidParticleX", 32, -32, random (0, 360), 2, random (10, 90))
+		Stop
 
-		Slime:
-			TNT1 A 0
-			TNT1 A 0 A_PlaySound("bigspl1")
-			TNT1 A 0 A_CustomMissile ("BrownLiquidParticleX", 32, 32, random (0, 360), 2, random (10, 90))
-			TNT1 A 0 A_CustomMissile ("BrownLiquidParticleX", 32, -32, random (0, 360), 2, random (10, 90))
-			Stop
+	Slime:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("bigspl1")
+		TNT1 A 0 A_CustomMissile ("BrownLiquidParticleX", 32, 32, random (0, 360), 2, random (10, 90))
+		TNT1 A 0 A_CustomMissile ("BrownLiquidParticleX", 32, -32, random (0, 360), 2, random (10, 90))
+		Stop
 
-		XDeath:
-            TNT1 A 1
-			TNT1 A 1
-			TNT1 A 6
-            Stop
-
-		}
+	XDeath:
+		NULL A -1 A_NoBlocking
+		Stop
+	}
 }
 
 ACTOR Headkicker

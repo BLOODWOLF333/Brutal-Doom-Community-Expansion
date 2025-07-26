@@ -6,8 +6,8 @@ ACTOR ZombieMainBattleTank 9951//Tank treads & body
 	//$Sprite TNK1B1
     XScale 1.95
 	YScale 1.35
-	Radius 64
-	Height 64
+	Radius 80
+	Height 72
 	Game Doom
     GibHealth 25
     Health 4000
@@ -186,8 +186,8 @@ Actor ZombieMainBattleTankTurret 9952
 	+NOBLOODDECALS
 	+DONTRIP
 	damage 0
-	radius 46
-	height 48
+	radius 40
+	height 36
 	speed 0
 	Scale 1.0
 	Mass 31700//35 tons
@@ -196,18 +196,12 @@ Actor ZombieMainBattleTankTurret 9952
 	states
 	{
 	Spawn:
-		TNT1 A 0 NODELAY A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
 		TNKZ T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
-		TNKZ T 1 A_Look
-
-	Idle:
-		TNT1 A 0
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
-		TNKZ T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
 		TNKZ T 1 A_Look
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
-	    Loop
+		Loop
 
 	See:
 		TNT1 A 0
@@ -241,7 +235,7 @@ Actor ZombieMainBattleTankTurret 9952
 	ForgetTarget:
 		TNT1 A 0
 		TNT1 A 0 A_ClearTarget
-		Goto Idle
+		Goto Spawn
 
 	Missile:
 		TNT1 A 0
@@ -263,8 +257,8 @@ Actor ZombieMainBattleTankTurret 9952
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundHMG", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("TANKMG", 5)
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 72, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 72, 16, 0, 0)
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 80, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 80, 16, 0, 0)
 
 		TNKZ T 1 A_FaceTarget(4)
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
@@ -275,33 +269,8 @@ Actor ZombieMainBattleTankTurret 9952
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundHMG", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("TANKMG", 5)
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 72, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 72, 16, 0, 0)
-
-		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
-		TNKZ T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
-		TNT1 A 0 A_GiveInventory("TankReady", 1)
-		TNKZ T 1 A_FaceTarget(4)
-		TNT1 A 0 A_GiveInventory("TankReady", 1)
-		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
-		TNKZ T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
-		TNT1 A 0 A_GiveInventory("TankReady", 1)
-		TNT1 A 0 A_CustomMissile("DistantFireSoundHMG", 32, 0, 0, 1, 0)
-		TNT1 A 0 A_PlaySound("TANKMG", 5)
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 72, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 72, 16, 0, 0)
-
-		TNKZ T 1 A_FaceTarget(4)
-		TNT1 A 0 A_GiveInventory("TankReady", 1)
-		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
-		TNKZ T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
-		TNT1 A 0 A_GiveInventory("TankReady", 1)
-		TNKZ T 1 A_FaceTarget(4)
-		TNT1 A 0 A_GiveInventory("TankReady", 1)
-		TNT1 A 0 A_CustomMissile("DistantFireSoundHMG", 32, 0, 0, 1, 0)
-		TNT1 A 0 A_PlaySound("TANKMG", 5)
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 72, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 72, 16, 0, 0)
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 80, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 80, 16, 0, 0)
 
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
 		TNKZ T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
@@ -313,8 +282,8 @@ Actor ZombieMainBattleTankTurret 9952
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundHMG", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("TANKMG", 5)
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 72, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 72, 16, 0, 0)
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 80, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 80, 16, 0, 0)
 
 		TNKZ T 1 A_FaceTarget(4)
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
@@ -325,33 +294,8 @@ Actor ZombieMainBattleTankTurret 9952
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundHMG", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("TANKMG", 5)
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 72, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 72, 16, 0, 0)
-
-		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
-		TNKZ T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
-		TNT1 A 0 A_GiveInventory("TankReady", 1)
-		TNKZ T 1 A_FaceTarget(4)
-		TNT1 A 0 A_GiveInventory("TankReady", 1)
-		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
-		TNKZ T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
-		TNT1 A 0 A_GiveInventory("TankReady", 1)
-		TNT1 A 0 A_CustomMissile("DistantFireSoundHMG", 32, 0, 0, 1, 0)
-		TNT1 A 0 A_PlaySound("TANKMG", 5)
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 72, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 72, 16, 0, 0)
-
-		TNKZ T 1 A_FaceTarget(4)
-		TNT1 A 0 A_GiveInventory("TankReady", 1)
-		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
-		TNKZ T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
-		TNT1 A 0 A_GiveInventory("TankReady", 1)
-		TNKZ T 1 A_FaceTarget(4)
-		TNT1 A 0 A_GiveInventory("TankReady", 1)
-		TNT1 A 0 A_CustomMissile("DistantFireSoundHMG", 32, 0, 0, 1, 0)
-		TNT1 A 0 A_PlaySound("TANKMG", 5)
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 72, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 72, 16, 0, 0)
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 80, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 80, 16, 0, 0)
 
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
 		TNKZ T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
@@ -363,8 +307,8 @@ Actor ZombieMainBattleTankTurret 9952
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundHMG", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("TANKMG", 5)
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 72, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 72, 16, 0, 0)
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 80, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 80, 16, 0, 0)
 
 		TNKZ T 1 A_FaceTarget(4)
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
@@ -375,8 +319,8 @@ Actor ZombieMainBattleTankTurret 9952
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundHMG", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("TANKMG", 5)
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 72, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 72, 16, 0, 0)
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 80, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 80, 16, 0, 0)
 
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
 		TNKZ T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
@@ -388,8 +332,8 @@ Actor ZombieMainBattleTankTurret 9952
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundHMG", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("TANKMG", 5)
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 72, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 72, 16, 0, 0)
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 80, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 80, 16, 0, 0)
 
 		TNKZ T 1 A_FaceTarget(4)
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
@@ -400,8 +344,58 @@ Actor ZombieMainBattleTankTurret 9952
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundHMG", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("TANKMG", 5)
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 72, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 72, 16, 0, 0)
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 80, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 80, 16, 0, 0)
+
+		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
+		TNKZ T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
+		TNT1 A 0 A_GiveInventory("TankReady", 1)
+		TNKZ T 1 A_FaceTarget(4)
+		TNT1 A 0 A_GiveInventory("TankReady", 1)
+		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
+		TNKZ T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
+		TNT1 A 0 A_GiveInventory("TankReady", 1)
+		TNT1 A 0 A_CustomMissile("DistantFireSoundHMG", 32, 0, 0, 1, 0)
+		TNT1 A 0 A_PlaySound("TANKMG", 5)
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 80, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 80, 16, 0, 0)
+
+		TNKZ T 1 A_FaceTarget(4)
+		TNT1 A 0 A_GiveInventory("TankReady", 1)
+		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
+		TNKZ T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
+		TNT1 A 0 A_GiveInventory("TankReady", 1)
+		TNKZ T 1 A_FaceTarget(4)
+		TNT1 A 0 A_GiveInventory("TankReady", 1)
+		TNT1 A 0 A_CustomMissile("DistantFireSoundHMG", 32, 0, 0, 1, 0)
+		TNT1 A 0 A_PlaySound("TANKMG", 5)
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 80, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 80, 16, 0, 0)
+
+		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
+		TNKZ T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
+		TNT1 A 0 A_GiveInventory("TankReady", 1)
+		TNKZ T 1 A_FaceTarget(4)
+		TNT1 A 0 A_GiveInventory("TankReady", 1)
+		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
+		TNKZ T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
+		TNT1 A 0 A_GiveInventory("TankReady", 1)
+		TNT1 A 0 A_CustomMissile("DistantFireSoundHMG", 32, 0, 0, 1, 0)
+		TNT1 A 0 A_PlaySound("TANKMG", 5)
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 80, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 80, 16, 0, 0)
+
+		TNKZ T 1 A_FaceTarget(4)
+		TNT1 A 0 A_GiveInventory("TankReady", 1)
+		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
+		TNKZ T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
+		TNT1 A 0 A_GiveInventory("TankReady", 1)
+		TNKZ T 1 A_FaceTarget(4)
+		TNT1 A 0 A_GiveInventory("TankReady", 1)
+		TNT1 A 0 A_CustomMissile("DistantFireSoundHMG", 32, 0, 0, 1, 0)
+		TNT1 A 0 A_PlaySound("TANKMG", 5)
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunProjectileEnemy", 80, 16, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("HeavyMachinegunFlash", 80, 16, 0, 0)
 		TNT1 A 0 A_JumpIfTargetInLOS("Missile", 6)
 		Goto See
 
@@ -423,8 +417,8 @@ Actor ZombieMainBattleTankTurret 9952
 
 		TNT1 A 0 A_CustomMissile("DistantFireSoundCannon", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("TANKF", 5)
-		TNT1 A 0 A_CustomMissile("EnemyTankShell", 60, 0, angle + random(-1, 1), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(4,5))
-		TNT1 A 0 A_CustomMissile("TankFireEffect", 60, 0, 0, 0)
+		TNT1 A 0 A_CustomMissile("EnemyTankShell", 68, 0, angle + random(-1, 1), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(4,5))
+		TNT1 A 0 A_CustomMissile("TankFireEffect", 68, 0, 0, 0)
 
 		TNKZ T 1 A_FaceTarget(4)
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
@@ -441,8 +435,8 @@ Actor ZombieMainBattleTankTurret 9952
 		TNT1 A 0
 		TNT1 A 0 A_CustomMissile("DistantFireSoundCannon", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("TANKF", 5)
-		TNT1 A 0 A_CustomMissile("EnemyTankShell", 60, 0, angle + random(-1, 1), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(2,3))
-		TNT1 A 0 A_CustomMissile("TankFireEffect", 60, 0, 0, 0)
+		TNT1 A 0 A_CustomMissile("EnemyTankShell", 68, 0, angle + random(-1, 1), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(2,3))
+		TNT1 A 0 A_CustomMissile("TankFireEffect", 68, 0, 0, 0)
 
 		TNKZ T 1 A_FaceTarget(4)
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
@@ -459,8 +453,8 @@ Actor ZombieMainBattleTankTurret 9952
 		TNT1 A 0
 		TNT1 A 0 A_CustomMissile("DistantFireSoundCannon", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("TANKF", 5)
-		TNT1 A 0 A_CustomMissile("EnemyTankShell", 60, 0, angle + random(-1, 1), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(0,1))
-		TNT1 A 0 A_CustomMissile("TankFireEffect", 60, 0, 0, 0)
+		TNT1 A 0 A_CustomMissile("EnemyTankShell", 68, 0, angle + random(-1, 1), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(0,1))
+		TNT1 A 0 A_CustomMissile("TankFireEffect", 68, 0, 0, 0)
 
 		TNKZ T 1 A_FaceTarget(4)
 		TNT1 A 0 A_GiveInventory("TankReady", 1)
@@ -494,13 +488,11 @@ ACTOR ZombieArtilleryTank : ZombieMainBattleTank 9950
 	//$Icon "monster"
 	//$Colour rgb(200, 0, 0)
 	//$Sprite TNK1B1
-    Radius 64
-	Height 64
+	Radius 80
+	Height 72
 	health 2000
 	Mass 36300//40 tons
 	Speed 16
-	XScale 1.95
-	YScale 1.35
 	States
 	{
 	Spawn:
@@ -517,12 +509,13 @@ Actor ZombieArtilleryTankTurret: ZombieMainBattleTankTurret 9949
 	//$Icon "monster"
 	//$Colour rgb(200, 0, 0)
 	//$Sprite TN2ZT1
+	radius 40
+	height 36
 	States
 	{
 	Spawn:
-	Idle:
-		TNT1 A 0 NODELAY A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
 		TN2Z T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
+		TN2Z T 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
 		TN2Z T 1 A_Look
 	    Loop
 
@@ -550,7 +543,7 @@ Actor ZombieArtilleryTankTurret: ZombieMainBattleTankTurret 9949
 	ForgetTarget:
 		TNT1 A 0
 		TNT1 A 0 A_ClearTarget
-		Goto Idle
+		Goto Spawn
 
 	Missile:
 		TNT1 A 0
@@ -566,8 +559,8 @@ Actor ZombieArtilleryTankTurret: ZombieMainBattleTankTurret 9949
 		TN2Z T 1 A_FaceTarget(6)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundAC", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("ACANO1", 5)
-		TNT1 A 0 A_CustomMissile("AutoCannonProjectileEnemy", 64, 30, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("AutocannonFlash", 64, 30, 0, 0)
+		TNT1 A 0 A_CustomMissile("AutoCannonProjectileEnemy", 72, 30, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("AutocannonFlash", 72, 30, 0, 0)
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
 		TN2Z T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
 		TN2Z T 1 A_FaceTarget(6)
@@ -577,8 +570,8 @@ Actor ZombieArtilleryTankTurret: ZombieMainBattleTankTurret 9949
 		TN2Z T 1 A_FaceTarget(6)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundAC", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("ACANO1", 5)
-		TNT1 A 0 A_CustomMissile("AutoCannonProjectileEnemy", 64, -30, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("AutocannonFlash", 64, -30, 0, 0)
+		TNT1 A 0 A_CustomMissile("AutoCannonProjectileEnemy", 72, -30, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("AutocannonFlash", 72, -30, 0, 0)
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
 		TN2Z T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
 		TN2Z T 1 A_FaceTarget(6)
@@ -588,8 +581,8 @@ Actor ZombieArtilleryTankTurret: ZombieMainBattleTankTurret 9949
 		TN2Z T 1 A_FaceTarget(6)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundAC", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("ACANO1", 5)
-		TNT1 A 0 A_CustomMissile("AutoCannonProjectileEnemy", 64, 30, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("AutocannonFlash", 64, 30, 0, 0)
+		TNT1 A 0 A_CustomMissile("AutoCannonProjectileEnemy", 72, 30, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("AutocannonFlash", 72, 30, 0, 0)
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
 		TN2Z T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
 		TN2Z T 1 A_FaceTarget(6)
@@ -599,8 +592,8 @@ Actor ZombieArtilleryTankTurret: ZombieMainBattleTankTurret 9949
 		TN2Z T 1 A_FaceTarget(6)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundAC", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("ACANO1", 5)
-		TNT1 A 0 A_CustomMissile("AutoCannonProjectileEnemy", 64, -30, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("AutocannonFlash", 64, -30, 0, 0)
+		TNT1 A 0 A_CustomMissile("AutoCannonProjectileEnemy", 72, -30, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("AutocannonFlash", 72, -30, 0, 0)
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
 		TN2Z T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
 		TN2Z T 1 A_FaceTarget(6)
@@ -610,8 +603,8 @@ Actor ZombieArtilleryTankTurret: ZombieMainBattleTankTurret 9949
 		TN2Z T 1 A_FaceTarget(6)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundAC", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("ACANO1", 5)
-		TNT1 A 0 A_CustomMissile("AutoCannonProjectileEnemy", 64, 30, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("AutocannonFlash", 64, 30, 0, 0)
+		TNT1 A 0 A_CustomMissile("AutoCannonProjectileEnemy", 72, 30, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("AutocannonFlash", 72, 30, 0, 0)
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
 		TN2Z T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
 		TN2Z T 1 A_FaceTarget(6)
@@ -621,8 +614,8 @@ Actor ZombieArtilleryTankTurret: ZombieMainBattleTankTurret 9949
 		TN2Z T 1 A_FaceTarget(6)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundAC", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("ACANO1", 5)
-		TNT1 A 0 A_CustomMissile("AutoCannonProjectileEnemy", 64, -30, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("AutocannonFlash", 64, -30, 0, 0)
+		TNT1 A 0 A_CustomMissile("AutoCannonProjectileEnemy", 72, -30, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("AutocannonFlash", 72, -30, 0, 0)
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
 		TN2Z T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
 		TN2Z T 1 A_FaceTarget(6)
@@ -632,8 +625,8 @@ Actor ZombieArtilleryTankTurret: ZombieMainBattleTankTurret 9949
 		TN2Z T 1 A_FaceTarget(6)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundAC", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("ACANO1", 5)
-		TNT1 A 0 A_CustomMissile("AutoCannonProjectileEnemy", 64, 30, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("AutocannonFlash", 64, 30, 0, 0)
+		TNT1 A 0 A_CustomMissile("AutoCannonProjectileEnemy", 72, 30, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("AutocannonFlash", 72, 30, 0, 0)
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
 		TN2Z T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
 		TN2Z T 1 A_FaceTarget(6)
@@ -643,8 +636,8 @@ Actor ZombieArtilleryTankTurret: ZombieMainBattleTankTurret 9949
 		TN2Z T 1 A_FaceTarget(6)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundAC", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_PlaySound("ACANO1", 5)
-		TNT1 A 0 A_CustomMissile("AutoCannonProjectileEnemy", 64, -30, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
-		TNT1 A 0 A_CustomMissile("AutocannonFlash", 64, -30, 0, 0)
+		TNT1 A 0 A_CustomMissile("AutoCannonProjectileEnemy", 72, -30, angle + random(-3, 3), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(-2 ,2))
+		TNT1 A 0 A_CustomMissile("AutocannonFlash", 72, -30, 0, 0)
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
 		TN2Z T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
 		TN2Z T 1 A_FaceTarget(6)
@@ -663,8 +656,8 @@ Actor ZombieArtilleryTankTurret: ZombieMainBattleTankTurret 9949
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
 		TN2Z T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
 		TN2Z T 1 A_FaceTarget(6)
-		TNT1 A 0 A_CustomMissile("TankMissile2", 96, 26, angle + random(-1, 1), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(8, 10))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundMissile", 96, 0, 0, 1, 0)
+		TNT1 A 0 A_CustomMissile("TankMissile2", 104, 26, angle + random(-1, 1), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(10, 14))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundMissile", 104, 0, 0, 1, 0)
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
 		TN2Z T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
 		TN2Z T 1 A_FaceTarget(6)
@@ -677,8 +670,8 @@ Actor ZombieArtilleryTankTurret: ZombieMainBattleTankTurret 9949
 		TN2Z T 1 A_FaceTarget(6)
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
 		TN2Z T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
-		TNT1 A 0 A_CustomMissile("TankMissile2", 96, -26, angle + random(-1, 1), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(8, 10))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundMissile", 96, 0, 0, 1, 0)
+		TNT1 A 0 A_CustomMissile("TankMissile2", 104, -26, angle + random(-1, 1), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(10, 14))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundMissile", 104, 0, 0, 1, 0)
 		TN2Z T 1 A_FaceTarget(6)
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
 		TN2Z T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
@@ -693,8 +686,8 @@ Actor ZombieArtilleryTankTurret: ZombieMainBattleTankTurret 9949
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
 		TN2Z T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
 		TN2Z T 1 A_FaceTarget(6)
-		TNT1 A 0 A_CustomMissile("TankMissile2", 96, 26, angle + random(-1, 1), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(5, 7))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundMissile", 96, 0, 0, 1, 0)
+		TNT1 A 0 A_CustomMissile("TankMissile2", 104, 26, angle + random(-1, 1), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(6, 9))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundMissile", 104, 0, 0, 1, 0)
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
 		TN2Z T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
 		TN2Z T 1 A_FaceTarget(6)
@@ -707,8 +700,8 @@ Actor ZombieArtilleryTankTurret: ZombieMainBattleTankTurret 9949
 		TN2Z T 1 A_FaceTarget(6)
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
 		TN2Z T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
-		TNT1 A 0 A_CustomMissile("TankMissile2", 96, -26, angle + random(-1, 1), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(5, 7))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundMissile", 96, 0, 0, 1, 0)
+		TNT1 A 0 A_CustomMissile("TankMissile2", 104, -26, angle + random(-1, 1), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(6, 9))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundMissile", 104, 0, 0, 1, 0)
 		TN2Z T 1 A_FaceTarget(6)
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
 		TN2Z T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
@@ -723,8 +716,8 @@ Actor ZombieArtilleryTankTurret: ZombieMainBattleTankTurret 9949
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
 		TN2Z T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
 		TN2Z T 1 A_FaceTarget(6)
-		TNT1 A 0 A_CustomMissile("TankMissile2", 96, 26, angle + random(-1, 1), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(2, 4))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundMissile", 96, 0, 0, 1, 0)
+		TNT1 A 0 A_CustomMissile("TankMissile2", 104, 26, angle + random(-1, 1), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(3, 5))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundMissile", 104, 0, 0, 1, 0)
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
 		TN2Z T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
 		TN2Z T 1 A_FaceTarget(6)
@@ -737,8 +730,8 @@ Actor ZombieArtilleryTankTurret: ZombieMainBattleTankTurret 9949
 		TN2Z T 1 A_FaceTarget(6)
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
 		TN2Z T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)
-		TNT1 A 0 A_CustomMissile("TankMissile2", 96, -26, angle + random(-1, 1), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(2, 4))
-		TNT1 A 0 A_CustomMissile("DistantFireSoundMissile", 96, 0, 0, 1, 0)
+		TNT1 A 0 A_CustomMissile("TankMissile2", 104, -26, angle + random(-1, 1), CMF_OFFSETPITCH | CMF_ABSOLUTEANGLE, random(3, 5))
+		TNT1 A 0 A_CustomMissile("DistantFireSoundMissile", 104, 0, 0, 1, 0)
 		TN2Z T 1 A_FaceTarget(6)
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
 		TN2Z T 1 A_Warp(AAPTR_MASTER, 0, 0, 0, 0, WARPF_USECALLERANGLE)

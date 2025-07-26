@@ -27,9 +27,8 @@ actor BaronHoldingBarrel
 	States
 	{
 		Spawn:
-		TNT1 A 0
+		TNT1 A 2 NODELAY A_Warp(AAPTR_Master,0,0,75,0,WARPF_NOCHECKPOSITION | WARPF_INTERPOLATE)
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHoldingBarrel", AAPTR_MASTER) == 0, "Die")
-		TNT1 A 2 A_Warp(AAPTR_Master,0,0,75,0,WARPF_NOCHECKPOSITION | WARPF_INTERPOLATE)
 		Loop
 
 		Die:
@@ -78,9 +77,8 @@ actor BaronBossHoldingBarrel : BaronHoldingBarrel
 	States
 	{
 		Spawn:
-		TNT1 A 0
+		TNT1 A 2 NODELAY A_Warp(AAPTR_Master,0,0,88,0,WARPF_NOCHECKPOSITION | WARPF_INTERPOLATE)
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHoldingBarrel", AAPTR_MASTER) == 0, "Die")
-		TNT1 A 2 A_Warp(AAPTR_Master,0,0,88,0,WARPF_NOCHECKPOSITION | WARPF_INTERPOLATE)
 		Loop
 	}
 }
@@ -94,9 +92,8 @@ actor KnightHoldingBarrel : BaronHoldingBarrel
 	States
 	{
 		Spawn:
-		TNT1 A 0
+		TNT1 A 2 NODELAY A_Warp(AAPTR_Master,0,0,68,0,WARPF_NOCHECKPOSITION | WARPF_INTERPOLATE)
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHoldingBarrel", AAPTR_MASTER) == 0, "Die")
-		TNT1 A 2 A_Warp(AAPTR_Master,0,0,68,0,WARPF_NOCHECKPOSITION | WARPF_INTERPOLATE)
 		Loop
 	}
 }
@@ -128,9 +125,8 @@ actor HeadshotTargetBase
 	States
 	{
 		Spawn:
-		TNT1 A 0
+		TNT1 A 2 NODELAY//A_Warp(AAPTR_Master,0,0,//Z-axis,0,WARPF_NOCHECKPOSITION | WARPF_INTERPOLATE)
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
-		TNT1 A 2 //A_Warp(AAPTR_Master,0,0,//Z-axis,0,WARPF_NOCHECKPOSITION | WARPF_INTERPOLATE)
 		LOOP
 
 		Pain:
@@ -227,9 +223,8 @@ Actor BaronHeadShot : HeadShotTargetBase
 	States
 	{
 		Spawn:
-		TNT1 A 0
+		TNT1 A 2 NODELAY A_Warp(AAPTR_Master,0,0,64,0,WARPF_NOCHECKPOSITION | WARPF_INTERPOLATE)
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
-		TNT1 A 2 A_Warp(AAPTR_Master,0,0,64,0,WARPF_NOCHECKPOSITION | WARPF_INTERPOLATE)
 		LOOP
 	}
 }
@@ -239,9 +234,8 @@ Actor DyingBaronHeadShot : BaronHeadShot
 	States
 	{
 		Spawn:
-		TNT1 A 0
+		TNT1 A 2 NODELAY A_Warp(AAPTR_Master,0,0,58,0,WARPF_NOCHECKPOSITION | WARPF_INTERPOLATE)
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
-		TNT1 A 2 A_Warp(AAPTR_Master,0,0,58,0,WARPF_NOCHECKPOSITION | WARPF_INTERPOLATE)
 		LOOP
 	}
 }
@@ -255,9 +249,8 @@ Actor BaronBossHeadShot : BaronHeadShot
 	States
 	{
 		Spawn:
-		TNT1 A 0
+		TNT1 A 2 NODELAY A_Warp(AAPTR_Master,0,0,76,0,WARPF_NOCHECKPOSITION | WARPF_INTERPOLATE)
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
-		TNT1 A 2 A_Warp(AAPTR_Master,0,0,76,0,WARPF_NOCHECKPOSITION | WARPF_INTERPOLATE)
 		LOOP
 	}
 }
@@ -296,9 +289,8 @@ actor EnemyTankWeakSpot: HeadshotTargetBase
 	States
 	{
 	Spawn:
-		TNT1 A 0
+		TNT1 A 2 NODELAY A_Warp(AAPTR_Master,-64,0,16,0,WARPF_NOCHECKPOSITION | WARPF_INTERPOLATE)
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
-		HSHT A 2 A_Warp(AAPTR_Master,-64,0,16,0,WARPF_NOCHECKPOSITION | WARPF_INTERPOLATE)
 		LOOP
 	}
 }
@@ -312,9 +304,8 @@ Actor KnightHeadShot : BaronHeadShot
 	States
 	{
 		Spawn:
-		TNT1 A 0
+		TNT1 A 2 NODELAY A_Warp(AAPTR_Master,0,0,59,0,WARPF_NOCHECKPOSITION | WARPF_INTERPOLATE)
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
-		TNT1 A 2 A_Warp(AAPTR_Master,0,0,59,0,WARPF_NOCHECKPOSITION | WARPF_INTERPOLATE)
 		LOOP
 	}
 }
@@ -324,9 +315,8 @@ Actor DyingKnightHeadShot : KnightHeadShot
 	States
 	{
 		Spawn:
-		TNT1 A 0
+		TNT1 A 2 NODELAY A_Warp(AAPTR_Master,0,0,47,0,WARPF_NOCHECKPOSITION | WARPF_INTERPOLATE)
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
-		TNT1 A 2 A_Warp(AAPTR_Master,0,0,47,0,WARPF_NOCHECKPOSITION | WARPF_INTERPOLATE)
 		LOOP
 	}
 }
@@ -420,18 +410,16 @@ Actor RevenantHeadShot : HeadShotTargetBase
 	States
 	{
 		Spawn:
-		TNT1 A 0
+		TNT1 A 2 NODELAY A_Warp(AAPTR_Master,0,0,56,0,WARPF_NOCHECKPOSITION | WARPF_INTERPOLATE)
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
-		TNT1 A 2 A_Warp(AAPTR_Master,0,0,56,0,WARPF_NOCHECKPOSITION | WARPF_INTERPOLATE)
 		LOOP
 	}
 }
 
 Actor TankEngineWeakSpot : HeadshotTargetBase//for player
 {
-	Health 1000
-	Radius 24
-	Height 44
+	Radius 32
+	Height 32
 	Species "Marines"
 	DamageType "TankWeakSpot"
 	BloodType "TankBlood"
@@ -457,71 +445,14 @@ Actor TankEngineWeakSpot : HeadshotTargetBase//for player
 	Damagefactor "TankWeakSpot", 0.0	Damagefactor "CheckRepair", 0.0
 
 	PainChance "Avoid", 0	PainChance "HitGround", 255	PainChance "Repair", 255
-	XScale 0.19
-	YScale 0.17
+	XScale 0.25
+	YScale 0.13
 	States
 	{
-		Spawn:
-		TNT1 A 3
-		TNT1 A 1 A_Die
-		Stop
-
-		Pain:
-		TNT1 A 3 A_JumpIfHealthLower(201, "Pain800")//800 BFG9000
-		TNT1 A 0 A_JumpIfHealthLower(601, "Pain400")//400
-		TNT1 A 0 A_JumpIfHealthLower(801, "Pain200")//200
-		TNT1 A 0 A_JumpIfHealthLower(901, "Pain100")//100
-		TNT1 A 0 A_JumpIfHealthLower(951, "Pain50")//50
-		TNT1 A 0 A_JumpIfHealthLower(976, "Pain25")//25
-		TNT1 A 0 A_Explode(15,15)
-		TNT1 A 1 A_Die
-		Stop
-
-		Pain25:
-		TNT1 A 0
-		TNT1 A 0 A_Explode(25,15, 0, 0, 15)//hs
-		TNT1 A 1 A_Die
-		Stop
-
-		Pain50:
-		TNT1 A 0
-		TNT1 A 0 A_Explode(50,15, 0, 0, 15)//hs
-		TNT1 A 1 A_Die
-		Stop
-
-		Pain100:
-		TNT1 A 0
-		TNT1 A 0 A_Explode(100,15, 0, 0, 15)//hs
-		TNT1 A 1 A_Die
-		Stop
-
-		Pain200:
-		TNT1 A 0
-		TNT1 A 0 A_Explode(200,15, 0, 0, 15)//hs
-		TNT1 A 1 A_Die
-		Stop
-
-		Pain400:
-		TNT1 A 0
-		TNT1 A 0 A_Explode(400,15, 0, 0, 15)//hs
-		TNT1 A 1 A_Die
-		Stop
-
-		Pain800:
-		TNT1 A 0
-		TNT1 A 0 A_Explode(800,15, 0, 0, 15)//hs
-		TNT1 A 1 A_Die
-		Stop
-
-		Death:
-		TNT1 A -1 A_NoBlocking
-		Stop
-
-		XDeath:
-		TNT1 A 0
-		TNT1 A 0 A_Explode(1000,15, 0, 0, 15)//hs
-		TNT1 A -1 A_NoBlocking
-		Stop
+	Spawn:
+		TNT1 A 2 NODELAY A_Warp(AAPTR_Master,-64,0,16,0,WARPF_NOCHECKPOSITION | WARPF_INTERPOLATE)
+		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
+		LOOP
 	}
 }
 
@@ -547,9 +478,8 @@ Actor VileHeadShot : HeadShotTargetBase
 	States
 	{
 		Spawn:
-		TNT1 A 0
+		TNT1 A 2 NODELAY A_Warp(AAPTR_Master,0,0,56,0,WARPF_NOCHECKPOSITION | WARPF_INTERPOLATE)
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
-		TNT1 A 2 A_Warp(AAPTR_Master,0,0,56,0,WARPF_NOCHECKPOSITION | WARPF_INTERPOLATE)
 		LOOP
 	}
 }
@@ -559,9 +489,8 @@ Actor DyingVileHeadShot : VileHeadShot//hunched over
 	States
 	{
 		Spawn:
-		TNT1 A 0
+		TNT1 A 2 NODELAY A_Warp(AAPTR_Master,0,0,46,0,WARPF_NOCHECKPOSITION | WARPF_INTERPOLATE)
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("BDHeadShot", AAPTR_MASTER) == 0, "Die")
-		TNT1 A 2 A_Warp(AAPTR_Master,0,0,46,0,WARPF_NOCHECKPOSITION | WARPF_INTERPOLATE)
 		LOOP
 	}
 }

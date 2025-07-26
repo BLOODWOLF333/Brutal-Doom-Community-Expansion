@@ -3,12 +3,11 @@
 
 Script "BDHeadShot" (int pointer)
 {
-	//Log(s:"Pointer ",i:pointer);//the master
 	SetActivator(0, pointer);//Change activator to master (monster body)
+	//Log(s:"Headshot Pointer bitfield ",i:ClassifyActor(0));
 
 	If(ClassifyActor(0) & ACTOR_ALIVE)//Is the master (monster body) alive?
 	{
-		//Log(s:"Pointer bitfield ",i:ClassifyActor(0));
 		SetResultValue(1);
 	}
 	Else
@@ -19,8 +18,8 @@ Script "BDHeadShot" (int pointer)
 
 Script "BDHoldingBarrel" (int pointer)
 {
-	//Log(s:"Pointer ",i:pointer);//the master
 	SetActivator(0, pointer);//Change activator to master (monster body)
+	//Log(s:"Pointer bitfield ",i:ClassifyActor(0));
 
 	If(CheckInventory("HasExplosiveBarrel") && (ClassifyActor(0) & ACTOR_ALIVE))//Is monster currently holding a barrel and alive?
 	{
@@ -30,4 +29,126 @@ Script "BDHoldingBarrel" (int pointer)
 	{
 		SetResultValue(0);
 	}
+}
+
+Script "BDAnimateTracks" (int pointer)
+{
+	bool isMoving = 0;
+
+	SetActivator(0, pointer);//Change activator to master (PlayerTank)
+	//Log(s:"Tracks Pointer bitfield ",i:ClassifyActor(0));
+
+	If(ClassifyActor(0) & ACTOR_ALIVE)//Is the master (PlayerTank) alive?
+	{
+		SetResultValue(1);
+	}
+	Else
+	{
+		SetResultValue(0);
+	}
+
+	If(CheckInventory("BackPedal") || CheckInventory("Accelerate") || CheckInventory("TurnLeft") || CheckInventory("TurnRight"))
+	{
+		isMoving = 1;
+		//Log(s:"isMoving ",b:isMoving);
+	}
+
+	//Log(s:"MP40Ammo ",i:CheckActorInventory(262,"MP40Ammo"));
+	Switch(CheckActorInventory(262,"MP40Ammo"))
+	{
+		Case 1:
+		If(isMoving == 1)
+		{
+			SetActorState(262,"Moving",1);
+		}
+		Else
+		{
+			SetActorState(262,"Stationary",1);
+		}
+		Break;
+
+		Default:
+		Break;
+	}
+
+	//Log(s:"ShotgunAmmo ",i:CheckActorInventory(262,"ShotgunAmmo"));
+	Switch(CheckActorInventory(262,"ShotgunAmmo"))
+	{
+		Case 3:
+		If(isMoving == 1)
+		{
+			SetActorState(262,"PitchBackMoving",1);
+		}
+		Else
+		{
+			SetActorState(262,"PitchBack",1);
+		}
+		Break;
+
+		Default:
+		Break;
+	}
+
+	//Log(s:"PitchBackToken ",i:CheckActorInventory(262,"PitchBackToken"));
+	Switch(CheckActorInventory(262,"PitchBackToken"))
+	{
+		Case 3:
+		If(isMoving == 1)
+		{
+			SetActorState(262,"PitchFrontMoving",1);
+		}
+		Else
+		{
+			SetActorState(262,"PitchFront",1);
+		}
+		Break;
+
+		Case 6:
+		If(isMoving == 1)
+		{
+			SetActorState(262,"PitchFront2Moving",1);
+		}
+		Else
+		{
+			SetActorState(262,"PitchFront2",1);
+		}
+		Break;
+
+		Default:
+		Break;
+	}
+
+	//Log(s:"PitchFrontToken ",i:CheckActorInventory(262,"PitchFrontToken"));
+	Switch(CheckActorInventory(262,"PitchFrontToken"))
+	{
+		Case 3:
+		If(isMoving == 1)
+		{
+			SetActorState(262,"PitchBackMoving",1);
+		}
+		Else
+		{
+			SetActorState(262,"PitchBack",1);
+		}
+		Break;
+
+		Case 6:
+		If(isMoving == 1)
+		{
+			SetActorState(262,"PitchBack2Moving",1);
+		}
+		Else
+		{
+			SetActorState(262,"PitchBack2",1);
+		}
+		Break;
+
+		Default:
+		Break;
+	}
+
+	TakeActorInventory(262,"MP40Ammo",9);
+	TakeActorInventory(262,"ShotgunAmmo",9);
+	TakeActorInventory(262,"PitchBackToken",9);
+	TakeActorInventory(262,"PitchFrontToken",9);
 }
