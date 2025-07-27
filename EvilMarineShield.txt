@@ -14,7 +14,6 @@ ACTOR EvilMarineShield : Rifle
 	Ready:
 		MSHG A 2 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeatAmmo", 50, "Destroy")
-		TNT1 A 0 A_SpawnItemEx("MeatShield", 16, -11, 0, 0)
         Loop
 
 	Select:
@@ -22,6 +21,7 @@ ACTOR EvilMarineShield : Rifle
 		TNT1 A 0 A_Raise
 		MSHG A 1 offset(0,40)
 		MSHG A 1 offset(0,48)
+		TNT1 A 0 A_SPAWNITEMEX("MeatShield", 16, -11, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
 		Goto LoadBullets
 
 	LoadBullets:
@@ -43,7 +43,6 @@ ACTOR EvilMarineShield : Rifle
 		TNT1 A 0 A_AlertMonsters
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",32,-4,28)
 		MSHF A 2 BRIGHT A_FireBullets (1.8, 1.4, -1, 14, "WeakPuff", FBF_NORANDOM)
-		TNT1 A 0 A_SpawnItemEx("MeatShield", 16, -11, 0, 0)
 		TNT1 A 0 A_ZoomFactor(0.99)
         TNT1 A 0 A_FireCustomMissile("DecorativeTracer",random(-1,1),0,8,0,0,random(-1,1))
 		PI2G A 0 A_Takeinventory("BDPistolAmmo",1)
@@ -51,15 +50,19 @@ ACTOR EvilMarineShield : Rifle
 		PI2G A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,16,-4)
 		MSHF B 2
 		TNT1 A 0 A_ZoomFactor(1.0)
-		TNT1 A 0 A_SpawnItemEx("MeatShield", 16, -11, 0, 0)
 		MSHF C 2
-		TNT1 A 0 A_SpawnItemEx("MeatShield", 16, -11, 0, 0)
 		MSHG A 1
 		TNT1 A 0 A_Refire
 		Goto Ready
 
 	Deselect:
     AltFire:
+	    TNT1 A 0
+		TNT1 A 0 A_TakeInventory("GoSpecial",1)
+        TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
+        TNT1 A 0 A_TakeInventory("HasEvilMarineShield",1)
+		TNT1 A 0 A_TakeInventory("GrabbedAEvilMarine",1)
+		TNT1 A 0 A_TakeInventory("StartDualWield", 1)
 		GRZ5 D 1 offset(-4, 32)
 		GRZ5 D 1 offset(-9, 33)
 		GRZ5 D 1 offset(-16, 34)
@@ -71,11 +74,9 @@ ACTOR EvilMarineShield : Rifle
 		GRZ5 B 1 offset(-1, 32)
         TNT1 A 0 A_PlaySound("skeleton/swing")
 		TNT1 A 0 A_FireCustomMissile("ThrowedEvilMarine", 0, 0, 0, 0)
-		TNT1 A 0 A_TakeInventory("GoSpecial",1)
-        TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
-        TNT1 A 0 A_TakeInventory("HasEvilMarineShield",1)
         TNT1 A 0 A_Giveinventory("Punching",1)
         THEF BCD 4
+		TNT1 A 0 A_GiveInventory("UsedStamina", 27)
         TNT1 A 0 A_TakeInventory("EvilMarineShield",1)
         Stop
 
@@ -85,15 +86,18 @@ ACTOR EvilMarineShield : Rifle
 
 	Destroy:
 	    TNT1 A 0
+		TNT1 A 0 A_TakeInventory("GoSpecial",1)
+        TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
+        TNT1 A 0 A_TakeInventory("HasEvilMarineShield",1)
+		TNT1 A 0 A_TakeInventory("GrabbedAEvilMarine",1)
+		TNT1 A 0 A_TakeInventory("StartDualWield", 1)
 		TNT1 A 0 A_SpawnItem("ZombiemanHeadExplode", 0, 50)
 		TNT1 A 12
         TNT1 A 0 A_PlaySound("skeleton/swing")
 		TNT1 A 0 A_FireCustomMissile("ThrowedEvilMarine", 0, 0, 0, 0)
-		TNT1 A 0 A_TakeInventory("GoSpecial",1)
-        TNT1 A 0 A_TakeInventory("GotMeatShield", 1)
-        TNT1 A 0 A_TakeInventory("HasEvilMarineShield",1)
         TNT1 A 0 A_Giveinventory("Punching",1)
         THEF BCD 4
+		TNT1 A 0 A_GiveInventory("UsedStamina", 27)
         TNT1 A 0 A_TakeInventory("EvilMarineShield",1)
         Stop
 	}

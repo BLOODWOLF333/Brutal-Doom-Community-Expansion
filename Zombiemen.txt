@@ -331,16 +331,8 @@ ACTOR RifleZombie : Zombieman Replaces ZombieMan
         TNT1 A 0 A_TakeInventory("IsDown", 1)
         Goto SeeContinue
 
-		BecomeMeatShield:
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
-        TNT1 A 0 A_GiveToTarget("HasZManShield", 1)
-		TNT1 A 0 A_GiveToTarget("GotMeatShield", 1)
-        Stop
-
 	GotoStealthKill:
 		TNT1 A 1
-		//TNT1 A 0 A_JumpIfInTargetInventory("PowerStrength", 1, "BecomeMeatShield")
 		TNT1 A 0 A_Explode(100, 1, 1)
 		TNT1 A 1
 		Goto SeeContinue
@@ -883,10 +875,9 @@ ACTOR RifleZombie : Zombieman Replaces ZombieMan
         Stop
 
 	Death.PussyGrab:
-	    TNT1 A 0
-		TNT1 A 0 A_Pain
-		TNT1 A 0 A_GiveToTarget("GrabbedAZombieman", 1)
 		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
+		TNT1 A 0 A_GiveToTarget("GrabbedAZombieman", 1)
+		TNT1 A 0 A_GiveToTarget("GotMeatShield", 1)
 		TNT1 A -1 A_NoBlocking
         Stop
 
@@ -1602,12 +1593,6 @@ Tag "Pistol Zombie"
 		TNT1 A 0 A_TakeInventory("SKZombieman", 1)
         TNT1 A 0 A_TakeInventory("IsDown", 1)
         Goto SeeContinue
-
-		BecomeMeatShield:
-		TNT1 A 0 A_NoBlocking
-        TNT1 A 0 A_GiveToTarget("HasZManShield", 1)
-		TNT1 A 0 A_GiveToTarget("GotMeatShield", 1)
-        Stop
 
 	Pain.ExtremePunches:
 	Pain.ExplosiveImpact:

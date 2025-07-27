@@ -31,6 +31,23 @@ Script "BDHoldingBarrel" (int pointer)
 	}
 }
 
+Script "BDMeatShield" (int pointer)
+{
+	SetActivator(0, pointer);//Change activator to master (Player)
+	Log(s:"Meatshield Pointer Class ",s:GetActorClass(0));
+	Log(s:"Meatshield Pointer bitfield ",i:ClassifyActor(0));
+	Log(s:"Activator inventory ",i:CheckInventory("GotMeatShield"));
+
+	If( (ClassifyActor(0) & ACTOR_ALIVE) && (CheckInventory("GotMeatShield")) )//Is the pointer alive and do they have a meatshield?
+	{
+		SetResultValue(1);
+	}
+	Else
+	{
+		SetResultValue(0);
+	}
+}
+
 Script "BDAnimateTracks" (int pointer)
 {
 	bool isMoving = 0;
