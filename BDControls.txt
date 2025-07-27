@@ -220,12 +220,6 @@ Script "BDUnMorph" (VOID) NET
  UnMorphActor(0, 0);
 }
 
-Script "BDCHeckOnline" (VOID) NET//Check if player is online.
-{
-if	(GameType () > 0)
-	SetActorState(0,"IsOnline");
-}
-
 script "GetVehiclePreviousHealth" (VOID) NET
 {
  vehicleprevioushealth = GetActorProperty(261, APROP_Health);
@@ -365,7 +359,7 @@ script "BDLeaveTank" (VOID) NET
 	int thisvehicleHelicopterRocketAmmo = CheckInventory("HelicopterRocketAmmo");
 	int thisvehicleMechRocketAmmo = CheckInventory("MechRocketAmmo");
 	int vehiclepreviousbaseangle = GetUserVariable(0, "user_tankbasedirection");
-	delay (1);
+	delay(1);
 	TakeInventory("HeavyMachinegunAmmo", 9999);
 	TakeInventory("TankAmmo", 9999);
 	TakeInventory("AutocannonAmmo", 9999);
@@ -376,6 +370,7 @@ script "BDLeaveTank" (VOID) NET
 	TakeInventory("RollLeft", 1);
 	Thing_Move(0, 264, 1);
 	UnMorphActor(0, 0);
+
 	SetActorProperty(PlayerNumber(), APROP_HEALTH, arrayHealth[PlayerNumber()]);
 	//Log(s:"Returned Health= ", i:GetActorProperty(PlayerNumber(), APROP_HEALTH));
 	arrayHealth[PlayerNumber()] = 0;
@@ -403,6 +398,7 @@ script "BDLeaveTank" (VOID) NET
 	}
 	arrayArmor[PlayerNumber()] = 0;
 	//Log(s:"Returned InitialArmor#= ", i:CheckInventory("BasicArmor"));
+	Delay(1);
 	SetActorProperty(261, APROP_Health, vehicleprevioushealth);
 	GiveActorInventory(261, "HeavyMachinegunAmmo", thisgunmachinegunammo);
 	GiveActorInventory(261, "TankAmmo", thisTankAmmo);

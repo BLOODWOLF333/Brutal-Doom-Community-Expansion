@@ -3,6 +3,7 @@
 
 Actor ArtilleryTankTurretNotReal: TankBaseAnimated
 {
+	+ISMONSTER
 	XScale 1.0
 	YScale 1.0
 	States
@@ -111,13 +112,6 @@ ACTOR ArtilleryTankUsed: ArtilleryTank
 		TNT1 A 0 Thing_ChangeTID(0, 0)
 		TNK1 C 0 A_ChangeFlag("THRUACTORS", 0)
 		TNT1 A 0 A_ChangeFlag("FRIENDLY", 1)
-		TNT1 A 0 ACS_NamedExecuteAlways("BDCHeckOnline")
-		Goto StandingHere
-
-	IsOnline:
-		TNT1 A 0
-		TNT1 A 1
-		TNT1 A 0 A_TAkeInventory("TankBaseDirection", 500)
 		Goto StandingHere
 
 Active:

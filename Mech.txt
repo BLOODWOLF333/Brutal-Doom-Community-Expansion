@@ -136,13 +136,6 @@ ACTOR MechUsed: Mech
 		TNT1 A 0 Thing_ChangeTID(0, 0)
 		TNK1 C 0 A_ChangeFlag("THRUACTORS", 0)
 		TNT1 A 0 A_ChangeFlag("FRIENDLY", 1)
-		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckOnline")
-		Goto StandingHere
-
-	IsOnline:
-		TNT1 A 0
-		TNT1 A 1
-		//TNT1 A 0 A_TAkeInventory("MechBaseDirection", 500)
 		Goto StandingHere
 
 	Active:

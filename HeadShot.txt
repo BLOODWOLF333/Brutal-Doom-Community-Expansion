@@ -51,13 +51,35 @@ Script "BDMeatShield" (int pointer)
 Script "BDAnimateTracks" (int pointer)
 {
 	bool isMoving = 0;
+	int tankbasedirection = 0;
 
 	SetActivator(0, pointer);//Change activator to master (PlayerTank)
+	//Log(s:"Tracks Pointer Class ",s:GetActorClass(0));
 	//Log(s:"Tracks Pointer bitfield ",i:ClassifyActor(0));
+	//Log(s:"Tracks inventory BackPedal ",i:CheckInventory("BackPedal"));
+	//Log(s:"Tracks inventory Accelerate ",i:CheckInventory("Accelerate"));
+	//Log(s:"Tracks inventory TurnLeft ",i:CheckInventory("TurnLeft"));
+	//Log(s:"Tracks inventory TurnRight ",i:CheckInventory("TurnRight"));
+
+	tankbasedirection = GetUserVariable(0,"user_tankbasedirection");//get PlayerTank's basedirection
+	//Log(s:"tankbasedirection ",i:tankbasedirection);
+
+	SetUserVariable(262,"user_tracksDirection",tankbasedirection);//set Tracks to the PlayerTank's basedirection
+	//Log(s:"tracksDirection ",i:GetUserVariable(262,"user_tracksDirection"));
 
 	If(ClassifyActor(0) & ACTOR_ALIVE)//Is the master (PlayerTank) alive?
 	{
-		SetResultValue(1);
+		//Log(s:"Player is alive");
+		//Log(s:"StrCmp PlayerTank? ",i:!StrCmp( GetActorClass(0), "PlayerTank" ));
+		//Log(s:"StrCmp PlayerArtilleryTank? ",i:!StrCmp( GetActorClass(0), "PlayerArtilleryTank" ));
+		If(!StrCmp( GetActorClass(0), "PlayerTank" ) || !StrCmp( GetActorClass(0), "PlayerArtilleryTank" ))//Is the player actually in a tank?
+		{
+			SetResultValue(1);
+		}
+		Else
+		{
+			SetResultValue(0);
+		}
 	}
 	Else
 	{
