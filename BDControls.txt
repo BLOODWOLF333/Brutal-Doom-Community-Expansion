@@ -330,6 +330,7 @@ script "BDEnterTank" (VOID) NET
 	TakeInventory("PowerInvisibility",1);
 	SetActorAngle (0, GetActorAngle (261));
 	Thing_Move(0, 261, 1);
+
 	vehicleprevioushealth = GetActorProperty(261, APROP_Health);
 	SetActorProperty(0, APROP_Health, vehicleprevioushealth);
 	int thisgunmachinegunammo = CheckActorInventory(261, "HeavyMachinegunAmmo");
@@ -338,7 +339,14 @@ script "BDEnterTank" (VOID) NET
 	int thisvehicleHelicopterRocketAmmo = CheckActorInventory(261, "HelicopterRocketAmmo");
 	int thisvehicleMechRocketAmmo = CheckActorInventory(261, "MechRocketAmmo");
 	int vehiclepreviousbaseangle = CheckActorInventory(261, "TankBaseDirection");
-	delay (6);
+	//Log(s:"thisgunmachinegunammo ",i:thisgunmachinegunammo);
+	//Log(s:"thisTankAmmo ",i:thisTankAmmo);
+	//Log(s:"thisvehicleAutocannonAmmo ",i:thisvehicleAutocannonAmmo);
+	//Log(s:"thisvehicleHelicopterRocketAmmo ",i:thisvehicleHelicopterRocketAmmo);
+	//Log(s:"thisvehicleMechRocketAmmo ",i:thisvehicleMechRocketAmmo);
+	//Log(s:"vehiclepreviousbaseangle ",i:vehiclepreviousbaseangle);
+	delay (1);
+
 	GiveInventory("HeavyMachinegunAmmo", thisgunmachinegunammo);
 	GiveInventory("TankAmmo", thisTankAmmo);
 	GiveInventory("AutocannonAmmo", thisvehicleAutocannonAmmo);
@@ -346,7 +354,7 @@ script "BDEnterTank" (VOID) NET
 	GiveInventory("MechRocketAmmo", thisvehicleMechRocketAmmo);
 	GiveInventory("IsInATank",1);
 	SetUserVariable(0, "user_tankbasedirection", vehiclepreviousbaseangle);
-	delay(2);
+	delay(1);
 }
 
 //leaving Tank
@@ -359,7 +367,27 @@ script "BDLeaveTank" (VOID) NET
 	int thisvehicleHelicopterRocketAmmo = CheckInventory("HelicopterRocketAmmo");
 	int thisvehicleMechRocketAmmo = CheckInventory("MechRocketAmmo");
 	int vehiclepreviousbaseangle = GetUserVariable(0, "user_tankbasedirection");
-	delay(1);
+	//Log(s:"thisgunmachinegunammo ",i:thisgunmachinegunammo);
+	//Log(s:"thisTankAmmo ",i:thisTankAmmo);
+	//Log(s:"thisvehicleAutocannonAmmo ",i:thisvehicleAutocannonAmmo);
+	//Log(s:"thisvehicleHelicopterRocketAmmo ",i:thisvehicleHelicopterRocketAmmo);
+	//Log(s:"thisvehicleMechRocketAmmo ",i:thisvehicleMechRocketAmmo);
+	//Log(s:"vehiclepreviousbaseangle ",i:vehiclepreviousbaseangle);
+	Delay(1);
+	SetActorProperty(261, APROP_Health, vehicleprevioushealth);
+	GiveActorInventory(261, "HeavyMachinegunAmmo", thisgunmachinegunammo);
+	GiveActorInventory(261, "TankAmmo", thisTankAmmo);
+	GiveActorInventory(261, "AutocannonAmmo", thisvehicleAutocannonAmmo);
+	GiveActorInventory(261, "HelicopterRocketAmmo", thisvehicleHelicopterRocketAmmo);
+	GiveActorInventory(261, "MechRocketAmmo", thisvehicleMechRocketAmmo);
+	GiveActorInventory(261, "TankBaseDirection", vehiclepreviousbaseangle);
+	//Log(s:"UsedTank HeavyMachinegunAmmo ",i:CheckActorInventory(261,"HeavyMachinegunAmmo"));
+	//Log(s:"UsedTank TankAmmo ",i:CheckActorInventory(261,"TankAmmo"));
+	//Log(s:"UsedTank AutocannonAmmo ",i:CheckActorInventory(261,"AutocannonAmmo"));
+	//Log(s:"UsedTank HelicopterRocketAmmo ",i:CheckActorInventory(261,"HelicopterRocketAmmo"));
+	//Log(s:"UsedTank MechRocketAmmo ",i:CheckActorInventory(261,"MechRocketAmmo"));
+	//Log(s:"UsedTank TankBaseDirection ",i:CheckActorInventory(261,"TankBaseDirection"));
+
 	TakeInventory("HeavyMachinegunAmmo", 9999);
 	TakeInventory("TankAmmo", 9999);
 	TakeInventory("AutocannonAmmo", 9999);
@@ -398,14 +426,28 @@ script "BDLeaveTank" (VOID) NET
 	}
 	arrayArmor[PlayerNumber()] = 0;
 	//Log(s:"Returned InitialArmor#= ", i:CheckInventory("BasicArmor"));
-	Delay(1);
-	SetActorProperty(261, APROP_Health, vehicleprevioushealth);
-	GiveActorInventory(261, "HeavyMachinegunAmmo", thisgunmachinegunammo);
-	GiveActorInventory(261, "TankAmmo", thisTankAmmo);
-	GiveActorInventory(261, "AutocannonAmmo", thisvehicleAutocannonAmmo);
-	GiveActorInventory(261, "HelicopterRocketAmmo", thisvehicleHelicopterRocketAmmo);
-	GiveActorInventory(261, "MechRocketAmmo", thisvehicleMechRocketAmmo);
-	GiveActorInventory(261, "TankBaseDirection", vehiclepreviousbaseangle);
+}
+
+//Set Tank's new base angle after you leave it.
+script "BDSetBaseAngle" (VOID) NET
+{
+	int thisvehiclecurrentbaseangle = CheckInventory("TankBaseDirection");
+	//Log(s:"BDSetBaseAngle TankBaseDirection ",i:thisvehiclecurrentbaseangle);
+	SetActorAngle(261,(thisvehiclecurrentbaseangle*256/360)<<8);//fixed point number
+	//Log(s:"BDSetBaseAngle ActorAngle ",i:GetActorAngle(261));
+}
+
+//Set the current direction of a newly spawned tank.
+script "BDSetNewTankDirection" (VOID) NET
+{
+	int thisvehicleinitialbaseangle = GetActorAngle(0);
+	int angleformulacalculation = thisvehicleinitialbaseangle >> 8;
+	int angleformulacalculationlastpart = angleformulacalculation*360/256;
+	//Log(s:"Enter TankBaseDirection ",i:angleformulacalculationlastpart);
+	GiveInventory("TankBaseDirection ", angleformulacalculationlastpart);
+	//Log(s:"NewTank TankBaseDirection ",i:angleformulacalculationlastpart);
+	SetUserVariable(0, "user_stationedtankbasedirection ", angleformulacalculationlastpart);
+	//Log(s:"NewTank user_stationedtankbasedirection ",i:angleformulacalculationlastpart);
 }
 
 script "BDForceUnmorph" (VOID) NET
@@ -414,24 +456,6 @@ script "BDForceUnmorph" (VOID) NET
  UnMorphActor(0, 0);
  TakeInventory("MorphToken", 1);
  Delay(1);
-}
-
-//Set Tank's new base angle after you leave it.
-script "BDSetBaseAngle" (VOID) NET
-{
- int thisvehiclecurrentbaseangle = CheckInventory("TankBaseDirection");
- SpawnSpot("TankBaseStationed", 0, 0, thisvehiclecurrentbaseangle*256/360);
- delay (1);
-}
-
-//Set the current direction of a newly spawned tank.
-script "BDSetNewTankDirection" (VOID) NET
-{
- int thisvehicleinitialbaseangle = GetActorAngle(0);
- int angleformulacalculation = thisvehicleinitialbaseangle >> 8;
- int angleformulacalculationlastpart = angleformulacalculation*360/256;
- GiveInventory("TankBaseDirection", angleformulacalculationlastpart);
- delay (1);
 }
 
 Script "BDEnterTankInfo"(VOID) NET
