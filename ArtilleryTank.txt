@@ -174,8 +174,8 @@ ACTOR ArtilleryTankMorphActivation : PowerupGiver
 ACTOR PlayerArtilleryTank : PlayerTank
 {
 	health 2000
-	player.viewheight 64
-    player.attackzoffset 28
+	player.viewheight 72
+    player.attackzoffset 36
 	Player.MorphWeapon "ArtilleryTankGun"
 	Mass 36300//40 tons
 	States
@@ -539,7 +539,7 @@ ACTOR PlayerArtilleryTank : PlayerTank
 		TNT1 A 0 A_TakEinventory("PowerLightAmp", 1)
 		TNT1 A 2 SetPlayerProperty(0, 0, PROP_BUDDHA)
 		TNT1 A 0 ACS_NamedExecuteAlways("BDLeaveTank")
-		TNT1 A 0 A_SpawnItemEx("ArtilleryTankUsed", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION, 0, 261)
+		TNT1 A 0 A_SpawnItemEx("ArtilleryTankUsed", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
 		Goto FinishExit
 
 	EmergencyExit:
@@ -688,24 +688,24 @@ ACTOR ArtilleryTankGun : DoomWeapon
 		TNT1 A 5
 		Goto LightEnd
 
-	Fire://zero-offset = 65 pixels high
+	Fire:
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfinventory("TankZoom", 1, "FireZoom")
 		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 1, 1)
 		Goto NoAmmo
 
-		TNT1 A 0 A_FireCustomMissile("Alerter",0,0,-32,-16)
-		TNLH H 1 BRIGHT A_FireCustomMissile("AutocannonFlash", 0, 0, -32, -16, 0, 0)
-		TNLH I 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", -0.2, 1, -32, -16, 0, 0.1)
+		TNT1 A 0 A_FireCustomMissile("Alerter",0,0,-32,-8)
+		TNLH H 1 BRIGHT A_FireCustomMissile("AutocannonFlash", 0, 0, -32, -8, 0, 0)
+		TNLH I 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", -0.4, 1, -32, -8, 0, 0.05)
 		TNLH J 2 A_PlaySound("ACANO1", 1)
 		TNT1 A 0 A_FireCustomMissile("DistantFireSoundAC")
 
 		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 1, 1)
 		Goto NoAmmo
 
-		TNT1 A 0 A_FireCustomMissile("Alerter",0,0,32,-16)
-		TNLH K 1 BRIGHT A_FireCustomMissile("AutocannonFlash", 0, 0, 32, -16, 0, 0)
-		TNLH L 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", 0.2, 1, 32, -16, 0, 0.1)
+		TNT1 A 0 A_FireCustomMissile("Alerter",0,0,32,-8)
+		TNLH K 1 BRIGHT A_FireCustomMissile("AutocannonFlash", 0, 0, 32, -8, 0, 0)
+		TNLH L 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", 0.4, 1, 32, -8, 0, 0.05)
 		TNLH M 2 A_PlaySound("ACANO1", 1)
 		TNT1 A 0 A_FireCustomMissile("DistantFireSoundAC")
 
@@ -717,18 +717,18 @@ ACTOR ArtilleryTankGun : DoomWeapon
 		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 1, 1)
 		Goto NoAmmoZoom
 
-		TNT1 A 0 A_FireCustomMissile("Alerter",0,0,-32,-16)
-		TNT1 H 1 BRIGHT A_FireCustomMissile("AutocannonFlash", 0, 0, -32, -16, 0, 0)
-		TNT1 I 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", -0.2, 1, -32, -16, 0, 0.1)
+		TNT1 A 0 A_FireCustomMissile("Alerter",0,0,-32,-8)
+		TNT1 H 1 BRIGHT A_FireCustomMissile("AutocannonFlash", 0, 0, -32, -8, 0, 0)
+		TNT1 I 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", -0.2, 1, -32, -8, 0, 0.05)
 		TNT1 J 2 A_PlaySound("ACANO1", 1)
 		TNT1 A 0 A_FireCustomMissile("DistantFireSoundAC")
 
 		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 1, 1)
 		Goto NoAmmo
 
-		TNT1 A 0 A_FireCustomMissile("Alerter",0,0,32,-16)
-		TNT1 K 1 BRIGHT A_FireCustomMissile("AutocannonFlash", 0, 0, 32, -16, 0, 0)
-		TNT1 L 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", 0.2, 1, 32, -16, 0, 0.1)
+		TNT1 A 0 A_FireCustomMissile("Alerter",0,0,32,-8)
+		TNT1 K 1 BRIGHT A_FireCustomMissile("AutocannonFlash", 0, 0, 32, -8, 0, 0)
+		TNT1 L 1 BRIGHT A_FireCustomMissile("AutoCannonProjectile", 0.2, 1, 32, -8, 0, 0.05)
 		TNT1 M 2 A_PlaySound("ACANO1", 1)
 		TNT1 A 0 A_FireCustomMissile("DistantFireSoundAC")
 
@@ -740,11 +740,11 @@ ACTOR ArtilleryTankGun : DoomWeapon
 		TNT1 A 0 A_JumpIfinventory("TankZoom", 1, "AltFire2")
 		TNT1 A 0 A_JumpIfInventory("HelicopterRocketAmmo", 2, 1)
 		Goto NoAmmo
-		TNT1 A 0 A_FireCustomMissile("TankMissile", 0.5, 1, random(56,72), random(56,72), 0, -0.5)
-		TNT1 A 0 A_FireCustomMissile("DistantFireSoundMissile", random(-1,1), 0, 0, -12, 0, random(-1,1))
+		TNT1 A 0 A_FireCustomMissile("TankMissile", 0.5, 1, random(56,72), random(48,64), 0, 6.0)
+		TNT1 A 0 A_FireCustomMissile("DistantFireSoundMissile", 0, 0, 64, 56)
 		TNLH G 15 BRIGHT
-		TNT1 A 0 A_FireCustomMissile("TankMissile", -0.5, 1, random(-72,-56), random(56,72), 0, -0.5)
-		TNT1 A 0 A_FireCustomMissile("DistantFireSoundMissile", random(-1,1), 0, 0, -12, 0, random(-1,1))
+		TNT1 A 0 A_FireCustomMissile("TankMissile", -0.5, 1, random(-56,-72), random(48,64), 0, 6.0)
+		TNT1 A 0 A_FireCustomMissile("DistantFireSoundMissile", 0, 0, -64, 56)
 		TNLH G 15 BRIGHT
 		Goto ReadyToFire
 
@@ -752,11 +752,11 @@ ACTOR ArtilleryTankGun : DoomWeapon
 		TNT1 A 0 A_JumpIfInventory("HelicopterRocketAmmo", 2, 1)
 		Goto NoAmmoZoom
 		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
-		TNT1 A 0 A_FireCustomMissile("TankMissile", 0.5, 1, random(56,72), random(56,72), 0, -0.5)
-		TNT1 A 0 A_FireCustomMissile("DistantFireSoundMissile", random(-1,1), 0, 0, -12, 0, random(-1,1))
+		TNT1 A 0 A_FireCustomMissile("TankMissile", 0.25, 1, random(56,72), random(48,64), 0, 9.0)
+		TNT1 A 0 A_FireCustomMissile("DistantFireSoundMissile", 0, 0, 64, 56)
 		TNT1 A 15 BRIGHT
-		TNT1 A 0 A_FireCustomMissile("TankMissile", -0.5, 1, random(-72,-56), random(56,72), 0, -0.5)
-		TNT1 A 0 A_FireCustomMissile("DistantFireSoundMissile", random(-1,1), 0, 0, -12, 0, random(-1,1))
+		TNT1 A 0 A_FireCustomMissile("TankMissile", -0.25, 1, random(-56,-72), random(48,64), 0, 9.0)
+		TNT1 A 0 A_FireCustomMissile("DistantFireSoundMissile", 0, 0, -64, 56)
 		TNT1 A 15 BRIGHT
 		Goto ReadyToFire2
 
