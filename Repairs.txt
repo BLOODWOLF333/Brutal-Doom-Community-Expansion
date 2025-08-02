@@ -425,21 +425,15 @@ Stop
 ACTOR TransferPlayerOutOfVehicle
 {
 	Radius 16
-	Height 40
+	Height 56
 	+MISSILE
-	+NOGRAVITY
-	+LOOKALLAROUND
-	MaxTargetRange 128
 	Speed 0
     States
     {
     Spawn:
-		TNT1 A 0
-	    TNT1 A 0 A_GiveToTarget("CanLeaveVehicle", 1)
+	    TNT1 A 0 NODELAY A_GiveToTarget("CanLeaveVehicle", 1)
 		TNT1 A 0 Thing_ChangeTID(0, 264)
-		TNT1 A 6
-		TNT1 A 0 A_SpawnItem("CancelTeleportFog")
-		TNT1 A 2
+		TNT1 A 12 A_SpawnItem("CancelTeleportFog")
 		TNT1 A 0 Thing_ChangeTID(0, 0)
 		Stop
 
