@@ -241,11 +241,13 @@ ACTOR Arachnotron1: Arachnotron replaces Arachnotron
 	    TNT1 A 0 A_GiveToTarget("GoFatality", 1)
 	Death.HelperMarineFatality:
         TNT1 A 0 A_GiveToTarget("ArachnotronFatality", 1)
+        TNT1 A 0 A_NoBlocking
         TNT1 A -1 A_BossDeath
 		Stop
 	Death.Fatality2:
 		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
         TNT1 A 0 A_GiveToTarget("ArachnotronFatality2", 1)
+        TNT1 A 0 A_NoBlocking
         TNT1 A -1 A_BossDeath
 		Stop
 
@@ -281,6 +283,7 @@ ACTOR Arachnotron1: Arachnotron replaces Arachnotron
 	Death.Frost:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("FrozenArachnotron")
+        TNT1 A 0 A_NoBlocking
 		TNT1 A -1 A_BossDeath
 		Stop
 

@@ -219,7 +219,7 @@ ACTOR TheArchvile: Archvile Replaces Archvile
 		TNT1 AA 0 A_CustomMissile ("XDeath1", 52, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("XDeathArchvileArm", 52, 0, random (0, 360), 2, random (40, 120))
 		VID2 HHIJ 5 A_SpawnItem ("MuchBlood", 50)
-		TNT1 A 0 A_SpawnItem("DyingArchvileNoArm")
+		TNT1 A 0 A_SpawnItemEx("DyingArchvileNoArm", 0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A -1 A_NoBlocking
 		Stop
 

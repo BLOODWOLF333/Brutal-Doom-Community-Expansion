@@ -29,7 +29,7 @@ ACTOR Mech: Tank 7263
     States
     {
     Spawn:
-		TNT1 A 4
+		MECH A 4
 		TNT1 A 0 A_GiveInventory("HeavyMachinegunAmmo", 2000)
 		TNT1 A 0 A_GiveInventory("MechRocketAmmo", 60)
 		Goto StandingHere
@@ -170,7 +170,6 @@ ACTOR PlayerMech : PlayerTank
     player.attackzoffset 36
 	MaxStepHeight 40
 	Player.MorphWeapon "MechGun"
-	var int user_tankbasedirection;
 	States
 	{
 	Spawn:
@@ -382,12 +381,12 @@ ACTOR PlayerMech : PlayerTank
 		Stop
 
 	ExitVehicle:
-		TNT1 A 2 A_Stop
+		MECH A 2
 		TNT1 A 0 A_ChangeFlag(NOPAIN, 1)
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_SpawnItemEx ("TransferPlayerOutOfVehicle", 128, 0, 4)
+		TNT1 A 0 A_SpawnItemEx("TransferPlayerOutOfVehicle", 128, 0, 4)
 
-		TNT1 A 4
+		MECH A 4
 
 		TNT1 A 0 A_JumpIfInventory("CanLeaveVehicle", 1, "CanExit")
 		TNT1 A 0 A_ChangeFlag(NOPAIN, 0)
@@ -395,6 +394,7 @@ ACTOR PlayerMech : PlayerTank
 		Goto Stay
 
 	CanExit:
+		TNT1 A 0
 		TNT1 A 0 A_TakeInventory("IsInATank", 1)
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
 		TNT1 A 0 A_TakeInventory("CanLeaveVehicle", 1)
