@@ -242,7 +242,7 @@ script "BDEnterHMG" (VOID) NET
 {
 	ACS_NamedExecuteAlways("BDStopCamera",0,0,0,0);
 	TakeInventory("PowerInvisibility",1);
-	SetActorAngle (0, GetActorAngle (261));
+	SetActorAngle(0, GetActorAngle (261));
 	Thing_Move(0, 261, 1);
 	int thisgunmachinegunammo = CheckActorInventory(261, "HeavyMachinegunAmmo");
 	delay(6);
@@ -274,7 +274,6 @@ script "BDEnterHMG" (VOID) NET
 	}
 	arrayArmor[PlayerNumber()] = 0;
 	//Log(s:"Returned InitialArmor#= ", i:CheckInventory("BasicArmor"));
-	delay(2);
 }
 
 //leaving Heavy Machinegun
@@ -283,16 +282,19 @@ script "BDLeaveHMG" (VOID) NET
 	arrayHealth[PlayerNumber()] = GetActorProperty(0, APROP_HEALTH);
 	arrayArmor[PlayerNumber()] = CheckInventory("BasicArmor");
 	arrayArmorClass[PlayerNumber()] = GetArmorInfo(ARMORINFO_CLASSNAME);
+	int thisgunmachinegunammo = CheckInventory("HeavyMachinegunAmmo");
 	//Log(s:"Health= ", i: arrayHealth[PlayerNumber()]);
 	//Log(s:"Armor#= ", i: arrayArmor[PlayerNumber()]);
 	//Log(s:"ArmorClass= ", s: arrayArmorClass[PlayerNumber()]);
-	int thisgunmachinegunammo = CheckInventory("HeavyMachinegunAmmo");
 	delay (1);
+
+	GiveActorInventory(261, "HeavyMachinegunAmmo", thisgunmachinegunammo);
 	TakeInventory("HeavyMachinegunAmmo", 9999);
 	TakeInventory("RollRight", 1);
 	TakeInventory("RollLeft", 1);
 	Thing_Move(0, 264, 1);
 	UnMorphActor(0, 0);
+
 	SetActorProperty(PlayerNumber(), APROP_HEALTH, arrayHealth[PlayerNumber()]);
 	//Log(s:"Returned Health= ", i:GetActorProperty(PlayerNumber(), APROP_HEALTH));
 	arrayHealth[PlayerNumber()] = 0;
@@ -320,7 +322,6 @@ script "BDLeaveHMG" (VOID) NET
 	}
 	arrayArmor[PlayerNumber()] = 0;
 	//Log(s:"Returned InitialArmor#= ", i:CheckInventory("BasicArmor"));
-	GiveActorInventory(261, "HeavyMachinegunAmmo", thisgunmachinegunammo);
 }
 
 //Entering Tank
@@ -354,7 +355,6 @@ script "BDEnterTank" (VOID) NET
 	GiveInventory("MechRocketAmmo", thisvehicleMechRocketAmmo);
 	GiveInventory("IsInATank",1);
 	SetUserVariable(0, "user_tankbasedirection", vehiclepreviousbaseangle);
-	delay(1);
 }
 
 //leaving Tank

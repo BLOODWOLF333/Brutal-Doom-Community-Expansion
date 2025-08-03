@@ -3,12 +3,18 @@
 
 ACTOR HeavyMachinegun: SwitchableDecoration 5462
 {
+	//$Category BD Vehicles
+	//$Colour rgb(200, 200, 200)
+	//$Sprite TTR1A1
+	MONSTER
 	Health 100
-	Radius 24
-	Height 64
+	Radius 16
+	Height 48
+	Mass 0x7FFFFFFF
+	Speed 0
+	Activation THINGSPEC_Activate | THINGSPEC_ThingTargets | THINGSPEC_NoDeathSpecial
 	+SOLID
 	+USESPECIAL
-	MONSTER
 	-COUNTKILL
 	+SHOOTABLE
 	+THRUACTORS
@@ -18,13 +24,7 @@ ACTOR HeavyMachinegun: SwitchableDecoration 5462
 	+NOTIMEFREEZE
 	+NEVERTARGET
 	+CANTSEEK
-	//$Category BD Vehicles
-	//$Colour rgb(200, 200, 200)
-	//$Sprite TTR1A1
 	BloodType "TankBlood", "TankBlood", "TankBlood"
-	Activation THINGSPEC_Activate | THINGSPEC_ThingTargets | THINGSPEC_NoDeathSpecial
-	Mass 0x7FFFFFFF
-	Speed 0
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
 	Damagefactor "Cut", 0.5	Damagefactor "Extremepunches", 0.0	Damagefactor "Fatality", 0.0
@@ -33,7 +33,7 @@ ACTOR HeavyMachinegun: SwitchableDecoration 5462
 	Damagefactor "HelperMarineFatality", 0.0	Damagefactor "KillMe", 0.0	Damagefactor "Leg", 0.0
 	Damagefactor "Slide", 0.0	Damagefactor "MonsterKnocked", 0.0	Damagefactor "PussyGrab", 0.0
 	Damagefactor "Repair", 1.0	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "Saw", 0.5
-	Damagefactor "Slide", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 1.0
+	Damagefactor "SpawnMarine", 0.0	Damagefactor "Taunt", 1.0
 	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0	Damagefactor "Kick", 0.0
 	Damagefactor "Melee", 0.0	Damagefactor "Shrapnel", 0.5	Damagefactor "Slime", 0.0
 	Damagefactor "Stealth", 0.0	Damagefactor "Stomp", 0.0	Damagefactor "Trample", 0.0
@@ -48,31 +48,26 @@ ACTOR HeavyMachinegun: SwitchableDecoration 5462
 	States
     {
     Spawn:
-	    TTR1 A 1
-		TNT1 A 0 Thing_ChangeTID(0, 261)
-		TTR1 A 1 A_ChangeFlag("FRIENDLY", 0)
-		TTR1 A 3
-		TNT1 A 0 Thing_ChangeTID(0, 0)
-		TTR1 A 0 A_ChangeFlag("THRUACTORS", 0)
+	    TTR1 A 4
+		TNT1 A 0 A_GiveInventory("HeavyMachinegunAmmo", 200)
 		TTR1 A -1
 		Stop
+
 	Active:
 		TNT1 A 0
+		TNT1 A 0 A_ChangeFLag("NOPAIN", 1)
 		TNT1 A 0 A_TakeFromTarget("PowerInvulnerable", 1)
 		TNT1 A 0 A_GiveToTarget("CeaseMorph", 1)
-		TTR1 A 0 A_ChangeFlag("FRIENDLY", 0)
 		TNT1 A 0 Thing_ChangeTID(0, 261)
+		TNT1 A 0 ACS_NamedExecuteAlways("GetVehiclePreviousHealth", 0, 0, 0, 0)//Check Vehicle Health
 		TNT1 A 0 A_GiveToTarget("CheckingMorphingPlayerHealth", 1)
-		TTR1 A 3
+		NULL A 3
 		TNT1 A 0 A_GiveToTarget("HeavyMachinegunMorpher", 1)
-		TNT1 A 0 A_GiveToTarget("HeavyMachinegunAmmo", 200)
-		TNT1 A 0 Thing_ChangeTID(0, 261)
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 1
+		NULL A 1
 		TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
-		TNT1 A 10
+		NULL A 10
 		TNT1 A 0 Thing_ChangeTID(0, 0)
-		TNT1 A 1
+		NULL A 1
 		Stop
 
 	Death:
@@ -89,31 +84,83 @@ ACTOR HeavyMachinegunUsed: HeavyMachinegun
 {
     States
     {
+	Spawn:
+	    TNT1 A 0 NODELAY Thing_ChangeTID(0, 261)
+		TTR1 A 4
+		TNT1 A 0 Thing_ChangeTID(0, 0)
+		TTR1 A -1
+		Stop
+
 	Active:
 		TNT1 A 0
+		TNT1 A 0 A_ChangeFLag("NOPAIN", 1)
 		TNT1 A 0 A_TakeFromTarget("PowerInvulnerable", 1)
 		TNT1 A 0 A_GiveToTarget("CeaseMorph", 1)
-		TTR1 A 0 A_ChangeFlag("FRIENDLY", 0)
-	See:
-		//TNT1 A 0 A_Chase("","",CHF_DONTMOVE )
-		TNT1 A 0 A_GiveToTarget("CheckingMorphingPlayerHealth", 1)
-		TTR1 A 3
-		TNT1 A 0 A_GiveToTarget("HeavyMachinegunMorpher", 1)
 		TNT1 A 0 Thing_ChangeTID(0, 261)
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 1
+		TNT1 A 0 ACS_NamedExecuteAlways("GetVehiclePreviousHealth", 0, 0, 0, 0)//Check Vehicle Health
+		TNT1 A 0 A_GiveToTarget("CheckingMorphingPlayerHealth", 1)
+		NULL A 3
+		TNT1 A 0 A_GiveToTarget("HeavyMachinegunMorpher", 1)
+		NULL A 1
 		TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
-		TNT1 A 10
+		NULL A 10
 		TNT1 A 0 Thing_ChangeTID(0, 0)
+		NULL A 1
 		Stop
+	}
+}
+
+ACTOR PowerHeavyMachinegunSwitch : PowerMorph {PowerMorph.PlayerClass "PlayerHeavyMachinegun"}
+
+ACTOR HeavyMachinegunMorpher : CustomInventory
+{
+	States
+	{
+	PickUp:
+	TNT1 A 0
+	TNT1 A 0 ACS_NamedExecuteAlways("BDEnterHMG", 0, 0, 0, 0)//Grab Tripod Gun.
+	TNT1 A 0 A_GiveInventory("HeavyMachinegunMorphActivation")
+	TNT1 A 0 A_SpawnItem("CancelTeleportFog")
+	TNT1 A 2
+	Stop
+	}
+}
+
+ACTOR HeavyMachinegunMorphActivation : PowerupGiver
+{
+	Powerup.Type "PowerHeavyMachinegunSwitch"
+	Powerup.Duration 0x7FFFFFFD
+	+INVENTORY.AUTOACTIVATE
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.MaxAmount 1
+	States
+	{
+	Spawn:
+	TNT1 A 100
+	Stop
+
+	PickUp:
+	TNT1 A 2
+	Stop
+	}
+}
+
+ACTOR CheckingMorphingPlayerHealth : CustomInventory
+{
+	States
+	{
+	PickUp:
+	TNT1 A 0
+	TNT1 A 0 ACS_NamedExecuteAlways("GetPlayerValues", 0, 0, 0, 0)//Grab Tripod Gun.
+	TNT1 A 2
+	Stop
 	}
 }
 
 ACTOR PlayerHeavyMachinegun : PlayerPawn
 {
-	Speed 0
 	Scale 1.0
-	Radius 24
+	Radius 16
 	Height 56
 	Mass 0x7FFFFFFF
 	PainChance 0
@@ -139,107 +186,48 @@ ACTOR PlayerHeavyMachinegun : PlayerPawn
 	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 0.0	Damagefactor "Use", 0.0
 	States
 	{
-
 	Spawn:
-	TTR2 A 1
+	TTR2 A 0
 	MARN A 0 ACS_NamedExecuteAlways("CheckIfDM", 0, 0, 0, 0)//Check if Deathmatch
-	TTR2 A 4
-	TNT2 A 0 A_TakeInventory("PressedUse", 1)
+	TTR2 A 2 A_TakeInventory("PressedUse", 1)
+
 	Spawn2:
-	TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "ExitVehicle")
-	TTR2 A 1
+	TTR2 A 4 A_JumpIfInventory("PressedUse", 1, "ExitVehicle")
 	Loop
+
+	ExitVehicle:
+	TTR2 A 2
+	TNT1 A 0 A_TakeInventory("PressedUse", 1)
+	TNT1 A 0 A_SpawnItemEx ("TransferPlayerOutOfVehicle", -64, 0, 4)
+
+	TTR2 A 4
+
+	TNT1 A 0 A_JumpIfInventory("CanLeaveVehicle", 1, "CanExit")
+	TNT1 A 0 A_Print("Can't leave from this direction", 1)
+	Goto Spawn2
+
+	CanExit:
+	TNT1 A 0 A_TakeInventory("PressedUse", 1)
+	TNT1 A 0 A_TakeInventory("Kicking", 1)
+	TNT1 A 2 A_TakeInventory("CanLeaveVehicle", 1)
+	TNT1 A 0 ACS_NamedExecuteAlways("BDLeaveHMG")
+	TNT1 A 0 A_SpawnItemEx("HeavyMachinegunUsed", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+	Goto Spawn2
 
 	PAIN:
 	TTR2 A 1
 	TTR2 A 1 A_Pain
-	Goto Spawn
-
-	ExitVehicle:
-	TNT1 A 1
-	TNT1 A 0 A_TakeInventory("PressedUse", 1)
-
-	TNT1 A 0 A_SpawnItemEx ("TransferPlayerOutOfVehicle", -64, 0, 4)
-	TTR2 A 4
-	TNT1 A 0 A_JumpIfInventory("CanLeaveVehicle", 1, "CanExit")
-	TNT1 A 0 A_Print("Can't leave from this direction", 1)
-	Goto Spawn
-
-	CanExit:
-	TNT1 A 0 A_TakeInventory("PressedUse", 1)
-	TNT1 A 0 A_TakeInventory("CanLeaveVehicle", 1)
-	TNT1 A 0 A_SpawnItemEx ("HeavyMachinegunUsed", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
-	TNT1 A 0 ACS_NamedExecuteAlways("BDLeaveHMG")
-	TNT1 A 100
-	TNT1 A -1
-	Stop
+	Goto Spawn2
 
 	Death:
-	TNT1 A 0
-	TNT1 A 0 A_Scream
-	TNT1 A 0 A_NoBlocking
 	TNT1 A 0 A_TakeInventory("HeavyMachinegunHUD", 1)
-	TNT1 A 0 A_SpawnItemEx ("HeavyMachinegun", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
-	PLAY HIJKLM 4
+	PLAY H 4 A_Scream
+	PLAY I 4 A_NoBlocking
+	PLAY JKLM 4
 	PLAY N -1
 	Stop
-
 	}
 }
-
-ACTOR PowerHeavyMachinegunSwitch : PowerMorph {PowerMorph.PlayerClass "PlayerHeavyMachinegun"}
-
-ACTOR HeavyMachinegunMorpher : CustomInventory
-{
-  States
-  {
-  PickUp:
-  TNT1 A 0
-  TNT1 A 0 ACS_NamedExecuteAlways("BDEnterHMG", 0, 0, 0, 0)//Grab Tripod Gun.
-  TNT1 A 0 A_GiveInventory("HeavyMachinegunMorphActivation")
-  TNT1 A 0 A_SpawnItem("CancelTeleportFog")
-  TNT1 A 2
-  Stop
-  }
- }
-
-ACTOR CheckingMorphingPlayerHealth : CustomInventory
-{
-  States
-  {
-  PickUp:
-  TNT1 A 0
-  TNT1 A 0 ACS_NamedExecuteAlways("GetPlayerValues", 0, 0, 0, 0)//Grab Tripod Gun.
-  TNT1 A 2
-  Stop
-  }
- }
-
-ACTOR HeavyMachinegunMorphActivation : PowerupGiver
-{
-  Powerup.Type "PowerHeavyMachinegunSwitch"
-  Powerup.Duration 252000
-  +INVENTORY.AUTOACTIVATE
-  +INVENTORY.ALWAYSPICKUP
-  Inventory.MaxAmount 1
-  Health 100
-  GibHealth 1
-  Scale 0.5
-  Mass 999999999
-  Height 96
-  Radius 32
-  States
-  {
-  Spawn:
-  TNT1 A 100
-  Stop
-
-  PickUp:
-  TNT1 A 1
-  TNT1 A 1
-  Stop
-  }
- }
 
 ACTOR HeavyMachinegunHUD : DoomWeapon
 {
@@ -294,29 +282,29 @@ ACTOR HeavyMachinegunHUD : DoomWeapon
 		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 2, 1)
 		Goto NoAmmo
 
-		TNT1 A 0 A_ZoomFactor(1.25)
+		TNT1 A 0 A_ZoomFactor(1.1)
 		HMGH B 1 BRIGHT
-		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
-		TNT1 A 0 A_FireCustomMissile("HeavyMachinegunProjectile", 0, 1, 2, -2)
-		TNT1 A 0 A_FireCustomMissile("HeavyMachinegunFlash", 0, 0, 2, -2)
-		RIFF A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 2, -2)
-		TNT1 A 0 A_FireCustomMissile("DistantFireSoundHMG", random(-1,1), 0, 0, -12, 0, random(-1,1))
 	    TNT1 A 0 A_PlaySound("TANKMG", 1)
+		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
+		TNT1 A 0 A_FireCustomMissile("DistantFireSoundHMG", 0, 0, 0, -4, 0, 0)
+		TNT1 A 0 A_FireCustomMissile("HeavyMachinegunProjectile", 0, 1, 6, -4, 0, 0)
+		TNT1 A 0 A_FireCustomMissile("HeavyMachinegunFlash", 0, 0, 6, -4)
+		RIFF A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 6, -4)
 		HMGH D 1
-		TNT1 A 0 A_ZoomFactor(1.23)
+		TNT1 A 0 A_ZoomFactor(1.09)
 		HMGH G 1
-		TNT1 A 0 A_ZoomFactor(1.25)
+		TNT1 A 0 A_ZoomFactor(1.1)
 		HMGH C 1 BRIGHT
-		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
-		TNT1 A 0 A_FireCustomMissile("HeavyMachinegunProjectile", 0, 1, -2, -2)
-		TNT1 A 0 A_FireCustomMissile("HeavyMachinegunFlash", 0, 0, -2, -2)
-		RIFF A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, -2, -2)
-		TNT1 A 0 A_FireCustomMissile("DistantFireSoundHMG", random(-1,1), 0, 0, -12, 0, random(-1,1))
 	    TNT1 A 0 A_PlaySound("TANKMG", 1)
+		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
+		TNT1 A 0 A_FireCustomMissile("DistantFireSoundHMG", 0, 0, 0, -4, 0, 0)
+		TNT1 A 0 A_FireCustomMissile("HeavyMachinegunProjectile", 0, 1, -6, -4, 0, 0)
+		TNT1 A 0 A_FireCustomMissile("HeavyMachinegunFlash", 0, 0, -6, -4)
+		RIFF A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, -6, -4)
 		HMGH E 1
-		TNT1 A 0 A_ZoomFactor(1.23)
+		TNT1 A 0 A_ZoomFactor(1.09)
 		HMGH G 1
-		TNT1 A 0 A_ZoomFactor(1.25)
+		TNT1 A 0 A_ZoomFactor(1.1)
 		HMGH A 0 A_Refire
 		Goto ReadyToFire
 
@@ -339,7 +327,7 @@ ACTOR HeavyMachinegunHUD : DoomWeapon
 		NULL A 0 A_JumpIf (pitch > 16, "TooLowCheck")
 		Goto Flash
 
-TooHigh:
+	TooHigh:
 		TNT1 A 0
 		TNT1 A 0 A_SetPitch(325)
 		Goto Flash

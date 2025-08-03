@@ -140,15 +140,10 @@ ACTOR AttackHelicopterMorpher : CustomInventory
 ACTOR AttackHelicopterMorphActivation : PowerupGiver
 {
 	Powerup.Type "PowerAttackHelicopterSwitch"
-	Powerup.Duration 252000
+	Powerup.Duration 0x7FFFFFFD
 	+INVENTORY.AUTOACTIVATE
 	+INVENTORY.ALWAYSPICKUP
 	Inventory.MaxAmount 1
-	Health 100
-	GibHealth 1
-	Mass 9999
-	Height 96
-	Radius 32
 	States
 	{
 	Spawn:
