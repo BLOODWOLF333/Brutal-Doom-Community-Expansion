@@ -2,9 +2,10 @@
 //An actor that will spawn multiple arterial blood actors
 ACTOR ArterialBloodSpray
 {
- Speed 0
- +CLIENTSIDEONLY
- +NOINTERACTION
+	Speed 0
+	+CLIENTSIDEONLY
+	+NOINTERACTION
+	+DONTSPLASH
     States
     {
      Spawn:
@@ -44,6 +45,7 @@ Actor BloodSplinter
 {
 	+THRUACTORS
 	+CLIENTSIDEONLY
+	+DONTSPLASH
 	States
 		{
 			 Spawn:
@@ -76,6 +78,7 @@ ACTOR BootSmearerRed
 	-COUNTKILL
 	+LOOKALLAROUND
 	-FRIENDLY
+	+DONTSPLASH
 	Radius 0
 	Height 0
 	 states
@@ -973,6 +976,7 @@ actor DeadBlood
 	+THRUACTORS
 	+CLIENTSIDEONLY
 	+NOGRAVITY
+	+DONTSPLASH
 	Scale 0.6
 	Alpha 0.9
 	Mass 999999
@@ -1251,6 +1255,7 @@ ACTOR PlayerFlyingBlood
 	+NOBLOCKMAP
 	+FORCEXYBILLBOARD
 	+EXPLODEONWATER
+	+DONTSPLASH
 	States
 	{
 		Spawn:
@@ -1540,6 +1545,7 @@ Actor SuperGoreSpawner
 	+FORCEXYBILLBOARD
 	+THRUACTORS
 	+NOBLOCKMAP
+	+DONTSPLASH
 	Decal BrutalBloodSuper
 	radius 2
 	height 2
@@ -1671,6 +1677,7 @@ ACTOR WallRedBlood
    +NOTELEPORT
    +NOBLOCKMAP
    +THRUACTORS
+	+DONTSPLASH
     States
     {
 		Spawn:
@@ -1704,6 +1711,7 @@ ACTOR WallOldBlood
    +NOTELEPORT
    +NOBLOCKMAP
    +THRUACTORS
+	+DONTSPLASH
     States
     {
 		Spawn:
@@ -1808,6 +1816,7 @@ ACTOR WaterBloodCHecker
 	+EXPLODEONWATER
 	+CLIENTSIDEONLY
 	+DOOMBOUNCE
+	+DONTSPLASH
 	BounceFactor 0.01
 	Height 1
     SeeSound "none"
@@ -1845,6 +1854,7 @@ ACTOR WaterBloodSpot
 {
 +CLIENTSIDEONLY
 +THRUACTORS
++DONTSPLASH
 Radius 0
 Height 0
 Renderstyle Shaded
@@ -2735,6 +2745,7 @@ Actor TankBlood
 	+NOBLOODDECALS
 	-BLOODSPLATTER
 	+CLIENTSIDEONLY
+	+DONTSPLASH
 	Renderstyle Add
 	Speed 0
 	Scale 0.4
