@@ -470,43 +470,38 @@ states
 		Stop
 
 	Spawn:
-		TTRB A 0
-		TNT1 A 2 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
-		CAND C 2
+		CAND C 4 BRIGHT
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
 
 	Spawn1:
-		CAND C 1
-		TNT1 A 1 A_SpawnItemEx("CandleStick1Flare", 0, 0, 20)
-	Stay:
-		CAND C 25 bright
+		CAND C 4 BRIGHT A_SpawnItemEx("CandleStick1Flare", 0, 0, 12)
 		TNT1 A 0 A_Jump(128, "Stay2")
 
 	Stay1:
 		CAND CBCBCB 2 BRIGHT
-		CAND C 12 BRIGHT
+		CAND C 16 BRIGHT
 		CAND CBCB 2 BRIGHT
 		Loop
 
 	Stay2:
 		CAND CBCBCB 2 BRIGHT
-		CAND C 25 BRIGHT
+		CAND C 32 BRIGHT
 		CAND CBCB 2 BRIGHT
 		Loop
 	}
 }
 
-Actor Candlestick1Flare : Candlestick
+Actor Candlestick1Flare : Flare_General
 {
 XScale 0.2
-YScale 0.09
+YScale 0.1
 Renderstyle Add
 Alpha 0.8
 states
 	{
 	Spawn:
-		FSO1 AB 1
+		FSO1 AB 5
 		Loop
-
 	}
 }
 
