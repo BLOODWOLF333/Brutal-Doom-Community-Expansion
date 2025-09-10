@@ -32,13 +32,17 @@ YScale 1.2
 Radius 2
 Height 4
 Renderstyle Add
-Alpha 0.9
+Alpha 0.8
 +CLIENTSIDEONLY
 +NONETID
 +THRUACTORS
 states
 	{
 	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(128,2)
+		TNT1 A 0 A_SetScale(-scalex,scaley)
+	Stay:
 		TRKR ABCDEFGHIJKL 1 BRIGHT
 		Loop
 	}
@@ -47,10 +51,14 @@ states
 Actor TallTorch_RedCOre : TallTorch_RedFlames
 {
 XScale 0.5
-YScale 0.31
+YScale 0.3
 states
 	{
 	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(128,2)
+		TNT1 A 0 A_SetScale(-scalex,scaley)
+	Stay:
 		TRKR MN 1 BRIGHT
 		Loop
 	}
@@ -112,13 +120,17 @@ YScale 1.2
 Radius 2
 Height 4
 Renderstyle Add
-Alpha 0.9
+Alpha 0.8
 +CLIENTSIDEONLY
 +NONETID
 +THRUACTORS
 states
 	{
 	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(128,2)
+		TNT1 A 0 A_SetScale(-scalex,scaley)
+	Stay:
 		TRKB ABCDEFGHIJKL 1 BRIGHT
 		Loop
 	}
@@ -127,10 +139,14 @@ states
 Actor TallTorch_BlueCOre : TallTorch_RedFlames
 {
 XScale 0.5
-YScale 0.31
+YScale 0.3
 states
 	{
 	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(128,2)
+		TNT1 A 0 A_SetScale(-scalex,scaley)
+	Stay:
 		TRKB MN 1 BRIGHT
 		Loop
 	}
@@ -180,13 +196,17 @@ YScale 1.2
 Radius 2
 Height 4
 Renderstyle Add
-Alpha 0.9
+Alpha 0.8
 +CLIENTSIDEONLY
 +NONETID
 +THRUACTORS
 states
 	{
 	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(128,2)
+		TNT1 A 0 A_SetScale(-scalex,scaley)
+	Stay:
 		TRKG ABCDEFGHIJKL 1 BRIGHT
 		Loop
 	}
@@ -195,10 +215,14 @@ states
 Actor TallTorch_GreenCore : TallTorch_RedFlames
 {
 XScale 0.5
-YScale 0.31
+YScale 0.3
 states
 	{
 	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(128,2)
+		TNT1 A 0 A_SetScale(-scalex,scaley)
+	Stay:
 		TRKG MN 1 BRIGHT
 		Loop
 	}
@@ -248,13 +272,17 @@ YScale 1.2
 Radius 2
 Height 4
 Renderstyle Add
-Alpha 0.9
+Alpha 0.8
 +CLIENTSIDEONLY
 +NONETID
 +THRUACTORS
 states
 	{
 	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(128,2)
+		TNT1 A 0 A_SetScale(-scalex,scaley)
+	Stay:
 		SRKB ABCDEFGHIJKL 1 BRIGHT
 		Loop
 	}
@@ -263,10 +291,14 @@ states
 Actor ShortTorch_BlueCOre : ShortTorch_BlueFlames
 {
 XScale 0.5
-YScale 0.35
+YScale 0.3
 states
 	{
 	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(128,2)
+		TNT1 A 0 A_SetScale(-scalex,scaley)
+	Stay:
 		SRKB MN 1 BRIGHT
 		Loop
 	}
@@ -317,13 +349,17 @@ YScale 1.2
 Radius 2
 Height 4
 Renderstyle Add
-Alpha 0.9
+Alpha 0.8
 +CLIENTSIDEONLY
 +NONETID
 +THRUACTORS
 states
 	{
 	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(128,2)
+		TNT1 A 0 A_SetScale(-scalex,scaley)
+	Stay:
 		SRKR ABCDEFGHIJKL 1 BRIGHT
 		Loop
 	}
@@ -332,10 +368,14 @@ states
 Actor ShortTorch_RedCOre : ShortTorch_RedFlames
 {
 XScale 0.5
-YScale 0.35
+YScale 0.3
 states
 	{
 	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(128,2)
+		TNT1 A 0 A_SetScale(-scalex,scaley)
+	Stay:
 		SRKR MN 1 BRIGHT
 		Loop
 	}
@@ -385,13 +425,17 @@ YScale 1.2
 Radius 2
 Height 4
 Renderstyle Add
-Alpha 0.9
+Alpha 0.8
 +CLIENTSIDEONLY
 +NONETID
 +THRUACTORS
 states
 	{
 	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(128,2)
+		TNT1 A 0 A_SetScale(-scalex,scaley)
+	Stay:
 		SRKG ABCDEFGHIJKL 1 BRIGHT
 		Loop
 	}
@@ -400,10 +444,14 @@ states
 Actor ShortTorch_GreenCOre : ShortTorch_RedFlames
 {
 XScale 0.5
-YScale 0.35
+YScale 0.3
 states
 	{
 	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(128,2)
+		TNT1 A 0 A_SetScale(-scalex,scaley)
+	Stay:
 		SRKG MN 1 BRIGHT
 		Loop
 	}
@@ -496,10 +544,14 @@ Actor Candlestick1Flare : TorchBall
 XScale 0.2
 YScale 0.1
 Renderstyle Add
-Alpha 0.8
+Alpha 0.5
 states
 	{
 	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(128,2)
+		TNT1 A 0 A_SetScale(-scalex,scaley)
+	Stay:
 		FSO1 AB 5
 		Loop
 	}
@@ -561,8 +613,8 @@ Actor BurningBarrel1 replaces BurningBarrel
 
 	Stay:
 		TNT1 A 0 A_SpawnItem("BurningBarrelTopFire")
-		BURB A 2 A_CustomMissile("RealisticFireSparks1", 44, 0, random (0, 140), 2, random (0, 160))
-		BURB BCBABCBABCBABC 2
+		BURB A 8 A_CustomMissile("RealisticFireSparks1", 44, 0, random (0, 140), 2, random (0, 160))
+		BURB BCB 8
 		Loop
 
 	Death.ExtremePunches:
@@ -631,34 +683,6 @@ actor BurningBarrelDamage
 		TNT1 A 0
 		TNT1 AA 5 A_Explode(10,5)
 		Stop
-	}
-}
-
-Actor TorchFlare
-{
-	+NOINTERACTION
-	+NOGRAVITY
-	+CLIENTSIDEONLY
-	+FORCEXYBILLBOARD
-	renderstyle Add
-	radius 1
-	height 1
-	alpha 0.4
-}
-
-Actor RedTF : TorchFlare
-{
-states
-	{
-	Spawn:
-	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_Jump(128,2)
-		FLAR A 2 bright
-		stop
-		TNT1 A 0
-		FLAR B 2 bright
-		stop
 	}
 }
 
@@ -811,7 +835,7 @@ actor HumanBBQ
 	+NOPAIN
 	States
 	{
-		Spawn:
+	Spawn:
 		TNT1 A 0
 		TNT1 A 0 A_Explode(3,5)
 		TNT1 A 0 A_NoBLocking
@@ -831,15 +855,15 @@ Actor BurningPillarTopFIre : BurningBarrelTopFIre
 
 Actor BDECBurningPillar
 {
-+NOBLOOD
-+GHOST
-+NOTARGET
-+RANDOMIZE
-Radius 16
-+SOLID
-height 40
-+INVULNERABLE
-states
+	+NOBLOOD
+	+GHOST
+	+NOTARGET
+	+RANDOMIZE
+	Radius 16
+	+SOLID
+	height 40
+	+INVULNERABLE
+	states
 	{
 	Spawn:
 		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
