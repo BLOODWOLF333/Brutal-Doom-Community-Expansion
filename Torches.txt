@@ -326,9 +326,7 @@ states
 
 	Spawn:
 		TTRB A 0
-
 		TNT1 A 0 A_Playsound("BDFireplace2", 1, 1, 1)
-		TNT1 A 0 A_SpawnItemEx("EvidenceCheckerGreenTorch", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
 		TNT1 A 2 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
 		TNT1 A 2
 		TNT1 A 0 A_SPawnItem("ShortTOrch_RedFlames")
@@ -545,6 +543,7 @@ XScale 0.2
 YScale 0.1
 Renderstyle Add
 Alpha 0.5
++NOINTERACTION
 states
 	{
 	Spawn:

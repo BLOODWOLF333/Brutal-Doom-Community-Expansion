@@ -9,7 +9,6 @@ Actor BloodParticleX
 	+THRUACTORS  +CLIENTSIDEONLY
 	+NOTELEPORT  +DontSplash
 	decal Bloodsplash
-	BounceFactor 0.1
 	Gravity 0.5
 	RenderStyle Add
 	Scale 1.0
@@ -18,11 +17,6 @@ Actor BloodParticleX
 	States
 	{
 	Spawn:
-		TNT1 A 1
-		TNT1 A 0 A_ChangeFlag(DOOMBOUNCE, 0)
-		TNT1 A 1
-		Goto Stand
-	Stand:
 		BSPH ABCDDDDDDDD 4
 		Stop
 	Death:
@@ -96,13 +90,11 @@ Actor BloodLiquidParticleX
 	+Missile
 	-NoGravity
 	+DontSplash
-	+BOUNCEONCEILINGS
 	+FORCEXYBILLBOARD
 	+THRUACTORS
 	+CLIENTSIDEONLY
 	+NOTELEPORT
 	+DontSplash
-	BounceFactor 0.1
 	Gravity 0.5
 	RenderStyle Translucent
 	Scale 2.0
@@ -218,7 +210,6 @@ Actor nukageParticleX
 	+THRUACTORS  +CLIENTSIDEONLY
 	+NOTELEPORT  +DontSplash
 	decal Nukeagesplash
-	BounceFactor 0.1
 	Gravity 0.5
 	RenderStyle Add
 	Scale 1.0
@@ -227,17 +218,12 @@ Actor nukageParticleX
 	States
 	{
 	Spawn:
-		TNT1 A 1
-		TNT1 A 0 A_ChangeFlag(DOOMBOUNCE, 0)
-		TNT1 A 1
-		Goto Stand
-	Stand:
-		NKSH ABCDDDDDD 4
+		NKSH ABCDDDDDD 4 BRIGHT
 		Stop
 	Death:
 		TNT1 A 0
 		TNT1 A 0 A_SetScale(0.6, 0.6)
-		NSPL ABCDEFGH 1
+		NSPL ABCDEFGH 1 BRIGHT
 		Stop
 	}
 }
@@ -400,7 +386,6 @@ Actor OrangeParticleX
 	+THRUACTORS  +CLIENTSIDEONLY
 	+NOTELEPORT  +DontSplash
 	decal Orangesplash
-	BounceFactor 0.1
 	Gravity 0.5
 	RenderStyle Add
 	Scale 1.0
@@ -409,11 +394,6 @@ Actor OrangeParticleX
 	States
 	{
 	Spawn:
-		TNT1 A 1
-		TNT1 A 0 A_ChangeFlag(DOOMBOUNCE, 0)
-		TNT1 A 1
-		Goto Stand
-	Stand:
 		OSPH ABCDDDDDDDD 4
 		Stop
 	Death:
@@ -583,7 +563,6 @@ Actor PinaColadaParticleX
 	+THRUACTORS  +CLIENTSIDEONLY
 	+NOTELEPORT  +DontSplash
 	decal PinaColadasplash
-	BounceFactor 0.1
 	Gravity 0.5
 	RenderStyle Add
 	Scale 1.0
@@ -592,11 +571,6 @@ Actor PinaColadaParticleX
 	States
 	{
 	Spawn:
-		TNT1 A 1
-		TNT1 A 0 A_ChangeFlag(DOOMBOUNCE, 0)
-		TNT1 A 1
-		Goto Stand
-	Stand:
 		PSPH ABCDDDDDDDD 4
 		Stop
 	Death:
@@ -766,7 +740,6 @@ Actor PurpleParticleX
 	+THRUACTORS  +CLIENTSIDEONLY
 	+NOTELEPORT  +DontSplash
 	decal Purplesplash
-	BounceFactor 0.1
 	Gravity 0.5
 	RenderStyle Add
 	Scale 1.0
@@ -775,11 +748,6 @@ Actor PurpleParticleX
 	States
 	{
 	Spawn:
-		TNT1 A 1
-		TNT1 A 0 A_ChangeFlag(DOOMBOUNCE, 0)
-		TNT1 A 1
-		Goto Stand
-	Stand:
 		VSPH ABCDDDDDDDD 4
 		Stop
 	Death:
@@ -949,7 +917,6 @@ Actor SlimeParticleX
 	+THRUACTORS  +CLIENTSIDEONLY
 	+NOTELEPORT  +DontSplash
 	decal Slimesplash
-	BounceFactor 0.1
 	Gravity 0.5
 	RenderStyle Add
 	Scale 1.0
@@ -958,11 +925,6 @@ Actor SlimeParticleX
 	States
 	{
 	Spawn:
-		TNT1 A 1
-		TNT1 A 0 A_ChangeFlag(DOOMBOUNCE, 0)
-		TNT1 A 1
-		Goto Stand
-	Stand:
 		SSPH ABCDDDDDDDD 4
 		Stop
 	Death:
@@ -1270,7 +1232,6 @@ Actor TarParticleX
 	+THRUACTORS  +CLIENTSIDEONLY
 	+NOTELEPORT  +DontSplash
 	decal Watersplash
-	BounceFactor 0.1
 	Gravity 0.5
 	RenderStyle Add
 	Scale 1.0
@@ -1279,11 +1240,6 @@ Actor TarParticleX
 	States
 	{
 	Spawn:
-		TNT1 A 1
-		TNT1 A 0 A_ChangeFlag(DOOMBOUNCE, 0)
-		TNT1 A 1
-		Goto Stand
-	Stand:
 		TSPH ABCDDDDDDDD 4
 		Stop
 	Death:
