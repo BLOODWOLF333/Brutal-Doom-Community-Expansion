@@ -39,19 +39,18 @@ ACTOR ExplosiveBarrel1 Replaces ExplosiveBarrel
 	States
 	{
 	Spawn:
-		BARI A 0
-		TNT1 A 0 A_GiveInventory("TargetIsANExplosiveBarrel", 1)
-		MARN A 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
-		BARI A 2
+		BARI A 6
+		TNT1 A 0 A_GiveInventory("TargetIsANExplosiveBarrel", 1)//Delay for Sunlust Map30 check
+		TTN1 A 0 ACS_NamedExecuteAlways("BDCheckDecorations", 0, 0, 0, 0)//Check if advanced decorations are disabled.
 		TNT1 A 0 A_RadiusGive("BarrelCounter",64,RGF_GIVESELF | RGF_OBJECTS | RGF_CUBE | RGF_NOSIGHT,1)
-		BARI A 2
+		BARI A 6
 		TNT1 A 0 A_JumpIfInventory("BarrelCounter",9,"Vanilla")
 		Goto Stay
 
 	Vanilla:
 		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
 		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
-		TNT1 A 0 A_SpawnItem("VanillaExplosiveBarrel")
+		TNT1 A 0 A_SpawnItemEx("VanillaExplosiveBarrel",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
 		TNT1 A 2 Thing_Remove(0)
 		Stop
 
@@ -113,7 +112,21 @@ ACTOR ExplosiveBarrel1 Replaces ExplosiveBarrel
         Goto Spawn
 
 	Death:
-        BEXP A 4 BRIGHT A_JumpIfInventory("BarrelCounter",9,"VanillaDeath")//In the case that the check in the spawn state fails (online latency)
+	XDeath:
+	Crush:
+		BEXP A 5 BRIGHT
+		TNT1 A 0 A_JumpIfInventory("TargetIsANExplosiveBarrel",1,"BrutalDeath")//If not Sunlust Map30
+	VanillaDeath:
+		BEXP B 5 BRIGHT A_Scream
+		BEXP C 5 BRIGHT
+		BEXP D 5 BRIGHT A_Explode
+		BEXP E 10 BRIGHT
+		TNT1 A 1050 BRIGHT A_BarrelDestroy
+		TNT1 A 5 A_Respawn
+		Wait
+
+	BrutalDeath:
+        BEXP A 0 BRIGHT A_JumpIfInventory("BarrelCounter",9,"VanillaDeath")
 		BEXP B 4 BRIGHT A_Scream
 		BEXP C 4 BRIGHT
 		BEXP D 1 BRIGHT A_Explode(200,200)
@@ -135,19 +148,9 @@ ACTOR ExplosiveBarrel1 Replaces ExplosiveBarrel
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece", 0,0,5,random (-15, 15), random (-15, 15), random (-15, 15))
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece2", 0,0,10,random (-15, 15), random (-15, 15), random (-15, 15))
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", 0,0,15,random (-15, 15), random (-15, 15), random (-15, 15))
-		BEXP E 4 BRIGHT
+		BEXP E 8 BRIGHT
 		TNT1 A 840 BRIGHT A_BarrelDestroy
 		TNT1 A 4 A_Respawn
-		Wait
-
-	VanillaDeath:
-		BEXP A 5 BRIGHT
-		BEXP B 5 BRIGHT A_Scream
-		BEXP C 5 BRIGHT
-		BEXP D 5 BRIGHT A_Explode
-		BEXP E 10 BRIGHT
-		TNT1 A 1050 BRIGHT A_BarrelDestroy
-		TNT1 A 5 A_Respawn
 		Wait
 
 	Death.Fatality:
@@ -669,13 +672,13 @@ ACTOR VanillaExplosiveBarrel: ExplosiveBarrel1
 		Loop
 
 	Death:
-		BEXP A 4 BRIGHT
-		BEXP B 4 BRIGHT A_Scream
-		BEXP C 4 BRIGHT
-		BEXP D 4 BRIGHT A_Explode
-		BEXP E 4 BRIGHT
-		TNT1 A 840 BRIGHT A_BarrelDestroy
-		TNT1 A 4 A_Respawn
+		BEXP A 5 BRIGHT
+		BEXP B 5 BRIGHT A_Scream
+		BEXP C 5 BRIGHT
+		BEXP D 5 BRIGHT A_Explode
+		BEXP E 10 BRIGHT
+		TNT1 A 1050 BRIGHT A_BarrelDestroy
+		TNT1 A 5 A_Respawn
 		Wait
 	}
 }
