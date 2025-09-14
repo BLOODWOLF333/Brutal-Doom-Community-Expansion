@@ -16,11 +16,12 @@ Actor ExplosionParticle
   +NOTELEPORT
   RenderStyle Add
   Scale 0.8
-  Gravity 0
+  Gravity 1
+  Speed 12
   States
   {
   Spawn:
-    SPKO B 1 Bright A_FadeOut(0.02)
+    SPKO B 1 Bright A_FadeOut(0.04)
     Loop
   }
 }
@@ -29,6 +30,7 @@ Actor ExplosionParticle2: ExplosionParticle
 {
 
   Scale 0.1
+  Speed 6
   States
   {
   Spawn:
@@ -193,7 +195,7 @@ Actor BluePlasmaParticle: ExplosionParticle
 {
   BounceFactor 0.2
   Gravity 0.8
-  Scale 0.035
+  Scale 0.014
   Speed 12
   States
   {
@@ -208,7 +210,7 @@ Actor RailgunTrailParticle : BluePlasmaParticle
 {
   Gravity 0.0
   RenderStyle Add
-  Scale 0.1
+  Scale 0.4
   Speed 1
   States
   {
@@ -237,6 +239,22 @@ Actor BluePlasmaFire: BluePlasmaParticle
   }
 }
 
+Actor PurplePlasmaFire: BluePlasmaFire
+{
+  +NoGravity
+  RenderStyle Add
+  Scale 0.7
+  Alpha 0.9
+  Speed 4
+  States
+  {
+  Spawn:
+  Death:
+    VFOG ABCDEFG 1 Bright
+    Stop
+  }
+}
+
 Actor BluePlasmaFireNonStatic: BluePlasmaFire
 {
 Speed 2
@@ -248,7 +266,7 @@ Actor PlasmaParticleX: BluePlasmaParticle
   BounceFactor 0.1
   Gravity 0.4
   RenderStyle Add
-  Scale 1.0
+  Scale 4.0
   Speed 2
   States
   {
@@ -276,15 +294,15 @@ Actor BigPlasmaParticleX: PlasmaParticleX
 }
 
 Actor PlasmaParticle: BluePlasmaParticle
-
 {
-  States
-  {
-  Spawn:
-  Death:
-    SPKG A 2 Bright A_FadeOut(0.02)
-    Loop
-  }
+	Scale 0.14
+	States
+	{
+	Spawn:
+	Death:
+	SPKG A 2 Bright A_FadeOut(0.02)
+	Loop
+	}
 }
 
 ACTOR RailPuff: BulletPuff
@@ -366,6 +384,7 @@ ACTOR BarrelParticle
 	+NONETID
     +NOBLOCKMAP
     +NOTELEPORT
+	+THRUACTORS
     States
     {
     Spawn:
@@ -1241,7 +1260,7 @@ Speed 6
 
 	Live:
 			SPKS JKLMN 1 BRIGHT
-			SPKS O 35
+			SPKS O 35 BRIGHT
 			SPKS OOOOOOOOOO 1 BRIGHT A_FadeOut(0.1)
 			Stop
     }
@@ -1646,3 +1665,80 @@ ACTOR BDECFoliageParticleLeaf: BDECFoliageParticle1a
 		TNT1 A 0
         Stop
 }}
+
+ACTOR PlasmaHitFogNew: ExplosionParticle2
+{
+	Radius 1
+	Height 1
+	Alpha 1.0
+	RenderStyle Add
+	Scale 0.3
+	Speed 3
+	+NOGRAVITY
+	+BOUNCEONCEILINGS
+	+BOUNCEONWALLS
+	-SKYEXPLODE
+	States
+    {
+	Spawn:
+	TNT1 A 0
+	TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Live")
+	Spawn1:
+	TNT1 A 0
+	TNT1 A 0 A_SetScale(-0.2, -0.2)
+	Goto live
+
+	Spawn2:
+	TNT1 A 0
+	TNT1 A 0 A_SetScale(0.4, -0.4)
+	Goto live
+
+	Spawn3:
+	TNT1 A 0
+	TNT1 A 0 A_SetScale(-0.6, 0.6)
+	Goto live
+	Live:
+	PFOG ABCDEFG 1 BRIGHT
+	Stop
+    }
+}
+
+ACTOR GreenPlasmaHitFogNew: PlasmaHitFogNew
+{
+	Radius 1
+	Height 1
+	Scale 0.5
+	Speed 6
+	States
+    {
+	Spawn:
+	TNT1 A 0
+	TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Live")
+	Spawn1:
+	TNT1 A 0
+	TNT1 A 0 A_SetScale(-0.5, -0.5)
+	Goto live2
+
+	Spawn2:
+	TNT1 A 0
+	TNT1 A 0 A_SetScale(0.4, -0.4)
+	Goto live2
+
+	Spawn3:
+	TNT1 A 0
+	TNT1 A 0 A_SetScale(-0.8, 0.8)
+	Goto live
+
+	Live:
+	BFOG ABCDE 1 BRIGHT
+	TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (0, 360), 2, random (20, 90))
+	BFOG FG 1 BRIGHT
+	Stop
+
+	Live2:
+	BFOG BC 2 BRIGHT
+	TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (0, 360), 2, random (20, 90))
+	BFOG DEFG 1 BRIGHT
+	Stop
+    }
+}
