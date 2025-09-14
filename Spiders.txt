@@ -303,23 +303,6 @@ Actor EnemyPlasmaBall : PlasmaBall75 Replaces PlasmaBall2
 	Speed 30
 	-THRUSPECIES
 	Species "Arachnotron"
-	States
-	{
-	Death:
-		PLSN A 0 A_CustomMissile ("BluePlasmaFire", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AAAAA 0 A_CustomMissile ("BluePlasmaParticle", 0, 0, random (0, 360), 2, random (0, 360))
-		PLSE ABC 2 BRIGHT A_SpawnItem("BlueFlare")
-		PLSE DE 2 Bright A_SpawnItem("BlueFlareSmall")
-		TNT2 AAA 9 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
-		Stop
-
-	XDeath:
-		PLSN A 0 A_CustomMissile ("BluePlasmaFire", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AAAAA 0 A_CustomMissile ("BluePlasmaParticle", 0, 0, random (0, 360), 2, random (0, 360))
-		PLSE ABC 2 BRIGHT A_SpawnItem("BlueFlare")
-		PLSE DE 2 Bright A_SpawnItem("BlueFlareSmall")
-		Stop
-	}
 }
 
 ACTOR EvilPlasmaBall : EnemyPlasmaBall

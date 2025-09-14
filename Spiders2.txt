@@ -473,7 +473,7 @@ ACTOR PurplePlasmaBall : EnemyPlasmaBall
 	Radius 6
 	Height 6
 	Speed 30
-	Scale 0.55
+	Scale 0.5
 	DamageType Plasma
 	Damage (random(32,32))
 	Decal StunnerScorch
@@ -487,12 +487,11 @@ ACTOR PurplePlasmaBall : EnemyPlasmaBall
 	states
 	{
 	Spawn:
-		PBAL HIHI 1 BRIGHT A_SpawnItem("PinkIonFlare")
+		PBAL HI 4 BRIGHT
 		Loop
 	Death:
 	XDeath:
-		TNT1 A 0 A_SpawnItem ("IonPuff", 0)
-		TNT2 AAA 9 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAA 1 A_CustomMissile("PurplePlasmaFire", 0, 0, random (0, 360), 2, random (0, 360))
 		Stop
 	}
 }
@@ -508,7 +507,7 @@ ACTOR IonPuff: BulletPuff
   states
   {
   Spawn:
-	FIR4 ABCDE 1 Bright A_SpawnItem("PinkFlare" ,0)
+	FIR4 ABCDE 1 Bright
 	FIR4 FGHIJKLMNOP 1 Bright A_FadeOut(0.04)
     stop
   }

@@ -225,19 +225,11 @@ ACTOR BelphegorGreenPlasmaBall: BaronBall
 	States
 	{
 	Spawn:
-		PBAL CC 1 BRIGHT A_SpawnItem("GreenFlareMedium2",0,0)
-		TNT1 A 0 A_CustomMissile ("GreenFlameTrails", 2, 0, random (160, 210), 2, random (-30, 30))
-		TNT1 A 0 A_CustomMissile ("OldschoolRocketSmokeTrailDarker", 2, 0, random (160, 210), 2, random (-30, 30))
+		PBAL CD 4 BRIGHT
 		Loop
 
 	Death:
-		BFE1 A 0 Bright
-		EXPL A 0 Radius_Quake (2, 35, 0, 5, 0)
-		BFE1 A 0 Bright A_Explode(7,7,1)
-        TNT1 AAAA 0 A_CustomMissile ("GreenExplosionFire", 2, 0, random (0, 360), 2, random (0, 360))
-        EXPL A 0 A_CustomMissile ("BigNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360))
-		FRPG BCDEF 2 Bright A_SpawnItem("GreenFlare",0,0)
-		TNT1 AAAA 2 A_CustomMissile ("BigNeoSmoke", 2, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAA 1 A_CustomMissile ("GreenPlasmaHitFogNew", 2, 0, random (0, 360), 2, random (-50, 90))
 		Stop
 	}
 }

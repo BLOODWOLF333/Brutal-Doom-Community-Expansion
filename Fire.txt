@@ -1299,27 +1299,23 @@ ACTOR ImpBallGettingReady: FlameTrails
 {
 	+NOINTERACTION
 	+NOCLIP
-    Scale 0.5
-	Speed 1
+    Scale 0.3
+	Speed 0
 	States
 	{
     Spawn:
-        BLHD AB 1 BRIGHT A_SpawnItem("FireballFlare")
+        BLHD AB 2 BRIGHT
         Stop
 	}
 }
 
 ACTOR BallGettingReadyGreen: ImpBallGettingReady
 {
-Speed 0
--FORCEXYBILLBOARD
-Alpha 1.0
-Renderstyle Add
-    Scale 1.6
+	Scale 0.4
 	States
 	{
     Spawn:
-        FRPG JK 3 BRIGHT  A_SpawnItem("GreenFlareSmall")
+        BLHD EF 2 BRIGHT
         Stop
 	}
 }

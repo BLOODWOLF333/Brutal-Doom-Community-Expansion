@@ -518,46 +518,37 @@ ACTOR BigFireBall Replaces Fatshot
 	States
 	{
 	Spawn:
-	    TNT1 A 0
-		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)//Check Effects
-		BLHD AB 4 BRIGHT
-		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "SpawnCheap")
-
-	Spawn1:
-		BLHD A 4 BRIGHT A_SpawnItem ("CoolandNewFlameTrailsMedium")
-		TNT1 A 0 A_CustomMissile ("RocketSmokeTrail52", 2, 0, random (70, 110), 2, random (0, 360))
-		BLHD B 4 BRIGHT A_SpawnItem ("CoolandNewFlameTrailsMedium")
-		TNT1 A 0 A_CustomMissile ("RocketSmokeTrail52", 2, 0, random (70, 110), 2, random (0, 360))
-		Loop
-
-	SpawnCheap:
 		BLHD AB 4 BRIGHT
 		Loop
 
 	Death:
-	TNT1 A 0
-	TNT1 A 0 A_Explode(6, 6, 1)
-	TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DeathCheap")
-	TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-	TNT1 A 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
-	TNT1 A 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (40, 90))
-	TNT1 A 0 A_CustomMissile ("BDExplosionparticles3", 10, 0, random (0, 360), 2, random (40, 90))
-	EXPL A 0 A_CustomMissile ("FlamethrowerFireParticles", 6, 0, random (0, 360), 2, random (0, 90))
-	TNT1 A 0 A_SpawnItemEx("TinyBurningPiece", random (-15, 15), random (-15, 15))
-	TNT1 A 0 A_SpawnItemEx("TinyBurningPiece2", random (-35, 35), random (-35, 35))
-	TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-45, 45), random (-45, 35))
-	TNT1 A 20 A_CustomMissile ("BigBlackSmoke", 0, 0, random (0, 360), 2, random (40, 160))
-	Stop
+		TNT1 A 0 A_ChangeFlag("NOGRAVITY", 0)
+		TNT1 A 0 A_Explode(6, 6, 1)
+		Goto ExplosionEffect
+
+	ExplosionEffect:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DeathCheap")
+		TNT1 AA 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
+		TNT1 A 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (40, 90))
+		TNT1 A 0 A_CustomMissile ("BDExplosionparticles3", 10, 0, random (0, 360), 2, random (40, 90))
+		EXPL A 0 A_CustomMissile ("FlamethrowerFireParticles", 6, 0, random (0, 360), 2, random (0, 90))
+		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece", random (-15, 15), random (-15, 15))
+		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece2", random (-35, 35), random (-35, 35))
+		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-45, 45), random (-45, 35))
+		TNT1 AA 20 A_CustomMissile ("BigBlackSmoke", 0, 0, random (0, 360), 2, random (40, 160))
+		Stop
 
 	DeathCheap:
 	XDeath:
-	TNT1 A 0
-	TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-	TNT1 A 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
-	TNT1 A 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (40, 90))
-	TNT1 A 0 A_CustomMissile ("BDExplosionparticles3", 10, 0, random (0, 360), 2, random (40, 90))
-	EXPL A 0 A_CustomMissile ("FlamethrowerFireParticles", 6, 0, random (0, 360), 2, random (0, 90))
-	Stop
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
+		TNT1 A 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (40, 90))
+		TNT1 A 0 A_CustomMissile ("BDExplosionparticles3", 10, 0, random (0, 360), 2, random (40, 90))
+		EXPL A 0 A_CustomMissile ("FlamethrowerFireParticles", 6, 0, random (0, 360), 2, random (0, 90))
+		Stop
 	}
 }
 
