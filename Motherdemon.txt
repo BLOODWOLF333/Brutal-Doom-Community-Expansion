@@ -144,27 +144,13 @@ actor MotherBall : GreenPlasmaBall
 	States
 	{
 	Spawn:
-	    TNT1 A 0
-		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)//Check Effects
-		SPKO A 4 BRIGHT
-		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "SpawnCheap")
-
-	Spawn1:
-		SPKO A 4 BRIGHT A_SpawnItemEx("SmallFlameTrails", 0, 0, 0, 0, 0, 0, 0, 128)
-		TNT1 A 0 A_CustomMissile ("OldschoolRocketSmokeTrailDarker", 2, 0, random (160, 210), 2, random (-30, 30))
-		TNT1 A 0 A_SeekerMissile (2,4, SMF_LOOK)
-		Loop
-
-	SpawnCheap:
-	    SPKO A 4 BRIGHT
-		TNT1 A 0 A_SeekerMissile (2,4, SMF_LOOK)
+		SPKO A 4 BRIGHT A_SeekerMissile (2,4, SMF_LOOK)
 		Loop
 
 	Death:
 		TNT1 A 0 A_SpawnItemEx("SparkX", 0, 0, 0, 0, 0, 0, 0, 128)
 	    TNT1 A 0 A_SpawnItemEx ("DetectFloorCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 AA 0 A_SpawnItem("RedFlare",0,0)
 		TNT1 A 0 A_SetScale(0.7)
 		TNT1 A 0 A_FadeOut(0.2)
 		FRPR ABCDEFGH 2 BRIGHT
@@ -173,7 +159,6 @@ actor MotherBall : GreenPlasmaBall
 	XDeath:
         TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx("SparkX", 0, 0, 0, 0, 0, 0, 0, 128)
-		TNT1 AA 0 A_SpawnItem("RedFlare",0,0)
 	    TNT1 A 0 A_SetScale(0.7)
 		TNT1 A 0 A_FadeOut(0.2)
 		FRPR ABCDEFGH 2 BRIGHT
@@ -192,18 +177,7 @@ actor MotherBallDumb : MotherBall
 	States
 	{
 	Spawn:
-	    TNT1 A 0
-		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)//Check Effects
-		SPDO A 4 BRIGHT
-		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "SpawnCheap")
-
-	Spawn1:
-		SPKO A 4 BRIGHT A_SpawnItemEx("SmallFlameTrails", 0, 0, 0, 0, 0, 0, 0, 128)
-		TNT1 A 0 A_CustomMissile ("OldschoolRocketSmokeTrailDarker", 2, 0, random (160, 210), 2, random (-30, 30))
-		Loop
-
-	SpawnCheap:
-	    SPKO A 4 BRIGHT
+		SPKO A 4 BRIGHT
 		Loop
 	}
 }
@@ -286,13 +260,12 @@ actor MotherFireTrail
 
 ACTOR SuperMotherBall : BelphegorGreenPlasmaBall
 {
-	Scale 3.0
+	Scale 1.0
 	Damagetype "Fire"
 	States
 	{
 	Spawn:
-		FRFX AB 1 BRIGHT A_SpawnItem("RedFlare2",0,0)
-		TNT1 A 0 A_SpawnItemEx("FlameTrails", 0, 0, 0, 0, 0, 0, 0, 128)
+		BLHD AB 4 BRIGHT
 		Loop
 
 	Death:
@@ -309,7 +282,7 @@ ACTOR SuperMotherBall : BelphegorGreenPlasmaBall
 		TNT1 A 0 A_CustomMissile("MotherBallDumb", 8, 0, 225, CMF_AIMDIRECTION, random(0,15))
 		TNT1 A 0 A_CustomMissile("MotherBallDumb", 8, 0, 270, CMF_AIMDIRECTION, random(0,15))
 		TNT1 A 0 A_CustomMissile("MotherBallDumb", 8, 0, 315, CMF_AIMDIRECTION, random(0,15))
-		FRFX CDEFGHIJKLMNOP 2 Bright A_SpawnItem("RedFlare",0,0)
+		FRFX CDEFGHIJKLMNOP 2 Bright
 		TNT1 AAAA 2 A_CustomMissile ("BigNeoSmoke", 2, 0, random (0, 360), 2, random (0, 360))
 		Stop
 	}

@@ -500,8 +500,9 @@ ACTOR Plasma_Ball
 		TNT1 AAAAA 0 A_CustomMissile ("BluePlasmaParticle", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 A 0 A_SpawnItemEx ("DetectFloorCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 0 A_SpawnItemEx ("DetectCeilCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		PLSE ABCDE 1 BRIGHT A_CustomMissile ("PlasmaHitFogNew", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT2 AAA 9 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItemEx("PlasmaPuff")
+		TNT1 AAAA 1 A_CustomMissile ("PlasmaHitFogNew", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAA 9 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
 		Stop
 	}
 }
