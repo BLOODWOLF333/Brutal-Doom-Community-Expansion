@@ -2350,21 +2350,18 @@ ACTOR FireBall_ Replaces DoomImpBall
 	DeathSound "imp/shotx"
 	Decal "Scorch"
 	Species "Imps"
-	Scale 0.3
+	Scale 0.5
 	States
 	{
 	Spawn:
-		BLHD AB 4 BRIGHT
+		MANF AB 4 BRIGHT
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
-
-	Spawn1:
-		BLHD AB 4 BRIGHT
 		Loop
 
 	SpawnUnderwater:
-		BLHD AB 4 BRIGHT  A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
+		MANF AB 4 BRIGHT A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
-		Goto Spawn1
+		Goto Spawn
 
 	Death:
 		TNT1 A 0 A_SpawnItemEx ("SmallUnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
@@ -2377,18 +2374,6 @@ ACTOR FireBall_ Replaces DoomImpBall
 		TNT1 AA 0 A_CustomMissile ("BDExplosionparticles3", 10, 0, random (0, 180), 2, random (40, 90))
 		TNT1 AA 0 A_CustomMissile ("ExplosionParticle", 10, 0, random (0, 180), 2, random (40, 90))
 		TNT1 AA 0 A_CustomMissile ("ExplosionParticle2", 10, 0, random (0, 180), 2, random (40, 90))
-		Stop
-
-	XDeath:
-		TNT1 A 0 A_SpawnItemEx ("SmallUnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-15, 15), random (-15, 15))
-		TNT1 A 0 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
-		EXPL AAA 0 A_CustomMissile ("ImpFireBallFlames1", 1, 0, random (0, 360), 2, random (0, 90))
-		EXPL A 0 A_CustomMissile ("ImpFireBallFlames2", 1, 0, random (0, 360), 2, random (0, 90))
-		TNT1 A 0 A_CustomMissile ("BDExplosionparticles", 10, 0, random (0, 180), 2, random (40, 90))
-		TNT1 AA 0 A_CustomMissile ("BDExplosionparticles3", 10, 0, random (0, 180), 2, random (40, 90))
-		TNT1 AA 0 A_CustomMissile ("ExplosionParticle", 10, 0, random (0, 180), 2, random (40, 90))
-		TNT1 A 0 A_CustomMissile ("ExplosionParticle2", 10, 0, random (0, 180), 2, random (40, 90))
 		Stop
 	}
 }

@@ -138,13 +138,13 @@ actor MotherBall : GreenPlasmaBall
 	Damage (random(16,16))
 	+THRUGHOST
 	+SEEKERMISSILE
-	Scale 0.375
+	Scale 0.5
 	Speed 15
 	Damagetype "Fire"
 	States
 	{
 	Spawn:
-		SPKO A 4 BRIGHT A_SeekerMissile (2,4, SMF_LOOK)
+		MANF AB 4 BRIGHT A_SeekerMissile (2,4, SMF_LOOK)
 		Loop
 
 	Death:
@@ -171,13 +171,13 @@ actor MotherBallDumb : MotherBall
 	Damage (random(16,16))
 	+THRUGHOST
 	-SEEKERMISSILE
-	Scale 0.375
+	Scale 0.5
 	Speed 15
 	FastSpeed 30
 	States
 	{
 	Spawn:
-		SPKO A 4 BRIGHT
+		MANF AB 4 BRIGHT
 		Loop
 	}
 }
@@ -260,12 +260,12 @@ actor MotherFireTrail
 
 ACTOR SuperMotherBall : BelphegorGreenPlasmaBall
 {
-	Scale 1.0
+	Scale 2.0
 	Damagetype "Fire"
 	States
 	{
 	Spawn:
-		BLHD AB 4 BRIGHT
+		MANF AB 4 BRIGHT
 		Loop
 
 	Death:
