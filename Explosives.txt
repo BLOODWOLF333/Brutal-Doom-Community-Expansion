@@ -567,26 +567,14 @@ ACTOR CyberBalls: Rocket2
 	States
 	{
 	Spawn:
-	    TNT1 A 0
-		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)//Check Effects
 		WYVB A 4 BRIGHT
-		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "SpawnCheap")
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
-
-	Spawn1:
-	    WYVB AA 1 Bright A_SpawnItem("RedFlareSmall2",0,0)
-		TNT1 A 0 A_CustomMissile ("OldschoolRocketSmokeTrail2", 2, 0, random (160, 210), 2, random (-30, 30))
-		Loop
-
-	SpawnCheap:
-	    WYVB A 4 Bright
 		Loop
 
 SpawnUnderwater:
-	    WYVB AA 1 Bright A_SpawnItem("RedFlareSmall2",0,0)
-		TNT1 A 0 A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
+	    WYVB A 4 Bright A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
-		Goto Spawn1
+		Goto Spawn
 	}
 }
 
