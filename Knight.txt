@@ -507,7 +507,7 @@ ACTOR GreenPlasmaBall: BaronBall Replaces BaronBall
     Damage (random(42,42))
 	RenderStyle Add
 	Alpha 0.95
-	Scale 0.4
+	Scale 1.0
 	SeeSound "baron/attack"
 	DeathSound "baron/shotx"
 	Decal "Scorch"
@@ -515,7 +515,7 @@ ACTOR GreenPlasmaBall: BaronBall Replaces BaronBall
 	States
 	{
 	Spawn:
-		PBAL CD 4 BRIGHT
+		BAL7 AB 4 BRIGHT
 		Loop
 
 	Death:

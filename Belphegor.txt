@@ -39,9 +39,9 @@ ACTOR Belphegor : BaronofHell 2544
 	See:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("Token1", 1, "See2")
-		BOS3 AAAA 2 A_Chase("","")
+		BOS3 AAAA 2 A_Chase
 		BOS3 BBBB 2 A_Chase
-		BOS3 CCCC 2 A_Chase("","")
+		BOS3 CCCC 2 A_Chase
 		BOS3 BBBB 2 A_Chase
 		Loop
 
@@ -76,14 +76,30 @@ ACTOR Belphegor : BaronofHell 2544
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 		TNT1 A 0 A_JumpIfInventory("Token1", 1, "MissileAngry")
-		BOS3 F 8 A_FaceTarget
+		BOS3 F 2 A_FaceTarget
+		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 79, 38, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, 38, random (0, 140), 2, random (0, 160))
+		BOS3 F 2 A_FaceTarget
+		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 79, 38, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, 38, random (0, 140), 2, random (0, 160))
+		BOS3 F 2 A_FaceTarget
+		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 79, 38, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, 38, random (0, 140), 2, random (0, 160))
+		BOS3 F 2 A_FaceTarget
+		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 79, 38, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, 38, random (0, 140), 2, random (0, 160))
 		BOS3 G 8 A_FaceTarget
 		BOS3 H 8 A_CustomMissile("BelphegorGreenPlasmaBall", 38, 0, 0, 1)
 		TNT1 A 0 A_CustomMissile("Alerter", 38)
 		Goto See
 
 	 MissileAngry:
-		BOS3 F 4 A_FaceTarget
+		BOS3 F 2 A_FaceTarget
+		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 79, 38, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, 38, random (0, 140), 2, random (0, 160))
+		BOS3 F 2 A_FaceTarget
+		TNT1 A 0 A_CustomMissile ("SmallGreenFlameTrails", 79, 38, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 79, 38, random (0, 140), 2, random (0, 160))
 		BOS3 G 4 A_FaceTarget
 		BOS3 H 4 A_CustomMissile("BelphegorGreenPlasmaBall", 38, 0, 0, 1)
 		TNT1 A 0 A_CustomMissile("Alerter", 38)
@@ -217,7 +233,7 @@ ACTOR BelphegorGreenPlasmaBall: BaronBall
     Damage (random(48,48))
 	RenderStyle Add
 	Alpha 0.9
-	Scale 0.5
+	Scale 1.1
 	SeeSound "baron/attack"
 	DeathSound "FAREXPL"
 	Decal "Scorch"
@@ -225,7 +241,7 @@ ACTOR BelphegorGreenPlasmaBall: BaronBall
 	States
 	{
 	Spawn:
-		PBAL CD 4 BRIGHT
+		BAL7 AB 4 BRIGHT
 		Loop
 
 	Death:
