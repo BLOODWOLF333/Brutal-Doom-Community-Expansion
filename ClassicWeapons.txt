@@ -1390,24 +1390,19 @@ ACTOR ClassicPlasmaBall : Plasmaball
 	Projectile
 	+RANDOMIZE
 	+THRUSPECIES
+	Species "Marines"
 	RenderStyle Add
 	Alpha 0.75
 	SeeSound "weapons/plasmaf"
 	DeathSound "weapons/plasmax"
 	Obituary "$OB_MPPLASMARIFLE"
-	Species "Marines"
 	States
 	{
 	Spawn:
-		PLSS AB 1 Bright A_SpawnItem("BlueFlareSmall")
+		PLSS AB 6 Bright
 		Loop
-
 	Death:
-	    TNT1 A 0
-		TNT1 A 0 A_CustomMissile ("BluePlasmaFire", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AAAAA 0 A_CustomMissile ("BluePlasmaParticle", 0, 0, random (0, 360), 2, random (0, 360))
-		PLSE ABC 2 BRIGHT A_SpawnItem("BlueFlare")
-		PLSE DE 2 Bright A_SpawnItem("BlueFlareSmall")
+		PLSE ABCDE 4 Bright
 		Stop
 	}
 }

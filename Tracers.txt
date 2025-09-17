@@ -211,14 +211,14 @@ Actor MastermindTracer: Tracer
 	{
 	Spawn:
 		TNT1 A 1
-		TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail2", (2 *momx)/-35.0, -(2 *momy)/-35.0, 2+(2 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
-        TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail3", (4 *momx)/-35.0, -(4 *momy)/-35.0, 2+(4 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
-        TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail4", (6 *momx)/-35.0, -(6 *momy)/-35.0, 2+(6 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
-        TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail5", (8 *momx)/-35.0, -(8 *momy)/-35.0, 2+(8 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
-        TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail6", (10*momx)/-35.0, -(10*momy)/-35.0, 2+(10*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
-		TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail7", (12*momx)/-35.0, -(12*momy)/-35.0, 2+(12*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
-		TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail8", (14*momx)/-35.0, -(14*momy)/-35.0, 2+(14*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
-		TNT1 A 0 A_SpawnItemEx("AutoCannonTracerTrail9", (16*momx)/-35.0, -(16*momy)/-35.0, 2+(16*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("MastermindTracerTrail2", (2 *momx)/-35.0, -(2 *momy)/-35.0, 2+(2 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("MastermindTracerTrail3", (4 *momx)/-35.0, -(4 *momy)/-35.0, 2+(4 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("MastermindTracerTrail4", (6 *momx)/-35.0, -(6 *momy)/-35.0, 2+(6 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("MastermindTracerTrail5", (8 *momx)/-35.0, -(8 *momy)/-35.0, 2+(8 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("MastermindTracerTrail6", (10*momx)/-35.0, -(10*momy)/-35.0, 2+(10*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("MastermindTracerTrail7", (12*momx)/-35.0, -(12*momy)/-35.0, 2+(12*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("MastermindTracerTrail8", (14*momx)/-35.0, -(14*momy)/-35.0, 2+(14*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("MastermindTracerTrail9", (16*momx)/-35.0, -(16*momy)/-35.0, 2+(16*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
         Loop
 	XDeath:
 	Death:
@@ -260,15 +260,6 @@ actor MastermindTracerTrail6: MastermindTracerTrail {    Alpha 0.65 }
 actor MastermindTracerTrail7: MastermindTracerTrail {    Alpha 0.60 }
 actor MastermindTracerTrail8: MastermindTracerTrail {    Alpha 0.55 }
 actor MastermindTracerTrail9: MastermindTracerTrail {    Alpha 0.50 }
-actor MastermindTracerTrail10: MastermindTracerTrail {    Alpha 0.45 }
-actor MastermindTracerTrail11: MastermindTracerTrail {    Alpha 0.40 }
-actor MastermindTracerTrail12: MastermindTracerTrail {    Alpha 0.35 }
-actor MastermindTracerTrail13: MastermindTracerTrail {    Alpha 0.30 }
-actor MastermindTracerTrail14: MastermindTracerTrail {    Alpha 0.25 }
-actor MastermindTracerTrail15: MastermindTracerTrail {    Alpha 0.20 }
-actor MastermindTracerTrail16: MastermindTracerTrail {    Alpha 0.15 }
-actor MastermindTracerTrail17: MastermindTracerTrail {    Alpha 0.10 }
-actor MastermindTracerTrail18: MastermindTracerTrail {    Alpha 0.05 }
 
 Actor SpawnBulletDecalBackwards: FastProjectile
 {
