@@ -9,13 +9,14 @@ ACTOR Rocket2
     Damage (random (300, 300))
 	DamageType Explosive
     MeleeDamage 0
-	Scale 0.5
+	Scale 1.0
     Decal "Scorch"
 	+MISSILE
     +NOGRAVITY
     +EXTREMEDEATH
 	+THRUSPECIES
 	+NOTELEPORT
+	+ROCKETTRAIL
 	SeeSound "Rocket/Launch"
 	DeathSound "Explosion"
 	Obituary "$OB_MPROCKET"
@@ -34,13 +35,12 @@ ACTOR Rocket2
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 
 	Live:
-	    MISL AA 1 Bright A_SpawnItem("RocketFlare",-20,0)
-		TNT1 A 0 A_CustomMissile ("OldschoolRocketSmokeTrail2", 2, 0, random (160, 210), 2, random (-30, 30))
+	    MISL A 4 BRIGHT
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 		Loop
 
 	SpawnUnderwater:
-		MISL AA 1 Bright A_SpawnItem("RocketFlare",-20,0)
-	    TNT1 A 0 A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
+		MISL A 4 BRIGHT A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 	    Goto Live
 
@@ -179,8 +179,8 @@ actor JuggernautRocket: Rocket2
 	TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 
 	Live:
-	MISL AA 1 Bright A_SpawnItem("RocketFlare",-20,0)
-	TNT1 A 0 A_CustomMissile ("OldschoolRocketSmokeTrail2", 2, 0, random (160, 210), 2, random (-30, 30))
+	MISL A 4 Bright
+	TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 	Loop
 	}
 }
@@ -505,8 +505,8 @@ ACTOR MarineRocket2: Rocket2
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 
 	Live:
-	    MISL AA 1 Bright A_SpawnItem("RocketFlare",-20,0)
-		TNT1 A 0 A_CustomMissile ("OldschoolRocketSmokeTrail2", 2, 0, random (160, 210), 2, random (-30, 30))
+	    MISL A 4 Bright
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 		Loop
 
 	Death:
@@ -603,17 +603,16 @@ ACTOR NuclearRocket: Rocket2
 	Spawn:
 		TNT1 A 0
 		TNT1 A 0 A_PlaySound("DSRLAUN")
-		TNT1 A 0 BRIGHT A_CustomMissile("RocketBackblast", 0, 0, 180, 2, 0+pitch)
+		TNT1 A 0 A_CustomMissile("RocketBackblast", 0, 0, 180, 2, 0+pitch)
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 
 	Live:
-	    MISL AA 1 Bright A_SpawnItem("RocketFlare",-20,0)
-		TNT1 A 0 A_CustomMissile ("OldschoolRocketSmokeTrail2", 2, 0, random (160, 210), 2, random (-30, 30))
+	    MISL A 4 Bright
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 		Loop
 
 	SpawnUnderwater:
-	    MISL AA 1 Bright A_SpawnItem("RocketFlare",-20,0)
-	    TNT1 A 0 A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
+	    MISL A 4 Bright A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 	    Goto Live
 
@@ -678,10 +677,11 @@ ACTOR TankShell
 	Decal "BigScorch"
 	Damagetype Explosive
 	Species "Marines"
+	Renderstyle Add
 	States
 	{
 	Spawn:
-		MISL A 1 Bright
+		WYVB A 1 Bright
 		TNT1 A 0 A_SpawnItemEx("HeavyMachinegunProjectileTracerTrail2", (6 *momx)/-35.0, -(6 *momy)/-35.0, 2+(6 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
         TNT1 A 0 A_SpawnItemEx("HeavyMachinegunProjectileTracerTrail3", (12 *momx)/-35.0, -(12 *momy)/-35.0, 2+(12 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
         TNT1 A 0 A_SpawnItemEx("HeavyMachinegunProjectileTracerTrail4", (18 *momx)/-35.0, -(18 *momy)/-35.0, 2+(18 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
@@ -690,7 +690,7 @@ ACTOR TankShell
 		Loop
 
 	Death:
-		MISL B 0 Bright A_Explode
+		TNT1 A 0 A_Explode
 		TNT1 A 0 A_SpawnItem("RocketExplosion")
 		TNT1 A 0 A_PlaySound("Explosion", 1)
 		TNT1 A 0 A_SpawnItemEx ("ExplosionSplashSpawner", 0, 0, -20)
