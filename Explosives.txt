@@ -35,12 +35,12 @@ ACTOR Rocket2
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 
 	Live:
-	    MISL A 4 BRIGHT
+	    MISL A 1 BRIGHT
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 		Loop
 
 	SpawnUnderwater:
-		MISL A 4 BRIGHT A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
+		MISL A 1 BRIGHT A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 	    Goto Live
 
@@ -179,7 +179,7 @@ actor JuggernautRocket: Rocket2
 	TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 
 	Live:
-	MISL A 4 Bright
+	MISL A 1 Bright
 	TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 	Loop
 	}
@@ -275,6 +275,7 @@ ACTOR GrenadeMissile
 	+THRUSPECIES
 	-NOTELEPORT
 	-NOGRAVITY
+	+ROCKETTRAIL
 	Species "Marines"
 	DamageType Kick
 	BounceType Doom
@@ -288,14 +289,15 @@ ACTOR GrenadeMissile
 	States
 	{
 	Spawn:
+		TNT1 A 0
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 		TNT1 A 0 A_GiveInventory("STGrenadeTimer", 1)
 		TNT1 A 0 A_JumpIfInventory("STGrenadeTimer", 6, "Explode")
 		TNT1 A 0 A_CheckFloor("Death")
-		GBPJ AAABBBCCCDDD 1 A_CustomMissile ("RocketSmokeTrail52", 2, 0, random (70, 110), 2, random (0, 360))
+		GBPJ ABCD 3
 		TNT1 A 0 A_JumpIfInventory("STGrenadeTimer", 6, "Explode")
 		TNT1 A 0 A_GiveInventory("STGrenadeTimer", 1)
-		GBPJ EEEFFFGGGHHH 1 A_CustomMissile ("RocketSmokeTrail52", 2, 0, random (70, 110), 2, random (0, 360))
+		GBPJ EFGH 3
 		TNT1 A 0 A_JumpIfInventory("STGrenadeTimer", 6, "Explode")
 		Loop
 
@@ -311,7 +313,7 @@ ACTOR GrenadeMissile
 	Death:
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("STGrenadeTimer", 6, "Explode")
-		GBPJ AAAA 3 A_CustomMissile ("RocketSmokeTrail52", 2, 0, random (70, 110), 2, random (0, 360))
+		GBPJ AAAA 3
 		TNT1 A 0 A_GiveInventory("STGrenadeTimer", 1)
 		Loop
 
@@ -361,17 +363,13 @@ ACTOR ShortGrenade: GrenadeMissile
 	States
 	{
 	Spawn:
+		TNT1 A 0
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
-		GBPJ AAAAAAAAABBBBBBBCCCCCDDDDDEEEEEFFFFFGGGGGHHHHH 1 A_CustomMissile ("RocketSmokeTrail52", 2, 0, random (70, 110), 2, random (0, 360))
+		GBPJ ABCDEFGH 3
 		Loop
 
 	SpawnUnderwater:
-		TNT1 A 0 A_GiveInventory("STGrenadeTimer", 1)
-		GBPJ ABCD 3
-		TNT1 A 0 A_JumpIfInventory("STGrenadeTimer", 1, "Explode")
-		TNT1 A 0 A_GiveInventory("STGrenadeTimer", 1)
-		GBPJ EFGH 3
-		TNT1 A 0 A_JumpIfInventory("STGrenadeTimer", 1, "Explode")
+		GBPJ ABCDEFGH 3 A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
 	    Goto Spawn
 
 	Death:
@@ -429,17 +427,12 @@ ACTOR MarineShortGrenade : GrenadeMissile
 	States
 	{
 	Spawn:
-	    TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
-		GBPJ AAAAAAAAABBBBBBBCCCCCDDDDDEEEEEFFFFFGGGGGHHHHH 1 A_CustomMissile ("RocketSmokeTrail52", 2, 0, random (70, 110), 2, random (0, 360))
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		GBPJ ABCDEFGH 3
 		Loop
 
 	SpawnUnderwater:
-		TNT1 A 0 A_GiveInventory("STGrenadeTimer", 1)
-		GBPJ ABCD 3
-		TNT1 A 0 A_JumpIfInventory("STGrenadeTimer", 1, "Explode")
-		TNT1 A 0 A_GiveInventory("STGrenadeTimer", 1)
-		GBPJ EFGH 3
-		TNT1 A 0 A_JumpIfInventory("STGrenadeTimer", 1, "Explode")
+		GBPJ ABCDEFGH 3 A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
 	    Goto Spawn
 
 	Death:
@@ -505,7 +498,7 @@ ACTOR MarineRocket2: Rocket2
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 
 	Live:
-	    MISL A 4 Bright
+	    MISL A 1 Bright
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 		Loop
 
@@ -567,12 +560,12 @@ ACTOR CyberBalls: Rocket2
 	States
 	{
 	Spawn:
-		WYVB A 4 BRIGHT
+		WYVB A 1 BRIGHT
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 		Loop
 
-SpawnUnderwater:
-	    WYVB A 4 Bright A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
+	SpawnUnderwater:
+		WYVB A 1 Bright A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 		Goto Spawn
 	}
@@ -607,12 +600,12 @@ ACTOR NuclearRocket: Rocket2
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 
 	Live:
-	    MISL A 4 Bright
+	    MISL A 1 Bright
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 		Loop
 
 	SpawnUnderwater:
-	    MISL A 4 Bright A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
+	    MISL A 1 Bright A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 	    Goto Live
 

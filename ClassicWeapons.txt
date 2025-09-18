@@ -1286,7 +1286,7 @@ ACTOR ClassicRocket: Rocket
 	+RANDOMIZE
 	+DEHEXPLOSION
 	+THRUSPECIES
-	-ROCKETTRAIL
+	+ROCKETTRAIL
 	SeeSound "weapons/rocklf"
 	DeathSound "Explosion"
 	Obituary "$OB_MPROCKET"
@@ -1294,8 +1294,7 @@ ACTOR ClassicRocket: Rocket
 	States
 	{
 	Spawn:
-		MISL EE 1 Bright A_SpawnItem("RocketFlare",-20,0)
-		TNT1 A 0 A_CustomMissile ("OldschoolRocketSmokeTrail2", 2, 0, random (160, 210), 2, random (-30, 30))
+		MISL E 1 Bright
 		Loop
 	Death:
 		EXPL A 0 Radius_Quake (2, 35, 0, 5, 0)//(intensity, duration, damrad, tremrad, tid)
