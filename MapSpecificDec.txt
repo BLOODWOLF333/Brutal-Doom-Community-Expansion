@@ -392,8 +392,8 @@ Radius 16
 		BPDC P 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
 		Loop
 	Extinguish:
-		BPDC A 4 A_StopSound(1)
-		BPDC A -1
+		BPDC P 4 A_StopSound(1)
+		BPDC P -1
 		Stop
 }}
 
@@ -450,6 +450,17 @@ ACTOR BDVines2: BDVines1 11834
 		SPDC V 1
 		SPDC V -1
 		Stop
+
+		Death.Burn:
+	Death.Flames:
+	Death.Plasma:
+	Death.Plasma2:
+	Death.Fire:
+		TNT1 A 0
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1", 0, 0, -50)
+		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 55)
+		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
 	Burning:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
@@ -480,6 +491,17 @@ ACTOR BDecJunglePlant: BDECBush
 		TNT1 AAA 0 A_CustomMissile ("BDECFoliageParticle5a", 15, 0, random (0, 360), 2, random (20, 90))
 		TNT1 AA 0 A_CustomMissile ("BDECFoliageParticle5B", 15, 0, random (0, 360), 2, random (20, 90))
 		Stop
+
+	Death.Burn:
+	Death.Flames:
+	Death.Plasma:
+	Death.Plasma2:
+	Death.Fire:
+		TNT1 A 0
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1", 0, 0, 10)
+		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
+		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 25)
 	Burning:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
@@ -616,7 +638,7 @@ ACTOR BDECGreenTree3: BDECGreenTree2 15852
 {
  States
 	{
-		Spawn:
+	Spawn:
 		SPDC S 1
 		SPDC S -1
 		Stop
@@ -634,6 +656,17 @@ ACTOR BDECGreenTree3: BDECGreenTree2 15852
 		TNT1 AAA 0 A_CustomMissile ("WoodParticleTiny", 55, 0, random (0, 360), 2, random (20, 90))
 		TNT1 AAA 0 A_CustomMissile ("WoodParticleBig", 65, 0, random (0, 360), 2, random (20, 90))
 		Stop
+
+	Death.Burn:
+	Death.Flames:
+	Death.Plasma:
+	Death.Plasma2:
+	Death.Fire:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 165)
+		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Big", 0, 0, 40)
+		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Slim", 0, 0, 10)
+		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
 	Burning:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
@@ -742,10 +775,19 @@ ACTOR BDECDeadTree2: BDECDeadTree1 11009
 {
  States
 	{
-		Spawn:
+	Spawn:
 		SPDC H 1
 		SPDC H -1
 		Stop
+	Death.Burn:
+	Death.Flames:
+	Death.Plasma:
+	Death.Plasma2:
+	Death.Fire:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 55)
+		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
+		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Big", 0, 0, 10)
 	Burning:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")

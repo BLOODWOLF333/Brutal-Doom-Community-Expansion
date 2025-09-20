@@ -660,12 +660,16 @@ Actor RailgunTrailEffect
 +MISSILE
 +NOGRAVITY
 RenderStyle Add
+Alpha 1.0
 Scale 0.05
 States
 	{
 	Spawn:
-		PBEX ABCD 1 BRIGHT A_FadeOut(0.1)
+		LEYS B 1 BRIGHT A_FadeOut(0.125)
 		Loop
+
+		//PBEX ABCD 1 BRIGHT A_FadeOut(0.1)
+		//Loop
 	}
 }
 
