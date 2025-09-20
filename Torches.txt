@@ -521,20 +521,6 @@ states
 	}
 }
 
-Actor BurningBarrelTopFIre : TallTorch_RedFlames
-{
-	XScale 0.6
-	YScale 0.6
-	Alpha 1.0
-	Renderstyle Add
-	states
-	{
-	Spawn:
-		BURF ABCDEFGHIJKLMNOPQABCDEFGHIJKLMNOPQ 1 BRIGHT
-		Stop
-	}
-}
-
 Actor BurningBarrel1 replaces BurningBarrel
 {
 	+SOLID
@@ -575,9 +561,7 @@ Actor BurningBarrel1 replaces BurningBarrel
 		TNT1 A 2
 
 	Stay:
-		TNT1 A 0 A_SpawnItem("BurningBarrelTopFire")
-		BURB A 8 A_CustomMissile("RealisticFireSparks1", 44, 0, random (0, 140), 2, random (0, 160))
-		BURB BCB 8
+		BURB ABC 4 BRIGHT
 		Loop
 
 	Death.ExtremePunches:
@@ -617,34 +601,6 @@ Actor BurningBarrel1 replaces BurningBarrel
 		TNT1 AAA 0 A_CustomMissile ("BarrelShrapnel2", 15, 0, random (0, 360), 2, random (30, 160))
 		TNT1 AAA 0 A_CustomMissile ("BarrelShrapnel3", 5, 0, random (0, 360), 2, random (30, 160))
 		TNT1 AAA 0 A_CustomMissile ("BarrelShrapnel4", 5, 0, random (0, 360), 2, random (30, 160))
-		Stop
-	}
-}
-
-actor BurningBarrelDamage
-{
-	+NOTARGET
-	Radius 0
-	Height 0
-	DamageType Fire
-	+NOGRAVITY
-	+NOTELEPORT
-	+NODAMAGETHRUST
-	+THRUGHOST
-	+NORADIUSDMG
-	+NOEXTREMEDEATH
-	+FORCERADIUSDMG
-	-BLOODSPLATTER
-	+BLOODLESSIMPACT
-	PROJECTILE
-	+DEHEXPLOSION
-	+ACTIVATEMCROSS
-	+NOTARGET
-	States
-	{
-		Spawn:
-		TNT1 A 0
-		TNT1 AA 5 A_Explode(10,5)
 		Stop
 	}
 }
