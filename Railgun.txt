@@ -528,8 +528,8 @@ ACTOR RailGun : BrutalWeapon
 ACTOR RailgunProjectile
 {
 	Radius 2
-	Height 2
-	Speed 120
+	Height 4
+	Speed 600
 	Damage (random(400, 400))
     DamageType Railgun
 	Decal "SmallerScorch"
@@ -543,10 +543,6 @@ ACTOR RailgunProjectile
 	+BounceOnCeilings
 	+ROCKETTRAIL
 	Species "Marines"
-	Scale 1.0
-	renderstyle ADD
-	alpha 0.90
-	Scale 0.10
 	DeathSound "weapons/plasmax"
     SeeSound "None"
 	Obituary "$OB_MPPLASMARIFLE"
@@ -557,24 +553,29 @@ ACTOR RailgunProjectile
 	Spawn:
         TNT1 A 1 BRIGHT
 		RAIL A 0 A_SpawnItem("WhiteShockwave")
+		RAIL A 0 A_CheckFloor("Death")
 		Loop
 
 	Death:
-	Melee:
-	Xdeath:
-		TNT1 AAAA 0 A_SpawnItemEx("BluePlasmaParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
-		TNT1 AA 0 A_SpawnItem("WhiteShockwave")
-		RAIL A 0 A_Explode(120,5, 1)
-        TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
-        TNT1 AAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleVeryFast", 0, 0, random (0, 360), 2, random (0, 360))
-        EXPL AAAAA 0 A_CustomMissile ("ExplosionSmokeFast22", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AAAA 0 A_CustomMissile ("FireworkSFXType2", 2, 0, random (0, 360), 2, random (10, 80))
-		RAIL A 0 A_SpawnItemEx ("DetectFloorCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		RAIL A 0 A_SpawnItemEx ("DetectCeilCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		RAIL A 0 A_CustomMissile ("BluePlasmaFire", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AAAAA 0 A_CustomMissile ("BluePlasmaParticle", 0, 0, random (0, 360), 2, random (0, 360))
-		Stop
+		TNT1 A 1
+		TNT1 AA 0 A_CustomMissile ("SparkXNoModel", 2, 0, random (0, 360), 2, random (0, 360))
+		RAIL A 0 A_SpawnItem("RailgunFlameTrails")
+
+		TNT1 AAA 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
+		TNT1 AA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (40, 90))
+		TNT1 AA 0 A_CustomMissile ("BDExplosionparticles3", 10, 0, random (0, 360), 2, random (40, 90))
+		TNT1 AAA 0 A_CustomMissile ("ExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+
+		RAIL A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		RAIL A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		RAIL A 0 A_SpawnItemEx ("RocketExplosion",0,0,13,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		EXPL A 0 Radius_Quake (1, 7, 0, 1, 0)
+		RAIL A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		RAIL A 0 A_SpawnItemEx ("LiquidExplosionEffectSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 2
+		RAIL A 0 A_PlaySound("FAREXPL", 0)
+		TNT1 A 15
+		RAIL A 0 A_PlaySound("distexpl", 5)
 		Stop
 	}
 }
@@ -618,7 +619,7 @@ Actor RailgunTrailEffectMissile: FastProjectile
 	+NODAMAGETHRUST
 	Radius 1
 	Height 2
-	Speed 120
+	Speed 600
 	-SKYEXPLODE
 	+ripper
 	MissileType "RailgunTrailEffect"
@@ -661,15 +662,12 @@ Actor RailgunTrailEffect
 +NOGRAVITY
 RenderStyle Add
 Alpha 1.0
-Scale 0.05
+Scale 0.1
 States
 	{
 	Spawn:
-		LEYS B 1 BRIGHT A_FadeOut(0.125)
+		PBEX ABCD 1 BRIGHT A_FadeOut(0.125)
 		Loop
-
-		//PBEX ABCD 1 BRIGHT A_FadeOut(0.1)
-		//Loop
 	}
 }
 
@@ -683,7 +681,7 @@ Actor RailgunPenetrator: MarineTracer
 	Scale 0.2
 	+MISSILE
 	+RIPPER
-	Speed 80
+	Speed 600
 	-SKYEXPLODE
 	MissileType "RailgunPenetrationParticle"
 	States

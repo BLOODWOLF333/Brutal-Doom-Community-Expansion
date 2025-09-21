@@ -195,7 +195,7 @@ Actor BluePlasmaParticle: ExplosionParticle
 {
   BounceFactor 0.2
   Gravity 0.8
-  Scale 0.014
+  Scale 0.03
   Speed 12
   States
   {
@@ -348,23 +348,22 @@ ACTOR ShortRailPuff: BulletPuff
 
 ACTOR RailgunPuff: BulletPuff
 {
-  RenderStyle Add
-  Alpha 0.95
-  +NOBLOCKMAP
-  +NOGRAVITY
-  +CLIENTSIDEONLY
-  +NONETID
-  Scale 1.1
-  states
-  {
-  Spawn:
-    PBEX A 0 BRIGHT// A_SpawnItem("BlueFlare",0,0)
+	RenderStyle Add
+	Alpha 0.95
+	+NOBLOCKMAP
+	+NOGRAVITY
+	+CLIENTSIDEONLY
+	+NONETID
+	Scale 1.1
+	states
+	{
+	Spawn:
+		PBEX A 0
 		TNT1 AA 0 A_CustomMissile ("PlasmaParticleX", 12, 0, random (0, 360), 2, random (0, 360))
-	TNT1 A 0 A_SpawnItemEx("BluePlasmaParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
-	//EXPL AAAA 0 A_CustomMissile ("SmallSmoke", 0, 0, random (0, 360), 2, random (0, 360))
-    PLSE ABCDE 2 BRIGHT A_SpawnItem("BlueFlare" ,0)
-    stop
-  }
+		TNT1 A 0 A_SpawnItemEx("BluePlasmaParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
+		PLSE ABCDE 2 BRIGHT
+		stop
+	}
 }
 
 ACTOR BarrelParticle
