@@ -1982,7 +1982,9 @@ ACTOR TinyBurningPieceTemp: TinyBurningPiece
 	CFCF ABCDEFGHIJKLABCDEFGHIJKL 1 BRIGHT
 	TNT1 A 0 A_GiveInventory("BrutalCounter",1)
 	Loop
+
 	Extinguish:
+	CFCF NOP 1 BRIGHT
 	TNT1 A 0 A_SpawnItem("BarrelExplosionSmokeColumn")
 	Stop
     }
