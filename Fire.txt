@@ -1850,7 +1850,8 @@ ACTOR TinyBurningPieceM
 	+NONETID
 	Alpha 0.9
 	RenderStyle Add
-	Scale 1.1
+	XScale 0.25
+	YScale 0.5
 	Radius 0
     Height 0
     +NOBLOCKMAP
@@ -1860,12 +1861,12 @@ ACTOR TinyBurningPieceM
 	States
 	{
 	Spawn:
-	CFCM ABCDEFGHIJKL 1 BRIGHT
+	NF2R ABCDEFGHIJKLMNOPQ 1 BRIGHT
 	TNT1 A 0 A_Jump(24, "StopBurning")
 	Loop
 
 	StopBurning:
-	CFCM NOP 1 BRIGHT
+	NF2R RSTU 1 BRIGHT
 	Stop
     }
 }
@@ -1877,7 +1878,8 @@ ACTOR TinyBurningPieceY
 	+NONETID
 	Alpha 0.9
 	RenderStyle Add
-	Scale 1.1
+	XScale 0.25
+	YScale 0.5
 	Radius 0
     Height 0
     +NOBLOCKMAP
@@ -1887,12 +1889,12 @@ ACTOR TinyBurningPieceY
 	States
 	{
 	Spawn:
-	CFCY ABCDEFGHIJKL 1 BRIGHT
+	NF3R ABCDEFGHIJKLMNOPQ 1 BRIGHT
 	TNT1 A 0 A_Jump(24, "StopBurning")
 	Loop
 
 	StopBurning:
-	CFCY NOP 1 BRIGHT
+	NF3R RSTU 1 BRIGHT
 	Stop
     }
 }
@@ -1905,12 +1907,14 @@ ACTOR TinyBurningPiece2: TinyBurningPiece
 
 ACTOR TinyBurningPiece2M: TinyBurningPieceM
 {
-	Scale 0.7
+	XScale 0.2
+	YScale 0.4
 }
 
 ACTOR TinyBurningPiece2Y: TinyBurningPieceY
 {
-	Scale 0.7
+	XScale 0.2
+	YScale 0.4
 }
 
 ACTOR TinyBurningPiece3: TinyBurningPiece
@@ -1921,12 +1925,14 @@ ACTOR TinyBurningPiece3: TinyBurningPiece
 
 ACTOR TinyBurningPiece3M: TinyBurningPieceM
 {
-	Scale 0.5
+	XScale 0.15
+	YScale 0.3
 }
 
 ACTOR TinyBurningPiece3Y: TinyBurningPieceY
 {
-	Scale 0.5
+	XScale 0.15
+	YScale 0.3
 }
 
 ACTOR TinyBurningPieceInfinite: TinyBurningPiece
