@@ -4,7 +4,7 @@ scale 0.5
 states
 	{
 	Spawn:
-		TRED D 4 BRIGHT
+		TRED F 3 BRIGHT
 		TNT1 A 0 A_Playsound("BDFireplace2", 1, 1, 1)
 		Goto Stay
 
@@ -19,7 +19,7 @@ Actor TallTorch_Blue : TallTorch_Red replaces BlueTorch
 states
 	{
 	Spawn:
-		TBLU D 4 BRIGHT
+		TBLU F 3 BRIGHT
 		TNT1 A 0 A_SpawnItemEx("EvidenceCheckerBlueTorch", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_Playsound("BDFireplace2", 1, 1, 1)
 		Goto Stay
@@ -35,7 +35,7 @@ Actor TallTorch_Green : TallTorch_Red replaces GreenTorch
 states
 	{
 	Spawn:
-		TGRN D 4 BRIGHT
+		TGRN F 3 BRIGHT
 		TNT1 A 0 A_SpawnItemEx("EvidenceCheckerGreenTorch", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_Playsound("BDFireplace2", 1, 1, 1)
 		Goto Stay
@@ -52,12 +52,12 @@ scale 0.4
 states
 	{
 	Spawn:
-		SMBT D 4 BRIGHT
+		SMBT F 3 BRIGHT
 		TNT1 A 0 A_Playsound("BDFireplace2", 1, 1, 1)
 		Goto Stay
 
 	Stay:
-		SMBT ABCD 4 BRIGHT
+		SMBT ABCDEF 3 BRIGHT
 		Loop
 	}
 }
@@ -67,12 +67,12 @@ Actor ShortTorch_Red : ShortTorch_Blue replaces ShortRedTorch
 states
 	{
 	Spawn:
-		SMRT D 4 BRIGHT
+		SMRT F 3 BRIGHT
 		TNT1 A 0 A_Playsound("BDFireplace2", 1, 1, 1)
 		Goto Stay
 
 	Stay:
-		SMRT ABCD 4 BRIGHT
+		SMRT ABCDEF 3 BRIGHT
 		Loop
 	}
 }
@@ -82,13 +82,13 @@ Actor ShortTorch_Green : ShortTorch_Blue replaces ShortGreenTorch
 states
 	{
 	Spawn:
-		SMGT D 4 BRIGHT
+		SMGT F 3 BRIGHT
 		TNT1 A 0 A_SpawnItemEx("EvidenceCheckerGreenTorch", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_Playsound("BDFireplace2", 1, 1, 1)
 		Goto Stay
 
 	Stay:
-		SMGT ABCD 4 BRIGHT
+		SMGT ABCDEF 3 BRIGHT
 		Loop
 	}
 }
