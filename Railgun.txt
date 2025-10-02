@@ -179,7 +179,7 @@ ACTOR RailGun : BrutalWeapon
 		RAIL A 0 A_SpawnItemEx("PlasmaFlareSpawn",32,0,28)
 		//RAIL A 0 A_FireCustomMissile("RailgunTrailEffectMissile", 0, 0, 0, 0)
 		RAIL A 0 A_FireCustomMissile("RailgunProjectile", 0, 1, 0, 0)
-		RAIL A 0 A_RailAttack(400, 0, 0, "none", "none", RGF_FULLBRIGHT, 1, "RailgunPuff2", 0, 0, 0, 0, 0, 0, "RailgunTrailEffect")
+		RAIL A 0 A_RailAttack(400, 0, 0, "none", "none", RGF_FULLBRIGHT, 0, "RailgunPuff2", 0, 0, 0, 0, 0, 0, "RailgunTrailEffect", -4)
 
 		RAIL A 0 A_PlaySound("RAILF1", 1)
 
