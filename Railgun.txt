@@ -529,7 +529,7 @@ ACTOR RailgunProjectile
 {
 	Radius 2
 	Height 4
-	Speed 600
+	Speed 256
 	Damage (random(400, 400))
     DamageType Railgun
 	Decal "SmallerScorch"
@@ -542,6 +542,7 @@ ACTOR RailgunProjectile
 	+BounceOnFloors
 	+BounceOnCeilings
 	+ROCKETTRAIL
+	+RIPPER
 	Species "Marines"
 	DeathSound "weapons/plasmax"
     SeeSound "None"
@@ -556,7 +557,9 @@ ACTOR RailgunProjectile
 		RAIL A 0 A_CheckFloor("Death")
 		Loop
 
+	Melee:
 	Death:
+	XDeath:
 		TNT1 A 1
 		TNT1 AA 0 A_CustomMissile ("SparkXNoModel", 2, 0, random (0, 360), 2, random (0, 360))
 		RAIL A 0 A_SpawnItem("RailgunFlameTrails")
@@ -625,11 +628,11 @@ Actor RailgunTrailEffectMissile: FastProjectile
 	MissileType "RailgunTrailEffect"
 	States
 	{
-		Spawn:
+	Spawn:
 		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItem("RailgunTrailEffect")
 		Stop
 
-		Death:
+	Death:
 		TNT1 A 1
 		RAIL A 0 A_SpawnItemEx ("ExplosionSplashSpawner", 0, 0, 0)
 		RAIL A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
