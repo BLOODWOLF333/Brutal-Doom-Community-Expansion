@@ -643,6 +643,17 @@ ACTOR BrutalAxe : BrutalWeapon
 		//AXEG A 0 A_Saw("", "", 5, "AltAxePuffs", SF_NORANDOM, 48, 3, 0)
 		AXEG A 0 A_FireCustomMissile("AltAxeAttackStrong", 0, 0, 0, 0)
 		Goto AltGreenBloodEndSwing
+
+	KickFlash://18 tics
+		TNT1 AAA 1
+		TNT1 A 12
+		TNT1 AAA 1
+		Stop
+
+	SlideFlashEnd://10 tics
+		TNT1 A 7
+		TNT1 AAA 1
+		Stop
 	}
 }
 

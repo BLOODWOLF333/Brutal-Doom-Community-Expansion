@@ -422,6 +422,17 @@ ACTOR BrutalSMG : BrutalWeapon
 		SMGG A 1
 		SMGG A 0 A_Print("You can't dual wield smgs when playing in Tactical Mode.",1)
 		Goto Ready
+
+	KickFlash://18 tics
+		TNT1 AAA 1
+		TNT1 A 12
+		TNT1 AAA 1
+		Stop
+
+	SlideFlashEnd://10 tics
+		TNT1 A 7
+		TNT1 AAA 1
+		Stop
 	}
 }
 

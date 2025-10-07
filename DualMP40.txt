@@ -332,10 +332,20 @@ ACTOR DualMP40 : BrutalWeapon
 		MP40 I -1
 		Stop
 
-
 	Steady:
 		TNT1 A 1
 		Goto Ready
+
+	KickFlash://18 tics
+		TNT1 AAA 1
+		TNT1 A 12
+		TNT1 AAA 1
+		Stop
+
+	SlideFlashEnd://10 tics
+		TNT1 A 7
+		TNT1 AAA 1
+		Stop
 	}
 }
 

@@ -198,5 +198,16 @@ ACTOR Flamethrower2 : BrutalWeapon
 		FLMT A 0 A_Refire
 		FLMT A 0 A_PlaySound("FLAMSTOP", CHAN_WEAPON)
 		Goto Ready+6
+
+	KickFlash://18 tics
+		TNT1 AAA 1
+		TNT1 A 12
+		TNT1 AAA 1
+		Stop
+
+	SlideFlashEnd://10 tics
+		TNT1 A 7
+		TNT1 AAA 1
+		Stop
 	}
 }

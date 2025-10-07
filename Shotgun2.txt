@@ -526,5 +526,16 @@ ACTOR Shot_Gun2 : BrutalWeapon
 		RIFG A 0 A_JumpIfInventory("AmmoSlug",1,"Reload")
 		RIFG A 0 A_JumpIfInventory("IsRunning",1,"StartSprint")
 		Goto Ready2
+
+	KickFlash://18 tics
+		TNT1 AAA 1
+		TNT1 A 12
+		TNT1 AAA 1
+		Stop
+
+	SlideFlashEnd://10 tics
+		TNT1 A 7
+		TNT1 AAA 1
+		Stop
 	}
 }
