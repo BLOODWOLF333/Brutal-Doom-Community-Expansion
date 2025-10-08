@@ -70,8 +70,17 @@ Script "BDSpawnFlashlight" (VOID) NET
 {
 	While(CheckInventory("FlashlightOn") == 1)
 	{
-		GiveInventory("BDFlashlightSpawner",1);
-		Delay(4);
+		If(GetCVar("isrunningzandronum") ==1)
+		{
+			GiveInventory("BDFlashlightSpawner",1);
+			Delay(4);
+		}
+		Else
+		{
+			//GZDoom delays dynamic light spawns
+			GiveInventory("BDFlashlightSpawner",1);
+			Delay(3);
+		}
 	}
 }
 
