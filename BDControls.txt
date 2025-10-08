@@ -862,12 +862,3 @@ Script "CheckVoodoo" (VOID)
         SetActorState(0,"VoodooDoll");
     }
 }
-
-Script "BDSpawnFlashlight" (VOID) NET
-{
-	While(CheckInventory("FlashlightOn") == 1)
-	{
-		GiveInventory("BDFlashlightSpawner", 1);
-		Delay(2);
-	}
-}

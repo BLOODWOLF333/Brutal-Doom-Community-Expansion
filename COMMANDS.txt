@@ -66,6 +66,15 @@ Script "BDFlashlight" (VOID) NET
  GiveInventory("GoSpecial", 1);
 }
 
+Script "BDSpawnFlashlight" (VOID) NET
+{
+	While(CheckInventory("FlashlightOn") == 1)
+	{
+		GiveInventory("BDFlashlightSpawner",1);
+		Delay(4);
+	}
+}
+
 Script "BDGrenade" (VOID) NET
 {
  GiveInventory("BDWeaponAction", 1);
