@@ -27,18 +27,32 @@ ACTOR ClassicWeapon : DoomWeapon
 		TNT1 A 2 A_WeaponReady
 		Loop
 
-	WEaponActions:
-		  TNT1 A 0
-		  TNT1 A 0 A_TakeInventory("BDWEaponACtion", 1)
-		  TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
-		  TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		  TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
-		  TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
-		  TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
-		  TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-		  TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
-		  TNT1 A 2
-		  Goto GoingToReady
+	Flash:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfHealthLower(1,"LightEnd")
+		TNT1 A 0 A_JumpIfInventory("SwitchFlashlight",1,"SwitchFlashlight")
+		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "TryUse")
+		TNT1 A 4
+		Goto Flash
+
+	LightEnd:
+		TNT1 A 0
+		Stop
+
+	SwitchFlashlight:
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("SwitchFlashlight", 1)
+		TNT1 A 0 A_JumpIfInventory("FlashlightOn",1,"TurnFlashOff")
+		TNT1 A 0 A_Giveinventory("FlashlightOn",1)
+		TNT1 A 0 A_PlaySound("FLASHON", 5)
+		TNT1 A 0 ACS_NamedExecuteAlways("BDSpawnFlashlight",0,0,0,0)
+        Goto Flash
+
+	TurnFlashOff:
+		TNT1 A 0 A_Takeinventory("FlashlightOn",1)
+		TNT1 A 0 A_Light0
+		TNT1 A 0 A_PlaySound("FLASHOFF", 5)
+        Goto Flash
 
 	Tryuse:
 		TNT1 A 0
@@ -46,7 +60,6 @@ ACTOR ClassicWeapon : DoomWeapon
 		RIFF A 0 A_FireCustomMissile("UseAttack", 0, 0, 0, 0)
 		RIFF A 0 A_FireCustomMissile("StealthAttack", 0, 0, 0, -7)
 		TNT1 A 1
-		TNT1 A 0 A_JumpIfInventory("FlashlightOn", 1, "WaitFlashlightOn")
 		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "Interrupt")
 		Goto Flash
 
@@ -56,77 +69,6 @@ ACTOR ClassicWeapon : DoomWeapon
 		TNT1 A 4
 		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "Interrupt")
 		Goto Flash
-
-	WaitFlashlightOn:
-		TNT1 A 0
-		TNT1 A 0 A_TakeInventory("PRessedUse", 1)
-		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
-		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
-		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
-		TNT1 A 1 BRIGHT
-		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
-		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
-		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
-		TNT1 A 1 BRIGHT
-		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
-		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
-		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
-		TNT1 A 1 BRIGHT
-		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "WaitFlashlightOn")
-		Goto Flash
-
-	Flash:
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfHealthLower(1,"LightEnd")
-		TNT1 A 0 A_JumpIfInventory("SwitchFlashlight",1,"SwitchFlashlight")
-		TNT1 A 0 A_JumpIfInventory("FlashlightOn", 1, "FlashOn")
-		TNT1 A 1
-		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "TryUse")
-		TNT1 A 1
-		Goto Flash
-
-	LightEnd:
-		TNT1 A 0
-		Stop
-
-	FlashOn:
-	    TNT1 A 0
-		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
-		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
-		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
-		TNT1 A 1 BRIGHT
-
-		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
-		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
-		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
-		TNT1 A 1 BRIGHT
-		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "TryUse")
-
-		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
-		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
-		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
-		TNT1 A 1 BRIGHT
-
-		RIFF A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
-		RIFF A 0 A_FireCustomMissile("FlashlightProjectile2", 0, 0, 0, 0, 0, 0)
-		RIFF A 0 A_FireCustomMissile("FlashlightProjectile3", 0, 0, 0, 0, 0, 0)
-		TNT1 A 1 BRIGHT
-		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "TryUse")
-		Goto Flash
-
-	SwitchFlashlight:
-		TNT1 A 0
-		TNT1 A 0 A_TakeInventory("SwitchFlashlight", 1)
-		TNT1 A 0 A_JumpIfInventory("FlashlightOn",1,"TurnFlashOff")
-		TNT1 A 0 A_Giveinventory("FlashlightOn",1)
-		TNT1 A 0 A_PlaySound("FLASHON", 5)
-        Goto Flash
-
-	TurnFlashOff:
-		TNT1 A 0 A_Takeinventory("FlashlightOn",1)
-		TNT1 A 0 A_Light0
-		TNT1 A 0 A_PlaySound("FLASHOFF", 5)
-        Goto Flash
 
 	DoKick:
 		TNT1 A 1 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")

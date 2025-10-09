@@ -998,3 +998,30 @@ Actor PlasmaPuff : HitPuff
 		Stop
 	}
 }
+
+ACTOR FlashlightPuff1 : BulletPuff
+{
+	+NODECAL
+	+DONTSPLASH
+	+BLOODLESSIMPACT//don't spawn blood on hit
+	+PUFFONACTORS//illuminate a shootable actor
+	States
+	{
+		Spawn:
+		TNT2 A 3
+		Stop
+
+		Crash:
+		Death:
+		XDeath:
+		TNT2 A 3
+		TNT2 A 0 A_AlertMonsters(150)
+		Stop
+	}
+}
+
+ACTOR FlashlightPuff2 : FlashlightPuff1
+{}
+
+ACTOR FlashlightPuff3 : FlashlightPuff1
+{}
