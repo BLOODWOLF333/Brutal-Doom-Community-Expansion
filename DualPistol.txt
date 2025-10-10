@@ -45,7 +45,7 @@ ACTOR DualPistols : BrutalWeapon
 		Goto Ready
 
 	StartSprint:
-		PI2G A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+		PI2G CDE 1 A_WeaponReady(WRF_ALLOWRELOAD)
 		SHTN A 0 A_Takeinventory("Zoomed",1)
         SHTN A 0 A_ZoomFactor(1.0)
 		SHTN A 0 A_Takeinventory("ADSmode",1)
@@ -54,26 +54,26 @@ ACTOR DualPistols : BrutalWeapon
 		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
 
 	Sprinting:
-		PI2G A 1 offset(-9,34) A_SetPitch(pitch -0.5)
-		PI2G A 1 offset(-6,36) A_SetPitch(pitch -0.5)
-		PI2G A 1 offset(-3,38) A_SetPitch(pitch -0.5)
-		PI2G A 1 offset(0,38) A_SetPitch(pitch -0.5)
-		PI2G A 1 offset(3,36) A_SetPitch(pitch -0.5)
-		PI2G A 1 offset(6,34) A_SetPitch(pitch -0.5)
-		PI2G A 1 offset(9,32) A_SetPitch(pitch -0.5)
+		PI2G F 1 offset(-9,34) A_SetPitch(pitch -0.5)
+		PI2G F 1 offset(-6,36) A_SetPitch(pitch -0.5)
+		PI2G F 1 offset(-3,38) A_SetPitch(pitch -0.5)
+		PI2G F 1 offset(0,38) A_SetPitch(pitch -0.5)
+		PI2G F 1 offset(3,36) A_SetPitch(pitch -0.5)
+		PI2G F 1 offset(6,34) A_SetPitch(pitch -0.5)
+		PI2G F 1 offset(9,32) A_SetPitch(pitch -0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		SMGG A 0 A_WeaponReady(WRF_NOBOB)
 		SMGG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         SMGG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
         SMGG A 0 A_JumpIfInventory("Reloading",1,"Reload")
 
-		PI2G A 1 offset(9,34) A_SetPitch(pitch +0.5)
-		PI2G A 1 offset(6,36) A_SetPitch(pitch +0.5)
-		PI2G A 1 offset(3,38) A_SetPitch(pitch +0.5)
-		PI2G A 1 offset(0,38) A_SetPitch(pitch +0.5)
-		PI2G A 1 offset(-3,36) A_SetPitch(pitch +0.5)
-		PI2G A 1 offset(-6,34) A_SetPitch(pitch +0.5)
-		PI2G A 1 offset(-9,32) A_SetPitch(pitch +0.5)
+		PI2G F 1 offset(9,34) A_SetPitch(pitch +0.5)
+		PI2G F 1 offset(6,36) A_SetPitch(pitch +0.5)
+		PI2G F 1 offset(3,38) A_SetPitch(pitch +0.5)
+		PI2G F 1 offset(0,38) A_SetPitch(pitch +0.5)
+		PI2G F 1 offset(-3,36) A_SetPitch(pitch +0.5)
+		PI2G F 1 offset(-6,34) A_SetPitch(pitch +0.5)
+		PI2G F 1 offset(-9,32) A_SetPitch(pitch +0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 1)
 		SMGG A 0 A_WeaponReady(WRF_NOBOB)
 		SMGG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
@@ -87,16 +87,16 @@ ACTOR DualPistols : BrutalWeapon
 	StopSprint:
 		PI2G A 0 A_JumpIfInventory("PowerStrength", 1, 2)
 		PI2G A 0 A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
-		PI2G A 1 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
+		PI2G EDC 1 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		Goto Ready
 
 	StopSprintTired:
-		PI2G A 1 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
+		PI2G EDC 1 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		PI2G A 0 A_PlaySound("Tired", 2)
 		Goto Ready
 
 	Deselect:
-        PIS2 BA 1
+        PI2F LMN 1
 		TNT1 AAAAAAAAAAAA 0 A_Lower
 		PI2G A 0 A_TakeInventory("TossGrenade", 1)
 		TNT1 A 1 A_Lower
@@ -127,10 +127,9 @@ ACTOR DualPistols : BrutalWeapon
 		Goto SelectAnimation
 
 	SelectAnimation:
-		TNT1 A 1
 	    PI2G A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
         PI2G A 0 A_PlaySound("CLIPIN")
-        PIS2 AB 1
+        PI2F NML 1
 		PI2G A 0 A_Takeinventory("StartDualWield",1)
 		Goto Ready
 
@@ -159,13 +158,13 @@ ACTOR DualPistols : BrutalWeapon
         PI2G A 0 A_PlaySound("pfire", 2)
 		PIST F 0 A_AlertMonsters
 		PI2G A 0 A_SpawnItemEx("PlayerMuzzle1",32,4,28)
-		PI2F D 1 BRIGHT A_FireBullets (1.8, 1.4, -1, 14, "WeakPuff", FBF_NORANDOM)
+		PI2F E 1 BRIGHT A_FireBullets (1.8, 1.4, -1, 14, "WeakPuff", FBF_NORANDOM)
 		TNT1 A 0 A_ZoomFactor(0.99)
         TNT1 A 0 A_FireCustomMissile("DecorativeTracer",random(-1,1),0,-8,0,0,random(-1,1))
 		PI2G A 0 A_Takeinventory("BDDualPistolAmmo",1)
 		PI2G A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,-8,-4)
 		TNT1 A 0 A_SetPitch(-0.2 + pitch)
-		PI2F F 1
+		PI2F G 1
 		TNT1 A 0 A_ZoomFactor(1.0)
 		PI2G A 2 A_WeaponReady(WRF_NOBOB | WRF_ALLOWRELOAD)
 		TNT1 A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
@@ -179,15 +178,15 @@ ACTOR DualPistols : BrutalWeapon
         PI2G A 0 A_PlaySound("pfire", 2)
 		PIST F 0 A_AlertMonsters
 		PI2G A 0 A_SpawnItemEx("PlayerMuzzle1",32,4,28)
-		PI2F D 1 BRIGHT A_FireBullets (1.8, 1.4, -1, 14, "WeakPuff", FBF_NORANDOM)
+		PI2F E 1 BRIGHT A_FireBullets (1.8, 1.4, -1, 14, "WeakPuff", FBF_NORANDOM)
 		TNT1 A 0 A_ZoomFactor(0.99)
         TNT1 A 0 A_FireCustomMissile("DecorativeTracer",random(-1,1),0,-8,0,0,random(-1,1))
 		PI2G A 0 A_Takeinventory("BDDualPistolAmmo",1)
 		PI2G A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,-8,-4)
 		TNT1 A 0 A_SetPitch(-0.2 + pitch)
-        PI2F E 1
+        PI2F G 1
 		TNT1 A 0 A_ZoomFactor(1.0)
-		PI2F F 1
+		PI2F H 1
 		PI2G A 1
 		PI2G A 2 A_WeaponReady(WRF_NOBOB | WRF_ALLOWRELOAD)
 		TNT1 A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
@@ -208,7 +207,7 @@ ACTOR DualPistols : BrutalWeapon
 		PI2G A 0 A_Takeinventory("BDDualPistolAmmo",1)
 		PI2G A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,16,-4)
 		TNT1 A 0 A_SetPitch(-0.2 + pitch)
-		PI2F B 1
+		PI2F C 1
 		TNT1 A 0 A_ZoomFactor(1.0)
 
 		PI2G A 0 A_JumpIfInventory("BDDualPistolAmmo",1,1)
@@ -217,13 +216,13 @@ ACTOR DualPistols : BrutalWeapon
 		PI2G A 0 A_PlaySound("pfire", 2)
 		PIST F 0 A_AlertMonsters
 		PI2G A 0 A_SpawnItemEx("PlayerMuzzle1",32,4,28)
-		PI2F D 1 BRIGHT A_FireBullets (1.8, 1.4, -1, 14, "WeakPuff", FBF_NORANDOM)
+		PI2F E 1 BRIGHT A_FireBullets (1.8, 1.4, -1, 14, "WeakPuff", FBF_NORANDOM)
 		TNT1 A 0 A_ZoomFactor(0.99)
         TNT1 A 0 A_FireCustomMissile("DecorativeTracer",random(-1,1),0,-8,0,0,random(-1,1))
 		PI2G A 0 A_Takeinventory("BDDualPistolAmmo",1)
 		PI2G A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,-8,-4)
 		TNT1 A 0 A_SetPitch(-0.2 + pitch)
-        PI2F E 1
+        PI2F G 1
 		TNT1 A 0 A_ZoomFactor(1.0)
 
 		//FIRE2RIGHT2
@@ -240,7 +239,7 @@ ACTOR DualPistols : BrutalWeapon
 		PI2G A 0 A_Takeinventory("BDDualPistolAmmo",1)
 		PI2G A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,16,-4)
 		TNT1 A 0 A_SetPitch(-0.2 + pitch)
-		PI2F B 1
+		PI2F C 1
 		TNT1 A 0 A_ZoomFactor(1.0)
 
 		PI2G A 0 A_JumpIfInventory("BDDualPistolAmmo",1,1)
@@ -249,13 +248,13 @@ ACTOR DualPistols : BrutalWeapon
 		PI2G A 0 A_PlaySound("pfire", 2)
 		PIST F 0 A_AlertMonsters
 		PI2G A 0 A_SpawnItemEx("PlayerMuzzle1",32,4,28)
-		PI2F D 1 BRIGHT A_FireBullets (2.0, 1.6, -1, 14, "WeakPuff", FBF_NORANDOM)
+		PI2F E 1 BRIGHT A_FireBullets (2.0, 1.6, -1, 14, "WeakPuff", FBF_NORANDOM)
 		TNT1 A 0 A_ZoomFactor(0.99)
         TNT1 A 0 A_FireCustomMissile("DecorativeTracer",random(-1,1),0,-8,0,0,random(-1,1))
 		PI2G A 0 A_Takeinventory("BDDualPistolAmmo",1)
 		PI2G A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,-8,-4)
 		TNT1 A 0 A_SetPitch(-0.2 + pitch)
-        PI2F E 1
+        PI2F G 1
 		TNT1 A 0 A_ZoomFactor(1.0)
 
 		//FIRE2RIGHT3
@@ -272,7 +271,7 @@ ACTOR DualPistols : BrutalWeapon
 		PI2G A 0 A_Takeinventory("BDDualPistolAmmo",1)
 		PI2G A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,16,-4)
 		TNT1 A 0 A_SetPitch(-0.2 + pitch)
-		PI2F B 1
+		PI2F C 1
 		TNT1 A 0 A_ZoomFactor(1.0)
 
 		PI2G A 0 A_JumpIfInventory("BDDualPistolAmmo",1,1)
@@ -281,13 +280,13 @@ ACTOR DualPistols : BrutalWeapon
 		PI2G A 0 A_PlaySound("pfire", 2)
 		PIST F 0 A_AlertMonsters
 		PI2G A 0 A_SpawnItemEx("PlayerMuzzle1",32,4,28)
-		PI2F D 1 BRIGHT A_FireBullets (2.3, 1.9, -1, 14, "WeakPuff", FBF_NORANDOM)
+		PI2F E 1 BRIGHT A_FireBullets (2.3, 1.9, -1, 14, "WeakPuff", FBF_NORANDOM)
 		TNT1 A 0 A_ZoomFactor(0.99)
         TNT1 A 0 A_FireCustomMissile("DecorativeTracer",random(-1,1),0,-8,0,0,random(-1,1))
 		PI2G A 0 A_Takeinventory("BDDualPistolAmmo",1)
 		PI2G A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,-8,-4)
 		TNT1 A 0 A_SetPitch(-0.2 + pitch)
-        PI2F E 1
+        PI2F G 1
 		TNT1 A 0 A_ZoomFactor(1.0)
 
 		PI2G A 2 A_WeaponReady(WRF_NOBOB | WRF_ALLOWRELOAD)
@@ -301,15 +300,15 @@ ACTOR DualPistols : BrutalWeapon
 		PI2G A 0 A_PlaySound("pfire", 2)
 		PIST F 0 A_AlertMonsters
 		PI2G A 0 A_SpawnItemEx("PlayerMuzzle1",32,4,28)
-		PI2F D 1 BRIGHT A_FireBullets (1.8, 1.4, -1, 14, "WeakPuff", FBF_NORANDOM)
+		PI2F E 1 BRIGHT A_FireBullets (1.8, 1.4, -1, 14, "WeakPuff", FBF_NORANDOM)
 		TNT1 A 0 A_ZoomFactor(0.99)
         TNT1 A 0 A_FireCustomMissile("DecorativeTracer",random(-1,1),0,-8,0,0,random(-1,1))
 		PI2G A 0 A_Takeinventory("BDDualPistolAmmo",1)
 		PI2G A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,-8,-4)
 		TNT1 A 0 A_SetPitch(-0.2 + pitch)
-        PI2F E 1
+        PI2F G 1
 		TNT1 A 0 A_ZoomFactor(1.0)
-		PI2F F 1
+		PI2F H 1
 
 	Fire2Left2:
 		TNT1 A 0
@@ -319,15 +318,15 @@ ACTOR DualPistols : BrutalWeapon
 		PI2G A 0 A_PlaySound("pfire", 2)
 		PIST F 0 A_AlertMonsters
 		PI2G A 0 A_SpawnItemEx("PlayerMuzzle1",32,4,28)
-		PI2F D 1 BRIGHT A_FireBullets (2.0, 1.6, -1, 14, "WeakPuff", FBF_NORANDOM)
+		PI2F E 1 BRIGHT A_FireBullets (2.0, 1.6, -1, 14, "WeakPuff", FBF_NORANDOM)
 		TNT1 A 0 A_ZoomFactor(0.99)
         TNT1 A 0 A_FireCustomMissile("DecorativeTracer",random(-1,1),0,-8,0,0,random(-1,1))
 		PI2G A 0 A_Takeinventory("BDDualPistolAmmo",1)
 		PI2G A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,-8,-4)
 		TNT1 A 0 A_SetPitch(-0.2 + pitch)
-        PI2F E 1
+        PI2F G 1
 		TNT1 A 0 A_ZoomFactor(1.0)
-		PI2F F 1
+		PI2F H 1
 
 	Fire2Left3:
 		TNT1 A 0
@@ -337,15 +336,15 @@ ACTOR DualPistols : BrutalWeapon
 		PI2G A 0 A_PlaySound("pfire", 2)
 		PIST F 0 A_AlertMonsters
 		PI2G A 0 A_SpawnItemEx("PlayerMuzzle1",32,4,28)
-		PI2F D 1 BRIGHT A_FireBullets (2.3, 1.9, -1, 14, "WeakPuff", FBF_NORANDOM)
+		PI2F E 1 BRIGHT A_FireBullets (2.3, 1.9, -1, 14, "WeakPuff", FBF_NORANDOM)
 		TNT1 A 0 A_ZoomFactor(0.99)
         TNT1 A 0 A_FireCustomMissile("DecorativeTracer",random(-1,1),0,-8,0,0,random(-1,1))
 		PI2G A 0 A_Takeinventory("BDDualPistolAmmo",1)
 		PI2G A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,-8,-4)
 		TNT1 A 0 A_SetPitch(-0.2 + pitch)
-        PI2F E 1
+        PI2F G 1
 		TNT1 A 0 A_ZoomFactor(1.0)
-		PI2F F 1
+		PI2F H 1
 
 		PI2G A 2 A_WeaponReady(WRF_NOBOB | WRF_ALLOWRELOAD)
 		Goto Ready
@@ -362,7 +361,6 @@ ACTOR DualPistols : BrutalWeapon
 		TNT1 A 0 A_TakeInventory("PistolBurstFire", 1)
 		TNT1 A 0 A_Print("Single shot")
 		Goto Ready3
-
 
 	NoAmmo:
 		RIFG A 0
@@ -386,8 +384,8 @@ ACTOR DualPistols : BrutalWeapon
 		RIFG A 0 A_JumpIfInventory("IsRunning",1,"StartSprint")
 		Goto Ready3
 
-    Reload:
-		PI2G A 1 A_WeaponReady
+    Reload://round in chamber
+		"####" "#" 1 A_WeaponReady
 		PI2G A 0 A_Takeinventory("Reloading",1)
 		PI2G A 0 A_Takeinventory("ADSmode",1)
 		PI2G A 0 A_Takeinventory("Zoomed",1)
@@ -398,51 +396,64 @@ ACTOR DualPistols : BrutalWeapon
         Goto Ready
         TNT1 AAA 0
 		PI2G A 0 A_JumpIfInventory("TurboReload",1,"TurboReload")
-		PI2G A 0 A_JumpIfInventory("PistolUnloaded", 1, "PutMag")
-
-		PIST F 0 A_PlaySound("RELO1")
-        PISR ABCDE 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
-		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		PISR F 4 A_FireCustomMissile("EmptyPistolClipSpawn",0,0,0,-20)
-	PutMag:
-		PISR F 4
-		PISR GH 1
-		PISR A 0 A_PlaySound("prel")
-		PISR IJKLMN 2
-		PISR OPQR 1
 		PI2G A 0 A_JumpIfInventory("PistolUnloaded", 1, "PutMag2")
-
+		PIST E 0 A_JumpIfInventory("BDPistolAmmo",1,1)
+		Goto Reload2//reload empty chamber right
+		TNT1 AAA 0
+		PIST E 0 A_JumpIfInventory("BDPistolAmmo",16,"ReloadLeft")//right is full
 		PIST F 0 A_PlaySound("RELO1")
-        PI2R CDE 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+        3ISR ABCDEF 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		PI2R F 4 A_FireCustomMissile("EmptyPistolClipSpawn",225,0,-10,-20)
-	PutMag2:
-		PI2R F 4
-		PI2R GH 1
-		PI2R A 0 A_PlaySound("prel")
-		PI2R IJKLMN 2
-		PI2R OPQR 1
+		PIST E 0 A_JumpIfInventory("BDPistolAmmo",2,"PutMag")//if mag is not empty then retain it right
+		3ISR G 4 A_FireCustomMissile("EmptyPistolClipSpawn",0,0,0,-20)
+
+	PutMag://reload right
+		3ISR G 4
+		3ISR HI 1
+		PISR A 0 A_PlaySound("prel")
+		3ISR JKLMNOPQRSTUVWX 1
+
+	ReloadLeft://Reload left
+		PI2G A 0 A_JumpIfInventory("DualPistolUnloaded", 1, "PutMagLeft2")
+		PIST E 0 A_JumpIfInventory("BDDualPistolAmmo",2,1)
+		Goto Reload2Left//reload empty chamber left
+		TNT1 AAA 0
+		PIST F 0 A_PlaySound("RELO1")
+        4ISR ABCDEF 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		PIST E 0 A_JumpIfInventory("BDDualPistolAmmo",3,"PutMagLeft")//if mag is not empty then retain it left
+		4ISR G 4 A_FireCustomMissile("EmptyPistolClipSpawn",225,0,-10,-20)
+
+	PutMagLeft://reload left
+		4ISR G 4
+		4ISR HI 1
+		4ISR A 0 A_PlaySound("prel")
+		4ISR JKLMNOPQRSTUVWX 1
+
+	FinishReload:
+		5ISR ABCDEFGHIJKLM 1
 		PIST F 0 A_Takeinventory("PistolUnloaded",1)
-		PI2G A 0 A_JumpIfInventory("BDDualPistolAmmo",1,"InsertBullets2")//15+1 effect
-		Goto InsertBullets
+		PIST F 0 A_Takeinventory("DualPistolUnloaded",1)
+		Goto InsertBullets//30+2
 
 	TurboReload:
 		PI2G A 0 A_Takeinventory("PistolUnloaded",1)
+		PIST F 0 A_Takeinventory("DualPistolUnloaded",1)
 		TNT1 A 0 A_JumpIfInventory("Clip1",1,3)
 		Goto Ready
         TNT1 AAA 0
-        Goto InsertBullets2
+        Goto InsertBullets//30+2
 
-	InsertBullets:
+	InsertBullets://30+2
 		TNT1 AAAA 0
-		PI2G A 0 A_JumpIfInventory("BDDualPistolAmmo",30,15)
+		PI2G A 0 A_JumpIfInventory("BDDualPistolAmmo",32,15)
 		PI2G A 0 A_JumpIfInventory("Clip1",1,3)
 		Goto Ready
         TNT1 AAAAAA 0
 		PI2G A 0 A_Giveinventory("BDDualPistolAmmo",1)
 		PI2G A 0 A_Giveinventory("BDPistolAmmo",1)
 		PI2G A 0 A_Takeinventory("Clip1",1)
-		Goto InsertBullets
+		Goto InsertBullets//30+2
 
 		TNT1 AAAAAAAAAA 0
 		PI2G A 1 A_Takeinventory("Reloading",1)
@@ -455,16 +466,49 @@ ACTOR DualPistols : BrutalWeapon
 		PI2G A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
         Goto Ready
 
-	InsertBullets2:
+	Reload2:
+		PIST F 0 A_PlaySound("RELO1")
+        3ISR ABCDEF 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		3ISR G 4 A_FireCustomMissile("EmptyPistolClipSpawn",0,0,0,-20)
+
+	PutMag2://reload right
+		3ISR G 4
+		3ISR HI 1
+		PISR A 0 A_PlaySound("prel")
+		3ISR JKLMNOPQRSTUVWX 1
+
+	Reload2Left://Reload left
+		PI2G A 0 A_JumpIfInventory("DualPistolUnloaded", 1, "PutMagLeft2")
+		PIST E 0 A_JumpIfInventory("BDDualPistolAmmo",15,"FinishReload2")//Left is full
+		PIST F 0 A_PlaySound("RELO1")
+        4ISR ABCDEF 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		PIST E 0 A_JumpIfInventory("BDDualPistolAmmo",2,"PutMagLeft2")//if mag is not empty then retain it left
+		4ISR G 4 A_FireCustomMissile("EmptyPistolClipSpawn",225,0,-10,-20)
+
+	PutMagLeft2://reload left
+		4ISR G 4
+		4ISR HI 1
+		4ISR A 0 A_PlaySound("prel")
+		4ISR JKLMNOPQRSTUVWX 1
+
+	FinishReload2:
+		5ISR ABCDEFGHIJKLM 1
+		PIST F 0 A_Takeinventory("PistolUnloaded",1)
+		PIST F 0 A_Takeinventory("DualPistolUnloaded",1)
+		Goto InsertBullets2//30
+
+	InsertBullets2://30
 		TNT1 AAAA 0
-		PI2G A 0 A_JumpIfInventory("BDDualPistolAmmo",32,15)
+		PI2G A 0 A_JumpIfInventory("BDDualPistolAmmo",30,15)
 		PI2G A 0 A_JumpIfInventory("Clip1",1,3)
 		Goto Ready
         TNT1 AAAAAA 0
 		PI2G A 0 A_Giveinventory("BDDualPistolAmmo",1)
 		PI2G A 0 A_Giveinventory("BDPistolAmmo",1)
 		PI2G A 0 A_Takeinventory("Clip1",1)
-		Goto InsertBullets2
+		Goto InsertBullets2//30
 
 		TNT1 AAAAAAAAAA 0
 		PI2G A 1 A_Takeinventory("Reloading",1)
@@ -487,22 +531,25 @@ ACTOR DualPistols : BrutalWeapon
         PI2G A 0 A_ZoomFactor(1.0)
 		PI2G A 0 A_GiveInventory ("Pumping", 1)
 		PI2G A 0 A_Takeinventory("Reloading",1)
-		PISR RQPO 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		PI2F LMN 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		3ISR XWVUTSRQP 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		PISR A 0 A_PlaySound("prel")
-		PISR NMLKJI 2 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		PISR HG 1
-		PISR F 4
+		3ISR ONMLKJIHGFEDCBA 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 
-		PI2R RQPO 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		TNT1 A 2
+
+		4ISR XWVUTSRQP 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		PISR A 0 A_PlaySound("prel")
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		PI2R A 0 A_PlaySound("prel")
-		PI2R NMLKJI 2 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		4ISR ONMLKJIHGFEDCBA 1
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		PI2R GH 1
-		PI2R F 4
+		PI2F NML 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		PI2G A 0 A_Giveinventory("PistolUnloaded",1)
+		PI2G A 0 A_Giveinventory("DualPistolUnloaded",1)
 		Goto RemoveBullets
 
 	UnloadLeft:
@@ -514,14 +561,14 @@ ACTOR DualPistols : BrutalWeapon
         PI2G A 0 A_ZoomFactor(1.0)
 		PI2G A 0 A_GiveInventory ("Pumping", 1)
 		PI2G A 0 A_Takeinventory("Reloading",1)
-		PI2R RQPO 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		4ISR XWVUTSRQP 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		PISR A 0 A_PlaySound("prel")
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		PI2R A 0 A_PlaySound("prel")
-		PI2R NMLKJI 2 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		4ISR ONMLKJIHGFEDCBA 1
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		PI2R GH 1
-		PI2R F 4
-		PI2G A 0 A_Giveinventory("PistolUnloaded",1)
+		PI2F NML 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		PI2G A 0 A_Giveinventory("DualPistolUnloaded",1)
 		Goto RemoveBullets
 
 	RemoveBullets:
@@ -553,15 +600,15 @@ ACTOR DualPistols : BrutalWeapon
 		TNT1 A 1
 		Goto Ready
 
-	KickFlash://18 tics
-		TNT1 AAA 1
-		TNT1 A 12
-		TNT1 AAA 1
+	KickFlash://20 tics
+		PI2G BCDE 1
+		PI2G F 12
+		PI2G EDCB 1
 		Stop
 
 	SlideFlashEnd://10 tics
-		TNT1 A 7
-		TNT1 AAA 1
+		PI2G F 6
+		PI2G EDCB 1
 		Stop
 	}
 }
