@@ -1008,13 +1008,14 @@ ACTOR FlashlightPuff1 : BulletPuff
 	States
 	{
 		Spawn:
-		TNT2 A 3
+		TNT2 A 4
+		TNT2 A 0 A_AlertMonsters(150)
 		Stop
 
 		Crash:
 		Death:
 		XDeath:
-		TNT2 A 3
+		TNT2 A 4
 		TNT2 A 0 A_AlertMonsters(150)
 		Stop
 	}
