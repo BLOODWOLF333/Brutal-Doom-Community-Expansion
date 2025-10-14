@@ -118,8 +118,8 @@ Actor ClipReplacer : BasicAmmoPickup Replaces Clip
 		TNT1 A 0
 		MARN A 0 ACS_NamedExecuteAlways("BDDisableNewGuns", 0, 0, 0, 0)//Check if advanced decorations are disabled.
 		TNT1 A 2
-		TNT1 A 0 A_Jump(4, "Spawn3") // Mauser 9mm
-		TNT1 A 0 A_Jump(16, "Spawn2") // Pistol Ammo
+		TNT1 A 0 A_Jump(2, "Spawn3") // Mauser 9mm
+		TNT1 A 0 A_Jump(32, "Spawn2") // Pistol Ammo
 
 	Vanilla:
 	Spawn1:
@@ -335,7 +335,7 @@ ACTOR AmmoShellReplacer : BasicAmmoPickup Replaces Shell
 		TNT1 A 0
 		MARN A 0 ACS_NamedExecuteAlways("BDDisableNewGuns", 0, 0, 0, 0)//Check if advanced decorations are disabled.
 		TNT1 A 2
-		TNT1 A 0 A_Jump(4, "Spawn3") // Magnum Ammo
+		TNT1 A 0 A_Jump(2, "Spawn3") // Magnum Ammo
 		TNT1 A 0 A_Jump(32, "Spawn2") // Slug Ammo
 		TNT1 A 2
 
@@ -488,7 +488,7 @@ ACTOR AmmoShellBoxReplacer : BasicAmmoPickup Replaces ShellBox
 		TNT1 A 0
 		MARN A 0 ACS_NamedExecuteAlways("BDDisableNewGuns", 0, 0, 0, 0)//Check if advanced decorations are disabled.
 		TNT1 A 2
-		TNT1 A 0 A_Jump(4, "Spawn3") // Magnum Ammo Box
+		TNT1 A 0 A_Jump(2, "Spawn3") // Magnum Ammo Box
 		TNT1 A 0 A_Jump(32, "Spawn2") // Slug Ammo Box
 		TNT1 A 2
 
@@ -663,8 +663,8 @@ Actor ClipBoxReplacer : BasicAmmoPickup Replaces ClipBox
 		TNT1 A 0
 		MARN A 0 ACS_NamedExecuteAlways("BDDisableNewGuns", 0, 0, 0, 0)//Check if advanced decorations are disabled.
 		TNT1 A 2
-		TNT1 A 0 A_Jump(4, "Spawn3") // Buzzsaw ammo
-		TNT1 A 0 A_Jump(16, "Spawn2") // Pistol ammo box
+		TNT1 A 0 A_Jump(8, "Spawn3") // Buzzsaw ammo
+		TNT1 A 0 A_Jump(32, "Spawn2") // Pistol ammo box
 		TNT1 A 2
 
 	Vanilla:
@@ -1032,7 +1032,7 @@ ACTOR AmmoCellPackReplacer : BasicAmmoPickup Replaces CellPack
 		MARN A 0 ACS_NamedExecuteAlways("BDDisableNewGuns", 0, 0, 0, 0)//Check if advanced decorations are disabled.
 		TNT1 A 2
 		TNT1 A 0 A_Jump(2, "Spawn3") // Nuclear Missile
-		TNT1 A 0 A_Jump(4, "Spawn2") // Gas
+		TNT1 A 0 A_Jump(8, "Spawn2") // Gas
 		TNT1 A 2
 
 	Vanilla:
