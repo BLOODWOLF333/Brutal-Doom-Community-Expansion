@@ -32,7 +32,7 @@ ACTOR RifleZombie : Zombieman Replaces ZombieMan
 	MaxDropOffHeight 32
     BloodType "Zombie_Blood", "Zombie_SawBlood", "Zombie_SawBlood"
 	SeeSound "grunt/sight"
-	AttackSound "weapons/rifle"
+	AttackSound "none"
 	PainSound "grunt/pain"
 	DeathSound "grunt/death"
 	ActiveSound "grunt/active"
@@ -1512,8 +1512,10 @@ Tag "Pistol Zombie"
 
         PSPR A 1
 		PSPR A 1 A_CustomMissile("EmptyPistolClipSpawn", 38, 0, random(-11, 11), 0)
-        TNT1 A 0 A_PlaySound("Reload")
-        PSPR ABACDED 3
+        TNT1 A 0 A_PlaySound("Pistol/Reload1")
+        PSPR ABACD 3
+        TNT1 A 0 A_PlaySound("Pistol/Reload2")
+		PSPR ED 3
         Goto SeeContinue
 
    Pain.Avoid:
