@@ -42,6 +42,10 @@ SHTLOAD1 SHTLOAD1
 SHTLOAD2 SHTLOAD2
 SHTLOAD3 SHTLOAD3
 SHTLOAD4 SHTLOAD4
+weapons/shell1 dsshell1
+weapons/shell2 dsshell2
+weapons/shell3 dsshell3
+$random weapons/shell {weapons/shell1 weapons/shell2 weapons/shell3}
 
 // RIFLE
 Rifle/Select CLIPIN
@@ -50,16 +54,16 @@ Rifle/Select CLIPIN
 CLIPIN CLIPIN
 CLIPINSS CLIPINSS
 DRYFIRE DRYFIRE
-DSF2OOF DSF2OOF
 DSRLAUN DSRLAUN
 insertshell SHELL_IN
 PLSM9 PLSM9
 PLSTHRW PLSTHRW
-SlugASG	SlugASG
+SlugASG SlugASG
 SlugShot SlugSG
-SlugSSG	SlugSSG
+SlugSSG SlugSSG
 weapons/empty DRYFIRE
 weapons/rifle DSRIFLE
+$limit weapons/rifle 0
 weapons/sg sgfire
 $limit weapons/sg 0
 weapons/sgpump STGNPUMP
@@ -67,6 +71,7 @@ MINIGN1 MINIGN1
 MINIGEN MINIGEN
 MINIGN3 MINIGN3
 MINIGN4 MINIGN4
+CHAINSPI CHAINSPI
 $limit MINIGN4 0
 A12FIR A12FIR
 AACL AACL
@@ -82,6 +87,84 @@ DSSAW7 DSSAW7
 DSSAW8 DSSAW8
 DSSAW9 DSSAW9
 DSSAW0 DSSAW0
+RIFLE RIFLE
+PLASMA PLASM
+PLSCHARG PLSCHARG
+PLSALTFR PLSALTFR
+PLSFULL PLSFULL
+IMPACT IMPACT
+LAUNCH LAUNCH
+PLREADY PLREADY
+BFGREADY BFGREADy
+RLREADY RLREADY
+BFGEXPLO BFGEXPLO
+BFGEXPL2 BFGEXPL2
+$rolloff BFGEXPL2 1000 6000
+BFGCHARGE BFGCHARG
+BFGFIRE BFGFIRE
+10KIDLE 10KIDLE
+10KSTART 10KSTART
+10KFIRE 10KFIRE
+10KSTOP 10KSTOP
+RELOAD RELOAD
+weapons/firegrenade GLAUNCH
+weapons/reloadgrenade GRELOAD
+GRLLO1 GRLLO1
+GRLLO2 GRLLO2
+$volume weapons/casing2 0.7
+$volume weapons/sshoto .5
+$volume weapons/sshotc .5
+$volume weapons/sshotl 1.5
+weapons/plasmarifle PLASMA
+$limit weapons/plasmarifle 0
+$volume weapons/plasmarifle 0.9
+Rocket/Launch DSRLAUN
+RKTSML RKTSML
+SSHFIRE SSHFIRE
+$Limit SSHFIRE 0
+weapons/ssg/open SSGOPEN
+weapons/ssg/close SSGCLOSE
+weapons/ssg/in SSGIN
+weapons/ssg/fire SSGFIRE
+FireSuperShotgun SSGFIRE1
+$volume FireSuperShotgun 1.3
+$random weapon/crack { BCRACK1 BCRACK2 BCRACK3 BCRACK4 BCRACK5 BCRACK6 BCRACK7 }
+$pitchshift BCRACK1 7
+$pitchshift BCRACK2 7
+$pitchshift BCRACK3 7
+$pitchshift BCRACK4 7
+$pitchshift BCRACK5 7
+$pitchshift BCRACK6 7
+$pitchshift BCRACK7 7
+BCRACK1 BCRACK1
+BCRACK2 BCRACK2
+BCRACK3 BCRACK3
+BCRACK4 BCRACK4
+BCRACK5 BCRACK5
+BCRACK6 BCRACK6
+BCRACK7 BCRACK7
+AXECLN AXECLN
+AXEHIT AXEHIT
+AXEDRAW AXEDRAW
+$random SlideKickStart { SLIDSTRT1 SLIDSTRT2 SLIDSTRT3 }
+SLIDSTRT1 SLIDSTR1
+SLIDSTRT2 SLIDSTR2
+SLIDSTRT3 SLIDSTR3
+$random SlideKickLoop { SLIDLOP1 SLIDLOP2 SLIDLOP3 SLIDLOP4 }
+SLIDLOP1 SLIDLOP1
+SLIDLOP2 SLIDLOP2
+SLIDLOP3 SLIDLOP3
+SLIDLOP4 SLIDLOP4
+$random SlideKickStop { SLIDEND1 SLIDEND2 }
+SLIDEND1 SLIDEND1
+SLIDEND2 SLIDEND2
+RLAUNCH1 RLAUNCH1
+RLLOOP RLLOOP
+RAILF1 RAILF1
+RAILR1 RAILR1
+GRNPIN GRNPIN
+GRNBNCE GRNBNCE
+GRNTOSS GRNTOSS
 
 //Unmaker
 UNMSTA UNMSTA
@@ -166,39 +249,39 @@ PIKUPTALK2 PIKUPTALK2
 PIKUPTALK3 PIKUPTALK3
 PIKUPTALK4 PIKUPTALK4
 
-redburn	redburn
+redburn redburn
 
-world/watersplash		splash1
+world/watersplash splash1
 
-world/sludgegloop		dsploosh
-world/lavasizzle		dslvsiz
-world/drip			dsdrip2
+world/sludgegloop dsploosh
+world/lavasizzle dslvsiz
+world/drip dsdrip2
 world/hotsiz dshtsiz
 
 //PlayerSounds
-$playersound	player	male	*death		dspldeth
-$playersound	player	male	*xdeath		dspdiehi
-$playersound	player	male	*gibbed		dsslop
-$playersound	player	male	*grunt		dsoof
-$playersounddup	player	male	*land		*grunt
-$playersound	player	male	*jump		dsoof
-$playersound	player	male	*fist		dspunch
-$playersound	player	male	*usefail	dsnoway
-$playersound	player	male	*taunt		TAUNT
-$playeralias	player	male	plpain		Pain1
-$playersound	player	male	tired		TIRED
+$playersound player male *death dspldeth
+$playersound player male *xdeath dspdiehi
+$playersound player male *gibbed dsslop
+$playersound player male *grunt dsoof
+$playersounddup player male *land *grunt
+$playersound player male *jump dsoof
+$playersound player male *fist dspunch
+$playersound player male *usefail dsnoway
+$playersound player male *taunt TAUNT
+$playeralias player male plpain Pain1
+$playersound player male tired TIRED
 
-$playersound	player	female	*death		DSFDETH
-$playersound	player	female	*xdeath		DSFDIEHI
-$playersound	player	female	*gibbed		dsslop
-$playeralias	player	female	*grunt		DSFEMUF
-$playersound	player	female	*land		DSF2OOF
-$playeralias	player	female	*jump		DSFEMUF
-$playersound	player	female	*fist		dspunch
-$playeralias	player	female	*usefail	DSFEMUF
-$playersound	player	female	*taunt		dsftaunt
-$playeralias	player	female	plpain		DSFPAIN
-$playersound	player	female	tired		FTIRED
+$playersound player female *death DSFDETH
+$playersound player female *xdeath DSFDIEHI
+$playersound player female *gibbed dsslop
+$playeralias player female *grunt DSFEMUF
+$playersound player female *land DSF2OOF
+$playeralias player female *jump DSFEMUF
+$playersound player female *fist dspunch
+$playeralias player female *usefail DSFEMUF
+$playersound player female *taunt dsftaunt
+$playeralias player female plpain DSFPAIN
+$playersound player female tired FTIRED
 
 $random DSFPAIN { DSFPAIN1 DSFPAIN2 DSFPAIN3 DSFPAIN4 DSFPAIN5 DSFPAIN6 DSFPAIN7 }
 DSFPAIN1 DSFPAIN1
@@ -231,111 +314,42 @@ FTAUNT2 FTAUNT2
 FTAUNT3 FTAUNT3
 FTAUNT4 FTAUNT4
 
-$playersound	player	male	BIGSCRE		bigscrea
-$playersound	player	female	BIGSCRE		DSFDIEHI
-$playersound	player	female	*death		DSFDETH
+$ playersound player male BIGSCRE bigscrea
+$playersound player female BIGSCRE DSFDIEHI
 
 DSFDTHE BIGSCRE
 
 DSSALUTE DSSALUTE
-$playersound	player	male	SALUTE		DSSALUTE
-$playersound	player	female	SALUTE		DSFTAUN2
+$ playersound player male SALUTE DSSALUTE
+$playersound player female SALUTE DSFTAUN2
 
 $limit FUCK 1
-
-$limit weapons/rifle 0
-
-LAUNCH LAUNCH
-PLREADY PLREADY
-BFGREADY BFGREADy
-RLREADY RLREADY
-
-BFGEXPLO BFGEXPLO
-BFGEXPL2 BFGEXPL2
-$rolloff BFGEXPL2 1000 6000
-
-BFGCHARGE BFGCHARG
-BFGFIRE BFGFIRE
 
 ARMOR ARMOR
 GOTHPB GOTHPB
 GOTHPS GOTHPS
-
-10KIDLE 10KIDLE
-10KSTART 10KSTART
-10KFIRE 10KFIRE
-10KSTOP 10KSTOP
-
-IBRN1 IBRN1
-IBRN2 IBRN2
-IBRN3 IBRN3
-RELOAD RELOAD
-
-weapons/firegrenade			GLAUNCH
-weapons/reloadgrenade		GRELOAD
-GRLLO1 GRLLO1
-GRLLO2 GRLLO2
 
 $limit world/watersplash 4
 $limit world/sludgegloop 2
 $limit world/drip 2
 $limit world/hotsiz 2
 $limit world/lavasizzle 2
-
-$volume ricochet/hit 0.7
 $volume world/watersplash 0.3
-$volume weapons/casing2 0.7
 
-$volume weapons/sshoto	1.5
-$volume weapons/sshotc	1.5
-$volume weapons/sshotl  1.5
+Ricochet RIC1
 
-weapons/plasmarifle PLASMA
-$limit weapons/plasmarifle 0
-$volume weapons/plasmarifle 0.9
+$random world/ricochet { ricochet/hit world/b1ank }
+$random ricochet/hit { world/ricochet1 world/ricochet2 world/ricochet3 world/ricochet4 world/ricochet5 }
+world/ricochet1 ricoche1
+world/ricochet2 ricoche2
+world/ricochet3 ricoche3
+world/ricochet4 ricoche4
+world/ricochet5 ricoche5
+world/blank1 blanksnd
+world/blank2 blanksnd
+$volume ricochet/hit 0.7
 
-Rocket/Launch DSRLAUN
-RKTSML RKTSML
-
-SSHFIRE SSHFIRE
-$Limit SSHFIRE 0
-weapons/ssg/open	SSGOPEN
-weapons/ssg/close	SSGCLOSE
-weapons/ssg/in		SSGIN
-weapons/ssg/fire	SSGFIRE
-FireSuperShotgun    SSGFIRE1
-
-$volume FireSuperShotgun  1.3
-
-$random world/ricochet      {  ricochet/hit world/b1ank }
-$random ricochet/hit        {  world/ricochet1 world/ricochet2 world/ricochet3 world/ricochet4 world/ricochet5 }
-world/ricochet1     ricoche1
-world/ricochet2     ricoche2
-world/ricochet3     ricoche3
-world/ricochet4     ricoche4
-world/ricochet5     ricoche5
-world/blank1        blanksnd
-world/blank2        blanksnd
-
-$random weapon/crack { BCRACK1 BCRACK2 BCRACK3 BCRACK4 BCRACK5 BCRACK6 BCRACK7 }
-
-$pitchshift BCRACK1 7
-$pitchshift BCRACK2 7
-$pitchshift BCRACK3 7
-$pitchshift BCRACK4 7
-$pitchshift BCRACK5 7
-$pitchshift BCRACK6 7
-$pitchshift BCRACK7 7
-
-BCRACK1 BCRACK1
-BCRACK2 BCRACK2
-BCRACK3 BCRACK3
-BCRACK4 BCRACK4
-BCRACK5 BCRACK5
-BCRACK6 BCRACK6
-BCRACK7 BCRACK7
-
-$random BHITDIR {  BHITDIR1 BHITDIR2 BHITDIR3 BHITDIR4 BHITDIR5 }
+$random BHITDIR { BHITDIR1 BHITDIR2 BHITDIR3 BHITDIR4 BHITDIR5 }
 BHITDIR1 BHITDIR1
 BHITDIR2 BHITDIR2
 BHITDIR3 BHITDIR3
@@ -358,7 +372,7 @@ Explode1 Explode1
 Explode2 Explode2
 
 // This is the second sound, it's muffled and can be heard one city block away.
-$random FAREXPL  { dsbarex1 dsbarex2 dsbarex3 dsbarex4 dsbarex5 dsbarex6 }
+$random FAREXPL { dsbarex1 dsbarex2 dsbarex3 dsbarex4 dsbarex5 dsbarex6 }
 dsbarex1 dsbarex1
 dsbarex2 dsbarex2
 dsbarex3 dsbarex3
@@ -378,60 +392,58 @@ $rolloff distexpl 2000 12000
 
 //=============================================================================================
 
-//=============================================================================================
-
 //Distant gun sounds
 
 //Assault Rifle
 FARRIF FARRIF
 $limit FARRIF 70
-$rolloff  FARRIF 1000 6000
+$rolloff FARRIF 1000 6000
 
 //Heavy Machinegun
 FARHMG FARHMG
 $limit FARHMG 70
-$rolloff  FARHMG 1000 6000
+$rolloff FARHMG 1000 6000
 
 //Shotgun
 FARSHT FARSHT
 $limit FARSHT 70
-$rolloff  FARSHT 1000 6000
+$rolloff FARSHT 1000 6000
 
 //Pistol
 FARSMG FARSMG
 $limit FARSMG 70
-$rolloff  FARSMG 1000 6000
+$rolloff FARSMG 1000 6000
 
 //Light Machinegun
 FARMGN FARMGN
 $limit FARMGN 70
-$rolloff  FARMGN 1000 6000
+$rolloff FARMGN 1000 6000
 
 //Autocannon
 FARCAN1 FARCAN1
 $volume FARCAN1 0.5
 $limit FARCAN1 70
-$rolloff  FARCAN1 1000 6000
+$rolloff FARCAN1 1000 6000
 
 //SuperShotgun or Sniper Rifle
 FARSSG FARSSG
 $limit FARSSG 70
-$rolloff  FARSSG 1000 6000
+$rolloff FARSSG 1000 6000
 
 //Rocket
 FARMISL FARMISL
 $limit FARMISL 70
-$rolloff  FARMISL 1000 6000
+$rolloff FARMISL 1000 6000
 
 //Tank Missile
 DSMISFIR DSMISFIR
 $limit DSMISFIR 70
-$rolloff  DSMISFIR 1000 6000
+$rolloff DSMISFIR 1000 6000
 
 //Tank Cannon
 FARTANK FARTANK
 $limit FARTANK 70
-$rolloff  FARTANK 1000 6000
+$rolloff FARTANK 1000 6000
 //=============================================================================================
 
 //=============================================================================================
@@ -441,74 +453,45 @@ DSSAWHIT DSSAWHIT
 DSSAWUP DSSAWUP
 DSSAWDIE DSSAWDIE
 
-weapons/chainsaw/draw	CSAWDRAW
-weapons/chainsaw/start	CSAWSTRT
-weapons/chainsaw/loop	CSAWFUL
-weapons/chainsaw/stop	CSAWSTOP
-weapons/chainsaw/idle	CSAWREDY
-CSAWCUT                 CSAWCUT
+weapons/chainsaw/draw CSAWDRAW
+weapons/chainsaw/start CSAWSTRT
+weapons/chainsaw/loop CSAWFUL
+weapons/chainsaw/stop CSAWSTOP
+weapons/chainsaw/idle CSAWREDY
+CSAWCUT CSAWCUT
 //=============================================================================================
 
-weapons/shell1			dsshell1
-weapons/shell2			dsshell2
-weapons/shell3			dsshell3
-$random weapons/shell		{weapons/shell1 weapons/shell2 weapons/shell3}
-
-CHAINSPI CHAINSPI
-
-$random u45/fire	{ u45/fire1 u45/fire2 u45/fire3 u45/fire4}
-u45/fire1		uspfire1
-u45/fire2		uspfire2
-u45/fire3		uspfire3
-u45/fire4		uspfire4
-Ricochet		RIC1
-
-RIFLE RIFLE
-PLASMA PLASM
-PLSCHARG PLSCHARG
-PLSALTFR PLSALTFR
-PLSFULL PLSFULL
-IMPACT IMPACT
-
-$random puff/ric 		{ puff/ric1 puff/ric2 puff/ric3 puff/ric4 puff/ric5 puff/ric6 puff/ric7 }
-puff/ric1 			dsrich1
-puff/ric2 			dsrich2
-puff/ric3 			dsrich3
-puff/ric4 			dsrich4
-puff/ric5 			dsrich5
-puff/ric6 			dsrich6
-puff/ric7 			dsrich7
+$random puff/ric { puff/ric1 puff/ric2 puff/ric3 puff/ric4 puff/ric5 puff/ric6 puff/ric7 }
+puff/ric1 dsrich1
+puff/ric2 dsrich2
+puff/ric3 dsrich3
+puff/ric4 dsrich4
+puff/ric5 dsrich5
+puff/ric6 dsrich6
+puff/ric7 dsrich7
 
 $limit weapons/chaingun/fire 0
-weapons/chaingun/fire	CHGNSHOT
-weapons/chaingun/spin	CHGNSPIN
-weapons/chaingun/stop	CHGNSTOP
-weapons/chaingun/start	CHGNSTRT
+weapons/chaingun/fire CHGNSHOT
+weapons/chaingun/spin CHGNSPIN
+weapons/chaingun/stop CHGNSTOP
+weapons/chaingun/start CHGNSTRT
 
-weapons/ssg/open	SSGOPEN
-weapons/ssg/close	SSGCLOSE
-weapons/ssg/in		SSGIN
-weapons/ssg/fire	SSGFIRE
-FireSuperShotgun    SSGFIRE1
-
-weapons/shotgun2                    STGNSHOT
-weapons/shotgun/pump	            STGNPUMP
-weapons/assaultrifle                G2FIRE
+weapons/shotgun2 STGNSHOT
+weapons/shotgun/pump STGNPUMP
+weapons/assaultrifle G2FIRE
 
 REVOFIR REVOFIR
 REVOHAM REVOHAM
 
-RELOAD RELOAD
 RELO1 RELO1
 RELO2 RELO2
 
-insertshell	SHELL_IN
-M249		M249
-M249R1      M249R1
-M249R2      M249R2
-M249R3      M249R3
-M249R4     	M249R4
-GLOCK18     GLOCK18
+M249 M249
+M249R1 M249R1
+M249R2 M249R2
+M249R3 M249R3
+M249R4 M249R4
+GLOCK18 GLOCK18
 
 BDFirePlace dstorch
 $limit BDfireplace 2
@@ -518,10 +501,9 @@ BDFirePlace2 dstorch2
 $limit BDfireplace2 2
 $rolloff BDfireplace2 100 600
 
-CHAINSPI CHAINSPI
 CHAINSTO CHAINSTO
-weapons/gswing                  dsswing
-weapons/gpunch                  dspunch
+weapons/gswing dsswing
+weapons/gpunch dspunch
 DSSAWZIP DSSAWZIP
 DSSAWPUL DSSAWPUL
 
@@ -530,31 +512,31 @@ fstatk1 fstatk1
 fstatk2 fstatk2
 fstatk3 fstatk3
 
-$random weapons/casing  { weapons/casing2 weapons/casing3 }
-weapons/casing2	dscasin1
-weapons/casing2	dscasin2
-weapons/casing3	dscasin3
+$random weapons/casing { weapons/casing2 weapons/casing3 }
+weapons/casing2 dscasin1
+weapons/casing2 dscasin2
+weapons/casing3 dscasin3
 
-$random 40mmCasing  { 40CAS1 40CAS2 40CAS3 }
+$random 40mmCasing { 40CAS1 40CAS2 40CAS3 }
 40CAS1 40CAS1
 40CAS2 40CAS2
 40CAS3 40CAS3
 
-$random SlowBurnDeath  { DSCULTF1 DSCULTF3 }
+$random SlowBurnDeath { DSCULTF1 DSCULTF3 }
 DSCULTF1 DSCULTF1
 DSCULTF2 DSCULTF2
 DSCULTF3 DSCULTF3
 
-weapons/chainsaw/hitwall1	DSSAWAL1
-weapons/chainsaw/hitwall2	DSSAWAL2
-weapons/chainsaw/hitwall3	DSSAWAL3
-weapons/chainsaw/hitwall4	DSSAWAL4
+weapons/chainsaw/hitwall1 DSSAWAL1
+weapons/chainsaw/hitwall2 DSSAWAL2
+weapons/chainsaw/hitwall3 DSSAWAL3
+weapons/chainsaw/hitwall4 DSSAWAL4
 
 $random weapons/chainsaw/hitwall { weapons/chainsaw/hitwall1 weapons/chainsaw/hitwall2 weapons/chainsaw/hitwall3 weapons/chainsaw/hitwall4 }
 
 $limit weapons/chainsaw/hitwall 1
 
-$random BLOOOD  { DSBLUD01 DSBLUD02 DSBLUD03 }
+$random BLOOOD { DSBLUD01 DSBLUD02 DSBLUD03 }
 DSBLUD01 DSBLUD01
 DSBLUD02 DSBLUD02
 DSBLUD03 DSBLUD03
@@ -607,50 +589,49 @@ CLAP CLAP
 
 KNUCKLED KNUCKLED
 
-DSSALUTE DSSALUTE
-$random Sparks/Spawn { Sparks/Sound1  Sparks/Sound2  Sparks/Sound3  Sparks/Sound4 }
-Sparks/Sound1		SPARKS1
-Sparks/Sound2		SPARKS2
-Sparks/Sound3		SPARKS3
-Sparks/Sound4		SPARKS4
+$random Sparks/Spawn { Sparks/Sound1 Sparks/Sound2 Sparks/Sound3 Sparks/Sound4 }
+Sparks/Sound1 SPARKS1
+Sparks/Sound2 SPARKS2
+Sparks/Sound3 SPARKS3
+Sparks/Sound4 SPARKS4
 
 DSBOTTLE DSBOTTLE
 DSPIPBNC DSPIPBNC
 TAUNT TAUNT
 
-Weapons/GrenadeFire	DSGRFIRE
-Weapons/GrenadeBounce	DSGRBNCE
-Weapons/GrenadeOpen	DSGROPEN
-Weapons/GrenadeLoad	DSGRLOAD
-Weapons/GrenadeClose	DSGRCLOS
+Weapons/GrenadeFire DSGRFIRE
+Weapons/GrenadeBounce DSGRBNCE
+Weapons/GrenadeOpen DSGROPEN
+Weapons/GrenadeLoad DSGRLOAD
+Weapons/GrenadeClose DSGRCLOS
 
 DSCANFIR DSCANFIR
 $rolloff DSCANFIR 1000 6000
 
 //Mags
 
-$random weapons/smallmagdrop  { weapons/smallmagdrop1 weapons/smallmagdrop2 weapons/smallmagdrop3 weapons/smallmagdrop4 }
-weapons/smallmagdrop1		dsbounc1
-weapons/smallmagdrop2		dsbounc2
-weapons/smallmagdrop3		dsbounc3
-weapons/smallmagdrop4		dsbounc4
+$random weapons/smallmagdrop { weapons/smallmagdrop1 weapons/smallmagdrop2 weapons/smallmagdrop3 weapons/smallmagdrop4 }
+weapons/smallmagdrop1 dsbounc1
+weapons/smallmagdrop2 dsbounc2
+weapons/smallmagdrop3 dsbounc3
+weapons/smallmagdrop4 dsbounc4
 
-$random weapons/largemagdrop  { weapons/largemagdrop1 weapons/largemagdrop2 weapons/largemagdrop3 weapons/largemagdrop4 }
-weapons/largemagdrop1		dsaounc1
-weapons/largemagdrop2		dsaounc2
-weapons/largemagdrop3		dsaounc3
-weapons/largemagdrop4		dsaounc4
+$random weapons/largemagdrop { weapons/largemagdrop1 weapons/largemagdrop2 weapons/largemagdrop3 weapons/largemagdrop4 }
+weapons/largemagdrop1 dsaounc1
+weapons/largemagdrop2 dsaounc2
+weapons/largemagdrop3 dsaounc3
+weapons/largemagdrop4 dsaounc4
 
-weapons/barrelpain		barrelz
+weapons/barrelpain barrelz
 
 $volume weapons/smallmagdrop 0.5
 $volume weapons/largemagdrop 0.5
 
 //Imps
 $random imp/melee { imp/melee1 imp/melee2 imp/melee3 }
-imp/melee1	IMPCLAW1
-imp/melee2	IMPCLAW2
-imp/melee3	IMPCLAW3
+imp/melee1 IMPCLAW1
+imp/melee2 IMPCLAW2
+imp/melee3 IMPCLAW3
 
 $random player/cyborg/fist { marine/superfist1 marine/superfist2 marine/superfist3 marine/superfist4 marine/superfist5 }
 marine/superfist1 plspnch1
@@ -691,17 +672,17 @@ zombiemarine/sight9
 zombiemarine/sight10
 zombiemarine/sight11 }
 
-zombiemarine/sight1	zspsit1
-zombiemarine/sight2	zspsit2
-zombiemarine/sight3	zspsit3
-zombiemarine/sight4	zspsit4
-zombiemarine/sight5	zspsit5
-zombiemarine/sight6	zspsit6
-zombiemarine/sight7	zspsit7
-zombiemarine/sight8	zspsit8
-zombiemarine/sight9	zspsit9
-zombiemarine/sight10	zspsit10
-zombiemarine/sight11	zspsit11
+zombiemarine/sight1 zspsit1
+zombiemarine/sight2 zspsit2
+zombiemarine/sight3 zspsit3
+zombiemarine/sight4 zspsit4
+zombiemarine/sight5 zspsit5
+zombiemarine/sight6 zspsit6
+zombiemarine/sight7 zspsit7
+zombiemarine/sight8 zspsit8
+zombiemarine/sight9 zspsit9
+zombiemarine/sight10 zspsit10
+zombiemarine/sight11 zspsit11
 
 $volume zombiemarine/sight 0.80
 
@@ -714,13 +695,13 @@ zombiemarine/death5
 zombiemarine/death6
 zombiemarine/death7 }
 
-zombiemarine/death1	zspdth1
-zombiemarine/death2	zspdth2
-zombiemarine/death3	zspdth3
-zombiemarine/death4	zspdth4
-zombiemarine/death5	zspdth5
-zombiemarine/death6	zspdth6
-zombiemarine/death7	zspdth7
+zombiemarine/death1 zspdth1
+zombiemarine/death2 zspdth2
+zombiemarine/death3 zspdth3
+zombiemarine/death4 zspdth4
+zombiemarine/death5 zspdth5
+zombiemarine/death6 zspdth6
+zombiemarine/death7 zspdth7
 
 $random zombiemarine/pain
 { zombiemarine/pain1
@@ -735,24 +716,24 @@ zombiemarine/pain9
 zombiemarine/pain10
 zombiemarine/pain11 }
 
-zombiemarine/pain1		zsppn1
-zombiemarine/pain2		zsppn2
-zombiemarine/pain3		zsppn3
-zombiemarine/pain4		zsppn4
-zombiemarine/pain5		zsppn5
-zombiemarine/pain6		zsppn6
-zombiemarine/pain7		zsppn7
-zombiemarine/pain8		zsppn8
-zombiemarine/pain9		zsppn9
-zombiemarine/pain10	zsppn10
-zombiemarine/pain11	zsppn11
+zombiemarine/pain1 zsppn1
+zombiemarine/pain2 zsppn2
+zombiemarine/pain3 zsppn3
+zombiemarine/pain4 zsppn4
+zombiemarine/pain5 zsppn5
+zombiemarine/pain6 zsppn6
+zombiemarine/pain7 zsppn7
+zombiemarine/pain8 zsppn8
+zombiemarine/pain9 zsppn9
+zombiemarine/pain10 zsppn10
+zombiemarine/pain11 zsppn11
 
 $random zombiemarine/active { zombiemarine/active1 zombiemarine/active2 zombiemarine/active3 zombiemarine/active4 zombiemarine/active5 NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING }
-zombiemarine/active1	zspact1
-zombiemarine/active2	zspact2
-zombiemarine/active3	zspact3
-zombiemarine/active4	zspact4
-zombiemarine/active5	zspact5
+zombiemarine/active1 zspact1
+zombiemarine/active2 zspact2
+zombiemarine/active3 zspact3
+zombiemarine/active4 zspact4
+zombiemarine/active5 zspact5
 
 $volume zombiemarine/active 0.76
 
@@ -772,11 +753,11 @@ BTKPAIN1 BTKPAIN1
 BTKPAIN2 BTKPAIN2
 BTKPAIN3 BTKPAIN3
 
-$rolloff  juggernaut/see 1000 6000
-$rolloff  juggernaut/engine 1000 6000
-$rolloff  juggernaut/death 1000 6000
-$rolloff  juggernaut/pain 1000 6000
-$rolloff  juggernaut/roam 1000 6000
+$rolloff juggernaut/see 1000 6000
+$rolloff juggernaut/engine 1000 6000
+$rolloff juggernaut/death 1000 6000
+$rolloff juggernaut/pain 1000 6000
+$rolloff juggernaut/roam 1000 6000
 
 $random DSMADTH { DSMADTH1 DSMADTH2 DSMADTH3 DSMADTH4 DSMADTH5 DSMADTH6 DSMADTH7 DSMADTH8 }
 DSMADTH1 DSMADTH1
@@ -795,17 +776,17 @@ CYBPAIN CYBPAIN
 
 PSXDPN PSXDPN
 PSXDP2 PSXDP2
-belphegor/sight			dsbrssi2
-belphegor/active		dsdmac2
-belphegor/death			dskntdt2
+belphegor/sight dsbrssi2
+belphegor/active dsdmac2
+belphegor/death dskntdt2
 
 CYBTAT CYBTAT
 $rolloff CYBTAT 1000 6000
 
-baby2/sight			dsbspsi2
-baby2/active		dsbspac2
-baby2/death			dsbspdt2
-baby2/walk			dsbspwl2
+baby2/sight dsbspsi2
+baby2/active dsbspac2
+baby2/death dsbspdt2
+baby2/walk dsbspwl2
 
 //Marine Voices
 $random MRNAT { MRNAT1 MRNAT2 MRNAT3 MRNAT4 MRNAT5 MRNAT6 NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING
@@ -884,7 +865,6 @@ CPTRT14 CPTRT14
 
 $random TorturedMarineDieBD { CPTRT11 CPTRT13 CPTRT14 }
 CPTRT11 CPTRT11
-//CPTRT12 CPTRT12 HMG sound wtf?
 CPTRT13 CPTRT13
 CPTRT14 CPTRT14
 
@@ -937,11 +917,7 @@ $random DSRIFLE { DSRIFL1 DSRIFL2 }
 DSRIFL1 DSRIFL1
 DSRIFL2 DSRIFL2
 
-AMBRAIN	AMBRAIN
-
-GRNPIN GRNPIN
-GRNBNCE GRNBNCE
-GRNTOSS GRNTOSS
+AMBRAIN AMBRAIN
 
 $random EvilmarineSight { EVMRSIT1 EVMRSIT2 EVMRSIT3 EVMRSIT4 EVMRSIT5 EVMRSIT6}
 EVMRSIT1 EVMRSIT1
@@ -967,38 +943,32 @@ EVMRDT2 EVMRDT2
 
 EVMRLAUG EVMRLAUG
 
-RLAUNCH1 RLAUNCH1
-RLLOOP RLLOOP
-
-RAILF1 RAILF1
-RAILR1 RAILR1
-
 // Gore
-$random misc/xdeath		{ misc/xdeath1a misc/xdeath1b misc/xdeath1c misc/xdeath1d misc/xdeath1e misc/xdeath1f misc/xdeath2a misc/xdeath2b misc/xdeath2c misc/xdeath2d misc/xdeath2e misc/xdeath2f misc/xdeath3a misc/xdeath3b misc/xdeath3c misc/xdeath4a misc/xdeath4b misc/xdeath4c }
-misc/xdeath1a			dsxdth1a
-misc/xdeath1b			dsxdth1b
-misc/xdeath1c			dsxdth1c
-misc/xdeath1d			dsxdth1d
-misc/xdeath1e			dsxdth1e
-misc/xdeath1f			dsxdth1f
-$random misc/xdeath1		{ misc/xdeath1a misc/xdeath1b misc/xdeath1c misc/xdeath1d misc/xdeath1e misc/xdeath1f }
-misc/xdeath2a			dsxdth2a
-misc/xdeath2b			dsxdth2b
-misc/xdeath2c			dsxdth2c
-misc/xdeath2d			dsxdth2d
-misc/xdeath2e			dsxdth2e
-misc/xdeath2f			dsxdth2f
-$random misc/xdeath2		{ misc/xdeath2a misc/xdeath2b misc/xdeath2c misc/xdeath2d misc/xdeath2e misc/xdeath2f }
-misc/xdeath3a			dsxdth3a
-misc/xdeath3b			dsxdth3b
-misc/xdeath3c			dsxdth3c
-$random misc/xdeath3		{ misc/xdeath3a misc/xdeath3b misc/xdeath3c }
-misc/xdeath4a			dsxdth4a
-misc/xdeath4b			dsxdth4b
-misc/xdeath4c			dsxdth4c
-$random misc/xdeath4		{ misc/xdeath4a misc/xdeath4b misc/xdeath4c }
+$random misc/xdeath { misc/xdeath1a misc/xdeath1b misc/xdeath1c misc/xdeath1d misc/xdeath1e misc/xdeath1f misc/xdeath2a misc/xdeath2b misc/xdeath2c misc/xdeath2d misc/xdeath2e misc/xdeath2f misc/xdeath3a misc/xdeath3b misc/xdeath3c misc/xdeath4a misc/xdeath4b misc/xdeath4c }
+misc/xdeath1a dsxdth1a
+misc/xdeath1b dsxdth1b
+misc/xdeath1c dsxdth1c
+misc/xdeath1d dsxdth1d
+misc/xdeath1e dsxdth1e
+misc/xdeath1f dsxdth1f
+$random misc/xdeath1 { misc/xdeath1a misc/xdeath1b misc/xdeath1c misc/xdeath1d misc/xdeath1e misc/xdeath1f }
+misc/xdeath2a dsxdth2a
+misc/xdeath2b dsxdth2b
+misc/xdeath2c dsxdth2c
+misc/xdeath2d dsxdth2d
+misc/xdeath2e dsxdth2e
+misc/xdeath2f dsxdth2f
+$random misc/xdeath2 { misc/xdeath2a misc/xdeath2b misc/xdeath2c misc/xdeath2d misc/xdeath2e misc/xdeath2f }
+misc/xdeath3a dsxdth3a
+misc/xdeath3b dsxdth3b
+misc/xdeath3c dsxdth3c
+$random misc/xdeath3 { misc/xdeath3a misc/xdeath3b misc/xdeath3c }
+misc/xdeath4a dsxdth4a
+misc/xdeath4b dsxdth4b
+misc/xdeath4c dsxdth4c
+$random misc/xdeath4 { misc/xdeath4a misc/xdeath4b misc/xdeath4c }
 
-$random misc/xdeath5		{ misc/xdeath4a misc/xdeath4b misc/xdeath2a misc/xdeath2b misc/xdeath2e}
+$random misc/xdeath5 { misc/xdeath4a misc/xdeath4b misc/xdeath2a misc/xdeath2b misc/xdeath2e}
 $limit misc/xdeath5 2
 
 $volume misc/xdeath 0.4
@@ -1026,11 +996,11 @@ LQDRIP12 LQDRIP12
 LQDRIP13 LQDRIP13
 LQDRIP14 LQDRIP14
 
-$random blooddrop  { LQDRIP1 LQDRIP2 LQDRIP3 }
-$random blooddrop2  { LQDRIP4 LQDRIP5 LQDRIP6 LQDRIP7 }
-$random blooddrop3  { LQDRIP8 LQDRIP9 LQDRIP10 LQDRIP11 LQDRIP12 LQDRIP13 LQDRIP14 LQDRIP14 }
+$random blooddrop { LQDRIP1 LQDRIP2 LQDRIP3 }
+$random blooddrop2 { LQDRIP4 LQDRIP5 LQDRIP6 LQDRIP7 }
+$random blooddrop3 { LQDRIP8 LQDRIP9 LQDRIP10 LQDRIP11 LQDRIP12 LQDRIP13 LQDRIP14 LQDRIP14 }
 
-$random REVIDLE  { REVIDLE1 REVIDLE2 REVIDLE3 REVIDLE4 REVIDLE5 REVIDLE6 REVIDLE7 }
+$random REVIDLE { REVIDLE1 REVIDLE2 REVIDLE3 REVIDLE4 REVIDLE5 REVIDLE6 REVIDLE7 }
 REVIDLE1 REVIDLE1
 REVIDLE2 REVIDLE2
 REVIDLE3 REVIDLE3
@@ -1063,15 +1033,8 @@ $rolloff mother/death 1000 6000
 $rolloff mother/attack 1000 6000
 $rolloff mother/active 1000 6000
 
-AXECLN AXECLN
-AXEHIT AXEHIT
-AXEDRAW AXEDRAW
-
 BDALARM BDALARM
 $limit BDALARM 0
-
-BRKCLANG BRKCLANG
-B2KCLANG B2KCLANG
 
 //VOLCABUS
 Volcabus/Sight VOLCST
@@ -1110,31 +1073,16 @@ CHNRTL1 CHNRTL1
 CHNRTL2 CHNRTL2
 CHNRTL3 CHNRTL3
 
-$random SlideKickStart { SLIDSTRT1 SLIDSTRT2 SLIDSTRT3 }
-SLIDSTRT1	SLIDSTR1
-SLIDSTRT2	SLIDSTR2
-SLIDSTRT3	SLIDSTR3
-
-$random SlideKickLoop { SLIDLOP1 SLIDLOP2 SLIDLOP3 SLIDLOP4 }
-SLIDLOP1	SLIDLOP1
-SLIDLOP2	SLIDLOP2
-SLIDLOP3	SLIDLOP3
-SLIDLOP4	SLIDLOP4
-
-$random SlideKickStop { SLIDEND1 SLIDEND2 }
-SLIDEND1	SLIDEND1
-SLIDEND2	SLIDEND2
-
 FLEAS FLEAS
 
-rat/melee			dsratmel
-rat/pain			dsratpai
-rat/death1			dsratdt1
-rat/death2			dsratdt2
-rat/death3			dsratdt3
-$random rat/death		{ rat/death1 rat/death2 rat/death3 }
+rat/melee dsratmel
+rat/pain dsratpai
+rat/death1 dsratdt1
+rat/death2 dsratdt2
+rat/death3 dsratdt3
+$random rat/death { rat/death1 rat/death2 rat/death3 }
 
-$random BodyThud		{ BTHUD1 BTHUD2 BTHUD3 BTHUD4 BTHUD5 BTHUD6 BTHUD7 }
+$random BodyThud { BTHUD1 BTHUD2 BTHUD3 BTHUD4 BTHUD5 BTHUD6 BTHUD7 }
 BTHUD1 BTHUD1
 BTHUD2 BTHUD2
 BTHUD3 BTHUD3
