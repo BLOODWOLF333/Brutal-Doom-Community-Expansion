@@ -2996,17 +2996,16 @@ ACTOR ZombiemanGotHisLegBlowed: DyingZombiemanNoArm
 		Spawn:
 		TNT1 A 0
 		TNT1 A 0 A_PlaySound ("BURNZOM",4)
-		POS7 AAAAA 2 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, random (0, 360), 2, random (0, 45))
-		POS7 BBBBB 2 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, random (0, 360), 2, random (0, 45))
-		POS7 CCCCC 2 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, random (0, 360), 2, random (0, 45))
-		POS7 EEEEE 2 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
+		POS7 AA 2 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, random (0, 360), 2, random (0, 45))
+		POS7 BB 2 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, random (0, 360), 2, random (0, 45))
+		POS7 CC 2 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, random (0, 360), 2, random (0, 45))
+		POS7 EE 2 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 
 		Suffer:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("DeathTimer", 4, "Fall")
-		POS7 FFFFF 2 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
-		POS7 EEEEE 2 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
+		POS7 FFEEFFEEFFEE 2 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
 		TNT1 A 0 A_Jump(4, "LastStand")
 		TNT1 A 0 A_Jump(16, "LeaveCrawling")
 		TNT1 A 0 A_GiveInventory("DeathTimer", 1)
