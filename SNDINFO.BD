@@ -87,6 +87,8 @@ $rolloff dsbarex6 1000 6000
 Explode1 Explode1
 Explode2 Explode2
 $random Explosion {Explode1 Explode2}
+NUKEEXP NUKEEXP
+$rolloff NUKEEXP 2000 12000
 
 //////////
 // Weapons
@@ -137,14 +139,6 @@ CSAWCUT CSAWCUT
 weapons/chainsaw/draw CSAWDRAW
 weapons/chainsaw/loop CSAWFUL
 weapons/chainsaw/idle CSAWREDY
-weapons/chainsaw/stop CSAWSTOP
-weapons/chainsaw/start CSAWSTRT
-weapons/chainsaw/hitwall1 DSSAWAL1
-weapons/chainsaw/hitwall2 DSSAWAL2
-weapons/chainsaw/hitwall3 DSSAWAL3
-weapons/chainsaw/hitwall4 DSSAWAL4
-$random weapons/chainsaw/hitwall { weapons/chainsaw/hitwall1 weapons/chainsaw/hitwall2 weapons/chainsaw/hitwall3 weapons/chainsaw/hitwall4 }
-$limit weapons/chainsaw/hitwall 1
 DSSAW0 DSSAW0
 DSSAW1 DSSAW1
 DSSAW2 DSSAW2
@@ -156,19 +150,37 @@ DSSAW7 DSSAW7
 DSSAW8 DSSAW8
 DSSAW9 DSSAW9
 $random CSAWFLESH { DSSAW0 DSSAW1 DSSAW2 DSSAW3 DSSAW4 DSSAW5 DSSAW6 DSSAW7 DSSAW8 DSSAW9 }
-DSSAWDIE DSSAWDIE
-DSSAWFUL DSSAWFUL
+weapons/chainsaw/hitwall1 DSSAWAL1
+weapons/chainsaw/hitwall2 DSSAWAL2
+weapons/chainsaw/hitwall3 DSSAWAL3
+weapons/chainsaw/hitwall4 DSSAWAL4
+$random weapons/chainsaw/hitwall { weapons/chainsaw/hitwall1 weapons/chainsaw/hitwall2 weapons/chainsaw/hitwall3 weapons/chainsaw/hitwall4 }
+$limit weapons/chainsaw/hitwall 1
 DSSAWHIT DSSAWHIT
 DSSAWUP DSSAWUP
+DSSAWZIP DSSAWZIP
 
 // Distant gunshots
-FARRIF FARRIF
-$limit FARRIF 70
-$rolloff FARRIF 1000 6000
+FARCAN1 FARCAN1
+$volume FARCAN1 0.5
+$limit FARCAN1 70
+$rolloff FARCAN1 1000 6000
 
 FARHMG FARHMG
 $limit FARHMG 70
 $rolloff FARHMG 1000 6000
+
+FARMGN FARMGN
+$limit FARMGN 70
+$rolloff FARMGN 1000 6000
+
+FARMISL FARMISL
+$limit FARMISL 70
+$rolloff FARMISL 1000 6000
+
+FARRIF FARRIF
+$limit FARRIF 70
+$rolloff FARRIF 1000 6000
 
 FARSHT FARSHT
 $limit FARSHT 70
@@ -178,65 +190,55 @@ FARSMG FARSMG
 $limit FARSMG 70
 $rolloff FARSMG 1000 6000
 
-FARMGN FARMGN
-$limit FARMGN 70
-$rolloff FARMGN 1000 6000
-
-FARCAN1 FARCAN1
-$volume FARCAN1 0.5
-$limit FARCAN1 70
-$rolloff FARCAN1 1000 6000
-
 FARSSG FARSSG
 $limit FARSSG 70
 $rolloff FARSSG 1000 6000
 
-FARMISL FARMISL
-$limit FARMISL 70
-$rolloff FARMISL 1000 6000
+FARTANK FARTANK
+$limit FARTANK 70
+$rolloff FARTANK 1000 6000
 
 DSMISFIR DSMISFIR
 $limit DSMISFIR 70
 $rolloff DSMISFIR 1000 6000
-
-FARTANK FARTANK
-$limit FARTANK 70
-$rolloff FARTANK 1000 6000
 
 // FlameCannon
 FLAMER FLAMER
 FLAMSTOP FLAMSTOP
 
 // Grenade
-GRNPIN GRNPIN
 GRNBNCE GRNBNCE
+GRNPIN GRNPIN
 GRNTOSS GRNTOSS
 
 // Grenadelauncher
-Weapons/GrenadeFire DSGRFIRE
 Weapons/GrenadeBounce DSGRBNCE
-Weapons/GrenadeOpen DSGROPEN
-Weapons/GrenadeLoad DSGRLOAD
 Weapons/GrenadeClose DSGRCLOS
+Weapons/GrenadeLoad DSGRLOAD
+Weapons/GrenadeOpen DSGROPEN
 weapons/firegrenade GLAUNCH
-weapons/reloadgrenade GRELOAD
-
-// Heavy Machinegun
-HMGFIRE HMGFIRE
 
 // Machineigun
 GRLLO1 GRLLO1
 GRLLO2 GRLLO2
 
 // Melee
+weapons/gswing dsswing
+FOOTWALL FOOTWALL
+fstatk1 fstatk1
+fstatk2 fstatk2
+fstatk3 fstatk3
+$random fstatk { fstatk1 fstatk2 fstatk3 }
+KICK KICK
+marine/superfist1 plspnch1
+marine/superfist2 plspnch2
+marine/superfist3 plspnch3
+marine/superfist4 plspnch4
+marine/superfist5 plspnch5
+$random player/cyborg/fist { marine/superfist1 marine/superfist2 marine/superfist3 marine/superfist4 marine/superfist5 }
 SLIDEND1 SLIDEND1
 SLIDEND2 SLIDEND2
 $random SlideKickStop { SLIDEND1 SLIDEND2 }
-SLIDLOP1 SLIDLOP1
-SLIDLOP2 SLIDLOP2
-SLIDLOP3 SLIDLOP3
-SLIDLOP4 SLIDLOP4
-$random SlideKickLoop { SLIDLOP1 SLIDLOP2 SLIDLOP3 SLIDLOP4 }
 SLIDSTRT1 SLIDSTR1
 SLIDSTRT2 SLIDSTR2
 SLIDSTRT3 SLIDSTR3
@@ -250,9 +252,6 @@ MP40/Draw MP40DRAW
 MP40 MP40
 $limit MP40 0
 
-// NukeLauncher
-NUKEEXPL NUKEEXPL
-
 // Pistol
 Pistol/Reload1 MG_OUT
 Pistol/Reload2 PISR
@@ -265,6 +264,7 @@ PREL PREL
 // Plasmagun
 BEP BEP
 BEPBEP BEPBEP
+DSPLASMA DSPLASMA
 PLREADY PLREADY
 PLSALTFR PLSALTFR
 PLSCHARG PLSCHARG
@@ -272,22 +272,19 @@ PLSCOOL PLSCOOL
 PLSDRAW PLSDRAW
 PLSFULL PLSFULL
 PLSM9 PLSM9
-weapons/plasmarifle PLASMA
-$limit weapons/plasmarifle 0
-$volume weapons/plasmarifle 0.9
 
 // Railgun
 RAILF1 RAILF1
 RAILR1 RAILR1
 
 // Revolver
-Revolver/Fire REVOFIR
-Revolver/Fire2 REVOFI2
-Revolver/Hammer REVOHAM
-Revolver/Open revop
+Revolver/Reload Revbin
 Revolver/Close revlose
 Revolver/Unload revlose2
-Revolver/Reload Revbin
+Revolver/Fire2 REVOFI2
+Revolver/Fire REVOFIR
+Revolver/Hammer REVOHAM
+Revolver/Open revop
 
 // RIFLE
 CLIPIN CLIPIN
@@ -304,14 +301,14 @@ RLANSHOT RLANSHOT
 ROCKPKUP ROCKPKUP
 
 // Shotgun
-$Random Shotgun/Reload { SHTLOAD1 SHTLOAD2 SHTLOAD3 SHTLOAD4 }
+weapons/sg SGFIRE
+$limit weapons/sg 0
+insertshell SHELL_IN
 SHTLOAD1 SHTLOAD1
 SHTLOAD2 SHTLOAD2
 SHTLOAD3 SHTLOAD3
 SHTLOAD4 SHTLOAD4
-weapons/sg SGFIRE
-$limit weapons/sg 0
-insertshell SHELL_IN
+$Random Shotgun/Reload { SHTLOAD1 SHTLOAD2 SHTLOAD3 SHTLOAD4 }
 SlugShot SlugSG
 weapons/sgpump STGNPUMP
 
@@ -325,22 +322,16 @@ CLIPINSS CLIPINSS
 SlugSSG SlugSSG
 SSHFIRE SSHFIRE
 $Limit SSHFIRE 0
-weapons/ssg/open SSGOPEN
-weapons/ssg/close SSGCLOSE
-weapons/ssg/in SSGIN
-weapons/ssg/fire SSGFIRE
-FireSuperShotgun SSGFIRE1
-$volume FireSuperShotgun 1.3
 
 // Unmaker
-UNMSTA UNMSTA
-UNMLOP UNMLOP
-UNMSTO UNMSTO
 weapons/unmaker DSLASER
+UNMLOP UNMLOP
+UNMSTA UNMSTA
+UNMSTO UNMSTO
 
-/////////
-// Player
-/////////
+//////////
+// DoomGal
+//////////
 
 //Doomguy's Sounds
 $random FUCK { FUCK1 FUCK2 FUCK3 FUCK4 }
@@ -366,9 +357,6 @@ $rolloff ICOLAUG 1000 6000
 $rolloff ICOFIRE 1000 6000
 $rolloff ICOBREAT 1000 6000
 $rolloff ICOSCRE 1000 6000
-
-NUKEEXP NUKEEXP
-$rolloff NUKEEXP 2000 12000
 
 $random HEDBON { HEDBON1 HEDBON2 HEDBON3 }
 HEDBON1 HEDBON1
@@ -452,6 +440,8 @@ $playersound player female *taunt dsftaunt
 $playeralias player female plpain DSFPAIN
 $playersound player female tired FTIRED
 
+PAIN1 PAIN1
+
 $random DSFPAIN { DSFPAIN1 DSFPAIN2 DSFPAIN3 DSFPAIN4 DSFPAIN5 DSFPAIN6 DSFPAIN7 }
 DSFPAIN1 DSFPAIN1
 DSFPAIN2 DSFPAIN2
@@ -520,20 +510,6 @@ puff/ric5 dsrich5
 puff/ric6 dsrich6
 puff/ric7 dsrich7
 
-weapons/shotgun2 STGNSHOT
-weapons/shotgun/pump STGNPUMP
-weapons/assaultrifle G2FIRE
-
-REVOFIR REVOFIR
-REVOHAM REVOHAM
-
-M249 M249
-M249R1 M249R1
-M249R2 M249R2
-M249R3 M249R3
-M249R4 M249R4
-GLOCK18 GLOCK18
-
 BDFirePlace dstorch
 $limit BDfireplace 2
 $rolloff BDfireplace 100 600
@@ -541,16 +517,6 @@ $rolloff BDfireplace 100 600
 BDFirePlace2 dstorch2
 $limit BDfireplace2 2
 $rolloff BDfireplace2 100 600
-
-weapons/gswing dsswing
-weapons/gpunch dspunch
-DSSAWZIP DSSAWZIP
-DSSAWPUL DSSAWPUL
-
-$random fstatk { fstatk1 fstatk2 fstatk3 }
-fstatk1 fstatk1
-fstatk2 fstatk2
-fstatk3 fstatk3
 
 $random SlowBurnDeath { DSCULTF1 DSCULTF3 }
 DSCULTF1 DSCULTF1
@@ -610,13 +576,6 @@ $random imp/melee { imp/melee1 imp/melee2 imp/melee3 }
 imp/melee1 IMPCLAW1
 imp/melee2 IMPCLAW2
 imp/melee3 IMPCLAW3
-
-$random player/cyborg/fist { marine/superfist1 marine/superfist2 marine/superfist3 marine/superfist4 marine/superfist5 }
-marine/superfist1 plspnch1
-marine/superfist2 plspnch2
-marine/superfist3 plspnch3
-marine/superfist4 plspnch4
-marine/superfist5 plspnch5
 
 //Zombies
 
@@ -716,10 +675,6 @@ zombiemarine/active5 zspact5
 $volume zombiemarine/active 0.76
 
 IMPCHARG IMPCHARG
-
-KICK KICK
-FOOTWALL FOOTWALL
-PAIN1 PAIN1
 
 juggernaut/see BTKUNQV2
 juggernaut/roam BTKUNQV1
