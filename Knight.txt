@@ -141,7 +141,7 @@ ACTOR HellKnight2 : HellKnight Replaces HellKnight
 		BOS2 E 3 A_CustomMissile("BaronAttackOnBarrel", 32)
         BOS2 E 3 A_FaceTarget
 		TNT1 A 0 A_JumpIfInventory("HasExplosiveBarrel", 1, "MissileBarrel")
-        TNT1 A 0 A_PlaySound("weapons/gswing")
+        TNT1 A 0 A_PlaySound("Melee/SwingStrong")
 		BOS2 F 6 A_FaceTarget
 		BOS2 G 6 A_CustomMissile("KnightAttack",32,0,0,0)
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")

@@ -854,7 +854,7 @@ ACTOR AxeAttack: FastProjectile
 	XDeath:
 		AXEG A 0
 		TNT1 A 0 A_giveToTarget("AxeHit", 1)
-		PUFF A 0 A_PlaySound("player/cyborg/fist", 3)
+		PUFF A 0 A_PlaySound("Melee/Flesh", 3)
 		AXEG A 0 A_PlaySound("AXEHIT", 6)
 		AXEG A 0 A_SpawnItemEx ("PLOFT2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		AXEG A 0 Radius_Quake (1, 7, 0, 1, 0)//(intensity, duration, damrad, tremrad, tid)

@@ -473,7 +473,7 @@ ACTOR Shot_Gun2 : BrutalWeapon
 	DoKickReloading:
 		NULL A 0 A_JumpIf (momZ > 0, "AirKick")
 		NULL A 0 A_JumpIf (momZ < 0, "AirKick")
-        SHTN A 0 A_PlaySound("KICK")
+        SHTN A 0 A_PlaySound("Kick/Swing")
 		SHTN A 0 SetPlayerProperty(0,1,0)
 		KICK BCD 1
 		RIFF A 0 A_FireCustomMissile("KickAttack", 0, 0, 0, -7)
