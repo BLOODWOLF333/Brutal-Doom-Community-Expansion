@@ -69,7 +69,7 @@ ACTOR Labguy: RifleZombie
 
 		Melee:
 		SCZA E 6 A_FaceTarget
-		TNT1 A 0 A_PlaySound("skeleton/swing")
+		TNT1 A 0 A_PlaySound("Axe/Swing")
 		TNT1 A 0 A_CustomMissile("ZombieAxeAttack",28,0,0,0)
 		SCZA F 6 A_FaceTarget
 		SCZA E 6 A_FaceTarget
@@ -1680,7 +1680,7 @@ ACTOR ZombieAxeAttack
 		TNT1 A 6 BRIGHT
 		Stop
 	Death:
-        TNT1 A 4 A_PlaySound("AxeHit")
+        TNT1 A 4 A_PlaySound("Axe/Hit")
 		Stop
 	}
 }

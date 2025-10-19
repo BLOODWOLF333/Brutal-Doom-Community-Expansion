@@ -13,6 +13,17 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
 	Tag "Fists"
 	States
 	{
+	KickFlash://18 tics
+		PUNS DCB 1
+		PUNS A 12
+		PUNS BCD 1
+		Stop
+
+	SlideFlashEnd://10 tics
+		PUNS A 7
+		PUNS BCD 1
+		Stop
+
 	Steady:
 		TNT1 A 0
 		TNT1 A 2
@@ -1448,17 +1459,6 @@ ACTOR Melee_Attacks : BrutalWeapon Replaces Fist
         THEF BCD 4
 		TNT1 A 0 A_GiveInventory("UsedStamina", 27)
 		Goto Ready
-
-	KickFlash://18 tics
-		TNT1 AAA 1
-		TNT1 A 12
-		TNT1 AAA 1
-		Stop
-
-	SlideFlashEnd://10 tics
-		TNT1 A 7
-		TNT1 AAA 1
-		Stop
 	}
 }
 

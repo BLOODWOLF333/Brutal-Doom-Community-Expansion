@@ -20,6 +20,84 @@ Actor Chain_saw : BrutalWeapon
 	DropItem "ChainsawSpawner"
 	states
 	{
+	KickFlash://18 tics
+        CSA1 A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"RedKickFlash")
+        CSA1 A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"BlueKickFlash")
+        CSA1 A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"GreenKickFlash")
+		SAWG A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		SAWG A 0 A_playsoundex("Chainsaw/Idle", 6)
+		CSA1 JKL 1
+		CSA1 M 6
+		SAWG A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		SAWG A 0 A_playsoundex("Chainsaw/Idle", 6)
+		CSA1 M 6
+		CSA1 LKJ 1
+		Stop
+
+	RedKickFlash:
+		SAWG A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		SAWG A 0 A_playsoundex("Chainsaw/Idle", 6)
+		CSR1 JKL 1
+		CSR1 M 6
+		SAWG A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		SAWG A 0 A_playsoundex("Chainsaw/Idle", 6)
+		CSR1 M 6
+		CSR1 LKJ 1
+		Stop
+
+	BlueKickFlash:
+		SAWG A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		SAWG A 0 A_playsoundex("Chainsaw/Idle", 6)
+		CSB1 JKL 1
+		CSB1 M 6
+		SAWG A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		SAWG A 0 A_playsoundex("Chainsaw/Idle", 6)
+		CSB1 M 6
+		CSB1 LKJ 1
+		Stop
+
+	GreenKickFlash:
+		SAWG A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		SAWG A 0 A_playsoundex("Chainsaw/Idle", 6)
+		CSG1 JKL 1
+		CSG1 M 6
+		SAWG A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		SAWG A 0 A_playsoundex("Chainsaw/Idle", 6)
+		CSG1 M 6
+		CSG1 LKJ 1
+		Stop
+
+	SlideFlashEnd://10 tics
+        CSA1 A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"RedSlideFlashEnd")
+        CSA1 A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"BlueSlideFlashEnd")
+        CSA1 A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"GreenSlideFlashEnd")
+		SAWG A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		SAWG A 0 A_playsoundex("Chainsaw/Idle", 6)
+		CSA1 M 7
+		CSA1 LKJ 1
+		Stop
+
+	RedSlideFlashEnd:
+		SAWG A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		SAWG A 0 A_playsoundex("Chainsaw/Idle", 6)
+		CSR1 M 7
+		CSR1 LKJ 1
+		Stop
+
+	BlueSlideFlashEnd:
+		SAWG A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		SAWG A 0 A_playsoundex("Chainsaw/Idle", 6)
+		CSB1 M 7
+		CSB1 LKJ 1
+		Stop
+
+	GreenSlideFlashEnd:
+		SAWG A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		SAWG A 0 A_playsoundex("Chainsaw/Idle", 6)
+		CSG1 M 7
+		CSG1 LKJ 1
+		Stop
+
 	Spawn:
 		CSAW A -1
 		Stop
@@ -878,17 +956,6 @@ Actor Chain_saw : BrutalWeapon
 		CSB2 Q 1 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		CSB2 Q 0 A_PlaySound("Tired", 2)
 		Goto Ready3
-
-	KickFlash://18 tics
-		TNT1 AAA 1
-		TNT1 A 12
-		TNT1 AAA 1
-		Stop
-
-	SlideFlashEnd://10 tics
-		TNT1 A 7
-		TNT1 AAA 1
-		Stop
 	}
 }
 
