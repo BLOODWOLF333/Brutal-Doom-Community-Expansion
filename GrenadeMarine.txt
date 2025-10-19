@@ -355,12 +355,12 @@ ACTOR Marine_Grenade: Marine_Rifle
 		MAR1 AAA 1 A_Chase("Saw", "")
 		TNT1 A 0 A_Recoil(-5)
 		MAR1 BBB 1 A_Chase("Saw", "")
-		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
+		TNT1 A 0 A_PlaySound("Chainsaw/Idle")
 		TNT1 A 0 A_Recoil(-5)
 		MAR1 CCC 1 A_Chase("Saw", "")
 		TNT1 A 0 A_Recoil(-5)
 		MAR1 BBB 1 A_Chase("Saw", "")
-		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
+		TNT1 A 0 A_PlaySound("Chainsaw/Idle")
 		TNT1 A 0 A_Recoil(-5)
 
 		TNT1 A 0 A_Jump(64, "Jump")
@@ -419,14 +419,14 @@ ACTOR Marine_Grenade: Marine_Rifle
 		TNT1 A 0 A_Recoil(-3)
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
 		MAR1 BBB 1 A_Chase("Saw", "")
-		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
+		TNT1 A 0 A_PlaySound("Chainsaw/Idle")
 		TNT1 A 0 A_Recoil(-3)
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
 		MAR1 CCC 1 A_Chase("Saw", "")
 		TNT1 A 0 A_Recoil(-3)
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
 		MAR1 BBB 1 A_Chase("Saw", "")
-		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
+		TNT1 A 0 A_PlaySound("Chainsaw/Idle")
 		TNT1 A 0 A_Recoil(-3)
 
 		TNT1 A 0 A_Jump(64, "Jump")
@@ -485,14 +485,14 @@ ACTOR Marine_Grenade: Marine_Rifle
 		TNT1 A 0 A_Recoil(-3)
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
 		MAR1 BBB 1 A_Chase("Saw", "")
-		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
+		TNT1 A 0 A_PlaySound("Chainsaw/Idle")
 		TNT1 A 0 A_Recoil(-3)
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
 		MAR1 CCC 1 A_Chase("Saw", "")
 		TNT1 A 0 A_Recoil(-3)
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
 		MAR1 BBB 1 A_Chase("Saw", "")
-		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
+		TNT1 A 0 A_PlaySound("Chainsaw/Idle")
 		TNT1 A 0 A_Recoil(-3)
 
 		TNT1 A 0 A_Jump(64, "Jump")
@@ -557,7 +557,7 @@ ACTOR Marine_Grenade: Marine_Rifle
 	Saw:
 		TNT1 A 0
 		TNT1 A 0 A_Jump(64, "Melee")
-		TNT1 A 0 A_PlaySound("weapons/chainsaw/loop", 4)
+		TNT1 A 0 A_PlaySound("Chainsaw/Loop", 4)
 		MAR1 A 1 A_FaceTarget
 		MAR1 D 2 A_M_Saw("","",10,"SSawPuff2")
 		MAR1 A 1 A_FaceTarget
@@ -1038,9 +1038,9 @@ ACTOR GrenadeMarineGuarding: Marine_Grenade
 	MissileClose:
 		TNT1 A 0
 		MAR1 AAAAAA 1 A_Chase("Saw", "")
-		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
+		TNT1 A 0 A_PlaySound("Chainsaw/Idle")
 		MAR1 DDDDDD 1 A_Chase("Saw", "")
-		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
+		TNT1 A 0 A_PlaySound("Chainsaw/Idle")
 
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Missile
@@ -1093,12 +1093,12 @@ ACTOR GrenadeMarineGuarding: Marine_Grenade
 		MAR1 AAA 1 A_Chase("Saw", "")
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
 		MAR1 AAA 1 A_Chase("Saw", "")
-		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
+		TNT1 A 0 A_PlaySound("Chainsaw/Idle")
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
 		MAR1 DDD 1 A_Chase("Saw", "")
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
 		MAR1 DDD 1 A_Chase("Saw", "")
-		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
+		TNT1 A 0 A_PlaySound("Chainsaw/Idle")
 
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Missile
@@ -1151,12 +1151,12 @@ ACTOR GrenadeMarineGuarding: Marine_Grenade
 		MAR1 AAA 1 A_Chase("Saw", "")
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
 		MAR1 AAA 1 A_Chase("Saw", "")
-		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
+		TNT1 A 0 A_PlaySound("Chainsaw/Idle")
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
 		MAR1 DDD 1 A_Chase("Saw", "")
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
 		MAR1 DDD 1 A_Chase("Saw", "")
-		TNT1 A 0 A_PlaySound("weapons/chainsaw/idle")
+		TNT1 A 0 A_PlaySound("Chainsaw/Idle")
 
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Missile
@@ -1206,7 +1206,7 @@ ACTOR GrenadeMarineGuarding: Marine_Grenade
 	Saw:
 		TNT1 A 0
 		TNT1 A 0 A_Jump(64, "Melee")
-		TNT1 A 0 A_PlaySound("weapons/chainsaw/loop", 4)
+		TNT1 A 0 A_PlaySound("Chainsaw/Loop", 4)
 		MAR1 A 1 A_FaceTarget
 		MAR1 D 2 A_M_Saw("","",10,"SSawPuff2")
 		MAR1 A 1 A_FaceTarget

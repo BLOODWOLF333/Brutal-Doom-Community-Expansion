@@ -135,10 +135,10 @@ CHGNSHOT CHGNSHOT
 $limit CHGNSHOT 0
 
 // Chainsaw
-CSAWCUT CSAWCUT
-weapons/chainsaw/draw CSAWDRAW
-weapons/chainsaw/loop CSAWFUL
-weapons/chainsaw/idle CSAWREDY
+Chainsaw/Cut    CSAWCUT
+Chainsaw/Draw	CSAWDRAW
+Chainsaw/Loop	CSAWFUL
+Chainsaw/Idle	CSAWREDY
 DSSAW0 DSSAW0
 DSSAW1 DSSAW1
 DSSAW2 DSSAW2
@@ -149,13 +149,14 @@ DSSAW6 DSSAW6
 DSSAW7 DSSAW7
 DSSAW8 DSSAW8
 DSSAW9 DSSAW9
-$random CSAWFLESH { DSSAW0 DSSAW1 DSSAW2 DSSAW3 DSSAW4 DSSAW5 DSSAW6 DSSAW7 DSSAW8 DSSAW9 }
-weapons/chainsaw/hitwall1 DSSAWAL1
-weapons/chainsaw/hitwall2 DSSAWAL2
-weapons/chainsaw/hitwall3 DSSAWAL3
-weapons/chainsaw/hitwall4 DSSAWAL4
-$random Chainsaw/Wall { weapons/chainsaw/hitwall1 weapons/chainsaw/hitwall2 weapons/chainsaw/hitwall3 weapons/chainsaw/hitwall4 }
+$random Chainsaw/Flesh { DSSAW0 DSSAW1 DSSAW2 DSSAW3 DSSAW4 DSSAW5 DSSAW6 DSSAW7 DSSAW8 DSSAW9 }
+DSSAWAL1 DSSAWAL1
+DSSAWAL2 DSSAWAL2
+DSSAWAL3 DSSAWAL3
+DSSAWAL4 DSSAWAL4
+$random Chainsaw/Wall { DSSAWAL1 DSSAWAL2 DSSAWAL3 DSSAWAL4 }
 $limit Chainsaw/Wall 4
+DSSAWFUL DSSAWFUL
 DSSAWHIT DSSAWHIT
 DSSAWUP DSSAWUP
 Chainsaw/Zip DSSAWZIP
