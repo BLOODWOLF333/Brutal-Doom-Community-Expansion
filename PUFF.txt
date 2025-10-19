@@ -17,7 +17,7 @@ ACTOR MeleePuff: BulletPuff
 	Death:
 	Melee:
 	XDeath:
-	PUFF A 0 A_PlaySound("player/cyborg/fist")
+	PUFF A 0 A_PlaySound("Melee/Flesh")
 	EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
 	TNT1 A 10
 	stop
@@ -35,7 +35,7 @@ Decal "Crack"
   XDeath:
   Melee:
   Death:
-    TNT1 A 0 A_PlaySound("player/cyborg/fist")
+    TNT1 A 0 A_PlaySound("Melee/Flesh")
 	EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
     TNT1 A 0
     stop
@@ -48,22 +48,22 @@ DamageType Kick
   states
   {
   Spawn:
-    PUFF A 0 A_PlaySound("player/cyborg/fist")
+    PUFF A 0 A_PlaySound("Melee/Flesh")
 	TNT1 A 0 A_SpawnItemEx ("PLOFT2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
     EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
     stop
   Death:
-    PUFF A 0 A_PlaySound("player/cyborg/fist")
+    PUFF A 0 A_PlaySound("Melee/Flesh")
 	TNT1 A 0 A_SpawnItemEx ("PLOFT2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
     EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
     stop
   Melee:
-    PUFF A 0 A_PlaySound("player/cyborg/fist")
+    PUFF A 0 A_PlaySound("Melee/Flesh")
 	TNT1 A 0 A_SpawnItemEx ("PLOFT2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
     EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
     stop
   XDeath:
-    PUFF A 0 A_PlaySound("player/cyborg/fist")
+    PUFF A 0 A_PlaySound("Melee/Flesh")
 	TNT1 A 0 A_SpawnItemEx ("PLOFT2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
     EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
     stop
@@ -90,7 +90,7 @@ Decal "Crack"
   Melee:
   Death:
   TNT1 A 1
-	TNT1 A 0 A_PlaySound("player/cyborg/fist")
+	TNT1 A 0 A_PlaySound("Melee/Flesh")
 	    EXPL A 0 Radius_Quake (1, 7, 0, 1, 0)
 	    EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
     TNT1 A 10
@@ -869,7 +869,7 @@ ACTOR SSawPuff: HitPuff
 		TNT1 A 0 A_Jump (128,3)
 		TNT1 A 0 A_SpawnItem ("Sparks", 0)
 		TNT1 AAAAAA 0 A_CustomMissile ("SparkX", 2, 0, random (0, 360), 2, random (30, 170))
-		BPUF C 1 bright A_PlaySound("weapons/chainsaw/hitwall")
+		BPUF C 1 bright A_PlaySound("Chainsaw/Wall")
 		BPUF D 1 bright
 		Stop
 	}

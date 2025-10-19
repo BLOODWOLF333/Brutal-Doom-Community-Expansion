@@ -20,7 +20,7 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXEG ABCDE 1
 		TNT1 A 0 A_TakeInventory("StartDualWield", 1)
 		AXEF AB 1
-	    AXEG A 0 A_PlaySound("weapons/gswing", 1)
+	    AXEG A 0 A_PlaySound("Melee/SwingStrong", 1)
 		AXEG A 0 A_JumpIfInventory("PowerStrength", 1, "StrongThrow")
 		AXEG A 0 A_FireCustomMissile("ThrowedAxe", 0, 0, 0, 0)
 		GRTH JKLM 1
@@ -177,7 +177,7 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXEG A 0 A_Refire
 		AXEG D 1
 		AXEF AB 1
-	    AXEG A 0 A_PlaySound("weapons/gswing", 1)
+	    AXEG A 0 A_PlaySound("Melee/SwingStrong", 1)
 		AXEG A 0 A_JumpIfInventory("PowerStrength", 1, "StrongAttack")
 		//AXEG A 0 A_Saw("", "", 5, "AxePuffs", SF_NORANDOM, 48, 0,3)
 		AXEG A 0 A_FireCustomMissile("AxeAttack", 0, 0, 0, -8)
@@ -282,7 +282,7 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXEG A 0 A_Refire
 		AXRG D 1
 		AXRF AB 1
-	    AXEG A 0 A_PlaySound("weapons/gswing", 1)
+	    AXEG A 0 A_PlaySound("Melee/SwingStrong", 1)
 		AXEG A 0 A_JumpIfInventory("PowerStrength", 1, "RedBloodStrongAttack")
 		//AXEG A 0 A_Saw("", "", 5, "AxePuffs", SF_NORANDOM, 48, 0,3)
 		AXEG A 0 A_FireCustomMissile("AxeAttack", 0, 0, 0, -8)
@@ -380,7 +380,7 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXEG A 0 A_Refire
 		AXBG D 1
 		AXBF AB 1
-	    AXEG A 0 A_PlaySound("weapons/gswing", 1)
+	    AXEG A 0 A_PlaySound("Melee/SwingStrong", 1)
 		AXEG A 0 A_JumpIfInventory("PowerStrength", 1, "BlueBloodStrongAttack")
 		//AXEG A 0 A_Saw("", "", 5, "AxePuffs", SF_NORANDOM, 48, 0,3)
 		AXEG A 0 A_FireCustomMissile("AxeAttack", 0, 0, 0, -8)
@@ -476,7 +476,7 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXEG A 0 A_Refire
 		AXGG D 1
 		AXGF AB 1
-	    AXEG A 0 A_PlaySound("weapons/gswing", 1)
+	    AXEG A 0 A_PlaySound("Melee/SwingStrong", 1)
 		AXEG A 0 A_JumpIfInventory("PowerStrength", 1, "GreenBloodStrongAttack")
 		//AXEG A 0 A_Saw("", "", 5, "AxePuffs", SF_NORANDOM, 48, 0,3)
 		AXEG A 0 A_FireCustomMissile("AxeAttack", 0, 0, 0, -8)
@@ -518,7 +518,7 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXEG E 1
 		AXEG A 0 A_Refire
 		AXEG DC 1
-	    AXEG A 0 A_PlaySound("weapons/gswing", 1)
+	    AXEG A 0 A_PlaySound("Melee/SwingStrong", 1)
 		AXEG A 0 A_JumpIfInventory("PowerStrength", 1, "AltStrongAttack")
 		//AXEG A 0 A_Saw("", "", 5, "AltAxePuffs", SF_NORANDOM, 48, 3, 0)
 		AXEG A 0 A_FireCustomMissile("AltAxeAttack", 0, 0, 0, 0)
@@ -553,7 +553,7 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXEG A 0 A_TakeInventory("AxeHit", 1)
 		AXEG A 0 A_Refire
 		AXRG DC 1
-	    AXEG A 0 A_PlaySound("weapons/gswing", 1)
+	    AXEG A 0 A_PlaySound("Melee/SwingStrong", 1)
 		AXEG A 0 A_JumpIfInventory("PowerStrength", 1, "AltRedBloodStrongAttack")
 		//AXEG A 0 A_Saw("", "", 5, "AltAxePuffs", SF_NORANDOM, 48, 3, 0)
 		AXEG A 0 A_FireCustomMissile("AltAxeAttack", 0, 0, 0, 0)
@@ -586,7 +586,7 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXEG A 0 A_TakeInventory("AxeHit", 1)
 		AXEG A 0 A_Refire
 		AXBG DC 1
-	    AXEG A 0 A_PlaySound("weapons/gswing", 1)
+	    AXEG A 0 A_PlaySound("Melee/SwingStrong", 1)
 		AXEG A 0 A_JumpIfInventory("PowerStrength", 1, "AltBlueBloodStrongAttack")
 		//AXEG A 0 A_Saw("", "", 5, "AltAxePuffs", SF_NORANDOM, 48, 3, 0)
 		AXEG A 0 A_FireCustomMissile("AltAxeAttack", 0, 0, 0, 0)
@@ -618,7 +618,7 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXGG E 1
 		AXEG A 0 A_Refire
 		AXGG DC 1
-	    AXEG A 0 A_PlaySound("weapons/gswing", 1)
+	    AXEG A 0 A_PlaySound("Melee/SwingStrong", 1)
 		AXEG A 0 A_JumpIfInventory("PowerStrength", 1, "AltGreenBloodStrongAttack")
 		//AXEG A 0 A_Saw("", "", 5, "AltAxePuffs", SF_NORANDOM, 48, 3, 0)
 		AXEG A 0 A_FireCustomMissile("AltAxeAttack", 0, 0, 0, 0)

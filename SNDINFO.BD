@@ -154,11 +154,11 @@ weapons/chainsaw/hitwall1 DSSAWAL1
 weapons/chainsaw/hitwall2 DSSAWAL2
 weapons/chainsaw/hitwall3 DSSAWAL3
 weapons/chainsaw/hitwall4 DSSAWAL4
-$random weapons/chainsaw/hitwall { weapons/chainsaw/hitwall1 weapons/chainsaw/hitwall2 weapons/chainsaw/hitwall3 weapons/chainsaw/hitwall4 }
-$limit weapons/chainsaw/hitwall 1
+$random Chainsaw/Wall { weapons/chainsaw/hitwall1 weapons/chainsaw/hitwall2 weapons/chainsaw/hitwall3 weapons/chainsaw/hitwall4 }
+$limit Chainsaw/Wall 4
 DSSAWHIT DSSAWHIT
 DSSAWUP DSSAWUP
-DSSAWZIP DSSAWZIP
+Chainsaw/Zip DSSAWZIP
 
 // Distant gunshots
 FARCAN1 FARCAN1
@@ -223,26 +223,47 @@ GRLLO1 GRLLO1
 GRLLO2 GRLLO2
 
 // Melee
-weapons/gswing dsswing
+Melee/SwingStrong dsswing
+FISTIMP1 FISTIMP1
+FISTIMP2 FISTIMP2
+FISTIMP3 FISTIMP3
+$random Melee/Wall { FISTIMP1 FISTIMP2 FISTIMP3 }
 FOOTWALL FOOTWALL
 fstatk1 fstatk1
 fstatk2 fstatk2
 fstatk3 fstatk3
-$random fstatk { fstatk1 fstatk2 fstatk3 }
-KICK KICK
+$random Melee/Swing { fstatk1 fstatk2 fstatk3 }
+fstatk4 fstatk4
+fstatk5 fstatk5
+fstatk6 fstatk6
+$random Melee/SwingDeep { fstatk4 fstatk5 fstatk6 }
+fstatk7 fstatk7
+fstatk8 fstatk8
+fstatk9 fstatk9
+$random Melee/SwingHigh { fstatk7 fstatk8 fstatk9 }
+Kick/Swing KICK
+KICKHIT1 KICKHIT1
+KICKHIT2 KICKHIT2
+KICKHIT3 KICKHIT3
+$random Kick/flesh { KICKHIT1 KICKHIT2 KICKHIT3 }
+KICKWAL1 KICKWAL1
+KICKWAL2 KICKWAL2
+KICKWAL3 KICKWAL3
+$random Kick/wall { KICKWAL1 KICKWAL2 KICKWAL3 }
+Melee/Reload KNUCKLED
 marine/superfist1 plspnch1
 marine/superfist2 plspnch2
 marine/superfist3 plspnch3
 marine/superfist4 plspnch4
 marine/superfist5 plspnch5
-$random player/cyborg/fist { marine/superfist1 marine/superfist2 marine/superfist3 marine/superfist4 marine/superfist5 }
+$random Melee/Flesh { marine/superfist1 marine/superfist2 marine/superfist3 marine/superfist4 marine/superfist5 }
 SLIDEND1 SLIDEND1
 SLIDEND2 SLIDEND2
-$random SlideKickStop { SLIDEND1 SLIDEND2 }
+$random Kick/SlideStop { SLIDEND1 SLIDEND2 }
 SLIDSTRT1 SLIDSTR1
 SLIDSTRT2 SLIDSTR2
 SLIDSTRT3 SLIDSTR3
-$random SlideKickStart { SLIDSTRT1 SLIDSTRT2 SLIDSTRT3 }
+$random Kick/SlideStart { SLIDSTRT1 SLIDSTRT2 SLIDSTRT3 }
 
 // MP40
 MP40/Reload1 MP401
