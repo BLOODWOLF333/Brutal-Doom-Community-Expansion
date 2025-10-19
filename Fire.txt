@@ -1409,6 +1409,7 @@ ACTOR PentagramSpawner
     Spawn:
         TNT1 A 0
 		TNT1 A 1 A_SpawnItem("BurningPentagram")
+		TNT1 A 0 A_PlaySound("D3TELEPT")
 		TNT1 A 1 A_SpawnItem("PentagramFlare")
 		TNT1 A 50
 		TNT1 A 1 A_SpawnItem("PentagramOff")
@@ -1424,6 +1425,7 @@ ACTOR PentagramSpawnerBig : PentagramSpawner
     Spawn:
         TNT1 A 0
 		TNT1 A 1 A_SpawnItem("BurningPentagramBig")
+		TNT1 A 0 A_PlaySound("D3TELEPT")
 		TNT1 A 1 A_SpawnItem("PentagramFlarebig")
 		TNT1 A 50
 		TNT1 A 1 A_SpawnItem("PentagramOffbig")

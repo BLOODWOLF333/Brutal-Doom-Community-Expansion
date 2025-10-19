@@ -23,27 +23,6 @@ ACTOR TeleportationFog Replaces TeleportFog
 	}
 }
 
-/*ACTOR BrutalTeleportDest: TeleportDest Replaces TeleportDest //Nope, overcomplicates every fucking thing
-{
-	+NOBLOCKMAP
-	+NOSECTOR
-	+DONTSPLASH
-	+MISSILE
-	+THRUACTORS
-	+NODAMAGETHRUST
-	-BLOODSPLATTER
-	+BLOODLESSIMPACT
-	+FORCERADIUSDMG
-	Damagetype "TeleportRemover"
-	States
-	{
-		Spawn:
-		TNT1 A 35
-		TNT1 A 0 A_Explode(8, 64, 0)
-		Loop
-	}
-}*/
-
 ACTOR FriendlymarineTFog
 {
 	+THRUACTORS
