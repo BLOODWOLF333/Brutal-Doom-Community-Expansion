@@ -3894,17 +3894,14 @@ Actor PlutoniaBridgeLong
 
 Actor BDECCandleCorridor
 {
-
 	States
 	{
-		Spawn:
-			TNT1 A 0
-			TNT1 A 0 A_SpawnItemEx("Candlestick", 0, 0, 0)
-			TNT1 A 0 A_SpawnItemEx("Candlestick", 60, -5, 0)
-			TNT1 A 0 A_SpawnItemEx("Candlestick", 112, -7, 0)
-			TNT1 A 0 A_SpawnItemEx("Candlestick", -64, 1, 0)
-			TNT1 A 0 A_SpawnItemEx("Candlestick", -98, -4, 0)
-			Stop
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx("Candlestick2", 0, 0, 0)
+		TNT1 A 0 A_SpawnItemEx("Candlestick2", 60, -1, 0)
+		TNT1 A 0 A_SpawnItemEx("Candlestick2", -60, 1, 0)
+		Stop
 	}
 }
 
@@ -4183,11 +4180,11 @@ ACTOR BDECPentagram 25856
 	{
     Spawn:
         PNTG C 1 BRIGHT
-		TNT1 A 0 A_SpawnItemEx("CandleStick", 26, 25, 0)
-		TNT1 A 0 A_SpawnItemEx("CandleStick", -26, 25, 0)
-		TNT1 A 0 A_SpawnItemEx("CandleStick", 40, -15, 0)
-		TNT1 A 0 A_SpawnItemEx("CandleStick", -40, -15, 0)
-		TNT1 A 0 A_SpawnItemEx("CandleStick", 0, -40, 0)
+		TNT1 A 0 A_SpawnItemEx("CandleStick2", 26, 25, 0)
+		TNT1 A 0 A_SpawnItemEx("CandleStick2", -26, 25, 0)
+		TNT1 A 0 A_SpawnItemEx("CandleStick2", 40, -15, 0)
+		TNT1 A 0 A_SpawnItemEx("CandleStick2", -40, -15, 0)
+		TNT1 A 0 A_SpawnItemEx("CandleStick2", 0, -40, 0)
 		PNTG C -1 BRIGHT
         Stop
 	}
