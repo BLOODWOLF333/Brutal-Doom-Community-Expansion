@@ -847,7 +847,7 @@ ACTOR ClassicShotgun : ClassicWeapon
 	Weapon.AmmoType "ShellPurist"
 	Tag "Shotgun"
 	Inventory.PickupMessage "$GOTSHOTGUN"
-	Inventory.PickupSound "weapons/sgpump"
+	Inventory.PickupSound "weapons/shotgr"
 	Obituary "$OB_MPSHOTGUN"
 	DropItem "ShotgunSpawner"
 
@@ -887,12 +887,12 @@ ACTOR ClassicShotgun : ClassicWeapon
 		Loop
 	Fire:
 		PKSG A 3
-		TNT1 A 0 A_PlaySound("weapons/sg", 1)
+		TNT1 A 0 A_PlaySound("weapons/shotgf", 1)
 		RIFF A 0 A_FireCustomMissile("DistantFireSoundShotgun", random(-1,1), 0, 0, -12, 0, random(-1,1))
 		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		PKSG B 7 BRIGHT A_FireBullets (5.6, 0, 7, 15, "ShotgunPuff", FBF_NORANDOM | FBF_USEAMMO)
 		PKSG GIK 3
-		SHTG A 0 A_PlaySound("weapons/sgpump", 3)
+		SHTG A 0 A_PlaySound("weapons/shotgr", 3)
 		PKSG M 6 A_FireCustomMissile("ShotCaseSpawn",40,0,14,0)
 		PKSG KIG 3
 		PKSG A 3

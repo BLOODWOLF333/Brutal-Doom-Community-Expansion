@@ -329,16 +329,18 @@ RLANSHOT RLANSHOT
 ROCKPKUP ROCKPKUP
 
 // Shotgun
-weapons/sg SGFIRE
-$limit weapons/sg 0
-insertshell SHELL_IN
+Shotgun/Fire SGFIRE
+$rolloff Shotgun/Fire 200 2200
+$limit Shotgun/Fire 10
+Shotgun/Pump1 SHGUPUM1
+Shotgun/Pump2 SHGUPUM2
 SHTLOAD1 SHTLOAD1
 SHTLOAD2 SHTLOAD2
 SHTLOAD3 SHTLOAD3
 SHTLOAD4 SHTLOAD4
 $Random Shotgun/Reload { SHTLOAD1 SHTLOAD2 SHTLOAD3 SHTLOAD4 }
-SlugShot SlugSG
-weapons/sgpump STGNPUMP
+Shotgun/Slug SLUGSG
+Shotgun/Pump STGNPUMP
 
 // SMG
 SMG/Fire SMGFIRE

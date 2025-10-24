@@ -9,7 +9,7 @@ ACTOR Shot_Gun2 : BrutalWeapon
 	Weapon.AmmoType1 "AmmoSlug"
 	Weapon.AmmoType2 "ShotgunAmmo"
 	Inventory.PickupMessage "$GOTSHOTGUN"
-    Inventory.PickupSound "weapons/sgpump"
+    Inventory.PickupSound "Shotgun/Pump"
 	Obituary "$OB_MPSHOTGUN"
     AttackSound "None"
     +WEAPON.NOAUTOAIM
@@ -67,7 +67,7 @@ ACTOR Shot_Gun2 : BrutalWeapon
         TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
         SHTA MLKJ 1 A_JumpIfInventory("ShotgunChangeAmmo",1,"Reload")
-		SHTN A 0 A_PlaySound("weapons/sgpump")
+		SHTN A 0 A_PlaySound("Shotgun/Pump2")
 
 	Ready3:
 	Ready:
@@ -126,7 +126,7 @@ ACTOR Shot_Gun2 : BrutalWeapon
         TNT1 AAA 0
 		SHTN A 0 A_JumpIfInventory("ShotgunWasEmpty", 1, "EjectEmpty")
         SHTN A 0 A_AlertMonsters
-        SHTN A 0 A_PlaySound("SlugShot", 1)
+        SHTN A 0 A_PlaySound("Shotgun/Slug", 1)
 		RIFF A 0 A_FireCustomMissile("DistantFireSoundShotgun", random(-1,1), 0, 0, -12, 0, random(-1,1))
         SHTN A 0
 		SHTN A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
@@ -155,7 +155,7 @@ ACTOR Shot_Gun2 : BrutalWeapon
 		SHTN BCDEFG 1 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
 		SHTN A 0 A_JumpIfInventory("Reloading",1,"InsertingShells")
 		SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		SHTN A 0 A_PlaySound("weapons/sgpump", 3)
+		SHTN A 0 A_PlaySound("Shotgun/Pump1", 3)
 		SHTN R 1 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
 		SHTA YX 1 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
 		SHTN J 1 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
@@ -175,7 +175,7 @@ ACTOR Shot_Gun2 : BrutalWeapon
 		SHTN BCDEFG 1 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
 		SHTN A 0 A_JumpIfInventory("Reloading",1,"InsertingShells")
 		SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		SHTN A 0 A_PlaySound("weapons/sgpump", 3)
+		SHTN A 0 A_PlaySound("Shotgun/Pump1", 3)
 		SHTN HIJ 1 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
 		SHTN A 0 A_JumpIfInventory("Reloading",1,"InsertingShells")
 		SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
@@ -185,6 +185,7 @@ ACTOR Shot_Gun2 : BrutalWeapon
 	Chamber:
 		TNT1 A 0
 		SHTN A 0 A_TakeInventory("ShotgunWasEmpty",1)
+		SHTN A 0 A_PlaySound("Shotgun/Pump2", 3)
 		SHTN KLMNO 1 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
 		SHTA XY 1 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
 		SHTN R 1 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
@@ -203,6 +204,7 @@ ACTOR Shot_Gun2 : BrutalWeapon
 		SHTN A 0 A_JumpIfInventory("NoAutoReload", 1, 1)
 		Goto InsertingShells
 		TNT1 AAA 0
+		SHTN A 0 A_PlaySound("Shotgun/Pump2", 3)
 		SHTN KLMNOIH 1 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
 		SHTN GFEDCB 1 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
 		SHTN A 0 A_JumpIfInventory("Reloading",1,"InsertingShells")
@@ -216,7 +218,7 @@ ACTOR Shot_Gun2 : BrutalWeapon
         TNT1 AAA 0
 		SHTN A 0 A_JumpIfInventory("ShotgunWasEmpty", 1, "EjectEmpty")
         SHTN A 0 A_AlertMonsters
-        SHTN A 0 A_PlaySound("SlugShot", 1)
+        SHTN A 0 A_PlaySound("Shotgun/Slug", 1)
 		RIFF A 0 A_FireCustomMissile("DistantFireSoundShotgun", random(-1,1), 0, 0, -12, 0, random(-1,1))
         SHTN A 0
 		SHTN A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
@@ -241,8 +243,8 @@ ACTOR Shot_Gun2 : BrutalWeapon
 		SHTN A 0
 		SHTN A 0 A_GiveInventory("Pumping", 1)
 		SHTN A 0 A_GiveInventory("GoSpecial", 1)
-		SHTN A 0 A_PlaySound("weapons/sgpump", 5)
-		SHT8 GHIJ 2 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
+		SHTN A 0 A_PlaySound("Shotgun/Pump1", 5)
+		SHT8 GHIJ 1 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
 		SHTN A 0 A_FireCustomMissile("SlugCaseSpawn",40,0,14,0)
 		SHTN A 0 A_JumpIfInventory("Reloading",1,"InsertingShells")
 		SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
@@ -251,6 +253,7 @@ ACTOR Shot_Gun2 : BrutalWeapon
 	ChamberADS:
 		TNT1 AAA 0
 		SHTN A 0 A_TakeInventory("ShotgunWasEmpty", 1)
+		SHTN A 0 A_PlaySound("Shotgun/Pump2", 5)
 		SHT8 JIHG 2 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
 		SHTN A 0 A_JumpIfInventory("Reloading",1,"InsertingShells")
 		SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
@@ -266,6 +269,7 @@ ACTOR Shot_Gun2 : BrutalWeapon
         SHTN A 0 A_ZoomFactor(1.3)
 		SHTN A 0 A_Giveinventory("ADSmode",1)
 		RIFG A 0 A_SetCrosshair(41)
+		TNT1 A 0 A_PlaySound("ads/in", 5)
         SHT8 AB 1
         SHTN A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
 		SHT8 C 1
@@ -296,6 +300,7 @@ ACTOR Shot_Gun2 : BrutalWeapon
 		SHTN A 0 A_Takeinventory("ADSmode",1)
 		RIFG A 0 A_SetCrosshair(0)
 		SHTN A 0 A_Giveinventory("GoSpecial",1)
+		TNT1 A 0 A_PlaySound("ads/out", 5)
 		SHT8 BA 1
         Goto Ready
 
@@ -340,7 +345,7 @@ ACTOR Shot_Gun2 : BrutalWeapon
 		SHTN V 1 A_WeaponReady(WRF_NOBOB)
 		SHTA Z 1 A_WeaponReady(WRF_NOBOB)
 		SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		SHTN A 0 A_PlaySound("insertshell")
+		SHTN A 0 A_PlaySound("Shotgun/Reload")
 		SHTN XYZ 1 A_WeaponReady(WRF_NOBOB)
 		SHTN "[]" 1 A_WeaponReady(WRF_NOBOB)
 		SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
@@ -417,19 +422,21 @@ ACTOR Shot_Gun2 : BrutalWeapon
         TNT1 AAA 0
 		SHTN A 0 A_Takeinventory("ShotgunAmmo",1)
 		SHTN A 0 A_Giveinventory("AmmoSlug",1)
-		SHTN A 0 A_PlaySound("weapons/sgpump", 3)
+		SHTN A 0 A_PlaySound("Shotgun/Pump1", 3)
 		SHTN R 1 A_WeaponReady(WRF_NOBOB)
 		SHTA YX 1 A_WeaponReady(WRF_NOBOB)
 		SHTN O 1 A_WeaponReady(WRF_NOBOB)
 		SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		SHTN A 0 A_JumpIfInventory("ShotgunAmmo",1,1)
 		Goto FinishUnload
+		SHTN A 0 A_PlaySound("Shotgun/Pump2", 3)
 		SHTN O 2 A_WeaponReady(WRF_NOBOB)
 		SHTA XY 2 A_WeaponReady(WRF_NOBOB)
 		SHTN RG 2 A_WeaponReady(WRF_NOBOB)
 		Goto RemoveBullets
 
 	FInishUnload:
+		SHTN A 0 A_PlaySound("Shotgun/Pump2", 3)
 		SHTN JIHG 2 A_WeaponReady(WRF_NOBOB)
 		SHTN FEDCBA 1 A_WeaponReady(WRF_NOBOB)
 		SHTN A 0 A_Takeinventory("Unloading",1)
