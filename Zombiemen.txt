@@ -1737,7 +1737,7 @@ ACTOR BrutalizedZombieMan1
 
 	Pain:
 	ZZD1 A 30
-	TNT1 A 0 A_Die("Fall")
+	ZZD1 A 0 A_Die("Fall")
 
 	Death.Fall:
 	TNT1 A 0 A_NoBlocking
@@ -1815,7 +1815,7 @@ ACTOR BrutalizedZombieMan2: BrutalizedZombieMan1
 	Spawn:
 	Pain:
     ZZD1 B 30
-	TNT1 A 0 A_Die("Fall")
+	ZZD1 B 0 A_Die("Fall")
 
 	Death.Fall:
 	TNT1 A 0 A_NoBlocking
@@ -1868,7 +1868,7 @@ ACTOR BrutalizedZombieMan3: BrutalizedZombieMan1
 	TNT1 A 0
 	TNT1 A 0 A_Jump(96, 2)
     ZZD1 C 30
-	TNT1 A 0 A_Die("Fall")
+	ZZD1 C 0 A_Die("Fall")
 
 	Death.Fall:
 	TNT1 A 0 A_NoBlocking
@@ -1936,7 +1936,7 @@ ACTOR BrutalizedZombieManLeg: BrutalizedZombieMan1
 	Spawn:
 	Pain:
     POS7 A 5
-	TNT1 A 0 A_Die("Fall")
+	POS7 A 0 A_Die("Fall")
 
 	Death.Fall:
 	POS7 BCD 5 A_NoBlocking
@@ -2145,11 +2145,11 @@ ACTOR DyingZombieman
 			Loop
 
 		Fall:
-			TNT1 A 0 A_Die
+			ZMAM A 0 A_Die
 			Goto Death
 
 		LastStand:
-			TNT1 A 0 A_Die("LastStand")
+			ZMAM A 0 A_Die("LastStand")
 		Death.LastStand:
 			TNT1 A 0 A_NoBlocking
 			TNT1 A 0 A_Pain
@@ -2281,7 +2281,7 @@ ACTOR DyingZombiemanLostTeeth: RifleZombie
 		ZZD5 CB 8
 		ZZD5 CB 12 A_Pain
 		ZZD5 CB 12 A_Pain
-		TNT1 A 0 A_Die
+		ZZD5 C 0 A_Die
 
 	Death:
 		"####" "#" 2
@@ -2352,7 +2352,7 @@ ACTOR DyingZombiemanNoArm: DyingZombieman
 		ZZD2 BBBBB 2 A_CustomMissile ("Brutal_LiquidBlood", 30, 0, 90, 2, random (0, 45))
 		ZZD2 EEEEE 2 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
 		TNT1 A 0 A_Jump(4, "LastStand")
-		TNT1 A 0 A_Die
+		ZZD2 E 0 A_Die
 
 		Death.Cut:
 		Death.Minigun:
@@ -2448,7 +2448,7 @@ ACTOR DyingZombiemanNoArm: DyingZombieman
 		Stop
 
 		LastStand:
-		TNT1 A 0 A_Die("LastStand")
+		ZZD2 E 0 A_Die("LastStand")
 		Death.LastStand:
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_Pain
@@ -2481,7 +2481,7 @@ ACTOR DyingZManFatality5: DyingZombiemanNoArm
 		FRAA FGHG 5 A_CustomMissile("Brutal_LiquidBlood2", 32 , 0, random (0, 360), 2, random (40, 90))
 		FRAA FGHG 5 A_CustomMissile("Brutal_LiquidBlood2", 32 , 0, random (0, 360), 2, random (40, 90))
 		FRAA FGHG 5 A_CustomMissile("Brutal_LiquidBlood2", 32 , 0, random (0, 360), 2, random (40, 90))
-		TNT1 A 0 A_Die
+		FRAA H 0 A_Die
 
 	Death:
 		"####" "#" 2
@@ -2638,7 +2638,7 @@ ACTOR ZombieManDyingAfterFatality: DyingZombiemanNoArm
 		TNT1 A 0 A_SpawnItem ("BloodDying", 0, 20)
 		ZZD5 EEEEE 2 A_CustomMissile ("Brutal_LiquidBlood", 20, 0, random(0, 360), 2, random (0, 45))
 		TNT1 A 0 A_SpawnItem ("BloodDying", 0, 20)
-		TNT1 A 0 A_Die
+		ZZD5 E 0 A_Die
 
 		Death.Head:
 		Death.Minorhead:
@@ -2712,7 +2712,8 @@ ACTOR ZombiemanFallingBeheaded
 		ZZD6 AABBCCDD 4 A_CustomMissile ("Brutal_LiquidBlood2", 40, 0, 120, 2, random (0, 60))
 		ZZD6 EE 3 A_CustomMissile ("Brutal_LiquidBlood2", 40, 0, 120, 2, random (0, 60))
 		ZZD6 FFGG 2 A_CustomMissile ("Brutal_LiquidBlood2", 40, 0, 120, 2, random (0, 60))
-		TNT1 A 0 A_Die("Fall")
+		ZZD6 G 0 A_Die("Fall")
+
 	Death.Fall:
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
         TNT1 A 0 A_SpawnItem ("DeadZombieman_NoHeadFront")
@@ -2725,13 +2726,13 @@ ACTOR ZombiemanFallingBeheaded
 		ZZD6 AABBCCDD 3 A_CustomMissile ("Brutal_LiquidBlood2", 40, 0, 120, 2, random (0, 60))
 		ZZD6 EE 3 A_CustomMissile ("Brutal_LiquidBlood2", 40, 0, 120, 2, random (0, 60))
 		ZZD6 FFGG 2 A_CustomMissile ("Brutal_LiquidBlood2", 40, 0, 120, 2, random (0, 60))
-		TNT1 A 0 A_Die("Fall")
+		ZZD6 G 0 A_Die("Fall")
 		Stop
 
 	Instant:
 		ZZD6 I 8
 		ZZD6 EEEEE 3 A_CustomMissile ("Brutal_LiquidBlood2", 40, 0, 120, 2, random (0, 60))
-		TNT1 A 0 A_Die
+		ZZD6 E 0 A_Die
 	Death:
 		ZZD6 FFGG 2 A_CustomMissile ("Brutal_LiquidBlood2", 40, 0, 120, 2, random (0, 60))
 		TNT1 A 0 A_NoBlocking
@@ -2813,7 +2814,7 @@ ACTOR ZombiemanFallingHoleOnStomach
 		ZXZ1 A 1 A_Stop
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		ZXZ1 BBBBBBBBBBBBBBBBBBB 3 A_CustomMissile ("Brutal_LiquidBlood2", 26, 0, random (0, 360), 2, random (30, 60))
-		TNT1 A 0 A_Die("Fall")
+		ZXZ1 B 0 A_Die("Fall")
 	Death.Fall:
 		TNT1 A 0 A_NoBlocking
 		ZXZ1 CCC 3 A_CustomMissile ("Brutal_LiquidBlood2", 26, 0, random (0, 360), 2, random (10, 40))
@@ -2912,7 +2913,7 @@ ACTOR ZombiemanFallingSplattered
 		ZXZ2 A 1 A_Stop
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		ZXZ2 BBBBBBBBBBBBBBBBBBB 3 A_CustomMissile ("Brutal_LiquidBlood2", 26, 0, random (0, 360), 2, random (30, 60))
-		TNT1 A 0 A_Die("Fall")
+		ZXZ2 B 0 A_Die("Fall")
 	Death.Fall:
 		TNT1 A 0 A_NoBlocking
 		ZXZ2 CCC 3 A_CustomMissile ("Brutal_LiquidBlood2", 26, 10, -45, 2, random (0, 60))
@@ -3012,7 +3013,7 @@ ACTOR ZombiemanGotHisLegBlowed: DyingZombiemanNoArm
 		Loop
 
 		Fall:
-		TNT1 A 0 A_Die
+		POS7 E 0 A_Die
 
 		Death.Cut:
 		Death.Minigun:
@@ -3027,7 +3028,7 @@ ACTOR ZombiemanGotHisLegBlowed: DyingZombiemanNoArm
 		Stop
 
 		LeaveCrawling:
-		TNT1 A 0 A_Die("LeaveCrawling")
+		POS7 E 0 A_Die("LeaveCrawling")
 		Death.LeaveCrawling:
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_StopSound(4)
@@ -3035,7 +3036,7 @@ ACTOR ZombiemanGotHisLegBlowed: DyingZombiemanNoArm
 		Stop
 
 		LastStand:
-		TNT1 A 0 A_Die("LastStand")
+		POS7 E 0 A_Die("LastStand")
 		Death.LastStand:
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_StopSound(4)
@@ -3119,7 +3120,7 @@ ACTOR ZombiemanSaciLol: ZombiemanGotHisLegBlowed
 		ZL1E ABC 3
 		TNT1 A 0 A_SpawnItem ("BloodDying", 0, 30)
 		ZL1E DDDD 1 A_Wander
-		TNT1 A 0 A_Die("Fall")
+		ZL1E D 0 A_Die("Fall")
 		Death.Fall:
 		ZMAD C 0 A_NoBlocking
 		TNT1 A 0 A_StopSound(4)

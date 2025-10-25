@@ -177,7 +177,7 @@ actor BurningImp
 		IZD4 DDD 2 BRIGHT A_CustomMissile ("BurnParticles", 25, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_PlaySound("imp/pain")
 		TNT1 A 0 A_Playsound("props/redfire")
-		TNT1 A 0 A_Die
+		IZD4 D 0 A_Die
 
 	Death:
 		TNT1 A 0 A_SpawnItem("BurningImpCorpse")
@@ -199,7 +199,7 @@ ACTOR BurningImpCorpse : BurningImp
 	Spawn:
 		BOSB FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 2 BRIGHT A_CustomMissile ("FlameTrails", 15, 0, random (0, 360), 2, random (50, 130))
 		BOSB FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 20 A_CustomMissile ("SmallSmoke", 25, 0, random (0, 360), 2, random (70, 110))
-		TNT1 A 0 A_Die
+		BOSB F 0 A_Die
 
 	Death:
 		BOSB F -1 A_Noblocking
@@ -219,7 +219,7 @@ Actor BurnedDemon
 		CRB7 KKKK 2 BRIGHT A_CustomMissile ("FlameTrails", 45, 0, random (0, 360), 2, random (50, 130))
 		CRB7 LLLL 2 BRIGHT A_CustomMissile ("FlameTrails", 30, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_Playsound("props/redfire")
-		TNT1 A 0 A_Die
+		CRB7 L 0 A_Die
 
 	Death:
 		CARB JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ 2 BRIGHT A_CustomMissile ("FlameTrails", 25, 0, random (0, 360), 2, random (50, 130))
@@ -323,7 +323,7 @@ ACTOR DyingZombiemanInFlamesCorpse : DyingZombiemanInFlames
 	Spawn:
 		BRZ3 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 3 BRIGHT A_CustomMissile("BurnParticles", 5, 0, random (0, 360), 2, random (50, 130))
 		BRZ3 HHHHHHHHHHHHHHHHHHHHHHHH 10 A_CustomMissile("PlasmaSmoke", 15, 0, random (0, 360), 2, random (50, 130))
-		TNT1 A 0 A_Die
+		BRZ3 H 0 A_Die
 
 	Death:
 		BRZ3 H -1 A_Noblocking
@@ -420,7 +420,7 @@ ACTOR DyingSergeantNoLegInFlamesCorpse : DyingSergeantNoLegInFlames
 	Spawn:
 		BRZ3 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 3 BRIGHT A_CustomMissile("BurnParticles", 5, 0, random (0, 360), 2, random (50, 130))
 		BRZ3 HHHHHHHHHHHHHHHHHHHHHHHH 10 A_CustomMissile("PlasmaSmoke", 15, 0, random (0, 360), 2, random (50, 130))
-		TNT1 A 0 A_Die
+		BRZ3 H 0 A_Die
 
 	Death:
 		BRZ3 H -1 A_Noblocking
@@ -545,7 +545,7 @@ ACTOR BurningZombieCorpse : BurningZombie
 		TNT1 A 0 A_Jump(128, "Spawn2")
 		BURN VVVVVVVVVVVVVVVVVV 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
 		BURN VVVVVVVVVVVVVVVVVV 10 A_CustomMissile("PlasmaSmoke", 15, 0, random (0, 360), 2, random (50, 130))
-		TNT1 A 0 A_Die
+		BURN V 0 A_Die
 
 	Death:
 		BURN V -1 A_NoBlocking
@@ -626,7 +626,7 @@ ACTOR BurningCacodemonCorpse : BurningCacodemon
 		TNT1 A 0 A_Playsound("props/redfire")
 		HEAD PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP 6 BRIGHT A_CustomMissile("FireballExplosionFlamesBig", 15, 0, random (0, 360), 2, random (50, 130))
 		HEAD PPPPPPPPPPPPPPPPPPPPPPPP 12 A_CustomMissile("PlasmaSmoke", 15, 0, random (0, 360), 2, random (50, 130))
-		TNT1 A 0 A_Die
+		HEAD P 0 A_Die
 
 	Death:
 		HEAD P -1 A_NoBlocking
@@ -750,7 +750,7 @@ ACTOR BurningZombieManCorpse : BurningZombieCorpse
 		BRZ3 FF 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
 		BRZ3 GG 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-15, 15), random (-15, 15))
-		TNT1 A 0 A_Die
+		BRZ3 G 0 A_Die
 
 	Death:
 		BRZ3 G 1 A_Jump(128,2)//H or I deathframe
@@ -829,7 +829,7 @@ ACTOR BurningShotgunguyCorpse : BurningZombieCorpse
 		TNT1 A 0 A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
 		BRZ3 GG 3 Bright A_Wander
 		TNT1 A 0 A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
-		TNT1 A 0 A_Die
+		BRZ3 G 0 A_Die
 
 	Death:
 		TNT1 A 0 A_StopSound(4)
@@ -851,7 +851,7 @@ ACTOR BurningShotgunguyCorpse : BurningZombieCorpse
 		TNT1 A 0 A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
 		BRZ3 GG 3 Bright A_Wander
 		TNT1 A 0 A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
-		TNT1 A 0 A_Die("Alt")
+		BRZ3 G 0 A_Die("Alt")
 
 	Death.Alt:
 		TNT1 A 0 A_StopSound(4)
@@ -873,7 +873,7 @@ ACTOR BurningShotgunguyCorpse : BurningZombieCorpse
 		TNT1 A 0 A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
 		BRZ3 GG 3 Bright A_Wander
 		TNT1 A 0 A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
-		TNT1 A 0 A_Die("Alt2")
+		BRZ3 G 0 A_Die("Alt2")
 
 	Death.Alt2:
 		TNT1 A 0 A_StopSound(4)
@@ -936,7 +936,7 @@ ACTOR BurningChaingunGuyCorpse : BurningZombieCorpse
 	Spawn:
 	    BRZ3 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 3 BRIGHT A_CustomMissile("BurnParticles", 5, 0, random (0, 360), 2, random (50, 130))
 		BRZ3 HHHHHHHHHHHHHHHHHHHHHHHH 10 A_CustomMissile("PlasmaSmoke", 15, 0, random (0, 360), 2, random (50, 130))
-		TNT1 A 0 A_Die
+		BRZ3 H 0 A_Die
 
 	Death:
 		TNT1 A 0 A_StopSound(4)
