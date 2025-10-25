@@ -133,7 +133,7 @@ ACTOR Shot_Gun2 : BrutalWeapon
 		SHTN A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 AAAAAAAAAAAAAAAA 0 A_FireCustomMissile("ShotgunParticles", random(-12,12), 0, -1, 0, 0, random(-9,9))
 		TNT1 AAAAA 0 A_FireCustomMissile("ShotgunParticles2", random(-12,12), 0, -1, 0, 0, random(-9,9))
-		TNT1 AAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-3,3), 0, 0, 0, 0, random(-3,3))
+		TNT1 A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
 		SHTN A 0 A_Takeinventory("ShotgunAmmo",1)
 		SHTA A 1 BRIGHT
 		SHTN A 0 A_FireBullets (0,0,1,40,"shotpuff",FBF_NORANDOM,128)
@@ -158,8 +158,10 @@ ACTOR Shot_Gun2 : BrutalWeapon
 		SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		SHTN A 0 A_PlaySound("Shotgun/Pump1", 3)
 		SHTN R 1 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
+		SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		SHTA YX 1 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
-		SHTN J 1 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
+		SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		SHTN J 4 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
 		SHTN A 0 A_FireCustomMissile("SlugCaseSpawn",40,0,14,0)
 		SHTN A 0 A_JumpIfInventory("Reloading",1,"InsertingShells")
 		SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
@@ -178,6 +180,8 @@ ACTOR Shot_Gun2 : BrutalWeapon
 		SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		SHTN A 0 A_PlaySound("Shotgun/Pump1", 3)
 		SHTN HIJ 1 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
+		SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		SHTN K 4 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
 		SHTN A 0 A_JumpIfInventory("Reloading",1,"InsertingShells")
 		SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		SHTN A 0 A_JumpIfInventory("ShotgunAmmo",1,"Chamber")
@@ -187,12 +191,12 @@ ACTOR Shot_Gun2 : BrutalWeapon
 		TNT1 A 0
 		SHTN A 0 A_TakeInventory("ShotgunWasEmpty",1)
 		SHTN A 0 A_PlaySound("Shotgun/Pump2", 3)
-		SHTN KLMNO 1 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
-		SHTA XY 1 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
-		SHTN R 1 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
-		SHTN GFEDCB 1 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
+		SHTN KLMNO 1
+		SHTA XY 1
+		SHTN R 1
+		SHTN G 4
+		SHTN FEDCB 1
 		SHTN A 0 A_JumpIfInventory("Reloading",1,"InsertingShells")
-		SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		Goto Ready3
 
    ChamberEmpty:
@@ -202,14 +206,14 @@ ACTOR Shot_Gun2 : BrutalWeapon
 		RIFG A 0 A_SetCrosshair(0)
 		SHTN A 0 A_Giveinventory("ShotgunWasEmpty",1)
 		SHTN A 0 A_JumpIfInventory("TurboReload", 1, "TurboReload")
+		SHTN A 0 A_PlaySound("Shotgun/Pump2", 3)
+		SHTN KLMNOIH 1
+		SHTN G 4
 		SHTN A 0 A_JumpIfInventory("NoAutoReload", 1, 1)
 		Goto InsertingShells
 		TNT1 AAA 0
-		SHTN A 0 A_PlaySound("Shotgun/Pump2", 3)
-		SHTN KLMNOIH 1 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
-		SHTN GFEDCB 1 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
+		SHTN FEDCB 1
 		SHTN A 0 A_JumpIfInventory("Reloading",1,"InsertingShells")
-		SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		Goto NoAmmo
 
 	Fire2:
@@ -225,7 +229,7 @@ ACTOR Shot_Gun2 : BrutalWeapon
 		SHTN A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 AAAAAAAAAAAAAAAA 0 A_FireCustomMissile("ShotgunParticles", random(-12,12), 0, -1, 0, 0, random(-9,9))
 		TNT1 AAAAA 0 A_FireCustomMissile("ShotgunParticles2", random(-12,12), 0, -1, 0, 0, random(-9,9))
-		TNT1 AAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-3,3), 0, 0, 0, 0, random(-3,3))
+		TNT1 A 0 A_FireCustomMissile("DecorativeTracer", random(-1,1), 0, 0, 0, 0, random(-1,1))
 		SHTN A 0 A_Takeinventory("ShotgunAmmo",1)
 		SHT8 D 1 BRIGHT
 		SHTN A 0 A_FireBullets (0,0,1,40,"shotpuff",FBF_NORANDOM,128)
@@ -245,7 +249,9 @@ ACTOR Shot_Gun2 : BrutalWeapon
 		SHTN A 0 A_GiveInventory("Pumping", 1)
 		SHTN A 0 A_GiveInventory("GoSpecial", 1)
 		SHTN A 0 A_PlaySound("Shotgun/Pump1", 5)
-		SHT8 GHIJ 1 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
+		SHT8 GHI 1 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
+		SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		SHT8 J 4 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
 		SHTN A 0 A_FireCustomMissile("SlugCaseSpawn",40,0,14,0)
 		SHTN A 0 A_JumpIfInventory("Reloading",1,"InsertingShells")
 		SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
@@ -255,9 +261,9 @@ ACTOR Shot_Gun2 : BrutalWeapon
 		TNT1 AAA 0
 		SHTN A 0 A_TakeInventory("ShotgunWasEmpty", 1)
 		SHTN A 0 A_PlaySound("Shotgun/Pump2", 5)
-		SHT8 JIHG 2 A_WeaponReady(WRF_NOFIRE| WRF_NOBOB)//Allows quick switch
+		SHT8 JIH 1
+		SHT8 G 4
 		SHTN A 0 A_JumpIfInventory("Reloading",1,"InsertingShells")
-		SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		SHTN A 0 A_JumpIfInventory("FiredSecondary",1,"HoldAim")//If still pressing alt fire, it means its holding aim
 		SHTN A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
 		Goto Ready2
@@ -347,7 +353,9 @@ ACTOR Shot_Gun2 : BrutalWeapon
 		SHTA Z 1 A_WeaponReady(WRF_NOBOB)
 		SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		SHTN A 0 A_PlaySound("Shotgun/Reload")
-		SHTN XYZ 1 A_WeaponReady(WRF_NOBOB)
+		SHTN X 1 A_WeaponReady(WRF_NOBOB)
+		SHTN Y 4 A_WeaponReady(WRF_NOBOB)
+		SHTN Z 1 A_WeaponReady(WRF_NOBOB)
 		SHTN "[]" 1 A_WeaponReady(WRF_NOBOB)
 		SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		SHTN A 0 A_JumpIfInventory("ShotgunAmmo",9,"FinishedInsertingShells")//If there are 8+1 shells, stop it immediately
@@ -365,6 +373,7 @@ ACTOR Shot_Gun2 : BrutalWeapon
 
 	FinishedInsertingShells:
 		SHTN EDCBA 1 A_WeaponReady(WRF_NOBOB)
+		SHTN A 0 A_Takeinventory("Reloading",1)
 		SHTN A 0 A_Takeinventory("Reloading",1)
 		Goto Ready
 
@@ -425,21 +434,24 @@ ACTOR Shot_Gun2 : BrutalWeapon
 		SHTN A 0 A_Giveinventory("AmmoSlug",1)
 		SHTN A 0 A_PlaySound("Shotgun/Pump1", 3)
 		SHTN R 1 A_WeaponReady(WRF_NOBOB)
+		SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		SHTA YX 1 A_WeaponReady(WRF_NOBOB)
-		SHTN O 1 A_WeaponReady(WRF_NOBOB)
+		SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		SHTN O 4 A_WeaponReady(WRF_NOBOB)
 		SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		SHTN A 0 A_JumpIfInventory("ShotgunAmmo",1,1)
 		Goto FinishUnload
 		SHTN A 0 A_PlaySound("Shotgun/Pump2", 3)
-		SHTN O 2 A_WeaponReady(WRF_NOBOB)
-		SHTA XY 2 A_WeaponReady(WRF_NOBOB)
-		SHTN RG 2 A_WeaponReady(WRF_NOBOB)
+		SHTA XY 1
+		SHTN R 1
+		SHTN G 4
 		Goto RemoveBullets
 
 	FInishUnload:
 		SHTN A 0 A_PlaySound("Shotgun/Pump2", 3)
-		SHTN JIHG 2 A_WeaponReady(WRF_NOBOB)
-		SHTN FEDCBA 1 A_WeaponReady(WRF_NOBOB)
+		SHTN JIH 1
+		SHTN G 4
+		SHTN FEDCBA 1
 		SHTN A 0 A_Takeinventory("Unloading",1)
 		SHTN A 0 A_GiveInventory("ShotgunUnloaded",1)
 		SHTN A 0 A_Giveinventory("ShotgunWasEmpty",1)
