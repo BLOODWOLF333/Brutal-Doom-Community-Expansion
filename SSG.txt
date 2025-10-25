@@ -22,20 +22,31 @@ ACTOR SSG : BrutalWeapon
 	DropItem "SSGSpawner"
 	States
 	{
+	KickFlash://18 tics
+		SHT2 OPQ 1
+		SHT2 R 12
+		SHT2 QPO 1
+		Stop
+
+	SlideFlashEnd://10 tics
+		SHT2 R 7
+		SHT2 QPO 1
+		Stop
+
     SelectAnimation:
 	Ready:
 	Ready3:
-	    SHTZ A 1 A_WeaponReady(WRF_ALLOWRELOAD)
-        SHTZ A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-        SHTZ A 0 A_JumpIfInventory("Taunting",1,"Taunt")
-		SHTZ A 0 A_JumpIfInventory("Salute1", 1, "Salute")
-		SHTZ A 0 A_JumpIfInventory("Salute2", 1, "Salute")
-		SHTZ A 0 A_JumpIfInventory("Reloading",1,"Reload")
-		SHTZ A 0 A_JumpIfInventory("Unloading",1,"Unload")
-		SHTZ A 0 A_JumpIfInventory("StartDualWield",1,"ChangeShell")
-		SHTZ A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+	    SHT2 A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+        SHT2 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        SHT2 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		SHT2 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		SHT2 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		SHT2 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		SHT2 A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		SHT2 A 0 A_JumpIfInventory("StartDualWield",1,"ChangeShell")
+		SHT2 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
-		SHTZ A 0 A_JumpIfInventory("IsRunning",1,"StartSprint")
+		SHT2 A 0 A_JumpIfInventory("IsRunning",1,"StartSprint")
 		Loop
 
 	ChangeShell:
@@ -48,11 +59,11 @@ ACTOR SSG : BrutalWeapon
 	NoSlugs:
 		TNT1 A 0 A_Print("You are out of shotgun slugs.", 2)
 		SHTN A 0 A_TakeInventory("ShotgunChangeAmmo",1)
-		SHTZ A 3
+		SHT2 A 3
 		Goto Ready
 
 	StartSprint:
-		SHTZ A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+		SHT2 STU 1 A_WeaponReady(WRF_ALLOWRELOAD)
 		SHTN A 0 A_Takeinventory("Zoomed",1)
         SHTN A 0 A_ZoomFactor(1.0)
 		SHTN A 0 A_Takeinventory("ADSmode",1)
@@ -61,26 +72,26 @@ ACTOR SSG : BrutalWeapon
 		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.)
 
 	Sprinting:
-		SSRU A 1 offset(-9,34) A_SetPitch(pitch -0.5)
-		SSRU A 1 offset(-6,36) A_SetPitch(pitch -0.5)
-		SSRU A 1 offset(-3,38) A_SetPitch(pitch -0.5)
-		SSRU A 1 offset(0,38) A_SetPitch(pitch -0.5)
-		SSRU A 1 offset(3,36) A_SetPitch(pitch -0.5)
-		SSRU A 1 offset(6,34) A_SetPitch(pitch -0.5)
-		SSRU A 1 offset(9,32) A_SetPitch(pitch -0.5)
+		SHT2 V 1 offset(-9,34) A_SetPitch(pitch -0.5)
+		SHT2 V 1 offset(-6,36) A_SetPitch(pitch -0.5)
+		SHT2 V 1 offset(-3,38) A_SetPitch(pitch -0.5)
+		SHT2 V 1 offset(0,38) A_SetPitch(pitch -0.5)
+		SHT2 V 1 offset(3,36) A_SetPitch(pitch -0.5)
+		SHT2 V 1 offset(6,34) A_SetPitch(pitch -0.5)
+		SHT2 V 1 offset(9,32) A_SetPitch(pitch -0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		SMGG A 0 A_WeaponReady(WRF_NOBOB)
 		SMGG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         SMGG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
         SMGG A 0 A_JumpIfInventory("Reloading",1,"Reload")
 
-		SSRU A 1 offset(9,34) A_SetPitch(pitch +0.5)
-		SSRU A 1 offset(6,36) A_SetPitch(pitch +0.5)
-		SSRU A 1 offset(3,38) A_SetPitch(pitch +0.5)
-		SSRU A 1 offset(0,38) A_SetPitch(pitch +0.5)
-		SSRU A 1 offset(-3,36) A_SetPitch(pitch +0.5)
-		SSRU A 1 offset(-6,34) A_SetPitch(pitch +0.5)
-		SSRU A 1 offset(-9,32) A_SetPitch(pitch +0.5)
+		SHT2 V 1 offset(9,34) A_SetPitch(pitch +0.5)
+		SHT2 V 1 offset(6,36) A_SetPitch(pitch +0.5)
+		SHT2 V 1 offset(3,38) A_SetPitch(pitch +0.5)
+		SHT2 V 1 offset(0,38) A_SetPitch(pitch +0.5)
+		SHT2 V 1 offset(-3,36) A_SetPitch(pitch +0.5)
+		SHT2 V 1 offset(-6,34) A_SetPitch(pitch +0.5)
+		SHT2 V 1 offset(-9,32) A_SetPitch(pitch +0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 2)
 		SMGG A 0 A_WeaponReady(WRF_NOBOB)
 		SMGG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
@@ -93,26 +104,26 @@ ACTOR SSG : BrutalWeapon
 
 	StopSprint:
 		SSRU A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		SHTZ A 0 A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
-		SSRU A 1 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
+		SHT2 A 0 A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
+		SHT2 UTS 1 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		Goto Ready
 
 	StopSprintTired:
-		SSRU A 1 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
-		SHTZ A 0 A_PlaySound("Tired", 2)
+		SHT2 UTS 1 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
+		SHT2 A 0 A_PlaySound("Tired", 2)
 		Goto Ready
 
 	Deselect:
-		SHTZ A 0 A_Takeinventory("Zoomed",1)
-        SHTZ A 0 A_ZoomFactor(1.0)
-		SHTZ A 0 A_TakeInventory("TossGrenade", 1)
-		SHT5 DCBA 1
+		SHT2 A 0 A_Takeinventory("Zoomed",1)
+        SHT2 A 0 A_ZoomFactor(1.0)
+		SHT2 A 0 A_TakeInventory("TossGrenade", 1)
+		SHT2 NMLK 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1 A_Lower
 		Wait
 
 	Select:
-		SHTZ A 0 A_Giveinventory("GoSpecial",1)
+		SHT2 A 0 A_Giveinventory("GoSpecial",1)
 		TNT1 A 0 A_TakeInventory("FistsSelected", 1)
 		TNT1 A 0 A_TakeInventory("ShotgunSelected", 1)
 		TNT1 A 0 A_TakeInventory("MinigunSelected", 1)
@@ -127,323 +138,292 @@ ACTOR SSG : BrutalWeapon
 		TNT1 A 0 A_TakeInventory("BFGSelected", 1)
 		TNT1 A 0 A_TakeInventory("FlameCannonSelected", 1)
 		TNT1 A 0 A_TakeInventory("SawSelected", 1)
-		SHTZ A 0 A_Takeinventory("HasBarrel",1)
-		SHTZ A 0 A_TakeInventory("TossGrenade", 1)
-		SHTZ A 0 A_TakeInventory("SSG2", 1)
+		SHT2 A 0 A_Takeinventory("HasBarrel",1)
+		SHT2 A 0 A_TakeInventory("TossGrenade", 1)
+		SHT2 A 0 A_TakeInventory("SSG2", 1)
 		TNT1 AAAAAAAAAAAA 0 A_Raise
-		SHTZ A 0 A_GunFlash
-		SHTZ A 0 A_JumpIfInventory("SSGAmmo", 1, 1)
+		SHT2 A 0 A_GunFlash
+		SHT2 A 0 A_JumpIfInventory("SSGAmmo", 1, 1)
 		Goto RaiseReloading
-		SHT5 ABCD 1
-		SHTZ A 0 A_PlaySound("weapons/sshotc")
+		TNT1 AAA 0
+		SHT2 KLMN 1
+		SHT2 A 0 A_PlaySound("weapons/sshotc")
 		Goto Ready
 
 	RaiseReloading:
-		SHTZ A 0
-		SHTZ A 0 A_JumpIfInventory("AmmoShell", 2, 1)
+		SHT2 A 0
+		SHT2 A 0 A_JumpIfInventory("AmmoShell", 2, 1)
 		Goto RaiseNoAmmo
-		SHTZ L 1 Offset(0,40)
-		SHTZ M 1 Offset(0,38)
-		SHTZ N 1 Offset(0,36)
-		SHTZ O 1 Offset(0,34)
-		SHTZ A 0 A_playsound("weapons/sshotl")
-		SHTZ P 2 Offset(10,36)
-		SHTZ P 2 Offset(20,46)
-		SHTZ Q 1 Offset(30,56)
-		SHTZ Q 1 Offset(40,66)
-		SHTZ R 1 Offset(50,76)
-		SHTZ S 1
-		SHTZ A 0 A_GiveInventory ("Pumping", 1)
+		TNT1 AAA 0
+		SHT2 A 0 A_playsound("weapons/sshoto")
+		SHTZ L 8 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		SHTZ MNOPQRSTUV 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 
-		SHTZ T 1 Offset(30,56)
-		SHTZ U 1 Offset(20,46)
-		SHTZ V 1 Offset(1,33)
+		SHT2 A 0 A_playsound("weapons/sshotl")
+		SHTZ WXY 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		TNT1 A 4 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		SHT2 A 0 A_TakeInventory("AmmoShell", 2)
+		SHT2 A 0 A_GiveInventory("SSGAmmo", 2)
 
-		SHTZ A 0 A_GiveInventory ("Pumping", 1)
-		SHTZ A 0 A_PlaySound("weapons/sshotc")
-		SHTZ A 0 A_TakeInventory("AmmoShell", 2)
-		SHTZ A 0 A_GiveInventory("SSGAmmo", 2)
+		SHTZ Z 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		SHT2 A 0 A_PlaySound("weapons/sshotc")
+		SHZ2 ABCDEFGHIJ 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 
-		SHTZ WXYZ 1
-		SHTZ A 0 A_TakeInventory ("Pumping", 1)
-		SHTZ A 0 A_TakeInventory ("SSGUnloaded", 1)
-		SHTZ A 0 A_TakeInventory("SSGAlt",1)
+		SHT2 A 0 A_TakeInventory("Pumping", 1)
+		SHT2 A 0 A_TakeInventory("SSGUnloaded", 1)
+		SHT2 A 0 A_TakeInventory("SSGAlt",1)
 		TNT1 A 0 A_TakeInventory("ShotgunChangeAmmo",1)
-		SHO9 DEFG 1
-		SHTZ A 0 A_ReFire
-		SHTZ A 2
+		SHTZ BA 1 A_ReFire
 		Goto Ready
 
 	RaiseNoAmmo:
-		SHT5 ABCD 1
-		SHTZ A 0 A_PlaySound("weapons/sshotc")
+		SHT2 KLMN 1
+		SHT2 A 0 A_PlaySound("weapons/sshotc")
 		Goto Ready
 
 	NoAmmo:
-		SHTZ A 0
-		SHTZ A 0 A_ZoomFactor(1.0)
-		SHTZ A 0 A_Takeinventory("Zoomed",1)
-		SHTZ A 0 A_Takeinventory("ADSmode",1)
+		SHT2 A 0
+		SHT2 A 0 A_ZoomFactor(1.0)
+		SHT2 A 0 A_Takeinventory("Zoomed",1)
+		SHT2 A 0 A_Takeinventory("ADSmode",1)
 		TNT1 A 0 A_PlaySound("weapons/empty", 4)
 		NoAmmo2:
-		SHTZ A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-	    SHTZ A 0 A_JumpIfInventory("Taunting",1,"Taunt")
-		SHTZ A 0 A_JumpIfInventory("Salute1", 1, "Salute")
-		SHTZ A 0 A_JumpIfInventory("Salute2", 1, "Salute")
-		SHTZ A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
-		SHTZ A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		SHTZ A 5 A_WeaponReady(WRF_ALLOWRELOAD | WRF_NOFIRE)
-		SHTZ A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		SHT2 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+	    SHT2 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		SHT2 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		SHT2 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		SHT2 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
+		SHT2 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		SHT2 A 5 A_WeaponReady(WRF_ALLOWRELOAD | WRF_NOFIRE)
+		SHT2 A 0 A_JumpIfInventory("Reloading",1,"Reload")
 		TNT1 A 0 A_JumpIfInventory("NoAutoReload", 1, 2)
-		SHTZ A 0 A_JumpIfInventory("AmmoShell",1,"Reload")
-		SHTZ A 0 A_JumpIfInventory("IsRunning",1,"StartSprint")
+		SHT2 A 0 A_JumpIfInventory("AmmoShell",1,"Reload")
+		SHT2 A 0 A_JumpIfInventory("IsRunning",1,"StartSprint")
 		Goto Ready3
 
 	 Fire:
-		SHTZ A 0 A_TakeInventory("Reloading",1)
-		SHTZ A 0 A_JumpIfInventory("SSGAmmo", 2, 2)
-		SHTZ A 0 A_JumpIfInventory("SSGAmmo", 1, "AltFire")
+		SHT2 A 0 A_TakeInventory("Reloading",1)
+		SHT2 A 0 A_JumpIfInventory("SSGAmmo", 2, 2)
+		SHT2 A 0 A_JumpIfInventory("SSGAmmo", 1, "AltFire")
 		Goto NoAmmo
-
-		SHTZ A 0 A_TakeInventory("SSGAmmo", 2)
-		SHTZ A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		SHTZ A 0 A_Recoil(3)
-		SHTZ A 0
-		SHTZ A 0 A_FireCustomMissile("DistantFireSoundSSG", random(-1,1), 0, 0, -12, 0, random(-1,1))
+		TNT1 AAA 0
+		SHT2 A 0 A_TakeInventory("SSGAmmo", 2)
+		SHT2 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
+		SHT2 A 0 A_Recoil(3)
+		SHT2 A 0
+		SHT2 A 0 A_FireCustomMissile("DistantFireSoundSSG", random(-1,1), 0, 0, -12, 0, random(-1,1))
 		SHO9 A 0 A_firebullets (0,0,1,40,"shotpuff",FBF_NORANDOM,128)
-        SHO9 A 0 BRIGHT A_playsound("SSHFIRE", 1)
+        SHO9 A 0 A_playsound("SSHFIRE", 1)
 		TNT1 AAAAAAAAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-6,6), 0, 0, 0, 0, random(-3,3))
-		TNT1 AAAAAAAAAAAAAAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-18,18), 0, -1, 0, 0, random(-9,9))
-		TNT1 AAAAAAAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles2", random(-18,18), 0, -1, 0, 0, random(-9,9))
-		SHTZ A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
+		TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_FireCustomMissile("ShotgunParticles", random(-18,18), 0, -1, 0, 0, random(-9,9))
+		TNT1 AAAAAAAAAAAAA 0 A_FireCustomMissile("ShotgunParticles2", random(-18,18), 0, -1, 0, 0, random(-9,9))
+		SHT2 A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
-		SHOF A 1 BRIGHT
-		SHTZ A 0 A_FireBullets (5.6, 2.8, 9, 13, "ShotgunPuff", FBF_NORANDOM)
-		SHTZ A 0 A_FireBullets (5.6, 2.8, 9, 13, "ShotgunPuff", FBF_NORANDOM)
+		SHT2 B 1 BRIGHT
+		SHT2 A 0 A_FireBullets (5.6, 2.8, 9, 13, "ShotgunPuff", FBF_NORANDOM)
+		SHT2 A 0 A_FireBullets (5.6, 2.8, 9, 13, "ShotgunPuff", FBF_NORANDOM)
 		TNT1 A 0 A_ZoomFactor(0.96)
-		SHTZ A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 3)//Tactical Mode deals extra damage and recoil
+		SHT2 A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 3)//Tactical Mode deals extra damage and recoil
 		SHTN A 0 A_FireBullets (5.6, 2.8, 10, 13, "ShotgunPuff2", FBF_NORANDOM)
-		SHTZ A 0 A_SetPitch(pitch-3.6)
-		SHTZ A 0 A_SetPitch(pitch-3.6)
-        SHOF B 1 BRIGHT
+		SHT2 A 0 A_SetPitch(pitch-3.6)
+		SHT2 A 0 A_SetPitch(pitch-3.6)
+        SHT2 C 1 BRIGHT
 		TNT1 A 0 A_ZoomFactor(1.0)
-        SHTZ A 0 A_TakeInventory("SSGAlt",1)
-        SHTZ A 0 A_TakeInventory("Reloading",1)
+        SHT2 A 0 A_TakeInventory("SSGAlt",1)
+        SHT2 A 0 A_TakeInventory("Reloading",1)
 
-		SHOF CDEFGI 1 A_SetPitch(pitch+0.6)
+		SHT2 DEFGHI 1 A_SetPitch(pitch+0.6)
 
-		SHTZ A 0 A_JumpIfInventory("Reloading",1,"Reload")
-		SHTZ A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-        SHTZ A 0 A_JumpIfInventory("Taunting",1,"Taunt")
-		SHTZ A 0 A_JumpIfInventory("Salute1", 1, "Salute")
-		SHTZ A 0 A_JumpIfInventory("Salute2", 1, "Salute")
-		SHTZ A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-		SHTZ A 1 A_WeaponReady(WRF_NOFIRE | WRF_NOBOB)
-		TNT1 A 0 A_JumpIfInventory("NoAutoReload", 1, 2)//Don't go to NoAmmo unless they try to fire again
+		SHT2 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		SHT2 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        SHT2 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		SHT2 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		SHT2 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		SHT2 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		SHT2 A 1 A_WeaponReady(WRF_NOFIRE | WRF_NOBOB)
+		TNT1 A 0 A_JumpIfInventory("NoAutoReload", 1, 1)//Don't go to NoAmmo unless they try to fire again
 		Goto NoAmmo2
-		TNT1 AA 0
+		TNT1 AAA 0
 		Goto Ready
 
 	Reload:	//both barrels
-		SHTZ A 0
-		SHTZ A 0 A_TakeInventory("Reloading",1)
-		SHTZ A 0 A_JumpIfInventory("AmmoShell", 1, 1)//Check if has any shells in inventory
+		SHT2 A 0
+		SHT2 A 0 A_TakeInventory("Reloading",1)
+		SHT2 A 0 A_JumpIfInventory("AmmoShell", 1, 1)//Check if has any shells in inventory
 		Goto Ready
-		SHTZ A 0 A_JumpIfInventory("AmmoShell", 2, 1)//Check if has two shells to reload both barrels
+		TNT1 AAA 0
+		SHT2 A 0 A_JumpIfInventory("AmmoShell", 2, 1)//Check if has two shells to reload both barrels
 		Goto Reload2
+		TNT1 AAA 0
+		SHT2 A 0 A_JumpIfInventory("SSGAlt", 1, "Reload2")//Check if right shell has been fired
+		SHT2 A 0 A_JumpIfInventory("SSGAmmo", 2, "Ready")//Check if both barrels are loaded
+		SHT2 A 0 A_JumpIfInventory("SSGAmmo", 1, "Reload2")
 
-		SHTZ A 0 A_JumpIfInventory("SSGAlt", 1, "Reload2")//Check if right shell has been fired
-		SHTZ A 0 A_JumpIfInventory("SSGAmmo", 2, "Ready")//Check if both barrels are loaded
-		SHTZ A 0 A_JumpIfInventory("SSGAmmo", 1, "Reload2")
-
-		SHTZ B 1 Offset(20,48)
-		SHTZ B 1 Offset(10,36)
-		SHTZ BCDEFGHIJ 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		SHTZ ABCDEFGHIJ 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		SHTZ A 0 A_GiveInventory ("Pumping", 1)
+		SHT2 A 0 A_GiveInventory("Pumping", 1)
 
-		SHTZ A 0 A_PlaySound("weapons/sshotc")
-		SHTZ A 0 A_JumpIfInventory("SSGUnloaded", 1, 3)
+		SHT2 A 0 A_PlaySound("weapons/sshoto")
+		SHT2 A 0 A_JumpIfInventory("SSGUnloaded", 1, 4)
+		SHTZ K 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		TNT1 AA 0 A_FireCustomMissile("SSGCaseSpawner",0,0,-8, -8)
-		SHTZ KL 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
-		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		SHTZ L 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+
 		SHTZ L 8 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		SHTZ MNOPQRSTUV 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+
+		SHT2 A 0 A_playsound("weapons/sshotl")
+		SHTZ WXY 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		TNT1 A 4 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		SHT2 A 0 A_TakeInventory("AmmoShell", 2)
+		SHT2 A 0 A_GiveInventory("SSGAmmo", 2)
+
+		SHTZ Z 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		SHTZ MNO 1
-		SHTZ A 0 A_playsound("weapons/sshotl")
-		SHTZ P 2 Offset(10,36)
-		SHTZ P 2 Offset(20,46)
-		SHTZ Q 1 Offset(30,56)
-		SHTZ Q 1 Offset(40,66)
-		SHTZ R 1 Offset(50,76)
-		SHTZ S 1
-		SHTZ A 0 A_GiveInventory ("Pumping", 1)
+		SHT2 A 0 A_PlaySound("weapons/sshotc")
+		SHZ2 ABCDEFGHIJ 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 
-		SHTZ T 1 Offset(30,56)
-		SHTZ U 1 Offset(20,46)
-		SHTZ V 1 Offset(1,33)
-
-		SHTZ A 0 A_GiveInventory ("Pumping", 1)
-		SHTZ A 0 A_PlaySound("weapons/sshotc")
-		SHTZ A 0 A_TakeInventory("AmmoShell", 2)
-		SHTZ A 0 A_GiveInventory("SSGAmmo", 2)
-
-		SHTZ WXYZ 1
-		SHTZ A 0 A_TakeInventory ("Pumping", 1)
-		SHTZ A 0 A_TakeInventory ("SSGUnloaded", 1)
-		SHTZ A 0 A_TakeInventory("SSGAlt",1)
+		SHT2 A 0 A_TakeInventory("Pumping", 1)
+		SHT2 A 0 A_TakeInventory("SSGUnloaded", 1)
+		SHT2 A 0 A_TakeInventory("SSGAlt",1)
 		TNT1 A 0 A_TakeInventory("ShotgunChangeAmmo",1)
-		SHO9 DEFG 1
-		SHTZ A 0 A_ReFire
-		SHTZ A 2
-		Goto Ready
-
-	AltFire:
-		SHTZ A 0 A_TakeInventory("Reloading",1)
-		SHTZ A 0 A_JumpIfInventory("SSGAmmo",1,3)
-        Goto NoAmmo
-        TNT1 AAAAA 0
-		SHTZ A 0 A_JumpIfInventory("SSGAlt",1,"AltFire2")
-
-		SHTZ A 0 A_TakeInventory("SSGAmmo",1)
-		SHTZ A 0 A_GiveInventory("SSGAlt",1)
-        SHTU A 1 BRIGHT A_FireBullets (2.7, 2.8, 9, 13, "ShotgunPuff", FBF_NORANDOM)
-		SHTZ A 0 A_ALertMonsters
-		TNT1 AAAAAAAAAAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-12,12), 0, -1, 0, 0, random(-9,9))
-		TNT1 AAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles2", random(-12,12), 0, -1, 0, 0, random(-9,9))
-		TNT1 AAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-3,3), 0, 0, 0, 0, random(-3,3))
-        SHTU A 0 BRIGHT A_PlaySound("Shotgun/Fire", 1)
-		SHTZ A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
-		SHTZ A 0 A_FireCustomMissile("DistantFireSoundShotgun", random(-1,1), 0, 0, -12, 0, random(-1,1))
-		TNT1 A 0 A_ZoomFactor(0.98)
-		SHTZ A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 3)//Tactical Mode deals extra damage and recoil
-		SHTN A 0 A_FireBullets (2.7, 2.8, 5, 13, "ShotgunPuff2", FBF_NORANDOM)
-		SHTZ A 0 A_SetPitch(pitch-1.8)
-		SHTZ A 0 A_SetPitch(pitch-1.8)
-		SHTZ A 0
-		SHOF E 1 A_SetPitch(0.3 + pitch)
-		TNT1 A 0 A_ZoomFactor(1.0)
-		SHOF FGHI 1 A_SetPitch(0.3 + pitch)
-        SHTZ A 1 A_SetPitch(0.3 + pitch)
-        Goto Ready
-
-	AltFire2:
-		SHTZ A 0 A_TakeInventory("SSGAmmo",1)
-        SHTU B 1 BRIGHT A_FireBullets (2.7, 2.8, 9, 13, "ShotgunPuff", FBF_NORANDOM)
-		SHTZ A 0 A_ALertMonsters
-		TNT1 AAAAAAAAAAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-12,12), 0, -1, 0, 0, random(-9,9))
-		TNT1 AAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles2", random(-12,12), 0, -1, 0, 0, random(-9,9))
-		TNT1 AAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-3,3), 0, 0, 0, 0, random(-3,3))
-        SHTU A 0 BRIGHT A_PlaySound("Shotgun/Fire", 1)
-		SHTZ A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
-		SHTZ A 0 A_FireCustomMissile("DistantFireSoundShotgun", random(-1,1), 0, 0, -12, 0, random(-1,1))
-		TNT1 A 0 A_ZoomFactor(0.98)
-		SHTZ A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 3)//Tactical Mode deals extra damage and recoil
-		SHTN A 0 A_FireBullets (2.7, 2.8, 5, 13, "ShotgunPuff2", FBF_NORANDOM)
-		SHTZ A 0 A_SetPitch(pitch-1.8)
-		SHTZ A 0 A_SetPitch(pitch-1.8)
-		SHTZ A 0
-		SHOF E 1 A_SetPitch(0.3 + pitch)
-		TNT1 A 0 A_ZoomFactor(1.0)
-		SHOF FGHI 1 A_SetPitch(0.3 + pitch)
-        SHTZ A 1 A_SetPitch(0.3 + pitch)
-
-		SHTZ A 0 A_TakeInventory("SSGAlt", 1)
-		TNT1 A 0 A_JumpIfInventory("NoAutoReload", 1, 2)//Don't go to NoAmmo unless they try to fire again
-		Goto Reload
-		TNT1 AA 0
+		SHTZ BA 1 A_ReFire
 		Goto Ready
 
 	Reload2://one barrel
-		SHTZ A 0 A_TakeInventory("Reloading",1)
-		SHTZ A 0 A_TakeInventory("SSGAlt",1)
-		SHTZ A 0 A_JumpIfInventory("SSGAmmo", 2, "Ready")//Check if both barrels are loaded
+		SHT2 A 0 A_TakeInventory("SSGAlt",1)
+		SHT2 A 0 A_JumpIfInventory("SSGAmmo", 2, "Ready")//Check if both barrels are loaded
 
-		SHTZ B 1 Offset(20,48)
-        SHTZ B 1 Offset(10,36)
-		SHTZ BCDEFGHIJ 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		SHTZ ABCDEFGHIJ 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		SHTZ A 0 A_GiveInventory ("Pumping", 1)
+		SHT2 A 0 A_GiveInventory("Pumping", 1)
 
-        SHTZ A 0 A_PlaySound("weapons/sshotc")
-		SHTZ A 0 A_FireCustomMissile("SSGCaseSpawner",0,0,-8, -8)
-        SHTZ KL 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		SHT2 A 0 A_PlaySound("weapons/sshoto")
+		SHTZ K 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		TNT1 A 0 A_FireCustomMissile("SSGCaseSpawner",0,0,-8, -8)
+		SHZ2 P 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+
+		SHZ2 P 8 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		SHZ2 QRSTUVWXYZ 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+
+		SHT2 A 0 A_playsound("weapons/sshotl")
+		SHZ3 ABCDE 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		TNT1 A 4 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		SHT2 A 0 A_TakeInventory("AmmoShell", 1)
+		SHT2 A 0 A_GiveInventory("SSGAmmo", 1)
+
+		SHTZ Z 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		SHT7 L 8 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		SHT2 A 0 A_PlaySound("weapons/sshotc")
+		SHZ2 ABCDEFGHIJ 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		SHT7 MNO 1
-        SHTZ A 0 A_playsound("weapons/sshotl")
-		SHT7 P 2 Offset(10,36)
-		SHT7 P 2 Offset(20,46)
-		SHTZ Q 1 Offset(30,56)
-		SHTZ Q 1 Offset(40,66)
-		SHTZ R 1 Offset(50,76)
-		SHTZ S 1
-		SHTZ A 0 A_GiveInventory ("Pumping", 1)
 
-		SHTZ T 1 Offset(30,56)
-		SHTZ U 1 Offset(20,46)
-		SHTZ V 1 Offset(1,33)
+		SHT2 A 0 A_TakeInventory("Pumping", 1)
+		SHT2 A 0 A_TakeInventory("SSGUnloaded", 1)
+		SHT2 A 0 A_TakeInventory("SSGAlt",1)
+		TNT1 A 0 A_TakeInventory("ShotgunChangeAmmo",1)
+		SHTZ BA 1 A_ReFire
+		Goto Ready
 
-		SHTZ A 0 A_GiveInventory ("Pumping", 1)
-        SHTZ A 0 A_PlaySound("weapons/sshotc")
-		SHTZ A 0 A_TakeInventory("AmmoShell", 1)
-		SHTZ A 0 A_GiveInventory("SSGAmmo", 1)
+	AltFire://right barrel
+		SHT2 A 0 A_TakeInventory("Reloading",1)
+		SHT2 A 0 A_JumpIfInventory("SSGAmmo",1,1)
+        Goto NoAmmo
+        TNT1 AAA 0
+		SHT2 A 0 A_JumpIfInventory("SSGAlt",1,"AltFire2")
 
-        SHTZ WXYZ 1
-		SHTZ A 0 A_GiveInventory ("Pumping", 1)
-		SHTZ A 0 A_TakeInventory("SSGAlt",1)
-		SHO9 DEFG 1
-		SHTZ A 0 A_ReFire
-		SHTZ A 2
+		SHT2 A 0 A_TakeInventory("SSGAmmo",1)
+		SHT2 A 0 A_GiveInventory("SSGAlt",1)
+        SHT2 X 1 BRIGHT A_FireBullets (2.7, 2.8, 9, 13, "ShotgunPuff", FBF_NORANDOM)
+		SHT2 A 0 A_ALertMonsters
+		TNT1 AAAAAAAAAAAAAAAA 0 A_FireCustomMissile("ShotgunParticles", random(-12,12), 0, -1, 0, 0, random(-9,9))
+		TNT1 AAAAA 0 A_FireCustomMissile("ShotgunParticles2", random(-12,12), 0, -1, 0, 0, random(-9,9))
+		TNT1 AAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-3,3), 0, 0, 0, 0, random(-3,3))
+        SHTU A 0 A_PlaySound("Shotgun/Fire", 1)
+		SHT2 A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
+		SHT2 A 0 A_FireCustomMissile("DistantFireSoundShotgun", random(-1,1), 0, 0, -12, 0, random(-1,1))
+		TNT1 A 0 A_ZoomFactor(0.98)
+		SHT2 A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 3)//Tactical Mode deals extra damage and recoil
+		SHTN A 0 A_FireBullets (2.7, 2.8, 5, 13, "ShotgunPuff2", FBF_NORANDOM)
+		SHT2 A 0 A_SetPitch(pitch-1.8)
+		SHT2 A 0 A_SetPitch(pitch-1.8)
+		SHT2 A 0
+		SHT2 E 1 A_SetPitch(0.3 + pitch)
+		TNT1 A 0 A_ZoomFactor(1.0)
+		SHT2 FGHI 1 A_SetPitch(0.3 + pitch)
+        SHT2 J 1 A_SetPitch(0.3 + pitch)
+        Goto Ready
 
-	  Goto Ready
+	AltFire2://left barrel
+		SHT2 A 0 A_TakeInventory("SSGAmmo",1)
+        SHT2 Y 1 BRIGHT A_FireBullets (2.7, 2.8, 9, 13, "ShotgunPuff", FBF_NORANDOM)
+		SHT2 A 0 A_ALertMonsters
+		TNT1 AAAAAAAAAAAAAAAA 0 A_FireCustomMissile("ShotgunParticles", random(-12,12), 0, -1, 0, 0, random(-9,9))
+		TNT1 AAAAA 0 A_FireCustomMissile("ShotgunParticles2", random(-12,12), 0, -1, 0, 0, random(-9,9))
+		TNT1 AAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-3,3), 0, 0, 0, 0, random(-3,3))
+        SHTU A 0 A_PlaySound("Shotgun/Fire", 1)
+		SHT2 A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
+		SHT2 A 0 A_FireCustomMissile("DistantFireSoundShotgun", random(-1,1), 0, 0, -12, 0, random(-1,1))
+		TNT1 A 0 A_ZoomFactor(0.98)
+		SHT2 A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 3)//Tactical Mode deals extra damage and recoil
+		SHTN A 0 A_FireBullets (2.7, 2.8, 5, 13, "ShotgunPuff2", FBF_NORANDOM)
+		SHT2 A 0 A_SetPitch(pitch-1.8)
+		SHT2 A 0 A_SetPitch(pitch-1.8)
+		SHT2 A 0
+		SHT2 E 1 A_SetPitch(0.3 + pitch)
+		TNT1 A 0 A_ZoomFactor(1.0)
+		SHT2 FGHI 1 A_SetPitch(0.3 + pitch)
+        SHT2 J 1 A_SetPitch(0.3 + pitch)
+
+		SHT2 A 0 A_TakeInventory("SSGAlt", 1)
+		TNT1 A 0 A_JumpIfInventory("NoAutoReload", 1, 1)//Don't go to NoAmmo unless they try to fire again
+		Goto Reload
+		TNT1 AAA 0
+		Goto Ready
 
 	Spawn:
 		SGN2 A -1
 		Stop
 
 	Unload:
-		SHTZ A 1 A_WeaponReady
-		SHTZ A 0 A_ZoomFactor(1.0)
-		SHTZ A 0 A_Takeinventory("Unloading",1)
-		SHTZ A 0 A_Takeinventory("ADSmode",1)
-		SHTZ A 0 A_Takeinventory("Zoomed",1)
-        SHTZ A 0 A_JumpIfInventory("SSGAmmo",1,3)
+		SHT2 A 1 A_WeaponReady
+		SHT2 A 0 A_ZoomFactor(1.0)
+		SHT2 A 0 A_Takeinventory("Unloading",1)
+		SHT2 A 0 A_Takeinventory("ADSmode",1)
+		SHT2 A 0 A_Takeinventory("Zoomed",1)
+        SHT2 A 0 A_JumpIfInventory("SSGAmmo",1,3)
 		TNT1 A 0 A_JumpIfInventory("ShotgunChangeAmmo", 1, "FinishUnload")
         Goto Ready
         TNT1 AAA 0
-		SHTZ B 1 Offset(20,48)
-        SHTZ B 1 Offset(10,36)
-		SHTZ BCDEFGHIV 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		SHTZ ABCDEFGHIJ 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		SHTZ A 0 A_PlaySound("weapons/sshotc")
-		SHTZ UTSQR 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+
+		SHT2 A 0 A_PlaySound("weapons/sshoto")
+		SHTZ K 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		SHTZ A 0 A_playsound("weapons/sshotl")
-		SHTZ P 2 Offset(10,36)
-		SHTZ P 2 Offset(20,46)
-		SHTZ O 1 Offset(30,56)
-		SHTZ O 1 Offset(40,66)
-		SHTZ N 1 Offset(50,76)
-		SHTZ M 1 Offset(40,66)
-		SHTZ L 8 Offset(30,56)
+		SHZ2 A 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+
+		SHTZ X 8 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		SHTZ XW 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		SHT2 A 0 A_PlaySound("weapons/sshotl")
+		SHTZ VUTSRQPONML 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 
 	RemoveBullets:
 		TNT1 AAAA 0
-		SHTZ A 0 A_JumpIfInventory("SSGAmmo",1,3)
+		SHT2 A 0 A_JumpIfInventory("SSGAmmo",1,1)
 		Goto FinishUnload
-        TNT1 AAAAAA 0
-		SHTZ A 0 A_Takeinventory("SSGAmmo",1)
-		SHTZ A 0 A_Giveinventory("AmmoShell",1)
+        TNT1 AAA 0
+		SHT2 A 0 A_Takeinventory("SSGAmmo",1)
+		SHT2 A 0 A_Giveinventory("AmmoShell",1)
 		Goto RemoveBullets
 
 	FInishUnload:
-		SHTZ A 0
-		SHTZ I 1 Offset(20,46)
-		SHTZ A 0 A_PlaySound("weapons/sshotc")
-		SHTZ WXYZ 1
-		SHO9 DEFG 1
+		SHT2 A 0 A_PlaySound("weapons/sshotc")
+		SHTZ JIHGFEDCBA 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		SHTZ A 0 A_GiveInventory("SSGUnloaded", 1)
 		SHTZ A 0 A_Takeinventory("Unloading",1)
 		SHTZ A 0 A_TakeInventory("SSGAlt",1)
@@ -456,17 +436,6 @@ ACTOR SSG : BrutalWeapon
 		TNT1 A 0 A_GiveInventory("Reloading",1)
 		TNT1 A 0 A_SelectWeapon("SSG2")
 		Goto Ready3
-
-	KickFlash://18 tics
-		TNT1 AAA 1
-		TNT1 A 12
-		TNT1 AAA 1
-		Stop
-
-	SlideFlashEnd://10 tics
-		TNT1 A 7
-		TNT1 AAA 1
-		Stop
 	}
 }
 
