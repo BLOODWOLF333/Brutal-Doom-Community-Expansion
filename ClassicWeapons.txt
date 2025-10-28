@@ -643,7 +643,7 @@ ACTOR ClassicPistol : ClassicWeapon
 	Obituary "$OB_MPPISTOL"
 	+WEAPON.WIMPY_WEAPON
 	Inventory.Pickupmessage "$GOTPISTOL"
-    Inventory.PickupSound "CLIPIN"
+    Inventory.PickupSound "Pistol/Draw"
 	Tag "$TAG_PISTOL"
 	Dropitem "PistolSpawner"
 	scale 0.9
@@ -710,7 +710,7 @@ ACTOR ClassicSMG : ClassicWeapon
 	Obituary "%o was shot down by %k's SMG."
 	Tag "Sub-Machinegun"
 	Inventory.Pickupmessage "$GOTSMG"
-    Inventory.PickupSound "CLIPIN"
+    Inventory.PickupSound "Rifle/Select"
 	DropItem "SMGSpawner"
 	Scale 0.8
 	States
@@ -787,7 +787,7 @@ ACTOR ClassicMP40 : ClassicWeapon
 	Obituary "%o was shot down by %k's MP40."
 	Tag "MP40"
 	Inventory.Pickupmessage "$GOTMP40"
-    Inventory.PickupSound "CLIPIN"
+    Inventory.PickupSound "MP40/Draw"
 	DropItem "MP40Spawner"
 	Scale 0.9
 	States
@@ -847,7 +847,7 @@ ACTOR ClassicShotgun : ClassicWeapon
 	Weapon.AmmoType "ShellPurist"
 	Tag "Shotgun"
 	Inventory.PickupMessage "$GOTSHOTGUN"
-	Inventory.PickupSound "weapons/shotgr"
+    Inventory.PickupSound "Shotgun/Pump"
 	Obituary "$OB_MPSHOTGUN"
 	DropItem "ShotgunSpawner"
 
