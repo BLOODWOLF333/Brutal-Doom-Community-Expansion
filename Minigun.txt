@@ -16,6 +16,17 @@ ACTOR MiniGun : BrutalWeapon
 	DropItem "ChaingunSpawner"
 	States
 	{
+	KickFlash://18 tics
+		CHGS DCB 1
+		CHGS A 12
+		CHGS BCD 1
+		Stop
+
+	SlideFlashEnd://10 tics
+		CHGS A 7
+		CHGS BCD 1
+		Stop
+
 	Spawn:
 		MGUN A -1
 		Stop
@@ -37,7 +48,7 @@ ACTOR MiniGun : BrutalWeapon
 
 	IdleNoAmmo:
 		CHAE A 1 A_WeaponReady
-		CHAG A 0 A_TakeInventory ("Spin",1)
+		CHAG A 0 A_TakeInventory("Spin",1)
 		CHAG A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		CHAG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		CHAG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
@@ -50,7 +61,7 @@ ACTOR MiniGun : BrutalWeapon
 
 	Ready2:
 		CHAG A 0
-		CHAG A 0 A_PlaySound("CHAINSPI", 5)
+		CHAG A 0 A_PlaySound("Chaingun/Spin", 5)
 		CHAG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		CHAG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		CHAG ABCD 1 A_WeaponReady
@@ -109,7 +120,7 @@ ACTOR MiniGun : BrutalWeapon
 
 	Sprinting2:
 		CHAG A 0 A_TakeInventory("Spin",1)
-		CHAG A 0 A_PlaySound("CHAINSTO", 6)
+		CHAG A 0 A_PlaySound("Chaingun/Stop", 6)
 		CHAG A 0 A_StopSound(5)
 		CHSP A 1 offset(-9,34) A_SetPitch(pitch -0.5)
 		CHSP A 1 offset(-6,36) A_SetPitch(pitch -0.5)
@@ -226,7 +237,7 @@ ACTOR MiniGun : BrutalWeapon
 			TNT1 A 0 A_TakeInventory("Reloading", 1)
 			TNT1 A 0 A_TakeInventory("StartDualWield",1)
 			CHAG A 0 SetPlayerProperty(0,0,0)
-			CHAG A 0 A_PlaySound("CHAINSTO", 5)
+			CHAG A 0 A_PlaySound("Chaingun/Stop", 5)
 			CHGS DCBA 1
 			TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 			TNT1 A 1 A_Lower
@@ -272,18 +283,18 @@ ACTOR MiniGun : BrutalWeapon
 			CHAG A 0
 			CHAG A 0 A_JumpIfInventory("Spin",1,"Hold")
 			RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, "Hold")//tactical mode has spin-up
-			CHAG A 0 A_PlaySound("CHAINSTA", 5)
+			CHAG A 0 A_PlaySound("Chaingun/Start", 5)
 			CHAG A 0 A_FireCustomMissile("Alerter", 0, 0, 0, 0)
 			CHAG BCD 4
 			CHAG ABCD 3
 			CHAG ABCD 2
 			CHAG A 0 A_StopSound(5)
 			CHAG A 0 A_JumpIfInventory("FiredPrimary",1,"Hold")
-			CHAG A 0 A_PlaySound("CHAINSTO", 5)
+			CHAG A 0 A_PlaySound("Chaingun/Stop", 5)
 			Goto SpinDown2
 		Hold:
 			RIFF A 0 A_FireCustomMissile("DistantFireSoundMachinegun", random(-1,1), 0, 0, -12, 0, random(-1,1))
-			CHAG A 0 A_PlaySound("CHGNSHOT", 1)
+			CHAG A 0 A_PlaySound("Chaingun/Fire", 1)
 			CHAF A 1 BRIGHT A_FireBullets(1.8, 1.9, -1, 16, "MachineGunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
 			TNT1 A 0 A_ZoomFactor(0.99)
 			CHAG A 0 A_Firecustommissile("50CaseSpawn",0,0,-12,-16)
@@ -295,7 +306,7 @@ ACTOR MiniGun : BrutalWeapon
 			RIFG A 0 A_SetPitch(pitch-0.4)
 
 			RIFF A 0 A_FireCustomMissile("DistantFireSoundMachinegun", random(-1,1), 0, 0, -12, 0, random(-1,1))
-			CHAG A 0 A_PlaySound("CHGNSHOT", 1)
+			CHAG A 0 A_PlaySound("Chaingun/Fire", 1)
 			CHAF C 1 BRIGHT A_FireBullets(1.8, 1.9, -1, 16, "MachineGunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
 			TNT1 A 0 A_ZoomFactor(0.99)
 			CHAG A 0 A_Firecustommissile("50CaseSpawn",0,0,-12,-16)
@@ -315,7 +326,7 @@ ACTOR MiniGun : BrutalWeapon
 			CHAG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 			CHAG A 0 A_JumpIfInventory("IsRunning",1,"StartSprint")
 			CHAG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-			CHAG A 0 A_PlaySound("CHAINSTO", 5)
+			CHAG A 0 A_PlaySound("Chaingun/Stop", 5)
 			CHAG ABCD 1 A_WeaponReady(WRF_NOFIRE)
 			CHAG A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
 			CHAG A 0 A_JumpIfInventory("FiredPrimary",1,"Hold")
@@ -365,7 +376,7 @@ ACTOR MiniGun : BrutalWeapon
 		CHAG A 0 A_JumpIfInventory("Clip2",1,1)
 		Goto IdleNoAmmo
 
-		CHAG A 0 A_PlaySound("CHAINSTA", 5)
+		CHAG A 0 A_PlaySound("Chaingun/Start", 5)
 		CHAG BCD 4 A_WeaponReady(WRF_NOFIRE | WRF_NOSECONDARY)
 		CHAG ABCD 3 A_WeaponReady(WRF_NOFIRE | WRF_NOSECONDARY)
 		CHAG ABCD 2 A_WeaponReady(WRF_NOFIRE | WRF_NOSECONDARY)
@@ -376,7 +387,7 @@ ACTOR MiniGun : BrutalWeapon
 
 	  StopAlt:
 		CHAG A 0
-		CHAG A 0 A_PlaySound("CHAINSTO", 6)
+		CHAG A 0 A_PlaySound("Chaingun/Stop", 6)
 		CHAG A 0 A_StopSound(5)
 		CHAG A 0 A_StopSound(1)
 
@@ -386,16 +397,5 @@ ACTOR MiniGun : BrutalWeapon
 		CHAG A 0 A_TakeInventory ("Spin",1)
 		CHAG ABCD 5 A_WeaponReady(WRF_NOFIRE | WRF_NOSECONDARY)
 		Goto Ready
-
-	KickFlash://18 tics
-		TNT1 AAA 1
-		TNT1 A 12
-		TNT1 AAA 1
-		Stop
-
-	SlideFlashEnd://10 tics
-		TNT1 A 7
-		TNT1 AAA 1
-		Stop
 	}
 }

@@ -79,7 +79,7 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 
 	Missile:
 		TNT1 A 0 A_TakeInventory("SKChaingunGuy", 1)
-		TNT1 A 0 A_PlaySound("CHAINSTA")
+		TNT1 A 0 A_PlaySound("Chaingun/Start")
 		TNT1 A 0 A_GiveInventory("IsFiring", 1)
 		MPOS E 8 A_FaceTarget
 		MPOS E 8 A_FaceTarget
@@ -92,26 +92,26 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 		TNT1 A 0 A_CustomMissile("Alerter",32)
 		MPOS E 1 A_FaceTarget
 		TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
-		TNT1 A 0 A_PlaySound("CHGNSHOT")
+		TNT1 A 0 A_PlaySound("Chaingun/Fire")
 
         MPOS H 1 BRIGHT A_CustomMissile("Tracer", 32, 8, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
         TNT1 A 0 A_CustomMissile("EnemyMinigunBrass", 32, 0, -60, 2, random(20, 55))
 		MPOS E 1 A_FaceTarget
 		TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
-		TNT1 A 0 A_PlaySound("CHGNSHOT")
+		TNT1 A 0 A_PlaySound("Chaingun/Fire")
 
 		MPOS F 1 BRIGHT A_CustomMissile("MonsterMinigunTracer", 32, 8, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
         TNT1 A 0 A_CustomMissile("EnemyMinigunBrass", 32, 0, -60, 2, random(20, 55))
 		TNT1 A 0 A_CustomMissile("Alerter",32)
 		MPOS E 1 A_FaceTarget
 		TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
-		TNT1 A 0 A_PlaySound("CHGNSHOT")
+		TNT1 A 0 A_PlaySound("Chaingun/Fire")
 
         MPOS H 1 BRIGHT A_CustomMissile("Tracer", 32, 8, random(-3, 3), CMF_OFFSETPITCH, random(-2, 2))
         TNT1 A 0 A_CustomMissile("EnemyMinigunBrass", 32, 0, -60, 2, random(20, 55))
 		MPOS E 1 A_FaceTarget
 		TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
-		TNT1 A 0 A_PlaySound("CHGNSHOT")
+		TNT1 A 0 A_PlaySound("Chaingun/Fire")
 
 		TNT1 A 0 A_JumpIfInTargetInventory("ChainguyguyContinue", 1, "MissileContinue")
 		TNT1 A 0 A_CposRefire
@@ -151,13 +151,13 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 	Pain.IsFiring:
 	CPDR A 2 A_FaceTarget
 	TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
-	TNT1 A 0 A_PlaySound("CHGNSHOT")
+	TNT1 A 0 A_PlaySound("Chaingun/Fire")
 	CPDR B 2 A_CustomMissile("MonsterMinigunTracer", 30, 13, random(-9, 9), CMF_OFFSETPITCH, random(-6, 6))
 	TNT1 A 0 A_CustomMissile("EnemyMinigunBrass", 30, 0, -60, 2, random(20, 55))
 	TNT1 A 0 A_CustomMissile("Alerter",30)
 	CPDR A 2 A_FaceTarget
 	TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 30, 0, 0, 1, 0)
-	TNT1 A 0 A_PlaySound("CHGNSHOT")
+	TNT1 A 0 A_PlaySound("Chaingun/Fire")
 	Goto MissileContinue
 
 	Pain.Slide:
@@ -238,7 +238,7 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 	TNT1 A 0 A_ChangeFLag("SLIDESONWALLS", 0)
 	CPDR A 2 A_FaceTarget
 	TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
-	TNT1 A 0 A_PlaySound("CHGNSHOT")
+	TNT1 A 0 A_PlaySound("Chaingun/Fire")
 
 	CPDR B 2 A_CustomMissile("MonsterMinigunTracer", 34, 6, random(-9, 9), CMF_OFFSETPITCH, random(-6, 6))
 	TNT1 A 0 A_CustomMissile("EnemyMinigunBrass", 32, 0, -60, 2, random(20, 55))
@@ -246,7 +246,7 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 
 	CPDR A 2 A_FaceTarget
 	TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
-	TNT1 A 0 A_PlaySound("CHGNSHOT")
+	TNT1 A 0 A_PlaySound("Chaingun/Fire")
 
 	CPDR B 2 A_CustomMissile ("Tracer", 34, 6, random(-9, 9), CMF_OFFSETPITCH, random(-6, 6))
 	TNT1 A 0 A_CustomMissile("EnemyMinigunBrass", 32, 0, -60, 2, random(20, 55))
@@ -254,7 +254,7 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 
 	CPDR C 2 A_FaceTarget
 	TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
-	TNT1 A 0 A_PlaySound("CHGNSHOT")
+	TNT1 A 0 A_PlaySound("Chaingun/Fire")
 
 	CPDR D 2 A_CustomMissile ("MonsterMinigunTracer", 24, 15, -20, 2, -20)
 	TNT1 A 0 A_CustomMissile("EnemyMinigunBrass", 24, 0, -60, 2, random(20, 55))
@@ -262,7 +262,7 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 
 	CPDR C 2 A_FaceTarget
 	TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
-	TNT1 A 0 A_PlaySound("CHGNSHOT")
+	TNT1 A 0 A_PlaySound("Chaingun/Fire")
 
 	CPDR D 2 A_CustomMissile ("Tracer", 24, 15, -20, 2, -20)
 	TNT1 A 0 A_CustomMissile("EnemyMinigunBrass", 24, 0, -60, 2, random(20, 55))
@@ -271,7 +271,7 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 	TNT1 A 0 A_Recoil(1)
 	CPDR E 2 A_FaceTarget
 	TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
-	TNT1 A 0 A_PlaySound("CHGNSHOT")
+	TNT1 A 0 A_PlaySound("Chaingun/Fire")
 
 	TNT1 A 0 A_Recoil(1)
 	CPDR F 2 A_CustomMissile ("MonsterMinigunTracer", 24, 15, -20, 2, 20)
@@ -282,7 +282,7 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 	TNT1 A 0 A_Recoil(1)
 	CPDR G 2 A_FaceTarget
 	TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
-	TNT1 A 0 A_PlaySound("CHGNSHOT")
+	TNT1 A 0 A_PlaySound("Chaingun/Fire")
 
 	TNT1 A 0 A_Recoil(1)
 	CPDR H 2 A_CustomMissile ("Tracer", 24, 15, -10, 2, 40)
@@ -293,7 +293,7 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 	TNT1 A 0 A_Recoil(1)
 	CPDR I 2 A_FaceTarget
 	TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
-	TNT1 A 0 A_PlaySound("CHGNSHOT")
+	TNT1 A 0 A_PlaySound("Chaingun/Fire")
 
 	TNT1 A 0 A_Recoil(1)
 	CPDR J 2 A_CustomMissile ("MonsterMinigunTracer", 24, 15, -10, 2, 40)
@@ -304,7 +304,7 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 	TNT1 A 0 A_Stop
 	CPDR K 2 A_FaceTarget
 	TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
-	TNT1 A 0 A_PlaySound("CHGNSHOT")
+	TNT1 A 0 A_PlaySound("Chaingun/Fire")
 
 	CPDR L 2 A_CustomMissile ("Tracer", 12, 15, -10, 2, 40)
 	TNT1 A 0 A_CustomMissile("EnemyMinigunBrass", 12, 0, -60, 2, random(20, 55))
@@ -313,7 +313,7 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 
 	CPDR M 2 A_FaceTarget
 	TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
-	TNT1 A 0 A_PlaySound("CHGNSHOT")
+	TNT1 A 0 A_PlaySound("Chaingun/Fire")
 
 	CPDR N 2 A_CustomMissile ("MonsterMinigunTracer", 12, 15, -10, 2, 20)
 	TNT1 A 0 A_CustomMissile("EnemyMinigunBrass", 12, 0, -60, 2, random(20, 55))
@@ -321,7 +321,7 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 
 	CPDR M 2 A_FaceTarget
 	TNT1 A 0 A_CustomMissile("DistantFireSoundMachinegun", 32, 0, 0, 1, 0)
-	TNT1 A 0 A_PlaySound("CHGNSHOT")
+	TNT1 A 0 A_PlaySound("Chaingun/Fire")
 
 	CPDR N 2 A_CustomMissile ("Tracer", 12, 15, -10, 2, 20)
 	TNT1 A 0 A_CustomMissile("EnemyMinigunBrass", 12, 0, -60, 2, random(20, 55))

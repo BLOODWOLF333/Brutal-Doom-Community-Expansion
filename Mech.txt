@@ -519,11 +519,11 @@ ACTOR MechGun : DoomWeapon
 	Machinegun:
 		MEKH A 0
 		MEKH A 0 A_JumpIfinventory("TankZoom", 1, "MachinegunZoom")
-		MEKH A 0 A_PlaySound("CHAINSTA", 3)
+		MEKH A 0 A_PlaySound("Chaingun/Start", 3)
 		MEKH A 5
 	FireContinue:
 		MEKH A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 2, 2)
-		MEKH A 0 A_PlaySound("CHAINSTO", 3)
+		MEKH A 0 A_PlaySound("Chaingun/Stop", 3)
 		Goto NoAmmo
 
 		MEKH A 0 A_PlaySound("TANKMG", 1)
@@ -536,16 +536,16 @@ ACTOR MechGun : DoomWeapon
 		MEKH A 3 BRIGHT A_FireCustomMissile("HeavyMachinegunFlash", 0, 0, -56, -8, 0, 0)
 
 		MEKH A 0 A_ReFire("FireContinue")
-		MEKH A 0 A_PlaySound("CHAINSTO", 3)
+		MEKH A 0 A_PlaySound("Chaingun/Stop", 3)
 		Goto ReadyToFire
 
 	MachinegunZoom:
 		TNT1 A 0
-		TNT1 A 0 A_PlaySound("CHAINSTA", 3)
+		TNT1 A 0 A_PlaySound("Chaingun/Start", 3)
 		TNT1 A 5
 	MachinegunZoomContinue:
 		TNT1 A 0 A_JumpIfInventory("HeavyMachinegunAmmo", 2, 2)
-		TNT1 A 0 A_PlaySound("CHAINSTO", 3)
+		TNT1 A 0 A_PlaySound("Chaingun/Stop", 3)
 		Goto NoAmmoZoom
 
 		MEKH A 0 A_PlaySound("TANKMG", 1)
@@ -558,7 +558,7 @@ ACTOR MechGun : DoomWeapon
 		TNT1 A 3 BRIGHT A_FireCustomMissile("HeavyMachinegunFlash", 0, 0, -56, -8, 0, 0)
 
 		TNT1 A 0 A_ReFire("MachinegunZoomContinue")
-		TNT1 A 0 A_PlaySound("CHAINSTO", 3)
+		TNT1 A 0 A_PlaySound("Chaingun/Stop", 3)
 		Goto ReadyZoom
 
 	Laser:

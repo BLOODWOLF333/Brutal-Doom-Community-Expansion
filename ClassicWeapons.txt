@@ -140,7 +140,7 @@ ACTOR ClassicWeapon : DoomWeapon
 		KICK A 0 A_Takeinventory("Kicking",1)
 		TNT1 A 0 A_PlaySound("Kick/Swing")
 		TNT1 A 0 A_Recoil (-6)
-		TNT1 A 0 A_PlaySound("Kick/SlideStart", 5)
+		TNT1 A 0 A_PlaySound("Kick/SlideStart")
 		KICK LMN 1
 		TNT1 A 0 A_SetPItch(10)
 		TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"BerserkSlide")
@@ -596,14 +596,14 @@ ACTOR ClassicSaw : ClassicWeapon
 		TNT1 A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"Fire.Blood")
         TNT1 A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"Fire.BlueBlood")
         TNT1 A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"Fire.GreenBlood")
-		VSAW CD 4 A_Saw("DSSAWHIT","CSAWCUT",20,"SSawPuff2",SF_NORANDOM)
+		VSAW CD 4 A_Saw("weapons/sawfull","weapons/sawhit",20,"SSawPuff2",SF_NORANDOM)
 		SAWG B 0 A_ReFire
 		Goto Ready
 
 	Fire.Blood:
 		TNT1 A 0 A_TakeInventory("PowerBlueBloodOnVisor", 1)
 		TNT1 A 0 A_TakeInventory("PowerGreenBloodOnVisor", 1)
-		VSRW CD 4 A_Saw("DSSAWHIT","CSAWCUT",20,"SSawPuff2",SF_NORANDOM)
+		VSRW CD 4 A_Saw("weapons/sawfull","weapons/sawhit",20,"SSawPuff2",SF_NORANDOM)
 		TNT1 A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"Fire.BlueBlood")
         TNT1 A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"Fire.GreenBlood")
 		SAWG B 0 A_ReFire
@@ -612,7 +612,7 @@ ACTOR ClassicSaw : ClassicWeapon
 	Fire.BlueBlood:
 		TNT1 A 0 A_TakeInventory("PowerBloodOnVisor", 1)
 		TNT1 A 0 A_TakeInventory("PowerGreenBloodOnVisor", 1)
-		VSBW CD 4 A_Saw("DSSAWHIT","CSAWCUT",20,"SSawPuff2",SF_NORANDOM)
+		VSBW CD 4 A_Saw("weapons/sawfull","weapons/sawhit",20,"SSawPuff2",SF_NORANDOM)
 		TNT1 A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"Fire.Blood")
         TNT1 A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"Fire.GreenBlood")
 		SAWG B 0 A_ReFire
@@ -621,7 +621,7 @@ ACTOR ClassicSaw : ClassicWeapon
 	Fire.GreenBlood:
 		TNT1 A 0 A_TakeInventory("PowerBlueBloodOnVisor", 1)
 		TNT1 A 0 A_TakeInventory("PowerBloodOnVisor", 1)
-		VSGW CD 4 A_Saw("DSSAWHIT","CSAWCUT",20,"SSawPuff2",SF_NORANDOM)
+		VSGW CD 4 A_Saw("weapons/sawfull","weapons/sawhit",20,"SSawPuff2",SF_NORANDOM)
 		TNT1 A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"Fire.Blood")
         TNT1 A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"Fire.BlueBlood")
 		SAWG B 0 A_ReFire
@@ -993,7 +993,7 @@ ACTOR ClassicChaingun : ClassicWeapon
 
 	Ready:
 	Ready3:
-		PKCG G 1 A_WeaponReady
+		PKCG A 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
@@ -1002,7 +1002,7 @@ ACTOR ClassicChaingun : ClassicWeapon
 		TNT1 A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		Loop
 	Deselect:
-		PKCG G 1 A_Lower
+		PKCG A 1 A_Lower
 		TNT1 A 0 A_TakeInventory("HeavyAutomaticWeapon",1)
 		TNT1 A 0 A_TakeInventory("RandomHeadExploder", 1)
 		Loop
@@ -1025,23 +1025,24 @@ ACTOR ClassicChaingun : ClassicWeapon
 		TNT1 A 0 A_TakeInventory("SawSelected", 1)
 		MGN1 A 0 A_GiveInventory("RandomHeadExploder", 1)
 		TNT1 A 0 A_GunFlash
-		PKCG G 1 A_Raise
+		PKCG A 1 A_Raise
 		Loop
 	Fire:
+		PKCG B 1
 		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 A 0 A_PlaySound("weapons/chngun", 1)
 		RIFF A 0 A_FireCustomMissile("DistantFireSoundMachinegun", random(-1,1), 0, 0, -12, 0, random(-1,1))
-		PKCG E 1 BRIGHT A_FireBullets(5.6, 0, 1, 15, "MinigunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
+		PKCG C 1 BRIGHT A_FireBullets(5.6, 0, 1, 15, "MinigunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
 		TNT1 A 0 A_Firecustommissile("50CaseSpawn2",0,0,8,-16)
-		PKCG GHD 1
+		PKCG DA 1
 
+		PKCG E 1
 		A12G A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 A 0 A_PlaySound("weapons/chngun", 1)
 		RIFF A 0 A_FireCustomMissile("DistantFireSoundMachinegun", random(-1,1), 0, 0, -12, 0, random(-1,1))
-		PKCG E 1 BRIGHT A_FireBullets(5.6, 0, 1, 15, "MinigunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
+		PKCG F 1 BRIGHT A_FireBullets(5.6, 0, 1, 15, "MinigunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
 		TNT1 A 0 A_Firecustommissile("50CaseSpawn2",0,0,8,-16)
-		PKCG GHD 1
-
+		PKCG GA 1
 		PKCG G 0 A_ReFire
 		Goto Ready
 
@@ -1066,7 +1067,6 @@ ACTOR ClassicBuzzsaw : ClassicWeapon
 	Scale 1.0
 	States
 	{
-
 	Ready:
 	Ready3:
 		PKBZ A 1 A_WeaponReady
