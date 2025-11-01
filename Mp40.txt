@@ -593,7 +593,7 @@ ACTOR HitlersBuzzsaw : BrutalWeapon
 
 	Fire:
 		TNT1 A 0 A_FireCustomMissile("DistantFireSoundHMG", random(-1,1), 0, 0, -12, 0, random(-1,1))
-		MP40 A 0 A_PlaySound("MP40/Fire", 1)
+		MP40 A 0 A_PlaySound("MG42/Fire", 1)
 		HBUS B 1 BRIGHT A_FireBullets (2.0, 2.1, -1, 24, "MachinegunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
 		MP40 A 0 A_FireCustomMissile("ShakeYourAssMinor", 0, 0, 0, 0)
         MP40 A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))
@@ -610,7 +610,7 @@ ACTOR HitlersBuzzsaw : BrutalWeapon
 		Goto NoAmmo
 		TNT1 AAAA 0
 		TNT1 A 0 A_FireCustomMissile("DistantFireSoundHMG", random(-1,1), 0, 0, -12, 0, random(-1,1))
-		MP40 A 0 A_PlaySound("MP40/Fire", 1)
+		MP40 A 0 A_PlaySound("MG42/Fire", 1)
 		HBUS C 1 BRIGHT A_FireBullets (2.0, 2.1, -1, 24, "MachinegunBulletPuff", FBF_NORANDOM | FBF_USEAMMO)
 		MP40 A 0 A_FireCustomMissile("ShakeYourAssMinor", 0, 0, 0, 0)
         MP40 A 0 A_FireCustomMissile("DecorativeTracer", random(-2,2), 0, 0, 0, 0, random(-2,2))

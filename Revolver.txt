@@ -20,11 +20,14 @@ ACTOR Revolver : BrutalWeapon
 	States
 	{
 	KickFlash://18 tics
-		REVA A 18
+		REVO VWX 1
+		REVO X 12
+		REVO XWV 1
 		Stop
 
 	SlideFlashEnd://10 tics
-		REVA A 10
+		REVO X 7
+		REVO XWV 1
 		Stop
 
     Spawn:
@@ -70,8 +73,9 @@ ACTOR Revolver : BrutalWeapon
 		REVO A 0 A_Takeinventory("ADSmode",1)
 		REVO A 0 A_TakeInventory("PistolBurstFire",1)
         REVO A 0 A_ZoomFactor(1.0)
-		TNT1 AAAAAAAAAAAA 0 A_Lower
-		REVO KKKK 1 A_Lower
+		REVO VWX 1
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1 A_Lower
 		Wait
 
 	Select:
@@ -102,11 +106,11 @@ ACTOR Revolver : BrutalWeapon
 
 	SelectAnimation:
 		TNT1 A 0
-		REVO A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
 		TNT1 A 0 A_JumpIfInventory("RevolverChangeAmmo", 1, "Reload")
-		REVO KLMN 2 A_JumpIfInventory("Reloading",1,"Reload")
+		REVO UTS 1 A_JumpIfInventory("GoFatality", 1, "Steady")
+		REVO KLMN 2 A_JumpIfInventory("GoFatality", 1, "Steady")
 		TNT1 A 0 A_PlaySound("Revolver/Hammer", 4)
-		REVO OPQR 2
+		REVO OPQR 2 A_JumpIfInventory("GoFatality", 1, "Steady")
 		Goto Ready
 
     Fire:
