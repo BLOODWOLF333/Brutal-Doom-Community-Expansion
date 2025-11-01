@@ -127,8 +127,8 @@ Actor Chain_saw : BrutalWeapon
 		KICK A 0 A_Takeinventory("PowerGreenBloodOnVisor",1)
 		TNT1 A 0 A_SetCrosshair(41)
 		SAWG A 0 A_GunFlash
-		TNT1 AAAAAA 1 A_RAise
-		TNT1 AAAAAAAAA 0 A_Raise
+		TNT1 A 1 A_Raise
+		TNT1 AAAAAAAAAAAA 0 A_Raise
 		Goto SelectAnimation
 
 	SelectAnimation:
@@ -140,7 +140,6 @@ Actor Chain_saw : BrutalWeapon
 		Goto REady
 
 	Deselect:
-	    SAWY EDCBA 1
 		SAWG A 0 A_StopSound(6)
 		AXEG A 0 A_Takeinventory("PowerBloodOnVisor",1)
 		AXEG A 0 A_Takeinventory("PowerBlueBloodOnVisor",1)
@@ -151,13 +150,13 @@ Actor Chain_saw : BrutalWeapon
 		TNT1 A 0 A_TakeInventory("StartDualWield",1)
 		SAWG A 0 A_Stopsound(1)
 		TNT1 A 0 A_SetCrosshair(0)
+	    SAWY FGHIJ 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1 A_Lower
 		wait
 
 	Ready:
 	Ready3:
-		TNT1 A 0 A_SetCrosshair(41)
 	Reload:
 	ReadyToFire:
 		SAWG A 0
