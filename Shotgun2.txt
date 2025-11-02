@@ -341,6 +341,7 @@ ACTOR Shot_Gun2 : BrutalWeapon
 
 	 InsertingShells:
 		SHTN A 0
+		SHTN A 0 A_JumpIfInventory("TurboReload", 1, "TurboReload")
 		SHTN A 0 A_JumpIfInventory("AmmoSlug",1,1)//if there are no more reserve shells, finish reload.
         Goto FinishedInsertingShells
 		SHTN A 0
