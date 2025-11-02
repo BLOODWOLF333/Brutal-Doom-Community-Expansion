@@ -350,13 +350,14 @@ script "BDBlackMetal" (void)
         SetActorProperty (0, APROP_Speed, 1.25);
 }
 
-Script "MGGrenadeCheck"(VOID)
+Script "UBGLCheck"(VOID)
 {
-if (checkinventory("FiredMGGrenade") == 1) {
-setfont("NoGren");
-hudmessage(s:"A"; HUDMSG_PLAIN, 0, CR_UNTRANSLATED, 0.50, 0.90, 1.0);
-delay(5);
-}
+	if(!checkinventory("UBGLLoaded") == 1)
+	{
+		setfont("NoGren");
+		hudmessage(s:"A"; HUDMSG_PLAIN, 0, CR_UNTRANSLATED, 0.50, 0.90, 1.0);
+		delay(5);
+	}
 }
 
 Script "GetBerserkEffect" (VOID) NET

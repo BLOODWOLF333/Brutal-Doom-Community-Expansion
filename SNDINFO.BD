@@ -102,6 +102,7 @@ $rolloff DSCANFIR 1000 6000
 RELO1 RELO1
 RELO2 RELO2
 RELOAD RELOAD
+HMGFIRE HMGFIRE
 
 // ASG
 ASG/Fire AA12F
@@ -228,11 +229,12 @@ Weapons/GrenadeClose DSGRCLOS
 Weapons/GrenadeLoad DSGRLOAD
 Weapons/GrenadeOpen DSGROPEN
 weapons/firegrenade GLAUNCH
+GrenadeLauncher/Fire DSGRFIRE
 
-// Machineigun
-HMGFIRE HMGFIRE
-GRLLO1 GRLLO1
-GRLLO2 GRLLO2
+$random GrenadeLauncher/Casing { HGRENB1A HGRENB2A }
+HGRENB1A HGRENB1A
+HGRENB2A HGRENB2A
+$volume GrenadeLauncher/Casing 0.5
 
 // Melee
 Melee/SwingStrong dsswing
@@ -320,10 +322,16 @@ Revolver/Hammer REVOHAM
 Revolver/Open revop
 
 // RIFLE
-CLIPIN CLIPIN
+Rifle/Bolt1 bolt1
+Rifle/Bolt2 bolt2
 Rifle/Select CLIPIN
-weapons/rifle DSRIFLE
-$limit weapons/rifle 0
+Rifle/Fire DSRIFLE
+$limit Rifle/Fire 0
+Rifle/Grenade1 GRLLO1
+Rifle/Grenade2 GRLLO2
+Rifle/Reload1 RIFLER1
+Rifle/Reload2 RIFLER2
+Rifle/ReloadGrenade RIFLER3
 
 // RocketLauncher
 DSRFIRE DSRFIRE

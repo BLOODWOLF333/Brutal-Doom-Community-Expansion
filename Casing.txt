@@ -848,3 +848,49 @@ ACTOR EmptyCellSpawn
 		Stop
 	}
 }
+
+ACTOR GrenadeCasing
+{
+	Height 4
+	Radius 2
+	Speed 8
+	Scale 0.5
+	+DOOMBOUNCE
+	-NOGRAVITY
+	+WINDTHRUST
+	+CLIENTSIDEONLY
+	+NONETID
+	+MOVEWITHSECTOR
+	+MISSILE
+	+NOBLOCKMAP
+	-DROPOFF
+	+NOTELEPORT
+	+FORCEXYBILLBOARD
+	+NOTDMATCH
+	+GHOST
+	BounceFactor 0.4
+	Mass 2
+	DeathSound "GrenadeLauncher/Casing"
+	BounceSound "GrenadeLauncher/Casing"
+	SeeSound "GrenadeLauncher/Casing"
+	States
+	{
+		Spawn:
+		GBPJ NNNOOOPPPIIIJJJKKKLLLMMM 1 A_CustomMissile("CasingSmoke", 0, 0, random(0, 360), 2, random(85, 90))
+		Loop
+
+		Death:
+		"####" "#" 0
+		"####" "#" 0 ACS_NamedExecuteAlways("BDCheckJanitor")//Check Effects
+		"####" "#" 0 ACS_NamedExecuteAlways("BDCheckJanitor2")//Check Effects
+		"####" "#" 0 A_SpawnItem("MicroSmokeColumn")
+		RestLoop:
+		"####" "#" 200
+		"####" "#" 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+		Loop
+
+		Stoping:
+		TNT1 A 0
+		Stop
+	}
+}
