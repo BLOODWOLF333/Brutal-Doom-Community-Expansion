@@ -381,7 +381,7 @@ ACTOR Marine_SMG: Marine_Rifle
 		TNT1 A 0 A_CustomMissile("EmptyPistolClipSpawn", 30, 0, random(-11, 11), 0)
 		MRMP D 8 A_FaceTarget
 		TNT1 A 0 A_PlaySound("SMG/Reload2")
-		MRMP A 18 A_FaceTarget
+		MRMP A 16 A_FaceTarget
 		TNT1 A 0 A_TakeInventory("BDSMGAmmo", 40)
 		Goto See
 
@@ -958,7 +958,7 @@ ACTOR SMGMarineGuarding: Marine_SMG
 		TNT1 A 0 A_CustomMissile("EmptyPistolClipSpawn", 30, 0, random(-11, 11), 0)
 		MRMP D 8 A_FaceTarget
 		TNT1 A 0 A_PlaySound("SMG/Reload2")
-		MRMP A 18 A_FaceTarget
+		MRMP A 16 A_FaceTarget
 		TNT1 A 0 A_TakeInventory("BDSMGAmmo", 40)
 		Goto See
 

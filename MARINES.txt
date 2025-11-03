@@ -507,7 +507,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		TNT1 A 0 A_CustomMissile("EmptyClipSpawn", 30, 0, random(-11, 11), 0)
 		MWAV J 10 A_TakeInventory("RifleAmmo", 30)
 		MWAV K 10 A_FaceTarget
-		TNT1 A 0 A_PlaySound("CLIPIN")
+		TNT1 A 0 A_PlaySound("Rifle/Select")
 		MWAV J 10 A_FaceTarget
 		MWAV I 10 A_FaceTarget
 		Goto See
@@ -1097,7 +1097,7 @@ ACTOR RifleMarineGuarding: Marine_Rifle
 		TNT1 A 0 A_CustomMissile("EmptyClipSpawn", 30, 0, random(-11, 11), 0)
 		MWAV J 10 A_TakeInventory("RifleAmmo", 30)
 		MWAV K 10 A_FaceTarget
-		TNT1 A 0 A_PlaySound("CLIPIN")
+		TNT1 A 0 A_PlaySound("Rifle/Select")
 		MWAV J 10 A_FaceTarget
 		MWAV I 10 A_FaceTarget
 		Goto See
