@@ -1293,7 +1293,7 @@ actor BrutalizedImpStop3: BrutalizedImpStop
 
 Actor DeadImp: CurbstompedMarine Replaces DeadDoomImp
 {
-    Radius 12
+    Radius 20
     Height 12
     +SHOOTABLE
     +NOTELEPORT
@@ -1453,9 +1453,9 @@ Actor DeadImp_Slumped: ZombiemanTorso
 	+NOBLOCKMONST
 	-SLIDESONWALLS
 	Health 200
-	DamageFactor "Head", 15.0
+	DamageFactor "Head", 15.0	DamageFactor "Kick", 15.0
 	Height 36
-	Radius 8
+	Radius 20
 	BloodType "Slumped_Blood", "Slumped_SawBlood", "Slumped_SawBlood"
 	States
 	{
@@ -1480,6 +1480,7 @@ Actor DeadImp_Slumped: ZombiemanTorso
 		Stop
 
 	Death.Head:
+	Death.Kick:
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItemEx("ImpHeadExplode", 0, 0, 22)
 		TNT1 A 0 A_SpawnItem("DeadImp_Slumped_NoHead")
@@ -2412,7 +2413,7 @@ ACTOR ImpAttack2: ImpAttack
 ACTOR ImpBrutalizedWithNoLeg
 {
 	Game Doom
-	Radius 16
+	Radius 20
 	Height 55
 	Health 20
 	GibHealth 80
@@ -2614,7 +2615,7 @@ ACTOR ImpSaciLol: DyingImpNoLeg
 
 ACTOR ImpTorso
 {
-    Radius 8
+    Radius 20
     Height 16
 	Mass 20
     Health 50
