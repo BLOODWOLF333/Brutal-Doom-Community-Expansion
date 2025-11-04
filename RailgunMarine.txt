@@ -224,6 +224,8 @@ ACTOR Marine_Railgun: Marine_Rifle
 		MRRG D 8 A_FaceTarget
 		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, 1)
 		Goto ForgetTarget
+		TNT1 A 0 A_JumpIfInventory("RailgunAmmo", 1, "Reload")
+		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 1, "ReloadSMG")
 		TNT1 A 0 A_Jump(32, "Waits2", "Waits3")
 		MRRG D 8 A_FaceTarget
 		TNT1 A 0 A_ClearTarget
@@ -482,7 +484,7 @@ ACTOR Marine_Railgun: Marine_Rifle
 		TNT1 A 0 A_CustomMissile("MarineWeakTracer", 48, 0, random(-1,1), CMF_OFFSETPITCH, random(-1,1))
 		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
 
-		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 40, "ReloadSMG")
+		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 40, "Reload")
 
 		MRMP A 2 A_FaceTarget
 		TNT1 A 0 A_Recoil(5)
@@ -494,7 +496,7 @@ ACTOR Marine_Railgun: Marine_Rifle
 		TNT1 A 0 A_CustomMissile("MarineWeakTracer", 48, 0, random(-1,1), CMF_OFFSETPITCH, random(-1,1))
 		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
 
-		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 40, "ReloadSMG")
+		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 40, "Reload")
 
 		MRMP A 2 A_FaceTarget
 		TNT1 A 0 A_Recoil(5)
@@ -506,7 +508,7 @@ ACTOR Marine_Railgun: Marine_Rifle
 		TNT1 A 0 A_CustomMissile("MarineWeakTracer", 48, 0, random(-1,1), CMF_OFFSETPITCH, random(-1,1))
 		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
 
-		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 40, "ReloadSMG")
+		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 40, "Reload")
 
 		MRMP A 2 A_FaceTarget
 		TNT1 A 0 A_Recoil(5)
@@ -518,7 +520,19 @@ ACTOR Marine_Railgun: Marine_Rifle
 		TNT1 A 0 A_CustomMissile("MarineWeakTracer", 48, 0, random(-1,1), CMF_OFFSETPITCH, random(-1,1))
 		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
 
-		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 40, "ReloadSMG")
+		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 40, "Reload")
+
+		MRMP A 2 A_FaceTarget
+		TNT1 A 0 A_Recoil(5)
+		MRMP D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
+		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
+		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
+        TNT1 A 0 A_PlaySound("SMG/Fire", 1)
+		TNT1 A 0 A_GiveInventory("BDSMGAmmo",1)
+		TNT1 A 0 A_CustomMissile("MarineWeakTracer", 48, 0, random(-1,1), CMF_OFFSETPITCH, random(-1,1))
+		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
+
+		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 40, "Reload")
 		Goto Pain.Avoid
 
 	Melee:
@@ -956,6 +970,8 @@ ACTOR RailgunMarineGuarding: Marine_Railgun
 		TNT1 A 0 A_ChangeFLag("SOLID", 0)
 		TNT1 A 0 A_GiveInventory("TargetIsAMarine")
 		MRRG AAAAAAAA 4 A_Look
+		TNT1 A 0 A_JumpIfInventory("RailgunAmmo", 1, "Reload")
+		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 1, "ReloadSMG")
 		TNT1 A 0 A_JumpIfHealthLower(135,"Heal")
 		Loop
 
@@ -1142,7 +1158,6 @@ ACTOR RailgunMarineGuarding: Marine_Railgun
 		Goto Pain.Avoid
 
 	RetreatClose:
-		TNT1 A 0
 		MRMP A 2 A_FaceTarget
 		TNT1 A 0 A_Recoil(5)
 		MRMP D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
@@ -1153,19 +1168,7 @@ ACTOR RailgunMarineGuarding: Marine_Railgun
 		TNT1 A 0 A_CustomMissile("MarineWeakTracer", 48, 0, random(-1,1), CMF_OFFSETPITCH, random(-1,1))
 		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
 
-		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 40, "ReloadSMG")
-
-		MRMP A 2 A_FaceTarget
-		TNT1 A 0 A_Recoil(5)
-		MRMP D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
-		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
-        TNT1 A 0 A_PlaySound("SMG/Fire", 1)
-		TNT1 A 0 A_GiveInventory("BDSMGAmmo",1)
-		TNT1 A 0 A_CustomMissile("MarineWeakTracer", 48, 0, random(-1,1), CMF_OFFSETPITCH, random(-1,1))
-		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
-
-		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 40, "ReloadSMG")
+		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 40, "Reload")
 
 		MRMP A 2 A_FaceTarget
 		TNT1 A 0 A_Recoil(5)
@@ -1177,7 +1180,7 @@ ACTOR RailgunMarineGuarding: Marine_Railgun
 		TNT1 A 0 A_CustomMissile("MarineWeakTracer", 48, 0, random(-1,1), CMF_OFFSETPITCH, random(-1,1))
 		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
 
-		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 40, "ReloadSMG")
+		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 40, "Reload")
 
 		MRMP A 2 A_FaceTarget
 		TNT1 A 0 A_Recoil(5)
@@ -1189,7 +1192,31 @@ ACTOR RailgunMarineGuarding: Marine_Railgun
 		TNT1 A 0 A_CustomMissile("MarineWeakTracer", 48, 0, random(-1,1), CMF_OFFSETPITCH, random(-1,1))
 		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
 
-		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 40, "ReloadSMG")
+		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 40, "Reload")
+
+		MRMP A 2 A_FaceTarget
+		TNT1 A 0 A_Recoil(5)
+		MRMP D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
+		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
+		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
+        TNT1 A 0 A_PlaySound("SMG/Fire", 1)
+		TNT1 A 0 A_GiveInventory("BDSMGAmmo",1)
+		TNT1 A 0 A_CustomMissile("MarineWeakTracer", 48, 0, random(-1,1), CMF_OFFSETPITCH, random(-1,1))
+		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
+
+		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 40, "Reload")
+
+		MRMP A 2 A_FaceTarget
+		TNT1 A 0 A_Recoil(5)
+		MRMP D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
+		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
+		TNT1 A 0 A_CustomMissile("DistantFireSoundPistol", 32, 0, 0, 1, 0)
+        TNT1 A 0 A_PlaySound("SMG/Fire", 1)
+		TNT1 A 0 A_GiveInventory("BDSMGAmmo",1)
+		TNT1 A 0 A_CustomMissile("MarineWeakTracer", 48, 0, random(-1,1), CMF_OFFSETPITCH, random(-1,1))
+		TNT1 A 0 A_SpawnItem ("PistolCaseSpawn", 0, 30,0)
+
+		TNT1 A 0 A_JumpIfInventory("BDSMGAmmo", 40, "Reload")
 		Goto Pain.Avoid
 
 	Melee:

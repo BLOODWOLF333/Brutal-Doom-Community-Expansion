@@ -362,6 +362,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		MARN D 8 A_FaceTarget
 		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, 1)
 		Goto ForgetTarget
+		TNT1 A 0 A_JumpIfInventory("RifleAmmo", 1, "Reload")
 		TNT1 A 0 A_Jump(32, "Waits2", "Waits3")
 		MARN D 8 A_Facetarget
 		TNT1 A 0 A_ClearTarget
@@ -454,14 +455,15 @@ ACTOR Marine_Rifle: SwitchableDecoration
 
 		TNT1 A 0 A_Jump(128, "MissileLeft", "MissileRight")
 
-		MAR2 A 3 A_FaceTarget
-		MAR2 D 2 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
+		MAR2 A 1 A_FaceTarget
+		MAR2 D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("Rifle/Fire")
 		TNT1 A 0 A_CustomMissile("DistantFireSoundRifle", 48, 0, 0, 1, 0)
 		TNT1 A 0 A_GiveInventory("RifleAmmo",1)
 		TNT1 A 0 A_CustomMissile("MarineTracer", 48, 0, random(-1, 1), CMF_OFFSETPITCH, random(-1, 1))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 48,0)
+		MAR2 A 3 A_FaceTarget
 
 		TNT1 A 0 A_JumpIfInventory("RifleAmmo", 30, "Reload")
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
@@ -470,15 +472,16 @@ ACTOR Marine_Rifle: SwitchableDecoration
 	MissileLeft:
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "FollowPlayer")
 		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "FollowPlayer")
-		MAR2 A 3 A_FaceTarget
+		MAR2 A 1 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
-		MAR2 D 2 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
+		MAR2 D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("Rifle/Fire")
 		TNT1 A 0 A_CustomMissile("DistantFireSoundRifle", 48, 0, 0, 1, 0)
 		TNT1 A 0 A_GiveInventory("RifleAmmo",1)
 		TNT1 A 0 A_CustomMissile("MarineTracer", 48, 0, random(-1, 1), CMF_OFFSETPITCH, random(-1, 1))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 48,0)
+		MAR2 A 3 A_FaceTarget
 
 		TNT1 A 0 A_JumpIfInventory("RifleAmmo", 30, "Reload")
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
@@ -487,15 +490,16 @@ ACTOR Marine_Rifle: SwitchableDecoration
 	MissileRight:
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "FollowPlayer")
 		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "FollowPlayer")
-		MAR2 A 3 A_FaceTarget
+		MAR2 A 1 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
-		MAR2 D 2 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
+		MAR2 D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("Rifle/Fire")
 		TNT1 A 0 A_CustomMissile("DistantFireSoundRifle", 48, 0, 0, 1, 0)
 		TNT1 A 0 A_GiveInventory("RifleAmmo",1)
 		TNT1 A 0 A_CustomMissile("MarineTracer", 48, 0, random(-1, 1), CMF_OFFSETPITCH, random(-1, 1))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 48,0)
+		MAR2 A 3 A_FaceTarget
 
 		TNT1 A 0 A_JumpIfInventory("RifleAmmo", 30, "Reload")
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
@@ -521,51 +525,68 @@ ACTOR Marine_Rifle: SwitchableDecoration
 
 	Retreat:
 		TNT1 A 0 //A_LOG("RETREAT")
-		MAR2 A 3 A_FaceTarget
+		MAR2 A 1 A_FaceTarget
 		TNT1 A 0 A_Recoil(5)
-		MAR2 D 2 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
+		MAR2 D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("Rifle/Fire")
 		TNT1 A 0 A_CustomMissile("DistantFireSoundRifle", 48, 0, 0, 1, 0)
 		TNT1 A 0 A_GiveInventory("RifleAmmo",1)
 		TNT1 A 0 A_CustomMissile("MarineTracer", 48, 0, random(-1, 1), CMF_OFFSETPITCH, random(-1, 1))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 48,0)
+		MAR2 A 3 A_FaceTarget
 
 		TNT1 A 0 A_JumpIfInventory("RifleAmmo", 30, "Reload")
 
-        MAR2 A 3 A_FaceTarget
+		MAR2 A 1 A_FaceTarget
 		TNT1 A 0 A_Recoil(5)
-		MAR2 D 2 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
+		MAR2 D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("Rifle/Fire")
 		TNT1 A 0 A_CustomMissile("DistantFireSoundRifle", 48, 0, 0, 1, 0)
 		TNT1 A 0 A_GiveInventory("RifleAmmo",1)
 		TNT1 A 0 A_CustomMissile("MarineTracer", 48, 0, random(-1, 1), CMF_OFFSETPITCH, random(-1, 1))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 48,0)
+		MAR2 A 3 A_FaceTarget
 
 		TNT1 A 0 A_JumpIfInventory("RifleAmmo", 30, "Reload")
 
-		MAR2 A 3 A_FaceTarget
+		MAR2 A 1 A_FaceTarget
 		TNT1 A 0 A_Recoil(5)
-		MAR2 D 2 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
+		MAR2 D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("Rifle/Fire")
 		TNT1 A 0 A_CustomMissile("DistantFireSoundRifle", 48, 0, 0, 1, 0)
 		TNT1 A 0 A_GiveInventory("RifleAmmo",1)
 		TNT1 A 0 A_CustomMissile("MarineTracer", 48, 0, random(-1, 1), CMF_OFFSETPITCH, random(-1, 1))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 48,0)
+		MAR2 A 3 A_FaceTarget
 
 		TNT1 A 0 A_JumpIfInventory("RifleAmmo", 30, "Reload")
 
-		MAR2 A 3 A_FaceTarget
+		MAR2 A 1 A_FaceTarget
 		TNT1 A 0 A_Recoil(5)
-		MAR2 D 2 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
+		MAR2 D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("Rifle/Fire")
 		TNT1 A 0 A_CustomMissile("DistantFireSoundRifle", 48, 0, 0, 1, 0)
 		TNT1 A 0 A_GiveInventory("RifleAmmo",1)
 		TNT1 A 0 A_CustomMissile("MarineTracer", 48, 0, random(-1, 1), CMF_OFFSETPITCH, random(-1, 1))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 48,0)
+		MAR2 A 3 A_FaceTarget
+
+		TNT1 A 0 A_JumpIfInventory("RifleAmmo", 30, "Reload")
+
+		MAR2 A 1 A_FaceTarget
+		TNT1 A 0 A_Recoil(5)
+		MAR2 D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
+		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
+		TNT1 A 0 A_PlaySound("Rifle/Fire")
+		TNT1 A 0 A_CustomMissile("DistantFireSoundRifle", 48, 0, 0, 1, 0)
+		TNT1 A 0 A_GiveInventory("RifleAmmo",1)
+		TNT1 A 0 A_CustomMissile("MarineTracer", 48, 0, random(-1, 1), CMF_OFFSETPITCH, random(-1, 1))
+		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 48,0)
+		MAR2 A 3 A_FaceTarget
 
 		TNT1 A 0 A_JumpIfInventory("RifleAmmo", 30, "Reload")
 		Goto Pain.Avoid
@@ -1016,6 +1037,7 @@ ACTOR RifleMarineGuarding: Marine_Rifle
 		TNT1 A 0 A_ChangeFlag("SOLID", 0)
 		TNT1 A 0 A_GiveInventory("TargetIsAMarine")
 		MARN DDDDDDDD 4 A_Look
+		TNT1 A 0 A_JumpIfInventory("RifleAmmo", 1, "Reload")
 		TNT1 A 0 A_JumpIfHealthLower(160,"Heal")
 		Loop
 
@@ -1048,44 +1070,47 @@ ACTOR RifleMarineGuarding: Marine_Rifle
 
 		TNT1 A 0 A_Jump(128, "MissileLeft", "MissileRight")
 
-		MAR2 A 3 A_FaceTarget
-		MAR2 D 2 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
+		MAR2 A 1 A_FaceTarget
+		MAR2 D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("Rifle/Fire")
 		TNT1 A 0 A_CustomMissile("DistantFireSoundRifle", 48, 0, 0, 1, 0)
 		TNT1 A 0 A_GiveInventory("RifleAmmo",1)
 		TNT1 A 0 A_CustomMissile("MarineTracer", 48, 0, random(-1, 1), CMF_OFFSETPITCH, random(-1, 1))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 48,0)
+		MAR2 A 3 A_FaceTarget
 
 		TNT1 A 0 A_JumpIfInventory("RifleAmmo", 30, "Reload")
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Missile
 
 	MissileLeft:
-		MAR2 A 3 A_FaceTarget
+		MAR2 A 1 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
-		MAR2 D 2 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
+		MAR2 D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("Rifle/Fire")
 		TNT1 A 0 A_CustomMissile("DistantFireSoundRifle", 48, 0, 0, 1, 0)
 		TNT1 A 0 A_GiveInventory("RifleAmmo",1)
 		TNT1 A 0 A_CustomMissile("MarineTracer", 48, 0, random(-1, 1), CMF_OFFSETPITCH, random(-1, 1))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 48,0)
+		MAR2 A 3 A_FaceTarget
 
 		TNT1 A 0 A_JumpIfInventory("RifleAmmo", 30, "Reload")
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Missile
 
 	MissileRight:
-		MAR2 A 3 A_FaceTarget
+		MAR2 A 1 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
-		MAR2 D 2 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
+		MAR2 D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("Rifle/Fire")
 		TNT1 A 0 A_CustomMissile("DistantFireSoundRifle", 48, 0, 0, 1, 0)
 		TNT1 A 0 A_GiveInventory("RifleAmmo",1)
 		TNT1 A 0 A_CustomMissile("MarineTracer", 48, 0, random(-1, 1), CMF_OFFSETPITCH, random(-1, 1))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 48,0)
+		MAR2 A 3 A_FaceTarget
 
 		TNT1 A 0 A_JumpIfInventory("RifleAmmo", 30, "Reload")
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
@@ -1109,51 +1134,68 @@ ACTOR RifleMarineGuarding: Marine_Rifle
 		Goto MissileRight
 
 	Retreat:
-		MAR2 A 3 A_FaceTarget
+		MAR2 A 1 A_FaceTarget
 		TNT1 A 0 A_Recoil(5)
-		MAR2 D 2 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
+		MAR2 D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("Rifle/Fire")
 		TNT1 A 0 A_CustomMissile("DistantFireSoundRifle", 48, 0, 0, 1, 0)
 		TNT1 A 0 A_GiveInventory("RifleAmmo",1)
 		TNT1 A 0 A_CustomMissile("MarineTracer", 48, 0, random(-1, 1), CMF_OFFSETPITCH, random(-1, 1))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 48,0)
+		MAR2 A 3 A_FaceTarget
 
 		TNT1 A 0 A_JumpIfInventory("RifleAmmo", 30, "Reload")
 
-        MAR2 A 3 A_FaceTarget
+		MAR2 A 1 A_FaceTarget
 		TNT1 A 0 A_Recoil(5)
-		MAR2 D 2 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
+		MAR2 D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("Rifle/Fire")
 		TNT1 A 0 A_CustomMissile("DistantFireSoundRifle", 48, 0, 0, 1, 0)
 		TNT1 A 0 A_GiveInventory("RifleAmmo",1)
 		TNT1 A 0 A_CustomMissile("MarineTracer", 48, 0, random(-1, 1), CMF_OFFSETPITCH, random(-1, 1))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 48,0)
+		MAR2 A 3 A_FaceTarget
 
 		TNT1 A 0 A_JumpIfInventory("RifleAmmo", 30, "Reload")
 
-		MAR2 A 3 A_FaceTarget
+		MAR2 A 1 A_FaceTarget
 		TNT1 A 0 A_Recoil(5)
-		MAR2 D 2 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
+		MAR2 D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("Rifle/Fire")
 		TNT1 A 0 A_CustomMissile("DistantFireSoundRifle", 48, 0, 0, 1, 0)
 		TNT1 A 0 A_GiveInventory("RifleAmmo",1)
 		TNT1 A 0 A_CustomMissile("MarineTracer", 48, 0, random(-1, 1), CMF_OFFSETPITCH, random(-1, 1))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 48,0)
+		MAR2 A 3 A_FaceTarget
 
 		TNT1 A 0 A_JumpIfInventory("RifleAmmo", 30, "Reload")
 
-		MAR2 A 3 A_FaceTarget
+		MAR2 A 1 A_FaceTarget
 		TNT1 A 0 A_Recoil(5)
-		MAR2 D 2 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
+		MAR2 D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("Rifle/Fire")
 		TNT1 A 0 A_CustomMissile("DistantFireSoundRifle", 48, 0, 0, 1, 0)
 		TNT1 A 0 A_GiveInventory("RifleAmmo",1)
 		TNT1 A 0 A_CustomMissile("MarineTracer", 48, 0, random(-1, 1), CMF_OFFSETPITCH, random(-1, 1))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 48,0)
+		MAR2 A 3 A_FaceTarget
+
+		TNT1 A 0 A_JumpIfInventory("RifleAmmo", 30, "Reload")
+
+		MAR2 A 1 A_FaceTarget
+		TNT1 A 0 A_Recoil(5)
+		MAR2 D 1 BRIGHT A_CustomMissile("MarineMuzzle1", 48)
+		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
+		TNT1 A 0 A_PlaySound("Rifle/Fire")
+		TNT1 A 0 A_CustomMissile("DistantFireSoundRifle", 48, 0, 0, 1, 0)
+		TNT1 A 0 A_GiveInventory("RifleAmmo",1)
+		TNT1 A 0 A_CustomMissile("MarineTracer", 48, 0, random(-1, 1), CMF_OFFSETPITCH, random(-1, 1))
+		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 48,0)
+		MAR2 A 3 A_FaceTarget
 
 		TNT1 A 0 A_JumpIfInventory("RifleAmmo", 30, "Reload")
 		Goto Pain.Avoid

@@ -225,6 +225,7 @@ ACTOR Marine_Shotgun: Marine_Rifle
 		MAR3 D 8 A_FaceTarget
 		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, 1)
 		Goto ForgetTarget
+		TNT1 A 0 A_JumpIfInventory("ShotgunAmmo", 1, "Reload")
 		TNT1 A 0 A_Jump(32, "Waits2", "Waits3")
 		MAR3 D 8 A_FaceTarget
 		TNT1 A 0 A_ClearTarget
@@ -417,19 +418,23 @@ ACTOR Marine_Shotgun: Marine_Rifle
 		Goto MissileRight
 
 	Retreat:
-		PLA3 E 3 A_FaceTarget
+		PLA3 E 1 A_FaceTarget
 		TNT1 A 0 A_Recoil(5)
-		PLA3 F 3 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
+		PLA3 F 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("Shotgun/Fire", 1)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundShotgun", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_GiveInventory("ShotgunAmmo", 1)
 		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 48, 0, random(-3, 3), CMF_OFFSETPITCH, random(-3, 3))
-		PLA3 HJ 3 A_FaceTarget
+		PLA3 H 4 A_FaceTarget
+		PLA3 J 6 A_FaceTarget
 		TNT1 A 0 A_PlaySound("Shotgun/Pump", 3)
+		PLA3 K 6 A_FaceTarget
 		TNT1 A 0 A_SpawnItem ("ShotCaseSpawn", 0, 30,0)
-		PLA3 KJHE 3 A_FaceTarget
+		PLA3 J 8 A_FaceTarget
+		PLA3 H 8 A_FaceTarget
 		TNT1 A 0 A_JumpIfInventory("ShotgunAmmo", 8, "Reload")
+		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Pain.Avoid
 
 	Melee:
@@ -851,6 +856,7 @@ ACTOR ShotgunMarineGuarding: Marine_Shotgun
 		TNT1 A 0 A_ChangeFLag("SOLID", 0)
 		TNT1 A 0 A_GiveInventory("TargetIsAMarine")
 		MAR3 DDDDDDDD 4 A_Look
+		TNT1 A 0 A_JumpIfInventory("ShotgunAmmo", 1, "Reload")
 		TNT1 A 0 A_JumpIfHealthLower(175,"Heal")
 		Loop
 
@@ -983,19 +989,23 @@ ACTOR ShotgunMarineGuarding: Marine_Shotgun
 		Goto MissileRight
 
 	Retreat:
-		PLA3 E 3 A_FaceTarget
+		PLA3 E 1 A_FaceTarget
 		TNT1 A 0 A_Recoil(5)
-		PLA3 F 3 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
+		PLA3 F 1 BRIGHT A_CustomMissile("MarineMuzzle1", 32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
 		TNT1 A 0 A_PlaySound("Shotgun/Fire", 1)
 		TNT1 A 0 A_CustomMissile("DistantFireSoundShotgun", 32, 0, 0, 1, 0)
 		TNT1 A 0 A_GiveInventory("ShotgunAmmo", 1)
 		TNT1 AAAAAAAAA 0 A_CustomMissile("MarineShotgunTracer", 48, 0, random(-3, 3), CMF_OFFSETPITCH, random(-3, 3))
-		PLA3 HJ 3 A_FaceTarget
+		PLA3 H 4 A_FaceTarget
+		PLA3 J 6 A_FaceTarget
 		TNT1 A 0 A_PlaySound("Shotgun/Pump", 3)
+		PLA3 K 6 A_FaceTarget
 		TNT1 A 0 A_SpawnItem ("ShotCaseSpawn", 0, 30,0)
-		PLA3 KJHE 3 A_FaceTarget
+		PLA3 J 8 A_FaceTarget
+		PLA3 H 8 A_FaceTarget
 		TNT1 A 0 A_JumpIfInventory("ShotgunAmmo", 8, "Reload")
+		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Pain.Avoid
 
 	Melee:
