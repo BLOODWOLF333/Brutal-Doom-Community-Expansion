@@ -430,6 +430,10 @@ ACTOR Marine_Shotgun: Marine_Rifle
         TNT1 A 0 A_PlaySound("Shotgun/Reload")
 		TNT1 A 0 A_TakeInventory("ShotgunAmmo", 1)
 		PLA3 K 8 A_FaceTarget
+		SHTN A 0 A_PlaySound("Shotgun/Pump1")
+		PLA3 J 8 A_FaceTarget
+		SHTN A 0 A_PlaySound("Shotgun/Pump2")
+		PLA3 K 8 A_FaceTarget
 		Goto See
 
 	CheckRetreat:
@@ -1021,6 +1025,10 @@ ACTOR ShotgunMarineGuarding: Marine_Shotgun
 		PLA3 J 2 A_FaceTarget
         TNT1 A 0 A_PlaySound("Shotgun/Reload")
 		TNT1 A 0 A_TakeInventory("ShotgunAmmo", 1)
+		PLA3 K 8 A_FaceTarget
+		SHTN A 0 A_PlaySound("Shotgun/Pump1")
+		PLA3 J 8 A_FaceTarget
+		SHTN A 0 A_PlaySound("Shotgun/Pump2")
 		PLA3 K 8 A_FaceTarget
 		Goto See
 
