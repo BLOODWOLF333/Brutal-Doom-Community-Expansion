@@ -449,7 +449,7 @@ ACTOR HitlersBuzzsaw : BrutalWeapon
 		MP40 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		MP40 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		MP40 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-		MP40 A 0 A_JumpIfInventory("IsRunning",1,"StartSprintNoAmmo")
+		MP40 A 0 A_JumpIfInventory("IsRunning",1,"StartSprint")
 		MP40 A 0 A_JumpIfInventory("BuzzsawAmmo", 1, "Ready")
 		Loop
 
@@ -458,7 +458,7 @@ ACTOR HitlersBuzzsaw : BrutalWeapon
 		Goto IdleNoAmmo
 
 	StartSprint:
-		HBUS A 1 A_WeaponReady
+		HBUS KLM 1 A_WeaponReady
 		SHTN A 0 A_Takeinventory("Zoomed",1)
         SHTN A 0 A_ZoomFactor(1.0)
 		SHTN A 0 A_Takeinventory("ADSmode",1)
@@ -467,25 +467,25 @@ ACTOR HitlersBuzzsaw : BrutalWeapon
 		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
 
 	Sprinting:
-		HBUS A 1 offset(-9,34) A_SetPitch(pitch -0.5)
-		HBUS A 1 offset(-6,36) A_SetPitch(pitch -0.5)
-		HBUS A 1 offset(-3,38) A_SetPitch(pitch -0.5)
-		HBUS A 1 offset(0,38) A_SetPitch(pitch -0.5)
-		HBUS A 1 offset(3,36) A_SetPitch(pitch -0.5)
-		HBUS A 1 offset(6,34) A_SetPitch(pitch -0.5)
-		HBUS A 1 offset(9,32) A_SetPitch(pitch -0.5)
+		HBUS N 1 offset(-9,34) A_SetPitch(pitch -0.5)
+		HBUS N 1 offset(-6,36) A_SetPitch(pitch -0.5)
+		HBUS N 1 offset(-3,38) A_SetPitch(pitch -0.5)
+		HBUS N 1 offset(0,38) A_SetPitch(pitch -0.5)
+		HBUS N 1 offset(3,36) A_SetPitch(pitch -0.5)
+		HBUS N 1 offset(6,34) A_SetPitch(pitch -0.5)
+		HBUS N 1 offset(9,32) A_SetPitch(pitch -0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 3)
 		SMGG A 0 A_WeaponReady(WRF_NOBOB)
 		SMGG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         SMGG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 
-		HBUS A 1 offset(9,34) A_SetPitch(pitch +0.5)
-		HBUS A 1 offset(6,36) A_SetPitch(pitch +0.5)
-		HBUS A 1 offset(3,38) A_SetPitch(pitch +0.5)
-		HBUS A 1 offset(0,38) A_SetPitch(pitch +0.5)
-		HBUS A 1 offset(-3,36) A_SetPitch(pitch +0.5)
-		HBUS A 1 offset(-6,34) A_SetPitch(pitch +0.5)
-		HBUS A 1 offset(-9,32) A_SetPitch(pitch +0.5)
+		HBUS N 1 offset(9,34) A_SetPitch(pitch +0.5)
+		HBUS N 1 offset(6,36) A_SetPitch(pitch +0.5)
+		HBUS N 1 offset(3,38) A_SetPitch(pitch +0.5)
+		HBUS N 1 offset(0,38) A_SetPitch(pitch +0.5)
+		HBUS N 1 offset(-3,36) A_SetPitch(pitch +0.5)
+		HBUS N 1 offset(-6,34) A_SetPitch(pitch +0.5)
+		HBUS N 1 offset(-9,32) A_SetPitch(pitch +0.5)
 		TNT1 A 0 A_GiveInventory("UsedStamina", 3)
 		SMGG A 0 A_WeaponReady(WRF_NOBOB)
 		SMGG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
@@ -496,62 +496,14 @@ ACTOR HitlersBuzzsaw : BrutalWeapon
 		Goto StopSprint
 
 	StopSprint:
+		HBUS MLK 1
 		HBUS A 0 A_JumpIfInventory("PowerStrength", 1, 2)
 		HBUS A 0 A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
-		HBUS A 1 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
+		HBUS A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		Goto Ready
 
 	StopSprintTired:
-		HBUS A 1 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
-		HBUS A 0 A_PlaySound("Tired", 2)
-		Goto Ready
-
-	StartSprintNoAmmo:
-		HBUS F 1 A_WeaponReady
-		SHTN A 0 A_Takeinventory("Zoomed",1)
-        SHTN A 0 A_ZoomFactor(1.0)
-		SHTN A 0 A_Takeinventory("ADSmode",1)
-		RIFG A 0 A_SetCrosshair(0)
-		SHTN A 0 A_Giveinventory("GoSpecial",1)
-		TNT1 A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
-
-	SprintingNoAmmo:
-		HBUS F 1 offset(-9,34) A_SetPitch(pitch -0.5)
-		HBUS F 1 offset(-6,36) A_SetPitch(pitch -0.5)
-		HBUS F 1 offset(-3,38) A_SetPitch(pitch -0.5)
-		HBUS F 1 offset(0,38) A_SetPitch(pitch -0.5)
-		HBUS F 1 offset(3,36) A_SetPitch(pitch -0.5)
-		HBUS F 1 offset(6,34) A_SetPitch(pitch -0.5)
-		HBUS F 1 offset(9,32) A_SetPitch(pitch -0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 3)
-		SMGG A 0 A_WeaponReady(WRF_NOBOB)
-		SMGG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-        SMGG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
-
-		HBUS F 1 offset(9,34) A_SetPitch(pitch +0.5)
-		HBUS F 1 offset(6,36) A_SetPitch(pitch +0.5)
-		HBUS F 1 offset(3,38) A_SetPitch(pitch +0.5)
-		HBUS F 1 offset(0,38) A_SetPitch(pitch +0.5)
-		HBUS F 1 offset(-3,36) A_SetPitch(pitch +0.5)
-		HBUS F 1 offset(-6,34) A_SetPitch(pitch +0.5)
-		HBUS F 1 offset(-9,32) A_SetPitch(pitch +0.5)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 3)
-		SMGG A 0 A_WeaponReady(WRF_NOBOB)
-		SMGG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-        SMGG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
-
-		PLAY A 0 ACS_NamedExecuteAlways("BDSprint", 0, 0, 0, 0)//Makes player faster.
-		SMGG A 0 A_JumpIfInventory("IsRunning", 1, "SprintingNoAmmo")
-		Goto StopSprintNoAmmo
-
-	StopSprintNoAmmo:
-		HBUS F 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		HBUS A 0 A_JumpIfInventory("UsedStamina", 100, "StopSprintTiredNoAmmo")
-		HBUS F 1 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
-		Goto Ready
-
-	StopSprintTiredNoAmmo:
-		HBUS F 1 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
+		HBUS A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		HBUS A 0 A_PlaySound("Tired", 2)
 		Goto Ready
 

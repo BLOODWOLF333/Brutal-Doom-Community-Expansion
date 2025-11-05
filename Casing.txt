@@ -731,39 +731,20 @@ ACTOR EmptyClip
    }
 }
 
-ACTOR EmptyRocketChamber
+ACTOR EmptyRocketChamber : EmptyClip
 {
-   Height 2
-   Radius 2
-   Speed 4
-   Scale 0.9
-   +DOOMBOUNCE
-   - NOGRAVITY
-   +WINDTHRUST
-   +CLIENTSIDEONLY
-	+NONETID
-   +MOVEWITHSECTOR
-   +MISSILE
-   +NOBLOCKMAP
-   -DROPOFF
-   +NOTELEPORT
-   +FORCEXYBILLBOARD
-   +NOTDMATCH
-   +GHOST
-   Mass 1
-   BounceFactor 0.3
-   DeathSound "weapons/barrelpain"
-   BounceSound "weapons/barrelpain"
-   States
-   {
-   Spawn:
-      TNT1 A 0
-      RCSE ABCDEFGHABCDEFGHABCDEFGHABCDEFGHABCDEFGH 4
-      Stop
-   Death:
-      RCSE G 600
-      Loop
-   }
+	Scale 0.8
+	BounceSound "weapons/barrelpain"
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		RCSE ABCDEFGHABCDEFGHABCDEFGHABCDEFGHABCDEFGH 4
+		Stop
+	Death:
+		RCSE G 600
+		Loop
+	}
 }
 
 ACTOR EmptyCell
@@ -812,7 +793,7 @@ ACTOR RocketCaseSpawn
 	{
 	Spawn:
         TNT1 A 0
-		TNT1 A 1 A_CustomMissile("EmptyRocketChamber",0,0,random(80,100),2,0)
+		TNT1 A 1 A_CustomMissile("EmptyRocketChamber",0,0,random(-80,-100),2,random(40,60))
 		Stop
 	}
 }

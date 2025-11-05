@@ -330,11 +330,7 @@ ACTOR DualRifles : BrutalWeapon
 		4IFR Q 4
 		4IFR RSTUVWXYZ 1
 		4IFR BA 1
-
-		DURI A 0 A_Takeinventory("RifleUnloaded",1)
-		RIFG A 0 A_Takeinventory("DualRifleUnloaded",1)
-		DURI A 0 A_JumpIfInventory("DoubleRifleAmmo",2,"InsertBullets2")//60+2
-		Goto InsertBullets
+		Goto FinishReloading
 
 	TurboReload:
 		DURI A 0 A_Takeinventory("RifleUnloaded",1)
@@ -347,7 +343,7 @@ ACTOR DualRifles : BrutalWeapon
 		TNT1 AAA 0
 		DURI A 0 A_JumpIfInventory("DoubleRifleAmmo",60,8)
 		DURI A 0 A_JumpIfInventory("Clip2",1,1)
-		Goto FinishReloading
+		Goto Ready
         TNT1 AAA 0
 		DURI A 0 A_Giveinventory("RifleAmmo",1)
 		DURI A 0 A_Giveinventory("DoubleRifleAmmo",1)
@@ -356,13 +352,13 @@ ACTOR DualRifles : BrutalWeapon
 		TNT1 AAA 0
 		DURI A 0 A_Takeinventory("Reloading",1)
 		DURI A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
-        Goto FinishReloading
+        Goto Ready
 
 	InsertBullets2:
 		TNT1 AAA 0
 		DURI A 0 A_JumpIfInventory("DoubleRifleAmmo",62,8)
 		DURI A 0 A_JumpIfInventory("Clip2",1,1)
-		Goto FinishReloading
+		Goto Ready
         TNT1 AAA 0
 		DURI A 0 A_Giveinventory("RifleAmmo",1)
 		DURI A 0 A_Giveinventory("DoubleRifleAmmo",1)
@@ -371,11 +367,14 @@ ACTOR DualRifles : BrutalWeapon
 		TNT1 AAA 0
 		DURI A 0 A_Takeinventory("Reloading",1)
 		DURI A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
-        Goto FinishReloading
+        Goto Ready
 
 	FinishReloading:
 		DURR DCBA 1
-		Goto Ready
+		DURI A 0 A_Takeinventory("RifleUnloaded",1)
+		RIFG A 0 A_Takeinventory("DualRifleUnloaded",1)
+		DURI A 0 A_JumpIfInventory("DoubleRifleAmmo",2,"InsertBullets2")//60+2
+		Goto InsertBullets
 
 	Unload:
 		DURI A 1 A_WeaponReady

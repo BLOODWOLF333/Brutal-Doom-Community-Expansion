@@ -4,7 +4,7 @@ ACTOR GrenadeLauncher : BrutalWeapon
 	Weapon.AmmoGive1 1
 	Weapon.AmmoType1 "AmmoRocket"
 	Weapon.AmmoType2 "GLAmmo"
-    Inventory.PickupSound "ROCKPKUP"
+    Inventory.PickupSound "Rocket/Draw"
     +WEAPON.NOAUTOAIM
 	+WEAPON.NOAUTOFIRE
 	+WEAPON.EXPLOSIVE
@@ -62,7 +62,7 @@ ACTOR GrenadeLauncher : BrutalWeapon
 
 	SelectAnimation:
 		GLAN A 0
-		GLAN A 0 A_PlaySound("RLANDRAW")
+		GLAN A 0 A_PlaySound("Rocket/Draw")
         GLSW ABC 1
 		Goto Ready
 
