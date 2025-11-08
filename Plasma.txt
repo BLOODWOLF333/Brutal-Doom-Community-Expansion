@@ -16,13 +16,59 @@ ACTOR Plasma_Gun : BrutalWeapon
 	DropItem "PLasmagunSpawner"
 	States
 	{
-	PuristGun:
-		TNT1 A 1
-		PLSN A 0 A_GiveInventory("ClassicPlasmaRifle", 1)
-		PLSN A 0 A_TakeInventory("Plasma_Gun", 1)
+	KickFlash://18 tics
+		PLSS EFG 1
+		PLSS H 12
+		PLSS GFE 1
+		Stop
+
+	SlideFlashEnd://10 tics
+		PLSS H 7
+		PLSS GFE 1
+		Stop
+
+	Deselect:
+		PLSN A 0 A_Takeinventory("Reloading",1)
+		PLSN A 0 A_Takeinventory("HasPlasmaWeapon",1)
+		PLSN A 0 A_TakeInventory("TossGrenade", 1)
+		PLSN A 0 A_StopSound(6)
+        PLSS EFGH 1
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1 A_Lower
+		Wait
+
+	Select:
+		PLSN A 0
+		PLSN A 0 A_Takeinventory("StartDualWield",1)
+		PLSN A 0 A_Giveinventory("GoSpecial",1)
+	    DUPL A 0 A_Giveinventory("HasPlasmaWeapon",1)
+		TNT1 A 0 A_TakeInventory("FistsSelected", 1)
+		TNT1 A 0 A_TakeInventory("ShotgunSelected", 1)
+		TNT1 A 0 A_TakeInventory("MinigunSelected", 1)
+		TNT1 A 0 A_TakeInventory("SSGSelected", 1)
+		TNT1 A 0 A_TakeInventory("RocketLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("GrenadeLauncherSelected", 1)
+		TNT1 A 0 A_GiveInventory("PlasmaGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RailGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("RevenantLauncherSelected", 1)
+		TNT1 A 0 A_TakeInventory("SubMachineGunSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFG10KSelected", 1)
+		TNT1 A 0 A_TakeInventory("BFGSelected", 1)
+		TNT1 A 0 A_TakeInventory("FlameCannonSelected", 1)
+		TNT1 A 0 A_TakeInventory("SawSelected", 1)
+		PLSN A 0 A_Takeinventory("HasBarrel",1)
+		PLSN A 0 A_TakeInventory("TossGrenade", 1)
 		PLSN A 0 A_TakeInventory("DualPlasmaRifles", 1)
-		TNT1 A 10
-		Goto Ready
+		PLSN A 0 A_GunFlash
+		TNT1 A 1 A_Raise
+		TNT1 AAAAAAAAAAAA 0 A_Raise
+		Goto SelectAnimation
+
+	SelectAnimation:
+        PLSS DCBA 1 A_JumpIfInventory("GoFatality", 1, "Steady")
+		PLSN A 0 A_PlaySound("Plasma/Draw")
+		USAS A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		Goto Ready3
 
 	Ready3:
 	Ready:
@@ -107,90 +153,67 @@ ACTOR Plasma_Gun : BrutalWeapon
 		Goto StopSprint
 
 	StopSprint:
+		PLSP A 1
 		PLSP A 0 A_JumpIfInventory("PowerStrength", 1, 2)
 		PLSN A 0 A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
-		PLSP A 1 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
-		Goto Ready
+		PLSP A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
+		Goto Ready3
 
 	StopSprintTired:
-		PLSP A 1 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
+		PLSP A 0 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		PLSN A 0 A_PlaySound("Tired", 2)
-		Goto Ready
-
-	Deselect:
-		PLSN A 0 A_Takeinventory("Reloading",1)
-		PLSN A 0 A_Takeinventory("HasPlasmaWeapon",1)
-		PLSN A 0 A_TakeInventory("TossGrenade", 1)
-		PLSN A 0 A_StopSound(6)
-        PLS9 CBA 1
-		TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
-		TNT1 A 1 A_Lower
-		Wait
-
-	Select:
-		PLSN A 0
-		PLSN A 0 A_Takeinventory("StartDualWield",1)
-		PLSN A 0 A_Giveinventory("GoSpecial",1)
-	    DUPL A 0 A_Giveinventory("HasPlasmaWeapon",1)
-		TNT1 A 0 A_TakeInventory("FistsSelected", 1)
-		TNT1 A 0 A_TakeInventory("ShotgunSelected", 1)
-		TNT1 A 0 A_TakeInventory("MinigunSelected", 1)
-		TNT1 A 0 A_TakeInventory("SSGSelected", 1)
-		TNT1 A 0 A_TakeInventory("RocketLauncherSelected", 1)
-		TNT1 A 0 A_TakeInventory("GrenadeLauncherSelected", 1)
-		TNT1 A 0 A_GiveInventory("PlasmaGunSelected", 1)
-		TNT1 A 0 A_TakeInventory("RailGunSelected", 1)
-		TNT1 A 0 A_TakeInventory("RevenantLauncherSelected", 1)
-		TNT1 A 0 A_TakeInventory("SubMachineGunSelected", 1)
-		TNT1 A 0 A_TakeInventory("BFG10KSelected", 1)
-		TNT1 A 0 A_TakeInventory("BFGSelected", 1)
-		TNT1 A 0 A_TakeInventory("FlameCannonSelected", 1)
-		TNT1 A 0 A_TakeInventory("SawSelected", 1)
-		PLSN A 0 A_Takeinventory("HasBarrel",1)
-		PLSN A 0 A_TakeInventory("TossGrenade", 1)
-		PLSN A 0 A_TakeInventory("DualPlasmaRifles", 1)
-		PLSN A 0 A_GunFlash
-		TNT1 A 1 A_Raise
-		TNT1 AAAAAA 0 A_Raise
-	    PLSN A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "PuristGun")
-		PLSN A 0 A_PlaySound("Plasma/Draw")
-		SelectAnimation:
-        PLS9 ABC 1 A_JumpIfInventory("GoFatality", 1, "Steady")
-		PLSN A 0 A_Takeinventory("StartDualWield",1)
-		PLSN A 0 A_GunFlash
-		Goto Ready
+		Goto Ready3
 
 	Fire:
 		PLSN A 0
         PLSN A 0 A_JumpIfInventory("Reloading",1,"Reload")
-        PLSN A 0 A_JumpIfInventory("PlasmaAmmo",1,2)
+        PLSN A 0 A_JumpIfInventory("PlasmaAmmo",1,1)
         Goto NoAmmo
-        TNT1 AAAA 0
+        TNT1 AAA 0
         PLSN A 0 A_PlaySound("Plasma/Fire", 1)
 		PLSN A 0 A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, 0, 0)
-		PLSN A 0 A_TakeInventory("DoublePlasmaAmmo", 1)
-		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		PLST A 1 BRIGHT A_FireCustomMissile("Plasma_Ball", frandom(-0.6,0.6), 1, 0, 0, 0, frandom(-0.7,0.7))
+		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		PLSN A 0 A_Takeinventory("PlasmaAmmo",1)
+		PLSN A 0 A_TakeInventory("DoublePlasmaAmmo", 1)
 		TNT1 A 0 A_ZoomFactor(0.99)
 		RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
 		RIFG A 0 A_SetPitch(-0.2 + pitch)
-		PLST B 1 BRIGHT
+		PLST C 1 BRIGHT
 		TNT1 A 0 A_ZoomFactor(1.0)
 		TNT1 A 0 A_JumpIfInventory("IsTacticalClass", 1, 2)//Tactical mode skips a frame, fires faster
+		PLST D 1 BRIGHT
+		PLSN A 1 BRIGHT A_JumpIfInventory("FiredPrimary",1,1)
+		Goto Ready3
+		RIFG AAA 0
+        PLSN A 0 A_JumpIfInventory("PlasmaAmmo",1,1)
+        Goto NoAmmo
+        TNT1 AAA 0
+        PLSN A 0 A_PlaySound("Plasma/Fire", 1)
+		PLSN A 0 A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, 0, 0)
+		PLST B 1 BRIGHT A_FireCustomMissile("Plasma_Ball", frandom(-0.6,0.6), 1, 0, 0, 0, frandom(-0.7,0.7))
+		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
+		PLSN A 0 A_Takeinventory("PlasmaAmmo",1)
+		PLSN A 0 A_TakeInventory("DoublePlasmaAmmo", 1)
+		TNT1 A 0 A_ZoomFactor(0.99)
+		RIFG A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 2)//tactical mode has muzzle climb
+		RIFG A 0 A_SetPitch(-0.2 + pitch)
 		PLST C 1 BRIGHT
-		PLST D 1 BRIGHT A_Refire
-		Goto Ready
+		TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_JumpIfInventory("IsTacticalClass", 1, 2)//Tactical mode skips a frame, fires faster
+		PLST D 1 BRIGHT
+		PLSN A 1 BRIGHT A_Refire
+		Goto Ready3
 
 // Charging up secondary ------------------------------------------------------------
 
 	AltFire:
         PLSN A 0 A_JumpIfInventory("Reloading",1,"Reload")
-        PLSN A 0 A_JumpIfInventory("PlasmaAmmo",10,2)
+        PLSN A 0 A_JumpIfInventory("PlasmaAmmo",10,1)
         Goto NoAmmo
         TNT1 AAA 0
+		PLSN A 0 A_PlaySound("Plasma/Charge", 6)
 
-	PLSN A 0 A_PlaySound("Plasma/Charge")
 		PLSA A 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, 0, 0)
 		PLSA B 1 BRIGHT A_Takeinventory("PlasmaAmmo",1)
 		PLSA C 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, 0, 0)
@@ -232,55 +255,56 @@ ACTOR Plasma_Gun : BrutalWeapon
 		PLSA C 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, 0, 0)
 		PLSA D 1 BRIGHT
 
-	PLSN A 0 A_PlaySound("Plasma/FullyCharged", 6, 0.8, 1)
+		PLSN A 0 A_StopSound(6)
+		PLSN A 0 A_PlaySound("Plasma/FullyCharged", 6, 0.8, 1)
 
 // Holding Charge ------------------------------------------------------------
 
-AltHold:
-	PLSN A 0 A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, 0, 0)
-	PLSN A 0 A_JumpIfInventory("Reloading",1,"Cancel")
-	PLFA A 1 BRIGHT offset (0, 32)
+	AltHold:
+		PLSN A 0 A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, 0, 0)
+		PLSN A 0 A_JumpIfInventory("Reloading",1,"Cancel")
+		PLFA A 1 BRIGHT
 
-	PLSN A 0 A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, 0, 0)
-	PLSN A 0 A_JumpIfInventory("Reloading",1,"Cancel")
-	PLFA B 1 BRIGHT offset (0, 33)
+		PLSN A 0 A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, 0, 0)
+		PLSN A 0 A_JumpIfInventory("Reloading",1,"Cancel")
+		PLFA B 1 BRIGHT
 
-	PLSN A 0 A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, 0, 0)
-	PLSN A 0 A_JumpIfInventory("Reloading",1,"Cancel")
-	PLFA C 1 BRIGHT offset (1, 32)
+		PLSN A 0 A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, 0, 0)
+		PLSN A 0 A_JumpIfInventory("Reloading",1,"Cancel")
+		PLFA C 1 BRIGHT
 
-	PLSN A 0 A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, 0, 0)
-	PLSN A 0 A_JumpIfInventory("Reloading",1,"Cancel")
-	PLFA D 1 BRIGHT offset (-1, 32)
+		PLSN A 0 A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, 0, 0)
+		PLSN A 0 A_JumpIfInventory("Reloading",1,"Cancel")
+		PLFA D 1 BRIGHT
 
-	PLSN A 0 A_Refire
+		PLSN A 0 A_Refire
 
 // Let Fly --------------------------------------------------------------------------
 
-	PLSN A 0 A_StopSound(6)
-	PLST A 1 BRIGHT A_PlaySound("Plasma/AltFire")
-	TNT1 A 0 A_ZoomFactor(0.98)
-	TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
-	PLST B 2 BRIGHT A_Recoil(2)
-	TNT1 A 0 A_ZoomFactor(1.0)
-	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
-	PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
-		PLSN A 0 A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, 0, 0)
+		PLSN A 0 A_StopSound(6)
+		PLSN A 0 A_PlaySound("Plasma/AltFire")
+		PLST A 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, 0, 0)
+		PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
+		PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
+		PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
+		PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
+		PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
+		PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
+		PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
+		PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
+		PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
+		PLSN A 0 A_FireCustomMissile("PlasmaBall75", frandom(-2.7,2.7), 0, 0, 0, 0, frandom(-2.8,2.8))
+		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		PLSN A 0 A_Takeinventory("DoublePlasmaAmmo",10)
-        PLSN KLKJ 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(0.98)
+		PLST B 2 BRIGHT A_Recoil(2)
+		TNT1 A 0 A_ZoomFactor(1.0)
+		PLSN KLKJ 1 BRIGHT
 		PLSN A 0 A_SetPitch(pitch - 1.8)
-        PLSN BCD 1
+		PLSN BCD 1
 		PLSN EEEEEEEEEEEE 3 A_FireCustomMissile("SmokeSpawner",0,0,10,5)
 		PLSN DCB 1
-        PLSN A 0 A_PlaySound("Plasma/BeepBeep", 5)
+		PLSN A 0 A_PlaySound("Plasma/BeepBeep")
 		Goto Ready
 
 // Cancel Charge --------------------------------------------------------------------------------------------
@@ -330,14 +354,11 @@ AltHold:
 		PLSA C 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, 0, 0)
 		PLSA D 1 BRIGHT
 
-			PLSN A 0 A_TakeInventory("Reloading",1)
-			PLSN A 0 A_Giveinventory("DoublePlasmaAmmo",10)
-			PLSN A 0 A_PlaySound("Plasma/BeepBeep", 5, 1.2)
-			PLSN A 0 A_ClearReFire
-
+		PLSN A 0 A_TakeInventory("Reloading",1)
+		PLSN A 0 A_Giveinventory("DoublePlasmaAmmo",10)
+		PLSN A 0 A_PlaySound("Plasma/BeepBeep")
+		PLSN A 0 A_ClearReFire
 		Goto Ready
-
-//  ------------------------------------------------------------------------------
 
 	Spawn:
 		PLAS A -1
@@ -349,7 +370,7 @@ AltHold:
 		RIFG A 0 A_Takeinventory("Zoomed",1)
 		RIFG A 0 A_Takeinventory("ADSmode",1)
 		RIFG A 0 A_JumpIfInventory("TurboReload",1,"TurboReload")
-		PLSR A 5 BRIGHT A_PlaySound("Plasma/Beep", 4)
+		PLSR A 5 BRIGHT A_PlaySound("Plasma/Beep")
 		RIFG A 0 A_JumpIfInventory("PlasmaAmmo",1,"Ready3")//If they press AltFire with less than 10 cells
 		NoAmmo2:
 		RIFG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
@@ -367,84 +388,87 @@ AltHold:
 		Goto ReadyNoAmmo
 
     Reload:
-		PLSR A 4 BRIGHT
+		PLSR A 1 BRIGHT
 		PLSN A 0 A_Takeinventory("Reloading",1)
 		PLSN A 0 A_JumpIfInventory("PlasmaAmmo",50,"Ready")
 		PLSN A 0 A_JumpIfInventory("TurboReload",1,"TurboReload")
 		PLSN A 0 A_JumpIfInventory("PlasmaUnloaded",1,"PutMag")
-		PLSN A 0 A_JumpIfInventory("AmmoCell",1,3)
-        Goto Ready
-        TNT1 AAAA 0
-		PLSR BCD 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		PLSN A 0 A_JumpIfInventory("AmmoCell",1,1)
+        Goto Ready3
+        TNT1 AAA 0
+		PLSR BLK 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		PLSR J 4 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		PLSN A 0 A_PlaySound("Plasma/Reload1")
-		PLSR JIHGFE 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
-		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		PLSN A 0 A_FireCustomMissile("EmptyCellSpawn",0,0,0,-20)
+		PLSR IHGF 1
 		PLSR E 8
+		PLSN A 0 A_JumpIfInventory("PlasmaAmmo",1,"PutMag")//If magazine is not empty then retain it
+		PLSN A 0 A_FireCustomMissile("EmptyCellSpawn",0,0,0,-20)
+
 	PutMag:
 		PLSR E 8
-        PLSR FGHI 1
-		PLSR J 4 A_PlaySound("Plasma/Reload2")
-		PLSR KLB 1
-		PLSN A 4 BRIGHT
-		PLSR A 0 A_TakeInventory("PlasmaUnloaded",1)
+        PLSR FG 1
+		PLSR A 0 A_PlaySound("Plasma/Reload2")
+		PLSR HI 1
+		PLSR J 4
+		PLSR DCB 1
+		PLSN A 1 BRIGHT
 
-		ReloadingSequence:
-		TNT1 AAAAAAAAAA 0
-		PLSN A 0 A_JumpIfInventory("PlasmaAmmo",50,15)
-		PLSN A 0 A_JumpIfInventory("AmmoCell",1,3)
-		Goto Ready
-        TNT1 AAAAAA 0
+	ReloadingSequence:
+		TNT1 AAA 0
+		PLSN A 0 A_JumpIfInventory("PlasmaAmmo",50,8)
+		PLSN A 0 A_JumpIfInventory("AmmoCell",1,1)
+		Goto Ready3
+        TNT1 AAA 0
 		PLSN A 0 A_Giveinventory("PlasmaAmmo",1)
 		PLSN A 0 A_Giveinventory("DoublePlasmaAmmo",1)
 		PLSN A 0 A_Takeinventory("AmmoCell",1)
 		Goto ReloadingSequence
-		TNT1 AAAAAAAA 0
-
-		PLSN A 1 A_Takeinventory("Reloading",1)
-        Goto Ready
+		TNT1 AAA 0
+		PLSR A 0 A_TakeInventory("PlasmaUnloaded",1)
+		PLSN A 1 BRIGHT A_Takeinventory("Reloading",1)
+        Goto Ready3
 
 	TurboReload:
 		TNT1 A 0
-		RIFG A 0 A_Takeinventory("PlasmaUnloaded",1)
 		RIFG A 0 A_JumpIfInventory("AmmoCell",1,1)
-		Goto Ready
+		Goto Ready3
 		RIFG A 0
         Goto ReloadingSequence
 
 	Unload:
-		PLSN A 4 BRIGHT
+		PLSN A 1 BRIGHT
 		PLSN A 0 A_Takeinventory("Unloading",1)
-		PLSN A 0 A_JumpIfInventory("PlasmaAmmo",1,3)
+		PLSN A 0 A_JumpIfInventory("PlasmaAmmo",1,1)
 		Goto ReadyNoAmmo
-		TNT1 AAAAA 0
-        PLSR BCD 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		TNT1 AAA 0
+		PLSR BLK 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		PLSR J 4 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		PLSN A 0 A_PlaySound("Plasma/Reload1")
-		PLSR JIHGFE 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
-		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		PLSR IHGF 1
 		PLSR E 8
 
 	UnloadingSequence:
 		PLSN A 0
 		PLSN A 0 A_Takeinventory("Unloading",1)
 		PLSN A 0 A_GiveInventory("PlasmaUnloaded",1)
-		PLSN A 0 A_JumpIfInventory("PlasmaAmmo",1,3)
-		Goto Ready
-        TNT1 AAAAAAA 0
+		PLSN A 0 A_JumpIfInventory("PlasmaAmmo",1,1)
+		Goto Ready3
+        TNT1 AAA 0
 		PLSN A 0 A_Takeinventory("PlasmaAmmo",1)
 		PLSN A 0 A_Takeinventory("DoublePlasmaAmmo",1)
 		PLSN A 0 A_Giveinventory("AmmoCell",1)
 		Goto UnloadingSequence
 
 	DualWield:
-		PLSN A 0
 		PLSN A 1 BRIGHT A_Takeinventory("StartDualWield",1)
 		PLSN A 0 A_JumpIfInventory("IsTacticalClass", 1, "NoDual")//Tactical mode cant dual
 		PLSN A 0 A_JumpIfInventory("HasDualPlasma", 1, "GetDual")
 		PLSN A 0 A_Print("You must have two identical weapons to dual wield.")
-		Goto Ready
+		Goto Ready3
 
 	 GetDual:
 		PLSN A 0 A_SetCrosshair(0)
@@ -460,23 +484,12 @@ AltHold:
 		PLSN A 0 A_GiveInventory("DualPlasmaRifles",1)
         PLSN A 0 A_ZoomFactor(1.0)
 		PLSN A 0 A_SelectWEapon("DualPlasmaRifles")
-		Goto Ready
+		Goto Ready3
 
 	NoDual:
 		PLSN A 1 BRIGHT
 		PLSN A 0 A_Print("You can't dual wield plasma rifles when playing in Tactical Mode.",1)
-		Goto Ready
-
-	KickFlash://18 tics
-		TNT1 AAA 1
-		TNT1 A 12
-		TNT1 AAA 1
-		Stop
-
-	SlideFlashEnd://10 tics
-		TNT1 A 7
-		TNT1 AAA 1
-		Stop
+		Goto Ready3
 	}
 }
 
