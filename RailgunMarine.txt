@@ -327,7 +327,7 @@ ACTOR Marine_Railgun: Marine_Rifle
 		MRRG A 15 A_FaceTarget
 		TNT1 A 0 A_PlaySound("RAILR1", 2)
 		MRRG D 30 A_FaceTarget
-		TNT1 A 0 A_PlaySound("BEPBEP", 2)
+		TNT1 A 0 A_PlaySound("Plasma/BeepBeep", 2)
 		TNT1 A 0 A_JumpIfInventory("RailgunAmmo", 50, "Reload")
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Missile
@@ -364,7 +364,7 @@ ACTOR Marine_Railgun: Marine_Rifle
 		MRRG A 15 A_FaceTarget
 		TNT1 A 0 A_PlaySound("RAILR1", 2)
 		MRRG D 30 A_FaceTarget
-		TNT1 A 0 A_PlaySound("BEPBEP", 2)
+		TNT1 A 0 A_PlaySound("Plasma/BeepBeep", 2)
 		TNT1 A 0 A_JumpIfInventory("RailgunAmmo", 50, "Reload")
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Missile
@@ -402,7 +402,7 @@ ACTOR Marine_Railgun: Marine_Rifle
 		MRRG A 15 A_FaceTarget
 		TNT1 A 0 A_PlaySound("RAILR1", 2)
 		MRRG D 30 A_FaceTarget
-		TNT1 A 0 A_PlaySound("BEPBEP", 2)
+		TNT1 A 0 A_PlaySound("Plasma/BeepBeep", 2)
 		TNT1 A 0 A_JumpIfInventory("RailgunAmmo", 50, "Reload")
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Missile
@@ -425,13 +425,13 @@ ACTOR Marine_Railgun: Marine_Rifle
 
 	Reload:
 		MRRG A 2 A_FaceTarget
-		TNT1 A 0 A_PlaySound("PLREADY",2)
+		TNT1 A 0 A_PlaySound("Plasma/Reload2",2)
 		MRRG D 6 A_FaceTarget
 		TNT1 A 0 A_CustomMissile("EmptyCellSpawn", 30, 0, random(-11, 11), 0)
 		MRRG D 38 A_FaceTarget
 		TNT1 A 0 A_PlaySound("RAILR1",2)
 		MRRG D 30 A_FaceTarget
-		TNT1 A 0 A_PlaySound("BEPBEP",2)
+		TNT1 A 0 A_PlaySound("Plasma/BeepBeep",2)
 		TNT1 A 0 A_TakeInventory("RailgunAmmo", 50)
 		Goto See
 
@@ -468,7 +468,7 @@ ACTOR Marine_Railgun: Marine_Rifle
 		MRRG A 15 A_FaceTarget
 		TNT1 A 0 A_PlaySound("RAILR1", 2)
 		MRRG D 30 A_FaceTarget
-		TNT1 A 0 A_PlaySound("BEPBEP", 2)
+		TNT1 A 0 A_PlaySound("Plasma/BeepBeep", 2)
 		TNT1 A 0 A_JumpIfInventory("RailgunAmmo", 50, "Reload")
 		Goto Pain.Avoid
 
@@ -1016,7 +1016,7 @@ ACTOR RailgunMarineGuarding: Marine_Railgun
 		MRRG A 15 A_FaceTarget
 		TNT1 A 0 A_PlaySound("RAILR1", 2)
 		MRRG D 30 A_FaceTarget
-		TNT1 A 0 A_PlaySound("BEPBEP", 2)
+		TNT1 A 0 A_PlaySound("Plasma/BeepBeep", 2)
 		TNT1 A 0 A_JumpIfInventory("RailgunAmmo", 50, "Reload")
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Missile
@@ -1051,7 +1051,7 @@ ACTOR RailgunMarineGuarding: Marine_Railgun
 		MRRG A 15 A_FaceTarget
 		TNT1 A 0 A_PlaySound("RAILR1", 2)
 		MRRG D 30 A_FaceTarget
-		TNT1 A 0 A_PlaySound("BEPBEP", 2)
+		TNT1 A 0 A_PlaySound("Plasma/BeepBeep", 2)
 		TNT1 A 0 A_JumpIfInventory("RailgunAmmo", 50, "Reload")
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Missile
@@ -1087,7 +1087,7 @@ ACTOR RailgunMarineGuarding: Marine_Railgun
 		MRRG A 15 A_FaceTarget
 		TNT1 A 0 A_PlaySound("RAILR1", 2)
 		MRRG D 30 A_FaceTarget
-		TNT1 A 0 A_PlaySound("BEPBEP", 2)
+		TNT1 A 0 A_PlaySound("Plasma/BeepBeep", 2)
 		TNT1 A 0 A_JumpIfInventory("RailgunAmmo", 50, "Reload")
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Missile
@@ -1110,13 +1110,13 @@ ACTOR RailgunMarineGuarding: Marine_Railgun
 
 	Reload:
 		MRRG A 2 A_FaceTarget
-		TNT1 A 0 A_PlaySound("PLREADY",2)
+		TNT1 A 0 A_PlaySound("Plasma/Reload2",2)
 		MRRG D 6 A_FaceTarget
 		TNT1 A 0 A_CustomMissile("EmptyCellSpawn", 30, 0, random(-11, 11), 0)
 		MRRG D 38 A_FaceTarget
 		TNT1 A 0 A_PlaySound("RAILR1",2)
 		MRRG D 30 A_FaceTarget
-		TNT1 A 0 A_PlaySound("BEPBEP",2)
+		TNT1 A 0 A_PlaySound("Plasma/BeepBeep",2)
 		TNT1 A 0 A_TakeInventory("RailgunAmmo", 50)
 		Goto See
 
@@ -1153,7 +1153,7 @@ ACTOR RailgunMarineGuarding: Marine_Railgun
 		MRRG A 15 A_FaceTarget
 		TNT1 A 0 A_PlaySound("RAILR1", 2)
 		MRRG D 30 A_FaceTarget
-		TNT1 A 0 A_PlaySound("BEPBEP", 2)
+		TNT1 A 0 A_PlaySound("Plasma/BeepBeep", 2)
 		TNT1 A 0 A_JumpIfInventory("RailgunAmmo", 50, "Reload")
 		Goto Pain.Avoid
 
