@@ -17,6 +17,17 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 	scale 0.9
 	States
 	{
+	KickFlash://18 tics
+		PLRS DCB 1
+		PLRS A 12
+		PLRS BCD 1
+		Stop
+
+	SlideFlashEnd://10 tics
+		PLRS A 7
+		PLRS BCD 1
+		Stop
+
 	Ready:
 	Ready3:
         DUPL A 0 A_JumpIfInventory("Kicking",1,"DoKick")
@@ -94,12 +105,8 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 		DUPL A 0 A_Takeinventory("Reloading",1)
 		DUPL A 0 A_Takeinventory("HasPlasmaWeapon",1)
 		DUPL A 0 A_TakeInventory("TossGrenade", 1)
-        DUPL A 1 Offset(0, 34)
-		DUPL A 1 Offset(0, 38)
-		DUPL A 1 Offset(0, 42)
-		DUPL A 1 Offset(0, 50)
-		DUPL A 0 Offset(0, 32)
-		TNT1 AAAAAAAAAAAA 0 A_Lower
+        PLRS DCBA 1
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1 A_Lower
 		Wait
 
@@ -124,18 +131,17 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 		DUPL A 0 A_Takeinventory("HasBarrel",1)
 		DUPL A 0 A_TakeInventory("TossGrenade", 1)
 		DUPL A 0 A_TakeInventory("Plasma_Gun", 1)
+		DUPL A 0 A_Takeinventory("StartDualWield",1)
 		DUPL A 0 A_GunFlash
 		TNT1 A 1 A_Raise
 		TNT1 AAAAAAAAAAAA 0 A_Raise
-		DUPL A 0 A_PlaySound("Plasma/Draw")
-		SelectAnimation:
-        DUPL A 1 Offset(0, 50)
-		DUPL A 1 Offset(0, 42)
-		DUPL A 1 Offset(0, 38)
-		DUPL A 1 Offset(0, 34)
-		DUPL A 0 Offset(0, 32)
-		DUPL A 0 A_Takeinventory("StartDualWield",1)
-		Goto Ready
+		Goto SelectAnimation
+
+	SelectAnimation:
+        PLRS ABCD 1 A_JumpIfInventory("GoFatality", 1, "Steady")
+		PLSN A 0 A_PlaySound("Plasma/Draw")
+		USAS A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		Goto Ready3
 
 	Fire:
 		DUPL A 0
@@ -143,8 +149,8 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 		Goto FireLeft
         DUPL A 0 A_PlaySound("Plasma/Fire", CHAN_WEAPON)
 		DUPL A 0 A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, 8, 0)
-		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		DUPL B 1 BRIGHT A_FireCustomMissile("Plasma_Ball", frandom(-1.6, 1.6), 1, 8, 0, 0, frandom(-1.2, 1.2))
+		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		DUPL A 0 A_ZoomFactor(0.99)
 		DUPL A 0 A_Takeinventory("PlasmaAmmo",1)
 		DUPL A 0 A_Takeinventory("DoublePlasmaAmmo",1)
@@ -156,10 +162,10 @@ ACTOR DualPlasmaRifles : BrutalWeapon
         Goto NoAmmo
         DUPL A 0 A_PlaySound("Plasma/Fire", CHAN_WEAPON)
 		DUPL A 0 A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, -8, 0)
-		TNT1 A 0 A_SetPitch(-0.2 + pitch)
 		DUPL D 1 BRIGHT A_FireCustomMissile("Plasma_Ball", frandom(-1.6, 1.6), 1, -8, 0, 0, frandom(-1.2, 1.2))
 		DUPL A 0 A_ZoomFactor(0.99)
 		DUPL A 0 A_Takeinventory("DoublePlasmaAmmo",1)
+		TNT1 A 0 A_SetPitch(-0.2 + pitch)
 		DUPL E 1
 		DUPL A 0 A_ZoomFactor(1.0)
 		DUPL A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
@@ -171,13 +177,13 @@ ACTOR DualPlasmaRifles : BrutalWeapon
         Goto NoAmmo
         DUPL A 0 A_PlaySound("Plasma/Fire", CHAN_WEAPON)
 		DUPL A 0 A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, -8, 0)
-		TNT1 A 0 A_SetPitch(-0.2 + pitch)
 		DUPL D 1 BRIGHT A_FireCustomMissile("Plasma_Ball", frandom(-1.6, 1.6), 1, -8, 0, 0, frandom(-1.2, 1.2))
 		DUPL A 0 A_ZoomFactor(0.99)
 		DUPL A 0 A_Takeinventory("DoublePlasmaAmmo",1)
+		TNT1 A 0 A_SetPitch(-0.2 + pitch)
 		DUPL E 1
 		DUPL A 0 A_ZoomFactor(1.0)
-		DUPL A 2
+		DUPL A 1
 		DUPL A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
 		Goto Ready
 
@@ -188,104 +194,135 @@ ACTOR DualPlasmaRifles : BrutalWeapon
     Reload:
 		DUPL A 4
 		DUPL A 0 A_Takeinventory("Reloading",1)
-		DUPL A 0 A_JumpIfInventory("AmmoCell",1,3)
+		DUPL A 0 A_JumpIfInventory("AmmoCell",1,1)
 		Goto Ready
 		DUPL AAA 0
 		DUPL A 0 A_JumpIfInventory("DoublePlasmaAmmo",100,"Ready")
 		DUPL A 0 A_JumpIfInventory("TurboReload",1,"TurboReload")
 		PLSN A 0 A_JumpIfInventory("PlasmaUnloaded",1,"PutMag")
+		PIST E 0 A_JumpIfInventory("PlasmaAmmo",50,"ReloadLeft")//right mag is full
 
-		PLSR BCD 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		PLSR BLK 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		PLSR J 4 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		PLSN A 0 A_PlaySound("Plasma/Reload1")
-		PLSR JIHGFE 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
-		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		PLSN A 0 A_FireCustomMissile("EmptyCellSpawn",0,0,10,-20)
+		PLSR IHGF 1
 		PLSR E 8
+		PLSN A 0 A_JumpIfInventory("PlasmaAmmo",1,"PutMag")//If magazine is not empty then retain it
+		PLSN A 0 A_FireCustomMissile("EmptyCellSpawn",0,0,10,-20)
+
 	PutMag:
 		PLSR E 8
-        PLSR FGHI 1
-		PLSR J 4 A_PlaySound("Plasma/Reload2")
-		PLSR KL 1
-		PLSN A 0 A_JumpIfInventory("PlasmaUnloaded",1,"PutMag2")
+        PLSR FG 1
+		PLSR A 0 A_PlaySound("Plasma/Reload2")
+		PLSR HI 1
+		PLSR J 4
+		PLSR DCB 1
+		TNT1 A 4
 
-		P2SR BCD 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+	ReloadLeft:
+		TNT1 A 4
+		PLSN A 0 A_JumpIfInventory("DualPlasmaUnloaded",1,"PutMagLeft")
+		P2SR BLK 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		P2SR J 4 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		PLSN A 0 A_PlaySound("Plasma/Reload1")
-		P2SR JIHGFE 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
-		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		P2SR IHGF 1
+		P2SR E 8
+		PLSN A 0 A_JumpIfInventory("DoublePlasmaAmmo",4,2)//If magazine is not empty then retain it
 		PLSN A 0 A_FireCustomMissile("EmptyCellSpawn",225,0,-10,-20)
-		P2SR E 8
-	PutMag2:
-		P2SR E 8
-        P2SR FGHI 1
-		P2SR J 4 A_PlaySound("Plasma/Reload2")
-		P2SR KL 1
-		PLSR A 0 A_TakeInventory("PlasmaUnloaded",1)
 
-		ReloadingSequence:
-		TNT1 AAAAAAAAAA 0
-		DUPL A 0 A_JumpIfInventory("DoublePlasmaAmmo",100,15)
+	PutMagLeft:
+		P2SR E 8
+        P2SR FG 1
+		PLSR A 0 A_PlaySound("Plasma/Reload2")
+		P2SR HI 1
+		P2SR J 4
+		P2SR DCB 1
+		TNT1 A 4
+		Goto FinishReload
+
+	ReloadingSequence:
+		TNT1 AAA 0
+		DUPL A 0 A_JumpIfInventory("DoublePlasmaAmmo",100,8)
 		DUPL A 0 A_JumpIfInventory("AmmoCell",1,3)
 		Goto Ready
-        TNT1 AAAAAA 0
+        TNT1 AAA 0
 		DUPL A 0 A_Giveinventory("PlasmaAmmo",1)
 		DUPL A 0 A_Giveinventory("DoublePlasmaAmmo",1)
 		DUPL A 0 A_Takeinventory("AmmoCell",1)
 		Goto ReloadingSequence
-		TNT1 AAAAAAAA 0
+		TNT1 AAA 0
 		TNT1 A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
-		DUPL A 1 A_Takeinventory("Reloading",1)
+		DUPL A 0 A_Takeinventory("Reloading",1)
         Goto Ready
+
+	FinishReload:
+		PLRS ABCD 1
+		DUPL A 0 A_Takeinventory("PlasmaUnloaded",1)
+		DUPL A 0 A_Takeinventory("DualPlasmaUnloaded",1)
+		DUPL A 0 A_Takeinventory("Reloading",1)
+		Goto ReloadingSequence
 
 	TurboReload:
 		DUPL A 0 A_Takeinventory("Unloading",1)
-		DUPL A 0 A_JumpIfInventory("AmmoCell",1,3)
+		DUPL A 0 A_JumpIfInventory("AmmoCell",1,1)
 		Goto Ready
 		DUPL AAA 0
 		Goto ReloadingSequence
 
 	Unload:
 		DUPL A 0 A_Takeinventory("Unloading",1)
-		DUPL A 0 A_JumpIfInventory("PlasmaAmmo",1,3)
+		DUPL A 0 A_JumpIfInventory("PlasmaAmmo",1,1)
 		Goto UnloadLeft
-		TNT1 AAAAA 0
-        PLSR BCD 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		TNT1 AAA 0
+		PLSR BLK 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		PLSR J 4 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		PLSN A 0 A_PlaySound("Plasma/Reload1")
-		PLSR JIHGFE 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
-		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		PLSR E 8
-
-		P2SR BCD 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
-		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		PLSN A 0 A_PlaySound("Plasma/Reload1")
-		P2SR JIHGFE 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
-		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		P2SR E 8
+		PLSR IHGF 1
+		PLSR E 4
 		PLSN A 0 A_GiveInventory("PlasmaUnloaded",1)
+		PLSR DCB 1
+		TNT1 A 4
+
+		TNT1 A 4
+		P2SR BLK 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		P2SR J 4 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		PLSN A 0 A_PlaySound("Plasma/Reload1")
+		P2SR IHGF 1
+		P2SR E 4
+		PLSN A 0 A_GiveInventory("DualPlasmaUnloaded",1)
+		P2SR DCB 1
 		Goto RemoveBullets
 
 	UnloadLeft:
 		TNT1 A 0
-		DUPL A 0 A_JumpIfInventory("DoublePlasmaAmmo",1,3)
+		DUPL A 0 A_JumpIfInventory("DoublePlasmaAmmo",1,1)
 		Goto Ready
-		TNT1 AAAAA 0
-		P2SR BCD 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		TNT1 AAA 0
+		P2SR BLK 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		P2SR J 4 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		PLSN A 0 A_PlaySound("Plasma/Reload1")
-		P2SR JIHGFE 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
-		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		P2SR E 8
-		PLSN A 0 A_GiveInventory("PlasmaUnloaded",1)
+		P2SR IHGF 1
+		P2SR E 4
+		PLSN A 0 A_GiveInventory("DualPlasmaUnloaded",1)
+		P2SR DCB 1
 		Goto RemoveBullets
 
 	RemoveBullets:
 		DUPL A 0
 		DUPL A 0 A_Takeinventory("Unloading",1)
-		DUPL A 0 A_JumpIfInventory("DoublePlasmaAmmo",1,3)
+		DUPL A 0 A_JumpIfInventory("DoublePlasmaAmmo",1,1)
 		Goto Ready
-        TNT1 AAAAAAA 0
+        TNT1 AAA 0
 		DUPL A 0 A_Takeinventory("PlasmaAmmo",1)
 		DUPL A 0 A_Takeinventory("DoublePlasmaAmmo",1)
 		DUPL A 0 A_Giveinventory("AmmoCell",1)
@@ -312,17 +349,6 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 		RIFG A 0 A_JumpIfInventory("AmmoCell",1,"Reload")
 		RIFG A 0 A_JumpIfInventory("IsRunning",1,"StartSprint")
 		Goto Ready3
-
-	KickFlash://18 tics
-		TNT1 AAA 1
-		TNT1 A 12
-		TNT1 AAA 1
-		Stop
-
-	SlideFlashEnd://10 tics
-		TNT1 A 7
-		TNT1 AAA 1
-		Stop
 	}
 }
 

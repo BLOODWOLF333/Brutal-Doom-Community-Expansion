@@ -449,12 +449,14 @@ ACTOR Plasma_Gun : BrutalWeapon
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		PLSN A 0 A_PlaySound("Plasma/Reload1")
 		PLSR IHGF 1
-		PLSR E 8
+		PLSR E 4
+		PLSN A 0 A_GiveInventory("PlasmaUnloaded",1)
+		PLSR DCB 1
+		Goto UnloadingSequence
 
 	UnloadingSequence:
 		PLSN A 0
 		PLSN A 0 A_Takeinventory("Unloading",1)
-		PLSN A 0 A_GiveInventory("PlasmaUnloaded",1)
 		PLSN A 0 A_JumpIfInventory("PlasmaAmmo",1,1)
 		Goto Ready3
         TNT1 AAA 0
