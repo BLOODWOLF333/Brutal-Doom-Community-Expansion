@@ -222,13 +222,14 @@ GRNPIN GRNPIN
 GRNTOSS GRNTOSS
 
 // Grenadelauncher
-Weapons/GrenadeBounce DSGRBNCE
-Weapons/GrenadeClose DSGRCLOS
-Weapons/GrenadeLoad DSGRLOAD
-Weapons/GrenadeOpen DSGROPEN
-weapons/firegrenade GLAUNCH
+GrenadeLauncher/Close DSGRCLOS
 GrenadeLauncher/Fire DSGRFIRE
-
+GrenadeLauncher/Load DSGRLOAD
+GrenadeLauncher/Open DSGROPEN
+$random GrenadeLauncher/Bounce { GLGRBNC1 GLGRBNC2 GLGRBNC3 }
+GLGRBNC1 GLGRBNC1
+GLGRBNC2 GLGRBNC2
+GLGRBNC3 GLGRBNC3
 $random GrenadeLauncher/Casing { HGRENB1A HGRENB2A }
 HGRENB1A HGRENB1A
 HGRENB2A HGRENB2A

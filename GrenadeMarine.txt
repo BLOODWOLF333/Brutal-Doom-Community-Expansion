@@ -314,39 +314,45 @@ ACTOR Marine_Grenade: Marine_Rifle
 		TNT1 A 0 A_Jump(128, "MissileLeft", "MissileRight")
 		TNT1 A 0 A_JumpIfCloser(384,"MissileClose")
 		TNT1 A 0 A_JumpIfCloser(768,"MissileMid")
-		MRGL A 3 A_FaceTarget
-		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle2", 32)
+		MRGL A 1 A_FaceTarget
+		MRGL D 1 BRIGHT A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 8)
+		TNT1 A 0 A_PlaySound("GrenadeLauncher/Fire", 1)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
-		TNT1 A 0 A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 8)
+		TNT1 A 0 A_CustomMissile("MarineMuzzle2", 32)
 		TNT1 A 0 A_Recoil(2)
 		MRGL A 6 A_FaceTarget
-		MRGL D 12 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeOpen")
-		MRGL A 15 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeLoad")
-		MRGL D 5 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeClose")
-		MRGL A 3 A_FaceTarget
+		MRGL D 6 A_FaceTarget
+		MRGL A 0 A_PlaySound("GrenadeLauncher/Open")
+		MRGL A 10 A_FaceTarget
+		TNT1 A 0 A_CustomMissile("GrenadeCasing", 32, 0, random(120,140), 0, random(40,60))
+		MRGL D 18 A_FaceTarget
+		GRLN A 0 A_PlaySound("GrenadeLauncher/Load")
+		MRGL A 10 A_FaceTarget
+		GRLN A 0 A_PlaySound("GrenadeLauncher/Close")
+		MRGL D 15 A_FaceTarget
+
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Missile
 
 	MissileMid:
 		TNT1 A 0
-		MRGL A 3 A_FaceTarget
-		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle2", 32)
+		MRGL A 1 A_FaceTarget
+		MRGL D 1 BRIGHT A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 4)
+		TNT1 A 0 A_PlaySound("GrenadeLauncher/Fire", 1)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
-		TNT1 A 0 A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 4)
+		TNT1 A 0 A_CustomMissile("MarineMuzzle2", 32)
 		TNT1 A 0 A_Recoil(2)
 		MRGL A 6 A_FaceTarget
-		MRGL D 12 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeOpen")
-		MRGL A 15 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeLoad")
-		MRGL D 5 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeClose")
-		MRGL A 3 A_FaceTarget
+		MRGL D 6 A_FaceTarget
+		MRGL A 0 A_PlaySound("GrenadeLauncher/Open")
+		MRGL A 10 A_FaceTarget
+		TNT1 A 0 A_CustomMissile("GrenadeCasing", 32, 0, random(120,140), 0, random(40,60))
+		MRGL D 18 A_FaceTarget
+		GRLN A 0 A_PlaySound("GrenadeLauncher/Load")
+		MRGL A 10 A_FaceTarget
+		GRLN A 0 A_PlaySound("GrenadeLauncher/Close")
+		MRGL D 15 A_FaceTarget
+
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Missile
 
@@ -374,41 +380,47 @@ ACTOR Marine_Grenade: Marine_Rifle
 		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "FollowPlayer")
 		TNT1 A 0 A_JumpIfCloser(384,"MissileCloseLeft")
 		TNT1 A 0 A_JumpIfCloser(768,"MissileMidLeft")
-		MRGL A 3 A_FaceTarget
+		MRGL A 1 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
-		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle2", 32)
+		MRGL D 1 BRIGHT A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 8)
+		TNT1 A 0 A_PlaySound("GrenadeLauncher/Fire", 1)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
-		TNT1 A 0 A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 8)
+		TNT1 A 0 A_CustomMissile("MarineMuzzle2", 32)
 		TNT1 A 0 A_Recoil(2)
 		MRGL A 6 A_FaceTarget
-		MRGL D 12 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeOpen")
-		MRGL A 15 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeLoad")
-		MRGL D 5 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeClose")
-		MRGL A 3 A_FaceTarget
+		MRGL D 6 A_FaceTarget
+		MRGL A 0 A_PlaySound("GrenadeLauncher/Open")
+		MRGL A 10 A_FaceTarget
+		TNT1 A 0 A_CustomMissile("GrenadeCasing", 32, 0, random(120,140), 0, random(40,60))
+		MRGL D 18 A_FaceTarget
+		GRLN A 0 A_PlaySound("GrenadeLauncher/Load")
+		MRGL A 10 A_FaceTarget
+		GRLN A 0 A_PlaySound("GrenadeLauncher/Close")
+		MRGL D 15 A_FaceTarget
+
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Missile
 
 	MissileMidLeft:
 		TNT1 A 0
-		MRGL A 3 A_FaceTarget
+		MRGL A 1 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
-		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle2", 32)
+		MRGL D 1 BRIGHT A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 4)
+		TNT1 A 0 A_PlaySound("GrenadeLauncher/Fire", 1)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
-		TNT1 A 0 A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 4)
+		TNT1 A 0 A_CustomMissile("MarineMuzzle2", 32)
 		TNT1 A 0 A_Recoil(2)
 		MRGL A 6 A_FaceTarget
-		MRGL D 12 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeOpen")
-		MRGL A 15 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeLoad")
-		MRGL D 5 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeClose")
-		MRGL A 3 A_FaceTarget
+		MRGL D 6 A_FaceTarget
+		MRGL A 0 A_PlaySound("GrenadeLauncher/Open")
+		MRGL A 10 A_FaceTarget
+		TNT1 A 0 A_CustomMissile("GrenadeCasing", 32, 0, random(120,140), 0, random(40,60))
+		MRGL D 18 A_FaceTarget
+		GRLN A 0 A_PlaySound("GrenadeLauncher/Load")
+		MRGL A 10 A_FaceTarget
+		GRLN A 0 A_PlaySound("GrenadeLauncher/Close")
+		MRGL D 15 A_FaceTarget
+
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Missile
 
@@ -440,41 +452,47 @@ ACTOR Marine_Grenade: Marine_Rifle
 		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "FollowPlayer")
 		TNT1 A 0 A_JumpIfCloser(384,"MissileCloseRight")
 		TNT1 A 0 A_JumpIfCloser(768,"MissileMidRight")
-		MRGL A 3 A_FaceTarget
+		MRGL A 1 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
-		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle2", 32)
+		MRGL D 1 BRIGHT A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 8)
+		TNT1 A 0 A_PlaySound("GrenadeLauncher/Fire", 1)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
-		TNT1 A 0 A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 8)
+		TNT1 A 0 A_CustomMissile("MarineMuzzle2", 32)
 		TNT1 A 0 A_Recoil(2)
 		MRGL A 6 A_FaceTarget
-		MRGL D 12 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeOpen")
-		MRGL A 15 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeLoad")
-		MRGL D 5 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeClose")
-		MRGL A 3 A_FaceTarget
+		MRGL D 6 A_FaceTarget
+		MRGL A 0 A_PlaySound("GrenadeLauncher/Open")
+		MRGL A 10 A_FaceTarget
+		TNT1 A 0 A_CustomMissile("GrenadeCasing", 32, 0, random(120,140), 0, random(40,60))
+		MRGL D 18 A_FaceTarget
+		GRLN A 0 A_PlaySound("GrenadeLauncher/Load")
+		MRGL A 10 A_FaceTarget
+		GRLN A 0 A_PlaySound("GrenadeLauncher/Close")
+		MRGL D 15 A_FaceTarget
+
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Missile
 
 	MissileMidRight:
 		TNT1 A 0
-		MRGL A 3 A_FaceTarget
+		MRGL A 1 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
-		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle2", 32)
+		MRGL D 1 BRIGHT A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 4)
+		TNT1 A 0 A_PlaySound("GrenadeLauncher/Fire", 1)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
-		TNT1 A 0 A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 4)
+		TNT1 A 0 A_CustomMissile("MarineMuzzle2", 32)
 		TNT1 A 0 A_Recoil(2)
 		MRGL A 6 A_FaceTarget
-		MRGL D 12 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeOpen")
-		MRGL A 15 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeLoad")
-		MRGL D 5 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeClose")
-		MRGL A 3 A_FaceTarget
+		MRGL D 6 A_FaceTarget
+		MRGL A 0 A_PlaySound("GrenadeLauncher/Open")
+		MRGL A 10 A_FaceTarget
+		TNT1 A 0 A_CustomMissile("GrenadeCasing", 32, 0, random(120,140), 0, random(40,60))
+		MRGL D 18 A_FaceTarget
+		GRLN A 0 A_PlaySound("GrenadeLauncher/Load")
+		MRGL A 10 A_FaceTarget
+		GRLN A 0 A_PlaySound("GrenadeLauncher/Close")
+		MRGL D 15 A_FaceTarget
+
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Missile
 
@@ -509,21 +527,23 @@ ACTOR Marine_Grenade: Marine_Rifle
 	Retreat:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfCloser(384,"RetreatClose")
-		MRGL A 3 A_FaceTarget
+		MRGL A 1 A_FaceTarget
 		TNT1 A 0 A_Recoil(5)
-		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle2", 32)
+		MRGL D 1 BRIGHT A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 4)
+		TNT1 A 0 A_PlaySound("GrenadeLauncher/Fire", 1)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
-		TNT1 A 0 A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 4)
+		TNT1 A 0 A_CustomMissile("MarineMuzzle2", 32)
 		TNT1 A 0 A_Recoil(2)
 		MRGL A 6 A_FaceTarget
-		MRGL D 12 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeOpen")
-		MRGL A 15 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeLoad")
-		MRGL D 5 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeClose")
-		MRGL A 3 A_FaceTarget
+		MRGL D 6 A_FaceTarget
+		MRGL A 0 A_PlaySound("GrenadeLauncher/Open")
+		MRGL A 10 A_FaceTarget
+		TNT1 A 0 A_CustomMissile("GrenadeCasing", 32, 0, random(120,140), 0, random(40,60))
+		MRGL D 18 A_FaceTarget
+		GRLN A 0 A_PlaySound("GrenadeLauncher/Load")
+		MRGL A 10 A_FaceTarget
+		GRLN A 0 A_PlaySound("GrenadeLauncher/Close")
+		MRGL D 15 A_FaceTarget
 		Goto Pain.Avoid
 
 	RetreatClose:
@@ -999,39 +1019,43 @@ ACTOR GrenadeMarineGuarding: Marine_Grenade
 		TNT1 A 0 A_Jump(128, "MissileLeft", "MissileRight")
 		TNT1 A 0 A_JumpIfCloser(384,"MissileClose")
 		TNT1 A 0 A_JumpIfCloser(768,"MissileMid")
-		MRGL A 3 A_FaceTarget
-		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle2", 32)
+		MRGL A 1 A_FaceTarget
+		MRGL D 1 BRIGHT A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 8)
+		TNT1 A 0 A_PlaySound("GrenadeLauncher/Fire", 1)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
-		TNT1 A 0 A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 8)
+		TNT1 A 0 A_CustomMissile("MarineMuzzle2", 32)
 		TNT1 A 0 A_Recoil(2)
 		MRGL A 6 A_FaceTarget
-		MRGL D 12 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeOpen")
-		MRGL A 15 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeLoad")
-		MRGL D 5 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeClose")
-		MRGL A 3 A_FaceTarget
+		MRGL D 6 A_FaceTarget
+		MRGL A 0 A_PlaySound("GrenadeLauncher/Open")
+		MRGL A 10 A_FaceTarget
+		TNT1 A 0 A_CustomMissile("GrenadeCasing", 32, 0, random(120,140), 0, random(40,60))
+		MRGL D 18 A_FaceTarget
+		GRLN A 0 A_PlaySound("GrenadeLauncher/Load")
+		MRGL A 10 A_FaceTarget
+		GRLN A 0 A_PlaySound("GrenadeLauncher/Close")
+		MRGL D 15 A_FaceTarget
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Missile
 
 	MissileMid:
 		TNT1 A 0
-		MRGL A 3 A_FaceTarget
-		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle2", 32)
+		MRGL A 1 A_FaceTarget
+		MRGL D 1 BRIGHT A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 4)
+		TNT1 A 0 A_PlaySound("GrenadeLauncher/Fire", 1)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
-		TNT1 A 0 A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 4)
+		TNT1 A 0 A_CustomMissile("MarineMuzzle2", 32)
 		TNT1 A 0 A_Recoil(2)
 		MRGL A 6 A_FaceTarget
-		MRGL D 12 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeOpen")
-		MRGL A 15 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeLoad")
-		MRGL D 5 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeClose")
-		MRGL A 3 A_FaceTarget
+		MRGL D 6 A_FaceTarget
+		MRGL A 0 A_PlaySound("GrenadeLauncher/Open")
+		MRGL A 10 A_FaceTarget
+		TNT1 A 0 A_CustomMissile("GrenadeCasing", 32, 0, random(120,140), 0, random(40,60))
+		MRGL D 18 A_FaceTarget
+		GRLN A 0 A_PlaySound("GrenadeLauncher/Load")
+		MRGL A 10 A_FaceTarget
+		GRLN A 0 A_PlaySound("GrenadeLauncher/Close")
+		MRGL D 15 A_FaceTarget
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Missile
 
@@ -1049,41 +1073,45 @@ ACTOR GrenadeMarineGuarding: Marine_Grenade
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfCloser(384,"MissileCloseLeft")
 		TNT1 A 0 A_JumpIfCloser(768,"MissileMidLeft")
-		MRGL A 3 A_FaceTarget
+		MRGL A 1 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
-		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle2", 32)
+		MRGL D 1 BRIGHT A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 8)
+		TNT1 A 0 A_PlaySound("GrenadeLauncher/Fire", 1)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
-		TNT1 A 0 A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 8)
+		TNT1 A 0 A_CustomMissile("MarineMuzzle2", 32)
 		TNT1 A 0 A_Recoil(2)
 		MRGL A 6 A_FaceTarget
-		MRGL D 12 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeOpen")
-		MRGL A 15 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeLoad")
-		MRGL D 5 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeClose")
-		MRGL A 3 A_FaceTarget
+		MRGL D 6 A_FaceTarget
+		MRGL A 0 A_PlaySound("GrenadeLauncher/Open")
+		MRGL A 10 A_FaceTarget
+		TNT1 A 0 A_CustomMissile("GrenadeCasing", 32, 0, random(120,140), 0, random(40,60))
+		MRGL D 18 A_FaceTarget
+		GRLN A 0 A_PlaySound("GrenadeLauncher/Load")
+		MRGL A 10 A_FaceTarget
+		GRLN A 0 A_PlaySound("GrenadeLauncher/Close")
+		MRGL D 15 A_FaceTarget
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Missile
 
 	MissileMidLeft:
 		TNT1 A 0
-		MRGL A 3 A_FaceTarget
+		MRGL A 1 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
-		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle2", 32)
+		MRGL D 1 BRIGHT A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 4)
+		TNT1 A 0 A_PlaySound("GrenadeLauncher/Fire", 1)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
-		TNT1 A 0 A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 4)
+		TNT1 A 0 A_CustomMissile("MarineMuzzle2", 32)
 		TNT1 A 0 A_Recoil(2)
 		MRGL A 6 A_FaceTarget
-		MRGL D 12 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeOpen")
-		MRGL A 15 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeLoad")
-		MRGL D 5 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeClose")
-		MRGL A 3 A_FaceTarget
+		MRGL D 6 A_FaceTarget
+		MRGL A 0 A_PlaySound("GrenadeLauncher/Open")
+		MRGL A 10 A_FaceTarget
+		TNT1 A 0 A_CustomMissile("GrenadeCasing", 32, 0, random(120,140), 0, random(40,60))
+		MRGL D 18 A_FaceTarget
+		GRLN A 0 A_PlaySound("GrenadeLauncher/Load")
+		MRGL A 10 A_FaceTarget
+		GRLN A 0 A_PlaySound("GrenadeLauncher/Close")
+		MRGL D 15 A_FaceTarget
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Missile
 
@@ -1107,41 +1135,45 @@ ACTOR GrenadeMarineGuarding: Marine_Grenade
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfCloser(384,"MissileCloseRight")
 		TNT1 A 0 A_JumpIfCloser(768,"MissileMidRight")
-		MRGL A 3 A_FaceTarget
+		MRGL A 1 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
-		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle2", 32)
+		MRGL D 1 BRIGHT A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 8)
+		TNT1 A 0 A_PlaySound("GrenadeLauncher/Fire", 1)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
-		TNT1 A 0 A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 8)
+		TNT1 A 0 A_CustomMissile("MarineMuzzle2", 32)
 		TNT1 A 0 A_Recoil(2)
 		MRGL A 6 A_FaceTarget
-		MRGL D 12 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeOpen")
-		MRGL A 15 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeLoad")
-		MRGL D 5 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeClose")
-		MRGL A 3 A_FaceTarget
+		MRGL D 6 A_FaceTarget
+		MRGL A 0 A_PlaySound("GrenadeLauncher/Open")
+		MRGL A 10 A_FaceTarget
+		TNT1 A 0 A_CustomMissile("GrenadeCasing", 32, 0, random(120,140), 0, random(40,60))
+		MRGL D 18 A_FaceTarget
+		GRLN A 0 A_PlaySound("GrenadeLauncher/Load")
+		MRGL A 10 A_FaceTarget
+		GRLN A 0 A_PlaySound("GrenadeLauncher/Close")
+		MRGL D 15 A_FaceTarget
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Missile
 
 	MissileMidRight:
 		TNT1 A 0
-		MRGL A 3 A_FaceTarget
+		MRGL A 1 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
-		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle2", 32)
+		MRGL D 1 BRIGHT A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 4)
+		TNT1 A 0 A_PlaySound("GrenadeLauncher/Fire", 1)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
-		TNT1 A 0 A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 4)
+		TNT1 A 0 A_CustomMissile("MarineMuzzle2", 32)
 		TNT1 A 0 A_Recoil(2)
 		MRGL A 6 A_FaceTarget
-		MRGL D 12 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeOpen")
-		MRGL A 15 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeLoad")
-		MRGL D 5 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeClose")
-		MRGL A 3 A_FaceTarget
+		MRGL D 6 A_FaceTarget
+		MRGL A 0 A_PlaySound("GrenadeLauncher/Open")
+		MRGL A 10 A_FaceTarget
+		TNT1 A 0 A_CustomMissile("GrenadeCasing", 32, 0, random(120,140), 0, random(40,60))
+		MRGL D 18 A_FaceTarget
+		GRLN A 0 A_PlaySound("GrenadeLauncher/Load")
+		MRGL A 10 A_FaceTarget
+		GRLN A 0 A_PlaySound("GrenadeLauncher/Close")
+		MRGL D 15 A_FaceTarget
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Missile
 
@@ -1170,21 +1202,23 @@ ACTOR GrenadeMarineGuarding: Marine_Grenade
 	Retreat:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfCloser(384,"RetreatClose")
-		MRGL A 3 A_FaceTarget
+		MRGL A 1 A_FaceTarget
 		TNT1 A 0 A_Recoil(5)
-		MRGL D 3 BRIGHT A_CustomMissile("MarineMuzzle2", 32)
+		MRGL D 1 BRIGHT A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 4)
+		TNT1 A 0 A_PlaySound("GrenadeLauncher/Fire", 1)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
-		TNT1 A 0 A_CustomMissile("MarineShortGrenade", 48, 0, 0, CMF_OFFSETPITCH, 4)
+		TNT1 A 0 A_CustomMissile("MarineMuzzle2", 32)
 		TNT1 A 0 A_Recoil(2)
 		MRGL A 6 A_FaceTarget
-		MRGL D 12 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeOpen")
-		MRGL A 15 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeLoad")
-		MRGL D 5 A_FaceTarget
-		MRGL A 0 A_PlaySound("Weapons/GrenadeClose")
-		MRGL A 3 A_FaceTarget
+		MRGL D 6 A_FaceTarget
+		MRGL A 0 A_PlaySound("GrenadeLauncher/Open")
+		MRGL A 10 A_FaceTarget
+		TNT1 A 0 A_CustomMissile("GrenadeCasing", 32, 0, random(120,140), 0, random(40,60))
+		MRGL D 18 A_FaceTarget
+		GRLN A 0 A_PlaySound("GrenadeLauncher/Load")
+		MRGL A 10 A_FaceTarget
+		GRLN A 0 A_PlaySound("GrenadeLauncher/Close")
+		MRGL D 15 A_FaceTarget
 		Goto Pain.Avoid
 
 	Melee:
