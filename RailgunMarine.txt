@@ -315,18 +315,18 @@ ACTOR Marine_Railgun: Marine_Rifle
 
 		TNT1 A 0 A_Jump(128, "MissileLeft", "MissileRight")
 		TNT1 A 0 A_JumpIfCloser(256,"MissileClose")
-		MRGA D 1 BRIGHT A_CustomMissile("PlasmaFlareSpawn", 48)
+		MRGA D 1 BRIGHT A_FaceTarget
 		TNT1 A 0 A_GiveInventory("RailgunAmmo",10)
-		MRGA A 0 A_Recoil(6)
-		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("RAILF1", 1)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
+		TNT1 A 0 A_CustomMissile("PlasmaFlareSpawn", 48)
 		TNT1 A 0 A_CustomMissile("MarineRailgunProjectile", 48)
 		TNT1 A 0 A_CustomRailgun(400, 0, "none", "none", RGF_FULLBRIGHT,1, 0, "MarineRailgunPuff2", 0, 0, 0, 0, 0, 0, "RailgunTrailEffect")
-		TNT1 A 0 A_CustomMissile("Alerter",48)
-		MRGA A 10 A_FaceTarget
-		MRRG A 15 A_FaceTarget
-		TNT1 A 0 A_PlaySound("RAILR1", 2)
-		MRRG D 30 A_FaceTarget
+		TNT1 A 0 A_PlaySound("Railgun/Fire", 1)
+		MRGA D 1 BRIGHT A_AlertMonsters(0, AMF_TARGETEMITTER)
+		MRGA A 0 A_Recoil(2)
+		MRRG A 8 A_FaceTarget
+		TNT1 A 0 A_PlaySound("Railgun/Recharge", 5)
+		MRRG D 42 A_FaceTarget
 		TNT1 A 0 A_PlaySound("Plasma/BeepBeep", 2)
 		TNT1 A 0 A_JumpIfInventory("RailgunAmmo", 50, "Reload")
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
@@ -352,18 +352,18 @@ ACTOR Marine_Railgun: Marine_Rifle
 		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "FollowPlayer")
 		TNT1 A 0 A_JumpIfCloser(256,"MissileCloseLeft")
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
-		MRGA D 1 BRIGHT A_CustomMissile("PlasmaFlareSpawn", 48)
+		MRGA D 1 BRIGHT A_FaceTarget
 		TNT1 A 0 A_GiveInventory("RailgunAmmo",10)
-		MRGA A 0 A_Recoil(6)
-		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("RAILF1", 1)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
+		TNT1 A 0 A_CustomMissile("PlasmaFlareSpawn", 48)
 		TNT1 A 0 A_CustomMissile("MarineRailgunProjectile", 48)
 		TNT1 A 0 A_CustomRailgun(400, 0, "none", "none", RGF_FULLBRIGHT,1, 0, "MarineRailgunPuff2", 0, 0, 0, 0, 0, 0, "RailgunTrailEffect")
-		TNT1 A 0 A_CustomMissile("Alerter",48)
-		MRGA A 10 A_FaceTarget
-		MRRG A 15 A_FaceTarget
-		TNT1 A 0 A_PlaySound("RAILR1", 2)
-		MRRG D 30 A_FaceTarget
+		TNT1 A 0 A_PlaySound("Railgun/Fire", 1)
+		MRGA D 1 BRIGHT A_AlertMonsters(0, AMF_TARGETEMITTER)
+		MRGA A 0 A_Recoil(2)
+		MRRG A 8 A_FaceTarget
+		TNT1 A 0 A_PlaySound("Railgun/Recharge", 5)
+		MRRG D 42 A_FaceTarget
 		TNT1 A 0 A_PlaySound("Plasma/BeepBeep", 2)
 		TNT1 A 0 A_JumpIfInventory("RailgunAmmo", 50, "Reload")
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
@@ -390,18 +390,18 @@ ACTOR Marine_Railgun: Marine_Rifle
 		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "FollowPlayer")
 		TNT1 A 0 A_JumpIfCloser(256,"MissileCloseRight")
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
-		MRGA D 1 BRIGHT A_CustomMissile("PlasmaFlareSpawn", 48)
+		MRGA D 1 BRIGHT A_FaceTarget
 		TNT1 A 0 A_GiveInventory("RailgunAmmo",10)
-		MRGA A 0 A_Recoil(6)
-		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("RAILF1", 1)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
+		TNT1 A 0 A_CustomMissile("PlasmaFlareSpawn", 48)
 		TNT1 A 0 A_CustomMissile("MarineRailgunProjectile", 48)
 		TNT1 A 0 A_CustomRailgun(400, 0, "none", "none", RGF_FULLBRIGHT,1, 0, "MarineRailgunPuff2", 0, 0, 0, 0, 0, 0, "RailgunTrailEffect")
-		TNT1 A 0 A_CustomMissile("Alerter",48)
-		MRGA A 10 A_FaceTarget
-		MRRG A 15 A_FaceTarget
-		TNT1 A 0 A_PlaySound("RAILR1", 2)
-		MRRG D 30 A_FaceTarget
+		TNT1 A 0 A_PlaySound("Railgun/Fire", 1)
+		MRGA D 1 BRIGHT A_AlertMonsters(0, AMF_TARGETEMITTER)
+		MRGA A 0 A_Recoil(2)
+		MRRG A 8 A_FaceTarget
+		TNT1 A 0 A_PlaySound("Railgun/Recharge", 5)
+		MRRG D 42 A_FaceTarget
 		TNT1 A 0 A_PlaySound("Plasma/BeepBeep", 2)
 		TNT1 A 0 A_JumpIfInventory("RailgunAmmo", 50, "Reload")
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
@@ -424,14 +424,15 @@ ACTOR Marine_Railgun: Marine_Rifle
 		Goto Missile
 
 	Reload:
-		MRRG A 2 A_FaceTarget
-		TNT1 A 0 A_PlaySound("Plasma/Reload2",2)
-		MRRG D 6 A_FaceTarget
+		MRRG A 8 A_FaceTarget
+		TNT1 A 0 A_PlaySound("Railgun/Reload1", 5)
+		MRRG D 12 A_FaceTarget
 		TNT1 A 0 A_CustomMissile("EmptyCellSpawn", 30, 0, random(-11, 11), 0)
-		MRRG D 38 A_FaceTarget
-		TNT1 A 0 A_PlaySound("RAILR1",2)
-		MRRG D 30 A_FaceTarget
-		TNT1 A 0 A_PlaySound("Plasma/BeepBeep",2)
+		MRRG A 14 A_FaceTarget
+		TNT1 A 0 A_PlaySound("Railgun/Reload2", 5)
+		MRRG D 8 A_FaceTarget
+		TNT1 A 0 A_PlaySound("Railgun/Recharge", 5)
+		MRRG A 2 A_FaceTarget
 		TNT1 A 0 A_TakeInventory("RailgunAmmo", 50)
 		Goto See
 
@@ -456,20 +457,21 @@ ACTOR Marine_Railgun: Marine_Rifle
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfCloser(256,"RetreatClose")
 		TNT1 A 0 A_Recoil(5)
-		MRGA D 1 BRIGHT A_CustomMissile("PlasmaFlareSpawn", 48)
+		MRGA D 1 BRIGHT A_FaceTarget
 		TNT1 A 0 A_GiveInventory("RailgunAmmo",10)
-		MRGA A 0 A_Recoil(6)
-		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("RAILF1", 1)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
+		TNT1 A 0 A_CustomMissile("PlasmaFlareSpawn", 48)
 		TNT1 A 0 A_CustomMissile("MarineRailgunProjectile", 48)
 		TNT1 A 0 A_CustomRailgun(400, 0, "none", "none", RGF_FULLBRIGHT,1, 0, "MarineRailgunPuff2", 0, 0, 0, 0, 0, 0, "RailgunTrailEffect")
-		TNT1 A 0 A_CustomMissile("Alerter",48)
-		MRGA A 10 A_FaceTarget
-		MRRG A 15 A_FaceTarget
-		TNT1 A 0 A_PlaySound("RAILR1", 2)
-		MRRG D 30 A_FaceTarget
+		TNT1 A 0 A_PlaySound("Railgun/Fire", 1)
+		MRGA D 1 BRIGHT A_AlertMonsters(0, AMF_TARGETEMITTER)
+		MRGA A 0 A_Recoil(2)
+		MRRG A 8 A_FaceTarget
+		TNT1 A 0 A_PlaySound("Railgun/Recharge", 5)
+		MRRG D 42 A_FaceTarget
 		TNT1 A 0 A_PlaySound("Plasma/BeepBeep", 2)
 		TNT1 A 0 A_JumpIfInventory("RailgunAmmo", 50, "Reload")
+		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Pain.Avoid
 
 	RetreatClose:
@@ -1004,18 +1006,18 @@ ACTOR RailgunMarineGuarding: Marine_Railgun
 
 		TNT1 A 0 A_Jump(128, "MissileLeft", "MissileRight")
 		TNT1 A 0 A_JumpIfCloser(256,"MissileClose")
-		MRGA D 1 BRIGHT A_CustomMissile("PlasmaFlareSpawn", 48)
+		MRGA D 1 BRIGHT A_FaceTarget
 		TNT1 A 0 A_GiveInventory("RailgunAmmo",10)
-		MRGA A 0 A_Recoil(6)
-		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("RAILF1", 1)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
+		TNT1 A 0 A_CustomMissile("PlasmaFlareSpawn", 48)
 		TNT1 A 0 A_CustomMissile("MarineRailgunProjectile", 48)
 		TNT1 A 0 A_CustomRailgun(400, 0, "none", "none", RGF_FULLBRIGHT,1, 0, "MarineRailgunPuff2", 0, 0, 0, 0, 0, 0, "RailgunTrailEffect")
-		TNT1 A 0 A_CustomMissile("Alerter",48)
-		MRGA A 10 A_FaceTarget
-		MRRG A 15 A_FaceTarget
-		TNT1 A 0 A_PlaySound("RAILR1", 2)
-		MRRG D 30 A_FaceTarget
+		TNT1 A 0 A_PlaySound("Railgun/Fire", 1)
+		MRGA D 1 BRIGHT A_AlertMonsters(0, AMF_TARGETEMITTER)
+		MRGA A 0 A_Recoil(2)
+		MRRG A 8 A_FaceTarget
+		TNT1 A 0 A_PlaySound("Railgun/Recharge", 5)
+		MRRG D 42 A_FaceTarget
 		TNT1 A 0 A_PlaySound("Plasma/BeepBeep", 2)
 		TNT1 A 0 A_JumpIfInventory("RailgunAmmo", 50, "Reload")
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
@@ -1039,18 +1041,18 @@ ACTOR RailgunMarineGuarding: Marine_Railgun
 	MissileLeft:
 		TNT1 A 0 A_JumpIfCloser(256,"MissileCloseLeft")
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
-		MRGA D 1 BRIGHT A_CustomMissile("PlasmaFlareSpawn", 48)
+		MRGA D 1 BRIGHT A_FaceTarget
 		TNT1 A 0 A_GiveInventory("RailgunAmmo",10)
-		MRGA A 0 A_Recoil(6)
-		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("RAILF1", 1)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
+		TNT1 A 0 A_CustomMissile("PlasmaFlareSpawn", 48)
 		TNT1 A 0 A_CustomMissile("MarineRailgunProjectile", 48)
 		TNT1 A 0 A_CustomRailgun(400, 0, "none", "none", RGF_FULLBRIGHT,1, 0, "MarineRailgunPuff2", 0, 0, 0, 0, 0, 0, "RailgunTrailEffect")
-		TNT1 A 0 A_CustomMissile("Alerter",48)
-		MRGA A 10 A_FaceTarget
-		MRRG A 15 A_FaceTarget
-		TNT1 A 0 A_PlaySound("RAILR1", 2)
-		MRRG D 30 A_FaceTarget
+		TNT1 A 0 A_PlaySound("Railgun/Fire", 1)
+		MRGA D 1 BRIGHT A_AlertMonsters(0, AMF_TARGETEMITTER)
+		MRGA A 0 A_Recoil(2)
+		MRRG A 8 A_FaceTarget
+		TNT1 A 0 A_PlaySound("Railgun/Recharge", 5)
+		MRRG D 42 A_FaceTarget
 		TNT1 A 0 A_PlaySound("Plasma/BeepBeep", 2)
 		TNT1 A 0 A_JumpIfInventory("RailgunAmmo", 50, "Reload")
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
@@ -1075,18 +1077,18 @@ ACTOR RailgunMarineGuarding: Marine_Railgun
 	MissileRight:
 		TNT1 A 0 A_JumpIfCloser(256,"MissileCloseRight")
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
-		MRGA D 1 BRIGHT A_CustomMissile("PlasmaFlareSpawn", 48)
+		MRGA D 1 BRIGHT A_FaceTarget
 		TNT1 A 0 A_GiveInventory("RailgunAmmo",10)
-		MRGA A 0 A_Recoil(6)
-		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("RAILF1", 1)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
+		TNT1 A 0 A_CustomMissile("PlasmaFlareSpawn", 48)
 		TNT1 A 0 A_CustomMissile("MarineRailgunProjectile", 48)
 		TNT1 A 0 A_CustomRailgun(400, 0, "none", "none", RGF_FULLBRIGHT,1, 0, "MarineRailgunPuff2", 0, 0, 0, 0, 0, 0, "RailgunTrailEffect")
-		TNT1 A 0 A_CustomMissile("Alerter",48)
-		MRGA A 10 A_FaceTarget
-		MRRG A 15 A_FaceTarget
-		TNT1 A 0 A_PlaySound("RAILR1", 2)
-		MRRG D 30 A_FaceTarget
+		TNT1 A 0 A_PlaySound("Railgun/Fire", 1)
+		MRGA D 1 BRIGHT A_AlertMonsters(0, AMF_TARGETEMITTER)
+		MRGA A 0 A_Recoil(2)
+		MRRG A 8 A_FaceTarget
+		TNT1 A 0 A_PlaySound("Railgun/Recharge", 5)
+		MRRG D 42 A_FaceTarget
 		TNT1 A 0 A_PlaySound("Plasma/BeepBeep", 2)
 		TNT1 A 0 A_JumpIfInventory("RailgunAmmo", 50, "Reload")
 		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
@@ -1109,14 +1111,15 @@ ACTOR RailgunMarineGuarding: Marine_Railgun
 		Goto Missile
 
 	Reload:
-		MRRG A 2 A_FaceTarget
-		TNT1 A 0 A_PlaySound("Plasma/Reload2",2)
-		MRRG D 6 A_FaceTarget
+		MRRG A 8 A_FaceTarget
+		TNT1 A 0 A_PlaySound("Railgun/Reload1", 5)
+		MRRG D 12 A_FaceTarget
 		TNT1 A 0 A_CustomMissile("EmptyCellSpawn", 30, 0, random(-11, 11), 0)
-		MRRG D 38 A_FaceTarget
-		TNT1 A 0 A_PlaySound("RAILR1",2)
-		MRRG D 30 A_FaceTarget
-		TNT1 A 0 A_PlaySound("Plasma/BeepBeep",2)
+		MRRG A 14 A_FaceTarget
+		TNT1 A 0 A_PlaySound("Railgun/Reload2", 5)
+		MRRG D 8 A_FaceTarget
+		TNT1 A 0 A_PlaySound("Railgun/Recharge", 5)
+		MRRG A 2 A_FaceTarget
 		TNT1 A 0 A_TakeInventory("RailgunAmmo", 50)
 		Goto See
 
@@ -1141,20 +1144,21 @@ ACTOR RailgunMarineGuarding: Marine_Railgun
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfCloser(256,"RetreatClose")
 		TNT1 A 0 A_Recoil(5)
-		MRGA D 1 BRIGHT A_CustomMissile("PlasmaFlareSpawn", 48)
+		MRGA D 1 BRIGHT A_FaceTarget
 		TNT1 A 0 A_GiveInventory("RailgunAmmo",10)
-		MRGA A 0 A_Recoil(6)
-		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("RAILF1", 1)
+		TNT1 A 0 A_CustomMissile("Alerter",48)
+		TNT1 A 0 A_CustomMissile("PlasmaFlareSpawn", 48)
 		TNT1 A 0 A_CustomMissile("MarineRailgunProjectile", 48)
 		TNT1 A 0 A_CustomRailgun(400, 0, "none", "none", RGF_FULLBRIGHT,1, 0, "MarineRailgunPuff2", 0, 0, 0, 0, 0, 0, "RailgunTrailEffect")
-		TNT1 A 0 A_CustomMissile("Alerter",48)
-		MRGA A 10 A_FaceTarget
-		MRRG A 15 A_FaceTarget
-		TNT1 A 0 A_PlaySound("RAILR1", 2)
-		MRRG D 30 A_FaceTarget
+		TNT1 A 0 A_PlaySound("Railgun/Fire", 1)
+		MRGA D 1 BRIGHT A_AlertMonsters(0, AMF_TARGETEMITTER)
+		MRGA A 0 A_Recoil(2)
+		MRRG A 8 A_FaceTarget
+		TNT1 A 0 A_PlaySound("Railgun/Recharge", 5)
+		MRRG D 42 A_FaceTarget
 		TNT1 A 0 A_PlaySound("Plasma/BeepBeep", 2)
 		TNT1 A 0 A_JumpIfInventory("RailgunAmmo", 50, "Reload")
+		TNT1 A 0 A_MonsterRefire(0,"ForgetTarget")
 		Goto Pain.Avoid
 
 	RetreatClose:
