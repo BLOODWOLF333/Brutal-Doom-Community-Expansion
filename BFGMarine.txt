@@ -313,13 +313,13 @@ ACTOR Marine_BFG: Marine_Rifle
 
 		TNT1 A 0 A_Jump(128, "MissileLeft", "MissileRight")
 		TNT1 A 0 A_JumpIfCloser(256,"MissileClose")
-		TNT1 A 0 A_PlaySound("BFGCHARGE")
+		TNT1 A 0 A_PlaySound("BFG/Charge")
 		MAR7 D 14 BRIGHT A_SpawnItemEx("GreenFlareSpawn",16,0,32)
 		MAR7 D 1 BRIGHT A_FaceTarget
 		MAR7 D 14 BRIGHT A_SpawnItemEx("GreenFlareSpawn",16,0,32)
 		MAR7 D 1 BRIGHT A_FaceTarget
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("BFGFIRE")
+		TNT1 A 0 A_PlaySound("BFG/Fire")
 		TNT1 A 0 A_Recoil(8)
 		TNT1 A 0 A_CustomMissile("FriendlyBFGBall", 48)
 		TNT1 A 0 A_CustomMissile("Alerter",48)
@@ -355,7 +355,7 @@ ACTOR Marine_BFG: Marine_Rifle
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "FollowPlayer")
 		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "FollowPlayer")
 		TNT1 A 0 A_JumpIfCloser(256,"MissileCloseLeft")
-		TNT1 A 0 A_PlaySound("BFGCHARGE")
+		TNT1 A 0 A_PlaySound("BFG/Charge")
 		MAR7 D 14 BRIGHT A_SpawnItemEx("GreenFlareSpawn",16,0,32)
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
 		MAR7 D 1 BRIGHT A_FaceTarget
@@ -363,7 +363,7 @@ ACTOR Marine_BFG: Marine_Rifle
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
 		MAR7 D 1 BRIGHT A_FaceTarget
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("BFGFIRE")
+		TNT1 A 0 A_PlaySound("BFG/Fire")
 		TNT1 A 0 A_Recoil(8)
 		TNT1 A 0 A_CustomMissile("FriendlyBFGBall", 48)
 		TNT1 A 0 A_CustomMissile("Alerter",48)
@@ -400,7 +400,7 @@ ACTOR Marine_BFG: Marine_Rifle
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "FollowPlayer")
 		TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "FollowPlayer")
 		TNT1 A 0 A_JumpIfCloser(256,"MissileCloseRight")
-		TNT1 A 0 A_PlaySound("BFGCHARGE")
+		TNT1 A 0 A_PlaySound("BFG/Charge")
 		MAR7 D 14 BRIGHT A_SpawnItemEx("GreenFlareSpawn",16,0,32)
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
 		MAR7 D 1 BRIGHT A_FaceTarget
@@ -408,7 +408,7 @@ ACTOR Marine_BFG: Marine_Rifle
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
 		MAR7 D 1 BRIGHT A_FaceTarget
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("BFGFIRE")
+		TNT1 A 0 A_PlaySound("BFG/Fire")
 		TNT1 A 0 A_Recoil(8)
 		TNT1 A 0 A_CustomMissile("FriendlyBFGBall", 48)
 		TNT1 A 0 A_CustomMissile("Alerter",48)
@@ -444,7 +444,7 @@ ACTOR Marine_BFG: Marine_Rifle
 	Retreat:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfCloser(256,"RetreatClose")
-		TNT1 A 0 A_PlaySound("BFGCHARGE")
+		TNT1 A 0 A_PlaySound("BFG/Charge")
 		MAR7 D 14 BRIGHT A_SpawnItemEx("GreenFlareSpawn",16,0,32)
 		TNT1 A 0 A_Recoil(5)
 		MAR7 D 1 BRIGHT A_FaceTarget
@@ -452,7 +452,7 @@ ACTOR Marine_BFG: Marine_Rifle
 		TNT1 A 0 A_Recoil(5)
 		MAR7 D 1 BRIGHT A_FaceTarget
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("BFGFIRE")
+		TNT1 A 0 A_PlaySound("BFG/Fire")
 		TNT1 A 0 A_Recoil(8)
 		TNT1 A 0 A_CustomMissile("FriendlyBFGBall", 48)
 		TNT1 A 0 A_CustomMissile("Alerter",48)
@@ -950,13 +950,13 @@ ACTOR BFGMarineGuarding: Marine_BFG
 
 		TNT1 A 0 A_Jump(128, "MissileLeft", "MissileRight")
 		TNT1 A 0 A_JumpIfCloser(256,"MissileClose")
-		TNT1 A 0 A_PlaySound("BFGCHARGE")
+		TNT1 A 0 A_PlaySound("BFG/Charge")
 		MAR7 D 14 BRIGHT A_SpawnItemEx("GreenFlareSpawn",16,0,32)
 		MAR7 D 1 BRIGHT A_FaceTarget
 		MAR7 D 14 BRIGHT A_SpawnItemEx("GreenFlareSpawn",16,0,32)
 		MAR7 D 1 BRIGHT A_FaceTarget
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("BFGFIRE")
+		TNT1 A 0 A_PlaySound("BFG/Fire")
 		TNT1 A 0 A_Recoil(8)
 		TNT1 A 0 A_CustomMissile("FriendlyBFGBall", 48)
 		TNT1 A 0 A_CustomMissile("Alerter",48)
@@ -991,7 +991,7 @@ ACTOR BFGMarineGuarding: Marine_BFG
 	MissileLeft:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfCloser(256,"MissileCloseLeft")
-		TNT1 A 0 A_PlaySound("BFGCHARGE")
+		TNT1 A 0 A_PlaySound("BFG/Charge")
 		MAR7 D 14 BRIGHT A_SpawnItemEx("GreenFlareSpawn",16,0,32)
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
 		MAR7 D 1 BRIGHT A_FaceTarget
@@ -999,7 +999,7 @@ ACTOR BFGMarineGuarding: Marine_BFG
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
 		MAR7 D 1 BRIGHT A_FaceTarget
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("BFGFIRE")
+		TNT1 A 0 A_PlaySound("BFG/Fire")
 		TNT1 A 0 A_Recoil(8)
 		TNT1 A 0 A_CustomMissile("FriendlyBFGBall", 48)
 		TNT1 A 0 A_CustomMissile("Alerter",48)
@@ -1035,7 +1035,7 @@ ACTOR BFGMarineGuarding: Marine_BFG
 	MissileRight:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfCloser(256,"MissileCloseRight")
-		TNT1 A 0 A_PlaySound("BFGCHARGE")
+		TNT1 A 0 A_PlaySound("BFG/Charge")
 		MAR7 D 14 BRIGHT A_SpawnItemEx("GreenFlareSpawn",16,0,32)
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
 		MAR7 D 1 BRIGHT A_FaceTarget
@@ -1043,7 +1043,7 @@ ACTOR BFGMarineGuarding: Marine_BFG
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
 		MAR7 D 1 BRIGHT A_FaceTarget
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("BFGFIRE")
+		TNT1 A 0 A_PlaySound("BFG/Fire")
 		TNT1 A 0 A_Recoil(8)
 		TNT1 A 0 A_CustomMissile("FriendlyBFGBall", 48)
 		TNT1 A 0 A_CustomMissile("Alerter",48)
@@ -1079,7 +1079,7 @@ ACTOR BFGMarineGuarding: Marine_BFG
 	Retreat:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfCloser(256,"RetreatClose")
-		TNT1 A 0 A_PlaySound("BFGCHARGE")
+		TNT1 A 0 A_PlaySound("BFG/Charge")
 		MAR7 D 14 BRIGHT A_SpawnItemEx("GreenFlareSpawn",16,0,32)
 		TNT1 A 0 A_Recoil(5)
 		MAR7 D 1 BRIGHT A_FaceTarget
@@ -1087,7 +1087,7 @@ ACTOR BFGMarineGuarding: Marine_BFG
 		TNT1 A 0 A_Recoil(5)
 		MAR7 D 1 BRIGHT A_FaceTarget
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("BFGFIRE")
+		TNT1 A 0 A_PlaySound("BFG/Fire")
 		TNT1 A 0 A_Recoil(8)
 		TNT1 A 0 A_CustomMissile("FriendlyBFGBall", 48)
 		TNT1 A 0 A_CustomMissile("Alerter",48)

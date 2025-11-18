@@ -1362,7 +1362,7 @@ ACTOR VanillaBFG9000 : ClassicWeapon
 	+WEAPON.EXPLOSIVE
 	Tag "BFG 9000"
 	Inventory.PickupMessage "$GOTBFG9000"
-    Inventory.PickupSound "BFGREADY"
+    Inventory.PickupSound "BFG/Draw"
 	DropItem "BFG9000Spawner"
 	Scale 0.8
 	States
@@ -1403,10 +1403,10 @@ ACTOR VanillaBFG9000 : ClassicWeapon
 		BFGN A 1 A_Raise
 		Loop
 	Fire:
-		BFGN A 20 A_PlaySound("BFGCHARGE")
+		BFGN A 20 A_PlaySound("BFG/Charge",5)
 		BFGC ABCD 2 BRIGHT A_FireCustomMissile("GreenFlareSpawn", 0, 0, 0, 0)
 		BFGA A 2 BRIGHT A_FireCustomMissile("GreenFlareSpawn", 0, 0, 0, 0)
-		TNT1 A 0 A_PlaySound("BFGFIRE")
+		TNT1 A 0 A_PlaySound("BFG/Fire",5)
 		BFGA ABCDE 2 BRIGHT
 		TNT1 A 0 A_FireCustomMissile("ClassicBFGBall")
 		BFGN A 20 A_Refire
@@ -1432,7 +1432,7 @@ ACTOR ClassicBFGBall : BFGBall
 	+RANDOMIZE
 	RenderStyle Add
 	Alpha 0.75
-	DeathSound "BFGEXPLO"
+	DeathSound "BFG/Explosion"
 	Obituary "$OB_MPBFG_BOOM"
 	Species "Marines"
 	+THRUSPECIES
@@ -1448,7 +1448,7 @@ ACTOR ClassicBFGBall : BFGBall
 		BFGN A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 AA 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		BFGN A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 0 A_PlaySOund("BFGEXPL2", 1)
+		TNT1 A 0 A_PlaySound("BFG/ExplosionDistant", 1)
 		BFGN A 0 Bright A_SpawnItem("GreenShockWave",0,0,0)
 		EXPL A 0 A_SpawnItemEx("BFGBigFlare", 0, 0, 0)
 		EXPL A 0 A_SpawnItemEx("BFGBigFlare", 50, 0, 0)
@@ -1485,7 +1485,7 @@ ACTOR ClassicUnmaker : ClassicWeapon
 	Weapon.AmmoGive 40
 	Weapon.AmmoType "CellPurist"
 	Inventory.PickupMessage "What the !@#%* is this!"
-	Inventory.PickupSound "BFGREADY"
+	Inventory.PickupSound "BFG/Draw"
 	AttackSound "NULL"
 	Inventory.Icon "LGUNA0"
 	Tag "Unmaker"

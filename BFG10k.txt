@@ -8,7 +8,7 @@ Actor BFG10k : BrutalWeapon
 	Weapon.Kickback 100
 	Weapon.SelectionOrder 2900
 	Inventory.Pickupmessage "$GOTBFG10K"
-	Inventory.PickupSound "BFGREADY"
+	Inventory.PickupSound "BFG/Draw"
 	Obituary "%o was blasted by %k's BFG10K"
 	Decal BFGLightning
 	+WEAPON.BFG
@@ -94,7 +94,7 @@ Actor BFG10k : BrutalWeapon
 	BG2G A 0 A_Takeinventory("HasBarrel",1)
 	BG2G A 0 A_GunFlash
     BG2G EEEE 1 BRIGHT A_Raise
-	BG2G A 0 A_PlaySound("BFGREADY", 3)
+	BG2G A 0 A_PlaySound("BFG/Draw", 3)
 	TNT1 AAAAAAAAAAAA 0 A_Raise
     Goto Ready
 
