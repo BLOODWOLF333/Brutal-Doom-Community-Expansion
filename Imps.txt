@@ -1079,7 +1079,10 @@ ACTOR BrutalizedImp1
     TNT1 AA 0 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
 
 	Pain:
-    IZD1 AA 10 A_PAIN
+    IZD1 A 20
+	IZD1 A 0 A_PAIN
+    IZD1 A 20
+	IZD1 A 0 A_PAIN
 	IZD1 A 0 A_Die("Fall")
 
     Death.Fall:
@@ -1709,29 +1712,29 @@ ACTOR DyingImp
 	Goto Suffer
 
 	Suffer:
-        TRO2 DDDDD 2 A_CustomMissile ("Brutal_LiquidBlood", 16, 0, random (0, 360), 2, random (0, 45))
-        TRO2 D 2
+        TRO2 DDDDD 5 A_CustomMissile ("Brutal_LiquidBlood", 16, 0, random (0, 360), 2, random (0, 45))
+        TRO2 D 0 A_Pain
 
-        TRO2 EEEEE 2 A_CustomMissile ("Brutal_LiquidBlood", 16, 0, random (0, 360), 2, random (0, 45))
-        TRO2 E 2 A_Pain
+        TRO2 EEEEE 5 A_CustomMissile ("Brutal_LiquidBlood", 16, 0, random (0, 360), 2, random (0, 45))
+        TRO2 E 0 A_Pain
 
-        TRO2 DDDDD 2 A_CustomMissile ("Brutal_LiquidBlood", 16, 0, random (0, 360), 2, random (0, 45))
-        TRO2 D 2
+        TRO2 DDDDD 5 A_CustomMissile ("Brutal_LiquidBlood", 16, 0, random (0, 360), 2, random (0, 45))
+        TRO2 D 0 A_Pain
 
-        TRO2 EEEEE 2 A_CustomMissile ("Brutal_LiquidBlood", 16, 0, random (0, 360), 2, random (0, 45))
-        TRO2 E 2 A_Pain
+        TRO2 EEEEE 5 A_CustomMissile ("Brutal_LiquidBlood", 16, 0, random (0, 360), 2, random (0, 45))
+        TRO2 E 0 A_Pain
 
-        TRO2 DDDDD 2 A_CustomMissile ("Brutal_LiquidBlood", 16, 0, random (0, 360), 2, random (0, 45))
-        TRO2 D 2
+        TRO2 DDDDD 5 A_CustomMissile ("Brutal_LiquidBlood", 16, 0, random (0, 360), 2, random (0, 45))
+        TRO2 D 0 A_Pain
 
-        TRO2 EEEEE 2 A_CustomMissile ("Brutal_LiquidBlood", 16, 0, random (0, 360), 2, random (0, 45))
-        TRO2 E 2 A_Pain
+        TRO2 EEEEE 5 A_CustomMissile ("Brutal_LiquidBlood", 16, 0, random (0, 360), 2, random (0, 45))
+        TRO2 E 0 A_Pain
 
-        TRO2 DDDDD 2 A_CustomMissile ("Brutal_LiquidBlood", 16, 0, random (0, 360), 2, random (0, 45))
-        TRO2 D 2
+        TRO2 DDDDD 5 A_CustomMissile ("Brutal_LiquidBlood", 16, 0, random (0, 360), 2, random (0, 45))
+        TRO2 D 0 A_Pain
 
-        TRO2 EEEEE 2 A_CustomMissile ("Brutal_LiquidBlood", 16, 0, random (0, 360), 2, random (0, 45))
-        TRO2 E 2 A_Pain
+        TRO2 EEEEE 5 A_CustomMissile ("Brutal_LiquidBlood", 16, 0, random (0, 360), 2, random (0, 45))
+        TRO2 E 0 A_Pain
 		TRO2 E 0 A_Die
 
 	Death:
@@ -1941,30 +1944,30 @@ ACTOR DyingImpNoArm
 	Goto Suffer
 
 	Suffer:
-        TR08 BB 4 A_CustomMissile ("Brutal_LiquidBlood", 26, 0, random (0, 360), 2, random (0, 45))
+        TR08 BB 5 A_CustomMissile ("Brutal_LiquidBlood", 26, 0, random (0, 360), 2, random (0, 45))
         TR08 B 5
-        TR08 CC 4 A_CustomMissile ("Brutal_LiquidBlood", 26, 0, random (0, 360), 2, random (0, 45))
-        TR08 C 5 A_Pain
+        TR08 CC 5 A_CustomMissile ("Brutal_LiquidBlood", 26, 0, random (0, 360), 2, random (0, 45))
+        TR08 C 0 A_Pain
 
-        TR08 BB 4 A_CustomMissile ("Brutal_LiquidBlood", 26, 0, random (0, 360), 2, random (0, 45))
+        TR08 BB 5 A_CustomMissile ("Brutal_LiquidBlood", 26, 0, random (0, 360), 2, random (0, 45))
         TR08 B 5
-        TR08 CC 4 A_CustomMissile ("Brutal_LiquidBlood", 26, 0, random (0, 360), 2, random (0, 45))
-        TR08 C 5 A_Pain
+        TR08 CC 5 A_CustomMissile ("Brutal_LiquidBlood", 26, 0, random (0, 360), 2, random (0, 45))
+        TR08 C 0 A_Pain
 
-        TR08 BB 4 A_CustomMissile ("Brutal_LiquidBlood", 26, 0, random (0, 360), 2, random (0, 45))
+        TR08 BB 5 A_CustomMissile ("Brutal_LiquidBlood", 26, 0, random (0, 360), 2, random (0, 45))
         TR08 B 5
-        TR08 CC 4 A_CustomMissile ("Brutal_LiquidBlood", 26, 0, random (0, 360), 2, random (0, 45))
-        TR08 C 5 A_Pain
+        TR08 CC 5 A_CustomMissile ("Brutal_LiquidBlood", 26, 0, random (0, 360), 2, random (0, 45))
+        TR08 C 0 A_Pain
 
-        TR08 BB 4 A_CustomMissile ("Brutal_LiquidBlood", 26, 0, random (0, 360), 2, random (0, 45))
+        TR08 BB 5 A_CustomMissile ("Brutal_LiquidBlood", 26, 0, random (0, 360), 2, random (0, 45))
         TR08 B 5
-        TR08 CC 4 A_CustomMissile ("Brutal_LiquidBlood", 26, 0, random (0, 360), 2, random (0, 45))
-        TR08 C 5 A_Pain
+        TR08 CC 5 A_CustomMissile ("Brutal_LiquidBlood", 26, 0, random (0, 360), 2, random (0, 45))
+        TR08 C 0 A_Pain
 
-        TR08 BB 4 A_CustomMissile ("Brutal_LiquidBlood", 26, 0, random (0, 360), 2, random (0, 45))
+        TR08 BB 5 A_CustomMissile ("Brutal_LiquidBlood", 26, 0, random (0, 360), 2, random (0, 45))
         TR08 B 5
-        TR08 CC 4 A_CustomMissile ("Brutal_LiquidBlood", 26, 0, random (0, 360), 2, random (0, 45))
-        TR08 C 5 A_Pain
+        TR08 CC 5 A_CustomMissile ("Brutal_LiquidBlood", 26, 0, random (0, 360), 2, random (0, 45))
+        TR08 C 0 A_Pain
 		TR08 C 0 A_Die
 
 	Death:
@@ -2281,25 +2284,30 @@ ACTOR DyingImpNoLeg
 	Goto Suffer
 
 	Suffer:
-        TR09 DD 4 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
+        TR09 DD 5 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
         TR09 D 5 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
-        TR09 FF 4 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
-        TR09 F 5 A_Pain
+        TR09 FF 5 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
+        TR09 F 0 A_Pain
 
-        TR09 DD 4 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
+        TR09 DD 5 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
         TR09 D 5 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
-        TR09 FF 4 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
-        TR09 F 5 A_Pain
+        TR09 FF 5 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
+        TR09 F 0 A_Pain
 
-        TR09 DD 4 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
+        TR09 DD 5 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
         TR09 D 5 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
-        TR09 FF 4 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
-        TR09 F 5 A_Pain
+        TR09 FF 5 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
+        TR09 F 0 A_Pain
 
-        TR09 DD 4 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
+        TR09 DD 5 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
         TR09 D 5 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
-        TR09 FF 4 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
-        TR09 F 5 A_Pain
+        TR09 FF 5 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
+        TR09 F 0 A_Pain
+
+        TR09 DD 5 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
+        TR09 D 5 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
+        TR09 FF 5 A_CustomMissile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45))
+        TR09 F 0 A_Pain
 		TR09 F 0 A_Die("Fall")
 
 	Death.Fall:
@@ -2433,11 +2441,11 @@ ACTOR ImpBrutalizedWithNoLeg
 	States
 	{
 	Spawn:
-		TR09 A 8 A_PAIN
-		TR09 BC 8
+		TR09 A 9 A_PAIN
+		TR09 BCD 3
 		TR09 A 0 A_PAIN
-		TR09 DE 8
-		TR09 A 0 A_PAIN
+		TR09 D 18
+		TR09 A 0 A_SCREAM
 		TR09 A 0 A_Die("Fall")
 
 	Death.Fall:
