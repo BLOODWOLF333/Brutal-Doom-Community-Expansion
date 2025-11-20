@@ -77,7 +77,7 @@ ACTOR Marine_BFG10K: Marine_Rifle
 
 	ForgetActiveTarget:
 		TNT1 A 0
-		TNT1 A 0 A_PlaySound("10KSTOP",4)
+		TNT1 A 0 A_PlaySound("BFG10K/Stop",4)
 		M10K A 30 A_Look
 		TNT1 A 0 A_ClearTarget
 		Goto Spawn
@@ -320,7 +320,7 @@ ACTOR Marine_BFG10K: Marine_Rifle
 		TNT1 A 0 A_PlaySound("MRNAT", 2)
 
 		TNT1 A 0 A_JumpIfCloser(256,"MissileClose")
-		TNT1 A 0 A_PlaySound("10KSTART")
+		TNT1 A 0 A_PlaySound("BFG10K/Charge")
 		M10K D 30 A_FaceTarget
 	MissileContinue:
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsACyberdemon", 1, "CheckRetreat")
@@ -334,7 +334,7 @@ ACTOR Marine_BFG10K: Marine_Rifle
 		M10K D 1 BRIGHT A_SpawnItemEx("GreenFlareSpawn",16,0,32)
 		TNT1 A 0 A_CustomMissile("Alerter",32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("BFG10KFIRE")
+		TNT1 A 0 A_PlaySound("BFG10K/Fire")
 		M10K D 1 BRIGHT A_CustomMissile("MarineBFG10K_Ball", 48)
 		TNT1 A 0 A_Recoil(4)
 		M10K D 1 BRIGHT A_SpawnItemEx("GreenFlareSpawn",16,0,32)
@@ -371,7 +371,7 @@ ACTOR Marine_BFG10K: Marine_Rifle
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
 		TNT1 A 0 A_CustomMissile("Alerter",32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("BFG10KFIRE")
+		TNT1 A 0 A_PlaySound("BFG10K/Fire")
 		M10K D 1 BRIGHT A_CustomMissile("MarineBFG10K_Ball", 48)
 		TNT1 A 0 A_Recoil(4)
 		M10K D 1 BRIGHT A_SpawnItemEx("GreenFlareSpawn",16,0,32)
@@ -408,7 +408,7 @@ ACTOR Marine_BFG10K: Marine_Rifle
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
 		TNT1 A 0 A_CustomMissile("Alerter",32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("BFG10KFIRE")
+		TNT1 A 0 A_PlaySound("BFG10K/Fire")
 		M10K D 1 BRIGHT A_CustomMissile("MarineBFG10K_Ball", 48)
 		TNT1 A 0 A_Recoil(4)
 		M10K D 1 BRIGHT A_SpawnItemEx("GreenFlareSpawn",16,0,32)
@@ -505,7 +505,7 @@ ACTOR Marine_BFG10K: Marine_Rifle
 	Retreat:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfCloser(256,"RetreatClose")
-		TNT1 A 0 A_PlaySound("10KSTART")
+		TNT1 A 0 A_PlaySound("BFG10K/Charge")
 		M10K D 3 A_FaceTarget
 		TNT1 A 0 A_Recoil(1)
 		M10K D 3 A_FaceTarget
@@ -529,7 +529,7 @@ ACTOR Marine_BFG10K: Marine_Rifle
 		M10K D 1 BRIGHT A_SpawnItemEx("GreenFlareSpawn",16,0,32)
 		TNT1 A 0 A_CustomMissile("Alerter",32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("BFG10KFIRE")
+		TNT1 A 0 A_PlaySound("BFG10K/Fire")
 		M10K D 1 BRIGHT A_CustomMissile("MarineBFG10K_Ball", 48)
 		TNT1 A 0 A_Recoil(4)
 		M10K D 1 BRIGHT A_SpawnItemEx("GreenFlareSpawn",16,0,32)
@@ -1002,7 +1002,7 @@ ACTOR BFG10KMarineGuarding: Marine_BFG10K
 
 	ForgetActiveTarget:
 		TNT1 A 0
-		TNT1 A 0 A_PlaySound("10KSTOP",4)
+		TNT1 A 0 A_PlaySound("BFG10K/Stop",4)
 		M10K A 30 A_Look
 		TNT1 A 0 A_ClearTarget
 		Goto Spawn
@@ -1029,7 +1029,7 @@ ACTOR BFG10KMarineGuarding: Marine_BFG10K
 		TNT1 A 0 A_PlaySound("MRNAT", 2)
 
 		TNT1 A 0 A_JumpIfCloser(256,"MissileClose")
-		TNT1 A 0 A_PlaySound("10KSTART")
+		TNT1 A 0 A_PlaySound("BFG10K/Charge")
 		M10K D 30 A_FaceTarget
 	MissileContinue:
 		TNT1 A 0 A_JumpIfInTargetInventory("TargetIsACyberdemon", 1, "CheckRetreat")
@@ -1043,7 +1043,7 @@ ACTOR BFG10KMarineGuarding: Marine_BFG10K
 		M10K D 1 BRIGHT A_SpawnItemEx("GreenFlareSpawn",16,0,32)
 		TNT1 A 0 A_CustomMissile("Alerter",32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("BFG10KFIRE")
+		TNT1 A 0 A_PlaySound("BFG10K/Fire")
 		M10K D 1 BRIGHT A_CustomMissile("MarineBFG10K_Ball", 48)
 		TNT1 A 0 A_Recoil(4)
 		M10K D 1 BRIGHT A_SpawnItemEx("GreenFlareSpawn",16,0,32)
@@ -1078,7 +1078,7 @@ ACTOR BFG10KMarineGuarding: Marine_BFG10K
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
 		TNT1 A 0 A_CustomMissile("Alerter",32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("BFG10KFIRE")
+		TNT1 A 0 A_PlaySound("BFG10K/Fire")
 		M10K D 1 BRIGHT A_CustomMissile("MarineBFG10K_Ball", 48)
 		TNT1 A 0 A_Recoil(4)
 		M10K D 1 BRIGHT A_SpawnItemEx("GreenFlareSpawn",16,0,32)
@@ -1113,7 +1113,7 @@ ACTOR BFG10KMarineGuarding: Marine_BFG10K
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
 		TNT1 A 0 A_CustomMissile("Alerter",32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("BFG10KFIRE")
+		TNT1 A 0 A_PlaySound("BFG10K/Fire")
 		M10K D 1 BRIGHT A_CustomMissile("MarineBFG10K_Ball", 48)
 		TNT1 A 0 A_Recoil(4)
 		M10K D 1 BRIGHT A_SpawnItemEx("GreenFlareSpawn",16,0,32)
@@ -1210,7 +1210,7 @@ ACTOR BFG10KMarineGuarding: Marine_BFG10K
 	Retreat:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfCloser(256,"RetreatClose")
-		TNT1 A 0 A_PlaySound("10KSTART")
+		TNT1 A 0 A_PlaySound("BFG10K/Charge")
 		M10K D 3 A_FaceTarget
 		TNT1 A 0 A_Recoil(1)
 		M10K D 3 A_FaceTarget
@@ -1234,7 +1234,7 @@ ACTOR BFG10KMarineGuarding: Marine_BFG10K
 		M10K D 1 BRIGHT A_SpawnItemEx("GreenFlareSpawn",16,0,32)
 		TNT1 A 0 A_CustomMissile("Alerter",32)
 		TNT1 A 0 A_AlertMonsters(0, AMF_TARGETEMITTER)
-		TNT1 A 0 A_PlaySound("BFG10KFIRE")
+		TNT1 A 0 A_PlaySound("BFG10K/Fire")
 		M10K D 1 BRIGHT A_CustomMissile("MarineBFG10K_Ball", 48)
 		TNT1 A 0 A_Recoil(4)
 		M10K D 1 BRIGHT A_SpawnItemEx("GreenFlareSpawn",16,0,32)
