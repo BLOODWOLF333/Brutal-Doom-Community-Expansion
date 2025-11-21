@@ -21,25 +21,25 @@ ACTOR BrutalAxe : BrutalWeapon
         AXEG A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"BlueKickFlash")
         AXEG A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"GreenKickFlash")
 		AXES DCB 1
-		AXES A 12
+		AXES A 15
 		AXES BCD 1
 		Stop
 
 	RedKickFlash:
 		AXRS DCB 1
-		AXRS A 12
+		AXRS A 15
 		AXRS BCD 1
 		Stop
 
 	BlueKickFlash:
 		AXBS DCB 1
-		AXBS A 12
+		AXBS A 15
 		AXBS BCD 1
 		Stop
 
 	GreenKickFlash:
 		AXGS DCB 1
-		AXGS A 12
+		AXGS A 15
 		AXGS BCD 1
 		Stop
 
@@ -47,22 +47,22 @@ ACTOR BrutalAxe : BrutalWeapon
 		AXEG A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"RedSlideFlashEnd")
         AXEG A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"BlueSlideFlashEnd")
         AXEG A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"GreenSlideFlashEnd")
-		AXES A 7
+		AXES A 10
 		AXES BCD 1
 		Stop
 
 	RedSlideFlashEnd:
-		AXRS A 7
+		AXRS A 10
 		AXRS BCD 1
 		Stop
 
 	BlueSlideFlashEnd:
-		AXBS A 7
+		AXBS A 10
 		AXBS BCD 1
 		Stop
 
 	GreenSlideFlashEnd:
-		AXGS A 7
+		AXGS A 10
 		AXGS BCD 1
 		Stop
 

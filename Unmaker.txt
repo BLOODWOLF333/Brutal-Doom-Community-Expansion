@@ -15,6 +15,17 @@ ACTOR Unmaker : BrutalWeapon
 	DropItem "UnmakerSpawner"
 	States
 	{
+	KickFlash://18 tics
+		TNT1 AAA 1
+		TNT1 A 15
+		TNT1 AAA 1
+		Stop
+
+	SlideFlashEnd://10 tics
+		TNT1 A 10
+		TNT1 AAA 1
+		Stop
+
 	Ready:
 	Ready3:
 		UNHG ABCD 2 A_WeaponReady
@@ -157,17 +168,6 @@ ACTOR Unmaker : BrutalWeapon
 		UNHG A 0 A_PlaySOund("UNMSTO", 1)
 		UNHF DCBA 1
 		Goto Ready3
-
-	KickFlash://18 tics
-		TNT1 AAA 1
-		TNT1 A 12
-		TNT1 AAA 1
-		Stop
-
-	SlideFlashEnd://10 tics
-		TNT1 A 7
-		TNT1 AAA 1
-		Stop
 	}
 }
 

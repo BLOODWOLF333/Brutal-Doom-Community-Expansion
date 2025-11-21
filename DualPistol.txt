@@ -22,6 +22,17 @@ ACTOR DualPistols : BrutalWeapon
 	Dropitem "PistolSpawner"
 	States
 	{
+	KickFlash://18 tics
+		PI2G BCDE 1
+		PI2G F 14
+		PI2G EDCB 1
+		Stop
+
+	SlideFlashEnd://10 tics
+		PI2G F 10
+		PI2G EDCB 1
+		Stop
+
 	Ready3:
 	Ready:
         PI2G A 0 A_JumpIfInventory("Kicking",1,"DoKick")
@@ -638,17 +649,6 @@ ACTOR DualPistols : BrutalWeapon
 	Steady:
 		TNT1 A 1
 		Goto Ready
-
-	KickFlash://20 tics
-		PI2G BCDE 1
-		PI2G F 12
-		PI2G EDCB 1
-		Stop
-
-	SlideFlashEnd://10 tics
-		PI2G F 6
-		PI2G EDCB 1
-		Stop
 	}
 }
 

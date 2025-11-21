@@ -22,24 +22,24 @@ ACTOR DualSMG : BrutalWeapon
 	KickFlash://18 tics
 		SM2S A 0 A_JumpIfInventory("SMGUnloaded", 1, "KickFlashNoAmmo")
 		SM2S ABC 1
-		SM2S D 12
+		SM2S D 15
 		SM2S CBA 1
 		Stop
 
 	KickFlashNoAmmo://18 tics
 		SM2S EFG 1
-		SM2S H 12
+		SM2S H 15
 		SM2S GFE 1
 		Stop
 
 	SlideFlashEnd://10 tics
 		SM2S D 0 A_JumpIfInventory("SMGUnloaded", 1, "SlideFlashEndNoAmmo")
-		SM2S D 7
+		SM2S D 10
 		SM2S CBA 1
 		Stop
 
 	SlideFlashEndNoAmmo://10 tics
-		SM2S H 7
+		SM2S H 10
 		SM2S GFE 1
 		Stop
 

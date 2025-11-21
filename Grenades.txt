@@ -17,13 +17,23 @@ ACTOR HandGrenades : BrutalWeapon
 	Tag "Frag Grenade"
 	States
 	{
+	KickFlash://18 tics
+		TNT1 AAA 1
+		TNT1 A 15
+		TNT1 AAA 1
+		Stop
+
+	SlideFlashEnd://10 tics
+		TNT1 A 10
+		TNT1 AAA 1
+		Stop
 
 	Ready:
 	Ready3:
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("GrenadeAmmo", 1, 1)
 		Goto NoGrenades
-
+		TNT1 AAA 0
 		GRHO AB 1
 		Goto Steady
 
@@ -228,17 +238,6 @@ ACTOR HandGrenades : BrutalWeapon
 		TNT1 A 1 ACS_NamedExecuteAlways("BDTacticalSpeed", 0, 0, 0, 0)//Makes player slower.
 		TNT1 A 0 A_PlaySound("Tired", 2)
 		Goto Ready
-
-	KickFlash://18 tics
-		TNT1 AAA 1
-		TNT1 A 12
-		TNT1 AAA 1
-		Stop
-
-	SlideFlashEnd://10 tics
-		TNT1 A 7
-		TNT1 AAA 1
-		Stop
 	}
 }
 

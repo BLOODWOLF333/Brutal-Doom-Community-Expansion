@@ -22,6 +22,17 @@ ACTOR BrutalPistol : BrutalWeapon
 	DropItem "PistolSpawner"
 	States
 	{
+	KickFlash://18 tics
+		PISS DEF 1
+		PISS F 15
+		PISS FED 1
+		Stop
+
+	SlideFlashEnd://10 tics
+		PISS F 10
+		PISS FED 1
+		Stop
+
 	Ready3:
 	Ready:
 		PIST E 0 A_JumpIfInventory("BDPistolAmmo",1,1)
@@ -462,17 +473,6 @@ ACTOR BrutalPistol : BrutalWeapon
 		PIST E 1
 		PIST E 0 A_Print("You can't dual wield pistols when playing in Tactical Mode.",1)
 		Goto Ready
-
-	KickFlash://18 tics
-		PISS DEF 1
-		PISS F 12
-		PISS FED 1
-		Stop
-
-	SlideFlashEnd://10 tics
-		PISS F 7
-		PISS FED 1
-		Stop
 	}
 }
 

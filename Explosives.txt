@@ -613,7 +613,7 @@ ACTOR NuclearRocket: Rocket2
         TNT1 A 0
 		TNT1 A 0 A_CustomMissile ("SpawnedExplosionNuke2", 30, 0, 0, 2, 90)//rising explosion
 		TNT1 A 4 A_SpawnItemEx("NukeFlare", 0, 0, 150)
-		TNT1 A 0 A_PlaySound("NUKEEXP", 1)
+		TNT1 A 0 A_PlaySound("Nuke/Explosion", 1)
 		TNT1 A 0 A_Explode(5120, 1024)
 		TNT1 AAAA 0 A_CustomMissile("SpawnedExplosionNuke", random (0, 64), random (-128, 128), random (0, 360), 0, 0)//base explosions
 		TNT1 AAAA 0 A_CustomMissile("NuclearFlamesImpact", random (0, 64), 0, random (0, 360), 2, 0)

@@ -13,6 +13,17 @@ ACTOR FlameCannon : BrutalWeapon
 	DropItem "FlameCannonSpawner"
 	States
 	{
+	KickFlash://18 tics
+		TNT1 AAA 1
+		TNT1 A 15
+		TNT1 AAA 1
+		Stop
+
+	SlideFlashEnd://10 tics
+		TNT1 A 10
+		TNT1 AAA 1
+		Stop
+
 	Ready:
 	Ready3:
 	Reload:
@@ -172,17 +183,6 @@ ACTOR FlameCannon : BrutalWeapon
 		FLMG A 0 A_PlaySound("FLAMSTOP", CHAN_WEAPON)
 		FLMG A 14
 		Goto Ready
-
-	KickFlash://18 tics
-		TNT1 AAA 1
-		TNT1 A 12
-		TNT1 AAA 1
-		Stop
-
-	SlideFlashEnd://10 tics
-		TNT1 A 7
-		TNT1 AAA 1
-		Stop
 	}
 }
 
