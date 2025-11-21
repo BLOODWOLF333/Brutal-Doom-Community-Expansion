@@ -106,8 +106,6 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		Loop
 
 	See:
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("HasExplosiveBarrel",1,"StartToThrow")
         BTS3 BC 1
 		BTS3 D 4
 		BTS3 CBA 1
@@ -255,13 +253,12 @@ ACTOR BaronofHell2 : BaronofHell Replaces BaronofHell
 		BOBA BC 4 A_FACETARGET
 		BOBA D 4 A_SPAWNITEMEX("BaronHoldingBarrel", 0, 0, 75, 0, 0, 0, 0, SXF_SETMASTER|SXF_NOCHECKPOSITION)
 	WaitingToThrow:
-		BOBA D 4 A_Look
+		BOBA D 4 A_FACETARGET
+		BOBA D 4 A_CheckSight("WaitingToThrow")
 		TNT1 A 0 A_JumpIfInventory("HasExplosiveBarrel",1,1)
 		Goto EndThrow
 	StartToThrow:
 		TNT1 AAA 0
-		BOBA D 3 A_FACETARGET
-		BOBA D 1 A_CheckSight("WaitingToThrow")
 		BOBA E 8 A_PlaySound("baron/sight")
 		BOBA E 8 A_JumpIfInventory("HasExplosiveBarrel",1,1)
 		Goto EndThrow
@@ -1103,7 +1100,6 @@ Actor BaronBoss1: BaronofHell2 3013
 		BARO A 0
 		TNT1 A 0 ACS_NamedExecuteAlways("BDBruiserBrothersHealth")
 		TNT1 A 0 ACS_NamedExecuteAlways("BDBruiserBrotherOne")
-		TNT1 A 0 A_JumpIfInventory("HasExplosiveBarrel",1,"StartToThrow")
         BTS3 BC 1
 		BTS3 D 4
 		BTS3 CBA 1
@@ -1253,13 +1249,12 @@ Actor BaronBoss1: BaronofHell2 3013
 		BOBA BC 4 A_FACETARGET
 		BOBA D 4 A_SPAWNITEMEX("BaronBossHoldingBarrel", 0, 0, 88, 0, 0, 0, 0, SXF_SETMASTER|SXF_NOCHECKPOSITION)
 	WaitingToThrow:
-		BOBA D 4 A_Look
+		BOBA D 4 A_FACETARGET
+		BOBA D 4 A_CheckSight("WaitingToThrow")
 		TNT1 A 0 A_JumpIfInventory("HasExplosiveBarrel",1,1)
 		Goto EndThrow
 	StartToThrow:
 		TNT1 AAA 0
-		BOBA D 3 A_FACETARGET
-		BOBA D 1 A_CheckSight("WaitingToThrow")
 		BOBA E 8 A_PlaySound("baron/sight")
 		BOBA E 8 A_JumpIfInventory("HasExplosiveBarrel",1,1)
 		Goto EndThrow
