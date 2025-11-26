@@ -145,25 +145,26 @@ ACTOR GrenadeLauncher : BrutalWeapon
 		GRLN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		GRLN A 0 A_PlaySound("GrenadeLauncher/Open", 5)
 		TNT1 A 0 A_GiveInventory("GLUnloaded", 1)
-		GRLN JK 1
-		GRLN L 8 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		GRLN JK 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		GRLN A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		GRLN L 8 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		GRLN A 0 A_FireCustomMissile("GrenadeCasing",random(120,140),0,-8,-8,0,random(40,60))
 		Goto PutMag
 
 	PutMag:
-		GRLN L 8
+		GRLN L 8 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		GRLN A 0 A_Takeinventory("GLUnloaded",1)
-		GRLN MNOPQRSTUV 1
+		GRLN MNOPQRSTUV 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		GRLN A 0 A_PlaySound("GrenadeLauncher/Load", 5)
 		TNT1 A 0 A_TakeInventory("AmmoRocket", 1)
 		TNT1 A 0 A_GiveInventory("GLAmmo", 1)
 		TNT1 A 0 A_TakeInventory("GLUnloaded", 1)
-		GRLN WX 1
-		GRLN Y 8
-		GRLN Z 1
+		GRLN WX 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		GRLN Y 8 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		GRLN Z 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		GRLN A 0 A_PlaySound("GrenadeLauncher/Close", 5)
-		GRLN "[]^" 1
-		GRL2 ABCDEFGHIJKL 1
+		GRLN "[]^" 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		GRL2 ABCDEFGHIJKL 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		Goto Ready
 
 	ReloadEmpty:
@@ -173,7 +174,7 @@ ACTOR GrenadeLauncher : BrutalWeapon
 		GRLN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		GRLN A 0 A_PlaySound("GrenadeLauncher/Open", 5)
 		TNT1 A 0 A_GiveInventory("GLUnloaded", 1)
-		GRLN L 8
+		GRLN L 8 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		Goto PutMag
 
 	Unload:
@@ -186,24 +187,24 @@ ACTOR GrenadeLauncher : BrutalWeapon
 		TNT1 A 0 A_JumpIfInventory("GLAmmo", 1, 1)
 		Goto Ready
 		TNT1 AAA 0
-		GRL2 LKJIHGFEDCBA 1
+		GRL2 LKJIHGFEDCBA 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		GRLN A 0 A_PlaySound("GrenadeLauncher/Open", 5)
-		GRLN "^][" 1
-		GRLN Z 1
-		GRLN Y 8
-		GRLN XW 1
+		GRLN "^][" 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		GRLN Z 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		GRLN Y 8 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		GRLN XW 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		GRLN A 0 A_PlaySound("GrenadeLauncher/Load", 5)
 		TNT1 A 0 A_GiveInventory("AmmoRocket", 1)
 		TNT1 A 0 A_TakeInventory("GLAmmo", 1)
 		TNT1 A 0 A_GiveInventory("GLUnloaded", 1)
-		GRLN VUTSRQPONM 1
-		GRLN L 4
+		GRLN VUTSRQPONM 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		GRLN L 4 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 
-		GRLN L 4
-		GRLN MNO 1
+		GRLN L 4 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		GRLN MNO 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		GRLN A 0 A_PlaySound("GrenadeLauncher/Close", 5)
-		GRLN "[]^" 1
-		GRL2 ABCDEFGHIJKL 1
+		GRLN "[]^" 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		GRL2 ABCDEFGHIJKL 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		Goto Ready
 
 	NoAmmo:

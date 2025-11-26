@@ -319,8 +319,8 @@ ACTOR AssaultShotgun2 : BrutalWeapon
 		USAR ABCDEFGHIJ 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		USAR A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		USAS A 0 A_PlaySound("ASG/Reload1")
-		USAR KLMN 1
-		USAR O 8
+		USAR KLMN 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		USAR O 8 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		USAS A 0 A_GiveInventory("ASGUnloaded",1)
 		USAS A 0 A_FireCustomMissile("EmptyDrumSpawn",0,0,0,-20)
 		Goto PutMag
@@ -335,20 +335,21 @@ ACTOR AssaultShotgun2 : BrutalWeapon
 		USAR ABCDEFGHIJ 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		USAR A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		USAS A 0 A_PlaySound("ASG/Reload1")
-		SSAR YWU 1
-		USAR S 1
-		USAR O 8
+		SSAR YWU 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		USAR S 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		USAR O 8 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		USAS A 0 A_GiveInventory("ASGUnloaded",1)
 		Goto PutMag
 
 	PutMag:
-		USAR PQRS 1
-		SSAR TUVW 1
+		USAR O 8 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		USAR PQRS 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		SSAR TUVW 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		USAS A 0 A_PlaySound("ASG/Reload2")
-		SSAR XYZ 1
+		SSAR XYZ 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		USAS A 0 A_Takeinventory("ASGUnloaded",1)
-		2SAR A 4
-		2SAR BCDEFG 1
+		2SAR A 4 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		2SAR BCDEFG 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		USAS A 0 A_JumpIfInventory("AssaultShotgunAmmo",1,"InsertBullets2")//shell in drum
 		Goto InsertBullets//empty drum
 
@@ -425,10 +426,10 @@ ACTOR AssaultShotgun2 : BrutalWeapon
 		USAR A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		USAS A 0 A_PlaySound("ASG/Reload1")
 		USAS A 0 A_GiveInventory("ASGUnloaded",1)
-		SSAR YWU 1
-		USAR S 1
-		USAR O 8
-		3SAR HGFEDCBA 1
+		SSAR YWU 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		USAR S 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		USAR O 8 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		3SAR HGFEDCBA 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 
 	RemoveBullets:
 		TNT1 AAA 0

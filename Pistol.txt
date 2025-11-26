@@ -296,21 +296,21 @@ ACTOR BrutalPistol : BrutalWeapon
 		Goto Reload2//reload empty chamber
 		TNT1 AAA 0
 		PIST E 0 A_PlaySound("Pistol/Reload1")
-        PISR ABCDEF 1
+        PISR ABCDEF 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		PIST E 0 A_JumpIfInventory("BDPistolAmmo",2,"PutMag")//if mag is not empty then retain it
-		PISR G 4
+		PISR G 8 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		PIST E 0 A_FireCustomMissile("EmptyPistolClipSpawn",0,0,0,-20)
 		PIST E 0 A_GiveInventory("PistolUnloaded",1)
 	PutMag:
-		PISR G 4 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		PISR G 8 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		PISR HIJKL 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		PISR A 0 A_PlaySound("Pistol/Reload2")
-		PISR MNO 1
-		PISR P 4
-		PISR QRSTUVW 1
-		PISR DCBA 1
+		PISR MNO 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		PISR P 4 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		PISR QRSTUVW 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		PISR DCBA 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		PIST E 0 A_Takeinventory("PistolUnloaded",1)
 		Goto InsertBullets
 
@@ -342,22 +342,22 @@ ACTOR BrutalPistol : BrutalWeapon
 
 	Reload2://Reload empty chamber
 		PIST E 0 A_PlaySound("Pistol/Reload1")
-        2ISR ABCDEF 1
-		2ISR G 4
+        2ISR ABCDEF 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		2ISR G 8 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		PIST E 0 A_FireCustomMissile("EmptyPistolClipSpawn",0,0,0,-20)
 		PIST E 0 A_GiveInventory("PistolUnloaded",1)
 	PutMag2:
-		2ISR G 4 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		2ISR G 8 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		2ISR HIJKL 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		2ISR A 0 A_PlaySound("Pistol/Reload2")
-		2ISR MNO 1
-		2ISR P 4
-		2ISR QRS 1
+		2ISR MNO 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		2ISR P 4 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		2ISR QRS 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		2ISR A 0 A_PlaySound("pistol/slide2")
-		2ISR TUV 1
-		PISR WDCBA 1
+		2ISR TUV 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		PISR WDCBA 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		PIST E 0 A_Takeinventory("PistolUnloaded",1)
 		Goto InsertBullets2
 
@@ -418,8 +418,8 @@ ACTOR BrutalPistol : BrutalWeapon
         PISR ABCDEWVUTS 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		PISR A 0 A_PlaySound("Pistol/Reload1")
-		2ISR ONMLKJIH 1
-		2ISR G 8
+		2ISR ONMLKJIH 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		2ISR G 8 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		SMGG A 0 A_Giveinventory("PistolUnloaded",1)
 		2ISR FEDCBA 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
