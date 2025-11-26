@@ -135,14 +135,14 @@ ACTOR FlameCannon : BrutalWeapon
 	 Fire:
         FLMG A 0
 		FLMG A 0 A_JumpIf(waterlevel > 1, "DryFire")
-        FLMG A 0 A_JumpIfInventory("Gas", 16, "Fireball")
+        FLMG A 0 A_JumpIfInventory("Gas", 10, "Fireball")
 		FLMG A 0 A_StopSound(CHAN_WEAPON)
 		Goto DryFire
 
 	AltFire:
 	    FLMG A 0
 		FLMG A 0 A_JumpIf(waterlevel > 1, "DryFire")
-        FLMG A 0 A_JumpIfInventory("Gas", 28, "Flamethrower")
+        FLMG A 0 A_JumpIfInventory("Gas", 2, "Flamethrower")
 		FLMG A 0 A_StopSound(CHAN_WEAPON)
 		Goto DryFire
 
@@ -151,43 +151,46 @@ ACTOR FlameCannon : BrutalWeapon
 		Goto Ready+6
 
 	Fireball:
-        FLMG B 1 BRIGHT A_FireCustomMissile("PlayerFireBall", 0, 1, 0, 0)
+        FLMG B 1 BRIGHT A_FireCustomMissile("PlayerFireBall", 0, 0, 0, 0)
 		FLMG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
 		FLMG A 0 A_ZoomFactor(0.99)
-		FLMG A 0 A_TakeInventory("Gas", 16)
+		FLMG A 0 A_TakeInventory("Gas", 10)
 		FLMG A 0 A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0)
         FLMG C 1 BRIGHT
 		FLMG A 0 A_ZoomFactor(1.0)
-		FLMG B 1 BRIGHT
-		FLMG A 7
+		FLMG DE 1 BRIGHT
+		FLMG A 6
 		Goto Ready
 
 	Flamethrower:
-        FLMG A 0 A_FireCustomMissile("FlamethrowerMissile", 0, 1, 0, 0, 0, 8)
+        FLMG A 0 A_FireCustomMissile("FlamethrowerMissile", 0, 0, 0, 0, 0, 8)
 		FLMG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		FLMG A 0 A_PlaySound("FLAMER", CHAN_WEAPON, 1, 1)
 		TNT1 A 0 A_FireCustomMissile("Alerter",0,0)
-		FLMG A 0 A_TakeInventory("Gas", 7)
-		FLMG BE 1 BRIGHT
+		FLMG A 0 A_TakeInventory("Gas", 2)
+		FLMG BC 1 BRIGHT
 
-		FLMG A 0 A_FireCustomMissile("FlamethrowerMissileNoLight", 0, 1, 0, 0, 0, 8)
+		TNT1 A 0 A_JumpIfNoAmmo("DryFire")
+		FLMG A 0 A_FireCustomMissile("FlamethrowerMissileNoLight", 0, 0, 0, 0, 0, 8)
 		FLMG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		FLMG A 0 A_PlaySound("FLAMER", CHAN_WEAPON, 1, 1)
-		FLMG A 0 A_TakeInventory("Gas", 7)
-		FLMG CD 1 BRIGHT
+		FLMG A 0 A_TakeInventory("Gas", 2)
+		FLMG DE 1 BRIGHT
 
-		FLMG A 0 A_FireCustomMissile("FlamethrowerMissileNoLight", 0, 1, 0, 0, 0, 8)
+		TNT1 A 0 A_JumpIfNoAmmo("DryFire")
+		FLMG A 0 A_FireCustomMissile("FlamethrowerMissileNoLight", 0, 0, 0, 0, 0, 8)
 		FLMG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		FLMG A 0 A_PlaySound("FLAMER", CHAN_WEAPON, 1, 1)
-		FLMG A 0 A_TakeInventory("Gas", 7)
-		FLMG BE 1 BRIGHT
+		FLMG A 0 A_TakeInventory("Gas", 2)
+		FLMG BC 1 BRIGHT
 
-		FLMG A 0 A_FireCustomMissile("FlamethrowerMissileNoLight", 0, 1, 0, 0, 0, 8)
+		TNT1 A 0 A_JumpIfNoAmmo("DryFire")
+		FLMG A 0 A_FireCustomMissile("FlamethrowerMissileNoLight", 0, 0, 0, 0, 0, 8)
 		FLMG A 0 A_SpawnItemEx("PlayerMuzzle1",32,0,28)
 		FLMG A 0 A_PlaySound("FLAMER", CHAN_WEAPON, 1, 1)
-		FLMG A 0 A_TakeInventory("Gas", 7)
-		FLMG CD 1 BRIGHT
+		FLMG A 0 A_TakeInventory("Gas", 2)
+		FLMG DE 1 BRIGHT
 		FLMG A 0 A_PlaySound("FLAMSTOP", CHAN_WEAPON)
 		FLMG A 14
 		Goto Ready
