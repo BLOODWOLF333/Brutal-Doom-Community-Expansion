@@ -326,13 +326,13 @@ ACTOR DualSMG : BrutalWeapon
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		SMGR I 0 A_PlaySound("SMG/Reload1")
 		SMGR IJKLMNO 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
-		SMGR P 8 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		SMGR P 4 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		SM2F A 0 A_GiveInventory("SMGUnloaded",1)
 		SMGR A 0 A_JumpIfInventory("BDSMGAmmo",1,"PutMag")//if mag is not empty then retain it
 		SM2F A 0 A_FireCustomMissile("EmptyPistolClipSpawn",0,0,10,-20)
 
 	PutMag://reload right
-		SMGR P 8 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		SMGR P 4 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         SMGR QRS 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
@@ -351,13 +351,13 @@ ACTOR DualSMG : BrutalWeapon
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		4MGR I 0 A_PlaySound("SMG/Reload1")
 		4MGR IJKLMNO 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
-		4MGR P 8 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		4MGR P 4 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		SM2F A 0 A_GiveInventory("DualSMGUnloaded",1)
 		SMGR A 0 A_JumpIfInventory("BDDualSMGAmmo",2,"PutMag2")//if mag is not empty then retain it
 		SM2F A 0 A_FireCustomMissile("EmptyPistolClipSpawn",225,0,-10,-20)
 
 	PutMag2://reload left
-		4MGR P 8 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		4MGR P 4 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         4MGR QRS 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		A12R A 0 A_JumpIfInventory("Kicking",1,"DoKick")
