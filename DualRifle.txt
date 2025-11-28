@@ -298,12 +298,12 @@ ACTOR DualRifles : BrutalWeapon
 		RIFG A 0 A_GiveInventory("RifleUnloaded",1)
 		RIFG A 0 A_PlaySound("Rifle/Reload1")
         RIFR PONMLKJI 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
-        RIFR H 4 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
-		RIFG A 0 A_JumpIfInventory("RifleAmmo",2,2)//If mag is not empty then retain it
+        RIFR H 6 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		RIFG A 0 A_JumpIfInventory("RifleAmmo",2,"PutMag")//If mag is not empty then retain it
 		RIFG A 0 A_FireCustomMissile("EmptyClipSpawn",0,0,10,-20)
 
 	PutMag:
-		RIFR H 4 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		RIFR H 6 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		RIFR IJKLMNOP 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		RIFR A 0 A_PlaySound("Rifle/Reload2")
 		RIFR Q 4 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
@@ -319,12 +319,12 @@ ACTOR DualRifles : BrutalWeapon
 		RIFG A 0 A_GiveInventory("DualRifleUnloaded",1)
 		RIFG A 0 A_PlaySound("Rifle/Reload1")
 		4IFR PONMLKJI 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
-		4IFR H 4 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
-		RIFG A 0 A_JumpIfInventory("DoubleRifleAmmo",4,2)//If mag is not empty then retain it
+		4IFR H 6 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		RIFG A 0 A_JumpIfInventory("DoubleRifleAmmo",4,"PutMag2")//If mag is not empty then retain it
 		RIFG A 0 A_FireCustomMissile("EmptyClipSpawn",225,0,-10,-20)
 
 	PutMag2:
-		4IFR H 4 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		4IFR H 6 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		4IFR IJKLMNOP 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		4IFR A 0 A_PlaySound("Rifle/Reload2")
 		4IFR Q 4 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
