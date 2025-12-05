@@ -255,10 +255,11 @@ ACTOR Shot_Gun : BrutalWeapon
 		SHTN A 0 A_FireCustomMissile("ShotCaseSpawn",40,0,14,0)
 		SHTN A 0 A_JumpIfInventory("Reloading",1,"InsertingShells")
 		SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		Goto ChamberADS
+		SHTN A 0 A_JumpIfInventory("ShotgunAmmo",1,"ChamberADS")
+		Goto ChamberADSEmpty
 
 	ChamberADS:
-		TNT1 AAA 0
+		TNT1 A 0
 		SHTN A 0 A_TakeInventory("ShotgunWasEmpty", 1)
 		SHTN A 0 A_PlaySound("Shotgun/Pump2", 3)
 		SHT8 JIH 1
@@ -267,6 +268,21 @@ ACTOR Shot_Gun : BrutalWeapon
 		SHTN A 0 A_JumpIfInventory("FiredSecondary",1,"HoldAim")//If still pressing alt fire, it means its holding aim
 		SHTN A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
 		Goto Ready2
+
+	ChamberADSEmpty:
+		TNT1 A 0
+		SHTN A 0 A_Giveinventory("ShotgunWasEmpty",1)
+		SHTN A 0 A_JumpIfInventory("TurboReload", 1, "TurboReload")
+		SHTN A 0 A_PlaySound("Shotgun/Pump2", 3)
+		SHT8 JIH 1
+		SHT8 G 4
+		SHTN A 0 A_JumpIfInventory("NoAutoReload", 1, 1)
+		Goto InsertingShells
+		TNT1 AAA 0
+		SHTN A 0 A_JumpIfInventory("Reloading",1,"InsertingShells")
+		SHTN A 0 A_JumpIfInventory("FiredSecondary",1,"HoldAim")//If still pressing alt fire, it means its holding aim
+		SHTN A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
+		Goto NoAmm3
 
 	AltFire:
         SHTN A 0
@@ -323,13 +339,8 @@ ACTOR Shot_Gun : BrutalWeapon
 		RIFG A 0 A_SetCrosshair(0)
 		SHTN A 1
 		SHTN A 0 A_JumpIfInventory("ShotgunAmmo",9,"Ready3")
-		SHTN A 0 A_JumpIfInventory("ShotgunAmmo", 1, "ReloadNormally")//Check if there is a shell in the chamber
-		SHTN A 0 A_GiveInventory("ShotgunWasEmpty", 1)//This means there is no shell in the chamber
 
 	ReloadNormally:
-        SHTN A 0 A_JumpIfInventory("AmmoShell",1,1)//If there is no reserve ammo, don't reload, go back to Ready
-        Goto Ready
-		TNT1 AAA 0
 		SHTN A 0 A_Takeinventory("ShotgunUnloaded",1)
 		TNT1 A 0 A_TakeInventory("ShotgunChangeAmmo",1)
 		SHTN A 0 A_JumpIfInventory("TurboReload", 1, "TurboReload")//Check if reloads are disabled.
@@ -338,11 +349,13 @@ ACTOR Shot_Gun : BrutalWeapon
 		SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 
 	 InsertingShells:
-		SHTN A 0
-		SHTN A 0 A_JumpIfInventory("TurboReload", 1, "TurboReload")
+		TNT1 A 0
+		SHTN A 0 A_Takeinventory("Zoomed",1)
+		SHTN A 0 A_ZoomFactor(1.0)
+		RIFG A 0 A_SetCrosshair(0)
 		SHTN A 0 A_JumpIfInventory("AmmoShell",1,1)//if there are no more reserve shells, finish reload.
         Goto FinishedInsertingShells
-		SHTN A 0
+		SHTN AAA 0
 		SHTN A 0 A_GiveInventory ("Pumping", 1)
 		SHTN A 0 A_TakeInventory("Reloading", 1)
         SHTN A 0 A_JumpIfInventory("ShotgunAmmo",8,"CheckIfFinishReload")
@@ -350,7 +363,7 @@ ACTOR Shot_Gun : BrutalWeapon
 		SHTN A 0 A_Takeinventory("AmmoShell",1)
 
 	InsertShellAnimation:
-		SHTN VW 1  A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
+		SHTN VW 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
 		SHTN A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		SHTN A 0 A_PlaySound("Shotgun/Reload")
 		SHTN X 1 A_WeaponReady(WRF_NOBOB | WRF_NOFIRE)
@@ -370,6 +383,7 @@ ACTOR Shot_Gun : BrutalWeapon
 		//Play the insert shell animation again, and insert the 9th shell
 		SHTN A 0 A_JumpIfInventory("AmmoShell",1,1)//if there are no more reserve shells, finish reload.
         Goto FinishedInsertingShells
+		TNT1 AAA 0
 		SHTN A 0 A_Giveinventory("ShotgunAmmo",1)
 		SHTN A 0 A_Takeinventory("AmmoShell",1)
         Goto InsertShellAnimation
