@@ -547,6 +547,8 @@ ACTOR DeadLiveStick: LiveStick Replaces LiveStick
     GibHealth 10
 	+SOLID
 	+SHOOTABLE
+	DropItem "HealthPlusNoCount" 128
+	DropItem "ArmorShardNoCount" 128
 	Damagefactor "Avoid", 0.0	Damagefactor "BHFTOnBarrel", 0.0	Damagefactor "Blood", 0.0
 	Damagefactor "CancelTeleportFog", 0.0	Damagefactor "CauseWaterSplash", 0.0
 	Damagefactor "FriendBullet", 0.0	Damagefactor "GibRemoving", 100.0
@@ -742,6 +744,27 @@ ACTOR ImpaledMarineAlive1: DeadLiveStick
 	}
 }
 
+Actor ImpaledMarineAlive1A: ImpaledMarineAlive1
+{
+	XScale -1.0
+	YScale 1.0
+}
+
+Actor ImpaledMarineAlive1B: ImpaledMarineAlive1
+{
+	Translation  "112:127=32:47", "48:79=64:79"
+}
+
+Actor ImpaledMarineAlive1C: ImpaledMarineAlive1
+{
+	Translation "112:127=96:111"
+}
+
+Actor ImpaledMarineAlive1D: ImpaledMarineAlive1
+{
+	translation "112:127=[0,128,192]:[0,0,0]"
+}
+
 ACTOR ImpaledMarineAlive2: ImpaledMarineAlive1
 {
 	States
@@ -804,38 +827,17 @@ Actor ImpaledMarineAlive2A: ImpaledMarineAlive2
 	YScale 1.0
 }
 
-Actor ImpaledMarineAlive2b: ImpaledMarineAlive2
+Actor ImpaledMarineAlive2B: ImpaledMarineAlive2
 {
 	Translation  "112:127=32:47", "48:79=64:79"
 }
 
-Actor ImpaledMarineAlive2c: ImpaledMarineAlive2
+Actor ImpaledMarineAlive2C: ImpaledMarineAlive2
 {
 	Translation "112:127=96:111"
 }
 
-Actor ImpaledMarineAlive2d: ImpaledMarineAlive2
-{
-	translation "112:127=[0,128,192]:[0,0,0]"
-}
-
-Actor ImpaledMarineAlive1A: ImpaledMarineAlive1
-{
-	XScale -1.0
-	YScale 1.0
-}
-
-Actor ImpaledMarineAlive1b: ImpaledMarineAlive1
-{
-	Translation  "112:127=32:47", "48:79=64:79"
-}
-
-Actor ImpaledMarineAlive1c: ImpaledMarineAlive1
-{
-	Translation "112:127=96:111"
-}
-
-Actor ImpaledMarineAlive1d: ImpaledMarineAlive1
+Actor ImpaledMarineAlive2D: ImpaledMarineAlive2
 {
 	translation "112:127=[0,128,192]:[0,0,0]"
 }
