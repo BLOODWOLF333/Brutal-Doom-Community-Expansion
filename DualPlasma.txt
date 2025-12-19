@@ -147,6 +147,7 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 		DUPL A 0
         DUPL A 0 A_JumpIfInventory("PlasmaAmmo",1,1)
 		Goto FireLeft
+        TNT1 AAA 0
         DUPL A 0 A_PlaySound("Plasma/Fire", CHAN_WEAPON)
 		DUPL A 0 A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, 8, 0)
 		DUPL B 1 BRIGHT A_FireCustomMissile("Plasma_Ball", frandom(-1.6, 1.6), 1, 8, 0, 0, frandom(-1.2, 1.2))
@@ -160,6 +161,7 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 
 		DUPL A 0 A_JumpIfInventory("DoublePlasmaAmmo",1,1)
         Goto NoAmmo
+        TNT1 AAA 0
         DUPL A 0 A_PlaySound("Plasma/Fire", CHAN_WEAPON)
 		DUPL A 0 A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, -8, 0)
 		DUPL D 1 BRIGHT A_FireCustomMissile("Plasma_Ball", frandom(-1.6, 1.6), 1, -8, 0, 0, frandom(-1.2, 1.2))
@@ -175,6 +177,7 @@ ACTOR DualPlasmaRifles : BrutalWeapon
 		DUPL A 0
         DUPL A 0 A_JumpIfInventory("DoublePlasmaAmmo",1,1)
         Goto NoAmmo
+        TNT1 AAA 0
         DUPL A 0 A_PlaySound("Plasma/Fire", CHAN_WEAPON)
 		DUPL A 0 A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, -8, 0)
 		DUPL D 1 BRIGHT A_FireCustomMissile("Plasma_Ball", frandom(-1.6, 1.6), 1, -8, 0, 0, frandom(-1.2, 1.2))
