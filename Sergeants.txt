@@ -1474,12 +1474,11 @@ ACTOR SMGGuy: ShotgunGuy1
 		TNT1 A 0
 		PSS3 H 5 A_Scream
 		PSS3 I 5
-		PSS3 J 5 A_NoBlocking
-		TNT1 A 0 A_GiveToTarget("SoulAmmo", 10)
+		PSS3 J 5 A_GiveToTarget("SoulAmmo", 10)
 		PSS3 K 5
 		TNT1 A 0 A_SpawnItem("GrowingBloodPool")
         TNT1 A 0 A_SpawnItem("DeadShotgunguy")
-		TNT1 A -1 A_NoBLocking
+		TNT1 A -1 A_NoBlocking
 		Stop
 
 	Raise:
