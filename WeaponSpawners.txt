@@ -192,20 +192,6 @@ ACTOR ShotgunSpawner: BasicWeaponPickup 2021
     }
 }
 
-ACTOR ShotgunSpawnerDroped: ShotgunSpawner
-{
-	States
-    {
-	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx("BrutalShotgunSpawner",0,0,0,0,0,0,0,0,0)
-		TNT1 A 0 A_SpawnItemEx("ClassicShotgun",0,0,0,0,0,0,0,0,0)
-		TNT1 A 1
-		TNT1 A -1
-		Stop
-    }
-}
-
 ACTOR BrutalRevolverSpawner: CustomInventory
 {
 	radius 20
@@ -601,20 +587,6 @@ ACTOR ChaingunSpawner: BasicWeaponPickup 2032
     }
 }
 
-ACTOR DropedChaingunSpawner: ChaingunSpawner
-{
-	States
-    {
-	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx("MiniGun",0,0,0,0,0,0,0,0,0)
-		TNT1 A 0 A_SpawnItemEx("ClassicChaingun",0,0,0,0,0,0,0,0,0)
-		TNT1 A 1
-		TNT1 A -1
-		Stop
-    }
-}
-
 actor ChaingunSpawnerReplacer : BasicWeaponPickup Replaces Chaingun
 {
     States
@@ -766,20 +738,6 @@ ACTOR PlasmagunSpawner: BasicWeaponPickup 2034
 	//$Colour rgb(220,180,100)
 	//$Sprite PLASA0
 	//$NotAngled
-	States
-    {
-	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx("BrutalPlasmagunSpawner",0,0,0,0,0,0,0,0,0)
-		TNT1 A 0 A_SpawnItemEx("ClassicPlasmaRifle",0,0,0,0,0,0,0,0,0)
-		TNT1 A 1
-		TNT1 A -1
-		Stop
-    }
-}
-
-ACTOR DropedPlasmaGun: PlasmagunSpawner
-{
 	States
     {
 	Spawn:

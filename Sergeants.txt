@@ -23,7 +23,7 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 
 	Damagetype "Melee"
 	DropItem "GrenadeAmmo", 4
-	DropItem "ShotgunSpawnerDroped"
+	DropItem "ShotgunDrop"
 	Monster
 	+FLOORCLIP
 	+SLIDESONWALLS
@@ -1145,7 +1145,7 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 
 ACTOR SMGGuy: ShotgunGuy1
 {
-	DropItem "SMGSpawner"
+	DropItem "SMGDrop"
 	Tag "SMG Zombie"
 	Obituary "%o got punctured by a SMG Zombie."
 	States
