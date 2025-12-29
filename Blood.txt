@@ -2748,14 +2748,15 @@ Actor TankBlood
 	+DONTSPLASH
 	Renderstyle Add
 	Speed 0
-	Scale 0.4
+	Scale 0.15
+	Gravity 0.5
 	States
 	{
 	Spawn:
 	TNT1 A 0 NODELAY
 	TNT1 A 0 A_SpawnItem("YellowFlareSmall", 0)
 	TNT1 A 0 A_PlaySound("vehicle/pain")
-	FX58 ABCDEFGHIJ 1 BRIGHT
+	FX57 ABCDEFGHIJK 1 BRIGHT
 	TNT1 A 60
 	Stop
 	}
