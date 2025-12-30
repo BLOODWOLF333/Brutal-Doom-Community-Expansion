@@ -256,9 +256,7 @@ ACTOR Arachnotron1: Arachnotron replaces Arachnotron
 	XDeath:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        TNT1 AAA 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
-		TNT1 AA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (40, 90))
-		TNT1 AA 0 A_CustomMissile ("BDExplosionparticles3", 10, 0, random (0, 360), 2, random (40, 90))
+        TNT1 A 0 A_CustomMissile ("BDExplosionparticlesBig", 0, 0, random (0, 360), 2, random (40, 90))
 		TNT1 AAA 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
         EXPL A 0 A_CustomMissile ("BigNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 A 0 A_SpawnItem ("SplatteredLarge")
@@ -330,9 +328,7 @@ Actor DeadSpider: CurbstompedMarine
 	Death.Minigun:
     Death:
   	    TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        TNT1 AAA 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
-		TNT1 AA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (40, 90))
-		TNT1 AA 0 A_CustomMissile ("BDExplosionparticles3", 10, 0, random (0, 360), 2, random (40, 90))
+        TNT1 A 0 A_CustomMissile ("BDExplosionparticlesBig", 0, 0, random (0, 360), 2, random (40, 90))
 		TNT1 AAA 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
         EXPL A 0 A_CustomMissile ("BigNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 A 0 A_SpawnItem ("SplatteredLarge")

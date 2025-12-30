@@ -395,8 +395,8 @@ ACTOR CacodemonBall_ Replaces CacodemonBall
 		PBAL EF 4 BRIGHT
 		Loop
 	Death:
-		TNT1 AAA 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (0, 90))
+		TNT1 A 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (0, 90))
 		TNT1 AAA 0 A_CustomMissile ("SmallExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 A 0 A_SpawnItemEx("PlasmaPuff")
 		TNT1 A 0 A_CustomMissile ("PurplePlasmaFire", 0, 0, random (0, 360), 2, random (0, 360))
