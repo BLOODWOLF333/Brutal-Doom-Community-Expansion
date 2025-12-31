@@ -865,18 +865,18 @@ ACTOR AxeAttack: FastProjectile
 
 	SpawnDirt:
 		AXEG A 0
-		AXEG A 0 A_CustomMissile ("BrownCloudSmallLong", 0, 0, random (0, 360), 2, random (10, 150))
+		AXEG A 0 A_CustomMissile ("BrownCloudSmallLong", 2, 0, random (0, 360), 2, random (60, 120))
 		TNT1 AA 0 A_CustomMissile ("DirtChunk3", 0, 0, random (0, 360), 2, random (30, 150))
 		TNT1 AA 0 A_CustomMissile ("DirtChunk4", 0, 0, random (0, 360), 2, random (30, 150))
-		AXEG A 0 A_CustomMissile ("MudDustSmall", 4, 0, random (0, 360), 2, random (30, 150))
+		AXEG A 0 A_CustomMissile ("MudDustSmall", 2, 0, random (0, 360), 2, random (30, 150))
 		AXEG A 0 A_SpawnItem("DirtRicochet")
 		Stop
 
 	SpawnSand:
 		AXEG A 0
-		AXEG A 0 A_CustomMissile ("SandCloudSmallLong", 0, 0, random (0, 360), 2, random (10, 90))
-		AXEG A 0 A_CustomMissile ("SandCloudSmall", 0, 0, random (0, 360), 2, random (10, 90))
-		AXEG A 0 A_CustomMissile ("SandDustSmall", 4, 0, random (0, 360), 2, random (30, 150))
+		AXEG A 0 A_CustomMissile ("SandCloudSmallLong", 2, 0, random (0, 360), 2, random (60, 120))
+		AXEG A 0 A_CustomMissile ("SandCloudSmall", 2, 0, random (0, 360), 2, random (60, 120))
+		AXEG A 0 A_CustomMissile ("SandDustSmall", 2, 0, random (0, 360), 2, random (30, 150))
 		Stop
 
 	XDeath:
