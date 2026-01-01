@@ -1369,12 +1369,12 @@ ACTOR BDExplosionparticlesSmall: BDExplosionparticles
 	}
 }
 
-/*ACTOR ImpBallExplosionparticles : BDExplosionparticles//v22
+ACTOR ImpBallExplosionparticles : BDExplosionparticles
 {
 	Speed 1
 	RenderStyle "Add"
 	Scale 0.3
-	aLPHA 1.0
+	Alpha 1.0
 	States
 	{
 	Spawn:
@@ -1387,16 +1387,17 @@ ACTOR BDExplosionparticlesSmall: BDExplosionparticles
 
 	Spawn2:
 		TNT1 A 0
-		TNT1 A 0 A_SetScale(0.4, 0.4)
+		TNT1 A 0 A_SetScale(-0.3, -0.3)
 		Goto live
 
 	Spawn3:
 		TNT1 A 0
-		TNT1 A 0 A_SetScale(-0.45, 0.45)
+		TNT1 A 0 A_SetScale(0.3, -0.3)
 		Goto live
 
 	Live:
-		EXP5 ABCDEFGHIJKLMNOPQRSTUVW 1 BRIGHT
+		EXP5 ABCDEFGHIJK 1 BRIGHT
+		EXP5 LMNOPQRSTU 1 BRIGHT A_FadeOut(0.1)
 		Stop
 	}
 }
@@ -1405,7 +1406,7 @@ ACTOR KnightBallExplosionparticles : BDExplosionparticles//v22
 {
 	Speed 1
 	RenderStyle "Add"
-	Scale 0.5
+	Scale 0.6
 	Alpha 1.0
 	States
 	{
@@ -1414,24 +1415,25 @@ ACTOR KnightBallExplosionparticles : BDExplosionparticles//v22
 		TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Live")
 	Spawn1:
 		TNT1 A 0
-		TNT1 A 0 A_SetScale(-0.5, 0.5)
+		TNT1 A 0 A_SetScale(-0.6, 0.6)
 		Goto live
 
 	Spawn2:
 		TNT1 A 0
-		TNT1 A 0 A_SetScale(0.6, 0.6)
+		TNT1 A 0 A_SetScale(-0.6, -0.6)
 		Goto live
 
 	Spawn3:
 		TNT1 A 0
-		TNT1 A 0 A_SetScale(-0.55, 0.55)
+		TNT1 A 0 A_SetScale(0.6, -0.6)
 		Goto live
 
 	Live:
-		EXP7 ABCDEFGHIJKLMNOPQRSTUVW 1 BRIGHT
+		EXP7 ABCDEFGHIJKL 1 BRIGHT
+		EXP7 MNOPQRSTUV 1 BRIGHT A_FadeOut(0.1)
 		Stop
 	}
-}*/
+}
 
 ACTOR BDECFoliageParticle1a
 {
@@ -1787,17 +1789,17 @@ ACTOR PlasmaHitFogNew: ExplosionParticle2
 	TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Live")
 	Spawn1:
 	TNT1 A 0
-	TNT1 A 0 A_SetScale(-0.2, -0.2)
+	TNT1 A 0 A_SetScale(-0.3, 0.3)
 	Goto live
 
 	Spawn2:
 	TNT1 A 0
-	TNT1 A 0 A_SetScale(0.4, -0.4)
+	TNT1 A 0 A_SetScale(-0.3, -0.3)
 	Goto live
 
 	Spawn3:
 	TNT1 A 0
-	TNT1 A 0 A_SetScale(-0.6, 0.6)
+	TNT1 A 0 A_SetScale(0.3, -0.3)
 	Goto live
 	Live:
 	PFOG ABCDEFG 1 BRIGHT
@@ -1818,17 +1820,17 @@ ACTOR GreenPlasmaHitFogNew: PlasmaHitFogNew
 	TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Live")
 	Spawn1:
 	TNT1 A 0
-	TNT1 A 0 A_SetScale(-0.5, -0.5)
+	TNT1 A 0 A_SetScale(-0.5, 0.5)
 	Goto live2
 
 	Spawn2:
 	TNT1 A 0
-	TNT1 A 0 A_SetScale(0.4, -0.4)
+	TNT1 A 0 A_SetScale(-0.5, -0.5)
 	Goto live2
 
 	Spawn3:
 	TNT1 A 0
-	TNT1 A 0 A_SetScale(-0.8, 0.8)
+	TNT1 A 0 A_SetScale(0.5, -0.5)
 	Goto live
 
 	Live:

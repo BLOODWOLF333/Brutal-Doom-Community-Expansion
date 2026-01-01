@@ -2377,9 +2377,7 @@ ACTOR FireBall_ Replaces DoomImpBall
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-5, 5), random (-5, 5))
 		TNT1 A 0 A_SpawnItemEx ("DetectFloorCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 0 A_SpawnItemEx ("DetectCeilCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 AAAA 0 A_CustomMissile ("BDExplosionparticlesSmall", 10, 0, random (0, 180), 2, random (40, 90))
-		TNT1 AA 0 A_CustomMissile ("ExplosionParticle", 10, 0, random (0, 180), 2, random (40, 90))
-		TNT1 AA 0 A_CustomMissile ("ExplosionParticle2", 10, 0, random (0, 180), 2, random (40, 90))
+		TNT1 A 0 A_CustomMissile ("ImpBallExplosionparticles", 1, 0, random (0, 180), 2, random (40, 90))
 		Stop
 	}
 }
