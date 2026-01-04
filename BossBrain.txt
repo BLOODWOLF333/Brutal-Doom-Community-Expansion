@@ -66,8 +66,9 @@ ACTOR BossBrainReplacer Replaces BossBrain
 	Stop
 
 	BrainExplode:
-	MISL BC 10 Bright
-	MISL D 10 A_BrainExplode
+	EXP4 ABCDEFGHIJKLMNOPQRST 1 BRIGHT
+	MISL D 0 A_BrainExplode
+	EXP4 UVWXY 1 Bright A_FadeOut(0.2)
 	Stop
 
 	Pain:
@@ -116,8 +117,9 @@ ACTOR AltMap01Airplane
 	States
 	{
 		BrainExplode:
-			MISL BC 10 Bright
-			MISL D 10 A_BrainExplode
+			EXP4 ABCDEFGHIJKLMNOPQRST 1 BRIGHT
+			MISL D 0 A_BrainExplode
+			EXP4 UVWXY 1 Bright A_FadeOut(0.2)
 			Stop
 		Spawn:
 			TNT1 A 1

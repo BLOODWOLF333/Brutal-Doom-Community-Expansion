@@ -60,7 +60,7 @@ ACTOR BackblastFlames1: FlameTrails
 	States
 	{
     Spawn:
-		tnt1 A 0
+		TNT1 A 0
 		TNT1 A 3
         EXPL ABCDEFGHI 1 BRIGHT
         Stop
@@ -343,7 +343,7 @@ ACTOR FlamethrowerBurningStuff
 		Goto Live
 
 	Live:
-		tnt1 A 10
+		TNT1 A 10
 		Stop
 	XDeath:
 		TNT1 A 0
@@ -1172,35 +1172,33 @@ ACTOR GreenFlameTrailsBig: GreenFlameTrails
 
 ACTOR HighExplosiveFlames: FlameTrails
 {
-    Scale 2.4
-	Speed 4
-	Alpha 1.0
+    Scale 1.0
+	Speed 1
 	States
 	{
-    Spawn:
-		tnt1 A 0
-		TNT1 A 2
-        X003 AABBCDEFGHIJKLMNOP 1 BRIGHT
-		TNT1 AA 0 A_CustomMissile ("ExplosionSmokeHDLarge", 0, 0, random (0, 360), 2, random (0, 360))
-		X003 QRSTUVWXYZ 1 BRIGHT
+    Spawn://X003
+		TNT1 A 1
+        EXP4 ABCDEFGHIJKLMNO 1 BRIGHT
+		TNT1 A 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
+		TNT1 A 0 A_CustomMissile ("FlamethrowerFireParticles", 0, 0, random (0, 360), 2, random (0, 360))
+		EXP4 PQRSTUVWXY 1 BRIGHT A_FadeOut(0.1)
         Stop
 	}
 }
 
 ACTOR HighExplosiveFlames2: FlameTrails
 {
-    Scale 2.4
-	Speed 4
-	Alpha 1.0
+    Scale 1.5
+	Speed 2
 	States
 	{
     Spawn:
-		tnt1 A 0
-		TNT1 A 1
+		TNT1 A 2
 		TNT1 A 0 A_PlaySound("FAREXPL",0)
-        X003 AABBCDEFGHIJKLMNOPQRSTUVWX 1 BRIGHT
-		EXPL A 0 A_CustomMissile ("BigBlackSmokeLarger", 0, 0, random (0, 360), 2, random (20, 90))
-		X003 YZ 1 BRIGHT
+        EXP4 ABCDEFGHIJKLMNO 2 BRIGHT
+		TNT1 A 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
+		TNT1 A 0 A_CustomMissile ("FlamethrowerFireParticles", 0, 0, random (0, 360), 2, random (0, 360))
+		EXP4 PQRSTUVWXY 2 BRIGHT A_FadeOut(0.1)
         Stop
 	}
 }
@@ -1209,14 +1207,14 @@ ACTOR HighExplosiveFlamesBig: FlameTrails
 {
     Scale 3.0
 	Speed 3
-	Alpha 1.0
 	States
 	{
     Spawn:
-		tnt1 A 0
-        X003 AABBCDEFGHIJKLMNOPQRSTUVWX 2 BRIGHT
-		EXPL A 0 A_CustomMissile ("BigBlackSmokeLarger", 0, 0, random (0, 360), 2, random (20, 90))
-		X003 YZ 2 BRIGHT
+		TNT1 A 3
+        EXP4 ABCDEFGHIJKLMNO 3 BRIGHT
+		TNT1 A 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
+		TNT1 A 0 A_CustomMissile ("FlamethrowerFireParticles", 0, 0, random (0, 360), 2, random (0, 360))
+		EXP4 PQRSTUVWXY 3 BRIGHT A_FadeOut(0.1)
         Stop
 	}
 }
@@ -1224,30 +1222,30 @@ ACTOR HighExplosiveFlamesBig: FlameTrails
 ACTOR HighExplosiveFlamesHuge: FlameTrails
 {
     Scale 5.0
-	Speed 4
-	Alpha 1.0
+	Speed 5
 	States
 	{
     Spawn:
-		tnt1 A 0
-        X003 AABBCDEFGHIJKLMNOPQRSTUVWX 2 BRIGHT
-		EXPL A 0 A_CustomMissile ("BigBlackSmokeLarger", 0, 0, random (0, 360), 2, random (20, 90))
-		X003 YZ 1 BRIGHT
+		TNT1 A 5
+        X003 ABCDEFGHIJKLMNOP 5 BRIGHT
+		X003 A 0 A_CustomMissile ("BigBlackSmokeLarger", 0, 0, random (0, 360), 2, random (20, 90))
+		X003 QRSTUVWXYZ 5 BRIGHT A_FadeOut(0.1)
         Stop
 	}
 }
 
 ACTOR HighExplosiveFlamesSmall: FlameTrails
 {
-    Scale 1.0
+    Scale 0.5
 	Speed 1
-	Alpha 1.0
 	States
 	{
     Spawn:
-		tnt1 A 0
-        X003 AABBCDEFGHIJKLMNOPQRSTUVWX 1 BRIGHT
-		X003 YZ 1 BRIGHT
+		TNT1 A 1
+        EXP4 ABCDEFGHIJKLMNO 1 BRIGHT
+		TNT1 A 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
+		TNT1 A 0 A_CustomMissile ("FlamethrowerFireParticles", 0, 0, random (0, 360), 2, random (0, 360))
+		EXP4 PQRSTUVWXY 1 BRIGHT A_FadeOut(0.1)
         Stop
 	}
 }
@@ -1269,11 +1267,10 @@ ACTOR HugeBackblastFlames1
 	States
 	{
     Spawn:
-		tnt1 A 0
-		TNT1 A 4
-        X003 AAABBBCCCDEFGHIJKLMNOP 1 BRIGHT
-		EXPL A 0 A_CustomMissile ("BigBlackSmokeLarger", random (0, 10), 0, random (0, 360), 2, random (20, 90))
-        X003 QRSTUVWXYZ 1 BRIGHT
+		TNT1 A 2
+        X003 ABCDEFGHIJKLMNOP 2 BRIGHT
+		X003 A 0 A_CustomMissile ("BigBlackSmokeLarger", 0, 0, random (0, 360), 2, random (20, 90))
+		X003 QRSTUVWXYZ 2 BRIGHT A_FadeOut(0.1)
 		Stop
 	}
 }
@@ -1344,50 +1341,53 @@ Speed 1
 	States
 	{
     Spawn:
-        EXPL A 1 BRIGHT
-		EXPL A 0 A_CustomMissile ("ExplosionSmokeHD", 0, 0, random (0, 360), 2, random (0, 360))
-		EXP3 BCDEFGHIJ 1 BRIGHT
-		EXP3 KLMNPRTUVW 1 BRIGHT A_FadeOut(0.1)
+		EXP3 ABCDEFGHIJKLM 1 BRIGHT
+		EXP3 A 0 A_CustomMissile ("ExplosionSmokeHD", 0, 0, random (0, 360), 2, random (0, 360))
+		EXP3 NOPQRSTUVW 1 BRIGHT A_FadeOut(0.1)
         Stop
 	}
 }
 
 ACTOR NuclearFlames: ExplosionFlames
 {
-Scale 5.2
-Speed 6
+Scale 5.0
+Speed 5
 	States
 	{
     Spawn:
-        X003 ABCDEFGHIJKLMNOPQRSTUVWXYZ 4 BRIGHT
-        Stop
+		TNT1 A 5
+        X003 ABCDEFGHIJKLMNOP 5 BRIGHT
+		X003 QRSTUVWXYZ 5 BRIGHT A_FadeOut(0.1)
+		Stop
 	}
 }
 
 ACTOR NuclearFlamesBig: ExplosionFlames
 {
-Scale 12.2
-Speed 3
+Scale 12.0
+Speed 12
 	States
 	{
     Spawn:
-        X003 ABCDEFGHIJKLMNOPQRSTUVWXYZ 4 BRIGHT
-        Stop
+		TNT1 A 12
+        X003 ABCDEFGHIJKLMNOP 12 BRIGHT
+		X003 QRSTUVWXYZ 12 BRIGHT A_FadeOut(0.1)
+		Stop
 	}
 }
 
 ACTOR NuclearFlamesImpact: ExplosionFlames
 {
-Scale 12.2
-Speed 30
+Scale 12.0
+Speed 12
 -CLIENTSIDEONLY
 +FORCERADIUSDMG
 Damagetype "Fire"
 	States
 	{
     Spawn:
-        EXPL ABCDFGH 2 BRIGHT A_Explode
-		EXPL IIIIIIIIII 1 BRIGHT A_FAdeout(0.1)
+        EXPL ABCDEFGH 12 BRIGHT A_Explode
+		EXPL IIIIIIIIII 12 BRIGHT A_FadeOut(0.1)
         Stop
 	}
 }
@@ -1659,10 +1659,9 @@ Speed 1
 	States
 	{
     Spawn:
-        EXPL A 1 BRIGHT
-		EXPL A 0 A_CustomMissile ("ExplosionSmokeHD", 0, 0, random (0, 360), 2, random (0, 360))
-		EXP3 BCDEFGHIJ 1 BRIGHT
-		EXP3 KLMNPRTUVW 1 BRIGHT A_FadeOut(0.1)
+		EXP3 ABCDEFGHIJKLM 1 BRIGHT
+		EXP3 A 0 A_CustomMissile ("ExplosionSmokeHD", 0, 0, random (0, 360), 2, random (0, 360))
+		EXP3 NOPQRSTUVW 1 BRIGHT A_FadeOut(0.1)
         Stop
 	}
 }
