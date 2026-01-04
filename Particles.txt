@@ -1775,7 +1775,7 @@ ACTOR PlasmaHitFogNew: ExplosionParticle2
 	Alpha 1.0
 	RenderStyle Add
 	Scale 0.3
-	Speed 3
+	Speed 1
 	+NOGRAVITY
 	+BOUNCEONCEILINGS
 	+BOUNCEONWALLS
@@ -1811,8 +1811,8 @@ ACTOR PlasmaHitFogNew: ExplosionParticle2
 
 ACTOR GreenPlasmaHitFogNew: PlasmaHitFogNew
 {
-	Scale 0.5
-	Speed 6
+	Scale 1.0
+	Speed 1
 	States
     {
 	Spawn:
@@ -1821,17 +1821,17 @@ ACTOR GreenPlasmaHitFogNew: PlasmaHitFogNew
 
 	Spawn1:
 	TNT1 A 0
-	TNT1 A 0 A_SetScale(-0.5, 0.5)
+	TNT1 A 0 A_SetScale(-1.0, 1.0)
 	Goto live
 
 	Spawn2:
 	TNT1 A 0
-	TNT1 A 0 A_SetScale(-0.5, -0.5)
+	TNT1 A 0 A_SetScale(-1.0, -1.0)
 	Goto live
 
 	Spawn3:
 	TNT1 A 0
-	TNT1 A 0 A_SetScale(0.5, -0.5)
+	TNT1 A 0 A_SetScale(1.0, -1.0)
 	Goto live
 
 	Live:
