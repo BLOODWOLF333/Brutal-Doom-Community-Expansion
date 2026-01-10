@@ -1771,16 +1771,15 @@ ACTOR SmallGreenFlameTrails: GreenFlameTrails
 
 ACTOR TankExplosionFlames: FlameTrails
 {
-Scale 4.0
-Speed 12
-+DOOMBOUNCE
+	Scale 1.0
+	Speed 1
+	+DOOMBOUNCE
 	States
 	{
     Spawn:
-        EXPL AAA 1 BRIGHT
-        EXPL BCDEFG 1 BRIGHT
-		EXPL AA 0 A_CustomMissile ("BigNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360))
-		EXPL HHHHHHH 1 A_FadeOut(0.1)
+		EXPZ ABCDEFGHIJKLMNOP 1 BRIGHT
+		TNT1 A 0 A_CustomMissile ("ExplosionSmokeHD", 0, 0, random (0, 360), 2, random (10, 90))
+		EXPZ QRSTUVWXYZ 1 BRIGHT A_FadeOut(0.1)
         Stop
 	}
 }

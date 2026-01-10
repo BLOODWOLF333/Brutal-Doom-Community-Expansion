@@ -476,8 +476,9 @@ ACTOR AutoCannonProjectile: HeavyMachinegunProjectile
 {
 	Damage (random(60, 60))
 	Speed 240
-	Scale 1.5
+	Scale 0.25
 	Decal "Scorch"
+	DeathSound "skeleton/tracex"
 	States
 	{
 	Spawn:
@@ -502,16 +503,17 @@ ACTOR AutoCannonProjectile: HeavyMachinegunProjectile
 		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 2, 0, random (0, 360), 2, random (0, 360))
 
 		TNT1 A 0 A_CheckFloor("ExplodeFloor")
-		XPAC ABCDEFGHIJ 1 BRIGHT
-		TNT1 A 1
+		EXPZ ABCDEFGHIJKLMNOP 1 BRIGHT
+		TNT1 A 0 A_CustomMissile ("ExplosionSmokeHD", 0, 0, random (0, 360), 2, random (10, 90))
+		EXPZ QRSTUVWXYZ 1 BRIGHT A_FadeOut(0.1)
 		Stop
 
 	ExplodeFloor:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("BulletPuff")
 		TNT1 A 0 A_Jump(64, "Ricochet")
-		XPAC ABCDEFGHIJ 1 BRIGHT
-		TNT1 A 1
+		EXPZ ABCDEFGHIJKLMNOP 1 BRIGHT
+		TNT1 A 0 A_CustomMissile ("ExplosionSmokeHD", 0, 0, random (0, 360), 2, random (10, 90))
+		EXPZ QRSTUVWXYZ 1 BRIGHT A_FadeOut(0.1)
 		Stop
 
 	Ricochet:
@@ -549,8 +551,9 @@ States
 		TNT1 A 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (40, 90))
 		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 2, 0, random (0, 360), 2, random (0, 360))
 
-		XPAC ABCDEFGHIJ 1 BRIGHT
-		TNT1 A 1
+		EXPZ ABCDEFGHIJKLMNOP 1 BRIGHT
+		TNT1 A 0 A_CustomMissile ("ExplosionSmokeHD", 0, 0, random (0, 360), 2, random (10, 90))
+		EXPZ QRSTUVWXYZ 1 BRIGHT A_FadeOut(0.1)
 		Stop
 		}
 }
@@ -576,8 +579,8 @@ Death:
 	Goto XDeath
 
 Nah:
-		TNT1 A 0
-		Stop
+	TNT1 A 0
+	Stop
 	}
 }
 
