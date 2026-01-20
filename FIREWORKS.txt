@@ -226,34 +226,6 @@ ACTOR BarrelShrapnel4: BarrelShrapnel1
  Scale 1.2
 }
 
-actor GreatKaboom: DeadMarine
-{
-	Game Doom
-	States
-	{
-	Spawn:
-	TNT1 A 50
-	TNT1 A 0 A_SpawnItemEx ("ExplosionSplashSpawner", 0, 0, 0)
-	TNT1 AAAA 0 A_CustomMissile ("ExplosionSpawner", 20, 0, random (0, 360), 2, random (0, 180))
-	TNT1 AAAAAA 0 A_CustomMissile ("ExplosionSpawner", 20, 0, random (0, 360), 2, random (0, 180))
-	Stop
-	}
-}
-
-actor UltraKaboom: DeadMarine
-{
-	Game Doom
-	States
-	{
-	Spawn:
-	TNT1 A 50
-	TNT1 A 0 A_SpawnItemEx ("ExplosionSplashSpawner", 0, 0, 0)
-	TNT1 AAAA 0 A_CustomMissile ("LongExplosionSpawner", 20, 0, random (0, 360), 2, random (0, 180))
-	TNT1 AAAAAA 0 A_CustomMissile ("ExplosionSpawner", 20, 0, random (0, 360), 2, random (0, 180))
-	Stop
-	}
-}
-
 actor BarrelKaboom: DeadMarine
 {
 	Game Doom
@@ -268,7 +240,7 @@ actor BarrelKaboom: DeadMarine
 	}
 }
 
-actor BigExplosion1112: DeadMarine
+actor BigExplosion1112: DeadMarine//vehicle explosion
 {
 	Game Doom
 	States
@@ -355,22 +327,7 @@ states
 	}
 }
 
-Actor LongExplosionSpawner: ExplosionSpawner
-{
-speed 66
-renderstyle ADD
-alpha 0.9
-scale .15
-Decal "BigScorch"
-states
-	{
-	Spawn:
-		TNT1 AAAAAA 2 A_SpawnItem("SpawnedExplosionLarge")
-		Stop
-	}
-}
-
-Actor hUGEExplosionSpawner: ExplosionSpawner
+Actor HugeExplosionSpawner: ExplosionSpawner
 {
 speed 100
 renderstyle ADD
@@ -388,7 +345,7 @@ states
 	}
 }
 
-Actor hUGEExplosionSpawner2: hUGEExplosionSpawner
+Actor HugeExplosionSpawner2: HugeExplosionSpawner
 {
 speed 80
 states
@@ -438,104 +395,6 @@ states
  TNT1 A 0
  TNT1 A 2 A_PlaySound("FAREXPL",0)
 TNT1 A 0 A_CustomMissile ("HighExplosiveFlamesSmall", 0, 0, random (0, 360), 2, random (0, 90))
-		Stop
-	}
-}
-
-Actor SpawnedExplosionRepeat
-{
-+NOCLIP
-+NOGRAVITY
-states
-	{
-	Spawn:
- TNT1 A 2
- TNT1 A 2 A_PlaySound("FAREXPL",0)
- TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-TNT1 AAAA 0 A_CustomMissile ("ExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
-TNT1 A 3
-TNT1 AAAA 0 A_CustomMissile ("ExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
-TNT1 A 3
-TNT1 AAAA 0 A_CustomMissile ("ExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
-		Stop
-	}
-}
-
-Actor SpawnedExplosionBig
-{
-+NOCLIP
-+NOGRAVITY
-states
-	{
-	Spawn:
- TNT1 A 2
- TNT1 A 2 A_PlaySound("FAREXPL",0)
- EXPL A 0 A_CustomMissile ("HugeNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360))
- EXPL A 0 A_CustomMissile ("BigNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360))
- TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-TNT1 AAAA 0 A_CustomMissile ("ExplosionFlamesBig", 0, 0, random (0, 360), 2, random (0, 180))
-TNT1 A 3
-TNT1 AAAA 0 A_CustomMissile ("ExplosionFlamesBig", 0, 0, random (0, 360), 2, random (0, 180))
-		Stop
-	}
-}
-
-Actor SpawnedExplosionLarge
-{
-+NOCLIP
-+NOGRAVITY
-states
-	{
-	Spawn:
- TNT1 A 2
- TNT1 A 2 A_PlaySound("FAREXPL",0)
-TNT1 AA 0 A_CustomMissile ("ExplosionFlamesBig2", 0, 0, random (0, 360), 2, random (0, 180))
-tnt1 a 0 a_eXPLODE(200, 400)
-		Stop
-	}
-}
-
-Actor SpawnedExplosionLarge2
-{
-+NOCLIP
-+NOGRAVITY
-states
-	{
-	Spawn:
- TNT1 A 2
- TNT1 A 2
-TNT1 AA 0 A_CustomMissile ("ExplosionFlamesBig2", 0, 0, random (0, 360), 2, random (0, 180))
-tnt1 a 0 a_eXPLODE(200, 400)
-		Stop
-	}
-}
-
-Actor SpawnedExplosionGiant
-{
-+NOCLIP
-+NOGRAVITY
-states
-	{
-	Spawn:
- TNT1 A 2
- TNT1 A 2 A_PlaySound("FAREXPL",0)
- EXPL A 0 A_CustomMissile ("RidiculousNeoSmoke", 0, 0, random (0, 360), 2, random (0, 180))
- TNT1 AA 0 A_CustomMissile ("ExplosionFlamesGiant", 0, 0, random (0, 360), 2, random (0, 180))
-		Stop
-	}
-}
-
-Actor SpawnedFlamers
-{
-+NOCLIP
-+NOGRAVITY
-    DamageType Flames
-states
-	{
-	Spawn:
- TNT1 A 2
-TNT1 A 0 A_Explode(100,40)
-TNT1 AAAA 0 A_CustomMissile ("ExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
 		Stop
 	}
 }
@@ -638,24 +497,6 @@ Actor SpawnedExplosionNuke2//Rising explosion
 	}
 }
 
-Actor RocketPenetrationExplosion
-{
-+NOCLIP
-+NOGRAVITY
-DamageType "ExplosiveImpact"
-states
-	{
-	Spawn:
- TNT1 A 2
- TNT1 A 2
- TNT1 A 0 A_Explode(20, 80)
- EXPL A 0 A_CustomMissile ("BigNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360))
- EXPL A 0 A_CustomMissile ("ExplosionSmoke", 0, 0, random (0, 360), 2, random (0, 360))
- TNT1 AA 0 A_CustomMissile ("SmallExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
-		Stop
-	}
-}
-
 ACTOR VanillaExplosiveBarrel: ExplosiveBarrel1
 {
 	-FRIENDLY
@@ -682,7 +523,7 @@ ACTOR VanillaExplosiveBarrel: ExplosiveBarrel1
 	}
 }
 
-ACTOR FireworkSFXType1
+ACTOR FireworkSFXType1//PainElemental explosion
 {
 	Radius 4
 	Height 4
