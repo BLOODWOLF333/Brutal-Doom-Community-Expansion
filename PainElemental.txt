@@ -122,7 +122,7 @@ ACTOR PainElemental1 Replaces PainElemental
 		TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		EXPL A 0 A_SpawnItemEx("ExplosionParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
 		TNT1 A 0 A_SpawnItem("BigBloodSpot")
-		EXPL AAAAAAAAAAAAAAAAA 0 A_CustomMissile ("FireBallExplosion", 6, 0, random (0, 360), 2, random (0, 360))
+		EXPL A 0 A_CustomMissile ("FireBallExplosion", 6, 0, random (0, 360), 2, random (0, 360))
 		TNT1 A 0 BRIGHT A_PainDie
 		PAIN N -1
 		Stop
