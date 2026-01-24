@@ -4,8 +4,16 @@
 
 actor BigBlueSuperGore: BigSuperGore
 {
-translation "168:191=192:207","16:47=240:247"
-Decal BlueBloodSplat
+	translation "168:191=192:207","16:47=240:247"
+	Decal BlueBloodSplat
+	states
+	{
+		Spawn:
+		BLOR A 1
+		TNT1 A 0 A_RadiusGive("BlueBloodOnVisor", 64, RGF_PLAYERS, 1)
+		BLOR ABCDEFGHIJK 1 A_FadeOut(0.06)
+		Stop
+	}
 }
 
 actor Blue_Blood: Brutal_Blood
@@ -25,7 +33,8 @@ actor Blue_Blood: Brutal_Blood
 			TNT1 A 0 A_CustomMissile ("BlueWaterBloodCHecker", 7, 0, random (0, 360), 2, random (30, 60))
 		Spawn2:
 			TNT1 A 0 A_CustomMissile ("Blue_FlyingBlood", 7, 0, random (0, 360), 2, random (30, 60))
-			TNT1 A 0 A_CustomMissile ("Blue_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (20, 90))
+			TNT1 A 0 A_CustomMissile("Blue_ArterialBlood22Small", 0, 0, random (0, 360), 2, random (30, 90))
+			TNT1 A 0 A_CustomMissile("Blue_BloodMist22Small", 0, 0, random (0, 360), 2, random (30, 90))
 			Goto LowBlood
 		Splash:
 			BLOD A 0
@@ -298,60 +307,23 @@ Decal "None"
 }
 
 //A decorative kind of flying blood spawned by arterial blood
-ACTOR Blue_LiquidBlood: Brutal_LiquidBlood
+ACTOR Blue_ArterialBlood22 : ArterialBlood22
 {
- decal BlueBloodSmearSmall
- translation "168:191=192:207","16:47=240:247"
-	States
-    {
-	Spawn:
-	   TNT1 A 0
-	   TNT1 A 0 A_CustomMissile ("Blue_FlyingBloodTrail", 10, 0, random (0, 360), 2, random (0, 90))
-	   BLOD AAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItem("Blue_LiquidBloodTrail")
-	   Stop
-	Death:
-  	   TNT1 A 0 A_PlaySound("blooddrop2")
-	   //XDT1 FGHIJKL 2
-	   TNT1 A 0
-       Stop
-	}
+	decal BlueBloodSmearSmall
+	translation "168:191=192:207","16:47=240:247"
 }
 
 //Faster version, leaves no decals. Used to prevent decal overflow
-ACTOR Blue_LiquidBlood2: Blue_LiquidBlood
+ACTOR Blue_ArterialBlood22NoDecal : ArterialBlood22
 {
- speed 4
- scale 0.4
- gravity 0.6
- decal "None"
+	decal "None"
+	translation "168:191=192:207","16:47=240:247"
 }
 
-//This version leaves a bloodspot
-ACTOR Blue_LiquidBlood3: Blue_FlyingBlood
+Actor Blue_ArterialBlood22Small: ArterialBlood22
 {
-Speed 3
-translation "168:191=192:207","16:47=240:247"
-Decal BlueBloodSplat
-    States
-    {
-	 Death:
-  	   TNT1 A 0 A_PlaySound("blooddrop2")
-	   TNT1 A 0 A_CheckFloor("SpawnFloor")
-	   TNT1 A 4
-	   Stop
-
-	 SpawnFloor:
-	   tnt1 a 0 A_SPawnItem("Blue_BloodSpot")
-	   XDT1 FGHIJKL 2
-	   TNT1 A 0
-       Stop
-    }
-}
-
-//Very fast version
-ACTOR Blue_LiquidBloodFast: Blue_LiquidBlood2
-{
- speed 8
+	Scale 0.05
+	translation "168:191=192:207","16:47=240:247"
 }
 
 //Decorative trails
@@ -373,31 +345,31 @@ ACTOR BlueArterialBloodSpray
      Spawn:
 	 TNT1 A 0
 	 TNT1 A 0 A_stop
-		TNT1 AAAA 2 A_CustomMissile ("Blue_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 AAAA 2 A_CustomMissile ("Blue_ArterialBlood22NoDecal", 0, 0, 0, 2, random (0, 60))
 		TNT1 A 6
-		TNT1 A 2 A_CustomMissile ("Blue_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 2 A_CustomMissile ("Blue_ArterialBlood22NoDecal", 0, 0, 0, 2, random (0, 60))
 		TNT1 A 6
-		TNT1 A 2 A_CustomMissile ("Blue_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 2 A_CustomMissile ("Blue_ArterialBlood22NoDecal", 0, 0, 0, 2, random (0, 60))
 		TNT1 A 6
-		TNT1 A 2 A_CustomMissile ("Blue_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 2 A_CustomMissile ("Blue_ArterialBlood22NoDecal", 0, 0, 0, 2, random (0, 60))
 		TNT1 A 6
-		TNT1 A 2 A_CustomMissile ("Blue_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 2 A_CustomMissile ("Blue_ArterialBlood22NoDecal", 0, 0, 0, 2, random (0, 60))
 		TNT1 A 9
-		TNT1 A 2 A_CustomMissile ("Blue_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 2 A_CustomMissile ("Blue_ArterialBlood22NoDecal", 0, 0, 0, 2, random (0, 60))
 		TNT1 A 9
-		TNT1 A 2 A_CustomMissile ("Blue_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 2 A_CustomMissile ("Blue_ArterialBlood22NoDecal", 0, 0, 0, 2, random (0, 60))
 		TNT1 A 9
-		TNT1 A 2 A_CustomMissile ("Blue_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 2 A_CustomMissile ("Blue_ArterialBlood22NoDecal", 0, 0, 0, 2, random (0, 60))
 		TNT1 A 9
-		TNT1 A 2 A_CustomMissile ("Blue_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 2 A_CustomMissile ("Blue_ArterialBlood22NoDecal", 0, 0, 0, 2, random (0, 60))
 		TNT1 A 12
-		TNT1 A 2 A_CustomMissile ("Blue_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 2 A_CustomMissile ("Blue_ArterialBlood22NoDecal", 0, 0, 0, 2, random (0, 60))
 		TNT1 A 12
-		TNT1 A 2 A_CustomMissile ("Blue_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 2 A_CustomMissile ("Blue_ArterialBlood22NoDecal", 0, 0, 0, 2, random (0, 60))
 		TNT1 A 16
-		TNT1 A 2 A_CustomMissile ("Blue_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 2 A_CustomMissile ("Blue_ArterialBlood22NoDecal", 0, 0, 0, 2, random (0, 60))
 		TNT1 A 19
-		TNT1 A 2 A_CustomMissile ("Blue_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 2 A_CustomMissile ("Blue_ArterialBlood22NoDecal", 0, 0, 0, 2, random (0, 60))
        Stop
     }
 }
@@ -453,7 +425,7 @@ Decal BlueBloodSplat
   Spawn:
         //TNT1 AAAAA 0 A_CustomMissile ("BloodTr2", 7, 0, random (0, 360), 2, random (0, 180))
         //TNT1 AAAAAAAAAAA 0 A_CustomMissile ("BloodTr2", 0, 0, random (0, 180), 2, random (0, 180))
-		TNT1 AAAA 3 A_CustomMissile ("Blue_LiquidBlood", 10, 0, random (0, 360), 2, random (30, 80))
+		TNT1 AAAA 3 A_CustomMissile ("Blue_ArterialBlood22", 10, 0, random (0, 360), 2, random (30, 80))
         BLOD BCD 0
         stop
 	Splash:
@@ -464,8 +436,90 @@ Decal BlueBloodSplat
 
 actor BlueBloodMist : BloodMist
 {
-translation "168:191=192:207","16:47=240:247"
-Decal BlueBloodSplat
+	translation "168:191=192:207","16:47=240:247"
+	Decal BlueBloodSplat
+}
+
+actor Blue_Bloodmist22 : Bloodmist
+{
+	translation "168:191=192:207","16:47=240:247"
+	Decal BlueBloodSplat
+	scale 0.7
+	speed 4
+	Gravity 0.3
+	Alpha 0.5
+	states
+	{
+	Spawn:
+		GTXP A 1
+		TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Live")
+	Spawn1:
+		TNT1 A 0
+		TNT1 A 0 A_SetScale(-0.7, 0.7)
+		Goto live
+
+	Spawn2:
+		TNT1 A 0
+		TNT1 A 0 A_SetScale(-0.7, -0.7)
+		Goto live
+
+	Spawn3:
+		TNT1 A 0
+		TNT1 A 0 A_SetScale(0.7, -0.7)
+		Goto live
+
+	Live:
+		GTXP BCDEFGHIJKLMNOPQRSTUVWXY 1 A_JumpIf(waterlevel > 1, "Splash")
+		Stop
+
+	Vanish:
+		TNT1 A 0
+		Stop
+	Death:
+		XDT1 FGHIJKL 2
+		Stop
+	}
+}
+
+actor Blue_Bloodmist22Small : Bloodmist
+{
+	translation "168:191=192:207","16:47=240:247"
+	Decal BlueBloodSplat
+	speed 2
+	Scale 0.3
+	Alpha 0.4
+	states
+	{
+	Spawn:
+		GTXP A 1
+		TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Live")
+	Spawn1:
+		TNT1 A 0
+		TNT1 A 0 A_SetScale(-0.3, 0.3)
+		Goto live
+
+	Spawn2:
+		TNT1 A 0
+		TNT1 A 0 A_SetScale(-0.3, -0.3)
+		Goto live
+
+	Spawn3:
+		TNT1 A 0
+		TNT1 A 0 A_SetScale(0.3, -0.3)
+		Goto live
+
+	Live:
+		GTXP BCDEFGHIJKLMNOPQRSTUVWXY 1 A_JumpIf(waterlevel > 1, "Splash")
+		Stop
+
+	Vanish:
+		TNT1 A 0
+		Stop
+
+	Death:
+		XDT1 FGHIJKL 2
+		Stop
+	}
 }
 
 actor BlueBloodMistBig : BloodMistBig
@@ -1729,8 +1783,8 @@ actor MuchBloodBlue : Blood
 		TNT1 A 0
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 
-        TNT1 AAAAAAAAAAAA 0 A_CustomMissile ("Blue_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
-        TNT1 AAAAAAAAAAAA 0 A_CustomMissile("Blue_FlyingBloodTrail", 0, 0, 180)
+		TNT1 A 0 A_CustomMissile("Blue_ArterialBlood22", 0, 0, random (0, 360), 2, random (30, 90))
+		TNT1 A 0 A_CustomMissile("Blue_BloodMist22", 0, 0, random (0, 360), 2, random (30, 90))
 		TNT1 AAA 0 A_CustomMissile("BlueBloodMistSmall", 0, 0, random (0, 360), 2, random (30, 90))
   	    TNT1 AAA 0 A_CustomMissile ("Blue_FlyingBlood", 0, 0, random (0, 360), 2, random (0, 160))
 
@@ -1752,8 +1806,8 @@ actor MuchBlood2Blue : Blood
 		TNT1 A 0 A_PlaySound("misc/xdeath4")
 
         TNT1 AAA 0 A_CustomMissile("BlueBloodMistSmall", 0, 0, random (0, 360), 2, random (30, 90))
-        TNT1 AAAAAAAAA 0 A_CustomMissile ("Blue_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
-        TNT1 AAAAAAAAA 0 A_CustomMissile("Blue_FlyingBloodTrail", 0, 0, 180)
+		TNT1 A 0 A_CustomMissile("Blue_ArterialBlood22", 0, 0, random (0, 360), 2, random (30, 90))
+		TNT1 A 0 A_CustomMissile("Blue_BloodMist22", 0, 0, random (0, 360), 2, random (30, 90))
   	    TNT1 AAA 0 A_CustomMissile ("Blue_FlyingBlood", 0, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_CustomMissile ("BlueBloodMistBig", 0, 0, random (0, 360), 2, random (30, 90))
 
@@ -1775,8 +1829,8 @@ actor MuchBlood3Blue : Blood
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		TNT1 A 0 A_PlaySound("misc/xdeath4")
 
-        TNT1 AAAAAAAAA 0 A_CustomMissile ("Blue_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
-        TNT1 AAAAAAAAA 0 A_CustomMissile("Blue_FlyingBloodTrail", 0, 0, 180)
+		TNT1 A 0 A_CustomMissile("Blue_ArterialBlood22", 0, 0, random (0, 360), 2, random (30, 90))
+		TNT1 A 0 A_CustomMissile("Blue_BloodMist22", 0, 0, random (0, 360), 2, random (30, 90))
   	    TNT1 AAA 0 A_CustomMissile ("Blue_FlyingBlood", 0, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAAAA 0 A_CustomMissile ("BlueBloodMistBig", 0, 0, random (0, 360), 2, random (30, 90))
 

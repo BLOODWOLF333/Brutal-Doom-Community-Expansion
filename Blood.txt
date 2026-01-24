@@ -11,31 +11,31 @@ ACTOR ArterialBloodSpray
 		Spawn:
 		TNT1 A 0
 		TNT1 A 0 A_stop
-		TNT1 AAAA 2 A_CustomMissile ("Brutal_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 AAAA 2 A_CustomMissile ("ArterialBlood22NoDecal", 0, 0, 0, 2, random (0, 60))
 		TNT1 A 6
-		TNT1 A 2 A_CustomMissile ("Brutal_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 2 A_CustomMissile ("ArterialBlood22NoDecal", 0, 0, 0, 2, random (0, 60))
 		TNT1 A 6
-		TNT1 A 2 A_CustomMissile ("Brutal_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 2 A_CustomMissile ("ArterialBlood22NoDecal", 0, 0, 0, 2, random (0, 60))
 		TNT1 A 6
-		TNT1 A 2 A_CustomMissile ("Brutal_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 2 A_CustomMissile ("ArterialBlood22NoDecal", 0, 0, 0, 2, random (0, 60))
 		TNT1 A 6
-		TNT1 A 2 A_CustomMissile ("Brutal_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 2 A_CustomMissile ("ArterialBlood22NoDecal", 0, 0, 0, 2, random (0, 60))
 		TNT1 A 9
-		TNT1 A 2 A_CustomMissile ("Brutal_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 2 A_CustomMissile ("ArterialBlood22NoDecal", 0, 0, 0, 2, random (0, 60))
 		TNT1 A 9
-		TNT1 A 2 A_CustomMissile ("Brutal_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 2 A_CustomMissile ("ArterialBlood22NoDecal", 0, 0, 0, 2, random (0, 60))
 		TNT1 A 9
-		TNT1 A 2 A_CustomMissile ("Brutal_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 2 A_CustomMissile ("ArterialBlood22NoDecal", 0, 0, 0, 2, random (0, 60))
 		TNT1 A 9
-		TNT1 A 2 A_CustomMissile ("Brutal_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 2 A_CustomMissile ("ArterialBlood22NoDecal", 0, 0, 0, 2, random (0, 60))
 		TNT1 A 12
-		TNT1 A 2 A_CustomMissile ("Brutal_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 2 A_CustomMissile ("ArterialBlood22NoDecal", 0, 0, 0, 2, random (0, 60))
 		TNT1 A 12
-		TNT1 A 2 A_CustomMissile ("Brutal_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 2 A_CustomMissile ("ArterialBlood22NoDecal", 0, 0, 0, 2, random (0, 60))
 		TNT1 A 16
-		TNT1 A 2 A_CustomMissile ("Brutal_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 2 A_CustomMissile ("ArterialBlood22NoDecal", 0, 0, 0, 2, random (0, 60))
 		TNT1 A 19
-		TNT1 A 2 A_CustomMissile ("Brutal_LiquidBlood2", 0, 0, 0, 2, random (0, 60))
+		TNT1 A 2 A_CustomMissile ("ArterialBlood22NoDecal", 0, 0, 0, 2, random (0, 60))
 		Stop
 	}
 }
@@ -127,7 +127,8 @@ actor Brutal_Blood Replaces Blood
 		TNT1 A 0 A_CustomMissile ("WaterBloodCHecker", 7, 0, random (0, 360), 2, random (30, 60))
 		Spawn2:
 		TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 7, 0, random (0, 360), 2, random (30, 60))
-		TNT1 A 0 A_CustomMissile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (20, 90))
+		TNT1 A 0 A_CustomMissile("ArterialBlood22Small", 0, 0, random (0, 360), 2, random (30, 90))
+		TNT1 A 0 A_CustomMissile("BloodMist22Small", 0, 0, random (0, 360), 2, random (30, 90))
 		Goto LowBlood
 		Splash:
 		BLOD A 0
@@ -191,7 +192,7 @@ ACTOR BloodDying : Brutal_Blood
 	States
 	{
 		Spawn:
-		TNT1 AAAA 2 A_CustomMissile ("Brutal_LiquidBlood2", 0, 0, random (0, 360), 2, random (20, 90))
+		TNT1 AAAA 2 A_CustomMissile ("ArterialBlood22NoDecal", 0, 0, random (0, 360), 2, random (20, 90))
 		TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (20, 90))
 		Stop
 	}
@@ -449,15 +450,15 @@ actor Bloodmist : Brutal_FlyingBlood
 	scale 0.8
 	radius 2
 	height 2
-	speed  8
+	speed 8
 	Gravity 0.6
-	alpha 0.9
+	Alpha 0.9
 	states
 	{
 		Spawn:
 		BLHT A 0
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCHeckJanitor4", 0 , 0, 0, 0)
-		BLHT A 1
+		GTXZ A 1
 		TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Live")
 		Spawn1:
 		TNT1 A 0
@@ -466,18 +467,16 @@ actor Bloodmist : Brutal_FlyingBlood
 
 		Spawn2:
 		TNT1 A 0
-		TNT1 A 0 A_SetScale(-0.9, -0.9)
+		TNT1 A 0 A_SetScale(-0.8, -0.8)
 		Goto live
 
 		Spawn3:
 		TNT1 A 0
-		TNT1 A 0 A_SetScale(0.7, -0.7)
+		TNT1 A 0 A_SetScale(0.8, -0.8)
 		Goto live
 
 		Live:
-		BLHT ABCDEFGHI 3
-		TNT1 A 0
-		BLHT JJJJ 6 A_JumpIf(waterlevel > 1, "Splash")
+		GTXZ BCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_JumpIf(waterlevel > 1, "Splash")
 		Stop
 
 		Vanish:
@@ -490,9 +489,87 @@ actor Bloodmist : Brutal_FlyingBlood
 	}
 }
 
+actor Bloodmist22 : Bloodmist
+{
+	scale 0.7
+	speed 4
+	Gravity 0.3
+	Alpha 0.5
+	states
+	{
+	Spawn:
+		GTXP A 1
+		TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Live")
+	Spawn1:
+		TNT1 A 0
+		TNT1 A 0 A_SetScale(-0.7, 0.7)
+		Goto live
+
+	Spawn2:
+		TNT1 A 0
+		TNT1 A 0 A_SetScale(-0.7, -0.7)
+		Goto live
+
+	Spawn3:
+		TNT1 A 0
+		TNT1 A 0 A_SetScale(0.7, -0.7)
+		Goto live
+
+	Live:
+		GTXP BCDEFGHIJKLMNOPQRSTUVWXY 1 A_JumpIf(waterlevel > 1, "Splash")
+		Stop
+
+	Vanish:
+		TNT1 A 0
+		Stop
+	Death:
+		XDT1 FGHIJKL 2
+		Stop
+	}
+}
+
+actor Bloodmist22Small : Bloodmist
+{
+	speed 2
+	Scale 0.3
+	Alpha 0.4
+	states
+	{
+	Spawn:
+		GTXP A 1
+		TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Live")
+	Spawn1:
+		TNT1 A 0
+		TNT1 A 0 A_SetScale(-0.3, 0.3)
+		Goto live
+
+	Spawn2:
+		TNT1 A 0
+		TNT1 A 0 A_SetScale(-0.3, -0.3)
+		Goto live
+
+	Spawn3:
+		TNT1 A 0
+		TNT1 A 0 A_SetScale(0.3, -0.3)
+		Goto live
+
+	Live:
+		GTXP BCDEFGHIJKLMNOPQRSTUVWXY 1 A_JumpIf(waterlevel > 1, "Splash")
+		Stop
+
+	Vanish:
+		TNT1 A 0
+		Stop
+
+	Death:
+		XDT1 FGHIJKL 2
+		Stop
+	}
+}
+
 actor BloodmistBig : Bloodmist
 {
-	scale 1
+	scale 1.0
 	speed 5
 	GRAVITY 0.4
 	states
@@ -503,12 +580,12 @@ actor BloodmistBig : Bloodmist
 		TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Live")
 		Spawn1:
 		TNT1 A 0
-		TNT1 A 0 A_SetScale(-1.1, 1.1)
+		TNT1 A 0 A_SetScale(-1.0, 1.0)
 		Goto live
 
 		Spawn2:
 		TNT1 A 0
-		TNT1 A 0 A_SetScale(-0.9, -0.9)
+		TNT1 A 0 A_SetScale(-1.0, -1.0)
 		Goto live
 
 		Spawn3:
@@ -547,22 +624,22 @@ actor BloodmistExtraBig : Bloodmist
 		TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Live")
 		Spawn1:
 		TNT1 A 0
-		TNT1 A 0 A_SetScale(-1.6, 1.6)
+		TNT1 A 0 A_SetScale(-1.5, 1.5)
 		Goto live
 
 		Spawn2:
 		TNT1 A 0
-		TNT1 A 0 A_SetScale(-1.5, -1.6)
+		TNT1 A 0 A_SetScale(-1.5, -1.5)
 		Goto live
 
 		Spawn3:
 		TNT1 A 0
-		TNT1 A 0 A_SetScale(1.4, -1.5)
+		TNT1 A 0 A_SetScale(1.5, -1.5)
 		Goto live
 	}
 }
 
-Actor BloodMistLarge: BloodMistBig
+Actor BloodmistLarge: BloodMistBig
 {
 	speed 6
 }
@@ -585,12 +662,12 @@ actor BloodmistSmall : Bloodmist
 
 		Spawn2:
 		TNT1 A 0
-		TNT1 A 0 A_SetScale(-0.4, -0.4)
+		TNT1 A 0 A_SetScale(-0.5, -0.5)
 		Goto live
 
 		Spawn3:
 		TNT1 A 0
-		TNT1 A 0 A_SetScale(0.5, -0.6)
+		TNT1 A 0 A_SetScale(0.5, -0.5)
 		Goto live
 	}
 }
@@ -626,17 +703,17 @@ actor BloodmistXXXBig : Bloodmist
 		TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Live")
 		Spawn1:
 		TNT1 A 0
-		TNT1 A 0 A_SetScale(-3.6, 3.6)
+		TNT1 A 0 A_SetScale(-3.0, 3.0)
 		Goto live
 
 		Spawn2:
 		TNT1 A 0
-		TNT1 A 0 A_SetScale(-3.5, -3.6)
+		TNT1 A 0 A_SetScale(-3.0, -3.0)
 		Goto live
 
 		Spawn3:
 		TNT1 A 0
-		TNT1 A 0 A_SetScale(3.2, -3.2)
+		TNT1 A 0 A_SetScale(3.0, -3.0)
 		Goto live
 	}
 }
@@ -645,6 +722,58 @@ actor BloodmistXXBig : BloodmistXXXBig
 {
 	scale 3.0
 	speed 12
+}
+
+actor ArterialBlood22 : Bloodmist
+{
+	Speed 1
+	Gravity 0.1
+	Scale 0.1
+	Alpha 0.5
+	states
+	{
+	Spawn:
+		GTXZ A 0
+		TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Spawn4")
+	Spawn1:
+		TNT1 A 0
+		GTXZ ABCDE 1 A_SetScale(scalex+0.01, scaley+0.01)
+		GTXZ FGHIJKLMNOPQRSTUVWXYZ 1 A_JumpIf(waterlevel > 1, "Splash")
+		Stop
+
+	Spawn2:
+		TNT1 A 0
+		GTXZ ABCDE 1 A_SetScale(scalex+0.02, scaley+0.02)
+		GTXZ FGHIJKLMNOPQRSTUVWXYZ 1 A_JumpIf(waterlevel > 1, "Splash")
+		Stop
+
+	Spawn3:
+		TNT1 A 0
+		GTXZ ABCDE 1 A_SetScale(scalex+0.03, scaley+0.03)
+		GTXZ FGHIJKLMNOPQRSTUVWXYZ 1 A_JumpIf(waterlevel > 1, "Splash")
+		Stop
+
+	Spawn4:
+		TNT1 A 0
+		GTXZ ABCDE 1 A_SetScale(scalex+0.04, scaley+0.04)
+		GTXZ FGHIJKLMNOPQRSTUVWXYZ 1 A_JumpIf(waterlevel > 1, "Splash")
+		Stop
+	}
+}
+
+Actor ArterialBlood22Faster : ArterialBlood22
+{
+	Speed 3
+}
+
+Actor ArterialBlood22NoDecal : ArterialBlood22
+{
+	decal "None"
+}
+
+Actor ArterialBlood22Small: ArterialBlood22
+{
+	Scale 0.05
 }
 
 actor Brutal_FlyingBloodFaster: Brutal_FlyingBlood
@@ -744,63 +873,6 @@ ACTOR Brutal_FlyingBloodFake: Brutal_FlyingBloodTrail
 }
 
 ACTOR Brutal_FlyingBloodFakeNoDecal: Brutal_FlyingBloodFake { decal "none"}
-
-//A decorative kind of flying blood spawned by arterial blood
-ACTOR Brutal_LiquidBlood: Brutal_FlyingBlood
-{
- speed 3
- scale 0.2
- gravity 0.6
- decal BrutalBloodSmearSmall
-    States
-    {
-     Spawn:
-	 TNT1 A 0
-	 TNT1 A 0 A_CustomMissile ("Brutal_FlyingBloodTrail", 1, 0, random (0, 360), 2, random (40, 90))
-	 BLOD AAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItem("Brutal_LiquidBloodTrail")
-	 Stop
-	 Death:
-  	   TNT1 A 0 A_PlaySound("blooddrop2")
-	   XDT1 FGHIJKL 2
-	   TNT1 A 0
-       Stop
-    }
-}
-
-//Faster version, leaves no decals. Used to prevent decal overflow
-ACTOR Brutal_LiquidBlood2: Brutal_LiquidBlood
-{
- speed 4
- scale 0.4
- gravity 0.6
- decal "None"
-}
-
-//This version leaves a bloodspot
-ACTOR Brutal_LiquidBlood3: Brutal_FlyingBlood
-{
-Speed 3
-    States
-    {
-	 Death:
-  	   TNT1 A 0 A_PlaySound("blooddrop2")
-	   TNT1 A 0 A_CheckFloor("SpawnFloor")
-	   TNT1 A 4
-	   Stop
-
-	 SpawnFloor:
-	   tnt1 a 0 A_SPawnItem("Brutal_BloodSpot")
-	   XDT1 FGHIJKL 2
-	   TNT1 A 0
-       Stop
-    }
-}
-
-//Very fast version
-ACTOR Brutal_LiquidBloodFast: Brutal_LiquidBlood2
-{
- speed 8
-}
 
 //Decorative trails
 ACTOR Brutal_LiquidBloodTrail: Brutal_FlyingBlood
