@@ -166,7 +166,7 @@ ACTOR PlayerBike : PlayerPawn
 	{
 	Spawn:
 		TNT1 A 0
-		TNT1 A 0 A_GiveInventory("IsInATank", 1)
+		TNT1 A 0 A_GiveInventory("IsAVehicle", 1)
 	    TNT1 A 0 A_TakeInventory("PressedUse", 1)
 		TNT1 A 0 A_TakeInventory("PressedJump", 1)
 		TNT1 A 0 A_TakeInventory("TurnRight", 1)
@@ -771,7 +771,7 @@ ACTOR PlayerBike : PlayerPawn
 	CanExit:
 		TNT1 A 0
 		TNT1 A 0 SetPlayerProperty(0,0,4)
-		TNT1 A 0 A_TakeInventory("IsInATank", 1)
+		TNT1 A 0 A_TakeInventory("IsAVehicle", 1)
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
 		TNT1 A 0 A_TakeInventory("CanLeaveVehicle", 1)
 		TNT1 A 0 A_TakeInventory("TankZoom", 1)
