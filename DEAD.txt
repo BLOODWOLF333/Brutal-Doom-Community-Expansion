@@ -869,7 +869,7 @@ ACTOR DeadBloodyTwitch: BloodyTwitch Replaces BloodyTwitch
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	DamageFactor "SSG", 5.0	Damagefactor "ExtremePunches", 5.0	Damagefactor "Fatality", 5.0	Damagefactor "HelperMarineFatality", 5.0
 	DamageFactor "TankWeakSpot", 0.0	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0
-	Damagefactor "Use", 0.0
+	Damagefactor "Use", 0.0	Damagefactor "HumanBBQ", 100.0
 	States
 	{
     Spawn:
@@ -940,7 +940,7 @@ ACTOR DeadBloodyTwitchB: DeadBloodyTwitch
 	Death.Humanbbq:
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItem("HumanBBQ1")
+		TNT1 A 0 A_SpawnItem("HumanBBQ2")
 		Stop
 	}
 }
@@ -985,7 +985,7 @@ ACTOR HangingBody: Meat2 Replaces Meat2
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	DamageFactor "SSG", 5.0	Damagefactor "ExtremePunches", 5.0	Damagefactor "Fatality", 5.0	Damagefactor "HelperMarineFatality", 5.0
 	DamageFactor "TankWeakSpot", 0.0	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0
-	Damagefactor "Use", 0.0
+	Damagefactor "Use", 0.0	Damagefactor "HumanBBQ", 100.0
 	States
 	{
 	Spawn:
@@ -1011,7 +1011,7 @@ ACTOR HangingBody: Meat2 Replaces Meat2
 	Death.Humanbbq:
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItem("HumanBBQ1")
+		TNT1 A 0 A_SpawnItem("HumanBBQ3")
 		Stop
 	}
 }
@@ -1046,7 +1046,7 @@ ACTOR HangingPairOfLegs: DeadBloodyTwitchB Replaces Meat4
 	Death.Humanbbq:
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItem("HumanBBQ1")
+		TNT1 A 0 A_SpawnItem("HumanBBQ4")
 		Stop
 	}
 }
@@ -1101,7 +1101,7 @@ ACTOR HangingDeadGuyNoLeg: Meat3 Replaces Meat3
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	DamageFactor "SSG", 5.0	Damagefactor "ExtremePunches", 5.0	Damagefactor "Fatality", 5.0	Damagefactor "HelperMarineFatality", 5.0
 	DamageFactor "TankWeakSpot", 0.0	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0
-	Damagefactor "Use", 0.0
+	Damagefactor "Use", 0.0	Damagefactor "HumanBBQ", 100.0
 	States
 	{
 	Spawn:
@@ -1127,7 +1127,7 @@ ACTOR HangingDeadGuyNoLeg: Meat3 Replaces Meat3
 	Death.Humanbbq:
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItem("HumanBBQ1")
+		TNT1 A 0 A_SpawnItem("HumanBBQ5")
 		Stop
 	}
 }
@@ -1162,7 +1162,7 @@ ACTOR HangingLeg: DeadBloodyTwitchB Replaces Meat5
 	Death.Humanbbq:
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItem("HumanBBQ1")
+		TNT1 A 0 A_SpawnItem("HumanBBQ6")
 		Stop
 	}
 }
@@ -1200,7 +1200,7 @@ ACTOR DeadNonsolidTwitch : DeadBloodyTwitch Replaces NonsolidTwitch
 ACTOR DeadHangNoGuts: HangNoGuts Replaces HangNoGuts
 {
 	Radius 20
-	Height 90
+	Height 83
 	Health 100
 	Mass 999999
 	+SOLID
@@ -1219,7 +1219,7 @@ ACTOR DeadHangNoGuts: HangNoGuts Replaces HangNoGuts
 	Damagefactor "RevenantHitStomach", 0.0	Damagefactor "SpawnMarine", 0.0	Damagefactor "Stealth", 0.0
 	DamageFactor "SSG", 5.0	Damagefactor "ExtremePunches", 5.0	Damagefactor "Fatality", 5.0	Damagefactor "HelperMarineFatality", 5.0
 	DamageFactor "TankWeakSpot", 0.0	Damagefactor "Taunt", 0.0	Damagefactor "TeleportRemover", 100.0
-	Damagefactor "Use", 0.0
+	Damagefactor "Use", 0.0	Damagefactor "HumanBBQ", 100.0
 	States
 	{
     Spawn:
@@ -1246,7 +1246,7 @@ ACTOR DeadHangNoGuts: HangNoGuts Replaces HangNoGuts
 	 Death.Humanbbq:
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItem("HumanBBQ1")
+		TNT1 A 0 A_SpawnItem("HumanBBQ7")
 		Stop
 	}
 }
@@ -1255,7 +1255,7 @@ ACTOR DeadHangNoGuts: HangNoGuts Replaces HangNoGuts
 ACTOR DeadHangBNoBrain: DeadHangNoGuts Replaces HangBNoBrain
 {
 	Radius 16
-	Height 88
+	Height 83
 	States
 	{
 	 Spawn:
@@ -1278,7 +1278,7 @@ ACTOR DeadHangBNoBrain: DeadHangNoGuts Replaces HangBNoBrain
 ACTOR DeadHangTLookingDown: DeadHangNoGuts Replaces HangTLookingDown
 {
 	Radius 16
-	Height 64
+	Height 59
 	States
 	{
 	 Spawn:
@@ -1301,7 +1301,7 @@ ACTOR DeadHangTLookingDown: DeadHangNoGuts Replaces HangTLookingDown
 ACTOR DeadHangTLookingUp: DeadHangNoGuts Replaces HangTLookingUp
 {
 	Radius 16
-	Height 64
+	Height 59
 	States
 	{
 	Spawn:
@@ -1324,7 +1324,7 @@ ACTOR DeadHangTLookingUp: DeadHangNoGuts Replaces HangTLookingUp
 ACTOR DeadHangTSkull: DeadHangNoGuts replaces HangTSkull
 {
 	Radius 16
-	Height 64
+	Height 59
 	States
 	{
 	Spawn:
@@ -1347,7 +1347,7 @@ ACTOR DeadHangTSkull: DeadHangNoGuts replaces HangTSkull
 ACTOR DeadHangTNoBrain: DeadHangNoGuts Replaces HangTNoBrain
 {
 	Radius 16
-	Height 64
+	Height 59
     States
 	{
 	Spawn:
@@ -1670,7 +1670,7 @@ Actor SpawnedMaggotDec3: SpawnedMaggotDec
 ACTOR HumanBBQ1
 {
 	Radius 16
-	Height 84
+	Height 67
 	Health 100
 	Mass 99999999
 	+SOLID
@@ -1679,26 +1679,80 @@ ACTOR HumanBBQ1
 	States
 	{
 	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Spawn4")
-	Spawn1:
 		HDB7 A 1
 		HDB7 A -1
 		Stop
+	}
+}
 
-	Spawn2:
+ACTOR HumanBBQ2 : HumanBBQ1
+{
+	Height 67
+	States
+	{
+	Spawn:
 		HDB7 B 1
 		HDB7 B -1
 		Stop
+	}
+}
 
-	Spawn3:
+ACTOR HumanBBQ3 : HumanBBQ1
+{
+	Height 83
+	States
+	{
+	Spawn:
 		HDB7 C 1
 		HDB7 C -1
 		Stop
+	}
+}
 
-	Spawn4:
+ACTOR HumanBBQ4 : HumanBBQ1
+{
+	Height 83
+	States
+	{
+	Spawn:
 		HDB7 D 1
 		HDB7 D -1
+		Stop
+	}
+}
+
+ACTOR HumanBBQ5 : HumanBBQ1
+{
+	Height 83
+	States
+	{
+	Spawn:
+		HDB7 E 1
+		HDB7 E -1
+		Stop
+	}
+}
+
+ACTOR HumanBBQ6 : HumanBBQ1
+{
+	Height 83
+	States
+	{
+	Spawn:
+		HDB7 F 1
+		HDB7 F -1
+		Stop
+	}
+}
+
+ACTOR HumanBBQ7 : HumanBBQ1
+{
+	Height 83
+	States
+	{
+	Spawn:
+		HDB7 G 1
+		HDB7 G -1
 		Stop
 	}
 }
