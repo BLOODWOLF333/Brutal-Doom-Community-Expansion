@@ -282,7 +282,7 @@ ACTOR Shot_Gun : BrutalWeapon
 		SHTN A 0 A_JumpIfInventory("Reloading",1,"InsertingShells")
 		SHTN A 0 A_JumpIfInventory("FiredSecondary",1,"HoldAim")//If still pressing alt fire, it means its holding aim
 		SHTN A 0 A_JumpIfInventory("FiredPrimary",1,"Fire")
-		Goto NoAmm3
+		Goto NoAmmo3
 
 	AltFire:
         SHTN A 0
