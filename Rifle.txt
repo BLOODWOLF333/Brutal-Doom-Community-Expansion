@@ -374,11 +374,7 @@ ACTOR Rifle : BrutalWeapon
 		RIFG A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		RIFG A 0 A_JumpIfInventory("ExecuteDownedEnemy", 1, "DoExecution")
 		RIFG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		RIFG A 0 A_JumpIfInventory("ADSmode",1,2)
 		RIFG A 5 A_WeaponReady(WRF_ALLOWRELOAD | WRF_NOPRIMARY)
-		Goto NoAmmo3
-		RI2G A 5 A_WeaponReady(WRF_ALLOWRELOAD | WRF_NOPRIMARY)
-	NoAmmo3:
 		RIFG A 0 A_JumpIfInventory("Reloading",1,"Reload")
 		RIFG A 0 A_JumpIfInventory("TurboReload",1,"TurboReload")
 		TNT1 A 0 A_JumpIfInventory("NoAutoReload", 1, 2)
