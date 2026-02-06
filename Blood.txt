@@ -259,19 +259,11 @@ ACTOR Brutal_BloodSpot
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Death")
 		Loop
 
-		FadeA:
-		BPDL AAAA 1 A_FadeOut(0.05)
-		Stop
-
 		SpawnBFrameOnly:
 		BPDL B 800
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Death")
 		Loop
-
-		FadeB:
-		BPDL BBBB 1 A_FadeOut(0.05)
-		Stop
 
 		SpawnCFrameOnly:
 		BPDL C 800
@@ -279,19 +271,11 @@ ACTOR Brutal_BloodSpot
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Death")
 		Loop
 
-		FadeC:
-		BPDL CCCC 1 A_FadeOut(0.05)
-		Stop
-
 		SpawnDFrameOnly:
 		BPDL D 800
 		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "Death")
 		Loop
-
-		FadeD:
-		BPDL DDDD 1 A_FadeOut(0.05)
-		Stop
 
 		WaterBloodSpot:
 		TNT1 A 0
@@ -976,18 +960,45 @@ actor CeilBloodSpot
 	Alpha 0.9
 	states
 	{
-		Spawn:
-		  BPDL A 1
-		  TNT1 A 0 A_QueueCorpse
-		  TNT1 A 0 A_SpawnItem ("DripingBloodLeavesSmallPool")
-		  TNT1 A 0 A_SpawnItem ("CeilBloodTinyBloodSpawner")
-		Live:
-		  BPDL A 5 ThrustThingZ(0, 20, 0, 1)
-		  Loop
-		Death:
-			TNT1 A 0
-			Stop
-			}
+	Spawn:
+		TNT1 A 1
+		TNT1 A 0 A_QueueCorpse
+		TNT1 A 0 A_SpawnItem ("DripingBloodLeavesSmallPool")
+		TNT1 A 0 A_SpawnItem ("CeilBloodTinyBloodSpawner")
+		TNT1 A 0 A_Jump(255, "SpawnA", "SpawnB", "SpawnC", "SpawnD", "SpawnE", "SpawnF", "SpawnG")
+
+	SpawnA:
+		BPDL A 5 ThrustThingZ(0, 20, 0, 1)
+		Loop
+
+	SpawnB:
+		BPDL B 5 ThrustThingZ(0, 20, 0, 1)
+		Loop
+
+	SpawnC:
+		BPDL C 5 ThrustThingZ(0, 20, 0, 1)
+		Loop
+
+	SpawnD:
+		BPDL D 5 ThrustThingZ(0, 20, 0, 1)
+		Loop
+
+	SpawnE:
+		BPDL E 5 ThrustThingZ(0, 20, 0, 1)
+		Loop
+
+	SpawnF:
+		BPDL F 5 ThrustThingZ(0, 20, 0, 1)
+		Loop
+
+	SpawnG:
+		BPDL G 5 ThrustThingZ(0, 20, 0, 1)
+		Loop
+
+	Death:
+		TNT1 A 0
+		Stop
+	}
 }
 
 //Bigger version of a ceil blood spot, usually left by sticky gibs.
@@ -995,18 +1006,45 @@ actor CeilBloodSpotLarge: CeilBloodSpot
 {
 	states
 	{
-		Spawn:
-			BPDL A 1
-			TNT1 A 0 A_QueueCorpse
-			TNT1 A 0 A_SpawnItem ("DripingBloodLeavesSmallPool")
-			TNT1 A 0 A_SpawnItem ("CeilBloodLargeBloodSpawner")
-		Live:
-			BPDL A 5 ThrustThingZ(0, 20, 0, 1)
-			Loop
-		Splash:
-			BLOD A 0
-			stop
-			}
+	Spawn:
+		BPDL A 1
+		TNT1 A 0 A_QueueCorpse
+		TNT1 A 0 A_SpawnItem ("DripingBloodLeavesSmallPool")
+		TNT1 A 0 A_SpawnItem ("CeilBloodLargeBloodSpawner")
+		TNT1 A 0 A_Jump(255, "SpawnA", "SpawnB", "SpawnC", "SpawnD", "SpawnE", "SpawnF", "SpawnG")
+
+	SpawnA:
+		BPDL A 5 ThrustThingZ(0, 20, 0, 1)
+		Loop
+
+	SpawnB:
+		BPDL B 5 ThrustThingZ(0, 20, 0, 1)
+		Loop
+
+	SpawnC:
+		BPDL C 5 ThrustThingZ(0, 20, 0, 1)
+		Loop
+
+	SpawnD:
+		BPDL D 5 ThrustThingZ(0, 20, 0, 1)
+		Loop
+
+	SpawnE:
+		BPDL E 5 ThrustThingZ(0, 20, 0, 1)
+		Loop
+
+	SpawnF:
+		BPDL F 5 ThrustThingZ(0, 20, 0, 1)
+		Loop
+
+	SpawnG:
+		BPDL G 5 ThrustThingZ(0, 20, 0, 1)
+		Loop
+
+	Death:
+		TNT1 A 0
+		Stop
+	}
 }
 
 //Small blood drips spawner, usually caused by regular blood touching the ceiling.
@@ -1164,7 +1202,7 @@ Actor FireBlood : Brutal_Blood
 	}
 }
 
-actor GiantBloodSpot: Brutal_BloodSpot {Scale 1.1}
+actor GiantBloodSpot: Brutal_BloodSpot {Scale 1.1}//Mastermind bloodspot
 
 //A blood pool spawned by regular enemy deaths.
 actor GrowingBloodPool: Brutal_BloodSpot
@@ -1237,7 +1275,6 @@ actor GrowingBloodPool: Brutal_BloodSpot
 
 actor BigBloodSpot: GiantBloodSpot { Scale 0.7}
 actor MediumBloodSpot: GiantBloodSpot { Scale 0.4}
-actor MediumBloodSpot2: GiantBloodSpot{ Scale 0.4}
 actor MinuscleBloodSpot: Brutal_BloodSpot {Scale 0.25}
 
 actor MediumOldBloodSpot: GiantBloodSpot
