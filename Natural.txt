@@ -369,7 +369,7 @@ ACTOR StalagtiteReplacer Replaces Stalagtite
 	ForestSpawn:
 		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 AAAAAA 0 A_SpawnItemEx("BDECGrassSpecial", random(-180, 180), random(-180, 180))
-		TNT1 A 0 A_SpawnItem("BDECBush")
+		TNT1 A 0 A_SpawnItem("BDECBushSpawner")
 		TNT1 A 2 Thing_Remove(0)
 		Stop
 	}

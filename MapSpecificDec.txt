@@ -232,369 +232,588 @@ ACTOR BDECDestroyedLightPost: BDdecorationBase 11011
 
 ACTOR BDECGrassSpawner: BDdecorationBase 15848
 {
-Scale 0.8
- States
+	States
 	{
-		Spawn:
-		SPDC M 1
-		TNT1 AAAA 0 A_SpawnItemEx("BDECGrass", random(-100, 100), random(-100, 100))
-		TNT1 AA 0 A_SpawnItemEx("BDECGrass2", random(-120, 120), random(-120, 120))
-		TNT1 A 0 A_SpawnItemEx("BDECGrass3", random(-100, 100), random(-100, 100))
-		TNT1 A 0 A_SpawnItemEx("BDECGrass4")
+	Spawn:
+		GRSS A 1
+		TNT1 AAAAAAA 0 A_SpawnItemEx("BDECGrassSpecial", random(-100, 100), random(-100, 100))
+		TNT1 AAAAA 0 A_SpawnItemEx("BDECGrassSpecial", random(-120, 120), random(-120, 120))
+		TNT1 AAA 0 A_SpawnItemEx("BDECGrassSpecial", random(-100, 100), random(-100, 100))
+		TNT1 A 0 A_SpawnItemEx("BDECGrassSpecial")
 		Stop
-}}
+	}
+}
 
 ACTOR BDECGrassSpawnerLarge: BDdecorationBase
 {
-Scale 0.8
- States
+	States
 	{
-		Spawn:
-		SPDC M 1
-		TNT1 AAAAAAAA 0 A_SpawnItemEx("BDECGrass", random(-300, 300), random(-300, 300))
-		TNT1 AAAAAA 0 A_SpawnItemEx("BDECGrass2", random(-320, 320), random(-320, 320))
-		TNT1 AAAAA 0 A_SpawnItemEx("BDECGrass3", random(-300, 300), random(-300, 300))
-		TNT1 A 0 A_SpawnItemEx("BDECGrass4")
+	Spawn:
+		GRSS A 1
+		TNT1 AAAAAAAAAAAAA 0 A_SpawnItemEx("BDECGrassSpecial", random(-300, 300), random(-300, 300))
+		TNT1 AAAAAAAAAAA 0 A_SpawnItemEx("BDECGrassSpecial", random(-320, 320), random(-320, 320))
+		TNT1 AAAAAAAAA 0 A_SpawnItemEx("BDECGrassSpecial", random(-300, 300), random(-300, 300))
+		TNT1 A 0 A_SpawnItemEx("BDECGrassSpecial")
 		Stop
-}}
+	}
+}
 
 ACTOR BDECGrass: BDdecorationBase
 {
-Scale 0.35
--CLIENTSIDEONLY
-+SHOOTABLE
-+NOBLOOD
--ACTLIKEBRIDGE
-Health 50
-Radius 1
-Height 1
-Mass 99999
-DamageFactor "Plasma", 200.0 DamageFactor "PLasma2", 200.0
- States
+	Scale 0.55
+	-CLIENTSIDEONLY
+	+SHOOTABLE
+	+NOBLOOD
+	-ACTLIKEBRIDGE
+	Health 50
+	Radius 1
+	Height 1
+	Mass 99999
+	DamageFactor "Plasma", 200.0 DamageFactor "Fire", 200.0
+	States
 	{
-		Spawn:
-		SPDC M 1
-		SPDC M -1
-		Stop
+	Spawn:
+	GRSS A 1
+	GRSS A -1
+	Stop
 
-		Death.Fire:
-		Death.Burn:
-		Death.Flames:
-		Death.Plasma2:
-		Death.Plasma:
-			TNT1 A 0
-			TNT1 A 0 A_NoBlocking
-			TNT1 A 0 A_CustomMissile("TinyBurningPieceTemp")
-			TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTemp", 0, 0, 16)
-			BPDC A 1
-			BPDC A -1
-			Stop
-}}
+	Death.Fire:
+	Death.Burn:
+	Death.Flames:
+	Death.Plasma:
+	TNT1 A 0
+	TNT1 A 0 A_NoBlocking
+	TNT1 A 0 A_CustomMissile("TinyBurningPieceTemp")
+	TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTemp", 0, 0, 16)
+	GRSS C 1
+	GRSS C -1
+	Stop
+	}
+}
 
 ACTOR BDECGrass2: BDECGrass
 {
-Scale 0.5
+	States
+	{
+	Spawn:
+	GRSS D 1
+	GRSS D -1
+	Stop
+
+	Death.Fire:
+	Death.Burn:
+	Death.Flames:
+	Death.Plasma:
+	TNT1 A 0
+	TNT1 A 0 A_NoBlocking
+	TNT1 A 0 A_CustomMissile("TinyBurningPieceTemp")
+	TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTemp", 0, 0, 16)
+	GRSS E 1
+	GRSS E -1
+	Stop
+	}
 }
 
 ACTOR BDECGrass3: BDECGrass
 {
-Scale 0.7
+	States
+	{
+	Spawn:
+	GRSS F 1
+	GRSS F -1
+	Stop
+
+	Death.Fire:
+	Death.Burn:
+	Death.Flames:
+	Death.Plasma:
+	TNT1 A 0
+	TNT1 A 0 A_NoBlocking
+	TNT1 A 0 A_CustomMissile("TinyBurningPieceTemp")
+	TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTemp", 0, 0, 16)
+	GRSS G 1
+	GRSS G -1
+	Stop
+	}
 }
 
 ACTOR BDECGrass4: BDECGrass
 {
-Scale 1.0
+	States
+	{
+	Spawn:
+	GRSS H 1
+	GRSS H -1
+	Stop
+
+	Death.Fire:
+	Death.Burn:
+	Death.Flames:
+	Death.Plasma:
+	TNT1 A 0
+	TNT1 A 0 A_NoBlocking
+	TNT1 A 0 A_CustomMissile("TinyBurningPieceTemp")
+	TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTemp", 0, 0, 16)
+	GRSS I 1
+	GRSS I -1
+	Stop
+	}
 }
 
 ACTOR BDECGrassSpecial: BDECGrass
 {
-Scale 0.5
-States
+	States
 	{
-		Spawn:
-		SPDC M 0
-		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckFloorType3", 0, 0, 0, 0)//Check if is under a liquid
-		SPDC M 2
-		TNT1 A 0 A_JumpIfInventory("IsOverGrass", 1, "Randomizes")
-		Stop
+	Spawn:
+	TNT1 A 0
+	TNT1 A 0 ACS_NamedExecuteAlways("BDCheckFloorType3", 0, 0, 0, 0)//Check if is under a liquid
+	TNT1 A 2
+	TNT1 A 0 A_JumpIfInventory("IsOverGrass", 1, "Randomizes")
+	TNT1 A 0 A_JumpIfInventory("IsOverDirt", 1, "Randomizes")
+	TNT1 A 0 A_JumpIfInventory("IsOverSand", 1, "Randomizes")
+	Stop
 
 	Randomizes:
+	TNT1 A 0
+	TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Spawn4")
+
+	Spawn1:
 		TNT1 A 0
-		TNT1 A 0 A_Jump(255, "SpawnForest1", "SpawnForest2", "SpawnForest3", "SpawnForest4")
-
-	SpawnFOrest1:
-		SPDC M 1
-		SPDC M -1
+		TNT1 A 0 A_SpawnItem("BDECGrass")
 		Stop
 
-	SpawnFOrest2:
-		SPDC M 1
-		TNT1 A 0 A_SetScale (-0.6, 0.6)
-		SPDC M -1
+	Spawn2:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("BDECGrass2")
 		Stop
 
-	SpawnFOrest3:
-		SPDC M 1
-		TNT1 A 0 A_SetScale (0.8, 0.8)
-		SPDC M -1
+	Spawn3:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("BDECGrass3")
 		Stop
 
-	SpawnFOrest4:
-		SPDC M 1
-		TNT1 A 0 A_SetScale (-1.1, 1.1)
-		SPDC M -1
+	Spawn4:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("BDECGrass4")
 		Stop
-}}
+	}
+}
 
-ACTOR BDECBush: BDdecorationBase 15849
+ACTOR BDECBush: BDdecorationBase
 {
-Scale 0.6
-+SHOOTABLE
-+NOBLOOD
-+THRUACTORS
--ACTLIKEBRIDGE
-DamageFactor "Plasma", 200.0 DamageFactor "PLasma2", 200.0
-Health 20
-Height 1
-Radius 16
- States
+	Scale 0.6
+	+SHOOTABLE
+	+NOBLOOD
+	+THRUACTORS
+	-ACTLIKEBRIDGE
+	DamageFactor "Plasma", 200.0 DamageFactor "Fire", 200.0
+	Health 20
+	Height 1
+	Radius 16
+	States
 	{
-		Spawn:
-		SPDC P 1
-		SPDC P -1
-		Stop
+	Spawn:
+	BUSH A 1
+	BUSH A -1
+	Stop
 
-		Death.Explosive:
-		XDeath:
-		TNT1 A 1
-		TNT1 A 0 A_NoBlocking
-		TNT1 AAAAAAAA 0 A_CustomMissile ("BDECFoliageParticleLeaf", 15, 0, random (0, 360), 2, random (40, 90))
-		TNT1 AAA 0 A_CustomMissile ("BDECFoliageParticle3a", 15, 0, random (0, 360), 2, random (20, 90))
-		TNT1 A 0 A_CustomMissile ("BDECFoliageParticle3b", 15, 0, random (0, 360), 2, random (20, 90))
-		Stop
+	Death.Explosive:
+	XDeath:
+	TNT1 A 1
+	TNT1 A 0 A_NoBlocking
+	TNT1 AAAAAAAA 0 A_CustomMissile ("BDECFoliageParticleLeaf", 15, 0, random (0, 360), 2, random (40, 90))
+	TNT1 AAA 0 A_CustomMissile ("BDECFoliageParticle3a", 15, 0, random (0, 360), 2, random (20, 90))
+	TNT1 A 0 A_CustomMissile ("BDECFoliageParticle3b", 15, 0, random (0, 360), 2, random (20, 90))
+	Stop
 
 	Death.Burn:
 	Death.Flames:
 	Death.Plasma:
-	Death.Plasma2:
 	Death.Fire:
-		TNT1 A 0
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1", 0, 0, 10)
-		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
-		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 25)
+	TNT1 A 0
+	TNT1 A 0 A_NoBlocking
+	TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1", 0, 0, 10)
+	TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
+	TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 25)
 
 	Burning:
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
-		BPDC P 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
-		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
-		BPDC P 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
-		Loop
+	TNT1 A 0
+	TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+	BUSH B 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+	TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+	BUSH B 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+	Loop
+
 	Extinguish:
-		BPDC P 4 A_StopSound(1)
-		BPDC P -1
+	BUSH B 4 A_StopSound(1)
+	BUSH B -1
+	Stop
+	}
+}
+
+ACTOR BDECBush2: BDECBush
+{
+	Scale 0.5
+	States
+	{
+	Spawn:
+	BUSH C 1
+	BUSH C -1
+	Stop
+
+	Burning:
+	TNT1 A 0
+	TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+	BUSH D 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+	TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+	BUSH D 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+	Loop
+
+	Extinguish:
+	BUSH D 4 A_StopSound(1)
+	BUSH D -1
+	Stop
+	}
+}
+
+ACTOR BDECBush3: BDECBush
+{
+	Scale 0.4
+	States
+	{
+	Spawn:
+	BUSH E 1
+	BUSH E -1
+	Stop
+
+	Burning:
+	TNT1 A 0
+	TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+	BUSH F 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+	TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+	BUSH F 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+	Loop
+
+	Extinguish:
+	BUSH F 4 A_StopSound(1)
+	BUSH F -1
+	Stop
+	}
+}
+
+ACTOR BDECBush4: BDECBush
+{
+	Scale 0.5
+	States
+	{
+	Spawn:
+	BUSH G 1
+	BUSH G -1
+	Stop
+
+	Burning:
+	TNT1 A 0
+	TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+	BUSH H 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+	TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+	BUSH H 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+	Loop
+
+	Extinguish:
+	BUSH H 4 A_StopSound(1)
+	BUSH H -1
+	Stop
+	}
+}
+
+ACTOR BDECBush5: BDECBush
+{
+	Scale 0.4
+	States
+	{
+	Spawn:
+	BUSH I 1
+	BUSH I -1
+	Stop
+
+	Burning:
+	TNT1 A 0
+	TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+	BUSH J 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+	TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+	BUSH J 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+	Loop
+
+	Extinguish:
+	BUSH J 4 A_StopSound(1)
+	BUSH J -1
+	Stop
+	}
+}
+
+ACTOR BDECBushSpawner: BDdecorationBase 15849
+{
+	States
+	{
+	Spawn:
+	BUSH A 0
+	TNT1 A 0 ACS_NamedExecuteAlways("BDCheckFloorType3", 0, 0, 0, 0)//Check if is under a liquid
+	BUSH A 2
+	TNT1 A 0 A_JumpIfInventory("IsOverGrass", 1, "Randomizes")
+	TNT1 A 0 A_JumpIfInventory("IsOverDirt", 1, "Randomizes")
+	TNT1 A 0 A_JumpIfInventory("IsOverSand", 1, "Randomizes")
+	Stop
+
+	Randomizes:
+	TNT1 A 0
+	TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Spawn4", "Spawn5")
+
+	Spawn1:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("BDECBush")
 		Stop
-}}
+
+	Spawn2:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("BDECBush2")
+		Stop
+
+	Spawn3:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("BDECBush3")
+		Stop
+
+	Spawn4:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("BDECBush4")
+		Stop
+
+	Spawn5:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("BDECBush5")
+		Stop
+	}
+}
 
 ACTOR BDVines1: BDECBush 11034
 {
-+NOGRAVITY
-+FLOAT
-+DONTFALL
--ACTLIKEBRIDGE
-Health 1
-Mass 99999999
-Radius 8
-Height 8
-sCALE 0.6
-
- States
+	+NOGRAVITY
+	+FLOAT
+	+DONTFALL
+	-ACTLIKEBRIDGE
+	Health 1
+	Mass 99999999
+	Radius 8
+	Height 8
+	Scale 0.6
+	States
 	{
-		Spawn:
-		SPDC U 1
-		SPDC U -1
-		Stop
+	Spawn:
+	VINE A 1
+	VINE A -1
+	Stop
 
-		Death.Burn:
+	Death.Burn:
 	Death.Flames:
 	Death.Plasma:
-	Death.Plasma2:
 	Death.Fire:
-		TNT1 A 0
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1", 0, 0, -50)
-		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 55)
-		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
+	TNT1 A 0
+	TNT1 A 0 A_NoBlocking
+	TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1", 0, 0, -50)
+	TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 55)
+	TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
 
 	Burning:
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
-		BPDC U 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
-		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
-		BPDC U 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
-		Loop
+	TNT1 A 0
+	TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+	VINE B 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+	TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+	VINE B 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+	Loop
 	Extinguish:
-		TNT1 A 4 A_StopSound(1)
-		TNT1 A -1
-		Stop
-}}
+	TNT1 A 4 A_StopSound(1)
+	TNT1 A -1
+	Stop
+	}
+}
 
 ACTOR BDVines2: BDVines1 11834
 {
-+NOGRAVITY
-+FLOAT
- States
+	+NOGRAVITY
+	+FLOAT
+	States
 	{
 	Spawn:
-		SPDC V 1
-		SPDC V -1
-		Stop
+	VINE C 1
+	VINE C -1
+	Stop
 
-		Death.Burn:
+	Death.Burn:
 	Death.Flames:
 	Death.Plasma:
-	Death.Plasma2:
 	Death.Fire:
-		TNT1 A 0
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1", 0, 0, -50)
-		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 55)
-		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
+	TNT1 A 0
+	TNT1 A 0 A_NoBlocking
+	TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1", 0, 0, -50)
+	TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 55)
+	TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
 	Burning:
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
-		BPDC V 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
-		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
-		BPDC V 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
-		Loop
+	TNT1 A 0
+	TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+	VINE D 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+	TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+	VINE D 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+	Loop
 	Extinguish:
-		TNT1 A 4 A_StopSound(1)
-		TNT1 A -1
-		Stop
-}}
+	TNT1 A 4 A_StopSound(1)
+	TNT1 A -1
+	Stop
+	}
+}
 
 ACTOR BDecJunglePlant: BDECBush
 {
- States
+	States
 	{
-		Spawn:
-		SPDC W 1
-		SPDC W -1
-		Loop
+	Spawn:
+	PALM C 1
+	PALM C -1
+	Stop
 
-		Death.Explosive:
-		XDeath:
-		TNT1 A 1
-		TNT1 A 0 A_NoBlocking
-		TNT1 AAAAAAAA 0 A_CustomMissile ("BDECFoliageParticleLeaf", 15, 0, random (0, 360), 2, random (40, 90))
-		TNT1 AAA 0 A_CustomMissile ("BDECFoliageParticle5a", 15, 0, random (0, 360), 2, random (20, 90))
-		TNT1 AA 0 A_CustomMissile ("BDECFoliageParticle5B", 15, 0, random (0, 360), 2, random (20, 90))
-		Stop
+	Death.Explosive:
+	XDeath:
+	TNT1 A 1
+	TNT1 A 0 A_NoBlocking
+	TNT1 AAAAAAAA 0 A_CustomMissile ("BDECFoliageParticleLeaf", 15, 0, random (0, 360), 2, random (40, 90))
+	TNT1 AAA 0 A_CustomMissile ("BDECFoliageParticle5a", 15, 0, random (0, 360), 2, random (20, 90))
+	TNT1 AA 0 A_CustomMissile ("BDECFoliageParticle5B", 15, 0, random (0, 360), 2, random (20, 90))
+	Stop
 
 	Death.Burn:
 	Death.Flames:
 	Death.Plasma:
-	Death.Plasma2:
 	Death.Fire:
-		TNT1 A 0
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1", 0, 0, 10)
-		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
-		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 25)
+	TNT1 A 0
+	TNT1 A 0 A_NoBlocking
+	TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1", 0, 0, 10)
+	TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
+	TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 25)
 	Burning:
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
-		BPDC W 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
-		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
-		BPDC W 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
-		Loop
+	TNT1 A 0
+	TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+	PALM D 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+	TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+	PALM D 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+	Loop
 	Extinguish:
-		BPDC W 4 A_StopSound(1)
-		BPDC W -1
-		Stop
-}}
+	PALM D 4 A_StopSound(1)
+	PALM D -1
+	Stop
+	}
+}
 
 ACTOR BDecJunglePlant2: BDecJunglePlant
 {
- Scale 1.0
- States
+	Scale 1.0
+	States
 	{
-		Spawn:
-		SPDC Z 1
-		SPDC Z -1
-		Loop
-}}
-
-ACTOR BDECGreenTree1 15850
-{
-//$category BD Vegetation
-Scale 0.8
-+SHOOTABLE
-+SOLID
-DamageFactor "Fire", 2.0 DamageFactor "Burn", 2.0 DamageFactor "Flames", 2.0
-DamageFactor "Plasma", 2.0 DamageFactor "PLasma2", 2.0
-Health 300
-Radius 8
-Height 64
-DeathHeight 32
-Mass 999999
-+NOBLOODDECALS
-+NOTAUTOAIMED
-+NOTARGET
-BloodType "TreeBlood"
- States
-	{
-		Spawn:
-		SPDC Q 1
-		SPDC Q -1
-		Stop
-
-		Death:
-		TRE1 B 1
-		TNT1 A 0 A_NoBlocking
-		TNT1 AAAAAAAA 0 A_CustomMissile ("BDECFoliageParticleLeaf", 55, 0, random (0, 360), 2, random (40, 90))
-		TNT1 AAA 0 A_CustomMissile ("BDECFoliageParticle2a", 85, 0, random (0, 360), 2, random (20, 90))
-		TNT1 AAA 0 A_CustomMissile ("BDECFoliageParticle2b", 75, 0, random (0, 360), 2, random (20, 90))
-		TNT1 A 0 A_CustomMissile ("BDECFoliageParticle2c", 65, 0, random (0, 360), 2, random (20, 90))
-		TNT1 AAA 0 A_CustomMissile ("BrownCloud", 35, 0, random (0, 360), 2, random (20, 90))
-		TNT1 AA 0 A_CustomMissile ("BrownCloud", 45, 0, random (0, 360), 2, random (20, 90))
-		TNT1 AAA 0 A_CustomMissile ("WoodParticle", 45, 0, random (0, 360), 2, random (20, 90))
-		TNT1 AAA 0 A_CustomMissile ("WoodParticleSmall", 45, 0, random (0, 360), 2, random (20, 90))
-		TNT1 AAA 0 A_CustomMissile ("WoodParticleTiny", 55, 0, random (0, 360), 2, random (20, 90))
-		TNT1 AAA 0 A_CustomMissile ("WoodParticleBig", 65, 0, random (0, 360), 2, random (20, 90))
-		Stop
+	Spawn:
+	PALM A 1
+	PALM A -1
+	Stop
 
 	Death.Burn:
 	Death.Flames:
 	Death.Plasma:
-	Death.Plasma2:
 	Death.Fire:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 165)
-		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Big", 0, 0, 80)
-		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Slim", 0, 0, 10)
-		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
+	TNT1 A 0
+	TNT1 A 0 A_NoBlocking
+	TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1", 0, 0, 10)
+	TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
+	TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 25)
 	Burning:
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
-		BPDC Q 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
-		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
-		BPDC Q 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
-		Loop
+	TNT1 A 0
+	TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+	PALM B 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+	TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+	PALM B 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+	Loop
 	Extinguish:
-		BPDC Q 4 A_StopSound(1)
-		BPDC Q -1
-		Stop
-}}
+	PALM B 4 A_StopSound(1)
+	PALM B -1
+	Stop
+	}
+}
+
+ACTOR BDECGreenTree1 15850
+{
+	//$category BD Vegetation
+	Scale 0.8
+	+SHOOTABLE
+	+SOLID
+	DamageFactor "Fire", 2.0 DamageFactor "Burn", 2.0 DamageFactor "Flames", 2.0
+	DamageFactor "Plasma", 2.0
+	Health 300
+	Radius 8
+	Height 64
+	DeathHeight 32
+	Mass 999999
+	+NOBLOODDECALS
+	+NOTAUTOAIMED
+	+NOTARGET
+	BloodType "TreeBlood"
+	States
+	{
+	Spawn:
+	TREE J 1
+	TREE J -1
+	Stop
+
+	Death:
+	TRE1 B 1
+	TNT1 A 0 A_NoBlocking
+	TNT1 AAAAAAAA 0 A_CustomMissile ("BDECFoliageParticleLeaf", 55, 0, random (0, 360), 2, random (40, 90))
+	TNT1 AAA 0 A_CustomMissile ("BDECFoliageParticle2a", 85, 0, random (0, 360), 2, random (20, 90))
+	TNT1 AAA 0 A_CustomMissile ("BDECFoliageParticle2b", 75, 0, random (0, 360), 2, random (20, 90))
+	TNT1 A 0 A_CustomMissile ("BDECFoliageParticle2c", 65, 0, random (0, 360), 2, random (20, 90))
+	TNT1 AAA 0 A_CustomMissile ("BrownCloud", 35, 0, random (0, 360), 2, random (20, 90))
+	TNT1 AA 0 A_CustomMissile ("BrownCloud", 45, 0, random (0, 360), 2, random (20, 90))
+	TNT1 AAA 0 A_CustomMissile ("WoodParticle", 45, 0, random (0, 360), 2, random (20, 90))
+	TNT1 AAA 0 A_CustomMissile ("WoodParticleSmall", 45, 0, random (0, 360), 2, random (20, 90))
+	TNT1 AAA 0 A_CustomMissile ("WoodParticleTiny", 55, 0, random (0, 360), 2, random (20, 90))
+	TNT1 AAA 0 A_CustomMissile ("WoodParticleBig", 65, 0, random (0, 360), 2, random (20, 90))
+	Stop
+
+	Death.Burn:
+	Death.Flames:
+	Death.Plasma:
+	Death.Fire:
+	TNT1 A 0
+	TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 165)
+	TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Big", 0, 0, 80)
+	TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Slim", 0, 0, 10)
+	TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
+	Burning:
+	TNT1 A 0
+	TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+	TREE K 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+	TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+	TREE K 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+	Loop
+	Extinguish:
+	TREE K 4 A_StopSound(1)
+	TREE K -1
+	Stop
+	}
+}
 
 ACTOR BDECGreenTree2: BDECGreenTree1 15851
 {
  States
 	{
 		Spawn:
-		SPDC R 1
-		SPDC R -1
+		TREE L 1
+		TREE L -1
 		Stop
 
 		Death:
@@ -614,7 +833,6 @@ ACTOR BDECGreenTree2: BDECGreenTree1 15851
 	Death.Burn:
 	Death.Flames:
 	Death.Plasma:
-	Death.Plasma2:
 	Death.Fire:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 165)
@@ -624,23 +842,24 @@ ACTOR BDECGreenTree2: BDECGreenTree1 15851
 	Burning:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
-		BPDC R 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TREE M 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
 		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
-		BPDC R 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TREE M 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
 		Loop
 	Extinguish:
-		BPDC R 4 A_StopSound(1)
-		BPDC R -1
+		TREE M 4 A_StopSound(1)
+		TREE M -1
 		Stop
-}}
+	}
+}
 
 ACTOR BDECGreenTree3: BDECGreenTree2 15852
 {
  States
 	{
 	Spawn:
-		SPDC S 1
-		SPDC S -1
+		TREE N 1
+		TREE N -1
 		Stop
 
 	Death:
@@ -660,7 +879,6 @@ ACTOR BDECGreenTree3: BDECGreenTree2 15852
 	Death.Burn:
 	Death.Flames:
 	Death.Plasma:
-	Death.Plasma2:
 	Death.Fire:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 165)
@@ -670,73 +888,74 @@ ACTOR BDECGreenTree3: BDECGreenTree2 15852
 	Burning:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
-		BPDC S 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TREE O 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
 		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
-		BPDC S 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TREE O 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
 		Loop
 	Extinguish:
-		BPDC S 4 A_StopSound(1)
-		BPDC S -1
+		TREE O 4 A_StopSound(1)
+		TREE O -1
 		Stop
-}}
+	}
+}
 
 ACTOR BDPalmTree: BDECGreenTree2 15853
 {
- Radius 8
- Height 96
- States
+	Radius 8
+	Height 96
+	States
 	{
-		Spawn:
-		SPDC X 1
-		SPDC X -1
-		Loop
+	Spawn:
+	PALM E 1
+	PALM E -1
+	Stop
 
 	Death:
-		TRE1 B 1
-		TNT1 A 0 A_NoBlocking
-		TNT1 AAAAAAAAA 0 A_CustomMissile ("BDECFoliageParticle7", 100, 0, random (0, 360), 2, random (20, 90))
-		TNT1 A 0 A_CustomMissile ("BrownCloud", 35, 0, random (0, 360), 2, random (20, 90))
-		TNT1 A 0 A_CustomMissile ("BrownCloud", 65, 0, random (0, 360), 2, random (20, 90))
-		TNT1 A 0 A_CustomMissile ("BrownCloud", 95, 0, random (0, 360), 2, random (20, 90))
-		TNT1 AAA 0 A_CustomMissile ("WoodParticle", 45, 0, random (0, 360), 2, random (20, 90))
-		TNT1 AAA 0 A_CustomMissile ("WoodParticleSmall", 45, 0, random (0, 360), 2, random (20, 90))
-		TNT1 AAA 0 A_CustomMissile ("WoodParticleTiny", 65, 0, random (0, 360), 2, random (20, 90))
-		TNT1 AAA 0 A_CustomMissile ("WoodParticleBig", 85, 0, random (0, 360), 2, random (20, 90))
-		Stop
+	TRE1 B 1
+	TNT1 A 0 A_NoBlocking
+	TNT1 AAAAAAAAA 0 A_CustomMissile ("BDECFoliageParticle7", 100, 0, random (0, 360), 2, random (20, 90))
+	TNT1 A 0 A_CustomMissile ("BrownCloud", 35, 0, random (0, 360), 2, random (20, 90))
+	TNT1 A 0 A_CustomMissile ("BrownCloud", 65, 0, random (0, 360), 2, random (20, 90))
+	TNT1 A 0 A_CustomMissile ("BrownCloud", 95, 0, random (0, 360), 2, random (20, 90))
+	TNT1 AAA 0 A_CustomMissile ("WoodParticle", 45, 0, random (0, 360), 2, random (20, 90))
+	TNT1 AAA 0 A_CustomMissile ("WoodParticleSmall", 45, 0, random (0, 360), 2, random (20, 90))
+	TNT1 AAA 0 A_CustomMissile ("WoodParticleTiny", 65, 0, random (0, 360), 2, random (20, 90))
+	TNT1 AAA 0 A_CustomMissile ("WoodParticleBig", 85, 0, random (0, 360), 2, random (20, 90))
+	Stop
 
 	Death.Burn:
 	Death.Flames:
 	Death.Plasma:
-	Death.Plasma2:
 	Death.Fire:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 205)
-		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Slim", 0, 0, 10)
-		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1", 0, 0, 120)
-		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
+	TNT1 A 0
+	TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 205)
+	TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Slim", 0, 0, 10)
+	TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1", 0, 0, 120)
+	TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
 	Burning:
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
-		BPDC X 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
-		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
-		BPDC X 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
-		Loop
+	TNT1 A 0
+	TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+	PALM F 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+	TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+	PALM F 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+	Loop
 	Extinguish:
-		BPDC X 4 A_StopSound(1)
-		BPDC X -1
-		Stop
-}}
+	PALM F 4 A_StopSound(1)
+	PALM F -1
+	Stop
+	}
+}
 
 ACTOR BDECDeadTree1: BDECGreenTree1 11008
 {
  States
 	{
-		Spawn:
-		SPDC G 1
-		SPDC G -1
+	Spawn:
+		TREE A 1
+		TREE A -1
 		Stop
 
-		Death:
+	Death:
 		TRE1 B 1
 		TNT1 A 0 A_NoBlocking
 		TNT1 AAAAAA 0 A_CustomMissile ("BDECFoliageParticle6a", 65, 0, random (0, 360), 2, random (20, 90))
@@ -752,7 +971,6 @@ ACTOR BDECDeadTree1: BDECGreenTree1 11008
 	Death.Burn:
 	Death.Flames:
 	Death.Plasma:
-	Death.Plasma2:
 	Death.Fire:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 55)
@@ -761,28 +979,29 @@ ACTOR BDECDeadTree1: BDECGreenTree1 11008
 	Burning:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
-		BPDC G 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TREE C 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
 		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
-		BPDC G 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TREE C 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
 		Loop
 	Extinguish:
-		BPDC G 4 A_StopSound(1)
-		BPDC G -1
+		TREE C 4 A_StopSound(1)
+		TREE C -1
 		Stop
-}}
+	}
+}
 
 ACTOR BDECDeadTree2: BDECDeadTree1 11009
 {
  States
 	{
 	Spawn:
-		SPDC H 1
-		SPDC H -1
+		TREE E 1
+		TREE E -1
 		Stop
+
 	Death.Burn:
 	Death.Flames:
 	Death.Plasma:
-	Death.Plasma2:
 	Death.Fire:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 55)
@@ -791,96 +1010,98 @@ ACTOR BDECDeadTree2: BDECDeadTree1 11009
 	Burning:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
-		BPDC H 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TREE I 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
 		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
-		BPDC H 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+		TREE I 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
 		Loop
 	Extinguish:
-		BPDC H 4 A_StopSound(1)
-		BPDC H -1
+		TREE I 4 A_StopSound(1)
+		TREE I -1
 		Stop
-}}
+	}
+}
 
 ACTOR BDECOldTree1: BDECGreenTree1
 {
- States
+	Scale 0.7
+	States
 	{
-		Spawn:
-		BPDC J 1
-		BPDC j -1
-		Stop
+	Spawn:
+	TREE B 1
+	TREE B -1
+	Stop
 
-		Death:
-		TRE1 B 1
-		TNT1 A 0 A_NoBlocking
-		TNT1 AAAAA 0 A_CustomMissile ("BDECFoliageParticle6a", 65, 0, random (0, 360), 2, random (20, 90))
-		TNT1 AAAA 0 A_CustomMissile ("BDECFoliageParticle6b", 55, 0, random (0, 360), 2, random (20, 90))
-		TNT1 AAAAAAAA 0 A_CustomMissile ("BDECFoliageParticleLeaf", 65, 0, random (0, 360), 2, random (40, 90))
-		TNT1 AAA 0 A_CustomMissile ("BDECFoliageParticle3a", 75, 0, random (0, 360), 2, random (20, 90))
-		TNT1 A 0 A_CustomMissile ("BDECFoliageParticle3b", 15, 0, random (0, 360), 2, random (20, 90))
-		TNT1 AAA 0 A_CustomMissile ("BrownCloud", 35, 0, random (0, 360), 2, random (20, 90))
-		TNT1 AA 0 A_CustomMissile ("BrownCloud", 45, 0, random (0, 360), 2, random (20, 90))
-		TNT1 AAA 0 A_CustomMissile ("WoodParticle", 45, 0, random (0, 360), 2, random (20, 90))
-		TNT1 AAA 0 A_CustomMissile ("WoodParticleSmall", 45, 0, random (0, 360), 2, random (20, 90))
-		TNT1 AAA 0 A_CustomMissile ("WoodParticleTiny", 55, 0, random (0, 360), 2, random (20, 90))
-		TNT1 AAA 0 A_CustomMissile ("WoodParticleBig", 65, 0, random (0, 360), 2, random (20, 90))
-		Stop
+	Death:
+	TRE1 B 1
+	TNT1 A 0 A_NoBlocking
+	TNT1 AAAAA 0 A_CustomMissile ("BDECFoliageParticle6a", 65, 0, random (0, 360), 2, random (20, 90))
+	TNT1 AAAA 0 A_CustomMissile ("BDECFoliageParticle6b", 55, 0, random (0, 360), 2, random (20, 90))
+	TNT1 AAAAAAAA 0 A_CustomMissile ("BDECFoliageParticleLeaf", 65, 0, random (0, 360), 2, random (40, 90))
+	TNT1 AAA 0 A_CustomMissile ("BDECFoliageParticle3a", 75, 0, random (0, 360), 2, random (20, 90))
+	TNT1 A 0 A_CustomMissile ("BDECFoliageParticle3b", 15, 0, random (0, 360), 2, random (20, 90))
+	TNT1 AAA 0 A_CustomMissile ("BrownCloud", 35, 0, random (0, 360), 2, random (20, 90))
+	TNT1 AA 0 A_CustomMissile ("BrownCloud", 45, 0, random (0, 360), 2, random (20, 90))
+	TNT1 AAA 0 A_CustomMissile ("WoodParticle", 45, 0, random (0, 360), 2, random (20, 90))
+	TNT1 AAA 0 A_CustomMissile ("WoodParticleSmall", 45, 0, random (0, 360), 2, random (20, 90))
+	TNT1 AAA 0 A_CustomMissile ("WoodParticleTiny", 55, 0, random (0, 360), 2, random (20, 90))
+	TNT1 AAA 0 A_CustomMissile ("WoodParticleBig", 65, 0, random (0, 360), 2, random (20, 90))
+	Stop
 
 	Death.Burn:
 	Death.Flames:
 	Death.Plasma:
-	Death.Plasma2:
 	Death.Fire:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 55)
-		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
-		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Big", 0, 0, 10)
+	TNT1 A 0
+	TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 55)
+	TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
+	TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1Big", 0, 0, 10)
 	Burning:
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
-		BPDC G 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
-		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
-		BPDC G 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
-		Loop
+	TNT1 A 0
+	TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+	TREE C 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+	TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+	TREE C 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+	Loop
 	Extinguish:
-		BPDC G 4 A_StopSound(1)
-		BPDC G -1
-		Stop
-}}
+	TREE C 4 A_StopSound(1)
+	TREE C -1
+	Stop
+	}
+}
 
 ACTOR BDECOldTree2: BDECOldTree1
 {
- Scale 0.5
- States
+	Scale 0.65
+	States
 	{
-		Spawn:
-		BPDC I 1
-		BPDC I -1
-		Stop
+	Spawn:
+	TREE D 1
+	TREE D -1
+	Stop
 
 	Death.Burn:
 	Death.Flames:
 	Death.Plasma:
-	Death.Plasma2:
 	Death.Fire:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 55)
-		TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
-		TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1", 0, 0, 10)
+	TNT1 A 0
+	TNT1 A 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 55)
+	TNT1 A 0 A_Playsound("BDFireplace", 1, 1, 1)
+	TNT1 A 0 A_SpawnItemEx("TempHDFlamesGFX1", 0, 0, 10)
 	Burning:
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
-		BPDC H 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
-		TNT1 A 0 A_GiveInventory("BrutalCounter",1)
-		BPDC H 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
-		Loop
+	TNT1 A 0
+	TNT1 A 0 A_JumpIfInventory("BrutalCounter",53,"Extinguish")
+	TREE I 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+	TNT1 A 0 A_GiveInventory("BrutalCounter",1)
+	TREE I 10 BRIGHT A_CustomMissile ("BurnDamageSmall", 16)
+	Loop
 	Extinguish:
-		BPDC H 4 A_StopSound(1)
-		BPDC H -1
-		Stop
-}}
+	TREE I 4 A_StopSound(1)
+	TREE I -1
+	Stop
+	}
+}
 
-Actor BDECbigfire
+Actor BDECBigFire
 {
 height 32
 radius 32
@@ -1519,8 +1740,8 @@ Scale 1.0
  States
 	{
 		Spawn:
-		SPDC Y 1
-		SPDC Y -1
+		GRSS B 1
+		GRSS B -1
 		Loop
 
 }}
@@ -1530,7 +1751,7 @@ ACTOR BDecRiverPlantSpawner: BDdecorationBase
  States
 	{
 		Spawn:
-		SPDC Z 1
+		PALM A 1
 		TNT1 AAA 0 A_SpawnItemEx("BDecRiverPlant", random(-100, 100), random(-100, 100))
 		TNT1 A 0
 		Stop
@@ -3859,35 +4080,33 @@ states
 
 Actor PlutoniaBridgeShort
 {
-
 	States
 	{
-		Spawn:
-			TNT1 A 0
-			TNT1 A 0 A_SpawnItemEx("PlutoniaBridge", 0, 0, 0)
-			TNT1 A 0 A_SpawnItemEx("PlutoniaBridge", 0, 64, 0)
-			TNT1 A 0 A_SpawnItemEx("PlutoniaBridge", 0, 128, 0)
-			TNT1 A 0 A_SpawnItemEx("PlutoniaBridge", 0, -64, 0)
-			TNT1 A 0 A_SpawnItemEx("PlutoniaBridge", 0, -128, 0)
-			Stop
+	Spawn:
+	TNT1 A 0
+	TNT1 A 0 A_SpawnItemEx("PlutoniaBridge", 0, 0, 0)
+	TNT1 A 0 A_SpawnItemEx("PlutoniaBridge", 0, 64, 0)
+	TNT1 A 0 A_SpawnItemEx("PlutoniaBridge", 0, 128, 0)
+	TNT1 A 0 A_SpawnItemEx("PlutoniaBridge", 0, -64, 0)
+	TNT1 A 0 A_SpawnItemEx("PlutoniaBridge", 0, -128, 0)
+	Stop
 	}
 }
 
 Actor PlutoniaBridgeLong
 {
-
 	States
 	{
-		Spawn:
-			TNT1 A 0
-			TNT1 A 0 A_SpawnItemEx("PlutoniaBridge", 0, 0, 0)
-			TNT1 A 0 A_SpawnItemEx("PlutoniaBridge", 0, 64, 0)
-			TNT1 A 0 A_SpawnItemEx("PlutoniaBridge", 0, 128, 0)
-			TNT1 A 0 A_SpawnItemEx("PlutoniaBridge", 0, 212, 0)
-			TNT1 A 0 A_SpawnItemEx("PlutoniaBridge", 0, -64, 0)
-			TNT1 A 0 A_SpawnItemEx("PlutoniaBridge", 0, -128, 0)
-			TNT1 A 0 A_SpawnItemEx("PlutoniaBridge", 0, -212, 0)
-			Stop
+	Spawn:
+	TNT1 A 0
+	TNT1 A 0 A_SpawnItemEx("PlutoniaBridge", 0, 0, 0)
+	TNT1 A 0 A_SpawnItemEx("PlutoniaBridge", 0, 64, 0)
+	TNT1 A 0 A_SpawnItemEx("PlutoniaBridge", 0, 128, 0)
+	TNT1 A 0 A_SpawnItemEx("PlutoniaBridge", 0, 212, 0)
+	TNT1 A 0 A_SpawnItemEx("PlutoniaBridge", 0, -64, 0)
+	TNT1 A 0 A_SpawnItemEx("PlutoniaBridge", 0, -128, 0)
+	TNT1 A 0 A_SpawnItemEx("PlutoniaBridge", 0, -212, 0)
+	Stop
 	}
 }
 
@@ -3896,45 +4115,43 @@ Actor BDECCandleCorridor
 	States
 	{
 	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx("Candlestick2", 0, 0, 0)
-		TNT1 A 0 A_SpawnItemEx("Candlestick2", 60, -1, 0)
-		TNT1 A 0 A_SpawnItemEx("Candlestick2", -60, 1, 0)
-		Stop
+	TNT1 A 0
+	TNT1 A 0 A_SpawnItemEx("Candlestick2", 0, 0, 0)
+	TNT1 A 0 A_SpawnItemEx("Candlestick2", 60, -1, 0)
+	TNT1 A 0 A_SpawnItemEx("Candlestick2", -60, 1, 0)
+	Stop
 	}
 }
 
 Actor BDECJungleLine1
 {
-
 	States
 	{
-		Spawn:
-			TNT1 A 0
-			TNT1 A 0 A_SpawnItemEx("BDECGreenTree2", random(10, -10), 0, 0)
-			TNT1 A 0 A_SpawnItemEx("BDECGreenTree2", random(60, 90), -5, 0)
-			TNT1 A 0 A_SpawnItemEx("BDECGreenTree2", random(120, 160), -7, 0)
-			TNT1 A 0 A_SpawnItemEx("BDECGreenTree2", random(-40, -60), 1, 0)
-			TNT1 A 0 A_SpawnItemEx("BDECGreenTree3", random(-120, -160), -4, 0)
-			TNT1 A 0 A_SpawnItemEx("BDPalmTree", random(-40, 40), -12, 0)
-			TNT1 A 0 A_SpawnItemEx("BDecJunglePlant", random(0, 60), 16, 0)
-			TNT1 A 0 A_SpawnItemEx("BDecJunglePlant", random(0, -60), 16, 0)
-			Stop
+	Spawn:
+	TNT1 A 0
+	TNT1 A 0 A_SpawnItemEx("BDECGreenTree2", random(10, -10), 0, 0)
+	TNT1 A 0 A_SpawnItemEx("BDECGreenTree2", random(60, 90), -5, 0)
+	TNT1 A 0 A_SpawnItemEx("BDECGreenTree2", random(120, 160), -7, 0)
+	TNT1 A 0 A_SpawnItemEx("BDECGreenTree2", random(-40, -60), 1, 0)
+	TNT1 A 0 A_SpawnItemEx("BDECGreenTree3", random(-120, -160), -4, 0)
+	TNT1 A 0 A_SpawnItemEx("BDPalmTree", random(-40, 40), -12, 0)
+	TNT1 A 0 A_SpawnItemEx("BDecJunglePlant", random(0, 60), 16, 0)
+	TNT1 A 0 A_SpawnItemEx("BDecJunglePlant", random(0, -60), 16, 0)
+	Stop
 	}
 }
 
 Actor BDECGrassLine1
 {
-
 	States
 	{
-		Spawn:
-			TNT1 A 0
-			TNT1 A 0 A_SpawnItemEx("BDECBush", random(10, -10), 0, 0)
-			TNT1 A 0 A_SpawnItemEx("BDECGrassSpawner", random(60, 90), random(10, -10), 0)
-			TNT1 A 0 A_SpawnItemEx("BDECGrassSpawner", 12, random(10, -10), 0)
-			TNT1 A 0 A_SpawnItemEx("BDECGrassSpawner", random(-60, -90), random(10, -10), 0)
-			Stop
+	Spawn:
+	TNT1 A 0
+	TNT1 A 0 A_SpawnItemEx("BDECBushSpawner", random(10, -10), 0, 0)
+	TNT1 A 0 A_SpawnItemEx("BDECGrassSpawner", random(60, 90), random(10, -10), 0)
+	TNT1 A 0 A_SpawnItemEx("BDECGrassSpawner", 12, random(10, -10), 0)
+	TNT1 A 0 A_SpawnItemEx("BDECGrassSpawner", random(-60, -90), random(10, -10), 0)
+	Stop
 	}
 }
 
@@ -4253,7 +4470,7 @@ ACTOR BDECHellGrowth : BigTree
 	damagefactor "Avoid", 0.0    damagefactor "Kick", 0.0	damagefactor "Melee", 0.0
     damagefactor "KillMe", 0.0 damagefactor "Trample", 0.0
 	DamageFactor "Fire", 2.0 DamageFactor "Burn", 2.0 DamageFactor "Flames", 2.0
-	DamageFactor "Plasma", 2.0 DamageFactor "PLasma2", 2.0
+	DamageFactor "Plasma", 2.0
 	+SOLID
     +SHOOTABLE
     +FORCEYBILLBOARD
@@ -4284,7 +4501,6 @@ ACTOR BDECHellGrowth : BigTree
 	Death.Burn:
 	Death.Flames:
 	Death.Plasma:
-	Death.Plasma2:
 	Death.Fire:
 		TNT1 A 1
 		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 64)
@@ -4346,7 +4562,6 @@ ACTOR BDECHellGrowthSmall : TorchTree
 	Death.Burn:
 	Death.Flames:
 	Death.Plasma:
-	Death.Plasma2:
 	Death.Fire:
 		TNT1 A 0
 		TNT1 AA 0 A_SpawnItemEx("RealisticFireSparksTempBig", 0, 0, 64)
