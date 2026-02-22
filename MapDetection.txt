@@ -1,3 +1,34 @@
+ACTOR EvidenceCheckerRedTorch
+{
+	+THRUACTORS
+	+NOCLIP
+	+NOBLOCKMAP
+	Radius 1
+	Height 1
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		MARN A 0 ACS_NamedExecuteAlways("BDDisableMapEnhancements", 0, 0, 0, 0)//Check if advanced decorations are disabled.
+		TNT1 A 0 A_SetANgle(0)
+		TNT1 A 0 A_JumpIf(x == 1392, "EvidencePMAP01")
+		TNT1 A 2
+		Stop
+
+	EvidencePMAP01:
+		TNT1 A 2
+		TNT1 A 0 A_JumpIf(y == 48, "IsPMAP01")
+		Stop
+
+	IsPMAP01:
+		TNT1 A 0
+		TNT1 A 0 //A_PrintBold("Congo ", 2, BIGFONT)
+		TNT1 A 0 A_SpawnItemEx("PMap01DecorationSpawn", -1392, -48, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
+		TNT1 A 2
+		Stop
+	}
+}
+
 ACTOR EvidenceCheckerGreenTorch
 {
 	+THRUACTORS
@@ -5,7 +36,6 @@ ACTOR EvidenceCheckerGreenTorch
 	+NOBLOCKMAP
 	Radius 1
 	Height 1
-
 		States
 		{
 		Spawn:
@@ -13,24 +43,12 @@ ACTOR EvidenceCheckerGreenTorch
 			MARN A 0 ACS_NamedExecuteAlways("BDDisableMapEnhancements", 0, 0, 0, 0)//Check if advanced decorations are disabled.
 			TNT1 A 0 A_SetANgle(0)
 
-			TNT1 A 0 A_JumpIf(x == 1392, "EvidencePMAP01")
 			TNT1 A 0 A_JumpIf(x == 464, "EvidenceD2MAP12")
 			TNT1 A 0 A_JumpIf(x == -1024, "EvidenceD2MAP13")
 			TNT1 A 0 A_JumpIf(x == 352, "EvidenceD2MAP16")
 			TNT1 A 0 A_JumpIf(x == 2192, "EvidenceD2MAP20")
 			TNT1 A 0 A_JumpIf(x == 162, "EvidenceTNTMAP02")
 
-			TNT1 A 2
-			Stop
-		EvidencePMAP01:
-			TNT1 A 2
-			TNT1 A 0 A_JumpIf(y == 48, "IsPMAP01")
-			Stop
-
-		IsPMAP01:
-			TNT1 A 0
-			TNT1 A 0 //A_PrintBold("Congo ", 2, BIGFONT)
-			TNT1 A 0 A_SpawnItemEx("PMap01DecorationSpawn", -1392, -48, 0, 0, 0, 0, 0, SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION)
 			TNT1 A 2
 			Stop
 
