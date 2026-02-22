@@ -186,7 +186,7 @@ ACTOR Big_Tree: BigTree Replaces BigTree
 
 	DirtSpawn:
 		TRE2 A 1
-		TNT1 A 0 A_Jump(196, "DirtSpawn2", "DirtSpawn3")
+		TNT1 A 0 A_Jump(196, "DirtSpawn2", "DirtSpawn3", "DirtSpawn4")
 		TRE2 A -1
 		Stop
 
@@ -202,11 +202,31 @@ ACTOR Big_Tree: BigTree Replaces BigTree
 		TNT1 A 2 Thing_Remove(0)
 		Stop
 
+	DirtSpawn4:
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
+		TNT1 A 0 A_SpawnItem("BDECOldTreeSpawner")
+		TNT1 A 2 Thing_Remove(0)
+		Stop
+
 	ForestSpawn:
+		TRE2 A 1
+		TNT1 A 0 A_Jump(196, "ForestSpawn2", "ForestSpawn3")
+		TRE2 A -1
+		Stop
+
+	ForestSpawn2:
 		TNT1 A 0
 		TNT1 AAAAAAAA 0 A_SpawnItemEx("BDECGrassSpecial", random(-180, 180), random(-180, 180))
 		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
 		TNT1 A 0 A_SpawnItem("BDECGreenTreeSpawner")
+		TNT1 A 2 Thing_Remove(0)
+		Stop
+
+	ForestSpawn3:
+		TNT1 A 0
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("BDECGrassSpecial", random(-180, 180), random(-180, 180))
+		TNT1 A 2 A_ChangeFlag("NOINTERACTION", 1)
+		TNT1 A 0 A_SpawnItem("BDECOldTreeSpawner")
 		TNT1 A 2 Thing_Remove(0)
 		Stop
 

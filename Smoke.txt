@@ -483,12 +483,9 @@ Actor LSOHK
 
 ACTOR BarrelExplosionSmokeColumn
 {
-    Radius 0
-    Height 0
-	Alpha 0.7
+	Alpha 0.9
 	RenderStyle Translucent
-	XScale 1.6
-	YScale 0.8
+	Scale 0.5
     -SOLID
     +NOTELEPORT
     +DONTSPLASH
@@ -498,20 +495,17 @@ ACTOR BarrelExplosionSmokeColumn
     States
     {
     Spawn:
-	SB17 A 3 A_SetScale(0.8, 0.4)
-	SB17 B 3 A_SetScale(0.9, 0.5)
-	SB17 C 3 A_SetScale(1.0, 0.6)
-	SB17 D 3 A_SetScale(1.1, 0.7)
-	SB17 E 3 A_SetScale(1.6, 0.8)
+	SB17 A 2 A_SetScale(0.1)
 	TNT1 A 0 A_JumpIf(waterlevel > 1, "Stap")
-	SB17 ABCDEFG 3
-	SB17 ABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFG 3
-
-	SB17 ABCDEFG 3 A_SetScale(1.6, 0.8)
-	SB17 ABCDEFG 3 A_SetScale(1.1, 0.7)
-	SB17 ABCDEFG 3 A_SetScale(1.0, 0.6)
-	SB17 ABCDEFG 3 A_SetScale(0.6, 0.4)
-	SB17 ABCDEFG 3 A_SetScale(0.4, 0.2)
+	SB17 B 2 A_SetScale(0.2)
+	SB17 C 2 A_SetScale(0.3)
+	SB17 D 2 A_SetScale(0.4)
+	SB17 E 2 A_SetScale(0.5)
+	SB17 FGHIJKLMNOPQRSTUVWX 2
+	SB17 ABCDEFGHIJKLMNOPQRSTUVWX 2
+	SB17 ABCDEFGHIJKLMNOPQRSTUVWX 2
+	SB17 ABCDEFGHIJKLMNOPQRSTUVWX 2
+	SB17 ABCDEFGHIJKLMNOPQRSTUVWX 2 A_FadeOut(0.04)
 	Stop
 	Stap:
 	TNT1 A 0
@@ -519,53 +513,50 @@ ACTOR BarrelExplosionSmokeColumn
     }
 }
 
-ACTOR BarrelExplosionSmokeColumnInfinite: BarrelExplosionSmokeColumn
-{
-    States
-    {
-    Spawn:
-		SB17 ABCDEFG 3
-		Loop
-    }
-}
-
 ACTOR ExplosionSimpleSmokeColumn: BarrelExplosionSmokeColumn
 {
-    Radius 0
-    Height 0
-	Alpha 0.4
-	RenderStyle Translucent
-	XScale 1.5
-	YScale 0.6
+	States
+	{
+    Spawn:
+	SB17 A 2
+	TNT1 A 0 A_JumpIf(waterlevel > 1, "Stap")
+	SB17 BCDEFGHIJKLMNOPQRSTUVWX 2
+	SB17 ABCDEFGHIJKLMNOPQRSTUVWX 2
+	SB17 ABCDEFGHIJKLMNOPQRSTUVWX 2
+	SB17 ABCDEFGHIJKLMNOPQRSTUVWX 2
+	SB17 ABCDEFGHIJKLMNOPQRSTUVWX 2
+	Stop
+	Stap:
+	TNT1 A 0
+	Stop
+	}
 }
 
 ACTOR MicroSmokeColumn: BarrelExplosionSmokeColumn
 {
-    Radius 0
-    Height 0
-	Alpha 0.2
-	RenderStyle Add
-	XScale 0.2
-	YScale 0.2
-	-NOINTERACTION
-	-NOBLOCKMAP
-	States
+	Scale 0.1
+    States
     {
     Spawn:
-		SB17 ABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFG 3
-		TNT1 A 0 A_SetScale(0.16, 0.16)
-		SB17 ABCDEFG 3
-		TNT1 A 0 A_SetScale(0.13, 0.13)
-		SB17 ABCDEFG 3
-		TNT1 A 0 A_SetScale(0.10, 0.10)
-		SB17 ABCDEFG 3
-		TNT1 A 0 A_SetScale(0.06, 0.06)
-		SB17 ABCDEFG 3
-		Stop
-		}
+	SB17 A 2 A_SetScale(0.02)
+	TNT1 A 0 A_JumpIf(waterlevel > 1, "Stap")
+	SB17 B 2 A_SetScale(0.04)
+	SB17 C 2 A_SetScale(0.06)
+	SB17 D 2 A_SetScale(0.08)
+	SB17 E 2 A_SetScale(0.10)
+	SB17 FGHIJKLMNOPQRSTUVWX 2
+	SB17 ABCDEFGHIJKLMNOPQRSTUVWX 2
+	SB17 ABCDEFGHIJKLMNOPQRSTUVWX 2
+	SB17 ABCDEFGHIJKLMNOPQRSTUVWX 2
+	SB17 ABCDEFGHIJKLMNOPQRSTUVWX 2 A_FadeOut(0.04)
+	Stop
+	Stap:
+	TNT1 A 0
+	Stop
+    }
 }
 
-ACTOR ExplosionSimpleSmokeColumn2: ExplosionSimpleSmokeColumn
+ACTOR ExplosionSimpleSmokeColumn2: MicroSmokeColumn//Lamps
 {
    +NOGRAVITY
 }
