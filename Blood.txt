@@ -112,7 +112,7 @@ actor Brutal_Blood Replaces Blood
 	+DONTSPLASH
 	Speed 0
 	Scale 0.8
-	Alpha 1.0
+	Alpha 0.9
 	Mass 999999
 	states
 	{
@@ -475,7 +475,7 @@ actor Bloodmist22 : Bloodmist
 {
 	scale 0.7
 	speed 4
-	Alpha 0.5
+	Alpha 0.9
 	states
 	{
 	Spawn:
@@ -513,7 +513,7 @@ actor Bloodmist22Small : Bloodmist
 {
 	speed 2
 	Scale 0.3
-	Alpha 0.4
+	Alpha 0.9
 	states
 	{
 	Spawn:
@@ -707,7 +707,7 @@ actor ArterialBlood22 : Bloodmist
 	Speed 1
 	Gravity 0.5
 	Scale 0.1
-	Alpha 0.5
+	Alpha 0.9
 	states
 	{
 	Spawn:
@@ -830,7 +830,7 @@ ACTOR Brutal_FlyingBloodFake: Brutal_FlyingBloodTrail
 	speed 3
 	Gravity 0.5
 	Renderstyle Translucent
-	Alpha 0.95
+	Alpha 0.9
 	+NOCLIP
     Mass 1
     States
@@ -1312,7 +1312,7 @@ actor Player_Blood : Brutal_Blood
 actor Player_BloodSaw : Brutal_Blood
 {
 	Gravity 0.5
-	Alpha 0.4
+	Alpha 0.9
 	-NOGRAVITY
 	Scale 0.25
 	States
@@ -1564,7 +1564,7 @@ ACTOR SplatteredSmall: Brutal_BloodSpot
 actor SuperGore
 {
 	Decal BloodSplat
-	Alpha 0.6
+	Alpha 0.9
 	Renderstyle Translucent
 	+FORCEXYBILLBOARD
 	+GHOST
@@ -1622,7 +1622,7 @@ Scale 1.0
 Actor SuperGoreMistTiny: SuperGore
 {
 Scale 0.4
-Alpha 0.3
+Alpha 0.9
 Speed 0
 +NOGRAVITY
 	 states
@@ -1717,7 +1717,7 @@ ACTOR Underblood1
 	radius 8
 	height 1
 	Renderstyle Translucent
-	Alpha 0.2
+	Alpha 0.9
 	Decal BrutalBloodSplat
 	+MISSILE
 	+CLIENTSIDEONLY
@@ -1752,7 +1752,6 @@ ACTOR Underblood3: Underblood1
 {
  scale 2.2
  speed 2
- Alpha 0.3
 }
 
 //An invisible projectile only used to spawn bloodsplats on the walls, usually spawned by extreme deaths.
