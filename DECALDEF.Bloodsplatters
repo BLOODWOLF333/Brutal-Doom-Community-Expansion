@@ -415,16 +415,28 @@ randomflipy
 shade "65 00 00"
 }
 
+decal BrutalBloodSplat03
+{
+pic BSPLNEW3
+x-scale 0.355
+y-scale 0.355
+randomflipx
+randomflipy
+shade "65 00 00"
+}
+
 decalgroup BrutalBloodSplat
 {
 BrutalBloodSplat01 6
 BrutalBloodSplat02 6
+BrutalBloodSplat03 6
 }
 
 decalgroup BrutalBlood
 {
 BrutalBloodSplat01 6
 BrutalBloodSplat02 6
+BrutalBloodSplat03 6
 }
 
 decal BrutalBloodSuper01
@@ -527,10 +539,21 @@ randomflipy
 shade "31 00 00"
 }
 
+decal BrutalOldBloodSplat03
+{
+pic BSPLNEW3
+x-scale 0.355
+y-scale 0.355
+randomflipx
+randomflipy
+shade "31 00 00"
+}
+
 decalgroup BrutalOldBloodSplat
 {
 BrutalOldBloodSplat01 6
 BrutalOldBloodSplat02 6
+BrutalOldBloodSplat03 6
 }
 
 decal BrutalOldBloodSuper01
@@ -633,10 +656,21 @@ randomflipy
 shade "00 45 00"
 }
 
+decal GreenBloodSplat03
+{
+pic BSPLNEW3
+x-scale 0.355
+y-scale 0.355
+randomflipx
+randomflipy
+shade "00 45 00"
+}
+
 decalgroup GreenBloodSplat
 {
 GreenBloodSplat01 6
 GreenBloodSplat02 6
+GreenBloodSplat03 6
 }
 
 decal GreenBloodSuper01
@@ -743,10 +777,23 @@ shade "00 00 70"
 //lowerdecal BrutalBloodSmear
 }
 
+decal BlueBloodSplat03
+{
+pic BSPLNEW3
+x-scale 0.355
+y-scale 0.355
+randomflipx
+randomflipy
+//translucent 0.9
+shade "00 00 70"
+//lowerdecal BrutalBloodSmear
+}
+
 decalgroup BlueBloodSplat
 {
 BlueBloodSplat01 6
 BlueBloodSplat02 6
+BlueBloodSplat03 6
 }
 
 decal BlueBloodSuper01
@@ -823,60 +870,4 @@ decalgroup BlueBloodGiant
 BlueBloodGiant01 6
 BlueBloodGiant02 6
 BlueBloodGiant03 6
-}
-
-/// +++++++++++++++++////
-/// Blood Animators
-/// +++++++++++++++++////
-
-slider BSlide1
-{
-DistY -26
-SlideStart 0
-SlideTime 9
-}
-
-stretcher BStretch1
-{
-GoalX 1.0
-GoalY 3.5
-StretchStart 0
-StretchTime 9
-}
-
-slider BSlide2
-{
-DistY -20
-SlideStart 0
-SlideTime 12
-}
-
-stretcher BStretch2
-{
-GoalX 1.0
-GoalY 3.2
-StretchStart 0
-StretchTime 12
-}
-
-combiner BloodSlide1
-{
-BSlide1
-BStretch1
-}
-
-combiner BloodSlide2
-{
-BSlide2
-BStretch2
-}
-
-decal BloodSplatSaw
-{
-pic BSPLNEW2
-shade "65 00 00"
-x-scale 1.0
-y-scale 1.0
-randomflipx
-randomflipy
 }
