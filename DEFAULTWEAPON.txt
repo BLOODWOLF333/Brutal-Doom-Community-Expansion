@@ -65,7 +65,7 @@ ACTOR BrutalWeapon : DoomWeapon
 		TNT1 A 0
 		TNT1 A 0 A_TakeInventory("PressedUse", 100)
 		RIFF A 0 A_FireCustomMissile("UseAttack", 0, 0, 0, 0)
-		RIFF A 0 A_FireCustomMissile("StealthAttack", 0, 0, 0, -7)
+		RIFF A 0 A_FireCustomMissile("StealthAttack", 0, 0, 0, 0)
 		TNT1 A 1
 		TNT1 A 0 A_JumpIfInventory("PressedUse", 1, "Interrupt")
 		Goto Flash

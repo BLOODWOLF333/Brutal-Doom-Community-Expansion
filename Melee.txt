@@ -1569,26 +1569,36 @@ ACTOR KickAttack
 	Spawn:
 		TNT1 AA 1 BRIGHT
 		Stop
+
 	Death:
-	XDEath:
-			TNT1 A 0 A_AlertMonsters(128)
-			TNT1 A 0 A_CheckFloor("DeathOnGround")
-		    PUFF A 0 A_PlaySound("Kick/wall", 3)
-			TNT1 A 0 A_SpawnItemEx ("PLOFT2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-			EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
-			TNT1 A 0 A_GiveToTarget("KickHasHit", 1)
-			TNT1 A 0 Radius_Quake (1, 7, 0, 1, 0)//(intensity, duration, damrad, tremrad, tid)
-			TNT1 A 10
-			Stop
+		TNT1 A 0 A_AlertMonsters(128)
+		TNT1 A 0 A_CheckFloor("DeathOnGround")
+		PUFF A 0 A_PlaySound("Kick/wall", 3)
+		TNT1 A 0 A_SpawnItemEx ("PLOFT2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_GiveToTarget("KickHasHit", 1)
+		TNT1 A 0 Radius_Quake (1, 7, 0, 1, 0)//(intensity, duration, damrad, tremrad, tid)
+		TNT1 A 10
+		Stop
+
+	XDeath:
+		TNT1 A 0 A_AlertMonsters(128)
+		PUFF A 0 A_PlaySound("Kick/flesh", 3)
+		TNT1 A 0 A_SpawnItemEx ("PLOFT2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_GiveToTarget("KickHasHit", 1)
+		TNT1 A 0 Radius_Quake (1, 7, 0, 1, 0)//(intensity, duration, damrad, tremrad, tid)
+		TNT1 A 10
+		Stop
 
 	DeathOnGround:
-			TNT1 A 0
-		    PUFF A 0 A_PlaySound("Kick/wall", 3)
-			TNT1 A 0 A_SpawnItemEx ("PLOFT2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-			EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
-			TNT1 A 0 Radius_Quake (1, 7, 0, 1, 0)//(intensity, duration, damrad, tremrad, tid)
-			TNT1 A 10
-			Stop
+		TNT1 A 0
+		PUFF A 0 A_PlaySound("Kick/wall", 3)
+		TNT1 A 0 A_SpawnItemEx ("PLOFT2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 Radius_Quake (1, 7, 0, 1, 0)//(intensity, duration, damrad, tremrad, tid)
+		TNT1 A 10
+		Stop
 	}
 }
 
@@ -1615,20 +1625,6 @@ ACTOR SuperAirKickAttack: KickAttack
 	+EXTREMEDEATH
 	DamageType Extremepunches
     Damage (random(80,80))
-	States
-	{
-	Spawn:
-		TNT1 AA 1 BRIGHT
-		Stop
-	Death:
-		PUFF A 0 A_PlaySound("Kick/wall", 3)
-		TNT1 A 0 A_SpawnItemEx ("PLOFT2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 A 0 A_GiveToTarget("KickHasHit", 1)
-		TNT1 A 0 Radius_Quake (1, 7, 0, 1, 0)//(intensity, duration, damrad, tremrad, tid)
-		TNT1 A 10
-		Stop
-	}
 }
 
 ACTOR MeleeStrike1: KickAttack//Jab
@@ -1641,10 +1637,17 @@ States
 	Spawn:
 		TNT1 AA 1 BRIGHT
 		Stop
+
 	Death:
-	    TNT1 A 0
-		TNT1 A 0 A_AlertMonsters(200)
-		PUFF A 0 A_PlaySound("Kick/wall")
+		TNT1 A 0 A_AlertMonsters(128)
+		PUFF A 0 A_PlaySound("Melee/wall", 3)
+		EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 10
+		Stop
+
+	XDeath:
+		TNT1 A 0 A_AlertMonsters(128)
+		PUFF A 0 A_PlaySound("Melee/flesh", 3)
 		EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 A 10
 		Stop
@@ -1738,12 +1741,35 @@ ACTOR ExecutionAttackKick: KickAttack
 	States
 	{
 	Death:
+		TNT1 A 0 A_AlertMonsters(128)
+		TNT1 A 0 A_CheckFloor("DeathOnGround")
+		PUFF A 0 A_PlaySound("Kick/wall", 3)
+		TNT1 A 0 A_SpawnItemEx ("PLOFT2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_GiveToTarget("KickHasHit", 1)
+		TNT1 A 0 Radius_Quake (1, 7, 0, 1, 0)//(intensity, duration, damrad, tremrad, tid)
+		TNT1 A 10 A_Explode(10, 10, 0)
+		Stop
+
 	XDeath:
-			TNT1 A 10 A_Explode(10, 10, 0)
-		    TNT1 A 0 A_PlaySound("Kick/wall")
-			TNT1 AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
-			Stop
-		}
+		TNT1 A 0 A_AlertMonsters(128)
+		PUFF A 0 A_PlaySound("Kick/flesh", 3)
+		TNT1 A 0 A_SpawnItemEx ("PLOFT2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_GiveToTarget("KickHasHit", 1)
+		TNT1 A 0 Radius_Quake (1, 7, 0, 1, 0)//(intensity, duration, damrad, tremrad, tid)
+		TNT1 A 10 A_Explode(10, 10, 0)
+		Stop
+
+	DeathOnGround:
+		TNT1 A 0
+		PUFF A 0 A_PlaySound("Kick/wall", 3)
+		TNT1 A 0 A_SpawnItemEx ("PLOFT2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 Radius_Quake (1, 7, 0, 1, 0)//(intensity, duration, damrad, tremrad, tid)
+		TNT1 A 10 A_Explode(10, 10, 0)
+		Stop
+	}
 }
 
 ACTOR StealthAttack: KickAttack
@@ -1846,25 +1872,35 @@ ACTOR SlideAttack: KickAttack
 		TNT1 AA 1 BRIGHT
 		Stop
 
-	XDEath:
-			TNT1 A 0
-		    PUFF A 0 A_PlaySound("Kick/wall", 3)
-			TNT1 A 0 A_SpawnItemEx ("PLOFT2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-			EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
-			TNT1 A 0 A_GiveToTarget("KickHasHit", 1)
-			TNT1 A 0 Radius_Quake (1, 7, 0, 1, 0)//(intensity, duration, damrad, tremrad, tid)
-			TNT1 A 10
-			Stop
+	Death:
+		TNT1 A 0 A_AlertMonsters(128)
+		PUFF A 0 A_PlaySound("Kick/wall", 3)
+		TNT1 A 0 A_SpawnItemEx ("PLOFT2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_GiveToTarget("KickHasHit", 1)
+		TNT1 A 0 Radius_Quake (1, 7, 0, 1, 0)//(intensity, duration, damrad, tremrad, tid)
+		TNT1 A 10
+		Stop
 
-	DEath:
-			TNT1 A 0
-		    PUFF A 0 A_PlaySound("Kick/wall", 3)
-			TNT1 A 0 A_SpawnItemEx ("PLOFT2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-			EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
-			TNT1 A 0 A_GiveToTarget("KickHasHit", 1)
-			TNT1 A 0 Radius_Quake (1, 7, 0, 1, 0)//(intensity, duration, damrad, tremrad, tid)
-			TNT1 A 10
-			Stop
+	XDeath:
+		TNT1 A 0 A_AlertMonsters(128)
+		PUFF A 0 A_PlaySound("Kick/flesh", 3)
+		TNT1 A 0 A_SpawnItemEx ("PLOFT2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_GiveToTarget("KickHasHit", 1)
+		TNT1 A 0 Radius_Quake (1, 7, 0, 1, 0)//(intensity, duration, damrad, tremrad, tid)
+		TNT1 A 10
+		Stop
+
+	XDEath:
+		TNT1 A 0
+		PUFF A 0 A_PlaySound("Kick/wall", 3)
+		TNT1 A 0 A_SpawnItemEx ("PLOFT2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_GiveToTarget("KickHasHit", 1)
+		TNT1 A 0 Radius_Quake (1, 7, 0, 1, 0)//(intensity, duration, damrad, tremrad, tid)
+		TNT1 A 10
+		Stop
 	}
 }
 
