@@ -259,7 +259,6 @@ ACTOR SSG : BrutalWeapon
 		SHT2 A 0 A_JumpIfInventory("AmmoShell", 2, 1)//Check if has two shells to reload both barrels
 		Goto Reload2
 		TNT1 AAA 0
-		SHT2 A 0 A_JumpIfInventory("SSGAlt", 1, "Reload2")//Check if right shell has been fired
 		SHT2 A 0 A_JumpIfInventory("SSGAmmo", 2, "Ready")//Check if both barrels are loaded
 		SHT2 A 0 A_JumpIfInventory("SSGAmmo", 1, "Reload2")
 
