@@ -232,6 +232,11 @@ ACTOR BDECDestroyedLightPost: BDdecorationBase 11011
 
 ACTOR BDECGrassSpawner: BDdecorationBase 15848
 {
+	-SOLID
+	+THRUACTORS
+	-ACTLIKEBRIDGE
+	+NOTAUTOAIMED
+	+NOTARGET
 	States
 	{
 	Spawn:
@@ -246,6 +251,11 @@ ACTOR BDECGrassSpawner: BDdecorationBase 15848
 
 ACTOR BDECGrassSpawnerLarge: BDdecorationBase
 {
+	-SOLID
+	+THRUACTORS
+	-ACTLIKEBRIDGE
+	+NOTAUTOAIMED
+	+NOTARGET
 	States
 	{
 	Spawn:
@@ -264,6 +274,7 @@ ACTOR BDECGrass: BDdecorationBase
 	-CLIENTSIDEONLY
 	+SHOOTABLE
 	+NOBLOOD
+	-SOLID
 	-ACTLIKEBRIDGE
 	Health 50
 	Radius 12
@@ -404,7 +415,7 @@ ACTOR BDECBush: BDdecorationBase
 	Scale 0.6
 	+SHOOTABLE
 	+NOBLOOD
-	+THRUACTORS
+	-SOLID
 	-ACTLIKEBRIDGE
 	DamageFactor "Plasma", 200.0 DamageFactor "Fire", 200.0
 	Health 20
@@ -750,8 +761,6 @@ ACTOR BDECGreenTree1 15850
 {
 	//$category BD Vegetation
 	Scale 0.75
-	+SHOOTABLE
-	+SOLID
 	DamageFactor "Fire", 2.0 DamageFactor "Burn", 2.0 DamageFactor "Flames", 2.0
 	DamageFactor "Plasma", 2.0
 	Health 300
@@ -759,6 +768,8 @@ ACTOR BDECGreenTree1 15850
 	Height 64
 	DeathHeight 32
 	Mass 999999
+	+SHOOTABLE
+	+SOLID
 	+NOBLOODDECALS
 	+NOTAUTOAIMED
 	+NOTARGET
