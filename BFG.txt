@@ -398,7 +398,7 @@ ACTOR GreenShockWave
    Speed 0
    Height 64
    Radius 32
-   Scale 2.25
+   Scale 3.0
    RenderStyle add
    Alpha 0.9
    +DROPOFF
@@ -416,25 +416,24 @@ ACTOR GreenShockWave
 
 ACTOR WhiteShockWave: GreenShockwave
 {
-Scale 2.0
-Alpha 0.05
+Scale 3.0
+Alpha 0.1
    States
    {
    Spawn:
-      SHWK A 1
-      SHWK CEGIKMOQ 1 A_FadeOut(0.01)
+      SHWK ACEGIKMOQ 1 BRIGHT A_FadeOut(0.01)
       Stop
    }
 }
 
 ACTOR WhiteShockWaveBig: WhiteShockWave
 {
-Scale 3.0
+Scale 4.0
 }
 
 ACTOR WhiteShockWaveSmall: WhiteShockWave
 {
-Scale 1.0
+Scale 2.0
 }
 
 ACTOR BFGFOG
