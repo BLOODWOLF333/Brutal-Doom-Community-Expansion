@@ -602,5 +602,16 @@ ACTOR ExplosionAirBurstEffectGreen : ExplosionAirBurstEffect
 
 ACTOR ExplosionAirBurstEffectSmall : ExplosionAirBurstEffect
 {
-	Scale 0.5
+	Scale 0.75
+}
+
+ACTOR ExplosionAirBurstEffectSmallGreen : ExplosionAirBurstEffect
+{
+	Scale 0.75
+	States
+	{
+	Spawn:
+		FGXP ACEGIKMOQSUWY 1 BRIGHT A_FadeOut(0.05)
+		Stop
+	}
 }
