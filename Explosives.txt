@@ -49,9 +49,9 @@ ACTOR Rocket2
 	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	    TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 AAAAAAAAAA 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AAAAA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (0, 90))
-		TNT1 AAAA 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAA 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (0, 90))
+		TNT1 A 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 A 0 A_SpawnItemEx ("RocketExplosion",0,0,13,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx ("LiquidExplosionEffectSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
@@ -192,8 +192,9 @@ actor RocketExplosion
 	States
 	{
 		Spawn:
-		TNT1 A 3 NODELAY A_SpawnItem("WhiteShockwave")
-		TNT1 A 0 A_CustomMissile("ExplosionAirBurstEffect", 2, 0, random (0, 360), 2, random (40, 90))
+		TNT1 A 0
+		TNT1 A 3 A_SpawnItem("WhiteShockwave")
+		TNT1 AAAAAAAA 0 A_CustomMissile("ExplosionAirBurstEffect", 2, 0, random (0, 360), 2, random (-45, 45))
 		TNT1 A 0 A_Explode
 		Stop
 	}
@@ -221,8 +222,8 @@ actor BarrelExplosion: RocketExplosion
 	{
 		Spawn:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("WhiteShockwaveBig")
-		TNT1 A 3 A_CustomMissile("ExplosionAirBurstEffect", 2, 0, random (0, 360), 2, random (40, 90))
+		TNT1 A 3 A_SpawnItem("WhiteShockwaveBig")
+		TNT1 AAAAAAAA 0 A_CustomMissile("ExplosionAirBurstEffect", 2, 0, random (0, 360), 2, random (-45, 45))
 		TNT1 A 0 A_Explode
 		Stop
 }
@@ -235,8 +236,8 @@ actor TankMissileExplosion: RocketExplosion
 	{
 		Spawn:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("WhiteShockwaveBig")
-		TNT1 A 3 A_CustomMissile("ExplosionAirBurstEffect", 2, 0, random (0, 360), 2, random (40, 90))
+		TNT1 A 3 A_SpawnItem("WhiteShockwaveBig")
+		TNT1 AAAAAAAA 0 A_CustomMissile("ExplosionAirBurstEffect", 2, 0, random (0, 360), 2, random (-45, 45))
 		TNT1 A 0 A_Explode(128,256)
 		Stop
 	}
@@ -248,8 +249,9 @@ actor GrenadeExplosion: RocketExplosion
 	States
 	{
 	Spawn:
-		TNT1 A 3 NODELAY A_SpawnItem("WhiteShockwaveSmall")
-		TNT1 A 0 A_CustomMissile("ExplosionAirBurstEffectSmall", 2, 0, random (0, 360), 2, random (40, 90))
+		TNT1 A 0
+		TNT1 A 3 A_SpawnItem("WhiteShockwaveSmall")
+		TNT1 AAAAAAAA 0 A_CustomMissile("ExplosionAirBurstEffectSmall", 2, 0, random (0, 360), 2, random (-45, 45))
 		TNT1 A 0 A_Explode
 		Stop
 	}
@@ -338,9 +340,9 @@ ACTOR GrenadeMissile
 		TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 AAAAAAAAAA 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AAAAA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (0, 90))
-		TNT1 AAAA 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAA 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (0, 90))
+		TNT1 A 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
 		Stop
 	}
 }
@@ -381,9 +383,9 @@ ACTOR ShortGrenade: GrenadeMissile
 		TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 AAAAAAAAAA 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AAAAA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (0, 90))
-		TNT1 AAAA 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAA 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (0, 90))
+		TNT1 A 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
 		Stop
 	}
 }
@@ -401,8 +403,8 @@ ACTOR FriendlyGrenadeExplosion
 	{
 		Spawn:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("WhiteShockwaveSmall")
-		TNT1 A 3 A_CustomMissile("ExplosionAirBurstEffectSmall", 2, 0, random (0, 360), 2, random (40, 90))
+		TNT1 A 3 A_SpawnItem("WhiteShockwaveSmall")
+		TNT1 AAAAAAAA 0 A_CustomMissile("ExplosionAirBurstEffectSmall", 2, 0, random (0, 360), 2, random (-45, 45))
 		TNT1 A 0 A_Explode(100,300)
 		Stop
 	}
@@ -443,9 +445,9 @@ ACTOR MarineShortGrenade : GrenadeMissile
 	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	    TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 AAAAAAAAAA 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AAAAA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (0, 90))
-		TNT1 AAAA 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAA 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (0, 90))
+		TNT1 A 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
 		Stop
 	}
 }
@@ -502,9 +504,9 @@ ACTOR MarineRocket2: Rocket2
 	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	    TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 AAAAAA 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAA 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 AAAA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (0, 90))
-		TNT1 AAAA 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 A 0 A_SpawnItemEx ("MarineRocketExplosion",0,0,13,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 0
 		TNT1 A 2
@@ -569,9 +571,9 @@ ACTOR CyberBalls: Rocket2
 	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	    TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 AAAAAAAAAA 0 A_CustomMissile ("BDExplosionparticlesBig", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AAAAA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (0, 90))
-		TNT1 AAAA 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAA 0 A_CustomMissile ("BDExplosionparticlesBig", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (0, 90))
+		TNT1 A 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 A 0 A_SpawnItemEx ("RocketExplosion",0,0,13,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx ("LiquidExplosionEffectSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
@@ -702,9 +704,9 @@ ACTOR TankShell
 	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	    TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 AAAAAAAAAA 0 A_CustomMissile ("BDExplosionparticlesBig", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AAAAA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (0, 90))
-		TNT1 AAAAA 0 A_CustomMissile ("TankExplosionFlames", 0, 0, random (0, 360), 2, random (0, 90))
+		TNT1 AAAA 0 A_CustomMissile ("BDExplosionparticlesBig", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (0, 90))
+		TNT1 A 0 A_CustomMissile ("TankExplosionFlames", 0, 0, random (0, 360), 2, random (0, 90))
 		TNT1 A 6
 		TNT1 A 0 A_PlaySound("FAREXPL", 0)
 		TNT1 A 12

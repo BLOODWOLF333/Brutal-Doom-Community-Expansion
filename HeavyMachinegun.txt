@@ -498,8 +498,8 @@ ACTOR AutoCannonProjectile: HeavyMachinegunProjectile
 	XDeath:
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_Explode(10, 120)
-		TNT1 A 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
-		TNT1 A 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (40, 90))
+		TNT1 AAAA 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
+		TNT1 AAAA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (40, 90))
 		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 2, 0, random (0, 360), 2, random (0, 360))
 
 		TNT1 A 0 A_CheckFloor("ExplodeFloor")
@@ -547,8 +547,8 @@ States
 
 		Death:
 		TNT1 A 0 A_Explode(10, 120)
-		TNT1 A 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
-		TNT1 A 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (40, 90))
+		TNT1 AAAA 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
+		TNT1 AAAA 0 A_CustomMissile ("BDExplosionparticles2", 0, 0, random (0, 360), 2, random (40, 90))
 		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 2, 0, random (0, 360), 2, random (0, 360))
 
 		EXPZ ABCDEFGHIJKLMNOP 1 BRIGHT
