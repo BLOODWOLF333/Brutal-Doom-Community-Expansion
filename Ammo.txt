@@ -752,15 +752,8 @@ ACTOR AmmoRocket : Ammo
         EXPL AAAA 0 A_CustomMissile ("ExplosionSmokeFast22", 0, 0, random (0, 360), 2, random (0, 360))
 		EXPL A 0 A_CustomMissile ("BigNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 A 0 A_SpawnItemEx ("RocketExplosion",0,0,13,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		//TNT1 A 0 A_SpawnItemEx ("RocketPenetrator",cos(-pitch)*42,0,0+(sin(pitch)*42),cos(-pitch)*40,0,sin(pitch)*40,0,SXF_TRANSFERPITCH)
-		//TNT1 AA 0 A_SpawnItem("SuperExpensiveParticleSpawner")
-
-		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx ("LiquidExplosionEffectSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 0 A_PlaySound("FAREXPL", 0)
-		TNT1 A 4
-		TNT1 A 0 A_Explode(100, 100)
-		TNT1 A 10
 		TNT1 A 0 A_PlaySound("distexpl", 5)
 		TNT1 AAAAA 4 A_CustomMissile ("HeavyExplosionSmoke", 2, 0, random (0, 360), 2, random (0, 360))
 		Stop
@@ -874,14 +867,9 @@ ACTOR AmmoRocketBox : AmmoRocket
         EXPL AAAA 0 A_CustomMissile ("ExplosionSmokeFast22", 0, 0, random (0, 360), 2, random (0, 360))
 		EXPL A 0 A_CustomMissile ("BigNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 A 0 A_SpawnItemEx ("RocketExplosion",0,0,13,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		//TNT1 A 0 A_SpawnItemEx ("RocketPenetrator",cos(-pitch)*42,0,0+(sin(pitch)*42),cos(-pitch)*40,0,sin(pitch)*40,0,SXF_TRANSFERPITCH)
-		//TNT1 AA 0 A_SpawnItem("SuperExpensiveParticleSpawner")
 		EXPL AAA 0 A_CustomMissile ("BarrelKaboom", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 A 0 A_Explode(150, 300)
-		TNT1 A 2
 		TNT1 A 0 A_SpawnItemEx ("LiquidExplosionEffectSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 0 A_PlaySound("FAREXPL", 0)
-		TNT1 A 15
 		TNT1 A 0 A_PlaySound("distexpl", 5)
 		TNT1 AAAAA 4 A_CustomMissile ("HeavyExplosionSmoke", 2, 0, random (0, 360), 2, random (0, 360))
 		Stop
