@@ -55,12 +55,10 @@ ACTOR BurnParticles
     States
     {
 	Spawn:
-		TNT1 A 0
+		TNT1 A 2
         XDT3 A 0 A_Explode(3,30)
-		TNT1 A 0 A_SpawnItem("RedFlare", 0, 5)
-		TTRB A 0 bright A_CustomMissile ("PlasmaSmoke", 20, 0, random (0, 360), 2, random (60, 130))
-		TTRB A 0 bright A_CustomMissile ("SmallFireTrail324", 0, 0, random (0, 360), 2, random (0, 130))
-		TNT1 A 3
+		TTRB A 0 A_CustomMissile ("PlasmaSmoke", 14, 0, random (0, 360), 2, random (60, 130))
+		TTRB A 0 A_CustomMissile ("SmallFireTrail324", 0, 0, random (0, 360), 2, random (0, 130))
 		stop
     }
 }
@@ -71,11 +69,10 @@ ACTOR SmallBurnParticles: BurnParticles
     States
     {
 	Spawn:
-		TNT1 A 0
+		TNT1 A 2
         XDT3 A 0 A_Explode(2,30)
-		TNT1 A 0 A_SpawnItem("RedFlare", 0, 5)
-		TTRB A 0 bright A_CustomMissile ("PlasmaSmoke", 20, 0, random (0, 360), 2, random (60, 130))
-		TTRB A 0 bright A_CustomMissile ("SmallFlameTrails", 0, 0, random (0, 360), 2, random (60, 130))
+		TTRB A 0 A_CustomMissile ("PlasmaSmoke", 14, 0, random (0, 360), 2, random (60, 130))
+		TTRB A 0 A_CustomMissile ("SmallFlameTrails", 0, 0, random (0, 360), 2, random (60, 130))
 		stop
     }
 }
@@ -85,10 +82,9 @@ ACTOR BurnParticlesNoDamage: BurnParticles
     States
     {
 	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItem("RedFlare", 0, 5)
-		TTRB A 0 bright A_CustomMissile ("PlasmaSmoke", 20, 0, random (0, 360), 2, random (60, 130))
-		TTRB A 0 bright A_CustomMissile ("FlameTrails", 0, 0, random (0, 360), 2, random (60, 130))
+		TNT1 A 2
+		TTRB A 0 A_CustomMissile ("PlasmaSmoke", 14, 0, random (0, 360), 2, random (60, 130))
+		TTRB A 0 A_CustomMissile ("FlameTrails", 0, 0, random (0, 360), 2, random (60, 130))
 		stop
     }
 }

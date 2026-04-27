@@ -44,8 +44,7 @@ ACTOR FlameTrails
 	States
 	{
     Spawn:
-        TNT1 A 2
-        FRFX IJKLMNOP 3 BRIGHT
+        FRFX GHIJKLMNOP 3 BRIGHT
         Stop
 	}
 }
@@ -60,8 +59,6 @@ ACTOR BackblastFlames1: FlameTrails
 	States
 	{
     Spawn:
-		TNT1 A 0
-		TNT1 A 3
         EXPL ABCDEFGHI 1 BRIGHT
         Stop
 	}
@@ -90,7 +87,6 @@ ACTOR BlueFlameTrails: FlameTrails
 	States
 	{
     Spawn:
-        TNT1 A 2
         FRPB ABCDEFGH 1 BRIGHT
         Stop
 	}
@@ -103,7 +99,6 @@ ACTOR CoolandNewFlameTrails: FlameTrails
 	States
 	{
     Spawn:
-		TNT1 A 2
         FIR3 LMNOP 1 BRIGHT
         Stop
 	}
@@ -116,7 +111,6 @@ ACTOR CoolandNewFlameTrailsMedium: FlameTrails
 	States
 	{
     Spawn:
-		TNT1 A 2
         FIR3 GHIJKLMNOP 1 BRIGHT
         Stop
 	}
@@ -145,10 +139,10 @@ Speed 6
 	States
 	{
     Spawn:
-        EXPL A 6 BRIGHT
+        EXPL A 4 BRIGHT
 		EXPL A 0 A_CustomMissile ("ExplosionSmokeHDLarge", 0, 0, random (0, 360), 2, random (0, 360))
-        EXPL BCDEFG 6 BRIGHT
-		EXPL HHHHHHHHHH 6 BRIGHT
+        EXPL BCDEFG 4 BRIGHT
+		EXPL HHHHHHHHHH 4 BRIGHT
         Stop
 	}
 }
@@ -175,10 +169,10 @@ Speed 9
 	States
 	{
     Spawn:
-        EXPL A 9 BRIGHT
+        EXPL A 4 BRIGHT
 		EXPL A 0 A_CustomMissile ("ExplosionSmokeHDLarge", 0, 0, random (0, 360), 2, random (0, 360))
-        EXPL BCDEFG 9 BRIGHT
-		EXPL HHHHHHHHHH 9 BRIGHT
+        EXPL BCDEFG 4 BRIGHT
+		EXPL HHHHHHHHHH 4 BRIGHT
         Stop
 	}
 }
@@ -277,17 +271,15 @@ ACTOR Flames
 	States
 	{
     Spawn:
-        TNT1 C 6
-        Goto See
-	See:
+		FRFX AB 1 BRIGHT
         FLMG A 0 A_Explode (15, 40)
-        FRFX C 2 BRIGHT
+        FRFX CD 1 BRIGHT
         FLMG A 0 A_Explode (15, 40)
-        FRFX C 2 BRIGHT
+        FRFX EF 1 BRIGHT
         FLMG A 0 A_Explode (15, 40)
-	    EXPL AA 0 A_CustomMissile ("ExplosionSmoke", 32, 0, random (0, 360), 2, random (0, 360))
+	    EXPL A 0 A_CustomMissile ("ExplosionSmoke", 32, 0, random (0, 360), 2, random (0, 360))
         FLMG A 0 A_Explode (15, 40)
-        FRFX FGHIJKLMNOPG 2 BRIGHT
+        FRFX GHIJKLMNOP 2 BRIGHT
 		Goto Death
 	Death:
 	    EXPL AA 0 A_CustomMissile ("ExplosionSmoke", 32, 0, random (0, 360), 2, random (0, 360))
@@ -424,7 +416,6 @@ ACTOR FlamethrowerFireParticles
 	States
 	{
     Spawn:
-	    TNT1 A 0
         FIR3 ABCD 1 BRIGHT
 		TNT1 A 0 A_CustomMissile ("BigBlackSmoke", 40, 0, random (0, 360), 2, random (40, 160))
 		FIR3 EFGHIJKLMNOP 1 BRIGHT
@@ -437,7 +428,6 @@ ACTOR FlamethrowerFireParticlesM : FlamethrowerFireParticles
 	States
 	{
     Spawn:
-	    TNT1 A 0
         FIR4 ABCD 1 BRIGHT
 		TNT1 A 0 A_CustomMissile ("BigBlackSmoke", 40, 0, random (0, 360), 2, random (40, 160))
 		FIR4 EFGHIJKLMNOP 1 BRIGHT
@@ -1146,7 +1136,6 @@ Scale 0.5
 	States
 	{
     Spawn:
-	    TNT1 A 2
         EXPG CDEFG 1 BRIGHT
         Stop
 	}
@@ -1158,7 +1147,6 @@ ACTOR GreenFlameTrails: FlameTrails
 	States
 	{
     Spawn:
-	    TNT1 A 2
         FRPG ABCDEFGH 1 BRIGHT
         Stop
 	}
@@ -1176,7 +1164,6 @@ ACTOR HighExplosiveFlames: FlameTrails
 	States
 	{
     Spawn://X003
-		TNT1 A 1
         EXP4 ABCDEFGHIJKLMNO 1 BRIGHT
 		TNT1 AAAA 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
 		TNT1 A 0 A_CustomMissile ("FlamethrowerFireParticles", 0, 0, random (0, 360), 2, random (0, 360))
@@ -1192,9 +1179,9 @@ ACTOR HighExplosiveFlames2: FlameTrails
 	States
 	{
     Spawn:
-		TNT1 A 2
+		EXP4 A 2 BRIGHT
 		TNT1 A 0 A_PlaySound("FAREXPL",0)
-        EXP4 ABCDEFGHIJKLMNO 2 BRIGHT
+        EXP4 BCDEFGHIJKLMNO 2 BRIGHT
 		TNT1 AAAA 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
 		TNT1 A 0 A_CustomMissile ("FlamethrowerFireParticles", 0, 0, random (0, 360), 2, random (0, 360))
 		EXP4 PQRSTUVWXY 2 BRIGHT
@@ -1209,11 +1196,10 @@ ACTOR HighExplosiveFlamesBig: FlameTrails
 	States
 	{
     Spawn:
-		TNT1 A 3
-        EXP4 ABCDEFGHIJKLMNO 3 BRIGHT
+        EXP4 ABCDEFGHIJKLMNO 2 BRIGHT
 		TNT1 AAAA 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
 		TNT1 A 0 A_CustomMissile ("FlamethrowerFireParticles", 0, 0, random (0, 360), 2, random (0, 360))
-		EXP4 PQRSTUVWXY 3 BRIGHT
+		EXP4 PQRSTUVWXY 2 BRIGHT
         Stop
 	}
 }
@@ -1225,10 +1211,9 @@ ACTOR HighExplosiveFlamesHuge: FlameTrails
 	States
 	{
     Spawn:
-		TNT1 A 5
-        X003 ABCDEFGHIJKLMNOP 5 BRIGHT
+        X003 ABCDEFGHIJKLMNOP 2 BRIGHT
 		X003 A 0 A_CustomMissile ("BigBlackSmokeLarger", 0, 0, random (0, 360), 2, random (20, 90))
-		X003 QRSTUVWXY 5 BRIGHT
+		X003 QRSTUVWXY 2 BRIGHT
         Stop
 	}
 }
@@ -1240,7 +1225,6 @@ ACTOR HighExplosiveFlamesSmall: FlameTrails
 	States
 	{
     Spawn:
-		TNT1 A 1
         EXP4 ABCDEFGHIJKLMNO 1 BRIGHT
 		TNT1 AAAA 0 A_CustomMissile ("BDExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
 		TNT1 A 0 A_CustomMissile ("FlamethrowerFireParticles", 0, 0, random (0, 360), 2, random (0, 360))
@@ -1266,7 +1250,6 @@ ACTOR HugeBackblastFlames1
 	States
 	{
     Spawn:
-		TNT1 A 2
         X003 ABCDEFGHIJKLMNOP 2 BRIGHT
 		X003 A 0 A_CustomMissile ("BigBlackSmokeLarger", 0, 0, random (0, 360), 2, random (20, 90))
 		X003 QRSTUVWXY 2 BRIGHT
@@ -1354,9 +1337,8 @@ Speed 5
 	States
 	{
     Spawn:
-		TNT1 A 5
-        X003 ABCDEFGHIJKLMNOP 5 BRIGHT
-		X003 QRSTUVWXY 5 BRIGHT
+        X003 ABCDEFGHIJKLMNOP 4 BRIGHT
+		X003 QRSTUVWXY 4 BRIGHT
 		Stop
 	}
 }
@@ -1368,9 +1350,8 @@ Speed 12
 	States
 	{
     Spawn:
-		TNT1 A 12
-        X003 ABCDEFGHIJKLMNOP 12 BRIGHT
-		X003 QRSTUVWXY 12 BRIGHT
+        X003 ABCDEFGHIJKLMNOP 4 BRIGHT
+		X003 QRSTUVWXY 4 BRIGHT
 		Stop
 	}
 }
@@ -1385,8 +1366,8 @@ Damagetype "Fire"
 	States
 	{
     Spawn:
-        EXPL ABCDEFGH 12 BRIGHT A_Explode
-		EXPL IIIIIIIIII 12 BRIGHT
+        EXPL ABCDEFGH 4 BRIGHT A_Explode
+		EXPL IIIIIIIIII 4 BRIGHT
         Stop
 	}
 }
@@ -1688,27 +1669,24 @@ ACTOR SmallFireFocus24: BarrelExplosionSmokeColumn
     }
 }
 
-ACTOR SmallFireTrail: FlameTrails
+ACTOR SmallFireTrail : FlameTrails
 {
 Scale 0.7
 Speed 2
 Alpha 0.7
-Radius 1
-Height 1
 Renderstyle Add
 	States
 	{
     Spawn:
-		TNT1 A 5
         FIR3 CDEFGHIJKLMNOP 2 BRIGHT
 		Stop
 	}
 }
 
-ACTOR SmallFireTrail324:SmallFireTrail
+ACTOR SmallFireTrail324 : SmallFireTrail
 {
-Speed 3
-Alpha 0.9
+	Speed 1
+	Alpha 0.9
 	States
 	{
     Spawn:
@@ -1723,8 +1701,7 @@ ACTOR SmallFlameTrails: FlameTrails
 	States
 	{
     Spawn:
-        TNT1 A 2
-        FRFX IJKLMNOP 3 BRIGHT
+        FRFX GHIJKLMNOP 1 BRIGHT
         Stop
 		}
 }
@@ -1737,7 +1714,7 @@ ACTOR ImpFireBallFlames1: SmallFlameTrails
 	States
 	{
 	Spawn:
-		FRFX IJK 1 BRIGHT
+		FRFX GHIJK 1 BRIGHT
 		TNT1 A 0 A_Jump(128, 2)
 		TNT1 A 0 A_CustomMissile ("OldschoolRocketSmokeTrail2", 2, 0, random (0, 360), 2, random (20, 90))
 		FRFX LMNOP 1 BRIGHT
@@ -1753,7 +1730,7 @@ ACTOR ImpFireBallFlames2: SmallFlameTrails
 	States
 	{
 	Spawn:
-		FRFX IJK 2 BRIGHT
+		FRFX GHIJK 2 BRIGHT
 		TNT1 A 0 A_Jump(128, 2)
 		TNT1 A 0 A_CustomMissile ("OldschoolRocketSmokeTrail2Bigger", 2, random (0, 360), 2, random (20, 90))
 		FRFX LMNOP 2 BRIGHT
