@@ -228,7 +228,7 @@ ACTOR XDeathGuts: XDeath2
         XME4 AAAABBBBCCCCDDDD 2
         Loop
     Death:
-        TNT1 AAAAAAA 0 A_CustomMissile ("Brutal_FlyingBloodTrail5", 0, 0, random (0, 180), 2, random (0, 180))
+        TNT1 AAAAAAA 0 A_CustomMissile ("BloodTrails", 0, 0, random (0, 180), 2, random (0, 180))
         TNT1 A 0 A_QueueCorpse
 		XME4 E 9009
         Stop
@@ -434,7 +434,7 @@ ACTOR XDeathBullArm1: XDeathArm1
     Spawn:
         TNT1 A 0
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		HND8 ABCDEFGH 3 A_CustomMissile ("Brutal_FlyingBloodTrail5", 0, 0, random (0, 360), 2, random (0, 360))
+		HND8 ABCDEFGH 3 A_CustomMissile ("BloodTrails", 0, 0, random (0, 360), 2, random (0, 360))
 		Loop
 
     Death.plasma: Death.Burn: Death.Flames:
@@ -555,7 +555,7 @@ ACTOR XDeathImpArm: XDeathArm1
     Spawn:
         TNT1 A 0
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		HND4 ABCDEFGH 4 A_CustomMissile ("Brutal_FlyingBloodTrail5", 0, 0, random (0, 360), 2, random (0, 360))
+		HND4 ABCDEFGH 4 A_CustomMissile ("BloodTrails", 0, 0, random (0, 360), 2, random (0, 360))
 		Loop
     Death.plasma:
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece2", random (-15, 15), random (-15, 15))
@@ -743,7 +743,7 @@ ACTOR XDeathZombieLeg: XDeathArm1
     Spawn:
         TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		LEG1 ABCDEFGH 5 A_CustomMissile ("Brutal_FlyingBloodTrail5", 0, 0, random (0, 360), 2, random (0, 360))
+		LEG1 ABCDEFGH 5 A_CustomMissile ("BloodTrails", 0, 0, random (0, 360), 2, random (0, 360))
 		Loop
 	Death:
         LEG1 A 1
@@ -845,7 +845,7 @@ ACTOR XDeathZombieLeg2: XDeathZombieLeg
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		LEG1 ABCDEFGH 5 A_CustomMissile ("Brutal_FlyingBloodTrail5", 0, 0, random (0, 360), 2, random (0, 360))
+		LEG1 ABCDEFGH 5 A_CustomMissile ("BloodTrails", 0, 0, random (0, 360), 2, random (0, 360))
 		Loop
 	Death:
 	    LEG1 J 1
@@ -887,7 +887,7 @@ ACTOR XDeathImpLeg: XDeathArm1
     Spawn:
         TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		LEG4 ABCDEFGH 5 A_CustomMissile ("Brutal_FlyingBloodTrail5", 0, 0, random (0, 360), 2, random (0, 360))
+		LEG4 ABCDEFGH 5 A_CustomMissile ("BloodTrails", 0, 0, random (0, 360), 2, random (0, 360))
 		Loop
 	Death:
         LEG4 I 1
@@ -1001,7 +1001,7 @@ ACTOR XDeathBullLeg12: XDeathArm1
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
         TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
-		LEG8 ABCDEFGH 4 A_CustomMissile ("Brutal_FlyingBloodTrail5", 0, 0, random (0, 360), 2, random (0, 360))
+		LEG8 ABCDEFGH 4 A_CustomMissile ("BloodTrails", 0, 0, random (0, 360), 2, random (0, 360))
 		Loop
 	Death:
 	    LEG8 I 1
@@ -1105,7 +1105,7 @@ ACTOR XDeathSargeLeg1: XDeathArm1
     Spawn:
         TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		LEG2 ABCDEFGH 5 A_CustomMissile ("Brutal_FlyingBloodTrail5", 0, 0, random (0, 360), 2, random (0, 360))
+		LEG2 ABCDEFGH 5 A_CustomMissile ("BloodTrails", 0, 0, random (0, 360), 2, random (0, 360))
 		Loop
 	Death:
         LEG2 A 1
@@ -1205,7 +1205,7 @@ ACTOR XDeathSargeLeg2: XDeathArm1
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		LEG2 ABCDEFGH 5 A_CustomMissile ("Brutal_FlyingBloodTrail5", 0, 0, random (0, 360), 2, random (0, 360))
+		LEG2 ABCDEFGH 5 A_CustomMissile ("BloodTrails", 0, 0, random (0, 360), 2, random (0, 360))
 		Loop
 	Death:
 	    LEG2 E 1
@@ -1337,11 +1337,11 @@ Speed 2
     {
     Spawn:
         TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
-		XSTO A 24 A_CustomMissile ("Brutal_FlyingBloodTrail5", 0, 0, random (0, 360), 2, random (0, 360))
+		XSTO A 24 A_CustomMissile ("BloodTrails", 0, 0, random (0, 360), 2, random (0, 360))
 		Loop
     Death:
         TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
-        XSTO EEEEEEEEE 0 A_CustomMissile ("Brutal_FlyingBloodTrail5", 0, 0, random (0, 180), 2, random (0, 180))
+        XSTO EEEEEEEEE 0 A_CustomMissile ("BloodTrails", 0, 0, random (0, 180), 2, random (0, 180))
         XSTO E 1
 		TNT1 A 0 A_QueueCorpse
 		Goto Rest
@@ -1989,7 +1989,7 @@ ACTOR XDeathArchvileLeg: XDeathArm1
     Spawn:
         TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		DIAG IJKLMNOP 4 A_CustomMissile ("Brutal_FlyingBloodTrail5", 0, 0, random (0, 360), 2, random (0, 360))
+		DIAG IJKLMNOP 4 A_CustomMissile ("BloodTrails", 0, 0, random (0, 360), 2, random (0, 360))
 		Loop
 	Death:
         DIAG J 1
@@ -2045,7 +2045,7 @@ ACTOR XDeathArchvileArm: XDeathArm1
     Spawn:
         TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		DIAG ABCDEFGH 4 A_CustomMissile ("Brutal_FlyingBloodTrail5", 0, 0, random (0, 360), 2, random (0, 360))
+		DIAG ABCDEFGH 4 A_CustomMissile ("BloodTrails", 0, 0, random (0, 360), 2, random (0, 360))
 		Loop
 	Death:
         DIAG GF 2
@@ -2635,7 +2635,7 @@ actor ZombiemanHead: LimbBase
 		TNT1 A 0 A_SpawnItem("ZombiemanHeadExplode")
         Stop
 	Crush:
-        TNT1 AAAAAAAA 0 A_CustomMissile ("Brutal_FlyingBloodTrail5", 0, 0, random (0, 360), 2, random (60, 140))
+        TNT1 AAAAAAAA 0 A_CustomMissile ("BloodTrails", 0, 0, random (0, 360), 2, random (60, 140))
         TNT1 A 0 A_PlaySound("misc/xdeath5")
         CRS1 B 5
         CRS1 B 9009
@@ -2917,7 +2917,7 @@ damagefactor "SuperPunch", 9.0
     Death.Trample:
 	Crush:
 	    TNT1 A 0 A_GiveToTarget("BootsSmearedWithRedBlood", 6)
-        TNT1 AAAAAAAA 0 A_CustomMissile ("Brutal_FlyingBloodTrail5", 0, 0, random (0, 360), 2, random (60, 140))
+        TNT1 AAAAAAAA 0 A_CustomMissile ("BloodTrails", 0, 0, random (0, 360), 2, random (60, 140))
         TNT1 A 0 A_PlaySound("misc/xdeath5")
         CRS1 B 5
         CRS1 B 9009
@@ -3546,7 +3546,7 @@ DamageFactor "HeadKick", 999.0
 
     Death.Trample:
 	Crush:
-        TNT1 AAAAAAAA 0 A_CustomMissile ("Brutal_FlyingBloodTrail5", 0, 0, random (0, 360), 2, random (60, 140))
+        TNT1 AAAAAAAA 0 A_CustomMissile ("BloodTrails", 0, 0, random (0, 360), 2, random (60, 140))
         TNT1 A 0 A_PlaySound("misc/xdeath5")
         CRS1 B 5
         CRS1 B 9009
@@ -3581,7 +3581,7 @@ DamageFactor "HeadKick", 999.0
 		TNT1 AAA 0 A_CustomMissile ("LSpart1", 2, 0, random (0, 360), 2, random (0, 160))
         TNT1 A 0 A_CustomMissile ("LSpart3", 2, 0, random (0, 360), 2, random (0, 160))
         TNT1 AA 0 A_CustomMissile ("LSpart2", 2, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAAAA 0 A_CustomMissile ("Brutal_FlyingBloodTrail5", 0, 0, random (0, 360), 2, random (60, 140))
+		TNT1 AAAAA 0 A_CustomMissile ("BloodTrails", 0, 0, random (0, 360), 2, random (60, 140))
         TNT1 A 0 A_PlaySound("misc/xdeath5")
 		TNT1 AAAA 0 A_CustomMissile ("Brains1", 5, 0, random (0, 360), 2, random (60, 140))
 		TNT1 AAAAAA 0 A_CustomMissile ("SmallBrainPiece", 5, 0, random (0, 360), 2, random (60, 140))
@@ -3684,7 +3684,7 @@ damagefactor "SuperPunch", 9.0
     Death.Trample:
 	Crush:
 	    TNT1 A 0 A_GiveToTarget("BootsSmearedWithRedBlood", 6)
-        TNT1 AAAAAAAA 0 A_CustomMissile ("Brutal_FlyingBloodTrail5", 0, 0, random (0, 360), 2, random (60, 140))
+        TNT1 AAAAAAAA 0 A_CustomMissile ("BloodTrails", 0, 0, random (0, 360), 2, random (60, 140))
         TNT1 A 0 A_PlaySound("misc/xdeath5")
         CRS1 B 5
         CRS1 B 9009
@@ -4443,7 +4443,7 @@ ACTOR XDeathPainElementalNew1: XDeath1
 		Goto Rest
 	Rest:
 		CAGI Q 800
-TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		TNT1 A 0 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 		CAGI Q 8029
 		Stop
@@ -4518,7 +4518,7 @@ ACTOR MancubusEyeballs //Eyeballs
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		MANE Y 4 //A_CustomMissile ("BloodTr255", 0, 0, random (0, 360), 2, random (0, 360))
+		MANE Y 4
 		Loop
 	Death:
 	    MANE Y 1
@@ -4648,7 +4648,7 @@ ACTOR Brains2 : Brains1 //Teeth
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		BRIB ABCD 4 //A_CustomMissile ("BloodTr255", 0, 0, random (0, 360), 2, random (0, 360))
+		BRIB ABCD 4
 		Loop
 	Death:
 	    BRIB A 1
@@ -4692,7 +4692,7 @@ ACTOR Brains3 : Brains1 //Eyeballs
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		BRIB EFGH 4 //A_CustomMissile ("BloodTr255", 0, 0, random (0, 360), 2, random (0, 360))
+		BRIB EFGH 4
 		Loop
 	Death:
 	    BRIB E 1
@@ -4745,7 +4745,7 @@ ACTOR Brains4 : Brains1 //White skinned piece 1
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		BRIB IJKL 4 //A_CustomMissile ("BloodTr255", 0, 0, random (0, 360), 2, random (0, 360))
+		BRIB IJKL 4
 		Loop
 	Death:
 	    BRIN D 1
@@ -4783,7 +4783,7 @@ ACTOR Brains5 : Brains1 //White skinned piece 2
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		BRIB IJKL 4 //A_CustomMissile ("BloodTr255", 0, 0, random (0, 360), 2, random (0, 360))
+		BRIB IJKL 4
 		Loop
 	Death:
 	    BRIN E 1
@@ -4818,7 +4818,7 @@ ACTOR Brains6 : Brains1 //Brown skinned piece
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		BRIB MNOP 4 //A_CustomMissile ("BloodTr255", 0, 0, random (0, 360), 2, random (0, 360))
+		BRIB MNOP 4
 		Loop
 	Death:
 	    BRIN F 1
@@ -4858,7 +4858,7 @@ ACTOR Brains7 : Brains1 //Brown skinned teeth
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		BRIB QRST 4 //A_CustomMissile ("BloodTr255", 0, 0, random (0, 360), 2, random (0, 360))
+		BRIB QRST 4
 		Loop
 	Death:
 	    BRIN G 1
@@ -4883,7 +4883,7 @@ ACTOR Brains4GreenHair: Brains4 //White skinned piece 1
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		BR7B IJKL 4 //A_CustomMissile ("BloodTr255", 0, 0, random (0, 360), 2, random (0, 360))
+		BR7B IJKL 4
 		Loop
 	Death:
 	    BR7N D 1
@@ -4903,7 +4903,7 @@ ACTOR Brains4GreenHairBig: Brains4 //White skinned piece 1
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		BR7B ABCD 4 //A_CustomMissile ("BloodTr255", 0, 0, random (0, 360), 2, random (0, 360))
+		BR7B ABCD 4
 		Loop
 	Death:
 	    BR7B A 1
@@ -4923,7 +4923,7 @@ ACTOR Brains4Blonde: Brains4 //White skinned piece 1
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		BR8B IJKL 4 //A_CustomMissile ("BloodTr255", 0, 0, random (0, 360), 2, random (0, 360))
+		BR8B IJKL 4
 		Loop
 	Death:
 	    BR8B I 1
@@ -4943,7 +4943,7 @@ ACTOR Brains4BlondeBig: Brains4 //White skinned piece 1
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		BR8B ABCD 4 //A_CustomMissile ("BloodTr255", 0, 0, random (0, 360), 2, random (0, 360))
+		BR8B ABCD 4
 		Loop
 	Death:
 	    BR8B A 1
@@ -4966,7 +4966,7 @@ Scale 1.0
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		BR7B EFGH 4 //A_CustomMissile ("BloodTr255", 0, 0, random (0, 360), 2, random (0, 360))
+		BR7B EFGH 4
 		Loop
 	Death:
 	    BR7B E 1
@@ -4989,7 +4989,7 @@ Scale 1.0
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		BR7N E 4 //A_CustomMissile ("BloodTr255", 0, 0, random (0, 360), 2, random (0, 360))
+		BR7N E 4
 		Loop
 	Death:
 	    BR7N E 1
@@ -5049,7 +5049,7 @@ ACTOR PinkyJaw: BaronHeadPiece
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		PDG1 ABCDEFGH 4 //A_CustomMissile ("BloodTr255", 0, 0, random (0, 360), 2, random (0, 360))
+		PDG1 ABCDEFGH 4
 		Loop
 	Death:
 	    PDG1 H 2
