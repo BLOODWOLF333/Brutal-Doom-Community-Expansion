@@ -1518,13 +1518,13 @@ ACTOR GreenWaterBloodCHecker
 
 	IsOverLiquid:
 		TNT1 A 1
-		TNT1 A 0 A_SpawnItem ("WaterBloodSpot", 5)
+		TNT1 A 0 A_SpawnItem ("GreenWaterBloodSpot", 5)
 		Stop
     }
 }
 
 //muddy water bloodspot actor
-ACTOR GreenWaterBloodSpot: WaterBloodSpot
+ACTOR GreenWaterBloodSpot
 {
 	+CLIENTSIDEONLY
 	+THRUACTORS
