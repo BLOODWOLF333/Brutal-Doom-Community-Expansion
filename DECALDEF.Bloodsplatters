@@ -31,34 +31,59 @@ stretcher BrutalBloodSmearerSmall
 //	Decal Defs
 //////////////
 
+// Vanilla
+
+decal BloodSplat1
+{
+pic BSPLAT1
+shade "BloodDefault"
+x-scale 0.2
+y-scale 0.2
+randomflipx
+randomflipy
+}
+
+decal BloodSplat2
+{
+pic BSPLAT2
+shade "BloodDefault"
+x-scale 0.2
+y-scale 0.2
+randomflipx
+randomflipy
+}
+
+decal BloodSplat3
+{
+pic BSPLAT3
+shade "BloodDefault"
+x-scale 0.2
+y-scale 0.2
+randomflipx
+randomflipy
+}
+
+decal BloodSmear1
+{
+	pic BSMEAR1
+	shade "BloodDefault"
+	x-scale 0.2
+	y-scale 0.2
+	randomflipx
+	animator BrutalBloodSmearer
+}
+
+decal BloodSmear2
+{
+	pic BSMEAR2
+	shade "BloodDefault"
+	x-scale 0.2
+	y-scale 0.2
+	randomflipx
+	animator BrutalBloodSmearer
+}
+
 // Red
-
-decal BloodSplat001
-{
-pic BSPLNEW
-x-scale 0.35
-y-scale 0.35
-randomflipx
-randomflipy
-}
-
-decal BloodSplat002
-{
-pic BSPLNEW2
-x-scale 0.35
-y-scale 0.35
-randomflipx
-randomflipy
-}
-
-decal BloodSplat003
-{
-pic BSPLNEW3
-x-scale 0.35
-y-scale 0.35
-randomflipx
-randomflipy
-}
 
 decal BrutalBloodSmear1
 {
@@ -716,6 +741,21 @@ lowerdecal GreenBloodSmear
 //////////////
 // Decalgroups
 //////////////
+
+// Vanilla
+
+decalgroup BloodSplat
+{
+BloodSplat1 1
+BloodSplat2 1
+BloodSplat3 1
+}
+
+decalgroup BloodSmear
+{
+BloodSmear1 1
+BloodSmear2 1
+}
 
 // Red
 
