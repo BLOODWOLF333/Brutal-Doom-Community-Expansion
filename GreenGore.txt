@@ -2114,7 +2114,7 @@ ACTOR GreenGuts
     States
     {
     Spawn:
-		GUTS M 1
+		GUTG A 1
 		TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Spawn4")
 	Spawn1:
 		TNT1 A 0
@@ -2137,8 +2137,8 @@ ACTOR GreenGuts
 		Goto Live
 
 	Live:
-		GUTS NOPQRSTUV 1 A_JumpIf(waterlevel > 1, "Water")
-        GUTS V -1
+		GUTG BCDEFGHIJ 1 A_JumpIf(waterlevel > 1, "Water")
+        GUTG J -1
 		Loop
 
     Death:
@@ -2149,12 +2149,12 @@ ACTOR GreenGuts
 		TNT1 A 0 A_Jump(255, "Rest1", "Rest2")
 
 	Rest1:
-        GUTS W 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+        GUTG K 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 		Loop
 
 	Rest2:
-		GUTS X 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
+		GUTG L 800 ACS_NamedExecuteAlways("BDCheckJanitor", 0, 0, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing")
 		Loop
 
@@ -2163,7 +2163,7 @@ ACTOR GreenGuts
 		Stop
 
 	Water:
-		GUTS TUVU 4
+		GUTG HIJI 4
 		Loop
     }
 }
