@@ -332,14 +332,14 @@ ACTOR Shot_Gun : BrutalWeapon
     Reload:
 	    SHTN A 0
 		SHTN A 0 A_TakeInventory("Reloading", 1)
-		SHTN A 0 A_JumpIfInventory("AmmoShell", 1, 1)
-		Goto Ready
-		SHTN AAA 0
 	    SHTN A 0 A_Takeinventory("Zoomed",1)
         SHTN A 0 A_ZoomFactor(1.0)
 		RIFG A 0 A_SetCrosshair(0)
 		SHTN A 1
 		SHTN A 0 A_JumpIfInventory("ShotgunAmmo",9,"Ready3")
+		SHTN A 0 A_JumpIfInventory("AmmoShell", 1, 1)
+		Goto Ready
+		SHTN AAA 0
 
 	ReloadNormally:
 		SHTN A 0 A_Takeinventory("ShotgunUnloaded",1)
@@ -380,6 +380,9 @@ ACTOR Shot_Gun : BrutalWeapon
 
 	CheckIfFinishReload:
 		SHTN A 0
+		SHTN A 0 A_JumpIfInventory("ShotgunAmmo", 1, 1)
+		Goto Ready
+		SHTN AAA 0
 		SHTN A 0 A_JumpIfInventory("ShotgunWasEmpty", 1, "EjectEmpty")//If shotgun was empty,
 		//Play the insert shell animation again, and insert the 9th shell
 		SHTN A 0 A_JumpIfInventory("AmmoShell",1,1)//if there are no more reserve shells, finish reload.
@@ -396,6 +399,7 @@ ACTOR Shot_Gun : BrutalWeapon
 		Goto Ready
 
 	TurboReload:
+		TNT1 A 0
 		SHTN A 0 A_JumpIfInventory("AmmoShell",1,1)//if there are no more reserve shells, finish reload.
         Goto Ready
 	TurboInsertShells:
@@ -492,7 +496,7 @@ ACTOR Shot_Gun : BrutalWeapon
 		RIFG A 0 A_SetCrosshair(0)
 		RIFG A 0 A_JumpIfInventory("TurboReload",1,"TurboReload")
 		TNT1 A 0 A_PlaySound("weapons/empty", 4)
-		NoAmmo2:
+	NoAmmo2:
 		RIFG A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 	    RIFG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		RIFG A 0 A_JumpIfInventory("Salute1", 1, "Salute")
