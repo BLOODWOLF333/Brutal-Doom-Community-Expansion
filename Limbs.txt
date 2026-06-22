@@ -225,12 +225,12 @@ ACTOR XDeathGuts: XDeath2
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-        XME4 AAAABBBBCCCCDDDD 2
+        XME2 AAAABBBBCCCCDDDD 2
         Loop
     Death:
         TNT1 AAAAAAA 0 A_CustomMissile ("BloodTrails", 0, 0, random (0, 180), 2, random (0, 180))
         TNT1 A 0 A_QueueCorpse
-		XME4 E 9009
+		XME2 E 9009
         Stop
     }
 }
