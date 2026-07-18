@@ -859,7 +859,8 @@ ACTOR Imp Replaces DoomImp
 	 Death.ExtremePunches:
 		TNT1 A 0
 		TNT1 A 0 A_XScream
-		TNT1 A 0 A_CustomMissile ("ExtremePunchedImp", 8, 0, random (175, 185), 2, random (10, 20))
+		TNT1 A 0 A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ExtremePunchedImp", 8, 0, random (175, 185), 2, random (10, 20))
 		TNT1 A -1 A_NoBlocking
 		Stop
 	Death.Shrapnel:
