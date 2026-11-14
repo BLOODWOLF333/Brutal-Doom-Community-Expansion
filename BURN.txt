@@ -9,7 +9,7 @@ actor GenericBurningGuy
 	-SOLID
 	-SHOOTABLE
 	Mass 1000
-	Health 100
+	Health 20
 	Damagefactor "Fire", 0.0	Damagefactor "Burn", 0.0
 	States
 	{
@@ -124,7 +124,7 @@ actor DesintegratedHuman
 	-SOLID
 	-SHOOTABLE
     Mass 1000
-    Health 100
+    Health 20
 	Scale 0.7
 	States
 	{
@@ -153,12 +153,12 @@ actor DesintegratedHuman
 
 actor BurningImp
 {
-	Radius 1
-	Height 1
 	+NOTELEPORT
 	+MOVEWITHSECTOR
+	Radius 20
+	Height 56
 	Mass 1000
-	Health 100
+	Health 20
 	Damagefactor "Fire", 0.0	Damagefactor "Burn", 0.0
 	States
 	{
@@ -190,6 +190,7 @@ ACTOR BurningImpCorpse : BurningImp
 	+ALWAYSTELEFRAG
 	-SOLID
 	-SHOOTABLE
+	Damagefactor "Fire", 0.0	Damagefactor "Burn", 0.0
 	States
 	{
 	Spawn:
@@ -203,11 +204,8 @@ ACTOR BurningImpCorpse : BurningImp
 	}
 }
 
-Actor BurnedDemon
+Actor BurnedDemon : BurningImpCorpse
 {
-	Radius 1
-	Height 1
-	Damagefactor "Fire", 0.0	Damagefactor "Burn", 0.0
 	States
 	{
 	Spawn:
@@ -430,7 +428,7 @@ ACTOR BurningZombie
     Height 56
     Speed 3
     Scale 0.98
-	Health 100
+	Health 20
 	GibHealth 25
 	PainSound "grunt/pain"
 	DeathSound "grunt/death"
@@ -555,7 +553,7 @@ ACTOR BurningCacodemon
     Height 56
     Speed 3
     Scale 0.9
-	Health 100
+	Health 20
 	GibHealth 25
 	PainSound "caco/pain"
 	DeathSound "caco/death"
@@ -635,7 +633,7 @@ ACTOR BurningZombieMan
     Radius 8
     Height 48
     Speed 3
-	Health 30
+	Health 20
 	GibHealth 25
 	PainSound "grunt/pain"
 	DeathSound "grunt/death"
@@ -1056,6 +1054,157 @@ ACTOR BurningDemon: BurningZombieMan
 		TNT1 A 0 A_SpawnItemEx("HealthCrueltyBonus2",0,0,24,frandom (-2.5, 2.5), frandom (-2.5, 2.5), 5)
 		Stop
     }
+}
+
+Actor BurningFatso
+{
+	Radius 48
+	Height 64
+    Speed 0
+	Health 20
+	GibHealth 25
+	PainSound "fatso/pain"
+	DeathSound "fatso/death"
+	Damagefactor "Fire", 0.0	Damagefactor "Burn", 0.0
+	+SHOOTABLE
+    +FLOORCLIP
+    +LOOKALLAROUND
+	+NOICEDEATH
+	+FRIGHTENED
+    Obituary "%o was near someone in flames."
+	States
+	{
+	Spawn:
+		BF4T AAA 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+		TNT1 A 0 A_Pain
+		BF4T BBB 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+		BF4T CCC 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+		BF4T BBB 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+
+		BF4T AAA 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+		TNT1 A 0 A_Pain
+		BF4T BBB 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+		BF4T CCC 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+		BF4T BBB 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+		TNT1 AA 0 A_SpawnItemEx("TinyBurningPiece", random (-15, 15), random (-15, 15))
+		TNT1 AAA 0 A_SpawnItemEx("TinyBurningPiece2", random (-35, 35), random (-35, 35))
+		TNT1 AAA 0 A_SpawnItemEx("TinyBurningPiece3", random (-45, 45), random (-45, 35))
+		BF4T AAA 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+		TNT1 A 0 A_Pain
+		BF4T BBB 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+		BF4T CCC 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+		BF4T BBB 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+
+		BF4T AAA 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+		TNT1 A 0 A_Pain
+		BF4T BBB 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+		BF4T CCC 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+		BF4T BBB 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+		TNT1 A 0 A_SpawnItemEx ("DetectFloorCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_SpawnItem("BarrelExplosionSmokeColumn")
+		TNT1 AA 0 A_SpawnItemEx("TinyBurningPiece", random (-15, 15), random (-15, 15))
+		TNT1 AAA 0 A_SpawnItemEx("TinyBurningPiece2", random (-35, 35), random (-35, 35))
+		TNT1 AAA 0 A_SpawnItemEx("TinyBurningPiece3", random (-45, 45), random (-45, 35))
+		BF4T DEF 4 A_CustomMissile ("BurnParticles", 12, 0, random (0, 180), 2, random (50, 90))
+		BF4T F 4 A_DIE
+
+	Death:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem ("BurnedFatso")
+		TNT1 A -1 A_NoBlocking
+		Stop
+	}
+}
+
+Actor BurnedFatso : BurningImpCorpse
+{
+	States
+	{
+	Spawn:
+		BF4T FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 10 A_CustomMissile ("BurnParticles", 12, 0, random (0, 180), 2, random (50, 90))
+		BF4T F 10 A_DIE
+
+	Death:
+        CARB L -1 A_NoBlocking
+        Stop
+	}
+}
+
+Actor BurningVolcabus
+{
+	Scale 1.5
+	Radius 48
+	Height 99//SpriteH(66x150%=99)
+    Speed 0
+	Health 20
+	GibHealth 25
+	PainSound "Volcabus/pain"
+	DeathSound "Volcabus/death"
+	Damagefactor "Fire", 0.0	Damagefactor "Burn", 0.0
+	+SHOOTABLE
+    +FLOORCLIP
+    +LOOKALLAROUND
+	+NOICEDEATH
+	+FRIGHTENED
+    Obituary "%o was near someone in flames."
+	States
+	{
+	Spawn:
+		F7T2 FFF 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+		TNT1 A 0 A_Pain
+		F7T2 GGG 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+		F7T2 HHH 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+		F7T2 GGG 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+
+		F7T2 FFF 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+		TNT1 A 0 A_Pain
+		F7T2 GGG 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+		F7T2 HHH 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+		F7T2 GGG 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+		TNT1 AA 0 A_SpawnItemEx("TinyBurningPiece", random (-15, 15), random (-15, 15))
+		TNT1 AAA 0 A_SpawnItemEx("TinyBurningPiece2", random (-35, 35), random (-35, 35))
+		TNT1 AAA 0 A_SpawnItemEx("TinyBurningPiece3", random (-45, 45), random (-45, 35))
+		F7T2 FFF 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+		TNT1 A 0 A_Pain
+		F7T2 GGG 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+		F7T2 HHH 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+		F7T2 GGG 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+
+		F7T2 FFF 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+		TNT1 A 0 A_Pain
+		F7T2 GGG 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+		F7T2 HHH 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+		F7T2 GGG 2 BRIGHT A_CustomMissile ("BurnParticles", 42, 0, random (0, 180), 2, random (0, 180))
+		TNT1 A 0 A_SpawnItemEx ("DetectFloorCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_SpawnItem("BarrelExplosionSmokeColumn")
+		TNT1 AA 0 A_SpawnItemEx("TinyBurningPiece", random (-15, 15), random (-15, 15))
+		TNT1 AAA 0 A_SpawnItemEx("TinyBurningPiece2", random (-35, 35), random (-35, 35))
+		TNT1 AAA 0 A_SpawnItemEx("TinyBurningPiece3", random (-45, 45), random (-45, 35))
+		F7T2 BCD 4 A_CustomMissile ("BurnParticles", 12, 0, random (0, 180), 2, random (50, 90))
+		F7T2 D 4 A_DIE
+
+	Death:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem ("BurnedVolcabus")
+		TNT1 A -1 A_NoBlocking
+		Stop
+	}
+}
+
+Actor BurnedVolcabus : BurningImpCorpse
+{
+	States
+	{
+	Spawn:
+		F7T2 EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 10 A_CustomMissile ("BurnParticles", 12, 0, random (0, 180), 2, random (50, 90))
+		F7T2 E 10 A_DIE
+
+	Death:
+        F7T2 E -1 A_BossDeath
+        Stop
+	}
 }
 
 ACTOR XDeathBurnedLeg
