@@ -95,7 +95,7 @@ script "BDInitialize" enter
 
 	//===========================
 	//Game compatibilities
-	if	(GameType () == GAME_NET_COOPERATIVE)
+	if	(GameType () == 1)
 	{
 		ConsoleCommand("compat_clientssendfullbuttoninfo 1");
 	}
@@ -335,7 +335,7 @@ Script "BDCHeckJanitor" (VOID)
 {
 if	(GetCvar("bd_lowgraphicsmode") == 1) { GiveInventory("LowGraphicsMode", 1); }
 if	(GetCvar("zdoombrutaljanitor") == 1) { GiveInventory("LowGraphicsMode", 1); }
-if	(GameType () == GAME_NET_DEATHMATCH) { GiveInventory("LowGraphicsMode", 1); }
+if	(GameType () == 2) { GiveInventory("LowGraphicsMode", 1); }
 }
 
 Script "BDCHeckJanitor2" (VOID)
@@ -405,7 +405,7 @@ if	(GetCvar("bd_disablenewguns") == 1) { SetActorState(0,"Vanilla"); }
 
 Script "CheckIfDM" (VOID)
 {
-	if	(GameType () == GAME_NET_DEATHMATCH)
+	if	(GameType () == 2)
 	{
 		GiveInventory("DMGame", 1);
 		SetActorProperty(0,APROP_SPECIES,"None");
