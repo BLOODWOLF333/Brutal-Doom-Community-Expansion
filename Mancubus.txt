@@ -217,6 +217,7 @@ ACTOR Mancubus : Fatso Replaces Fatso
 		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate")
 		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
 		TNT1 A 0 A_SPAWNITEM("DyingFatsoNoHead")
+		TNT1 A 1 A_NoBlocking
 		TNT1 A -1 A_BossDeath
         Stop
 
@@ -229,6 +230,7 @@ ACTOR Mancubus : Fatso Replaces Fatso
 		FATT T 1 A_NoBlocking
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 	    TNT1 A 0 A_SpawnItem ("DeadFatNoHead", 1)
+		TNT1 A 1 A_NoBlocking
 		TNT1 A -1 A_BossDeath
         Stop
 
@@ -532,26 +534,24 @@ Actor NoGutsFatso: CurbstompedMarine
     Death.flames:
     Death.burn:
     Death.Plasma: Death.Plasma2:
-        TNT1 A 0
         TNT1 A 0 A_Scream
-        TNT1 A 0 A_NoBlocking
         TNT1 AAA 0 A_CustomMissile ("Brutal_FlyingBlood", 50, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 AA 0 A_CustomMissile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 AA 0 A_CustomMissile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, random (0, 160))
 		EXPL AAAAAA 0 A_CustomMissile ("ExplosionSmoke", 32, 0, random (0, 360), 2, random (0, 360))
         CARB LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL 10 A_CustomMissile ("SmallSmoke", 1, 0, random (0, 360), 2, random (0, 160))
-        CARB L -1
+        CARB L -1 A_NoBlocking
+		Stop
 
 	Crush:
 	Death.CrushedBodies:
-		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_XScream
 		TNT1 AA 0 A_SpawnItem("MeatDeathSmall")
 		TNT1 AAA 0 bright A_CustomMissile ("SuperGoreSpawner", 1, 0, random (0, 360), 2, random (5, 10))
 		TNT1 AA 0 bright A_CustomMissile ("XDeath1", 1, random (-30, 30), random (0, 360), 2, random (30, 180))
 		TNT1 AA 0 bright A_CustomMissile ("XDeath2b", 1, random (-30, 30), random (0, 360), 2, random (30, 180))
 		TNT1 AA 0 bright A_CustomMissile ("XDeath3b", 1, random (-30, 30), random (0, 360), 2, random (30, 180))
-		CRS3 B 1 A_XScream
-		CRS3 B -1
+		CRS3 B -1 A_NoBlocking
 		Stop
 
     }
@@ -585,16 +585,15 @@ States
     Death.Plasma: Death.Plasma2:
         TNT1 A 0
         TNT1 A 0 A_Scream
-        TNT1 A 0 A_NoBlocking
         TNT1 AAA 0 A_CustomMissile ("Brutal_FlyingBlood", 50, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 AA 0 A_CustomMissile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 AA 0 A_CustomMissile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, random (0, 160))
 		EXPL AAAAAA 0 A_CustomMissile ("ExplosionSmoke", 32, 0, random (0, 360), 2, random (0, 360))
         CARB LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL 10 A_CustomMissile ("SmallSmoke", 1, 0, random (0, 360), 2, random (0, 160))
-        CARB L -1
+        CARB L -1 A_NoBlocking
         Stop
-
-		}}
+	}
+}
 
 Actor DeadFAT3F: DeadFat
 {
@@ -889,7 +888,6 @@ Actor DyingFatsoNoHead : NoGutsFatso
 		FATT LLL 2 A_CustomMissile ("ArterialBlood22NoDecal", 40, 0, random (0, 360), 2, random (30, 50))
 		TNT1 A 0 A_Scream
 		FATT MMM 2 A_CustomMissile ("ArterialBlood22NoDecal", 30, 0, random (0, 360), 2, random (20, 50))
-		TNT1 A 0 A_NoBlocking
 		FATT NNOOPPQQRRSS 2 A_CustomMissile ("ArterialBlood22NoDecal", 20, 0, random (0, 360), 2, random (20, 50))
 		FATT TTTTTTTTTTTTTTTTTTTTTTT 2 A_CustomMissile ("ArterialBlood22NoDecal", 20, 0, random (0, 360), 2, random (20, 50))
 		FATT T 2 A_DIE
@@ -898,5 +896,6 @@ Actor DyingFatsoNoHead : NoGutsFatso
 		TNT1 A 0 A_SpawnItem ("DeadFatNoHead", 1)
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		TNT1 A -1 A_NOBLOCKING
+		Stop
 	}
 }

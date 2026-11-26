@@ -251,9 +251,9 @@ Actor Volcabus : Mancubus 2543
 
 	//Brutalize animation
 	Suffer:
+		F5T2 C 1 A_NoBlocking
 		TNT1 A 0 A_SpawnItem ("DyingVolcabus")
-		TNT1 A 0 A_BossDeath
-		TNT1 A -1 A_NoBlocking
+		TNT1 A -1 A_BossDeath
         Stop
 
 	Death2:
@@ -394,6 +394,7 @@ Actor Volcabus : Mancubus 2543
 	Death.Decaptate:
 		TNT1 A 0
 		TNT1 A 0 A_SPAWNITEM("DyingVolcabusNoHead")
+		TNT1 A 1 A_NoBlocking
 		TNT1 A -1 A_BOSSDEATH
 		Stop
 
@@ -664,7 +665,6 @@ Actor DyingVolcabusNoHead : DyingVolcabus
 		FA72 FFFFKKKK 2 A_CustomMissile ("ArterialBlood22NoDecal", 30, 0, random (0, 360), 2, random (10, 90))
 
 		FA72 GGG 2 A_CustomMissile ("ArterialBlood22NoDecal", 67, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_NoBlocking
 		FA72 HHH 2 A_CustomMissile ("brutal_FlyingBlood", 58, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("MuchBlood", 58, 0, random (0, 360), 2, random (0, 160))
 		FA72 III 2 A_CustomMissile ("brutal_FlyingBlood", 44, 0, random (0, 360), 2, random (0, 160))
@@ -675,7 +675,7 @@ Actor DyingVolcabusNoHead : DyingVolcabus
 
 	Death.Expire:
 		FA72 JJJJJJJJJJJJJJJJJJ 2 A_CustomMissile ("ArterialBlood22NoDecal", 21, 0, random (0, 360), 2, random (0, 160))
-		FA72 J -1 A_BossDeath
+		FA72 J -1 A_NOBLOCKING
 		Stop
 
 	Death:
